@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2021-04-13 for GEMP.
+
 2022-02-21 Version: v1.0.6
 - SDK for Operation Incident Center.
 

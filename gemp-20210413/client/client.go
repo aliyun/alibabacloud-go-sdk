@@ -5,17 +5,74 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DataValue struct {
+	Code              *string `json:"code,omitempty" xml:"code,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	ConfigDescription *string `json:"configDescription,omitempty" xml:"configDescription,omitempty"`
+	ConfigCode        *string `json:"configCode,omitempty" xml:"configCode,omitempty"`
+	ParentCode        *string `json:"parentCode,omitempty" xml:"parentCode,omitempty"`
+	ConfigKey         *string `json:"configKey,omitempty" xml:"configKey,omitempty"`
+	ConfigValue       *string `json:"configValue,omitempty" xml:"configValue,omitempty"`
+	Requirement       *bool   `json:"requirement,omitempty" xml:"requirement,omitempty"`
+}
+
+func (s DataValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataValue) SetCode(v string) *DataValue {
+	s.Code = &v
+	return s
+}
+
+func (s *DataValue) SetDescription(v string) *DataValue {
+	s.Description = &v
+	return s
+}
+
+func (s *DataValue) SetConfigDescription(v string) *DataValue {
+	s.ConfigDescription = &v
+	return s
+}
+
+func (s *DataValue) SetConfigCode(v string) *DataValue {
+	s.ConfigCode = &v
+	return s
+}
+
+func (s *DataValue) SetParentCode(v string) *DataValue {
+	s.ParentCode = &v
+	return s
+}
+
+func (s *DataValue) SetConfigKey(v string) *DataValue {
+	s.ConfigKey = &v
+	return s
+}
+
+func (s *DataValue) SetConfigValue(v string) *DataValue {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *DataValue) SetRequirement(v bool) *DataValue {
+	s.Requirement = &v
+	return s
+}
+
 type AddProblemServiceGroupRequest struct {
-	// 故障ID
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 应急协同组
+	ProblemId       *int64   `json:"problemId,omitempty" xml:"problemId,omitempty"`
 	ServiceGroupIds []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
@@ -38,7 +95,6 @@ func (s *AddProblemServiceGroupRequest) SetServiceGroupIds(v []*int64) *AddProbl
 }
 
 type AddProblemServiceGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -56,8 +112,9 @@ func (s *AddProblemServiceGroupResponseBody) SetRequestId(v string) *AddProblemS
 }
 
 type AddProblemServiceGroupResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddProblemServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddProblemServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddProblemServiceGroupResponse) String() string {
@@ -73,22 +130,211 @@ func (s *AddProblemServiceGroupResponse) SetHeaders(v map[string]*string) *AddPr
 	return s
 }
 
+func (s *AddProblemServiceGroupResponse) SetStatusCode(v int32) *AddProblemServiceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AddProblemServiceGroupResponse) SetBody(v *AddProblemServiceGroupResponseBody) *AddProblemServiceGroupResponse {
 	s.Body = v
 	return s
 }
 
+type BillingStatisticsResponseBody struct {
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *BillingStatisticsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+}
+
+func (s BillingStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BillingStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BillingStatisticsResponseBody) SetRequestId(v string) *BillingStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBody) SetData(v *BillingStatisticsResponseBodyData) *BillingStatisticsResponseBody {
+	s.Data = v
+	return s
+}
+
+type BillingStatisticsResponseBodyData struct {
+	AppUserCount                     *int64 `json:"appUserCount,omitempty" xml:"appUserCount,omitempty"`
+	AppUserCountFree                 *int64 `json:"appUserCountFree,omitempty" xml:"appUserCountFree,omitempty"`
+	EmailSend                        *int64 `json:"emailSend,omitempty" xml:"emailSend,omitempty"`
+	EmailSendFree                    *int64 `json:"emailSendFree,omitempty" xml:"emailSendFree,omitempty"`
+	EscalationPlanCount              *int64 `json:"escalationPlanCount,omitempty" xml:"escalationPlanCount,omitempty"`
+	EscalationPlanCountFree          *int64 `json:"escalationPlanCountFree,omitempty" xml:"escalationPlanCountFree,omitempty"`
+	EventReportApi                   *int64 `json:"eventReportApi,omitempty" xml:"eventReportApi,omitempty"`
+	EventReportApiFree               *int64 `json:"eventReportApiFree,omitempty" xml:"eventReportApiFree,omitempty"`
+	HasScheduleServiceGroupCount     *int64 `json:"hasScheduleServiceGroupCount,omitempty" xml:"hasScheduleServiceGroupCount,omitempty"`
+	HasScheduleServiceGroupCountFree *int64 `json:"hasScheduleServiceGroupCountFree,omitempty" xml:"hasScheduleServiceGroupCountFree,omitempty"`
+	ImMsgSend                        *int64 `json:"imMsgSend,omitempty" xml:"imMsgSend,omitempty"`
+	ImMsgSendFree                    *int64 `json:"imMsgSendFree,omitempty" xml:"imMsgSendFree,omitempty"`
+	RuleCount                        *int64 `json:"ruleCount,omitempty" xml:"ruleCount,omitempty"`
+	RuleCountFree                    *int64 `json:"ruleCountFree,omitempty" xml:"ruleCountFree,omitempty"`
+	SmsSend                          *int64 `json:"smsSend,omitempty" xml:"smsSend,omitempty"`
+	SmsSendFree                      *int64 `json:"smsSendFree,omitempty" xml:"smsSendFree,omitempty"`
+	SubscriptionNotifyCount          *int64 `json:"subscriptionNotifyCount,omitempty" xml:"subscriptionNotifyCount,omitempty"`
+	SubscriptionNotifyCountFree      *int64 `json:"subscriptionNotifyCountFree,omitempty" xml:"subscriptionNotifyCountFree,omitempty"`
+	Type                             *bool  `json:"type,omitempty" xml:"type,omitempty"`
+	VoiceSend                        *int64 `json:"voiceSend,omitempty" xml:"voiceSend,omitempty"`
+	VoiceSendFree                    *int64 `json:"voiceSendFree,omitempty" xml:"voiceSendFree,omitempty"`
+}
+
+func (s BillingStatisticsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BillingStatisticsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BillingStatisticsResponseBodyData) SetAppUserCount(v int64) *BillingStatisticsResponseBodyData {
+	s.AppUserCount = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetAppUserCountFree(v int64) *BillingStatisticsResponseBodyData {
+	s.AppUserCountFree = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetEmailSend(v int64) *BillingStatisticsResponseBodyData {
+	s.EmailSend = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetEmailSendFree(v int64) *BillingStatisticsResponseBodyData {
+	s.EmailSendFree = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetEscalationPlanCount(v int64) *BillingStatisticsResponseBodyData {
+	s.EscalationPlanCount = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetEscalationPlanCountFree(v int64) *BillingStatisticsResponseBodyData {
+	s.EscalationPlanCountFree = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetEventReportApi(v int64) *BillingStatisticsResponseBodyData {
+	s.EventReportApi = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetEventReportApiFree(v int64) *BillingStatisticsResponseBodyData {
+	s.EventReportApiFree = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetHasScheduleServiceGroupCount(v int64) *BillingStatisticsResponseBodyData {
+	s.HasScheduleServiceGroupCount = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetHasScheduleServiceGroupCountFree(v int64) *BillingStatisticsResponseBodyData {
+	s.HasScheduleServiceGroupCountFree = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetImMsgSend(v int64) *BillingStatisticsResponseBodyData {
+	s.ImMsgSend = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetImMsgSendFree(v int64) *BillingStatisticsResponseBodyData {
+	s.ImMsgSendFree = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetRuleCount(v int64) *BillingStatisticsResponseBodyData {
+	s.RuleCount = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetRuleCountFree(v int64) *BillingStatisticsResponseBodyData {
+	s.RuleCountFree = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetSmsSend(v int64) *BillingStatisticsResponseBodyData {
+	s.SmsSend = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetSmsSendFree(v int64) *BillingStatisticsResponseBodyData {
+	s.SmsSendFree = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetSubscriptionNotifyCount(v int64) *BillingStatisticsResponseBodyData {
+	s.SubscriptionNotifyCount = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetSubscriptionNotifyCountFree(v int64) *BillingStatisticsResponseBodyData {
+	s.SubscriptionNotifyCountFree = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetType(v bool) *BillingStatisticsResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetVoiceSend(v int64) *BillingStatisticsResponseBodyData {
+	s.VoiceSend = &v
+	return s
+}
+
+func (s *BillingStatisticsResponseBodyData) SetVoiceSendFree(v int64) *BillingStatisticsResponseBodyData {
+	s.VoiceSendFree = &v
+	return s
+}
+
+type BillingStatisticsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BillingStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BillingStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BillingStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BillingStatisticsResponse) SetHeaders(v map[string]*string) *BillingStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BillingStatisticsResponse) SetStatusCode(v int32) *BillingStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BillingStatisticsResponse) SetBody(v *BillingStatisticsResponseBody) *BillingStatisticsResponse {
+	s.Body = v
+	return s
+}
+
 type CancelProblemRequest struct {
-	// 取消原因
-	CancelReason *int64 `json:"cancelReason,omitempty" xml:"cancelReason,omitempty"`
-	// 取消原因描述
+	CancelReason            *int64  `json:"cancelReason,omitempty" xml:"cancelReason,omitempty"`
 	CancelReasonDescription *string `json:"cancelReasonDescription,omitempty" xml:"cancelReasonDescription,omitempty"`
-	// 幂等校验token
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 故障id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// PROBLEM_NOTIFY	通告类型 PROBLEM_NOTIFY：故障通告 PROBLEM_UPDATE：故障更新 PROBLEM_UPGRADE：故障升级 PROBLEM_DEGRADE：故障降级 PROBLEM_RECOVER：故障恢复 PROBLEM_REISSUE： 故障补发 PROBLEM_CANCEL：故障取消
-	ProblemNotifyType *int64 `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
+	ClientToken             *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ProblemId               *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemNotifyType       *int64  `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
 }
 
 func (s CancelProblemRequest) String() string {
@@ -125,7 +371,6 @@ func (s *CancelProblemRequest) SetProblemNotifyType(v int64) *CancelProblemReque
 }
 
 type CancelProblemResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -143,8 +388,9 @@ func (s *CancelProblemResponseBody) SetRequestId(v string) *CancelProblemRespons
 }
 
 type CancelProblemResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CancelProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CancelProblemResponse) String() string {
@@ -160,17 +406,19 @@ func (s *CancelProblemResponse) SetHeaders(v map[string]*string) *CancelProblemR
 	return s
 }
 
+func (s *CancelProblemResponse) SetStatusCode(v int32) *CancelProblemResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CancelProblemResponse) SetBody(v *CancelProblemResponseBody) *CancelProblemResponse {
 	s.Body = v
 	return s
 }
 
 type CheckWebhookRequest struct {
-	// 幂等校验token
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// webook地址
-	Webhook *string `json:"webhook,omitempty" xml:"webhook,omitempty"`
-	// webhook地址类型 企业微信WEIXIN_GROUP 钉钉群 DING_GROUP 飞书 FEISHU_GROUP
+	Webhook     *string `json:"webhook,omitempty" xml:"webhook,omitempty"`
 	WebhookType *string `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
 }
 
@@ -198,7 +446,6 @@ func (s *CheckWebhookRequest) SetWebhookType(v string) *CheckWebhookRequest {
 }
 
 type CheckWebhookResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -216,8 +463,9 @@ func (s *CheckWebhookResponseBody) SetRequestId(v string) *CheckWebhookResponseB
 }
 
 type CheckWebhookResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckWebhookResponse) String() string {
@@ -233,13 +481,17 @@ func (s *CheckWebhookResponse) SetHeaders(v map[string]*string) *CheckWebhookRes
 	return s
 }
 
+func (s *CheckWebhookResponse) SetStatusCode(v int32) *CheckWebhookResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CheckWebhookResponse) SetBody(v *CheckWebhookResponseBody) *CheckWebhookResponse {
 	s.Body = v
 	return s
 }
 
 type ConfirmIntegrationConfigRequest struct {
-	// 幂等id
 	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
@@ -280,8 +532,9 @@ func (s *ConfirmIntegrationConfigResponseBody) SetRequestId(v string) *ConfirmIn
 }
 
 type ConfirmIntegrationConfigResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ConfirmIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ConfirmIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ConfirmIntegrationConfigResponse) String() string {
@@ -297,21 +550,21 @@ func (s *ConfirmIntegrationConfigResponse) SetHeaders(v map[string]*string) *Con
 	return s
 }
 
+func (s *ConfirmIntegrationConfigResponse) SetStatusCode(v int32) *ConfirmIntegrationConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ConfirmIntegrationConfigResponse) SetBody(v *ConfirmIntegrationConfigResponseBody) *ConfirmIntegrationConfigResponse {
 	s.Body = v
 	return s
 }
 
 type CreateEscalationPlanRequest struct {
-	// clientToken
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 升级计划描述
-	EscalationPlanDescription *string `json:"escalationPlanDescription,omitempty" xml:"escalationPlanDescription,omitempty"`
-	// 升级计划名称
-	EscalationPlanName *string `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
-	// 升级计划规则列表
-	EscalationPlanRules []*CreateEscalationPlanRequestEscalationPlanRules `json:"escalationPlanRules,omitempty" xml:"escalationPlanRules,omitempty" type:"Repeated"`
-	// 升级计划范围对象列表
+	ClientToken                *string                                                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EscalationPlanDescription  *string                                                  `json:"escalationPlanDescription,omitempty" xml:"escalationPlanDescription,omitempty"`
+	EscalationPlanName         *string                                                  `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
+	EscalationPlanRules        []*CreateEscalationPlanRequestEscalationPlanRules        `json:"escalationPlanRules,omitempty" xml:"escalationPlanRules,omitempty" type:"Repeated"`
 	EscalationPlanScopeObjects []*CreateEscalationPlanRequestEscalationPlanScopeObjects `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty" type:"Repeated"`
 }
 
@@ -349,12 +602,9 @@ func (s *CreateEscalationPlanRequest) SetEscalationPlanScopeObjects(v []*CreateE
 }
 
 type CreateEscalationPlanRequestEscalationPlanRules struct {
-	// 升级条件
 	EscalationPlanConditions []*CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions `json:"escalationPlanConditions,omitempty" xml:"escalationPlanConditions,omitempty" type:"Repeated"`
-	// 升级策略
 	EscalationPlanStrategies []*CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies `json:"escalationPlanStrategies,omitempty" xml:"escalationPlanStrategies,omitempty" type:"Repeated"`
-	// 升级类型
-	EscalationPlanType *string `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
+	EscalationPlanType       *string                                                                   `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
 }
 
 func (s CreateEscalationPlanRequestEscalationPlanRules) String() string {
@@ -381,10 +631,8 @@ func (s *CreateEscalationPlanRequestEscalationPlanRules) SetEscalationPlanType(v
 }
 
 type CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions struct {
-	// 影响等级
 	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	// 事件等级
-	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	Level     *string `json:"level,omitempty" xml:"level,omitempty"`
 }
 
 func (s CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions) String() string {
@@ -406,16 +654,11 @@ func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions)
 }
 
 type CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies struct {
-	// 是否支持群通知
-	EnableWebhook *bool `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	// 升级通知策略
-	NoticeChannels []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
-	// 升级通知对象id列表
-	NoticeObjects []*int64 `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
-	// 通知时间
-	NoticeTime *string `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	// 服务组id
-	ServiceGroupIds []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
+	EnableWebhook   *bool     `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	NoticeChannels  []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
+	NoticeObjects   []*int64  `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
+	NoticeTime      *string   `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroupIds []*int64  `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) String() string {
@@ -452,10 +695,8 @@ func (s *CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies)
 }
 
 type CreateEscalationPlanRequestEscalationPlanScopeObjects struct {
-	// 范围对象类型
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 范围对象id
-	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	Scope         *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObjectId *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
 }
 
 func (s CreateEscalationPlanRequestEscalationPlanScopeObjects) String() string {
@@ -477,10 +718,8 @@ func (s *CreateEscalationPlanRequestEscalationPlanScopeObjects) SetScopeObjectId
 }
 
 type CreateEscalationPlanResponseBody struct {
-	// data
-	Data *CreateEscalationPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *CreateEscalationPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateEscalationPlanResponseBody) String() string {
@@ -502,7 +741,6 @@ func (s *CreateEscalationPlanResponseBody) SetRequestId(v string) *CreateEscalat
 }
 
 type CreateEscalationPlanResponseBodyData struct {
-	// 升级计划id
 	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
 }
 
@@ -520,8 +758,9 @@ func (s *CreateEscalationPlanResponseBodyData) SetEscalationPlanId(v int64) *Cre
 }
 
 type CreateEscalationPlanResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateEscalationPlanResponse) String() string {
@@ -537,30 +776,26 @@ func (s *CreateEscalationPlanResponse) SetHeaders(v map[string]*string) *CreateE
 	return s
 }
 
+func (s *CreateEscalationPlanResponse) SetStatusCode(v int32) *CreateEscalationPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateEscalationPlanResponse) SetBody(v *CreateEscalationPlanResponseBody) *CreateEscalationPlanResponse {
 	s.Body = v
 	return s
 }
 
 type CreateIncidentRequest struct {
-	// 分派的用户ID
-	AssignUserId *int64 `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
-	// 通知渠道     SMS 短信   EMAIL 邮件   PHONE  电话  WEIXIN_GROUP企微群 DING_GROUP 钉钉群
-	Channels []*string `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	// 幂等UUID
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 影响等级 高：HIGH 低 LOW
-	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// 事件描述
-	IncidentDescription *string `json:"incidentDescription,omitempty" xml:"incidentDescription,omitempty"`
-	// P1	事件级别 P1 P2 P3 P4
-	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	// 事件标题
-	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
-	// 关联服务ID
-	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	// 服务组Id
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	AssignUserId        *int64    `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
+	Channels            []*string `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	ClientToken         *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Effect              *string   `json:"effect,omitempty" xml:"effect,omitempty"`
+	IncidentDescription *string   `json:"incidentDescription,omitempty" xml:"incidentDescription,omitempty"`
+	IncidentLevel       *string   `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	IncidentTitle       *string   `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	RelatedServiceId    *int64    `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	ServiceGroupId      *int64    `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s CreateIncidentRequest) String() string {
@@ -617,10 +852,8 @@ func (s *CreateIncidentRequest) SetServiceGroupId(v int64) *CreateIncidentReques
 }
 
 type CreateIncidentResponseBody struct {
-	// Id of the request
-	Data *CreateIncidentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// requestId
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *CreateIncidentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateIncidentResponseBody) String() string {
@@ -642,7 +875,6 @@ func (s *CreateIncidentResponseBody) SetRequestId(v string) *CreateIncidentRespo
 }
 
 type CreateIncidentResponseBodyData struct {
-	// 事件主健Id
 	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
@@ -660,8 +892,9 @@ func (s *CreateIncidentResponseBodyData) SetIncidentId(v int64) *CreateIncidentR
 }
 
 type CreateIncidentResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateIncidentResponse) String() string {
@@ -677,18 +910,20 @@ func (s *CreateIncidentResponse) SetHeaders(v map[string]*string) *CreateInciden
 	return s
 }
 
+func (s *CreateIncidentResponse) SetStatusCode(v int32) *CreateIncidentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateIncidentResponse) SetBody(v *CreateIncidentResponseBody) *CreateIncidentResponse {
 	s.Body = v
 	return s
 }
 
 type CreateIncidentSubtotalRequest struct {
-	// 幂等校验Id
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 事件id
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IncidentId  *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
 func (s CreateIncidentSubtotalRequest) String() string {
@@ -715,9 +950,8 @@ func (s *CreateIncidentSubtotalRequest) SetIncidentId(v int64) *CreateIncidentSu
 }
 
 type CreateIncidentSubtotalResponseBody struct {
-	Data *CreateIncidentSubtotalResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// requestId
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *CreateIncidentSubtotalResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateIncidentSubtotalResponseBody) String() string {
@@ -739,7 +973,6 @@ func (s *CreateIncidentSubtotalResponseBody) SetRequestId(v string) *CreateIncid
 }
 
 type CreateIncidentSubtotalResponseBodyData struct {
-	// 小计Id
 	SubtotalId *int64 `json:"subtotalId,omitempty" xml:"subtotalId,omitempty"`
 }
 
@@ -757,8 +990,9 @@ func (s *CreateIncidentSubtotalResponseBodyData) SetSubtotalId(v int64) *CreateI
 }
 
 type CreateIncidentSubtotalResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateIncidentSubtotalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateIncidentSubtotalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateIncidentSubtotalResponse) String() string {
@@ -771,6 +1005,11 @@ func (s CreateIncidentSubtotalResponse) GoString() string {
 
 func (s *CreateIncidentSubtotalResponse) SetHeaders(v map[string]*string) *CreateIncidentSubtotalResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateIncidentSubtotalResponse) SetStatusCode(v int32) *CreateIncidentSubtotalResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -826,7 +1065,6 @@ func (s *CreateIntegrationConfigResponseBody) SetRequestId(v string) *CreateInte
 }
 
 type CreateIntegrationConfigResponseBodyData struct {
-	// 集成配置id
 	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
 
@@ -844,8 +1082,9 @@ func (s *CreateIntegrationConfigResponseBodyData) SetIntegrationConfigId(v int64
 }
 
 type CreateIntegrationConfigResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateIntegrationConfigResponse) String() string {
@@ -861,42 +1100,32 @@ func (s *CreateIntegrationConfigResponse) SetHeaders(v map[string]*string) *Crea
 	return s
 }
 
+func (s *CreateIntegrationConfigResponse) SetStatusCode(v int32) *CreateIntegrationConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateIntegrationConfigResponse) SetBody(v *CreateIntegrationConfigResponseBody) *CreateIntegrationConfigResponse {
 	s.Body = v
 	return s
 }
 
 type CreateProblemRequest struct {
-	// 影响服务列表
-	AffectServiceIds []*int64 `json:"affectServiceIds,omitempty" xml:"affectServiceIds,omitempty" type:"Repeated"`
-	// 幂等校验Id
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 发现时间 (XXXX-XX-XX 00:00:00)
-	DiscoverTime *string `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
-	// 事件id
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 主要处理人
-	MainHandlerId *int64 `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
-	// 初步原因
-	PreliminaryReason *string `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
-	// 故障等级 1=P1 2=P2 3=P3 4=P4
-	ProblemLevel *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
-	// 故障名称
-	ProblemName *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
-	// 通告类型
-	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
-	// 故障状态  HANDLING 处理中 RECOVERED 已恢复  REPLAYING 复盘中  REPLAYED 已复盘 CANCEL 已取消
-	ProblemStatus *string `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
-	// 进展摘要
-	ProgressSummary *string `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
-	// 进展摘要富文本id
-	ProgressSummaryRichTextId *int64 `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
-	// 恢复时间
-	RecoveryTime *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
-	// 所属服务
-	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	// 应急协同组
-	ServiceGroupIds []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
+	AffectServiceIds          []*int64 `json:"affectServiceIds,omitempty" xml:"affectServiceIds,omitempty" type:"Repeated"`
+	ClientToken               *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	DiscoverTime              *string  `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
+	IncidentId                *int64   `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	MainHandlerId             *int64   `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
+	PreliminaryReason         *string  `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
+	ProblemLevel              *string  `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	ProblemName               *string  `json:"problemName,omitempty" xml:"problemName,omitempty"`
+	ProblemNotifyType         *string  `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
+	ProblemStatus             *string  `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
+	ProgressSummary           *string  `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
+	ProgressSummaryRichTextId *int64   `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
+	RecoveryTime              *string  `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
+	RelatedServiceId          *int64   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	ServiceGroupIds           []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateProblemRequest) String() string {
@@ -983,9 +1212,8 @@ func (s *CreateProblemRequest) SetServiceGroupIds(v []*int64) *CreateProblemRequ
 }
 
 type CreateProblemResponseBody struct {
-	Data *CreateProblemResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *CreateProblemResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateProblemResponseBody) String() string {
@@ -1007,7 +1235,6 @@ func (s *CreateProblemResponseBody) SetRequestId(v string) *CreateProblemRespons
 }
 
 type CreateProblemResponseBodyData struct {
-	// 故障Id
 	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
@@ -1025,8 +1252,9 @@ func (s *CreateProblemResponseBodyData) SetProblemId(v int64) *CreateProblemResp
 }
 
 type CreateProblemResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateProblemResponse) String() string {
@@ -1042,26 +1270,24 @@ func (s *CreateProblemResponse) SetHeaders(v map[string]*string) *CreateProblemR
 	return s
 }
 
+func (s *CreateProblemResponse) SetStatusCode(v int32) *CreateProblemResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateProblemResponse) SetBody(v *CreateProblemResponseBody) *CreateProblemResponse {
 	s.Body = v
 	return s
 }
 
 type CreateProblemEffectionServiceRequest struct {
-	// clientToken
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 影响描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 影响等级
-	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// 图片地址
-	PictureUrl []*string `json:"pictureUrl,omitempty" xml:"pictureUrl,omitempty" type:"Repeated"`
-	// 故障id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 影响服务id
-	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// 影响状态 0 未恢复 1已恢复
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	ClientToken *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Description *string   `json:"description,omitempty" xml:"description,omitempty"`
+	Level       *string   `json:"level,omitempty" xml:"level,omitempty"`
+	PictureUrl  []*string `json:"pictureUrl,omitempty" xml:"pictureUrl,omitempty" type:"Repeated"`
+	ProblemId   *int64    `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ServiceId   *int64    `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	Status      *string   `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s CreateProblemEffectionServiceRequest) String() string {
@@ -1131,7 +1357,6 @@ func (s *CreateProblemEffectionServiceResponseBody) SetRequestId(v string) *Crea
 }
 
 type CreateProblemEffectionServiceResponseBodyData struct {
-	// 影响服务id
 	EffectionServiceId *int64 `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
 }
 
@@ -1149,8 +1374,9 @@ func (s *CreateProblemEffectionServiceResponseBodyData) SetEffectionServiceId(v 
 }
 
 type CreateProblemEffectionServiceResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateProblemEffectionServiceResponse) String() string {
@@ -1166,32 +1392,27 @@ func (s *CreateProblemEffectionServiceResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *CreateProblemEffectionServiceResponse) SetStatusCode(v int32) *CreateProblemEffectionServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateProblemEffectionServiceResponse) SetBody(v *CreateProblemEffectionServiceResponseBody) *CreateProblemEffectionServiceResponse {
 	s.Body = v
 	return s
 }
 
 type CreateProblemMeasureRequest struct {
-	// 验收标准
-	CheckStandard *string `json:"checkStandard,omitempty" xml:"checkStandard,omitempty"`
-	// 验收人id
-	CheckUserId *int64 `json:"checkUserId,omitempty" xml:"checkUserId,omitempty"`
-	// 幂等校验token
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 措施内容
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 负责人id
-	DirectorId *int64 `json:"directorId,omitempty" xml:"directorId,omitempty"`
-	// 计划完成时间
+	CheckStandard  *string `json:"checkStandard,omitempty" xml:"checkStandard,omitempty"`
+	CheckUserId    *int64  `json:"checkUserId,omitempty" xml:"checkUserId,omitempty"`
+	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Content        *string `json:"content,omitempty" xml:"content,omitempty"`
+	DirectorId     *int64  `json:"directorId,omitempty" xml:"directorId,omitempty"`
 	PlanFinishTime *string `json:"planFinishTime,omitempty" xml:"planFinishTime,omitempty"`
-	// 故障Id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 跟踪人id
-	StalkerId *int64 `json:"stalkerId,omitempty" xml:"stalkerId,omitempty"`
-	// 状态 IMPROVED 改进 2 未改进UNIMPROVED
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 措施类型
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	ProblemId      *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	StalkerId      *int64  `json:"stalkerId,omitempty" xml:"stalkerId,omitempty"`
+	Status         *string `json:"status,omitempty" xml:"status,omitempty"`
+	Type           *int32  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateProblemMeasureRequest) String() string {
@@ -1253,9 +1474,8 @@ func (s *CreateProblemMeasureRequest) SetType(v int32) *CreateProblemMeasureRequ
 }
 
 type CreateProblemMeasureResponseBody struct {
-	Data *CreateProblemMeasureResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *CreateProblemMeasureResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateProblemMeasureResponseBody) String() string {
@@ -1277,7 +1497,6 @@ func (s *CreateProblemMeasureResponseBody) SetRequestId(v string) *CreateProblem
 }
 
 type CreateProblemMeasureResponseBodyData struct {
-	// 故障措施Id
 	MeasureId *int64 `json:"measureId,omitempty" xml:"measureId,omitempty"`
 }
 
@@ -1295,8 +1514,9 @@ func (s *CreateProblemMeasureResponseBodyData) SetMeasureId(v int64) *CreateProb
 }
 
 type CreateProblemMeasureResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateProblemMeasureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProblemMeasureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateProblemMeasureResponse) String() string {
@@ -1312,18 +1532,20 @@ func (s *CreateProblemMeasureResponse) SetHeaders(v map[string]*string) *CreateP
 	return s
 }
 
+func (s *CreateProblemMeasureResponse) SetStatusCode(v int32) *CreateProblemMeasureResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateProblemMeasureResponse) SetBody(v *CreateProblemMeasureResponseBody) *CreateProblemMeasureResponse {
 	s.Body = v
 	return s
 }
 
 type CreateProblemSubtotalRequest struct {
-	// 幂等校验token
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 小计文本
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 故障Id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemId   *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s CreateProblemSubtotalRequest) String() string {
@@ -1350,9 +1572,8 @@ func (s *CreateProblemSubtotalRequest) SetProblemId(v int64) *CreateProblemSubto
 }
 
 type CreateProblemSubtotalResponseBody struct {
-	Data *CreateProblemSubtotalResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *CreateProblemSubtotalResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateProblemSubtotalResponseBody) String() string {
@@ -1374,7 +1595,6 @@ func (s *CreateProblemSubtotalResponseBody) SetRequestId(v string) *CreateProble
 }
 
 type CreateProblemSubtotalResponseBodyData struct {
-	// 小计id
 	SubtotalId *int64 `json:"subtotalId,omitempty" xml:"subtotalId,omitempty"`
 }
 
@@ -1392,8 +1612,9 @@ func (s *CreateProblemSubtotalResponseBodyData) SetSubtotalId(v int64) *CreatePr
 }
 
 type CreateProblemSubtotalResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateProblemSubtotalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProblemSubtotalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateProblemSubtotalResponse) String() string {
@@ -1409,22 +1630,22 @@ func (s *CreateProblemSubtotalResponse) SetHeaders(v map[string]*string) *Create
 	return s
 }
 
+func (s *CreateProblemSubtotalResponse) SetStatusCode(v int32) *CreateProblemSubtotalResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateProblemSubtotalResponse) SetBody(v *CreateProblemSubtotalResponseBody) *CreateProblemSubtotalResponse {
 	s.Body = v
 	return s
 }
 
 type CreateProblemTimelineRequest struct {
-	// clientToken
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 节点内容
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 关键节点 码表:PROBLEM_KEY_NODE (逗号分隔)
-	KeyNode *string `json:"keyNode,omitempty" xml:"keyNode,omitempty"`
-	// 故障id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 发生时间
-	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	KeyNode     *string `json:"keyNode,omitempty" xml:"keyNode,omitempty"`
+	ProblemId   *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	Time        *string `json:"time,omitempty" xml:"time,omitempty"`
 }
 
 func (s CreateProblemTimelineRequest) String() string {
@@ -1461,10 +1682,8 @@ func (s *CreateProblemTimelineRequest) SetTime(v string) *CreateProblemTimelineR
 }
 
 type CreateProblemTimelineResponseBody struct {
-	// Object
-	Data *CreateProblemTimelineResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *CreateProblemTimelineResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateProblemTimelineResponseBody) String() string {
@@ -1486,7 +1705,6 @@ func (s *CreateProblemTimelineResponseBody) SetRequestId(v string) *CreateProble
 }
 
 type CreateProblemTimelineResponseBodyData struct {
-	// 故障事件线id
 	ProblemTimelineId *int64 `json:"problemTimelineId,omitempty" xml:"problemTimelineId,omitempty"`
 }
 
@@ -1504,8 +1722,9 @@ func (s *CreateProblemTimelineResponseBodyData) SetProblemTimelineId(v int64) *C
 }
 
 type CreateProblemTimelineResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateProblemTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProblemTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateProblemTimelineResponse) String() string {
@@ -1521,17 +1740,19 @@ func (s *CreateProblemTimelineResponse) SetHeaders(v map[string]*string) *Create
 	return s
 }
 
+func (s *CreateProblemTimelineResponse) SetStatusCode(v int32) *CreateProblemTimelineResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateProblemTimelineResponse) SetBody(v *CreateProblemTimelineResponseBody) *CreateProblemTimelineResponse {
 	s.Body = v
 	return s
 }
 
 type CreateProblemTimelinesRequest struct {
-	// clientToken
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 故障id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 时间线节点
+	ClientToken   *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ProblemId     *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 	TimelineNodes *string `json:"timelineNodes,omitempty" xml:"timelineNodes,omitempty"`
 }
 
@@ -1599,8 +1820,9 @@ func (s *CreateProblemTimelinesResponseBodyData) SetProblemTimelineIds(v []*int6
 }
 
 type CreateProblemTimelinesResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateProblemTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProblemTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateProblemTimelinesResponse) String() string {
@@ -1616,18 +1838,20 @@ func (s *CreateProblemTimelinesResponse) SetHeaders(v map[string]*string) *Creat
 	return s
 }
 
+func (s *CreateProblemTimelinesResponse) SetStatusCode(v int32) *CreateProblemTimelinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateProblemTimelinesResponse) SetBody(v *CreateProblemTimelinesResponseBody) *CreateProblemTimelinesResponse {
 	s.Body = v
 	return s
 }
 
 type CreateRichTextRequest struct {
-	// 资源id
-	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 资源类型
+	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// 文本内容
-	RichText *string `json:"richText,omitempty" xml:"richText,omitempty"`
+	RichText     *string `json:"richText,omitempty" xml:"richText,omitempty"`
 }
 
 func (s CreateRichTextRequest) String() string {
@@ -1654,10 +1878,8 @@ func (s *CreateRichTextRequest) SetRichText(v string) *CreateRichTextRequest {
 }
 
 type CreateRichTextResponseBody struct {
-	// data
-	Data *CreateRichTextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *CreateRichTextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateRichTextResponseBody) String() string {
@@ -1679,12 +1901,9 @@ func (s *CreateRichTextResponseBody) SetRequestId(v string) *CreateRichTextRespo
 }
 
 type CreateRichTextResponseBodyData struct {
-	// 资源id
-	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 资源类型
-	InstanceType *int64 `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// 富文本内容
-	RichText *string `json:"richText,omitempty" xml:"richText,omitempty"`
+	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceType *int64  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	RichText     *string `json:"richText,omitempty" xml:"richText,omitempty"`
 }
 
 func (s CreateRichTextResponseBodyData) String() string {
@@ -1711,8 +1930,9 @@ func (s *CreateRichTextResponseBodyData) SetRichText(v string) *CreateRichTextRe
 }
 
 type CreateRichTextResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateRichTextResponse) String() string {
@@ -1728,42 +1948,32 @@ func (s *CreateRichTextResponse) SetHeaders(v map[string]*string) *CreateRichTex
 	return s
 }
 
+func (s *CreateRichTextResponse) SetStatusCode(v int32) *CreateRichTextResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateRichTextResponse) SetBody(v *CreateRichTextResponseBody) *CreateRichTextResponse {
 	s.Body = v
 	return s
 }
 
 type CreateRouteRuleRequest struct {
-	// 事件分派对象ID（服务组ID 或用户ID）
-	AssignObjectId *int64 `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
-	// 事件分派对象类型 SERVICEGROUP服务组 USER 单个用户
-	AssignObjectType *string `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
-	// 子规则关系AND,OR
-	ChildRuleRelation *string `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 影响程度 LOW-一般 HIGH-严重
-	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	// 启用状态
-	EnableStatus *string `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
-	// 事件级别 P1 P2 P3 P4
-	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	// 命中次数
-	MatchCount *int32 `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
-	// 通知渠道。 SMS 短信  EMAIL 邮件  PHONE电话  WEIXIN_GROUP 企微群 DING_GROUP钉钉群
-	NotifyChannels []*string `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
-	// 关联服务ID
-	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	// 子规则
-	RouteChildRules []*CreateRouteRuleRequestRouteChildRules `json:"routeChildRules,omitempty" xml:"routeChildRules,omitempty" type:"Repeated"`
-	// 路由类型：INCIDENT 触发事件 ALERT仅触发报警
-	RouteType *string `json:"routeType,omitempty" xml:"routeType,omitempty"`
-	// 规则名称
-	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// 时间窗口
-	TimeWindow *int64 `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
-	// 时间窗口单位 MINUTE  分钟  SECOND 秒
-	TimeWindowUnit *string `json:"timeWindowUnit,omitempty" xml:"timeWindowUnit,omitempty"`
+	AssignObjectId    *int64                                   `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
+	AssignObjectType  *string                                  `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
+	ChildRuleRelation *string                                  `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
+	ClientToken       *string                                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Effection         *string                                  `json:"effection,omitempty" xml:"effection,omitempty"`
+	EnableStatus      *string                                  `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
+	IncidentLevel     *string                                  `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	MatchCount        *int32                                   `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
+	NotifyChannels    []*string                                `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
+	RelatedServiceId  *int64                                   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	RouteChildRules   []*CreateRouteRuleRequestRouteChildRules `json:"routeChildRules,omitempty" xml:"routeChildRules,omitempty" type:"Repeated"`
+	RouteType         *string                                  `json:"routeType,omitempty" xml:"routeType,omitempty"`
+	RuleName          *string                                  `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	TimeWindow        *int64                                   `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
+	TimeWindowUnit    *string                                  `json:"timeWindowUnit,omitempty" xml:"timeWindowUnit,omitempty"`
 }
 
 func (s CreateRouteRuleRequest) String() string {
@@ -1850,12 +2060,9 @@ func (s *CreateRouteRuleRequest) SetTimeWindowUnit(v string) *CreateRouteRuleReq
 }
 
 type CreateRouteRuleRequestRouteChildRules struct {
-	// 0-与，1-或
-	ChildConditionRelation *int64 `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
-	// 条件
-	Conditions []*CreateRouteRuleRequestRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// 监控源ID
-	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	ChildConditionRelation *int64                                             `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
+	Conditions             []*CreateRouteRuleRequestRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	MonitorSourceId        *int64                                             `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
 }
 
 func (s CreateRouteRuleRequestRouteChildRules) String() string {
@@ -1882,12 +2089,9 @@ func (s *CreateRouteRuleRequestRouteChildRules) SetMonitorSourceId(v int64) *Cre
 }
 
 type CreateRouteRuleRequestRouteChildRulesConditions struct {
-	// 字段名称
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 操作符号：notContain 不包含；contain 包含；equals 等于；notEquals 不等于；
+	Key             *string `json:"key,omitempty" xml:"key,omitempty"`
 	OperationSymbol *string `json:"operationSymbol,omitempty" xml:"operationSymbol,omitempty"`
-	// 字段值
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	Value           *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s CreateRouteRuleRequestRouteChildRulesConditions) String() string {
@@ -1914,10 +2118,8 @@ func (s *CreateRouteRuleRequestRouteChildRulesConditions) SetValue(v string) *Cr
 }
 
 type CreateRouteRuleResponseBody struct {
-	// 结果
-	Data *CreateRouteRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// 请求
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *CreateRouteRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateRouteRuleResponseBody) String() string {
@@ -1939,7 +2141,6 @@ func (s *CreateRouteRuleResponseBody) SetRequestId(v string) *CreateRouteRuleRes
 }
 
 type CreateRouteRuleResponseBodyData struct {
-	// 规则ID
 	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
 }
 
@@ -1957,8 +2158,9 @@ func (s *CreateRouteRuleResponseBodyData) SetRouteRuleId(v int64) *CreateRouteRu
 }
 
 type CreateRouteRuleResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateRouteRuleResponse) String() string {
@@ -1974,18 +2176,20 @@ func (s *CreateRouteRuleResponse) SetHeaders(v map[string]*string) *CreateRouteR
 	return s
 }
 
+func (s *CreateRouteRuleResponse) SetStatusCode(v int32) *CreateRouteRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateRouteRuleResponse) SetBody(v *CreateRouteRuleResponseBody) *CreateRouteRuleResponse {
 	s.Body = v
 	return s
 }
 
 type CreateServiceRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 服务描述
+	ClientToken        *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	ServiceDescription *string `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
-	// 服务名称
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s CreateServiceRequest) String() string {
@@ -2012,10 +2216,8 @@ func (s *CreateServiceRequest) SetServiceName(v string) *CreateServiceRequest {
 }
 
 type CreateServiceResponseBody struct {
-	// 服务ID
-	Data *CreateServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *CreateServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateServiceResponseBody) String() string {
@@ -2037,7 +2239,6 @@ func (s *CreateServiceResponseBody) SetRequestId(v string) *CreateServiceRespons
 }
 
 type CreateServiceResponseBodyData struct {
-	// 服务ID
 	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 }
 
@@ -2055,8 +2256,9 @@ func (s *CreateServiceResponseBodyData) SetServiceId(v int64) *CreateServiceResp
 }
 
 type CreateServiceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateServiceResponse) String() string {
@@ -2072,28 +2274,25 @@ func (s *CreateServiceResponse) SetHeaders(v map[string]*string) *CreateServiceR
 	return s
 }
 
+func (s *CreateServiceResponse) SetStatusCode(v int32) *CreateServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateServiceResponse) SetBody(v *CreateServiceResponseBody) *CreateServiceResponse {
 	s.Body = v
 	return s
 }
 
 type CreateServiceGroupRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// ENABLE 启用 DISABLE 禁用
-	EnableWebhook *string `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	// 监控源消息模版
-	MonitorSourceTemplates []*CreateServiceGroupRequestMonitorSourceTemplates `json:"monitorSourceTemplates,omitempty" xml:"monitorSourceTemplates,omitempty" type:"Repeated"`
-	// 服务描述
-	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
-	// 服务小组名称
-	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
-	// 小组人员用户ID
-	UserIds []*int64 `json:"userIds,omitempty" xml:"userIds,omitempty" type:"Repeated"`
-	// webhookLink
-	WebhookLink *string `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
-	// WEIXIN_GROUP微信 DING_GROUP钉钉 FEISHU_GROUP飞书
-	WebhookType *string `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
+	ClientToken             *string                                            `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EnableWebhook           *string                                            `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	MonitorSourceTemplates  []*CreateServiceGroupRequestMonitorSourceTemplates `json:"monitorSourceTemplates,omitempty" xml:"monitorSourceTemplates,omitempty" type:"Repeated"`
+	ServiceGroupDescription *string                                            `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
+	ServiceGroupName        *string                                            `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	UserIds                 []*int64                                           `json:"userIds,omitempty" xml:"userIds,omitempty" type:"Repeated"`
+	WebhookLink             *string                                            `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
+	WebhookType             *string                                            `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
 }
 
 func (s CreateServiceGroupRequest) String() string {
@@ -2145,14 +2344,10 @@ func (s *CreateServiceGroupRequest) SetWebhookType(v string) *CreateServiceGroup
 }
 
 type CreateServiceGroupRequestMonitorSourceTemplates struct {
-	// 监控源ID
-	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	// 监控源名字
+	MonitorSourceId   *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
 	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	// 模板内容
-	TemplateContent *string `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
-	// 消息模版ID
-	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	TemplateContent   *string `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
+	TemplateId        *int64  `json:"templateId,omitempty" xml:"templateId,omitempty"`
 }
 
 func (s CreateServiceGroupRequestMonitorSourceTemplates) String() string {
@@ -2184,10 +2379,8 @@ func (s *CreateServiceGroupRequestMonitorSourceTemplates) SetTemplateId(v int64)
 }
 
 type CreateServiceGroupResponseBody struct {
-	// 服务组ID
-	Data *CreateServiceGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *CreateServiceGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateServiceGroupResponseBody) String() string {
@@ -2209,7 +2402,6 @@ func (s *CreateServiceGroupResponseBody) SetRequestId(v string) *CreateServiceGr
 }
 
 type CreateServiceGroupResponseBodyData struct {
-	// 服务组ID
 	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
@@ -2227,8 +2419,9 @@ func (s *CreateServiceGroupResponseBodyData) SetServiceGroupId(v int64) *CreateS
 }
 
 type CreateServiceGroupResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateServiceGroupResponse) String() string {
@@ -2244,22 +2437,22 @@ func (s *CreateServiceGroupResponse) SetHeaders(v map[string]*string) *CreateSer
 	return s
 }
 
+func (s *CreateServiceGroupResponse) SetStatusCode(v int32) *CreateServiceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateServiceGroupResponse) SetBody(v *CreateServiceGroupResponseBody) *CreateServiceGroupResponse {
 	s.Body = v
 	return s
 }
 
 type CreateServiceGroupSchedulingRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 快速排班
+	ClientToken    *string                                            `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	FastScheduling *CreateServiceGroupSchedulingRequestFastScheduling `json:"fastScheduling,omitempty" xml:"fastScheduling,omitempty" type:"Struct"`
-	// 精细排班
 	FineScheduling *CreateServiceGroupSchedulingRequestFineScheduling `json:"fineScheduling,omitempty" xml:"fineScheduling,omitempty" type:"Struct"`
-	// 排班方式 FAST 快速排班 FINE  精细排班
-	SchedulingWay *string `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	SchedulingWay  *string                                            `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
+	ServiceGroupId *int64                                             `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s CreateServiceGroupSchedulingRequest) String() string {
@@ -2296,14 +2489,10 @@ func (s *CreateServiceGroupSchedulingRequest) SetServiceGroupId(v int64) *Create
 }
 
 type CreateServiceGroupSchedulingRequestFastScheduling struct {
-	// 值班方案 dutyPlan FAST_CHOICE 快速选择   CUSTOM  自定义
-	DutyPlan *string `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
-	// 快速轮班用户
-	SchedulingUsers []*CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
-	// 每人排班时长
-	SingleDuration *int32 `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
-	// 每人排班时常单位 HOUR 小时 DAY  天
-	SingleDurationUnit *string `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
+	DutyPlan           *string                                                             `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
+	SchedulingUsers    []*CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
+	SingleDuration     *int32                                                              `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
+	SingleDurationUnit *string                                                             `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
 }
 
 func (s CreateServiceGroupSchedulingRequestFastScheduling) String() string {
@@ -2335,9 +2524,7 @@ func (s *CreateServiceGroupSchedulingRequestFastScheduling) SetSingleDurationUni
 }
 
 type CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers struct {
-	// 排班顺序
-	SchedulingOrder *int64 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	// 轮班用户ID
+	SchedulingOrder  *int64 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
 	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 }
 
@@ -2360,16 +2547,11 @@ func (s *CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) SetSc
 }
 
 type CreateServiceGroupSchedulingRequestFineScheduling struct {
-	// 循环周期
-	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
-	// 循环周期单位 HOUR 小时 DAY  天
-	PeriodUnit *string `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
-	// 精细排班信息表
-	SchedulingFineShifts []*CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts `json:"schedulingFineShifts,omitempty" xml:"schedulingFineShifts,omitempty" type:"Repeated"`
-	// 精细排班模版
+	Period                       *int32                                                                           `json:"period,omitempty" xml:"period,omitempty"`
+	PeriodUnit                   *string                                                                          `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
+	SchedulingFineShifts         []*CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts         `json:"schedulingFineShifts,omitempty" xml:"schedulingFineShifts,omitempty" type:"Repeated"`
 	SchedulingTemplateFineShifts []*CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts `json:"schedulingTemplateFineShifts,omitempty" xml:"schedulingTemplateFineShifts,omitempty" type:"Repeated"`
-	// 班次类型 MORNING_NIGHT 早晚班 MORNING_NOON_NIGHT 早中晚班 CUSTOM 自定义
-	ShiftType *string `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
+	ShiftType                    *string                                                                          `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
 }
 
 func (s CreateServiceGroupSchedulingRequestFineScheduling) String() string {
@@ -2406,20 +2588,13 @@ func (s *CreateServiceGroupSchedulingRequestFineScheduling) SetShiftType(v strin
 }
 
 type CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts struct {
-	// 循环次序
-	CycleOrder *int32 `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
-	// 排班结束时间
-	SchedulingEndTime *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	// 排班顺序
-	SchedulingOrder *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	// 排班开始时间
+	CycleOrder          *int32  `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
+	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingOrder     *int32  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
 	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	// 排班用户ID
-	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	// 班次名称
-	ShiftName *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	// 是否跨天
-	SkipOneDay *bool `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	SchedulingUserId    *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	ShiftName           *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	SkipOneDay          *bool   `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) String() string {
@@ -2466,18 +2641,12 @@ func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) 
 }
 
 type CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts struct {
-	// 排班结束时间
-	SchedulingEndTime *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	// 排班顺序
-	SchedulingOrder *int64 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	// 排班开始时间
+	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingOrder     *int64  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
 	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	// 用户ID
-	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	// 用户名字
-	SchedulingUserName *string `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
-	// 是否跨天
-	SkipOneDay *bool `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	SchedulingUserId    *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingUserName  *string `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
+	SkipOneDay          *bool   `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts) String() string {
@@ -2519,7 +2688,6 @@ func (s *CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFine
 }
 
 type CreateServiceGroupSchedulingResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -2537,8 +2705,9 @@ func (s *CreateServiceGroupSchedulingResponseBody) SetRequestId(v string) *Creat
 }
 
 type CreateServiceGroupSchedulingResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateServiceGroupSchedulingResponse) String() string {
@@ -2554,34 +2723,28 @@ func (s *CreateServiceGroupSchedulingResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *CreateServiceGroupSchedulingResponse) SetStatusCode(v int32) *CreateServiceGroupSchedulingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateServiceGroupSchedulingResponse) SetBody(v *CreateServiceGroupSchedulingResponseBody) *CreateServiceGroupSchedulingResponse {
 	s.Body = v
 	return s
 }
 
 type CreateSubscriptionRequest struct {
-	// 幂等参数
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 结束时间
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 订阅时效
-	ExpiredType *int64 `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
-	// 通知对象列表
-	NotifyObjectList []*CreateSubscriptionRequestNotifyObjectList `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
-	// 通知对象类型
-	NotifyObjectType *int64 `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
-	// 通知策略列表
+	ClientToken        *string                                        `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EndTime            *string                                        `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	ExpiredType        *int64                                         `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
+	NotifyObjectList   []*CreateSubscriptionRequestNotifyObjectList   `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
+	NotifyObjectType   *int64                                         `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
 	NotifyStrategyList []*CreateSubscriptionRequestNotifyStrategyList `json:"notifyStrategyList,omitempty" xml:"notifyStrategyList,omitempty" type:"Repeated"`
-	// 时间段
-	Period *string `json:"period,omitempty" xml:"period,omitempty"`
-	// 订阅范围类型
-	Scope *int64 `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 订阅范围列表
-	ScopeObjectList []*CreateSubscriptionRequestScopeObjectList `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
-	// 开始时间
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 通知订阅名称
-	SubscriptionTitle *string `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
+	Period             *string                                        `json:"period,omitempty" xml:"period,omitempty"`
+	Scope              *int64                                         `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObjectList    []*CreateSubscriptionRequestScopeObjectList    `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
+	StartTime          *string                                        `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	SubscriptionTitle  *string                                        `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
 }
 
 func (s CreateSubscriptionRequest) String() string {
@@ -2648,7 +2811,6 @@ func (s *CreateSubscriptionRequest) SetSubscriptionTitle(v string) *CreateSubscr
 }
 
 type CreateSubscriptionRequestNotifyObjectList struct {
-	// 通知对象id
 	NotifyObjectId *int64 `json:"notifyObjectId,omitempty" xml:"notifyObjectId,omitempty"`
 }
 
@@ -2666,14 +2828,10 @@ func (s *CreateSubscriptionRequestNotifyObjectList) SetNotifyObjectId(v int64) *
 }
 
 type CreateSubscriptionRequestNotifyStrategyList struct {
-	// 渠道，多个逗号分隔
-	Channels *string `json:"channels,omitempty" xml:"channels,omitempty"`
-	// 订阅实例类型，事件、报警、故障
-	InstanceType *int64 `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// 分时段渠道
+	Channels      *string                                                   `json:"channels,omitempty" xml:"channels,omitempty"`
+	InstanceType  *int64                                                    `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	PeriodChannel *CreateSubscriptionRequestNotifyStrategyListPeriodChannel `json:"periodChannel,omitempty" xml:"periodChannel,omitempty" type:"Struct"`
-	// 条件。json格式，包含多个条件，比如级别、影响程度 kv格式
-	Strategies []*CreateSubscriptionRequestNotifyStrategyListStrategies `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Repeated"`
+	Strategies    []*CreateSubscriptionRequestNotifyStrategyListStrategies  `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Repeated"`
 }
 
 func (s CreateSubscriptionRequestNotifyStrategyList) String() string {
@@ -2705,10 +2863,8 @@ func (s *CreateSubscriptionRequestNotifyStrategyList) SetStrategies(v []*CreateS
 }
 
 type CreateSubscriptionRequestNotifyStrategyListPeriodChannel struct {
-	// 非工作时段
 	NonWorkday *string `json:"nonWorkday,omitempty" xml:"nonWorkday,omitempty"`
-	// 工作时段
-	Workday *string `json:"workday,omitempty" xml:"workday,omitempty"`
+	Workday    *string `json:"workday,omitempty" xml:"workday,omitempty"`
 }
 
 func (s CreateSubscriptionRequestNotifyStrategyListPeriodChannel) String() string {
@@ -2730,7 +2886,6 @@ func (s *CreateSubscriptionRequestNotifyStrategyListPeriodChannel) SetWorkday(v 
 }
 
 type CreateSubscriptionRequestNotifyStrategyListStrategies struct {
-	// 通知策略条件
 	Conditions []*CreateSubscriptionRequestNotifyStrategyListStrategiesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
 }
 
@@ -2748,13 +2903,9 @@ func (s *CreateSubscriptionRequestNotifyStrategyListStrategies) SetConditions(v 
 }
 
 type CreateSubscriptionRequestNotifyStrategyListStrategiesConditions struct {
-	// 时间动作
-	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 影响范围
-	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	// 等级
-	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// 故障通知类型
+	Action            *string `json:"action,omitempty" xml:"action,omitempty"`
+	Effection         *string `json:"effection,omitempty" xml:"effection,omitempty"`
+	Level             *string `json:"level,omitempty" xml:"level,omitempty"`
 	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
 }
 
@@ -2787,7 +2938,6 @@ func (s *CreateSubscriptionRequestNotifyStrategyListStrategiesConditions) SetPro
 }
 
 type CreateSubscriptionRequestScopeObjectList struct {
-	// 订阅范围对象id
 	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
 }
 
@@ -2805,9 +2955,8 @@ func (s *CreateSubscriptionRequestScopeObjectList) SetScopeObjectId(v int64) *Cr
 }
 
 type CreateSubscriptionResponseBody struct {
-	Data *CreateSubscriptionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// request id
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *CreateSubscriptionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateSubscriptionResponseBody) String() string {
@@ -2829,7 +2978,6 @@ func (s *CreateSubscriptionResponseBody) SetRequestId(v string) *CreateSubscript
 }
 
 type CreateSubscriptionResponseBodyData struct {
-	// 订阅id
 	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
 }
 
@@ -2847,8 +2995,9 @@ func (s *CreateSubscriptionResponseBodyData) SetSubscriptionId(v int64) *CreateS
 }
 
 type CreateSubscriptionResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateSubscriptionResponse) String() string {
@@ -2864,15 +3013,18 @@ func (s *CreateSubscriptionResponse) SetHeaders(v map[string]*string) *CreateSub
 	return s
 }
 
+func (s *CreateSubscriptionResponse) SetStatusCode(v int32) *CreateSubscriptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateSubscriptionResponse) SetBody(v *CreateSubscriptionResponseBody) *CreateSubscriptionResponse {
 	s.Body = v
 	return s
 }
 
 type CreateTenantApplicationRequest struct {
-	// 应用协同渠道
-	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// 幂等标识
+	Channel     *string `json:"channel,omitempty" xml:"channel,omitempty"`
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -2895,10 +3047,8 @@ func (s *CreateTenantApplicationRequest) SetClientToken(v string) *CreateTenantA
 }
 
 type CreateTenantApplicationResponseBody struct {
-	// data
-	Data *CreateTenantApplicationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// id of the req
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *CreateTenantApplicationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateTenantApplicationResponseBody) String() string {
@@ -2920,9 +3070,7 @@ func (s *CreateTenantApplicationResponseBody) SetRequestId(v string) *CreateTena
 }
 
 type CreateTenantApplicationResponseBodyData struct {
-	// 开通url
-	OpenUrl *string `json:"openUrl,omitempty" xml:"openUrl,omitempty"`
-	// 开通进度状态
+	OpenUrl  *string `json:"openUrl,omitempty" xml:"openUrl,omitempty"`
 	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
 }
 
@@ -2945,8 +3093,9 @@ func (s *CreateTenantApplicationResponseBodyData) SetProgress(v string) *CreateT
 }
 
 type CreateTenantApplicationResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateTenantApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTenantApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateTenantApplicationResponse) String() string {
@@ -2959,6 +3108,11 @@ func (s CreateTenantApplicationResponse) GoString() string {
 
 func (s *CreateTenantApplicationResponse) SetHeaders(v map[string]*string) *CreateTenantApplicationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateTenantApplicationResponse) SetStatusCode(v int32) *CreateTenantApplicationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3049,8 +3203,9 @@ func (s *CreateUserResponseBodyData) SetUserId(v int64) *CreateUserResponseBodyD
 }
 
 type CreateUserResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateUserResponse) String() string {
@@ -3066,16 +3221,19 @@ func (s *CreateUserResponse) SetHeaders(v map[string]*string) *CreateUserRespons
 	return s
 }
 
+func (s *CreateUserResponse) SetStatusCode(v int32) *CreateUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteEscalationPlanRequest struct {
-	// clientToken
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 升级计划ID
-	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	ClientToken      *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EscalationPlanId *int64  `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
 }
 
 func (s DeleteEscalationPlanRequest) String() string {
@@ -3097,7 +3255,6 @@ func (s *DeleteEscalationPlanRequest) SetEscalationPlanId(v int64) *DeleteEscala
 }
 
 type DeleteEscalationPlanResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3115,8 +3272,9 @@ func (s *DeleteEscalationPlanResponseBody) SetRequestId(v string) *DeleteEscalat
 }
 
 type DeleteEscalationPlanResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteEscalationPlanResponse) String() string {
@@ -3132,16 +3290,19 @@ func (s *DeleteEscalationPlanResponse) SetHeaders(v map[string]*string) *DeleteE
 	return s
 }
 
+func (s *DeleteEscalationPlanResponse) SetStatusCode(v int32) *DeleteEscalationPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteEscalationPlanResponse) SetBody(v *DeleteEscalationPlanResponseBody) *DeleteEscalationPlanResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteIncidentRequest struct {
-	// 幂等校验
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 事件Id
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IncidentId  *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
 func (s DeleteIncidentRequest) String() string {
@@ -3163,7 +3324,6 @@ func (s *DeleteIncidentRequest) SetIncidentId(v int64) *DeleteIncidentRequest {
 }
 
 type DeleteIncidentResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3181,8 +3341,9 @@ func (s *DeleteIncidentResponseBody) SetRequestId(v string) *DeleteIncidentRespo
 }
 
 type DeleteIncidentResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteIncidentResponse) String() string {
@@ -3198,16 +3359,19 @@ func (s *DeleteIncidentResponse) SetHeaders(v map[string]*string) *DeleteInciden
 	return s
 }
 
+func (s *DeleteIncidentResponse) SetStatusCode(v int32) *DeleteIncidentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteIncidentResponse) SetBody(v *DeleteIncidentResponseBody) *DeleteIncidentResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteIntegrationConfigRequest struct {
-	// 幂等id
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 集成配置id
-	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
 
 func (s DeleteIntegrationConfigRequest) String() string {
@@ -3229,7 +3393,6 @@ func (s *DeleteIntegrationConfigRequest) SetIntegrationConfigId(v int64) *Delete
 }
 
 type DeleteIntegrationConfigResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3247,8 +3410,9 @@ func (s *DeleteIntegrationConfigResponseBody) SetRequestId(v string) *DeleteInte
 }
 
 type DeleteIntegrationConfigResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteIntegrationConfigResponse) String() string {
@@ -3264,16 +3428,19 @@ func (s *DeleteIntegrationConfigResponse) SetHeaders(v map[string]*string) *Dele
 	return s
 }
 
+func (s *DeleteIntegrationConfigResponse) SetStatusCode(v int32) *DeleteIntegrationConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteIntegrationConfigResponse) SetBody(v *DeleteIntegrationConfigResponseBody) *DeleteIntegrationConfigResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteProblemRequest struct {
-	// 幂等校验
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 故障Id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemId   *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s DeleteProblemRequest) String() string {
@@ -3295,7 +3462,6 @@ func (s *DeleteProblemRequest) SetProblemId(v int64) *DeleteProblemRequest {
 }
 
 type DeleteProblemResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3313,8 +3479,9 @@ func (s *DeleteProblemResponseBody) SetRequestId(v string) *DeleteProblemRespons
 }
 
 type DeleteProblemResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteProblemResponse) String() string {
@@ -3330,18 +3497,20 @@ func (s *DeleteProblemResponse) SetHeaders(v map[string]*string) *DeleteProblemR
 	return s
 }
 
+func (s *DeleteProblemResponse) SetStatusCode(v int32) *DeleteProblemResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteProblemResponse) SetBody(v *DeleteProblemResponseBody) *DeleteProblemResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteProblemEffectionServiceRequest struct {
-	// clientToken
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 影响服务ID
-	EffectionServiceId *int64 `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
-	// 故障id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ClientToken        *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EffectionServiceId *int64  `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
+	ProblemId          *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s DeleteProblemEffectionServiceRequest) String() string {
@@ -3368,7 +3537,6 @@ func (s *DeleteProblemEffectionServiceRequest) SetProblemId(v int64) *DeleteProb
 }
 
 type DeleteProblemEffectionServiceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3386,8 +3554,9 @@ func (s *DeleteProblemEffectionServiceResponseBody) SetRequestId(v string) *Dele
 }
 
 type DeleteProblemEffectionServiceResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteProblemEffectionServiceResponse) String() string {
@@ -3403,18 +3572,20 @@ func (s *DeleteProblemEffectionServiceResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *DeleteProblemEffectionServiceResponse) SetStatusCode(v int32) *DeleteProblemEffectionServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteProblemEffectionServiceResponse) SetBody(v *DeleteProblemEffectionServiceResponseBody) *DeleteProblemEffectionServiceResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteProblemMeasureRequest struct {
-	// 幂等校验token
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 故障改成措施id
-	MeasureId *int64 `json:"measureId,omitempty" xml:"measureId,omitempty"`
-	// 故障Id
-	ProblemId *string `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	MeasureId   *int64  `json:"measureId,omitempty" xml:"measureId,omitempty"`
+	ProblemId   *string `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s DeleteProblemMeasureRequest) String() string {
@@ -3441,7 +3612,6 @@ func (s *DeleteProblemMeasureRequest) SetProblemId(v string) *DeleteProblemMeasu
 }
 
 type DeleteProblemMeasureResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3459,8 +3629,9 @@ func (s *DeleteProblemMeasureResponseBody) SetRequestId(v string) *DeleteProblem
 }
 
 type DeleteProblemMeasureResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteProblemMeasureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteProblemMeasureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteProblemMeasureResponse) String() string {
@@ -3476,18 +3647,20 @@ func (s *DeleteProblemMeasureResponse) SetHeaders(v map[string]*string) *DeleteP
 	return s
 }
 
+func (s *DeleteProblemMeasureResponse) SetStatusCode(v int32) *DeleteProblemMeasureResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteProblemMeasureResponse) SetBody(v *DeleteProblemMeasureResponseBody) *DeleteProblemMeasureResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteProblemTimelineRequest struct {
-	// clientToken
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 故障id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// ID
-	ProblemTimelineId *int64 `json:"problemTimelineId,omitempty" xml:"problemTimelineId,omitempty"`
+	ClientToken       *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ProblemId         *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemTimelineId *int64  `json:"problemTimelineId,omitempty" xml:"problemTimelineId,omitempty"`
 }
 
 func (s DeleteProblemTimelineRequest) String() string {
@@ -3514,7 +3687,6 @@ func (s *DeleteProblemTimelineRequest) SetProblemTimelineId(v int64) *DeleteProb
 }
 
 type DeleteProblemTimelineResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3532,8 +3704,9 @@ func (s *DeleteProblemTimelineResponseBody) SetRequestId(v string) *DeleteProble
 }
 
 type DeleteProblemTimelineResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteProblemTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteProblemTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteProblemTimelineResponse) String() string {
@@ -3549,16 +3722,19 @@ func (s *DeleteProblemTimelineResponse) SetHeaders(v map[string]*string) *Delete
 	return s
 }
 
+func (s *DeleteProblemTimelineResponse) SetStatusCode(v int32) *DeleteProblemTimelineResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteProblemTimelineResponse) SetBody(v *DeleteProblemTimelineResponseBody) *DeleteProblemTimelineResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteRouteRuleRequest struct {
-	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 规则ID
-	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	RouteRuleId *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
 }
 
 func (s DeleteRouteRuleRequest) String() string {
@@ -3580,7 +3756,6 @@ func (s *DeleteRouteRuleRequest) SetRouteRuleId(v int64) *DeleteRouteRuleRequest
 }
 
 type DeleteRouteRuleResponseBody struct {
-	// 请求ID
 	RequestId *int64 `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3598,8 +3773,9 @@ func (s *DeleteRouteRuleResponseBody) SetRequestId(v int64) *DeleteRouteRuleResp
 }
 
 type DeleteRouteRuleResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteRouteRuleResponse) String() string {
@@ -3615,16 +3791,19 @@ func (s *DeleteRouteRuleResponse) SetHeaders(v map[string]*string) *DeleteRouteR
 	return s
 }
 
+func (s *DeleteRouteRuleResponse) SetStatusCode(v int32) *DeleteRouteRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteRouteRuleResponse) SetBody(v *DeleteRouteRuleResponseBody) *DeleteRouteRuleResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteServiceRequest struct {
-	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 服务ID
-	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceId   *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 }
 
 func (s DeleteServiceRequest) String() string {
@@ -3646,7 +3825,6 @@ func (s *DeleteServiceRequest) SetServiceId(v int64) *DeleteServiceRequest {
 }
 
 type DeleteServiceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3664,8 +3842,9 @@ func (s *DeleteServiceResponseBody) SetRequestId(v string) *DeleteServiceRespons
 }
 
 type DeleteServiceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteServiceResponse) String() string {
@@ -3681,16 +3860,19 @@ func (s *DeleteServiceResponse) SetHeaders(v map[string]*string) *DeleteServiceR
 	return s
 }
 
+func (s *DeleteServiceResponse) SetStatusCode(v int32) *DeleteServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteServiceResponse) SetBody(v *DeleteServiceResponseBody) *DeleteServiceResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteServiceGroupRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s DeleteServiceGroupRequest) String() string {
@@ -3712,7 +3894,6 @@ func (s *DeleteServiceGroupRequest) SetServiceGroupId(v int64) *DeleteServiceGro
 }
 
 type DeleteServiceGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3730,8 +3911,9 @@ func (s *DeleteServiceGroupResponseBody) SetRequestId(v string) *DeleteServiceGr
 }
 
 type DeleteServiceGroupResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteServiceGroupResponse) String() string {
@@ -3747,22 +3929,68 @@ func (s *DeleteServiceGroupResponse) SetHeaders(v map[string]*string) *DeleteSer
 	return s
 }
 
+func (s *DeleteServiceGroupResponse) SetStatusCode(v int32) *DeleteServiceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteServiceGroupResponse) SetBody(v *DeleteServiceGroupResponseBody) *DeleteServiceGroupResponse {
 	s.Body = v
 	return s
 }
 
+type DeleteServiceGroupSchedulingResponseBody struct {
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteServiceGroupSchedulingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceGroupSchedulingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceGroupSchedulingResponseBody) SetRequestId(v string) *DeleteServiceGroupSchedulingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteServiceGroupSchedulingResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteServiceGroupSchedulingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceGroupSchedulingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceGroupSchedulingResponse) SetHeaders(v map[string]*string) *DeleteServiceGroupSchedulingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceGroupSchedulingResponse) SetStatusCode(v int32) *DeleteServiceGroupSchedulingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteServiceGroupSchedulingResponse) SetBody(v *DeleteServiceGroupSchedulingResponseBody) *DeleteServiceGroupSchedulingResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteServiceGroupUserRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 新的用户
-	NewUserId *int64 `json:"newUserId,omitempty" xml:"newUserId,omitempty"`
-	// 老的用户ID
-	OldUserId *int64 `json:"oldUserId,omitempty" xml:"oldUserId,omitempty"`
-	// 删除服务组成员
-	RemoveUser *bool `json:"removeUser,omitempty" xml:"removeUser,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	NewUserId      *int64  `json:"newUserId,omitempty" xml:"newUserId,omitempty"`
+	OldUserId      *int64  `json:"oldUserId,omitempty" xml:"oldUserId,omitempty"`
+	RemoveUser     *bool   `json:"removeUser,omitempty" xml:"removeUser,omitempty"`
+	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s DeleteServiceGroupUserRequest) String() string {
@@ -3799,7 +4027,6 @@ func (s *DeleteServiceGroupUserRequest) SetServiceGroupId(v int64) *DeleteServic
 }
 
 type DeleteServiceGroupUserResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3817,8 +4044,9 @@ func (s *DeleteServiceGroupUserResponseBody) SetRequestId(v string) *DeleteServi
 }
 
 type DeleteServiceGroupUserResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteServiceGroupUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceGroupUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteServiceGroupUserResponse) String() string {
@@ -3831,6 +4059,11 @@ func (s DeleteServiceGroupUserResponse) GoString() string {
 
 func (s *DeleteServiceGroupUserResponse) SetHeaders(v map[string]*string) *DeleteServiceGroupUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceGroupUserResponse) SetStatusCode(v int32) *DeleteServiceGroupUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3857,7 +4090,6 @@ func (s *DeleteSubscriptionRequest) SetSubscriptionId(v int64) *DeleteSubscripti
 }
 
 type DeleteSubscriptionResponseBody struct {
-	// requestId
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3875,8 +4107,9 @@ func (s *DeleteSubscriptionResponseBody) SetRequestId(v string) *DeleteSubscript
 }
 
 type DeleteSubscriptionResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSubscriptionResponse) String() string {
@@ -3892,16 +4125,19 @@ func (s *DeleteSubscriptionResponse) SetHeaders(v map[string]*string) *DeleteSub
 	return s
 }
 
+func (s *DeleteSubscriptionResponse) SetStatusCode(v int32) *DeleteSubscriptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteSubscriptionResponse) SetBody(v *DeleteSubscriptionResponseBody) *DeleteSubscriptionResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteUserRequest struct {
-	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 用户ID
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s DeleteUserRequest) String() string {
@@ -3923,7 +4159,6 @@ func (s *DeleteUserRequest) SetUserId(v int64) *DeleteUserRequest {
 }
 
 type DeleteUserResponseBody struct {
-	// id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3941,8 +4176,9 @@ func (s *DeleteUserResponseBody) SetRequestId(v string) *DeleteUserResponseBody 
 }
 
 type DeleteUserResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteUserResponse) String() string {
@@ -3958,18 +4194,20 @@ func (s *DeleteUserResponse) SetHeaders(v map[string]*string) *DeleteUserRespons
 	return s
 }
 
+func (s *DeleteUserResponse) SetStatusCode(v int32) *DeleteUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserResponse {
 	s.Body = v
 	return s
 }
 
 type DeliverIncidentRequest struct {
-	// 转交用户ID
-	AssignUserId *int64 `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
-	// 幂等校验id
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 事件ID
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	AssignUserId *int64  `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
+	ClientToken  *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	IncidentId   *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
 func (s DeliverIncidentRequest) String() string {
@@ -3996,7 +4234,6 @@ func (s *DeliverIncidentRequest) SetIncidentId(v int64) *DeliverIncidentRequest 
 }
 
 type DeliverIncidentResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4014,8 +4251,9 @@ func (s *DeliverIncidentResponseBody) SetRequestId(v string) *DeliverIncidentRes
 }
 
 type DeliverIncidentResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeliverIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeliverIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeliverIncidentResponse) String() string {
@@ -4031,16 +4269,19 @@ func (s *DeliverIncidentResponse) SetHeaders(v map[string]*string) *DeliverIncid
 	return s
 }
 
+func (s *DeliverIncidentResponse) SetStatusCode(v int32) *DeliverIncidentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeliverIncidentResponse) SetBody(v *DeliverIncidentResponseBody) *DeliverIncidentResponse {
 	s.Body = v
 	return s
 }
 
 type DisableEscalationPlanRequest struct {
-	// clientToken
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 升级计划ID
-	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	ClientToken      *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EscalationPlanId *int64  `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
 }
 
 func (s DisableEscalationPlanRequest) String() string {
@@ -4062,7 +4303,6 @@ func (s *DisableEscalationPlanRequest) SetEscalationPlanId(v int64) *DisableEsca
 }
 
 type DisableEscalationPlanResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4080,8 +4320,9 @@ func (s *DisableEscalationPlanResponseBody) SetRequestId(v string) *DisableEscal
 }
 
 type DisableEscalationPlanResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableEscalationPlanResponse) String() string {
@@ -4097,13 +4338,17 @@ func (s *DisableEscalationPlanResponse) SetHeaders(v map[string]*string) *Disabl
 	return s
 }
 
+func (s *DisableEscalationPlanResponse) SetStatusCode(v int32) *DisableEscalationPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DisableEscalationPlanResponse) SetBody(v *DisableEscalationPlanResponseBody) *DisableEscalationPlanResponse {
 	s.Body = v
 	return s
 }
 
 type DisableIntegrationConfigRequest struct {
-	// 幂等id
 	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
@@ -4127,7 +4372,6 @@ func (s *DisableIntegrationConfigRequest) SetIntegrationConfigId(v int64) *Disab
 }
 
 type DisableIntegrationConfigResponseBody struct {
-	// requestId
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4145,8 +4389,9 @@ func (s *DisableIntegrationConfigResponseBody) SetRequestId(v string) *DisableIn
 }
 
 type DisableIntegrationConfigResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableIntegrationConfigResponse) String() string {
@@ -4162,16 +4407,19 @@ func (s *DisableIntegrationConfigResponse) SetHeaders(v map[string]*string) *Dis
 	return s
 }
 
+func (s *DisableIntegrationConfigResponse) SetStatusCode(v int32) *DisableIntegrationConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DisableIntegrationConfigResponse) SetBody(v *DisableIntegrationConfigResponseBody) *DisableIntegrationConfigResponse {
 	s.Body = v
 	return s
 }
 
 type DisableRouteRuleRequest struct {
-	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 请求ID
-	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	RouteRuleId *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
 }
 
 func (s DisableRouteRuleRequest) String() string {
@@ -4193,9 +4441,7 @@ func (s *DisableRouteRuleRequest) SetRouteRuleId(v int64) *DisableRouteRuleReque
 }
 
 type DisableRouteRuleResponseBody struct {
-	// C4BE3837-1A13-413B-A225-2C88188E8A43
-	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
-	// 请求ID
+	Data      *int64  `json:"data,omitempty" xml:"data,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4218,8 +4464,9 @@ func (s *DisableRouteRuleResponseBody) SetRequestId(v string) *DisableRouteRuleR
 }
 
 type DisableRouteRuleResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableRouteRuleResponse) String() string {
@@ -4235,16 +4482,19 @@ func (s *DisableRouteRuleResponse) SetHeaders(v map[string]*string) *DisableRout
 	return s
 }
 
+func (s *DisableRouteRuleResponse) SetStatusCode(v int32) *DisableRouteRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DisableRouteRuleResponse) SetBody(v *DisableRouteRuleResponseBody) *DisableRouteRuleResponse {
 	s.Body = v
 	return s
 }
 
 type DisableServiceGroupWebhookRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s DisableServiceGroupWebhookRequest) String() string {
@@ -4266,7 +4516,6 @@ func (s *DisableServiceGroupWebhookRequest) SetServiceGroupId(v int64) *DisableS
 }
 
 type DisableServiceGroupWebhookResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4284,8 +4533,9 @@ func (s *DisableServiceGroupWebhookResponseBody) SetRequestId(v string) *Disable
 }
 
 type DisableServiceGroupWebhookResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableServiceGroupWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableServiceGroupWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableServiceGroupWebhookResponse) String() string {
@@ -4298,6 +4548,11 @@ func (s DisableServiceGroupWebhookResponse) GoString() string {
 
 func (s *DisableServiceGroupWebhookResponse) SetHeaders(v map[string]*string) *DisableServiceGroupWebhookResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableServiceGroupWebhookResponse) SetStatusCode(v int32) *DisableServiceGroupWebhookResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4341,8 +4596,9 @@ func (s *DisableSubscriptionResponseBody) SetRequestId(v string) *DisableSubscri
 }
 
 type DisableSubscriptionResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableSubscriptionResponse) String() string {
@@ -4358,16 +4614,19 @@ func (s *DisableSubscriptionResponse) SetHeaders(v map[string]*string) *DisableS
 	return s
 }
 
+func (s *DisableSubscriptionResponse) SetStatusCode(v int32) *DisableSubscriptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DisableSubscriptionResponse) SetBody(v *DisableSubscriptionResponseBody) *DisableSubscriptionResponse {
 	s.Body = v
 	return s
 }
 
 type EnableEscalationPlanRequest struct {
-	// clientToken
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 升级计划ID
-	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	ClientToken      *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EscalationPlanId *int64  `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
 }
 
 func (s EnableEscalationPlanRequest) String() string {
@@ -4389,7 +4648,6 @@ func (s *EnableEscalationPlanRequest) SetEscalationPlanId(v int64) *EnableEscala
 }
 
 type EnableEscalationPlanResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4407,8 +4665,9 @@ func (s *EnableEscalationPlanResponseBody) SetRequestId(v string) *EnableEscalat
 }
 
 type EnableEscalationPlanResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableEscalationPlanResponse) String() string {
@@ -4424,13 +4683,17 @@ func (s *EnableEscalationPlanResponse) SetHeaders(v map[string]*string) *EnableE
 	return s
 }
 
+func (s *EnableEscalationPlanResponse) SetStatusCode(v int32) *EnableEscalationPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *EnableEscalationPlanResponse) SetBody(v *EnableEscalationPlanResponseBody) *EnableEscalationPlanResponse {
 	s.Body = v
 	return s
 }
 
 type EnableIntegrationConfigRequest struct {
-	// 幂等id
 	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
@@ -4471,8 +4734,9 @@ func (s *EnableIntegrationConfigResponseBody) SetRequestId(v string) *EnableInte
 }
 
 type EnableIntegrationConfigResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableIntegrationConfigResponse) String() string {
@@ -4488,16 +4752,19 @@ func (s *EnableIntegrationConfigResponse) SetHeaders(v map[string]*string) *Enab
 	return s
 }
 
+func (s *EnableIntegrationConfigResponse) SetStatusCode(v int32) *EnableIntegrationConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *EnableIntegrationConfigResponse) SetBody(v *EnableIntegrationConfigResponseBody) *EnableIntegrationConfigResponse {
 	s.Body = v
 	return s
 }
 
 type EnableRouteRuleRequest struct {
-	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 规则ID
-	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	RouteRuleId *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
 }
 
 func (s EnableRouteRuleRequest) String() string {
@@ -4519,8 +4786,7 @@ func (s *EnableRouteRuleRequest) SetRouteRuleId(v int64) *EnableRouteRuleRequest
 }
 
 type EnableRouteRuleResponseBody struct {
-	Data *int32 `json:"data,omitempty" xml:"data,omitempty"`
-	// 请求ID
+	Data      *int32  `json:"data,omitempty" xml:"data,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4543,8 +4809,9 @@ func (s *EnableRouteRuleResponseBody) SetRequestId(v string) *EnableRouteRuleRes
 }
 
 type EnableRouteRuleResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableRouteRuleResponse) String() string {
@@ -4560,16 +4827,19 @@ func (s *EnableRouteRuleResponse) SetHeaders(v map[string]*string) *EnableRouteR
 	return s
 }
 
+func (s *EnableRouteRuleResponse) SetStatusCode(v int32) *EnableRouteRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *EnableRouteRuleResponse) SetBody(v *EnableRouteRuleResponseBody) *EnableRouteRuleResponse {
 	s.Body = v
 	return s
 }
 
 type EnableServiceGroupWebhookRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s EnableServiceGroupWebhookRequest) String() string {
@@ -4591,7 +4861,6 @@ func (s *EnableServiceGroupWebhookRequest) SetServiceGroupId(v int64) *EnableSer
 }
 
 type EnableServiceGroupWebhookResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4609,8 +4878,9 @@ func (s *EnableServiceGroupWebhookResponseBody) SetRequestId(v string) *EnableSe
 }
 
 type EnableServiceGroupWebhookResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableServiceGroupWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableServiceGroupWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableServiceGroupWebhookResponse) String() string {
@@ -4623,6 +4893,11 @@ func (s EnableServiceGroupWebhookResponse) GoString() string {
 
 func (s *EnableServiceGroupWebhookResponse) SetHeaders(v map[string]*string) *EnableServiceGroupWebhookResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableServiceGroupWebhookResponse) SetStatusCode(v int32) *EnableServiceGroupWebhookResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4666,8 +4941,9 @@ func (s *EnableSubscriptionResponseBody) SetRequestId(v string) *EnableSubscript
 }
 
 type EnableSubscriptionResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableSubscriptionResponse) String() string {
@@ -4683,24 +4959,23 @@ func (s *EnableSubscriptionResponse) SetHeaders(v map[string]*string) *EnableSub
 	return s
 }
 
+func (s *EnableSubscriptionResponse) SetStatusCode(v int32) *EnableSubscriptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *EnableSubscriptionResponse) SetBody(v *EnableSubscriptionResponseBody) *EnableSubscriptionResponse {
 	s.Body = v
 	return s
 }
 
 type FinishIncidentRequest struct {
-	// 幂等校验Id
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 完结原因
-	IncidentFinishReason *int32 `json:"incidentFinishReason,omitempty" xml:"incidentFinishReason,omitempty"`
-	// 原因描述
-	IncidentFinishReasonDescription *string `json:"incidentFinishReasonDescription,omitempty" xml:"incidentFinishReasonDescription,omitempty"`
-	// 解决方案
-	IncidentFinishSolution *int32 `json:"incidentFinishSolution,omitempty" xml:"incidentFinishSolution,omitempty"`
-	// 解决方案描述
-	IncidentFinishSolutionDescription *string `json:"incidentFinishSolutionDescription,omitempty" xml:"incidentFinishSolutionDescription,omitempty"`
-	// 事件ID数组
-	IncidentIds []*int64 `json:"incidentIds,omitempty" xml:"incidentIds,omitempty" type:"Repeated"`
+	ClientToken                       *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	IncidentFinishReason              *int32   `json:"incidentFinishReason,omitempty" xml:"incidentFinishReason,omitempty"`
+	IncidentFinishReasonDescription   *string  `json:"incidentFinishReasonDescription,omitempty" xml:"incidentFinishReasonDescription,omitempty"`
+	IncidentFinishSolution            *int32   `json:"incidentFinishSolution,omitempty" xml:"incidentFinishSolution,omitempty"`
+	IncidentFinishSolutionDescription *string  `json:"incidentFinishSolutionDescription,omitempty" xml:"incidentFinishSolutionDescription,omitempty"`
+	IncidentIds                       []*int64 `json:"incidentIds,omitempty" xml:"incidentIds,omitempty" type:"Repeated"`
 }
 
 func (s FinishIncidentRequest) String() string {
@@ -4742,7 +5017,6 @@ func (s *FinishIncidentRequest) SetIncidentIds(v []*int64) *FinishIncidentReques
 }
 
 type FinishIncidentResponseBody struct {
-	// requestId
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4760,8 +5034,9 @@ func (s *FinishIncidentResponseBody) SetRequestId(v string) *FinishIncidentRespo
 }
 
 type FinishIncidentResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FinishIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FinishIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FinishIncidentResponse) String() string {
@@ -4777,16 +5052,19 @@ func (s *FinishIncidentResponse) SetHeaders(v map[string]*string) *FinishInciden
 	return s
 }
 
+func (s *FinishIncidentResponse) SetStatusCode(v int32) *FinishIncidentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *FinishIncidentResponse) SetBody(v *FinishIncidentResponseBody) *FinishIncidentResponse {
 	s.Body = v
 	return s
 }
 
 type FinishProblemRequest struct {
-	// 幂等校验
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 故障Id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemId   *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s FinishProblemRequest) String() string {
@@ -4808,7 +5086,6 @@ func (s *FinishProblemRequest) SetProblemId(v int64) *FinishProblemRequest {
 }
 
 type FinishProblemResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4826,8 +5103,9 @@ func (s *FinishProblemResponseBody) SetRequestId(v string) *FinishProblemRespons
 }
 
 type FinishProblemResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FinishProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FinishProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FinishProblemResponse) String() string {
@@ -4843,16 +5121,19 @@ func (s *FinishProblemResponse) SetHeaders(v map[string]*string) *FinishProblemR
 	return s
 }
 
+func (s *FinishProblemResponse) SetStatusCode(v int32) *FinishProblemResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *FinishProblemResponse) SetBody(v *FinishProblemResponseBody) *FinishProblemResponse {
 	s.Body = v
 	return s
 }
 
 type GeneratePictureLinkRequest struct {
-	// keys
-	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
-	// 故障id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	Keys      []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	ProblemId *int64    `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s GeneratePictureLinkRequest) String() string {
@@ -4874,9 +5155,8 @@ func (s *GeneratePictureLinkRequest) SetProblemId(v int64) *GeneratePictureLinkR
 }
 
 type GeneratePictureLinkResponseBody struct {
-	Data *GeneratePictureLinkResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GeneratePictureLinkResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GeneratePictureLinkResponseBody) String() string {
@@ -4898,7 +5178,6 @@ func (s *GeneratePictureLinkResponseBody) SetRequestId(v string) *GeneratePictur
 }
 
 type GeneratePictureLinkResponseBodyData struct {
-	// array
 	Links []*GeneratePictureLinkResponseBodyDataLinks `json:"links,omitempty" xml:"links,omitempty" type:"Repeated"`
 }
 
@@ -4916,9 +5195,7 @@ func (s *GeneratePictureLinkResponseBodyData) SetLinks(v []*GeneratePictureLinkR
 }
 
 type GeneratePictureLinkResponseBodyDataLinks struct {
-	// oss key
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// url
+	Key  *string `json:"key,omitempty" xml:"key,omitempty"`
 	Link *string `json:"link,omitempty" xml:"link,omitempty"`
 }
 
@@ -4941,8 +5218,9 @@ func (s *GeneratePictureLinkResponseBodyDataLinks) SetLink(v string) *GeneratePi
 }
 
 type GeneratePictureLinkResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GeneratePictureLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GeneratePictureLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GeneratePictureLinkResponse) String() string {
@@ -4958,18 +5236,20 @@ func (s *GeneratePictureLinkResponse) SetHeaders(v map[string]*string) *Generate
 	return s
 }
 
+func (s *GeneratePictureLinkResponse) SetStatusCode(v int32) *GeneratePictureLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GeneratePictureLinkResponse) SetBody(v *GeneratePictureLinkResponseBody) *GeneratePictureLinkResponse {
 	s.Body = v
 	return s
 }
 
 type GeneratePictureUploadSignRequest struct {
-	// 文件
-	Files []*GeneratePictureUploadSignRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	// 资源id
-	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 资源类型
-	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	Files        []*GeneratePictureUploadSignRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	InstanceId   *int64                                   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceType *string                                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 }
 
 func (s GeneratePictureUploadSignRequest) String() string {
@@ -4996,11 +5276,8 @@ func (s *GeneratePictureUploadSignRequest) SetInstanceType(v string) *GeneratePi
 }
 
 type GeneratePictureUploadSignRequestFiles struct {
-	// 文件名称
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// 文件大小
-	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	// 文件类型
+	FileSize *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
 }
 
@@ -5028,10 +5305,8 @@ func (s *GeneratePictureUploadSignRequestFiles) SetFileType(v string) *GenerateP
 }
 
 type GeneratePictureUploadSignResponseBody struct {
-	// data
-	Data *GeneratePictureUploadSignResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GeneratePictureUploadSignResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GeneratePictureUploadSignResponseBody) String() string {
@@ -5053,18 +5328,12 @@ func (s *GeneratePictureUploadSignResponseBody) SetRequestId(v string) *Generate
 }
 
 type GeneratePictureUploadSignResponseBodyData struct {
-	// accessKeyId
-	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
-	// oss bucket name
-	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// files
-	Files []*GeneratePictureUploadSignResponseBodyDataFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	// policy
-	Policy *string `json:"policy,omitempty" xml:"policy,omitempty"`
-	// signature
-	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
-	// url
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	AccessKeyId *string                                           `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
+	BucketName  *string                                           `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	Files       []*GeneratePictureUploadSignResponseBodyDataFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	Policy      *string                                           `json:"policy,omitempty" xml:"policy,omitempty"`
+	Signature   *string                                           `json:"signature,omitempty" xml:"signature,omitempty"`
+	Url         *string                                           `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s GeneratePictureUploadSignResponseBodyData) String() string {
@@ -5106,14 +5375,10 @@ func (s *GeneratePictureUploadSignResponseBodyData) SetUrl(v string) *GeneratePi
 }
 
 type GeneratePictureUploadSignResponseBodyDataFiles struct {
-	// 文件名称
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// 文件大小
-	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	// 文件类型
+	FileSize *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
-	// oss key
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	Key      *string `json:"key,omitempty" xml:"key,omitempty"`
 }
 
 func (s GeneratePictureUploadSignResponseBodyDataFiles) String() string {
@@ -5145,8 +5410,9 @@ func (s *GeneratePictureUploadSignResponseBodyDataFiles) SetKey(v string) *Gener
 }
 
 type GeneratePictureUploadSignResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GeneratePictureUploadSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GeneratePictureUploadSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GeneratePictureUploadSignResponse) String() string {
@@ -5162,16 +5428,19 @@ func (s *GeneratePictureUploadSignResponse) SetHeaders(v map[string]*string) *Ge
 	return s
 }
 
+func (s *GeneratePictureUploadSignResponse) SetStatusCode(v int32) *GeneratePictureUploadSignResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GeneratePictureUploadSignResponse) SetBody(v *GeneratePictureUploadSignResponseBody) *GeneratePictureUploadSignResponse {
 	s.Body = v
 	return s
 }
 
 type GenerateProblemPictureLinkRequest struct {
-	// oss key
-	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
-	// 故障id
-	ProblemId *string `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	Keys      []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	ProblemId *string   `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s GenerateProblemPictureLinkRequest) String() string {
@@ -5193,9 +5462,8 @@ func (s *GenerateProblemPictureLinkRequest) SetProblemId(v string) *GenerateProb
 }
 
 type GenerateProblemPictureLinkResponseBody struct {
-	Data *GenerateProblemPictureLinkResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// requestId
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GenerateProblemPictureLinkResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GenerateProblemPictureLinkResponseBody) String() string {
@@ -5217,7 +5485,6 @@ func (s *GenerateProblemPictureLinkResponseBody) SetRequestId(v string) *Generat
 }
 
 type GenerateProblemPictureLinkResponseBodyData struct {
-	// 图片链接列表
 	Links []*GenerateProblemPictureLinkResponseBodyDataLinks `json:"links,omitempty" xml:"links,omitempty" type:"Repeated"`
 }
 
@@ -5235,9 +5502,7 @@ func (s *GenerateProblemPictureLinkResponseBodyData) SetLinks(v []*GenerateProbl
 }
 
 type GenerateProblemPictureLinkResponseBodyDataLinks struct {
-	// oss key
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 图片链接
+	Key  *string `json:"key,omitempty" xml:"key,omitempty"`
 	Link *string `json:"link,omitempty" xml:"link,omitempty"`
 }
 
@@ -5260,8 +5525,9 @@ func (s *GenerateProblemPictureLinkResponseBodyDataLinks) SetLink(v string) *Gen
 }
 
 type GenerateProblemPictureLinkResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateProblemPictureLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateProblemPictureLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GenerateProblemPictureLinkResponse) String() string {
@@ -5277,20 +5543,21 @@ func (s *GenerateProblemPictureLinkResponse) SetHeaders(v map[string]*string) *G
 	return s
 }
 
+func (s *GenerateProblemPictureLinkResponse) SetStatusCode(v int32) *GenerateProblemPictureLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GenerateProblemPictureLinkResponse) SetBody(v *GenerateProblemPictureLinkResponseBody) *GenerateProblemPictureLinkResponse {
 	s.Body = v
 	return s
 }
 
 type GenerateProblemPictureUploadSignRequest struct {
-	// 文件名
-	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// 文件大小KB
-	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	// 文件类型
-	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
-	// 故障id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	FileName  *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	FileSize  *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	FileType  *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	ProblemId *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s GenerateProblemPictureUploadSignRequest) String() string {
@@ -5322,9 +5589,8 @@ func (s *GenerateProblemPictureUploadSignRequest) SetProblemId(v int64) *Generat
 }
 
 type GenerateProblemPictureUploadSignResponseBody struct {
-	Data *GenerateProblemPictureUploadSignResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// requestId
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GenerateProblemPictureUploadSignResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GenerateProblemPictureUploadSignResponseBody) String() string {
@@ -5346,18 +5612,12 @@ func (s *GenerateProblemPictureUploadSignResponseBody) SetRequestId(v string) *G
 }
 
 type GenerateProblemPictureUploadSignResponseBodyData struct {
-	// ossaccessKeyId
 	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
-	// oss bucket name
-	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// oss key
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// policy
-	Policy *string `json:"policy,omitempty" xml:"policy,omitempty"`
-	// signature
-	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
-	// url
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	BucketName  *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	Key         *string `json:"key,omitempty" xml:"key,omitempty"`
+	Policy      *string `json:"policy,omitempty" xml:"policy,omitempty"`
+	Signature   *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	Url         *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s GenerateProblemPictureUploadSignResponseBodyData) String() string {
@@ -5399,8 +5659,9 @@ func (s *GenerateProblemPictureUploadSignResponseBodyData) SetUrl(v string) *Gen
 }
 
 type GenerateProblemPictureUploadSignResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateProblemPictureUploadSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateProblemPictureUploadSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GenerateProblemPictureUploadSignResponse) String() string {
@@ -5416,16 +5677,19 @@ func (s *GenerateProblemPictureUploadSignResponse) SetHeaders(v map[string]*stri
 	return s
 }
 
+func (s *GenerateProblemPictureUploadSignResponse) SetStatusCode(v int32) *GenerateProblemPictureUploadSignResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GenerateProblemPictureUploadSignResponse) SetBody(v *GenerateProblemPictureUploadSignResponseBody) *GenerateProblemPictureUploadSignResponse {
 	s.Body = v
 	return s
 }
 
 type GetEscalationPlanRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 升级计划id
-	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	ClientToken      *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EscalationPlanId *int64  `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
 }
 
 func (s GetEscalationPlanRequest) String() string {
@@ -5447,10 +5711,8 @@ func (s *GetEscalationPlanRequest) SetEscalationPlanId(v int64) *GetEscalationPl
 }
 
 type GetEscalationPlanResponseBody struct {
-	// data
-	Data *GetEscalationPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetEscalationPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetEscalationPlanResponseBody) String() string {
@@ -5472,17 +5734,11 @@ func (s *GetEscalationPlanResponseBody) SetRequestId(v string) *GetEscalationPla
 }
 
 type GetEscalationPlanResponseBodyData struct {
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 升级计划描述
-	EscalationPlanDescription *string `json:"escalationPlanDescription,omitempty" xml:"escalationPlanDescription,omitempty"`
-	// 升级计划id
-	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
-	// 升级计划名称
-	EscalationPlanName *string `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
-	// 升级计划规则列表
-	EscalationPlanRules []*GetEscalationPlanResponseBodyDataEscalationPlanRules `json:"escalationPlanRules,omitempty" xml:"escalationPlanRules,omitempty" type:"Repeated"`
-	// 升级计划范围对象列表
+	CreateTime                 *string                                                        `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	EscalationPlanDescription  *string                                                        `json:"escalationPlanDescription,omitempty" xml:"escalationPlanDescription,omitempty"`
+	EscalationPlanId           *int64                                                         `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	EscalationPlanName         *string                                                        `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
+	EscalationPlanRules        []*GetEscalationPlanResponseBodyDataEscalationPlanRules        `json:"escalationPlanRules,omitempty" xml:"escalationPlanRules,omitempty" type:"Repeated"`
 	EscalationPlanScopeObjects []*GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty" type:"Repeated"`
 }
 
@@ -5525,11 +5781,8 @@ func (s *GetEscalationPlanResponseBodyData) SetEscalationPlanScopeObjects(v []*G
 }
 
 type GetEscalationPlanResponseBodyDataEscalationPlanRules struct {
-	// 升级计划条件
 	EscalationPlanConditions []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanConditions `json:"escalationPlanConditions,omitempty" xml:"escalationPlanConditions,omitempty" type:"Repeated"`
-	// 升级计划id
-	EscalationPlanRuleId *int64 `json:"escalationPlanRuleId,omitempty" xml:"escalationPlanRuleId,omitempty"`
-	// 升级计划策略
+	EscalationPlanRuleId     *int64                                                                          `json:"escalationPlanRuleId,omitempty" xml:"escalationPlanRuleId,omitempty"`
 	EscalationPlanStrategies []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies `json:"escalationPlanStrategies,omitempty" xml:"escalationPlanStrategies,omitempty" type:"Repeated"`
 }
 
@@ -5557,10 +5810,8 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRules) SetEscalationPlan
 }
 
 type GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanConditions struct {
-	// 影响等级
 	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	// 事件等级
-	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	Level     *string `json:"level,omitempty" xml:"level,omitempty"`
 }
 
 func (s GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanConditions) String() string {
@@ -5582,18 +5833,12 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanCondi
 }
 
 type GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies struct {
-	// 是否支持群通知
-	EnableWebhook *bool `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	// 升级计划类型
-	EscalationPlanType *string `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
-	// 通知对象渠道
-	NoticeChannels *string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty"`
-	// 通知对象列表
-	NoticeObjectList []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
-	// 通知时间
-	NoticeTime *int64 `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	// 服务组列表
-	ServiceGroups []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
+	EnableWebhook      *bool                                                                                           `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	EscalationPlanType *string                                                                                         `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
+	NoticeChannels     *string                                                                                         `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty"`
+	NoticeObjectList   []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
+	NoticeTime         *int64                                                                                          `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroups      []*GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups    `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
 }
 
 func (s GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies) String() string {
@@ -5635,9 +5880,7 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrat
 }
 
 type GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList struct {
-	// 通知对象id
-	NoticeObjectId *int64 `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
-	// 通知对象名称
+	NoticeObjectId   *int64  `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
 	NoticeObjectName *string `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
 }
 
@@ -5660,9 +5903,7 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrat
 }
 
 type GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups struct {
-	// 服务组id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 服务组名称
+	Id               *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
 }
 
@@ -5685,12 +5926,11 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrat
 }
 
 type GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects struct {
-	// 范围对象类型
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 范围对象id
-	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
-	// 范围对象名称
-	ScopeObjectName *string `json:"scopeObjectName,omitempty" xml:"scopeObjectName,omitempty"`
+	EscalationPlanScopeObjects *int32  `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty"`
+	Scope                      *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObjectDeletedType     *int32  `json:"scopeObjectDeletedType,omitempty" xml:"scopeObjectDeletedType,omitempty"`
+	ScopeObjectId              *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	ScopeObjectName            *string `json:"scopeObjectName,omitempty" xml:"scopeObjectName,omitempty"`
 }
 
 func (s GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects) String() string {
@@ -5701,8 +5941,18 @@ func (s GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects) GoString() 
 	return s.String()
 }
 
+func (s *GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects) SetEscalationPlanScopeObjects(v int32) *GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects {
+	s.EscalationPlanScopeObjects = &v
+	return s
+}
+
 func (s *GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects) SetScope(v string) *GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects {
 	s.Scope = &v
+	return s
+}
+
+func (s *GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects) SetScopeObjectDeletedType(v int32) *GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects {
+	s.ScopeObjectDeletedType = &v
 	return s
 }
 
@@ -5717,8 +5967,9 @@ func (s *GetEscalationPlanResponseBodyDataEscalationPlanScopeObjects) SetScopeOb
 }
 
 type GetEscalationPlanResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetEscalationPlanResponse) String() string {
@@ -5734,13 +5985,17 @@ func (s *GetEscalationPlanResponse) SetHeaders(v map[string]*string) *GetEscalat
 	return s
 }
 
+func (s *GetEscalationPlanResponse) SetStatusCode(v int32) *GetEscalationPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetEscalationPlanResponse) SetBody(v *GetEscalationPlanResponseBody) *GetEscalationPlanResponse {
 	s.Body = v
 	return s
 }
 
 type GetEventRequest struct {
-	// 监控源ID不能为空
 	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
 }
 
@@ -5758,10 +6013,8 @@ func (s *GetEventRequest) SetMonitorSourceId(v int64) *GetEventRequest {
 }
 
 type GetEventResponseBody struct {
-	// 告警
-	Data *GetEventResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetEventResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetEventResponseBody) String() string {
@@ -5783,13 +6036,9 @@ func (s *GetEventResponseBody) SetRequestId(v string) *GetEventResponseBody {
 }
 
 type GetEventResponseBodyData struct {
-	// 告警内容
-	EventJson *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
-	// 告警上报时间
-	EventTime *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
-	// 告警源ID
-	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	// 告警源名称
+	EventJson         *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
+	EventTime         *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
+	MonitorSourceId   *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
 	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
 }
 
@@ -5822,8 +6071,9 @@ func (s *GetEventResponseBodyData) SetMonitorSourceName(v string) *GetEventRespo
 }
 
 type GetEventResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetEventResponse) String() string {
@@ -5839,13 +6089,17 @@ func (s *GetEventResponse) SetHeaders(v map[string]*string) *GetEventResponse {
 	return s
 }
 
+func (s *GetEventResponse) SetStatusCode(v int32) *GetEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetEventResponse) SetBody(v *GetEventResponseBody) *GetEventResponse {
 	s.Body = v
 	return s
 }
 
 type GetHomePageGuidanceRequest struct {
-	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -5863,9 +6117,8 @@ func (s *GetHomePageGuidanceRequest) SetClientToken(v string) *GetHomePageGuidan
 }
 
 type GetHomePageGuidanceResponseBody struct {
-	Data *GetHomePageGuidanceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetHomePageGuidanceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetHomePageGuidanceResponseBody) String() string {
@@ -5887,14 +6140,10 @@ func (s *GetHomePageGuidanceResponseBody) SetRequestId(v string) *GetHomePageGui
 }
 
 type GetHomePageGuidanceResponseBodyData struct {
-	// 通知订阅配置状态
 	NotifySubscriptionStatus *bool `json:"notifySubscriptionStatus,omitempty" xml:"notifySubscriptionStatus,omitempty"`
-	// 服务组配置状态
-	ServiceGroupStatus *bool `json:"serviceGroupStatus,omitempty" xml:"serviceGroupStatus,omitempty"`
-	// 服务配置状态
-	ServiceStatus *bool `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty"`
-	// 用户配置状态
-	UsersStatus *bool `json:"usersStatus,omitempty" xml:"usersStatus,omitempty"`
+	ServiceGroupStatus       *bool `json:"serviceGroupStatus,omitempty" xml:"serviceGroupStatus,omitempty"`
+	ServiceStatus            *bool `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty"`
+	UsersStatus              *bool `json:"usersStatus,omitempty" xml:"usersStatus,omitempty"`
 }
 
 func (s GetHomePageGuidanceResponseBodyData) String() string {
@@ -5926,8 +6175,9 @@ func (s *GetHomePageGuidanceResponseBodyData) SetUsersStatus(v bool) *GetHomePag
 }
 
 type GetHomePageGuidanceResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetHomePageGuidanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetHomePageGuidanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetHomePageGuidanceResponse) String() string {
@@ -5943,16 +6193,19 @@ func (s *GetHomePageGuidanceResponse) SetHeaders(v map[string]*string) *GetHomeP
 	return s
 }
 
+func (s *GetHomePageGuidanceResponse) SetStatusCode(v int32) *GetHomePageGuidanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetHomePageGuidanceResponse) SetBody(v *GetHomePageGuidanceResponseBody) *GetHomePageGuidanceResponse {
 	s.Body = v
 	return s
 }
 
 type GetIncidentRequest struct {
-	// 幂等校验
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 事件ID
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IncidentId  *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
 func (s GetIncidentRequest) String() string {
@@ -5997,54 +6250,37 @@ func (s *GetIncidentResponseBody) SetRequestId(v string) *GetIncidentResponseBod
 }
 
 type GetIncidentResponseBodyData struct {
-	// 分派的用户ID
-	AssignUserId *int64 `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
-	// 分派的用户姓名 (用户表获取)
-	AssignUserName *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
-	// 分派的用户手机号
-	AssignUserPhone *string `json:"assignUserPhone,omitempty" xml:"assignUserPhone,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 持续时间
-	DurationTime *int64 `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
-	// HIGH	影响等级 高：HIGH 低 LOW
-	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// 事件描述
-	IncidentDescription *string `json:"incidentDescription,omitempty" xml:"incidentDescription,omitempty"`
-	// 事件Id
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 事件级别 P1 P2 P3 P4
-	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	// 事件编号
-	IncidentNumber *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
-	// 事件状态 ASSIGNED已分派 RESPONDED已响应  FINISHED已完结
-	IncidentStatus *string `json:"incidentStatus,omitempty" xml:"incidentStatus,omitempty"`
-	// 事件标题
-	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
-	// 事件来源 是：手动 否：自动
-	IsManual *bool `json:"isManual,omitempty" xml:"isManual,omitempty"`
-	// 是否升级 是 否
-	IsUpgrade *bool `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
-	// 通知渠道
-	NotifyChannels []*string `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
-	// 故障Id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 故障编号
-	ProblemNumber *string `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
-	// 关联服务描述
-	RelatedServiceDescription *string `json:"relatedServiceDescription,omitempty" xml:"relatedServiceDescription,omitempty"`
-	// 关联服服务id
-	RelatedServiceGroupId *int64 `json:"relatedServiceGroupId,omitempty" xml:"relatedServiceGroupId,omitempty"`
-	// 关联服务组名称
-	RelatedServiceGroupName *string `json:"relatedServiceGroupName,omitempty" xml:"relatedServiceGroupName,omitempty"`
-	// 关联服务ID
-	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	// 关联服务名称
-	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	// 流转规则ID
-	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	// 流转规则名称
-	RouteRuleName *string `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
+	AssignToWhoIsValid        *int32    `json:"assignToWhoIsValid,omitempty" xml:"assignToWhoIsValid,omitempty"`
+	AssignUserId              *int64    `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
+	AssignUserName            *string   `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
+	AssignUserPhone           *string   `json:"assignUserPhone,omitempty" xml:"assignUserPhone,omitempty"`
+	CreateTime                *string   `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	DefaultAssignToWho        *int32    `json:"defaultAssignToWho,omitempty" xml:"defaultAssignToWho,omitempty"`
+	DefaultAssignToWhoIsValid *int32    `json:"defaultAssignToWhoIsValid,omitempty" xml:"defaultAssignToWhoIsValid,omitempty"`
+	DefaultAssignToWhoName    *string   `json:"defaultAssignToWhoName,omitempty" xml:"defaultAssignToWhoName,omitempty"`
+	DurationTime              *int64    `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
+	Effect                    *string   `json:"effect,omitempty" xml:"effect,omitempty"`
+	IncidentDescription       *string   `json:"incidentDescription,omitempty" xml:"incidentDescription,omitempty"`
+	IncidentId                *int64    `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IncidentLevel             *string   `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	IncidentNumber            *string   `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
+	IncidentStatus            *string   `json:"incidentStatus,omitempty" xml:"incidentStatus,omitempty"`
+	IncidentTitle             *string   `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	IsManual                  *bool     `json:"isManual,omitempty" xml:"isManual,omitempty"`
+	IsUpgrade                 *bool     `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
+	NotifyChannels            []*string `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
+	ProblemId                 *int64    `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemNumber             *string   `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
+	RelRouteRuleDeleteType    *int32    `json:"relRouteRuleDeleteType,omitempty" xml:"relRouteRuleDeleteType,omitempty"`
+	RelServiceDeleteType      *int32    `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
+	RelServiceGroupIsValid    *int32    `json:"relServiceGroupIsValid,omitempty" xml:"relServiceGroupIsValid,omitempty"`
+	RelatedServiceDescription *string   `json:"relatedServiceDescription,omitempty" xml:"relatedServiceDescription,omitempty"`
+	RelatedServiceGroupId     *int64    `json:"relatedServiceGroupId,omitempty" xml:"relatedServiceGroupId,omitempty"`
+	RelatedServiceGroupName   *string   `json:"relatedServiceGroupName,omitempty" xml:"relatedServiceGroupName,omitempty"`
+	RelatedServiceId          *int64    `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	RelatedServiceName        *string   `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
+	RouteRuleId               *int64    `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	RouteRuleName             *string   `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
 }
 
 func (s GetIncidentResponseBodyData) String() string {
@@ -6053,6 +6289,11 @@ func (s GetIncidentResponseBodyData) String() string {
 
 func (s GetIncidentResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetIncidentResponseBodyData) SetAssignToWhoIsValid(v int32) *GetIncidentResponseBodyData {
+	s.AssignToWhoIsValid = &v
+	return s
 }
 
 func (s *GetIncidentResponseBodyData) SetAssignUserId(v int64) *GetIncidentResponseBodyData {
@@ -6072,6 +6313,21 @@ func (s *GetIncidentResponseBodyData) SetAssignUserPhone(v string) *GetIncidentR
 
 func (s *GetIncidentResponseBodyData) SetCreateTime(v string) *GetIncidentResponseBodyData {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetIncidentResponseBodyData) SetDefaultAssignToWho(v int32) *GetIncidentResponseBodyData {
+	s.DefaultAssignToWho = &v
+	return s
+}
+
+func (s *GetIncidentResponseBodyData) SetDefaultAssignToWhoIsValid(v int32) *GetIncidentResponseBodyData {
+	s.DefaultAssignToWhoIsValid = &v
+	return s
+}
+
+func (s *GetIncidentResponseBodyData) SetDefaultAssignToWhoName(v string) *GetIncidentResponseBodyData {
+	s.DefaultAssignToWhoName = &v
 	return s
 }
 
@@ -6140,6 +6396,21 @@ func (s *GetIncidentResponseBodyData) SetProblemNumber(v string) *GetIncidentRes
 	return s
 }
 
+func (s *GetIncidentResponseBodyData) SetRelRouteRuleDeleteType(v int32) *GetIncidentResponseBodyData {
+	s.RelRouteRuleDeleteType = &v
+	return s
+}
+
+func (s *GetIncidentResponseBodyData) SetRelServiceDeleteType(v int32) *GetIncidentResponseBodyData {
+	s.RelServiceDeleteType = &v
+	return s
+}
+
+func (s *GetIncidentResponseBodyData) SetRelServiceGroupIsValid(v int32) *GetIncidentResponseBodyData {
+	s.RelServiceGroupIsValid = &v
+	return s
+}
+
 func (s *GetIncidentResponseBodyData) SetRelatedServiceDescription(v string) *GetIncidentResponseBodyData {
 	s.RelatedServiceDescription = &v
 	return s
@@ -6176,8 +6447,9 @@ func (s *GetIncidentResponseBodyData) SetRouteRuleName(v string) *GetIncidentRes
 }
 
 type GetIncidentResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetIncidentResponse) String() string {
@@ -6193,13 +6465,17 @@ func (s *GetIncidentResponse) SetHeaders(v map[string]*string) *GetIncidentRespo
 	return s
 }
 
+func (s *GetIncidentResponse) SetStatusCode(v int32) *GetIncidentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetIncidentResponse) SetBody(v *GetIncidentResponseBody) *GetIncidentResponse {
 	s.Body = v
 	return s
 }
 
 type GetIncidentStatisticsRequest struct {
-	// 幂等校验Id
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -6240,14 +6516,10 @@ func (s *GetIncidentStatisticsResponseBody) SetRequestId(v string) *GetIncidentS
 }
 
 type GetIncidentStatisticsResponseBodyData struct {
-	// 所有 完结
-	AllFinish *int32 `json:"allFinish,omitempty" xml:"allFinish,omitempty"`
-	// 所有 待响应
+	AllFinish   *int32 `json:"allFinish,omitempty" xml:"allFinish,omitempty"`
 	AllResponse *int32 `json:"allResponse,omitempty" xml:"allResponse,omitempty"`
-	// 我的 完结
-	MyFinish *int32 `json:"myFinish,omitempty" xml:"myFinish,omitempty"`
-	// 我的 待响应
-	MyResponse *int32 `json:"myResponse,omitempty" xml:"myResponse,omitempty"`
+	MyFinish    *int32 `json:"myFinish,omitempty" xml:"myFinish,omitempty"`
+	MyResponse  *int32 `json:"myResponse,omitempty" xml:"myResponse,omitempty"`
 }
 
 func (s GetIncidentStatisticsResponseBodyData) String() string {
@@ -6279,8 +6551,9 @@ func (s *GetIncidentStatisticsResponseBodyData) SetMyResponse(v int32) *GetIncid
 }
 
 type GetIncidentStatisticsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetIncidentStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetIncidentStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetIncidentStatisticsResponse) String() string {
@@ -6296,15 +6569,18 @@ func (s *GetIncidentStatisticsResponse) SetHeaders(v map[string]*string) *GetInc
 	return s
 }
 
+func (s *GetIncidentStatisticsResponse) SetStatusCode(v int32) *GetIncidentStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetIncidentStatisticsResponse) SetBody(v *GetIncidentStatisticsResponseBody) *GetIncidentStatisticsResponse {
 	s.Body = v
 	return s
 }
 
 type GetIncidentSubtotalCountRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 事件id列表
+	ClientToken *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	IncidentIds []*int64 `json:"incidentIds,omitempty" xml:"incidentIds,omitempty" type:"Repeated"`
 }
 
@@ -6327,7 +6603,6 @@ func (s *GetIncidentSubtotalCountRequest) SetIncidentIds(v []*int64) *GetInciden
 }
 
 type GetIncidentSubtotalCountResponseBody struct {
-	// data
 	Data *GetIncidentSubtotalCountResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
@@ -6345,9 +6620,7 @@ func (s *GetIncidentSubtotalCountResponseBody) SetData(v *GetIncidentSubtotalCou
 }
 
 type GetIncidentSubtotalCountResponseBodyData struct {
-	// id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// map
+	RequestId     *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	SubtotalCount map[string]interface{} `json:"subtotalCount,omitempty" xml:"subtotalCount,omitempty"`
 }
 
@@ -6370,8 +6643,9 @@ func (s *GetIncidentSubtotalCountResponseBodyData) SetSubtotalCount(v map[string
 }
 
 type GetIncidentSubtotalCountResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetIncidentSubtotalCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetIncidentSubtotalCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetIncidentSubtotalCountResponse) String() string {
@@ -6387,16 +6661,19 @@ func (s *GetIncidentSubtotalCountResponse) SetHeaders(v map[string]*string) *Get
 	return s
 }
 
+func (s *GetIncidentSubtotalCountResponse) SetStatusCode(v int32) *GetIncidentSubtotalCountResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetIncidentSubtotalCountResponse) SetBody(v *GetIncidentSubtotalCountResponseBody) *GetIncidentSubtotalCountResponse {
 	s.Body = v
 	return s
 }
 
 type GetIntegrationConfigRequest struct {
-	// 幂等id
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 集成配置id
-	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
 
 func (s GetIntegrationConfigRequest) String() string {
@@ -6418,9 +6695,8 @@ func (s *GetIntegrationConfigRequest) SetIntegrationConfigId(v int64) *GetIntegr
 }
 
 type GetIntegrationConfigResponseBody struct {
-	Data *GetIntegrationConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetIntegrationConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetIntegrationConfigResponseBody) String() string {
@@ -6442,20 +6718,13 @@ func (s *GetIntegrationConfigResponseBody) SetRequestId(v string) *GetIntegratio
 }
 
 type GetIntegrationConfigResponseBodyData struct {
-	// 集成秘钥
-	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
-	// 集成配置id、
-	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
-	// 是否接收报警
-	IsReceivedEvent *bool `json:"isReceivedEvent,omitempty" xml:"isReceivedEvent,omitempty"`
-	// 监控源id
-	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	// 监控源名称
-	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	// 监控源简称
+	AccessKey              *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	IntegrationConfigId    *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	IsReceivedEvent        *bool   `json:"isReceivedEvent,omitempty" xml:"isReceivedEvent,omitempty"`
+	MonitorSourceId        *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	MonitorSourceName      *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
 	MonitorSourceShortName *string `json:"monitorSourceShortName,omitempty" xml:"monitorSourceShortName,omitempty"`
-	// 集成配置状态，DISABLE 禁用，INTEGRATED 已集成，UNINTEGRATED未集成
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s GetIntegrationConfigResponseBodyData) String() string {
@@ -6502,8 +6771,9 @@ func (s *GetIntegrationConfigResponseBodyData) SetStatus(v string) *GetIntegrati
 }
 
 type GetIntegrationConfigResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetIntegrationConfigResponse) String() string {
@@ -6519,16 +6789,19 @@ func (s *GetIntegrationConfigResponse) SetHeaders(v map[string]*string) *GetInte
 	return s
 }
 
+func (s *GetIntegrationConfigResponse) SetStatusCode(v int32) *GetIntegrationConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetIntegrationConfigResponse) SetBody(v *GetIntegrationConfigResponseBody) *GetIntegrationConfigResponse {
 	s.Body = v
 	return s
 }
 
 type GetProblemRequest struct {
-	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 故障ID
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemId   *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s GetProblemRequest) String() string {
@@ -6550,10 +6823,8 @@ func (s *GetProblemRequest) SetProblemId(v int64) *GetProblemRequest {
 }
 
 type GetProblemResponseBody struct {
-	// 详情
-	Data *GetProblemResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetProblemResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetProblemResponseBody) String() string {
@@ -6575,66 +6846,38 @@ func (s *GetProblemResponseBody) SetRequestId(v string) *GetProblemResponseBody 
 }
 
 type GetProblemResponseBodyData struct {
-	// 已取消故障操作日志
-	CancelProblemOperateLogs []*GetProblemResponseBodyDataCancelProblemOperateLogs `json:"cancelProblemOperateLogs,omitempty" xml:"cancelProblemOperateLogs,omitempty" type:"Repeated"`
-	// 取消原因
-	CancelReason *int64 `json:"cancelReason,omitempty" xml:"cancelReason,omitempty"`
-	// 取消原因描述
-	CancelReasonDescription *string `json:"cancelReasonDescription,omitempty" xml:"cancelReasonDescription,omitempty"`
-	// 应急协同组
-	CoordinationGroups []*GetProblemResponseBodyDataCoordinationGroups `json:"coordinationGroups,omitempty" xml:"coordinationGroups,omitempty" type:"Repeated"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 发现时间
-	DiscoverTime *string `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
-	// 持续时间
-	DurationTime *int64 `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
-	// 影响服务
-	EffectionServices []*GetProblemResponseBodyDataEffectionServices `json:"effectionServices,omitempty" xml:"effectionServices,omitempty" type:"Repeated"`
-	// 舆情反馈
-	Feedback *string `json:"feedback,omitempty" xml:"feedback,omitempty"`
-	// 处理中故障操作日志
-	HandingProblemOperateLogs []*GetProblemResponseBodyDataHandingProblemOperateLogs `json:"handingProblemOperateLogs,omitempty" xml:"handingProblemOperateLogs,omitempty" type:"Repeated"`
-	// 事件id
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 事件编号
-	IncidentNumber *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
-	// 主要处理人
-	MainHandler *int64 `json:"mainHandler,omitempty" xml:"mainHandler,omitempty"`
-	// 主要处理人ID
-	MainHandlerId *int64 `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
-	// 主要处理人手机号
-	MainHandlerPhone *string `json:"mainHandlerPhone,omitempty" xml:"mainHandlerPhone,omitempty"`
-	// 初步原因
-	PreliminaryReason *string `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
-	// ID
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 故障等级 P1 P2 P3 P4
-	ProblemLevel *int32 `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
-	// 故障名称
-	ProblemName *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
-	// 故障编号
-	ProblemNumber *string `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
-	// 故障状态  HANDLING    处理中 RECOVERED  已恢复  REPLAYING   复盘中  REPLAYED     已复盘 CANCEL        已取消
-	ProblemStatus *int32 `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
-	// 进展摘要
-	ProgressSummary *string `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
-	// 进展摘要富文本id
-	ProgressSummaryRichTextId *int64 `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
-	// 恢复时间
-	RecoveryTime *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
-	// 关联服务ID
-	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	// 已复盘故障操作日志
-	ReplayProblemOperateLogs []*GetProblemResponseBodyDataReplayProblemOperateLogs `json:"replayProblemOperateLogs,omitempty" xml:"replayProblemOperateLogs,omitempty" type:"Repeated"`
-	// 复盘中故障操作日志
+	CancelProblemOperateLogs    []*GetProblemResponseBodyDataCancelProblemOperateLogs    `json:"cancelProblemOperateLogs,omitempty" xml:"cancelProblemOperateLogs,omitempty" type:"Repeated"`
+	CancelReason                *int64                                                   `json:"cancelReason,omitempty" xml:"cancelReason,omitempty"`
+	CancelReasonDescription     *string                                                  `json:"cancelReasonDescription,omitempty" xml:"cancelReasonDescription,omitempty"`
+	CoordinationGroups          []*GetProblemResponseBodyDataCoordinationGroups          `json:"coordinationGroups,omitempty" xml:"coordinationGroups,omitempty" type:"Repeated"`
+	CreateTime                  *string                                                  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	DiscoverTime                *string                                                  `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
+	DurationTime                *int64                                                   `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
+	EffectionServices           []*GetProblemResponseBodyDataEffectionServices           `json:"effectionServices,omitempty" xml:"effectionServices,omitempty" type:"Repeated"`
+	Feedback                    *string                                                  `json:"feedback,omitempty" xml:"feedback,omitempty"`
+	HandingProblemOperateLogs   []*GetProblemResponseBodyDataHandingProblemOperateLogs   `json:"handingProblemOperateLogs,omitempty" xml:"handingProblemOperateLogs,omitempty" type:"Repeated"`
+	IncidentId                  *int64                                                   `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IncidentNumber              *string                                                  `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
+	MainHandler                 *int64                                                   `json:"mainHandler,omitempty" xml:"mainHandler,omitempty"`
+	MainHandlerId               *int64                                                   `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
+	MainHandlerIsValid          *int64                                                   `json:"mainHandlerIsValid,omitempty" xml:"mainHandlerIsValid,omitempty"`
+	MainHandlerPhone            *string                                                  `json:"mainHandlerPhone,omitempty" xml:"mainHandlerPhone,omitempty"`
+	PreliminaryReason           *string                                                  `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
+	ProblemId                   *int64                                                   `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemLevel                *int32                                                   `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	ProblemName                 *string                                                  `json:"problemName,omitempty" xml:"problemName,omitempty"`
+	ProblemNumber               *string                                                  `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
+	ProblemStatus               *int32                                                   `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
+	ProgressSummary             *string                                                  `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
+	ProgressSummaryRichTextId   *int64                                                   `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
+	RecoveryTime                *string                                                  `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
+	RelatedServiceId            *int64                                                   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	ReplayProblemOperateLogs    []*GetProblemResponseBodyDataReplayProblemOperateLogs    `json:"replayProblemOperateLogs,omitempty" xml:"replayProblemOperateLogs,omitempty" type:"Repeated"`
 	ReplayingProblemOperateLogs []*GetProblemResponseBodyDataReplayingProblemOperateLogs `json:"replayingProblemOperateLogs,omitempty" xml:"replayingProblemOperateLogs,omitempty" type:"Repeated"`
-	// 已恢复故障操作日志
-	RestoredProblemOperateLogs []*GetProblemResponseBodyDataRestoredProblemOperateLogs `json:"restoredProblemOperateLogs,omitempty" xml:"restoredProblemOperateLogs,omitempty" type:"Repeated"`
-	// 关联服务 名称
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// 故障操作时间线
-	Timelines []*GetProblemResponseBodyDataTimelines `json:"timelines,omitempty" xml:"timelines,omitempty" type:"Repeated"`
+	RestoredProblemOperateLogs  []*GetProblemResponseBodyDataRestoredProblemOperateLogs  `json:"restoredProblemOperateLogs,omitempty" xml:"restoredProblemOperateLogs,omitempty" type:"Repeated"`
+	ServiceDeleteType           *int32                                                   `json:"serviceDeleteType,omitempty" xml:"serviceDeleteType,omitempty"`
+	ServiceName                 *string                                                  `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	Timelines                   []*GetProblemResponseBodyDataTimelines                   `json:"timelines,omitempty" xml:"timelines,omitempty" type:"Repeated"`
 }
 
 func (s GetProblemResponseBodyData) String() string {
@@ -6715,6 +6958,11 @@ func (s *GetProblemResponseBodyData) SetMainHandlerId(v int64) *GetProblemRespon
 	return s
 }
 
+func (s *GetProblemResponseBodyData) SetMainHandlerIsValid(v int64) *GetProblemResponseBodyData {
+	s.MainHandlerIsValid = &v
+	return s
+}
+
 func (s *GetProblemResponseBodyData) SetMainHandlerPhone(v string) *GetProblemResponseBodyData {
 	s.MainHandlerPhone = &v
 	return s
@@ -6785,6 +7033,11 @@ func (s *GetProblemResponseBodyData) SetRestoredProblemOperateLogs(v []*GetProbl
 	return s
 }
 
+func (s *GetProblemResponseBodyData) SetServiceDeleteType(v int32) *GetProblemResponseBodyData {
+	s.ServiceDeleteType = &v
+	return s
+}
+
 func (s *GetProblemResponseBodyData) SetServiceName(v string) *GetProblemResponseBodyData {
 	s.ServiceName = &v
 	return s
@@ -6796,14 +7049,10 @@ func (s *GetProblemResponseBodyData) SetTimelines(v []*GetProblemResponseBodyDat
 }
 
 type GetProblemResponseBodyDataCancelProblemOperateLogs struct {
-	// 动作名称
 	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	// 操作时间
 	ActionTime *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
-	// 操作人
-	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// 用户ID
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	Operator   *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	UserId     *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s GetProblemResponseBodyDataCancelProblemOperateLogs) String() string {
@@ -6835,9 +7084,8 @@ func (s *GetProblemResponseBodyDataCancelProblemOperateLogs) SetUserId(v int64) 
 }
 
 type GetProblemResponseBodyDataCoordinationGroups struct {
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	// 服务组名字
+	IsValid          *int64  `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	ServiceGroupId   *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
 }
 
@@ -6847,6 +7095,11 @@ func (s GetProblemResponseBodyDataCoordinationGroups) String() string {
 
 func (s GetProblemResponseBodyDataCoordinationGroups) GoString() string {
 	return s.String()
+}
+
+func (s *GetProblemResponseBodyDataCoordinationGroups) SetIsValid(v int64) *GetProblemResponseBodyDataCoordinationGroups {
+	s.IsValid = &v
+	return s
 }
 
 func (s *GetProblemResponseBodyDataCoordinationGroups) SetServiceGroupId(v int64) *GetProblemResponseBodyDataCoordinationGroups {
@@ -6860,16 +7113,12 @@ func (s *GetProblemResponseBodyDataCoordinationGroups) SetServiceGroupName(v str
 }
 
 type GetProblemResponseBodyDataEffectionServices struct {
-	// 影响描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 影响等级 P1 . P2 P3 P4
-	EffectionLevel *int64 `json:"effectionLevel,omitempty" xml:"effectionLevel,omitempty"`
-	// 服务ID
-	EffectionServiceId *int64 `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
-	// 影响服务状态  RECOVERED 已经恢复 ,UN_RECOVERED 未恢复
-	EffectionStatus *int32 `json:"effectionStatus,omitempty" xml:"effectionStatus,omitempty"`
-	// 服务名称
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
+	EffectionLevel     *int64  `json:"effectionLevel,omitempty" xml:"effectionLevel,omitempty"`
+	EffectionServiceId *int64  `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
+	EffectionStatus    *int32  `json:"effectionStatus,omitempty" xml:"effectionStatus,omitempty"`
+	ServiceDeleteType  *int32  `json:"serviceDeleteType,omitempty" xml:"serviceDeleteType,omitempty"`
+	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s GetProblemResponseBodyDataEffectionServices) String() string {
@@ -6900,20 +7149,22 @@ func (s *GetProblemResponseBodyDataEffectionServices) SetEffectionStatus(v int32
 	return s
 }
 
+func (s *GetProblemResponseBodyDataEffectionServices) SetServiceDeleteType(v int32) *GetProblemResponseBodyDataEffectionServices {
+	s.ServiceDeleteType = &v
+	return s
+}
+
 func (s *GetProblemResponseBodyDataEffectionServices) SetServiceName(v string) *GetProblemResponseBodyDataEffectionServices {
 	s.ServiceName = &v
 	return s
 }
 
 type GetProblemResponseBodyDataHandingProblemOperateLogs struct {
-	// 动作名称
-	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	// 操作时间
-	ActionTime *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
-	// 操作人
-	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// 用户id
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	ActionName  *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
+	ActionTime  *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
+	Operator    *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserIsValid *int64  `json:"userIsValid,omitempty" xml:"userIsValid,omitempty"`
 }
 
 func (s GetProblemResponseBodyDataHandingProblemOperateLogs) String() string {
@@ -6944,15 +7195,17 @@ func (s *GetProblemResponseBodyDataHandingProblemOperateLogs) SetUserId(v int64)
 	return s
 }
 
+func (s *GetProblemResponseBodyDataHandingProblemOperateLogs) SetUserIsValid(v int64) *GetProblemResponseBodyDataHandingProblemOperateLogs {
+	s.UserIsValid = &v
+	return s
+}
+
 type GetProblemResponseBodyDataReplayProblemOperateLogs struct {
-	// 动作名称
-	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	// 操作时间
-	ActionTime *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
-	// 操作人
-	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// 用户id
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	ActionName  *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
+	ActionTime  *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
+	Operator    *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserIsValid *int64  `json:"userIsValid,omitempty" xml:"userIsValid,omitempty"`
 }
 
 func (s GetProblemResponseBodyDataReplayProblemOperateLogs) String() string {
@@ -6983,15 +7236,17 @@ func (s *GetProblemResponseBodyDataReplayProblemOperateLogs) SetUserId(v int64) 
 	return s
 }
 
+func (s *GetProblemResponseBodyDataReplayProblemOperateLogs) SetUserIsValid(v int64) *GetProblemResponseBodyDataReplayProblemOperateLogs {
+	s.UserIsValid = &v
+	return s
+}
+
 type GetProblemResponseBodyDataReplayingProblemOperateLogs struct {
-	// 动作名称
-	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	// 操作时间
-	ActionTime *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
-	// 操作人
-	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// 用户id
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	ActionName  *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
+	ActionTime  *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
+	Operator    *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserIsValid *int64  `json:"userIsValid,omitempty" xml:"userIsValid,omitempty"`
 }
 
 func (s GetProblemResponseBodyDataReplayingProblemOperateLogs) String() string {
@@ -7022,15 +7277,17 @@ func (s *GetProblemResponseBodyDataReplayingProblemOperateLogs) SetUserId(v int6
 	return s
 }
 
+func (s *GetProblemResponseBodyDataReplayingProblemOperateLogs) SetUserIsValid(v int64) *GetProblemResponseBodyDataReplayingProblemOperateLogs {
+	s.UserIsValid = &v
+	return s
+}
+
 type GetProblemResponseBodyDataRestoredProblemOperateLogs struct {
-	// 动作名称
-	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	// 操作时间
-	ActionTime *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
-	// 操作人
-	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// 用户id
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	ActionName  *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
+	ActionTime  *string `json:"actionTime,omitempty" xml:"actionTime,omitempty"`
+	Operator    *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserIsValid *int64  `json:"userIsValid,omitempty" xml:"userIsValid,omitempty"`
 }
 
 func (s GetProblemResponseBodyDataRestoredProblemOperateLogs) String() string {
@@ -7061,8 +7318,12 @@ func (s *GetProblemResponseBodyDataRestoredProblemOperateLogs) SetUserId(v int64
 	return s
 }
 
+func (s *GetProblemResponseBodyDataRestoredProblemOperateLogs) SetUserIsValid(v int64) *GetProblemResponseBodyDataRestoredProblemOperateLogs {
+	s.UserIsValid = &v
+	return s
+}
+
 type GetProblemResponseBodyDataTimelines struct {
-	// 关键节点 码表:PROBLEM_KEY_NODE (逗号分隔)
 	KeyNode *string `json:"keyNode,omitempty" xml:"keyNode,omitempty"`
 }
 
@@ -7080,8 +7341,9 @@ func (s *GetProblemResponseBodyDataTimelines) SetKeyNode(v string) *GetProblemRe
 }
 
 type GetProblemResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetProblemResponse) String() string {
@@ -7097,18 +7359,20 @@ func (s *GetProblemResponse) SetHeaders(v map[string]*string) *GetProblemRespons
 	return s
 }
 
+func (s *GetProblemResponse) SetStatusCode(v int32) *GetProblemResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetProblemResponse) SetBody(v *GetProblemResponseBody) *GetProblemResponse {
 	s.Body = v
 	return s
 }
 
 type GetProblemEffectionServiceRequest struct {
-	// clientToken
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// id主键
-	EffectionServiceId *int64 `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
-	// 故障id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ClientToken        *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EffectionServiceId *int64  `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
+	ProblemId          *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s GetProblemEffectionServiceRequest) String() string {
@@ -7135,9 +7399,8 @@ func (s *GetProblemEffectionServiceRequest) SetProblemId(v int64) *GetProblemEff
 }
 
 type GetProblemEffectionServiceResponseBody struct {
-	Data *GetProblemEffectionServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// requestId
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetProblemEffectionServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetProblemEffectionServiceResponseBody) String() string {
@@ -7159,20 +7422,13 @@ func (s *GetProblemEffectionServiceResponseBody) SetRequestId(v string) *GetProb
 }
 
 type GetProblemEffectionServiceResponseBodyData struct {
-	// 影响描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 影响服务id
-	EffectionServiceId *int64 `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
-	// 影响等级
-	Level *int64 `json:"level,omitempty" xml:"level,omitempty"`
-	// 图片链接
-	PicUrl []*string `json:"picUrl,omitempty" xml:"picUrl,omitempty" type:"Repeated"`
-	// 服务id
-	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// 服务名称
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// 影响状态 0 未恢复 1已恢复
-	Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
+	Description        *string   `json:"description,omitempty" xml:"description,omitempty"`
+	EffectionServiceId *int64    `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
+	Level              *int64    `json:"level,omitempty" xml:"level,omitempty"`
+	PicUrl             []*string `json:"picUrl,omitempty" xml:"picUrl,omitempty" type:"Repeated"`
+	ServiceId          *int64    `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName        *string   `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	Status             *int64    `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s GetProblemEffectionServiceResponseBodyData) String() string {
@@ -7219,8 +7475,9 @@ func (s *GetProblemEffectionServiceResponseBodyData) SetStatus(v int64) *GetProb
 }
 
 type GetProblemEffectionServiceResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetProblemEffectionServiceResponse) String() string {
@@ -7236,16 +7493,19 @@ func (s *GetProblemEffectionServiceResponse) SetHeaders(v map[string]*string) *G
 	return s
 }
 
+func (s *GetProblemEffectionServiceResponse) SetStatusCode(v int32) *GetProblemEffectionServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetProblemEffectionServiceResponse) SetBody(v *GetProblemEffectionServiceResponseBody) *GetProblemEffectionServiceResponse {
 	s.Body = v
 	return s
 }
 
 type GetProblemImprovementRequest struct {
-	// 幂等校验token
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 故障ID
-	ProblemId *string `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemId   *string `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s GetProblemImprovementRequest) String() string {
@@ -7267,9 +7527,8 @@ func (s *GetProblemImprovementRequest) SetProblemId(v string) *GetProblemImprove
 }
 
 type GetProblemImprovementResponseBody struct {
-	Data *GetProblemImprovementResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetProblemImprovementResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetProblemImprovementResponseBody) String() string {
@@ -7291,46 +7550,29 @@ func (s *GetProblemImprovementResponseBody) SetRequestId(v string) *GetProblemIm
 }
 
 type GetProblemImprovementResponseBodyData struct {
-	// 发现来源 码表:PROBLEM_DISCOVER_SOURCE
-	DiscoverSource *string `json:"discoverSource,omitempty" xml:"discoverSource,omitempty"`
-	// 故障责任部门
-	DutyDepartmentId *string `json:"dutyDepartmentId,omitempty" xml:"dutyDepartmentId,omitempty"`
-	// 故障责任部门名称
-	DutyDepartmentName *string `json:"dutyDepartmentName,omitempty" xml:"dutyDepartmentName,omitempty"`
-	// 故障责任人id
-	DutyUserId *int64 `json:"dutyUserId,omitempty" xml:"dutyUserId,omitempty"`
-	// 故障责任人名称
-	DutyUserName *string `json:"dutyUserName,omitempty" xml:"dutyUserName,omitempty"`
-	// 故障责任人手机号
-	DutyUserPhone *string `json:"dutyUserPhone,omitempty" xml:"dutyUserPhone,omitempty"`
-	// 注入方式 码表:PROBLEM_INJECTION_MODE
-	InjectionMode *string `json:"injectionMode,omitempty" xml:"injectionMode,omitempty"`
-	// 是否手动
-	IsManual *bool `json:"isManual,omitempty" xml:"isManual,omitempty"`
-	// 改进措施列表
-	MeasureList []*GetProblemImprovementResponseBodyDataMeasureList `json:"measureList,omitempty" xml:"measureList,omitempty" type:"Repeated"`
-	// 监控源
-	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	// 故障ID
-	ProblemId *string `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 故障原因
-	ProblemReason *string `json:"problemReason,omitempty" xml:"problemReason,omitempty"`
-	// 最近活动 码表:PROBLEM_RECENT_ACTIVITY
-	RecentActivity *string `json:"recentActivity,omitempty" xml:"recentActivity,omitempty"`
-	// 恢复方式  码表:PROBLEM_RECOVERY_MODE
-	RecoveryMode *string `json:"recoveryMode,omitempty" xml:"recoveryMode,omitempty"`
-	// 关联变更
-	RelationChanges *string `json:"relationChanges,omitempty" xml:"relationChanges,omitempty"`
-	// 备注
-	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// 复盘负责人id
-	ReplayDutyUserId *int64 `json:"replayDutyUserId,omitempty" xml:"replayDutyUserId,omitempty"`
-	// 复盘负责人名称
-	ReplayDutyUserName *string `json:"replayDutyUserName,omitempty" xml:"replayDutyUserName,omitempty"`
-	// 复盘负责人手机号
-	ReplayDutyUserPhone *string `json:"replayDutyUserPhone,omitempty" xml:"replayDutyUserPhone,omitempty"`
-	// 用户上报 码表:PROBLEM_USER_REPORT
-	UserReport *int64 `json:"userReport,omitempty" xml:"userReport,omitempty"`
+	CustomProblemReason   *string                                             `json:"customProblemReason,omitempty" xml:"customProblemReason,omitempty"`
+	DiscoverSource        *string                                             `json:"discoverSource,omitempty" xml:"discoverSource,omitempty"`
+	DutyDepartmentId      *string                                             `json:"dutyDepartmentId,omitempty" xml:"dutyDepartmentId,omitempty"`
+	DutyDepartmentName    *string                                             `json:"dutyDepartmentName,omitempty" xml:"dutyDepartmentName,omitempty"`
+	DutyUserId            *int64                                              `json:"dutyUserId,omitempty" xml:"dutyUserId,omitempty"`
+	DutyUserIsValid       *int64                                              `json:"dutyUserIsValid,omitempty" xml:"dutyUserIsValid,omitempty"`
+	DutyUserName          *string                                             `json:"dutyUserName,omitempty" xml:"dutyUserName,omitempty"`
+	DutyUserPhone         *string                                             `json:"dutyUserPhone,omitempty" xml:"dutyUserPhone,omitempty"`
+	InjectionMode         *string                                             `json:"injectionMode,omitempty" xml:"injectionMode,omitempty"`
+	IsManual              *bool                                               `json:"isManual,omitempty" xml:"isManual,omitempty"`
+	MeasureList           []*GetProblemImprovementResponseBodyDataMeasureList `json:"measureList,omitempty" xml:"measureList,omitempty" type:"Repeated"`
+	MonitorSourceName     *string                                             `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	ProblemId             *string                                             `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemReason         *string                                             `json:"problemReason,omitempty" xml:"problemReason,omitempty"`
+	RecentActivity        *string                                             `json:"recentActivity,omitempty" xml:"recentActivity,omitempty"`
+	RecoveryMode          *string                                             `json:"recoveryMode,omitempty" xml:"recoveryMode,omitempty"`
+	RelationChanges       *string                                             `json:"relationChanges,omitempty" xml:"relationChanges,omitempty"`
+	Remark                *string                                             `json:"remark,omitempty" xml:"remark,omitempty"`
+	ReplayDutyUserId      *int64                                              `json:"replayDutyUserId,omitempty" xml:"replayDutyUserId,omitempty"`
+	ReplayDutyUserIsValid *int64                                              `json:"replayDutyUserIsValid,omitempty" xml:"replayDutyUserIsValid,omitempty"`
+	ReplayDutyUserName    *string                                             `json:"replayDutyUserName,omitempty" xml:"replayDutyUserName,omitempty"`
+	ReplayDutyUserPhone   *string                                             `json:"replayDutyUserPhone,omitempty" xml:"replayDutyUserPhone,omitempty"`
+	UserReport            *int64                                              `json:"userReport,omitempty" xml:"userReport,omitempty"`
 }
 
 func (s GetProblemImprovementResponseBodyData) String() string {
@@ -7339,6 +7581,11 @@ func (s GetProblemImprovementResponseBodyData) String() string {
 
 func (s GetProblemImprovementResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetProblemImprovementResponseBodyData) SetCustomProblemReason(v string) *GetProblemImprovementResponseBodyData {
+	s.CustomProblemReason = &v
+	return s
 }
 
 func (s *GetProblemImprovementResponseBodyData) SetDiscoverSource(v string) *GetProblemImprovementResponseBodyData {
@@ -7358,6 +7605,11 @@ func (s *GetProblemImprovementResponseBodyData) SetDutyDepartmentName(v string) 
 
 func (s *GetProblemImprovementResponseBodyData) SetDutyUserId(v int64) *GetProblemImprovementResponseBodyData {
 	s.DutyUserId = &v
+	return s
+}
+
+func (s *GetProblemImprovementResponseBodyData) SetDutyUserIsValid(v int64) *GetProblemImprovementResponseBodyData {
+	s.DutyUserIsValid = &v
 	return s
 }
 
@@ -7426,6 +7678,11 @@ func (s *GetProblemImprovementResponseBodyData) SetReplayDutyUserId(v int64) *Ge
 	return s
 }
 
+func (s *GetProblemImprovementResponseBodyData) SetReplayDutyUserIsValid(v int64) *GetProblemImprovementResponseBodyData {
+	s.ReplayDutyUserIsValid = &v
+	return s
+}
+
 func (s *GetProblemImprovementResponseBodyData) SetReplayDutyUserName(v string) *GetProblemImprovementResponseBodyData {
 	s.ReplayDutyUserName = &v
 	return s
@@ -7442,30 +7699,21 @@ func (s *GetProblemImprovementResponseBodyData) SetUserReport(v int64) *GetProbl
 }
 
 type GetProblemImprovementResponseBodyDataMeasureList struct {
-	// 验收标准
-	CheckStandard *string `json:"checkStandard,omitempty" xml:"checkStandard,omitempty"`
-	// 验收人id
-	CheckUserId *int64 `json:"checkUserId,omitempty" xml:"checkUserId,omitempty"`
-	// 验收人名称
-	CheckUserName *string `json:"checkUserName,omitempty" xml:"checkUserName,omitempty"`
-	// 措施内容
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 负责人id
-	DirectorId *int64 `json:"directorId,omitempty" xml:"directorId,omitempty"`
-	// 负责人名称
-	DirectorName *string `json:"directorName,omitempty" xml:"directorName,omitempty"`
-	// 改进措施id 用于删除或更新
-	MeasureId *int64 `json:"measureId,omitempty" xml:"measureId,omitempty"`
-	// 计划完成时间
-	PlanFinishTime *string `json:"planFinishTime,omitempty" xml:"planFinishTime,omitempty"`
-	// 跟踪人id
-	StalkerId *int64 `json:"stalkerId,omitempty" xml:"stalkerId,omitempty"`
-	// 跟踪人名称
-	StalkerName *string `json:"stalkerName,omitempty" xml:"stalkerName,omitempty"`
-	// UNIMPROVED	状态 IMPROVED 改进 2 未改进UNIMPROVED
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 措施类型
-	Type *int64 `json:"type,omitempty" xml:"type,omitempty"`
+	CheckStandard    *string `json:"checkStandard,omitempty" xml:"checkStandard,omitempty"`
+	CheckUserId      *int64  `json:"checkUserId,omitempty" xml:"checkUserId,omitempty"`
+	CheckUserIsValid *int32  `json:"checkUserIsValid,omitempty" xml:"checkUserIsValid,omitempty"`
+	CheckUserName    *string `json:"checkUserName,omitempty" xml:"checkUserName,omitempty"`
+	Content          *string `json:"content,omitempty" xml:"content,omitempty"`
+	DirectorId       *int64  `json:"directorId,omitempty" xml:"directorId,omitempty"`
+	DirectorIsValid  *int32  `json:"directorIsValid,omitempty" xml:"directorIsValid,omitempty"`
+	DirectorName     *string `json:"directorName,omitempty" xml:"directorName,omitempty"`
+	MeasureId        *int64  `json:"measureId,omitempty" xml:"measureId,omitempty"`
+	PlanFinishTime   *string `json:"planFinishTime,omitempty" xml:"planFinishTime,omitempty"`
+	StalkerId        *int64  `json:"stalkerId,omitempty" xml:"stalkerId,omitempty"`
+	StalkerIsValid   *int32  `json:"stalkerIsValid,omitempty" xml:"stalkerIsValid,omitempty"`
+	StalkerName      *string `json:"stalkerName,omitempty" xml:"stalkerName,omitempty"`
+	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
+	Type             *int64  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetProblemImprovementResponseBodyDataMeasureList) String() string {
@@ -7486,6 +7734,11 @@ func (s *GetProblemImprovementResponseBodyDataMeasureList) SetCheckUserId(v int6
 	return s
 }
 
+func (s *GetProblemImprovementResponseBodyDataMeasureList) SetCheckUserIsValid(v int32) *GetProblemImprovementResponseBodyDataMeasureList {
+	s.CheckUserIsValid = &v
+	return s
+}
+
 func (s *GetProblemImprovementResponseBodyDataMeasureList) SetCheckUserName(v string) *GetProblemImprovementResponseBodyDataMeasureList {
 	s.CheckUserName = &v
 	return s
@@ -7498,6 +7751,11 @@ func (s *GetProblemImprovementResponseBodyDataMeasureList) SetContent(v string) 
 
 func (s *GetProblemImprovementResponseBodyDataMeasureList) SetDirectorId(v int64) *GetProblemImprovementResponseBodyDataMeasureList {
 	s.DirectorId = &v
+	return s
+}
+
+func (s *GetProblemImprovementResponseBodyDataMeasureList) SetDirectorIsValid(v int32) *GetProblemImprovementResponseBodyDataMeasureList {
+	s.DirectorIsValid = &v
 	return s
 }
 
@@ -7521,6 +7779,11 @@ func (s *GetProblemImprovementResponseBodyDataMeasureList) SetStalkerId(v int64)
 	return s
 }
 
+func (s *GetProblemImprovementResponseBodyDataMeasureList) SetStalkerIsValid(v int32) *GetProblemImprovementResponseBodyDataMeasureList {
+	s.StalkerIsValid = &v
+	return s
+}
+
 func (s *GetProblemImprovementResponseBodyDataMeasureList) SetStalkerName(v string) *GetProblemImprovementResponseBodyDataMeasureList {
 	s.StalkerName = &v
 	return s
@@ -7537,8 +7800,9 @@ func (s *GetProblemImprovementResponseBodyDataMeasureList) SetType(v int64) *Get
 }
 
 type GetProblemImprovementResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProblemImprovementResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetProblemImprovementResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetProblemImprovementResponse) String() string {
@@ -7554,28 +7818,25 @@ func (s *GetProblemImprovementResponse) SetHeaders(v map[string]*string) *GetPro
 	return s
 }
 
+func (s *GetProblemImprovementResponse) SetStatusCode(v int32) *GetProblemImprovementResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetProblemImprovementResponse) SetBody(v *GetProblemImprovementResponseBody) *GetProblemImprovementResponse {
 	s.Body = v
 	return s
 }
 
 type GetProblemPreviewRequest struct {
-	// 幂等校验token
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 影响服务
-	EffectServiceIds []*int64 `json:"effectServiceIds,omitempty" xml:"effectServiceIds,omitempty" type:"Repeated"`
-	// 事件Id
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 故障id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 故障等级
-	ProblemLevel *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
-	// 通告类型
-	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
-	// 所属服务
-	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	// 应急协同组
-	ServiceGroupIds []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
+	ClientToken       *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EffectServiceIds  []*int64 `json:"effectServiceIds,omitempty" xml:"effectServiceIds,omitempty" type:"Repeated"`
+	IncidentId        *int64   `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	ProblemId         *int64   `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemLevel      *string  `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	ProblemNotifyType *string  `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
+	RelatedServiceId  *int64   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	ServiceGroupIds   []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s GetProblemPreviewRequest) String() string {
@@ -7627,9 +7888,8 @@ func (s *GetProblemPreviewRequest) SetServiceGroupIds(v []*int64) *GetProblemPre
 }
 
 type GetProblemPreviewResponseBody struct {
-	Data *GetProblemPreviewResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// requestId
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetProblemPreviewResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetProblemPreviewResponseBody) String() string {
@@ -7651,23 +7911,15 @@ func (s *GetProblemPreviewResponseBody) SetRequestId(v string) *GetProblemPrevie
 }
 
 type GetProblemPreviewResponseBodyData struct {
-	// 降级后数据
-	DeAfterData *string `json:"deAfterData,omitempty" xml:"deAfterData,omitempty"`
-	// 降级前数据
-	DeBeforeData *string `json:"deBeforeData,omitempty" xml:"deBeforeData,omitempty"`
-	// 邮箱
-	Mail    *GetProblemPreviewResponseBodyDataMail    `json:"mail,omitempty" xml:"mail,omitempty" type:"Struct"`
-	Problem *GetProblemPreviewResponseBodyDataProblem `json:"problem,omitempty" xml:"problem,omitempty" type:"Struct"`
-	// 短信
-	Sms *GetProblemPreviewResponseBodyDataSms `json:"sms,omitempty" xml:"sms,omitempty" type:"Struct"`
-	// 升级后数据
-	UpAfterData *string `json:"upAfterData,omitempty" xml:"upAfterData,omitempty"`
-	// 升级前数据
-	UpBeforeData *string `json:"upBeforeData,omitempty" xml:"upBeforeData,omitempty"`
-	// 语音
-	Voice *GetProblemPreviewResponseBodyDataVoice `json:"voice,omitempty" xml:"voice,omitempty" type:"Struct"`
-	// webhook
-	Webhook *GetProblemPreviewResponseBodyDataWebhook `json:"webhook,omitempty" xml:"webhook,omitempty" type:"Struct"`
+	DeAfterData  *string                                   `json:"deAfterData,omitempty" xml:"deAfterData,omitempty"`
+	DeBeforeData *string                                   `json:"deBeforeData,omitempty" xml:"deBeforeData,omitempty"`
+	Mail         *GetProblemPreviewResponseBodyDataMail    `json:"mail,omitempty" xml:"mail,omitempty" type:"Struct"`
+	Problem      *GetProblemPreviewResponseBodyDataProblem `json:"problem,omitempty" xml:"problem,omitempty" type:"Struct"`
+	Sms          *GetProblemPreviewResponseBodyDataSms     `json:"sms,omitempty" xml:"sms,omitempty" type:"Struct"`
+	UpAfterData  *string                                   `json:"upAfterData,omitempty" xml:"upAfterData,omitempty"`
+	UpBeforeData *string                                   `json:"upBeforeData,omitempty" xml:"upBeforeData,omitempty"`
+	Voice        *GetProblemPreviewResponseBodyDataVoice   `json:"voice,omitempty" xml:"voice,omitempty" type:"Struct"`
+	Webhook      *GetProblemPreviewResponseBodyDataWebhook `json:"webhook,omitempty" xml:"webhook,omitempty" type:"Struct"`
 }
 
 func (s GetProblemPreviewResponseBodyData) String() string {
@@ -7724,7 +7976,6 @@ func (s *GetProblemPreviewResponseBodyData) SetWebhook(v *GetProblemPreviewRespo
 }
 
 type GetProblemPreviewResponseBodyDataMail struct {
-	// 数量
 	Count *int64                                        `json:"count,omitempty" xml:"count,omitempty"`
 	Users []*GetProblemPreviewResponseBodyDataMailUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
@@ -7748,7 +7999,6 @@ func (s *GetProblemPreviewResponseBodyDataMail) SetUsers(v []*GetProblemPreviewR
 }
 
 type GetProblemPreviewResponseBodyDataMailUsers struct {
-	// 用户名称
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -7766,42 +8016,24 @@ func (s *GetProblemPreviewResponseBodyDataMailUsers) SetUsername(v string) *GetP
 }
 
 type GetProblemPreviewResponseBodyDataProblem struct {
-	// 应急协同组
-	CoordinationGroups []*GetProblemPreviewResponseBodyDataProblemCoordinationGroups `json:"coordinationGroups,omitempty" xml:"coordinationGroups,omitempty" type:"Repeated"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 发现时间
-	DiscoverTime *string `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
-	// 影响服务
-	EffectionServices []*GetProblemPreviewResponseBodyDataProblemEffectionServices `json:"effectionServices,omitempty" xml:"effectionServices,omitempty" type:"Repeated"`
-	// 是否手动
-	IsManual *bool `json:"isManual,omitempty" xml:"isManual,omitempty"`
-	// 是否升级
-	IsUpgrade *bool `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
-	// 主要处理人Id
-	MainHandlerId *string `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
-	// 主要处理人
-	MainHandlerName *string `json:"mainHandlerName,omitempty" xml:"mainHandlerName,omitempty"`
-	// 初步原因
-	PreliminaryReason *string `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
-	// 故障Id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 故障等级 1=P1 2=P2 3=P3 4=P4
-	ProblemLevel *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
-	// 故障名称
-	ProblemName *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
-	// 故障状态 1 处理中 2已恢复 3复盘中 4已复盘 5已取消
-	ProblemStatus *string `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
-	// 进展摘要
-	ProgressSummary *string `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
-	// 富文本id
-	ProgressSummaryRichTextId *int64 `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
-	// 恢复时间
-	RecoveryTime *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
-	// 关联服务ID
-	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	// 关联服务 名称
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	CoordinationGroups        []*GetProblemPreviewResponseBodyDataProblemCoordinationGroups `json:"coordinationGroups,omitempty" xml:"coordinationGroups,omitempty" type:"Repeated"`
+	CreateTime                *string                                                       `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	DiscoverTime              *string                                                       `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
+	EffectionServices         []*GetProblemPreviewResponseBodyDataProblemEffectionServices  `json:"effectionServices,omitempty" xml:"effectionServices,omitempty" type:"Repeated"`
+	IsManual                  *bool                                                         `json:"isManual,omitempty" xml:"isManual,omitempty"`
+	IsUpgrade                 *bool                                                         `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
+	MainHandlerId             *string                                                       `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
+	MainHandlerName           *string                                                       `json:"mainHandlerName,omitempty" xml:"mainHandlerName,omitempty"`
+	PreliminaryReason         *string                                                       `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
+	ProblemId                 *int64                                                        `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemLevel              *string                                                       `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	ProblemName               *string                                                       `json:"problemName,omitempty" xml:"problemName,omitempty"`
+	ProblemStatus             *string                                                       `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
+	ProgressSummary           *string                                                       `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
+	ProgressSummaryRichTextId *int64                                                        `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
+	RecoveryTime              *string                                                       `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
+	RelatedServiceId          *int64                                                        `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	ServiceName               *string                                                       `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s GetProblemPreviewResponseBodyDataProblem) String() string {
@@ -7903,12 +8135,9 @@ func (s *GetProblemPreviewResponseBodyDataProblem) SetServiceName(v string) *Get
 }
 
 type GetProblemPreviewResponseBodyDataProblemCoordinationGroups struct {
-	// 服务组Maison
 	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
-	// 服务Id
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	// 服务组名称
-	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	ServiceGroupId          *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ServiceGroupName        *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
 }
 
 func (s GetProblemPreviewResponseBodyDataProblemCoordinationGroups) String() string {
@@ -7935,9 +8164,7 @@ func (s *GetProblemPreviewResponseBodyDataProblemCoordinationGroups) SetServiceG
 }
 
 type GetProblemPreviewResponseBodyDataProblemEffectionServices struct {
-	// 影响服务Id
-	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// 影响服务名称
+	ServiceId   *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
@@ -7960,7 +8187,6 @@ func (s *GetProblemPreviewResponseBodyDataProblemEffectionServices) SetServiceNa
 }
 
 type GetProblemPreviewResponseBodyDataSms struct {
-	// 数量
 	Count *int64                                       `json:"count,omitempty" xml:"count,omitempty"`
 	Users []*GetProblemPreviewResponseBodyDataSmsUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
@@ -7984,7 +8210,6 @@ func (s *GetProblemPreviewResponseBodyDataSms) SetUsers(v []*GetProblemPreviewRe
 }
 
 type GetProblemPreviewResponseBodyDataSmsUsers struct {
-	// 用户名称
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -8002,7 +8227,6 @@ func (s *GetProblemPreviewResponseBodyDataSmsUsers) SetUsername(v string) *GetPr
 }
 
 type GetProblemPreviewResponseBodyDataVoice struct {
-	// 数量
 	Count *int64                                         `json:"count,omitempty" xml:"count,omitempty"`
 	Users []*GetProblemPreviewResponseBodyDataVoiceUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
@@ -8026,7 +8250,6 @@ func (s *GetProblemPreviewResponseBodyDataVoice) SetUsers(v []*GetProblemPreview
 }
 
 type GetProblemPreviewResponseBodyDataVoiceUsers struct {
-	// 用户
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -8044,7 +8267,6 @@ func (s *GetProblemPreviewResponseBodyDataVoiceUsers) SetUsername(v string) *Get
 }
 
 type GetProblemPreviewResponseBodyDataWebhook struct {
-	// 数量
 	Count         *int64                                                   `json:"count,omitempty" xml:"count,omitempty"`
 	ServiceGroups []*GetProblemPreviewResponseBodyDataWebhookServiceGroups `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
 }
@@ -8068,7 +8290,6 @@ func (s *GetProblemPreviewResponseBodyDataWebhook) SetServiceGroups(v []*GetProb
 }
 
 type GetProblemPreviewResponseBodyDataWebhookServiceGroups struct {
-	// 服务名称
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
@@ -8086,8 +8307,9 @@ func (s *GetProblemPreviewResponseBodyDataWebhookServiceGroups) SetServiceName(v
 }
 
 type GetProblemPreviewResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProblemPreviewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetProblemPreviewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetProblemPreviewResponse) String() string {
@@ -8103,13 +8325,17 @@ func (s *GetProblemPreviewResponse) SetHeaders(v map[string]*string) *GetProblem
 	return s
 }
 
+func (s *GetProblemPreviewResponse) SetStatusCode(v int32) *GetProblemPreviewResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetProblemPreviewResponse) SetBody(v *GetProblemPreviewResponseBody) *GetProblemPreviewResponse {
 	s.Body = v
 	return s
 }
 
 type GetResourceStatisticsRequest struct {
-	// 幂等校验
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -8127,10 +8353,8 @@ func (s *GetResourceStatisticsRequest) SetClientToken(v string) *GetResourceStat
 }
 
 type GetResourceStatisticsResponseBody struct {
-	// data
-	Data *GetResourceStatisticsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetResourceStatisticsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetResourceStatisticsResponseBody) String() string {
@@ -8152,14 +8376,10 @@ func (s *GetResourceStatisticsResponseBody) SetRequestId(v string) *GetResourceS
 }
 
 type GetResourceStatisticsResponseBodyData struct {
-	// 报警总数
-	AlertCount *int32 `json:"alertCount,omitempty" xml:"alertCount,omitempty"`
-	// 事件总数
-	IncidentCount *int32 `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
-	// 集成总数
+	AlertCount       *int32 `json:"alertCount,omitempty" xml:"alertCount,omitempty"`
+	IncidentCount    *int32 `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
 	IntegrationCount *int32 `json:"integrationCount,omitempty" xml:"integrationCount,omitempty"`
-	// 故障总数
-	ProblemCount *int32 `json:"problemCount,omitempty" xml:"problemCount,omitempty"`
+	ProblemCount     *int32 `json:"problemCount,omitempty" xml:"problemCount,omitempty"`
 }
 
 func (s GetResourceStatisticsResponseBodyData) String() string {
@@ -8191,8 +8411,9 @@ func (s *GetResourceStatisticsResponseBodyData) SetProblemCount(v int32) *GetRes
 }
 
 type GetResourceStatisticsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetResourceStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetResourceStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetResourceStatisticsResponse) String() string {
@@ -8208,17 +8429,20 @@ func (s *GetResourceStatisticsResponse) SetHeaders(v map[string]*string) *GetRes
 	return s
 }
 
+func (s *GetResourceStatisticsResponse) SetStatusCode(v int32) *GetResourceStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetResourceStatisticsResponse) SetBody(v *GetResourceStatisticsResponseBody) *GetResourceStatisticsResponse {
 	s.Body = v
 	return s
 }
 
 type GetRichTextRequest struct {
-	// 资源类型
 	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// 资源id
-	RichTextId *int64 `json:"richTextId,omitempty" xml:"richTextId,omitempty"`
+	RichTextId   *int64  `json:"richTextId,omitempty" xml:"richTextId,omitempty"`
 }
 
 func (s GetRichTextRequest) String() string {
@@ -8245,10 +8469,8 @@ func (s *GetRichTextRequest) SetRichTextId(v int64) *GetRichTextRequest {
 }
 
 type GetRichTextResponseBody struct {
-	// data
-	Data *GetRichTextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetRichTextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetRichTextResponseBody) String() string {
@@ -8270,12 +8492,9 @@ func (s *GetRichTextResponseBody) SetRequestId(v string) *GetRichTextResponseBod
 }
 
 type GetRichTextResponseBodyData struct {
-	// 资源id
-	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 资源类型
-	InstanceType *int64 `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// 富文本内容
-	RichText *string `json:"richText,omitempty" xml:"richText,omitempty"`
+	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceType *int64  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	RichText     *string `json:"richText,omitempty" xml:"richText,omitempty"`
 }
 
 func (s GetRichTextResponseBodyData) String() string {
@@ -8302,8 +8521,9 @@ func (s *GetRichTextResponseBodyData) SetRichText(v string) *GetRichTextResponse
 }
 
 type GetRichTextResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetRichTextResponse) String() string {
@@ -8319,16 +8539,19 @@ func (s *GetRichTextResponse) SetHeaders(v map[string]*string) *GetRichTextRespo
 	return s
 }
 
+func (s *GetRichTextResponse) SetStatusCode(v int32) *GetRichTextResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetRichTextResponse) SetBody(v *GetRichTextResponseBody) *GetRichTextResponse {
 	s.Body = v
 	return s
 }
 
 type GetRouteRuleRequest struct {
-	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 规则ID
-	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	RouteRuleId *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
 }
 
 func (s GetRouteRuleRequest) String() string {
@@ -8350,10 +8573,8 @@ func (s *GetRouteRuleRequest) SetRouteRuleId(v int64) *GetRouteRuleRequest {
 }
 
 type GetRouteRuleResponseBody struct {
-	// 规则详情
-	Data *GetRouteRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetRouteRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetRouteRuleResponseBody) String() string {
@@ -8375,44 +8596,26 @@ func (s *GetRouteRuleResponseBody) SetRequestId(v string) *GetRouteRuleResponseB
 }
 
 type GetRouteRuleResponseBodyData struct {
-	// 事件分派对象ID（服务组ID 或用户ID）
-	AssignObjectId *int64 `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
-	// 通知对象名称
-	AssignObjectName *string `json:"assignObjectName,omitempty" xml:"assignObjectName,omitempty"`
-	// 事件分派对象类型 SERVICEGROUP 服务组  USER 单个用户
-	AssignObjectType *string `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
-	// 子规则关系，0与，1或
-	ChildRuleRelation *string `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 影响程度  LOW一般  HIGH-严重
-	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	// 是否启用  DISABLE禁用 ENABLE 启用
-	EnableStatus *string `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
-	// 子规则
+	AssignObjectId       *int64                                              `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
+	AssignObjectName     *string                                             `json:"assignObjectName,omitempty" xml:"assignObjectName,omitempty"`
+	AssignObjectType     *string                                             `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
+	ChildRuleRelation    *string                                             `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
+	CreateTime           *string                                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Effection            *string                                             `json:"effection,omitempty" xml:"effection,omitempty"`
+	EnableStatus         *string                                             `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
 	EventRouteChildRules []*GetRouteRuleResponseBodyDataEventRouteChildRules `json:"eventRouteChildRules,omitempty" xml:"eventRouteChildRules,omitempty" type:"Repeated"`
-	// 事件级别 P1 P2 P3 P4
-	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	// 命中次数
-	MatchCount *int64 `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
-	// 通知渠道名称
-	NotifyChannelNames []*string `json:"notifyChannelNames,omitempty" xml:"notifyChannelNames,omitempty" type:"Repeated"`
-	// 通知渠道
-	NotifyChannels []*string `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
-	// 关联服务ID
-	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	// 关联服务名称
-	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	// 规则ID
-	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	// 路由类型：INCIDENT 触发事件 ALERT 仅触发报警
-	RouteType *string `json:"routeType,omitempty" xml:"routeType,omitempty"`
-	// 流转规则名字
-	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// 时间窗口
-	TimeWindow *int32 `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
-	// 修改时间
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	IncidentLevel        *string                                             `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	MatchCount           *int64                                              `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
+	NotifyChannelNames   []*string                                           `json:"notifyChannelNames,omitempty" xml:"notifyChannelNames,omitempty" type:"Repeated"`
+	NotifyChannels       []*string                                           `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
+	RelServiceDeleteType *int32                                              `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
+	RelatedServiceId     *int64                                              `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	RelatedServiceName   *string                                             `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
+	RouteRuleId          *int64                                              `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	RouteType            *string                                             `json:"routeType,omitempty" xml:"routeType,omitempty"`
+	RuleName             *string                                             `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	TimeWindow           *int32                                              `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
+	UpdateTime           *string                                             `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetRouteRuleResponseBodyData) String() string {
@@ -8483,6 +8686,11 @@ func (s *GetRouteRuleResponseBodyData) SetNotifyChannels(v []*string) *GetRouteR
 	return s
 }
 
+func (s *GetRouteRuleResponseBodyData) SetRelServiceDeleteType(v int32) *GetRouteRuleResponseBodyData {
+	s.RelServiceDeleteType = &v
+	return s
+}
+
 func (s *GetRouteRuleResponseBodyData) SetRelatedServiceId(v int64) *GetRouteRuleResponseBodyData {
 	s.RelatedServiceId = &v
 	return s
@@ -8519,22 +8727,14 @@ func (s *GetRouteRuleResponseBodyData) SetUpdateTime(v string) *GetRouteRuleResp
 }
 
 type GetRouteRuleResponseBodyDataEventRouteChildRules struct {
-	// 子条件计算关系，0-与，1-或
-	ChildConditionRelation *int64 `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
-	// 子规则ID
-	ChildRouteRuleId *int64 `json:"childRouteRuleId,omitempty" xml:"childRouteRuleId,omitempty"`
-	// 条件
-	Conditions []*GetRouteRuleResponseBodyDataEventRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// 是否有效得规则true有效 false无效
-	IsValidChildRule *bool `json:"isValidChildRule,omitempty" xml:"isValidChildRule,omitempty"`
-	// 集成配置ID
-	MonitorIntegrationConfigId *int64 `json:"monitorIntegrationConfigId,omitempty" xml:"monitorIntegrationConfigId,omitempty"`
-	// 监控源ID
-	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	// 监控源名称
-	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	// 规则ID
-	ParentRuleId *int64 `json:"parentRuleId,omitempty" xml:"parentRuleId,omitempty"`
+	ChildConditionRelation     *int64                                                        `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
+	ChildRouteRuleId           *int64                                                        `json:"childRouteRuleId,omitempty" xml:"childRouteRuleId,omitempty"`
+	Conditions                 []*GetRouteRuleResponseBodyDataEventRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	IsValidChildRule           *bool                                                         `json:"isValidChildRule,omitempty" xml:"isValidChildRule,omitempty"`
+	MonitorIntegrationConfigId *int64                                                        `json:"monitorIntegrationConfigId,omitempty" xml:"monitorIntegrationConfigId,omitempty"`
+	MonitorSourceId            *int64                                                        `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	MonitorSourceName          *string                                                       `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	ParentRuleId               *int64                                                        `json:"parentRuleId,omitempty" xml:"parentRuleId,omitempty"`
 }
 
 func (s GetRouteRuleResponseBodyDataEventRouteChildRules) String() string {
@@ -8586,12 +8786,9 @@ func (s *GetRouteRuleResponseBodyDataEventRouteChildRules) SetParentRuleId(v int
 }
 
 type GetRouteRuleResponseBodyDataEventRouteChildRulesConditions struct {
-	// 条件可以
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 操作符
+	Key             *string `json:"key,omitempty" xml:"key,omitempty"`
 	OperationSymbol *string `json:"operationSymbol,omitempty" xml:"operationSymbol,omitempty"`
-	// 匹配值
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	Value           *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s GetRouteRuleResponseBodyDataEventRouteChildRulesConditions) String() string {
@@ -8618,8 +8815,9 @@ func (s *GetRouteRuleResponseBodyDataEventRouteChildRulesConditions) SetValue(v 
 }
 
 type GetRouteRuleResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetRouteRuleResponse) String() string {
@@ -8635,16 +8833,19 @@ func (s *GetRouteRuleResponse) SetHeaders(v map[string]*string) *GetRouteRuleRes
 	return s
 }
 
+func (s *GetRouteRuleResponse) SetStatusCode(v int32) *GetRouteRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetRouteRuleResponse) SetBody(v *GetRouteRuleResponseBody) *GetRouteRuleResponse {
 	s.Body = v
 	return s
 }
 
 type GetServiceRequest struct {
-	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 服务ID
-	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceId   *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 }
 
 func (s GetServiceRequest) String() string {
@@ -8666,10 +8867,8 @@ func (s *GetServiceRequest) SetServiceId(v int64) *GetServiceRequest {
 }
 
 type GetServiceResponseBody struct {
-	// 服务详情
-	Data *GetServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetServiceResponseBody) String() string {
@@ -8691,14 +8890,10 @@ func (s *GetServiceResponseBody) SetRequestId(v string) *GetServiceResponseBody 
 }
 
 type GetServiceResponseBodyData struct {
-	// 服务描述
 	ServiceDescription *string `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
-	// 服务ID
-	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// 服务名字
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// 修改时间
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	ServiceId          *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	UpdateTime         *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetServiceResponseBodyData) String() string {
@@ -8730,8 +8925,9 @@ func (s *GetServiceResponseBodyData) SetUpdateTime(v string) *GetServiceResponse
 }
 
 type GetServiceResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetServiceResponse) String() string {
@@ -8747,16 +8943,19 @@ func (s *GetServiceResponse) SetHeaders(v map[string]*string) *GetServiceRespons
 	return s
 }
 
+func (s *GetServiceResponse) SetStatusCode(v int32) *GetServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetServiceResponse) SetBody(v *GetServiceResponseBody) *GetServiceResponse {
 	s.Body = v
 	return s
 }
 
 type GetServiceGroupRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s GetServiceGroupRequest) String() string {
@@ -8778,9 +8977,8 @@ func (s *GetServiceGroupRequest) SetServiceGroupId(v int64) *GetServiceGroupRequ
 }
 
 type GetServiceGroupResponseBody struct {
-	Data *GetServiceGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetServiceGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetServiceGroupResponseBody) String() string {
@@ -8802,24 +9000,15 @@ func (s *GetServiceGroupResponseBody) SetRequestId(v string) *GetServiceGroupRes
 }
 
 type GetServiceGroupResponseBodyData struct {
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// ENABLE 启用 DISABLE 禁用
-	EnableWebhook *string `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	// 服务组描述
-	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	// 服务组名称
-	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
-	// 修改时间
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// 用户ID
-	Users []*GetServiceGroupResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
-	// webhook 跳转地址
-	WebhookLink *string `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
-	// WEIXIN_GROUP 微信 DING_GROUP 钉钉 FEISHU_GROUP飞书
-	WebhookType *string `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
+	CreateTime              *string                                 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	EnableWebhook           *string                                 `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	ServiceGroupDescription *string                                 `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
+	ServiceGroupId          *int64                                  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ServiceGroupName        *string                                 `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	UpdateTime              *string                                 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Users                   []*GetServiceGroupResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	WebhookLink             *string                                 `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
+	WebhookType             *string                                 `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
 }
 
 func (s GetServiceGroupResponseBodyData) String() string {
@@ -8876,14 +9065,10 @@ func (s *GetServiceGroupResponseBodyData) SetWebhookType(v string) *GetServiceGr
 }
 
 type GetServiceGroupResponseBodyDataUsers struct {
-	// 手机号
-	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	// 用户ID
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
-	// 用户名字
-	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	Phone          *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	UserId         *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserName       *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s GetServiceGroupResponseBodyDataUsers) String() string {
@@ -8915,8 +9100,9 @@ func (s *GetServiceGroupResponseBodyDataUsers) SetUserName(v string) *GetService
 }
 
 type GetServiceGroupResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetServiceGroupResponse) String() string {
@@ -8932,22 +9118,22 @@ func (s *GetServiceGroupResponse) SetHeaders(v map[string]*string) *GetServiceGr
 	return s
 }
 
+func (s *GetServiceGroupResponse) SetStatusCode(v int32) *GetServiceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetServiceGroupResponse) SetBody(v *GetServiceGroupResponseBody) *GetServiceGroupResponse {
 	s.Body = v
 	return s
 }
 
 type GetServiceGroupPersonSchedulingRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 排班结束时间
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	// 排班开始时间
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 用户ID
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EndTime        *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	StartTime      *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	UserId         *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s GetServiceGroupPersonSchedulingRequest) String() string {
@@ -8984,10 +9170,8 @@ func (s *GetServiceGroupPersonSchedulingRequest) SetUserId(v int64) *GetServiceG
 }
 
 type GetServiceGroupPersonSchedulingResponseBody struct {
-	// 排班日历
-	Data map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetServiceGroupPersonSchedulingResponseBody) String() string {
@@ -9009,8 +9193,9 @@ func (s *GetServiceGroupPersonSchedulingResponseBody) SetRequestId(v string) *Ge
 }
 
 type GetServiceGroupPersonSchedulingResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetServiceGroupPersonSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetServiceGroupPersonSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetServiceGroupPersonSchedulingResponse) String() string {
@@ -9026,16 +9211,19 @@ func (s *GetServiceGroupPersonSchedulingResponse) SetHeaders(v map[string]*strin
 	return s
 }
 
+func (s *GetServiceGroupPersonSchedulingResponse) SetStatusCode(v int32) *GetServiceGroupPersonSchedulingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetServiceGroupPersonSchedulingResponse) SetBody(v *GetServiceGroupPersonSchedulingResponseBody) *GetServiceGroupPersonSchedulingResponse {
 	s.Body = v
 	return s
 }
 
 type GetServiceGroupSchedulingRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingRequest) String() string {
@@ -9057,10 +9245,8 @@ func (s *GetServiceGroupSchedulingRequest) SetServiceGroupId(v int64) *GetServic
 }
 
 type GetServiceGroupSchedulingResponseBody struct {
-	// 排班详情
-	Data *GetServiceGroupSchedulingResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetServiceGroupSchedulingResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingResponseBody) String() string {
@@ -9082,16 +9268,11 @@ func (s *GetServiceGroupSchedulingResponseBody) SetRequestId(v string) *GetServi
 }
 
 type GetServiceGroupSchedulingResponseBodyData struct {
-	// 快速排班
 	FastScheduling *GetServiceGroupSchedulingResponseBodyDataFastScheduling `json:"fastScheduling,omitempty" xml:"fastScheduling,omitempty" type:"Struct"`
-	// 精细排班
 	FineScheduling *GetServiceGroupSchedulingResponseBodyDataFineScheduling `json:"fineScheduling,omitempty" xml:"fineScheduling,omitempty" type:"Struct"`
-	// 排班方式 FAST 快速排班 FINE 精细排班
-	SchedulingWay *string `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	// 已经排班
-	Users []*GetServiceGroupSchedulingResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	SchedulingWay  *string                                                  `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
+	ServiceGroupId *int64                                                   `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	Users          []*GetServiceGroupSchedulingResponseBodyDataUsers        `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
 
 func (s GetServiceGroupSchedulingResponseBodyData) String() string {
@@ -9128,16 +9309,11 @@ func (s *GetServiceGroupSchedulingResponseBodyData) SetUsers(v []*GetServiceGrou
 }
 
 type GetServiceGroupSchedulingResponseBodyDataFastScheduling struct {
-	// 值班方案 dutyPlan FAST_CHOICE 快速选择   CUSTOM  自定义
-	DutyPlan *string `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
-	// 快速排班ID
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 快速轮班用户
-	SchedulingUsers []*GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
-	// 每人排班时长
-	SingleDuration *int32 `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
-	// 每人排班时长单位 HOUR 小时 DAY 天
-	SingleDurationUnit *string `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
+	DutyPlan           *string                                                                   `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
+	Id                 *int64                                                                    `json:"id,omitempty" xml:"id,omitempty"`
+	SchedulingUsers    []*GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
+	SingleDuration     *int32                                                                    `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
+	SingleDurationUnit *string                                                                   `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingResponseBodyDataFastScheduling) String() string {
@@ -9174,11 +9350,8 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFastScheduling) SetSingleDurat
 }
 
 type GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers struct {
-	// 排班顺序
-	SchedulingOrder *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	// 轮班用户ID
-	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	// 轮班用户名字
+	SchedulingOrder    *int32  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
+	SchedulingUserId   *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 	SchedulingUserName *string `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
 }
 
@@ -9206,18 +9379,12 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers)
 }
 
 type GetServiceGroupSchedulingResponseBodyDataFineScheduling struct {
-	// 1
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 1
-	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
-	// 循环周期单位 HOUR 小时 DAY 天
-	PeriodUnit *string `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
-	// 精细排班班次人员信息
-	SchedulingFineShifts []*GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts `json:"schedulingFineShifts,omitempty" xml:"schedulingFineShifts,omitempty" type:"Repeated"`
-	// 精细排班模版
+	Id                           *int64                                                                                 `json:"id,omitempty" xml:"id,omitempty"`
+	Period                       *int32                                                                                 `json:"period,omitempty" xml:"period,omitempty"`
+	PeriodUnit                   *string                                                                                `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
+	SchedulingFineShifts         []*GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts         `json:"schedulingFineShifts,omitempty" xml:"schedulingFineShifts,omitempty" type:"Repeated"`
 	SchedulingTemplateFineShifts []*GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts `json:"schedulingTemplateFineShifts,omitempty" xml:"schedulingTemplateFineShifts,omitempty" type:"Repeated"`
-	// 班次类型 MORNING_NIGHT 早晚班 MORNING_NOON_NIGHT 早中晚班 CUSTOM 自定义
-	ShiftType *string `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
+	ShiftType                    *string                                                                                `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingResponseBodyDataFineScheduling) String() string {
@@ -9259,22 +9426,14 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFineScheduling) SetShiftType(v
 }
 
 type GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts struct {
-	// 循环次序
-	CycleOrder *int64 `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
-	// 排班结束时间
-	SchedulingEndTime *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	// 排班顺序
-	SchedulingOrder *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	// 排班开始时间
+	CycleOrder          *int64  `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
+	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingOrder     *int32  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
 	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	// 排班用户ID
-	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	// 排班用户名字
-	SchedulingUserName *string `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
-	// 班次名称
-	ShiftName *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	// 是否跨天
-	SkipOneDay *bool `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	SchedulingUserId    *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingUserName  *string `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
+	ShiftName           *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	SkipOneDay          *bool   `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShifts) String() string {
@@ -9326,20 +9485,13 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineSh
 }
 
 type GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts struct {
-	// 排班结束时间
-	SchedulingEndTime *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	// 排班顺序
-	SchedulingOrder *int64 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	// 排班开始时间
+	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingOrder     *int64  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
 	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	// 用户ID
-	SchedulingUserId *string `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	// 排班用户名字
-	SchedulingUserName *string `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
-	// 班次名称
-	ShiftName *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	// 是否跨天
-	SkipOneDay *bool `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	SchedulingUserId    *string `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingUserName  *string `json:"schedulingUserName,omitempty" xml:"schedulingUserName,omitempty"`
+	ShiftName           *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	SkipOneDay          *bool   `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateFineShifts) String() string {
@@ -9386,9 +9538,7 @@ func (s *GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTempla
 }
 
 type GetServiceGroupSchedulingResponseBodyDataUsers struct {
-	// 用户ID
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
-	// 用户名字
+	UserId   *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
 	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
@@ -9411,8 +9561,9 @@ func (s *GetServiceGroupSchedulingResponseBodyDataUsers) SetUserName(v string) *
 }
 
 type GetServiceGroupSchedulingResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetServiceGroupSchedulingResponse) String() string {
@@ -9428,26 +9579,24 @@ func (s *GetServiceGroupSchedulingResponse) SetHeaders(v map[string]*string) *Ge
 	return s
 }
 
+func (s *GetServiceGroupSchedulingResponse) SetStatusCode(v int32) *GetServiceGroupSchedulingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetServiceGroupSchedulingResponse) SetBody(v *GetServiceGroupSchedulingResponseBody) *GetServiceGroupSchedulingResponse {
 	s.Body = v
 	return s
 }
 
 type GetServiceGroupSchedulingPreviewRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 排班结束时间
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 快速排班
+	ClientToken    *string                                                `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EndTime        *string                                                `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	FastScheduling *GetServiceGroupSchedulingPreviewRequestFastScheduling `json:"fastScheduling,omitempty" xml:"fastScheduling,omitempty" type:"Struct"`
-	// 精细排
 	FineScheduling *GetServiceGroupSchedulingPreviewRequestFineScheduling `json:"fineScheduling,omitempty" xml:"fineScheduling,omitempty" type:"Struct"`
-	// 排班方式 FAST 快速排班 FINE 精细排班
-	SchedulingWay *string `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	// 排班开始时间
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	SchedulingWay  *string                                                `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
+	ServiceGroupId *int64                                                 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	StartTime      *string                                                `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingPreviewRequest) String() string {
@@ -9494,14 +9643,10 @@ func (s *GetServiceGroupSchedulingPreviewRequest) SetStartTime(v string) *GetSer
 }
 
 type GetServiceGroupSchedulingPreviewRequestFastScheduling struct {
-	// 值班方案 dutyPlan FAST_CHOICE 快速选择 CUSTOM 自定义
-	DutyPlan *string `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
-	// 快速轮班用户
-	SchedulingUsers []*GetServiceGroupSchedulingPreviewRequestFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
-	// 每人排班时长
-	SingleDuration *int32 `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
-	// 每人排班时长单位 HOUR 小时 DAY 天
-	SingleDurationUnit *string `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
+	DutyPlan           *string                                                                 `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
+	SchedulingUsers    []*GetServiceGroupSchedulingPreviewRequestFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
+	SingleDuration     *int32                                                                  `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
+	SingleDurationUnit *string                                                                 `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingPreviewRequestFastScheduling) String() string {
@@ -9533,9 +9678,7 @@ func (s *GetServiceGroupSchedulingPreviewRequestFastScheduling) SetSingleDuratio
 }
 
 type GetServiceGroupSchedulingPreviewRequestFastSchedulingSchedulingUsers struct {
-	// 排班顺序
-	SchedulingOrder *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	// 轮班用户ID
+	SchedulingOrder  *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
 	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 }
 
@@ -9558,14 +9701,10 @@ func (s *GetServiceGroupSchedulingPreviewRequestFastSchedulingSchedulingUsers) S
 }
 
 type GetServiceGroupSchedulingPreviewRequestFineScheduling struct {
-	// 循环周期
-	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
-	// 循环周期单位 HOUR 小时 DAY 天
-	PeriodUnit *string `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
-	// 精细排班班次人员信息
+	Period               *int32                                                                       `json:"period,omitempty" xml:"period,omitempty"`
+	PeriodUnit           *string                                                                      `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
 	SchedulingFineShifts []*GetServiceGroupSchedulingPreviewRequestFineSchedulingSchedulingFineShifts `json:"schedulingFineShifts,omitempty" xml:"schedulingFineShifts,omitempty" type:"Repeated"`
-	// 班次类型 MORNING_NIGHT 早晚班 MORNING_NOON_NIGHT 早中晚班 CUSTOM 自定义
-	ShiftType *string `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
+	ShiftType            *string                                                                      `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingPreviewRequestFineScheduling) String() string {
@@ -9597,14 +9736,10 @@ func (s *GetServiceGroupSchedulingPreviewRequestFineScheduling) SetShiftType(v s
 }
 
 type GetServiceGroupSchedulingPreviewRequestFineSchedulingSchedulingFineShifts struct {
-	// 排班结束时间
-	SchedulingEndTime *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	// 排班顺序
-	SchedulingOrder *int64 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	// 排班开始时间
+	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingOrder     *int64  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
 	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	// 班次名称
-	ShiftName *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	ShiftName           *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingPreviewRequestFineSchedulingSchedulingFineShifts) String() string {
@@ -9636,10 +9771,8 @@ func (s *GetServiceGroupSchedulingPreviewRequestFineSchedulingSchedulingFineShif
 }
 
 type GetServiceGroupSchedulingPreviewResponseBody struct {
-	// 服务组排班信息
-	Data map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetServiceGroupSchedulingPreviewResponseBody) String() string {
@@ -9661,8 +9794,9 @@ func (s *GetServiceGroupSchedulingPreviewResponseBody) SetRequestId(v string) *G
 }
 
 type GetServiceGroupSchedulingPreviewResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetServiceGroupSchedulingPreviewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetServiceGroupSchedulingPreviewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetServiceGroupSchedulingPreviewResponse) String() string {
@@ -9678,18 +9812,20 @@ func (s *GetServiceGroupSchedulingPreviewResponse) SetHeaders(v map[string]*stri
 	return s
 }
 
+func (s *GetServiceGroupSchedulingPreviewResponse) SetStatusCode(v int32) *GetServiceGroupSchedulingPreviewResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetServiceGroupSchedulingPreviewResponse) SetBody(v *GetServiceGroupSchedulingPreviewResponseBody) *GetServiceGroupSchedulingPreviewResponse {
 	s.Body = v
 	return s
 }
 
 type GetServiceGroupSpecialPersonSchedulingRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	// 用户ID
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	UserId         *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s GetServiceGroupSpecialPersonSchedulingRequest) String() string {
@@ -9716,10 +9852,8 @@ func (s *GetServiceGroupSpecialPersonSchedulingRequest) SetUserId(v int64) *GetS
 }
 
 type GetServiceGroupSpecialPersonSchedulingResponseBody struct {
-	// 人员排班信息
-	Data []*GetServiceGroupSpecialPersonSchedulingResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      []*GetServiceGroupSpecialPersonSchedulingResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string                                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetServiceGroupSpecialPersonSchedulingResponseBody) String() string {
@@ -9741,18 +9875,12 @@ func (s *GetServiceGroupSpecialPersonSchedulingResponseBody) SetRequestId(v stri
 }
 
 type GetServiceGroupSpecialPersonSchedulingResponseBodyData struct {
-	// 排班日期
-	SchedulingDate *string `json:"schedulingDate,omitempty" xml:"schedulingDate,omitempty"`
-	// 排班结束时间
-	SchedulingEndTime *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	// 排班开始时间
+	SchedulingDate      *string `json:"schedulingDate,omitempty" xml:"schedulingDate,omitempty"`
+	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
 	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	// 排班用户ID
-	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	// 服务组id
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	// 服务组名字
-	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	SchedulingUserId    *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	ServiceGroupId      *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ServiceGroupName    *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
 }
 
 func (s GetServiceGroupSpecialPersonSchedulingResponseBodyData) String() string {
@@ -9794,8 +9922,9 @@ func (s *GetServiceGroupSpecialPersonSchedulingResponseBodyData) SetServiceGroup
 }
 
 type GetServiceGroupSpecialPersonSchedulingResponse struct {
-	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetServiceGroupSpecialPersonSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetServiceGroupSpecialPersonSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetServiceGroupSpecialPersonSchedulingResponse) String() string {
@@ -9811,24 +9940,23 @@ func (s *GetServiceGroupSpecialPersonSchedulingResponse) SetHeaders(v map[string
 	return s
 }
 
+func (s *GetServiceGroupSpecialPersonSchedulingResponse) SetStatusCode(v int32) *GetServiceGroupSpecialPersonSchedulingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetServiceGroupSpecialPersonSchedulingResponse) SetBody(v *GetServiceGroupSpecialPersonSchedulingResponseBody) *GetServiceGroupSpecialPersonSchedulingResponse {
 	s.Body = v
 	return s
 }
 
 type GetSimilarIncidentStatisticsRequest struct {
-	// 幂等标识
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 触发时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 事件告警内容
-	Events []*string `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	// 事件id
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 事件标题
-	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
-	// 关联服务id
-	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	ClientToken      *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	CreateTime       *string   `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Events           []*string `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	IncidentId       *int64    `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IncidentTitle    *string   `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	RelatedServiceId *int64    `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
 }
 
 func (s GetSimilarIncidentStatisticsRequest) String() string {
@@ -9870,10 +9998,8 @@ func (s *GetSimilarIncidentStatisticsRequest) SetRelatedServiceId(v int64) *GetS
 }
 
 type GetSimilarIncidentStatisticsResponseBody struct {
-	// data
-	Data *GetSimilarIncidentStatisticsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetSimilarIncidentStatisticsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetSimilarIncidentStatisticsResponseBody) String() string {
@@ -9895,16 +10021,11 @@ func (s *GetSimilarIncidentStatisticsResponseBody) SetRequestId(v string) *GetSi
 }
 
 type GetSimilarIncidentStatisticsResponseBodyData struct {
-	// 7天内相似事件数量
-	CountInSevenDays *int64 `json:"countInSevenDays,omitempty" xml:"countInSevenDays,omitempty"`
-	// 6月内相似事件数量
-	CountInSixMonths *int64 `json:"countInSixMonths,omitempty" xml:"countInSixMonths,omitempty"`
-	// 根据日期分类
+	CountInSevenDays      *int64                                                               `json:"countInSevenDays,omitempty" xml:"countInSevenDays,omitempty"`
+	CountInSixMonths      *int64                                                               `json:"countInSixMonths,omitempty" xml:"countInSixMonths,omitempty"`
 	DailySimilarIncidents []*GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidents `json:"dailySimilarIncidents,omitempty" xml:"dailySimilarIncidents,omitempty" type:"Repeated"`
-	// id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// topFiveIncidents
-	TopFiveIncidents []*GetSimilarIncidentStatisticsResponseBodyDataTopFiveIncidents `json:"topFiveIncidents,omitempty" xml:"topFiveIncidents,omitempty" type:"Repeated"`
+	RequestId             *string                                                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TopFiveIncidents      []*GetSimilarIncidentStatisticsResponseBodyDataTopFiveIncidents      `json:"topFiveIncidents,omitempty" xml:"topFiveIncidents,omitempty" type:"Repeated"`
 }
 
 func (s GetSimilarIncidentStatisticsResponseBodyData) String() string {
@@ -9941,18 +10062,12 @@ func (s *GetSimilarIncidentStatisticsResponseBodyData) SetTopFiveIncidents(v []*
 }
 
 type GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidents struct {
-	// 数量
-	Commitment *int64 `json:"commitment,omitempty" xml:"commitment,omitempty"`
-	// 日期
-	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// 星期几
-	Day *int64 `json:"day,omitempty" xml:"day,omitempty"`
-	// 月份
-	Month *int64 `json:"month,omitempty" xml:"month,omitempty"`
-	// 相似事件列表
+	Commitment       *int64                                                                               `json:"commitment,omitempty" xml:"commitment,omitempty"`
+	Date             *string                                                                              `json:"date,omitempty" xml:"date,omitempty"`
+	Day              *int64                                                                               `json:"day,omitempty" xml:"day,omitempty"`
+	Month            *int64                                                                               `json:"month,omitempty" xml:"month,omitempty"`
 	SimilarIncidents []*GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidentsSimilarIncidents `json:"similarIncidents,omitempty" xml:"similarIncidents,omitempty" type:"Repeated"`
-	// 周
-	Week *string `json:"week,omitempty" xml:"week,omitempty"`
+	Week             *string                                                                              `json:"week,omitempty" xml:"week,omitempty"`
 }
 
 func (s GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidents) String() string {
@@ -9994,34 +10109,20 @@ func (s *GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidents) SetW
 }
 
 type GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidentsSimilarIncidents struct {
-	// 分派人id
-	AssignUserId *int64 `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
-	// 分派人
-	AssignUserName *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
-	// 触发时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 持续时间
-	DurationTime *int64 `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
-	// 触发原因
-	FinishReason *int64 `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
-	// 触发原因描述
-	FinishReasonDescription *string `json:"finishReasonDescription,omitempty" xml:"finishReasonDescription,omitempty"`
-	// 解决方案描述
+	AssignUserId              *int64  `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
+	AssignUserName            *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
+	CreateTime                *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	DurationTime              *int64  `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
+	FinishReason              *int64  `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
+	FinishReasonDescription   *string `json:"finishReasonDescription,omitempty" xml:"finishReasonDescription,omitempty"`
 	FinishSolutionDescription *string `json:"finishSolutionDescription,omitempty" xml:"finishSolutionDescription,omitempty"`
-	// 解决方案
-	IncidentFinishSolution *int64 `json:"incidentFinishSolution,omitempty" xml:"incidentFinishSolution,omitempty"`
-	// 事件id
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 事件编号
-	IncidentNumber *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
-	// 事件名称
-	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
-	// 流转规则id
-	RelatedRouteRuleId *int64 `json:"relatedRouteRuleId,omitempty" xml:"relatedRouteRuleId,omitempty"`
-	// 流转规则名称
-	RelatedRouteRuleName *string `json:"relatedRouteRuleName,omitempty" xml:"relatedRouteRuleName,omitempty"`
-	// 相似度
-	SimilarScore *string `json:"similarScore,omitempty" xml:"similarScore,omitempty"`
+	IncidentFinishSolution    *int64  `json:"incidentFinishSolution,omitempty" xml:"incidentFinishSolution,omitempty"`
+	IncidentId                *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IncidentNumber            *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
+	IncidentTitle             *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	RelatedRouteRuleId        *int64  `json:"relatedRouteRuleId,omitempty" xml:"relatedRouteRuleId,omitempty"`
+	RelatedRouteRuleName      *string `json:"relatedRouteRuleName,omitempty" xml:"relatedRouteRuleName,omitempty"`
+	SimilarScore              *string `json:"similarScore,omitempty" xml:"similarScore,omitempty"`
 }
 
 func (s GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidentsSimilarIncidents) String() string {
@@ -10103,34 +10204,20 @@ func (s *GetSimilarIncidentStatisticsResponseBodyDataDailySimilarIncidentsSimila
 }
 
 type GetSimilarIncidentStatisticsResponseBodyDataTopFiveIncidents struct {
-	// 分派人id
-	AssignUserId *string `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
-	// 分派人
-	AssignUserName *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
-	// 触发时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 持续时间
-	DurationTime *int64 `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
-	// 触发原因
-	FinishReason *int64 `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
-	// 触发原因描述
-	FinishReasonDescription *string `json:"finishReasonDescription,omitempty" xml:"finishReasonDescription,omitempty"`
-	// 解决方案描述
+	AssignUserId              *string `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
+	AssignUserName            *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
+	CreateTime                *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	DurationTime              *int64  `json:"durationTime,omitempty" xml:"durationTime,omitempty"`
+	FinishReason              *int64  `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
+	FinishReasonDescription   *string `json:"finishReasonDescription,omitempty" xml:"finishReasonDescription,omitempty"`
 	FinishSolutionDescription *string `json:"finishSolutionDescription,omitempty" xml:"finishSolutionDescription,omitempty"`
-	// 解决方案
-	IncidentFinishSolution *int64 `json:"incidentFinishSolution,omitempty" xml:"incidentFinishSolution,omitempty"`
-	// 事件id
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 事件编号
-	IncidentNumber *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
-	// 事件标题
-	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
-	// 流转规则id
-	RelatedRouteRuleId *int64 `json:"relatedRouteRuleId,omitempty" xml:"relatedRouteRuleId,omitempty"`
-	// 流转规则名称
-	RelatedRouteRuleName *string `json:"relatedRouteRuleName,omitempty" xml:"relatedRouteRuleName,omitempty"`
-	// 相似度
-	SimilarScore *string `json:"similarScore,omitempty" xml:"similarScore,omitempty"`
+	IncidentFinishSolution    *int64  `json:"incidentFinishSolution,omitempty" xml:"incidentFinishSolution,omitempty"`
+	IncidentId                *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IncidentNumber            *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
+	IncidentTitle             *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	RelatedRouteRuleId        *int64  `json:"relatedRouteRuleId,omitempty" xml:"relatedRouteRuleId,omitempty"`
+	RelatedRouteRuleName      *string `json:"relatedRouteRuleName,omitempty" xml:"relatedRouteRuleName,omitempty"`
+	SimilarScore              *string `json:"similarScore,omitempty" xml:"similarScore,omitempty"`
 }
 
 func (s GetSimilarIncidentStatisticsResponseBodyDataTopFiveIncidents) String() string {
@@ -10212,8 +10299,9 @@ func (s *GetSimilarIncidentStatisticsResponseBodyDataTopFiveIncidents) SetSimila
 }
 
 type GetSimilarIncidentStatisticsResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSimilarIncidentStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSimilarIncidentStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSimilarIncidentStatisticsResponse) String() string {
@@ -10229,13 +10317,19 @@ func (s *GetSimilarIncidentStatisticsResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *GetSimilarIncidentStatisticsResponse) SetStatusCode(v int32) *GetSimilarIncidentStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetSimilarIncidentStatisticsResponse) SetBody(v *GetSimilarIncidentStatisticsResponseBody) *GetSimilarIncidentStatisticsResponse {
 	s.Body = v
 	return s
 }
 
 type GetSubscriptionRequest struct {
-	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
+	NotFilterScopeObjectDeleted *bool  `json:"notFilterScopeObjectDeleted,omitempty" xml:"notFilterScopeObjectDeleted,omitempty"`
+	SubscriptionId              *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
 }
 
 func (s GetSubscriptionRequest) String() string {
@@ -10244,6 +10338,11 @@ func (s GetSubscriptionRequest) String() string {
 
 func (s GetSubscriptionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetSubscriptionRequest) SetNotFilterScopeObjectDeleted(v bool) *GetSubscriptionRequest {
+	s.NotFilterScopeObjectDeleted = &v
+	return s
 }
 
 func (s *GetSubscriptionRequest) SetSubscriptionId(v int64) *GetSubscriptionRequest {
@@ -10275,28 +10374,18 @@ func (s *GetSubscriptionResponseBody) SetRequestId(v string) *GetSubscriptionRes
 }
 
 type GetSubscriptionResponseBodyData struct {
-	// 时效结束时间
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 有效期类型 0 长期 1短期
-	ExpiredType *string `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
-	// 通知对象列表
-	NotifyObjectList []*GetSubscriptionResponseBodyDataNotifyObjectList `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
-	// 0服务组 1个人
-	NotifyObjectType *string `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
-	// 通知策略列表
+	EndTime            *string                                              `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	ExpiredType        *string                                              `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
+	NotifyObjectList   []*GetSubscriptionResponseBodyDataNotifyObjectList   `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
+	NotifyObjectType   *string                                              `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
 	NotifyStrategyList []*GetSubscriptionResponseBodyDataNotifyStrategyList `json:"notifyStrategyList,omitempty" xml:"notifyStrategyList,omitempty" type:"Repeated"`
-	// 时间段字符串
-	Period *string `json:"period,omitempty" xml:"period,omitempty"`
-	// 0 全部 1服务 2 流转规则
-	Scope           *string                                           `json:"scope,omitempty" xml:"scope,omitempty"`
-	ScopeObjectList []*GetSubscriptionResponseBodyDataScopeObjectList `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
-	// 时效开始时间
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 1 启用 0禁用
-	Status         *string `json:"status,omitempty" xml:"status,omitempty"`
-	SubscriptionId *int64  `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
-	// 通知订阅名称
-	SubscriptionTitle *string `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
+	Period             *string                                              `json:"period,omitempty" xml:"period,omitempty"`
+	Scope              *string                                              `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObjectList    []*GetSubscriptionResponseBodyDataScopeObjectList    `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
+	StartTime          *string                                              `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status             *string                                              `json:"status,omitempty" xml:"status,omitempty"`
+	SubscriptionId     *int64                                               `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
+	SubscriptionTitle  *string                                              `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
 }
 
 func (s GetSubscriptionResponseBodyData) String() string {
@@ -10368,14 +10457,10 @@ func (s *GetSubscriptionResponseBodyData) SetSubscriptionTitle(v string) *GetSub
 }
 
 type GetSubscriptionResponseBodyDataNotifyObjectList struct {
-	// id主键
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 通知对象名
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 关联主键id
-	NotifyObjectId *int64 `json:"notifyObjectId,omitempty" xml:"notifyObjectId,omitempty"`
-	// 通知对象类型0服务组 1个人
-	NotifyObjectType *int64 `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
+	Id               *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+	NotifyObjectId   *int64  `json:"notifyObjectId,omitempty" xml:"notifyObjectId,omitempty"`
+	NotifyObjectType *int64  `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
 }
 
 func (s GetSubscriptionResponseBodyDataNotifyObjectList) String() string {
@@ -10407,10 +10492,8 @@ func (s *GetSubscriptionResponseBodyDataNotifyObjectList) SetNotifyObjectType(v 
 }
 
 type GetSubscriptionResponseBodyDataNotifyStrategyList struct {
-	// 订阅实例类型，0事件、1报警、2故障
-	InstanceType *int64 `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// 策略
-	Strategies []*GetSubscriptionResponseBodyDataNotifyStrategyListStrategies `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Repeated"`
+	InstanceType *int64                                                         `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	Strategies   []*GetSubscriptionResponseBodyDataNotifyStrategyListStrategies `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Repeated"`
 }
 
 func (s GetSubscriptionResponseBodyDataNotifyStrategyList) String() string {
@@ -10432,13 +10515,9 @@ func (s *GetSubscriptionResponseBodyDataNotifyStrategyList) SetStrategies(v []*G
 }
 
 type GetSubscriptionResponseBodyDataNotifyStrategyListStrategies struct {
-	// 通知渠道
-	Channels *string `json:"channels,omitempty" xml:"channels,omitempty"`
-	// 条件
-	Conditions []*GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// 策略主键
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 分时间段渠道
+	Channels      *string                                                                   `json:"channels,omitempty" xml:"channels,omitempty"`
+	Conditions    []*GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesConditions  `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	Id            *int64                                                                    `json:"id,omitempty" xml:"id,omitempty"`
 	PeriodChannel *GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesPeriodChannel `json:"periodChannel,omitempty" xml:"periodChannel,omitempty" type:"Struct"`
 }
 
@@ -10471,13 +10550,9 @@ func (s *GetSubscriptionResponseBodyDataNotifyStrategyListStrategies) SetPeriodC
 }
 
 type GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesConditions struct {
-	// 事件动作
-	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 影响范围
-	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	// 等级
-	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// 故障通知类型
+	Action            *string `json:"action,omitempty" xml:"action,omitempty"`
+	Effection         *string `json:"effection,omitempty" xml:"effection,omitempty"`
+	Level             *string `json:"level,omitempty" xml:"level,omitempty"`
 	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
 }
 
@@ -10510,10 +10585,8 @@ func (s *GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesConditions) 
 }
 
 type GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesPeriodChannel struct {
-	// 非工作时间
 	NonWorkday *string `json:"nonWorkday,omitempty" xml:"nonWorkday,omitempty"`
-	// 工作时间
-	Workday *string `json:"workday,omitempty" xml:"workday,omitempty"`
+	Workday    *string `json:"workday,omitempty" xml:"workday,omitempty"`
 }
 
 func (s GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesPeriodChannel) String() string {
@@ -10535,14 +10608,11 @@ func (s *GetSubscriptionResponseBodyDataNotifyStrategyListStrategiesPeriodChanne
 }
 
 type GetSubscriptionResponseBodyDataScopeObjectList struct {
-	// id主键
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 订阅范围类型 0 全部 1服务 2 流转规则
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 订阅范围对象名称
-	ScopeObject *string `json:"scopeObject,omitempty" xml:"scopeObject,omitempty"`
-	// 订阅范围对象关联表主键id
-	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	Id            *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	IsValid       *int64  `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	Scope         *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObject   *string `json:"scopeObject,omitempty" xml:"scopeObject,omitempty"`
+	ScopeObjectId *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
 }
 
 func (s GetSubscriptionResponseBodyDataScopeObjectList) String() string {
@@ -10555,6 +10625,11 @@ func (s GetSubscriptionResponseBodyDataScopeObjectList) GoString() string {
 
 func (s *GetSubscriptionResponseBodyDataScopeObjectList) SetId(v int64) *GetSubscriptionResponseBodyDataScopeObjectList {
 	s.Id = &v
+	return s
+}
+
+func (s *GetSubscriptionResponseBodyDataScopeObjectList) SetIsValid(v int64) *GetSubscriptionResponseBodyDataScopeObjectList {
+	s.IsValid = &v
 	return s
 }
 
@@ -10574,8 +10649,9 @@ func (s *GetSubscriptionResponseBodyDataScopeObjectList) SetScopeObjectId(v int6
 }
 
 type GetSubscriptionResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSubscriptionResponse) String() string {
@@ -10591,13 +10667,17 @@ func (s *GetSubscriptionResponse) SetHeaders(v map[string]*string) *GetSubscript
 	return s
 }
 
+func (s *GetSubscriptionResponse) SetStatusCode(v int32) *GetSubscriptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetSubscriptionResponse) SetBody(v *GetSubscriptionResponseBody) *GetSubscriptionResponse {
 	s.Body = v
 	return s
 }
 
 type GetTenantApplicationRequest struct {
-	// 幂等标识
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -10615,10 +10695,8 @@ func (s *GetTenantApplicationRequest) SetClientToken(v string) *GetTenantApplica
 }
 
 type GetTenantApplicationResponseBody struct {
-	// data
-	Data *GetTenantApplicationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetTenantApplicationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetTenantApplicationResponseBody) String() string {
@@ -10640,14 +10718,10 @@ func (s *GetTenantApplicationResponseBody) SetRequestId(v string) *GetTenantAppl
 }
 
 type GetTenantApplicationResponseBodyData struct {
-	// 业务id
-	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	// 云钉协同渠道
-	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// 企业id
+	BizId         *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	Channel       *string `json:"channel,omitempty" xml:"channel,omitempty"`
 	CorporationId *string `json:"corporationId,omitempty" xml:"corporationId,omitempty"`
-	// 进度
-	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
+	Progress      *string `json:"progress,omitempty" xml:"progress,omitempty"`
 }
 
 func (s GetTenantApplicationResponseBodyData) String() string {
@@ -10679,8 +10753,9 @@ func (s *GetTenantApplicationResponseBodyData) SetProgress(v string) *GetTenantA
 }
 
 type GetTenantApplicationResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTenantApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTenantApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTenantApplicationResponse) String() string {
@@ -10696,16 +10771,105 @@ func (s *GetTenantApplicationResponse) SetHeaders(v map[string]*string) *GetTena
 	return s
 }
 
+func (s *GetTenantApplicationResponse) SetStatusCode(v int32) *GetTenantApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetTenantApplicationResponse) SetBody(v *GetTenantApplicationResponseBody) *GetTenantApplicationResponse {
 	s.Body = v
 	return s
 }
 
+type GetTenantStatusRequest struct {
+	TenantRamId *int64 `json:"tenantRamId,omitempty" xml:"tenantRamId,omitempty"`
+}
+
+func (s GetTenantStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTenantStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTenantStatusRequest) SetTenantRamId(v int64) *GetTenantStatusRequest {
+	s.TenantRamId = &v
+	return s
+}
+
+type GetTenantStatusResponseBody struct {
+	Data      *GetTenantStatusResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetTenantStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTenantStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTenantStatusResponseBody) SetData(v *GetTenantStatusResponseBodyData) *GetTenantStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTenantStatusResponseBody) SetRequestId(v string) *GetTenantStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetTenantStatusResponseBodyData struct {
+	TenantStatus *int32 `json:"tenantStatus,omitempty" xml:"tenantStatus,omitempty"`
+}
+
+func (s GetTenantStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTenantStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTenantStatusResponseBodyData) SetTenantStatus(v int32) *GetTenantStatusResponseBodyData {
+	s.TenantStatus = &v
+	return s
+}
+
+type GetTenantStatusResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTenantStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTenantStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTenantStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTenantStatusResponse) SetHeaders(v map[string]*string) *GetTenantStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTenantStatusResponse) SetStatusCode(v int32) *GetTenantStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTenantStatusResponse) SetBody(v *GetTenantStatusResponseBody) *GetTenantStatusResponse {
+	s.Body = v
+	return s
+}
+
 type GetUserRequest struct {
-	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 用户ID
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s GetUserRequest) String() string {
@@ -10727,10 +10891,8 @@ func (s *GetUserRequest) SetUserId(v int64) *GetUserRequest {
 }
 
 type GetUserResponseBody struct {
-	// 用户
-	Data *GetUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetUserResponseBody) String() string {
@@ -10752,26 +10914,16 @@ func (s *GetUserResponseBody) SetRequestId(v string) *GetUserResponseBody {
 }
 
 type GetUserResponseBodyData struct {
-	// CUSTOMER:主账号，SUB:子账号
-	AccountType *string `json:"accountType,omitempty" xml:"accountType,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// email
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// 是否可编辑
-	IsEditableUser *bool `json:"isEditableUser,omitempty" xml:"isEditableUser,omitempty"`
-	// 是否关联
-	IsRelated *string `json:"isRelated,omitempty" xml:"isRelated,omitempty"`
-	// 用户手机号
-	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// ramId
-	RamId *string `json:"ramId,omitempty" xml:"ramId,omitempty"`
-	// 所属服务组
-	ServiceGroups []*GetUserResponseBodyDataServiceGroups `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
-	// 用户ID
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
-	// 用户昵称
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	AccountType    *string                                 `json:"accountType,omitempty" xml:"accountType,omitempty"`
+	CreateTime     *string                                 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Email          *string                                 `json:"email,omitempty" xml:"email,omitempty"`
+	IsEditableUser *bool                                   `json:"isEditableUser,omitempty" xml:"isEditableUser,omitempty"`
+	IsRelated      *string                                 `json:"isRelated,omitempty" xml:"isRelated,omitempty"`
+	Phone          *string                                 `json:"phone,omitempty" xml:"phone,omitempty"`
+	RamId          *string                                 `json:"ramId,omitempty" xml:"ramId,omitempty"`
+	ServiceGroups  []*GetUserResponseBodyDataServiceGroups `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
+	UserId         *int64                                  `json:"userId,omitempty" xml:"userId,omitempty"`
+	Username       *string                                 `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s GetUserResponseBodyData) String() string {
@@ -10833,10 +10985,8 @@ func (s *GetUserResponseBodyData) SetUsername(v string) *GetUserResponseBodyData
 }
 
 type GetUserResponseBodyDataServiceGroups struct {
-	// 服务组名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s GetUserResponseBodyDataServiceGroups) String() string {
@@ -10858,8 +11008,9 @@ func (s *GetUserResponseBodyDataServiceGroups) SetServiceGroupId(v int64) *GetUs
 }
 
 type GetUserResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetUserResponse) String() string {
@@ -10875,13 +11026,17 @@ func (s *GetUserResponse) SetHeaders(v map[string]*string) *GetUserResponse {
 	return s
 }
 
+func (s *GetUserResponse) SetStatusCode(v int32) *GetUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 	s.Body = v
 	return s
 }
 
 type GetUserGuideStatusRequest struct {
-	// 幂等校验
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -10899,10 +11054,8 @@ func (s *GetUserGuideStatusRequest) SetClientToken(v string) *GetUserGuideStatus
 }
 
 type GetUserGuideStatusResponseBody struct {
-	// map
-	Data map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetUserGuideStatusResponseBody) String() string {
@@ -10924,8 +11077,9 @@ func (s *GetUserGuideStatusResponseBody) SetRequestId(v string) *GetUserGuideSta
 }
 
 type GetUserGuideStatusResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserGuideStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserGuideStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetUserGuideStatusResponse) String() string {
@@ -10941,30 +11095,27 @@ func (s *GetUserGuideStatusResponse) SetHeaders(v map[string]*string) *GetUserGu
 	return s
 }
 
+func (s *GetUserGuideStatusResponse) SetStatusCode(v int32) *GetUserGuideStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetUserGuideStatusResponse) SetBody(v *GetUserGuideStatusResponseBody) *GetUserGuideStatusResponse {
 	s.Body = v
 	return s
 }
 
 type ListAlertsRequest struct {
-	// 报警等级 P1 P2 P3 P4
-	AlertLevel *string `json:"alertLevel,omitempty" xml:"alertLevel,omitempty"`
-	// 报警名称
-	AlertName *string `json:"alertName,omitempty" xml:"alertName,omitempty"`
-	// 报警来源
-	AlertSourceName *string `json:"alertSourceName,omitempty" xml:"alertSourceName,omitempty"`
-	// 结束时间
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 当前页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 页大小
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 服务id
-	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	// 流转规则名字
-	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// 开始时间
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	AlertLevel       *string `json:"alertLevel,omitempty" xml:"alertLevel,omitempty"`
+	AlertName        *string `json:"alertName,omitempty" xml:"alertName,omitempty"`
+	AlertSourceName  *string `json:"alertSourceName,omitempty" xml:"alertSourceName,omitempty"`
+	EndTime          *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	MonitorSourceId  *string `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	PageNumber       *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize         *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RelatedServiceId *int64  `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	RuleName         *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	StartTime        *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s ListAlertsRequest) String() string {
@@ -10995,6 +11146,11 @@ func (s *ListAlertsRequest) SetEndTime(v string) *ListAlertsRequest {
 	return s
 }
 
+func (s *ListAlertsRequest) SetMonitorSourceId(v string) *ListAlertsRequest {
+	s.MonitorSourceId = &v
+	return s
+}
+
 func (s *ListAlertsRequest) SetPageNumber(v int64) *ListAlertsRequest {
 	s.PageNumber = &v
 	return s
@@ -11021,16 +11177,11 @@ func (s *ListAlertsRequest) SetStartTime(v string) *ListAlertsRequest {
 }
 
 type ListAlertsResponseBody struct {
-	// 报警列表
-	Data []*ListAlertsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 当前页
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 页的大小
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总条数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListAlertsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber *int32                        `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32                        `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RequestId  *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int64                        `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListAlertsResponseBody) String() string {
@@ -11067,28 +11218,20 @@ func (s *ListAlertsResponseBody) SetTotalCount(v int64) *ListAlertsResponseBody 
 }
 
 type ListAlertsResponseBodyData struct {
-	// 报警ID
-	AlertId *int64 `json:"alertId,omitempty" xml:"alertId,omitempty"`
-	// 告警优先级  1，2，3，4  对应 p1,p2,p3,p4
-	AlertLevel *string `json:"alertLevel,omitempty" xml:"alertLevel,omitempty"`
-	// 报警编号
-	AlertNumber *string `json:"alertNumber,omitempty" xml:"alertNumber,omitempty"`
-	// 报警源
-	AlertSourceName *string `json:"alertSourceName,omitempty" xml:"alertSourceName,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 第一次告警上报时间
-	FirstEventTime *string `json:"firstEventTime,omitempty" xml:"firstEventTime,omitempty"`
-	// 关联服务名称
-	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	// 关联流转规则ID
-	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	// 流转规则名字
-	RouteRuleName *string `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
-	// 收敛量
-	SourceEventCount *int64 `json:"sourceEventCount,omitempty" xml:"sourceEventCount,omitempty"`
-	// 报警标题
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	AlertId              *int64  `json:"alertId,omitempty" xml:"alertId,omitempty"`
+	AlertLevel           *string `json:"alertLevel,omitempty" xml:"alertLevel,omitempty"`
+	AlertNumber          *string `json:"alertNumber,omitempty" xml:"alertNumber,omitempty"`
+	AlertSourceName      *string `json:"alertSourceName,omitempty" xml:"alertSourceName,omitempty"`
+	CreateTime           *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	FirstEventTime       *string `json:"firstEventTime,omitempty" xml:"firstEventTime,omitempty"`
+	MonitorSourceName    *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	RelServiceDeleteType *int32  `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
+	RelatedServiceName   *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
+	RouteRuleDeleteType  *int32  `json:"routeRuleDeleteType,omitempty" xml:"routeRuleDeleteType,omitempty"`
+	RouteRuleId          *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	RouteRuleName        *string `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
+	SourceEventCount     *int64  `json:"sourceEventCount,omitempty" xml:"sourceEventCount,omitempty"`
+	Title                *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ListAlertsResponseBodyData) String() string {
@@ -11129,8 +11272,23 @@ func (s *ListAlertsResponseBodyData) SetFirstEventTime(v string) *ListAlertsResp
 	return s
 }
 
+func (s *ListAlertsResponseBodyData) SetMonitorSourceName(v string) *ListAlertsResponseBodyData {
+	s.MonitorSourceName = &v
+	return s
+}
+
+func (s *ListAlertsResponseBodyData) SetRelServiceDeleteType(v int32) *ListAlertsResponseBodyData {
+	s.RelServiceDeleteType = &v
+	return s
+}
+
 func (s *ListAlertsResponseBodyData) SetRelatedServiceName(v string) *ListAlertsResponseBodyData {
 	s.RelatedServiceName = &v
+	return s
+}
+
+func (s *ListAlertsResponseBodyData) SetRouteRuleDeleteType(v int32) *ListAlertsResponseBodyData {
+	s.RouteRuleDeleteType = &v
 	return s
 }
 
@@ -11155,8 +11313,9 @@ func (s *ListAlertsResponseBodyData) SetTitle(v string) *ListAlertsResponseBodyD
 }
 
 type ListAlertsResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAlertsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAlertsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAlertsResponse) String() string {
@@ -11172,17 +11331,112 @@ func (s *ListAlertsResponse) SetHeaders(v map[string]*string) *ListAlertsRespons
 	return s
 }
 
+func (s *ListAlertsResponse) SetStatusCode(v int32) *ListAlertsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListAlertsResponse) SetBody(v *ListAlertsResponseBody) *ListAlertsResponse {
+	s.Body = v
+	return s
+}
+
+type ListByMonitorSourceIdRequest struct {
+	MonitorSourceId *string `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+}
+
+func (s ListByMonitorSourceIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListByMonitorSourceIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListByMonitorSourceIdRequest) SetMonitorSourceId(v string) *ListByMonitorSourceIdRequest {
+	s.MonitorSourceId = &v
+	return s
+}
+
+type ListByMonitorSourceIdResponseBody struct {
+	Data      []*ListByMonitorSourceIdResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListByMonitorSourceIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListByMonitorSourceIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListByMonitorSourceIdResponseBody) SetData(v []*ListByMonitorSourceIdResponseBodyData) *ListByMonitorSourceIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListByMonitorSourceIdResponseBody) SetRequestId(v string) *ListByMonitorSourceIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListByMonitorSourceIdResponseBodyData struct {
+	Id       *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+}
+
+func (s ListByMonitorSourceIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListByMonitorSourceIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListByMonitorSourceIdResponseBodyData) SetId(v int64) *ListByMonitorSourceIdResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListByMonitorSourceIdResponseBodyData) SetRuleName(v string) *ListByMonitorSourceIdResponseBodyData {
+	s.RuleName = &v
+	return s
+}
+
+type ListByMonitorSourceIdResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListByMonitorSourceIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListByMonitorSourceIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListByMonitorSourceIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListByMonitorSourceIdResponse) SetHeaders(v map[string]*string) *ListByMonitorSourceIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListByMonitorSourceIdResponse) SetStatusCode(v int32) *ListByMonitorSourceIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListByMonitorSourceIdResponse) SetBody(v *ListByMonitorSourceIdResponseBody) *ListByMonitorSourceIdResponse {
 	s.Body = v
 	return s
 }
 
 type ListChartDataForServiceGroupRequest struct {
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 结束时间
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 开始时间
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	EndTime     *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	StartTime   *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s ListChartDataForServiceGroupRequest) String() string {
@@ -11209,10 +11463,8 @@ func (s *ListChartDataForServiceGroupRequest) SetStartTime(v string) *ListChartD
 }
 
 type ListChartDataForServiceGroupResponseBody struct {
-	// data
-	Data []*ListChartDataForServiceGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      []*ListChartDataForServiceGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string                                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListChartDataForServiceGroupResponseBody) String() string {
@@ -11234,26 +11486,16 @@ func (s *ListChartDataForServiceGroupResponseBody) SetRequestId(v string) *ListC
 }
 
 type ListChartDataForServiceGroupResponseBodyData struct {
-	// 根据影响等级时间等级分组统计数量
-	EffectionLevel map[string]interface{} `json:"effectionLevel,omitempty" xml:"effectionLevel,omitempty"`
-	// 升级事件数
-	EscalationIncidentCount *int64 `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
-	// 时间总数
-	IncidentCount *int64 `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
-	// 当日平均响应时间单位秒
-	MeanTimeToAcknowledge *int64 `json:"meanTimeToAcknowledge,omitempty" xml:"meanTimeToAcknowledge,omitempty"`
-	// 当日平均完结时间单位秒
-	MeanTimeToRepair *int64 `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
-	// 时间
-	Time *string `json:"time,omitempty" xml:"time,omitempty"`
-	// 总平均响应时间
-	TotalMeanTimeToAcknowledge *int64 `json:"totalMeanTimeToAcknowledge,omitempty" xml:"totalMeanTimeToAcknowledge,omitempty"`
-	// 总平均完结时间
-	TotalMeanTimeToRepair *int64 `json:"totalMeanTimeToRepair,omitempty" xml:"totalMeanTimeToRepair,omitempty"`
-	// 未响应升级事件数
-	UnAcknowledgedEscalationIncidentCount *int64 `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
-	// 未完结升级事件数
-	UnFinishEscalationIncidentCount *int64 `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
+	EffectionLevel                        map[string]interface{} `json:"effectionLevel,omitempty" xml:"effectionLevel,omitempty"`
+	EscalationIncidentCount               *int64                 `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
+	IncidentCount                         *int64                 `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
+	MeanTimeToAcknowledge                 *int64                 `json:"meanTimeToAcknowledge,omitempty" xml:"meanTimeToAcknowledge,omitempty"`
+	MeanTimeToRepair                      *int64                 `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
+	Time                                  *string                `json:"time,omitempty" xml:"time,omitempty"`
+	TotalMeanTimeToAcknowledge            *int64                 `json:"totalMeanTimeToAcknowledge,omitempty" xml:"totalMeanTimeToAcknowledge,omitempty"`
+	TotalMeanTimeToRepair                 *int64                 `json:"totalMeanTimeToRepair,omitempty" xml:"totalMeanTimeToRepair,omitempty"`
+	UnAcknowledgedEscalationIncidentCount *int64                 `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
+	UnFinishEscalationIncidentCount       *int64                 `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
 }
 
 func (s ListChartDataForServiceGroupResponseBodyData) String() string {
@@ -11315,8 +11557,9 @@ func (s *ListChartDataForServiceGroupResponseBodyData) SetUnFinishEscalationInci
 }
 
 type ListChartDataForServiceGroupResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListChartDataForServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListChartDataForServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListChartDataForServiceGroupResponse) String() string {
@@ -11332,6 +11575,11 @@ func (s *ListChartDataForServiceGroupResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *ListChartDataForServiceGroupResponse) SetStatusCode(v int32) *ListChartDataForServiceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListChartDataForServiceGroupResponse) SetBody(v *ListChartDataForServiceGroupResponseBody) *ListChartDataForServiceGroupResponse {
 	s.Body = v
 	return s
@@ -11339,10 +11587,8 @@ func (s *ListChartDataForServiceGroupResponse) SetBody(v *ListChartDataForServic
 
 type ListChartDataForUserRequest struct {
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 结束时间
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 开始时间
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	EndTime     *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	StartTime   *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s ListChartDataForUserRequest) String() string {
@@ -11369,10 +11615,8 @@ func (s *ListChartDataForUserRequest) SetStartTime(v string) *ListChartDataForUs
 }
 
 type ListChartDataForUserResponseBody struct {
-	// data
-	Data []*ListChartDataForUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      []*ListChartDataForUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListChartDataForUserResponseBody) String() string {
@@ -11394,26 +11638,16 @@ func (s *ListChartDataForUserResponseBody) SetRequestId(v string) *ListChartData
 }
 
 type ListChartDataForUserResponseBodyData struct {
-	// 根据影响等级时间等级分组统计数量
-	EffectionLevel map[string]interface{} `json:"effectionLevel,omitempty" xml:"effectionLevel,omitempty"`
-	// 升级事件数
-	EscalationIncidentCount *int64 `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
-	// 时间总数
-	IncidentCount *int64 `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
-	// 当日平均响应时间单位秒
-	MeanTimeToAcknowledge *int64 `json:"meanTimeToAcknowledge,omitempty" xml:"meanTimeToAcknowledge,omitempty"`
-	// 当日平均完结时间单位秒
-	MeanTimeToRepair *int64 `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
-	// 时间
-	Time *string `json:"time,omitempty" xml:"time,omitempty"`
-	// 总平均响应时间
-	TotalMeanTimeToAcknowledge *int64 `json:"totalMeanTimeToAcknowledge,omitempty" xml:"totalMeanTimeToAcknowledge,omitempty"`
-	// 总平均完结时间
-	TotalMeanTimeToRepair *int64 `json:"totalMeanTimeToRepair,omitempty" xml:"totalMeanTimeToRepair,omitempty"`
-	// 未响应升级事件数
-	UnAcknowledgedEscalationIncidentCount *int64 `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
-	// 未完结升级事件数
-	UnFinishEscalationIncidentCount *int64 `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
+	EffectionLevel                        map[string]interface{} `json:"effectionLevel,omitempty" xml:"effectionLevel,omitempty"`
+	EscalationIncidentCount               *int64                 `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
+	IncidentCount                         *int64                 `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
+	MeanTimeToAcknowledge                 *int64                 `json:"meanTimeToAcknowledge,omitempty" xml:"meanTimeToAcknowledge,omitempty"`
+	MeanTimeToRepair                      *int64                 `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
+	Time                                  *string                `json:"time,omitempty" xml:"time,omitempty"`
+	TotalMeanTimeToAcknowledge            *int64                 `json:"totalMeanTimeToAcknowledge,omitempty" xml:"totalMeanTimeToAcknowledge,omitempty"`
+	TotalMeanTimeToRepair                 *int64                 `json:"totalMeanTimeToRepair,omitempty" xml:"totalMeanTimeToRepair,omitempty"`
+	UnAcknowledgedEscalationIncidentCount *int64                 `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
+	UnFinishEscalationIncidentCount       *int64                 `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
 }
 
 func (s ListChartDataForUserResponseBodyData) String() string {
@@ -11475,8 +11709,9 @@ func (s *ListChartDataForUserResponseBodyData) SetUnFinishEscalationIncidentCoun
 }
 
 type ListChartDataForUserResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListChartDataForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListChartDataForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListChartDataForUserResponse) String() string {
@@ -11492,13 +11727,17 @@ func (s *ListChartDataForUserResponse) SetHeaders(v map[string]*string) *ListCha
 	return s
 }
 
+func (s *ListChartDataForUserResponse) SetStatusCode(v int32) *ListChartDataForUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListChartDataForUserResponse) SetBody(v *ListChartDataForUserResponseBody) *ListChartDataForUserResponse {
 	s.Body = v
 	return s
 }
 
 type ListConfigsRequest struct {
-	// 幂等校验token
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -11516,9 +11755,8 @@ func (s *ListConfigsRequest) SetClientToken(v string) *ListConfigsRequest {
 }
 
 type ListConfigsResponseBody struct {
-	Data map[string][]*DataValue `json:"data,omitempty" xml:"data,omitempty"`
-	// requestId
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      map[string][]*DataValue `json:"data,omitempty" xml:"data,omitempty"`
+	RequestId *string                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListConfigsResponseBody) String() string {
@@ -11540,8 +11778,9 @@ func (s *ListConfigsResponseBody) SetRequestId(v string) *ListConfigsResponseBod
 }
 
 type ListConfigsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListConfigsResponse) String() string {
@@ -11557,18 +11796,20 @@ func (s *ListConfigsResponse) SetHeaders(v map[string]*string) *ListConfigsRespo
 	return s
 }
 
+func (s *ListConfigsResponse) SetStatusCode(v int32) *ListConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListConfigsResponse) SetBody(v *ListConfigsResponseBody) *ListConfigsResponse {
 	s.Body = v
 	return s
 }
 
 type ListDataReportForServiceGroupRequest struct {
-	// 结束时间
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 服务组名称
+	EndTime          *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
-	// 开始时间
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	StartTime        *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s ListDataReportForServiceGroupRequest) String() string {
@@ -11595,16 +11836,11 @@ func (s *ListDataReportForServiceGroupRequest) SetStartTime(v string) *ListDataR
 }
 
 type ListDataReportForServiceGroupResponseBody struct {
-	// 统计数据
-	Data []*ListDataReportForServiceGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 当前页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 页大小
-	PageSIze *int64 `json:"pageSIze,omitempty" xml:"pageSIze,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListDataReportForServiceGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber *int64                                           `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSIze   *int64                                           `json:"pageSIze,omitempty" xml:"pageSIze,omitempty"`
+	RequestId  *string                                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int64                                           `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListDataReportForServiceGroupResponseBody) String() string {
@@ -11641,26 +11877,16 @@ func (s *ListDataReportForServiceGroupResponseBody) SetTotalCount(v int64) *List
 }
 
 type ListDataReportForServiceGroupResponseBodyData struct {
-	// 升级事件数量
-	EscalationIncidentCount *int64 `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
-	// 事件完结数
-	FinishIncidentCount *int64 `json:"finishIncidentCount,omitempty" xml:"finishIncidentCount,omitempty"`
-	// 完结率
-	FinishProportion *string `json:"finishProportion,omitempty" xml:"finishProportion,omitempty"`
-	// 事件数量
-	IncidentCount *int64 `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
-	// MRRA
-	MeanTimeToAcknowledge *int64 `json:"meanTimeToAcknowledge,omitempty" xml:"meanTimeToAcknowledge,omitempty"`
-	// MTTR
-	MeanTimeToRepair *int64 `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	// 服务组名字
-	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
-	// 未响应升级事件数量
-	UnAcknowledgedEscalationIncidentCount *int64 `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
-	// 未完成升级事件数量
-	UnFinishEscalationIncidentCount *int64 `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
+	EscalationIncidentCount               *int64  `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
+	FinishIncidentCount                   *int64  `json:"finishIncidentCount,omitempty" xml:"finishIncidentCount,omitempty"`
+	FinishProportion                      *string `json:"finishProportion,omitempty" xml:"finishProportion,omitempty"`
+	IncidentCount                         *int64  `json:"incidentCount,omitempty" xml:"incidentCount,omitempty"`
+	MeanTimeToAcknowledge                 *int64  `json:"meanTimeToAcknowledge,omitempty" xml:"meanTimeToAcknowledge,omitempty"`
+	MeanTimeToRepair                      *int64  `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
+	ServiceGroupId                        *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ServiceGroupName                      *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	UnAcknowledgedEscalationIncidentCount *int64  `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
+	UnFinishEscalationIncidentCount       *int64  `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
 }
 
 func (s ListDataReportForServiceGroupResponseBodyData) String() string {
@@ -11722,8 +11948,9 @@ func (s *ListDataReportForServiceGroupResponseBodyData) SetUnFinishEscalationInc
 }
 
 type ListDataReportForServiceGroupResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDataReportForServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDataReportForServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDataReportForServiceGroupResponse) String() string {
@@ -11739,20 +11966,21 @@ func (s *ListDataReportForServiceGroupResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *ListDataReportForServiceGroupResponse) SetStatusCode(v int32) *ListDataReportForServiceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDataReportForServiceGroupResponse) SetBody(v *ListDataReportForServiceGroupResponseBody) *ListDataReportForServiceGroupResponse {
 	s.Body = v
 	return s
 }
 
 type ListDataReportForUserRequest struct {
-	// 结束时间
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 当前页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 页大小
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 开始时间
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	EndTime    *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	PageNumber *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	StartTime  *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s ListDataReportForUserRequest) String() string {
@@ -11784,12 +12012,9 @@ func (s *ListDataReportForUserRequest) SetStartTime(v string) *ListDataReportFor
 }
 
 type ListDataReportForUserResponseBody struct {
-	// 个人统计数据
-	Data []*ListDataReportForUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总条数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListDataReportForUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId  *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int64                                   `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListDataReportForUserResponseBody) String() string {
@@ -11816,28 +12041,17 @@ func (s *ListDataReportForUserResponseBody) SetTotalCount(v int64) *ListDataRepo
 }
 
 type ListDataReportForUserResponseBodyData struct {
-	// 分配事件数量
-	DistributionIncidentCount *int64 `json:"distributionIncidentCount,omitempty" xml:"distributionIncidentCount,omitempty"`
-	// 升级事件数量
-	EscalationIncidentCount *int64 `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
-	// 完结事件数量
-	FinishIncidentNumber *int64 `json:"finishIncidentNumber,omitempty" xml:"finishIncidentNumber,omitempty"`
-	// 完结率
-	FinishProportion *string `json:"finishProportion,omitempty" xml:"finishProportion,omitempty"`
-	// MRRA
-	MeanTimeToAcknowledge *string `json:"meanTimeToAcknowledge,omitempty" xml:"meanTimeToAcknowledge,omitempty"`
-	// MTTA
-	MeanTimeToRepair *string `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
-	// 未响应升级数
-	UnAcknowledgedEscalationIncidentCount *int64 `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
-	// 非分配完结数
-	UnDistributionIncidentCount *int64 `json:"unDistributionIncidentCount,omitempty" xml:"unDistributionIncidentCount,omitempty"`
-	// 未完结事件数
-	UnFinishEscalationIncidentCount *int64 `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
-	// 用户ID
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
-	// 用户名字
-	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	DistributionIncidentCount             *int64  `json:"distributionIncidentCount,omitempty" xml:"distributionIncidentCount,omitempty"`
+	EscalationIncidentCount               *int64  `json:"escalationIncidentCount,omitempty" xml:"escalationIncidentCount,omitempty"`
+	FinishIncidentNumber                  *int64  `json:"finishIncidentNumber,omitempty" xml:"finishIncidentNumber,omitempty"`
+	FinishProportion                      *string `json:"finishProportion,omitempty" xml:"finishProportion,omitempty"`
+	MeanTimeToAcknowledge                 *string `json:"meanTimeToAcknowledge,omitempty" xml:"meanTimeToAcknowledge,omitempty"`
+	MeanTimeToRepair                      *string `json:"meanTimeToRepair,omitempty" xml:"meanTimeToRepair,omitempty"`
+	UnAcknowledgedEscalationIncidentCount *int64  `json:"unAcknowledgedEscalationIncidentCount,omitempty" xml:"unAcknowledgedEscalationIncidentCount,omitempty"`
+	UnDistributionIncidentCount           *int64  `json:"unDistributionIncidentCount,omitempty" xml:"unDistributionIncidentCount,omitempty"`
+	UnFinishEscalationIncidentCount       *int64  `json:"unFinishEscalationIncidentCount,omitempty" xml:"unFinishEscalationIncidentCount,omitempty"`
+	UserId                                *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserName                              *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s ListDataReportForUserResponseBodyData) String() string {
@@ -11904,8 +12118,9 @@ func (s *ListDataReportForUserResponseBodyData) SetUserName(v string) *ListDataR
 }
 
 type ListDataReportForUserResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDataReportForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDataReportForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDataReportForUserResponse) String() string {
@@ -11918,6 +12133,11 @@ func (s ListDataReportForUserResponse) GoString() string {
 
 func (s *ListDataReportForUserResponse) SetHeaders(v map[string]*string) *ListDataReportForUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListDataReportForUserResponse) SetStatusCode(v int32) *ListDataReportForUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11967,8 +12187,9 @@ func (s *ListDictionariesResponseBody) SetRequestId(v string) *ListDictionariesR
 }
 
 type ListDictionariesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDictionariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDictionariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDictionariesResponse) String() string {
@@ -11984,13 +12205,17 @@ func (s *ListDictionariesResponse) SetHeaders(v map[string]*string) *ListDiction
 	return s
 }
 
+func (s *ListDictionariesResponse) SetStatusCode(v int32) *ListDictionariesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDictionariesResponse) SetBody(v *ListDictionariesResponseBody) *ListDictionariesResponse {
 	s.Body = v
 	return s
 }
 
 type ListEscalationPlanServicesRequest struct {
-	// clientToken
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -12008,10 +12233,8 @@ func (s *ListEscalationPlanServicesRequest) SetClientToken(v string) *ListEscala
 }
 
 type ListEscalationPlanServicesResponseBody struct {
-	// data
-	Data []*ListEscalationPlanServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      []*ListEscalationPlanServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListEscalationPlanServicesResponseBody) String() string {
@@ -12033,10 +12256,8 @@ func (s *ListEscalationPlanServicesResponseBody) SetRequestId(v string) *ListEsc
 }
 
 type ListEscalationPlanServicesResponseBodyData struct {
-	// 范围类型
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 范围对象id
-	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	Scope         *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObjectId *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
 }
 
 func (s ListEscalationPlanServicesResponseBodyData) String() string {
@@ -12058,8 +12279,9 @@ func (s *ListEscalationPlanServicesResponseBodyData) SetScopeObjectId(v int64) *
 }
 
 type ListEscalationPlanServicesResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListEscalationPlanServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEscalationPlanServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListEscalationPlanServicesResponse) String() string {
@@ -12075,22 +12297,22 @@ func (s *ListEscalationPlanServicesResponse) SetHeaders(v map[string]*string) *L
 	return s
 }
 
+func (s *ListEscalationPlanServicesResponse) SetStatusCode(v int32) *ListEscalationPlanServicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListEscalationPlanServicesResponse) SetBody(v *ListEscalationPlanServicesResponseBody) *ListEscalationPlanServicesResponse {
 	s.Body = v
 	return s
 }
 
 type ListEscalationPlansRequest struct {
-	// clientToken
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 升级计划名
+	ClientToken        *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	EscalationPlanName *string `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
-	// pageNumber
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// pageSize
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 服务名称
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	PageNumber         *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize           *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s ListEscalationPlansRequest) String() string {
@@ -12127,16 +12349,11 @@ func (s *ListEscalationPlansRequest) SetServiceName(v string) *ListEscalationPla
 }
 
 type ListEscalationPlansResponseBody struct {
-	// data
-	Data []*ListEscalationPlansResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 分页参数
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 分页参数
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总条数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListEscalationPlansResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber *int64                                 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int64                                 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RequestId  *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int64                                 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListEscalationPlansResponseBody) String() string {
@@ -12173,16 +12390,11 @@ func (s *ListEscalationPlansResponseBody) SetTotalCount(v int64) *ListEscalation
 }
 
 type ListEscalationPlansResponseBodyData struct {
-	// 升级计划id
-	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
-	// 升级计划名称
-	EscalationPlanName *string `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
-	// 升级计划范围对象
+	EscalationPlanId           *int64                                                           `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	EscalationPlanName         *string                                                          `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
 	EscalationPlanScopeObjects []*ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty" type:"Repeated"`
-	// 修改时间
-	ModifyTime *string `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
-	// 启用ENABLE 禁用DISABLE
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	ModifyTime                 *string                                                          `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
+	Status                     *string                                                          `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListEscalationPlansResponseBodyData) String() string {
@@ -12219,12 +12431,10 @@ func (s *ListEscalationPlansResponseBodyData) SetStatus(v string) *ListEscalatio
 }
 
 type ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects struct {
-	// 范围对象类型
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 范围对象id（服务id）
-	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
-	// 范围对象名称
-	ScopeObjectName *string `json:"scopeObjectName,omitempty" xml:"scopeObjectName,omitempty"`
+	Scope                  *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObjectDeletedType *int32  `json:"scopeObjectDeletedType,omitempty" xml:"scopeObjectDeletedType,omitempty"`
+	ScopeObjectId          *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	ScopeObjectName        *string `json:"scopeObjectName,omitempty" xml:"scopeObjectName,omitempty"`
 }
 
 func (s ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects) String() string {
@@ -12240,6 +12450,11 @@ func (s *ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects) SetScope
 	return s
 }
 
+func (s *ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects) SetScopeObjectDeletedType(v int32) *ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects {
+	s.ScopeObjectDeletedType = &v
+	return s
+}
+
 func (s *ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects) SetScopeObjectId(v int64) *ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects {
 	s.ScopeObjectId = &v
 	return s
@@ -12251,8 +12466,9 @@ func (s *ListEscalationPlansResponseBodyDataEscalationPlanScopeObjects) SetScope
 }
 
 type ListEscalationPlansResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListEscalationPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEscalationPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListEscalationPlansResponse) String() string {
@@ -12268,16 +12484,170 @@ func (s *ListEscalationPlansResponse) SetHeaders(v map[string]*string) *ListEsca
 	return s
 }
 
+func (s *ListEscalationPlansResponse) SetStatusCode(v int32) *ListEscalationPlansResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListEscalationPlansResponse) SetBody(v *ListEscalationPlansResponseBody) *ListEscalationPlansResponse {
 	s.Body = v
 	return s
 }
 
+type ListEscalationPlansByNoticeObjectRequest struct {
+	NoticeObjectId   *int64 `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
+	NoticeObjectType *int64 `json:"noticeObjectType,omitempty" xml:"noticeObjectType,omitempty"`
+}
+
+func (s ListEscalationPlansByNoticeObjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEscalationPlansByNoticeObjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEscalationPlansByNoticeObjectRequest) SetNoticeObjectId(v int64) *ListEscalationPlansByNoticeObjectRequest {
+	s.NoticeObjectId = &v
+	return s
+}
+
+func (s *ListEscalationPlansByNoticeObjectRequest) SetNoticeObjectType(v int64) *ListEscalationPlansByNoticeObjectRequest {
+	s.NoticeObjectType = &v
+	return s
+}
+
+type ListEscalationPlansByNoticeObjectResponseBody struct {
+	Data      []*ListEscalationPlansByNoticeObjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string                                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListEscalationPlansByNoticeObjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEscalationPlansByNoticeObjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEscalationPlansByNoticeObjectResponseBody) SetData(v []*ListEscalationPlansByNoticeObjectResponseBodyData) *ListEscalationPlansByNoticeObjectResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEscalationPlansByNoticeObjectResponseBody) SetRequestId(v string) *ListEscalationPlansByNoticeObjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListEscalationPlansByNoticeObjectResponseBodyData struct {
+	EscalationPlanId           *int64                                                                         `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	EscalationPlanName         *string                                                                        `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
+	EscalationPlanScopeObjects []*ListEscalationPlansByNoticeObjectResponseBodyDataEscalationPlanScopeObjects `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty" type:"Repeated"`
+	ModifyTime                 *string                                                                        `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
+	Status                     *string                                                                        `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s ListEscalationPlansByNoticeObjectResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEscalationPlansByNoticeObjectResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEscalationPlansByNoticeObjectResponseBodyData) SetEscalationPlanId(v int64) *ListEscalationPlansByNoticeObjectResponseBodyData {
+	s.EscalationPlanId = &v
+	return s
+}
+
+func (s *ListEscalationPlansByNoticeObjectResponseBodyData) SetEscalationPlanName(v string) *ListEscalationPlansByNoticeObjectResponseBodyData {
+	s.EscalationPlanName = &v
+	return s
+}
+
+func (s *ListEscalationPlansByNoticeObjectResponseBodyData) SetEscalationPlanScopeObjects(v []*ListEscalationPlansByNoticeObjectResponseBodyDataEscalationPlanScopeObjects) *ListEscalationPlansByNoticeObjectResponseBodyData {
+	s.EscalationPlanScopeObjects = v
+	return s
+}
+
+func (s *ListEscalationPlansByNoticeObjectResponseBodyData) SetModifyTime(v string) *ListEscalationPlansByNoticeObjectResponseBodyData {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListEscalationPlansByNoticeObjectResponseBodyData) SetStatus(v string) *ListEscalationPlansByNoticeObjectResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type ListEscalationPlansByNoticeObjectResponseBodyDataEscalationPlanScopeObjects struct {
+	Scope                  *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObjectDeletedType *int32  `json:"scopeObjectDeletedType,omitempty" xml:"scopeObjectDeletedType,omitempty"`
+	ScopeObjectId          *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	ScopeObjectName        *string `json:"scopeObjectName,omitempty" xml:"scopeObjectName,omitempty"`
+}
+
+func (s ListEscalationPlansByNoticeObjectResponseBodyDataEscalationPlanScopeObjects) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEscalationPlansByNoticeObjectResponseBodyDataEscalationPlanScopeObjects) GoString() string {
+	return s.String()
+}
+
+func (s *ListEscalationPlansByNoticeObjectResponseBodyDataEscalationPlanScopeObjects) SetScope(v string) *ListEscalationPlansByNoticeObjectResponseBodyDataEscalationPlanScopeObjects {
+	s.Scope = &v
+	return s
+}
+
+func (s *ListEscalationPlansByNoticeObjectResponseBodyDataEscalationPlanScopeObjects) SetScopeObjectDeletedType(v int32) *ListEscalationPlansByNoticeObjectResponseBodyDataEscalationPlanScopeObjects {
+	s.ScopeObjectDeletedType = &v
+	return s
+}
+
+func (s *ListEscalationPlansByNoticeObjectResponseBodyDataEscalationPlanScopeObjects) SetScopeObjectId(v int64) *ListEscalationPlansByNoticeObjectResponseBodyDataEscalationPlanScopeObjects {
+	s.ScopeObjectId = &v
+	return s
+}
+
+func (s *ListEscalationPlansByNoticeObjectResponseBodyDataEscalationPlanScopeObjects) SetScopeObjectName(v string) *ListEscalationPlansByNoticeObjectResponseBodyDataEscalationPlanScopeObjects {
+	s.ScopeObjectName = &v
+	return s
+}
+
+type ListEscalationPlansByNoticeObjectResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEscalationPlansByNoticeObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEscalationPlansByNoticeObjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEscalationPlansByNoticeObjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEscalationPlansByNoticeObjectResponse) SetHeaders(v map[string]*string) *ListEscalationPlansByNoticeObjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEscalationPlansByNoticeObjectResponse) SetStatusCode(v int32) *ListEscalationPlansByNoticeObjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEscalationPlansByNoticeObjectResponse) SetBody(v *ListEscalationPlansByNoticeObjectResponseBody) *ListEscalationPlansByNoticeObjectResponse {
+	s.Body = v
+	return s
+}
+
 type ListIncidentDetailEscalationPlansRequest struct {
-	// 幂等校验
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 事件ID
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IncidentId  *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
 func (s ListIncidentDetailEscalationPlansRequest) String() string {
@@ -12299,10 +12669,8 @@ func (s *ListIncidentDetailEscalationPlansRequest) SetIncidentId(v int64) *ListI
 }
 
 type ListIncidentDetailEscalationPlansResponseBody struct {
-	// data
-	Data *ListIncidentDetailEscalationPlansResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *ListIncidentDetailEscalationPlansResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListIncidentDetailEscalationPlansResponseBody) String() string {
@@ -12324,14 +12692,10 @@ func (s *ListIncidentDetailEscalationPlansResponseBody) SetRequestId(v string) *
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyData struct {
-	// 升级策略ID
-	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
-	// 升级策略名称
-	EscalationPlanName *string `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
-	// 未响应升级策略
+	EscalationPlanId            *int64                                                                          `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	EscalationPlanName          *string                                                                         `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
 	NuAcknowledgeEscalationPlan []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan `json:"nuAcknowledgeEscalationPlan,omitempty" xml:"nuAcknowledgeEscalationPlan,omitempty" type:"Repeated"`
-	// 未完结升级策略规则列表
-	UnFinishEscalationPlan []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan `json:"unFinishEscalationPlan,omitempty" xml:"unFinishEscalationPlan,omitempty" type:"Repeated"`
+	UnFinishEscalationPlan      []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan      `json:"unFinishEscalationPlan,omitempty" xml:"unFinishEscalationPlan,omitempty" type:"Repeated"`
 }
 
 func (s ListIncidentDetailEscalationPlansResponseBodyData) String() string {
@@ -12363,20 +12727,13 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyData) SetUnFinishEscalatio
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan struct {
-	// 升级策略类型 UN_ACKNOWLEDGE
-	EscalationPlanType *string `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
-	// 分配渠道
-	NoticeChannels []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
-	// 用户信息
-	NoticeObjectList []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
-	// 延迟时间
-	NoticeTime *int64 `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	// 通知群
-	ServiceGroupList []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
-	// 开始时间
-	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 规则触发状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	EscalationPlanType *string                                                                                         `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
+	NoticeChannels     []*string                                                                                       `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
+	NoticeObjectList   []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
+	NoticeTime         *int64                                                                                          `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroupList   []*ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
+	StartTime          *int64                                                                                          `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status             *string                                                                                         `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan) String() string {
@@ -12423,11 +12780,8 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalatio
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList struct {
-	// 分配对象id
-	NoticeObjectId *int64 `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
-	// 分配对象名称
-	NoticeObjectName *string `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
-	// 分配对象手机号
+	NoticeObjectId    *int64  `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
+	NoticeObjectName  *string `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
 	NoticeObjectPhone *string `json:"noticeObjectPhone,omitempty" xml:"noticeObjectPhone,omitempty"`
 }
 
@@ -12455,9 +12809,7 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalatio
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList struct {
-	// 服务组id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 服务组名称
+	Id   *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -12480,20 +12832,13 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalatio
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan struct {
-	// 升级策略类型 UN_ACKNOWLEDGE
-	EscalationPlanType *string `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
-	// 分配渠道
-	NoticeChannels []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
-	// 用户信息
-	NoticeObjectList []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
-	// 延迟时间
-	NoticeTime *int32 `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	// 消息群
-	ServiceGroupList []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
-	// 开始时间
-	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 规则触发状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	EscalationPlanType *string                                                                                    `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
+	NoticeChannels     []*string                                                                                  `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
+	NoticeObjectList   []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList `json:"noticeObjectList,omitempty" xml:"noticeObjectList,omitempty" type:"Repeated"`
+	NoticeTime         *int32                                                                                     `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroupList   []*ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList `json:"serviceGroupList,omitempty" xml:"serviceGroupList,omitempty" type:"Repeated"`
+	StartTime          *int64                                                                                     `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status             *string                                                                                    `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan) String() string {
@@ -12540,11 +12885,8 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList struct {
-	// 分配对象id
-	NoticeObjectId *int64 `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
-	// 分配对象名称
-	NoticeObjectName *string `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
-	// 手机号
+	NoticeObjectId    *int64  `json:"noticeObjectId,omitempty" xml:"noticeObjectId,omitempty"`
+	NoticeObjectName  *string `json:"noticeObjectName,omitempty" xml:"noticeObjectName,omitempty"`
 	NoticeObjectPhone *string `json:"noticeObjectPhone,omitempty" xml:"noticeObjectPhone,omitempty"`
 }
 
@@ -12572,9 +12914,7 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan
 }
 
 type ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList struct {
-	// 服务组id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 服务组名称
+	Id   *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -12597,8 +12937,9 @@ func (s *ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan
 }
 
 type ListIncidentDetailEscalationPlansResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIncidentDetailEscalationPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIncidentDetailEscalationPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIncidentDetailEscalationPlansResponse) String() string {
@@ -12614,20 +12955,22 @@ func (s *ListIncidentDetailEscalationPlansResponse) SetHeaders(v map[string]*str
 	return s
 }
 
+func (s *ListIncidentDetailEscalationPlansResponse) SetStatusCode(v int32) *ListIncidentDetailEscalationPlansResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListIncidentDetailEscalationPlansResponse) SetBody(v *ListIncidentDetailEscalationPlansResponseBody) *ListIncidentDetailEscalationPlansResponse {
 	s.Body = v
 	return s
 }
 
 type ListIncidentDetailTimelinesRequest struct {
-	// 幂等校验
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 事件ID
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 行
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	IdSort      *string `json:"idSort,omitempty" xml:"idSort,omitempty"`
+	IncidentId  *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	PageNumber  *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize    *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListIncidentDetailTimelinesRequest) String() string {
@@ -12640,6 +12983,11 @@ func (s ListIncidentDetailTimelinesRequest) GoString() string {
 
 func (s *ListIncidentDetailTimelinesRequest) SetClientToken(v string) *ListIncidentDetailTimelinesRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ListIncidentDetailTimelinesRequest) SetIdSort(v string) *ListIncidentDetailTimelinesRequest {
+	s.IdSort = &v
 	return s
 }
 
@@ -12662,10 +13010,8 @@ type ListIncidentDetailTimelinesResponseBody struct {
 	Data       []*ListIncidentDetailTimelinesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	PageNumber *int32                                         `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize   *int32                                         `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总数
-	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	RequestId  *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int32                                         `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListIncidentDetailTimelinesResponseBody) String() string {
@@ -12702,22 +13048,15 @@ func (s *ListIncidentDetailTimelinesResponseBody) SetTotalCount(v int32) *ListIn
 }
 
 type ListIncidentDetailTimelinesResponseBodyData struct {
-	// 事件action
-	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 事件Id
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 服务名称
-	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	// 备注
-	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// 快照数据
-	SnapshotData *string `json:"snapshotData,omitempty" xml:"snapshotData,omitempty"`
-	// 主题
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	Action                 *string `json:"action,omitempty" xml:"action,omitempty"`
+	CreateTime             *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description            *string `json:"description,omitempty" xml:"description,omitempty"`
+	IncidentId             *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	RelRouteRuleDeleteType *int32  `json:"relRouteRuleDeleteType,omitempty" xml:"relRouteRuleDeleteType,omitempty"`
+	RelatedServiceName     *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
+	Remark                 *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	SnapshotData           *string `json:"snapshotData,omitempty" xml:"snapshotData,omitempty"`
+	Title                  *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ListIncidentDetailTimelinesResponseBodyData) String() string {
@@ -12748,6 +13087,11 @@ func (s *ListIncidentDetailTimelinesResponseBodyData) SetIncidentId(v int64) *Li
 	return s
 }
 
+func (s *ListIncidentDetailTimelinesResponseBodyData) SetRelRouteRuleDeleteType(v int32) *ListIncidentDetailTimelinesResponseBodyData {
+	s.RelRouteRuleDeleteType = &v
+	return s
+}
+
 func (s *ListIncidentDetailTimelinesResponseBodyData) SetRelatedServiceName(v string) *ListIncidentDetailTimelinesResponseBodyData {
 	s.RelatedServiceName = &v
 	return s
@@ -12769,8 +13113,9 @@ func (s *ListIncidentDetailTimelinesResponseBodyData) SetTitle(v string) *ListIn
 }
 
 type ListIncidentDetailTimelinesResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIncidentDetailTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIncidentDetailTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIncidentDetailTimelinesResponse) String() string {
@@ -12786,16 +13131,19 @@ func (s *ListIncidentDetailTimelinesResponse) SetHeaders(v map[string]*string) *
 	return s
 }
 
+func (s *ListIncidentDetailTimelinesResponse) SetStatusCode(v int32) *ListIncidentDetailTimelinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListIncidentDetailTimelinesResponse) SetBody(v *ListIncidentDetailTimelinesResponseBody) *ListIncidentDetailTimelinesResponse {
 	s.Body = v
 	return s
 }
 
 type ListIncidentSubtotalsRequest struct {
-	// 幂等校验
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 事件ID
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IncidentId  *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
 func (s ListIncidentSubtotalsRequest) String() string {
@@ -12817,9 +13165,8 @@ func (s *ListIncidentSubtotalsRequest) SetIncidentId(v int64) *ListIncidentSubto
 }
 
 type ListIncidentSubtotalsResponseBody struct {
-	Data []*ListIncidentSubtotalsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      []*ListIncidentSubtotalsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListIncidentSubtotalsResponseBody) String() string {
@@ -12841,16 +13188,11 @@ func (s *ListIncidentSubtotalsResponseBody) SetRequestId(v string) *ListIncident
 }
 
 type ListIncidentSubtotalsResponseBodyData struct {
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 操作人Id
-	CreateUserId *int64 `json:"createUserId,omitempty" xml:"createUserId,omitempty"`
-	// 操作人
-	CreateUserName *string `json:"createUserName,omitempty" xml:"createUserName,omitempty"`
-	// 操作人手机号
+	CreateTime      *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateUserId    *int64  `json:"createUserId,omitempty" xml:"createUserId,omitempty"`
+	CreateUserName  *string `json:"createUserName,omitempty" xml:"createUserName,omitempty"`
 	CreateUserPhone *string `json:"createUserPhone,omitempty" xml:"createUserPhone,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 
 func (s ListIncidentSubtotalsResponseBodyData) String() string {
@@ -12887,8 +13229,9 @@ func (s *ListIncidentSubtotalsResponseBodyData) SetDescription(v string) *ListIn
 }
 
 type ListIncidentSubtotalsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIncidentSubtotalsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIncidentSubtotalsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIncidentSubtotalsResponse) String() string {
@@ -12904,18 +13247,20 @@ func (s *ListIncidentSubtotalsResponse) SetHeaders(v map[string]*string) *ListIn
 	return s
 }
 
+func (s *ListIncidentSubtotalsResponse) SetStatusCode(v int32) *ListIncidentSubtotalsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListIncidentSubtotalsResponse) SetBody(v *ListIncidentSubtotalsResponseBody) *ListIncidentSubtotalsResponse {
 	s.Body = v
 	return s
 }
 
 type ListIncidentTimelinesRequest struct {
-	// 幂等校验Id
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 行
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageNumber  *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize    *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListIncidentTimelinesRequest) String() string {
@@ -12946,8 +13291,7 @@ type ListIncidentTimelinesResponseBody struct {
 	PageNumber *int32                                   `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize   *int32                                   `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	RequestId  *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总数
-	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	TotalCount *int32                                   `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListIncidentTimelinesResponseBody) String() string {
@@ -12984,26 +13328,17 @@ func (s *ListIncidentTimelinesResponseBody) SetTotalCount(v int32) *ListIncident
 }
 
 type ListIncidentTimelinesResponseBodyData struct {
-	// 动态类型  触发新增 INCIDENT_ADD 响应 INCIDENT_RESPONSE 转交 INCIDENT_DELIVER 变更 INCIDENT_UPDATE 添加小计 INCIDENT_ADD_SUBTOTAL 完结 INCIDENT_FINISH 分配 INCIDENT_ASSIGN 升级 INCIDENT_UPGRAD
-	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 描述
-	Description *int64 `json:"description,omitempty" xml:"description,omitempty"`
-	// 事件Id
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 事件编号
-	IncidentNumber *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
-	// 事件标题
-	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
-	// 服务名称
-	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	// 备注
-	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// 动态快照数据
-	SnapshotData *string `json:"snapshotData,omitempty" xml:"snapshotData,omitempty"`
-	// 动态
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	Action                 *string `json:"action,omitempty" xml:"action,omitempty"`
+	CreateTime             *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description            *int64  `json:"description,omitempty" xml:"description,omitempty"`
+	IncidentId             *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IncidentNumber         *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
+	IncidentTitle          *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	RelRouteRuleDeleteType *int32  `json:"relRouteRuleDeleteType,omitempty" xml:"relRouteRuleDeleteType,omitempty"`
+	RelatedServiceName     *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
+	Remark                 *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	SnapshotData           *string `json:"snapshotData,omitempty" xml:"snapshotData,omitempty"`
+	Title                  *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ListIncidentTimelinesResponseBodyData) String() string {
@@ -13044,6 +13379,11 @@ func (s *ListIncidentTimelinesResponseBodyData) SetIncidentTitle(v string) *List
 	return s
 }
 
+func (s *ListIncidentTimelinesResponseBodyData) SetRelRouteRuleDeleteType(v int32) *ListIncidentTimelinesResponseBodyData {
+	s.RelRouteRuleDeleteType = &v
+	return s
+}
+
 func (s *ListIncidentTimelinesResponseBodyData) SetRelatedServiceName(v string) *ListIncidentTimelinesResponseBodyData {
 	s.RelatedServiceName = &v
 	return s
@@ -13065,8 +13405,9 @@ func (s *ListIncidentTimelinesResponseBodyData) SetTitle(v string) *ListIncident
 }
 
 type ListIncidentTimelinesResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIncidentTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIncidentTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIncidentTimelinesResponse) String() string {
@@ -13082,34 +13423,28 @@ func (s *ListIncidentTimelinesResponse) SetHeaders(v map[string]*string) *ListIn
 	return s
 }
 
+func (s *ListIncidentTimelinesResponse) SetStatusCode(v int32) *ListIncidentTimelinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListIncidentTimelinesResponse) SetBody(v *ListIncidentTimelinesResponseBody) *ListIncidentTimelinesResponse {
 	s.Body = v
 	return s
 }
 
 type ListIncidentsRequest struct {
-	// 幂等校验id
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 创建结束时间
-	CreateEndTime *string `json:"createEndTime,omitempty" xml:"createEndTime,omitempty"`
-	// 创建开始时间
-	CreateStartTime *string `json:"createStartTime,omitempty" xml:"createStartTime,omitempty"`
-	// 影响等级 高：HIGH 低 LOW
-	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// 事件级别 P1 P2 P3 P4
-	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	// 事件状态 ASSIGNED已分派 RESPONDED已响应  FINISHED已完结
-	IncidentStatus *string `json:"incidentStatus,omitempty" xml:"incidentStatus,omitempty"`
-	// 是否自己 1是 0不是
-	Me *int32 `json:"me,omitempty" xml:"me,omitempty"`
-	// 页
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 行
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 关联服务ID
-	RelationServiceId *int64 `json:"relationServiceId,omitempty" xml:"relationServiceId,omitempty"`
-	// 流转规则名字
-	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	ClientToken       *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	CreateEndTime     *string `json:"createEndTime,omitempty" xml:"createEndTime,omitempty"`
+	CreateStartTime   *string `json:"createStartTime,omitempty" xml:"createStartTime,omitempty"`
+	Effect            *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	IncidentLevel     *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	IncidentStatus    *string `json:"incidentStatus,omitempty" xml:"incidentStatus,omitempty"`
+	Me                *int32  `json:"me,omitempty" xml:"me,omitempty"`
+	PageNumber        *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize          *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RelationServiceId *int64  `json:"relationServiceId,omitempty" xml:"relationServiceId,omitempty"`
+	RuleName          *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
 }
 
 func (s ListIncidentsRequest) String() string {
@@ -13176,15 +13511,11 @@ func (s *ListIncidentsRequest) SetRuleName(v string) *ListIncidentsRequest {
 }
 
 type ListIncidentsResponseBody struct {
-	Data []*ListIncidentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 页
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 行
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// requestId
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总数
-	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListIncidentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber *int32                           `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32                           `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RequestId  *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int32                           `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListIncidentsResponseBody) String() string {
@@ -13221,35 +13552,24 @@ func (s *ListIncidentsResponseBody) SetTotalCount(v int32) *ListIncidentsRespons
 }
 
 type ListIncidentsResponseBodyData struct {
-	// 分派的用户ID
-	AssignUserId *int64 `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
-	// 分派的用户姓名
-	AssignUserName *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
-	// 分派人手机号
-	AssignUserPhone *string `json:"assignUserPhone,omitempty" xml:"assignUserPhone,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 影响等级 高：HIGH 低 LOW
-	Effect     *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	IncidentId *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 事件级别 P1 P2 P3 P4
-	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	// 事件编号
-	IncidentNumber *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
-	// 事件状态 0已分派 1已响应 2已完结
-	IncidentStatus *string `json:"incidentStatus,omitempty" xml:"incidentStatus,omitempty"`
-	// 事件标题
-	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
-	// 事件来源 是=手动 否=自动
-	IsManual *bool `json:"isManual,omitempty" xml:"isManual,omitempty"`
-	// 关联服务ID
-	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	// 关联服务名称
-	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	// 流转规则ID
-	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	// 流转规则
-	RouteRuleName *string `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
+	AssignToWhoIsValid     *int64  `json:"assignToWhoIsValid,omitempty" xml:"assignToWhoIsValid,omitempty"`
+	AssignUserId           *int64  `json:"assignUserId,omitempty" xml:"assignUserId,omitempty"`
+	AssignUserName         *string `json:"assignUserName,omitempty" xml:"assignUserName,omitempty"`
+	AssignUserPhone        *string `json:"assignUserPhone,omitempty" xml:"assignUserPhone,omitempty"`
+	CreateTime             *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Effect                 *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	IncidentId             *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IncidentLevel          *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	IncidentNumber         *string `json:"incidentNumber,omitempty" xml:"incidentNumber,omitempty"`
+	IncidentStatus         *string `json:"incidentStatus,omitempty" xml:"incidentStatus,omitempty"`
+	IncidentTitle          *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
+	IsManual               *bool   `json:"isManual,omitempty" xml:"isManual,omitempty"`
+	RelRouteRuleDeleteType *int32  `json:"relRouteRuleDeleteType,omitempty" xml:"relRouteRuleDeleteType,omitempty"`
+	RelServiceDeleteType   *int32  `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
+	RelatedServiceId       *int64  `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	RelatedServiceName     *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
+	RouteRuleId            *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	RouteRuleName          *string `json:"routeRuleName,omitempty" xml:"routeRuleName,omitempty"`
 }
 
 func (s ListIncidentsResponseBodyData) String() string {
@@ -13258,6 +13578,11 @@ func (s ListIncidentsResponseBodyData) String() string {
 
 func (s ListIncidentsResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListIncidentsResponseBodyData) SetAssignToWhoIsValid(v int64) *ListIncidentsResponseBodyData {
+	s.AssignToWhoIsValid = &v
+	return s
 }
 
 func (s *ListIncidentsResponseBodyData) SetAssignUserId(v int64) *ListIncidentsResponseBodyData {
@@ -13315,6 +13640,16 @@ func (s *ListIncidentsResponseBodyData) SetIsManual(v bool) *ListIncidentsRespon
 	return s
 }
 
+func (s *ListIncidentsResponseBodyData) SetRelRouteRuleDeleteType(v int32) *ListIncidentsResponseBodyData {
+	s.RelRouteRuleDeleteType = &v
+	return s
+}
+
+func (s *ListIncidentsResponseBodyData) SetRelServiceDeleteType(v int32) *ListIncidentsResponseBodyData {
+	s.RelServiceDeleteType = &v
+	return s
+}
+
 func (s *ListIncidentsResponseBodyData) SetRelatedServiceId(v int64) *ListIncidentsResponseBodyData {
 	s.RelatedServiceId = &v
 	return s
@@ -13336,8 +13671,9 @@ func (s *ListIncidentsResponseBodyData) SetRouteRuleName(v string) *ListIncident
 }
 
 type ListIncidentsResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIncidentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIncidentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIncidentsResponse) String() string {
@@ -13353,20 +13689,21 @@ func (s *ListIncidentsResponse) SetHeaders(v map[string]*string) *ListIncidentsR
 	return s
 }
 
+func (s *ListIncidentsResponse) SetStatusCode(v int32) *ListIncidentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListIncidentsResponse) SetBody(v *ListIncidentsResponseBody) *ListIncidentsResponse {
 	s.Body = v
 	return s
 }
 
 type ListIntegrationConfigTimelinesRequest struct {
-	// 幂等参数
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 集成配置id
-	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
-	// 分页参数
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 分页参数
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	PageNumber          *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize            *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListIntegrationConfigTimelinesRequest) String() string {
@@ -13398,15 +13735,11 @@ func (s *ListIntegrationConfigTimelinesRequest) SetPageSize(v int64) *ListIntegr
 }
 
 type ListIntegrationConfigTimelinesResponseBody struct {
-	Data []*ListIntegrationConfigTimelinesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// pageNumber
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// pageSize
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// requestId
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// totalCount
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListIntegrationConfigTimelinesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber *int64                                            `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int64                                            `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RequestId  *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int64                                            `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListIntegrationConfigTimelinesResponseBody) String() string {
@@ -13443,12 +13776,9 @@ func (s *ListIntegrationConfigTimelinesResponseBody) SetTotalCount(v int64) *Lis
 }
 
 type ListIntegrationConfigTimelinesResponseBodyData struct {
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 描述
+	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 主题
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ListIntegrationConfigTimelinesResponseBodyData) String() string {
@@ -13475,8 +13805,9 @@ func (s *ListIntegrationConfigTimelinesResponseBodyData) SetTitle(v string) *Lis
 }
 
 type ListIntegrationConfigTimelinesResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIntegrationConfigTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIntegrationConfigTimelinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIntegrationConfigTimelinesResponse) String() string {
@@ -13492,13 +13823,17 @@ func (s *ListIntegrationConfigTimelinesResponse) SetHeaders(v map[string]*string
 	return s
 }
 
+func (s *ListIntegrationConfigTimelinesResponse) SetStatusCode(v int32) *ListIntegrationConfigTimelinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListIntegrationConfigTimelinesResponse) SetBody(v *ListIntegrationConfigTimelinesResponseBody) *ListIntegrationConfigTimelinesResponse {
 	s.Body = v
 	return s
 }
 
 type ListIntegrationConfigsRequest struct {
-	// 幂等id
 	ClientToken       *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
 }
@@ -13545,18 +13880,12 @@ func (s *ListIntegrationConfigsResponseBody) SetRequestId(v string) *ListIntegra
 }
 
 type ListIntegrationConfigsResponseBodyData struct {
-	// 集成配置id
-	IntegrationConfigId *int64 `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
-	// 是否已接受报警
-	IsReceivedEvent *bool `json:"isReceivedEvent,omitempty" xml:"isReceivedEvent,omitempty"`
-	// 监控源id
-	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	// 监控源名城
-	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	// 监控源简称
+	IntegrationConfigId    *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+	IsReceivedEvent        *bool   `json:"isReceivedEvent,omitempty" xml:"isReceivedEvent,omitempty"`
+	MonitorSourceId        *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	MonitorSourceName      *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
 	MonitorSourceShortName *string `json:"monitorSourceShortName,omitempty" xml:"monitorSourceShortName,omitempty"`
-	// 集成配置状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status                 *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListIntegrationConfigsResponseBodyData) String() string {
@@ -13598,8 +13927,9 @@ func (s *ListIntegrationConfigsResponseBodyData) SetStatus(v string) *ListIntegr
 }
 
 type ListIntegrationConfigsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIntegrationConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIntegrationConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIntegrationConfigsResponse) String() string {
@@ -13612,6 +13942,11 @@ func (s ListIntegrationConfigsResponse) GoString() string {
 
 func (s *ListIntegrationConfigsResponse) SetHeaders(v map[string]*string) *ListIntegrationConfigsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListIntegrationConfigsResponse) SetStatusCode(v int32) *ListIntegrationConfigsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13690,8 +14025,9 @@ func (s *ListMonitorSourcesResponseBodyData) SetMonitorSourceName(v string) *Lis
 }
 
 type ListMonitorSourcesResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListMonitorSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMonitorSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListMonitorSourcesResponse) String() string {
@@ -13707,22 +14043,22 @@ func (s *ListMonitorSourcesResponse) SetHeaders(v map[string]*string) *ListMonit
 	return s
 }
 
+func (s *ListMonitorSourcesResponse) SetStatusCode(v int32) *ListMonitorSourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListMonitorSourcesResponse) SetBody(v *ListMonitorSourcesResponseBody) *ListMonitorSourcesResponse {
 	s.Body = v
 	return s
 }
 
 type ListProblemDetailOperationsRequest struct {
-	// 幂等校验
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 时间排序
+	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	CreateTimeSort *string `json:"createTimeSort,omitempty" xml:"createTimeSort,omitempty"`
-	// 页
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 行
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 故障id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	PageNumber     *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize       *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ProblemId      *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s ListProblemDetailOperationsRequest) String() string {
@@ -13759,16 +14095,11 @@ func (s *ListProblemDetailOperationsRequest) SetProblemId(v int64) *ListProblemD
 }
 
 type ListProblemDetailOperationsResponseBody struct {
-	// data
-	Data []*ListProblemDetailOperationsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 页
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 行
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// requestId
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总数
-	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListProblemDetailOperationsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber *int32                                         `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32                                         `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RequestId  *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int32                                         `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListProblemDetailOperationsResponseBody) String() string {
@@ -13805,20 +14136,13 @@ func (s *ListProblemDetailOperationsResponseBody) SetTotalCount(v int32) *ListPr
 }
 
 type ListProblemDetailOperationsResponseBodyData struct {
-	// 升级 PROBLEM_UPGRADE 撤销 PROBLEM_REVOKE 恢复 PROBLEM_RESTORE 复盘 PROBLEM_IN_REVIEW 完结 PROBLEM_REOPENED 取消 PROBLEM_CANCEL 更新故障通告 PROBLEM_UPDATE_NOTIFY 添加故障小计 PROBLEM_ADD_SUBTOTAL 更新故障 PROBLEM_UPDATE
-	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 服务
+	Action             *string `json:"action,omitempty" xml:"action,omitempty"`
+	CreateTime         *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
 	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	// 备注
-	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// 快照数据
-	SnapshotData *string `json:"snapshotData,omitempty" xml:"snapshotData,omitempty"`
-	// 动态标题
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	Remark             *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	SnapshotData       *string `json:"snapshotData,omitempty" xml:"snapshotData,omitempty"`
+	Title              *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ListProblemDetailOperationsResponseBodyData) String() string {
@@ -13865,8 +14189,9 @@ func (s *ListProblemDetailOperationsResponseBodyData) SetTitle(v string) *ListPr
 }
 
 type ListProblemDetailOperationsResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListProblemDetailOperationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProblemDetailOperationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListProblemDetailOperationsResponse) String() string {
@@ -13882,18 +14207,20 @@ func (s *ListProblemDetailOperationsResponse) SetHeaders(v map[string]*string) *
 	return s
 }
 
+func (s *ListProblemDetailOperationsResponse) SetStatusCode(v int32) *ListProblemDetailOperationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListProblemDetailOperationsResponse) SetBody(v *ListProblemDetailOperationsResponseBody) *ListProblemDetailOperationsResponse {
 	s.Body = v
 	return s
 }
 
 type ListProblemOperationsRequest struct {
-	// 幂等校验token
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 页
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 行
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageNumber  *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize    *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListProblemOperationsRequest) String() string {
@@ -13920,16 +14247,11 @@ func (s *ListProblemOperationsRequest) SetPageSize(v int32) *ListProblemOperatio
 }
 
 type ListProblemOperationsResponseBody struct {
-	// data
-	Data []*ListProblemOperationsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 页
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 行
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总数
-	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListProblemOperationsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber *int32                                   `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int32                                   `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RequestId  *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int32                                   `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListProblemOperationsResponseBody) String() string {
@@ -13966,24 +14288,15 @@ func (s *ListProblemOperationsResponseBody) SetTotalCount(v int32) *ListProblemO
 }
 
 type ListProblemOperationsResponseBodyData struct {
-	// 升级    PROBLEM_UPGRADE      撤销     PROBLEM_REVOKE      恢复     PROBLEM_RESTORE       复盘     PROBLEM_IN_REVIEW       完结     PROBLEM_REOPENED       取消     PROBLEM_CANCEL       更新故障通告     PROBLEM_UPDATE_NOTIFY       添加故障小计     PROBLEM_ADD_SUBTOTAL       更新故障     PROBLEM_UPDATE
-	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 故障Id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 故障名称
-	ProblemName *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
-	// 故障编号
-	ProblemNumber *string `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
-	// 服务名称
+	Action             *string `json:"action,omitempty" xml:"action,omitempty"`
+	CreateTime         *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
+	ProblemId          *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemName        *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
+	ProblemNumber      *string `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
 	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	// 快照数据
-	SnapshotData *string `json:"snapshotData,omitempty" xml:"snapshotData,omitempty"`
-	// 动态标题
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	SnapshotData       *string `json:"snapshotData,omitempty" xml:"snapshotData,omitempty"`
+	Title              *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ListProblemOperationsResponseBodyData) String() string {
@@ -14040,8 +14353,9 @@ func (s *ListProblemOperationsResponseBodyData) SetTitle(v string) *ListProblemO
 }
 
 type ListProblemOperationsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListProblemOperationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProblemOperationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListProblemOperationsResponse) String() string {
@@ -14057,16 +14371,19 @@ func (s *ListProblemOperationsResponse) SetHeaders(v map[string]*string) *ListPr
 	return s
 }
 
+func (s *ListProblemOperationsResponse) SetStatusCode(v int32) *ListProblemOperationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListProblemOperationsResponse) SetBody(v *ListProblemOperationsResponseBody) *ListProblemOperationsResponse {
 	s.Body = v
 	return s
 }
 
 type ListProblemSubtotalsRequest struct {
-	// 幂等校验token
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 故障Id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemId   *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s ListProblemSubtotalsRequest) String() string {
@@ -14088,9 +14405,8 @@ func (s *ListProblemSubtotalsRequest) SetProblemId(v int64) *ListProblemSubtotal
 }
 
 type ListProblemSubtotalsResponseBody struct {
-	Data []*ListProblemSubtotalsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      []*ListProblemSubtotalsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListProblemSubtotalsResponseBody) String() string {
@@ -14112,16 +14428,11 @@ func (s *ListProblemSubtotalsResponseBody) SetRequestId(v string) *ListProblemSu
 }
 
 type ListProblemSubtotalsResponseBodyData struct {
-	// 操作人
-	CreateRamName *string `json:"createRamName,omitempty" xml:"createRamName,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 人员id
-	CreateUserId *int64 `json:"createUserId,omitempty" xml:"createUserId,omitempty"`
-	// 操作人手机号
+	CreateRamName   *string `json:"createRamName,omitempty" xml:"createRamName,omitempty"`
+	CreateTime      *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateUserId    *int64  `json:"createUserId,omitempty" xml:"createUserId,omitempty"`
 	CreateUserPhone *string `json:"createUserPhone,omitempty" xml:"createUserPhone,omitempty"`
-	// 描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 
 func (s ListProblemSubtotalsResponseBodyData) String() string {
@@ -14158,8 +14469,9 @@ func (s *ListProblemSubtotalsResponseBodyData) SetDescription(v string) *ListPro
 }
 
 type ListProblemSubtotalsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListProblemSubtotalsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProblemSubtotalsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListProblemSubtotalsResponse) String() string {
@@ -14175,16 +14487,19 @@ func (s *ListProblemSubtotalsResponse) SetHeaders(v map[string]*string) *ListPro
 	return s
 }
 
+func (s *ListProblemSubtotalsResponse) SetStatusCode(v int32) *ListProblemSubtotalsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListProblemSubtotalsResponse) SetBody(v *ListProblemSubtotalsResponseBody) *ListProblemSubtotalsResponse {
 	s.Body = v
 	return s
 }
 
 type ListProblemTimeLinesRequest struct {
-	// clientToken
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 故障ID
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemId   *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 }
 
 func (s ListProblemTimeLinesRequest) String() string {
@@ -14206,9 +14521,8 @@ func (s *ListProblemTimeLinesRequest) SetProblemId(v int64) *ListProblemTimeLine
 }
 
 type ListProblemTimeLinesResponseBody struct {
-	Data []*ListProblemTimeLinesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      []*ListProblemTimeLinesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListProblemTimeLinesResponseBody) String() string {
@@ -14230,22 +14544,14 @@ func (s *ListProblemTimeLinesResponseBody) SetRequestId(v string) *ListProblemTi
 }
 
 type ListProblemTimeLinesResponseBodyData struct {
-	// 内容
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 是否是关键字 true是 false不是 默认 false
-	IsKey *bool `json:"isKey,omitempty" xml:"isKey,omitempty"`
-	// 关键节点 码表:PROBLEM_KEY_NODE (逗号分隔)
-	KeyNode *string `json:"keyNode,omitempty" xml:"keyNode,omitempty"`
-	// 时间线id
-	ProblemTimelineId *int64 `json:"problemTimelineId,omitempty" xml:"problemTimelineId,omitempty"`
-	// 展示时间
-	Time *string `json:"time,omitempty" xml:"time,omitempty"`
-	// 修改时间
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// 内容中的用户信息
-	UsersInContent []*ListProblemTimeLinesResponseBodyDataUsersInContent `json:"usersInContent,omitempty" xml:"usersInContent,omitempty" type:"Repeated"`
+	Content           *string                                               `json:"content,omitempty" xml:"content,omitempty"`
+	CreateTime        *string                                               `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	IsKey             *bool                                                 `json:"isKey,omitempty" xml:"isKey,omitempty"`
+	KeyNode           *string                                               `json:"keyNode,omitempty" xml:"keyNode,omitempty"`
+	ProblemTimelineId *int64                                                `json:"problemTimelineId,omitempty" xml:"problemTimelineId,omitempty"`
+	Time              *string                                               `json:"time,omitempty" xml:"time,omitempty"`
+	UpdateTime        *string                                               `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UsersInContent    []*ListProblemTimeLinesResponseBodyDataUsersInContent `json:"usersInContent,omitempty" xml:"usersInContent,omitempty" type:"Repeated"`
 }
 
 func (s ListProblemTimeLinesResponseBodyData) String() string {
@@ -14297,9 +14603,8 @@ func (s *ListProblemTimeLinesResponseBodyData) SetUsersInContent(v []*ListProble
 }
 
 type ListProblemTimeLinesResponseBodyDataUsersInContent struct {
-	// 用户id
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
-	// 用户名
+	IsValid  *int64  `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	UserId   *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -14309,6 +14614,11 @@ func (s ListProblemTimeLinesResponseBodyDataUsersInContent) String() string {
 
 func (s ListProblemTimeLinesResponseBodyDataUsersInContent) GoString() string {
 	return s.String()
+}
+
+func (s *ListProblemTimeLinesResponseBodyDataUsersInContent) SetIsValid(v int64) *ListProblemTimeLinesResponseBodyDataUsersInContent {
+	s.IsValid = &v
+	return s
 }
 
 func (s *ListProblemTimeLinesResponseBodyDataUsersInContent) SetUserId(v int64) *ListProblemTimeLinesResponseBodyDataUsersInContent {
@@ -14322,8 +14632,9 @@ func (s *ListProblemTimeLinesResponseBodyDataUsersInContent) SetUsername(v strin
 }
 
 type ListProblemTimeLinesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListProblemTimeLinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProblemTimeLinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListProblemTimeLinesResponse) String() string {
@@ -14339,40 +14650,31 @@ func (s *ListProblemTimeLinesResponse) SetHeaders(v map[string]*string) *ListPro
 	return s
 }
 
+func (s *ListProblemTimeLinesResponse) SetStatusCode(v int32) *ListProblemTimeLinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListProblemTimeLinesResponse) SetBody(v *ListProblemTimeLinesResponseBody) *ListProblemTimeLinesResponse {
 	s.Body = v
 	return s
 }
 
 type ListProblemsRequest struct {
-	// 影响服务ID
-	AffectServiceId *int64 `json:"affectServiceId,omitempty" xml:"affectServiceId,omitempty"`
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 发现结束时间
-	DiscoveryEndTime *string `json:"discoveryEndTime,omitempty" xml:"discoveryEndTime,omitempty"`
-	// 发现开始时间
+	AffectServiceId    *int64  `json:"affectServiceId,omitempty" xml:"affectServiceId,omitempty"`
+	ClientToken        *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	DiscoveryEndTime   *string `json:"discoveryEndTime,omitempty" xml:"discoveryEndTime,omitempty"`
 	DiscoveryStartTime *string `json:"discoveryStartTime,omitempty" xml:"discoveryStartTime,omitempty"`
-	// 主要处理人
-	MainHandlerId *int64 `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
-	// 当前页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 页大小
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 故障等级 1=P1 2=P2 3=P3 4=P4
-	ProblemLevel *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
-	// 故障状态  HANDLING   处理中 RECOVERED 已恢复  REPLAYING   复盘中  REPLAYED     已复盘 CANCEL        已取消
-	ProblemStatus *string `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
-	// RESPONSIBLE 我负责的       PARTICIPATED 我参与的  ALL 全部
-	QueryType *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
-	// 复盘负责人
-	RepeaterId *int64 `json:"repeaterId,omitempty" xml:"repeaterId,omitempty"`
-	// 恢复结束时间
-	RestoreEndTime *string `json:"restoreEndTime,omitempty" xml:"restoreEndTime,omitempty"`
-	// 恢复开始时间
-	RestoreStartTime *string `json:"restoreStartTime,omitempty" xml:"restoreStartTime,omitempty"`
-	// 应急协同组
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	MainHandlerId      *int64  `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
+	PageNumber         *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize           *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ProblemLevel       *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	ProblemStatus      *string `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
+	QueryType          *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
+	RepeaterId         *int64  `json:"repeaterId,omitempty" xml:"repeaterId,omitempty"`
+	RestoreEndTime     *string `json:"restoreEndTime,omitempty" xml:"restoreEndTime,omitempty"`
+	RestoreStartTime   *string `json:"restoreStartTime,omitempty" xml:"restoreStartTime,omitempty"`
+	ServiceGroupId     *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s ListProblemsRequest) String() string {
@@ -14454,15 +14756,11 @@ func (s *ListProblemsRequest) SetServiceGroupId(v int64) *ListProblemsRequest {
 }
 
 type ListProblemsResponseBody struct {
-	Data []*ListProblemsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 当前页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 页大小
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总条数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListProblemsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber *int64                          `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int64                          `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RequestId  *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int64                          `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListProblemsResponseBody) String() string {
@@ -14499,45 +14797,28 @@ func (s *ListProblemsResponseBody) SetTotalCount(v int64) *ListProblemsResponseB
 }
 
 type ListProblemsResponseBodyData struct {
-	AffectServices []*ListProblemsResponseBodyDataAffectServices `json:"affectServices,omitempty" xml:"affectServices,omitempty" type:"Repeated"`
-	// 取消时间
-	CancelTime *string `json:"cancelTime,omitempty" xml:"cancelTime,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 发现时间
-	DiscoverTime *string `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
-	// 完结时间
-	FinishTime *string `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
-	// 事件ID
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 是否手动
-	IsManual *bool `json:"isManual,omitempty" xml:"isManual,omitempty"`
-	// 是否升级
-	IsUpgrade *bool `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
-	// 主要处理人ID
-	MainHandlerId *int64 `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
-	// 主要处理人名称
-	MainHandlerName *string `json:"mainHandlerName,omitempty" xml:"mainHandlerName,omitempty"`
-	// 故障id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 故障等级 1=P1 2=P2 3=P3 4=P4
-	ProblemLevel *string `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
-	// 故障名称
-	ProblemName *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
-	// 故障编号
-	ProblemNumber *string `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
-	// 故障状态  HANDLING    处理中 RECOVERED  已恢复  REPLAYING   复盘中  REPLAYED     已复盘 CANCEL        已取消
-	ProblemStatus *string `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
-	// 恢复时间
-	RecoveryTime *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
-	// 关联服务ID
-	RelatedServiceId *string `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	// 复盘时间
-	ReplayTime *string `json:"replayTime,omitempty" xml:"replayTime,omitempty"`
-	// 关联服务名称
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// 修改时间
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	AffectServices     []*ListProblemsResponseBodyDataAffectServices `json:"affectServices,omitempty" xml:"affectServices,omitempty" type:"Repeated"`
+	CancelTime         *string                                       `json:"cancelTime,omitempty" xml:"cancelTime,omitempty"`
+	CreateTime         *string                                       `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	DiscoverTime       *string                                       `json:"discoverTime,omitempty" xml:"discoverTime,omitempty"`
+	FinishTime         *string                                       `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
+	IncidentId         *int64                                        `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	IsManual           *bool                                         `json:"isManual,omitempty" xml:"isManual,omitempty"`
+	IsUpgrade          *bool                                         `json:"isUpgrade,omitempty" xml:"isUpgrade,omitempty"`
+	MainHandlerId      *int64                                        `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
+	MainHandlerIsValid *int64                                        `json:"mainHandlerIsValid,omitempty" xml:"mainHandlerIsValid,omitempty"`
+	MainHandlerName    *string                                       `json:"mainHandlerName,omitempty" xml:"mainHandlerName,omitempty"`
+	ProblemId          *int64                                        `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemLevel       *string                                       `json:"problemLevel,omitempty" xml:"problemLevel,omitempty"`
+	ProblemName        *string                                       `json:"problemName,omitempty" xml:"problemName,omitempty"`
+	ProblemNumber      *string                                       `json:"problemNumber,omitempty" xml:"problemNumber,omitempty"`
+	ProblemStatus      *string                                       `json:"problemStatus,omitempty" xml:"problemStatus,omitempty"`
+	RecoveryTime       *string                                       `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
+	RelatedServiceId   *string                                       `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	ReplayTime         *string                                       `json:"replayTime,omitempty" xml:"replayTime,omitempty"`
+	ServiceDeletedType *int32                                        `json:"serviceDeletedType,omitempty" xml:"serviceDeletedType,omitempty"`
+	ServiceName        *string                                       `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	UpdateTime         *string                                       `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListProblemsResponseBodyData) String() string {
@@ -14593,6 +14874,11 @@ func (s *ListProblemsResponseBodyData) SetMainHandlerId(v int64) *ListProblemsRe
 	return s
 }
 
+func (s *ListProblemsResponseBodyData) SetMainHandlerIsValid(v int64) *ListProblemsResponseBodyData {
+	s.MainHandlerIsValid = &v
+	return s
+}
+
 func (s *ListProblemsResponseBodyData) SetMainHandlerName(v string) *ListProblemsResponseBodyData {
 	s.MainHandlerName = &v
 	return s
@@ -14638,6 +14924,11 @@ func (s *ListProblemsResponseBodyData) SetReplayTime(v string) *ListProblemsResp
 	return s
 }
 
+func (s *ListProblemsResponseBodyData) SetServiceDeletedType(v int32) *ListProblemsResponseBodyData {
+	s.ServiceDeletedType = &v
+	return s
+}
+
 func (s *ListProblemsResponseBodyData) SetServiceName(v string) *ListProblemsResponseBodyData {
 	s.ServiceName = &v
 	return s
@@ -14649,14 +14940,10 @@ func (s *ListProblemsResponseBodyData) SetUpdateTime(v string) *ListProblemsResp
 }
 
 type ListProblemsResponseBodyDataAffectServices struct {
-	// 服务描述
 	ServiceDescription *string `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
-	// 影响服务ID
-	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// 服务名字
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// 修改时间
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	ServiceId          *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	UpdateTime         *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListProblemsResponseBodyDataAffectServices) String() string {
@@ -14688,8 +14975,9 @@ func (s *ListProblemsResponseBodyDataAffectServices) SetUpdateTime(v string) *Li
 }
 
 type ListProblemsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListProblemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProblemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListProblemsResponse) String() string {
@@ -14705,24 +14993,24 @@ func (s *ListProblemsResponse) SetHeaders(v map[string]*string) *ListProblemsRes
 	return s
 }
 
+func (s *ListProblemsResponse) SetStatusCode(v int32) *ListProblemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListProblemsResponse) SetBody(v *ListProblemsResponseBody) *ListProblemsResponse {
 	s.Body = v
 	return s
 }
 
 type ListRouteRulesRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 第几页
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 页的大小
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 路由类型：0触发事件 1仅触发报警 r
-	RouteType *int64 `json:"routeType,omitempty" xml:"routeType,omitempty"`
-	// 规则名称
-	RuleName []byte `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// 服务名称
-	ServiceName []byte `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	ClientToken               *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	NotFilterRouteRuleDeleted *bool   `json:"notFilterRouteRuleDeleted,omitempty" xml:"notFilterRouteRuleDeleted,omitempty"`
+	PageNumber                *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize                  *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RouteType                 *int64  `json:"routeType,omitempty" xml:"routeType,omitempty"`
+	RuleName                  []byte  `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	ServiceName               []byte  `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s ListRouteRulesRequest) String() string {
@@ -14735,6 +15023,11 @@ func (s ListRouteRulesRequest) GoString() string {
 
 func (s *ListRouteRulesRequest) SetClientToken(v string) *ListRouteRulesRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ListRouteRulesRequest) SetNotFilterRouteRuleDeleted(v bool) *ListRouteRulesRequest {
+	s.NotFilterRouteRuleDeleted = &v
 	return s
 }
 
@@ -14764,16 +15057,11 @@ func (s *ListRouteRulesRequest) SetServiceName(v []byte) *ListRouteRulesRequest 
 }
 
 type ListRouteRulesResponseBody struct {
-	// 规则列表
-	Data []*ListRouteRulesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 第几页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 分页大小
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总条数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListRouteRulesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber *int64                            `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int64                            `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RequestId  *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int64                            `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListRouteRulesResponseBody) String() string {
@@ -14810,40 +15098,25 @@ func (s *ListRouteRulesResponseBody) SetTotalCount(v int64) *ListRouteRulesRespo
 }
 
 type ListRouteRulesResponseBodyData struct {
-	// 事件分派对象ID（服务组ID 或用户ID）
-	AssignObjectId *int64 `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
-	// 事件分派对象类型 SERVICEGROUP 服务组  USER 单个用户
-	AssignObjectType *string `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 影响程度 LOW-一般 HIGH-严重
-	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	// 是否启用  DISABLE禁用. ENABLE 启用
-	EnableStatus *string `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
-	// 事件级别 P1 P2 P3 P4
-	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	// 命中次数
-	MatchCount *int64 `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
-	// 监控源名称
-	MonitorSourceNames *string `json:"monitorSourceNames,omitempty" xml:"monitorSourceNames,omitempty"`
-	// 关联服务ID
-	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	// 服务名称
-	RelatedServiceName *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
-	// 规则ID
-	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	// 路由类型：INCIDENT 触发事件 ALERT 仅触发报警
-	RouteType *string `json:"routeType,omitempty" xml:"routeType,omitempty"`
-	// 规则名称
-	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// 租户ID
-	TenantRamId *int64 `json:"tenantRamId,omitempty" xml:"tenantRamId,omitempty"`
-	// 时间窗口
-	TimeWindow *int64 `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
-	// 时间窗口单位 MINUTE 分钟  SECOND 秒
-	TimeWindowUnit *int64 `json:"timeWindowUnit,omitempty" xml:"timeWindowUnit,omitempty"`
-	// 修改时间
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	AssignObjectId       *int64  `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
+	AssignObjectType     *string `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
+	CreateTime           *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Effection            *string `json:"effection,omitempty" xml:"effection,omitempty"`
+	EnableStatus         *string `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
+	IncidentLevel        *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	IsValid              *int32  `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	MatchCount           *int64  `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
+	MonitorSourceNames   *string `json:"monitorSourceNames,omitempty" xml:"monitorSourceNames,omitempty"`
+	RelServiceDeleteType *int32  `json:"relServiceDeleteType,omitempty" xml:"relServiceDeleteType,omitempty"`
+	RelatedServiceId     *int64  `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	RelatedServiceName   *string `json:"relatedServiceName,omitempty" xml:"relatedServiceName,omitempty"`
+	RouteRuleId          *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	RouteType            *string `json:"routeType,omitempty" xml:"routeType,omitempty"`
+	RuleName             *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	TenantRamId          *int64  `json:"tenantRamId,omitempty" xml:"tenantRamId,omitempty"`
+	TimeWindow           *int64  `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
+	TimeWindowUnit       *int64  `json:"timeWindowUnit,omitempty" xml:"timeWindowUnit,omitempty"`
+	UpdateTime           *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListRouteRulesResponseBodyData) String() string {
@@ -14884,6 +15157,11 @@ func (s *ListRouteRulesResponseBodyData) SetIncidentLevel(v string) *ListRouteRu
 	return s
 }
 
+func (s *ListRouteRulesResponseBodyData) SetIsValid(v int32) *ListRouteRulesResponseBodyData {
+	s.IsValid = &v
+	return s
+}
+
 func (s *ListRouteRulesResponseBodyData) SetMatchCount(v int64) *ListRouteRulesResponseBodyData {
 	s.MatchCount = &v
 	return s
@@ -14891,6 +15169,11 @@ func (s *ListRouteRulesResponseBodyData) SetMatchCount(v int64) *ListRouteRulesR
 
 func (s *ListRouteRulesResponseBodyData) SetMonitorSourceNames(v string) *ListRouteRulesResponseBodyData {
 	s.MonitorSourceNames = &v
+	return s
+}
+
+func (s *ListRouteRulesResponseBodyData) SetRelServiceDeleteType(v int32) *ListRouteRulesResponseBodyData {
+	s.RelServiceDeleteType = &v
 	return s
 }
 
@@ -14940,8 +15223,9 @@ func (s *ListRouteRulesResponseBodyData) SetUpdateTime(v string) *ListRouteRules
 }
 
 type ListRouteRulesResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRouteRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRouteRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRouteRulesResponse) String() string {
@@ -14957,18 +15241,205 @@ func (s *ListRouteRulesResponse) SetHeaders(v map[string]*string) *ListRouteRule
 	return s
 }
 
+func (s *ListRouteRulesResponse) SetStatusCode(v int32) *ListRouteRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListRouteRulesResponse) SetBody(v *ListRouteRulesResponseBody) *ListRouteRulesResponse {
 	s.Body = v
 	return s
 }
 
+type ListRouteRulesByAssignWhoIdRequest struct {
+	AssignWhoId   *int64 `json:"assignWhoId,omitempty" xml:"assignWhoId,omitempty"`
+	AssignWhoType *int64 `json:"assignWhoType,omitempty" xml:"assignWhoType,omitempty"`
+}
+
+func (s ListRouteRulesByAssignWhoIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRouteRulesByAssignWhoIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRouteRulesByAssignWhoIdRequest) SetAssignWhoId(v int64) *ListRouteRulesByAssignWhoIdRequest {
+	s.AssignWhoId = &v
+	return s
+}
+
+func (s *ListRouteRulesByAssignWhoIdRequest) SetAssignWhoType(v int64) *ListRouteRulesByAssignWhoIdRequest {
+	s.AssignWhoType = &v
+	return s
+}
+
+type ListRouteRulesByAssignWhoIdResponseBody struct {
+	Data      []*ListRouteRulesByAssignWhoIdResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListRouteRulesByAssignWhoIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRouteRulesByAssignWhoIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRouteRulesByAssignWhoIdResponseBody) SetData(v []*ListRouteRulesByAssignWhoIdResponseBodyData) *ListRouteRulesByAssignWhoIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListRouteRulesByAssignWhoIdResponseBody) SetRequestId(v string) *ListRouteRulesByAssignWhoIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListRouteRulesByAssignWhoIdResponseBodyData struct {
+	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	RuleName    *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	TenantRamId *int64  `json:"tenantRamId,omitempty" xml:"tenantRamId,omitempty"`
+}
+
+func (s ListRouteRulesByAssignWhoIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRouteRulesByAssignWhoIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListRouteRulesByAssignWhoIdResponseBodyData) SetId(v int64) *ListRouteRulesByAssignWhoIdResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListRouteRulesByAssignWhoIdResponseBodyData) SetRuleName(v string) *ListRouteRulesByAssignWhoIdResponseBodyData {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListRouteRulesByAssignWhoIdResponseBodyData) SetTenantRamId(v int64) *ListRouteRulesByAssignWhoIdResponseBodyData {
+	s.TenantRamId = &v
+	return s
+}
+
+type ListRouteRulesByAssignWhoIdResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRouteRulesByAssignWhoIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRouteRulesByAssignWhoIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRouteRulesByAssignWhoIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRouteRulesByAssignWhoIdResponse) SetHeaders(v map[string]*string) *ListRouteRulesByAssignWhoIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRouteRulesByAssignWhoIdResponse) SetStatusCode(v int32) *ListRouteRulesByAssignWhoIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRouteRulesByAssignWhoIdResponse) SetBody(v *ListRouteRulesByAssignWhoIdResponseBody) *ListRouteRulesByAssignWhoIdResponse {
+	s.Body = v
+	return s
+}
+
+type ListRouteRulesByServiceResponseBody struct {
+	Data       []*ListRouteRulesByServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId  *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int32                                     `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListRouteRulesByServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRouteRulesByServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRouteRulesByServiceResponseBody) SetData(v []*ListRouteRulesByServiceResponseBodyData) *ListRouteRulesByServiceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListRouteRulesByServiceResponseBody) SetRequestId(v string) *ListRouteRulesByServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRouteRulesByServiceResponseBody) SetTotalCount(v int32) *ListRouteRulesByServiceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListRouteRulesByServiceResponseBodyData struct {
+	Id       *int32  `json:"id,omitempty" xml:"id,omitempty"`
+	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+}
+
+func (s ListRouteRulesByServiceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRouteRulesByServiceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListRouteRulesByServiceResponseBodyData) SetId(v int32) *ListRouteRulesByServiceResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListRouteRulesByServiceResponseBodyData) SetRuleName(v string) *ListRouteRulesByServiceResponseBodyData {
+	s.RuleName = &v
+	return s
+}
+
+type ListRouteRulesByServiceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRouteRulesByServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRouteRulesByServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRouteRulesByServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRouteRulesByServiceResponse) SetHeaders(v map[string]*string) *ListRouteRulesByServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRouteRulesByServiceResponse) SetStatusCode(v int32) *ListRouteRulesByServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRouteRulesByServiceResponse) SetBody(v *ListRouteRulesByServiceResponseBody) *ListRouteRulesByServiceResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceGroupMonitorSourceTemplatesRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s ListServiceGroupMonitorSourceTemplatesRequest) String() string {
@@ -14995,10 +15466,8 @@ func (s *ListServiceGroupMonitorSourceTemplatesRequest) SetServiceGroupId(v int6
 }
 
 type ListServiceGroupMonitorSourceTemplatesResponseBody struct {
-	// data
-	Data []*ListServiceGroupMonitorSourceTemplatesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      []*ListServiceGroupMonitorSourceTemplatesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string                                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListServiceGroupMonitorSourceTemplatesResponseBody) String() string {
@@ -15020,16 +15489,11 @@ func (s *ListServiceGroupMonitorSourceTemplatesResponseBody) SetRequestId(v stri
 }
 
 type ListServiceGroupMonitorSourceTemplatesResponseBodyData struct {
-	// 字段
-	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// 监控源ID
-	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	// 监控报警源名字
-	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	// 模板内容
-	TemplateContent *string `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
-	// 消息模版ID
-	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	Fields            []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	MonitorSourceId   *int64    `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	MonitorSourceName *string   `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	TemplateContent   *string   `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
+	TemplateId        *int64    `json:"templateId,omitempty" xml:"templateId,omitempty"`
 }
 
 func (s ListServiceGroupMonitorSourceTemplatesResponseBodyData) String() string {
@@ -15066,8 +15530,9 @@ func (s *ListServiceGroupMonitorSourceTemplatesResponseBodyData) SetTemplateId(v
 }
 
 type ListServiceGroupMonitorSourceTemplatesResponse struct {
-	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListServiceGroupMonitorSourceTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceGroupMonitorSourceTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListServiceGroupMonitorSourceTemplatesResponse) String() string {
@@ -15083,28 +15548,25 @@ func (s *ListServiceGroupMonitorSourceTemplatesResponse) SetHeaders(v map[string
 	return s
 }
 
+func (s *ListServiceGroupMonitorSourceTemplatesResponse) SetStatusCode(v int32) *ListServiceGroupMonitorSourceTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListServiceGroupMonitorSourceTemplatesResponse) SetBody(v *ListServiceGroupMonitorSourceTemplatesResponseBody) *ListServiceGroupMonitorSourceTemplatesResponse {
 	s.Body = v
 	return s
 }
 
 type ListServiceGroupsRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 是否已经排班
-	IsScheduled *bool `json:"isScheduled,omitempty" xml:"isScheduled,omitempty"`
-	// 是否根据排班状态排序
-	OrderByScheduleStatus *bool `json:"orderByScheduleStatus,omitempty" xml:"orderByScheduleStatus,omitempty"`
-	// 当前页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 页大小
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 搜索名称
-	QueryName *string `json:"queryName,omitempty" xml:"queryName,omitempty"`
-	// 搜索类型。USER用户 SERVICEGROUP服务组
-	QueryType *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
-	// 用户ID
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	ClientToken           *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	IsScheduled           *bool   `json:"isScheduled,omitempty" xml:"isScheduled,omitempty"`
+	OrderByScheduleStatus *bool   `json:"orderByScheduleStatus,omitempty" xml:"orderByScheduleStatus,omitempty"`
+	PageNumber            *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize              *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	QueryName             *string `json:"queryName,omitempty" xml:"queryName,omitempty"`
+	QueryType             *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
+	UserId                *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s ListServiceGroupsRequest) String() string {
@@ -15156,16 +15618,11 @@ func (s *ListServiceGroupsRequest) SetUserId(v int64) *ListServiceGroupsRequest 
 }
 
 type ListServiceGroupsResponseBody struct {
-	// 服务组列表
-	Data []*ListServiceGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 当前页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 分页大小
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总条数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListServiceGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber *int64                               `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int64                               `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RequestId  *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int64                               `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListServiceGroupsResponseBody) String() string {
@@ -15202,24 +15659,15 @@ func (s *ListServiceGroupsResponseBody) SetTotalCount(v int64) *ListServiceGroup
 }
 
 type ListServiceGroupsResponseBodyData struct {
-	// ENABLE 启用 DISABLE 禁用
-	EnableWebhook *string `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	// 是否已经排班
-	IsScheduled *bool `json:"isScheduled,omitempty" xml:"isScheduled,omitempty"`
-	// 服务组描述
-	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	// 服务组名字
-	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
-	// 修改时间
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// 服务组用户列表
-	Users []*ListServiceGroupsResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
-	// webhook 跳转地址
-	WebhookLink *string `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
-	// WEIXIN_GROUP微信DING_GROUP钉钉FEISHU_GROUP飞书
-	WebhookType *string `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
+	EnableWebhook           *string                                   `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	IsScheduled             *bool                                     `json:"isScheduled,omitempty" xml:"isScheduled,omitempty"`
+	ServiceGroupDescription *string                                   `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
+	ServiceGroupId          *int64                                    `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ServiceGroupName        *string                                   `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	UpdateTime              *string                                   `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Users                   []*ListServiceGroupsResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	WebhookLink             *string                                   `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
+	WebhookType             *string                                   `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
 }
 
 func (s ListServiceGroupsResponseBodyData) String() string {
@@ -15276,16 +15724,12 @@ func (s *ListServiceGroupsResponseBodyData) SetWebhookType(v string) *ListServic
 }
 
 type ListServiceGroupsResponseBodyDataUsers struct {
-	// 邮箱
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// 手机号
-	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	// 用户ID
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
-	// 用户名字
-	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	Email          *string `json:"email,omitempty" xml:"email,omitempty"`
+	IsRelated      *int32  `json:"isRelated,omitempty" xml:"isRelated,omitempty"`
+	Phone          *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	ServiceGroupId *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	UserId         *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserName       *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s ListServiceGroupsResponseBodyDataUsers) String() string {
@@ -15298,6 +15742,11 @@ func (s ListServiceGroupsResponseBodyDataUsers) GoString() string {
 
 func (s *ListServiceGroupsResponseBodyDataUsers) SetEmail(v string) *ListServiceGroupsResponseBodyDataUsers {
 	s.Email = &v
+	return s
+}
+
+func (s *ListServiceGroupsResponseBodyDataUsers) SetIsRelated(v int32) *ListServiceGroupsResponseBodyDataUsers {
+	s.IsRelated = &v
 	return s
 }
 
@@ -15322,8 +15771,9 @@ func (s *ListServiceGroupsResponseBodyDataUsers) SetUserName(v string) *ListServ
 }
 
 type ListServiceGroupsResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListServiceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListServiceGroupsResponse) String() string {
@@ -15339,19 +15789,101 @@ func (s *ListServiceGroupsResponse) SetHeaders(v map[string]*string) *ListServic
 	return s
 }
 
+func (s *ListServiceGroupsResponse) SetStatusCode(v int32) *ListServiceGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListServiceGroupsResponse) SetBody(v *ListServiceGroupsResponseBody) *ListServiceGroupsResponse {
 	s.Body = v
 	return s
 }
 
+type ListServiceGroupsByUserIdResponseBody struct {
+	Data      *ListServiceGroupsByUserIdResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListServiceGroupsByUserIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceGroupsByUserIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceGroupsByUserIdResponseBody) SetData(v *ListServiceGroupsByUserIdResponseBodyData) *ListServiceGroupsByUserIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListServiceGroupsByUserIdResponseBody) SetRequestId(v string) *ListServiceGroupsByUserIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListServiceGroupsByUserIdResponseBodyData struct {
+	IsScheduled      *bool   `json:"isScheduled,omitempty" xml:"isScheduled,omitempty"`
+	ServiceGroupId   *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+}
+
+func (s ListServiceGroupsByUserIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceGroupsByUserIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceGroupsByUserIdResponseBodyData) SetIsScheduled(v bool) *ListServiceGroupsByUserIdResponseBodyData {
+	s.IsScheduled = &v
+	return s
+}
+
+func (s *ListServiceGroupsByUserIdResponseBodyData) SetServiceGroupId(v int64) *ListServiceGroupsByUserIdResponseBodyData {
+	s.ServiceGroupId = &v
+	return s
+}
+
+func (s *ListServiceGroupsByUserIdResponseBodyData) SetServiceGroupName(v string) *ListServiceGroupsByUserIdResponseBodyData {
+	s.ServiceGroupName = &v
+	return s
+}
+
+type ListServiceGroupsByUserIdResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceGroupsByUserIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListServiceGroupsByUserIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceGroupsByUserIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceGroupsByUserIdResponse) SetHeaders(v map[string]*string) *ListServiceGroupsByUserIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceGroupsByUserIdResponse) SetStatusCode(v int32) *ListServiceGroupsByUserIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceGroupsByUserIdResponse) SetBody(v *ListServiceGroupsByUserIdResponseBody) *ListServiceGroupsByUserIdResponse {
+	s.Body = v
+	return s
+}
+
 type ListServicesRequest struct {
-	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 当前页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 页大小
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 服务名称
+	PageNumber  *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize    *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
@@ -15384,15 +15916,11 @@ func (s *ListServicesRequest) SetServiceName(v string) *ListServicesRequest {
 }
 
 type ListServicesResponseBody struct {
-	Data []*ListServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 当前页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 页大小
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总条数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber *int64                          `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int64                          `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RequestId  *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int64                          `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListServicesResponseBody) String() string {
@@ -15429,14 +15957,11 @@ func (s *ListServicesResponseBody) SetTotalCount(v int64) *ListServicesResponseB
 }
 
 type ListServicesResponseBodyData struct {
-	// 服务描述
+	IsValid            *int32  `json:"isValid,omitempty" xml:"isValid,omitempty"`
 	ServiceDescription *string `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
-	// 服务ID
-	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// 服务名字
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// 修改时间
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	ServiceId          *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	UpdateTime         *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListServicesResponseBodyData) String() string {
@@ -15445,6 +15970,11 @@ func (s ListServicesResponseBodyData) String() string {
 
 func (s ListServicesResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListServicesResponseBodyData) SetIsValid(v int32) *ListServicesResponseBodyData {
+	s.IsValid = &v
+	return s
 }
 
 func (s *ListServicesResponseBodyData) SetServiceDescription(v string) *ListServicesResponseBodyData {
@@ -15468,8 +15998,9 @@ func (s *ListServicesResponseBodyData) SetUpdateTime(v string) *ListServicesResp
 }
 
 type ListServicesResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListServicesResponse) String() string {
@@ -15485,30 +16016,26 @@ func (s *ListServicesResponse) SetHeaders(v map[string]*string) *ListServicesRes
 	return s
 }
 
+func (s *ListServicesResponse) SetStatusCode(v int32) *ListServicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListServicesResponse {
 	s.Body = v
 	return s
 }
 
 type ListSourceEventsRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 结束时间
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 报警或者事件ID
-	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// INCIDENT 事件、ALERT 报警、PROBLEM 故障
+	ClientToken  *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EndTime      *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// 当前页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 页大小
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// startRowKey 用来查询下一页的数据
-	StartRowKey *string `json:"startRowKey,omitempty" xml:"startRowKey,omitempty"`
-	// 开始时间
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// stopRowKey 用来查询上一页的数据
-	StopRowKey *string `json:"stopRowKey,omitempty" xml:"stopRowKey,omitempty"`
+	PageNumber   *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize     *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	StartRowKey  *string `json:"startRowKey,omitempty" xml:"startRowKey,omitempty"`
+	StartTime    *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	StopRowKey   *string `json:"stopRowKey,omitempty" xml:"stopRowKey,omitempty"`
 }
 
 func (s ListSourceEventsRequest) String() string {
@@ -15565,19 +16092,13 @@ func (s *ListSourceEventsRequest) SetStopRowKey(v string) *ListSourceEventsReque
 }
 
 type ListSourceEventsResponseBody struct {
-	Data []*ListSourceEventsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// firstRowKey
-	FirstRowKey *string `json:"firstRowKey,omitempty" xml:"firstRowKey,omitempty"`
-	// lastRowKey
-	LastRowKey *string `json:"lastRowKey,omitempty" xml:"lastRowKey,omitempty"`
-	// 当前页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 页大小
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总条数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data        []*ListSourceEventsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	FirstRowKey *string                             `json:"firstRowKey,omitempty" xml:"firstRowKey,omitempty"`
+	LastRowKey  *string                             `json:"lastRowKey,omitempty" xml:"lastRowKey,omitempty"`
+	PageNumber  *int64                              `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize    *int64                              `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RequestId   *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount  *int64                              `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListSourceEventsResponseBody) String() string {
@@ -15624,22 +16145,14 @@ func (s *ListSourceEventsResponseBody) SetTotalCount(v int64) *ListSourceEventsR
 }
 
 type ListSourceEventsResponseBodyData struct {
-	// 告警内容json
-	EventJson *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
-	// 告警上报时间
-	EventTime *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
-	// 关联对象ID
-	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// INCIDENT 事件、ALERT 报警、PROBLEM 故障
-	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// 监控告警源ID
-	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	// 监控告警源名称
+	EventJson         *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
+	EventTime         *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
+	InstanceId        *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceType      *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	MonitorSourceId   *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
 	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	// 规则ID
-	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	// 租户ID
-	TenantRamId *int64 `json:"tenantRamId,omitempty" xml:"tenantRamId,omitempty"`
+	RouteRuleId       *int64  `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	TenantRamId       *int64  `json:"tenantRamId,omitempty" xml:"tenantRamId,omitempty"`
 }
 
 func (s ListSourceEventsResponseBodyData) String() string {
@@ -15691,8 +16204,9 @@ func (s *ListSourceEventsResponseBodyData) SetTenantRamId(v int64) *ListSourceEv
 }
 
 type ListSourceEventsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSourceEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSourceEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSourceEventsResponse) String() string {
@@ -15708,13 +16222,17 @@ func (s *ListSourceEventsResponse) SetHeaders(v map[string]*string) *ListSourceE
 	return s
 }
 
+func (s *ListSourceEventsResponse) SetStatusCode(v int32) *ListSourceEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListSourceEventsResponse) SetBody(v *ListSourceEventsResponseBody) *ListSourceEventsResponse {
 	s.Body = v
 	return s
 }
 
 type ListSourceEventsForMonitorSourceRequest struct {
-	// 监控源ID
 	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
 }
 
@@ -15732,10 +16250,8 @@ func (s *ListSourceEventsForMonitorSourceRequest) SetMonitorSourceId(v int64) *L
 }
 
 type ListSourceEventsForMonitorSourceResponseBody struct {
-	// 告警列表
-	Data []*ListSourceEventsForMonitorSourceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      []*ListSourceEventsForMonitorSourceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string                                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListSourceEventsForMonitorSourceResponseBody) String() string {
@@ -15757,13 +16273,9 @@ func (s *ListSourceEventsForMonitorSourceResponseBody) SetRequestId(v string) *L
 }
 
 type ListSourceEventsForMonitorSourceResponseBodyData struct {
-	// 告警内容
-	EventJson *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
-	// 告警上报时间
-	EventTime *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
-	// 监控源ID
-	MonitorSourceId *bool `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	// 监控源名称
+	EventJson         *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
+	EventTime         *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
+	MonitorSourceId   *bool   `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
 	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
 }
 
@@ -15796,8 +16308,9 @@ func (s *ListSourceEventsForMonitorSourceResponseBodyData) SetMonitorSourceName(
 }
 
 type ListSourceEventsForMonitorSourceResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSourceEventsForMonitorSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSourceEventsForMonitorSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSourceEventsForMonitorSourceResponse) String() string {
@@ -15813,16 +16326,19 @@ func (s *ListSourceEventsForMonitorSourceResponse) SetHeaders(v map[string]*stri
 	return s
 }
 
+func (s *ListSourceEventsForMonitorSourceResponse) SetStatusCode(v int32) *ListSourceEventsForMonitorSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListSourceEventsForMonitorSourceResponse) SetBody(v *ListSourceEventsForMonitorSourceResponseBody) *ListSourceEventsForMonitorSourceResponse {
 	s.Body = v
 	return s
 }
 
 type ListSubscriptionServiceGroupsRequest struct {
-	// 幂等校验token
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 服务列表
-	ServiceIds []*int64 `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
+	ClientToken *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ServiceIds  []*int64 `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
 }
 
 func (s ListSubscriptionServiceGroupsRequest) String() string {
@@ -15844,9 +16360,8 @@ func (s *ListSubscriptionServiceGroupsRequest) SetServiceIds(v []*int64) *ListSu
 }
 
 type ListSubscriptionServiceGroupsResponseBody struct {
-	Data []*ListSubscriptionServiceGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      []*ListSubscriptionServiceGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string                                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListSubscriptionServiceGroupsResponseBody) String() string {
@@ -15868,12 +16383,9 @@ func (s *ListSubscriptionServiceGroupsResponseBody) SetRequestId(v string) *List
 }
 
 type ListSubscriptionServiceGroupsResponseBodyData struct {
-	// 服务组描述
 	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
-	// 主键
-	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// 服务组名称
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	ServiceId               *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName             *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s ListSubscriptionServiceGroupsResponseBodyData) String() string {
@@ -15900,8 +16412,9 @@ func (s *ListSubscriptionServiceGroupsResponseBodyData) SetServiceName(v string)
 }
 
 type ListSubscriptionServiceGroupsResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSubscriptionServiceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSubscriptionServiceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSubscriptionServiceGroupsResponse) String() string {
@@ -15917,28 +16430,26 @@ func (s *ListSubscriptionServiceGroupsResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *ListSubscriptionServiceGroupsResponse) SetStatusCode(v int32) *ListSubscriptionServiceGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListSubscriptionServiceGroupsResponse) SetBody(v *ListSubscriptionServiceGroupsResponseBody) *ListSubscriptionServiceGroupsResponse {
 	s.Body = v
 	return s
 }
 
 type ListSubscriptionsRequest struct {
-	// 幂等参数
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 通知对象名
-	NotifyObject *string `json:"notifyObject,omitempty" xml:"notifyObject,omitempty"`
-	// 通知对象类型notifyWhoType:0服务组 1个人
-	NotifyObjectType *string `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
-	// 第几页
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 一页几条
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 订阅范围类型 0全部1服务2流转规则
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 订阅范围对象名称
-	ScopeObject *string `json:"scopeObject,omitempty" xml:"scopeObject,omitempty"`
-	// 通知订阅名
-	SubscriptionTitle *string `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
+	ClientToken                 *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	NotFilterScopeObjectDeleted *bool   `json:"notFilterScopeObjectDeleted,omitempty" xml:"notFilterScopeObjectDeleted,omitempty"`
+	NotifyObject                *string `json:"notifyObject,omitempty" xml:"notifyObject,omitempty"`
+	NotifyObjectType            *string `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
+	PageNumber                  *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize                    *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Scope                       *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObject                 *string `json:"scopeObject,omitempty" xml:"scopeObject,omitempty"`
+	SubscriptionTitle           *string `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
 }
 
 func (s ListSubscriptionsRequest) String() string {
@@ -15951,6 +16462,11 @@ func (s ListSubscriptionsRequest) GoString() string {
 
 func (s *ListSubscriptionsRequest) SetClientToken(v string) *ListSubscriptionsRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ListSubscriptionsRequest) SetNotFilterScopeObjectDeleted(v bool) *ListSubscriptionsRequest {
+	s.NotFilterScopeObjectDeleted = &v
 	return s
 }
 
@@ -15990,15 +16506,11 @@ func (s *ListSubscriptionsRequest) SetSubscriptionTitle(v string) *ListSubscript
 }
 
 type ListSubscriptionsResponseBody struct {
-	Data []*ListSubscriptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 分页参数
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 分页参数
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 分页参数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListSubscriptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber *int64                               `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int64                               `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RequestId  *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int64                               `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListSubscriptionsResponseBody) String() string {
@@ -16035,26 +16547,16 @@ func (s *ListSubscriptionsResponseBody) SetTotalCount(v int64) *ListSubscription
 }
 
 type ListSubscriptionsResponseBodyData struct {
-	// 时效结束时间
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 有效期类型 0 长期 1短期
-	ExpiredType *string `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
-	// 通知对象列表
-	NotifyObjectList []*ListSubscriptionsResponseBodyDataNotifyObjectList `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
-	// 0服务组 1个人
-	NotifyObjectType *int64 `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
-	// 0 全部 1服务 2 流转规则
-	Scope *int64 `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 订阅范围列表
-	ScopeObjectList []*ListSubscriptionsResponseBodyDataScopeObjectList `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
-	// 时效开始时间
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// ENABLE 启用 DISABLE禁用
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 订阅id
-	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
-	// 通知订阅名称
-	SubscriptionTitle *string `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
+	EndTime           *string                                              `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	ExpiredType       *string                                              `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
+	NotifyObjectList  []*ListSubscriptionsResponseBodyDataNotifyObjectList `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
+	NotifyObjectType  *int64                                               `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
+	Scope             *int64                                               `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObjectList   []*ListSubscriptionsResponseBodyDataScopeObjectList  `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
+	StartTime         *string                                              `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status            *string                                              `json:"status,omitempty" xml:"status,omitempty"`
+	SubscriptionId    *int64                                               `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
+	SubscriptionTitle *string                                              `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
 }
 
 func (s ListSubscriptionsResponseBodyData) String() string {
@@ -16116,14 +16618,11 @@ func (s *ListSubscriptionsResponseBodyData) SetSubscriptionTitle(v string) *List
 }
 
 type ListSubscriptionsResponseBodyDataNotifyObjectList struct {
-	// id主键
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 通知对象名
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 关联主键id
-	NotifyObjectId *int64 `json:"notifyObjectId,omitempty" xml:"notifyObjectId,omitempty"`
-	// 通知对象类型0服务组 1个人
-	NotifyObjectType *int64 `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
+	Id               *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	IsValid          *int64  `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+	NotifyObjectId   *int64  `json:"notifyObjectId,omitempty" xml:"notifyObjectId,omitempty"`
+	NotifyObjectType *int64  `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
 }
 
 func (s ListSubscriptionsResponseBodyDataNotifyObjectList) String() string {
@@ -16136,6 +16635,11 @@ func (s ListSubscriptionsResponseBodyDataNotifyObjectList) GoString() string {
 
 func (s *ListSubscriptionsResponseBodyDataNotifyObjectList) SetId(v int64) *ListSubscriptionsResponseBodyDataNotifyObjectList {
 	s.Id = &v
+	return s
+}
+
+func (s *ListSubscriptionsResponseBodyDataNotifyObjectList) SetIsValid(v int64) *ListSubscriptionsResponseBodyDataNotifyObjectList {
+	s.IsValid = &v
 	return s
 }
 
@@ -16155,14 +16659,11 @@ func (s *ListSubscriptionsResponseBodyDataNotifyObjectList) SetNotifyObjectType(
 }
 
 type ListSubscriptionsResponseBodyDataScopeObjectList struct {
-	// id主键
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 订阅范围类型 ALL全部 SERVICE服务 ROUTETULE流转规则
-	Scope *int64 `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 订阅范围对象名称
-	ScopeObject *string `json:"scopeObject,omitempty" xml:"scopeObject,omitempty"`
-	// 订阅范围对象关联表主键id
-	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	Id            *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	IsValid       *int64  `json:"isValid,omitempty" xml:"isValid,omitempty"`
+	Scope         *int64  `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObject   *string `json:"scopeObject,omitempty" xml:"scopeObject,omitempty"`
+	ScopeObjectId *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
 }
 
 func (s ListSubscriptionsResponseBodyDataScopeObjectList) String() string {
@@ -16175,6 +16676,11 @@ func (s ListSubscriptionsResponseBodyDataScopeObjectList) GoString() string {
 
 func (s *ListSubscriptionsResponseBodyDataScopeObjectList) SetId(v int64) *ListSubscriptionsResponseBodyDataScopeObjectList {
 	s.Id = &v
+	return s
+}
+
+func (s *ListSubscriptionsResponseBodyDataScopeObjectList) SetIsValid(v int64) *ListSubscriptionsResponseBodyDataScopeObjectList {
+	s.IsValid = &v
 	return s
 }
 
@@ -16194,8 +16700,9 @@ func (s *ListSubscriptionsResponseBodyDataScopeObjectList) SetScopeObjectId(v in
 }
 
 type ListSubscriptionsResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSubscriptionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSubscriptionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSubscriptionsResponse) String() string {
@@ -16211,24 +16718,23 @@ func (s *ListSubscriptionsResponse) SetHeaders(v map[string]*string) *ListSubscr
 	return s
 }
 
+func (s *ListSubscriptionsResponse) SetStatusCode(v int32) *ListSubscriptionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListSubscriptionsResponse) SetBody(v *ListSubscriptionsResponseBody) *ListSubscriptionsResponse {
 	s.Body = v
 	return s
 }
 
 type ListTrendForSourceEventRequest struct {
-	// 结束时间
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 报警ID
-	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 类型
+	EndTime      *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// 请求ID
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 开始时间
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 时间单位毫秒
-	TimeUnit *int64 `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	StartTime    *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	TimeUnit     *int64  `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
 }
 
 func (s ListTrendForSourceEventRequest) String() string {
@@ -16270,10 +16776,8 @@ func (s *ListTrendForSourceEventRequest) SetTimeUnit(v int64) *ListTrendForSourc
 }
 
 type ListTrendForSourceEventResponseBody struct {
-	// 统计列表
-	Data []*ListTrendForSourceEventResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      []*ListTrendForSourceEventResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListTrendForSourceEventResponseBody) String() string {
@@ -16295,16 +16799,11 @@ func (s *ListTrendForSourceEventResponseBody) SetRequestId(v string) *ListTrendF
 }
 
 type ListTrendForSourceEventResponseBodyData struct {
-	// 收敛率
-	ConvergenceRate *string `json:"convergenceRate,omitempty" xml:"convergenceRate,omitempty"`
-	// 最大持续时长
-	MaxSustainTime *int64 `json:"maxSustainTime,omitempty" xml:"maxSustainTime,omitempty"`
-	// 是否跨天
-	SkipDay *bool `json:"skipDay,omitempty" xml:"skipDay,omitempty"`
-	// 按监控源分组统计数据
+	ConvergenceRate     *string                `json:"convergenceRate,omitempty" xml:"convergenceRate,omitempty"`
+	MaxSustainTime      *int64                 `json:"maxSustainTime,omitempty" xml:"maxSustainTime,omitempty"`
+	SkipDay             *bool                  `json:"skipDay,omitempty" xml:"skipDay,omitempty"`
 	SourceEventsStatMap map[string]interface{} `json:"sourceEventsStatMap,omitempty" xml:"sourceEventsStatMap,omitempty"`
-	// 时间单位
-	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	Unit                *string                `json:"unit,omitempty" xml:"unit,omitempty"`
 }
 
 func (s ListTrendForSourceEventResponseBodyData) String() string {
@@ -16341,8 +16840,9 @@ func (s *ListTrendForSourceEventResponseBodyData) SetUnit(v string) *ListTrendFo
 }
 
 type ListTrendForSourceEventResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTrendForSourceEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTrendForSourceEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTrendForSourceEventResponse) String() string {
@@ -16358,16 +16858,19 @@ func (s *ListTrendForSourceEventResponse) SetHeaders(v map[string]*string) *List
 	return s
 }
 
+func (s *ListTrendForSourceEventResponse) SetStatusCode(v int32) *ListTrendForSourceEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListTrendForSourceEventResponse) SetBody(v *ListTrendForSourceEventResponseBody) *ListTrendForSourceEventResponse {
 	s.Body = v
 	return s
 }
 
 type ListUserSerivceGroupsRequest struct {
-	// clientToken
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 用户ID
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s ListUserSerivceGroupsRequest) String() string {
@@ -16389,9 +16892,8 @@ func (s *ListUserSerivceGroupsRequest) SetUserId(v int64) *ListUserSerivceGroups
 }
 
 type ListUserSerivceGroupsResponseBody struct {
-	Data *ListUserSerivceGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *ListUserSerivceGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListUserSerivceGroupsResponseBody) String() string {
@@ -16413,18 +16915,12 @@ func (s *ListUserSerivceGroupsResponseBody) SetRequestId(v string) *ListUserSeri
 }
 
 type ListUserSerivceGroupsResponseBodyData struct {
-	// 邮箱
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// 手机号
-	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// RAM子账号ID
-	RamId *int64 `json:"ramId,omitempty" xml:"ramId,omitempty"`
-	// 人员所属服务组
+	Email         *string                                               `json:"email,omitempty" xml:"email,omitempty"`
+	Phone         *string                                               `json:"phone,omitempty" xml:"phone,omitempty"`
+	RamId         *int64                                                `json:"ramId,omitempty" xml:"ramId,omitempty"`
 	ServiceGroups []*ListUserSerivceGroupsResponseBodyDataServiceGroups `json:"serviceGroups,omitempty" xml:"serviceGroups,omitempty" type:"Repeated"`
-	// 用户ID
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
-	// 用户昵称
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	UserId        *int64                                                `json:"userId,omitempty" xml:"userId,omitempty"`
+	Username      *string                                               `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s ListUserSerivceGroupsResponseBodyData) String() string {
@@ -16466,12 +16962,9 @@ func (s *ListUserSerivceGroupsResponseBodyData) SetUsername(v string) *ListUserS
 }
 
 type ListUserSerivceGroupsResponseBodyDataServiceGroups struct {
-	// 服务组描述
 	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
-	// 服务组id
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	// 服务组名称
-	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	ServiceGroupId          *int64  `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ServiceGroupName        *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
 }
 
 func (s ListUserSerivceGroupsResponseBodyDataServiceGroups) String() string {
@@ -16498,8 +16991,9 @@ func (s *ListUserSerivceGroupsResponseBodyDataServiceGroups) SetServiceGroupName
 }
 
 type ListUserSerivceGroupsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUserSerivceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUserSerivceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListUserSerivceGroupsResponse) String() string {
@@ -16515,28 +17009,25 @@ func (s *ListUserSerivceGroupsResponse) SetHeaders(v map[string]*string) *ListUs
 	return s
 }
 
+func (s *ListUserSerivceGroupsResponse) SetStatusCode(v int32) *ListUserSerivceGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListUserSerivceGroupsResponse) SetBody(v *ListUserSerivceGroupsResponseBody) *ListUserSerivceGroupsResponse {
 	s.Body = v
 	return s
 }
 
 type ListUsersRequest struct {
-	// clientToken
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 分页参数
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 分页参数
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 人员手机号
-	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// ramID
-	RamId *string `json:"ramId,omitempty" xml:"ramId,omitempty"`
-	// USER_LIST列表 ALL_USERS下拉
-	Scene *int64 `json:"scene,omitempty" xml:"scene,omitempty"`
-	// 移动应用协同渠道
+	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	PageNumber     *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize       *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Phone          *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	RamId          *string `json:"ramId,omitempty" xml:"ramId,omitempty"`
+	Scene          *int64  `json:"scene,omitempty" xml:"scene,omitempty"`
 	SynergyChannel *string `json:"synergyChannel,omitempty" xml:"synergyChannel,omitempty"`
-	// 人员名称
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	Username       *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s ListUsersRequest) String() string {
@@ -16588,16 +17079,11 @@ func (s *ListUsersRequest) SetUsername(v string) *ListUsersRequest {
 }
 
 type ListUsersResponseBody struct {
-	// data
-	Data []*ListUsersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 分页
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 分页
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总条数
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	Data       []*ListUsersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber *int64                       `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int64                       `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RequestId  *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int64                       `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListUsersResponseBody) String() string {
@@ -16634,26 +17120,18 @@ func (s *ListUsersResponseBody) SetTotalCount(v int64) *ListUsersResponseBody {
 }
 
 type ListUsersResponseBodyData struct {
-	// 账户类型
-	AccountType *int64 `json:"accountType,omitempty" xml:"accountType,omitempty"`
-	// 移动应用账户
-	AppAccount *string `json:"appAccount,omitempty" xml:"appAccount,omitempty"`
-	// 邮箱
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// 是否可编辑
-	IsEditableUser *int64 `json:"isEditableUser,omitempty" xml:"isEditableUser,omitempty"`
-	// 是否关联
-	IsRelated *string `json:"isRelated,omitempty" xml:"isRelated,omitempty"`
-	// 手机
-	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// 子账号ramId
-	RamId *int64 `json:"ramId,omitempty" xml:"ramId,omitempty"`
-	// 移动应用协同渠道
+	AccountType    *int64  `json:"accountType,omitempty" xml:"accountType,omitempty"`
+	AppAccount     *string `json:"appAccount,omitempty" xml:"appAccount,omitempty"`
+	Email          *string `json:"email,omitempty" xml:"email,omitempty"`
+	IsEditableUser *int64  `json:"isEditableUser,omitempty" xml:"isEditableUser,omitempty"`
+	IsOperation    *int32  `json:"isOperation,omitempty" xml:"isOperation,omitempty"`
+	IsRam          *int32  `json:"isRam,omitempty" xml:"isRam,omitempty"`
+	IsRelated      *string `json:"isRelated,omitempty" xml:"isRelated,omitempty"`
+	Phone          *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	RamId          *int64  `json:"ramId,omitempty" xml:"ramId,omitempty"`
 	SynergyChannel *string `json:"synergyChannel,omitempty" xml:"synergyChannel,omitempty"`
-	// 用户id
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
-	// 用户名
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	UserId         *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	Username       *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s ListUsersResponseBodyData) String() string {
@@ -16681,6 +17159,16 @@ func (s *ListUsersResponseBodyData) SetEmail(v string) *ListUsersResponseBodyDat
 
 func (s *ListUsersResponseBodyData) SetIsEditableUser(v int64) *ListUsersResponseBodyData {
 	s.IsEditableUser = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyData) SetIsOperation(v int32) *ListUsersResponseBodyData {
+	s.IsOperation = &v
+	return s
+}
+
+func (s *ListUsersResponseBodyData) SetIsRam(v int32) *ListUsersResponseBodyData {
+	s.IsRam = &v
 	return s
 }
 
@@ -16715,8 +17203,9 @@ func (s *ListUsersResponseBodyData) SetUsername(v string) *ListUsersResponseBody
 }
 
 type ListUsersResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListUsersResponse) String() string {
@@ -16732,18 +17221,20 @@ func (s *ListUsersResponse) SetHeaders(v map[string]*string) *ListUsersResponse 
 	return s
 }
 
+func (s *ListUsersResponse) SetStatusCode(v int32) *ListUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse {
 	s.Body = v
 	return s
 }
 
 type RecoverProblemRequest struct {
-	// 故障ID
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 通告类型 PROBLEM_NOTIFY：故障通告 PROBLEM_UPDATE：故障更新 PROBLEM_UPGRADE：故障升级 PROBLEM_DEGRADE：故障降级 PROBLEM_RECOVER：故障恢复 PROBLEM_REISSUE： 故障补发 PROBLEM_CANCEL：故障取消
+	ProblemId         *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
-	// 恢复时间
-	RecoveryTime *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
+	RecoveryTime      *string `json:"recoveryTime,omitempty" xml:"recoveryTime,omitempty"`
 }
 
 func (s RecoverProblemRequest) String() string {
@@ -16770,7 +17261,6 @@ func (s *RecoverProblemRequest) SetRecoveryTime(v string) *RecoverProblemRequest
 }
 
 type RecoverProblemResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -16788,8 +17278,9 @@ func (s *RecoverProblemResponseBody) SetRequestId(v string) *RecoverProblemRespo
 }
 
 type RecoverProblemResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecoverProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecoverProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecoverProblemResponse) String() string {
@@ -16805,13 +17296,17 @@ func (s *RecoverProblemResponse) SetHeaders(v map[string]*string) *RecoverProble
 	return s
 }
 
+func (s *RecoverProblemResponse) SetStatusCode(v int32) *RecoverProblemResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RecoverProblemResponse) SetBody(v *RecoverProblemResponseBody) *RecoverProblemResponse {
 	s.Body = v
 	return s
 }
 
 type RefreshIntegrationConfigKeyRequest struct {
-	// 幂等id
 	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
@@ -16835,9 +17330,8 @@ func (s *RefreshIntegrationConfigKeyRequest) SetIntegrationConfigId(v int64) *Re
 }
 
 type RefreshIntegrationConfigKeyResponseBody struct {
-	Data *RefreshIntegrationConfigKeyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *RefreshIntegrationConfigKeyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s RefreshIntegrationConfigKeyResponseBody) String() string {
@@ -16859,7 +17353,6 @@ func (s *RefreshIntegrationConfigKeyResponseBody) SetRequestId(v string) *Refres
 }
 
 type RefreshIntegrationConfigKeyResponseBodyData struct {
-	// 集成秘钥
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 }
 
@@ -16877,8 +17370,9 @@ func (s *RefreshIntegrationConfigKeyResponseBodyData) SetKey(v string) *RefreshI
 }
 
 type RefreshIntegrationConfigKeyResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RefreshIntegrationConfigKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RefreshIntegrationConfigKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RefreshIntegrationConfigKeyResponse) String() string {
@@ -16894,15 +17388,87 @@ func (s *RefreshIntegrationConfigKeyResponse) SetHeaders(v map[string]*string) *
 	return s
 }
 
+func (s *RefreshIntegrationConfigKeyResponse) SetStatusCode(v int32) *RefreshIntegrationConfigKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RefreshIntegrationConfigKeyResponse) SetBody(v *RefreshIntegrationConfigKeyResponseBody) *RefreshIntegrationConfigKeyResponse {
 	s.Body = v
 	return s
 }
 
+type RemoveIntegrationConfigRequest struct {
+	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
+}
+
+func (s RemoveIntegrationConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveIntegrationConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveIntegrationConfigRequest) SetClientToken(v string) *RemoveIntegrationConfigRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RemoveIntegrationConfigRequest) SetIntegrationConfigId(v int64) *RemoveIntegrationConfigRequest {
+	s.IntegrationConfigId = &v
+	return s
+}
+
+type RemoveIntegrationConfigResponseBody struct {
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s RemoveIntegrationConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveIntegrationConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveIntegrationConfigResponseBody) SetRequestId(v string) *RemoveIntegrationConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveIntegrationConfigResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveIntegrationConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveIntegrationConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveIntegrationConfigResponse) SetHeaders(v map[string]*string) *RemoveIntegrationConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveIntegrationConfigResponse) SetStatusCode(v int32) *RemoveIntegrationConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveIntegrationConfigResponse) SetBody(v *RemoveIntegrationConfigResponseBody) *RemoveIntegrationConfigResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveProblemServiceGroupRequest struct {
-	// 故障ID
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 应急协同组
+	ProblemId       *int64   `json:"problemId,omitempty" xml:"problemId,omitempty"`
 	ServiceGroupIds []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
@@ -16925,7 +17491,6 @@ func (s *RemoveProblemServiceGroupRequest) SetServiceGroupIds(v []*int64) *Remov
 }
 
 type RemoveProblemServiceGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -16943,8 +17508,9 @@ func (s *RemoveProblemServiceGroupResponseBody) SetRequestId(v string) *RemovePr
 }
 
 type RemoveProblemServiceGroupResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveProblemServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveProblemServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveProblemServiceGroupResponse) String() string {
@@ -16960,18 +17526,20 @@ func (s *RemoveProblemServiceGroupResponse) SetHeaders(v map[string]*string) *Re
 	return s
 }
 
+func (s *RemoveProblemServiceGroupResponse) SetStatusCode(v int32) *RemoveProblemServiceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RemoveProblemServiceGroupResponse) SetBody(v *RemoveProblemServiceGroupResponseBody) *RemoveProblemServiceGroupResponse {
 	s.Body = v
 	return s
 }
 
 type ReplayProblemRequest struct {
-	// 幂等校验token
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 故障ID
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 复盘负责人ID
-	ReplayDutyUserId *int64 `json:"replayDutyUserId,omitempty" xml:"replayDutyUserId,omitempty"`
+	ClientToken      *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ProblemId        *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ReplayDutyUserId *int64  `json:"replayDutyUserId,omitempty" xml:"replayDutyUserId,omitempty"`
 }
 
 func (s ReplayProblemRequest) String() string {
@@ -16998,7 +17566,6 @@ func (s *ReplayProblemRequest) SetReplayDutyUserId(v int64) *ReplayProblemReques
 }
 
 type ReplayProblemResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -17016,8 +17583,9 @@ func (s *ReplayProblemResponseBody) SetRequestId(v string) *ReplayProblemRespons
 }
 
 type ReplayProblemResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReplayProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReplayProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReplayProblemResponse) String() string {
@@ -17033,15 +17601,18 @@ func (s *ReplayProblemResponse) SetHeaders(v map[string]*string) *ReplayProblemR
 	return s
 }
 
+func (s *ReplayProblemResponse) SetStatusCode(v int32) *ReplayProblemResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ReplayProblemResponse) SetBody(v *ReplayProblemResponseBody) *ReplayProblemResponse {
 	s.Body = v
 	return s
 }
 
 type RespondIncidentRequest struct {
-	// 幂等校验Id
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 事件ID数组
+	ClientToken *string  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	IncidentIds []*int64 `json:"incidentIds,omitempty" xml:"incidentIds,omitempty" type:"Repeated"`
 }
 
@@ -17064,7 +17635,6 @@ func (s *RespondIncidentRequest) SetIncidentIds(v []*int64) *RespondIncidentRequ
 }
 
 type RespondIncidentResponseBody struct {
-	// requestId
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -17082,8 +17652,9 @@ func (s *RespondIncidentResponseBody) SetRequestId(v string) *RespondIncidentRes
 }
 
 type RespondIncidentResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RespondIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RespondIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RespondIncidentResponse) String() string {
@@ -17099,17 +17670,19 @@ func (s *RespondIncidentResponse) SetHeaders(v map[string]*string) *RespondIncid
 	return s
 }
 
+func (s *RespondIncidentResponse) SetStatusCode(v int32) *RespondIncidentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RespondIncidentResponse) SetBody(v *RespondIncidentResponseBody) *RespondIncidentResponse {
 	s.Body = v
 	return s
 }
 
 type RevokeProblemRecoveryRequest struct {
-	// 幂等校验Id
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 故障ID
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 通告类型 PROBLEM_NOTIFY：故障通告 PROBLEM_UPDATE：故障更新 PROBLEM_UPGRADE：故障升级 PROBLEM_DEGRADE：故障降级 PROBLEM_RECOVER：故障恢复 PROBLEM_REISSUE： 故障补发 PROBLEM_CANCEL：故障取消
+	ClientToken       *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ProblemId         *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
 }
 
@@ -17137,7 +17710,6 @@ func (s *RevokeProblemRecoveryRequest) SetProblemNotifyType(v string) *RevokePro
 }
 
 type RevokeProblemRecoveryResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -17155,8 +17727,9 @@ func (s *RevokeProblemRecoveryResponseBody) SetRequestId(v string) *RevokeProble
 }
 
 type RevokeProblemRecoveryResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RevokeProblemRecoveryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RevokeProblemRecoveryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RevokeProblemRecoveryResponse) String() string {
@@ -17172,23 +17745,68 @@ func (s *RevokeProblemRecoveryResponse) SetHeaders(v map[string]*string) *Revoke
 	return s
 }
 
+func (s *RevokeProblemRecoveryResponse) SetStatusCode(v int32) *RevokeProblemRecoveryResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RevokeProblemRecoveryResponse) SetBody(v *RevokeProblemRecoveryResponseBody) *RevokeProblemRecoveryResponse {
 	s.Body = v
 	return s
 }
 
+type UnbindUserResponseBody struct {
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UnbindUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindUserResponseBody) SetRequestId(v string) *UnbindUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnbindUserResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnbindUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnbindUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindUserResponse) SetHeaders(v map[string]*string) *UnbindUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnbindUserResponse) SetStatusCode(v int32) *UnbindUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnbindUserResponse) SetBody(v *UnbindUserResponseBody) *UnbindUserResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateEscalationPlanRequest struct {
-	// clientToken
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 升级计划描述
-	EscalationPlanDescription *string `json:"escalationPlanDescription,omitempty" xml:"escalationPlanDescription,omitempty"`
-	// 升级计划id
-	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
-	// 升级计划名称
-	EscalationPlanName *string `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
-	// 升级计划规则
-	EscalationPlanRules []*UpdateEscalationPlanRequestEscalationPlanRules `json:"escalationPlanRules,omitempty" xml:"escalationPlanRules,omitempty" type:"Repeated"`
-	// 关联范围列表（服务）
+	ClientToken                *string                                                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EscalationPlanDescription  *string                                                  `json:"escalationPlanDescription,omitempty" xml:"escalationPlanDescription,omitempty"`
+	EscalationPlanId           *int64                                                   `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
+	EscalationPlanName         *string                                                  `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
+	EscalationPlanRules        []*UpdateEscalationPlanRequestEscalationPlanRules        `json:"escalationPlanRules,omitempty" xml:"escalationPlanRules,omitempty" type:"Repeated"`
 	EscalationPlanScopeObjects []*UpdateEscalationPlanRequestEscalationPlanScopeObjects `json:"escalationPlanScopeObjects,omitempty" xml:"escalationPlanScopeObjects,omitempty" type:"Repeated"`
 }
 
@@ -17231,14 +17849,10 @@ func (s *UpdateEscalationPlanRequest) SetEscalationPlanScopeObjects(v []*UpdateE
 }
 
 type UpdateEscalationPlanRequestEscalationPlanRules struct {
-	// 升级计划条件列表
 	EscalationPlanConditions []*UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions `json:"escalationPlanConditions,omitempty" xml:"escalationPlanConditions,omitempty" type:"Repeated"`
-	// 升级策略列表
 	EscalationPlanStrategies []*UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies `json:"escalationPlanStrategies,omitempty" xml:"escalationPlanStrategies,omitempty" type:"Repeated"`
-	// UN_ACKNOWLEDGE 未响应 UN_FINISH 未完结
-	EscalationPlanType *string `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
-	// 主键
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	EscalationPlanType       *string                                                                   `json:"escalationPlanType,omitempty" xml:"escalationPlanType,omitempty"`
+	Id                       *int64                                                                    `json:"id,omitempty" xml:"id,omitempty"`
 }
 
 func (s UpdateEscalationPlanRequestEscalationPlanRules) String() string {
@@ -17270,10 +17884,8 @@ func (s *UpdateEscalationPlanRequestEscalationPlanRules) SetId(v int64) *UpdateE
 }
 
 type UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions struct {
-	// LOW HIGH
 	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	// P1 P2 P3 P4
-	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	Level     *string `json:"level,omitempty" xml:"level,omitempty"`
 }
 
 func (s UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions) String() string {
@@ -17295,16 +17907,11 @@ func (s *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions)
 }
 
 type UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies struct {
-	// 是否支持群通知
-	EnableWebhook *bool `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	// 通知渠道
-	NoticeChannels []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
-	// 通知对象id
-	NoticeObjects []*int64 `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
-	// 通知时间
-	NoticeTime *int64 `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
-	// 服务组id
-	ServiceGroupIds []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
+	EnableWebhook   *bool     `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	NoticeChannels  []*string `json:"noticeChannels,omitempty" xml:"noticeChannels,omitempty" type:"Repeated"`
+	NoticeObjects   []*int64  `json:"noticeObjects,omitempty" xml:"noticeObjects,omitempty" type:"Repeated"`
+	NoticeTime      *int64    `json:"noticeTime,omitempty" xml:"noticeTime,omitempty"`
+	ServiceGroupIds []*int64  `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies) String() string {
@@ -17341,12 +17948,9 @@ func (s *UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies)
 }
 
 type UpdateEscalationPlanRequestEscalationPlanScopeObjects struct {
-	// 主键
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 范围对象类型
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 范围对象id
-	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
+	Id            *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Scope         *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObjectId *int64  `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
 }
 
 func (s UpdateEscalationPlanRequestEscalationPlanScopeObjects) String() string {
@@ -17373,7 +17977,6 @@ func (s *UpdateEscalationPlanRequestEscalationPlanScopeObjects) SetScopeObjectId
 }
 
 type UpdateEscalationPlanResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -17391,8 +17994,9 @@ func (s *UpdateEscalationPlanResponseBody) SetRequestId(v string) *UpdateEscalat
 }
 
 type UpdateEscalationPlanResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateEscalationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateEscalationPlanResponse) String() string {
@@ -17408,21 +18012,21 @@ func (s *UpdateEscalationPlanResponse) SetHeaders(v map[string]*string) *UpdateE
 	return s
 }
 
+func (s *UpdateEscalationPlanResponse) SetStatusCode(v int32) *UpdateEscalationPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateEscalationPlanResponse) SetBody(v *UpdateEscalationPlanResponseBody) *UpdateEscalationPlanResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateIncidentRequest struct {
-	// 幂等校验Id
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 影响程度
-	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// 事件Id
-	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 级别
+	ClientToken   *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Effect        *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	IncidentId    *int64  `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	// 事件标题
 	IncidentTitle *string `json:"incidentTitle,omitempty" xml:"incidentTitle,omitempty"`
 }
 
@@ -17460,9 +18064,8 @@ func (s *UpdateIncidentRequest) SetIncidentTitle(v string) *UpdateIncidentReques
 }
 
 type UpdateIncidentResponseBody struct {
-	Data *UpdateIncidentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *UpdateIncidentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s UpdateIncidentResponseBody) String() string {
@@ -17484,7 +18087,6 @@ func (s *UpdateIncidentResponseBody) SetRequestId(v string) *UpdateIncidentRespo
 }
 
 type UpdateIncidentResponseBodyData struct {
-	// 事件id
 	IncidentId *int64 `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
 }
 
@@ -17502,8 +18104,9 @@ func (s *UpdateIncidentResponseBodyData) SetIncidentId(v int64) *UpdateIncidentR
 }
 
 type UpdateIncidentResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateIncidentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateIncidentResponse) String() string {
@@ -17519,15 +18122,18 @@ func (s *UpdateIncidentResponse) SetHeaders(v map[string]*string) *UpdateInciden
 	return s
 }
 
+func (s *UpdateIncidentResponse) SetStatusCode(v int32) *UpdateIncidentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateIncidentResponse) SetBody(v *UpdateIncidentResponseBody) *UpdateIncidentResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateIntegrationConfigRequest struct {
-	// 集成秘钥
-	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
-	// 幂等id
+	AccessKey           *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
 	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	IntegrationConfigId *int64  `json:"integrationConfigId,omitempty" xml:"integrationConfigId,omitempty"`
 }
@@ -17556,7 +18162,6 @@ func (s *UpdateIntegrationConfigRequest) SetIntegrationConfigId(v int64) *Update
 }
 
 type UpdateIntegrationConfigResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -17574,8 +18179,9 @@ func (s *UpdateIntegrationConfigResponseBody) SetRequestId(v string) *UpdateInte
 }
 
 type UpdateIntegrationConfigResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateIntegrationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateIntegrationConfigResponse) String() string {
@@ -17591,32 +18197,27 @@ func (s *UpdateIntegrationConfigResponse) SetHeaders(v map[string]*string) *Upda
 	return s
 }
 
+func (s *UpdateIntegrationConfigResponse) SetStatusCode(v int32) *UpdateIntegrationConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateIntegrationConfigResponse) SetBody(v *UpdateIntegrationConfigResponseBody) *UpdateIntegrationConfigResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateProblemRequest struct {
-	// 舆情反馈
-	Feedback *string `json:"feedback,omitempty" xml:"feedback,omitempty"`
-	// 故障等级
-	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// 主要处理人
-	MainHandlerId *int64 `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
-	// 初步原因
-	PreliminaryReason *string `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
-	// 故障ID
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 故障名
-	ProblemName *string `json:"problemName,omitempty" xml:"problemName,omitempty"`
-	// 进展摘要
-	ProgressSummary *string `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
-	// 进展摘要富文本id
-	ProgressSummaryRichTextId *int64 `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
-	// 所属服务
-	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	// 应急协同组
-	ServiceGroupIds []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
+	Feedback                  *string  `json:"feedback,omitempty" xml:"feedback,omitempty"`
+	Level                     *string  `json:"level,omitempty" xml:"level,omitempty"`
+	MainHandlerId             *int64   `json:"mainHandlerId,omitempty" xml:"mainHandlerId,omitempty"`
+	PreliminaryReason         *string  `json:"preliminaryReason,omitempty" xml:"preliminaryReason,omitempty"`
+	ProblemId                 *int64   `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemName               *string  `json:"problemName,omitempty" xml:"problemName,omitempty"`
+	ProgressSummary           *string  `json:"progressSummary,omitempty" xml:"progressSummary,omitempty"`
+	ProgressSummaryRichTextId *int64   `json:"progressSummaryRichTextId,omitempty" xml:"progressSummaryRichTextId,omitempty"`
+	RelatedServiceId          *int64   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	ServiceGroupIds           []*int64 `json:"serviceGroupIds,omitempty" xml:"serviceGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateProblemRequest) String() string {
@@ -17678,7 +18279,6 @@ func (s *UpdateProblemRequest) SetServiceGroupIds(v []*int64) *UpdateProblemRequ
 }
 
 type UpdateProblemResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -17696,8 +18296,9 @@ func (s *UpdateProblemResponseBody) SetRequestId(v string) *UpdateProblemRespons
 }
 
 type UpdateProblemResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateProblemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateProblemResponse) String() string {
@@ -17713,28 +18314,25 @@ func (s *UpdateProblemResponse) SetHeaders(v map[string]*string) *UpdateProblemR
 	return s
 }
 
+func (s *UpdateProblemResponse) SetStatusCode(v int32) *UpdateProblemResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateProblemResponse) SetBody(v *UpdateProblemResponseBody) *UpdateProblemResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateProblemEffectionServiceRequest struct {
-	// clientToken
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 影响描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 影响服务id
-	EffectionServiceId *int64 `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
-	// 影响等级
-	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// 图片地址
-	PicUrl []*string `json:"picUrl,omitempty" xml:"picUrl,omitempty" type:"Repeated"`
-	// 故障id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 关联服务id
-	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// 影响状态 UN_RECOVERED 未恢复 RECOVERED已恢复
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	ClientToken        *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Description        *string   `json:"description,omitempty" xml:"description,omitempty"`
+	EffectionServiceId *int64    `json:"effectionServiceId,omitempty" xml:"effectionServiceId,omitempty"`
+	Level              *string   `json:"level,omitempty" xml:"level,omitempty"`
+	PicUrl             []*string `json:"picUrl,omitempty" xml:"picUrl,omitempty" type:"Repeated"`
+	ProblemId          *int64    `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ServiceId          *int64    `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	Status             *string   `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s UpdateProblemEffectionServiceRequest) String() string {
@@ -17786,7 +18384,6 @@ func (s *UpdateProblemEffectionServiceRequest) SetStatus(v string) *UpdateProble
 }
 
 type UpdateProblemEffectionServiceResponseBody struct {
-	// requestId
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -17804,8 +18401,9 @@ func (s *UpdateProblemEffectionServiceResponseBody) SetRequestId(v string) *Upda
 }
 
 type UpdateProblemEffectionServiceResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateProblemEffectionServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateProblemEffectionServiceResponse) String() string {
@@ -17821,42 +18419,33 @@ func (s *UpdateProblemEffectionServiceResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *UpdateProblemEffectionServiceResponse) SetStatusCode(v int32) *UpdateProblemEffectionServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateProblemEffectionServiceResponse) SetBody(v *UpdateProblemEffectionServiceResponseBody) *UpdateProblemEffectionServiceResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateProblemImprovementRequest struct {
-	// 幂等校验token
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 发现来源 码表:PROBLEM_DISCOVER_SOURCE
-	DiscoverSource *int64 `json:"discoverSource,omitempty" xml:"discoverSource,omitempty"`
-	// 故障责任部门ID
-	DutyDepartmentId *int64 `json:"dutyDepartmentId,omitempty" xml:"dutyDepartmentId,omitempty"`
-	// 故障责任部门
-	DutyDepartmentName *string `json:"dutyDepartmentName,omitempty" xml:"dutyDepartmentName,omitempty"`
-	// 故障责任人id
-	DutyUserId *int64 `json:"dutyUserId,omitempty" xml:"dutyUserId,omitempty"`
-	// 注入方式 码表:PROBLEM_INJECTION_MODE
-	InjectionMode *string `json:"injectionMode,omitempty" xml:"injectionMode,omitempty"`
-	// 监控源
-	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	// 故障ID
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 故障原因
-	ProblemReason *string `json:"problemReason,omitempty" xml:"problemReason,omitempty"`
-	// 最近活动 码表:PROBLEM_RECENT_ACTIVITY
-	RecentActivity *string `json:"recentActivity,omitempty" xml:"recentActivity,omitempty"`
-	// 恢复方式  码表:PROBLEM_RECOVERY_MODE
-	RecoveryMode *string `json:"recoveryMode,omitempty" xml:"recoveryMode,omitempty"`
-	// 关联变更
-	RelationChanges *string `json:"relationChanges,omitempty" xml:"relationChanges,omitempty"`
-	// 备注
-	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// 复盘负责人id
-	ReplayDutyUserId *int64 `json:"replayDutyUserId,omitempty" xml:"replayDutyUserId,omitempty"`
-	// 用户上报 码表:PROBLEM_USER_REPORT
-	UserReport *int64 `json:"userReport,omitempty" xml:"userReport,omitempty"`
+	ClientToken         *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	CustomProblemReason *string `json:"customProblemReason,omitempty" xml:"customProblemReason,omitempty"`
+	DiscoverSource      *int64  `json:"discoverSource,omitempty" xml:"discoverSource,omitempty"`
+	DutyDepartmentId    *int64  `json:"dutyDepartmentId,omitempty" xml:"dutyDepartmentId,omitempty"`
+	DutyDepartmentName  *string `json:"dutyDepartmentName,omitempty" xml:"dutyDepartmentName,omitempty"`
+	DutyUserId          *int64  `json:"dutyUserId,omitempty" xml:"dutyUserId,omitempty"`
+	InjectionMode       *string `json:"injectionMode,omitempty" xml:"injectionMode,omitempty"`
+	MonitorSourceName   *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
+	ProblemId           *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemReason       *string `json:"problemReason,omitempty" xml:"problemReason,omitempty"`
+	RecentActivity      *string `json:"recentActivity,omitempty" xml:"recentActivity,omitempty"`
+	RecoveryMode        *string `json:"recoveryMode,omitempty" xml:"recoveryMode,omitempty"`
+	RelationChanges     *string `json:"relationChanges,omitempty" xml:"relationChanges,omitempty"`
+	Remark              *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	ReplayDutyUserId    *int64  `json:"replayDutyUserId,omitempty" xml:"replayDutyUserId,omitempty"`
+	UserReport          *int64  `json:"userReport,omitempty" xml:"userReport,omitempty"`
 }
 
 func (s UpdateProblemImprovementRequest) String() string {
@@ -17869,6 +18458,11 @@ func (s UpdateProblemImprovementRequest) GoString() string {
 
 func (s *UpdateProblemImprovementRequest) SetClientToken(v string) *UpdateProblemImprovementRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateProblemImprovementRequest) SetCustomProblemReason(v string) *UpdateProblemImprovementRequest {
+	s.CustomProblemReason = &v
 	return s
 }
 
@@ -17943,7 +18537,6 @@ func (s *UpdateProblemImprovementRequest) SetUserReport(v int64) *UpdateProblemI
 }
 
 type UpdateProblemImprovementResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -17961,8 +18554,9 @@ func (s *UpdateProblemImprovementResponseBody) SetRequestId(v string) *UpdatePro
 }
 
 type UpdateProblemImprovementResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateProblemImprovementResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateProblemImprovementResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateProblemImprovementResponse) String() string {
@@ -17978,34 +18572,28 @@ func (s *UpdateProblemImprovementResponse) SetHeaders(v map[string]*string) *Upd
 	return s
 }
 
+func (s *UpdateProblemImprovementResponse) SetStatusCode(v int32) *UpdateProblemImprovementResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateProblemImprovementResponse) SetBody(v *UpdateProblemImprovementResponseBody) *UpdateProblemImprovementResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateProblemMeasureRequest struct {
-	// 验收标准
-	CheckStandard *string `json:"checkStandard,omitempty" xml:"checkStandard,omitempty"`
-	// 验收人id
-	CheckUserId *int64 `json:"checkUserId,omitempty" xml:"checkUserId,omitempty"`
-	// 幂等校验token
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 措施内容
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 负责人id
-	DirectorId *int64 `json:"directorId,omitempty" xml:"directorId,omitempty"`
-	// 措施Id
-	MeasureId *int64 `json:"measureId,omitempty" xml:"measureId,omitempty"`
-	// 计划完成时间
+	CheckStandard  *string `json:"checkStandard,omitempty" xml:"checkStandard,omitempty"`
+	CheckUserId    *int64  `json:"checkUserId,omitempty" xml:"checkUserId,omitempty"`
+	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Content        *string `json:"content,omitempty" xml:"content,omitempty"`
+	DirectorId     *int64  `json:"directorId,omitempty" xml:"directorId,omitempty"`
+	MeasureId      *int64  `json:"measureId,omitempty" xml:"measureId,omitempty"`
 	PlanFinishTime *string `json:"planFinishTime,omitempty" xml:"planFinishTime,omitempty"`
-	// 故障Id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 跟踪人id
-	StalkerId *int64 `json:"stalkerId,omitempty" xml:"stalkerId,omitempty"`
-	// 状态 IMPROVED 改进 2 未改进UNIMPROVED
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 措施类型 码表 PROBLEM_REPLAY_IMPROVEMENT
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	ProblemId      *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	StalkerId      *int64  `json:"stalkerId,omitempty" xml:"stalkerId,omitempty"`
+	Status         *string `json:"status,omitempty" xml:"status,omitempty"`
+	Type           *int32  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s UpdateProblemMeasureRequest) String() string {
@@ -18072,7 +18660,6 @@ func (s *UpdateProblemMeasureRequest) SetType(v int32) *UpdateProblemMeasureRequ
 }
 
 type UpdateProblemMeasureResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -18090,8 +18677,9 @@ func (s *UpdateProblemMeasureResponseBody) SetRequestId(v string) *UpdateProblem
 }
 
 type UpdateProblemMeasureResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateProblemMeasureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateProblemMeasureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateProblemMeasureResponse) String() string {
@@ -18107,17 +18695,19 @@ func (s *UpdateProblemMeasureResponse) SetHeaders(v map[string]*string) *UpdateP
 	return s
 }
 
+func (s *UpdateProblemMeasureResponse) SetStatusCode(v int32) *UpdateProblemMeasureResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateProblemMeasureResponse) SetBody(v *UpdateProblemMeasureResponseBody) *UpdateProblemMeasureResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateProblemNoticeRequest struct {
-	// 幂等校验Id
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 故障Id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 通告类型 PROBLEM_NOTIFY：故障通告 PROBLEM_UPDATE：故障更新 PROBLEM_UPGRADE：故障升级 PROBLEM_DEGRADE：故障降级 PROBLEM_RECOVER：故障恢复 PROBLEM_REISSUE： 故障补发 PROBLEM_CANCEL：故障取消
+	ClientToken       *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ProblemId         *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
 	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
 }
 
@@ -18145,7 +18735,6 @@ func (s *UpdateProblemNoticeRequest) SetProblemNotifyType(v string) *UpdateProbl
 }
 
 type UpdateProblemNoticeResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -18163,8 +18752,9 @@ func (s *UpdateProblemNoticeResponseBody) SetRequestId(v string) *UpdateProblemN
 }
 
 type UpdateProblemNoticeResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateProblemNoticeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateProblemNoticeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateProblemNoticeResponse) String() string {
@@ -18180,24 +18770,23 @@ func (s *UpdateProblemNoticeResponse) SetHeaders(v map[string]*string) *UpdatePr
 	return s
 }
 
+func (s *UpdateProblemNoticeResponse) SetStatusCode(v int32) *UpdateProblemNoticeResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateProblemNoticeResponse) SetBody(v *UpdateProblemNoticeResponseBody) *UpdateProblemNoticeResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateProblemTimelineRequest struct {
-	// clientToken
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 节点内容
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 关键节点 码表:PROBLEM_KEY_NODE (逗号分隔)
-	KeyNode *string `json:"keyNode,omitempty" xml:"keyNode,omitempty"`
-	// 故障id
-	ProblemId *int64 `json:"problemId,omitempty" xml:"problemId,omitempty"`
-	// 时间节点id
-	ProblemTimelineId *int64 `json:"problemTimelineId,omitempty" xml:"problemTimelineId,omitempty"`
-	// 发生时间
-	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	ClientToken       *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Content           *string `json:"content,omitempty" xml:"content,omitempty"`
+	KeyNode           *string `json:"keyNode,omitempty" xml:"keyNode,omitempty"`
+	ProblemId         *int64  `json:"problemId,omitempty" xml:"problemId,omitempty"`
+	ProblemTimelineId *int64  `json:"problemTimelineId,omitempty" xml:"problemTimelineId,omitempty"`
+	Time              *string `json:"time,omitempty" xml:"time,omitempty"`
 }
 
 func (s UpdateProblemTimelineRequest) String() string {
@@ -18256,8 +18845,9 @@ func (s *UpdateProblemTimelineResponseBody) SetRequestId(v string) *UpdateProble
 }
 
 type UpdateProblemTimelineResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateProblemTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateProblemTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateProblemTimelineResponse) String() string {
@@ -18273,20 +18863,21 @@ func (s *UpdateProblemTimelineResponse) SetHeaders(v map[string]*string) *Update
 	return s
 }
 
+func (s *UpdateProblemTimelineResponse) SetStatusCode(v int32) *UpdateProblemTimelineResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateProblemTimelineResponse) SetBody(v *UpdateProblemTimelineResponseBody) *UpdateProblemTimelineResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateRichTextRequest struct {
-	// 资源id
-	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 资源类型
+	InstanceId   *int64  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// 文本内容
-	RichText *string `json:"richText,omitempty" xml:"richText,omitempty"`
-	// 富文本id
-	RichTextId *int64 `json:"richTextId,omitempty" xml:"richTextId,omitempty"`
+	RichText     *string `json:"richText,omitempty" xml:"richText,omitempty"`
+	RichTextId   *int64  `json:"richTextId,omitempty" xml:"richTextId,omitempty"`
 }
 
 func (s UpdateRichTextRequest) String() string {
@@ -18318,10 +18909,8 @@ func (s *UpdateRichTextRequest) SetRichTextId(v int64) *UpdateRichTextRequest {
 }
 
 type UpdateRichTextResponseBody struct {
-	// data
-	Data *UpdateRichTextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *UpdateRichTextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s UpdateRichTextResponseBody) String() string {
@@ -18343,7 +18932,6 @@ func (s *UpdateRichTextResponseBody) SetRequestId(v string) *UpdateRichTextRespo
 }
 
 type UpdateRichTextResponseBodyData struct {
-	// 富文本id
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
 }
 
@@ -18361,8 +18949,9 @@ func (s *UpdateRichTextResponseBodyData) SetId(v int64) *UpdateRichTextResponseB
 }
 
 type UpdateRichTextResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateRichTextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateRichTextResponse) String() string {
@@ -18378,42 +18967,32 @@ func (s *UpdateRichTextResponse) SetHeaders(v map[string]*string) *UpdateRichTex
 	return s
 }
 
+func (s *UpdateRichTextResponse) SetStatusCode(v int32) *UpdateRichTextResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateRichTextResponse) SetBody(v *UpdateRichTextResponseBody) *UpdateRichTextResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateRouteRuleRequest struct {
-	// 事件分派对象ID（服务组ID 或用户ID）
-	AssignObjectId *int64 `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
-	// 事件分派对象类型 SERVICEGROUP服务组  USER 单个用户
-	AssignObjectType *string `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
-	// AND
-	ChildRuleRelation *string `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 影响程度 LOW-一般 HIGH-严重
-	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	// 事件级别 1-P1 2-P2 3-P3 4-P4
-	IncidentLevel *string `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
-	// 命中次数
-	MatchCount *int64 `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
-	// 通知渠道    SMS 短信  EMAIL  邮件  PHONE  电话  WEIXIN_GROUP 企微群 DING_GROUP 钉钉群
-	NotifyChannels []*string `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
-	// 关联服务ID
-	RelatedServiceId *int64 `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
-	// 子规则
-	RouteChildRules []*UpdateRouteRuleRequestRouteChildRules `json:"routeChildRules,omitempty" xml:"routeChildRules,omitempty" type:"Repeated"`
-	// 规则ID
-	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	// 路由类型：INCIDENT 触发事件 ALERT 仅触发报警
-	RouteType *string `json:"routeType,omitempty" xml:"routeType,omitempty"`
-	// 规则名称
-	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// 时间窗口
-	TimeWindow *int32 `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
-	// 时间窗口单位 MINUTE 分钟  SECOND 秒
-	TimeWindowUnit *string `json:"timeWindowUnit,omitempty" xml:"timeWindowUnit,omitempty"`
+	AssignObjectId    *int64                                   `json:"assignObjectId,omitempty" xml:"assignObjectId,omitempty"`
+	AssignObjectType  *string                                  `json:"assignObjectType,omitempty" xml:"assignObjectType,omitempty"`
+	ChildRuleRelation *string                                  `json:"childRuleRelation,omitempty" xml:"childRuleRelation,omitempty"`
+	ClientToken       *string                                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Effection         *string                                  `json:"effection,omitempty" xml:"effection,omitempty"`
+	IncidentLevel     *string                                  `json:"incidentLevel,omitempty" xml:"incidentLevel,omitempty"`
+	MatchCount        *int64                                   `json:"matchCount,omitempty" xml:"matchCount,omitempty"`
+	NotifyChannels    []*string                                `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
+	RelatedServiceId  *int64                                   `json:"relatedServiceId,omitempty" xml:"relatedServiceId,omitempty"`
+	RouteChildRules   []*UpdateRouteRuleRequestRouteChildRules `json:"routeChildRules,omitempty" xml:"routeChildRules,omitempty" type:"Repeated"`
+	RouteRuleId       *int64                                   `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
+	RouteType         *string                                  `json:"routeType,omitempty" xml:"routeType,omitempty"`
+	RuleName          *string                                  `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	TimeWindow        *int32                                   `json:"timeWindow,omitempty" xml:"timeWindow,omitempty"`
+	TimeWindowUnit    *string                                  `json:"timeWindowUnit,omitempty" xml:"timeWindowUnit,omitempty"`
 }
 
 func (s UpdateRouteRuleRequest) String() string {
@@ -18500,16 +19079,11 @@ func (s *UpdateRouteRuleRequest) SetTimeWindowUnit(v string) *UpdateRouteRuleReq
 }
 
 type UpdateRouteRuleRequestRouteChildRules struct {
-	// 子条件计算关系
-	ChildConditionRelation *int64 `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
-	// 子规则ID 不填表示新增
-	ChildRouteRuleId *int64 `json:"childRouteRuleId,omitempty" xml:"childRouteRuleId,omitempty"`
-	// 条件
-	Conditions []*UpdateRouteRuleRequestRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// true  删除子规则  false编辑子规则
-	IsValidChildRule *bool `json:"isValidChildRule,omitempty" xml:"isValidChildRule,omitempty"`
-	// 监控源ID
-	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
+	ChildConditionRelation *int64                                             `json:"childConditionRelation,omitempty" xml:"childConditionRelation,omitempty"`
+	ChildRouteRuleId       *int64                                             `json:"childRouteRuleId,omitempty" xml:"childRouteRuleId,omitempty"`
+	Conditions             []*UpdateRouteRuleRequestRouteChildRulesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	IsValidChildRule       *bool                                              `json:"isValidChildRule,omitempty" xml:"isValidChildRule,omitempty"`
+	MonitorSourceId        *int64                                             `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
 }
 
 func (s UpdateRouteRuleRequestRouteChildRules) String() string {
@@ -18546,12 +19120,9 @@ func (s *UpdateRouteRuleRequestRouteChildRules) SetMonitorSourceId(v int64) *Upd
 }
 
 type UpdateRouteRuleRequestRouteChildRulesConditions struct {
-	// 字段
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 操作符
+	Key             *string `json:"key,omitempty" xml:"key,omitempty"`
 	OperationSymbol *string `json:"operationSymbol,omitempty" xml:"operationSymbol,omitempty"`
-	// 字段取值
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	Value           *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s UpdateRouteRuleRequestRouteChildRulesConditions) String() string {
@@ -18578,8 +19149,7 @@ func (s *UpdateRouteRuleRequestRouteChildRulesConditions) SetValue(v string) *Up
 }
 
 type UpdateRouteRuleResponseBody struct {
-	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
-	// 请求ID
+	Data      *int64  `json:"data,omitempty" xml:"data,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -18602,8 +19172,9 @@ func (s *UpdateRouteRuleResponseBody) SetRequestId(v string) *UpdateRouteRuleRes
 }
 
 type UpdateRouteRuleResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateRouteRuleResponse) String() string {
@@ -18619,20 +19190,21 @@ func (s *UpdateRouteRuleResponse) SetHeaders(v map[string]*string) *UpdateRouteR
 	return s
 }
 
+func (s *UpdateRouteRuleResponse) SetStatusCode(v int32) *UpdateRouteRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateRouteRuleResponse) SetBody(v *UpdateRouteRuleResponseBody) *UpdateRouteRuleResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateServiceRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 服务描述
+	ClientToken        *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	ServiceDescription *string `json:"serviceDescription,omitempty" xml:"serviceDescription,omitempty"`
-	// 服务ID
-	ServiceId *int64 `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// 服务名字
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	ServiceId          *int64  `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	ServiceName        *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s UpdateServiceRequest) String() string {
@@ -18664,8 +19236,7 @@ func (s *UpdateServiceRequest) SetServiceName(v string) *UpdateServiceRequest {
 }
 
 type UpdateServiceResponseBody struct {
-	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
-	// Id of the request
+	Data      *int64  `json:"data,omitempty" xml:"data,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -18688,8 +19259,9 @@ func (s *UpdateServiceResponseBody) SetRequestId(v string) *UpdateServiceRespons
 }
 
 type UpdateServiceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateServiceResponse) String() string {
@@ -18705,30 +19277,26 @@ func (s *UpdateServiceResponse) SetHeaders(v map[string]*string) *UpdateServiceR
 	return s
 }
 
+func (s *UpdateServiceResponse) SetStatusCode(v int32) *UpdateServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateServiceResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateServiceGroupRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// ENABLE 启用 DISABLE 禁用
-	EnableWebhook *string `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
-	// 监控源模版列表
-	MonitorSourceTemplates []*UpdateServiceGroupRequestMonitorSourceTemplates `json:"monitorSourceTemplates,omitempty" xml:"monitorSourceTemplates,omitempty" type:"Repeated"`
-	// 服务描述
-	ServiceGroupDescription *string `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
-	// 服务组名字
-	ServiceGroupName *string `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
-	// 用户ID列表修改后的
-	UserIds []*int64 `json:"userIds,omitempty" xml:"userIds,omitempty" type:"Repeated"`
-	// webhook跳转地址
-	WebhookLink *string `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
-	// WEIXIN_GROUP微信DING_GROUP钉钉FEISHU_GROUP飞书
-	WebhookType *string `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
+	ClientToken             *string                                            `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EnableWebhook           *string                                            `json:"enableWebhook,omitempty" xml:"enableWebhook,omitempty"`
+	MonitorSourceTemplates  []*UpdateServiceGroupRequestMonitorSourceTemplates `json:"monitorSourceTemplates,omitempty" xml:"monitorSourceTemplates,omitempty" type:"Repeated"`
+	ServiceGroupDescription *string                                            `json:"serviceGroupDescription,omitempty" xml:"serviceGroupDescription,omitempty"`
+	ServiceGroupId          *int64                                             `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ServiceGroupName        *string                                            `json:"serviceGroupName,omitempty" xml:"serviceGroupName,omitempty"`
+	UserIds                 []*int64                                           `json:"userIds,omitempty" xml:"userIds,omitempty" type:"Repeated"`
+	WebhookLink             *string                                            `json:"webhookLink,omitempty" xml:"webhookLink,omitempty"`
+	WebhookType             *string                                            `json:"webhookType,omitempty" xml:"webhookType,omitempty"`
 }
 
 func (s UpdateServiceGroupRequest) String() string {
@@ -18785,14 +19353,10 @@ func (s *UpdateServiceGroupRequest) SetWebhookType(v string) *UpdateServiceGroup
 }
 
 type UpdateServiceGroupRequestMonitorSourceTemplates struct {
-	// 监控报警源Id
-	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	// 监控报警源
+	MonitorSourceId   *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
 	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
-	// 消息模版内容
-	TemplateContent *string `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
-	// 消息模版ID
-	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	TemplateContent   *string `json:"templateContent,omitempty" xml:"templateContent,omitempty"`
+	TemplateId        *int64  `json:"templateId,omitempty" xml:"templateId,omitempty"`
 }
 
 func (s UpdateServiceGroupRequestMonitorSourceTemplates) String() string {
@@ -18824,7 +19388,6 @@ func (s *UpdateServiceGroupRequestMonitorSourceTemplates) SetTemplateId(v int64)
 }
 
 type UpdateServiceGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -18842,8 +19405,9 @@ func (s *UpdateServiceGroupResponseBody) SetRequestId(v string) *UpdateServiceGr
 }
 
 type UpdateServiceGroupResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateServiceGroupResponse) String() string {
@@ -18859,22 +19423,22 @@ func (s *UpdateServiceGroupResponse) SetHeaders(v map[string]*string) *UpdateSer
 	return s
 }
 
+func (s *UpdateServiceGroupResponse) SetStatusCode(v int32) *UpdateServiceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateServiceGroupResponse) SetBody(v *UpdateServiceGroupResponseBody) *UpdateServiceGroupResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateServiceGroupSchedulingRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 快速排班
+	ClientToken    *string                                            `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	FastScheduling *UpdateServiceGroupSchedulingRequestFastScheduling `json:"fastScheduling,omitempty" xml:"fastScheduling,omitempty" type:"Struct"`
-	// 精细排班
 	FineScheduling *UpdateServiceGroupSchedulingRequestFineScheduling `json:"fineScheduling,omitempty" xml:"fineScheduling,omitempty" type:"Struct"`
-	// 排班方式 FAST 快速排班 FINE 精细排班
-	SchedulingWay *string `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	SchedulingWay  *string                                            `json:"schedulingWay,omitempty" xml:"schedulingWay,omitempty"`
+	ServiceGroupId *int64                                             `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s UpdateServiceGroupSchedulingRequest) String() string {
@@ -18911,16 +19475,11 @@ func (s *UpdateServiceGroupSchedulingRequest) SetServiceGroupId(v int64) *Update
 }
 
 type UpdateServiceGroupSchedulingRequestFastScheduling struct {
-	// 值班方案 dutyPlan FAST_CHOICE 快速选择   CUSTOM  自定义
-	DutyPlan *string `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
-	// 快速排班ID
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 快速轮班用户
-	SchedulingUsers []*UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
-	// 每人排班时长
-	SingleDuration *int32 `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
-	// 每人排班时长单位 HOUR 小时 DAY 天
-	SingleDurationUnit *string `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
+	DutyPlan           *string                                                             `json:"dutyPlan,omitempty" xml:"dutyPlan,omitempty"`
+	Id                 *int64                                                              `json:"id,omitempty" xml:"id,omitempty"`
+	SchedulingUsers    []*UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers `json:"schedulingUsers,omitempty" xml:"schedulingUsers,omitempty" type:"Repeated"`
+	SingleDuration     *int32                                                              `json:"singleDuration,omitempty" xml:"singleDuration,omitempty"`
+	SingleDurationUnit *string                                                             `json:"singleDurationUnit,omitempty" xml:"singleDurationUnit,omitempty"`
 }
 
 func (s UpdateServiceGroupSchedulingRequestFastScheduling) String() string {
@@ -18957,9 +19516,7 @@ func (s *UpdateServiceGroupSchedulingRequestFastScheduling) SetSingleDurationUni
 }
 
 type UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers struct {
-	// 排班顺序
-	SchedulingOrder *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	// 轮班用户ID
+	SchedulingOrder  *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
 	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 }
 
@@ -18982,18 +19539,12 @@ func (s *UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers) SetSc
 }
 
 type UpdateServiceGroupSchedulingRequestFineScheduling struct {
-	// 精细排班ID
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 循环周期
-	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
-	// 循环周期单位 HOUR 小时 DAY 天
-	PeriodUnit *string `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
-	// 精细排班班次人员信息
-	SchedulingFineShifts []*UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts `json:"schedulingFineShifts,omitempty" xml:"schedulingFineShifts,omitempty" type:"Repeated"`
-	// 精细排班模版
+	Id                           *int64                                                                           `json:"id,omitempty" xml:"id,omitempty"`
+	Period                       *int32                                                                           `json:"period,omitempty" xml:"period,omitempty"`
+	PeriodUnit                   *string                                                                          `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
+	SchedulingFineShifts         []*UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts         `json:"schedulingFineShifts,omitempty" xml:"schedulingFineShifts,omitempty" type:"Repeated"`
 	SchedulingTemplateFineShifts []*UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts `json:"schedulingTemplateFineShifts,omitempty" xml:"schedulingTemplateFineShifts,omitempty" type:"Repeated"`
-	// 班次类型 MORNING_NIGHT 早晚班 MORNING_NOON_NIGHT 早中晚班 CUSTOM 自定义
-	ShiftType *string `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
+	ShiftType                    *string                                                                          `json:"shiftType,omitempty" xml:"shiftType,omitempty"`
 }
 
 func (s UpdateServiceGroupSchedulingRequestFineScheduling) String() string {
@@ -19035,20 +19586,13 @@ func (s *UpdateServiceGroupSchedulingRequestFineScheduling) SetShiftType(v strin
 }
 
 type UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts struct {
-	// 轮训次序
-	CycleOrder *int32 `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
-	// 排班结束时间
-	SchedulingEndTime *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	// 排班顺序
-	SchedulingOrder *int64 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	// 排班开始时间
+	CycleOrder          *int32  `json:"cycleOrder,omitempty" xml:"cycleOrder,omitempty"`
+	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingOrder     *int64  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
 	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	// 排班用户ID
-	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	// 班次名称
-	ShiftName *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	// 是否跨天
-	SkipOneDay *bool `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	SchedulingUserId    *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	ShiftName           *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	SkipOneDay          *bool   `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) String() string {
@@ -19095,18 +19639,12 @@ func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts) 
 }
 
 type UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts struct {
-	// 排班结束时间
-	SchedulingEndTime *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	// 排班顺序
-	SchedulingOrder *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	// 排班开始时间
+	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingOrder     *int32  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
 	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	// 排班用户ID
-	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
-	// 班次名称
-	ShiftName *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
-	// 是否跨天
-	SkipOneDay *bool `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
+	SchedulingUserId    *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	ShiftName           *string `json:"shiftName,omitempty" xml:"shiftName,omitempty"`
+	SkipOneDay          *bool   `json:"skipOneDay,omitempty" xml:"skipOneDay,omitempty"`
 }
 
 func (s UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShifts) String() string {
@@ -19148,7 +19686,6 @@ func (s *UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFine
 }
 
 type UpdateServiceGroupSchedulingResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -19166,8 +19703,9 @@ func (s *UpdateServiceGroupSchedulingResponseBody) SetRequestId(v string) *Updat
 }
 
 type UpdateServiceGroupSchedulingResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceGroupSchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateServiceGroupSchedulingResponse) String() string {
@@ -19183,20 +19721,21 @@ func (s *UpdateServiceGroupSchedulingResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *UpdateServiceGroupSchedulingResponse) SetStatusCode(v int32) *UpdateServiceGroupSchedulingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateServiceGroupSchedulingResponse) SetBody(v *UpdateServiceGroupSchedulingResponseBody) *UpdateServiceGroupSchedulingResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateServiceGroupSpecialDaySchedulingRequest struct {
-	// 幂等号
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 排班日期
-	SchedulingDate *string `json:"schedulingDate,omitempty" xml:"schedulingDate,omitempty"`
-	// 特殊排班信息
+	ClientToken           *string                                                               `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	SchedulingDate        *string                                                               `json:"schedulingDate,omitempty" xml:"schedulingDate,omitempty"`
 	SchedulingSpecialDays []*UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays `json:"schedulingSpecialDays,omitempty" xml:"schedulingSpecialDays,omitempty" type:"Repeated"`
-	// 服务组ID
-	ServiceGroupId *int64 `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
+	ServiceGroupId        *int64                                                                `json:"serviceGroupId,omitempty" xml:"serviceGroupId,omitempty"`
 }
 
 func (s UpdateServiceGroupSpecialDaySchedulingRequest) String() string {
@@ -19228,14 +19767,10 @@ func (s *UpdateServiceGroupSpecialDaySchedulingRequest) SetServiceGroupId(v int6
 }
 
 type UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays struct {
-	// 排班结束时间
-	SchedulingEndTime *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
-	// 班次顺序
-	SchedulingOrder *int32 `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
-	// 排班开始时间
+	SchedulingEndTime   *string `json:"schedulingEndTime,omitempty" xml:"schedulingEndTime,omitempty"`
+	SchedulingOrder     *int32  `json:"schedulingOrder,omitempty" xml:"schedulingOrder,omitempty"`
 	SchedulingStartTime *string `json:"schedulingStartTime,omitempty" xml:"schedulingStartTime,omitempty"`
-	// 排班用户ID
-	SchedulingUserId *int64 `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
+	SchedulingUserId    *int64  `json:"schedulingUserId,omitempty" xml:"schedulingUserId,omitempty"`
 }
 
 func (s UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays) String() string {
@@ -19267,7 +19802,6 @@ func (s *UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays) Set
 }
 
 type UpdateServiceGroupSpecialDaySchedulingResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -19285,8 +19819,9 @@ func (s *UpdateServiceGroupSpecialDaySchedulingResponseBody) SetRequestId(v stri
 }
 
 type UpdateServiceGroupSpecialDaySchedulingResponse struct {
-	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateServiceGroupSpecialDaySchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceGroupSpecialDaySchedulingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateServiceGroupSpecialDaySchedulingResponse) String() string {
@@ -19302,34 +19837,28 @@ func (s *UpdateServiceGroupSpecialDaySchedulingResponse) SetHeaders(v map[string
 	return s
 }
 
+func (s *UpdateServiceGroupSpecialDaySchedulingResponse) SetStatusCode(v int32) *UpdateServiceGroupSpecialDaySchedulingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateServiceGroupSpecialDaySchedulingResponse) SetBody(v *UpdateServiceGroupSpecialDaySchedulingResponseBody) *UpdateServiceGroupSpecialDaySchedulingResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateSubscriptionRequest struct {
-	// 结束时间
-	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 订阅时效
-	ExpiredType *string `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
-	// 通知对象列表
-	NotifyObjectList []*UpdateSubscriptionRequestNotifyObjectList `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
-	// 通知对象类型
-	NotifyObjectType *string `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
-	// 通知策略列表
+	EndTime            *string                                        `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	ExpiredType        *string                                        `json:"expiredType,omitempty" xml:"expiredType,omitempty"`
+	NotifyObjectList   []*UpdateSubscriptionRequestNotifyObjectList   `json:"notifyObjectList,omitempty" xml:"notifyObjectList,omitempty" type:"Repeated"`
+	NotifyObjectType   *string                                        `json:"notifyObjectType,omitempty" xml:"notifyObjectType,omitempty"`
 	NotifyStrategyList []*UpdateSubscriptionRequestNotifyStrategyList `json:"notifyStrategyList,omitempty" xml:"notifyStrategyList,omitempty" type:"Repeated"`
-	// 时间段字符串
-	Period *string `json:"period,omitempty" xml:"period,omitempty"`
-	// 订阅范围类型
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 订阅范围列表
-	ScopeObjectList []*UpdateSubscriptionRequestScopeObjectList `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
-	// 开始时间
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 主键
-	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
-	// 通知订阅名称
-	SubscriptionTitle *string `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
+	Period             *string                                        `json:"period,omitempty" xml:"period,omitempty"`
+	Scope              *string                                        `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScopeObjectList    []*UpdateSubscriptionRequestScopeObjectList    `json:"scopeObjectList,omitempty" xml:"scopeObjectList,omitempty" type:"Repeated"`
+	StartTime          *string                                        `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	SubscriptionId     *int64                                         `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
+	SubscriptionTitle  *string                                        `json:"subscriptionTitle,omitempty" xml:"subscriptionTitle,omitempty"`
 }
 
 func (s UpdateSubscriptionRequest) String() string {
@@ -19396,9 +19925,7 @@ func (s *UpdateSubscriptionRequest) SetSubscriptionTitle(v string) *UpdateSubscr
 }
 
 type UpdateSubscriptionRequestNotifyObjectList struct {
-	// 主键id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 通知对象id
+	Id             *int64 `json:"id,omitempty" xml:"id,omitempty"`
 	NotifyObjectId *int64 `json:"notifyObjectId,omitempty" xml:"notifyObjectId,omitempty"`
 }
 
@@ -19421,10 +19948,8 @@ func (s *UpdateSubscriptionRequestNotifyObjectList) SetNotifyObjectId(v int64) *
 }
 
 type UpdateSubscriptionRequestNotifyStrategyList struct {
-	// 订阅实例类型，事件、报警、故障
-	InstanceType *int64 `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// 通知策略
-	Strategies []*UpdateSubscriptionRequestNotifyStrategyListStrategies `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Repeated"`
+	InstanceType *int64                                                   `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	Strategies   []*UpdateSubscriptionRequestNotifyStrategyListStrategies `json:"strategies,omitempty" xml:"strategies,omitempty" type:"Repeated"`
 }
 
 func (s UpdateSubscriptionRequestNotifyStrategyList) String() string {
@@ -19446,13 +19971,9 @@ func (s *UpdateSubscriptionRequestNotifyStrategyList) SetStrategies(v []*UpdateS
 }
 
 type UpdateSubscriptionRequestNotifyStrategyListStrategies struct {
-	// 故障等级
-	Channels *string `json:"channels,omitempty" xml:"channels,omitempty"`
-	// 影响程度
-	Conditions []*UpdateSubscriptionRequestNotifyStrategyListStrategiesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// id
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 分时段通知渠道
+	Channels      *string                                                             `json:"channels,omitempty" xml:"channels,omitempty"`
+	Conditions    []*UpdateSubscriptionRequestNotifyStrategyListStrategiesConditions  `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	Id            *string                                                             `json:"id,omitempty" xml:"id,omitempty"`
 	PeriodChannel *UpdateSubscriptionRequestNotifyStrategyListStrategiesPeriodChannel `json:"periodChannel,omitempty" xml:"periodChannel,omitempty" type:"Struct"`
 }
 
@@ -19485,13 +20006,9 @@ func (s *UpdateSubscriptionRequestNotifyStrategyListStrategies) SetPeriodChannel
 }
 
 type UpdateSubscriptionRequestNotifyStrategyListStrategiesConditions struct {
-	// 事件动作
-	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 影响程度
-	Effection *string `json:"effection,omitempty" xml:"effection,omitempty"`
-	// 等级
-	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// 故障通知类型
+	Action            *string `json:"action,omitempty" xml:"action,omitempty"`
+	Effection         *string `json:"effection,omitempty" xml:"effection,omitempty"`
+	Level             *string `json:"level,omitempty" xml:"level,omitempty"`
 	ProblemNotifyType *string `json:"problemNotifyType,omitempty" xml:"problemNotifyType,omitempty"`
 }
 
@@ -19524,10 +20041,8 @@ func (s *UpdateSubscriptionRequestNotifyStrategyListStrategiesConditions) SetPro
 }
 
 type UpdateSubscriptionRequestNotifyStrategyListStrategiesPeriodChannel struct {
-	// 非工作时间
 	NonWorkday *string `json:"nonWorkday,omitempty" xml:"nonWorkday,omitempty"`
-	// 工作时间
-	Workday *string `json:"workday,omitempty" xml:"workday,omitempty"`
+	Workday    *string `json:"workday,omitempty" xml:"workday,omitempty"`
 }
 
 func (s UpdateSubscriptionRequestNotifyStrategyListStrategiesPeriodChannel) String() string {
@@ -19549,9 +20064,7 @@ func (s *UpdateSubscriptionRequestNotifyStrategyListStrategiesPeriodChannel) Set
 }
 
 type UpdateSubscriptionRequestScopeObjectList struct {
-	// 主键id
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 订阅范围对象id
+	Id            *int64 `json:"id,omitempty" xml:"id,omitempty"`
 	ScopeObjectId *int64 `json:"scopeObjectId,omitempty" xml:"scopeObjectId,omitempty"`
 }
 
@@ -19591,8 +20104,9 @@ func (s *UpdateSubscriptionResponseBody) SetRequestId(v string) *UpdateSubscript
 }
 
 type UpdateSubscriptionResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateSubscriptionResponse) String() string {
@@ -19608,24 +20122,23 @@ func (s *UpdateSubscriptionResponse) SetHeaders(v map[string]*string) *UpdateSub
 	return s
 }
 
+func (s *UpdateSubscriptionResponse) SetStatusCode(v int32) *UpdateSubscriptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateSubscriptionResponse) SetBody(v *UpdateSubscriptionResponseBody) *UpdateSubscriptionResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateUserRequest struct {
-	// 幂等号
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 邮件
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// 手机号
-	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// 用户ramId
-	RamId *int64 `json:"ramId,omitempty" xml:"ramId,omitempty"`
-	// 用户ID
-	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
-	// 用户名
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	Email       *string `json:"email,omitempty" xml:"email,omitempty"`
+	Phone       *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	RamId       *int64  `json:"ramId,omitempty" xml:"ramId,omitempty"`
+	UserId      *int64  `json:"userId,omitempty" xml:"userId,omitempty"`
+	Username    *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s UpdateUserRequest) String() string {
@@ -19684,8 +20197,9 @@ func (s *UpdateUserResponseBody) SetRequestId(v string) *UpdateUserResponseBody 
 }
 
 type UpdateUserResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateUserResponse) String() string {
@@ -19701,15 +20215,18 @@ func (s *UpdateUserResponse) SetHeaders(v map[string]*string) *UpdateUserRespons
 	return s
 }
 
+func (s *UpdateUserResponse) SetStatusCode(v int32) *UpdateUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateUserResponse) SetBody(v *UpdateUserResponseBody) *UpdateUserResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateUserGuideStatusRequest struct {
-	// 幂等校验
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// INCIDENT_GUIDE	事件线 INCIDENT_GUIDE配置人员 USER_GUIDE 服务组 SERVICE_GROUP_GUIDE 服务 SERVICE_GUIDE 集成配置 MONITOR_GUIDE 流转规则 ROUTE_RULE_GUIDE 通知订阅 NOTICE_GUIDE
 	GuideAction *string `json:"guideAction,omitempty" xml:"guideAction,omitempty"`
 }
 
@@ -19732,7 +20249,6 @@ func (s *UpdateUserGuideStatusRequest) SetGuideAction(v string) *UpdateUserGuide
 }
 
 type UpdateUserGuideStatusResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -19750,8 +20266,9 @@ func (s *UpdateUserGuideStatusResponseBody) SetRequestId(v string) *UpdateUserGu
 }
 
 type UpdateUserGuideStatusResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateUserGuideStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateUserGuideStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateUserGuideStatusResponse) String() string {
@@ -19767,15 +20284,18 @@ func (s *UpdateUserGuideStatusResponse) SetHeaders(v map[string]*string) *Update
 	return s
 }
 
+func (s *UpdateUserGuideStatusResponse) SetStatusCode(v int32) *UpdateUserGuideStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateUserGuideStatusResponse) SetBody(v *UpdateUserGuideStatusResponseBody) *UpdateUserGuideStatusResponse {
 	s.Body = v
 	return s
 }
 
 type VerifyRouteRuleRequest struct {
-	// 规则id
-	RouteRuleId *int64 `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
-	// 测试告警
+	RouteRuleId      *int64                                    `json:"routeRuleId,omitempty" xml:"routeRuleId,omitempty"`
 	TestSourceEvents []*VerifyRouteRuleRequestTestSourceEvents `json:"testSourceEvents,omitempty" xml:"testSourceEvents,omitempty" type:"Repeated"`
 }
 
@@ -19798,13 +20318,9 @@ func (s *VerifyRouteRuleRequest) SetTestSourceEvents(v []*VerifyRouteRuleRequest
 }
 
 type VerifyRouteRuleRequestTestSourceEvents struct {
-	// 告警内容
-	EventJson *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
-	// 告警上报时间
-	EventTime *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
-	// 监控告警源ID
-	MonitorSourceId *int64 `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
-	// 监控告警源名称
+	EventJson         *string `json:"eventJson,omitempty" xml:"eventJson,omitempty"`
+	EventTime         *string `json:"eventTime,omitempty" xml:"eventTime,omitempty"`
+	MonitorSourceId   *int64  `json:"monitorSourceId,omitempty" xml:"monitorSourceId,omitempty"`
 	MonitorSourceName *string `json:"monitorSourceName,omitempty" xml:"monitorSourceName,omitempty"`
 }
 
@@ -19837,10 +20353,8 @@ func (s *VerifyRouteRuleRequestTestSourceEvents) SetMonitorSourceName(v string) 
 }
 
 type VerifyRouteRuleResponseBody struct {
-	// 验证结果
-	Data *VerifyRouteRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *VerifyRouteRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s VerifyRouteRuleResponseBody) String() string {
@@ -19862,18 +20376,12 @@ func (s *VerifyRouteRuleResponseBody) SetRequestId(v string) *VerifyRouteRuleRes
 }
 
 type VerifyRouteRuleResponseBodyData struct {
-	// 升级策略名称
-	EscalationPlans []*VerifyRouteRuleResponseBodyDataEscalationPlans `json:"escalationPlans,omitempty" xml:"escalationPlans,omitempty" type:"Repeated"`
-	// 验证是否成功
-	IsValidRule *bool `json:"isValidRule,omitempty" xml:"isValidRule,omitempty"`
-	// 验证失败监控源ID
-	MonitorSourceIds []*int64 `json:"monitorSourceIds,omitempty" xml:"monitorSourceIds,omitempty" type:"Repeated"`
-	// 订阅名称
+	EscalationPlans         []*VerifyRouteRuleResponseBodyDataEscalationPlans         `json:"escalationPlans,omitempty" xml:"escalationPlans,omitempty" type:"Repeated"`
+	IsValidRule             *bool                                                     `json:"isValidRule,omitempty" xml:"isValidRule,omitempty"`
+	MonitorSourceIds        []*int64                                                  `json:"monitorSourceIds,omitempty" xml:"monitorSourceIds,omitempty" type:"Repeated"`
 	NotifySubscriptionNames []*VerifyRouteRuleResponseBodyDataNotifySubscriptionNames `json:"notifySubscriptionNames,omitempty" xml:"notifySubscriptionNames,omitempty" type:"Repeated"`
-	// 流转规则验证失败的原因
-	RouteRuleFailReason []*string `json:"routeRuleFailReason,omitempty" xml:"routeRuleFailReason,omitempty" type:"Repeated"`
-	// 事件或者报警
-	RouteType *string `json:"routeType,omitempty" xml:"routeType,omitempty"`
+	RouteRuleFailReason     []*string                                                 `json:"routeRuleFailReason,omitempty" xml:"routeRuleFailReason,omitempty" type:"Repeated"`
+	RouteType               *string                                                   `json:"routeType,omitempty" xml:"routeType,omitempty"`
 }
 
 func (s VerifyRouteRuleResponseBodyData) String() string {
@@ -19915,9 +20423,7 @@ func (s *VerifyRouteRuleResponseBodyData) SetRouteType(v string) *VerifyRouteRul
 }
 
 type VerifyRouteRuleResponseBodyDataEscalationPlans struct {
-	// 升级计划ID
-	EscalationPlanId *int64 `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
-	// 升级计划名称
+	EscalationPlanId   *int64  `json:"escalationPlanId,omitempty" xml:"escalationPlanId,omitempty"`
 	EscalationPlanName *string `json:"escalationPlanName,omitempty" xml:"escalationPlanName,omitempty"`
 }
 
@@ -19940,10 +20446,8 @@ func (s *VerifyRouteRuleResponseBodyDataEscalationPlans) SetEscalationPlanName(v
 }
 
 type VerifyRouteRuleResponseBodyDataNotifySubscriptionNames struct {
-	// 订阅ID
-	SubscriptionId *int64 `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
-	// 订阅名称
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	SubscriptionId *int64  `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
+	Title          *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s VerifyRouteRuleResponseBodyDataNotifySubscriptionNames) String() string {
@@ -19965,8 +20469,9 @@ func (s *VerifyRouteRuleResponseBodyDataNotifySubscriptionNames) SetTitle(v stri
 }
 
 type VerifyRouteRuleResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *VerifyRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VerifyRouteRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s VerifyRouteRuleResponse) String() string {
@@ -19982,73 +20487,13 @@ func (s *VerifyRouteRuleResponse) SetHeaders(v map[string]*string) *VerifyRouteR
 	return s
 }
 
+func (s *VerifyRouteRuleResponse) SetStatusCode(v int32) *VerifyRouteRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *VerifyRouteRuleResponse) SetBody(v *VerifyRouteRuleResponseBody) *VerifyRouteRuleResponse {
 	s.Body = v
-	return s
-}
-
-type DataValue struct {
-	Code        *string `json:"code,omitempty" xml:"code,omitempty"`
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 配置描述
-	ConfigDescription *string `json:"configDescription,omitempty" xml:"configDescription,omitempty"`
-	// 配置code
-	ConfigCode *string `json:"configCode,omitempty" xml:"configCode,omitempty"`
-	// 配置父code
-	ParentCode *string `json:"parentCode,omitempty" xml:"parentCode,omitempty"`
-	// key (用于前后端值传递)
-	ConfigKey *string `json:"configKey,omitempty" xml:"configKey,omitempty"`
-	// value (用于前端展示)
-	ConfigValue *string `json:"configValue,omitempty" xml:"configValue,omitempty"`
-	// 是否必选
-	Requirement *bool `json:"requirement,omitempty" xml:"requirement,omitempty"`
-}
-
-func (s DataValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DataValue) GoString() string {
-	return s.String()
-}
-
-func (s *DataValue) SetCode(v string) *DataValue {
-	s.Code = &v
-	return s
-}
-
-func (s *DataValue) SetDescription(v string) *DataValue {
-	s.Description = &v
-	return s
-}
-
-func (s *DataValue) SetConfigDescription(v string) *DataValue {
-	s.ConfigDescription = &v
-	return s
-}
-
-func (s *DataValue) SetConfigCode(v string) *DataValue {
-	s.ConfigCode = &v
-	return s
-}
-
-func (s *DataValue) SetParentCode(v string) *DataValue {
-	s.ParentCode = &v
-	return s
-}
-
-func (s *DataValue) SetConfigKey(v string) *DataValue {
-	s.ConfigKey = &v
-	return s
-}
-
-func (s *DataValue) SetConfigValue(v string) *DataValue {
-	s.ConfigValue = &v
-	return s
-}
-
-func (s *DataValue) SetRequirement(v bool) *DataValue {
-	s.Requirement = &v
 	return s
 }
 
@@ -20141,6 +20586,42 @@ func (client *Client) AddProblemServiceGroupWithOptions(request *AddProblemServi
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddProblemServiceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BillingStatistics() (_result *BillingStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BillingStatisticsResponse{}
+	_body, _err := client.BillingStatisticsWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BillingStatisticsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *BillingStatisticsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BillingStatistics"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/charging/details"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BillingStatisticsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22031,6 +22512,42 @@ func (client *Client) DeleteServiceGroupWithOptions(request *DeleteServiceGroupR
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteServiceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceGroupScheduling() (_result *DeleteServiceGroupSchedulingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteServiceGroupSchedulingResponse{}
+	_body, _err := client.DeleteServiceGroupSchedulingWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceGroupSchedulingWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceGroupSchedulingResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceGroupScheduling"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/scheduling/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteServiceGroupSchedulingResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24207,6 +24724,10 @@ func (client *Client) GetSubscriptionWithOptions(request *GetSubscriptionRequest
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NotFilterScopeObjectDeleted)) {
+		body["notFilterScopeObjectDeleted"] = request.NotFilterScopeObjectDeleted
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionId)) {
 		body["subscriptionId"] = request.SubscriptionId
 	}
@@ -24273,6 +24794,52 @@ func (client *Client) GetTenantApplicationWithOptions(request *GetTenantApplicat
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTenantApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTenantStatus(request *GetTenantStatusRequest) (_result *GetTenantStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTenantStatusResponse{}
+	_body, _err := client.GetTenantStatusWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTenantStatusWithOptions(request *GetTenantStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTenantStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantRamId)) {
+		body["tenantRamId"] = request.TenantRamId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTenantStatus"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/tenant/getTenantStatus"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTenantStatusResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24411,6 +24978,10 @@ func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, headers 
 		body["endTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MonitorSourceId)) {
+		body["monitorSourceId"] = request.MonitorSourceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		body["pageNumber"] = request.PageNumber
 	}
@@ -24447,6 +25018,52 @@ func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, headers 
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAlertsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListByMonitorSourceId(request *ListByMonitorSourceIdRequest) (_result *ListByMonitorSourceIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListByMonitorSourceIdResponse{}
+	_body, _err := client.ListByMonitorSourceIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListByMonitorSourceIdWithOptions(request *ListByMonitorSourceIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListByMonitorSourceIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MonitorSourceId)) {
+		body["monitorSourceId"] = request.MonitorSourceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListByMonitorSourceId"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/routeRule/listByMonitorSourceId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListByMonitorSourceIdResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24875,6 +25492,56 @@ func (client *Client) ListEscalationPlansWithOptions(request *ListEscalationPlan
 	return _result, _err
 }
 
+func (client *Client) ListEscalationPlansByNoticeObject(request *ListEscalationPlansByNoticeObjectRequest) (_result *ListEscalationPlansByNoticeObjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEscalationPlansByNoticeObjectResponse{}
+	_body, _err := client.ListEscalationPlansByNoticeObjectWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEscalationPlansByNoticeObjectWithOptions(request *ListEscalationPlansByNoticeObjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEscalationPlansByNoticeObjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NoticeObjectId)) {
+		body["noticeObjectId"] = request.NoticeObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoticeObjectType)) {
+		body["noticeObjectType"] = request.NoticeObjectType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEscalationPlansByNoticeObject"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/escalationPlan/listByNoticeObject"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEscalationPlansByNoticeObjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListIncidentDetailEscalationPlans(request *ListIncidentDetailEscalationPlansRequest) (_result *ListIncidentDetailEscalationPlansResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24945,6 +25612,10 @@ func (client *Client) ListIncidentDetailTimelinesWithOptions(request *ListIncide
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["clientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdSort)) {
+		body["idSort"] = request.IdSort
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IncidentId)) {
@@ -25663,6 +26334,10 @@ func (client *Client) ListRouteRulesWithOptions(request *ListRouteRulesRequest, 
 		body["clientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NotFilterRouteRuleDeleted)) {
+		body["notFilterRouteRuleDeleted"] = request.NotFilterRouteRuleDeleted
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		body["pageNumber"] = request.PageNumber
 	}
@@ -25699,6 +26374,92 @@ func (client *Client) ListRouteRulesWithOptions(request *ListRouteRulesRequest, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRouteRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRouteRulesByAssignWhoId(request *ListRouteRulesByAssignWhoIdRequest) (_result *ListRouteRulesByAssignWhoIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRouteRulesByAssignWhoIdResponse{}
+	_body, _err := client.ListRouteRulesByAssignWhoIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRouteRulesByAssignWhoIdWithOptions(request *ListRouteRulesByAssignWhoIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRouteRulesByAssignWhoIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssignWhoId)) {
+		body["assignWhoId"] = request.AssignWhoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssignWhoType)) {
+		body["assignWhoType"] = request.AssignWhoType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRouteRulesByAssignWhoId"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/routeRule/listByAssignWhoId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRouteRulesByAssignWhoIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRouteRulesByService() (_result *ListRouteRulesByServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRouteRulesByServiceResponse{}
+	_body, _err := client.ListRouteRulesByServiceWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRouteRulesByServiceWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRouteRulesByServiceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRouteRulesByService"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/routeRule/listByService"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRouteRulesByServiceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -25827,6 +26588,42 @@ func (client *Client) ListServiceGroupsWithOptions(request *ListServiceGroupsReq
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListServiceGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListServiceGroupsByUserId() (_result *ListServiceGroupsByUserIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListServiceGroupsByUserIdResponse{}
+	_body, _err := client.ListServiceGroupsByUserIdWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListServiceGroupsByUserIdWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceGroupsByUserIdResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceGroupsByUserId"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/services/group/listByUserId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServiceGroupsByUserIdResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -26087,6 +26884,10 @@ func (client *Client) ListSubscriptionsWithOptions(request *ListSubscriptionsReq
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["clientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotFilterScopeObjectDeleted)) {
+		body["notFilterScopeObjectDeleted"] = request.NotFilterScopeObjectDeleted
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyObject)) {
@@ -26435,6 +27236,56 @@ func (client *Client) RefreshIntegrationConfigKeyWithOptions(request *RefreshInt
 	return _result, _err
 }
 
+func (client *Client) RemoveIntegrationConfig(request *RemoveIntegrationConfigRequest) (_result *RemoveIntegrationConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RemoveIntegrationConfigResponse{}
+	_body, _err := client.RemoveIntegrationConfigWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveIntegrationConfigWithOptions(request *RemoveIntegrationConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveIntegrationConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntegrationConfigId)) {
+		body["integrationConfigId"] = request.IntegrationConfigId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveIntegrationConfig"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/integrationConfig/remove"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveIntegrationConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) RemoveProblemServiceGroup(request *RemoveProblemServiceGroupRequest) (_result *RemoveProblemServiceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26635,6 +27486,42 @@ func (client *Client) RevokeProblemRecoveryWithOptions(request *RevokeProblemRec
 		BodyType:    tea.String("json"),
 	}
 	_result = &RevokeProblemRecoveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnbindUser() (_result *UnbindUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UnbindUserResponse{}
+	_body, _err := client.UnbindUserWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnbindUserWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnbindUserResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindUser"),
+		Version:     tea.String("2021-04-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/unbind"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnbindUserResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27001,6 +27888,10 @@ func (client *Client) UpdateProblemImprovementWithOptions(request *UpdateProblem
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["clientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomProblemReason)) {
+		body["customProblemReason"] = request.CustomProblemReason
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DiscoverSource)) {
