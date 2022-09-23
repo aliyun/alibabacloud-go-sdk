@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -863,315 +863,6 @@ func (s *CreateOAuthTokenResponse) SetStatusCode(v int32) *CreateOAuthTokenRespo
 }
 
 func (s *CreateOAuthTokenResponse) SetBody(v *CreateOAuthTokenResponseBody) *CreateOAuthTokenResponse {
-	s.Body = v
-	return s
-}
-
-type CreatePipelineRequest struct {
-	BasicInfo    *CreatePipelineRequestBasicInfo   `json:"basicInfo,omitempty" xml:"basicInfo,omitempty" type:"Struct"`
-	PipelineYaml *string                           `json:"pipelineYaml,omitempty" xml:"pipelineYaml,omitempty"`
-	Settings     *CreatePipelineRequestSettings    `json:"settings,omitempty" xml:"settings,omitempty" type:"Struct"`
-	TriggerInfo  *CreatePipelineRequestTriggerInfo `json:"triggerInfo,omitempty" xml:"triggerInfo,omitempty" type:"Struct"`
-}
-
-func (s CreatePipelineRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePipelineRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePipelineRequest) SetBasicInfo(v *CreatePipelineRequestBasicInfo) *CreatePipelineRequest {
-	s.BasicInfo = v
-	return s
-}
-
-func (s *CreatePipelineRequest) SetPipelineYaml(v string) *CreatePipelineRequest {
-	s.PipelineYaml = &v
-	return s
-}
-
-func (s *CreatePipelineRequest) SetSettings(v *CreatePipelineRequestSettings) *CreatePipelineRequest {
-	s.Settings = v
-	return s
-}
-
-func (s *CreatePipelineRequest) SetTriggerInfo(v *CreatePipelineRequestTriggerInfo) *CreatePipelineRequest {
-	s.TriggerInfo = v
-	return s
-}
-
-type CreatePipelineRequestBasicInfo struct {
-	EnvId   *int64  `json:"envId,omitempty" xml:"envId,omitempty"`
-	GroupId *int64  `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
-	TagIds  *string `json:"tagIds,omitempty" xml:"tagIds,omitempty"`
-}
-
-func (s CreatePipelineRequestBasicInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePipelineRequestBasicInfo) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePipelineRequestBasicInfo) SetEnvId(v int64) *CreatePipelineRequestBasicInfo {
-	s.EnvId = &v
-	return s
-}
-
-func (s *CreatePipelineRequestBasicInfo) SetGroupId(v int64) *CreatePipelineRequestBasicInfo {
-	s.GroupId = &v
-	return s
-}
-
-func (s *CreatePipelineRequestBasicInfo) SetName(v string) *CreatePipelineRequestBasicInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *CreatePipelineRequestBasicInfo) SetTagIds(v string) *CreatePipelineRequestBasicInfo {
-	s.TagIds = &v
-	return s
-}
-
-type CreatePipelineRequestSettings struct {
-	Caches          []*CreatePipelineRequestSettingsCaches       `json:"caches,omitempty" xml:"caches,omitempty" type:"Repeated"`
-	GlobalParams    []*CreatePipelineRequestSettingsGlobalParams `json:"globalParams,omitempty" xml:"globalParams,omitempty" type:"Repeated"`
-	RunnerCacheMode *string                                      `json:"runnerCacheMode,omitempty" xml:"runnerCacheMode,omitempty"`
-}
-
-func (s CreatePipelineRequestSettings) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePipelineRequestSettings) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePipelineRequestSettings) SetCaches(v []*CreatePipelineRequestSettingsCaches) *CreatePipelineRequestSettings {
-	s.Caches = v
-	return s
-}
-
-func (s *CreatePipelineRequestSettings) SetGlobalParams(v []*CreatePipelineRequestSettingsGlobalParams) *CreatePipelineRequestSettings {
-	s.GlobalParams = v
-	return s
-}
-
-func (s *CreatePipelineRequestSettings) SetRunnerCacheMode(v string) *CreatePipelineRequestSettings {
-	s.RunnerCacheMode = &v
-	return s
-}
-
-type CreatePipelineRequestSettingsCaches struct {
-	Desc      *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	Directory *string `json:"directory,omitempty" xml:"directory,omitempty"`
-	Disable   *bool   `json:"disable,omitempty" xml:"disable,omitempty"`
-}
-
-func (s CreatePipelineRequestSettingsCaches) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePipelineRequestSettingsCaches) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePipelineRequestSettingsCaches) SetDesc(v string) *CreatePipelineRequestSettingsCaches {
-	s.Desc = &v
-	return s
-}
-
-func (s *CreatePipelineRequestSettingsCaches) SetDirectory(v string) *CreatePipelineRequestSettingsCaches {
-	s.Directory = &v
-	return s
-}
-
-func (s *CreatePipelineRequestSettingsCaches) SetDisable(v bool) *CreatePipelineRequestSettingsCaches {
-	s.Disable = &v
-	return s
-}
-
-type CreatePipelineRequestSettingsGlobalParams struct {
-	Key           *string `json:"key,omitempty" xml:"key,omitempty"`
-	Mask          *bool   `json:"mask,omitempty" xml:"mask,omitempty"`
-	RunningConfig *bool   `json:"runningConfig,omitempty" xml:"runningConfig,omitempty"`
-	Value         *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s CreatePipelineRequestSettingsGlobalParams) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePipelineRequestSettingsGlobalParams) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePipelineRequestSettingsGlobalParams) SetKey(v string) *CreatePipelineRequestSettingsGlobalParams {
-	s.Key = &v
-	return s
-}
-
-func (s *CreatePipelineRequestSettingsGlobalParams) SetMask(v bool) *CreatePipelineRequestSettingsGlobalParams {
-	s.Mask = &v
-	return s
-}
-
-func (s *CreatePipelineRequestSettingsGlobalParams) SetRunningConfig(v bool) *CreatePipelineRequestSettingsGlobalParams {
-	s.RunningConfig = &v
-	return s
-}
-
-func (s *CreatePipelineRequestSettingsGlobalParams) SetValue(v string) *CreatePipelineRequestSettingsGlobalParams {
-	s.Value = &v
-	return s
-}
-
-type CreatePipelineRequestTriggerInfo struct {
-	Scheduled     *CreatePipelineRequestTriggerInfoScheduled `json:"scheduled,omitempty" xml:"scheduled,omitempty" type:"Struct"`
-	WebhookEnable *bool                                      `json:"webhookEnable,omitempty" xml:"webhookEnable,omitempty"`
-}
-
-func (s CreatePipelineRequestTriggerInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePipelineRequestTriggerInfo) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePipelineRequestTriggerInfo) SetScheduled(v *CreatePipelineRequestTriggerInfoScheduled) *CreatePipelineRequestTriggerInfo {
-	s.Scheduled = v
-	return s
-}
-
-func (s *CreatePipelineRequestTriggerInfo) SetWebhookEnable(v bool) *CreatePipelineRequestTriggerInfo {
-	s.WebhookEnable = &v
-	return s
-}
-
-type CreatePipelineRequestTriggerInfoScheduled struct {
-	DaysOfWeek       *string `json:"daysOfWeek,omitempty" xml:"daysOfWeek,omitempty"`
-	FixedTime        *string `json:"fixedTime,omitempty" xml:"fixedTime,omitempty"`
-	From             *string `json:"from,omitempty" xml:"from,omitempty"`
-	Interval         *int32  `json:"interval,omitempty" xml:"interval,omitempty"`
-	OnlySourceChange *bool   `json:"onlySourceChange,omitempty" xml:"onlySourceChange,omitempty"`
-	To               *string `json:"to,omitempty" xml:"to,omitempty"`
-	Type             *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s CreatePipelineRequestTriggerInfoScheduled) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePipelineRequestTriggerInfoScheduled) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePipelineRequestTriggerInfoScheduled) SetDaysOfWeek(v string) *CreatePipelineRequestTriggerInfoScheduled {
-	s.DaysOfWeek = &v
-	return s
-}
-
-func (s *CreatePipelineRequestTriggerInfoScheduled) SetFixedTime(v string) *CreatePipelineRequestTriggerInfoScheduled {
-	s.FixedTime = &v
-	return s
-}
-
-func (s *CreatePipelineRequestTriggerInfoScheduled) SetFrom(v string) *CreatePipelineRequestTriggerInfoScheduled {
-	s.From = &v
-	return s
-}
-
-func (s *CreatePipelineRequestTriggerInfoScheduled) SetInterval(v int32) *CreatePipelineRequestTriggerInfoScheduled {
-	s.Interval = &v
-	return s
-}
-
-func (s *CreatePipelineRequestTriggerInfoScheduled) SetOnlySourceChange(v bool) *CreatePipelineRequestTriggerInfoScheduled {
-	s.OnlySourceChange = &v
-	return s
-}
-
-func (s *CreatePipelineRequestTriggerInfoScheduled) SetTo(v string) *CreatePipelineRequestTriggerInfoScheduled {
-	s.To = &v
-	return s
-}
-
-func (s *CreatePipelineRequestTriggerInfoScheduled) SetType(v string) *CreatePipelineRequestTriggerInfoScheduled {
-	s.Type = &v
-	return s
-}
-
-type CreatePipelineResponseBody struct {
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	Object       *int64  `json:"object,omitempty" xml:"object,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s CreatePipelineResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePipelineResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePipelineResponseBody) SetErrorCode(v string) *CreatePipelineResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreatePipelineResponseBody) SetErrorMessage(v string) *CreatePipelineResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *CreatePipelineResponseBody) SetObject(v int64) *CreatePipelineResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *CreatePipelineResponseBody) SetRequestId(v string) *CreatePipelineResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreatePipelineResponseBody) SetSuccess(v bool) *CreatePipelineResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreatePipelineResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePipelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreatePipelineResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePipelineResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePipelineResponse) SetHeaders(v map[string]*string) *CreatePipelineResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreatePipelineResponse) SetStatusCode(v int32) *CreatePipelineResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreatePipelineResponse) SetBody(v *CreatePipelineResponseBody) *CreatePipelineResponse {
 	s.Body = v
 	return s
 }
@@ -10599,6 +10290,194 @@ func (s *ListRepositoriesResponse) SetBody(v *ListRepositoriesResponseBody) *Lis
 	return s
 }
 
+type ListRepositoryCommitDiffRequest struct {
+	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	ContextLine    *int32  `json:"contextLine,omitempty" xml:"contextLine,omitempty"`
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s ListRepositoryCommitDiffRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryCommitDiffRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryCommitDiffRequest) SetAccessToken(v string) *ListRepositoryCommitDiffRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffRequest) SetContextLine(v int32) *ListRepositoryCommitDiffRequest {
+	s.ContextLine = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffRequest) SetOrganizationId(v string) *ListRepositoryCommitDiffRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type ListRepositoryCommitDiffResponseBody struct {
+	ErrorCode    *string                                       `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                       `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListRepositoryCommitDiffResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListRepositoryCommitDiffResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryCommitDiffResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryCommitDiffResponseBody) SetErrorCode(v string) *ListRepositoryCommitDiffResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBody) SetErrorMessage(v string) *ListRepositoryCommitDiffResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBody) SetRequestId(v string) *ListRepositoryCommitDiffResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBody) SetResult(v []*ListRepositoryCommitDiffResponseBodyResult) *ListRepositoryCommitDiffResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBody) SetSuccess(v bool) *ListRepositoryCommitDiffResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListRepositoryCommitDiffResponseBodyResult struct {
+	AMode       *string `json:"aMode,omitempty" xml:"aMode,omitempty"`
+	BMode       *string `json:"bMode,omitempty" xml:"bMode,omitempty"`
+	DeletedFile *bool   `json:"deletedFile,omitempty" xml:"deletedFile,omitempty"`
+	Diff        *string `json:"diff,omitempty" xml:"diff,omitempty"`
+	IsBinary    *bool   `json:"isBinary,omitempty" xml:"isBinary,omitempty"`
+	IsNewLfs    *bool   `json:"isNewLfs,omitempty" xml:"isNewLfs,omitempty"`
+	IsOldLfs    *bool   `json:"isOldLfs,omitempty" xml:"isOldLfs,omitempty"`
+	NewFile     *bool   `json:"newFile,omitempty" xml:"newFile,omitempty"`
+	NewId       *string `json:"newId,omitempty" xml:"newId,omitempty"`
+	NewPath     *string `json:"newPath,omitempty" xml:"newPath,omitempty"`
+	OldId       *string `json:"oldId,omitempty" xml:"oldId,omitempty"`
+	OldPath     *string `json:"oldPath,omitempty" xml:"oldPath,omitempty"`
+	RenamedFile *bool   `json:"renamedFile,omitempty" xml:"renamedFile,omitempty"`
+}
+
+func (s ListRepositoryCommitDiffResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryCommitDiffResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryCommitDiffResponseBodyResult) SetAMode(v string) *ListRepositoryCommitDiffResponseBodyResult {
+	s.AMode = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBodyResult) SetBMode(v string) *ListRepositoryCommitDiffResponseBodyResult {
+	s.BMode = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBodyResult) SetDeletedFile(v bool) *ListRepositoryCommitDiffResponseBodyResult {
+	s.DeletedFile = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBodyResult) SetDiff(v string) *ListRepositoryCommitDiffResponseBodyResult {
+	s.Diff = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBodyResult) SetIsBinary(v bool) *ListRepositoryCommitDiffResponseBodyResult {
+	s.IsBinary = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBodyResult) SetIsNewLfs(v bool) *ListRepositoryCommitDiffResponseBodyResult {
+	s.IsNewLfs = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBodyResult) SetIsOldLfs(v bool) *ListRepositoryCommitDiffResponseBodyResult {
+	s.IsOldLfs = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBodyResult) SetNewFile(v bool) *ListRepositoryCommitDiffResponseBodyResult {
+	s.NewFile = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBodyResult) SetNewId(v string) *ListRepositoryCommitDiffResponseBodyResult {
+	s.NewId = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBodyResult) SetNewPath(v string) *ListRepositoryCommitDiffResponseBodyResult {
+	s.NewPath = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBodyResult) SetOldId(v string) *ListRepositoryCommitDiffResponseBodyResult {
+	s.OldId = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBodyResult) SetOldPath(v string) *ListRepositoryCommitDiffResponseBodyResult {
+	s.OldPath = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponseBodyResult) SetRenamedFile(v bool) *ListRepositoryCommitDiffResponseBodyResult {
+	s.RenamedFile = &v
+	return s
+}
+
+type ListRepositoryCommitDiffResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRepositoryCommitDiffResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRepositoryCommitDiffResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryCommitDiffResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryCommitDiffResponse) SetHeaders(v map[string]*string) *ListRepositoryCommitDiffResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponse) SetStatusCode(v int32) *ListRepositoryCommitDiffResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRepositoryCommitDiffResponse) SetBody(v *ListRepositoryCommitDiffResponseBody) *ListRepositoryCommitDiffResponse {
+	s.Body = v
+	return s
+}
+
 type ListRepositoryMemberWithInheritedRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
@@ -14303,321 +14182,6 @@ func (s *UpdateHostGroupResponse) SetBody(v *UpdateHostGroupResponseBody) *Updat
 	return s
 }
 
-type UpdatePipelineRequest struct {
-	BasicInfo    *UpdatePipelineRequestBasicInfo   `json:"basicInfo,omitempty" xml:"basicInfo,omitempty" type:"Struct"`
-	PipelineYaml *string                           `json:"pipelineYaml,omitempty" xml:"pipelineYaml,omitempty"`
-	Settings     *UpdatePipelineRequestSettings    `json:"settings,omitempty" xml:"settings,omitempty" type:"Struct"`
-	TriggerInfo  *UpdatePipelineRequestTriggerInfo `json:"triggerInfo,omitempty" xml:"triggerInfo,omitempty" type:"Struct"`
-}
-
-func (s UpdatePipelineRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePipelineRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePipelineRequest) SetBasicInfo(v *UpdatePipelineRequestBasicInfo) *UpdatePipelineRequest {
-	s.BasicInfo = v
-	return s
-}
-
-func (s *UpdatePipelineRequest) SetPipelineYaml(v string) *UpdatePipelineRequest {
-	s.PipelineYaml = &v
-	return s
-}
-
-func (s *UpdatePipelineRequest) SetSettings(v *UpdatePipelineRequestSettings) *UpdatePipelineRequest {
-	s.Settings = v
-	return s
-}
-
-func (s *UpdatePipelineRequest) SetTriggerInfo(v *UpdatePipelineRequestTriggerInfo) *UpdatePipelineRequest {
-	s.TriggerInfo = v
-	return s
-}
-
-type UpdatePipelineRequestBasicInfo struct {
-	EnvId      *int64  `json:"envId,omitempty" xml:"envId,omitempty"`
-	GroupId    *int64  `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	PipelineId *int64  `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
-	TagIds     *string `json:"tagIds,omitempty" xml:"tagIds,omitempty"`
-}
-
-func (s UpdatePipelineRequestBasicInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePipelineRequestBasicInfo) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePipelineRequestBasicInfo) SetEnvId(v int64) *UpdatePipelineRequestBasicInfo {
-	s.EnvId = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestBasicInfo) SetGroupId(v int64) *UpdatePipelineRequestBasicInfo {
-	s.GroupId = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestBasicInfo) SetName(v string) *UpdatePipelineRequestBasicInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestBasicInfo) SetPipelineId(v int64) *UpdatePipelineRequestBasicInfo {
-	s.PipelineId = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestBasicInfo) SetTagIds(v string) *UpdatePipelineRequestBasicInfo {
-	s.TagIds = &v
-	return s
-}
-
-type UpdatePipelineRequestSettings struct {
-	Caches          []*UpdatePipelineRequestSettingsCaches       `json:"caches,omitempty" xml:"caches,omitempty" type:"Repeated"`
-	GlobalParams    []*UpdatePipelineRequestSettingsGlobalParams `json:"globalParams,omitempty" xml:"globalParams,omitempty" type:"Repeated"`
-	RunnerCacheMode *string                                      `json:"runnerCacheMode,omitempty" xml:"runnerCacheMode,omitempty"`
-}
-
-func (s UpdatePipelineRequestSettings) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePipelineRequestSettings) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePipelineRequestSettings) SetCaches(v []*UpdatePipelineRequestSettingsCaches) *UpdatePipelineRequestSettings {
-	s.Caches = v
-	return s
-}
-
-func (s *UpdatePipelineRequestSettings) SetGlobalParams(v []*UpdatePipelineRequestSettingsGlobalParams) *UpdatePipelineRequestSettings {
-	s.GlobalParams = v
-	return s
-}
-
-func (s *UpdatePipelineRequestSettings) SetRunnerCacheMode(v string) *UpdatePipelineRequestSettings {
-	s.RunnerCacheMode = &v
-	return s
-}
-
-type UpdatePipelineRequestSettingsCaches struct {
-	Desc      *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	Directory *string `json:"directory,omitempty" xml:"directory,omitempty"`
-	Disable   *bool   `json:"disable,omitempty" xml:"disable,omitempty"`
-}
-
-func (s UpdatePipelineRequestSettingsCaches) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePipelineRequestSettingsCaches) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePipelineRequestSettingsCaches) SetDesc(v string) *UpdatePipelineRequestSettingsCaches {
-	s.Desc = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestSettingsCaches) SetDirectory(v string) *UpdatePipelineRequestSettingsCaches {
-	s.Directory = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestSettingsCaches) SetDisable(v bool) *UpdatePipelineRequestSettingsCaches {
-	s.Disable = &v
-	return s
-}
-
-type UpdatePipelineRequestSettingsGlobalParams struct {
-	Key           *string `json:"key,omitempty" xml:"key,omitempty"`
-	Mask          *bool   `json:"mask,omitempty" xml:"mask,omitempty"`
-	RunningConfig *bool   `json:"runningConfig,omitempty" xml:"runningConfig,omitempty"`
-	Value         *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s UpdatePipelineRequestSettingsGlobalParams) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePipelineRequestSettingsGlobalParams) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePipelineRequestSettingsGlobalParams) SetKey(v string) *UpdatePipelineRequestSettingsGlobalParams {
-	s.Key = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestSettingsGlobalParams) SetMask(v bool) *UpdatePipelineRequestSettingsGlobalParams {
-	s.Mask = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestSettingsGlobalParams) SetRunningConfig(v bool) *UpdatePipelineRequestSettingsGlobalParams {
-	s.RunningConfig = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestSettingsGlobalParams) SetValue(v string) *UpdatePipelineRequestSettingsGlobalParams {
-	s.Value = &v
-	return s
-}
-
-type UpdatePipelineRequestTriggerInfo struct {
-	Scheduled     *UpdatePipelineRequestTriggerInfoScheduled `json:"scheduled,omitempty" xml:"scheduled,omitempty" type:"Struct"`
-	WebhookEnable *bool                                      `json:"webhookEnable,omitempty" xml:"webhookEnable,omitempty"`
-}
-
-func (s UpdatePipelineRequestTriggerInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePipelineRequestTriggerInfo) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePipelineRequestTriggerInfo) SetScheduled(v *UpdatePipelineRequestTriggerInfoScheduled) *UpdatePipelineRequestTriggerInfo {
-	s.Scheduled = v
-	return s
-}
-
-func (s *UpdatePipelineRequestTriggerInfo) SetWebhookEnable(v bool) *UpdatePipelineRequestTriggerInfo {
-	s.WebhookEnable = &v
-	return s
-}
-
-type UpdatePipelineRequestTriggerInfoScheduled struct {
-	DaysOfWeek       *string `json:"daysOfWeek,omitempty" xml:"daysOfWeek,omitempty"`
-	FixedTime        *string `json:"fixedTime,omitempty" xml:"fixedTime,omitempty"`
-	From             *string `json:"from,omitempty" xml:"from,omitempty"`
-	Interval         *int32  `json:"interval,omitempty" xml:"interval,omitempty"`
-	OnlySourceChange *bool   `json:"onlySourceChange,omitempty" xml:"onlySourceChange,omitempty"`
-	To               *string `json:"to,omitempty" xml:"to,omitempty"`
-	Type             *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s UpdatePipelineRequestTriggerInfoScheduled) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePipelineRequestTriggerInfoScheduled) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePipelineRequestTriggerInfoScheduled) SetDaysOfWeek(v string) *UpdatePipelineRequestTriggerInfoScheduled {
-	s.DaysOfWeek = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestTriggerInfoScheduled) SetFixedTime(v string) *UpdatePipelineRequestTriggerInfoScheduled {
-	s.FixedTime = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestTriggerInfoScheduled) SetFrom(v string) *UpdatePipelineRequestTriggerInfoScheduled {
-	s.From = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestTriggerInfoScheduled) SetInterval(v int32) *UpdatePipelineRequestTriggerInfoScheduled {
-	s.Interval = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestTriggerInfoScheduled) SetOnlySourceChange(v bool) *UpdatePipelineRequestTriggerInfoScheduled {
-	s.OnlySourceChange = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestTriggerInfoScheduled) SetTo(v string) *UpdatePipelineRequestTriggerInfoScheduled {
-	s.To = &v
-	return s
-}
-
-func (s *UpdatePipelineRequestTriggerInfoScheduled) SetType(v string) *UpdatePipelineRequestTriggerInfoScheduled {
-	s.Type = &v
-	return s
-}
-
-type UpdatePipelineResponseBody struct {
-	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	Object       *int64  `json:"object,omitempty" xml:"object,omitempty"`
-	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s UpdatePipelineResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePipelineResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePipelineResponseBody) SetErrorCode(v string) *UpdatePipelineResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpdatePipelineResponseBody) SetErrorMessage(v string) *UpdatePipelineResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *UpdatePipelineResponseBody) SetObject(v int64) *UpdatePipelineResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *UpdatePipelineResponseBody) SetRequestId(v string) *UpdatePipelineResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdatePipelineResponseBody) SetSuccess(v bool) *UpdatePipelineResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdatePipelineResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePipelineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdatePipelineResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePipelineResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePipelineResponse) SetHeaders(v map[string]*string) *UpdatePipelineResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdatePipelineResponse) SetStatusCode(v int32) *UpdatePipelineResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdatePipelineResponse) SetBody(v *UpdatePipelineResponseBody) *UpdatePipelineResponse {
-	s.Body = v
-	return s
-}
-
 type UpdatePipelineBaseInfoRequest struct {
 	EnvId        *int64  `json:"envId,omitempty" xml:"envId,omitempty"`
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
@@ -14958,6 +14522,913 @@ func (s *UpdateProjectMemberResponse) SetStatusCode(v int32) *UpdateProjectMembe
 }
 
 func (s *UpdateProjectMemberResponse) SetBody(v *UpdateProjectMemberResponseBody) *UpdateProjectMemberResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateProtectedBranchesRequest struct {
+	AccessToken         *string                                            `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	AllowMergeRoles     []*int32                                           `json:"allowMergeRoles,omitempty" xml:"allowMergeRoles,omitempty" type:"Repeated"`
+	AllowMergeUserIds   []*int64                                           `json:"allowMergeUserIds,omitempty" xml:"allowMergeUserIds,omitempty" type:"Repeated"`
+	AllowPushRoles      []*int32                                           `json:"allowPushRoles,omitempty" xml:"allowPushRoles,omitempty" type:"Repeated"`
+	AllowPushUserIds    []*int64                                           `json:"allowPushUserIds,omitempty" xml:"allowPushUserIds,omitempty" type:"Repeated"`
+	Branch              *string                                            `json:"branch,omitempty" xml:"branch,omitempty"`
+	Id                  *int64                                             `json:"id,omitempty" xml:"id,omitempty"`
+	MergeRequestSetting *UpdateProtectedBranchesRequestMergeRequestSetting `json:"mergeRequestSetting,omitempty" xml:"mergeRequestSetting,omitempty" type:"Struct"`
+	TestSettingDTO      *UpdateProtectedBranchesRequestTestSettingDTO      `json:"testSettingDTO,omitempty" xml:"testSettingDTO,omitempty" type:"Struct"`
+	OrganizationId      *string                                            `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s UpdateProtectedBranchesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesRequest) SetAccessToken(v string) *UpdateProtectedBranchesRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequest) SetAllowMergeRoles(v []*int32) *UpdateProtectedBranchesRequest {
+	s.AllowMergeRoles = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequest) SetAllowMergeUserIds(v []*int64) *UpdateProtectedBranchesRequest {
+	s.AllowMergeUserIds = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequest) SetAllowPushRoles(v []*int32) *UpdateProtectedBranchesRequest {
+	s.AllowPushRoles = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequest) SetAllowPushUserIds(v []*int64) *UpdateProtectedBranchesRequest {
+	s.AllowPushUserIds = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequest) SetBranch(v string) *UpdateProtectedBranchesRequest {
+	s.Branch = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequest) SetId(v int64) *UpdateProtectedBranchesRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequest) SetMergeRequestSetting(v *UpdateProtectedBranchesRequestMergeRequestSetting) *UpdateProtectedBranchesRequest {
+	s.MergeRequestSetting = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequest) SetTestSettingDTO(v *UpdateProtectedBranchesRequestTestSettingDTO) *UpdateProtectedBranchesRequest {
+	s.TestSettingDTO = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequest) SetOrganizationId(v string) *UpdateProtectedBranchesRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type UpdateProtectedBranchesRequestMergeRequestSetting struct {
+	AllowMergeRequestRoles       []*int32 `json:"allowMergeRequestRoles,omitempty" xml:"allowMergeRequestRoles,omitempty" type:"Repeated"`
+	DefaultAssignees             []*int32 `json:"defaultAssignees,omitempty" xml:"defaultAssignees,omitempty" type:"Repeated"`
+	IsAllowSelfApproval          *bool    `json:"isAllowSelfApproval,omitempty" xml:"isAllowSelfApproval,omitempty"`
+	IsRequireDiscussionProcessed *bool    `json:"isRequireDiscussionProcessed,omitempty" xml:"isRequireDiscussionProcessed,omitempty"`
+	IsRequired                   *bool    `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	IsResetApprovalWhenNewPush   *bool    `json:"isResetApprovalWhenNewPush,omitempty" xml:"isResetApprovalWhenNewPush,omitempty"`
+	MinimumApproval              *int32   `json:"minimumApproval,omitempty" xml:"minimumApproval,omitempty"`
+	MrMode                       *string  `json:"mrMode,omitempty" xml:"mrMode,omitempty"`
+	WhiteList                    *string  `json:"whiteList,omitempty" xml:"whiteList,omitempty"`
+}
+
+func (s UpdateProtectedBranchesRequestMergeRequestSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesRequestMergeRequestSetting) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesRequestMergeRequestSetting) SetAllowMergeRequestRoles(v []*int32) *UpdateProtectedBranchesRequestMergeRequestSetting {
+	s.AllowMergeRequestRoles = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestMergeRequestSetting) SetDefaultAssignees(v []*int32) *UpdateProtectedBranchesRequestMergeRequestSetting {
+	s.DefaultAssignees = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestMergeRequestSetting) SetIsAllowSelfApproval(v bool) *UpdateProtectedBranchesRequestMergeRequestSetting {
+	s.IsAllowSelfApproval = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestMergeRequestSetting) SetIsRequireDiscussionProcessed(v bool) *UpdateProtectedBranchesRequestMergeRequestSetting {
+	s.IsRequireDiscussionProcessed = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestMergeRequestSetting) SetIsRequired(v bool) *UpdateProtectedBranchesRequestMergeRequestSetting {
+	s.IsRequired = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestMergeRequestSetting) SetIsResetApprovalWhenNewPush(v bool) *UpdateProtectedBranchesRequestMergeRequestSetting {
+	s.IsResetApprovalWhenNewPush = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestMergeRequestSetting) SetMinimumApproval(v int32) *UpdateProtectedBranchesRequestMergeRequestSetting {
+	s.MinimumApproval = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestMergeRequestSetting) SetMrMode(v string) *UpdateProtectedBranchesRequestMergeRequestSetting {
+	s.MrMode = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestMergeRequestSetting) SetWhiteList(v string) *UpdateProtectedBranchesRequestMergeRequestSetting {
+	s.WhiteList = &v
+	return s
+}
+
+type UpdateProtectedBranchesRequestTestSettingDTO struct {
+	CheckConfig             *UpdateProtectedBranchesRequestTestSettingDTOCheckConfig             `json:"checkConfig,omitempty" xml:"checkConfig,omitempty" type:"Struct"`
+	CheckTaskQualityConfig  *UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig  `json:"checkTaskQualityConfig,omitempty" xml:"checkTaskQualityConfig,omitempty" type:"Struct"`
+	CodeGuidelinesDetection *UpdateProtectedBranchesRequestTestSettingDTOCodeGuidelinesDetection `json:"codeGuidelinesDetection,omitempty" xml:"codeGuidelinesDetection,omitempty" type:"Struct"`
+	IsRequired              *bool                                                                `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	SensitiveInfoDetection  *UpdateProtectedBranchesRequestTestSettingDTOSensitiveInfoDetection  `json:"sensitiveInfoDetection,omitempty" xml:"sensitiveInfoDetection,omitempty" type:"Struct"`
+}
+
+func (s UpdateProtectedBranchesRequestTestSettingDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesRequestTestSettingDTO) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTO) SetCheckConfig(v *UpdateProtectedBranchesRequestTestSettingDTOCheckConfig) *UpdateProtectedBranchesRequestTestSettingDTO {
+	s.CheckConfig = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTO) SetCheckTaskQualityConfig(v *UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig) *UpdateProtectedBranchesRequestTestSettingDTO {
+	s.CheckTaskQualityConfig = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTO) SetCodeGuidelinesDetection(v *UpdateProtectedBranchesRequestTestSettingDTOCodeGuidelinesDetection) *UpdateProtectedBranchesRequestTestSettingDTO {
+	s.CodeGuidelinesDetection = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTO) SetIsRequired(v bool) *UpdateProtectedBranchesRequestTestSettingDTO {
+	s.IsRequired = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTO) SetSensitiveInfoDetection(v *UpdateProtectedBranchesRequestTestSettingDTOSensitiveInfoDetection) *UpdateProtectedBranchesRequestTestSettingDTO {
+	s.SensitiveInfoDetection = v
+	return s
+}
+
+type UpdateProtectedBranchesRequestTestSettingDTOCheckConfig struct {
+	CheckItems []*UpdateProtectedBranchesRequestTestSettingDTOCheckConfigCheckItems `json:"checkItems,omitempty" xml:"checkItems,omitempty" type:"Repeated"`
+}
+
+func (s UpdateProtectedBranchesRequestTestSettingDTOCheckConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesRequestTestSettingDTOCheckConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTOCheckConfig) SetCheckItems(v []*UpdateProtectedBranchesRequestTestSettingDTOCheckConfigCheckItems) *UpdateProtectedBranchesRequestTestSettingDTOCheckConfig {
+	s.CheckItems = v
+	return s
+}
+
+type UpdateProtectedBranchesRequestTestSettingDTOCheckConfigCheckItems struct {
+	IsRequired *bool   `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s UpdateProtectedBranchesRequestTestSettingDTOCheckConfigCheckItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesRequestTestSettingDTOCheckConfigCheckItems) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTOCheckConfigCheckItems) SetIsRequired(v bool) *UpdateProtectedBranchesRequestTestSettingDTOCheckConfigCheckItems {
+	s.IsRequired = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTOCheckConfigCheckItems) SetName(v string) *UpdateProtectedBranchesRequestTestSettingDTOCheckConfigCheckItems {
+	s.Name = &v
+	return s
+}
+
+type UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig struct {
+	BizNo    *string `json:"bizNo,omitempty" xml:"bizNo,omitempty"`
+	Enabled  *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Message  *string `json:"message,omitempty" xml:"message,omitempty"`
+	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
+}
+
+func (s UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig) SetBizNo(v string) *UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig {
+	s.BizNo = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig) SetEnabled(v bool) *UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig) SetMessage(v string) *UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig) SetTaskName(v string) *UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig {
+	s.TaskName = &v
+	return s
+}
+
+type UpdateProtectedBranchesRequestTestSettingDTOCodeGuidelinesDetection struct {
+	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s UpdateProtectedBranchesRequestTestSettingDTOCodeGuidelinesDetection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesRequestTestSettingDTOCodeGuidelinesDetection) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTOCodeGuidelinesDetection) SetEnabled(v bool) *UpdateProtectedBranchesRequestTestSettingDTOCodeGuidelinesDetection {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTOCodeGuidelinesDetection) SetMessage(v string) *UpdateProtectedBranchesRequestTestSettingDTOCodeGuidelinesDetection {
+	s.Message = &v
+	return s
+}
+
+type UpdateProtectedBranchesRequestTestSettingDTOSensitiveInfoDetection struct {
+	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s UpdateProtectedBranchesRequestTestSettingDTOSensitiveInfoDetection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesRequestTestSettingDTOSensitiveInfoDetection) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTOSensitiveInfoDetection) SetEnabled(v bool) *UpdateProtectedBranchesRequestTestSettingDTOSensitiveInfoDetection {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesRequestTestSettingDTOSensitiveInfoDetection) SetMessage(v string) *UpdateProtectedBranchesRequestTestSettingDTOSensitiveInfoDetection {
+	s.Message = &v
+	return s
+}
+
+type UpdateProtectedBranchesResponseBody struct {
+	ErrorCode    *string                                    `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                    `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *UpdateProtectedBranchesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateProtectedBranchesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesResponseBody) SetErrorCode(v string) *UpdateProtectedBranchesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBody) SetErrorMessage(v string) *UpdateProtectedBranchesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBody) SetRequestId(v string) *UpdateProtectedBranchesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBody) SetResult(v *UpdateProtectedBranchesResponseBodyResult) *UpdateProtectedBranchesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBody) SetSuccess(v bool) *UpdateProtectedBranchesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateProtectedBranchesResponseBodyResult struct {
+	AllowMergeRoles     []*int32                                                      `json:"allowMergeRoles,omitempty" xml:"allowMergeRoles,omitempty" type:"Repeated"`
+	AllowMergeUserIds   []*int64                                                      `json:"allowMergeUserIds,omitempty" xml:"allowMergeUserIds,omitempty" type:"Repeated"`
+	AllowPushRoles      []*int32                                                      `json:"allowPushRoles,omitempty" xml:"allowPushRoles,omitempty" type:"Repeated"`
+	AllowPushUserIds    []*int64                                                      `json:"allowPushUserIds,omitempty" xml:"allowPushUserIds,omitempty" type:"Repeated"`
+	Branch              *string                                                       `json:"branch,omitempty" xml:"branch,omitempty"`
+	Id                  *int64                                                        `json:"id,omitempty" xml:"id,omitempty"`
+	MergeRequestSetting *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting `json:"mergeRequestSetting,omitempty" xml:"mergeRequestSetting,omitempty" type:"Struct"`
+	TestSettingDTO      *UpdateProtectedBranchesResponseBodyResultTestSettingDTO      `json:"testSettingDTO,omitempty" xml:"testSettingDTO,omitempty" type:"Struct"`
+}
+
+func (s UpdateProtectedBranchesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResult) SetAllowMergeRoles(v []*int32) *UpdateProtectedBranchesResponseBodyResult {
+	s.AllowMergeRoles = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResult) SetAllowMergeUserIds(v []*int64) *UpdateProtectedBranchesResponseBodyResult {
+	s.AllowMergeUserIds = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResult) SetAllowPushRoles(v []*int32) *UpdateProtectedBranchesResponseBodyResult {
+	s.AllowPushRoles = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResult) SetAllowPushUserIds(v []*int64) *UpdateProtectedBranchesResponseBodyResult {
+	s.AllowPushUserIds = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResult) SetBranch(v string) *UpdateProtectedBranchesResponseBodyResult {
+	s.Branch = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResult) SetId(v int64) *UpdateProtectedBranchesResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResult) SetMergeRequestSetting(v *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) *UpdateProtectedBranchesResponseBodyResult {
+	s.MergeRequestSetting = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResult) SetTestSettingDTO(v *UpdateProtectedBranchesResponseBodyResultTestSettingDTO) *UpdateProtectedBranchesResponseBodyResult {
+	s.TestSettingDTO = v
+	return s
+}
+
+type UpdateProtectedBranchesResponseBodyResultMergeRequestSetting struct {
+	AllowMergeRequestRoles       []*int32 `json:"allowMergeRequestRoles,omitempty" xml:"allowMergeRequestRoles,omitempty" type:"Repeated"`
+	DefaultAssignees             []*int32 `json:"defaultAssignees,omitempty" xml:"defaultAssignees,omitempty" type:"Repeated"`
+	IsAllowSelfApproval          *bool    `json:"isAllowSelfApproval,omitempty" xml:"isAllowSelfApproval,omitempty"`
+	IsRequireDiscussionProcessed *bool    `json:"isRequireDiscussionProcessed,omitempty" xml:"isRequireDiscussionProcessed,omitempty"`
+	IsRequired                   *bool    `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	IsResetApprovalWhenNewPush   *bool    `json:"isResetApprovalWhenNewPush,omitempty" xml:"isResetApprovalWhenNewPush,omitempty"`
+	MinimumApproval              *int32   `json:"minimumApproval,omitempty" xml:"minimumApproval,omitempty"`
+	MrMode                       *string  `json:"mrMode,omitempty" xml:"mrMode,omitempty"`
+	WhiteList                    *string  `json:"whiteList,omitempty" xml:"whiteList,omitempty"`
+}
+
+func (s UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) SetAllowMergeRequestRoles(v []*int32) *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting {
+	s.AllowMergeRequestRoles = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) SetDefaultAssignees(v []*int32) *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting {
+	s.DefaultAssignees = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) SetIsAllowSelfApproval(v bool) *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting {
+	s.IsAllowSelfApproval = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) SetIsRequireDiscussionProcessed(v bool) *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting {
+	s.IsRequireDiscussionProcessed = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) SetIsRequired(v bool) *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting {
+	s.IsRequired = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) SetIsResetApprovalWhenNewPush(v bool) *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting {
+	s.IsResetApprovalWhenNewPush = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) SetMinimumApproval(v int32) *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting {
+	s.MinimumApproval = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) SetMrMode(v string) *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting {
+	s.MrMode = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting) SetWhiteList(v string) *UpdateProtectedBranchesResponseBodyResultMergeRequestSetting {
+	s.WhiteList = &v
+	return s
+}
+
+type UpdateProtectedBranchesResponseBodyResultTestSettingDTO struct {
+	CheckConfig             *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfig             `json:"checkConfig,omitempty" xml:"checkConfig,omitempty" type:"Struct"`
+	CheckTaskQualityConfig  *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig  `json:"checkTaskQualityConfig,omitempty" xml:"checkTaskQualityConfig,omitempty" type:"Struct"`
+	CodeGuidelinesDetection *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCodeGuidelinesDetection `json:"codeGuidelinesDetection,omitempty" xml:"codeGuidelinesDetection,omitempty" type:"Struct"`
+	IsRequired              *bool                                                                           `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	SensitiveInfoDetection  *UpdateProtectedBranchesResponseBodyResultTestSettingDTOSensitiveInfoDetection  `json:"sensitiveInfoDetection,omitempty" xml:"sensitiveInfoDetection,omitempty" type:"Struct"`
+}
+
+func (s UpdateProtectedBranchesResponseBodyResultTestSettingDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesResponseBodyResultTestSettingDTO) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTO) SetCheckConfig(v *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfig) *UpdateProtectedBranchesResponseBodyResultTestSettingDTO {
+	s.CheckConfig = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTO) SetCheckTaskQualityConfig(v *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig) *UpdateProtectedBranchesResponseBodyResultTestSettingDTO {
+	s.CheckTaskQualityConfig = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTO) SetCodeGuidelinesDetection(v *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCodeGuidelinesDetection) *UpdateProtectedBranchesResponseBodyResultTestSettingDTO {
+	s.CodeGuidelinesDetection = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTO) SetIsRequired(v bool) *UpdateProtectedBranchesResponseBodyResultTestSettingDTO {
+	s.IsRequired = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTO) SetSensitiveInfoDetection(v *UpdateProtectedBranchesResponseBodyResultTestSettingDTOSensitiveInfoDetection) *UpdateProtectedBranchesResponseBodyResultTestSettingDTO {
+	s.SensitiveInfoDetection = v
+	return s
+}
+
+type UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfig struct {
+	CheckItems []*UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfigCheckItems `json:"checkItems,omitempty" xml:"checkItems,omitempty" type:"Repeated"`
+}
+
+func (s UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfig) SetCheckItems(v []*UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfigCheckItems) *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfig {
+	s.CheckItems = v
+	return s
+}
+
+type UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfigCheckItems struct {
+	IsRequired *bool   `json:"isRequired,omitempty" xml:"isRequired,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfigCheckItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfigCheckItems) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfigCheckItems) SetIsRequired(v bool) *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfigCheckItems {
+	s.IsRequired = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfigCheckItems) SetName(v string) *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfigCheckItems {
+	s.Name = &v
+	return s
+}
+
+type UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig struct {
+	BizNo    *string `json:"bizNo,omitempty" xml:"bizNo,omitempty"`
+	Enabled  *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Message  *string `json:"message,omitempty" xml:"message,omitempty"`
+	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
+}
+
+func (s UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig) SetBizNo(v string) *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig {
+	s.BizNo = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig) SetEnabled(v bool) *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig) SetMessage(v string) *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig) SetTaskName(v string) *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig {
+	s.TaskName = &v
+	return s
+}
+
+type UpdateProtectedBranchesResponseBodyResultTestSettingDTOCodeGuidelinesDetection struct {
+	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s UpdateProtectedBranchesResponseBodyResultTestSettingDTOCodeGuidelinesDetection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesResponseBodyResultTestSettingDTOCodeGuidelinesDetection) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCodeGuidelinesDetection) SetEnabled(v bool) *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCodeGuidelinesDetection {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCodeGuidelinesDetection) SetMessage(v string) *UpdateProtectedBranchesResponseBodyResultTestSettingDTOCodeGuidelinesDetection {
+	s.Message = &v
+	return s
+}
+
+type UpdateProtectedBranchesResponseBodyResultTestSettingDTOSensitiveInfoDetection struct {
+	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s UpdateProtectedBranchesResponseBodyResultTestSettingDTOSensitiveInfoDetection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesResponseBodyResultTestSettingDTOSensitiveInfoDetection) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTOSensitiveInfoDetection) SetEnabled(v bool) *UpdateProtectedBranchesResponseBodyResultTestSettingDTOSensitiveInfoDetection {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponseBodyResultTestSettingDTOSensitiveInfoDetection) SetMessage(v string) *UpdateProtectedBranchesResponseBodyResultTestSettingDTOSensitiveInfoDetection {
+	s.Message = &v
+	return s
+}
+
+type UpdateProtectedBranchesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateProtectedBranchesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateProtectedBranchesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProtectedBranchesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProtectedBranchesResponse) SetHeaders(v map[string]*string) *UpdateProtectedBranchesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponse) SetStatusCode(v int32) *UpdateProtectedBranchesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateProtectedBranchesResponse) SetBody(v *UpdateProtectedBranchesResponseBody) *UpdateProtectedBranchesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateRepositoryMemberRequest struct {
+	AccessToken    *string                                      `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	AccessLevel    *int32                                       `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	ExpireAt       *string                                      `json:"expireAt,omitempty" xml:"expireAt,omitempty"`
+	MemberType     *string                                      `json:"memberType,omitempty" xml:"memberType,omitempty"`
+	RelatedId      *string                                      `json:"relatedId,omitempty" xml:"relatedId,omitempty"`
+	RelatedInfos   []*UpdateRepositoryMemberRequestRelatedInfos `json:"relatedInfos,omitempty" xml:"relatedInfos,omitempty" type:"Repeated"`
+	OrganizationId *string                                      `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s UpdateRepositoryMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRepositoryMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRepositoryMemberRequest) SetAccessToken(v string) *UpdateRepositoryMemberRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberRequest) SetAccessLevel(v int32) *UpdateRepositoryMemberRequest {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberRequest) SetExpireAt(v string) *UpdateRepositoryMemberRequest {
+	s.ExpireAt = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberRequest) SetMemberType(v string) *UpdateRepositoryMemberRequest {
+	s.MemberType = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberRequest) SetRelatedId(v string) *UpdateRepositoryMemberRequest {
+	s.RelatedId = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberRequest) SetRelatedInfos(v []*UpdateRepositoryMemberRequestRelatedInfos) *UpdateRepositoryMemberRequest {
+	s.RelatedInfos = v
+	return s
+}
+
+func (s *UpdateRepositoryMemberRequest) SetOrganizationId(v string) *UpdateRepositoryMemberRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type UpdateRepositoryMemberRequestRelatedInfos struct {
+	RelatedId  *string `json:"relatedId,omitempty" xml:"relatedId,omitempty"`
+	SourceId   *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+}
+
+func (s UpdateRepositoryMemberRequestRelatedInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRepositoryMemberRequestRelatedInfos) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRepositoryMemberRequestRelatedInfos) SetRelatedId(v string) *UpdateRepositoryMemberRequestRelatedInfos {
+	s.RelatedId = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberRequestRelatedInfos) SetSourceId(v int64) *UpdateRepositoryMemberRequestRelatedInfos {
+	s.SourceId = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberRequestRelatedInfos) SetSourceType(v string) *UpdateRepositoryMemberRequestRelatedInfos {
+	s.SourceType = &v
+	return s
+}
+
+type UpdateRepositoryMemberResponseBody struct {
+	ErrorCode    *string                                   `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                   `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *UpdateRepositoryMemberResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateRepositoryMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRepositoryMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRepositoryMemberResponseBody) SetErrorCode(v string) *UpdateRepositoryMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBody) SetErrorMessage(v string) *UpdateRepositoryMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBody) SetRequestId(v string) *UpdateRepositoryMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBody) SetResult(v *UpdateRepositoryMemberResponseBodyResult) *UpdateRepositoryMemberResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBody) SetSuccess(v bool) *UpdateRepositoryMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateRepositoryMemberResponseBodyResult struct {
+	AccessLevel *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AvatarUrl   *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email       *string `json:"email,omitempty" xml:"email,omitempty"`
+	ExpireAt    *string `json:"expireAt,omitempty" xml:"expireAt,omitempty"`
+	ExternUid   *string `json:"externUid,omitempty" xml:"externUid,omitempty"`
+	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	MemberName  *string `json:"memberName,omitempty" xml:"memberName,omitempty"`
+	MemberType  *string `json:"memberType,omitempty" xml:"memberType,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	SourceId    *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	SourceType  *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	State       *string `json:"state,omitempty" xml:"state,omitempty"`
+	TbUserId    *string `json:"tbUserId,omitempty" xml:"tbUserId,omitempty"`
+	Username    *string `json:"username,omitempty" xml:"username,omitempty"`
+	WebUrl      *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+}
+
+func (s UpdateRepositoryMemberResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRepositoryMemberResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetAccessLevel(v int32) *UpdateRepositoryMemberResponseBodyResult {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetAvatarUrl(v string) *UpdateRepositoryMemberResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetEmail(v string) *UpdateRepositoryMemberResponseBodyResult {
+	s.Email = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetExpireAt(v string) *UpdateRepositoryMemberResponseBodyResult {
+	s.ExpireAt = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetExternUid(v string) *UpdateRepositoryMemberResponseBodyResult {
+	s.ExternUid = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetId(v int64) *UpdateRepositoryMemberResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetMemberName(v string) *UpdateRepositoryMemberResponseBodyResult {
+	s.MemberName = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetMemberType(v string) *UpdateRepositoryMemberResponseBodyResult {
+	s.MemberType = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetName(v string) *UpdateRepositoryMemberResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetSourceId(v int64) *UpdateRepositoryMemberResponseBodyResult {
+	s.SourceId = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetSourceType(v string) *UpdateRepositoryMemberResponseBodyResult {
+	s.SourceType = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetState(v string) *UpdateRepositoryMemberResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetTbUserId(v string) *UpdateRepositoryMemberResponseBodyResult {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetUsername(v string) *UpdateRepositoryMemberResponseBodyResult {
+	s.Username = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponseBodyResult) SetWebUrl(v string) *UpdateRepositoryMemberResponseBodyResult {
+	s.WebUrl = &v
+	return s
+}
+
+type UpdateRepositoryMemberResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateRepositoryMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateRepositoryMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRepositoryMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRepositoryMemberResponse) SetHeaders(v map[string]*string) *UpdateRepositoryMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponse) SetStatusCode(v int32) *UpdateRepositoryMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateRepositoryMemberResponse) SetBody(v *UpdateRepositoryMemberResponseBody) *UpdateRepositoryMemberResponse {
 	s.Body = v
 	return s
 }
@@ -15442,7 +15913,6 @@ func (client *Client) AddRepositoryMemberWithOptions(repositoryId *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	repositoryId = openapiutil.GetEncodeParam(repositoryId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
 		query["AccessToken"] = request.AccessToken
@@ -15470,7 +15940,7 @@ func (client *Client) AddRepositoryMemberWithOptions(repositoryId *string, reque
 		Action:      tea.String("AddRepositoryMember"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/repository/" + tea.StringValue(repositoryId) + "/members"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/members"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15503,7 +15973,6 @@ func (client *Client) AddWebhookWithOptions(repositoryId *string, request *AddWe
 	if _err != nil {
 		return _result, _err
 	}
-	repositoryId = openapiutil.GetEncodeParam(repositoryId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
 		query["AccessToken"] = request.AccessToken
@@ -15555,7 +16024,7 @@ func (client *Client) AddWebhookWithOptions(repositoryId *string, request *AddWe
 		Action:      tea.String("AddWebhook"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/repository/" + tea.StringValue(repositoryId) + "/webhooks/create"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/webhooks/create"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15588,7 +16057,6 @@ func (client *Client) CreateFlowTagWithOptions(organizationId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Color)) {
 		query["color"] = request.Color
@@ -15610,7 +16078,7 @@ func (client *Client) CreateFlowTagWithOptions(organizationId *string, request *
 		Action:      tea.String("CreateFlowTag"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tags"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/flow/tags"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15643,7 +16111,6 @@ func (client *Client) CreateFlowTagGroupWithOptions(organizationId *string, requ
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["name"] = request.Name
@@ -15657,7 +16124,7 @@ func (client *Client) CreateFlowTagGroupWithOptions(organizationId *string, requ
 		Action:      tea.String("CreateFlowTagGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tagGroups"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/flow/tagGroups"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15690,7 +16157,6 @@ func (client *Client) CreateHostGroupWithOptions(organizationId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AliyunRegion)) {
 		body["aliyunRegion"] = request.AliyunRegion
@@ -15740,7 +16206,7 @@ func (client *Client) CreateHostGroupWithOptions(organizationId *string, request
 		Action:      tea.String("CreateHostGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/hostGroups"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/hostGroups"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15822,65 +16288,6 @@ func (client *Client) CreateOAuthTokenWithOptions(request *CreateOAuthTokenReque
 	return _result, _err
 }
 
-func (client *Client) CreatePipeline(organizationId *string, request *CreatePipelineRequest) (_result *CreatePipelineResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreatePipelineResponse{}
-	_body, _err := client.CreatePipelineWithOptions(organizationId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreatePipelineWithOptions(organizationId *string, request *CreatePipelineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePipelineResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.BasicInfo))) {
-		body["basicInfo"] = request.BasicInfo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PipelineYaml)) {
-		body["pipelineYaml"] = request.PipelineYaml
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Settings))) {
-		body["settings"] = request.Settings
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TriggerInfo))) {
-		body["triggerInfo"] = request.TriggerInfo
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreatePipeline"),
-		Version:     tea.String("2021-06-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreatePipelineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) CreatePipelineGroup(organizationId *string, request *CreatePipelineGroupRequest) (_result *CreatePipelineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15898,7 +16305,6 @@ func (client *Client) CreatePipelineGroupWithOptions(organizationId *string, req
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["name"] = request.Name
@@ -15912,7 +16318,7 @@ func (client *Client) CreatePipelineGroupWithOptions(organizationId *string, req
 		Action:      tea.String("CreatePipelineGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelineGroups"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelineGroups"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15945,7 +16351,6 @@ func (client *Client) CreateProjectWithOptions(organizationId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CustomCode)) {
 		body["customCode"] = request.CustomCode
@@ -15971,7 +16376,7 @@ func (client *Client) CreateProjectWithOptions(organizationId *string, request *
 		Action:      tea.String("CreateProject"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/projects/createProject"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/projects/createProject"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16132,9 +16537,6 @@ func (client *Client) CreateResourceMemberWithOptions(organizationId *string, re
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	resourceType = openapiutil.GetEncodeParam(resourceType)
-	resourceId = openapiutil.GetEncodeParam(resourceId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
 		body["accountId"] = request.AccountId
@@ -16152,7 +16554,7 @@ func (client *Client) CreateResourceMemberWithOptions(organizationId *string, re
 		Action:      tea.String("CreateResourceMember"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/" + tea.StringValue(resourceType) + "/" + tea.StringValue(resourceId) + "/members"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(resourceType)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(resourceId)) + "/members"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16185,7 +16587,6 @@ func (client *Client) CreateSprintWithOptions(organizationId *string, request *C
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
 		body["endDate"] = request.EndDate
@@ -16215,7 +16616,7 @@ func (client *Client) CreateSprintWithOptions(organizationId *string, request *C
 		Action:      tea.String("CreateSprint"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/sprints/create"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/sprints/create"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16244,7 +16645,6 @@ func (client *Client) CreateSshKey(organizationId *string) (_result *CreateSshKe
 }
 
 func (client *Client) CreateSshKeyWithOptions(organizationId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSshKeyResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16252,7 +16652,7 @@ func (client *Client) CreateSshKeyWithOptions(organizationId *string, headers ma
 		Action:      tea.String("CreateSshKey"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/sshKey"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/sshKey"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16285,7 +16685,6 @@ func (client *Client) CreateVariableGroupWithOptions(organizationId *string, req
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
@@ -16307,7 +16706,7 @@ func (client *Client) CreateVariableGroupWithOptions(organizationId *string, req
 		Action:      tea.String("CreateVariableGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/variableGroups"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/variableGroups"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16340,7 +16739,6 @@ func (client *Client) CreateWorkitemWithOptions(organizationId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AssignedTo)) {
 		body["assignedTo"] = request.AssignedTo
@@ -16410,7 +16808,7 @@ func (client *Client) CreateWorkitemWithOptions(organizationId *string, request 
 		Action:      tea.String("CreateWorkitem"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/create"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitems/create"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16513,8 +16911,6 @@ func (client *Client) DeleteFlowTag(organizationId *string, id *string) (_result
 }
 
 func (client *Client) DeleteFlowTagWithOptions(organizationId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFlowTagResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	id = openapiutil.GetEncodeParam(id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16522,7 +16918,7 @@ func (client *Client) DeleteFlowTagWithOptions(organizationId *string, id *strin
 		Action:      tea.String("DeleteFlowTag"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tags/" + tea.StringValue(id)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/flow/tags/" + tea.StringValue(openapiutil.GetEncodeParam(id))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16551,8 +16947,6 @@ func (client *Client) DeleteFlowTagGroup(organizationId *string, id *string) (_r
 }
 
 func (client *Client) DeleteFlowTagGroupWithOptions(organizationId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFlowTagGroupResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	id = openapiutil.GetEncodeParam(id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16560,7 +16954,7 @@ func (client *Client) DeleteFlowTagGroupWithOptions(organizationId *string, id *
 		Action:      tea.String("DeleteFlowTagGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tagGroups/" + tea.StringValue(id)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/flow/tagGroups/" + tea.StringValue(openapiutil.GetEncodeParam(id))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16589,8 +16983,6 @@ func (client *Client) DeleteHostGroup(organizationId *string, id *string) (_resu
 }
 
 func (client *Client) DeleteHostGroupWithOptions(organizationId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteHostGroupResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	id = openapiutil.GetEncodeParam(id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16598,7 +16990,7 @@ func (client *Client) DeleteHostGroupWithOptions(organizationId *string, id *str
 		Action:      tea.String("DeleteHostGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/hostGroups/" + tea.StringValue(id)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/hostGroups/" + tea.StringValue(openapiutil.GetEncodeParam(id))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16627,8 +17019,6 @@ func (client *Client) DeletePipeline(organizationId *string, pipelineId *string)
 }
 
 func (client *Client) DeletePipelineWithOptions(organizationId *string, pipelineId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePipelineResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16636,7 +17026,7 @@ func (client *Client) DeletePipelineWithOptions(organizationId *string, pipeline
 		Action:      tea.String("DeletePipeline"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16665,8 +17055,6 @@ func (client *Client) DeletePipelineGroup(organizationId *string, groupId *strin
 }
 
 func (client *Client) DeletePipelineGroupWithOptions(organizationId *string, groupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePipelineGroupResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	groupId = openapiutil.GetEncodeParam(groupId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16674,7 +17062,7 @@ func (client *Client) DeletePipelineGroupWithOptions(organizationId *string, gro
 		Action:      tea.String("DeletePipelineGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelineGroups/" + tea.StringValue(groupId)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelineGroups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16707,7 +17095,6 @@ func (client *Client) DeleteProjectWithOptions(organizationId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
 		query["identifier"] = request.Identifier
@@ -16721,7 +17108,7 @@ func (client *Client) DeleteProjectWithOptions(organizationId *string, request *
 		Action:      tea.String("DeleteProject"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/projects/delete"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/projects/delete"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16750,10 +17137,6 @@ func (client *Client) DeleteResourceMember(organizationId *string, resourceType 
 }
 
 func (client *Client) DeleteResourceMemberWithOptions(organizationId *string, resourceType *string, resourceId *string, accountId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceMemberResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	resourceType = openapiutil.GetEncodeParam(resourceType)
-	resourceId = openapiutil.GetEncodeParam(resourceId)
-	accountId = openapiutil.GetEncodeParam(accountId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16761,7 +17144,7 @@ func (client *Client) DeleteResourceMemberWithOptions(organizationId *string, re
 		Action:      tea.String("DeleteResourceMember"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/" + tea.StringValue(resourceType) + "/" + tea.StringValue(resourceId) + "/members/" + tea.StringValue(accountId)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(resourceType)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(resourceId)) + "/members/" + tea.StringValue(openapiutil.GetEncodeParam(accountId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16790,8 +17173,6 @@ func (client *Client) DeleteVariableGroup(organizationId *string, id *string) (_
 }
 
 func (client *Client) DeleteVariableGroupWithOptions(organizationId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteVariableGroupResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	id = openapiutil.GetEncodeParam(id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16799,7 +17180,7 @@ func (client *Client) DeleteVariableGroupWithOptions(organizationId *string, id 
 		Action:      tea.String("DeleteVariableGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/variableGroups/" + tea.StringValue(id)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/variableGroups/" + tea.StringValue(openapiutil.GetEncodeParam(id))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16828,7 +17209,6 @@ func (client *Client) FrozenWorkspace(workspaceId *string) (_result *FrozenWorks
 }
 
 func (client *Client) FrozenWorkspaceWithOptions(workspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FrozenWorkspaceResponse, _err error) {
-	workspaceId = openapiutil.GetEncodeParam(workspaceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16836,7 +17216,7 @@ func (client *Client) FrozenWorkspaceWithOptions(workspaceId *string, headers ma
 		Action:      tea.String("FrozenWorkspace"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/workspaces/" + tea.StringValue(workspaceId) + "/frozen"),
+		Pathname:    tea.String("/api/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/frozen"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16869,7 +17249,6 @@ func (client *Client) GetCodeupOrganizationWithOptions(identity *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	identity = openapiutil.GetEncodeParam(identity)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
 		query["AccessToken"] = request.AccessToken
@@ -16883,7 +17262,7 @@ func (client *Client) GetCodeupOrganizationWithOptions(identity *string, request
 		Action:      tea.String("GetCodeupOrganization"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/organization/" + tea.StringValue(identity)),
+		Pathname:    tea.String("/api/organization/" + tea.StringValue(openapiutil.GetEncodeParam(identity))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16916,8 +17295,6 @@ func (client *Client) GetCustomFieldOptionWithOptions(organizationId *string, fi
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	fieldId = openapiutil.GetEncodeParam(fieldId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
 		query["spaceIdentifier"] = request.SpaceIdentifier
@@ -16939,7 +17316,7 @@ func (client *Client) GetCustomFieldOptionWithOptions(organizationId *string, fi
 		Action:      tea.String("GetCustomFieldOption"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/fields/" + tea.StringValue(fieldId) + "/getCustomOption"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/fields/" + tea.StringValue(openapiutil.GetEncodeParam(fieldId)) + "/getCustomOption"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16972,7 +17349,6 @@ func (client *Client) GetFileLastCommitWithOptions(repositoryId *string, request
 	if _err != nil {
 		return _result, _err
 	}
-	repositoryId = openapiutil.GetEncodeParam(repositoryId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
 		query["accessToken"] = request.AccessToken
@@ -16998,7 +17374,7 @@ func (client *Client) GetFileLastCommitWithOptions(repositoryId *string, request
 		Action:      tea.String("GetFileLastCommit"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/repository/" + tea.StringValue(repositoryId) + "/files/lastCommit"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/files/lastCommit"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17027,8 +17403,6 @@ func (client *Client) GetFlowTagGroup(organizationId *string, id *string) (_resu
 }
 
 func (client *Client) GetFlowTagGroupWithOptions(organizationId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFlowTagGroupResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	id = openapiutil.GetEncodeParam(id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17036,7 +17410,7 @@ func (client *Client) GetFlowTagGroupWithOptions(organizationId *string, id *str
 		Action:      tea.String("GetFlowTagGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tagGroups/" + tea.StringValue(id)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/flow/tagGroups/" + tea.StringValue(openapiutil.GetEncodeParam(id))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17065,8 +17439,6 @@ func (client *Client) GetHostGroup(organizationId *string, id *string) (_result 
 }
 
 func (client *Client) GetHostGroupWithOptions(organizationId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetHostGroupResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	id = openapiutil.GetEncodeParam(id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17074,7 +17446,7 @@ func (client *Client) GetHostGroupWithOptions(organizationId *string, id *string
 		Action:      tea.String("GetHostGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/hostGroups/" + tea.StringValue(id)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/hostGroups/" + tea.StringValue(openapiutil.GetEncodeParam(id))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17103,8 +17475,6 @@ func (client *Client) GetOrganizationMember(organizationId *string, accountId *s
 }
 
 func (client *Client) GetOrganizationMemberWithOptions(organizationId *string, accountId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetOrganizationMemberResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	accountId = openapiutil.GetEncodeParam(accountId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17112,7 +17482,7 @@ func (client *Client) GetOrganizationMemberWithOptions(organizationId *string, a
 		Action:      tea.String("GetOrganizationMember"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/members/" + tea.StringValue(accountId)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/members/" + tea.StringValue(openapiutil.GetEncodeParam(accountId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17141,8 +17511,6 @@ func (client *Client) GetPipeline(organizationId *string, pipelineId *string) (_
 }
 
 func (client *Client) GetPipelineWithOptions(organizationId *string, pipelineId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17150,7 +17518,7 @@ func (client *Client) GetPipelineWithOptions(organizationId *string, pipelineId 
 		Action:      tea.String("GetPipeline"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17183,7 +17551,6 @@ func (client *Client) GetPipelineArtifactUrlWithOptions(organizationId *string, 
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FileName)) {
 		query["fileName"] = request.FileName
@@ -17201,7 +17568,7 @@ func (client *Client) GetPipelineArtifactUrlWithOptions(organizationId *string, 
 		Action:      tea.String("GetPipelineArtifactUrl"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipeline/getArtifactDownloadUrl"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipeline/getArtifactDownloadUrl"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17234,11 +17601,6 @@ func (client *Client) GetPipelineEmasArtifactUrlWithOptions(organizationId *stri
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	emasJobInstanceId = openapiutil.GetEncodeParam(emasJobInstanceId)
-	md5 = openapiutil.GetEncodeParam(md5)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ServiceConnectionId)) {
 		query["serviceConnectionId"] = request.ServiceConnectionId
@@ -17252,7 +17614,7 @@ func (client *Client) GetPipelineEmasArtifactUrlWithOptions(organizationId *stri
 		Action:      tea.String("GetPipelineEmasArtifactUrl"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipeline/" + tea.StringValue(pipelineId) + "/pipelineRun/" + tea.StringValue(pipelineRunId) + "/emas/artifact/" + tea.StringValue(emasJobInstanceId) + "/" + tea.StringValue(md5)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipeline/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/pipelineRun/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineRunId)) + "/emas/artifact/" + tea.StringValue(openapiutil.GetEncodeParam(emasJobInstanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(md5))),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17281,8 +17643,6 @@ func (client *Client) GetPipelineGroup(organizationId *string, groupId *string) 
 }
 
 func (client *Client) GetPipelineGroupWithOptions(organizationId *string, groupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineGroupResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	groupId = openapiutil.GetEncodeParam(groupId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17290,7 +17650,7 @@ func (client *Client) GetPipelineGroupWithOptions(organizationId *string, groupI
 		Action:      tea.String("GetPipelineGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelineGroups/" + tea.StringValue(groupId)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelineGroups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17319,9 +17679,6 @@ func (client *Client) GetPipelineRun(organizationId *string, pipelineId *string,
 }
 
 func (client *Client) GetPipelineRunWithOptions(organizationId *string, pipelineId *string, pipelineRunId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineRunResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17329,7 +17686,7 @@ func (client *Client) GetPipelineRunWithOptions(organizationId *string, pipeline
 		Action:      tea.String("GetPipelineRun"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/pipelineRuns/" + tea.StringValue(pipelineRunId)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/pipelineRuns/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineRunId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17362,7 +17719,6 @@ func (client *Client) GetPipelineScanReportUrlWithOptions(organizationId *string
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ReportPath)) {
 		body["reportPath"] = request.ReportPath
@@ -17376,7 +17732,7 @@ func (client *Client) GetPipelineScanReportUrlWithOptions(organizationId *string
 		Action:      tea.String("GetPipelineScanReportUrl"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipeline/getPipelineScanReportUrl"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipeline/getPipelineScanReportUrl"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17405,8 +17761,6 @@ func (client *Client) GetProjectInfo(organizationId *string, projectId *string) 
 }
 
 func (client *Client) GetProjectInfoWithOptions(organizationId *string, projectId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectInfoResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	projectId = openapiutil.GetEncodeParam(projectId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17414,7 +17768,7 @@ func (client *Client) GetProjectInfoWithOptions(organizationId *string, projectI
 		Action:      tea.String("GetProjectInfo"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/project/" + tea.StringValue(projectId)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/project/" + tea.StringValue(openapiutil.GetEncodeParam(projectId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17555,8 +17909,6 @@ func (client *Client) GetSprintInfo(organizationId *string, sprintId *string) (_
 }
 
 func (client *Client) GetSprintInfoWithOptions(organizationId *string, sprintId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSprintInfoResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	sprintId = openapiutil.GetEncodeParam(sprintId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17564,7 +17916,7 @@ func (client *Client) GetSprintInfoWithOptions(organizationId *string, sprintId 
 		Action:      tea.String("GetSprintInfo"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/sprints/" + tea.StringValue(sprintId) + "/getSprintinfo"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/sprints/" + tea.StringValue(openapiutil.GetEncodeParam(sprintId)) + "/getSprintinfo"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17593,9 +17945,6 @@ func (client *Client) GetVMDeployOrder(organizationId *string, pipelineId *strin
 }
 
 func (client *Client) GetVMDeployOrderWithOptions(organizationId *string, pipelineId *string, deployOrderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetVMDeployOrderResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	deployOrderId = openapiutil.GetEncodeParam(deployOrderId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17603,7 +17952,7 @@ func (client *Client) GetVMDeployOrderWithOptions(organizationId *string, pipeli
 		Action:      tea.String("GetVMDeployOrder"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/deploy/" + tea.StringValue(deployOrderId)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/deploy/" + tea.StringValue(openapiutil.GetEncodeParam(deployOrderId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17632,8 +17981,6 @@ func (client *Client) GetVariableGroup(organizationId *string, id *string) (_res
 }
 
 func (client *Client) GetVariableGroupWithOptions(organizationId *string, id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetVariableGroupResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	id = openapiutil.GetEncodeParam(id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17641,7 +17988,7 @@ func (client *Client) GetVariableGroupWithOptions(organizationId *string, id *st
 		Action:      tea.String("GetVariableGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/variableGroups/" + tea.StringValue(id)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/variableGroups/" + tea.StringValue(openapiutil.GetEncodeParam(id))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17670,8 +18017,6 @@ func (client *Client) GetWorkItemActivity(organizationId *string, workitemId *st
 }
 
 func (client *Client) GetWorkItemActivityWithOptions(organizationId *string, workitemId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkItemActivityResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	workitemId = openapiutil.GetEncodeParam(workitemId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17679,7 +18024,7 @@ func (client *Client) GetWorkItemActivityWithOptions(organizationId *string, wor
 		Action:      tea.String("GetWorkItemActivity"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/" + tea.StringValue(workitemId) + "/getActivity"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitems/" + tea.StringValue(openapiutil.GetEncodeParam(workitemId)) + "/getActivity"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17708,8 +18053,6 @@ func (client *Client) GetWorkItemInfo(organizationId *string, workitemId *string
 }
 
 func (client *Client) GetWorkItemInfoWithOptions(organizationId *string, workitemId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkItemInfoResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	workitemId = openapiutil.GetEncodeParam(workitemId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17717,7 +18060,7 @@ func (client *Client) GetWorkItemInfoWithOptions(organizationId *string, workite
 		Action:      tea.String("GetWorkItemInfo"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/" + tea.StringValue(workitemId)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitems/" + tea.StringValue(openapiutil.GetEncodeParam(workitemId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17750,8 +18093,6 @@ func (client *Client) GetWorkItemWorkFlowInfoWithOptions(organizationId *string,
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	workitemId = openapiutil.GetEncodeParam(workitemId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ConfigurationId)) {
 		query["configurationId"] = request.ConfigurationId
@@ -17765,7 +18106,7 @@ func (client *Client) GetWorkItemWorkFlowInfoWithOptions(organizationId *string,
 		Action:      tea.String("GetWorkItemWorkFlowInfo"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/" + tea.StringValue(workitemId) + "/getWorkflowInfo"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitems/" + tea.StringValue(openapiutil.GetEncodeParam(workitemId)) + "/getWorkflowInfo"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17794,7 +18135,6 @@ func (client *Client) GetWorkspace(workspaceId *string) (_result *GetWorkspaceRe
 }
 
 func (client *Client) GetWorkspaceWithOptions(workspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
-	workspaceId = openapiutil.GetEncodeParam(workspaceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17802,7 +18142,7 @@ func (client *Client) GetWorkspaceWithOptions(workspaceId *string, headers map[s
 		Action:      tea.String("GetWorkspace"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/workspaces/" + tea.StringValue(workspaceId)),
+		Pathname:    tea.String("/api/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17835,7 +18175,6 @@ func (client *Client) JoinPipelineGroupWithOptions(organizationId *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["groupId"] = request.GroupId
@@ -17853,7 +18192,7 @@ func (client *Client) JoinPipelineGroupWithOptions(organizationId *string, reque
 		Action:      tea.String("JoinPipelineGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelineGroups/join"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelineGroups/join"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17882,7 +18221,6 @@ func (client *Client) ListFlowTagGroups(organizationId *string) (_result *ListFl
 }
 
 func (client *Client) ListFlowTagGroupsWithOptions(organizationId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFlowTagGroupsResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17890,7 +18228,7 @@ func (client *Client) ListFlowTagGroupsWithOptions(organizationId *string, heade
 		Action:      tea.String("ListFlowTagGroups"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tagGroups"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/flow/tagGroups"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17923,7 +18261,6 @@ func (client *Client) ListHostGroupsWithOptions(organizationId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CreateEndTime)) {
 		query["createEndTime"] = request.CreateEndTime
@@ -17969,7 +18306,7 @@ func (client *Client) ListHostGroupsWithOptions(organizationId *string, request 
 		Action:      tea.String("ListHostGroups"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/hostGroups"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/hostGroups"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18002,7 +18339,6 @@ func (client *Client) ListOrganizationMembersWithOptions(organizationId *string,
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ExternUid)) {
 		query["externUid"] = request.ExternUid
@@ -18044,7 +18380,7 @@ func (client *Client) ListOrganizationMembersWithOptions(organizationId *string,
 		Action:      tea.String("ListOrganizationMembers"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/members"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/members"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18077,8 +18413,6 @@ func (client *Client) ListPipelineGroupPipelinesWithOptions(organizationId *stri
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	groupId = openapiutil.GetEncodeParam(groupId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CreateEndTime)) {
 		query["createEndTime"] = request.CreateEndTime
@@ -18120,7 +18454,7 @@ func (client *Client) ListPipelineGroupPipelinesWithOptions(organizationId *stri
 		Action:      tea.String("ListPipelineGroupPipelines"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelineGroups/" + tea.StringValue(groupId) + "/pipelines"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelineGroups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/pipelines"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18153,7 +18487,6 @@ func (client *Client) ListPipelineGroupsWithOptions(organizationId *string, requ
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["maxResults"] = request.MaxResults
@@ -18171,7 +18504,7 @@ func (client *Client) ListPipelineGroupsWithOptions(organizationId *string, requ
 		Action:      tea.String("ListPipelineGroups"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelineGroups"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelineGroups"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18204,8 +18537,6 @@ func (client *Client) ListPipelineJobHistorysWithOptions(organizationId *string,
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Category)) {
 		query["category"] = request.Category
@@ -18231,7 +18562,7 @@ func (client *Client) ListPipelineJobHistorysWithOptions(organizationId *string,
 		Action:      tea.String("ListPipelineJobHistorys"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipeline/" + tea.StringValue(pipelineId) + "/job/historys"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipeline/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/job/historys"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18264,8 +18595,6 @@ func (client *Client) ListPipelineJobsWithOptions(organizationId *string, pipeli
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Category)) {
 		query["category"] = request.Category
@@ -18279,7 +18608,7 @@ func (client *Client) ListPipelineJobsWithOptions(organizationId *string, pipeli
 		Action:      tea.String("ListPipelineJobs"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipeline/" + tea.StringValue(pipelineId) + "/jobs"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipeline/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/jobs"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18312,8 +18641,6 @@ func (client *Client) ListPipelineRunsWithOptions(organizationId *string, pipeli
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["endTime"] = request.EndTime
@@ -18347,7 +18674,7 @@ func (client *Client) ListPipelineRunsWithOptions(organizationId *string, pipeli
 		Action:      tea.String("ListPipelineRuns"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/pipelineRuns"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/pipelineRuns"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18380,7 +18707,6 @@ func (client *Client) ListPipelinesWithOptions(organizationId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CreateEndTime)) {
 		query["createEndTime"] = request.CreateEndTime
@@ -18430,7 +18756,7 @@ func (client *Client) ListPipelinesWithOptions(organizationId *string, request *
 		Action:      tea.String("ListPipelines"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18463,8 +18789,6 @@ func (client *Client) ListProjectMembersWithOptions(organizationId *string, proj
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	projectId = openapiutil.GetEncodeParam(projectId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
 		query["targetType"] = request.TargetType
@@ -18478,7 +18802,7 @@ func (client *Client) ListProjectMembersWithOptions(organizationId *string, proj
 		Action:      tea.String("ListProjectMembers"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/projects/" + tea.StringValue(projectId) + "/listMembers"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/projects/" + tea.StringValue(openapiutil.GetEncodeParam(projectId)) + "/listMembers"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18511,7 +18835,6 @@ func (client *Client) ListProjectTemplatesWithOptions(organizationId *string, re
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Category)) {
 		query["category"] = request.Category
@@ -18525,7 +18848,7 @@ func (client *Client) ListProjectTemplatesWithOptions(organizationId *string, re
 		Action:      tea.String("ListProjectTemplates"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/projects/listTemplates"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/projects/listTemplates"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18558,8 +18881,6 @@ func (client *Client) ListProjectWorkitemTypesWithOptions(organizationId *string
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	projectId = openapiutil.GetEncodeParam(projectId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Category)) {
 		query["category"] = request.Category
@@ -18577,7 +18898,7 @@ func (client *Client) ListProjectWorkitemTypesWithOptions(organizationId *string
 		Action:      tea.String("ListProjectWorkitemTypes"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/projects/" + tea.StringValue(projectId) + "/getWorkitemType"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/projects/" + tea.StringValue(openapiutil.GetEncodeParam(projectId)) + "/getWorkitemType"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18610,7 +18931,6 @@ func (client *Client) ListProjectsWithOptions(organizationId *string, request *L
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Category)) {
 		query["category"] = request.Category
@@ -18644,7 +18964,7 @@ func (client *Client) ListProjectsWithOptions(organizationId *string, request *L
 		Action:      tea.String("ListProjects"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/listProjects"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/listProjects"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18734,6 +19054,60 @@ func (client *Client) ListRepositoriesWithOptions(request *ListRepositoriesReque
 	return _result, _err
 }
 
+func (client *Client) ListRepositoryCommitDiff(repositoryId *string, sha *string, request *ListRepositoryCommitDiffRequest) (_result *ListRepositoryCommitDiffResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRepositoryCommitDiffResponse{}
+	_body, _err := client.ListRepositoryCommitDiffWithOptions(repositoryId, sha, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRepositoryCommitDiffWithOptions(repositoryId *string, sha *string, request *ListRepositoryCommitDiffRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRepositoryCommitDiffResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContextLine)) {
+		query["contextLine"] = request.ContextLine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRepositoryCommitDiff"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/commits/" + tea.StringValue(openapiutil.GetEncodeParam(sha)) + "/diff"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRepositoryCommitDiffResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListRepositoryMemberWithInherited(repositoryId *string, request *ListRepositoryMemberWithInheritedRequest) (_result *ListRepositoryMemberWithInheritedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18751,7 +19125,6 @@ func (client *Client) ListRepositoryMemberWithInheritedWithOptions(repositoryId 
 	if _err != nil {
 		return _result, _err
 	}
-	repositoryId = openapiutil.GetEncodeParam(repositoryId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
 		query["accessToken"] = request.AccessToken
@@ -18769,7 +19142,7 @@ func (client *Client) ListRepositoryMemberWithInheritedWithOptions(repositoryId 
 		Action:      tea.String("ListRepositoryMemberWithInherited"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/repository/" + tea.StringValue(repositoryId) + "/members/list"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/members/list"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18802,7 +19175,6 @@ func (client *Client) ListRepositoryWebhookWithOptions(repositoryId *string, req
 	if _err != nil {
 		return _result, _err
 	}
-	repositoryId = openapiutil.GetEncodeParam(repositoryId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
 		query["accessToken"] = request.AccessToken
@@ -18828,7 +19200,7 @@ func (client *Client) ListRepositoryWebhookWithOptions(repositoryId *string, req
 		Action:      tea.String("ListRepositoryWebhook"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/repository/" + tea.StringValue(repositoryId) + "/webhooks/list"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/webhooks/list"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18857,9 +19229,6 @@ func (client *Client) ListResourceMembers(organizationId *string, resourceType *
 }
 
 func (client *Client) ListResourceMembersWithOptions(organizationId *string, resourceType *string, resourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourceMembersResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	resourceType = openapiutil.GetEncodeParam(resourceType)
-	resourceId = openapiutil.GetEncodeParam(resourceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -18867,7 +19236,7 @@ func (client *Client) ListResourceMembersWithOptions(organizationId *string, res
 		Action:      tea.String("ListResourceMembers"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/" + tea.StringValue(resourceType) + "/" + tea.StringValue(resourceId) + "/members"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(resourceType)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(resourceId)) + "/members"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18900,7 +19269,6 @@ func (client *Client) ListServiceConnectionsWithOptions(organizationId *string, 
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.SericeConnectionType)) {
 		query["sericeConnectionType"] = request.SericeConnectionType
@@ -18914,7 +19282,7 @@ func (client *Client) ListServiceConnectionsWithOptions(organizationId *string, 
 		Action:      tea.String("ListServiceConnections"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/serviceConnections"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/serviceConnections"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18947,7 +19315,6 @@ func (client *Client) ListSprintsWithOptions(organizationId *string, request *Li
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["maxResults"] = request.MaxResults
@@ -18973,7 +19340,7 @@ func (client *Client) ListSprintsWithOptions(organizationId *string, request *Li
 		Action:      tea.String("ListSprints"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/sprints/list"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/sprints/list"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19006,7 +19373,6 @@ func (client *Client) ListVariableGroupsWithOptions(organizationId *string, requ
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["maxResults"] = request.MaxResults
@@ -19032,7 +19398,7 @@ func (client *Client) ListVariableGroupsWithOptions(organizationId *string, requ
 		Action:      tea.String("ListVariableGroups"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/variableGroups"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/variableGroups"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19065,7 +19431,6 @@ func (client *Client) ListWorkItemAllFieldsWithOptions(organizationId *string, r
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
 		query["spaceIdentifier"] = request.SpaceIdentifier
@@ -19087,7 +19452,7 @@ func (client *Client) ListWorkItemAllFieldsWithOptions(organizationId *string, r
 		Action:      tea.String("ListWorkItemAllFields"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/fields/listAll"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitems/fields/listAll"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19120,7 +19485,6 @@ func (client *Client) ListWorkItemWorkFlowStatusWithOptions(organizationId *stri
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
 		query["spaceIdentifier"] = request.SpaceIdentifier
@@ -19146,7 +19510,7 @@ func (client *Client) ListWorkItemWorkFlowStatusWithOptions(organizationId *stri
 		Action:      tea.String("ListWorkItemWorkFlowStatus"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/workflow/listWorkflowStatus"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitems/workflow/listWorkflowStatus"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19175,8 +19539,6 @@ func (client *Client) ListWorkitemTime(organizationId *string, workitemId *strin
 }
 
 func (client *Client) ListWorkitemTimeWithOptions(organizationId *string, workitemId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkitemTimeResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	workitemId = openapiutil.GetEncodeParam(workitemId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19184,7 +19546,7 @@ func (client *Client) ListWorkitemTimeWithOptions(organizationId *string, workit
 		Action:      tea.String("ListWorkitemTime"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/" + tea.StringValue(workitemId) + "/time/list"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitems/" + tea.StringValue(openapiutil.GetEncodeParam(workitemId)) + "/time/list"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19217,7 +19579,6 @@ func (client *Client) ListWorkitemsWithOptions(organizationId *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Category)) {
 		query["category"] = request.Category
@@ -19267,7 +19628,7 @@ func (client *Client) ListWorkitemsWithOptions(organizationId *string, request *
 		Action:      tea.String("ListWorkitems"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/listWorkitems"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/listWorkitems"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19364,10 +19725,6 @@ func (client *Client) LogPipelineJobRun(organizationId *string, pipelineId *stri
 }
 
 func (client *Client) LogPipelineJobRunWithOptions(organizationId *string, pipelineId *string, jobId *string, pipelineRunId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *LogPipelineJobRunResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	jobId = openapiutil.GetEncodeParam(jobId)
-	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19375,7 +19732,7 @@ func (client *Client) LogPipelineJobRunWithOptions(organizationId *string, pipel
 		Action:      tea.String("LogPipelineJobRun"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipeline/" + tea.StringValue(pipelineId) + "/pipelineRun/" + tea.StringValue(pipelineRunId) + "/job/" + tea.StringValue(jobId) + "/logs"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipeline/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/pipelineRun/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineRunId)) + "/job/" + tea.StringValue(openapiutil.GetEncodeParam(jobId)) + "/logs"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19404,10 +19761,6 @@ func (client *Client) LogVMDeployMachine(organizationId *string, pipelineId *str
 }
 
 func (client *Client) LogVMDeployMachineWithOptions(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *LogVMDeployMachineResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	deployOrderId = openapiutil.GetEncodeParam(deployOrderId)
-	machineSn = openapiutil.GetEncodeParam(machineSn)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19415,7 +19768,7 @@ func (client *Client) LogVMDeployMachineWithOptions(organizationId *string, pipe
 		Action:      tea.String("LogVMDeployMachine"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/deploy/" + tea.StringValue(deployOrderId) + "/machine/" + tea.StringValue(machineSn) + "/log"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/deploy/" + tea.StringValue(openapiutil.GetEncodeParam(deployOrderId)) + "/machine/" + tea.StringValue(openapiutil.GetEncodeParam(machineSn)) + "/log"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19444,10 +19797,6 @@ func (client *Client) PassPipelineValidate(organizationId *string, pipelineId *s
 }
 
 func (client *Client) PassPipelineValidateWithOptions(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PassPipelineValidateResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
-	jobId = openapiutil.GetEncodeParam(jobId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19455,7 +19804,7 @@ func (client *Client) PassPipelineValidateWithOptions(organizationId *string, pi
 		Action:      tea.String("PassPipelineValidate"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/pipelineRuns/" + tea.StringValue(pipelineRunId) + "/jobs/" + tea.StringValue(jobId) + "/pass"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/pipelineRuns/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineRunId)) + "/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(jobId)) + "/pass"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19484,10 +19833,6 @@ func (client *Client) RefusePipelineValidate(organizationId *string, pipelineId 
 }
 
 func (client *Client) RefusePipelineValidateWithOptions(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RefusePipelineValidateResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
-	jobId = openapiutil.GetEncodeParam(jobId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19495,7 +19840,7 @@ func (client *Client) RefusePipelineValidateWithOptions(organizationId *string, 
 		Action:      tea.String("RefusePipelineValidate"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/pipelineRuns/" + tea.StringValue(pipelineRunId) + "/jobs/" + tea.StringValue(jobId) + "/refuse"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/pipelineRuns/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineRunId)) + "/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(jobId)) + "/refuse"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19524,7 +19869,6 @@ func (client *Client) ReleaseWorkspace(workspaceId *string) (_result *ReleaseWor
 }
 
 func (client *Client) ReleaseWorkspaceWithOptions(workspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReleaseWorkspaceResponse, _err error) {
-	workspaceId = openapiutil.GetEncodeParam(workspaceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19532,7 +19876,7 @@ func (client *Client) ReleaseWorkspaceWithOptions(workspaceId *string, headers m
 		Action:      tea.String("ReleaseWorkspace"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/workspaces/" + tea.StringValue(workspaceId) + "/release"),
+		Pathname:    tea.String("/api/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/release"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19561,7 +19905,6 @@ func (client *Client) ResetSshKey(organizationId *string) (_result *ResetSshKeyR
 }
 
 func (client *Client) ResetSshKeyWithOptions(organizationId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResetSshKeyResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19569,7 +19912,7 @@ func (client *Client) ResetSshKeyWithOptions(organizationId *string, headers map
 		Action:      tea.String("ResetSshKey"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/sshKey"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/sshKey"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19598,9 +19941,6 @@ func (client *Client) ResumeVMDeployOrder(organizationId *string, pipelineId *st
 }
 
 func (client *Client) ResumeVMDeployOrderWithOptions(organizationId *string, pipelineId *string, deployOrderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResumeVMDeployOrderResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	deployOrderId = openapiutil.GetEncodeParam(deployOrderId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19608,7 +19948,7 @@ func (client *Client) ResumeVMDeployOrderWithOptions(organizationId *string, pip
 		Action:      tea.String("ResumeVMDeployOrder"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/deploy/" + tea.StringValue(deployOrderId) + "/resume"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/deploy/" + tea.StringValue(openapiutil.GetEncodeParam(deployOrderId)) + "/resume"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19637,10 +19977,6 @@ func (client *Client) RetryPipelineJobRun(organizationId *string, pipelineId *st
 }
 
 func (client *Client) RetryPipelineJobRunWithOptions(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RetryPipelineJobRunResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
-	jobId = openapiutil.GetEncodeParam(jobId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19648,7 +19984,7 @@ func (client *Client) RetryPipelineJobRunWithOptions(organizationId *string, pip
 		Action:      tea.String("RetryPipelineJobRun"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/pipelineRuns/" + tea.StringValue(pipelineRunId) + "/jobs/" + tea.StringValue(jobId)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/pipelineRuns/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineRunId)) + "/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(jobId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19677,10 +20013,6 @@ func (client *Client) RetryVMDeployMachine(organizationId *string, pipelineId *s
 }
 
 func (client *Client) RetryVMDeployMachineWithOptions(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RetryVMDeployMachineResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	deployOrderId = openapiutil.GetEncodeParam(deployOrderId)
-	machineSn = openapiutil.GetEncodeParam(machineSn)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19688,7 +20020,7 @@ func (client *Client) RetryVMDeployMachineWithOptions(organizationId *string, pi
 		Action:      tea.String("RetryVMDeployMachine"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/deploy/" + tea.StringValue(deployOrderId) + "/machine/" + tea.StringValue(machineSn) + "/retry"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/deploy/" + tea.StringValue(openapiutil.GetEncodeParam(deployOrderId)) + "/machine/" + tea.StringValue(openapiutil.GetEncodeParam(machineSn)) + "/retry"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19717,10 +20049,6 @@ func (client *Client) SkipPipelineJobRun(organizationId *string, pipelineId *str
 }
 
 func (client *Client) SkipPipelineJobRunWithOptions(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SkipPipelineJobRunResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
-	jobId = openapiutil.GetEncodeParam(jobId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19728,7 +20056,7 @@ func (client *Client) SkipPipelineJobRunWithOptions(organizationId *string, pipe
 		Action:      tea.String("SkipPipelineJobRun"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/pipelineRuns/" + tea.StringValue(pipelineRunId) + "/jobs/" + tea.StringValue(jobId) + "/skip"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/pipelineRuns/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineRunId)) + "/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(jobId)) + "/skip"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19757,10 +20085,6 @@ func (client *Client) SkipVMDeployMachine(organizationId *string, pipelineId *st
 }
 
 func (client *Client) SkipVMDeployMachineWithOptions(organizationId *string, pipelineId *string, deployOrderId *string, machineSn *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SkipVMDeployMachineResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	deployOrderId = openapiutil.GetEncodeParam(deployOrderId)
-	machineSn = openapiutil.GetEncodeParam(machineSn)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19768,7 +20092,7 @@ func (client *Client) SkipVMDeployMachineWithOptions(organizationId *string, pip
 		Action:      tea.String("SkipVMDeployMachine"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/deploy/" + tea.StringValue(deployOrderId) + "/machine/" + tea.StringValue(machineSn) + "/skip"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/deploy/" + tea.StringValue(openapiutil.GetEncodeParam(deployOrderId)) + "/machine/" + tea.StringValue(openapiutil.GetEncodeParam(machineSn)) + "/skip"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19801,8 +20125,6 @@ func (client *Client) StartPipelineRunWithOptions(organizationId *string, pipeli
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Params)) {
 		body["params"] = request.Params
@@ -19816,7 +20138,7 @@ func (client *Client) StartPipelineRunWithOptions(organizationId *string, pipeli
 		Action:      tea.String("StartPipelineRun"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organizations/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/run"),
+		Pathname:    tea.String("/organizations/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/run"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19845,10 +20167,6 @@ func (client *Client) StopPipelineJobRun(organizationId *string, pipelineId *str
 }
 
 func (client *Client) StopPipelineJobRunWithOptions(organizationId *string, pipelineId *string, pipelineRunId *string, jobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopPipelineJobRunResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
-	jobId = openapiutil.GetEncodeParam(jobId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19856,7 +20174,7 @@ func (client *Client) StopPipelineJobRunWithOptions(organizationId *string, pipe
 		Action:      tea.String("StopPipelineJobRun"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/pipelineRuns/" + tea.StringValue(pipelineRunId) + "/jobs/" + tea.StringValue(jobId) + "/stop"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/pipelineRuns/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineRunId)) + "/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(jobId)) + "/stop"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19885,9 +20203,6 @@ func (client *Client) StopPipelineRun(organizationId *string, pipelineId *string
 }
 
 func (client *Client) StopPipelineRunWithOptions(organizationId *string, pipelineId *string, pipelineRunId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopPipelineRunResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	pipelineRunId = openapiutil.GetEncodeParam(pipelineRunId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19895,7 +20210,7 @@ func (client *Client) StopPipelineRunWithOptions(organizationId *string, pipelin
 		Action:      tea.String("StopPipelineRun"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/pipelineRuns/" + tea.StringValue(pipelineRunId) + "/stop"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/pipelineRuns/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineRunId)) + "/stop"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19924,9 +20239,6 @@ func (client *Client) StopVMDeployOrder(organizationId *string, pipelineId *stri
 }
 
 func (client *Client) StopVMDeployOrderWithOptions(organizationId *string, pipelineId *string, deployOrderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopVMDeployOrderResponse, _err error) {
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
-	deployOrderId = openapiutil.GetEncodeParam(deployOrderId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19934,7 +20246,7 @@ func (client *Client) StopVMDeployOrderWithOptions(organizationId *string, pipel
 		Action:      tea.String("StopVMDeployOrder"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/deploy/" + tea.StringValue(deployOrderId) + "/stop"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/deploy/" + tea.StringValue(openapiutil.GetEncodeParam(deployOrderId)) + "/stop"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19967,7 +20279,6 @@ func (client *Client) TriggerRepositoryMirrorSyncWithOptions(repositoryId *strin
 	if _err != nil {
 		return _result, _err
 	}
-	repositoryId = openapiutil.GetEncodeParam(repositoryId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
 		query["accessToken"] = request.AccessToken
@@ -19993,7 +20304,7 @@ func (client *Client) TriggerRepositoryMirrorSyncWithOptions(repositoryId *strin
 		Action:      tea.String("TriggerRepositoryMirrorSync"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/repository/" + tea.StringValue(repositoryId) + "/mirror"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/mirror"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -20026,8 +20337,6 @@ func (client *Client) UpdateFlowTagWithOptions(organizationId *string, id *strin
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	id = openapiutil.GetEncodeParam(id)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Color)) {
 		query["color"] = request.Color
@@ -20049,7 +20358,7 @@ func (client *Client) UpdateFlowTagWithOptions(organizationId *string, id *strin
 		Action:      tea.String("UpdateFlowTag"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tags/" + tea.StringValue(id)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/flow/tags/" + tea.StringValue(openapiutil.GetEncodeParam(id))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -20082,8 +20391,6 @@ func (client *Client) UpdateFlowTagGroupWithOptions(organizationId *string, id *
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	id = openapiutil.GetEncodeParam(id)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["name"] = request.Name
@@ -20097,7 +20404,7 @@ func (client *Client) UpdateFlowTagGroupWithOptions(organizationId *string, id *
 		Action:      tea.String("UpdateFlowTagGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/flow/tagGroups/" + tea.StringValue(id)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/flow/tagGroups/" + tea.StringValue(openapiutil.GetEncodeParam(id))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -20130,8 +20437,6 @@ func (client *Client) UpdateHostGroupWithOptions(organizationId *string, id *str
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	id = openapiutil.GetEncodeParam(id)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AliyunRegion)) {
 		body["aliyunRegion"] = request.AliyunRegion
@@ -20181,7 +20486,7 @@ func (client *Client) UpdateHostGroupWithOptions(organizationId *string, id *str
 		Action:      tea.String("UpdateHostGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/hostGroups/" + tea.StringValue(id)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/hostGroups/" + tea.StringValue(openapiutil.GetEncodeParam(id))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -20189,65 +20494,6 @@ func (client *Client) UpdateHostGroupWithOptions(organizationId *string, id *str
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateHostGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdatePipeline(organizationId *string, request *UpdatePipelineRequest) (_result *UpdatePipelineResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdatePipelineResponse{}
-	_body, _err := client.UpdatePipelineWithOptions(organizationId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdatePipelineWithOptions(organizationId *string, request *UpdatePipelineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePipelineResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.BasicInfo))) {
-		body["basicInfo"] = request.BasicInfo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PipelineYaml)) {
-		body["pipelineYaml"] = request.PipelineYaml
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Settings))) {
-		body["settings"] = request.Settings
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TriggerInfo))) {
-		body["triggerInfo"] = request.TriggerInfo
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdatePipeline"),
-		Version:     tea.String("2021-06-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdatePipelineResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20273,8 +20519,6 @@ func (client *Client) UpdatePipelineBaseInfoWithOptions(organizationId *string, 
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	pipelineId = openapiutil.GetEncodeParam(pipelineId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnvId)) {
 		query["envId"] = request.EnvId
@@ -20296,7 +20540,7 @@ func (client *Client) UpdatePipelineBaseInfoWithOptions(organizationId *string, 
 		Action:      tea.String("UpdatePipelineBaseInfo"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelines/" + tea.StringValue(pipelineId) + "/baseInfo"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(pipelineId)) + "/baseInfo"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -20329,8 +20573,6 @@ func (client *Client) UpdatePipelineGroupWithOptions(organizationId *string, gro
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	groupId = openapiutil.GetEncodeParam(groupId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["name"] = request.Name
@@ -20344,7 +20586,7 @@ func (client *Client) UpdatePipelineGroupWithOptions(organizationId *string, gro
 		Action:      tea.String("UpdatePipelineGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/pipelineGroups/" + tea.StringValue(groupId)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/pipelineGroups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -20377,8 +20619,6 @@ func (client *Client) UpdateProjectMemberWithOptions(organizationId *string, pro
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	projectId = openapiutil.GetEncodeParam(projectId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RoleIdentifier)) {
 		body["roleIdentifier"] = request.RoleIdentifier
@@ -20408,7 +20648,7 @@ func (client *Client) UpdateProjectMemberWithOptions(organizationId *string, pro
 		Action:      tea.String("UpdateProjectMember"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/projects/" + tea.StringValue(projectId) + "/updateMember"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/projects/" + tea.StringValue(openapiutil.GetEncodeParam(projectId)) + "/updateMember"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -20416,6 +20656,162 @@ func (client *Client) UpdateProjectMemberWithOptions(organizationId *string, pro
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateProjectMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateProtectedBranches(repositoryId *string, id *string, request *UpdateProtectedBranchesRequest) (_result *UpdateProtectedBranchesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateProtectedBranchesResponse{}
+	_body, _err := client.UpdateProtectedBranchesWithOptions(repositoryId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateProtectedBranchesWithOptions(repositoryId *string, id *string, request *UpdateProtectedBranchesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProtectedBranchesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowMergeRoles)) {
+		body["allowMergeRoles"] = request.AllowMergeRoles
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowMergeUserIds)) {
+		body["allowMergeUserIds"] = request.AllowMergeUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowPushRoles)) {
+		body["allowPushRoles"] = request.AllowPushRoles
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowPushUserIds)) {
+		body["allowPushUserIds"] = request.AllowPushUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Branch)) {
+		body["branch"] = request.Branch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.MergeRequestSetting))) {
+		body["mergeRequestSetting"] = request.MergeRequestSetting
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TestSettingDTO))) {
+		body["testSettingDTO"] = request.TestSettingDTO
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProtectedBranches"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/protect_branches/" + tea.StringValue(openapiutil.GetEncodeParam(id))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateProtectedBranchesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateRepositoryMember(repositoryId *string, userId *string, request *UpdateRepositoryMemberRequest) (_result *UpdateRepositoryMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateRepositoryMemberResponse{}
+	_body, _err := client.UpdateRepositoryMemberWithOptions(repositoryId, userId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateRepositoryMemberWithOptions(repositoryId *string, userId *string, request *UpdateRepositoryMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRepositoryMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessLevel)) {
+		body["accessLevel"] = request.AccessLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpireAt)) {
+		body["expireAt"] = request.ExpireAt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberType)) {
+		body["memberType"] = request.MemberType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedId)) {
+		body["relatedId"] = request.RelatedId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedInfos)) {
+		body["relatedInfos"] = request.RelatedInfos
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRepositoryMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(openapiutil.GetEncodeParam(repositoryId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(userId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateRepositoryMemberResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20441,10 +20837,6 @@ func (client *Client) UpdateResourceMemberWithOptions(organizationId *string, re
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	resourceType = openapiutil.GetEncodeParam(resourceType)
-	resourceId = openapiutil.GetEncodeParam(resourceId)
-	accountId = openapiutil.GetEncodeParam(accountId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
 		body["roleName"] = request.RoleName
@@ -20458,7 +20850,7 @@ func (client *Client) UpdateResourceMemberWithOptions(organizationId *string, re
 		Action:      tea.String("UpdateResourceMember"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/" + tea.StringValue(resourceType) + "/" + tea.StringValue(resourceId) + "/members/" + tea.StringValue(accountId)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(resourceType)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(resourceId)) + "/members/" + tea.StringValue(openapiutil.GetEncodeParam(accountId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -20491,8 +20883,6 @@ func (client *Client) UpdateVariableGroupWithOptions(organizationId *string, id 
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
-	id = openapiutil.GetEncodeParam(id)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
@@ -20514,7 +20904,7 @@ func (client *Client) UpdateVariableGroupWithOptions(organizationId *string, id 
 		Action:      tea.String("UpdateVariableGroup"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/variableGroups/" + tea.StringValue(id)),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/variableGroups/" + tea.StringValue(openapiutil.GetEncodeParam(id))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -20547,7 +20937,6 @@ func (client *Client) UpdateWorkItemWithOptions(organizationId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	organizationId = openapiutil.GetEncodeParam(organizationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FieldType)) {
 		body["fieldType"] = request.FieldType
@@ -20573,7 +20962,7 @@ func (client *Client) UpdateWorkItemWithOptions(organizationId *string, request 
 		Action:      tea.String("UpdateWorkItem"),
 		Version:     tea.String("2021-06-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/update"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitems/update"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),

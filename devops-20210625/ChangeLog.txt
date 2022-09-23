@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2021-06-25 for devops.
+
 2022-07-28 Version: v1.1.30
 - Add PipelineGroup.
 
