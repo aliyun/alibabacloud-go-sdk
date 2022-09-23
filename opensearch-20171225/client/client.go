@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -1015,20 +1015,13 @@ func (s *CreateFirstRankResponse) SetBody(v *CreateFirstRankResponseBody) *Creat
 }
 
 type CreateFunctionInstanceRequest struct {
-	// 创建参数
 	CreateParameters []*CreateFunctionInstanceRequestCreateParameters `json:"createParameters,omitempty" xml:"createParameters,omitempty" type:"Repeated"`
-	// 周期训练
-	Cron *string `json:"cron,omitempty" xml:"cron,omitempty"`
-	// 实例描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 功能类型
-	FunctionType *string `json:"functionType,omitempty" xml:"functionType,omitempty"`
-	// 实例名称
-	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	// 模型类型
-	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
-	// 使用参数
-	UsageParameters []*CreateFunctionInstanceRequestUsageParameters `json:"usageParameters,omitempty" xml:"usageParameters,omitempty" type:"Repeated"`
+	Cron             *string                                          `json:"cron,omitempty" xml:"cron,omitempty"`
+	Description      *string                                          `json:"description,omitempty" xml:"description,omitempty"`
+	FunctionType     *string                                          `json:"functionType,omitempty" xml:"functionType,omitempty"`
+	InstanceName     *string                                          `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	ModelType        *string                                          `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	UsageParameters  []*CreateFunctionInstanceRequestUsageParameters  `json:"usageParameters,omitempty" xml:"usageParameters,omitempty" type:"Repeated"`
 }
 
 func (s CreateFunctionInstanceRequest) String() string {
@@ -1075,9 +1068,7 @@ func (s *CreateFunctionInstanceRequest) SetUsageParameters(v []*CreateFunctionIn
 }
 
 type CreateFunctionInstanceRequestCreateParameters struct {
-	// 参数名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 参数值
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -1100,9 +1091,7 @@ func (s *CreateFunctionInstanceRequestCreateParameters) SetValue(v string) *Crea
 }
 
 type CreateFunctionInstanceRequestUsageParameters struct {
-	// 参数名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 参数值
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -1365,23 +1354,6 @@ func (s *CreateInterventionDictionaryResponse) SetStatusCode(v int32) *CreateInt
 }
 
 func (s *CreateInterventionDictionaryResponse) SetBody(v *CreateInterventionDictionaryResponseBody) *CreateInterventionDictionaryResponse {
-	s.Body = v
-	return s
-}
-
-type CreateModelRequest struct {
-	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CreateModelRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateModelRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateModelRequest) SetBody(v map[string]interface{}) *CreateModelRequest {
 	s.Body = v
 	return s
 }
@@ -4919,11 +4891,9 @@ func (s *GetFunctionCurrentVersionResponse) SetBody(v *GetFunctionCurrentVersion
 }
 
 type GetFunctionDefaultInstanceResponseBody struct {
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 功能名称
-	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	HttpCode     *int64  `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// 实例名称
+	Code         *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	FunctionName *string                                       `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	HttpCode     *int64                                        `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	InstanceName *string                                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	Latency      *int64                                        `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	Message      *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -7874,18 +7844,12 @@ func (s *ListFirstRanksResponse) SetBody(v *ListFirstRanksResponseBody) *ListFir
 }
 
 type ListFunctionInstancesRequest struct {
-	// 功能类型
 	FunctionType *string `json:"functionType,omitempty" xml:"functionType,omitempty"`
-	// 模型类型
-	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
-	// 返回信息的丰富度
-	Output *string `json:"output,omitempty" xml:"output,omitempty"`
-	// 页码
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 每页大小
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 实例来源
-	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	ModelType    *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	Output       *string `json:"output,omitempty" xml:"output,omitempty"`
+	PageNumber   *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize     *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Source       *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 
 func (s ListFunctionInstancesRequest) String() string {
@@ -8936,7 +8900,6 @@ func (s *ListProceedingsRequest) SetFilterFinished(v bool) *ListProceedingsReque
 }
 
 type ListProceedingsResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -12519,6 +12482,23 @@ func (s *RemoveUserAnalyzerResponse) SetBody(v *RemoveUserAnalyzerResponseBody) 
 	return s
 }
 
+type RenewAppGroupRequest struct {
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+}
+
+func (s RenewAppGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewAppGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenewAppGroupRequest) SetClientToken(v string) *RenewAppGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
 type RenewAppGroupResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
@@ -13486,7 +13466,6 @@ func (s *UpdateFetchFieldsResponse) SetBody(v *UpdateFetchFieldsResponseBody) *U
 }
 
 type UpdateFunctionDefaultInstanceRequest struct {
-	// 实例名称
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
 }
 
@@ -13580,14 +13559,10 @@ func (s *UpdateFunctionDefaultInstanceResponse) SetBody(v *UpdateFunctionDefault
 }
 
 type UpdateFunctionInstanceRequest struct {
-	// 创建参数
 	CreateParameters []*UpdateFunctionInstanceRequestCreateParameters `json:"createParameters,omitempty" xml:"createParameters,omitempty" type:"Repeated"`
-	// 周期训练
-	Cron *string `json:"cron,omitempty" xml:"cron,omitempty"`
-	// 实例描述
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 使用参数
-	UsageParameters []*UpdateFunctionInstanceRequestUsageParameters `json:"usageParameters,omitempty" xml:"usageParameters,omitempty" type:"Repeated"`
+	Cron             *string                                          `json:"cron,omitempty" xml:"cron,omitempty"`
+	Description      *string                                          `json:"description,omitempty" xml:"description,omitempty"`
+	UsageParameters  []*UpdateFunctionInstanceRequestUsageParameters  `json:"usageParameters,omitempty" xml:"usageParameters,omitempty" type:"Repeated"`
 }
 
 func (s UpdateFunctionInstanceRequest) String() string {
@@ -13619,9 +13594,7 @@ func (s *UpdateFunctionInstanceRequest) SetUsageParameters(v []*UpdateFunctionIn
 }
 
 type UpdateFunctionInstanceRequestCreateParameters struct {
-	// 参数名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 参数值
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -13667,12 +13640,9 @@ func (s *UpdateFunctionInstanceRequestUsageParameters) SetValue(v string) *Updat
 }
 
 type UpdateFunctionInstanceResponseBody struct {
-	// 错误码
-	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpCode *int64  `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// 耗时
-	Latency *int64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
-	// 错误信息
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpCode  *int64  `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Latency   *int64  `json:"Latency,omitempty" xml:"Latency,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -13907,7 +13877,6 @@ func (s *UpdateSummariesResponse) SetBody(v *UpdateSummariesResponseBody) *Updat
 }
 
 type ValidateDataSourcesResponseBody struct {
-	// Id of the request
 	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result    []*ValidateDataSourcesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
@@ -14077,8 +14046,6 @@ func (client *Client) BindESUserAnalyzer(appGroupIdentity *string, esInstanceId 
 }
 
 func (client *Client) BindESUserAnalyzerWithOptions(appGroupIdentity *string, esInstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BindESUserAnalyzerResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	esInstanceId = openapiutil.GetEncodeParam(esInstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14086,7 +14053,7 @@ func (client *Client) BindESUserAnalyzerWithOptions(appGroupIdentity *string, es
 		Action:      tea.String("BindESUserAnalyzer"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/es/" + tea.StringValue(esInstanceId) + "/actions/bind-analyzer"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/es/" + tea.StringValue(openapiutil.GetEncodeParam(esInstanceId)) + "/actions/bind-analyzer"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14115,7 +14082,6 @@ func (client *Client) BindEsInstance(appGroupIdentity *string) (_result *BindEsI
 }
 
 func (client *Client) BindEsInstanceWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BindEsInstanceResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14123,7 +14089,7 @@ func (client *Client) BindEsInstanceWithOptions(appGroupIdentity *string, header
 		Action:      tea.String("BindEsInstance"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/actions/bind-es-instance"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/actions/bind-es-instance"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14152,9 +14118,6 @@ func (client *Client) CompileSortScript(appGroupIdentity *string, scriptName *st
 }
 
 func (client *Client) CompileSortScriptWithOptions(appGroupIdentity *string, scriptName *string, appVersionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CompileSortScriptResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	scriptName = openapiutil.GetEncodeParam(scriptName)
-	appVersionId = openapiutil.GetEncodeParam(appVersionId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14162,7 +14125,7 @@ func (client *Client) CompileSortScriptWithOptions(appGroupIdentity *string, scr
 		Action:      tea.String("CompileSortScript"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appVersionId) + "/sort-scripts/" + tea.StringValue(scriptName) + "/actions/compiling"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appVersionId)) + "/sort-scripts/" + tea.StringValue(openapiutil.GetEncodeParam(scriptName)) + "/actions/compiling"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14191,9 +14154,6 @@ func (client *Client) CreateABTestExperiment(appGroupIdentity *string, sceneId *
 }
 
 func (client *Client) CreateABTestExperimentWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateABTestExperimentResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
-	groupId = openapiutil.GetEncodeParam(groupId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14201,7 +14161,7 @@ func (client *Client) CreateABTestExperimentWithOptions(appGroupIdentity *string
 		Action:      tea.String("CreateABTestExperiment"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId) + "/groups/" + tea.StringValue(groupId) + "/experiments"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/experiments"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14230,8 +14190,6 @@ func (client *Client) CreateABTestGroup(appGroupIdentity *string, sceneId *strin
 }
 
 func (client *Client) CreateABTestGroupWithOptions(appGroupIdentity *string, sceneId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateABTestGroupResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14239,7 +14197,7 @@ func (client *Client) CreateABTestGroupWithOptions(appGroupIdentity *string, sce
 		Action:      tea.String("CreateABTestGroup"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId) + "/groups"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId)) + "/groups"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14268,7 +14226,6 @@ func (client *Client) CreateABTestScene(appGroupIdentity *string) (_result *Crea
 }
 
 func (client *Client) CreateABTestSceneWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateABTestSceneResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14276,7 +14233,7 @@ func (client *Client) CreateABTestSceneWithOptions(appGroupIdentity *string, hea
 		Action:      tea.String("CreateABTestScene"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14309,7 +14266,6 @@ func (client *Client) CreateAppWithOptions(appGroupIdentity *string, request *Cr
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["dryRun"] = request.DryRun
@@ -14323,7 +14279,7 @@ func (client *Client) CreateAppWithOptions(appGroupIdentity *string, request *Cr
 		Action:      tea.String("CreateApp"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14388,7 +14344,6 @@ func (client *Client) CreateDataCollection(appGroupIdentity *string) (_result *C
 }
 
 func (client *Client) CreateDataCollectionWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDataCollectionResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14396,7 +14351,7 @@ func (client *Client) CreateDataCollectionWithOptions(appGroupIdentity *string, 
 		Action:      tea.String("CreateDataCollection"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/data-collections"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/data-collections"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14429,8 +14384,6 @@ func (client *Client) CreateFirstRankWithOptions(appGroupIdentity *string, appId
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["dryRun"] = request.DryRun
@@ -14444,7 +14397,7 @@ func (client *Client) CreateFirstRankWithOptions(appGroupIdentity *string, appId
 		Action:      tea.String("CreateFirstRank"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/first-ranks"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/first-ranks"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14477,8 +14430,6 @@ func (client *Client) CreateFunctionInstanceWithOptions(appGroupIdentity *string
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CreateParameters)) {
 		body["createParameters"] = request.CreateParameters
@@ -14516,7 +14467,7 @@ func (client *Client) CreateFunctionInstanceWithOptions(appGroupIdentity *string
 		Action:      tea.String("CreateFunctionInstance"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/functions/" + tea.StringValue(functionName) + "/instances"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/instances"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14545,9 +14496,6 @@ func (client *Client) CreateFunctionTask(appGroupIdentity *string, functionName 
 }
 
 func (client *Client) CreateFunctionTaskWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFunctionTaskResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	functionName = openapiutil.GetEncodeParam(functionName)
-	instanceName = openapiutil.GetEncodeParam(instanceName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14555,7 +14503,7 @@ func (client *Client) CreateFunctionTaskWithOptions(appGroupIdentity *string, fu
 		Action:      tea.String("CreateFunctionTask"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/functions/" + tea.StringValue(functionName) + "/instances/" + tea.StringValue(instanceName) + "/tasks"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceName)) + "/tasks"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14607,11 +14555,11 @@ func (client *Client) CreateInterventionDictionaryWithOptions(headers map[string
 	return _result, _err
 }
 
-func (client *Client) CreateModel(appGroupIdentity *string, request *CreateModelRequest) (_result *CreateModelResponse, _err error) {
+func (client *Client) CreateModel(appGroupIdentity *string) (_result *CreateModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &CreateModelResponse{}
-	_body, _err := client.CreateModelWithOptions(appGroupIdentity, request, headers, runtime)
+	_body, _err := client.CreateModelWithOptions(appGroupIdentity, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14619,26 +14567,15 @@ func (client *Client) CreateModel(appGroupIdentity *string, request *CreateModel
 	return _result, _err
 }
 
-func (client *Client) CreateModelWithOptions(appGroupIdentity *string, request *CreateModelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Body)) {
-		body["body"] = request.Body
-	}
-
+func (client *Client) CreateModelWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateModel"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/algorithm/models"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/models"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14671,8 +14608,6 @@ func (client *Client) CreateQueryProcessorWithOptions(appGroupIdentity *string, 
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["dryRun"] = request.DryRun
@@ -14686,7 +14621,7 @@ func (client *Client) CreateQueryProcessorWithOptions(appGroupIdentity *string, 
 		Action:      tea.String("CreateQueryProcessor"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/query-processors"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/query-processors"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14715,7 +14650,6 @@ func (client *Client) CreateScheduledTask(appGroupIdentity *string) (_result *Cr
 }
 
 func (client *Client) CreateScheduledTaskWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateScheduledTaskResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14723,7 +14657,7 @@ func (client *Client) CreateScheduledTaskWithOptions(appGroupIdentity *string, h
 		Action:      tea.String("CreateScheduledTask"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scheduled-tasks"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scheduled-tasks"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14752,8 +14686,6 @@ func (client *Client) CreateSearchStrategy(appGroupIdentity *string, appId *stri
 }
 
 func (client *Client) CreateSearchStrategyWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSearchStrategyResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14761,7 +14693,7 @@ func (client *Client) CreateSearchStrategyWithOptions(appGroupIdentity *string, 
 		Action:      tea.String("CreateSearchStrategy"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/search-strategies"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/search-strategies"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14794,8 +14726,6 @@ func (client *Client) CreateSecondRankWithOptions(appGroupIdentity *string, appI
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["dryRun"] = request.DryRun
@@ -14809,7 +14739,7 @@ func (client *Client) CreateSecondRankWithOptions(appGroupIdentity *string, appI
 		Action:      tea.String("CreateSecondRank"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/second-ranks"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/second-ranks"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14838,8 +14768,6 @@ func (client *Client) CreateSortScript(appGroupIdentity *string, appVersionId *s
 }
 
 func (client *Client) CreateSortScriptWithOptions(appGroupIdentity *string, appVersionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSortScriptResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appVersionId = openapiutil.GetEncodeParam(appVersionId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14847,7 +14775,7 @@ func (client *Client) CreateSortScriptWithOptions(appGroupIdentity *string, appV
 		Action:      tea.String("CreateSortScript"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appVersionId) + "/sort-scripts"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appVersionId)) + "/sort-scripts"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14912,10 +14840,6 @@ func (client *Client) DeleteABTestExperiment(appGroupIdentity *string, sceneId *
 }
 
 func (client *Client) DeleteABTestExperimentWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteABTestExperimentResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
-	groupId = openapiutil.GetEncodeParam(groupId)
-	experimentId = openapiutil.GetEncodeParam(experimentId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14923,7 +14847,7 @@ func (client *Client) DeleteABTestExperimentWithOptions(appGroupIdentity *string
 		Action:      tea.String("DeleteABTestExperiment"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId) + "/groups/" + tea.StringValue(groupId) + "/experiments/" + tea.StringValue(experimentId)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(experimentId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14952,9 +14876,6 @@ func (client *Client) DeleteABTestGroup(appGroupIdentity *string, sceneId *strin
 }
 
 func (client *Client) DeleteABTestGroupWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteABTestGroupResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
-	groupId = openapiutil.GetEncodeParam(groupId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -14962,7 +14883,7 @@ func (client *Client) DeleteABTestGroupWithOptions(appGroupIdentity *string, sce
 		Action:      tea.String("DeleteABTestGroup"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId) + "/groups/" + tea.StringValue(groupId)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14991,8 +14912,6 @@ func (client *Client) DeleteABTestScene(appGroupIdentity *string, sceneId *strin
 }
 
 func (client *Client) DeleteABTestSceneWithOptions(appGroupIdentity *string, sceneId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteABTestSceneResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15000,7 +14919,7 @@ func (client *Client) DeleteABTestSceneWithOptions(appGroupIdentity *string, sce
 		Action:      tea.String("DeleteABTestScene"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15029,9 +14948,6 @@ func (client *Client) DeleteFunctionInstance(appGroupIdentity *string, functionN
 }
 
 func (client *Client) DeleteFunctionInstanceWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionInstanceResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	functionName = openapiutil.GetEncodeParam(functionName)
-	instanceName = openapiutil.GetEncodeParam(instanceName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15039,7 +14955,7 @@ func (client *Client) DeleteFunctionInstanceWithOptions(appGroupIdentity *string
 		Action:      tea.String("DeleteFunctionInstance"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/functions/" + tea.StringValue(functionName) + "/instances/" + tea.StringValue(instanceName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15068,10 +14984,6 @@ func (client *Client) DeleteFunctionTask(appGroupIdentity *string, functionName 
 }
 
 func (client *Client) DeleteFunctionTaskWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, generation *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionTaskResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	functionName = openapiutil.GetEncodeParam(functionName)
-	instanceName = openapiutil.GetEncodeParam(instanceName)
-	generation = openapiutil.GetEncodeParam(generation)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15079,7 +14991,7 @@ func (client *Client) DeleteFunctionTaskWithOptions(appGroupIdentity *string, fu
 		Action:      tea.String("DeleteFunctionTask"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/functions/" + tea.StringValue(functionName) + "/instances/" + tea.StringValue(instanceName) + "/tasks/" + tea.StringValue(generation)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceName)) + "/tasks/" + tea.StringValue(openapiutil.GetEncodeParam(generation))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15108,8 +15020,6 @@ func (client *Client) DeleteModel(appGroupIdentity *string, modelName *string) (
 }
 
 func (client *Client) DeleteModelWithOptions(appGroupIdentity *string, modelName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteModelResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	modelName = openapiutil.GetEncodeParam(modelName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15117,7 +15027,7 @@ func (client *Client) DeleteModelWithOptions(appGroupIdentity *string, modelName
 		Action:      tea.String("DeleteModel"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/algorithm/models/" + tea.StringValue(modelName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15146,9 +15056,6 @@ func (client *Client) DeleteSortScript(appGroupIdentity *string, scriptName *str
 }
 
 func (client *Client) DeleteSortScriptWithOptions(appGroupIdentity *string, scriptName *string, appVersionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSortScriptResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	scriptName = openapiutil.GetEncodeParam(scriptName)
-	appVersionId = openapiutil.GetEncodeParam(appVersionId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15156,7 +15063,7 @@ func (client *Client) DeleteSortScriptWithOptions(appGroupIdentity *string, scri
 		Action:      tea.String("DeleteSortScript"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appVersionId) + "/sort-scripts/" + tea.StringValue(scriptName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appVersionId)) + "/sort-scripts/" + tea.StringValue(openapiutil.GetEncodeParam(scriptName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15185,10 +15092,6 @@ func (client *Client) DeleteSortScriptFile(appGroupIdentity *string, appVersionI
 }
 
 func (client *Client) DeleteSortScriptFileWithOptions(appGroupIdentity *string, appVersionId *string, scriptName *string, fileName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSortScriptFileResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appVersionId = openapiutil.GetEncodeParam(appVersionId)
-	scriptName = openapiutil.GetEncodeParam(scriptName)
-	fileName = openapiutil.GetEncodeParam(fileName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15196,7 +15099,7 @@ func (client *Client) DeleteSortScriptFileWithOptions(appGroupIdentity *string, 
 		Action:      tea.String("DeleteSortScriptFile"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appVersionId) + "/sort-scripts/" + tea.StringValue(scriptName) + "/files/src/" + tea.StringValue(fileName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appVersionId)) + "/sort-scripts/" + tea.StringValue(openapiutil.GetEncodeParam(scriptName)) + "/files/src/" + tea.StringValue(openapiutil.GetEncodeParam(fileName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15225,10 +15128,6 @@ func (client *Client) DescribeABTestExperiment(appGroupIdentity *string, sceneId
 }
 
 func (client *Client) DescribeABTestExperimentWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeABTestExperimentResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
-	groupId = openapiutil.GetEncodeParam(groupId)
-	experimentId = openapiutil.GetEncodeParam(experimentId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15236,7 +15135,7 @@ func (client *Client) DescribeABTestExperimentWithOptions(appGroupIdentity *stri
 		Action:      tea.String("DescribeABTestExperiment"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId) + "/groups/" + tea.StringValue(groupId) + "/experiments/" + tea.StringValue(experimentId)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(experimentId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15265,9 +15164,6 @@ func (client *Client) DescribeABTestGroup(appGroupIdentity *string, sceneId *str
 }
 
 func (client *Client) DescribeABTestGroupWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeABTestGroupResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
-	groupId = openapiutil.GetEncodeParam(groupId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15275,7 +15171,7 @@ func (client *Client) DescribeABTestGroupWithOptions(appGroupIdentity *string, s
 		Action:      tea.String("DescribeABTestGroup"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId) + "/groups/" + tea.StringValue(groupId)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15304,8 +15200,6 @@ func (client *Client) DescribeABTestScene(appGroupIdentity *string, sceneId *str
 }
 
 func (client *Client) DescribeABTestSceneWithOptions(appGroupIdentity *string, sceneId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeABTestSceneResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15313,7 +15207,7 @@ func (client *Client) DescribeABTestSceneWithOptions(appGroupIdentity *string, s
 		Action:      tea.String("DescribeABTestScene"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15342,8 +15236,6 @@ func (client *Client) DescribeApp(appGroupIdentity *string, appId *string) (_res
 }
 
 func (client *Client) DescribeAppWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAppResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15351,7 +15243,7 @@ func (client *Client) DescribeAppWithOptions(appGroupIdentity *string, appId *st
 		Action:      tea.String("DescribeApp"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15380,7 +15272,6 @@ func (client *Client) DescribeAppGroup(appGroupIdentity *string) (_result *Descr
 }
 
 func (client *Client) DescribeAppGroupWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAppGroupResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15388,7 +15279,7 @@ func (client *Client) DescribeAppGroupWithOptions(appGroupIdentity *string, head
 		Action:      tea.String("DescribeAppGroup"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15421,7 +15312,6 @@ func (client *Client) DescribeAppGroupDataReportWithOptions(appGroupIdentity *st
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["endTime"] = request.EndTime
@@ -15439,7 +15329,7 @@ func (client *Client) DescribeAppGroupDataReportWithOptions(appGroupIdentity *st
 		Action:      tea.String("DescribeAppGroupDataReport"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/data-report"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/data-report"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15468,7 +15358,6 @@ func (client *Client) DescribeAppGroupStatistics(appGroupIdentity *string) (_res
 }
 
 func (client *Client) DescribeAppGroupStatisticsWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAppGroupStatisticsResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15476,7 +15365,7 @@ func (client *Client) DescribeAppGroupStatisticsWithOptions(appGroupIdentity *st
 		Action:      tea.String("DescribeAppGroupStatistics"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/statistics"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/statistics"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15505,8 +15394,6 @@ func (client *Client) DescribeAppStatistics(appGroupIdentity *string, appId *str
 }
 
 func (client *Client) DescribeAppStatisticsWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAppStatisticsResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15514,7 +15401,7 @@ func (client *Client) DescribeAppStatisticsWithOptions(appGroupIdentity *string,
 		Action:      tea.String("DescribeAppStatistics"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/statistics"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/statistics"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15543,7 +15430,6 @@ func (client *Client) DescribeApps(appGroupIdentity *string) (_result *DescribeA
 }
 
 func (client *Client) DescribeAppsWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAppsResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15551,7 +15437,7 @@ func (client *Client) DescribeAppsWithOptions(appGroupIdentity *string, headers 
 		Action:      tea.String("DescribeApps"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15580,8 +15466,6 @@ func (client *Client) DescribeDataCollction(appGroupIdentity *string, dataCollec
 }
 
 func (client *Client) DescribeDataCollctionWithOptions(appGroupIdentity *string, dataCollectionIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeDataCollctionResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	dataCollectionIdentity = openapiutil.GetEncodeParam(dataCollectionIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15589,7 +15473,7 @@ func (client *Client) DescribeDataCollctionWithOptions(appGroupIdentity *string,
 		Action:      tea.String("DescribeDataCollction"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/data-collections/" + tea.StringValue(dataCollectionIdentity)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/data-collections/" + tea.StringValue(openapiutil.GetEncodeParam(dataCollectionIdentity))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15618,9 +15502,6 @@ func (client *Client) DescribeFirstRank(appGroupIdentity *string, appId *string,
 }
 
 func (client *Client) DescribeFirstRankWithOptions(appGroupIdentity *string, appId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeFirstRankResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15628,7 +15509,7 @@ func (client *Client) DescribeFirstRankWithOptions(appGroupIdentity *string, app
 		Action:      tea.String("DescribeFirstRank"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/first-ranks/" + tea.StringValue(name)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/first-ranks/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15657,7 +15538,6 @@ func (client *Client) DescribeInterventionDictionary(name *string) (_result *Des
 }
 
 func (client *Client) DescribeInterventionDictionaryWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeInterventionDictionaryResponse, _err error) {
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15665,7 +15545,7 @@ func (client *Client) DescribeInterventionDictionaryWithOptions(name *string, he
 		Action:      tea.String("DescribeInterventionDictionary"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/intervention-dictionaries/" + tea.StringValue(name)),
+		Pathname:    tea.String("/v4/openapi/intervention-dictionaries/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15694,8 +15574,6 @@ func (client *Client) DescribeModel(appGroupIdentity *string, modelName *string)
 }
 
 func (client *Client) DescribeModelWithOptions(appGroupIdentity *string, modelName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeModelResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	modelName = openapiutil.GetEncodeParam(modelName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15703,7 +15581,7 @@ func (client *Client) DescribeModelWithOptions(appGroupIdentity *string, modelNa
 		Action:      tea.String("DescribeModel"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/algorithm/models/" + tea.StringValue(modelName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15732,9 +15610,6 @@ func (client *Client) DescribeQueryProcessor(appGroupIdentity *string, appId *st
 }
 
 func (client *Client) DescribeQueryProcessorWithOptions(appGroupIdentity *string, appId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeQueryProcessorResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15742,7 +15617,7 @@ func (client *Client) DescribeQueryProcessorWithOptions(appGroupIdentity *string
 		Action:      tea.String("DescribeQueryProcessor"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/query-processors/" + tea.StringValue(name)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/query-processors/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15843,8 +15718,6 @@ func (client *Client) DescribeScheduledTask(appGroupIdentity *string, taskId *st
 }
 
 func (client *Client) DescribeScheduledTaskWithOptions(appGroupIdentity *string, taskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeScheduledTaskResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	taskId = openapiutil.GetEncodeParam(taskId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15852,7 +15725,7 @@ func (client *Client) DescribeScheduledTaskWithOptions(appGroupIdentity *string,
 		Action:      tea.String("DescribeScheduledTask"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scheduled-tasks/" + tea.StringValue(taskId)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scheduled-tasks/" + tea.StringValue(openapiutil.GetEncodeParam(taskId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15881,9 +15754,6 @@ func (client *Client) DescribeSecondRank(appGroupIdentity *string, appId *string
 }
 
 func (client *Client) DescribeSecondRankWithOptions(appGroupIdentity *string, appId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeSecondRankResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15891,7 +15761,7 @@ func (client *Client) DescribeSecondRankWithOptions(appGroupIdentity *string, ap
 		Action:      tea.String("DescribeSecondRank"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/second-ranks/" + tea.StringValue(name)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/second-ranks/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15920,7 +15790,6 @@ func (client *Client) DescribeSlowQueryStatus(appGroupIdentity *string) (_result
 }
 
 func (client *Client) DescribeSlowQueryStatusWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeSlowQueryStatusResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -15928,7 +15797,7 @@ func (client *Client) DescribeSlowQueryStatusWithOptions(appGroupIdentity *strin
 		Action:      tea.String("DescribeSlowQueryStatus"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/optimizers/slow-query"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/optimizers/slow-query"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15961,7 +15830,6 @@ func (client *Client) DescribeUserAnalyzerWithOptions(name *string, request *Des
 	if _err != nil {
 		return _result, _err
 	}
-	name = openapiutil.GetEncodeParam(name)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.With)) {
 		query["with"] = request.With
@@ -15975,7 +15843,7 @@ func (client *Client) DescribeUserAnalyzerWithOptions(name *string, request *Des
 		Action:      tea.String("DescribeUserAnalyzer"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/user-analyzers/" + tea.StringValue(name)),
+		Pathname:    tea.String("/v4/openapi/user-analyzers/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16004,7 +15872,6 @@ func (client *Client) DisableSlowQuery(appGroupIdentity *string) (_result *Disab
 }
 
 func (client *Client) DisableSlowQueryWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DisableSlowQueryResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16012,7 +15879,7 @@ func (client *Client) DisableSlowQueryWithOptions(appGroupIdentity *string, head
 		Action:      tea.String("DisableSlowQuery"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/optimizers/slow-query/actions/disable"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/optimizers/slow-query/actions/disable"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16041,7 +15908,6 @@ func (client *Client) EnableSlowQuery(appGroupIdentity *string) (_result *Enable
 }
 
 func (client *Client) EnableSlowQueryWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EnableSlowQueryResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16049,7 +15915,7 @@ func (client *Client) EnableSlowQueryWithOptions(appGroupIdentity *string, heade
 		Action:      tea.String("EnableSlowQuery"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/optimizers/slow-query/actions/enable"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/optimizers/slow-query/actions/enable"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16128,7 +15994,6 @@ func (client *Client) GetDomainWithOptions(domainName *string, request *GetDomai
 	if _err != nil {
 		return _result, _err
 	}
-	domainName = openapiutil.GetEncodeParam(domainName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppGroupIdentity)) {
 		query["appGroupIdentity"] = request.AppGroupIdentity
@@ -16142,7 +16007,7 @@ func (client *Client) GetDomainWithOptions(domainName *string, request *GetDomai
 		Action:      tea.String("GetDomain"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/domains/" + tea.StringValue(domainName)),
+		Pathname:    tea.String("/v4/openapi/domains/" + tea.StringValue(openapiutil.GetEncodeParam(domainName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16175,7 +16040,6 @@ func (client *Client) GetFunctionCurrentVersionWithOptions(functionName *string,
 	if _err != nil {
 		return _result, _err
 	}
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Category)) {
 		query["category"] = request.Category
@@ -16201,7 +16065,7 @@ func (client *Client) GetFunctionCurrentVersionWithOptions(functionName *string,
 		Action:      tea.String("GetFunctionCurrentVersion"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/functions/" + tea.StringValue(functionName) + "/current-version"),
+		Pathname:    tea.String("/v4/openapi/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/current-version"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16230,8 +16094,6 @@ func (client *Client) GetFunctionDefaultInstance(appGroupIdentity *string, funct
 }
 
 func (client *Client) GetFunctionDefaultInstanceWithOptions(appGroupIdentity *string, functionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionDefaultInstanceResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16239,7 +16101,7 @@ func (client *Client) GetFunctionDefaultInstanceWithOptions(appGroupIdentity *st
 		Action:      tea.String("GetFunctionDefaultInstance"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/functions/" + tea.StringValue(functionName) + "/default-instance"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/default-instance"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16272,9 +16134,6 @@ func (client *Client) GetFunctionInstanceWithOptions(appGroupIdentity *string, f
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	functionName = openapiutil.GetEncodeParam(functionName)
-	instanceName = openapiutil.GetEncodeParam(instanceName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Output)) {
 		query["output"] = request.Output
@@ -16288,7 +16147,7 @@ func (client *Client) GetFunctionInstanceWithOptions(appGroupIdentity *string, f
 		Action:      tea.String("GetFunctionInstance"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/functions/" + tea.StringValue(functionName) + "/instances/" + tea.StringValue(instanceName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16317,10 +16176,6 @@ func (client *Client) GetFunctionTask(appGroupIdentity *string, functionName *st
 }
 
 func (client *Client) GetFunctionTaskWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, generation *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionTaskResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	functionName = openapiutil.GetEncodeParam(functionName)
-	instanceName = openapiutil.GetEncodeParam(instanceName)
-	generation = openapiutil.GetEncodeParam(generation)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16328,7 +16183,7 @@ func (client *Client) GetFunctionTaskWithOptions(appGroupIdentity *string, funct
 		Action:      tea.String("GetFunctionTask"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/functions/" + tea.StringValue(functionName) + "/instances/" + tea.StringValue(instanceName) + "/tasks/" + tea.StringValue(generation)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceName)) + "/tasks/" + tea.StringValue(openapiutil.GetEncodeParam(generation))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16357,8 +16212,6 @@ func (client *Client) GetFunctionVersion(functionName *string, versionId *string
 }
 
 func (client *Client) GetFunctionVersionWithOptions(functionName *string, versionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionVersionResponse, _err error) {
-	functionName = openapiutil.GetEncodeParam(functionName)
-	versionId = openapiutil.GetEncodeParam(versionId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16366,7 +16219,7 @@ func (client *Client) GetFunctionVersionWithOptions(functionName *string, versio
 		Action:      tea.String("GetFunctionVersion"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/functions/" + tea.StringValue(functionName) + "/versions/" + tea.StringValue(versionId)),
+		Pathname:    tea.String("/v4/openapi/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(versionId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16395,8 +16248,6 @@ func (client *Client) GetModelProgress(appGroupIdentity *string, modelName *stri
 }
 
 func (client *Client) GetModelProgressWithOptions(appGroupIdentity *string, modelName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetModelProgressResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	modelName = openapiutil.GetEncodeParam(modelName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16404,7 +16255,7 @@ func (client *Client) GetModelProgressWithOptions(appGroupIdentity *string, mode
 		Action:      tea.String("GetModelProgress"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/algorithm/models/" + tea.StringValue(modelName) + "/progress"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName)) + "/progress"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16433,8 +16284,6 @@ func (client *Client) GetModelReport(appGroupIdentity *string, modelName *string
 }
 
 func (client *Client) GetModelReportWithOptions(appGroupIdentity *string, modelName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetModelReportResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	modelName = openapiutil.GetEncodeParam(modelName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16442,7 +16291,7 @@ func (client *Client) GetModelReportWithOptions(appGroupIdentity *string, modelN
 		Action:      tea.String("GetModelReport"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/algorithm/models/" + tea.StringValue(modelName) + "/report"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName)) + "/report"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16471,9 +16320,6 @@ func (client *Client) GetScriptFileNames(appGroupIdentity *string, appVersionId 
 }
 
 func (client *Client) GetScriptFileNamesWithOptions(appGroupIdentity *string, appVersionId *string, scriptName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetScriptFileNamesResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appVersionId = openapiutil.GetEncodeParam(appVersionId)
-	scriptName = openapiutil.GetEncodeParam(scriptName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16481,7 +16327,7 @@ func (client *Client) GetScriptFileNamesWithOptions(appGroupIdentity *string, ap
 		Action:      tea.String("GetScriptFileNames"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appVersionId) + "/sort-scripts/" + tea.StringValue(scriptName) + "/file-names"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appVersionId)) + "/sort-scripts/" + tea.StringValue(openapiutil.GetEncodeParam(scriptName)) + "/file-names"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16510,9 +16356,6 @@ func (client *Client) GetSearchStrategy(appGroupIdentity *string, appId *string,
 }
 
 func (client *Client) GetSearchStrategyWithOptions(appGroupIdentity *string, appId *string, strategyName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSearchStrategyResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
-	strategyName = openapiutil.GetEncodeParam(strategyName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16520,7 +16363,7 @@ func (client *Client) GetSearchStrategyWithOptions(appGroupIdentity *string, app
 		Action:      tea.String("GetSearchStrategy"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/search-strategies/" + tea.StringValue(strategyName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/search-strategies/" + tea.StringValue(openapiutil.GetEncodeParam(strategyName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16549,9 +16392,6 @@ func (client *Client) GetSortScript(appGroupIdentity *string, scriptName *string
 }
 
 func (client *Client) GetSortScriptWithOptions(appGroupIdentity *string, scriptName *string, appVersionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSortScriptResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	scriptName = openapiutil.GetEncodeParam(scriptName)
-	appVersionId = openapiutil.GetEncodeParam(appVersionId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16559,7 +16399,7 @@ func (client *Client) GetSortScriptWithOptions(appGroupIdentity *string, scriptN
 		Action:      tea.String("GetSortScript"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appVersionId) + "/sort-scripts/" + tea.StringValue(scriptName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appVersionId)) + "/sort-scripts/" + tea.StringValue(openapiutil.GetEncodeParam(scriptName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16588,10 +16428,6 @@ func (client *Client) GetSortScriptFile(appGroupIdentity *string, scriptName *st
 }
 
 func (client *Client) GetSortScriptFileWithOptions(appGroupIdentity *string, scriptName *string, appVersionId *string, fileName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSortScriptFileResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	scriptName = openapiutil.GetEncodeParam(scriptName)
-	appVersionId = openapiutil.GetEncodeParam(appVersionId)
-	fileName = openapiutil.GetEncodeParam(fileName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16599,7 +16435,7 @@ func (client *Client) GetSortScriptFileWithOptions(appGroupIdentity *string, scr
 		Action:      tea.String("GetSortScriptFile"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appVersionId) + "/sort-scripts/" + tea.StringValue(scriptName) + "/files/src/" + tea.StringValue(fileName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appVersionId)) + "/sort-scripts/" + tea.StringValue(openapiutil.GetEncodeParam(scriptName)) + "/files/src/" + tea.StringValue(openapiutil.GetEncodeParam(fileName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16632,7 +16468,6 @@ func (client *Client) GetValidationErrorWithOptions(appGroupIdentity *string, re
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ErrorCode)) {
 		query["errorCode"] = request.ErrorCode
@@ -16646,7 +16481,7 @@ func (client *Client) GetValidationErrorWithOptions(appGroupIdentity *string, re
 		Action:      tea.String("GetValidationError"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/algorithm/data/validation-error"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/data/validation-error"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16679,7 +16514,6 @@ func (client *Client) GetValidationReportWithOptions(appGroupIdentity *string, r
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["type"] = request.Type
@@ -16693,7 +16527,7 @@ func (client *Client) GetValidationReportWithOptions(appGroupIdentity *string, r
 		Action:      tea.String("GetValidationReport"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/algorithm/data/validation-report"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/data/validation-report"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16722,9 +16556,6 @@ func (client *Client) ListABTestExperiments(appGroupIdentity *string, sceneId *s
 }
 
 func (client *Client) ListABTestExperimentsWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListABTestExperimentsResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
-	groupId = openapiutil.GetEncodeParam(groupId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16732,7 +16563,7 @@ func (client *Client) ListABTestExperimentsWithOptions(appGroupIdentity *string,
 		Action:      tea.String("ListABTestExperiments"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId) + "/groups/" + tea.StringValue(groupId) + "/experiments"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/experiments"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16761,10 +16592,6 @@ func (client *Client) ListABTestFixedFlowDividers(appGroupIdentity *string, scen
 }
 
 func (client *Client) ListABTestFixedFlowDividersWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListABTestFixedFlowDividersResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
-	groupId = openapiutil.GetEncodeParam(groupId)
-	experimentId = openapiutil.GetEncodeParam(experimentId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16772,7 +16599,7 @@ func (client *Client) ListABTestFixedFlowDividersWithOptions(appGroupIdentity *s
 		Action:      tea.String("ListABTestFixedFlowDividers"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId) + "/groups/" + tea.StringValue(groupId) + "/experiments/" + tea.StringValue(experimentId) + "/fixed-flow-dividers"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(experimentId)) + "/fixed-flow-dividers"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16801,8 +16628,6 @@ func (client *Client) ListABTestGroups(appGroupIdentity *string, sceneId *string
 }
 
 func (client *Client) ListABTestGroupsWithOptions(appGroupIdentity *string, sceneId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListABTestGroupsResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16810,7 +16635,7 @@ func (client *Client) ListABTestGroupsWithOptions(appGroupIdentity *string, scen
 		Action:      tea.String("ListABTestGroups"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId) + "/groups"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId)) + "/groups"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16839,9 +16664,6 @@ func (client *Client) ListABTestMetrics(appGroupIdentity *string, sceneId *strin
 }
 
 func (client *Client) ListABTestMetricsWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListABTestMetricsResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
-	groupId = openapiutil.GetEncodeParam(groupId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16849,7 +16671,7 @@ func (client *Client) ListABTestMetricsWithOptions(appGroupIdentity *string, sce
 		Action:      tea.String("ListABTestMetrics"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId) + "/groups/" + tea.StringValue(groupId) + "/metrics"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/metrics"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16878,7 +16700,6 @@ func (client *Client) ListABTestScenes(appGroupIdentity *string) (_result *ListA
 }
 
 func (client *Client) ListABTestScenesWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListABTestScenesResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -16886,7 +16707,7 @@ func (client *Client) ListABTestScenesWithOptions(appGroupIdentity *string, head
 		Action:      tea.String("ListABTestScenes"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16919,7 +16740,6 @@ func (client *Client) ListAppGroupErrorsWithOptions(appGroupIdentity *string, re
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["appId"] = request.AppId
@@ -16949,7 +16769,7 @@ func (client *Client) ListAppGroupErrorsWithOptions(appGroupIdentity *string, re
 		Action:      tea.String("ListAppGroupErrors"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/errors"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/errors"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -16982,7 +16802,6 @@ func (client *Client) ListAppGroupMetricsWithOptions(appGroupIdentity *string, r
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["endTime"] = request.EndTime
@@ -17008,7 +16827,7 @@ func (client *Client) ListAppGroupMetricsWithOptions(appGroupIdentity *string, r
 		Action:      tea.String("ListAppGroupMetrics"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/metrics"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/metrics"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17165,7 +16984,6 @@ func (client *Client) ListDataCollectionsWithOptions(appGroupIdentity *string, r
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["pageNumber"] = request.PageNumber
@@ -17183,7 +17001,7 @@ func (client *Client) ListDataCollectionsWithOptions(appGroupIdentity *string, r
 		Action:      tea.String("ListDataCollections"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/data-collections"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/data-collections"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17216,7 +17034,6 @@ func (client *Client) ListDataSourceTableFieldsWithOptions(dataSourceType *strin
 	if _err != nil {
 		return _result, _err
 	}
-	dataSourceType = openapiutil.GetEncodeParam(dataSourceType)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Params)) {
 		query["params"] = request.Params
@@ -17230,7 +17047,7 @@ func (client *Client) ListDataSourceTableFieldsWithOptions(dataSourceType *strin
 		Action:      tea.String("ListDataSourceTableFields"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/assist/data-sources/" + tea.StringValue(dataSourceType) + "/fields"),
+		Pathname:    tea.String("/v4/openapi/assist/data-sources/" + tea.StringValue(openapiutil.GetEncodeParam(dataSourceType)) + "/fields"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17263,7 +17080,6 @@ func (client *Client) ListDataSourceTablesWithOptions(dataSourceType *string, re
 	if _err != nil {
 		return _result, _err
 	}
-	dataSourceType = openapiutil.GetEncodeParam(dataSourceType)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Params)) {
 		query["params"] = request.Params
@@ -17277,7 +17093,7 @@ func (client *Client) ListDataSourceTablesWithOptions(dataSourceType *string, re
 		Action:      tea.String("ListDataSourceTables"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/assist/data-sources/" + tea.StringValue(dataSourceType) + "/tables"),
+		Pathname:    tea.String("/v4/openapi/assist/data-sources/" + tea.StringValue(openapiutil.GetEncodeParam(dataSourceType)) + "/tables"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17310,7 +17126,6 @@ func (client *Client) ListDeployedAlgorithmModelsWithOptions(appGroupIdentity *s
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AlgorithmType)) {
 		query["algorithmType"] = request.AlgorithmType
@@ -17328,7 +17143,7 @@ func (client *Client) ListDeployedAlgorithmModelsWithOptions(appGroupIdentity *s
 		Action:      tea.String("ListDeployedAlgorithmModels"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/deployed-algorithm-models"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/deployed-algorithm-models"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17357,8 +17172,6 @@ func (client *Client) ListFirstRanks(appGroupIdentity *string, appId *string) (_
 }
 
 func (client *Client) ListFirstRanksWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFirstRanksResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17366,7 +17179,7 @@ func (client *Client) ListFirstRanksWithOptions(appGroupIdentity *string, appId 
 		Action:      tea.String("ListFirstRanks"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/first-ranks"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/first-ranks"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17399,8 +17212,6 @@ func (client *Client) ListFunctionInstancesWithOptions(appGroupIdentity *string,
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FunctionType)) {
 		query["functionType"] = request.FunctionType
@@ -17434,7 +17245,7 @@ func (client *Client) ListFunctionInstancesWithOptions(appGroupIdentity *string,
 		Action:      tea.String("ListFunctionInstances"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/functions/" + tea.StringValue(functionName) + "/instances"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/instances"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17467,9 +17278,6 @@ func (client *Client) ListFunctionTasksWithOptions(appGroupIdentity *string, fun
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	functionName = openapiutil.GetEncodeParam(functionName)
-	instanceName = openapiutil.GetEncodeParam(instanceName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["endTime"] = request.EndTime
@@ -17499,7 +17307,7 @@ func (client *Client) ListFunctionTasksWithOptions(appGroupIdentity *string, fun
 		Action:      tea.String("ListFunctionTasks"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/functions/" + tea.StringValue(functionName) + "/instances/" + tea.StringValue(instanceName) + "/tasks"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceName)) + "/tasks"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17586,7 +17394,6 @@ func (client *Client) ListInterventionDictionaryEntriesWithOptions(name *string,
 	if _err != nil {
 		return _result, _err
 	}
-	name = openapiutil.GetEncodeParam(name)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["pageNumber"] = request.PageNumber
@@ -17608,7 +17415,7 @@ func (client *Client) ListInterventionDictionaryEntriesWithOptions(name *string,
 		Action:      tea.String("ListInterventionDictionaryEntries"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/intervention-dictionaries/" + tea.StringValue(name) + "/entries"),
+		Pathname:    tea.String("/v4/openapi/intervention-dictionaries/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/entries"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17641,7 +17448,6 @@ func (client *Client) ListInterventionDictionaryNerResultsWithOptions(name *stri
 	if _err != nil {
 		return _result, _err
 	}
-	name = openapiutil.GetEncodeParam(name)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Query)) {
 		query["query"] = request.Query
@@ -17655,7 +17461,7 @@ func (client *Client) ListInterventionDictionaryNerResultsWithOptions(name *stri
 		Action:      tea.String("ListInterventionDictionaryNerResults"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/intervention-dictionaries/" + tea.StringValue(name) + "/ner-results"),
+		Pathname:    tea.String("/v4/openapi/intervention-dictionaries/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/ner-results"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17684,7 +17490,6 @@ func (client *Client) ListInterventionDictionaryRelatedEntities(name *string) (_
 }
 
 func (client *Client) ListInterventionDictionaryRelatedEntitiesWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInterventionDictionaryRelatedEntitiesResponse, _err error) {
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -17692,7 +17497,7 @@ func (client *Client) ListInterventionDictionaryRelatedEntitiesWithOptions(name 
 		Action:      tea.String("ListInterventionDictionaryRelatedEntities"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/intervention-dictionaries/" + tea.StringValue(name) + "/related"),
+		Pathname:    tea.String("/v4/openapi/intervention-dictionaries/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/related"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17725,7 +17530,6 @@ func (client *Client) ListModelsWithOptions(appGroupIdentity *string, request *L
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["pageNumber"] = request.PageNumber
@@ -17747,7 +17551,7 @@ func (client *Client) ListModelsWithOptions(appGroupIdentity *string, request *L
 		Action:      tea.String("ListModels"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/algorithm/models"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/models"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17780,7 +17584,6 @@ func (client *Client) ListProceedingsWithOptions(appGroupIdentity *string, reque
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FilterFinished)) {
 		query["filterFinished"] = request.FilterFinished
@@ -17794,7 +17597,7 @@ func (client *Client) ListProceedingsWithOptions(appGroupIdentity *string, reque
 		Action:      tea.String("ListProceedings"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/proceedings"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/proceedings"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17827,9 +17630,6 @@ func (client *Client) ListQueryProcessorAnalyzerResultsWithOptions(appGroupIdent
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
-	name = openapiutil.GetEncodeParam(name)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Text)) {
 		query["text"] = request.Text
@@ -17843,7 +17643,7 @@ func (client *Client) ListQueryProcessorAnalyzerResultsWithOptions(appGroupIdent
 		Action:      tea.String("ListQueryProcessorAnalyzerResults"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/query-processors/" + tea.StringValue(name) + "/analyze"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/query-processors/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/analyze"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17922,8 +17722,6 @@ func (client *Client) ListQueryProcessorsWithOptions(appGroupIdentity *string, a
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IsActive)) {
 		query["isActive"] = request.IsActive
@@ -17937,7 +17735,7 @@ func (client *Client) ListQueryProcessorsWithOptions(appGroupIdentity *string, a
 		Action:      tea.String("ListQueryProcessors"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/query-processors"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/query-processors"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -17970,7 +17768,6 @@ func (client *Client) ListQuotaReviewTasksWithOptions(appGroupIdentity *string, 
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["pageNumber"] = request.PageNumber
@@ -17988,7 +17785,7 @@ func (client *Client) ListQuotaReviewTasksWithOptions(appGroupIdentity *string, 
 		Action:      tea.String("ListQuotaReviewTasks"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/quota-review-tasks"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/quota-review-tasks"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18057,7 +17854,6 @@ func (client *Client) ListScheduledTasksWithOptions(appGroupIdentity *string, re
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["pageNumber"] = request.PageNumber
@@ -18079,7 +17875,7 @@ func (client *Client) ListScheduledTasksWithOptions(appGroupIdentity *string, re
 		Action:      tea.String("ListScheduledTasks"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scheduled-tasks"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scheduled-tasks"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18108,8 +17904,6 @@ func (client *Client) ListSearchStrategies(appGroupIdentity *string, appId *stri
 }
 
 func (client *Client) ListSearchStrategiesWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSearchStrategiesResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -18117,7 +17911,7 @@ func (client *Client) ListSearchStrategiesWithOptions(appGroupIdentity *string, 
 		Action:      tea.String("ListSearchStrategies"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/search-strategies"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/search-strategies"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18146,8 +17940,6 @@ func (client *Client) ListSecondRanks(appGroupIdentity *string, appId *string) (
 }
 
 func (client *Client) ListSecondRanksWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSecondRanksResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -18155,7 +17947,7 @@ func (client *Client) ListSecondRanksWithOptions(appGroupIdentity *string, appId
 		Action:      tea.String("ListSecondRanks"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/second-ranks"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/second-ranks"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18184,7 +17976,6 @@ func (client *Client) ListSlowQueryCategories(appGroupIdentity *string) (_result
 }
 
 func (client *Client) ListSlowQueryCategoriesWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSlowQueryCategoriesResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -18192,7 +17983,7 @@ func (client *Client) ListSlowQueryCategoriesWithOptions(appGroupIdentity *strin
 		Action:      tea.String("ListSlowQueryCategories"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/optimizers/slow-query/categories"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/optimizers/slow-query/categories"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18221,8 +18012,6 @@ func (client *Client) ListSlowQueryQueries(appGroupIdentity *string, categoryInd
 }
 
 func (client *Client) ListSlowQueryQueriesWithOptions(appGroupIdentity *string, categoryIndex *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSlowQueryQueriesResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	categoryIndex = openapiutil.GetEncodeParam(categoryIndex)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -18230,7 +18019,7 @@ func (client *Client) ListSlowQueryQueriesWithOptions(appGroupIdentity *string, 
 		Action:      tea.String("ListSlowQueryQueries"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/optimizers/slow-query/categories/" + tea.StringValue(categoryIndex) + "/queries"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/optimizers/slow-query/categories/" + tea.StringValue(openapiutil.GetEncodeParam(categoryIndex)) + "/queries"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18259,8 +18048,6 @@ func (client *Client) ListSortExpressions(appGroupIdentity *string, appId *strin
 }
 
 func (client *Client) ListSortExpressionsWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSortExpressionsResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -18268,7 +18055,7 @@ func (client *Client) ListSortExpressionsWithOptions(appGroupIdentity *string, a
 		Action:      tea.String("ListSortExpressions"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/sort-expressions"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/sort-expressions"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18297,8 +18084,6 @@ func (client *Client) ListSortScripts(appGroupIdentity *string, appVersionId *st
 }
 
 func (client *Client) ListSortScriptsWithOptions(appGroupIdentity *string, appVersionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSortScriptsResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appVersionId = openapiutil.GetEncodeParam(appVersionId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -18306,7 +18091,7 @@ func (client *Client) ListSortScriptsWithOptions(appGroupIdentity *string, appVe
 		Action:      tea.String("ListSortScripts"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appVersionId) + "/sort-scripts"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appVersionId)) + "/sort-scripts"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18339,8 +18124,6 @@ func (client *Client) ListStatisticLogsWithOptions(appGroupIdentity *string, mod
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	moduleName = openapiutil.GetEncodeParam(moduleName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Columns)) {
 		query["columns"] = request.Columns
@@ -18382,7 +18165,7 @@ func (client *Client) ListStatisticLogsWithOptions(appGroupIdentity *string, mod
 		Action:      tea.String("ListStatisticLogs"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/statistic-logs/" + tea.StringValue(moduleName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/statistic-logs/" + tea.StringValue(openapiutil.GetEncodeParam(moduleName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18415,8 +18198,6 @@ func (client *Client) ListStatisticReportWithOptions(appGroupIdentity *string, m
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	moduleName = openapiutil.GetEncodeParam(moduleName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Columns)) {
 		query["columns"] = request.Columns
@@ -18450,7 +18231,7 @@ func (client *Client) ListStatisticReportWithOptions(appGroupIdentity *string, m
 		Action:      tea.String("ListStatisticReport"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/statistic-report/" + tea.StringValue(moduleName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/statistic-report/" + tea.StringValue(openapiutil.GetEncodeParam(moduleName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18483,7 +18264,6 @@ func (client *Client) ListUserAnalyzerEntriesWithOptions(name *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	name = openapiutil.GetEncodeParam(name)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["pageNumber"] = request.PageNumber
@@ -18505,7 +18285,7 @@ func (client *Client) ListUserAnalyzerEntriesWithOptions(name *string, request *
 		Action:      tea.String("ListUserAnalyzerEntries"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/user-analyzers/" + tea.StringValue(name) + "/entries"),
+		Pathname:    tea.String("/v4/openapi/user-analyzers/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/entries"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18584,7 +18364,6 @@ func (client *Client) ModifyAppGroup(appGroupIdentity *string) (_result *ModifyA
 }
 
 func (client *Client) ModifyAppGroupWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyAppGroupResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -18592,7 +18371,7 @@ func (client *Client) ModifyAppGroupWithOptions(appGroupIdentity *string, header
 		Action:      tea.String("ModifyAppGroup"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18621,7 +18400,6 @@ func (client *Client) ModifyAppGroupQuota(appGroupIdentity *string) (_result *Mo
 }
 
 func (client *Client) ModifyAppGroupQuotaWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyAppGroupQuotaResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -18629,7 +18407,7 @@ func (client *Client) ModifyAppGroupQuotaWithOptions(appGroupIdentity *string, h
 		Action:      tea.String("ModifyAppGroupQuota"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/quota"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/quota"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18662,9 +18440,6 @@ func (client *Client) ModifyFirstRankWithOptions(appGroupIdentity *string, appId
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
-	name = openapiutil.GetEncodeParam(name)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["dryRun"] = request.DryRun
@@ -18678,7 +18453,7 @@ func (client *Client) ModifyFirstRankWithOptions(appGroupIdentity *string, appId
 		Action:      tea.String("ModifyFirstRank"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/first-ranks/" + tea.StringValue(name)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/first-ranks/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18707,8 +18482,6 @@ func (client *Client) ModifyModel(appGroupIdentity *string, modelName *string) (
 }
 
 func (client *Client) ModifyModelWithOptions(appGroupIdentity *string, modelName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyModelResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	modelName = openapiutil.GetEncodeParam(modelName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -18716,7 +18489,7 @@ func (client *Client) ModifyModelWithOptions(appGroupIdentity *string, modelName
 		Action:      tea.String("ModifyModel"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/algorithm/models/" + tea.StringValue(modelName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18749,9 +18522,6 @@ func (client *Client) ModifyQueryProcessorWithOptions(appGroupIdentity *string, 
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
-	name = openapiutil.GetEncodeParam(name)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["dryRun"] = request.DryRun
@@ -18765,7 +18535,7 @@ func (client *Client) ModifyQueryProcessorWithOptions(appGroupIdentity *string, 
 		Action:      tea.String("ModifyQueryProcessor"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/query-processors/" + tea.StringValue(name)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/query-processors/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18794,8 +18564,6 @@ func (client *Client) ModifyScheduledTask(appGroupIdentity *string, taskId *stri
 }
 
 func (client *Client) ModifyScheduledTaskWithOptions(appGroupIdentity *string, taskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyScheduledTaskResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	taskId = openapiutil.GetEncodeParam(taskId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -18803,7 +18571,7 @@ func (client *Client) ModifyScheduledTaskWithOptions(appGroupIdentity *string, t
 		Action:      tea.String("ModifyScheduledTask"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scheduled-tasks/" + tea.StringValue(taskId)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scheduled-tasks/" + tea.StringValue(openapiutil.GetEncodeParam(taskId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18836,9 +18604,6 @@ func (client *Client) ModifySecondRankWithOptions(appGroupIdentity *string, appI
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
-	name = openapiutil.GetEncodeParam(name)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["dryRun"] = request.DryRun
@@ -18852,7 +18617,7 @@ func (client *Client) ModifySecondRankWithOptions(appGroupIdentity *string, appI
 		Action:      tea.String("ModifySecondRank"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/second-ranks/" + tea.StringValue(name)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/second-ranks/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18885,8 +18650,6 @@ func (client *Client) PreviewModelWithOptions(appGroupIdentity *string, modelNam
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	modelName = openapiutil.GetEncodeParam(modelName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Query)) {
 		query["query"] = request.Query
@@ -18900,7 +18663,7 @@ func (client *Client) PreviewModelWithOptions(appGroupIdentity *string, modelNam
 		Action:      tea.String("PreviewModel"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/algorithm/models/" + tea.StringValue(modelName) + "/actions/preview"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName)) + "/actions/preview"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18929,7 +18692,6 @@ func (client *Client) PushInterventionDictionaryEntries(name *string) (_result *
 }
 
 func (client *Client) PushInterventionDictionaryEntriesWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushInterventionDictionaryEntriesResponse, _err error) {
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -18937,7 +18699,7 @@ func (client *Client) PushInterventionDictionaryEntriesWithOptions(name *string,
 		Action:      tea.String("PushInterventionDictionaryEntries"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/intervention-dictionaries/" + tea.StringValue(name) + "/entries/actions/bulk"),
+		Pathname:    tea.String("/v4/openapi/intervention-dictionaries/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/entries/actions/bulk"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -18966,7 +18728,6 @@ func (client *Client) PushUserAnalyzerEntries(name *string) (_result *PushUserAn
 }
 
 func (client *Client) PushUserAnalyzerEntriesWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushUserAnalyzerEntriesResponse, _err error) {
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -18974,7 +18735,7 @@ func (client *Client) PushUserAnalyzerEntriesWithOptions(name *string, headers m
 		Action:      tea.String("PushUserAnalyzerEntries"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/user-analyzers/" + tea.StringValue(name) + "/entries/actions/bulk"),
+		Pathname:    tea.String("/v4/openapi/user-analyzers/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/entries/actions/bulk"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19003,8 +18764,6 @@ func (client *Client) RankPreviewQuery(appGroupIdentity *string, modelName *stri
 }
 
 func (client *Client) RankPreviewQueryWithOptions(appGroupIdentity *string, modelName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RankPreviewQueryResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	modelName = openapiutil.GetEncodeParam(modelName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19012,7 +18771,7 @@ func (client *Client) RankPreviewQueryWithOptions(appGroupIdentity *string, mode
 		Action:      tea.String("RankPreviewQuery"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/algorithm/models/" + tea.StringValue(modelName) + "/actions/query-rank"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName)) + "/actions/query-rank"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19041,9 +18800,6 @@ func (client *Client) ReleaseSortScript(appGroupIdentity *string, scriptName *st
 }
 
 func (client *Client) ReleaseSortScriptWithOptions(appGroupIdentity *string, scriptName *string, appVersionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReleaseSortScriptResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	scriptName = openapiutil.GetEncodeParam(scriptName)
-	appVersionId = openapiutil.GetEncodeParam(appVersionId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19051,7 +18807,7 @@ func (client *Client) ReleaseSortScriptWithOptions(appGroupIdentity *string, scr
 		Action:      tea.String("ReleaseSortScript"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appVersionId) + "/sort-scripts/" + tea.StringValue(scriptName) + "/actions/release"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appVersionId)) + "/sort-scripts/" + tea.StringValue(openapiutil.GetEncodeParam(scriptName)) + "/actions/release"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19080,8 +18836,6 @@ func (client *Client) RemoveApp(appGroupIdentity *string, appId *string) (_resul
 }
 
 func (client *Client) RemoveAppWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveAppResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19089,7 +18843,7 @@ func (client *Client) RemoveAppWithOptions(appGroupIdentity *string, appId *stri
 		Action:      tea.String("RemoveApp"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19118,7 +18872,6 @@ func (client *Client) RemoveAppGroup(appGroupIdentity *string) (_result *RemoveA
 }
 
 func (client *Client) RemoveAppGroupWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveAppGroupResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19126,7 +18879,7 @@ func (client *Client) RemoveAppGroupWithOptions(appGroupIdentity *string, header
 		Action:      tea.String("RemoveAppGroup"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19155,8 +18908,6 @@ func (client *Client) RemoveDataCollection(appGroupIdentity *string, dataCollect
 }
 
 func (client *Client) RemoveDataCollectionWithOptions(appGroupIdentity *string, dataCollectionIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveDataCollectionResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	dataCollectionIdentity = openapiutil.GetEncodeParam(dataCollectionIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19164,7 +18915,7 @@ func (client *Client) RemoveDataCollectionWithOptions(appGroupIdentity *string, 
 		Action:      tea.String("RemoveDataCollection"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/data-collections/" + tea.StringValue(dataCollectionIdentity)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/data-collections/" + tea.StringValue(openapiutil.GetEncodeParam(dataCollectionIdentity))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19193,9 +18944,6 @@ func (client *Client) RemoveFirstRank(appGroupIdentity *string, appId *string, n
 }
 
 func (client *Client) RemoveFirstRankWithOptions(appGroupIdentity *string, appId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveFirstRankResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19203,7 +18951,7 @@ func (client *Client) RemoveFirstRankWithOptions(appGroupIdentity *string, appId
 		Action:      tea.String("RemoveFirstRank"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/first-ranks/" + tea.StringValue(name)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/first-ranks/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19232,7 +18980,6 @@ func (client *Client) RemoveInterventionDictionary(name *string) (_result *Remov
 }
 
 func (client *Client) RemoveInterventionDictionaryWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveInterventionDictionaryResponse, _err error) {
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19240,7 +18987,7 @@ func (client *Client) RemoveInterventionDictionaryWithOptions(name *string, head
 		Action:      tea.String("RemoveInterventionDictionary"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/intervention-dictionaries/" + tea.StringValue(name)),
+		Pathname:    tea.String("/v4/openapi/intervention-dictionaries/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19269,9 +19016,6 @@ func (client *Client) RemoveQueryProcessor(appGroupIdentity *string, appId *stri
 }
 
 func (client *Client) RemoveQueryProcessorWithOptions(appGroupIdentity *string, appId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveQueryProcessorResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19279,7 +19023,7 @@ func (client *Client) RemoveQueryProcessorWithOptions(appGroupIdentity *string, 
 		Action:      tea.String("RemoveQueryProcessor"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/query-processors/" + tea.StringValue(name)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/query-processors/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19308,8 +19052,6 @@ func (client *Client) RemoveScheduledTask(appGroupIdentity *string, taskId *stri
 }
 
 func (client *Client) RemoveScheduledTaskWithOptions(appGroupIdentity *string, taskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveScheduledTaskResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	taskId = openapiutil.GetEncodeParam(taskId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19317,7 +19059,7 @@ func (client *Client) RemoveScheduledTaskWithOptions(appGroupIdentity *string, t
 		Action:      tea.String("RemoveScheduledTask"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scheduled-tasks/" + tea.StringValue(taskId)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scheduled-tasks/" + tea.StringValue(openapiutil.GetEncodeParam(taskId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19346,9 +19088,6 @@ func (client *Client) RemoveSearchStrategy(appGroupIdentity *string, appId *stri
 }
 
 func (client *Client) RemoveSearchStrategyWithOptions(appGroupIdentity *string, appId *string, strategyName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveSearchStrategyResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
-	strategyName = openapiutil.GetEncodeParam(strategyName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19356,7 +19095,7 @@ func (client *Client) RemoveSearchStrategyWithOptions(appGroupIdentity *string, 
 		Action:      tea.String("RemoveSearchStrategy"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/search-strategies/" + tea.StringValue(strategyName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/search-strategies/" + tea.StringValue(openapiutil.GetEncodeParam(strategyName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19385,9 +19124,6 @@ func (client *Client) RemoveSecondRank(appGroupIdentity *string, appId *string, 
 }
 
 func (client *Client) RemoveSecondRankWithOptions(appGroupIdentity *string, appId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveSecondRankResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19395,7 +19131,7 @@ func (client *Client) RemoveSecondRankWithOptions(appGroupIdentity *string, appI
 		Action:      tea.String("RemoveSecondRank"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/second-ranks/" + tea.StringValue(name)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/second-ranks/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19424,7 +19160,6 @@ func (client *Client) RemoveUserAnalyzer(name *string) (_result *RemoveUserAnaly
 }
 
 func (client *Client) RemoveUserAnalyzerWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveUserAnalyzerResponse, _err error) {
-	name = openapiutil.GetEncodeParam(name)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19432,7 +19167,7 @@ func (client *Client) RemoveUserAnalyzerWithOptions(name *string, headers map[st
 		Action:      tea.String("RemoveUserAnalyzer"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/user-analyzers/" + tea.StringValue(name)),
+		Pathname:    tea.String("/v4/openapi/user-analyzers/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19448,11 +19183,11 @@ func (client *Client) RemoveUserAnalyzerWithOptions(name *string, headers map[st
 	return _result, _err
 }
 
-func (client *Client) RenewAppGroup(appGroupIdentity *string) (_result *RenewAppGroupResponse, _err error) {
+func (client *Client) RenewAppGroup(appGroupIdentity *string, request *RenewAppGroupRequest) (_result *RenewAppGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &RenewAppGroupResponse{}
-	_body, _err := client.RenewAppGroupWithOptions(appGroupIdentity, headers, runtime)
+	_body, _err := client.RenewAppGroupWithOptions(appGroupIdentity, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19460,16 +19195,25 @@ func (client *Client) RenewAppGroup(appGroupIdentity *string) (_result *RenewApp
 	return _result, _err
 }
 
-func (client *Client) RenewAppGroupWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenewAppGroupResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
+func (client *Client) RenewAppGroupWithOptions(appGroupIdentity *string, request *RenewAppGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenewAppGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["clientToken"] = request.ClientToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RenewAppGroup"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/actions/renew"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/actions/renew"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19498,7 +19242,6 @@ func (client *Client) ReplaceAppGroupCommodityCode(appGroupIdentity *string) (_r
 }
 
 func (client *Client) ReplaceAppGroupCommodityCodeWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReplaceAppGroupCommodityCodeResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19506,7 +19249,7 @@ func (client *Client) ReplaceAppGroupCommodityCodeWithOptions(appGroupIdentity *
 		Action:      tea.String("ReplaceAppGroupCommodityCode"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/actions/to-instance-typed"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/actions/to-instance-typed"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19535,10 +19278,6 @@ func (client *Client) SaveSortScriptFile(appGroupIdentity *string, scriptName *s
 }
 
 func (client *Client) SaveSortScriptFileWithOptions(appGroupIdentity *string, scriptName *string, appVersionId *string, fileName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SaveSortScriptFileResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	scriptName = openapiutil.GetEncodeParam(scriptName)
-	appVersionId = openapiutil.GetEncodeParam(appVersionId)
-	fileName = openapiutil.GetEncodeParam(fileName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19546,7 +19285,7 @@ func (client *Client) SaveSortScriptFileWithOptions(appGroupIdentity *string, sc
 		Action:      tea.String("SaveSortScriptFile"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appVersionId) + "/sort-scripts/" + tea.StringValue(scriptName) + "/files/src/" + tea.StringValue(fileName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appVersionId)) + "/sort-scripts/" + tea.StringValue(openapiutil.GetEncodeParam(scriptName)) + "/files/src/" + tea.StringValue(openapiutil.GetEncodeParam(fileName))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19575,7 +19314,6 @@ func (client *Client) StartSlowQueryAnalyzer(appGroupIdentity *string) (_result 
 }
 
 func (client *Client) StartSlowQueryAnalyzerWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartSlowQueryAnalyzerResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19583,7 +19321,7 @@ func (client *Client) StartSlowQueryAnalyzerWithOptions(appGroupIdentity *string
 		Action:      tea.String("StartSlowQueryAnalyzer"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/optimizers/slow-query/actions/run"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/optimizers/slow-query/actions/run"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19612,8 +19350,6 @@ func (client *Client) TrainModel(appGroupIdentity *string, modelName *string) (_
 }
 
 func (client *Client) TrainModelWithOptions(appGroupIdentity *string, modelName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TrainModelResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	modelName = openapiutil.GetEncodeParam(modelName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19621,7 +19357,7 @@ func (client *Client) TrainModelWithOptions(appGroupIdentity *string, modelName 
 		Action:      tea.String("TrainModel"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/algorithm/models/" + tea.StringValue(modelName) + "/actions/train"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName)) + "/actions/train"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19650,8 +19386,6 @@ func (client *Client) UnbindESUserAnalyzer(appGroupIdentity *string, esInstanceI
 }
 
 func (client *Client) UnbindESUserAnalyzerWithOptions(appGroupIdentity *string, esInstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnbindESUserAnalyzerResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	esInstanceId = openapiutil.GetEncodeParam(esInstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19659,7 +19393,7 @@ func (client *Client) UnbindESUserAnalyzerWithOptions(appGroupIdentity *string, 
 		Action:      tea.String("UnbindESUserAnalyzer"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/es/" + tea.StringValue(esInstanceId) + "/actions/unbind-analyzer"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/es/" + tea.StringValue(openapiutil.GetEncodeParam(esInstanceId)) + "/actions/unbind-analyzer"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19688,7 +19422,6 @@ func (client *Client) UnbindEsInstance(appGroupIdentity *string) (_result *Unbin
 }
 
 func (client *Client) UnbindEsInstanceWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnbindEsInstanceResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19696,7 +19429,7 @@ func (client *Client) UnbindEsInstanceWithOptions(appGroupIdentity *string, head
 		Action:      tea.String("UnbindEsInstance"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/actions/unbind-es-instance"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/actions/unbind-es-instance"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19725,10 +19458,6 @@ func (client *Client) UpdateABTestExperiment(appGroupIdentity *string, sceneId *
 }
 
 func (client *Client) UpdateABTestExperimentWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateABTestExperimentResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
-	groupId = openapiutil.GetEncodeParam(groupId)
-	experimentId = openapiutil.GetEncodeParam(experimentId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19736,7 +19465,7 @@ func (client *Client) UpdateABTestExperimentWithOptions(appGroupIdentity *string
 		Action:      tea.String("UpdateABTestExperiment"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId) + "/groups/" + tea.StringValue(groupId) + "/experiments/" + tea.StringValue(experimentId)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(experimentId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19765,10 +19494,6 @@ func (client *Client) UpdateABTestFixedFlowDividers(appGroupIdentity *string, sc
 }
 
 func (client *Client) UpdateABTestFixedFlowDividersWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, experimentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateABTestFixedFlowDividersResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
-	groupId = openapiutil.GetEncodeParam(groupId)
-	experimentId = openapiutil.GetEncodeParam(experimentId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19776,7 +19501,7 @@ func (client *Client) UpdateABTestFixedFlowDividersWithOptions(appGroupIdentity 
 		Action:      tea.String("UpdateABTestFixedFlowDividers"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId) + "/groups/" + tea.StringValue(groupId) + "/experiments/" + tea.StringValue(experimentId) + "/fixed-flow-dividers"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/experiments/" + tea.StringValue(openapiutil.GetEncodeParam(experimentId)) + "/fixed-flow-dividers"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19805,9 +19530,6 @@ func (client *Client) UpdateABTestGroup(appGroupIdentity *string, sceneId *strin
 }
 
 func (client *Client) UpdateABTestGroupWithOptions(appGroupIdentity *string, sceneId *string, groupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateABTestGroupResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
-	groupId = openapiutil.GetEncodeParam(groupId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19815,7 +19537,7 @@ func (client *Client) UpdateABTestGroupWithOptions(appGroupIdentity *string, sce
 		Action:      tea.String("UpdateABTestGroup"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId) + "/groups/" + tea.StringValue(groupId)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19844,8 +19566,6 @@ func (client *Client) UpdateABTestScene(appGroupIdentity *string, sceneId *strin
 }
 
 func (client *Client) UpdateABTestSceneWithOptions(appGroupIdentity *string, sceneId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateABTestSceneResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	sceneId = openapiutil.GetEncodeParam(sceneId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -19853,7 +19573,7 @@ func (client *Client) UpdateABTestSceneWithOptions(appGroupIdentity *string, sce
 		Action:      tea.String("UpdateABTestScene"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/scenes/" + tea.StringValue(sceneId)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(sceneId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19886,8 +19606,6 @@ func (client *Client) UpdateFetchFieldsWithOptions(appGroupIdentity *string, app
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["dryRun"] = request.DryRun
@@ -19901,7 +19619,7 @@ func (client *Client) UpdateFetchFieldsWithOptions(appGroupIdentity *string, app
 		Action:      tea.String("UpdateFetchFields"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/fetch-fields"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/fetch-fields"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19934,8 +19652,6 @@ func (client *Client) UpdateFunctionDefaultInstanceWithOptions(appGroupIdentity 
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		body["instanceName"] = request.InstanceName
@@ -19949,7 +19665,7 @@ func (client *Client) UpdateFunctionDefaultInstanceWithOptions(appGroupIdentity 
 		Action:      tea.String("UpdateFunctionDefaultInstance"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/functions/" + tea.StringValue(functionName) + "/default-instance"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/default-instance"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -19982,9 +19698,6 @@ func (client *Client) UpdateFunctionInstanceWithOptions(appGroupIdentity *string
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	functionName = openapiutil.GetEncodeParam(functionName)
-	instanceName = openapiutil.GetEncodeParam(instanceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CreateParameters)) {
 		body["createParameters"] = request.CreateParameters
@@ -20010,7 +19723,7 @@ func (client *Client) UpdateFunctionInstanceWithOptions(appGroupIdentity *string
 		Action:      tea.String("UpdateFunctionInstance"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/functions/" + tea.StringValue(functionName) + "/instances/" + tea.StringValue(instanceName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceName))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -20039,9 +19752,6 @@ func (client *Client) UpdateSearchStrategy(appGroupIdentity *string, appId *stri
 }
 
 func (client *Client) UpdateSearchStrategyWithOptions(appGroupIdentity *string, appId *string, strategyName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSearchStrategyResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
-	strategyName = openapiutil.GetEncodeParam(strategyName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -20049,7 +19759,7 @@ func (client *Client) UpdateSearchStrategyWithOptions(appGroupIdentity *string, 
 		Action:      tea.String("UpdateSearchStrategy"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/search-strategies/" + tea.StringValue(strategyName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/search-strategies/" + tea.StringValue(openapiutil.GetEncodeParam(strategyName))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -20078,9 +19788,6 @@ func (client *Client) UpdateSortScript(appGroupIdentity *string, appVersionId *s
 }
 
 func (client *Client) UpdateSortScriptWithOptions(appGroupIdentity *string, appVersionId *string, scriptName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSortScriptResponse, _err error) {
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appVersionId = openapiutil.GetEncodeParam(appVersionId)
-	scriptName = openapiutil.GetEncodeParam(scriptName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -20088,7 +19795,7 @@ func (client *Client) UpdateSortScriptWithOptions(appGroupIdentity *string, appV
 		Action:      tea.String("UpdateSortScript"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appVersionId) + "/sort-scripts/" + tea.StringValue(scriptName)),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appVersionId)) + "/sort-scripts/" + tea.StringValue(openapiutil.GetEncodeParam(scriptName))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -20121,8 +19828,6 @@ func (client *Client) UpdateSummariesWithOptions(appGroupIdentity *string, appId
 	if _err != nil {
 		return _result, _err
 	}
-	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
-	appId = openapiutil.GetEncodeParam(appId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["dryRun"] = request.DryRun
@@ -20136,7 +19841,7 @@ func (client *Client) UpdateSummariesWithOptions(appGroupIdentity *string, appId
 		Action:      tea.String("UpdateSummaries"),
 		Version:     tea.String("2017-12-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/apps/" + tea.StringValue(appId) + "/summaries"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/summaries"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
