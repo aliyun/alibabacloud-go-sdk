@@ -5,117 +5,12 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
-
-type AbortPredictiveJobsRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId   *string   `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	JobId        []*string `json:"JobId,omitempty" xml:"JobId,omitempty" type:"Repeated"`
-	SkillGroupId *string   `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-}
-
-func (s AbortPredictiveJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AbortPredictiveJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AbortPredictiveJobsRequest) SetAll(v bool) *AbortPredictiveJobsRequest {
-	s.All = &v
-	return s
-}
-
-func (s *AbortPredictiveJobsRequest) SetInstanceId(v string) *AbortPredictiveJobsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *AbortPredictiveJobsRequest) SetJobGroupId(v string) *AbortPredictiveJobsRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *AbortPredictiveJobsRequest) SetJobId(v []*string) *AbortPredictiveJobsRequest {
-	s.JobId = v
-	return s
-}
-
-func (s *AbortPredictiveJobsRequest) SetSkillGroupId(v string) *AbortPredictiveJobsRequest {
-	s.SkillGroupId = &v
-	return s
-}
-
-type AbortPredictiveJobsResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s AbortPredictiveJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AbortPredictiveJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AbortPredictiveJobsResponseBody) SetCode(v string) *AbortPredictiveJobsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AbortPredictiveJobsResponseBody) SetHttpStatusCode(v int32) *AbortPredictiveJobsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *AbortPredictiveJobsResponseBody) SetMessage(v string) *AbortPredictiveJobsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *AbortPredictiveJobsResponseBody) SetRequestId(v string) *AbortPredictiveJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AbortPredictiveJobsResponseBody) SetSuccess(v bool) *AbortPredictiveJobsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type AbortPredictiveJobsResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AbortPredictiveJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AbortPredictiveJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AbortPredictiveJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AbortPredictiveJobsResponse) SetHeaders(v map[string]*string) *AbortPredictiveJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AbortPredictiveJobsResponse) SetBody(v *AbortPredictiveJobsResponseBody) *AbortPredictiveJobsResponse {
-	s.Body = v
-	return s
-}
 
 type AddAgentDeviceRequest struct {
 	BrowserVersion *string `json:"BrowserVersion,omitempty" xml:"BrowserVersion,omitempty"`
@@ -206,8 +101,9 @@ func (s *AddAgentDeviceResponseBody) SetSuccess(v bool) *AddAgentDeviceResponseB
 }
 
 type AddAgentDeviceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddAgentDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddAgentDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddAgentDeviceResponse) String() string {
@@ -220,6 +116,11 @@ func (s AddAgentDeviceResponse) GoString() string {
 
 func (s *AddAgentDeviceResponse) SetHeaders(v map[string]*string) *AddAgentDeviceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddAgentDeviceResponse) SetStatusCode(v int32) *AddAgentDeviceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -561,8 +462,9 @@ func (s *AddBulkPhoneNumbersResponseBodyUserdPhoneNumbers) SetUserdPhoneNumber(v
 }
 
 type AddBulkPhoneNumbersResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddBulkPhoneNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddBulkPhoneNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddBulkPhoneNumbersResponse) String() string {
@@ -578,112 +480,12 @@ func (s *AddBulkPhoneNumbersResponse) SetHeaders(v map[string]*string) *AddBulkP
 	return s
 }
 
+func (s *AddBulkPhoneNumbersResponse) SetStatusCode(v int32) *AddBulkPhoneNumbersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AddBulkPhoneNumbersResponse) SetBody(v *AddBulkPhoneNumbersResponseBody) *AddBulkPhoneNumbersResponse {
-	s.Body = v
-	return s
-}
-
-type AddJobsToPredictiveJobGroupRequest struct {
-	ClientToken  *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId   *string   `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	JobsJson     []*string `json:"JobsJson,omitempty" xml:"JobsJson,omitempty" type:"Repeated"`
-	SkillGroupId *string   `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-}
-
-func (s AddJobsToPredictiveJobGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddJobsToPredictiveJobGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddJobsToPredictiveJobGroupRequest) SetClientToken(v string) *AddJobsToPredictiveJobGroupRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *AddJobsToPredictiveJobGroupRequest) SetInstanceId(v string) *AddJobsToPredictiveJobGroupRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *AddJobsToPredictiveJobGroupRequest) SetJobGroupId(v string) *AddJobsToPredictiveJobGroupRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *AddJobsToPredictiveJobGroupRequest) SetJobsJson(v []*string) *AddJobsToPredictiveJobGroupRequest {
-	s.JobsJson = v
-	return s
-}
-
-func (s *AddJobsToPredictiveJobGroupRequest) SetSkillGroupId(v string) *AddJobsToPredictiveJobGroupRequest {
-	s.SkillGroupId = &v
-	return s
-}
-
-type AddJobsToPredictiveJobGroupResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s AddJobsToPredictiveJobGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddJobsToPredictiveJobGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddJobsToPredictiveJobGroupResponseBody) SetCode(v string) *AddJobsToPredictiveJobGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AddJobsToPredictiveJobGroupResponseBody) SetHttpStatusCode(v int32) *AddJobsToPredictiveJobGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *AddJobsToPredictiveJobGroupResponseBody) SetMessage(v string) *AddJobsToPredictiveJobGroupResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *AddJobsToPredictiveJobGroupResponseBody) SetRequestId(v string) *AddJobsToPredictiveJobGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AddJobsToPredictiveJobGroupResponseBody) SetSuccess(v bool) *AddJobsToPredictiveJobGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-type AddJobsToPredictiveJobGroupResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddJobsToPredictiveJobGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddJobsToPredictiveJobGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddJobsToPredictiveJobGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddJobsToPredictiveJobGroupResponse) SetHeaders(v map[string]*string) *AddJobsToPredictiveJobGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddJobsToPredictiveJobGroupResponse) SetBody(v *AddJobsToPredictiveJobGroupResponseBody) *AddJobsToPredictiveJobGroupResponse {
 	s.Body = v
 	return s
 }
@@ -883,8 +685,9 @@ func (s *AddPhoneNumberResponseBodyPhoneNumberContactFlow) SetType(v string) *Ad
 }
 
 type AddPhoneNumberResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddPhoneNumberResponse) String() string {
@@ -897,6 +700,11 @@ func (s AddPhoneNumberResponse) GoString() string {
 
 func (s *AddPhoneNumberResponse) SetHeaders(v map[string]*string) *AddPhoneNumberResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddPhoneNumberResponse) SetStatusCode(v int32) *AddPhoneNumberResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1012,8 +820,9 @@ func (s *AddPhoneTagsResponseBody) SetSuccess(v bool) *AddPhoneTagsResponseBody 
 }
 
 type AddPhoneTagsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddPhoneTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddPhoneTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddPhoneTagsResponse) String() string {
@@ -1029,124 +838,12 @@ func (s *AddPhoneTagsResponse) SetHeaders(v map[string]*string) *AddPhoneTagsRes
 	return s
 }
 
+func (s *AddPhoneTagsResponse) SetStatusCode(v int32) *AddPhoneTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AddPhoneTagsResponse) SetBody(v *AddPhoneTagsResponseBody) *AddPhoneTagsResponse {
-	s.Body = v
-	return s
-}
-
-type AssignJobsRequest struct {
-	CallingNumber []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
-	GroupId       *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstanceId    *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobsJson      []*string `json:"JobsJson,omitempty" xml:"JobsJson,omitempty" type:"Repeated"`
-	ScenarioId    *string   `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	StrategyJson  *string   `json:"StrategyJson,omitempty" xml:"StrategyJson,omitempty"`
-}
-
-func (s AssignJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssignJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AssignJobsRequest) SetCallingNumber(v []*string) *AssignJobsRequest {
-	s.CallingNumber = v
-	return s
-}
-
-func (s *AssignJobsRequest) SetGroupId(v string) *AssignJobsRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *AssignJobsRequest) SetInstanceId(v string) *AssignJobsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *AssignJobsRequest) SetJobsJson(v []*string) *AssignJobsRequest {
-	s.JobsJson = v
-	return s
-}
-
-func (s *AssignJobsRequest) SetScenarioId(v string) *AssignJobsRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *AssignJobsRequest) SetStrategyJson(v string) *AssignJobsRequest {
-	s.StrategyJson = &v
-	return s
-}
-
-type AssignJobsResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s AssignJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssignJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AssignJobsResponseBody) SetCode(v string) *AssignJobsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AssignJobsResponseBody) SetGroupId(v string) *AssignJobsResponseBody {
-	s.GroupId = &v
-	return s
-}
-
-func (s *AssignJobsResponseBody) SetHttpStatusCode(v int32) *AssignJobsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *AssignJobsResponseBody) SetMessage(v string) *AssignJobsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *AssignJobsResponseBody) SetRequestId(v string) *AssignJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AssignJobsResponseBody) SetSuccess(v bool) *AssignJobsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type AssignJobsResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AssignJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AssignJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssignJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AssignJobsResponse) SetHeaders(v map[string]*string) *AssignJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AssignJobsResponse) SetBody(v *AssignJobsResponseBody) *AssignJobsResponse {
 	s.Body = v
 	return s
 }
@@ -1193,11 +890,12 @@ func (s *AssignUsersRequest) SetUserRamId(v []*string) *AssignUsersRequest {
 }
 
 type AssignUsersResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *AssignUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AssignUsersResponseBody) String() string {
@@ -1210,6 +908,11 @@ func (s AssignUsersResponseBody) GoString() string {
 
 func (s *AssignUsersResponseBody) SetCode(v string) *AssignUsersResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *AssignUsersResponseBody) SetData(v *AssignUsersResponseBodyData) *AssignUsersResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -1233,9 +936,62 @@ func (s *AssignUsersResponseBody) SetSuccess(v bool) *AssignUsersResponseBody {
 	return s
 }
 
+type AssignUsersResponseBodyData struct {
+	User []*AssignUsersResponseBodyDataUser `json:"User,omitempty" xml:"User,omitempty" type:"Repeated"`
+}
+
+func (s AssignUsersResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignUsersResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AssignUsersResponseBodyData) SetUser(v []*AssignUsersResponseBodyDataUser) *AssignUsersResponseBodyData {
+	s.User = v
+	return s
+}
+
+type AssignUsersResponseBodyDataUser struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Primary    *bool   `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	RamId      *string `json:"RamId,omitempty" xml:"RamId,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s AssignUsersResponseBodyDataUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignUsersResponseBodyDataUser) GoString() string {
+	return s.String()
+}
+
+func (s *AssignUsersResponseBodyDataUser) SetInstanceId(v string) *AssignUsersResponseBodyDataUser {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AssignUsersResponseBodyDataUser) SetPrimary(v bool) *AssignUsersResponseBodyDataUser {
+	s.Primary = &v
+	return s
+}
+
+func (s *AssignUsersResponseBodyDataUser) SetRamId(v string) *AssignUsersResponseBodyDataUser {
+	s.RamId = &v
+	return s
+}
+
+func (s *AssignUsersResponseBodyDataUser) SetUserId(v string) *AssignUsersResponseBodyDataUser {
+	s.UserId = &v
+	return s
+}
+
 type AssignUsersResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AssignUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AssignUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AssignUsersResponse) String() string {
@@ -1248,6 +1004,11 @@ func (s AssignUsersResponse) GoString() string {
 
 func (s *AssignUsersResponse) SetHeaders(v map[string]*string) *AssignUsersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AssignUsersResponse) SetStatusCode(v int32) *AssignUsersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1374,8 +1135,9 @@ func (s *CallOnlinePrivacyNumberResponseBodyData) SetTelX(v string) *CallOnlineP
 }
 
 type CallOnlinePrivacyNumberResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CallOnlinePrivacyNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CallOnlinePrivacyNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CallOnlinePrivacyNumberResponse) String() string {
@@ -1391,118 +1153,12 @@ func (s *CallOnlinePrivacyNumberResponse) SetHeaders(v map[string]*string) *Call
 	return s
 }
 
+func (s *CallOnlinePrivacyNumberResponse) SetStatusCode(v int32) *CallOnlinePrivacyNumberResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CallOnlinePrivacyNumberResponse) SetBody(v *CallOnlinePrivacyNumberResponseBody) *CallOnlinePrivacyNumberResponse {
-	s.Body = v
-	return s
-}
-
-type CancelJobsRequest struct {
-	All            *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	GroupId        *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId          []*string `json:"JobId,omitempty" xml:"JobId,omitempty" type:"Repeated"`
-	JobReferenceId []*string `json:"JobReferenceId,omitempty" xml:"JobReferenceId,omitempty" type:"Repeated"`
-	ScenarioId     *string   `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-}
-
-func (s CancelJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CancelJobsRequest) SetAll(v bool) *CancelJobsRequest {
-	s.All = &v
-	return s
-}
-
-func (s *CancelJobsRequest) SetGroupId(v string) *CancelJobsRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *CancelJobsRequest) SetInstanceId(v string) *CancelJobsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CancelJobsRequest) SetJobId(v []*string) *CancelJobsRequest {
-	s.JobId = v
-	return s
-}
-
-func (s *CancelJobsRequest) SetJobReferenceId(v []*string) *CancelJobsRequest {
-	s.JobReferenceId = v
-	return s
-}
-
-func (s *CancelJobsRequest) SetScenarioId(v string) *CancelJobsRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-type CancelJobsResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CancelJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CancelJobsResponseBody) SetCode(v string) *CancelJobsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CancelJobsResponseBody) SetHttpStatusCode(v int32) *CancelJobsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *CancelJobsResponseBody) SetMessage(v string) *CancelJobsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CancelJobsResponseBody) SetRequestId(v string) *CancelJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CancelJobsResponseBody) SetSuccess(v bool) *CancelJobsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CancelJobsResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CancelJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CancelJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CancelJobsResponse) SetHeaders(v map[string]*string) *CancelJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CancelJobsResponse) SetBody(v *CancelJobsResponseBody) *CancelJobsResponse {
 	s.Body = v
 	return s
 }
@@ -1636,8 +1292,9 @@ func (s *CheckNumberAvaliableResponseBodyCallerAvaliable) SetReason(v string) *C
 }
 
 type CheckNumberAvaliableResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckNumberAvaliableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckNumberAvaliableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckNumberAvaliableResponse) String() string {
@@ -1650,6 +1307,11 @@ func (s CheckNumberAvaliableResponse) GoString() string {
 
 func (s *CheckNumberAvaliableResponse) SetHeaders(v map[string]*string) *CheckNumberAvaliableResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CheckNumberAvaliableResponse) SetStatusCode(v int32) *CheckNumberAvaliableResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1806,8 +1468,9 @@ func (s *CommitContactFlowVersionModificationResponseBodyContactFlowVersion) Set
 }
 
 type CommitContactFlowVersionModificationResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CommitContactFlowVersionModificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CommitContactFlowVersionModificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CommitContactFlowVersionModificationResponse) String() string {
@@ -1823,477 +1486,12 @@ func (s *CommitContactFlowVersionModificationResponse) SetHeaders(v map[string]*
 	return s
 }
 
+func (s *CommitContactFlowVersionModificationResponse) SetStatusCode(v int32) *CommitContactFlowVersionModificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CommitContactFlowVersionModificationResponse) SetBody(v *CommitContactFlowVersionModificationResponseBody) *CommitContactFlowVersionModificationResponse {
-	s.Body = v
-	return s
-}
-
-type CreateBatchJobsRequest struct {
-	CallingNumber []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
-	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId    *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobFilePath   *string   `json:"JobFilePath,omitempty" xml:"JobFilePath,omitempty"`
-	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	ScenarioId    *string   `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	StrategyJson  *string   `json:"StrategyJson,omitempty" xml:"StrategyJson,omitempty"`
-	Submitted     *bool     `json:"Submitted,omitempty" xml:"Submitted,omitempty"`
-}
-
-func (s CreateBatchJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBatchJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBatchJobsRequest) SetCallingNumber(v []*string) *CreateBatchJobsRequest {
-	s.CallingNumber = v
-	return s
-}
-
-func (s *CreateBatchJobsRequest) SetDescription(v string) *CreateBatchJobsRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateBatchJobsRequest) SetInstanceId(v string) *CreateBatchJobsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateBatchJobsRequest) SetJobFilePath(v string) *CreateBatchJobsRequest {
-	s.JobFilePath = &v
-	return s
-}
-
-func (s *CreateBatchJobsRequest) SetName(v string) *CreateBatchJobsRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateBatchJobsRequest) SetScenarioId(v string) *CreateBatchJobsRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *CreateBatchJobsRequest) SetStrategyJson(v string) *CreateBatchJobsRequest {
-	s.StrategyJson = &v
-	return s
-}
-
-func (s *CreateBatchJobsRequest) SetSubmitted(v bool) *CreateBatchJobsRequest {
-	s.Submitted = &v
-	return s
-}
-
-type CreateBatchJobsResponseBody struct {
-	Code           *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobGroup       *CreateBatchJobsResponseBodyJobGroup `json:"JobGroup,omitempty" xml:"JobGroup,omitempty" type:"Struct"`
-	Message        *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateBatchJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBatchJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBatchJobsResponseBody) SetCode(v string) *CreateBatchJobsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBody) SetHttpStatusCode(v int32) *CreateBatchJobsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBody) SetJobGroup(v *CreateBatchJobsResponseBodyJobGroup) *CreateBatchJobsResponseBody {
-	s.JobGroup = v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBody) SetMessage(v string) *CreateBatchJobsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBody) SetRequestId(v string) *CreateBatchJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBody) SetSuccess(v bool) *CreateBatchJobsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateBatchJobsResponseBodyJobGroup struct {
-	CallingNumbers      []*string                                    `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
-	CreationTime        *int64                                       `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	JobFilePath         *string                                      `json:"JobFilePath,omitempty" xml:"JobFilePath,omitempty"`
-	JobGroupDescription *string                                      `json:"JobGroupDescription,omitempty" xml:"JobGroupDescription,omitempty"`
-	JobGroupId          *string                                      `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	JobGroupName        *string                                      `json:"JobGroupName,omitempty" xml:"JobGroupName,omitempty"`
-	ScenarioId          *string                                      `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Strategy            *CreateBatchJobsResponseBodyJobGroupStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
-}
-
-func (s CreateBatchJobsResponseBodyJobGroup) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBatchJobsResponseBodyJobGroup) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroup) SetCallingNumbers(v []*string) *CreateBatchJobsResponseBodyJobGroup {
-	s.CallingNumbers = v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroup) SetCreationTime(v int64) *CreateBatchJobsResponseBodyJobGroup {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroup) SetJobFilePath(v string) *CreateBatchJobsResponseBodyJobGroup {
-	s.JobFilePath = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroup) SetJobGroupDescription(v string) *CreateBatchJobsResponseBodyJobGroup {
-	s.JobGroupDescription = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroup) SetJobGroupId(v string) *CreateBatchJobsResponseBodyJobGroup {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroup) SetJobGroupName(v string) *CreateBatchJobsResponseBodyJobGroup {
-	s.JobGroupName = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroup) SetScenarioId(v string) *CreateBatchJobsResponseBodyJobGroup {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroup) SetStrategy(v *CreateBatchJobsResponseBodyJobGroupStrategy) *CreateBatchJobsResponseBodyJobGroup {
-	s.Strategy = v
-	return s
-}
-
-type CreateBatchJobsResponseBodyJobGroupStrategy struct {
-	Customized          *string                                                   `json:"Customized,omitempty" xml:"Customized,omitempty"`
-	EndTime             *int64                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FollowUpStrategy    *string                                                   `json:"FollowUpStrategy,omitempty" xml:"FollowUpStrategy,omitempty"`
-	IsTemplate          *bool                                                     `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	MaxAttemptsPerDay   *int32                                                    `json:"MaxAttemptsPerDay,omitempty" xml:"MaxAttemptsPerDay,omitempty"`
-	MinAttemptInterval  *int32                                                    `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
-	RepeatBy            *string                                                   `json:"RepeatBy,omitempty" xml:"RepeatBy,omitempty"`
-	RepeatDays          []*string                                                 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RoutingStrategy     *string                                                   `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
-	StartTime           *int64                                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StrategyDescription *string                                                   `json:"StrategyDescription,omitempty" xml:"StrategyDescription,omitempty"`
-	StrategyId          *string                                                   `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	StrategyName        *string                                                   `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	Type                *string                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
-	WorkingTime         []*CreateBatchJobsResponseBodyJobGroupStrategyWorkingTime `json:"WorkingTime,omitempty" xml:"WorkingTime,omitempty" type:"Repeated"`
-}
-
-func (s CreateBatchJobsResponseBodyJobGroupStrategy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBatchJobsResponseBodyJobGroupStrategy) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetCustomized(v string) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.Customized = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetEndTime(v int64) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.EndTime = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetFollowUpStrategy(v string) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.FollowUpStrategy = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetIsTemplate(v bool) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetMaxAttemptsPerDay(v int32) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.MaxAttemptsPerDay = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetMinAttemptInterval(v int32) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.MinAttemptInterval = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetRepeatBy(v string) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.RepeatBy = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetRepeatDays(v []*string) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.RepeatDays = v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetRoutingStrategy(v string) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.RoutingStrategy = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetStartTime(v int64) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.StartTime = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetStrategyDescription(v string) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.StrategyDescription = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetStrategyId(v string) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.StrategyId = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetStrategyName(v string) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.StrategyName = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetType(v string) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategy) SetWorkingTime(v []*CreateBatchJobsResponseBodyJobGroupStrategyWorkingTime) *CreateBatchJobsResponseBodyJobGroupStrategy {
-	s.WorkingTime = v
-	return s
-}
-
-type CreateBatchJobsResponseBodyJobGroupStrategyWorkingTime struct {
-	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s CreateBatchJobsResponseBodyJobGroupStrategyWorkingTime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBatchJobsResponseBodyJobGroupStrategyWorkingTime) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategyWorkingTime) SetBeginTime(v string) *CreateBatchJobsResponseBodyJobGroupStrategyWorkingTime {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *CreateBatchJobsResponseBodyJobGroupStrategyWorkingTime) SetEndTime(v string) *CreateBatchJobsResponseBodyJobGroupStrategyWorkingTime {
-	s.EndTime = &v
-	return s
-}
-
-type CreateBatchJobsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateBatchJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateBatchJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateBatchJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateBatchJobsResponse) SetHeaders(v map[string]*string) *CreateBatchJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateBatchJobsResponse) SetBody(v *CreateBatchJobsResponseBody) *CreateBatchJobsResponse {
-	s.Body = v
-	return s
-}
-
-type CreateCabInstanceRequest struct {
-	CallCenterInstanceId      *string `json:"CallCenterInstanceId,omitempty" xml:"CallCenterInstanceId,omitempty"`
-	InstanceDescription       *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	InstanceName              *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MaxConcurrentConversation *int32  `json:"MaxConcurrentConversation,omitempty" xml:"MaxConcurrentConversation,omitempty"`
-}
-
-func (s CreateCabInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCabInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCabInstanceRequest) SetCallCenterInstanceId(v string) *CreateCabInstanceRequest {
-	s.CallCenterInstanceId = &v
-	return s
-}
-
-func (s *CreateCabInstanceRequest) SetInstanceDescription(v string) *CreateCabInstanceRequest {
-	s.InstanceDescription = &v
-	return s
-}
-
-func (s *CreateCabInstanceRequest) SetInstanceName(v string) *CreateCabInstanceRequest {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *CreateCabInstanceRequest) SetMaxConcurrentConversation(v int32) *CreateCabInstanceRequest {
-	s.MaxConcurrentConversation = &v
-	return s
-}
-
-type CreateCabInstanceResponseBody struct {
-	Code           *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Instance       *CreateCabInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
-	Message        *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateCabInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCabInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCabInstanceResponseBody) SetCode(v string) *CreateCabInstanceResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateCabInstanceResponseBody) SetHttpStatusCode(v int32) *CreateCabInstanceResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *CreateCabInstanceResponseBody) SetInstance(v *CreateCabInstanceResponseBodyInstance) *CreateCabInstanceResponseBody {
-	s.Instance = v
-	return s
-}
-
-func (s *CreateCabInstanceResponseBody) SetMessage(v string) *CreateCabInstanceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateCabInstanceResponseBody) SetRequestId(v string) *CreateCabInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateCabInstanceResponseBody) SetSuccess(v bool) *CreateCabInstanceResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateCabInstanceResponseBodyInstance struct {
-	CallCenterInstanceId      *string `json:"CallCenterInstanceId,omitempty" xml:"CallCenterInstanceId,omitempty"`
-	CreationTime              *int64  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	InstanceDescription       *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	InstanceId                *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName              *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MaxConcurrentConversation *int32  `json:"MaxConcurrentConversation,omitempty" xml:"MaxConcurrentConversation,omitempty"`
-	Owner                     *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-}
-
-func (s CreateCabInstanceResponseBodyInstance) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCabInstanceResponseBodyInstance) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCabInstanceResponseBodyInstance) SetCallCenterInstanceId(v string) *CreateCabInstanceResponseBodyInstance {
-	s.CallCenterInstanceId = &v
-	return s
-}
-
-func (s *CreateCabInstanceResponseBodyInstance) SetCreationTime(v int64) *CreateCabInstanceResponseBodyInstance {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *CreateCabInstanceResponseBodyInstance) SetInstanceDescription(v string) *CreateCabInstanceResponseBodyInstance {
-	s.InstanceDescription = &v
-	return s
-}
-
-func (s *CreateCabInstanceResponseBodyInstance) SetInstanceId(v string) *CreateCabInstanceResponseBodyInstance {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateCabInstanceResponseBodyInstance) SetInstanceName(v string) *CreateCabInstanceResponseBodyInstance {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *CreateCabInstanceResponseBodyInstance) SetMaxConcurrentConversation(v int32) *CreateCabInstanceResponseBodyInstance {
-	s.MaxConcurrentConversation = &v
-	return s
-}
-
-func (s *CreateCabInstanceResponseBodyInstance) SetOwner(v string) *CreateCabInstanceResponseBodyInstance {
-	s.Owner = &v
-	return s
-}
-
-type CreateCabInstanceResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCabInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateCabInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCabInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCabInstanceResponse) SetHeaders(v map[string]*string) *CreateCabInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateCabInstanceResponse) SetBody(v *CreateCabInstanceResponseBody) *CreateCabInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -2616,8 +1814,9 @@ func (s *CreateContactFlowResponseBodyContactFlowVersionsContactFlowVersion) Set
 }
 
 type CreateContactFlowResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateContactFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateContactFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateContactFlowResponse) String() string {
@@ -2630,6 +1829,11 @@ func (s CreateContactFlowResponse) GoString() string {
 
 func (s *CreateContactFlowResponse) SetHeaders(v map[string]*string) *CreateContactFlowResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateContactFlowResponse) SetStatusCode(v int32) *CreateContactFlowResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2811,8 +2015,9 @@ func (s *CreateFaultResponseBody) SetSuccess(v bool) *CreateFaultResponseBody {
 }
 
 type CreateFaultResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateFaultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFaultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateFaultResponse) String() string {
@@ -2825,6 +2030,11 @@ func (s CreateFaultResponse) GoString() string {
 
 func (s *CreateFaultResponse) SetHeaders(v map[string]*string) *CreateFaultResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateFaultResponse) SetStatusCode(v int32) *CreateFaultResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3326,8 +2536,9 @@ func (s *CreateInstanceResponseBodyInstanceSuccessPhoneNumbers) SetSuccessPhoneN
 }
 
 type CreateInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateInstanceResponse) String() string {
@@ -3343,307 +2554,12 @@ func (s *CreateInstanceResponse) SetHeaders(v map[string]*string) *CreateInstanc
 	return s
 }
 
+func (s *CreateInstanceResponse) SetStatusCode(v int32) *CreateInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateInstanceResponse {
-	s.Body = v
-	return s
-}
-
-type CreateJobGroupRequest struct {
-	CallingNumber []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
-	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId    *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	ScenarioId    *string   `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	StrategyJson  *string   `json:"StrategyJson,omitempty" xml:"StrategyJson,omitempty"`
-}
-
-func (s CreateJobGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateJobGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateJobGroupRequest) SetCallingNumber(v []*string) *CreateJobGroupRequest {
-	s.CallingNumber = v
-	return s
-}
-
-func (s *CreateJobGroupRequest) SetDescription(v string) *CreateJobGroupRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateJobGroupRequest) SetInstanceId(v string) *CreateJobGroupRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateJobGroupRequest) SetName(v string) *CreateJobGroupRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateJobGroupRequest) SetScenarioId(v string) *CreateJobGroupRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *CreateJobGroupRequest) SetStrategyJson(v string) *CreateJobGroupRequest {
-	s.StrategyJson = &v
-	return s
-}
-
-type CreateJobGroupResponseBody struct {
-	Code           *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobGroup       *CreateJobGroupResponseBodyJobGroup `json:"JobGroup,omitempty" xml:"JobGroup,omitempty" type:"Struct"`
-	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateJobGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateJobGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateJobGroupResponseBody) SetCode(v string) *CreateJobGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBody) SetHttpStatusCode(v int32) *CreateJobGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBody) SetJobGroup(v *CreateJobGroupResponseBodyJobGroup) *CreateJobGroupResponseBody {
-	s.JobGroup = v
-	return s
-}
-
-func (s *CreateJobGroupResponseBody) SetMessage(v string) *CreateJobGroupResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBody) SetRequestId(v string) *CreateJobGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBody) SetSuccess(v bool) *CreateJobGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateJobGroupResponseBodyJobGroup struct {
-	CallingNumbers      []*string                                   `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
-	CreationTime        *int64                                      `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	JobFilePath         *string                                     `json:"JobFilePath,omitempty" xml:"JobFilePath,omitempty"`
-	JobGroupDescription *string                                     `json:"JobGroupDescription,omitempty" xml:"JobGroupDescription,omitempty"`
-	JobGroupId          *string                                     `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	JobGroupName        *string                                     `json:"JobGroupName,omitempty" xml:"JobGroupName,omitempty"`
-	ScenarioId          *string                                     `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Strategy            *CreateJobGroupResponseBodyJobGroupStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
-}
-
-func (s CreateJobGroupResponseBodyJobGroup) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateJobGroupResponseBodyJobGroup) GoString() string {
-	return s.String()
-}
-
-func (s *CreateJobGroupResponseBodyJobGroup) SetCallingNumbers(v []*string) *CreateJobGroupResponseBodyJobGroup {
-	s.CallingNumbers = v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroup) SetCreationTime(v int64) *CreateJobGroupResponseBodyJobGroup {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroup) SetJobFilePath(v string) *CreateJobGroupResponseBodyJobGroup {
-	s.JobFilePath = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroup) SetJobGroupDescription(v string) *CreateJobGroupResponseBodyJobGroup {
-	s.JobGroupDescription = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroup) SetJobGroupId(v string) *CreateJobGroupResponseBodyJobGroup {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroup) SetJobGroupName(v string) *CreateJobGroupResponseBodyJobGroup {
-	s.JobGroupName = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroup) SetScenarioId(v string) *CreateJobGroupResponseBodyJobGroup {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroup) SetStrategy(v *CreateJobGroupResponseBodyJobGroupStrategy) *CreateJobGroupResponseBodyJobGroup {
-	s.Strategy = v
-	return s
-}
-
-type CreateJobGroupResponseBodyJobGroupStrategy struct {
-	Customized          *string                                                  `json:"Customized,omitempty" xml:"Customized,omitempty"`
-	EndTime             *int64                                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FollowUpStrategy    *string                                                  `json:"FollowUpStrategy,omitempty" xml:"FollowUpStrategy,omitempty"`
-	IsTemplate          *bool                                                    `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	MaxAttemptsPerDay   *int32                                                   `json:"MaxAttemptsPerDay,omitempty" xml:"MaxAttemptsPerDay,omitempty"`
-	MinAttemptInterval  *int32                                                   `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
-	RepeatBy            *string                                                  `json:"RepeatBy,omitempty" xml:"RepeatBy,omitempty"`
-	RepeatDays          []*string                                                `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RoutingStrategy     *string                                                  `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
-	StartTime           *int64                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StrategyDescription *string                                                  `json:"StrategyDescription,omitempty" xml:"StrategyDescription,omitempty"`
-	StrategyId          *string                                                  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	StrategyName        *string                                                  `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	Type                *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	WorkingTime         []*CreateJobGroupResponseBodyJobGroupStrategyWorkingTime `json:"WorkingTime,omitempty" xml:"WorkingTime,omitempty" type:"Repeated"`
-}
-
-func (s CreateJobGroupResponseBodyJobGroupStrategy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateJobGroupResponseBodyJobGroupStrategy) GoString() string {
-	return s.String()
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetCustomized(v string) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.Customized = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetEndTime(v int64) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.EndTime = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetFollowUpStrategy(v string) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.FollowUpStrategy = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetIsTemplate(v bool) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetMaxAttemptsPerDay(v int32) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.MaxAttemptsPerDay = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetMinAttemptInterval(v int32) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.MinAttemptInterval = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetRepeatBy(v string) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.RepeatBy = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetRepeatDays(v []*string) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.RepeatDays = v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetRoutingStrategy(v string) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.RoutingStrategy = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetStartTime(v int64) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.StartTime = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetStrategyDescription(v string) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.StrategyDescription = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetStrategyId(v string) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.StrategyId = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetStrategyName(v string) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.StrategyName = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetType(v string) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategy) SetWorkingTime(v []*CreateJobGroupResponseBodyJobGroupStrategyWorkingTime) *CreateJobGroupResponseBodyJobGroupStrategy {
-	s.WorkingTime = v
-	return s
-}
-
-type CreateJobGroupResponseBodyJobGroupStrategyWorkingTime struct {
-	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	To   *string `json:"To,omitempty" xml:"To,omitempty"`
-}
-
-func (s CreateJobGroupResponseBodyJobGroupStrategyWorkingTime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateJobGroupResponseBodyJobGroupStrategyWorkingTime) GoString() string {
-	return s.String()
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategyWorkingTime) SetFrom(v string) *CreateJobGroupResponseBodyJobGroupStrategyWorkingTime {
-	s.From = &v
-	return s
-}
-
-func (s *CreateJobGroupResponseBodyJobGroupStrategyWorkingTime) SetTo(v string) *CreateJobGroupResponseBodyJobGroupStrategyWorkingTime {
-	s.To = &v
-	return s
-}
-
-type CreateJobGroupResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateJobGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateJobGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateJobGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateJobGroupResponse) SetHeaders(v map[string]*string) *CreateJobGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateJobGroupResponse) SetBody(v *CreateJobGroupResponseBody) *CreateJobGroupResponse {
 	s.Body = v
 	return s
 }
@@ -3808,8 +2724,9 @@ func (s *CreateMediaResponseBodyMediaUploadParam) SetOssFilePath(v string) *Crea
 }
 
 type CreateMediaResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateMediaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMediaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateMediaResponse) String() string {
@@ -3825,940 +2742,12 @@ func (s *CreateMediaResponse) SetHeaders(v map[string]*string) *CreateMediaRespo
 	return s
 }
 
+func (s *CreateMediaResponse) SetStatusCode(v int32) *CreateMediaResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateMediaResponse) SetBody(v *CreateMediaResponseBody) *CreateMediaResponse {
-	s.Body = v
-	return s
-}
-
-type CreatePredictiveJobGroupRequest struct {
-	Description    *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsDraft        *bool     `json:"IsDraft,omitempty" xml:"IsDraft,omitempty"`
-	JobFilePath    *string   `json:"JobFilePath,omitempty" xml:"JobFilePath,omitempty"`
-	JobsJson       []*string `json:"JobsJson,omitempty" xml:"JobsJson,omitempty" type:"Repeated"`
-	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Ratio          *int32    `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	SkillGroupId   *string   `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	StrategyJson   *string   `json:"StrategyJson,omitempty" xml:"StrategyJson,omitempty"`
-	TimingSchedule *bool     `json:"TimingSchedule,omitempty" xml:"TimingSchedule,omitempty"`
-}
-
-func (s CreatePredictiveJobGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePredictiveJobGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePredictiveJobGroupRequest) SetDescription(v string) *CreatePredictiveJobGroupRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupRequest) SetInstanceId(v string) *CreatePredictiveJobGroupRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupRequest) SetIsDraft(v bool) *CreatePredictiveJobGroupRequest {
-	s.IsDraft = &v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupRequest) SetJobFilePath(v string) *CreatePredictiveJobGroupRequest {
-	s.JobFilePath = &v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupRequest) SetJobsJson(v []*string) *CreatePredictiveJobGroupRequest {
-	s.JobsJson = v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupRequest) SetName(v string) *CreatePredictiveJobGroupRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupRequest) SetRatio(v int32) *CreatePredictiveJobGroupRequest {
-	s.Ratio = &v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupRequest) SetSkillGroupId(v string) *CreatePredictiveJobGroupRequest {
-	s.SkillGroupId = &v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupRequest) SetStrategyJson(v string) *CreatePredictiveJobGroupRequest {
-	s.StrategyJson = &v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupRequest) SetTimingSchedule(v bool) *CreatePredictiveJobGroupRequest {
-	s.TimingSchedule = &v
-	return s
-}
-
-type CreatePredictiveJobGroupResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobGroupId     *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreatePredictiveJobGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePredictiveJobGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePredictiveJobGroupResponseBody) SetCode(v string) *CreatePredictiveJobGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupResponseBody) SetHttpStatusCode(v int32) *CreatePredictiveJobGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupResponseBody) SetJobGroupId(v string) *CreatePredictiveJobGroupResponseBody {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupResponseBody) SetMessage(v string) *CreatePredictiveJobGroupResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupResponseBody) SetRequestId(v string) *CreatePredictiveJobGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupResponseBody) SetSuccess(v bool) *CreatePredictiveJobGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreatePredictiveJobGroupResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreatePredictiveJobGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreatePredictiveJobGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreatePredictiveJobGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreatePredictiveJobGroupResponse) SetHeaders(v map[string]*string) *CreatePredictiveJobGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreatePredictiveJobGroupResponse) SetBody(v *CreatePredictiveJobGroupResponseBody) *CreatePredictiveJobGroupResponse {
-	s.Body = v
-	return s
-}
-
-type CreateScenarioRequest struct {
-	Description  *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	StrategyJson *string   `json:"StrategyJson,omitempty" xml:"StrategyJson,omitempty"`
-	SurveysJson  []*string `json:"SurveysJson,omitempty" xml:"SurveysJson,omitempty" type:"Repeated"`
-	Type         *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s CreateScenarioRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioRequest) SetDescription(v string) *CreateScenarioRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateScenarioRequest) SetInstanceId(v string) *CreateScenarioRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateScenarioRequest) SetName(v string) *CreateScenarioRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateScenarioRequest) SetStrategyJson(v string) *CreateScenarioRequest {
-	s.StrategyJson = &v
-	return s
-}
-
-func (s *CreateScenarioRequest) SetSurveysJson(v []*string) *CreateScenarioRequest {
-	s.SurveysJson = v
-	return s
-}
-
-func (s *CreateScenarioRequest) SetType(v string) *CreateScenarioRequest {
-	s.Type = &v
-	return s
-}
-
-type CreateScenarioResponseBody struct {
-	Code           *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scenario       *CreateScenarioResponseBodyScenario `json:"Scenario,omitempty" xml:"Scenario,omitempty" type:"Struct"`
-	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateScenarioResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioResponseBody) SetCode(v string) *CreateScenarioResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBody) SetHttpStatusCode(v int32) *CreateScenarioResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBody) SetMessage(v string) *CreateScenarioResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBody) SetRequestId(v string) *CreateScenarioResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBody) SetScenario(v *CreateScenarioResponseBodyScenario) *CreateScenarioResponseBody {
-	s.Scenario = v
-	return s
-}
-
-func (s *CreateScenarioResponseBody) SetSuccess(v bool) *CreateScenarioResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateScenarioResponseBodyScenario struct {
-	IsTemplate          *bool                                          `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	ScenarioDescription *string                                        `json:"ScenarioDescription,omitempty" xml:"ScenarioDescription,omitempty"`
-	ScenarioId          *string                                        `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	ScenarioName        *string                                        `json:"ScenarioName,omitempty" xml:"ScenarioName,omitempty"`
-	Strategy            *CreateScenarioResponseBodyScenarioStrategy    `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
-	Surveys             []*CreateScenarioResponseBodyScenarioSurveys   `json:"Surveys,omitempty" xml:"Surveys,omitempty" type:"Repeated"`
-	Type                *string                                        `json:"Type,omitempty" xml:"Type,omitempty"`
-	Variables           []*CreateScenarioResponseBodyScenarioVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
-}
-
-func (s CreateScenarioResponseBodyScenario) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioResponseBodyScenario) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioResponseBodyScenario) SetIsTemplate(v bool) *CreateScenarioResponseBodyScenario {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenario) SetScenarioDescription(v string) *CreateScenarioResponseBodyScenario {
-	s.ScenarioDescription = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenario) SetScenarioId(v string) *CreateScenarioResponseBodyScenario {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenario) SetScenarioName(v string) *CreateScenarioResponseBodyScenario {
-	s.ScenarioName = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenario) SetStrategy(v *CreateScenarioResponseBodyScenarioStrategy) *CreateScenarioResponseBodyScenario {
-	s.Strategy = v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenario) SetSurveys(v []*CreateScenarioResponseBodyScenarioSurveys) *CreateScenarioResponseBodyScenario {
-	s.Surveys = v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenario) SetType(v string) *CreateScenarioResponseBodyScenario {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenario) SetVariables(v []*CreateScenarioResponseBodyScenarioVariables) *CreateScenarioResponseBodyScenario {
-	s.Variables = v
-	return s
-}
-
-type CreateScenarioResponseBodyScenarioStrategy struct {
-	Customized          *string                                                  `json:"Customized,omitempty" xml:"Customized,omitempty"`
-	EndTime             *int64                                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FollowUpStrategy    *string                                                  `json:"FollowUpStrategy,omitempty" xml:"FollowUpStrategy,omitempty"`
-	IsTemplate          *bool                                                    `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	MaxAttemptsPerDay   *int32                                                   `json:"MaxAttemptsPerDay,omitempty" xml:"MaxAttemptsPerDay,omitempty"`
-	MinAttemptInterval  *int32                                                   `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
-	RepeatBy            *string                                                  `json:"RepeatBy,omitempty" xml:"RepeatBy,omitempty"`
-	RepeatDays          []*string                                                `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RoutingStrategy     *string                                                  `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
-	StartTime           *int64                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StrategyDescription *string                                                  `json:"StrategyDescription,omitempty" xml:"StrategyDescription,omitempty"`
-	StrategyId          *string                                                  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	StrategyName        *string                                                  `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	Type                *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	WorkingTime         []*CreateScenarioResponseBodyScenarioStrategyWorkingTime `json:"WorkingTime,omitempty" xml:"WorkingTime,omitempty" type:"Repeated"`
-}
-
-func (s CreateScenarioResponseBodyScenarioStrategy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioResponseBodyScenarioStrategy) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetCustomized(v string) *CreateScenarioResponseBodyScenarioStrategy {
-	s.Customized = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetEndTime(v int64) *CreateScenarioResponseBodyScenarioStrategy {
-	s.EndTime = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetFollowUpStrategy(v string) *CreateScenarioResponseBodyScenarioStrategy {
-	s.FollowUpStrategy = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetIsTemplate(v bool) *CreateScenarioResponseBodyScenarioStrategy {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetMaxAttemptsPerDay(v int32) *CreateScenarioResponseBodyScenarioStrategy {
-	s.MaxAttemptsPerDay = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetMinAttemptInterval(v int32) *CreateScenarioResponseBodyScenarioStrategy {
-	s.MinAttemptInterval = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetRepeatBy(v string) *CreateScenarioResponseBodyScenarioStrategy {
-	s.RepeatBy = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetRepeatDays(v []*string) *CreateScenarioResponseBodyScenarioStrategy {
-	s.RepeatDays = v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetRoutingStrategy(v string) *CreateScenarioResponseBodyScenarioStrategy {
-	s.RoutingStrategy = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetStartTime(v int64) *CreateScenarioResponseBodyScenarioStrategy {
-	s.StartTime = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetStrategyDescription(v string) *CreateScenarioResponseBodyScenarioStrategy {
-	s.StrategyDescription = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetStrategyId(v string) *CreateScenarioResponseBodyScenarioStrategy {
-	s.StrategyId = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetStrategyName(v string) *CreateScenarioResponseBodyScenarioStrategy {
-	s.StrategyName = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetType(v string) *CreateScenarioResponseBodyScenarioStrategy {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategy) SetWorkingTime(v []*CreateScenarioResponseBodyScenarioStrategyWorkingTime) *CreateScenarioResponseBodyScenarioStrategy {
-	s.WorkingTime = v
-	return s
-}
-
-type CreateScenarioResponseBodyScenarioStrategyWorkingTime struct {
-	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s CreateScenarioResponseBodyScenarioStrategyWorkingTime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioResponseBodyScenarioStrategyWorkingTime) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategyWorkingTime) SetBeginTime(v string) *CreateScenarioResponseBodyScenarioStrategyWorkingTime {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioStrategyWorkingTime) SetEndTime(v string) *CreateScenarioResponseBodyScenarioStrategyWorkingTime {
-	s.EndTime = &v
-	return s
-}
-
-type CreateScenarioResponseBodyScenarioSurveys struct {
-	BeebotId          *string                                             `json:"BeebotId,omitempty" xml:"BeebotId,omitempty"`
-	Intents           []*CreateScenarioResponseBodyScenarioSurveysIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Repeated"`
-	Role              *string                                             `json:"Role,omitempty" xml:"Role,omitempty"`
-	Round             *int32                                              `json:"Round,omitempty" xml:"Round,omitempty"`
-	SurveyDescription *string                                             `json:"SurveyDescription,omitempty" xml:"SurveyDescription,omitempty"`
-	SurveyId          *string                                             `json:"SurveyId,omitempty" xml:"SurveyId,omitempty"`
-	SurveyName        *string                                             `json:"SurveyName,omitempty" xml:"SurveyName,omitempty"`
-}
-
-func (s CreateScenarioResponseBodyScenarioSurveys) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioResponseBodyScenarioSurveys) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioResponseBodyScenarioSurveys) SetBeebotId(v string) *CreateScenarioResponseBodyScenarioSurveys {
-	s.BeebotId = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioSurveys) SetIntents(v []*CreateScenarioResponseBodyScenarioSurveysIntents) *CreateScenarioResponseBodyScenarioSurveys {
-	s.Intents = v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioSurveys) SetRole(v string) *CreateScenarioResponseBodyScenarioSurveys {
-	s.Role = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioSurveys) SetRound(v int32) *CreateScenarioResponseBodyScenarioSurveys {
-	s.Round = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioSurveys) SetSurveyDescription(v string) *CreateScenarioResponseBodyScenarioSurveys {
-	s.SurveyDescription = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioSurveys) SetSurveyId(v string) *CreateScenarioResponseBodyScenarioSurveys {
-	s.SurveyId = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioSurveys) SetSurveyName(v string) *CreateScenarioResponseBodyScenarioSurveys {
-	s.SurveyName = &v
-	return s
-}
-
-type CreateScenarioResponseBodyScenarioSurveysIntents struct {
-	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-}
-
-func (s CreateScenarioResponseBodyScenarioSurveysIntents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioResponseBodyScenarioSurveysIntents) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioResponseBodyScenarioSurveysIntents) SetIntentId(v string) *CreateScenarioResponseBodyScenarioSurveysIntents {
-	s.IntentId = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioSurveysIntents) SetNodeId(v string) *CreateScenarioResponseBodyScenarioSurveysIntents {
-	s.NodeId = &v
-	return s
-}
-
-type CreateScenarioResponseBodyScenarioVariables struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s CreateScenarioResponseBodyScenarioVariables) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioResponseBodyScenarioVariables) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioResponseBodyScenarioVariables) SetKey(v string) *CreateScenarioResponseBodyScenarioVariables {
-	s.Key = &v
-	return s
-}
-
-func (s *CreateScenarioResponseBodyScenarioVariables) SetValue(v string) *CreateScenarioResponseBodyScenarioVariables {
-	s.Value = &v
-	return s
-}
-
-type CreateScenarioResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateScenarioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateScenarioResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioResponse) SetHeaders(v map[string]*string) *CreateScenarioResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateScenarioResponse) SetBody(v *CreateScenarioResponseBody) *CreateScenarioResponse {
-	s.Body = v
-	return s
-}
-
-type CreateScenarioFromTemplateRequest struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Variables   *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
-}
-
-func (s CreateScenarioFromTemplateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioFromTemplateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioFromTemplateRequest) SetDescription(v string) *CreateScenarioFromTemplateRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateRequest) SetInstanceId(v string) *CreateScenarioFromTemplateRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateRequest) SetName(v string) *CreateScenarioFromTemplateRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateRequest) SetTemplateId(v string) *CreateScenarioFromTemplateRequest {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateRequest) SetVariables(v string) *CreateScenarioFromTemplateRequest {
-	s.Variables = &v
-	return s
-}
-
-type CreateScenarioFromTemplateResponseBody struct {
-	Code           *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scenario       *CreateScenarioFromTemplateResponseBodyScenario `json:"Scenario,omitempty" xml:"Scenario,omitempty" type:"Struct"`
-	Success        *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateScenarioFromTemplateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioFromTemplateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioFromTemplateResponseBody) SetCode(v string) *CreateScenarioFromTemplateResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBody) SetHttpStatusCode(v int32) *CreateScenarioFromTemplateResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBody) SetMessage(v string) *CreateScenarioFromTemplateResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBody) SetRequestId(v string) *CreateScenarioFromTemplateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBody) SetScenario(v *CreateScenarioFromTemplateResponseBodyScenario) *CreateScenarioFromTemplateResponseBody {
-	s.Scenario = v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBody) SetSuccess(v bool) *CreateScenarioFromTemplateResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateScenarioFromTemplateResponseBodyScenario struct {
-	IsTemplate          *bool                                                      `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	ScenarioDescription *string                                                    `json:"ScenarioDescription,omitempty" xml:"ScenarioDescription,omitempty"`
-	ScenarioId          *string                                                    `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	ScenarioName        *string                                                    `json:"ScenarioName,omitempty" xml:"ScenarioName,omitempty"`
-	Strategy            *CreateScenarioFromTemplateResponseBodyScenarioStrategy    `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
-	Surveys             []*CreateScenarioFromTemplateResponseBodyScenarioSurveys   `json:"Surveys,omitempty" xml:"Surveys,omitempty" type:"Repeated"`
-	Type                *string                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
-	Variables           []*CreateScenarioFromTemplateResponseBodyScenarioVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
-}
-
-func (s CreateScenarioFromTemplateResponseBodyScenario) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioFromTemplateResponseBodyScenario) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenario) SetIsTemplate(v bool) *CreateScenarioFromTemplateResponseBodyScenario {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenario) SetScenarioDescription(v string) *CreateScenarioFromTemplateResponseBodyScenario {
-	s.ScenarioDescription = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenario) SetScenarioId(v string) *CreateScenarioFromTemplateResponseBodyScenario {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenario) SetScenarioName(v string) *CreateScenarioFromTemplateResponseBodyScenario {
-	s.ScenarioName = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenario) SetStrategy(v *CreateScenarioFromTemplateResponseBodyScenarioStrategy) *CreateScenarioFromTemplateResponseBodyScenario {
-	s.Strategy = v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenario) SetSurveys(v []*CreateScenarioFromTemplateResponseBodyScenarioSurveys) *CreateScenarioFromTemplateResponseBodyScenario {
-	s.Surveys = v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenario) SetType(v string) *CreateScenarioFromTemplateResponseBodyScenario {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenario) SetVariables(v []*CreateScenarioFromTemplateResponseBodyScenarioVariables) *CreateScenarioFromTemplateResponseBodyScenario {
-	s.Variables = v
-	return s
-}
-
-type CreateScenarioFromTemplateResponseBodyScenarioStrategy struct {
-	Customized          *string                                                              `json:"Customized,omitempty" xml:"Customized,omitempty"`
-	EndTime             *int64                                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FollowUpStrategy    *string                                                              `json:"FollowUpStrategy,omitempty" xml:"FollowUpStrategy,omitempty"`
-	IsTemplate          *bool                                                                `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	MaxAttemptsPerDay   *int32                                                               `json:"MaxAttemptsPerDay,omitempty" xml:"MaxAttemptsPerDay,omitempty"`
-	MinAttemptInterval  *int32                                                               `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
-	RepeatBy            *string                                                              `json:"RepeatBy,omitempty" xml:"RepeatBy,omitempty"`
-	RepeatDays          []*string                                                            `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RoutingStrategy     *string                                                              `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
-	StartTime           *int64                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StrategyDescription *string                                                              `json:"StrategyDescription,omitempty" xml:"StrategyDescription,omitempty"`
-	StrategyId          *string                                                              `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	StrategyName        *string                                                              `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	Type                *string                                                              `json:"Type,omitempty" xml:"Type,omitempty"`
-	WorkingTime         []*CreateScenarioFromTemplateResponseBodyScenarioStrategyWorkingTime `json:"WorkingTime,omitempty" xml:"WorkingTime,omitempty" type:"Repeated"`
-}
-
-func (s CreateScenarioFromTemplateResponseBodyScenarioStrategy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioFromTemplateResponseBodyScenarioStrategy) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetCustomized(v string) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.Customized = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetEndTime(v int64) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.EndTime = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetFollowUpStrategy(v string) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.FollowUpStrategy = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetIsTemplate(v bool) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetMaxAttemptsPerDay(v int32) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.MaxAttemptsPerDay = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetMinAttemptInterval(v int32) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.MinAttemptInterval = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetRepeatBy(v string) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.RepeatBy = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetRepeatDays(v []*string) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.RepeatDays = v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetRoutingStrategy(v string) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.RoutingStrategy = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetStartTime(v int64) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.StartTime = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetStrategyDescription(v string) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.StrategyDescription = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetStrategyId(v string) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.StrategyId = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetStrategyName(v string) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.StrategyName = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetType(v string) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategy) SetWorkingTime(v []*CreateScenarioFromTemplateResponseBodyScenarioStrategyWorkingTime) *CreateScenarioFromTemplateResponseBodyScenarioStrategy {
-	s.WorkingTime = v
-	return s
-}
-
-type CreateScenarioFromTemplateResponseBodyScenarioStrategyWorkingTime struct {
-	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s CreateScenarioFromTemplateResponseBodyScenarioStrategyWorkingTime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioFromTemplateResponseBodyScenarioStrategyWorkingTime) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategyWorkingTime) SetBeginTime(v string) *CreateScenarioFromTemplateResponseBodyScenarioStrategyWorkingTime {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioStrategyWorkingTime) SetEndTime(v string) *CreateScenarioFromTemplateResponseBodyScenarioStrategyWorkingTime {
-	s.EndTime = &v
-	return s
-}
-
-type CreateScenarioFromTemplateResponseBodyScenarioSurveys struct {
-	BeebotId          *string                                                         `json:"BeebotId,omitempty" xml:"BeebotId,omitempty"`
-	Intents           []*CreateScenarioFromTemplateResponseBodyScenarioSurveysIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Repeated"`
-	Role              *string                                                         `json:"Role,omitempty" xml:"Role,omitempty"`
-	Round             *int32                                                          `json:"Round,omitempty" xml:"Round,omitempty"`
-	SurveyDescription *string                                                         `json:"SurveyDescription,omitempty" xml:"SurveyDescription,omitempty"`
-	SurveyId          *string                                                         `json:"SurveyId,omitempty" xml:"SurveyId,omitempty"`
-	SurveyName        *string                                                         `json:"SurveyName,omitempty" xml:"SurveyName,omitempty"`
-}
-
-func (s CreateScenarioFromTemplateResponseBodyScenarioSurveys) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioFromTemplateResponseBodyScenarioSurveys) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioSurveys) SetBeebotId(v string) *CreateScenarioFromTemplateResponseBodyScenarioSurveys {
-	s.BeebotId = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioSurveys) SetIntents(v []*CreateScenarioFromTemplateResponseBodyScenarioSurveysIntents) *CreateScenarioFromTemplateResponseBodyScenarioSurveys {
-	s.Intents = v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioSurveys) SetRole(v string) *CreateScenarioFromTemplateResponseBodyScenarioSurveys {
-	s.Role = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioSurveys) SetRound(v int32) *CreateScenarioFromTemplateResponseBodyScenarioSurveys {
-	s.Round = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioSurveys) SetSurveyDescription(v string) *CreateScenarioFromTemplateResponseBodyScenarioSurveys {
-	s.SurveyDescription = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioSurveys) SetSurveyId(v string) *CreateScenarioFromTemplateResponseBodyScenarioSurveys {
-	s.SurveyId = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioSurveys) SetSurveyName(v string) *CreateScenarioFromTemplateResponseBodyScenarioSurveys {
-	s.SurveyName = &v
-	return s
-}
-
-type CreateScenarioFromTemplateResponseBodyScenarioSurveysIntents struct {
-	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-}
-
-func (s CreateScenarioFromTemplateResponseBodyScenarioSurveysIntents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioFromTemplateResponseBodyScenarioSurveysIntents) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioSurveysIntents) SetIntentId(v string) *CreateScenarioFromTemplateResponseBodyScenarioSurveysIntents {
-	s.IntentId = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioSurveysIntents) SetNodeId(v string) *CreateScenarioFromTemplateResponseBodyScenarioSurveysIntents {
-	s.NodeId = &v
-	return s
-}
-
-type CreateScenarioFromTemplateResponseBodyScenarioVariables struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s CreateScenarioFromTemplateResponseBodyScenarioVariables) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioFromTemplateResponseBodyScenarioVariables) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioVariables) SetKey(v string) *CreateScenarioFromTemplateResponseBodyScenarioVariables {
-	s.Key = &v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponseBodyScenarioVariables) SetValue(v string) *CreateScenarioFromTemplateResponseBodyScenarioVariables {
-	s.Value = &v
-	return s
-}
-
-type CreateScenarioFromTemplateResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateScenarioFromTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateScenarioFromTemplateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateScenarioFromTemplateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateScenarioFromTemplateResponse) SetHeaders(v map[string]*string) *CreateScenarioFromTemplateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateScenarioFromTemplateResponse) SetBody(v *CreateScenarioFromTemplateResponseBody) *CreateScenarioFromTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -4870,8 +2859,9 @@ func (s *CreateSkillGroupResponseBody) SetSuccess(v bool) *CreateSkillGroupRespo
 }
 
 type CreateSkillGroupResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateSkillGroupResponse) String() string {
@@ -4887,277 +2877,12 @@ func (s *CreateSkillGroupResponse) SetHeaders(v map[string]*string) *CreateSkill
 	return s
 }
 
+func (s *CreateSkillGroupResponse) SetStatusCode(v int32) *CreateSkillGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateSkillGroupResponse) SetBody(v *CreateSkillGroupResponseBody) *CreateSkillGroupResponse {
-	s.Body = v
-	return s
-}
-
-type CreateSurveyRequest struct {
-	Corpora                 *string `json:"Corpora,omitempty" xml:"Corpora,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FlowJson                *string `json:"FlowJson,omitempty" xml:"FlowJson,omitempty"`
-	GlobalQuestions         *string `json:"GlobalQuestions,omitempty" xml:"GlobalQuestions,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name                    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Role                    *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Round                   *int32  `json:"Round,omitempty" xml:"Round,omitempty"`
-	ScenarioId              *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	SpeechOptimizationParam *string `json:"SpeechOptimizationParam,omitempty" xml:"SpeechOptimizationParam,omitempty"`
-}
-
-func (s CreateSurveyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSurveyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSurveyRequest) SetCorpora(v string) *CreateSurveyRequest {
-	s.Corpora = &v
-	return s
-}
-
-func (s *CreateSurveyRequest) SetDescription(v string) *CreateSurveyRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateSurveyRequest) SetFlowJson(v string) *CreateSurveyRequest {
-	s.FlowJson = &v
-	return s
-}
-
-func (s *CreateSurveyRequest) SetGlobalQuestions(v string) *CreateSurveyRequest {
-	s.GlobalQuestions = &v
-	return s
-}
-
-func (s *CreateSurveyRequest) SetInstanceId(v string) *CreateSurveyRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateSurveyRequest) SetName(v string) *CreateSurveyRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateSurveyRequest) SetRole(v string) *CreateSurveyRequest {
-	s.Role = &v
-	return s
-}
-
-func (s *CreateSurveyRequest) SetRound(v int32) *CreateSurveyRequest {
-	s.Round = &v
-	return s
-}
-
-func (s *CreateSurveyRequest) SetScenarioId(v string) *CreateSurveyRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *CreateSurveyRequest) SetSpeechOptimizationParam(v string) *CreateSurveyRequest {
-	s.SpeechOptimizationParam = &v
-	return s
-}
-
-type CreateSurveyResponseBody struct {
-	Code           *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Survey         *CreateSurveyResponseBodySurvey `json:"Survey,omitempty" xml:"Survey,omitempty" type:"Struct"`
-}
-
-func (s CreateSurveyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSurveyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSurveyResponseBody) SetCode(v string) *CreateSurveyResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBody) SetHttpStatusCode(v int32) *CreateSurveyResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBody) SetMessage(v string) *CreateSurveyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBody) SetRequestId(v string) *CreateSurveyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBody) SetSuccess(v bool) *CreateSurveyResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBody) SetSurvey(v *CreateSurveyResponseBodySurvey) *CreateSurveyResponseBody {
-	s.Survey = v
-	return s
-}
-
-type CreateSurveyResponseBodySurvey struct {
-	AsrCustomModel          *CreateSurveyResponseBodySurveyAsrCustomModel `json:"AsrCustomModel,omitempty" xml:"AsrCustomModel,omitempty" type:"Struct"`
-	Description             *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	Flow                    *CreateSurveyResponseBodySurveyFlow           `json:"Flow,omitempty" xml:"Flow,omitempty" type:"Struct"`
-	GlobalQuestions         *string                                       `json:"GlobalQuestions,omitempty" xml:"GlobalQuestions,omitempty"`
-	HotWords                *string                                       `json:"HotWords,omitempty" xml:"HotWords,omitempty"`
-	Id                      *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name                    *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	Role                    *string                                       `json:"Role,omitempty" xml:"Role,omitempty"`
-	Round                   *int32                                        `json:"Round,omitempty" xml:"Round,omitempty"`
-	ScenarioUuid            *string                                       `json:"ScenarioUuid,omitempty" xml:"ScenarioUuid,omitempty"`
-	SpeechOptimizationParam *string                                       `json:"SpeechOptimizationParam,omitempty" xml:"SpeechOptimizationParam,omitempty"`
-}
-
-func (s CreateSurveyResponseBodySurvey) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSurveyResponseBodySurvey) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSurveyResponseBodySurvey) SetAsrCustomModel(v *CreateSurveyResponseBodySurveyAsrCustomModel) *CreateSurveyResponseBodySurvey {
-	s.AsrCustomModel = v
-	return s
-}
-
-func (s *CreateSurveyResponseBodySurvey) SetDescription(v string) *CreateSurveyResponseBodySurvey {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBodySurvey) SetFlow(v *CreateSurveyResponseBodySurveyFlow) *CreateSurveyResponseBodySurvey {
-	s.Flow = v
-	return s
-}
-
-func (s *CreateSurveyResponseBodySurvey) SetGlobalQuestions(v string) *CreateSurveyResponseBodySurvey {
-	s.GlobalQuestions = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBodySurvey) SetHotWords(v string) *CreateSurveyResponseBodySurvey {
-	s.HotWords = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBodySurvey) SetId(v string) *CreateSurveyResponseBodySurvey {
-	s.Id = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBodySurvey) SetName(v string) *CreateSurveyResponseBodySurvey {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBodySurvey) SetRole(v string) *CreateSurveyResponseBodySurvey {
-	s.Role = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBodySurvey) SetRound(v int32) *CreateSurveyResponseBodySurvey {
-	s.Round = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBodySurvey) SetScenarioUuid(v string) *CreateSurveyResponseBodySurvey {
-	s.ScenarioUuid = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBodySurvey) SetSpeechOptimizationParam(v string) *CreateSurveyResponseBodySurvey {
-	s.SpeechOptimizationParam = &v
-	return s
-}
-
-type CreateSurveyResponseBodySurveyAsrCustomModel struct {
-	Corpora           *string `json:"Corpora,omitempty" xml:"Corpora,omitempty"`
-	CustomModelStatus *int32  `json:"CustomModelStatus,omitempty" xml:"CustomModelStatus,omitempty"`
-}
-
-func (s CreateSurveyResponseBodySurveyAsrCustomModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSurveyResponseBodySurveyAsrCustomModel) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSurveyResponseBodySurveyAsrCustomModel) SetCorpora(v string) *CreateSurveyResponseBodySurveyAsrCustomModel {
-	s.Corpora = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBodySurveyAsrCustomModel) SetCustomModelStatus(v int32) *CreateSurveyResponseBodySurveyAsrCustomModel {
-	s.CustomModelStatus = &v
-	return s
-}
-
-type CreateSurveyResponseBodySurveyFlow struct {
-	FlowId      *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	FlowJson    *string `json:"FlowJson,omitempty" xml:"FlowJson,omitempty"`
-	IsPublished *bool   `json:"IsPublished,omitempty" xml:"IsPublished,omitempty"`
-}
-
-func (s CreateSurveyResponseBodySurveyFlow) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSurveyResponseBodySurveyFlow) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSurveyResponseBodySurveyFlow) SetFlowId(v string) *CreateSurveyResponseBodySurveyFlow {
-	s.FlowId = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBodySurveyFlow) SetFlowJson(v string) *CreateSurveyResponseBodySurveyFlow {
-	s.FlowJson = &v
-	return s
-}
-
-func (s *CreateSurveyResponseBodySurveyFlow) SetIsPublished(v bool) *CreateSurveyResponseBodySurveyFlow {
-	s.IsPublished = &v
-	return s
-}
-
-type CreateSurveyResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSurveyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateSurveyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSurveyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSurveyResponse) SetHeaders(v map[string]*string) *CreateSurveyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateSurveyResponse) SetBody(v *CreateSurveyResponseBody) *CreateSurveyResponse {
 	s.Body = v
 	return s
 }
@@ -5275,8 +3000,9 @@ func (s *CreateUserResponseBody) SetUserId(v string) *CreateUserResponseBody {
 }
 
 type CreateUserResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateUserResponse) String() string {
@@ -5289,6 +3015,11 @@ func (s CreateUserResponse) GoString() string {
 
 func (s *CreateUserResponse) SetHeaders(v map[string]*string) *CreateUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateUserResponse) SetStatusCode(v int32) *CreateUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5374,8 +3105,9 @@ func (s *CreateVoiceAppraiseResponseBody) SetSuccess(v bool) *CreateVoiceApprais
 }
 
 type CreateVoiceAppraiseResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVoiceAppraiseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVoiceAppraiseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateVoiceAppraiseResponse) String() string {
@@ -5388,6 +3120,11 @@ func (s CreateVoiceAppraiseResponse) GoString() string {
 
 func (s *CreateVoiceAppraiseResponse) SetHeaders(v map[string]*string) *CreateVoiceAppraiseResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateVoiceAppraiseResponse) SetStatusCode(v int32) *CreateVoiceAppraiseResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5455,8 +3192,9 @@ func (s *DeleteInstanceResponseBody) SetSuccess(v bool) *DeleteInstanceResponseB
 }
 
 type DeleteInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteInstanceResponse) String() string {
@@ -5472,94 +3210,12 @@ func (s *DeleteInstanceResponse) SetHeaders(v map[string]*string) *DeleteInstanc
 	return s
 }
 
+func (s *DeleteInstanceResponse) SetStatusCode(v int32) *DeleteInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteInstanceResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteJobGroupRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-}
-
-func (s DeleteJobGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteJobGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteJobGroupRequest) SetInstanceId(v string) *DeleteJobGroupRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteJobGroupRequest) SetJobGroupId(v string) *DeleteJobGroupRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-type DeleteJobGroupResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteJobGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteJobGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteJobGroupResponseBody) SetCode(v string) *DeleteJobGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteJobGroupResponseBody) SetHttpStatusCode(v int32) *DeleteJobGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DeleteJobGroupResponseBody) SetMessage(v string) *DeleteJobGroupResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteJobGroupResponseBody) SetRequestId(v string) *DeleteJobGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteJobGroupResponseBody) SetSuccess(v bool) *DeleteJobGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteJobGroupResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteJobGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteJobGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteJobGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteJobGroupResponse) SetHeaders(v map[string]*string) *DeleteJobGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteJobGroupResponse) SetBody(v *DeleteJobGroupResponseBody) *DeleteJobGroupResponse {
 	s.Body = v
 	return s
 }
@@ -5629,8 +3285,9 @@ func (s *DeleteMediaResponseBody) SetSuccess(v bool) *DeleteMediaResponseBody {
 }
 
 type DeleteMediaResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMediaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMediaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteMediaResponse) String() string {
@@ -5643,6 +3300,11 @@ func (s DeleteMediaResponse) GoString() string {
 
 func (s *DeleteMediaResponse) SetHeaders(v map[string]*string) *DeleteMediaResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteMediaResponse) SetStatusCode(v int32) *DeleteMediaResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5716,8 +3378,9 @@ func (s *DeletePhoneTagsResponseBody) SetSuccess(v bool) *DeletePhoneTagsRespons
 }
 
 type DeletePhoneTagsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeletePhoneTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePhoneTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeletePhoneTagsResponse) String() string {
@@ -5730,6 +3393,11 @@ func (s DeletePhoneTagsResponse) GoString() string {
 
 func (s *DeletePhoneTagsResponse) SetHeaders(v map[string]*string) *DeletePhoneTagsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeletePhoneTagsResponse) SetStatusCode(v int32) *DeletePhoneTagsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5803,8 +3471,9 @@ func (s *DeleteSkillGroupResponseBody) SetSuccess(v bool) *DeleteSkillGroupRespo
 }
 
 type DeleteSkillGroupResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSkillGroupResponse) String() string {
@@ -5820,100 +3489,12 @@ func (s *DeleteSkillGroupResponse) SetHeaders(v map[string]*string) *DeleteSkill
 	return s
 }
 
+func (s *DeleteSkillGroupResponse) SetStatusCode(v int32) *DeleteSkillGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteSkillGroupResponse) SetBody(v *DeleteSkillGroupResponseBody) *DeleteSkillGroupResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteSurveyRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	SurveyId   *string `json:"SurveyId,omitempty" xml:"SurveyId,omitempty"`
-}
-
-func (s DeleteSurveyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSurveyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSurveyRequest) SetInstanceId(v string) *DeleteSurveyRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteSurveyRequest) SetScenarioId(v string) *DeleteSurveyRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *DeleteSurveyRequest) SetSurveyId(v string) *DeleteSurveyRequest {
-	s.SurveyId = &v
-	return s
-}
-
-type DeleteSurveyResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteSurveyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSurveyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSurveyResponseBody) SetCode(v string) *DeleteSurveyResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteSurveyResponseBody) SetHttpStatusCode(v int32) *DeleteSurveyResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DeleteSurveyResponseBody) SetMessage(v string) *DeleteSurveyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteSurveyResponseBody) SetRequestId(v string) *DeleteSurveyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteSurveyResponseBody) SetSuccess(v bool) *DeleteSurveyResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteSurveyResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSurveyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteSurveyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSurveyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSurveyResponse) SetHeaders(v map[string]*string) *DeleteSurveyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteSurveyResponse) SetBody(v *DeleteSurveyResponseBody) *DeleteSurveyResponse {
 	s.Body = v
 	return s
 }
@@ -6031,8 +3612,9 @@ func (s *DialExResponseBody) SetTimeStamp(v string) *DialExResponseBody {
 }
 
 type DialExResponse struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DialExResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DialExResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DialExResponse) String() string {
@@ -6048,183 +3630,12 @@ func (s *DialExResponse) SetHeaders(v map[string]*string) *DialExResponse {
 	return s
 }
 
+func (s *DialExResponse) SetStatusCode(v int32) *DialExResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DialExResponse) SetBody(v *DialExResponseBody) *DialExResponse {
-	s.Body = v
-	return s
-}
-
-type DialogueRequest struct {
-	ActionKey     *string `json:"ActionKey,omitempty" xml:"ActionKey,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	CallId        *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	CallType      *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
-	CalledNumber  *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ScenarioId    *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Utterance     *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
-}
-
-func (s DialogueRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DialogueRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DialogueRequest) SetActionKey(v string) *DialogueRequest {
-	s.ActionKey = &v
-	return s
-}
-
-func (s *DialogueRequest) SetActionParams(v string) *DialogueRequest {
-	s.ActionParams = &v
-	return s
-}
-
-func (s *DialogueRequest) SetCallId(v string) *DialogueRequest {
-	s.CallId = &v
-	return s
-}
-
-func (s *DialogueRequest) SetCallType(v string) *DialogueRequest {
-	s.CallType = &v
-	return s
-}
-
-func (s *DialogueRequest) SetCalledNumber(v string) *DialogueRequest {
-	s.CalledNumber = &v
-	return s
-}
-
-func (s *DialogueRequest) SetCallingNumber(v string) *DialogueRequest {
-	s.CallingNumber = &v
-	return s
-}
-
-func (s *DialogueRequest) SetInstanceId(v string) *DialogueRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DialogueRequest) SetScenarioId(v string) *DialogueRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *DialogueRequest) SetTaskId(v string) *DialogueRequest {
-	s.TaskId = &v
-	return s
-}
-
-func (s *DialogueRequest) SetUtterance(v string) *DialogueRequest {
-	s.Utterance = &v
-	return s
-}
-
-type DialogueResponseBody struct {
-	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Feedback       *DialogueResponseBodyFeedback `json:"Feedback,omitempty" xml:"Feedback,omitempty" type:"Struct"`
-	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DialogueResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DialogueResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DialogueResponseBody) SetCode(v string) *DialogueResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DialogueResponseBody) SetFeedback(v *DialogueResponseBodyFeedback) *DialogueResponseBody {
-	s.Feedback = v
-	return s
-}
-
-func (s *DialogueResponseBody) SetHttpStatusCode(v int32) *DialogueResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DialogueResponseBody) SetMessage(v string) *DialogueResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DialogueResponseBody) SetRequestId(v string) *DialogueResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DialogueResponseBody) SetSuccess(v bool) *DialogueResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DialogueResponseBodyFeedback struct {
-	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
-}
-
-func (s DialogueResponseBodyFeedback) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DialogueResponseBodyFeedback) GoString() string {
-	return s.String()
-}
-
-func (s *DialogueResponseBodyFeedback) SetAction(v string) *DialogueResponseBodyFeedback {
-	s.Action = &v
-	return s
-}
-
-func (s *DialogueResponseBodyFeedback) SetActionParams(v string) *DialogueResponseBodyFeedback {
-	s.ActionParams = &v
-	return s
-}
-
-func (s *DialogueResponseBodyFeedback) SetContent(v string) *DialogueResponseBodyFeedback {
-	s.Content = &v
-	return s
-}
-
-func (s *DialogueResponseBodyFeedback) SetInterruptible(v bool) *DialogueResponseBodyFeedback {
-	s.Interruptible = &v
-	return s
-}
-
-type DialogueResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DialogueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DialogueResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DialogueResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DialogueResponse) SetHeaders(v map[string]*string) *DialogueResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DialogueResponse) SetBody(v *DialogueResponseBody) *DialogueResponse {
 	s.Body = v
 	return s
 }
@@ -6288,8 +3699,9 @@ func (s *DisableTrunkProvidersResponseBody) SetSuccess(v bool) *DisableTrunkProv
 }
 
 type DisableTrunkProvidersResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableTrunkProvidersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableTrunkProvidersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableTrunkProvidersResponse) String() string {
@@ -6302,6 +3714,11 @@ func (s DisableTrunkProvidersResponse) GoString() string {
 
 func (s *DisableTrunkProvidersResponse) SetHeaders(v map[string]*string) *DisableTrunkProvidersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableTrunkProvidersResponse) SetStatusCode(v int32) *DisableTrunkProvidersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6427,8 +3844,9 @@ func (s *DownloadAllTypeRecordingResponseBodyMediaDownloadParamListMediaDownload
 }
 
 type DownloadAllTypeRecordingResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DownloadAllTypeRecordingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DownloadAllTypeRecordingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DownloadAllTypeRecordingResponse) String() string {
@@ -6444,233 +3862,12 @@ func (s *DownloadAllTypeRecordingResponse) SetHeaders(v map[string]*string) *Dow
 	return s
 }
 
+func (s *DownloadAllTypeRecordingResponse) SetStatusCode(v int32) *DownloadAllTypeRecordingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DownloadAllTypeRecordingResponse) SetBody(v *DownloadAllTypeRecordingResponseBody) *DownloadAllTypeRecordingResponse {
-	s.Body = v
-	return s
-}
-
-type DownloadCabRecordingRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s DownloadCabRecordingRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadCabRecordingRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadCabRecordingRequest) SetInstanceId(v string) *DownloadCabRecordingRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DownloadCabRecordingRequest) SetTaskId(v string) *DownloadCabRecordingRequest {
-	s.TaskId = &v
-	return s
-}
-
-type DownloadCabRecordingResponseBody struct {
-	Code               *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode     *int32                                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	MediaDownloadParam *DownloadCabRecordingResponseBodyMediaDownloadParam `json:"MediaDownloadParam,omitempty" xml:"MediaDownloadParam,omitempty" type:"Struct"`
-	Message            *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DownloadCabRecordingResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadCabRecordingResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadCabRecordingResponseBody) SetCode(v string) *DownloadCabRecordingResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DownloadCabRecordingResponseBody) SetHttpStatusCode(v int32) *DownloadCabRecordingResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DownloadCabRecordingResponseBody) SetMediaDownloadParam(v *DownloadCabRecordingResponseBodyMediaDownloadParam) *DownloadCabRecordingResponseBody {
-	s.MediaDownloadParam = v
-	return s
-}
-
-func (s *DownloadCabRecordingResponseBody) SetMessage(v string) *DownloadCabRecordingResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DownloadCabRecordingResponseBody) SetRequestId(v string) *DownloadCabRecordingResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DownloadCabRecordingResponseBody) SetSuccess(v bool) *DownloadCabRecordingResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DownloadCabRecordingResponseBodyMediaDownloadParam struct {
-	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	SignatureUrl *string `json:"SignatureUrl,omitempty" xml:"SignatureUrl,omitempty"`
-}
-
-func (s DownloadCabRecordingResponseBodyMediaDownloadParam) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadCabRecordingResponseBodyMediaDownloadParam) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadCabRecordingResponseBodyMediaDownloadParam) SetFileName(v string) *DownloadCabRecordingResponseBodyMediaDownloadParam {
-	s.FileName = &v
-	return s
-}
-
-func (s *DownloadCabRecordingResponseBodyMediaDownloadParam) SetSignatureUrl(v string) *DownloadCabRecordingResponseBodyMediaDownloadParam {
-	s.SignatureUrl = &v
-	return s
-}
-
-type DownloadCabRecordingResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DownloadCabRecordingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DownloadCabRecordingResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadCabRecordingResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadCabRecordingResponse) SetHeaders(v map[string]*string) *DownloadCabRecordingResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DownloadCabRecordingResponse) SetBody(v *DownloadCabRecordingResponseBody) *DownloadCabRecordingResponse {
-	s.Body = v
-	return s
-}
-
-type DownloadOriginalStatisticsReportRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-}
-
-func (s DownloadOriginalStatisticsReportRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadOriginalStatisticsReportRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadOriginalStatisticsReportRequest) SetInstanceId(v string) *DownloadOriginalStatisticsReportRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DownloadOriginalStatisticsReportRequest) SetJobGroupId(v string) *DownloadOriginalStatisticsReportRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-type DownloadOriginalStatisticsReportResponseBody struct {
-	Code           *string                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	DownloadParams *DownloadOriginalStatisticsReportResponseBodyDownloadParams `json:"DownloadParams,omitempty" xml:"DownloadParams,omitempty" type:"Struct"`
-	HttpStatusCode *int32                                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DownloadOriginalStatisticsReportResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadOriginalStatisticsReportResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadOriginalStatisticsReportResponseBody) SetCode(v string) *DownloadOriginalStatisticsReportResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DownloadOriginalStatisticsReportResponseBody) SetDownloadParams(v *DownloadOriginalStatisticsReportResponseBodyDownloadParams) *DownloadOriginalStatisticsReportResponseBody {
-	s.DownloadParams = v
-	return s
-}
-
-func (s *DownloadOriginalStatisticsReportResponseBody) SetHttpStatusCode(v int32) *DownloadOriginalStatisticsReportResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DownloadOriginalStatisticsReportResponseBody) SetMessage(v string) *DownloadOriginalStatisticsReportResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DownloadOriginalStatisticsReportResponseBody) SetRequestId(v string) *DownloadOriginalStatisticsReportResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DownloadOriginalStatisticsReportResponseBody) SetSuccess(v bool) *DownloadOriginalStatisticsReportResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DownloadOriginalStatisticsReportResponseBodyDownloadParams struct {
-	SignatureUrl *string `json:"SignatureUrl,omitempty" xml:"SignatureUrl,omitempty"`
-}
-
-func (s DownloadOriginalStatisticsReportResponseBodyDownloadParams) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadOriginalStatisticsReportResponseBodyDownloadParams) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadOriginalStatisticsReportResponseBodyDownloadParams) SetSignatureUrl(v string) *DownloadOriginalStatisticsReportResponseBodyDownloadParams {
-	s.SignatureUrl = &v
-	return s
-}
-
-type DownloadOriginalStatisticsReportResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DownloadOriginalStatisticsReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DownloadOriginalStatisticsReportResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadOriginalStatisticsReportResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadOriginalStatisticsReportResponse) SetHeaders(v map[string]*string) *DownloadOriginalStatisticsReportResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DownloadOriginalStatisticsReportResponse) SetBody(v *DownloadOriginalStatisticsReportResponseBody) *DownloadOriginalStatisticsReportResponse {
 	s.Body = v
 	return s
 }
@@ -6775,8 +3972,9 @@ func (s *DownloadRecordingResponseBodyMediaDownloadParam) SetSignatureUrl(v stri
 }
 
 type DownloadRecordingResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DownloadRecordingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DownloadRecordingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DownloadRecordingResponse) String() string {
@@ -6792,117 +3990,12 @@ func (s *DownloadRecordingResponse) SetHeaders(v map[string]*string) *DownloadRe
 	return s
 }
 
+func (s *DownloadRecordingResponse) SetStatusCode(v int32) *DownloadRecordingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DownloadRecordingResponse) SetBody(v *DownloadRecordingResponseBody) *DownloadRecordingResponse {
-	s.Body = v
-	return s
-}
-
-type DownloadUnreachableContactsRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-}
-
-func (s DownloadUnreachableContactsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadUnreachableContactsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadUnreachableContactsRequest) SetInstanceId(v string) *DownloadUnreachableContactsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DownloadUnreachableContactsRequest) SetJobGroupId(v string) *DownloadUnreachableContactsRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-type DownloadUnreachableContactsResponseBody struct {
-	Code           *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	DownloadParams *DownloadUnreachableContactsResponseBodyDownloadParams `json:"DownloadParams,omitempty" xml:"DownloadParams,omitempty" type:"Struct"`
-	HttpStatusCode *int32                                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DownloadUnreachableContactsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadUnreachableContactsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadUnreachableContactsResponseBody) SetCode(v string) *DownloadUnreachableContactsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DownloadUnreachableContactsResponseBody) SetDownloadParams(v *DownloadUnreachableContactsResponseBodyDownloadParams) *DownloadUnreachableContactsResponseBody {
-	s.DownloadParams = v
-	return s
-}
-
-func (s *DownloadUnreachableContactsResponseBody) SetHttpStatusCode(v int32) *DownloadUnreachableContactsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DownloadUnreachableContactsResponseBody) SetMessage(v string) *DownloadUnreachableContactsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DownloadUnreachableContactsResponseBody) SetRequestId(v string) *DownloadUnreachableContactsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DownloadUnreachableContactsResponseBody) SetSuccess(v bool) *DownloadUnreachableContactsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DownloadUnreachableContactsResponseBodyDownloadParams struct {
-	SignatureUrl *string `json:"SignatureUrl,omitempty" xml:"SignatureUrl,omitempty"`
-}
-
-func (s DownloadUnreachableContactsResponseBodyDownloadParams) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadUnreachableContactsResponseBodyDownloadParams) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadUnreachableContactsResponseBodyDownloadParams) SetSignatureUrl(v string) *DownloadUnreachableContactsResponseBodyDownloadParams {
-	s.SignatureUrl = &v
-	return s
-}
-
-type DownloadUnreachableContactsResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DownloadUnreachableContactsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DownloadUnreachableContactsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadUnreachableContactsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadUnreachableContactsResponse) SetHeaders(v map[string]*string) *DownloadUnreachableContactsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DownloadUnreachableContactsResponse) SetBody(v *DownloadUnreachableContactsResponseBody) *DownloadUnreachableContactsResponse {
 	s.Body = v
 	return s
 }
@@ -7269,8 +4362,9 @@ func (s *FindUsersResponseBodyUsersListUserSkillLevelsSkillLevelSkill) SetSkillG
 }
 
 type FindUsersResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FindUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FindUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FindUsersResponse) String() string {
@@ -7283,6 +4377,11 @@ func (s FindUsersResponse) GoString() string {
 
 func (s *FindUsersResponse) SetHeaders(v map[string]*string) *FindUsersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FindUsersResponse) SetStatusCode(v int32) *FindUsersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7872,8 +4971,9 @@ func (s *GenerateAgentStatisticReportResponseBodyDataListListGenerateAgentStatis
 }
 
 type GenerateAgentStatisticReportResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateAgentStatisticReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateAgentStatisticReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GenerateAgentStatisticReportResponse) String() string {
@@ -7886,6 +4986,11 @@ func (s GenerateAgentStatisticReportResponse) GoString() string {
 
 func (s *GenerateAgentStatisticReportResponse) SetHeaders(v map[string]*string) *GenerateAgentStatisticReportResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GenerateAgentStatisticReportResponse) SetStatusCode(v int32) *GenerateAgentStatisticReportResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8458,8 +5563,9 @@ func (s *GetAgentDataResponseBodyDataListListOverall) SetTotalWorkTime(v int64) 
 }
 
 type GetAgentDataResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAgentDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAgentDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAgentDataResponse) String() string {
@@ -8472,6 +5578,11 @@ func (s GetAgentDataResponse) GoString() string {
 
 func (s *GetAgentDataResponse) SetHeaders(v map[string]*string) *GetAgentDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetAgentDataResponse) SetStatusCode(v int32) *GetAgentDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8745,8 +5856,9 @@ func (s *GetCallMeasureSummaryReportResponseBodySummaryReport) SetYear(v int32) 
 }
 
 type GetCallMeasureSummaryReportResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetCallMeasureSummaryReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCallMeasureSummaryReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetCallMeasureSummaryReportResponse) String() string {
@@ -8759,6 +5871,11 @@ func (s GetCallMeasureSummaryReportResponse) GoString() string {
 
 func (s *GetCallMeasureSummaryReportResponse) SetHeaders(v map[string]*string) *GetCallMeasureSummaryReportResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetCallMeasureSummaryReportResponse) SetStatusCode(v int32) *GetCallMeasureSummaryReportResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8873,8 +5990,9 @@ func (s *GetConfigResponseBodyConfigItem) SetValue(v string) *GetConfigResponseB
 }
 
 type GetConfigResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetConfigResponse) String() string {
@@ -8890,141 +6008,12 @@ func (s *GetConfigResponse) SetHeaders(v map[string]*string) *GetConfigResponse 
 	return s
 }
 
+func (s *GetConfigResponse) SetStatusCode(v int32) *GetConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetConfigResponse) SetBody(v *GetConfigResponseBody) *GetConfigResponse {
-	s.Body = v
-	return s
-}
-
-type GetContactInfoByOutboundTaskIdRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OutboundTaskId *string `json:"OutboundTaskId,omitempty" xml:"OutboundTaskId,omitempty"`
-	SkillGroupId   *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-}
-
-func (s GetContactInfoByOutboundTaskIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetContactInfoByOutboundTaskIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetContactInfoByOutboundTaskIdRequest) SetInstanceId(v string) *GetContactInfoByOutboundTaskIdRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetContactInfoByOutboundTaskIdRequest) SetOutboundTaskId(v string) *GetContactInfoByOutboundTaskIdRequest {
-	s.OutboundTaskId = &v
-	return s
-}
-
-func (s *GetContactInfoByOutboundTaskIdRequest) SetSkillGroupId(v string) *GetContactInfoByOutboundTaskIdRequest {
-	s.SkillGroupId = &v
-	return s
-}
-
-type GetContactInfoByOutboundTaskIdResponseBody struct {
-	Code            *string                                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	ContactIdentity *GetContactInfoByOutboundTaskIdResponseBodyContactIdentity `json:"ContactIdentity,omitempty" xml:"ContactIdentity,omitempty" type:"Struct"`
-	HttpStatusCode  *int32                                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message         *string                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId       *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success         *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetContactInfoByOutboundTaskIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetContactInfoByOutboundTaskIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetContactInfoByOutboundTaskIdResponseBody) SetCode(v string) *GetContactInfoByOutboundTaskIdResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetContactInfoByOutboundTaskIdResponseBody) SetContactIdentity(v *GetContactInfoByOutboundTaskIdResponseBodyContactIdentity) *GetContactInfoByOutboundTaskIdResponseBody {
-	s.ContactIdentity = v
-	return s
-}
-
-func (s *GetContactInfoByOutboundTaskIdResponseBody) SetHttpStatusCode(v int32) *GetContactInfoByOutboundTaskIdResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetContactInfoByOutboundTaskIdResponseBody) SetMessage(v string) *GetContactInfoByOutboundTaskIdResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetContactInfoByOutboundTaskIdResponseBody) SetRequestId(v string) *GetContactInfoByOutboundTaskIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetContactInfoByOutboundTaskIdResponseBody) SetSuccess(v bool) *GetContactInfoByOutboundTaskIdResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetContactInfoByOutboundTaskIdResponseBodyContactIdentity struct {
-	Caller             *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	ContactReferrnceId *string `json:"ContactReferrnceId,omitempty" xml:"ContactReferrnceId,omitempty"`
-	JobGroupId         *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	UserPhone          *string `json:"UserPhone,omitempty" xml:"UserPhone,omitempty"`
-}
-
-func (s GetContactInfoByOutboundTaskIdResponseBodyContactIdentity) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetContactInfoByOutboundTaskIdResponseBodyContactIdentity) GoString() string {
-	return s.String()
-}
-
-func (s *GetContactInfoByOutboundTaskIdResponseBodyContactIdentity) SetCaller(v string) *GetContactInfoByOutboundTaskIdResponseBodyContactIdentity {
-	s.Caller = &v
-	return s
-}
-
-func (s *GetContactInfoByOutboundTaskIdResponseBodyContactIdentity) SetContactReferrnceId(v string) *GetContactInfoByOutboundTaskIdResponseBodyContactIdentity {
-	s.ContactReferrnceId = &v
-	return s
-}
-
-func (s *GetContactInfoByOutboundTaskIdResponseBodyContactIdentity) SetJobGroupId(v string) *GetContactInfoByOutboundTaskIdResponseBodyContactIdentity {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *GetContactInfoByOutboundTaskIdResponseBodyContactIdentity) SetUserPhone(v string) *GetContactInfoByOutboundTaskIdResponseBodyContactIdentity {
-	s.UserPhone = &v
-	return s
-}
-
-type GetContactInfoByOutboundTaskIdResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetContactInfoByOutboundTaskIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetContactInfoByOutboundTaskIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetContactInfoByOutboundTaskIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetContactInfoByOutboundTaskIdResponse) SetHeaders(v map[string]*string) *GetContactInfoByOutboundTaskIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetContactInfoByOutboundTaskIdResponse) SetBody(v *GetContactInfoByOutboundTaskIdResponseBody) *GetContactInfoByOutboundTaskIdResponse {
 	s.Body = v
 	return s
 }
@@ -9205,8 +6194,9 @@ func (s *GetConversationDetailByContactIdResponseBodyDataListListQualityCheckPhr
 }
 
 type GetConversationDetailByContactIdResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetConversationDetailByContactIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetConversationDetailByContactIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetConversationDetailByContactIdResponse) String() string {
@@ -9222,164 +6212,12 @@ func (s *GetConversationDetailByContactIdResponse) SetHeaders(v map[string]*stri
 	return s
 }
 
+func (s *GetConversationDetailByContactIdResponse) SetStatusCode(v int32) *GetConversationDetailByContactIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetConversationDetailByContactIdResponse) SetBody(v *GetConversationDetailByContactIdResponseBody) *GetConversationDetailByContactIdResponse {
-	s.Body = v
-	return s
-}
-
-type GetConversationListRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s GetConversationListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetConversationListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetConversationListRequest) SetInstanceId(v string) *GetConversationListRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetConversationListRequest) SetTaskId(v string) *GetConversationListRequest {
-	s.TaskId = &v
-	return s
-}
-
-type GetConversationListResponseBody struct {
-	Code           *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Conversations  []*GetConversationListResponseBodyConversations `json:"Conversations,omitempty" xml:"Conversations,omitempty" type:"Repeated"`
-	HttpStatusCode *int32                                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetConversationListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetConversationListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetConversationListResponseBody) SetCode(v string) *GetConversationListResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetConversationListResponseBody) SetConversations(v []*GetConversationListResponseBodyConversations) *GetConversationListResponseBody {
-	s.Conversations = v
-	return s
-}
-
-func (s *GetConversationListResponseBody) SetHttpStatusCode(v int32) *GetConversationListResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetConversationListResponseBody) SetMessage(v string) *GetConversationListResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetConversationListResponseBody) SetRequestId(v string) *GetConversationListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetConversationListResponseBody) SetSuccess(v bool) *GetConversationListResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetConversationListResponseBodyConversations struct {
-	Script    *string                                                `json:"Script,omitempty" xml:"Script,omitempty"`
-	Speaker   *string                                                `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
-	Summary   []*GetConversationListResponseBodyConversationsSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Repeated"`
-	Timestamp *int64                                                 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-}
-
-func (s GetConversationListResponseBodyConversations) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetConversationListResponseBodyConversations) GoString() string {
-	return s.String()
-}
-
-func (s *GetConversationListResponseBodyConversations) SetScript(v string) *GetConversationListResponseBodyConversations {
-	s.Script = &v
-	return s
-}
-
-func (s *GetConversationListResponseBodyConversations) SetSpeaker(v string) *GetConversationListResponseBodyConversations {
-	s.Speaker = &v
-	return s
-}
-
-func (s *GetConversationListResponseBodyConversations) SetSummary(v []*GetConversationListResponseBodyConversationsSummary) *GetConversationListResponseBodyConversations {
-	s.Summary = v
-	return s
-}
-
-func (s *GetConversationListResponseBodyConversations) SetTimestamp(v int64) *GetConversationListResponseBodyConversations {
-	s.Timestamp = &v
-	return s
-}
-
-type GetConversationListResponseBodyConversationsSummary struct {
-	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	SummaryName *string `json:"SummaryName,omitempty" xml:"SummaryName,omitempty"`
-}
-
-func (s GetConversationListResponseBodyConversationsSummary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetConversationListResponseBodyConversationsSummary) GoString() string {
-	return s.String()
-}
-
-func (s *GetConversationListResponseBodyConversationsSummary) SetCategory(v string) *GetConversationListResponseBodyConversationsSummary {
-	s.Category = &v
-	return s
-}
-
-func (s *GetConversationListResponseBodyConversationsSummary) SetContent(v string) *GetConversationListResponseBodyConversationsSummary {
-	s.Content = &v
-	return s
-}
-
-func (s *GetConversationListResponseBodyConversationsSummary) SetSummaryName(v string) *GetConversationListResponseBodyConversationsSummary {
-	s.SummaryName = &v
-	return s
-}
-
-type GetConversationListResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetConversationListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetConversationListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetConversationListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetConversationListResponse) SetHeaders(v map[string]*string) *GetConversationListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetConversationListResponse) SetBody(v *GetConversationListResponseBody) *GetConversationListResponse {
 	s.Body = v
 	return s
 }
@@ -9731,8 +6569,9 @@ func (s *GetInstanceResponseBodyInstancePhoneNumbersPhoneNumber) SetUsage(v stri
 }
 
 type GetInstanceResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetInstanceResponse) String() string {
@@ -9745,6 +6584,11 @@ func (s GetInstanceResponse) GoString() string {
 
 func (s *GetInstanceResponse) SetHeaders(v map[string]*string) *GetInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceResponse) SetStatusCode(v int32) *GetInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9875,8 +6719,9 @@ func (s *GetInstanceStateResponseBodyRealTimeInstanceStateAgentStateDistribution
 }
 
 type GetInstanceStateResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetInstanceStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetInstanceStateResponse) String() string {
@@ -9889,6 +6734,11 @@ func (s GetInstanceStateResponse) GoString() string {
 
 func (s *GetInstanceStateResponse) SetHeaders(v map[string]*string) *GetInstanceStateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceStateResponse) SetStatusCode(v int32) *GetInstanceStateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10384,8 +7234,9 @@ func (s *GetInstanceSummaryReportResponseBodyInstanceSummaryReportOverall) SetTo
 }
 
 type GetInstanceSummaryReportResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetInstanceSummaryReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceSummaryReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetInstanceSummaryReportResponse) String() string {
@@ -10398,6 +7249,11 @@ func (s GetInstanceSummaryReportResponse) GoString() string {
 
 func (s *GetInstanceSummaryReportResponse) SetHeaders(v map[string]*string) *GetInstanceSummaryReportResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceSummaryReportResponse) SetStatusCode(v int32) *GetInstanceSummaryReportResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10945,8 +7801,9 @@ func (s *GetInstanceSummaryReportByIntervalResponseBodyInstanceTimeIntervalRepor
 }
 
 type GetInstanceSummaryReportByIntervalResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetInstanceSummaryReportByIntervalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceSummaryReportByIntervalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetInstanceSummaryReportByIntervalResponse) String() string {
@@ -10959,6 +7816,11 @@ func (s GetInstanceSummaryReportByIntervalResponse) GoString() string {
 
 func (s *GetInstanceSummaryReportByIntervalResponse) SetHeaders(v map[string]*string) *GetInstanceSummaryReportByIntervalResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceSummaryReportByIntervalResponse) SetStatusCode(v int32) *GetInstanceSummaryReportByIntervalResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11448,8 +8310,9 @@ func (s *GetInstanceSummaryReportSinceMidnightResponseBodyInstanceSummaryReportO
 }
 
 type GetInstanceSummaryReportSinceMidnightResponse struct {
-	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetInstanceSummaryReportSinceMidnightResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceSummaryReportSinceMidnightResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetInstanceSummaryReportSinceMidnightResponse) String() string {
@@ -11465,2142 +8328,12 @@ func (s *GetInstanceSummaryReportSinceMidnightResponse) SetHeaders(v map[string]
 	return s
 }
 
+func (s *GetInstanceSummaryReportSinceMidnightResponse) SetStatusCode(v int32) *GetInstanceSummaryReportSinceMidnightResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetInstanceSummaryReportSinceMidnightResponse) SetBody(v *GetInstanceSummaryReportSinceMidnightResponseBody) *GetInstanceSummaryReportSinceMidnightResponse {
-	s.Body = v
-	return s
-}
-
-type GetJobRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-}
-
-func (s GetJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobRequest) SetInstanceId(v string) *GetJobRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetJobRequest) SetJobId(v string) *GetJobRequest {
-	s.JobId = &v
-	return s
-}
-
-type GetJobResponseBody struct {
-	Code           *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Job            *GetJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
-	Message        *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobResponseBody) SetCode(v string) *GetJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetJobResponseBody) SetHttpStatusCode(v int32) *GetJobResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetJobResponseBody) SetJob(v *GetJobResponseBodyJob) *GetJobResponseBody {
-	s.Job = v
-	return s
-}
-
-func (s *GetJobResponseBody) SetMessage(v string) *GetJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetJobResponseBody) SetRequestId(v string) *GetJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetJobResponseBody) SetSuccess(v bool) *GetJobResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetJobResponseBodyJob struct {
-	CallingNumbers []*string                        `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
-	Contacts       []*GetJobResponseBodyJobContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
-	Extras         []*GetJobResponseBodyJobExtras   `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Repeated"`
-	FailureReason  *string                          `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
-	GroupId        *string                          `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId          *string                          `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Priority       *int32                           `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ReferenceId    *string                          `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	ScenarioId     *string                          `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Status         *string                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	StrategyId     *string                          `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	Summary        []*GetJobResponseBodyJobSummary  `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Repeated"`
-	SystemPriority *int32                           `json:"SystemPriority,omitempty" xml:"SystemPriority,omitempty"`
-	Tasks          []*GetJobResponseBodyJobTasks    `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-}
-
-func (s GetJobResponseBodyJob) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobResponseBodyJob) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobResponseBodyJob) SetCallingNumbers(v []*string) *GetJobResponseBodyJob {
-	s.CallingNumbers = v
-	return s
-}
-
-func (s *GetJobResponseBodyJob) SetContacts(v []*GetJobResponseBodyJobContacts) *GetJobResponseBodyJob {
-	s.Contacts = v
-	return s
-}
-
-func (s *GetJobResponseBodyJob) SetExtras(v []*GetJobResponseBodyJobExtras) *GetJobResponseBodyJob {
-	s.Extras = v
-	return s
-}
-
-func (s *GetJobResponseBodyJob) SetFailureReason(v string) *GetJobResponseBodyJob {
-	s.FailureReason = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJob) SetGroupId(v string) *GetJobResponseBodyJob {
-	s.GroupId = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJob) SetJobId(v string) *GetJobResponseBodyJob {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJob) SetPriority(v int32) *GetJobResponseBodyJob {
-	s.Priority = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJob) SetReferenceId(v string) *GetJobResponseBodyJob {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJob) SetScenarioId(v string) *GetJobResponseBodyJob {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJob) SetStatus(v string) *GetJobResponseBodyJob {
-	s.Status = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJob) SetStrategyId(v string) *GetJobResponseBodyJob {
-	s.StrategyId = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJob) SetSummary(v []*GetJobResponseBodyJobSummary) *GetJobResponseBodyJob {
-	s.Summary = v
-	return s
-}
-
-func (s *GetJobResponseBodyJob) SetSystemPriority(v int32) *GetJobResponseBodyJob {
-	s.SystemPriority = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJob) SetTasks(v []*GetJobResponseBodyJobTasks) *GetJobResponseBodyJob {
-	s.Tasks = v
-	return s
-}
-
-type GetJobResponseBodyJobContacts struct {
-	ContactId   *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Honorific   *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
-}
-
-func (s GetJobResponseBodyJobContacts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobResponseBodyJobContacts) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobResponseBodyJobContacts) SetContactId(v string) *GetJobResponseBodyJobContacts {
-	s.ContactId = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobContacts) SetContactName(v string) *GetJobResponseBodyJobContacts {
-	s.ContactName = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobContacts) SetHonorific(v string) *GetJobResponseBodyJobContacts {
-	s.Honorific = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobContacts) SetPhoneNumber(v string) *GetJobResponseBodyJobContacts {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobContacts) SetReferenceId(v string) *GetJobResponseBodyJobContacts {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobContacts) SetRole(v string) *GetJobResponseBodyJobContacts {
-	s.Role = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobContacts) SetState(v string) *GetJobResponseBodyJobContacts {
-	s.State = &v
-	return s
-}
-
-type GetJobResponseBodyJobExtras struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s GetJobResponseBodyJobExtras) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobResponseBodyJobExtras) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobResponseBodyJobExtras) SetKey(v string) *GetJobResponseBodyJobExtras {
-	s.Key = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobExtras) SetValue(v string) *GetJobResponseBodyJobExtras {
-	s.Value = &v
-	return s
-}
-
-type GetJobResponseBodyJobSummary struct {
-	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	SummaryName *string `json:"SummaryName,omitempty" xml:"SummaryName,omitempty"`
-}
-
-func (s GetJobResponseBodyJobSummary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobResponseBodyJobSummary) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobResponseBodyJobSummary) SetCategory(v string) *GetJobResponseBodyJobSummary {
-	s.Category = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobSummary) SetContent(v string) *GetJobResponseBodyJobSummary {
-	s.Content = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobSummary) SetSummaryName(v string) *GetJobResponseBodyJobSummary {
-	s.SummaryName = &v
-	return s
-}
-
-type GetJobResponseBodyJobTasks struct {
-	ActualTime    *int64                                    `json:"ActualTime,omitempty" xml:"ActualTime,omitempty"`
-	Brief         *string                                   `json:"Brief,omitempty" xml:"Brief,omitempty"`
-	CallId        *string                                   `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	CalledNumber  *string                                   `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber *string                                   `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	ChatbotId     *string                                   `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
-	Contact       *GetJobResponseBodyJobTasksContact        `json:"Contact,omitempty" xml:"Contact,omitempty" type:"Struct"`
-	Conversation  []*GetJobResponseBodyJobTasksConversation `json:"Conversation,omitempty" xml:"Conversation,omitempty" type:"Repeated"`
-	Duration      *int32                                    `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	JobId         *string                                   `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PlanedTime    *int64                                    `json:"PlanedTime,omitempty" xml:"PlanedTime,omitempty"`
-	ScenarioId    *string                                   `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Status        *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId        *string                                   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s GetJobResponseBodyJobTasks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobResponseBodyJobTasks) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobResponseBodyJobTasks) SetActualTime(v int64) *GetJobResponseBodyJobTasks {
-	s.ActualTime = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasks) SetBrief(v string) *GetJobResponseBodyJobTasks {
-	s.Brief = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasks) SetCallId(v string) *GetJobResponseBodyJobTasks {
-	s.CallId = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasks) SetCalledNumber(v string) *GetJobResponseBodyJobTasks {
-	s.CalledNumber = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasks) SetCallingNumber(v string) *GetJobResponseBodyJobTasks {
-	s.CallingNumber = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasks) SetChatbotId(v string) *GetJobResponseBodyJobTasks {
-	s.ChatbotId = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasks) SetContact(v *GetJobResponseBodyJobTasksContact) *GetJobResponseBodyJobTasks {
-	s.Contact = v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasks) SetConversation(v []*GetJobResponseBodyJobTasksConversation) *GetJobResponseBodyJobTasks {
-	s.Conversation = v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasks) SetDuration(v int32) *GetJobResponseBodyJobTasks {
-	s.Duration = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasks) SetJobId(v string) *GetJobResponseBodyJobTasks {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasks) SetPlanedTime(v int64) *GetJobResponseBodyJobTasks {
-	s.PlanedTime = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasks) SetScenarioId(v string) *GetJobResponseBodyJobTasks {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasks) SetStatus(v string) *GetJobResponseBodyJobTasks {
-	s.Status = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasks) SetTaskId(v string) *GetJobResponseBodyJobTasks {
-	s.TaskId = &v
-	return s
-}
-
-type GetJobResponseBodyJobTasksContact struct {
-	ContactId   *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Honorific   *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
-}
-
-func (s GetJobResponseBodyJobTasksContact) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobResponseBodyJobTasksContact) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobResponseBodyJobTasksContact) SetContactId(v string) *GetJobResponseBodyJobTasksContact {
-	s.ContactId = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasksContact) SetContactName(v string) *GetJobResponseBodyJobTasksContact {
-	s.ContactName = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasksContact) SetHonorific(v string) *GetJobResponseBodyJobTasksContact {
-	s.Honorific = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasksContact) SetPhoneNumber(v string) *GetJobResponseBodyJobTasksContact {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasksContact) SetReferenceId(v string) *GetJobResponseBodyJobTasksContact {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasksContact) SetRole(v string) *GetJobResponseBodyJobTasksContact {
-	s.Role = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasksContact) SetState(v string) *GetJobResponseBodyJobTasksContact {
-	s.State = &v
-	return s
-}
-
-type GetJobResponseBodyJobTasksConversation struct {
-	Script    *string                                          `json:"Script,omitempty" xml:"Script,omitempty"`
-	Speaker   *string                                          `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
-	Summary   []*GetJobResponseBodyJobTasksConversationSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Repeated"`
-	Timestamp *int64                                           `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-}
-
-func (s GetJobResponseBodyJobTasksConversation) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobResponseBodyJobTasksConversation) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobResponseBodyJobTasksConversation) SetScript(v string) *GetJobResponseBodyJobTasksConversation {
-	s.Script = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasksConversation) SetSpeaker(v string) *GetJobResponseBodyJobTasksConversation {
-	s.Speaker = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasksConversation) SetSummary(v []*GetJobResponseBodyJobTasksConversationSummary) *GetJobResponseBodyJobTasksConversation {
-	s.Summary = v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasksConversation) SetTimestamp(v int64) *GetJobResponseBodyJobTasksConversation {
-	s.Timestamp = &v
-	return s
-}
-
-type GetJobResponseBodyJobTasksConversationSummary struct {
-	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	SummaryName *string `json:"SummaryName,omitempty" xml:"SummaryName,omitempty"`
-}
-
-func (s GetJobResponseBodyJobTasksConversationSummary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobResponseBodyJobTasksConversationSummary) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobResponseBodyJobTasksConversationSummary) SetCategory(v string) *GetJobResponseBodyJobTasksConversationSummary {
-	s.Category = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasksConversationSummary) SetContent(v string) *GetJobResponseBodyJobTasksConversationSummary {
-	s.Content = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobTasksConversationSummary) SetSummaryName(v string) *GetJobResponseBodyJobTasksConversationSummary {
-	s.SummaryName = &v
-	return s
-}
-
-type GetJobResponse struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobResponse) SetHeaders(v map[string]*string) *GetJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
-	s.Body = v
-	return s
-}
-
-type GetJobDataUploadParamsRequest struct {
-	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-}
-
-func (s GetJobDataUploadParamsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobDataUploadParamsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobDataUploadParamsRequest) SetFileName(v string) *GetJobDataUploadParamsRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *GetJobDataUploadParamsRequest) SetInstanceId(v string) *GetJobDataUploadParamsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-type GetJobDataUploadParamsResponseBody struct {
-	Code           *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	UploadParams   *GetJobDataUploadParamsResponseBodyUploadParams `json:"UploadParams,omitempty" xml:"UploadParams,omitempty" type:"Struct"`
-}
-
-func (s GetJobDataUploadParamsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobDataUploadParamsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobDataUploadParamsResponseBody) SetCode(v string) *GetJobDataUploadParamsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetJobDataUploadParamsResponseBody) SetHttpStatusCode(v int32) *GetJobDataUploadParamsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetJobDataUploadParamsResponseBody) SetMessage(v string) *GetJobDataUploadParamsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetJobDataUploadParamsResponseBody) SetRequestId(v string) *GetJobDataUploadParamsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetJobDataUploadParamsResponseBody) SetSuccess(v bool) *GetJobDataUploadParamsResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetJobDataUploadParamsResponseBody) SetUploadParams(v *GetJobDataUploadParamsResponseBodyUploadParams) *GetJobDataUploadParamsResponseBody {
-	s.UploadParams = v
-	return s
-}
-
-type GetJobDataUploadParamsResponseBodyUploadParams struct {
-	AccessId  *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	Expire    *int32  `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	Folder    *string `json:"Folder,omitempty" xml:"Folder,omitempty"`
-	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-}
-
-func (s GetJobDataUploadParamsResponseBodyUploadParams) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobDataUploadParamsResponseBodyUploadParams) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobDataUploadParamsResponseBodyUploadParams) SetAccessId(v string) *GetJobDataUploadParamsResponseBodyUploadParams {
-	s.AccessId = &v
-	return s
-}
-
-func (s *GetJobDataUploadParamsResponseBodyUploadParams) SetExpire(v int32) *GetJobDataUploadParamsResponseBodyUploadParams {
-	s.Expire = &v
-	return s
-}
-
-func (s *GetJobDataUploadParamsResponseBodyUploadParams) SetFolder(v string) *GetJobDataUploadParamsResponseBodyUploadParams {
-	s.Folder = &v
-	return s
-}
-
-func (s *GetJobDataUploadParamsResponseBodyUploadParams) SetHost(v string) *GetJobDataUploadParamsResponseBodyUploadParams {
-	s.Host = &v
-	return s
-}
-
-func (s *GetJobDataUploadParamsResponseBodyUploadParams) SetPolicy(v string) *GetJobDataUploadParamsResponseBodyUploadParams {
-	s.Policy = &v
-	return s
-}
-
-func (s *GetJobDataUploadParamsResponseBodyUploadParams) SetSignature(v string) *GetJobDataUploadParamsResponseBodyUploadParams {
-	s.Signature = &v
-	return s
-}
-
-type GetJobDataUploadParamsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobDataUploadParamsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetJobDataUploadParamsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobDataUploadParamsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobDataUploadParamsResponse) SetHeaders(v map[string]*string) *GetJobDataUploadParamsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetJobDataUploadParamsResponse) SetBody(v *GetJobDataUploadParamsResponseBody) *GetJobDataUploadParamsResponse {
-	s.Body = v
-	return s
-}
-
-type GetJobFileUploadUrlRequest struct {
-	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-}
-
-func (s GetJobFileUploadUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobFileUploadUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobFileUploadUrlRequest) SetFileName(v string) *GetJobFileUploadUrlRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *GetJobFileUploadUrlRequest) SetInstanceId(v string) *GetJobFileUploadUrlRequest {
-	s.InstanceId = &v
-	return s
-}
-
-type GetJobFileUploadUrlResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	FilePath       *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	UploadUrl      *string `json:"UploadUrl,omitempty" xml:"UploadUrl,omitempty"`
-}
-
-func (s GetJobFileUploadUrlResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobFileUploadUrlResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobFileUploadUrlResponseBody) SetCode(v string) *GetJobFileUploadUrlResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetJobFileUploadUrlResponseBody) SetFilePath(v string) *GetJobFileUploadUrlResponseBody {
-	s.FilePath = &v
-	return s
-}
-
-func (s *GetJobFileUploadUrlResponseBody) SetHttpStatusCode(v int32) *GetJobFileUploadUrlResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetJobFileUploadUrlResponseBody) SetMessage(v string) *GetJobFileUploadUrlResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetJobFileUploadUrlResponseBody) SetRequestId(v string) *GetJobFileUploadUrlResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetJobFileUploadUrlResponseBody) SetSuccess(v bool) *GetJobFileUploadUrlResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetJobFileUploadUrlResponseBody) SetUploadUrl(v string) *GetJobFileUploadUrlResponseBody {
-	s.UploadUrl = &v
-	return s
-}
-
-type GetJobFileUploadUrlResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobFileUploadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetJobFileUploadUrlResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobFileUploadUrlResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobFileUploadUrlResponse) SetHeaders(v map[string]*string) *GetJobFileUploadUrlResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetJobFileUploadUrlResponse) SetBody(v *GetJobFileUploadUrlResponseBody) *GetJobFileUploadUrlResponse {
-	s.Body = v
-	return s
-}
-
-type GetJobGroupRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-}
-
-func (s GetJobGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobGroupRequest) SetInstanceId(v string) *GetJobGroupRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetJobGroupRequest) SetJobGroupId(v string) *GetJobGroupRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-type GetJobGroupResponseBody struct {
-	Code           *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobGroup       *GetJobGroupResponseBodyJobGroup `json:"JobGroup,omitempty" xml:"JobGroup,omitempty" type:"Struct"`
-	Message        *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetJobGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobGroupResponseBody) SetCode(v string) *GetJobGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBody) SetHttpStatusCode(v int32) *GetJobGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBody) SetJobGroup(v *GetJobGroupResponseBodyJobGroup) *GetJobGroupResponseBody {
-	s.JobGroup = v
-	return s
-}
-
-func (s *GetJobGroupResponseBody) SetMessage(v string) *GetJobGroupResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBody) SetRequestId(v string) *GetJobGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBody) SetSuccess(v bool) *GetJobGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetJobGroupResponseBodyJobGroup struct {
-	CallingNumbers []*string                                `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
-	CreationTime   *int64                                   `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description    *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id             *string                                  `json:"Id,omitempty" xml:"Id,omitempty"`
-	JobFilePath    *string                                  `json:"JobFilePath,omitempty" xml:"JobFilePath,omitempty"`
-	Name           *string                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Progress       *GetJobGroupResponseBodyJobGroupProgress `json:"Progress,omitempty" xml:"Progress,omitempty" type:"Struct"`
-	ScenarioId     *string                                  `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Strategy       *GetJobGroupResponseBodyJobGroupStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
-}
-
-func (s GetJobGroupResponseBodyJobGroup) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobGroupResponseBodyJobGroup) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobGroupResponseBodyJobGroup) SetCallingNumbers(v []*string) *GetJobGroupResponseBodyJobGroup {
-	s.CallingNumbers = v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroup) SetCreationTime(v int64) *GetJobGroupResponseBodyJobGroup {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroup) SetDescription(v string) *GetJobGroupResponseBodyJobGroup {
-	s.Description = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroup) SetId(v string) *GetJobGroupResponseBodyJobGroup {
-	s.Id = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroup) SetJobFilePath(v string) *GetJobGroupResponseBodyJobGroup {
-	s.JobFilePath = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroup) SetName(v string) *GetJobGroupResponseBodyJobGroup {
-	s.Name = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroup) SetProgress(v *GetJobGroupResponseBodyJobGroupProgress) *GetJobGroupResponseBodyJobGroup {
-	s.Progress = v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroup) SetScenarioId(v string) *GetJobGroupResponseBodyJobGroup {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroup) SetStrategy(v *GetJobGroupResponseBodyJobGroupStrategy) *GetJobGroupResponseBodyJobGroup {
-	s.Strategy = v
-	return s
-}
-
-type GetJobGroupResponseBodyJobGroupProgress struct {
-	Categories       []*GetJobGroupResponseBodyJobGroupProgressCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	Duration         *int32                                               `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	StartTime        *int64                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status           *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalCompleted   *int32                                               `json:"TotalCompleted,omitempty" xml:"TotalCompleted,omitempty"`
-	TotalJobs        *int32                                               `json:"TotalJobs,omitempty" xml:"TotalJobs,omitempty"`
-	TotalNotAnswered *int32                                               `json:"TotalNotAnswered,omitempty" xml:"TotalNotAnswered,omitempty"`
-}
-
-func (s GetJobGroupResponseBodyJobGroupProgress) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobGroupResponseBodyJobGroupProgress) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobGroupResponseBodyJobGroupProgress) SetCategories(v []*GetJobGroupResponseBodyJobGroupProgressCategories) *GetJobGroupResponseBodyJobGroupProgress {
-	s.Categories = v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupProgress) SetDuration(v int32) *GetJobGroupResponseBodyJobGroupProgress {
-	s.Duration = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupProgress) SetStartTime(v int64) *GetJobGroupResponseBodyJobGroupProgress {
-	s.StartTime = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupProgress) SetStatus(v string) *GetJobGroupResponseBodyJobGroupProgress {
-	s.Status = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupProgress) SetTotalCompleted(v int32) *GetJobGroupResponseBodyJobGroupProgress {
-	s.TotalCompleted = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupProgress) SetTotalJobs(v int32) *GetJobGroupResponseBodyJobGroupProgress {
-	s.TotalJobs = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupProgress) SetTotalNotAnswered(v int32) *GetJobGroupResponseBodyJobGroupProgress {
-	s.TotalNotAnswered = &v
-	return s
-}
-
-type GetJobGroupResponseBodyJobGroupProgressCategories struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s GetJobGroupResponseBodyJobGroupProgressCategories) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobGroupResponseBodyJobGroupProgressCategories) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobGroupResponseBodyJobGroupProgressCategories) SetKey(v string) *GetJobGroupResponseBodyJobGroupProgressCategories {
-	s.Key = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupProgressCategories) SetValue(v string) *GetJobGroupResponseBodyJobGroupProgressCategories {
-	s.Value = &v
-	return s
-}
-
-type GetJobGroupResponseBodyJobGroupStrategy struct {
-	Customized         *string                                               `json:"Customized,omitempty" xml:"Customized,omitempty"`
-	Description        *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndTime            *int64                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FollowUpStrategy   *string                                               `json:"FollowUpStrategy,omitempty" xml:"FollowUpStrategy,omitempty"`
-	Id                 *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsTemplate         *bool                                                 `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	MaxAttemptsPerDay  *int32                                                `json:"MaxAttemptsPerDay,omitempty" xml:"MaxAttemptsPerDay,omitempty"`
-	MinAttemptInterval *int32                                                `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
-	Name               *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	RepeatBy           *string                                               `json:"RepeatBy,omitempty" xml:"RepeatBy,omitempty"`
-	RepeatDays         []*string                                             `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RoutingStrategy    *string                                               `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
-	StartTime          *int64                                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type               *string                                               `json:"Type,omitempty" xml:"Type,omitempty"`
-	WorkingTime        []*GetJobGroupResponseBodyJobGroupStrategyWorkingTime `json:"WorkingTime,omitempty" xml:"WorkingTime,omitempty" type:"Repeated"`
-}
-
-func (s GetJobGroupResponseBodyJobGroupStrategy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobGroupResponseBodyJobGroupStrategy) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetCustomized(v string) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.Customized = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetDescription(v string) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.Description = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetEndTime(v int64) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.EndTime = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetFollowUpStrategy(v string) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.FollowUpStrategy = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetId(v string) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.Id = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetIsTemplate(v bool) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetMaxAttemptsPerDay(v int32) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.MaxAttemptsPerDay = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetMinAttemptInterval(v int32) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.MinAttemptInterval = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetName(v string) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.Name = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetRepeatBy(v string) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.RepeatBy = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetRepeatDays(v []*string) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.RepeatDays = v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetRoutingStrategy(v string) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.RoutingStrategy = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetStartTime(v int64) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.StartTime = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetType(v string) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.Type = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategy) SetWorkingTime(v []*GetJobGroupResponseBodyJobGroupStrategyWorkingTime) *GetJobGroupResponseBodyJobGroupStrategy {
-	s.WorkingTime = v
-	return s
-}
-
-type GetJobGroupResponseBodyJobGroupStrategyWorkingTime struct {
-	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s GetJobGroupResponseBodyJobGroupStrategyWorkingTime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobGroupResponseBodyJobGroupStrategyWorkingTime) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategyWorkingTime) SetBeginTime(v string) *GetJobGroupResponseBodyJobGroupStrategyWorkingTime {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *GetJobGroupResponseBodyJobGroupStrategyWorkingTime) SetEndTime(v string) *GetJobGroupResponseBodyJobGroupStrategyWorkingTime {
-	s.EndTime = &v
-	return s
-}
-
-type GetJobGroupResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetJobGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobGroupResponse) SetHeaders(v map[string]*string) *GetJobGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetJobGroupResponse) SetBody(v *GetJobGroupResponseBody) *GetJobGroupResponse {
-	s.Body = v
-	return s
-}
-
-type GetJobListRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryAll   *bool   `json:"QueryAll,omitempty" xml:"QueryAll,omitempty"`
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetJobListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobListRequest) SetInstanceId(v string) *GetJobListRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetJobListRequest) SetJobGroupId(v string) *GetJobListRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *GetJobListRequest) SetPageNumber(v int32) *GetJobListRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *GetJobListRequest) SetPageSize(v int32) *GetJobListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetJobListRequest) SetQueryAll(v bool) *GetJobListRequest {
-	s.QueryAll = &v
-	return s
-}
-
-func (s *GetJobListRequest) SetStatus(v int32) *GetJobListRequest {
-	s.Status = &v
-	return s
-}
-
-type GetJobListResponseBody struct {
-	Code           *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Jobs           *GetJobListResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Struct"`
-	Message        *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                       `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetJobListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobListResponseBody) SetCode(v string) *GetJobListResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetJobListResponseBody) SetHttpStatusCode(v int32) *GetJobListResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetJobListResponseBody) SetJobs(v *GetJobListResponseBodyJobs) *GetJobListResponseBody {
-	s.Jobs = v
-	return s
-}
-
-func (s *GetJobListResponseBody) SetMessage(v string) *GetJobListResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetJobListResponseBody) SetRequestId(v string) *GetJobListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetJobListResponseBody) SetSuccess(v bool) *GetJobListResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetJobListResponseBodyJobs struct {
-	List       []*GetJobListResponseBodyJobsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNumber *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s GetJobListResponseBodyJobs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobListResponseBodyJobs) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobListResponseBodyJobs) SetList(v []*GetJobListResponseBodyJobsList) *GetJobListResponseBodyJobs {
-	s.List = v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobs) SetPageNumber(v int32) *GetJobListResponseBodyJobs {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobs) SetPageSize(v int32) *GetJobListResponseBodyJobs {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobs) SetTotalCount(v int32) *GetJobListResponseBodyJobs {
-	s.TotalCount = &v
-	return s
-}
-
-type GetJobListResponseBodyJobsList struct {
-	CallingNumbers []*string                                 `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
-	Contacts       []*GetJobListResponseBodyJobsListContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
-	Extras         []*GetJobListResponseBodyJobsListExtras   `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Repeated"`
-	FailureReason  *string                                   `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
-	GroupId        *string                                   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId          *string                                   `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Priority       *int32                                    `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ReferenceId    *string                                   `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	ScenarioId     *string                                   `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Status         *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	StrategyId     *string                                   `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	Summary        []*GetJobListResponseBodyJobsListSummary  `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Repeated"`
-	SystemPriority *int32                                    `json:"SystemPriority,omitempty" xml:"SystemPriority,omitempty"`
-}
-
-func (s GetJobListResponseBodyJobsList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobListResponseBodyJobsList) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobListResponseBodyJobsList) SetCallingNumbers(v []*string) *GetJobListResponseBodyJobsList {
-	s.CallingNumbers = v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsList) SetContacts(v []*GetJobListResponseBodyJobsListContacts) *GetJobListResponseBodyJobsList {
-	s.Contacts = v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsList) SetExtras(v []*GetJobListResponseBodyJobsListExtras) *GetJobListResponseBodyJobsList {
-	s.Extras = v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsList) SetFailureReason(v string) *GetJobListResponseBodyJobsList {
-	s.FailureReason = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsList) SetGroupId(v string) *GetJobListResponseBodyJobsList {
-	s.GroupId = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsList) SetJobId(v string) *GetJobListResponseBodyJobsList {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsList) SetPriority(v int32) *GetJobListResponseBodyJobsList {
-	s.Priority = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsList) SetReferenceId(v string) *GetJobListResponseBodyJobsList {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsList) SetScenarioId(v string) *GetJobListResponseBodyJobsList {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsList) SetStatus(v string) *GetJobListResponseBodyJobsList {
-	s.Status = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsList) SetStrategyId(v string) *GetJobListResponseBodyJobsList {
-	s.StrategyId = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsList) SetSummary(v []*GetJobListResponseBodyJobsListSummary) *GetJobListResponseBodyJobsList {
-	s.Summary = v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsList) SetSystemPriority(v int32) *GetJobListResponseBodyJobsList {
-	s.SystemPriority = &v
-	return s
-}
-
-type GetJobListResponseBodyJobsListContacts struct {
-	ContactId   *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Honorific   *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
-	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
-}
-
-func (s GetJobListResponseBodyJobsListContacts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobListResponseBodyJobsListContacts) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobListResponseBodyJobsListContacts) SetContactId(v string) *GetJobListResponseBodyJobsListContacts {
-	s.ContactId = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListContacts) SetContactName(v string) *GetJobListResponseBodyJobsListContacts {
-	s.ContactName = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListContacts) SetHonorific(v string) *GetJobListResponseBodyJobsListContacts {
-	s.Honorific = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListContacts) SetJobId(v string) *GetJobListResponseBodyJobsListContacts {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListContacts) SetPhoneNumber(v string) *GetJobListResponseBodyJobsListContacts {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListContacts) SetReferenceId(v string) *GetJobListResponseBodyJobsListContacts {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListContacts) SetRole(v string) *GetJobListResponseBodyJobsListContacts {
-	s.Role = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListContacts) SetState(v string) *GetJobListResponseBodyJobsListContacts {
-	s.State = &v
-	return s
-}
-
-type GetJobListResponseBodyJobsListExtras struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s GetJobListResponseBodyJobsListExtras) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobListResponseBodyJobsListExtras) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobListResponseBodyJobsListExtras) SetKey(v string) *GetJobListResponseBodyJobsListExtras {
-	s.Key = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListExtras) SetValue(v string) *GetJobListResponseBodyJobsListExtras {
-	s.Value = &v
-	return s
-}
-
-type GetJobListResponseBodyJobsListSummary struct {
-	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content              *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ConversationDetailId *string `json:"ConversationDetailId,omitempty" xml:"ConversationDetailId,omitempty"`
-	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	SummaryId            *string `json:"SummaryId,omitempty" xml:"SummaryId,omitempty"`
-	SummaryName          *string `json:"SummaryName,omitempty" xml:"SummaryName,omitempty"`
-	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s GetJobListResponseBodyJobsListSummary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobListResponseBodyJobsListSummary) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobListResponseBodyJobsListSummary) SetCategory(v string) *GetJobListResponseBodyJobsListSummary {
-	s.Category = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListSummary) SetContent(v string) *GetJobListResponseBodyJobsListSummary {
-	s.Content = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListSummary) SetConversationDetailId(v string) *GetJobListResponseBodyJobsListSummary {
-	s.ConversationDetailId = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListSummary) SetGroupId(v string) *GetJobListResponseBodyJobsListSummary {
-	s.GroupId = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListSummary) SetJobId(v string) *GetJobListResponseBodyJobsListSummary {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListSummary) SetSummaryId(v string) *GetJobListResponseBodyJobsListSummary {
-	s.SummaryId = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListSummary) SetSummaryName(v string) *GetJobListResponseBodyJobsListSummary {
-	s.SummaryName = &v
-	return s
-}
-
-func (s *GetJobListResponseBodyJobsListSummary) SetTaskId(v string) *GetJobListResponseBodyJobsListSummary {
-	s.TaskId = &v
-	return s
-}
-
-type GetJobListResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetJobListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobListResponse) SetHeaders(v map[string]*string) *GetJobListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetJobListResponse) SetBody(v *GetJobListResponseBody) *GetJobListResponse {
-	s.Body = v
-	return s
-}
-
-type GetJobStatusByCallIdRequest struct {
-	CallId     *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-}
-
-func (s GetJobStatusByCallIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobStatusByCallIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobStatusByCallIdRequest) SetCallId(v string) *GetJobStatusByCallIdRequest {
-	s.CallId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdRequest) SetInstanceId(v string) *GetJobStatusByCallIdRequest {
-	s.InstanceId = &v
-	return s
-}
-
-type GetJobStatusByCallIdResponseBody struct {
-	Code           *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Job            *GetJobStatusByCallIdResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
-	Message        *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetJobStatusByCallIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobStatusByCallIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobStatusByCallIdResponseBody) SetCode(v string) *GetJobStatusByCallIdResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBody) SetHttpStatusCode(v int32) *GetJobStatusByCallIdResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBody) SetJob(v *GetJobStatusByCallIdResponseBodyJob) *GetJobStatusByCallIdResponseBody {
-	s.Job = v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBody) SetMessage(v string) *GetJobStatusByCallIdResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBody) SetRequestId(v string) *GetJobStatusByCallIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBody) SetSuccess(v bool) *GetJobStatusByCallIdResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetJobStatusByCallIdResponseBodyJob struct {
-	CallingNumbers []*string                                      `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
-	Contacts       []*GetJobStatusByCallIdResponseBodyJobContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
-	Extras         []*GetJobStatusByCallIdResponseBodyJobExtras   `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Repeated"`
-	FailureReason  *string                                        `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
-	GroupId        *string                                        `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId          *string                                        `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Priority       *int32                                         `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ReferenceId    *string                                        `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	ScenarioId     *string                                        `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Status         *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	StrategyId     *string                                        `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	Summary        []*GetJobStatusByCallIdResponseBodyJobSummary  `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Repeated"`
-	Tasks          []*GetJobStatusByCallIdResponseBodyJobTasks    `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-}
-
-func (s GetJobStatusByCallIdResponseBodyJob) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobStatusByCallIdResponseBodyJob) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJob) SetCallingNumbers(v []*string) *GetJobStatusByCallIdResponseBodyJob {
-	s.CallingNumbers = v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJob) SetContacts(v []*GetJobStatusByCallIdResponseBodyJobContacts) *GetJobStatusByCallIdResponseBodyJob {
-	s.Contacts = v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJob) SetExtras(v []*GetJobStatusByCallIdResponseBodyJobExtras) *GetJobStatusByCallIdResponseBodyJob {
-	s.Extras = v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJob) SetFailureReason(v string) *GetJobStatusByCallIdResponseBodyJob {
-	s.FailureReason = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJob) SetGroupId(v string) *GetJobStatusByCallIdResponseBodyJob {
-	s.GroupId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJob) SetJobId(v string) *GetJobStatusByCallIdResponseBodyJob {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJob) SetPriority(v int32) *GetJobStatusByCallIdResponseBodyJob {
-	s.Priority = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJob) SetReferenceId(v string) *GetJobStatusByCallIdResponseBodyJob {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJob) SetScenarioId(v string) *GetJobStatusByCallIdResponseBodyJob {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJob) SetStatus(v string) *GetJobStatusByCallIdResponseBodyJob {
-	s.Status = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJob) SetStrategyId(v string) *GetJobStatusByCallIdResponseBodyJob {
-	s.StrategyId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJob) SetSummary(v []*GetJobStatusByCallIdResponseBodyJobSummary) *GetJobStatusByCallIdResponseBodyJob {
-	s.Summary = v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJob) SetTasks(v []*GetJobStatusByCallIdResponseBodyJobTasks) *GetJobStatusByCallIdResponseBodyJob {
-	s.Tasks = v
-	return s
-}
-
-type GetJobStatusByCallIdResponseBodyJobContacts struct {
-	ContactId   *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Honorific   *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
-	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
-}
-
-func (s GetJobStatusByCallIdResponseBodyJobContacts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobStatusByCallIdResponseBodyJobContacts) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobContacts) SetContactId(v string) *GetJobStatusByCallIdResponseBodyJobContacts {
-	s.ContactId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobContacts) SetContactName(v string) *GetJobStatusByCallIdResponseBodyJobContacts {
-	s.ContactName = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobContacts) SetHonorific(v string) *GetJobStatusByCallIdResponseBodyJobContacts {
-	s.Honorific = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobContacts) SetJobId(v string) *GetJobStatusByCallIdResponseBodyJobContacts {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobContacts) SetPhoneNumber(v string) *GetJobStatusByCallIdResponseBodyJobContacts {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobContacts) SetReferenceId(v string) *GetJobStatusByCallIdResponseBodyJobContacts {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobContacts) SetRole(v string) *GetJobStatusByCallIdResponseBodyJobContacts {
-	s.Role = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobContacts) SetState(v string) *GetJobStatusByCallIdResponseBodyJobContacts {
-	s.State = &v
-	return s
-}
-
-type GetJobStatusByCallIdResponseBodyJobExtras struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s GetJobStatusByCallIdResponseBodyJobExtras) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobStatusByCallIdResponseBodyJobExtras) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobExtras) SetKey(v string) *GetJobStatusByCallIdResponseBodyJobExtras {
-	s.Key = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobExtras) SetValue(v string) *GetJobStatusByCallIdResponseBodyJobExtras {
-	s.Value = &v
-	return s
-}
-
-type GetJobStatusByCallIdResponseBodyJobSummary struct {
-	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	SummaryId   *string `json:"SummaryId,omitempty" xml:"SummaryId,omitempty"`
-	SummaryName *string `json:"SummaryName,omitempty" xml:"SummaryName,omitempty"`
-}
-
-func (s GetJobStatusByCallIdResponseBodyJobSummary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobStatusByCallIdResponseBodyJobSummary) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobSummary) SetCategory(v string) *GetJobStatusByCallIdResponseBodyJobSummary {
-	s.Category = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobSummary) SetContent(v string) *GetJobStatusByCallIdResponseBodyJobSummary {
-	s.Content = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobSummary) SetSummaryId(v string) *GetJobStatusByCallIdResponseBodyJobSummary {
-	s.SummaryId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobSummary) SetSummaryName(v string) *GetJobStatusByCallIdResponseBodyJobSummary {
-	s.SummaryName = &v
-	return s
-}
-
-type GetJobStatusByCallIdResponseBodyJobTasks struct {
-	ActualTime    *int64                                                  `json:"ActualTime,omitempty" xml:"ActualTime,omitempty"`
-	Brief         *string                                                 `json:"Brief,omitempty" xml:"Brief,omitempty"`
-	CallId        *string                                                 `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	CalledNumber  *string                                                 `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber *string                                                 `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	ChatbotId     *string                                                 `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
-	Contact       *GetJobStatusByCallIdResponseBodyJobTasksContact        `json:"Contact,omitempty" xml:"Contact,omitempty" type:"Struct"`
-	Conversation  []*GetJobStatusByCallIdResponseBodyJobTasksConversation `json:"Conversation,omitempty" xml:"Conversation,omitempty" type:"Repeated"`
-	Duration      *int32                                                  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EndTime       *int64                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	JobId         *string                                                 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PlanedTime    *int64                                                  `json:"PlanedTime,omitempty" xml:"PlanedTime,omitempty"`
-	ScenarioId    *string                                                 `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Status        *string                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId        *string                                                 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s GetJobStatusByCallIdResponseBodyJobTasks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobStatusByCallIdResponseBodyJobTasks) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetActualTime(v int64) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.ActualTime = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetBrief(v string) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.Brief = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetCallId(v string) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.CallId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetCalledNumber(v string) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.CalledNumber = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetCallingNumber(v string) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.CallingNumber = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetChatbotId(v string) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.ChatbotId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetContact(v *GetJobStatusByCallIdResponseBodyJobTasksContact) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.Contact = v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetConversation(v []*GetJobStatusByCallIdResponseBodyJobTasksConversation) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.Conversation = v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetDuration(v int32) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.Duration = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetEndTime(v int64) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.EndTime = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetJobId(v string) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetPlanedTime(v int64) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.PlanedTime = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetScenarioId(v string) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetStatus(v string) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.Status = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasks) SetTaskId(v string) *GetJobStatusByCallIdResponseBodyJobTasks {
-	s.TaskId = &v
-	return s
-}
-
-type GetJobStatusByCallIdResponseBodyJobTasksContact struct {
-	ContactId   *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Honorific   *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
-	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
-}
-
-func (s GetJobStatusByCallIdResponseBodyJobTasksContact) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobStatusByCallIdResponseBodyJobTasksContact) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksContact) SetContactId(v string) *GetJobStatusByCallIdResponseBodyJobTasksContact {
-	s.ContactId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksContact) SetContactName(v string) *GetJobStatusByCallIdResponseBodyJobTasksContact {
-	s.ContactName = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksContact) SetHonorific(v string) *GetJobStatusByCallIdResponseBodyJobTasksContact {
-	s.Honorific = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksContact) SetJobId(v string) *GetJobStatusByCallIdResponseBodyJobTasksContact {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksContact) SetPhoneNumber(v string) *GetJobStatusByCallIdResponseBodyJobTasksContact {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksContact) SetReferenceId(v string) *GetJobStatusByCallIdResponseBodyJobTasksContact {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksContact) SetRole(v string) *GetJobStatusByCallIdResponseBodyJobTasksContact {
-	s.Role = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksContact) SetState(v string) *GetJobStatusByCallIdResponseBodyJobTasksContact {
-	s.State = &v
-	return s
-}
-
-type GetJobStatusByCallIdResponseBodyJobTasksConversation struct {
-	ConversationDetailId *string                                                        `json:"ConversationDetailId,omitempty" xml:"ConversationDetailId,omitempty"`
-	Script               *string                                                        `json:"Script,omitempty" xml:"Script,omitempty"`
-	Speaker              *string                                                        `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
-	Summary              []*GetJobStatusByCallIdResponseBodyJobTasksConversationSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Repeated"`
-	TaskId               *string                                                        `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Timestamp            *int64                                                         `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-}
-
-func (s GetJobStatusByCallIdResponseBodyJobTasksConversation) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobStatusByCallIdResponseBodyJobTasksConversation) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksConversation) SetConversationDetailId(v string) *GetJobStatusByCallIdResponseBodyJobTasksConversation {
-	s.ConversationDetailId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksConversation) SetScript(v string) *GetJobStatusByCallIdResponseBodyJobTasksConversation {
-	s.Script = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksConversation) SetSpeaker(v string) *GetJobStatusByCallIdResponseBodyJobTasksConversation {
-	s.Speaker = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksConversation) SetSummary(v []*GetJobStatusByCallIdResponseBodyJobTasksConversationSummary) *GetJobStatusByCallIdResponseBodyJobTasksConversation {
-	s.Summary = v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksConversation) SetTaskId(v string) *GetJobStatusByCallIdResponseBodyJobTasksConversation {
-	s.TaskId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksConversation) SetTimestamp(v int64) *GetJobStatusByCallIdResponseBodyJobTasksConversation {
-	s.Timestamp = &v
-	return s
-}
-
-type GetJobStatusByCallIdResponseBodyJobTasksConversationSummary struct {
-	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	SummaryId   *string `json:"SummaryId,omitempty" xml:"SummaryId,omitempty"`
-	SummaryName *string `json:"SummaryName,omitempty" xml:"SummaryName,omitempty"`
-}
-
-func (s GetJobStatusByCallIdResponseBodyJobTasksConversationSummary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobStatusByCallIdResponseBodyJobTasksConversationSummary) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksConversationSummary) SetCategory(v string) *GetJobStatusByCallIdResponseBodyJobTasksConversationSummary {
-	s.Category = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksConversationSummary) SetContent(v string) *GetJobStatusByCallIdResponseBodyJobTasksConversationSummary {
-	s.Content = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksConversationSummary) SetSummaryId(v string) *GetJobStatusByCallIdResponseBodyJobTasksConversationSummary {
-	s.SummaryId = &v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponseBodyJobTasksConversationSummary) SetSummaryName(v string) *GetJobStatusByCallIdResponseBodyJobTasksConversationSummary {
-	s.SummaryName = &v
-	return s
-}
-
-type GetJobStatusByCallIdResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobStatusByCallIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetJobStatusByCallIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobStatusByCallIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobStatusByCallIdResponse) SetHeaders(v map[string]*string) *GetJobStatusByCallIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetJobStatusByCallIdResponse) SetBody(v *GetJobStatusByCallIdResponseBody) *GetJobStatusByCallIdResponse {
-	s.Body = v
-	return s
-}
-
-type GetJobTemplateDownloadParamsRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-}
-
-func (s GetJobTemplateDownloadParamsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobTemplateDownloadParamsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobTemplateDownloadParamsRequest) SetInstanceId(v string) *GetJobTemplateDownloadParamsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetJobTemplateDownloadParamsRequest) SetScenarioId(v string) *GetJobTemplateDownloadParamsRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-type GetJobTemplateDownloadParamsResponseBody struct {
-	Code           *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	DownloadParams *GetJobTemplateDownloadParamsResponseBodyDownloadParams `json:"DownloadParams,omitempty" xml:"DownloadParams,omitempty" type:"Struct"`
-	HttpStatusCode *int32                                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetJobTemplateDownloadParamsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobTemplateDownloadParamsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobTemplateDownloadParamsResponseBody) SetCode(v string) *GetJobTemplateDownloadParamsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetJobTemplateDownloadParamsResponseBody) SetDownloadParams(v *GetJobTemplateDownloadParamsResponseBodyDownloadParams) *GetJobTemplateDownloadParamsResponseBody {
-	s.DownloadParams = v
-	return s
-}
-
-func (s *GetJobTemplateDownloadParamsResponseBody) SetHttpStatusCode(v int32) *GetJobTemplateDownloadParamsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetJobTemplateDownloadParamsResponseBody) SetMessage(v string) *GetJobTemplateDownloadParamsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetJobTemplateDownloadParamsResponseBody) SetRequestId(v string) *GetJobTemplateDownloadParamsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetJobTemplateDownloadParamsResponseBody) SetSuccess(v bool) *GetJobTemplateDownloadParamsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetJobTemplateDownloadParamsResponseBodyDownloadParams struct {
-	SignatureUrl *string `json:"SignatureUrl,omitempty" xml:"SignatureUrl,omitempty"`
-}
-
-func (s GetJobTemplateDownloadParamsResponseBodyDownloadParams) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobTemplateDownloadParamsResponseBodyDownloadParams) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobTemplateDownloadParamsResponseBodyDownloadParams) SetSignatureUrl(v string) *GetJobTemplateDownloadParamsResponseBodyDownloadParams {
-	s.SignatureUrl = &v
-	return s
-}
-
-type GetJobTemplateDownloadParamsResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobTemplateDownloadParamsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetJobTemplateDownloadParamsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetJobTemplateDownloadParamsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetJobTemplateDownloadParamsResponse) SetHeaders(v map[string]*string) *GetJobTemplateDownloadParamsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetJobTemplateDownloadParamsResponse) SetBody(v *GetJobTemplateDownloadParamsResponseBody) *GetJobTemplateDownloadParamsResponse {
 	s.Body = v
 	return s
 }
@@ -13699,8 +8432,9 @@ func (s *GetNumberRegionInfoResponseBodyPhoneNumber) SetProvince(v string) *GetN
 }
 
 type GetNumberRegionInfoResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetNumberRegionInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetNumberRegionInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetNumberRegionInfoResponse) String() string {
@@ -13716,500 +8450,12 @@ func (s *GetNumberRegionInfoResponse) SetHeaders(v map[string]*string) *GetNumbe
 	return s
 }
 
+func (s *GetNumberRegionInfoResponse) SetStatusCode(v int32) *GetNumberRegionInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetNumberRegionInfoResponse) SetBody(v *GetNumberRegionInfoResponseBody) *GetNumberRegionInfoResponse {
-	s.Body = v
-	return s
-}
-
-type GetPredictiveJobGroupRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId   *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-}
-
-func (s GetPredictiveJobGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPredictiveJobGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetPredictiveJobGroupRequest) SetInstanceId(v string) *GetPredictiveJobGroupRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupRequest) SetJobGroupId(v string) *GetPredictiveJobGroupRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupRequest) SetSkillGroupId(v string) *GetPredictiveJobGroupRequest {
-	s.SkillGroupId = &v
-	return s
-}
-
-type GetPredictiveJobGroupResponseBody struct {
-	Code           *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobGroup       *GetPredictiveJobGroupResponseBodyJobGroup `json:"JobGroup,omitempty" xml:"JobGroup,omitempty" type:"Struct"`
-	Message        *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetPredictiveJobGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPredictiveJobGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetPredictiveJobGroupResponseBody) SetCode(v string) *GetPredictiveJobGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBody) SetHttpStatusCode(v int32) *GetPredictiveJobGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBody) SetJobGroup(v *GetPredictiveJobGroupResponseBodyJobGroup) *GetPredictiveJobGroupResponseBody {
-	s.JobGroup = v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBody) SetMessage(v string) *GetPredictiveJobGroupResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBody) SetRequestId(v string) *GetPredictiveJobGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBody) SetSuccess(v bool) *GetPredictiveJobGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetPredictiveJobGroupResponseBodyJobGroup struct {
-	CreationTime   *int64                                             `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description    *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId     *string                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId     *string                                            `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	Name           *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Progress       *GetPredictiveJobGroupResponseBodyJobGroupProgress `json:"Progress,omitempty" xml:"Progress,omitempty" type:"Struct"`
-	Ratio          *int64                                             `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	SkillGroupId   *string                                            `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	SkillGroupName *string                                            `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
-	Strategy       *GetPredictiveJobGroupResponseBodyJobGroupStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
-}
-
-func (s GetPredictiveJobGroupResponseBodyJobGroup) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPredictiveJobGroupResponseBodyJobGroup) GoString() string {
-	return s.String()
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroup) SetCreationTime(v int64) *GetPredictiveJobGroupResponseBodyJobGroup {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroup) SetDescription(v string) *GetPredictiveJobGroupResponseBodyJobGroup {
-	s.Description = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroup) SetInstanceId(v string) *GetPredictiveJobGroupResponseBodyJobGroup {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroup) SetJobGroupId(v string) *GetPredictiveJobGroupResponseBodyJobGroup {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroup) SetName(v string) *GetPredictiveJobGroupResponseBodyJobGroup {
-	s.Name = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroup) SetProgress(v *GetPredictiveJobGroupResponseBodyJobGroupProgress) *GetPredictiveJobGroupResponseBodyJobGroup {
-	s.Progress = v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroup) SetRatio(v int64) *GetPredictiveJobGroupResponseBodyJobGroup {
-	s.Ratio = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroup) SetSkillGroupId(v string) *GetPredictiveJobGroupResponseBodyJobGroup {
-	s.SkillGroupId = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroup) SetSkillGroupName(v string) *GetPredictiveJobGroupResponseBodyJobGroup {
-	s.SkillGroupName = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroup) SetStrategy(v *GetPredictiveJobGroupResponseBodyJobGroupStrategy) *GetPredictiveJobGroupResponseBodyJobGroup {
-	s.Strategy = v
-	return s
-}
-
-type GetPredictiveJobGroupResponseBodyJobGroupProgress struct {
-	Categories       []*GetPredictiveJobGroupResponseBodyJobGroupProgressCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	Duration         *int32                                                         `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	StartTime        *int64                                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status           *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalCompleted   *int32                                                         `json:"TotalCompleted,omitempty" xml:"TotalCompleted,omitempty"`
-	TotalJobs        *int32                                                         `json:"TotalJobs,omitempty" xml:"TotalJobs,omitempty"`
-	TotalNotAnswered *int32                                                         `json:"TotalNotAnswered,omitempty" xml:"TotalNotAnswered,omitempty"`
-}
-
-func (s GetPredictiveJobGroupResponseBodyJobGroupProgress) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPredictiveJobGroupResponseBodyJobGroupProgress) GoString() string {
-	return s.String()
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupProgress) SetCategories(v []*GetPredictiveJobGroupResponseBodyJobGroupProgressCategories) *GetPredictiveJobGroupResponseBodyJobGroupProgress {
-	s.Categories = v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupProgress) SetDuration(v int32) *GetPredictiveJobGroupResponseBodyJobGroupProgress {
-	s.Duration = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupProgress) SetStartTime(v int64) *GetPredictiveJobGroupResponseBodyJobGroupProgress {
-	s.StartTime = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupProgress) SetStatus(v string) *GetPredictiveJobGroupResponseBodyJobGroupProgress {
-	s.Status = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupProgress) SetTotalCompleted(v int32) *GetPredictiveJobGroupResponseBodyJobGroupProgress {
-	s.TotalCompleted = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupProgress) SetTotalJobs(v int32) *GetPredictiveJobGroupResponseBodyJobGroupProgress {
-	s.TotalJobs = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupProgress) SetTotalNotAnswered(v int32) *GetPredictiveJobGroupResponseBodyJobGroupProgress {
-	s.TotalNotAnswered = &v
-	return s
-}
-
-type GetPredictiveJobGroupResponseBodyJobGroupProgressCategories struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s GetPredictiveJobGroupResponseBodyJobGroupProgressCategories) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPredictiveJobGroupResponseBodyJobGroupProgressCategories) GoString() string {
-	return s.String()
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupProgressCategories) SetKey(v string) *GetPredictiveJobGroupResponseBodyJobGroupProgressCategories {
-	s.Key = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupProgressCategories) SetValue(v string) *GetPredictiveJobGroupResponseBodyJobGroupProgressCategories {
-	s.Value = &v
-	return s
-}
-
-type GetPredictiveJobGroupResponseBodyJobGroupStrategy struct {
-	EndTime            *int64                                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MaxAttemptsPerDay  *int32                                                          `json:"MaxAttemptsPerDay,omitempty" xml:"MaxAttemptsPerDay,omitempty"`
-	MinAttemptInterval *int32                                                          `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
-	StartTime          *int64                                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StrategyId         *string                                                         `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	WorkingTime        []*GetPredictiveJobGroupResponseBodyJobGroupStrategyWorkingTime `json:"WorkingTime,omitempty" xml:"WorkingTime,omitempty" type:"Repeated"`
-}
-
-func (s GetPredictiveJobGroupResponseBodyJobGroupStrategy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPredictiveJobGroupResponseBodyJobGroupStrategy) GoString() string {
-	return s.String()
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupStrategy) SetEndTime(v int64) *GetPredictiveJobGroupResponseBodyJobGroupStrategy {
-	s.EndTime = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupStrategy) SetMaxAttemptsPerDay(v int32) *GetPredictiveJobGroupResponseBodyJobGroupStrategy {
-	s.MaxAttemptsPerDay = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupStrategy) SetMinAttemptInterval(v int32) *GetPredictiveJobGroupResponseBodyJobGroupStrategy {
-	s.MinAttemptInterval = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupStrategy) SetStartTime(v int64) *GetPredictiveJobGroupResponseBodyJobGroupStrategy {
-	s.StartTime = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupStrategy) SetStrategyId(v string) *GetPredictiveJobGroupResponseBodyJobGroupStrategy {
-	s.StrategyId = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupStrategy) SetWorkingTime(v []*GetPredictiveJobGroupResponseBodyJobGroupStrategyWorkingTime) *GetPredictiveJobGroupResponseBodyJobGroupStrategy {
-	s.WorkingTime = v
-	return s
-}
-
-type GetPredictiveJobGroupResponseBodyJobGroupStrategyWorkingTime struct {
-	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s GetPredictiveJobGroupResponseBodyJobGroupStrategyWorkingTime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPredictiveJobGroupResponseBodyJobGroupStrategyWorkingTime) GoString() string {
-	return s.String()
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupStrategyWorkingTime) SetBeginTime(v string) *GetPredictiveJobGroupResponseBodyJobGroupStrategyWorkingTime {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponseBodyJobGroupStrategyWorkingTime) SetEndTime(v string) *GetPredictiveJobGroupResponseBodyJobGroupStrategyWorkingTime {
-	s.EndTime = &v
-	return s
-}
-
-type GetPredictiveJobGroupResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPredictiveJobGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetPredictiveJobGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPredictiveJobGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPredictiveJobGroupResponse) SetHeaders(v map[string]*string) *GetPredictiveJobGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetPredictiveJobGroupResponse) SetBody(v *GetPredictiveJobGroupResponseBody) *GetPredictiveJobGroupResponse {
-	s.Body = v
-	return s
-}
-
-type GetPredictiveTaskDataRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s GetPredictiveTaskDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPredictiveTaskDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetPredictiveTaskDataRequest) SetInstanceId(v string) *GetPredictiveTaskDataRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataRequest) SetSkillGroupId(v string) *GetPredictiveTaskDataRequest {
-	s.SkillGroupId = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataRequest) SetTaskId(v string) *GetPredictiveTaskDataRequest {
-	s.TaskId = &v
-	return s
-}
-
-type GetPredictiveTaskDataResponseBody struct {
-	Code           *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *GetPredictiveTaskDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int64                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetPredictiveTaskDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPredictiveTaskDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetPredictiveTaskDataResponseBody) SetCode(v string) *GetPredictiveTaskDataResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBody) SetData(v *GetPredictiveTaskDataResponseBodyData) *GetPredictiveTaskDataResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBody) SetHttpStatusCode(v int64) *GetPredictiveTaskDataResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBody) SetMessage(v string) *GetPredictiveTaskDataResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBody) SetRequestId(v string) *GetPredictiveTaskDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBody) SetSuccess(v string) *GetPredictiveTaskDataResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetPredictiveTaskDataResponseBodyData struct {
-	Abandoned     *bool   `json:"Abandoned,omitempty" xml:"Abandoned,omitempty"`
-	Answered      *bool   `json:"Answered,omitempty" xml:"Answered,omitempty"`
-	Connected     *bool   `json:"Connected,omitempty" xml:"Connected,omitempty"`
-	ContactId     *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	DialDuration  *int64  `json:"DialDuration,omitempty" xml:"DialDuration,omitempty"`
-	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	JobGroupId    *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	QueueDuration *int64  `json:"QueueDuration,omitempty" xml:"QueueDuration,omitempty"`
-	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TalkDuration  *int64  `json:"TalkDuration,omitempty" xml:"TalkDuration,omitempty"`
-	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s GetPredictiveTaskDataResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPredictiveTaskDataResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetPredictiveTaskDataResponseBodyData) SetAbandoned(v bool) *GetPredictiveTaskDataResponseBodyData {
-	s.Abandoned = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBodyData) SetAnswered(v bool) *GetPredictiveTaskDataResponseBodyData {
-	s.Answered = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBodyData) SetConnected(v bool) *GetPredictiveTaskDataResponseBodyData {
-	s.Connected = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBodyData) SetContactId(v string) *GetPredictiveTaskDataResponseBodyData {
-	s.ContactId = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBodyData) SetDialDuration(v int64) *GetPredictiveTaskDataResponseBodyData {
-	s.DialDuration = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBodyData) SetEndTime(v int64) *GetPredictiveTaskDataResponseBodyData {
-	s.EndTime = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBodyData) SetJobGroupId(v string) *GetPredictiveTaskDataResponseBodyData {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBodyData) SetQueueDuration(v int64) *GetPredictiveTaskDataResponseBodyData {
-	s.QueueDuration = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBodyData) SetStartTime(v int64) *GetPredictiveTaskDataResponseBodyData {
-	s.StartTime = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBodyData) SetTalkDuration(v int64) *GetPredictiveTaskDataResponseBodyData {
-	s.TalkDuration = &v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponseBodyData) SetTaskId(v string) *GetPredictiveTaskDataResponseBodyData {
-	s.TaskId = &v
-	return s
-}
-
-type GetPredictiveTaskDataResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPredictiveTaskDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetPredictiveTaskDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPredictiveTaskDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPredictiveTaskDataResponse) SetHeaders(v map[string]*string) *GetPredictiveTaskDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetPredictiveTaskDataResponse) SetBody(v *GetPredictiveTaskDataResponseBody) *GetPredictiveTaskDataResponse {
 	s.Body = v
 	return s
 }
@@ -14321,8 +8567,9 @@ func (s *GetRecordOssUploadParamResponseBody) SetSuccess(v bool) *GetRecordOssUp
 }
 
 type GetRecordOssUploadParamResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRecordOssUploadParamResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRecordOssUploadParamResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetRecordOssUploadParamResponse) String() string {
@@ -14335,6 +8582,11 @@ func (s GetRecordOssUploadParamResponse) GoString() string {
 
 func (s *GetRecordOssUploadParamResponse) SetHeaders(v map[string]*string) *GetRecordOssUploadParamResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetRecordOssUploadParamResponse) SetStatusCode(v int32) *GetRecordOssUploadParamResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14372,8 +8624,6 @@ type GetRoutePointResponseBody struct {
 	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RoutePoint     *string `json:"RoutePoint,omitempty" xml:"RoutePoint,omitempty"`
-	StatusCode     *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	StatusDesc     *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14410,24 +8660,15 @@ func (s *GetRoutePointResponseBody) SetRoutePoint(v string) *GetRoutePointRespon
 	return s
 }
 
-func (s *GetRoutePointResponseBody) SetStatusCode(v string) *GetRoutePointResponseBody {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetRoutePointResponseBody) SetStatusDesc(v string) *GetRoutePointResponseBody {
-	s.StatusDesc = &v
-	return s
-}
-
 func (s *GetRoutePointResponseBody) SetSuccess(v bool) *GetRoutePointResponseBody {
 	s.Success = &v
 	return s
 }
 
 type GetRoutePointResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRoutePointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRoutePointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetRoutePointResponse) String() string {
@@ -14443,382 +8684,12 @@ func (s *GetRoutePointResponse) SetHeaders(v map[string]*string) *GetRoutePointR
 	return s
 }
 
+func (s *GetRoutePointResponse) SetStatusCode(v int32) *GetRoutePointResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetRoutePointResponse) SetBody(v *GetRoutePointResponseBody) *GetRoutePointResponse {
-	s.Body = v
-	return s
-}
-
-type GetScenarioRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-}
-
-func (s GetScenarioRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetScenarioRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetScenarioRequest) SetInstanceId(v string) *GetScenarioRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetScenarioRequest) SetScenarioId(v string) *GetScenarioRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-type GetScenarioResponseBody struct {
-	Code           *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scenario       *GetScenarioResponseBodyScenario `json:"Scenario,omitempty" xml:"Scenario,omitempty" type:"Struct"`
-	Success        *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetScenarioResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetScenarioResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetScenarioResponseBody) SetCode(v string) *GetScenarioResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetScenarioResponseBody) SetHttpStatusCode(v int32) *GetScenarioResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetScenarioResponseBody) SetMessage(v string) *GetScenarioResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetScenarioResponseBody) SetRequestId(v string) *GetScenarioResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetScenarioResponseBody) SetScenario(v *GetScenarioResponseBodyScenario) *GetScenarioResponseBody {
-	s.Scenario = v
-	return s
-}
-
-func (s *GetScenarioResponseBody) SetSuccess(v bool) *GetScenarioResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetScenarioResponseBodyScenario struct {
-	Description *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *string                                     `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsTemplate  *bool                                       `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	Name        *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	Strategy    *GetScenarioResponseBodyScenarioStrategy    `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
-	Surveys     []*GetScenarioResponseBodyScenarioSurveys   `json:"Surveys,omitempty" xml:"Surveys,omitempty" type:"Repeated"`
-	Type        *string                                     `json:"Type,omitempty" xml:"Type,omitempty"`
-	Variables   []*GetScenarioResponseBodyScenarioVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
-}
-
-func (s GetScenarioResponseBodyScenario) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetScenarioResponseBodyScenario) GoString() string {
-	return s.String()
-}
-
-func (s *GetScenarioResponseBodyScenario) SetDescription(v string) *GetScenarioResponseBodyScenario {
-	s.Description = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenario) SetId(v string) *GetScenarioResponseBodyScenario {
-	s.Id = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenario) SetIsTemplate(v bool) *GetScenarioResponseBodyScenario {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenario) SetName(v string) *GetScenarioResponseBodyScenario {
-	s.Name = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenario) SetStrategy(v *GetScenarioResponseBodyScenarioStrategy) *GetScenarioResponseBodyScenario {
-	s.Strategy = v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenario) SetSurveys(v []*GetScenarioResponseBodyScenarioSurveys) *GetScenarioResponseBodyScenario {
-	s.Surveys = v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenario) SetType(v string) *GetScenarioResponseBodyScenario {
-	s.Type = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenario) SetVariables(v []*GetScenarioResponseBodyScenarioVariables) *GetScenarioResponseBodyScenario {
-	s.Variables = v
-	return s
-}
-
-type GetScenarioResponseBodyScenarioStrategy struct {
-	Customized         *string                                               `json:"Customized,omitempty" xml:"Customized,omitempty"`
-	Description        *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndTime            *int64                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FollowUpStrategy   *string                                               `json:"FollowUpStrategy,omitempty" xml:"FollowUpStrategy,omitempty"`
-	Id                 *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsTemplate         *bool                                                 `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	MaxAttemptsPerDay  *int32                                                `json:"MaxAttemptsPerDay,omitempty" xml:"MaxAttemptsPerDay,omitempty"`
-	MinAttemptInterval *int32                                                `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
-	Name               *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	RepeatBy           *string                                               `json:"RepeatBy,omitempty" xml:"RepeatBy,omitempty"`
-	RepeatDays         []*string                                             `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RoutingStrategy    *string                                               `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
-	StartTime          *int64                                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type               *string                                               `json:"Type,omitempty" xml:"Type,omitempty"`
-	WorkingTime        []*GetScenarioResponseBodyScenarioStrategyWorkingTime `json:"WorkingTime,omitempty" xml:"WorkingTime,omitempty" type:"Repeated"`
-}
-
-func (s GetScenarioResponseBodyScenarioStrategy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetScenarioResponseBodyScenarioStrategy) GoString() string {
-	return s.String()
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetCustomized(v string) *GetScenarioResponseBodyScenarioStrategy {
-	s.Customized = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetDescription(v string) *GetScenarioResponseBodyScenarioStrategy {
-	s.Description = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetEndTime(v int64) *GetScenarioResponseBodyScenarioStrategy {
-	s.EndTime = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetFollowUpStrategy(v string) *GetScenarioResponseBodyScenarioStrategy {
-	s.FollowUpStrategy = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetId(v string) *GetScenarioResponseBodyScenarioStrategy {
-	s.Id = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetIsTemplate(v bool) *GetScenarioResponseBodyScenarioStrategy {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetMaxAttemptsPerDay(v int32) *GetScenarioResponseBodyScenarioStrategy {
-	s.MaxAttemptsPerDay = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetMinAttemptInterval(v int32) *GetScenarioResponseBodyScenarioStrategy {
-	s.MinAttemptInterval = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetName(v string) *GetScenarioResponseBodyScenarioStrategy {
-	s.Name = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetRepeatBy(v string) *GetScenarioResponseBodyScenarioStrategy {
-	s.RepeatBy = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetRepeatDays(v []*string) *GetScenarioResponseBodyScenarioStrategy {
-	s.RepeatDays = v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetRoutingStrategy(v string) *GetScenarioResponseBodyScenarioStrategy {
-	s.RoutingStrategy = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetStartTime(v int64) *GetScenarioResponseBodyScenarioStrategy {
-	s.StartTime = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetType(v string) *GetScenarioResponseBodyScenarioStrategy {
-	s.Type = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategy) SetWorkingTime(v []*GetScenarioResponseBodyScenarioStrategyWorkingTime) *GetScenarioResponseBodyScenarioStrategy {
-	s.WorkingTime = v
-	return s
-}
-
-type GetScenarioResponseBodyScenarioStrategyWorkingTime struct {
-	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s GetScenarioResponseBodyScenarioStrategyWorkingTime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetScenarioResponseBodyScenarioStrategyWorkingTime) GoString() string {
-	return s.String()
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategyWorkingTime) SetBeginTime(v string) *GetScenarioResponseBodyScenarioStrategyWorkingTime {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioStrategyWorkingTime) SetEndTime(v string) *GetScenarioResponseBodyScenarioStrategyWorkingTime {
-	s.EndTime = &v
-	return s
-}
-
-type GetScenarioResponseBodyScenarioSurveys struct {
-	BeebotId    *string                                          `json:"BeebotId,omitempty" xml:"BeebotId,omitempty"`
-	Description *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *string                                          `json:"Id,omitempty" xml:"Id,omitempty"`
-	Intents     []*GetScenarioResponseBodyScenarioSurveysIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Repeated"`
-	Name        *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	Role        *string                                          `json:"Role,omitempty" xml:"Role,omitempty"`
-	Round       *int32                                           `json:"Round,omitempty" xml:"Round,omitempty"`
-}
-
-func (s GetScenarioResponseBodyScenarioSurveys) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetScenarioResponseBodyScenarioSurveys) GoString() string {
-	return s.String()
-}
-
-func (s *GetScenarioResponseBodyScenarioSurveys) SetBeebotId(v string) *GetScenarioResponseBodyScenarioSurveys {
-	s.BeebotId = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioSurveys) SetDescription(v string) *GetScenarioResponseBodyScenarioSurveys {
-	s.Description = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioSurveys) SetId(v string) *GetScenarioResponseBodyScenarioSurveys {
-	s.Id = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioSurveys) SetIntents(v []*GetScenarioResponseBodyScenarioSurveysIntents) *GetScenarioResponseBodyScenarioSurveys {
-	s.Intents = v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioSurveys) SetName(v string) *GetScenarioResponseBodyScenarioSurveys {
-	s.Name = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioSurveys) SetRole(v string) *GetScenarioResponseBodyScenarioSurveys {
-	s.Role = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioSurveys) SetRound(v int32) *GetScenarioResponseBodyScenarioSurveys {
-	s.Round = &v
-	return s
-}
-
-type GetScenarioResponseBodyScenarioSurveysIntents struct {
-	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-}
-
-func (s GetScenarioResponseBodyScenarioSurveysIntents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetScenarioResponseBodyScenarioSurveysIntents) GoString() string {
-	return s.String()
-}
-
-func (s *GetScenarioResponseBodyScenarioSurveysIntents) SetIntentId(v string) *GetScenarioResponseBodyScenarioSurveysIntents {
-	s.IntentId = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioSurveysIntents) SetNodeId(v string) *GetScenarioResponseBodyScenarioSurveysIntents {
-	s.NodeId = &v
-	return s
-}
-
-type GetScenarioResponseBodyScenarioVariables struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s GetScenarioResponseBodyScenarioVariables) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetScenarioResponseBodyScenarioVariables) GoString() string {
-	return s.String()
-}
-
-func (s *GetScenarioResponseBodyScenarioVariables) SetKey(v string) *GetScenarioResponseBodyScenarioVariables {
-	s.Key = &v
-	return s
-}
-
-func (s *GetScenarioResponseBodyScenarioVariables) SetValue(v string) *GetScenarioResponseBodyScenarioVariables {
-	s.Value = &v
-	return s
-}
-
-type GetScenarioResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetScenarioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetScenarioResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetScenarioResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetScenarioResponse) SetHeaders(v map[string]*string) *GetScenarioResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetScenarioResponse) SetBody(v *GetScenarioResponseBody) *GetScenarioResponse {
 	s.Body = v
 	return s
 }
@@ -14934,8 +8805,9 @@ func (s *GetServiceExtensionsResponseBodyServiceExtensionsServiceExtension) SetN
 }
 
 type GetServiceExtensionsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetServiceExtensionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetServiceExtensionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetServiceExtensionsResponse) String() string {
@@ -14948,6 +8820,11 @@ func (s GetServiceExtensionsResponse) GoString() string {
 
 func (s *GetServiceExtensionsResponse) SetHeaders(v map[string]*string) *GetServiceExtensionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetServiceExtensionsResponse) SetStatusCode(v int32) *GetServiceExtensionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15115,8 +8992,9 @@ func (s *GetSmsConfigResponseBodySmsConfigsSmsConfig) SetTemplateCode(v string) 
 }
 
 type GetSmsConfigResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSmsConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSmsConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSmsConfigResponse) String() string {
@@ -15132,235 +9010,12 @@ func (s *GetSmsConfigResponse) SetHeaders(v map[string]*string) *GetSmsConfigRes
 	return s
 }
 
+func (s *GetSmsConfigResponse) SetStatusCode(v int32) *GetSmsConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetSmsConfigResponse) SetBody(v *GetSmsConfigResponseBody) *GetSmsConfigResponse {
-	s.Body = v
-	return s
-}
-
-type GetSurveyRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	SurveyId   *string `json:"SurveyId,omitempty" xml:"SurveyId,omitempty"`
-}
-
-func (s GetSurveyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSurveyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetSurveyRequest) SetInstanceId(v string) *GetSurveyRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetSurveyRequest) SetScenarioId(v string) *GetSurveyRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *GetSurveyRequest) SetSurveyId(v string) *GetSurveyRequest {
-	s.SurveyId = &v
-	return s
-}
-
-type GetSurveyResponseBody struct {
-	Code           *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	Survey         *GetSurveyResponseBodySurvey `json:"Survey,omitempty" xml:"Survey,omitempty" type:"Struct"`
-}
-
-func (s GetSurveyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSurveyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetSurveyResponseBody) SetCode(v string) *GetSurveyResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetSurveyResponseBody) SetHttpStatusCode(v int32) *GetSurveyResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetSurveyResponseBody) SetMessage(v string) *GetSurveyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetSurveyResponseBody) SetRequestId(v string) *GetSurveyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetSurveyResponseBody) SetSuccess(v bool) *GetSurveyResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetSurveyResponseBody) SetSurvey(v *GetSurveyResponseBodySurvey) *GetSurveyResponseBody {
-	s.Survey = v
-	return s
-}
-
-type GetSurveyResponseBodySurvey struct {
-	AsrCustomModel          *GetSurveyResponseBodySurveyAsrCustomModel `json:"AsrCustomModel,omitempty" xml:"AsrCustomModel,omitempty" type:"Struct"`
-	Description             *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	Flow                    *GetSurveyResponseBodySurveyFlow           `json:"Flow,omitempty" xml:"Flow,omitempty" type:"Struct"`
-	GlobalQuestions         *string                                    `json:"GlobalQuestions,omitempty" xml:"GlobalQuestions,omitempty"`
-	HotWords                *string                                    `json:"HotWords,omitempty" xml:"HotWords,omitempty"`
-	Id                      *string                                    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name                    *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	Role                    *string                                    `json:"Role,omitempty" xml:"Role,omitempty"`
-	Round                   *int32                                     `json:"Round,omitempty" xml:"Round,omitempty"`
-	ScenarioUuid            *string                                    `json:"ScenarioUuid,omitempty" xml:"ScenarioUuid,omitempty"`
-	SpeechOptimizationParam *string                                    `json:"SpeechOptimizationParam,omitempty" xml:"SpeechOptimizationParam,omitempty"`
-}
-
-func (s GetSurveyResponseBodySurvey) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSurveyResponseBodySurvey) GoString() string {
-	return s.String()
-}
-
-func (s *GetSurveyResponseBodySurvey) SetAsrCustomModel(v *GetSurveyResponseBodySurveyAsrCustomModel) *GetSurveyResponseBodySurvey {
-	s.AsrCustomModel = v
-	return s
-}
-
-func (s *GetSurveyResponseBodySurvey) SetDescription(v string) *GetSurveyResponseBodySurvey {
-	s.Description = &v
-	return s
-}
-
-func (s *GetSurveyResponseBodySurvey) SetFlow(v *GetSurveyResponseBodySurveyFlow) *GetSurveyResponseBodySurvey {
-	s.Flow = v
-	return s
-}
-
-func (s *GetSurveyResponseBodySurvey) SetGlobalQuestions(v string) *GetSurveyResponseBodySurvey {
-	s.GlobalQuestions = &v
-	return s
-}
-
-func (s *GetSurveyResponseBodySurvey) SetHotWords(v string) *GetSurveyResponseBodySurvey {
-	s.HotWords = &v
-	return s
-}
-
-func (s *GetSurveyResponseBodySurvey) SetId(v string) *GetSurveyResponseBodySurvey {
-	s.Id = &v
-	return s
-}
-
-func (s *GetSurveyResponseBodySurvey) SetName(v string) *GetSurveyResponseBodySurvey {
-	s.Name = &v
-	return s
-}
-
-func (s *GetSurveyResponseBodySurvey) SetRole(v string) *GetSurveyResponseBodySurvey {
-	s.Role = &v
-	return s
-}
-
-func (s *GetSurveyResponseBodySurvey) SetRound(v int32) *GetSurveyResponseBodySurvey {
-	s.Round = &v
-	return s
-}
-
-func (s *GetSurveyResponseBodySurvey) SetScenarioUuid(v string) *GetSurveyResponseBodySurvey {
-	s.ScenarioUuid = &v
-	return s
-}
-
-func (s *GetSurveyResponseBodySurvey) SetSpeechOptimizationParam(v string) *GetSurveyResponseBodySurvey {
-	s.SpeechOptimizationParam = &v
-	return s
-}
-
-type GetSurveyResponseBodySurveyAsrCustomModel struct {
-	Corpora           *string `json:"Corpora,omitempty" xml:"Corpora,omitempty"`
-	CustomModelStatus *int32  `json:"CustomModelStatus,omitempty" xml:"CustomModelStatus,omitempty"`
-}
-
-func (s GetSurveyResponseBodySurveyAsrCustomModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSurveyResponseBodySurveyAsrCustomModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetSurveyResponseBodySurveyAsrCustomModel) SetCorpora(v string) *GetSurveyResponseBodySurveyAsrCustomModel {
-	s.Corpora = &v
-	return s
-}
-
-func (s *GetSurveyResponseBodySurveyAsrCustomModel) SetCustomModelStatus(v int32) *GetSurveyResponseBodySurveyAsrCustomModel {
-	s.CustomModelStatus = &v
-	return s
-}
-
-type GetSurveyResponseBodySurveyFlow struct {
-	FlowId      *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	FlowJson    *string `json:"FlowJson,omitempty" xml:"FlowJson,omitempty"`
-	IsPublished *bool   `json:"IsPublished,omitempty" xml:"IsPublished,omitempty"`
-}
-
-func (s GetSurveyResponseBodySurveyFlow) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSurveyResponseBodySurveyFlow) GoString() string {
-	return s.String()
-}
-
-func (s *GetSurveyResponseBodySurveyFlow) SetFlowId(v string) *GetSurveyResponseBodySurveyFlow {
-	s.FlowId = &v
-	return s
-}
-
-func (s *GetSurveyResponseBodySurveyFlow) SetFlowJson(v string) *GetSurveyResponseBodySurveyFlow {
-	s.FlowJson = &v
-	return s
-}
-
-func (s *GetSurveyResponseBodySurveyFlow) SetIsPublished(v bool) *GetSurveyResponseBodySurveyFlow {
-	s.IsPublished = &v
-	return s
-}
-
-type GetSurveyResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSurveyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetSurveyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSurveyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSurveyResponse) SetHeaders(v map[string]*string) *GetSurveyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetSurveyResponse) SetBody(v *GetSurveyResponseBody) *GetSurveyResponse {
 	s.Body = v
 	return s
 }
@@ -15442,8 +9097,9 @@ func (s *GetTURNCredentialsResponseBody) SetUsername(v string) *GetTURNCredentia
 }
 
 type GetTURNCredentialsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTURNCredentialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTURNCredentialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTURNCredentialsResponse) String() string {
@@ -15456,6 +9112,11 @@ func (s GetTURNCredentialsResponse) GoString() string {
 
 func (s *GetTURNCredentialsResponse) SetHeaders(v map[string]*string) *GetTURNCredentialsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetTURNCredentialsResponse) SetStatusCode(v int32) *GetTURNCredentialsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15529,8 +9190,9 @@ func (s *GetTURNServerListResponseBody) SetTurnServerListConfig(v string) *GetTU
 }
 
 type GetTURNServerListResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTURNServerListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTURNServerListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTURNServerListResponse) String() string {
@@ -15546,318 +9208,12 @@ func (s *GetTURNServerListResponse) SetHeaders(v map[string]*string) *GetTURNSer
 	return s
 }
 
+func (s *GetTURNServerListResponse) SetStatusCode(v int32) *GetTURNServerListResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetTURNServerListResponse) SetBody(v *GetTURNServerListResponseBody) *GetTURNServerListResponse {
-	s.Body = v
-	return s
-}
-
-type GetTaskListRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-}
-
-func (s GetTaskListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskListRequest) SetInstanceId(v string) *GetTaskListRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetTaskListRequest) SetJobId(v string) *GetTaskListRequest {
-	s.JobId = &v
-	return s
-}
-
-type GetTaskListResponseBody struct {
-	Code           *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Tasks          []*GetTaskListResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-}
-
-func (s GetTaskListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskListResponseBody) SetCode(v string) *GetTaskListResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetTaskListResponseBody) SetHttpStatusCode(v int32) *GetTaskListResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetTaskListResponseBody) SetMessage(v string) *GetTaskListResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetTaskListResponseBody) SetRequestId(v string) *GetTaskListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetTaskListResponseBody) SetSuccess(v bool) *GetTaskListResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetTaskListResponseBody) SetTasks(v []*GetTaskListResponseBodyTasks) *GetTaskListResponseBody {
-	s.Tasks = v
-	return s
-}
-
-type GetTaskListResponseBodyTasks struct {
-	ActualTime    *int64                                      `json:"ActualTime,omitempty" xml:"ActualTime,omitempty"`
-	Brief         *string                                     `json:"Brief,omitempty" xml:"Brief,omitempty"`
-	CallId        *string                                     `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	CalledNumber  *string                                     `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber *string                                     `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	ChatbotId     *string                                     `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
-	Contact       *GetTaskListResponseBodyTasksContact        `json:"Contact,omitempty" xml:"Contact,omitempty" type:"Struct"`
-	Conversation  []*GetTaskListResponseBodyTasksConversation `json:"Conversation,omitempty" xml:"Conversation,omitempty" type:"Repeated"`
-	Duration      *int32                                      `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	JobId         *string                                     `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PlanedTime    *int64                                      `json:"PlanedTime,omitempty" xml:"PlanedTime,omitempty"`
-	ScenarioId    *string                                     `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Status        *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId        *string                                     `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s GetTaskListResponseBodyTasks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskListResponseBodyTasks) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskListResponseBodyTasks) SetActualTime(v int64) *GetTaskListResponseBodyTasks {
-	s.ActualTime = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasks) SetBrief(v string) *GetTaskListResponseBodyTasks {
-	s.Brief = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasks) SetCallId(v string) *GetTaskListResponseBodyTasks {
-	s.CallId = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasks) SetCalledNumber(v string) *GetTaskListResponseBodyTasks {
-	s.CalledNumber = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasks) SetCallingNumber(v string) *GetTaskListResponseBodyTasks {
-	s.CallingNumber = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasks) SetChatbotId(v string) *GetTaskListResponseBodyTasks {
-	s.ChatbotId = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasks) SetContact(v *GetTaskListResponseBodyTasksContact) *GetTaskListResponseBodyTasks {
-	s.Contact = v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasks) SetConversation(v []*GetTaskListResponseBodyTasksConversation) *GetTaskListResponseBodyTasks {
-	s.Conversation = v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasks) SetDuration(v int32) *GetTaskListResponseBodyTasks {
-	s.Duration = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasks) SetJobId(v string) *GetTaskListResponseBodyTasks {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasks) SetPlanedTime(v int64) *GetTaskListResponseBodyTasks {
-	s.PlanedTime = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasks) SetScenarioId(v string) *GetTaskListResponseBodyTasks {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasks) SetStatus(v string) *GetTaskListResponseBodyTasks {
-	s.Status = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasks) SetTaskId(v string) *GetTaskListResponseBodyTasks {
-	s.TaskId = &v
-	return s
-}
-
-type GetTaskListResponseBodyTasksContact struct {
-	ContactId   *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Honorific   *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
-	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
-}
-
-func (s GetTaskListResponseBodyTasksContact) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskListResponseBodyTasksContact) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskListResponseBodyTasksContact) SetContactId(v string) *GetTaskListResponseBodyTasksContact {
-	s.ContactId = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasksContact) SetContactName(v string) *GetTaskListResponseBodyTasksContact {
-	s.ContactName = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasksContact) SetHonorific(v string) *GetTaskListResponseBodyTasksContact {
-	s.Honorific = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasksContact) SetJobId(v string) *GetTaskListResponseBodyTasksContact {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasksContact) SetPhoneNumber(v string) *GetTaskListResponseBodyTasksContact {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasksContact) SetReferenceId(v string) *GetTaskListResponseBodyTasksContact {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasksContact) SetRole(v string) *GetTaskListResponseBodyTasksContact {
-	s.Role = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasksContact) SetState(v string) *GetTaskListResponseBodyTasksContact {
-	s.State = &v
-	return s
-}
-
-type GetTaskListResponseBodyTasksConversation struct {
-	Script    *string                                            `json:"Script,omitempty" xml:"Script,omitempty"`
-	Speaker   *string                                            `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
-	Summary   []*GetTaskListResponseBodyTasksConversationSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Repeated"`
-	Timestamp *int64                                             `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-}
-
-func (s GetTaskListResponseBodyTasksConversation) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskListResponseBodyTasksConversation) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskListResponseBodyTasksConversation) SetScript(v string) *GetTaskListResponseBodyTasksConversation {
-	s.Script = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasksConversation) SetSpeaker(v string) *GetTaskListResponseBodyTasksConversation {
-	s.Speaker = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasksConversation) SetSummary(v []*GetTaskListResponseBodyTasksConversationSummary) *GetTaskListResponseBodyTasksConversation {
-	s.Summary = v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasksConversation) SetTimestamp(v int64) *GetTaskListResponseBodyTasksConversation {
-	s.Timestamp = &v
-	return s
-}
-
-type GetTaskListResponseBodyTasksConversationSummary struct {
-	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	SummaryName *string `json:"SummaryName,omitempty" xml:"SummaryName,omitempty"`
-}
-
-func (s GetTaskListResponseBodyTasksConversationSummary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskListResponseBodyTasksConversationSummary) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskListResponseBodyTasksConversationSummary) SetCategory(v string) *GetTaskListResponseBodyTasksConversationSummary {
-	s.Category = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasksConversationSummary) SetContent(v string) *GetTaskListResponseBodyTasksConversationSummary {
-	s.Content = &v
-	return s
-}
-
-func (s *GetTaskListResponseBodyTasksConversationSummary) SetSummaryName(v string) *GetTaskListResponseBodyTasksConversationSummary {
-	s.SummaryName = &v
-	return s
-}
-
-type GetTaskListResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTaskListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetTaskListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTaskListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetTaskListResponse) SetHeaders(v map[string]*string) *GetTaskListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetTaskListResponse) SetBody(v *GetTaskListResponseBody) *GetTaskListResponse {
 	s.Body = v
 	return s
 }
@@ -16154,8 +9510,9 @@ func (s *GetUserResponseBodyUserSkillLevelsSkillLevelSkill) SetSkillGroupName(v 
 }
 
 type GetUserResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetUserResponse) String() string {
@@ -16168,6 +9525,11 @@ func (s GetUserResponse) GoString() string {
 
 func (s *GetUserResponse) SetHeaders(v map[string]*string) *GetUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetUserResponse) SetStatusCode(v int32) *GetUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16440,8 +9802,9 @@ func (s *GetUserByExtensionResponseBodyUserSkillLevelsSkill) SetSkillGroupName(v
 }
 
 type GetUserByExtensionResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserByExtensionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserByExtensionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetUserByExtensionResponse) String() string {
@@ -16457,100 +9820,12 @@ func (s *GetUserByExtensionResponse) SetHeaders(v map[string]*string) *GetUserBy
 	return s
 }
 
+func (s *GetUserByExtensionResponse) SetStatusCode(v int32) *GetUserByExtensionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetUserByExtensionResponse) SetBody(v *GetUserByExtensionResponseBody) *GetUserByExtensionResponse {
-	s.Body = v
-	return s
-}
-
-type InflightTaskTimeoutRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceOwnerId *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
-	TaskId          *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s InflightTaskTimeoutRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InflightTaskTimeoutRequest) GoString() string {
-	return s.String()
-}
-
-func (s *InflightTaskTimeoutRequest) SetInstanceId(v string) *InflightTaskTimeoutRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *InflightTaskTimeoutRequest) SetInstanceOwnerId(v int64) *InflightTaskTimeoutRequest {
-	s.InstanceOwnerId = &v
-	return s
-}
-
-func (s *InflightTaskTimeoutRequest) SetTaskId(v string) *InflightTaskTimeoutRequest {
-	s.TaskId = &v
-	return s
-}
-
-type InflightTaskTimeoutResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s InflightTaskTimeoutResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InflightTaskTimeoutResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *InflightTaskTimeoutResponseBody) SetCode(v string) *InflightTaskTimeoutResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *InflightTaskTimeoutResponseBody) SetHttpStatusCode(v int32) *InflightTaskTimeoutResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *InflightTaskTimeoutResponseBody) SetMessage(v string) *InflightTaskTimeoutResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *InflightTaskTimeoutResponseBody) SetRequestId(v string) *InflightTaskTimeoutResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *InflightTaskTimeoutResponseBody) SetSuccess(v bool) *InflightTaskTimeoutResponseBody {
-	s.Success = &v
-	return s
-}
-
-type InflightTaskTimeoutResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InflightTaskTimeoutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s InflightTaskTimeoutResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InflightTaskTimeoutResponse) GoString() string {
-	return s.String()
-}
-
-func (s *InflightTaskTimeoutResponse) SetHeaders(v map[string]*string) *InflightTaskTimeoutResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *InflightTaskTimeoutResponse) SetBody(v *InflightTaskTimeoutResponseBody) *InflightTaskTimeoutResponse {
 	s.Body = v
 	return s
 }
@@ -16620,8 +9895,9 @@ func (s *LaunchAppraiseResponseBody) SetSuccess(v bool) *LaunchAppraiseResponseB
 }
 
 type LaunchAppraiseResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *LaunchAppraiseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *LaunchAppraiseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s LaunchAppraiseResponse) String() string {
@@ -16634,6 +9910,11 @@ func (s LaunchAppraiseResponse) GoString() string {
 
 func (s *LaunchAppraiseResponse) SetHeaders(v map[string]*string) *LaunchAppraiseResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *LaunchAppraiseResponse) SetStatusCode(v int32) *LaunchAppraiseResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16725,8 +10006,9 @@ func (s *LaunchShortMessageAppraiseResponseBody) SetSuccess(v bool) *LaunchShort
 }
 
 type LaunchShortMessageAppraiseResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *LaunchShortMessageAppraiseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *LaunchShortMessageAppraiseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s LaunchShortMessageAppraiseResponse) String() string {
@@ -16739,6 +10021,11 @@ func (s LaunchShortMessageAppraiseResponse) GoString() string {
 
 func (s *LaunchShortMessageAppraiseResponse) SetHeaders(v map[string]*string) *LaunchShortMessageAppraiseResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *LaunchShortMessageAppraiseResponse) SetStatusCode(v int32) *LaunchShortMessageAppraiseResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16906,8 +10193,9 @@ func (s *ListAgentDevicesResponseBodyAgentDeviceListAgentDevice) SetRemark(v str
 }
 
 type ListAgentDevicesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAgentDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAgentDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAgentDevicesResponse) String() string {
@@ -16920,6 +10208,11 @@ func (s ListAgentDevicesResponse) GoString() string {
 
 func (s *ListAgentDevicesResponse) SetHeaders(v map[string]*string) *ListAgentDevicesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAgentDevicesResponse) SetStatusCode(v int32) *ListAgentDevicesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -17121,8 +10414,9 @@ func (s *ListAgentEventsResponseBodyAgentEventListAgentEventSkillGroupIdsSkillGr
 }
 
 type ListAgentEventsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAgentEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAgentEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAgentEventsResponse) String() string {
@@ -17135,6 +10429,11 @@ func (s ListAgentEventsResponse) GoString() string {
 
 func (s *ListAgentEventsResponse) SetHeaders(v map[string]*string) *ListAgentEventsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAgentEventsResponse) SetStatusCode(v int32) *ListAgentEventsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -17338,8 +10637,9 @@ func (s *ListAgentStateLogsResponseBodyAgentStateLogPageList) SetStateTime(v int
 }
 
 type ListAgentStateLogsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAgentStateLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAgentStateLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAgentStateLogsResponse) String() string {
@@ -17352,6 +10652,11 @@ func (s ListAgentStateLogsResponse) GoString() string {
 
 func (s *ListAgentStateLogsResponse) SetHeaders(v map[string]*string) *ListAgentStateLogsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAgentStateLogsResponse) SetStatusCode(v int32) *ListAgentStateLogsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -17560,8 +10865,9 @@ func (s *ListAgentStatesResponseBodyDataListRealTimeAgentState) SetStateDuration
 }
 
 type ListAgentStatesResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAgentStatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAgentStatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAgentStatesResponse) String() string {
@@ -17574,6 +10880,11 @@ func (s ListAgentStatesResponse) GoString() string {
 
 func (s *ListAgentStatesResponse) SetHeaders(v map[string]*string) *ListAgentStatesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAgentStatesResponse) SetStatusCode(v int32) *ListAgentStatesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -18133,8 +11444,9 @@ func (s *ListAgentSummaryReportsResponseBodyPagedAgentSummaryReportListAgentSumm
 }
 
 type ListAgentSummaryReportsResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAgentSummaryReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAgentSummaryReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAgentSummaryReportsResponse) String() string {
@@ -18147,6 +11459,11 @@ func (s ListAgentSummaryReportsResponse) GoString() string {
 
 func (s *ListAgentSummaryReportsResponse) SetHeaders(v map[string]*string) *ListAgentSummaryReportsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAgentSummaryReportsResponse) SetStatusCode(v int32) *ListAgentSummaryReportsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -18758,8 +12075,9 @@ func (s *ListAgentSummaryReportsByIntervalResponseBodyPagedAgentSummaryReportLis
 }
 
 type ListAgentSummaryReportsByIntervalResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAgentSummaryReportsByIntervalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAgentSummaryReportsByIntervalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAgentSummaryReportsByIntervalResponse) String() string {
@@ -18772,6 +12090,11 @@ func (s ListAgentSummaryReportsByIntervalResponse) GoString() string {
 
 func (s *ListAgentSummaryReportsByIntervalResponse) SetHeaders(v map[string]*string) *ListAgentSummaryReportsByIntervalResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAgentSummaryReportsByIntervalResponse) SetStatusCode(v int32) *ListAgentSummaryReportsByIntervalResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -19313,8 +12636,9 @@ func (s *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReport
 }
 
 type ListAgentSummaryReportsSinceMidnightResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAgentSummaryReportsSinceMidnightResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAgentSummaryReportsSinceMidnightResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAgentSummaryReportsSinceMidnightResponse) String() string {
@@ -19330,217 +12654,12 @@ func (s *ListAgentSummaryReportsSinceMidnightResponse) SetHeaders(v map[string]*
 	return s
 }
 
+func (s *ListAgentSummaryReportsSinceMidnightResponse) SetStatusCode(v int32) *ListAgentSummaryReportsSinceMidnightResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListAgentSummaryReportsSinceMidnightResponse) SetBody(v *ListAgentSummaryReportsSinceMidnightResponseBody) *ListAgentSummaryReportsSinceMidnightResponse {
-	s.Body = v
-	return s
-}
-
-type ListBasicStatisticsReportSubItemsRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
-}
-
-func (s ListBasicStatisticsReportSubItemsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBasicStatisticsReportSubItemsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListBasicStatisticsReportSubItemsRequest) SetInstanceId(v string) *ListBasicStatisticsReportSubItemsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsRequest) SetJobGroupId(v string) *ListBasicStatisticsReportSubItemsRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsRequest) SetPageNumber(v int32) *ListBasicStatisticsReportSubItemsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsRequest) SetPageSize(v int32) *ListBasicStatisticsReportSubItemsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsRequest) SetTitle(v string) *ListBasicStatisticsReportSubItemsRequest {
-	s.Title = &v
-	return s
-}
-
-type ListBasicStatisticsReportSubItemsResponseBody struct {
-	Code           *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubItems       *ListBasicStatisticsReportSubItemsResponseBodySubItems `json:"SubItems,omitempty" xml:"SubItems,omitempty" type:"Struct"`
-	Success        *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListBasicStatisticsReportSubItemsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBasicStatisticsReportSubItemsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBody) SetCode(v string) *ListBasicStatisticsReportSubItemsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBody) SetHttpStatusCode(v int32) *ListBasicStatisticsReportSubItemsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBody) SetMessage(v string) *ListBasicStatisticsReportSubItemsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBody) SetRequestId(v string) *ListBasicStatisticsReportSubItemsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBody) SetSubItems(v *ListBasicStatisticsReportSubItemsResponseBodySubItems) *ListBasicStatisticsReportSubItemsResponseBody {
-	s.SubItems = v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBody) SetSuccess(v bool) *ListBasicStatisticsReportSubItemsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListBasicStatisticsReportSubItemsResponseBodySubItems struct {
-	List       []*ListBasicStatisticsReportSubItemsResponseBodySubItemsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNumber *int32                                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListBasicStatisticsReportSubItemsResponseBodySubItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBasicStatisticsReportSubItemsResponseBodySubItems) GoString() string {
-	return s.String()
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBodySubItems) SetList(v []*ListBasicStatisticsReportSubItemsResponseBodySubItemsList) *ListBasicStatisticsReportSubItemsResponseBodySubItems {
-	s.List = v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBodySubItems) SetPageNumber(v int32) *ListBasicStatisticsReportSubItemsResponseBodySubItems {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBodySubItems) SetPageSize(v int32) *ListBasicStatisticsReportSubItemsResponseBodySubItems {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBodySubItems) SetTotalCount(v int32) *ListBasicStatisticsReportSubItemsResponseBodySubItems {
-	s.TotalCount = &v
-	return s
-}
-
-type ListBasicStatisticsReportSubItemsResponseBodySubItemsList struct {
-	BasicStatisticsReportSubItemName *string                                                         `json:"BasicStatisticsReportSubItemName,omitempty" xml:"BasicStatisticsReportSubItemName,omitempty"`
-	Count                            *int32                                                          `json:"Count,omitempty" xml:"Count,omitempty"`
-	Percentage                       *int32                                                          `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	Row                              []*ListBasicStatisticsReportSubItemsResponseBodySubItemsListRow `json:"Row,omitempty" xml:"Row,omitempty" type:"Repeated"`
-	Value                            *string                                                         `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListBasicStatisticsReportSubItemsResponseBodySubItemsList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBasicStatisticsReportSubItemsResponseBodySubItemsList) GoString() string {
-	return s.String()
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBodySubItemsList) SetBasicStatisticsReportSubItemName(v string) *ListBasicStatisticsReportSubItemsResponseBodySubItemsList {
-	s.BasicStatisticsReportSubItemName = &v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBodySubItemsList) SetCount(v int32) *ListBasicStatisticsReportSubItemsResponseBodySubItemsList {
-	s.Count = &v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBodySubItemsList) SetPercentage(v int32) *ListBasicStatisticsReportSubItemsResponseBodySubItemsList {
-	s.Percentage = &v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBodySubItemsList) SetRow(v []*ListBasicStatisticsReportSubItemsResponseBodySubItemsListRow) *ListBasicStatisticsReportSubItemsResponseBodySubItemsList {
-	s.Row = v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBodySubItemsList) SetValue(v string) *ListBasicStatisticsReportSubItemsResponseBodySubItemsList {
-	s.Value = &v
-	return s
-}
-
-type ListBasicStatisticsReportSubItemsResponseBodySubItemsListRow struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListBasicStatisticsReportSubItemsResponseBodySubItemsListRow) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBasicStatisticsReportSubItemsResponseBodySubItemsListRow) GoString() string {
-	return s.String()
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBodySubItemsListRow) SetKey(v string) *ListBasicStatisticsReportSubItemsResponseBodySubItemsListRow {
-	s.Key = &v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponseBodySubItemsListRow) SetValue(v string) *ListBasicStatisticsReportSubItemsResponseBodySubItemsListRow {
-	s.Value = &v
-	return s
-}
-
-type ListBasicStatisticsReportSubItemsResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListBasicStatisticsReportSubItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListBasicStatisticsReportSubItemsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListBasicStatisticsReportSubItemsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponse) SetHeaders(v map[string]*string) *ListBasicStatisticsReportSubItemsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListBasicStatisticsReportSubItemsResponse) SetBody(v *ListBasicStatisticsReportSubItemsResponseBody) *ListBasicStatisticsReportSubItemsResponse {
 	s.Body = v
 	return s
 }
@@ -19963,8 +13082,9 @@ func (s *ListCallDetailRecordsResponseBodyCallDetailRecordsListCallDetailRecordR
 }
 
 type ListCallDetailRecordsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListCallDetailRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCallDetailRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListCallDetailRecordsResponse) String() string {
@@ -19977,6 +13097,11 @@ func (s ListCallDetailRecordsResponse) GoString() string {
 
 func (s *ListCallDetailRecordsResponse) SetHeaders(v map[string]*string) *ListCallDetailRecordsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListCallDetailRecordsResponse) SetStatusCode(v int32) *ListCallDetailRecordsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -20226,8 +13351,9 @@ func (s *ListCallEventDetailByContactIdResponseBodyDataEventsCallEventDetailDeta
 }
 
 type ListCallEventDetailByContactIdResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListCallEventDetailByContactIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCallEventDetailByContactIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListCallEventDetailByContactIdResponse) String() string {
@@ -20240,6 +13366,11 @@ func (s ListCallEventDetailByContactIdResponse) GoString() string {
 
 func (s *ListCallEventDetailByContactIdResponse) SetHeaders(v map[string]*string) *ListCallEventDetailByContactIdResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListCallEventDetailByContactIdResponse) SetStatusCode(v int32) *ListCallEventDetailByContactIdResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -20383,8 +13514,9 @@ func (s *ListCallMeasureSummaryReportsResponseBodyCallMeasureSummaryReportListCa
 }
 
 type ListCallMeasureSummaryReportsResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListCallMeasureSummaryReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCallMeasureSummaryReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListCallMeasureSummaryReportsResponse) String() string {
@@ -20397,6 +13529,11 @@ func (s ListCallMeasureSummaryReportsResponse) GoString() string {
 
 func (s *ListCallMeasureSummaryReportsResponse) SetHeaders(v map[string]*string) *ListCallMeasureSummaryReportsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListCallMeasureSummaryReportsResponse) SetStatusCode(v int32) *ListCallMeasureSummaryReportsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -20516,8 +13653,9 @@ func (s *ListConfigResponseBodyConfigItemsConfigItem) SetValue(v string) *ListCo
 }
 
 type ListConfigResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListConfigResponse) String() string {
@@ -20530,6 +13668,11 @@ func (s ListConfigResponse) GoString() string {
 
 func (s *ListConfigResponse) SetHeaders(v map[string]*string) *ListConfigResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListConfigResponse) SetStatusCode(v int32) *ListConfigResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -20831,8 +13974,9 @@ func (s *ListContactFlowsResponseBodyContactFlowsContactFlowVersionsContactFlowV
 }
 
 type ListContactFlowsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListContactFlowsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListContactFlowsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListContactFlowsResponse) String() string {
@@ -20845,6 +13989,11 @@ func (s ListContactFlowsResponse) GoString() string {
 
 func (s *ListContactFlowsResponse) SetHeaders(v map[string]*string) *ListContactFlowsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListContactFlowsResponse) SetStatusCode(v int32) *ListContactFlowsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -21200,8 +14349,9 @@ func (s *ListInstancesOfUserResponseBodyInstancesCallCenterInstancePhoneNumbersP
 }
 
 type ListInstancesOfUserResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListInstancesOfUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstancesOfUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListInstancesOfUserResponse) String() string {
@@ -21214,6 +14364,11 @@ func (s ListInstancesOfUserResponse) GoString() string {
 
 func (s *ListInstancesOfUserResponse) SetHeaders(v map[string]*string) *ListInstancesOfUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListInstancesOfUserResponse) SetStatusCode(v int32) *ListInstancesOfUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -21476,8 +14631,9 @@ func (s *ListIvrTrackingDetailResponseBodyIvrTrackingDetailsListIvrTrackingDetai
 }
 
 type ListIvrTrackingDetailResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIvrTrackingDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIvrTrackingDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIvrTrackingDetailResponse) String() string {
@@ -21493,1354 +14649,12 @@ func (s *ListIvrTrackingDetailResponse) SetHeaders(v map[string]*string) *ListIv
 	return s
 }
 
+func (s *ListIvrTrackingDetailResponse) SetStatusCode(v int32) *ListIvrTrackingDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListIvrTrackingDetailResponse) SetBody(v *ListIvrTrackingDetailResponseBody) *ListIvrTrackingDetailResponse {
-	s.Body = v
-	return s
-}
-
-type ListJobGroupsRequest struct {
-	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s ListJobGroupsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobGroupsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobGroupsRequest) SetEndTime(v int64) *ListJobGroupsRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ListJobGroupsRequest) SetInstanceId(v string) *ListJobGroupsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListJobGroupsRequest) SetPageNumber(v int32) *ListJobGroupsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListJobGroupsRequest) SetPageSize(v int32) *ListJobGroupsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListJobGroupsRequest) SetStartTime(v int64) *ListJobGroupsRequest {
-	s.StartTime = &v
-	return s
-}
-
-type ListJobGroupsResponseBody struct {
-	Code           *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	JobGroups      *ListJobGroupsResponseBodyJobGroups `json:"JobGroups,omitempty" xml:"JobGroups,omitempty" type:"Struct"`
-	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListJobGroupsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobGroupsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobGroupsResponseBody) SetCode(v string) *ListJobGroupsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBody) SetHttpStatusCode(v int32) *ListJobGroupsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBody) SetJobGroups(v *ListJobGroupsResponseBodyJobGroups) *ListJobGroupsResponseBody {
-	s.JobGroups = v
-	return s
-}
-
-func (s *ListJobGroupsResponseBody) SetMessage(v string) *ListJobGroupsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBody) SetRequestId(v string) *ListJobGroupsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBody) SetSuccess(v bool) *ListJobGroupsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListJobGroupsResponseBodyJobGroups struct {
-	List       []*ListJobGroupsResponseBodyJobGroupsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListJobGroupsResponseBodyJobGroups) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobGroupsResponseBodyJobGroups) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobGroupsResponseBodyJobGroups) SetList(v []*ListJobGroupsResponseBodyJobGroupsList) *ListJobGroupsResponseBodyJobGroups {
-	s.List = v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroups) SetPageNumber(v int32) *ListJobGroupsResponseBodyJobGroups {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroups) SetPageSize(v int32) *ListJobGroupsResponseBodyJobGroups {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroups) SetTotalCount(v int32) *ListJobGroupsResponseBodyJobGroups {
-	s.TotalCount = &v
-	return s
-}
-
-type ListJobGroupsResponseBodyJobGroupsList struct {
-	CallingNumbers []*string                                       `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
-	CreationTime   *int64                                          `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description    *string                                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id             *string                                         `json:"Id,omitempty" xml:"Id,omitempty"`
-	JobFilePath    *string                                         `json:"JobFilePath,omitempty" xml:"JobFilePath,omitempty"`
-	Name           *string                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	Progress       *ListJobGroupsResponseBodyJobGroupsListProgress `json:"Progress,omitempty" xml:"Progress,omitempty" type:"Struct"`
-	ScenarioId     *string                                         `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Strategy       *ListJobGroupsResponseBodyJobGroupsListStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
-}
-
-func (s ListJobGroupsResponseBodyJobGroupsList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobGroupsResponseBodyJobGroupsList) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsList) SetCallingNumbers(v []*string) *ListJobGroupsResponseBodyJobGroupsList {
-	s.CallingNumbers = v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsList) SetCreationTime(v int64) *ListJobGroupsResponseBodyJobGroupsList {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsList) SetDescription(v string) *ListJobGroupsResponseBodyJobGroupsList {
-	s.Description = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsList) SetId(v string) *ListJobGroupsResponseBodyJobGroupsList {
-	s.Id = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsList) SetJobFilePath(v string) *ListJobGroupsResponseBodyJobGroupsList {
-	s.JobFilePath = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsList) SetName(v string) *ListJobGroupsResponseBodyJobGroupsList {
-	s.Name = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsList) SetProgress(v *ListJobGroupsResponseBodyJobGroupsListProgress) *ListJobGroupsResponseBodyJobGroupsList {
-	s.Progress = v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsList) SetScenarioId(v string) *ListJobGroupsResponseBodyJobGroupsList {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsList) SetStrategy(v *ListJobGroupsResponseBodyJobGroupsListStrategy) *ListJobGroupsResponseBodyJobGroupsList {
-	s.Strategy = v
-	return s
-}
-
-type ListJobGroupsResponseBodyJobGroupsListProgress struct {
-	Categories       []*ListJobGroupsResponseBodyJobGroupsListProgressCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	Duration         *int32                                                      `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	StartTime        *int64                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status           *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalCompleted   *int32                                                      `json:"TotalCompleted,omitempty" xml:"TotalCompleted,omitempty"`
-	TotalJobs        *int32                                                      `json:"TotalJobs,omitempty" xml:"TotalJobs,omitempty"`
-	TotalNotAnswered *int32                                                      `json:"TotalNotAnswered,omitempty" xml:"TotalNotAnswered,omitempty"`
-}
-
-func (s ListJobGroupsResponseBodyJobGroupsListProgress) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobGroupsResponseBodyJobGroupsListProgress) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListProgress) SetCategories(v []*ListJobGroupsResponseBodyJobGroupsListProgressCategories) *ListJobGroupsResponseBodyJobGroupsListProgress {
-	s.Categories = v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListProgress) SetDuration(v int32) *ListJobGroupsResponseBodyJobGroupsListProgress {
-	s.Duration = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListProgress) SetStartTime(v int64) *ListJobGroupsResponseBodyJobGroupsListProgress {
-	s.StartTime = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListProgress) SetStatus(v string) *ListJobGroupsResponseBodyJobGroupsListProgress {
-	s.Status = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListProgress) SetTotalCompleted(v int32) *ListJobGroupsResponseBodyJobGroupsListProgress {
-	s.TotalCompleted = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListProgress) SetTotalJobs(v int32) *ListJobGroupsResponseBodyJobGroupsListProgress {
-	s.TotalJobs = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListProgress) SetTotalNotAnswered(v int32) *ListJobGroupsResponseBodyJobGroupsListProgress {
-	s.TotalNotAnswered = &v
-	return s
-}
-
-type ListJobGroupsResponseBodyJobGroupsListProgressCategories struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListJobGroupsResponseBodyJobGroupsListProgressCategories) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobGroupsResponseBodyJobGroupsListProgressCategories) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListProgressCategories) SetKey(v string) *ListJobGroupsResponseBodyJobGroupsListProgressCategories {
-	s.Key = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListProgressCategories) SetValue(v string) *ListJobGroupsResponseBodyJobGroupsListProgressCategories {
-	s.Value = &v
-	return s
-}
-
-type ListJobGroupsResponseBodyJobGroupsListStrategy struct {
-	Customized         *string                                                      `json:"Customized,omitempty" xml:"Customized,omitempty"`
-	Description        *string                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndTime            *int64                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FollowUpStrategy   *string                                                      `json:"FollowUpStrategy,omitempty" xml:"FollowUpStrategy,omitempty"`
-	Id                 *string                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsTemplate         *bool                                                        `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	MaxAttemptsPerDay  *int32                                                       `json:"MaxAttemptsPerDay,omitempty" xml:"MaxAttemptsPerDay,omitempty"`
-	MinAttemptInterval *int32                                                       `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
-	Name               *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	RepeatBy           *string                                                      `json:"RepeatBy,omitempty" xml:"RepeatBy,omitempty"`
-	RepeatDays         []*string                                                    `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RoutingStrategy    *string                                                      `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
-	StartTime          *int64                                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type               *string                                                      `json:"Type,omitempty" xml:"Type,omitempty"`
-	WorkingTime        []*ListJobGroupsResponseBodyJobGroupsListStrategyWorkingTime `json:"WorkingTime,omitempty" xml:"WorkingTime,omitempty" type:"Repeated"`
-}
-
-func (s ListJobGroupsResponseBodyJobGroupsListStrategy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobGroupsResponseBodyJobGroupsListStrategy) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetCustomized(v string) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.Customized = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetDescription(v string) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.Description = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetEndTime(v int64) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetFollowUpStrategy(v string) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.FollowUpStrategy = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetId(v string) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.Id = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetIsTemplate(v bool) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetMaxAttemptsPerDay(v int32) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.MaxAttemptsPerDay = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetMinAttemptInterval(v int32) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.MinAttemptInterval = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetName(v string) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.Name = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetRepeatBy(v string) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.RepeatBy = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetRepeatDays(v []*string) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.RepeatDays = v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetRoutingStrategy(v string) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.RoutingStrategy = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetStartTime(v int64) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.StartTime = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetType(v string) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.Type = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategy) SetWorkingTime(v []*ListJobGroupsResponseBodyJobGroupsListStrategyWorkingTime) *ListJobGroupsResponseBodyJobGroupsListStrategy {
-	s.WorkingTime = v
-	return s
-}
-
-type ListJobGroupsResponseBodyJobGroupsListStrategyWorkingTime struct {
-	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s ListJobGroupsResponseBodyJobGroupsListStrategyWorkingTime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobGroupsResponseBodyJobGroupsListStrategyWorkingTime) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategyWorkingTime) SetBeginTime(v string) *ListJobGroupsResponseBodyJobGroupsListStrategyWorkingTime {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *ListJobGroupsResponseBodyJobGroupsListStrategyWorkingTime) SetEndTime(v string) *ListJobGroupsResponseBodyJobGroupsListStrategyWorkingTime {
-	s.EndTime = &v
-	return s
-}
-
-type ListJobGroupsResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListJobGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListJobGroupsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobGroupsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobGroupsResponse) SetHeaders(v map[string]*string) *ListJobGroupsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListJobGroupsResponse) SetBody(v *ListJobGroupsResponseBody) *ListJobGroupsResponse {
-	s.Body = v
-	return s
-}
-
-type ListJobStatusRequest struct {
-	ContactName   *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PhoneNumber   *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ScenarioId    *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TimeAlignment *string `json:"TimeAlignment,omitempty" xml:"TimeAlignment,omitempty"`
-}
-
-func (s ListJobStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobStatusRequest) SetContactName(v string) *ListJobStatusRequest {
-	s.ContactName = &v
-	return s
-}
-
-func (s *ListJobStatusRequest) SetEndTime(v int64) *ListJobStatusRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ListJobStatusRequest) SetGroupId(v string) *ListJobStatusRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *ListJobStatusRequest) SetInstanceId(v string) *ListJobStatusRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListJobStatusRequest) SetPageNumber(v int32) *ListJobStatusRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListJobStatusRequest) SetPageSize(v int32) *ListJobStatusRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListJobStatusRequest) SetPhoneNumber(v string) *ListJobStatusRequest {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *ListJobStatusRequest) SetScenarioId(v string) *ListJobStatusRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *ListJobStatusRequest) SetStartTime(v int64) *ListJobStatusRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *ListJobStatusRequest) SetTimeAlignment(v string) *ListJobStatusRequest {
-	s.TimeAlignment = &v
-	return s
-}
-
-type ListJobStatusResponseBody struct {
-	Code           *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Jobs           *ListJobStatusResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Struct"`
-	Message        *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListJobStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobStatusResponseBody) SetCode(v string) *ListJobStatusResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBody) SetHttpStatusCode(v int32) *ListJobStatusResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBody) SetJobs(v *ListJobStatusResponseBodyJobs) *ListJobStatusResponseBody {
-	s.Jobs = v
-	return s
-}
-
-func (s *ListJobStatusResponseBody) SetMessage(v string) *ListJobStatusResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBody) SetRequestId(v string) *ListJobStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBody) SetSuccess(v bool) *ListJobStatusResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListJobStatusResponseBodyJobs struct {
-	List       []*ListJobStatusResponseBodyJobsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNumber *int32                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int32                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListJobStatusResponseBodyJobs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobStatusResponseBodyJobs) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobStatusResponseBodyJobs) SetList(v []*ListJobStatusResponseBodyJobsList) *ListJobStatusResponseBodyJobs {
-	s.List = v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobs) SetPageNumber(v int32) *ListJobStatusResponseBodyJobs {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobs) SetPageSize(v int32) *ListJobStatusResponseBodyJobs {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobs) SetTotalCount(v int32) *ListJobStatusResponseBodyJobs {
-	s.TotalCount = &v
-	return s
-}
-
-type ListJobStatusResponseBodyJobsList struct {
-	CallingNumbers []*string                                    `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
-	Contacts       []*ListJobStatusResponseBodyJobsListContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
-	Extras         []*ListJobStatusResponseBodyJobsListExtras   `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Repeated"`
-	FailureReason  *string                                      `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
-	GroupId        *string                                      `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId          *string                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Priority       *int32                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ReferenceId    *string                                      `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	ScenarioId     *string                                      `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Status         *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	StrategyId     *string                                      `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	Summary        []*ListJobStatusResponseBodyJobsListSummary  `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Repeated"`
-	Tasks          []*ListJobStatusResponseBodyJobsListTasks    `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-}
-
-func (s ListJobStatusResponseBodyJobsList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobStatusResponseBodyJobsList) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobStatusResponseBodyJobsList) SetCallingNumbers(v []*string) *ListJobStatusResponseBodyJobsList {
-	s.CallingNumbers = v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsList) SetContacts(v []*ListJobStatusResponseBodyJobsListContacts) *ListJobStatusResponseBodyJobsList {
-	s.Contacts = v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsList) SetExtras(v []*ListJobStatusResponseBodyJobsListExtras) *ListJobStatusResponseBodyJobsList {
-	s.Extras = v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsList) SetFailureReason(v string) *ListJobStatusResponseBodyJobsList {
-	s.FailureReason = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsList) SetGroupId(v string) *ListJobStatusResponseBodyJobsList {
-	s.GroupId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsList) SetJobId(v string) *ListJobStatusResponseBodyJobsList {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsList) SetPriority(v int32) *ListJobStatusResponseBodyJobsList {
-	s.Priority = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsList) SetReferenceId(v string) *ListJobStatusResponseBodyJobsList {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsList) SetScenarioId(v string) *ListJobStatusResponseBodyJobsList {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsList) SetStatus(v string) *ListJobStatusResponseBodyJobsList {
-	s.Status = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsList) SetStrategyId(v string) *ListJobStatusResponseBodyJobsList {
-	s.StrategyId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsList) SetSummary(v []*ListJobStatusResponseBodyJobsListSummary) *ListJobStatusResponseBodyJobsList {
-	s.Summary = v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsList) SetTasks(v []*ListJobStatusResponseBodyJobsListTasks) *ListJobStatusResponseBodyJobsList {
-	s.Tasks = v
-	return s
-}
-
-type ListJobStatusResponseBodyJobsListContacts struct {
-	ContactId   *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Honorific   *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
-	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
-}
-
-func (s ListJobStatusResponseBodyJobsListContacts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobStatusResponseBodyJobsListContacts) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobStatusResponseBodyJobsListContacts) SetContactId(v string) *ListJobStatusResponseBodyJobsListContacts {
-	s.ContactId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListContacts) SetContactName(v string) *ListJobStatusResponseBodyJobsListContacts {
-	s.ContactName = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListContacts) SetHonorific(v string) *ListJobStatusResponseBodyJobsListContacts {
-	s.Honorific = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListContacts) SetJobId(v string) *ListJobStatusResponseBodyJobsListContacts {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListContacts) SetPhoneNumber(v string) *ListJobStatusResponseBodyJobsListContacts {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListContacts) SetReferenceId(v string) *ListJobStatusResponseBodyJobsListContacts {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListContacts) SetRole(v string) *ListJobStatusResponseBodyJobsListContacts {
-	s.Role = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListContacts) SetState(v string) *ListJobStatusResponseBodyJobsListContacts {
-	s.State = &v
-	return s
-}
-
-type ListJobStatusResponseBodyJobsListExtras struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListJobStatusResponseBodyJobsListExtras) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobStatusResponseBodyJobsListExtras) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobStatusResponseBodyJobsListExtras) SetKey(v string) *ListJobStatusResponseBodyJobsListExtras {
-	s.Key = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListExtras) SetValue(v string) *ListJobStatusResponseBodyJobsListExtras {
-	s.Value = &v
-	return s
-}
-
-type ListJobStatusResponseBodyJobsListSummary struct {
-	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content              *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ConversationDetailId *string `json:"ConversationDetailId,omitempty" xml:"ConversationDetailId,omitempty"`
-	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	SummaryId            *string `json:"SummaryId,omitempty" xml:"SummaryId,omitempty"`
-	SummaryName          *string `json:"SummaryName,omitempty" xml:"SummaryName,omitempty"`
-	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s ListJobStatusResponseBodyJobsListSummary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobStatusResponseBodyJobsListSummary) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobStatusResponseBodyJobsListSummary) SetCategory(v string) *ListJobStatusResponseBodyJobsListSummary {
-	s.Category = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListSummary) SetContent(v string) *ListJobStatusResponseBodyJobsListSummary {
-	s.Content = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListSummary) SetConversationDetailId(v string) *ListJobStatusResponseBodyJobsListSummary {
-	s.ConversationDetailId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListSummary) SetGroupId(v string) *ListJobStatusResponseBodyJobsListSummary {
-	s.GroupId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListSummary) SetJobId(v string) *ListJobStatusResponseBodyJobsListSummary {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListSummary) SetSummaryId(v string) *ListJobStatusResponseBodyJobsListSummary {
-	s.SummaryId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListSummary) SetSummaryName(v string) *ListJobStatusResponseBodyJobsListSummary {
-	s.SummaryName = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListSummary) SetTaskId(v string) *ListJobStatusResponseBodyJobsListSummary {
-	s.TaskId = &v
-	return s
-}
-
-type ListJobStatusResponseBodyJobsListTasks struct {
-	ActualTime    *int64                                         `json:"ActualTime,omitempty" xml:"ActualTime,omitempty"`
-	Brief         *string                                        `json:"Brief,omitempty" xml:"Brief,omitempty"`
-	CallId        *string                                        `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	CalledNumber  *string                                        `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber *string                                        `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	ChatbotId     *string                                        `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
-	Contact       *ListJobStatusResponseBodyJobsListTasksContact `json:"Contact,omitempty" xml:"Contact,omitempty" type:"Struct"`
-	Duration      *int32                                         `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	JobId         *string                                        `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PlanedTime    *int64                                         `json:"PlanedTime,omitempty" xml:"PlanedTime,omitempty"`
-	ScenarioId    *string                                        `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Status        *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId        *string                                        `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s ListJobStatusResponseBodyJobsListTasks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobStatusResponseBodyJobsListTasks) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasks) SetActualTime(v int64) *ListJobStatusResponseBodyJobsListTasks {
-	s.ActualTime = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasks) SetBrief(v string) *ListJobStatusResponseBodyJobsListTasks {
-	s.Brief = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasks) SetCallId(v string) *ListJobStatusResponseBodyJobsListTasks {
-	s.CallId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasks) SetCalledNumber(v string) *ListJobStatusResponseBodyJobsListTasks {
-	s.CalledNumber = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasks) SetCallingNumber(v string) *ListJobStatusResponseBodyJobsListTasks {
-	s.CallingNumber = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasks) SetChatbotId(v string) *ListJobStatusResponseBodyJobsListTasks {
-	s.ChatbotId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasks) SetContact(v *ListJobStatusResponseBodyJobsListTasksContact) *ListJobStatusResponseBodyJobsListTasks {
-	s.Contact = v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasks) SetDuration(v int32) *ListJobStatusResponseBodyJobsListTasks {
-	s.Duration = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasks) SetJobId(v string) *ListJobStatusResponseBodyJobsListTasks {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasks) SetPlanedTime(v int64) *ListJobStatusResponseBodyJobsListTasks {
-	s.PlanedTime = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasks) SetScenarioId(v string) *ListJobStatusResponseBodyJobsListTasks {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasks) SetStatus(v string) *ListJobStatusResponseBodyJobsListTasks {
-	s.Status = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasks) SetTaskId(v string) *ListJobStatusResponseBodyJobsListTasks {
-	s.TaskId = &v
-	return s
-}
-
-type ListJobStatusResponseBodyJobsListTasksContact struct {
-	ContactId   *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Honorific   *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
-	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
-}
-
-func (s ListJobStatusResponseBodyJobsListTasksContact) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobStatusResponseBodyJobsListTasksContact) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasksContact) SetContactId(v string) *ListJobStatusResponseBodyJobsListTasksContact {
-	s.ContactId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasksContact) SetContactName(v string) *ListJobStatusResponseBodyJobsListTasksContact {
-	s.ContactName = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasksContact) SetHonorific(v string) *ListJobStatusResponseBodyJobsListTasksContact {
-	s.Honorific = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasksContact) SetJobId(v string) *ListJobStatusResponseBodyJobsListTasksContact {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasksContact) SetPhoneNumber(v string) *ListJobStatusResponseBodyJobsListTasksContact {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasksContact) SetReferenceId(v string) *ListJobStatusResponseBodyJobsListTasksContact {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasksContact) SetRole(v string) *ListJobStatusResponseBodyJobsListTasksContact {
-	s.Role = &v
-	return s
-}
-
-func (s *ListJobStatusResponseBodyJobsListTasksContact) SetState(v string) *ListJobStatusResponseBodyJobsListTasksContact {
-	s.State = &v
-	return s
-}
-
-type ListJobStatusResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListJobStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListJobStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobStatusResponse) SetHeaders(v map[string]*string) *ListJobStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListJobStatusResponse) SetBody(v *ListJobStatusResponseBody) *ListJobStatusResponse {
-	s.Body = v
-	return s
-}
-
-type ListJobsByGroupRequest struct {
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobFailureReason *string `json:"JobFailureReason,omitempty" xml:"JobFailureReason,omitempty"`
-	JobGroupId       *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	JobStatus        *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s ListJobsByGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobsByGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobsByGroupRequest) SetInstanceId(v string) *ListJobsByGroupRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListJobsByGroupRequest) SetJobFailureReason(v string) *ListJobsByGroupRequest {
-	s.JobFailureReason = &v
-	return s
-}
-
-func (s *ListJobsByGroupRequest) SetJobGroupId(v string) *ListJobsByGroupRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *ListJobsByGroupRequest) SetJobStatus(v string) *ListJobsByGroupRequest {
-	s.JobStatus = &v
-	return s
-}
-
-func (s *ListJobsByGroupRequest) SetPageNumber(v int32) *ListJobsByGroupRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListJobsByGroupRequest) SetPageSize(v int32) *ListJobsByGroupRequest {
-	s.PageSize = &v
-	return s
-}
-
-type ListJobsByGroupResponseBody struct {
-	Code           *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Jobs           *ListJobsByGroupResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Struct"`
-	Message        *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListJobsByGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobsByGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobsByGroupResponseBody) SetCode(v string) *ListJobsByGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBody) SetHttpStatusCode(v int32) *ListJobsByGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBody) SetJobs(v *ListJobsByGroupResponseBodyJobs) *ListJobsByGroupResponseBody {
-	s.Jobs = v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBody) SetMessage(v string) *ListJobsByGroupResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBody) SetRequestId(v string) *ListJobsByGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBody) SetSuccess(v bool) *ListJobsByGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListJobsByGroupResponseBodyJobs struct {
-	List       []*ListJobsByGroupResponseBodyJobsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListJobsByGroupResponseBodyJobs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobsByGroupResponseBodyJobs) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobsByGroupResponseBodyJobs) SetList(v []*ListJobsByGroupResponseBodyJobsList) *ListJobsByGroupResponseBodyJobs {
-	s.List = v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobs) SetPageNumber(v int32) *ListJobsByGroupResponseBodyJobs {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobs) SetPageSize(v int32) *ListJobsByGroupResponseBodyJobs {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobs) SetTotalCount(v int32) *ListJobsByGroupResponseBodyJobs {
-	s.TotalCount = &v
-	return s
-}
-
-type ListJobsByGroupResponseBodyJobsList struct {
-	CallingNumbers []*string                                      `json:"CallingNumbers,omitempty" xml:"CallingNumbers,omitempty" type:"Repeated"`
-	Contacts       []*ListJobsByGroupResponseBodyJobsListContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
-	Extras         []*ListJobsByGroupResponseBodyJobsListExtras   `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Repeated"`
-	FailureReason  *string                                        `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
-	GroupId        *string                                        `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId          *string                                        `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Priority       *int32                                         `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ReferenceId    *string                                        `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	ScenarioId     *string                                        `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Status         *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	StrategyId     *string                                        `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	Summary        []*ListJobsByGroupResponseBodyJobsListSummary  `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Repeated"`
-	SystemPriority *int32                                         `json:"SystemPriority,omitempty" xml:"SystemPriority,omitempty"`
-}
-
-func (s ListJobsByGroupResponseBodyJobsList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobsByGroupResponseBodyJobsList) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobsByGroupResponseBodyJobsList) SetCallingNumbers(v []*string) *ListJobsByGroupResponseBodyJobsList {
-	s.CallingNumbers = v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsList) SetContacts(v []*ListJobsByGroupResponseBodyJobsListContacts) *ListJobsByGroupResponseBodyJobsList {
-	s.Contacts = v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsList) SetExtras(v []*ListJobsByGroupResponseBodyJobsListExtras) *ListJobsByGroupResponseBodyJobsList {
-	s.Extras = v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsList) SetFailureReason(v string) *ListJobsByGroupResponseBodyJobsList {
-	s.FailureReason = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsList) SetGroupId(v string) *ListJobsByGroupResponseBodyJobsList {
-	s.GroupId = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsList) SetJobId(v string) *ListJobsByGroupResponseBodyJobsList {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsList) SetPriority(v int32) *ListJobsByGroupResponseBodyJobsList {
-	s.Priority = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsList) SetReferenceId(v string) *ListJobsByGroupResponseBodyJobsList {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsList) SetScenarioId(v string) *ListJobsByGroupResponseBodyJobsList {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsList) SetStatus(v string) *ListJobsByGroupResponseBodyJobsList {
-	s.Status = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsList) SetStrategyId(v string) *ListJobsByGroupResponseBodyJobsList {
-	s.StrategyId = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsList) SetSummary(v []*ListJobsByGroupResponseBodyJobsListSummary) *ListJobsByGroupResponseBodyJobsList {
-	s.Summary = v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsList) SetSystemPriority(v int32) *ListJobsByGroupResponseBodyJobsList {
-	s.SystemPriority = &v
-	return s
-}
-
-type ListJobsByGroupResponseBodyJobsListContacts struct {
-	ContactId   *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Honorific   *string `json:"Honorific,omitempty" xml:"Honorific,omitempty"`
-	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
-}
-
-func (s ListJobsByGroupResponseBodyJobsListContacts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobsByGroupResponseBodyJobsListContacts) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListContacts) SetContactId(v string) *ListJobsByGroupResponseBodyJobsListContacts {
-	s.ContactId = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListContacts) SetContactName(v string) *ListJobsByGroupResponseBodyJobsListContacts {
-	s.ContactName = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListContacts) SetHonorific(v string) *ListJobsByGroupResponseBodyJobsListContacts {
-	s.Honorific = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListContacts) SetJobId(v string) *ListJobsByGroupResponseBodyJobsListContacts {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListContacts) SetPhoneNumber(v string) *ListJobsByGroupResponseBodyJobsListContacts {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListContacts) SetReferenceId(v string) *ListJobsByGroupResponseBodyJobsListContacts {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListContacts) SetRole(v string) *ListJobsByGroupResponseBodyJobsListContacts {
-	s.Role = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListContacts) SetState(v string) *ListJobsByGroupResponseBodyJobsListContacts {
-	s.State = &v
-	return s
-}
-
-type ListJobsByGroupResponseBodyJobsListExtras struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListJobsByGroupResponseBodyJobsListExtras) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobsByGroupResponseBodyJobsListExtras) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListExtras) SetKey(v string) *ListJobsByGroupResponseBodyJobsListExtras {
-	s.Key = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListExtras) SetValue(v string) *ListJobsByGroupResponseBodyJobsListExtras {
-	s.Value = &v
-	return s
-}
-
-type ListJobsByGroupResponseBodyJobsListSummary struct {
-	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content              *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ConversationDetailId *string `json:"ConversationDetailId,omitempty" xml:"ConversationDetailId,omitempty"`
-	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	SummaryId            *string `json:"SummaryId,omitempty" xml:"SummaryId,omitempty"`
-	SummaryName          *string `json:"SummaryName,omitempty" xml:"SummaryName,omitempty"`
-	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s ListJobsByGroupResponseBodyJobsListSummary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobsByGroupResponseBodyJobsListSummary) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListSummary) SetCategory(v string) *ListJobsByGroupResponseBodyJobsListSummary {
-	s.Category = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListSummary) SetContent(v string) *ListJobsByGroupResponseBodyJobsListSummary {
-	s.Content = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListSummary) SetConversationDetailId(v string) *ListJobsByGroupResponseBodyJobsListSummary {
-	s.ConversationDetailId = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListSummary) SetGroupId(v string) *ListJobsByGroupResponseBodyJobsListSummary {
-	s.GroupId = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListSummary) SetJobId(v string) *ListJobsByGroupResponseBodyJobsListSummary {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListSummary) SetSummaryId(v string) *ListJobsByGroupResponseBodyJobsListSummary {
-	s.SummaryId = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListSummary) SetSummaryName(v string) *ListJobsByGroupResponseBodyJobsListSummary {
-	s.SummaryName = &v
-	return s
-}
-
-func (s *ListJobsByGroupResponseBodyJobsListSummary) SetTaskId(v string) *ListJobsByGroupResponseBodyJobsListSummary {
-	s.TaskId = &v
-	return s
-}
-
-type ListJobsByGroupResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListJobsByGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListJobsByGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListJobsByGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListJobsByGroupResponse) SetHeaders(v map[string]*string) *ListJobsByGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListJobsByGroupResponse) SetBody(v *ListJobsByGroupResponseBody) *ListJobsByGroupResponse {
 	s.Body = v
 	return s
 }
@@ -23045,8 +14859,9 @@ func (s *ListMediasResponseBodyMediasListMedia) SetType(v string) *ListMediasRes
 }
 
 type ListMediasResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListMediasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMediasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListMediasResponse) String() string {
@@ -23059,6 +14874,11 @@ func (s ListMediasResponse) GoString() string {
 
 func (s *ListMediasResponse) SetHeaders(v map[string]*string) *ListMediasResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListMediasResponse) SetStatusCode(v int32) *ListMediasResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -23350,8 +15170,9 @@ func (s *ListOutboundPhoneNumberOfUserResponseBodyOutboundPhoneNumbersPhoneNumbe
 }
 
 type ListOutboundPhoneNumberOfUserResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListOutboundPhoneNumberOfUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListOutboundPhoneNumberOfUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListOutboundPhoneNumberOfUserResponse) String() string {
@@ -23364,6 +15185,11 @@ func (s ListOutboundPhoneNumberOfUserResponse) GoString() string {
 
 func (s *ListOutboundPhoneNumberOfUserResponse) SetHeaders(v map[string]*string) *ListOutboundPhoneNumberOfUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListOutboundPhoneNumberOfUserResponse) SetStatusCode(v int32) *ListOutboundPhoneNumberOfUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -23719,8 +15545,9 @@ func (s *ListPhoneNumbersResponseBodyPhoneNumbersPhoneNumberSkillGroupsSkillGrou
 }
 
 type ListPhoneNumbersResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListPhoneNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPhoneNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListPhoneNumbersResponse) String() string {
@@ -23733,6 +15560,11 @@ func (s ListPhoneNumbersResponse) GoString() string {
 
 func (s *ListPhoneNumbersResponse) SetHeaders(v map[string]*string) *ListPhoneNumbersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListPhoneNumbersResponse) SetStatusCode(v int32) *ListPhoneNumbersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -23966,8 +15798,9 @@ func (s *ListPhoneTagsResponseBodyPhoneNumbersList) SetUsage(v string) *ListPhon
 }
 
 type ListPhoneTagsResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListPhoneTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPhoneTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListPhoneTagsResponse) String() string {
@@ -23980,6 +15813,11 @@ func (s ListPhoneTagsResponse) GoString() string {
 
 func (s *ListPhoneTagsResponse) SetHeaders(v map[string]*string) *ListPhoneTagsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListPhoneTagsResponse) SetStatusCode(v int32) *ListPhoneTagsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -24204,8 +16042,9 @@ func (s *ListRealTimeAgentResponseBodyDataUserSkillLevelsSkillLevelSkill) SetSki
 }
 
 type ListRealTimeAgentResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRealTimeAgentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRealTimeAgentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRealTimeAgentResponse) String() string {
@@ -24218,6 +16057,11 @@ func (s ListRealTimeAgentResponse) GoString() string {
 
 func (s *ListRealTimeAgentResponse) SetHeaders(v map[string]*string) *ListRealTimeAgentResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListRealTimeAgentResponse) SetStatusCode(v int32) *ListRealTimeAgentResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -24686,8 +16530,9 @@ func (s *ListRecentCallRecordsResponseBodyCallDetailRecordsListCallDetailRecordR
 }
 
 type ListRecentCallRecordsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRecentCallRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRecentCallRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRecentCallRecordsResponse) String() string {
@@ -24700,6 +16545,11 @@ func (s ListRecentCallRecordsResponse) GoString() string {
 
 func (s *ListRecentCallRecordsResponse) SetHeaders(v map[string]*string) *ListRecentCallRecordsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListRecentCallRecordsResponse) SetStatusCode(v int32) *ListRecentCallRecordsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -24962,8 +16812,9 @@ func (s *ListRecordingOfDualTrackResponseBodyRecordingsListRecording) SetStartTi
 }
 
 type ListRecordingOfDualTrackResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRecordingOfDualTrackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRecordingOfDualTrackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRecordingOfDualTrackResponse) String() string {
@@ -24976,6 +16827,11 @@ func (s ListRecordingOfDualTrackResponse) GoString() string {
 
 func (s *ListRecordingOfDualTrackResponse) SetHeaders(v map[string]*string) *ListRecordingOfDualTrackResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListRecordingOfDualTrackResponse) SetStatusCode(v int32) *ListRecordingOfDualTrackResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -25232,8 +17088,9 @@ func (s *ListRecordingsResponseBodyRecordingsListRecording) SetStartTime(v int64
 }
 
 type ListRecordingsResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRecordingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRecordingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRecordingsResponse) String() string {
@@ -25246,6 +17103,11 @@ func (s ListRecordingsResponse) GoString() string {
 
 func (s *ListRecordingsResponse) SetHeaders(v map[string]*string) *ListRecordingsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListRecordingsResponse) SetStatusCode(v int32) *ListRecordingsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -25443,8 +17305,9 @@ func (s *ListRecordingsByContactIdResponseBodyRecordingsRecording) SetStartTime(
 }
 
 type ListRecordingsByContactIdResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRecordingsByContactIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRecordingsByContactIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRecordingsByContactIdResponse) String() string {
@@ -25457,6 +17320,11 @@ func (s ListRecordingsByContactIdResponse) GoString() string {
 
 func (s *ListRecordingsByContactIdResponse) SetHeaders(v map[string]*string) *ListRecordingsByContactIdResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListRecordingsByContactIdResponse) SetStatusCode(v int32) *ListRecordingsByContactIdResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -25582,8 +17450,9 @@ func (s *ListRolesResponseBodyRolesRole) SetRoleName(v string) *ListRolesRespons
 }
 
 type ListRolesResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRolesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRolesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRolesResponse) String() string {
@@ -25599,639 +17468,12 @@ func (s *ListRolesResponse) SetHeaders(v map[string]*string) *ListRolesResponse 
 	return s
 }
 
+func (s *ListRolesResponse) SetStatusCode(v int32) *ListRolesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListRolesResponse) SetBody(v *ListRolesResponseBody) *ListRolesResponse {
-	s.Body = v
-	return s
-}
-
-type ListScenarioTemplatesResponseBody struct {
-	Code              *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode    *int32                                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message           *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ScenarioTemplates []*ListScenarioTemplatesResponseBodyScenarioTemplates `json:"ScenarioTemplates,omitempty" xml:"ScenarioTemplates,omitempty" type:"Repeated"`
-	Success           *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListScenarioTemplatesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenarioTemplatesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenarioTemplatesResponseBody) SetCode(v string) *ListScenarioTemplatesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBody) SetHttpStatusCode(v int32) *ListScenarioTemplatesResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBody) SetMessage(v string) *ListScenarioTemplatesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBody) SetRequestId(v string) *ListScenarioTemplatesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBody) SetScenarioTemplates(v []*ListScenarioTemplatesResponseBodyScenarioTemplates) *ListScenarioTemplatesResponseBody {
-	s.ScenarioTemplates = v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBody) SetSuccess(v bool) *ListScenarioTemplatesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListScenarioTemplatesResponseBodyScenarioTemplates struct {
-	Description *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *string                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsTemplate  *bool                                                          `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	Name        *string                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	Surveys     []*ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys   `json:"Surveys,omitempty" xml:"Surveys,omitempty" type:"Repeated"`
-	Type        *string                                                        `json:"Type,omitempty" xml:"Type,omitempty"`
-	Variables   []*ListScenarioTemplatesResponseBodyScenarioTemplatesVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
-}
-
-func (s ListScenarioTemplatesResponseBodyScenarioTemplates) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenarioTemplatesResponseBodyScenarioTemplates) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplates) SetDescription(v string) *ListScenarioTemplatesResponseBodyScenarioTemplates {
-	s.Description = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplates) SetId(v string) *ListScenarioTemplatesResponseBodyScenarioTemplates {
-	s.Id = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplates) SetIsTemplate(v bool) *ListScenarioTemplatesResponseBodyScenarioTemplates {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplates) SetName(v string) *ListScenarioTemplatesResponseBodyScenarioTemplates {
-	s.Name = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplates) SetSurveys(v []*ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys) *ListScenarioTemplatesResponseBodyScenarioTemplates {
-	s.Surveys = v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplates) SetType(v string) *ListScenarioTemplatesResponseBodyScenarioTemplates {
-	s.Type = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplates) SetVariables(v []*ListScenarioTemplatesResponseBodyScenarioTemplatesVariables) *ListScenarioTemplatesResponseBodyScenarioTemplates {
-	s.Variables = v
-	return s
-}
-
-type ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys struct {
-	BeebotId        *string                                                             `json:"BeebotId,omitempty" xml:"BeebotId,omitempty"`
-	Description     *string                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	Flow            *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysFlow      `json:"Flow,omitempty" xml:"Flow,omitempty" type:"Struct"`
-	GlobalQuestions *string                                                             `json:"GlobalQuestions,omitempty" xml:"GlobalQuestions,omitempty"`
-	Id              *string                                                             `json:"Id,omitempty" xml:"Id,omitempty"`
-	Intents         []*ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Repeated"`
-	Name            *string                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	Role            *string                                                             `json:"Role,omitempty" xml:"Role,omitempty"`
-	Round           *int32                                                              `json:"Round,omitempty" xml:"Round,omitempty"`
-}
-
-func (s ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys) SetBeebotId(v string) *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys {
-	s.BeebotId = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys) SetDescription(v string) *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys {
-	s.Description = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys) SetFlow(v *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysFlow) *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys {
-	s.Flow = v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys) SetGlobalQuestions(v string) *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys {
-	s.GlobalQuestions = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys) SetId(v string) *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys {
-	s.Id = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys) SetIntents(v []*ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysIntents) *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys {
-	s.Intents = v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys) SetName(v string) *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys {
-	s.Name = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys) SetRole(v string) *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys {
-	s.Role = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys) SetRound(v int32) *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveys {
-	s.Round = &v
-	return s
-}
-
-type ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysFlow struct {
-	FlowId      *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	FlowJson    *string `json:"FlowJson,omitempty" xml:"FlowJson,omitempty"`
-	IsPublished *bool   `json:"IsPublished,omitempty" xml:"IsPublished,omitempty"`
-}
-
-func (s ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysFlow) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysFlow) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysFlow) SetFlowId(v string) *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysFlow {
-	s.FlowId = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysFlow) SetFlowJson(v string) *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysFlow {
-	s.FlowJson = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysFlow) SetIsPublished(v bool) *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysFlow {
-	s.IsPublished = &v
-	return s
-}
-
-type ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysIntents struct {
-	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-}
-
-func (s ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysIntents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysIntents) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysIntents) SetIntentId(v string) *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysIntents {
-	s.IntentId = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysIntents) SetNodeId(v string) *ListScenarioTemplatesResponseBodyScenarioTemplatesSurveysIntents {
-	s.NodeId = &v
-	return s
-}
-
-type ListScenarioTemplatesResponseBodyScenarioTemplatesVariables struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListScenarioTemplatesResponseBodyScenarioTemplatesVariables) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenarioTemplatesResponseBodyScenarioTemplatesVariables) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesVariables) SetKey(v string) *ListScenarioTemplatesResponseBodyScenarioTemplatesVariables {
-	s.Key = &v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponseBodyScenarioTemplatesVariables) SetValue(v string) *ListScenarioTemplatesResponseBodyScenarioTemplatesVariables {
-	s.Value = &v
-	return s
-}
-
-type ListScenarioTemplatesResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListScenarioTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListScenarioTemplatesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenarioTemplatesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenarioTemplatesResponse) SetHeaders(v map[string]*string) *ListScenarioTemplatesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListScenarioTemplatesResponse) SetBody(v *ListScenarioTemplatesResponseBody) *ListScenarioTemplatesResponse {
-	s.Body = v
-	return s
-}
-
-type ListScenariosRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-}
-
-func (s ListScenariosRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenariosRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenariosRequest) SetInstanceId(v string) *ListScenariosRequest {
-	s.InstanceId = &v
-	return s
-}
-
-type ListScenariosResponseBody struct {
-	Code           *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scenarios      []*ListScenariosResponseBodyScenarios `json:"Scenarios,omitempty" xml:"Scenarios,omitempty" type:"Repeated"`
-	Success        *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListScenariosResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenariosResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenariosResponseBody) SetCode(v string) *ListScenariosResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListScenariosResponseBody) SetHttpStatusCode(v int32) *ListScenariosResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListScenariosResponseBody) SetMessage(v string) *ListScenariosResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListScenariosResponseBody) SetRequestId(v string) *ListScenariosResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListScenariosResponseBody) SetScenarios(v []*ListScenariosResponseBodyScenarios) *ListScenariosResponseBody {
-	s.Scenarios = v
-	return s
-}
-
-func (s *ListScenariosResponseBody) SetSuccess(v bool) *ListScenariosResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListScenariosResponseBodyScenarios struct {
-	Description *string                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *string                                        `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsTemplate  *bool                                          `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	Name        *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	Strategy    *ListScenariosResponseBodyScenariosStrategy    `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
-	Surveys     []*ListScenariosResponseBodyScenariosSurveys   `json:"Surveys,omitempty" xml:"Surveys,omitempty" type:"Repeated"`
-	Type        *string                                        `json:"Type,omitempty" xml:"Type,omitempty"`
-	Variables   []*ListScenariosResponseBodyScenariosVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
-}
-
-func (s ListScenariosResponseBodyScenarios) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenariosResponseBodyScenarios) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenariosResponseBodyScenarios) SetDescription(v string) *ListScenariosResponseBodyScenarios {
-	s.Description = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenarios) SetId(v string) *ListScenariosResponseBodyScenarios {
-	s.Id = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenarios) SetIsTemplate(v bool) *ListScenariosResponseBodyScenarios {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenarios) SetName(v string) *ListScenariosResponseBodyScenarios {
-	s.Name = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenarios) SetStrategy(v *ListScenariosResponseBodyScenariosStrategy) *ListScenariosResponseBodyScenarios {
-	s.Strategy = v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenarios) SetSurveys(v []*ListScenariosResponseBodyScenariosSurveys) *ListScenariosResponseBodyScenarios {
-	s.Surveys = v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenarios) SetType(v string) *ListScenariosResponseBodyScenarios {
-	s.Type = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenarios) SetVariables(v []*ListScenariosResponseBodyScenariosVariables) *ListScenariosResponseBodyScenarios {
-	s.Variables = v
-	return s
-}
-
-type ListScenariosResponseBodyScenariosStrategy struct {
-	Customized         *string                                                  `json:"Customized,omitempty" xml:"Customized,omitempty"`
-	Description        *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndTime            *int64                                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FollowUpStrategy   *string                                                  `json:"FollowUpStrategy,omitempty" xml:"FollowUpStrategy,omitempty"`
-	Id                 *string                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsTemplate         *bool                                                    `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	MaxAttemptsPerDay  *int32                                                   `json:"MaxAttemptsPerDay,omitempty" xml:"MaxAttemptsPerDay,omitempty"`
-	MinAttemptInterval *int32                                                   `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
-	Name               *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	RepeatBy           *string                                                  `json:"RepeatBy,omitempty" xml:"RepeatBy,omitempty"`
-	RepeatDays         []*string                                                `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RoutingStrategy    *string                                                  `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
-	StartTime          *int64                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type               *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	WorkingTime        []*ListScenariosResponseBodyScenariosStrategyWorkingTime `json:"WorkingTime,omitempty" xml:"WorkingTime,omitempty" type:"Repeated"`
-}
-
-func (s ListScenariosResponseBodyScenariosStrategy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenariosResponseBodyScenariosStrategy) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetCustomized(v string) *ListScenariosResponseBodyScenariosStrategy {
-	s.Customized = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetDescription(v string) *ListScenariosResponseBodyScenariosStrategy {
-	s.Description = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetEndTime(v int64) *ListScenariosResponseBodyScenariosStrategy {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetFollowUpStrategy(v string) *ListScenariosResponseBodyScenariosStrategy {
-	s.FollowUpStrategy = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetId(v string) *ListScenariosResponseBodyScenariosStrategy {
-	s.Id = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetIsTemplate(v bool) *ListScenariosResponseBodyScenariosStrategy {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetMaxAttemptsPerDay(v int32) *ListScenariosResponseBodyScenariosStrategy {
-	s.MaxAttemptsPerDay = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetMinAttemptInterval(v int32) *ListScenariosResponseBodyScenariosStrategy {
-	s.MinAttemptInterval = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetName(v string) *ListScenariosResponseBodyScenariosStrategy {
-	s.Name = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetRepeatBy(v string) *ListScenariosResponseBodyScenariosStrategy {
-	s.RepeatBy = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetRepeatDays(v []*string) *ListScenariosResponseBodyScenariosStrategy {
-	s.RepeatDays = v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetRoutingStrategy(v string) *ListScenariosResponseBodyScenariosStrategy {
-	s.RoutingStrategy = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetStartTime(v int64) *ListScenariosResponseBodyScenariosStrategy {
-	s.StartTime = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetType(v string) *ListScenariosResponseBodyScenariosStrategy {
-	s.Type = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategy) SetWorkingTime(v []*ListScenariosResponseBodyScenariosStrategyWorkingTime) *ListScenariosResponseBodyScenariosStrategy {
-	s.WorkingTime = v
-	return s
-}
-
-type ListScenariosResponseBodyScenariosStrategyWorkingTime struct {
-	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s ListScenariosResponseBodyScenariosStrategyWorkingTime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenariosResponseBodyScenariosStrategyWorkingTime) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategyWorkingTime) SetBeginTime(v string) *ListScenariosResponseBodyScenariosStrategyWorkingTime {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosStrategyWorkingTime) SetEndTime(v string) *ListScenariosResponseBodyScenariosStrategyWorkingTime {
-	s.EndTime = &v
-	return s
-}
-
-type ListScenariosResponseBodyScenariosSurveys struct {
-	BeebotId    *string                                             `json:"BeebotId,omitempty" xml:"BeebotId,omitempty"`
-	Description *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *string                                             `json:"Id,omitempty" xml:"Id,omitempty"`
-	Intents     []*ListScenariosResponseBodyScenariosSurveysIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Repeated"`
-	Name        *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	Role        *string                                             `json:"Role,omitempty" xml:"Role,omitempty"`
-	Round       *int32                                              `json:"Round,omitempty" xml:"Round,omitempty"`
-}
-
-func (s ListScenariosResponseBodyScenariosSurveys) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenariosResponseBodyScenariosSurveys) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenariosResponseBodyScenariosSurveys) SetBeebotId(v string) *ListScenariosResponseBodyScenariosSurveys {
-	s.BeebotId = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosSurveys) SetDescription(v string) *ListScenariosResponseBodyScenariosSurveys {
-	s.Description = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosSurveys) SetId(v string) *ListScenariosResponseBodyScenariosSurveys {
-	s.Id = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosSurveys) SetIntents(v []*ListScenariosResponseBodyScenariosSurveysIntents) *ListScenariosResponseBodyScenariosSurveys {
-	s.Intents = v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosSurveys) SetName(v string) *ListScenariosResponseBodyScenariosSurveys {
-	s.Name = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosSurveys) SetRole(v string) *ListScenariosResponseBodyScenariosSurveys {
-	s.Role = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosSurveys) SetRound(v int32) *ListScenariosResponseBodyScenariosSurveys {
-	s.Round = &v
-	return s
-}
-
-type ListScenariosResponseBodyScenariosSurveysIntents struct {
-	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-}
-
-func (s ListScenariosResponseBodyScenariosSurveysIntents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenariosResponseBodyScenariosSurveysIntents) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenariosResponseBodyScenariosSurveysIntents) SetIntentId(v string) *ListScenariosResponseBodyScenariosSurveysIntents {
-	s.IntentId = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosSurveysIntents) SetNodeId(v string) *ListScenariosResponseBodyScenariosSurveysIntents {
-	s.NodeId = &v
-	return s
-}
-
-type ListScenariosResponseBodyScenariosVariables struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListScenariosResponseBodyScenariosVariables) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenariosResponseBodyScenariosVariables) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenariosResponseBodyScenariosVariables) SetKey(v string) *ListScenariosResponseBodyScenariosVariables {
-	s.Key = &v
-	return s
-}
-
-func (s *ListScenariosResponseBodyScenariosVariables) SetValue(v string) *ListScenariosResponseBodyScenariosVariables {
-	s.Value = &v
-	return s
-}
-
-type ListScenariosResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListScenariosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListScenariosResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenariosResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenariosResponse) SetHeaders(v map[string]*string) *ListScenariosResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListScenariosResponse) SetBody(v *ListScenariosResponseBody) *ListScenariosResponse {
 	s.Body = v
 	return s
 }
@@ -26442,8 +17684,9 @@ func (s *ListSkillGroupStatesResponseBodyDataListRealTimeSkillGroupState) SetWor
 }
 
 type ListSkillGroupStatesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSkillGroupStatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSkillGroupStatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSkillGroupStatesResponse) String() string {
@@ -26456,6 +17699,11 @@ func (s ListSkillGroupStatesResponse) GoString() string {
 
 func (s *ListSkillGroupStatesResponse) SetHeaders(v map[string]*string) *ListSkillGroupStatesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListSkillGroupStatesResponse) SetStatusCode(v int32) *ListSkillGroupStatesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -27027,8 +18275,9 @@ func (s *ListSkillGroupSummaryReportsResponseBodyPagedSkillGroupSummaryReportLis
 }
 
 type ListSkillGroupSummaryReportsResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSkillGroupSummaryReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSkillGroupSummaryReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSkillGroupSummaryReportsResponse) String() string {
@@ -27041,6 +18290,11 @@ func (s ListSkillGroupSummaryReportsResponse) GoString() string {
 
 func (s *ListSkillGroupSummaryReportsResponse) SetHeaders(v map[string]*string) *ListSkillGroupSummaryReportsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsResponse) SetStatusCode(v int32) *ListSkillGroupSummaryReportsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -27664,8 +18918,9 @@ func (s *ListSkillGroupSummaryReportsByIntervalResponseBodyPagedSkillGroupSummar
 }
 
 type ListSkillGroupSummaryReportsByIntervalResponse struct {
-	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSkillGroupSummaryReportsByIntervalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSkillGroupSummaryReportsByIntervalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSkillGroupSummaryReportsByIntervalResponse) String() string {
@@ -27678,6 +18933,11 @@ func (s ListSkillGroupSummaryReportsByIntervalResponse) GoString() string {
 
 func (s *ListSkillGroupSummaryReportsByIntervalResponse) SetHeaders(v map[string]*string) *ListSkillGroupSummaryReportsByIntervalResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsByIntervalResponse) SetStatusCode(v int32) *ListSkillGroupSummaryReportsByIntervalResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -27883,6 +19143,8 @@ type ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummary
 	AverageWorkTime                           *int64   `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
 	CallsHandled                              *int64   `json:"CallsHandled,omitempty" xml:"CallsHandled,omitempty"`
 	CallsOffered                              *int64   `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	CallsServiceLevel20                       *int64   `json:"CallsServiceLevel20,omitempty" xml:"CallsServiceLevel20,omitempty"`
+	CallsServiceLevel30                       *int64   `json:"CallsServiceLevel30,omitempty" xml:"CallsServiceLevel30,omitempty"`
 	GiveUpByAgentOfQueueCount                 *int64   `json:"GiveUpByAgentOfQueueCount,omitempty" xml:"GiveUpByAgentOfQueueCount,omitempty"`
 	HandleRate                                *float32 `json:"HandleRate,omitempty" xml:"HandleRate,omitempty"`
 	InComingQueueOfQueueCount                 *int64   `json:"InComingQueueOfQueueCount,omitempty" xml:"InComingQueueOfQueueCount,omitempty"`
@@ -27951,6 +19213,16 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSum
 
 func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListSkillGroupSummaryReportInbound) SetCallsOffered(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListSkillGroupSummaryReportInbound {
 	s.CallsOffered = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListSkillGroupSummaryReportInbound) SetCallsServiceLevel20(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListSkillGroupSummaryReportInbound {
+	s.CallsServiceLevel20 = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListSkillGroupSummaryReportInbound) SetCallsServiceLevel30(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListSkillGroupSummaryReportInbound {
+	s.CallsServiceLevel30 = &v
 	return s
 }
 
@@ -28243,8 +19515,9 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSum
 }
 
 type ListSkillGroupSummaryReportsSinceMidnightResponse struct {
-	Headers map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSkillGroupSummaryReportsSinceMidnightResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSkillGroupSummaryReportsSinceMidnightResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSkillGroupSummaryReportsSinceMidnightResponse) String() string {
@@ -28260,13 +19533,20 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponse) SetHeaders(v map[str
 	return s
 }
 
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponse) SetStatusCode(v int32) *ListSkillGroupSummaryReportsSinceMidnightResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListSkillGroupSummaryReportsSinceMidnightResponse) SetBody(v *ListSkillGroupSummaryReportsSinceMidnightResponseBody) *ListSkillGroupSummaryReportsSinceMidnightResponse {
 	s.Body = v
 	return s
 }
 
 type ListSkillGroupsRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SkillGroupId   []*string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty" type:"Repeated"`
+	SkillGroupName []*string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty" type:"Repeated"`
 }
 
 func (s ListSkillGroupsRequest) String() string {
@@ -28279,6 +19559,16 @@ func (s ListSkillGroupsRequest) GoString() string {
 
 func (s *ListSkillGroupsRequest) SetInstanceId(v string) *ListSkillGroupsRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListSkillGroupsRequest) SetSkillGroupId(v []*string) *ListSkillGroupsRequest {
+	s.SkillGroupId = v
+	return s
+}
+
+func (s *ListSkillGroupsRequest) SetSkillGroupName(v []*string) *ListSkillGroupsRequest {
+	s.SkillGroupName = v
 	return s
 }
 
@@ -28494,8 +19784,9 @@ func (s *ListSkillGroupsResponseBodySkillGroupsSkillGroupOutboundPhoneNumbersPho
 }
 
 type ListSkillGroupsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSkillGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSkillGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSkillGroupsResponse) String() string {
@@ -28508,6 +19799,11 @@ func (s ListSkillGroupsResponse) GoString() string {
 
 func (s *ListSkillGroupsResponse) SetHeaders(v map[string]*string) *ListSkillGroupsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListSkillGroupsResponse) SetStatusCode(v int32) *ListSkillGroupsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -28774,8 +20070,9 @@ func (s *ListSkillGroupsOfUserResponseBodySkillLevelsSkillLevelSkillOutboundPhon
 }
 
 type ListSkillGroupsOfUserResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSkillGroupsOfUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSkillGroupsOfUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSkillGroupsOfUserResponse) String() string {
@@ -28791,229 +20088,12 @@ func (s *ListSkillGroupsOfUserResponse) SetHeaders(v map[string]*string) *ListSk
 	return s
 }
 
+func (s *ListSkillGroupsOfUserResponse) SetStatusCode(v int32) *ListSkillGroupsOfUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListSkillGroupsOfUserResponse) SetBody(v *ListSkillGroupsOfUserResponseBody) *ListSkillGroupsOfUserResponse {
-	s.Body = v
-	return s
-}
-
-type ListSurveysRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-}
-
-func (s ListSurveysRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSurveysRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListSurveysRequest) SetInstanceId(v string) *ListSurveysRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListSurveysRequest) SetScenarioId(v string) *ListSurveysRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-type ListSurveysResponseBody struct {
-	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	Surveys        []*ListSurveysResponseBodySurveys `json:"Surveys,omitempty" xml:"Surveys,omitempty" type:"Repeated"`
-}
-
-func (s ListSurveysResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSurveysResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListSurveysResponseBody) SetCode(v string) *ListSurveysResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListSurveysResponseBody) SetHttpStatusCode(v int32) *ListSurveysResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListSurveysResponseBody) SetMessage(v string) *ListSurveysResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListSurveysResponseBody) SetRequestId(v string) *ListSurveysResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListSurveysResponseBody) SetSuccess(v bool) *ListSurveysResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListSurveysResponseBody) SetSurveys(v []*ListSurveysResponseBodySurveys) *ListSurveysResponseBody {
-	s.Surveys = v
-	return s
-}
-
-type ListSurveysResponseBodySurveys struct {
-	AsrCustomModel          *ListSurveysResponseBodySurveysAsrCustomModel `json:"AsrCustomModel,omitempty" xml:"AsrCustomModel,omitempty" type:"Struct"`
-	Description             *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	Flow                    *ListSurveysResponseBodySurveysFlow           `json:"Flow,omitempty" xml:"Flow,omitempty" type:"Struct"`
-	GlobalQuestions         *string                                       `json:"GlobalQuestions,omitempty" xml:"GlobalQuestions,omitempty"`
-	HotWords                *string                                       `json:"HotWords,omitempty" xml:"HotWords,omitempty"`
-	Id                      *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name                    *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	Role                    *string                                       `json:"Role,omitempty" xml:"Role,omitempty"`
-	Round                   *int32                                        `json:"Round,omitempty" xml:"Round,omitempty"`
-	ScenarioUuid            *string                                       `json:"ScenarioUuid,omitempty" xml:"ScenarioUuid,omitempty"`
-	SpeechOptimizationParam *string                                       `json:"SpeechOptimizationParam,omitempty" xml:"SpeechOptimizationParam,omitempty"`
-}
-
-func (s ListSurveysResponseBodySurveys) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSurveysResponseBodySurveys) GoString() string {
-	return s.String()
-}
-
-func (s *ListSurveysResponseBodySurveys) SetAsrCustomModel(v *ListSurveysResponseBodySurveysAsrCustomModel) *ListSurveysResponseBodySurveys {
-	s.AsrCustomModel = v
-	return s
-}
-
-func (s *ListSurveysResponseBodySurveys) SetDescription(v string) *ListSurveysResponseBodySurveys {
-	s.Description = &v
-	return s
-}
-
-func (s *ListSurveysResponseBodySurveys) SetFlow(v *ListSurveysResponseBodySurveysFlow) *ListSurveysResponseBodySurveys {
-	s.Flow = v
-	return s
-}
-
-func (s *ListSurveysResponseBodySurveys) SetGlobalQuestions(v string) *ListSurveysResponseBodySurveys {
-	s.GlobalQuestions = &v
-	return s
-}
-
-func (s *ListSurveysResponseBodySurveys) SetHotWords(v string) *ListSurveysResponseBodySurveys {
-	s.HotWords = &v
-	return s
-}
-
-func (s *ListSurveysResponseBodySurveys) SetId(v string) *ListSurveysResponseBodySurveys {
-	s.Id = &v
-	return s
-}
-
-func (s *ListSurveysResponseBodySurveys) SetName(v string) *ListSurveysResponseBodySurveys {
-	s.Name = &v
-	return s
-}
-
-func (s *ListSurveysResponseBodySurveys) SetRole(v string) *ListSurveysResponseBodySurveys {
-	s.Role = &v
-	return s
-}
-
-func (s *ListSurveysResponseBodySurveys) SetRound(v int32) *ListSurveysResponseBodySurveys {
-	s.Round = &v
-	return s
-}
-
-func (s *ListSurveysResponseBodySurveys) SetScenarioUuid(v string) *ListSurveysResponseBodySurveys {
-	s.ScenarioUuid = &v
-	return s
-}
-
-func (s *ListSurveysResponseBodySurveys) SetSpeechOptimizationParam(v string) *ListSurveysResponseBodySurveys {
-	s.SpeechOptimizationParam = &v
-	return s
-}
-
-type ListSurveysResponseBodySurveysAsrCustomModel struct {
-	Corpora           *string `json:"Corpora,omitempty" xml:"Corpora,omitempty"`
-	CustomModelStatus *int32  `json:"CustomModelStatus,omitempty" xml:"CustomModelStatus,omitempty"`
-}
-
-func (s ListSurveysResponseBodySurveysAsrCustomModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSurveysResponseBodySurveysAsrCustomModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListSurveysResponseBodySurveysAsrCustomModel) SetCorpora(v string) *ListSurveysResponseBodySurveysAsrCustomModel {
-	s.Corpora = &v
-	return s
-}
-
-func (s *ListSurveysResponseBodySurveysAsrCustomModel) SetCustomModelStatus(v int32) *ListSurveysResponseBodySurveysAsrCustomModel {
-	s.CustomModelStatus = &v
-	return s
-}
-
-type ListSurveysResponseBodySurveysFlow struct {
-	FlowId      *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	FlowJson    *string `json:"FlowJson,omitempty" xml:"FlowJson,omitempty"`
-	IsPublished *bool   `json:"IsPublished,omitempty" xml:"IsPublished,omitempty"`
-}
-
-func (s ListSurveysResponseBodySurveysFlow) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSurveysResponseBodySurveysFlow) GoString() string {
-	return s.String()
-}
-
-func (s *ListSurveysResponseBodySurveysFlow) SetFlowId(v string) *ListSurveysResponseBodySurveysFlow {
-	s.FlowId = &v
-	return s
-}
-
-func (s *ListSurveysResponseBodySurveysFlow) SetFlowJson(v string) *ListSurveysResponseBodySurveysFlow {
-	s.FlowJson = &v
-	return s
-}
-
-func (s *ListSurveysResponseBodySurveysFlow) SetIsPublished(v bool) *ListSurveysResponseBodySurveysFlow {
-	s.IsPublished = &v
-	return s
-}
-
-type ListSurveysResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSurveysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListSurveysResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSurveysResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListSurveysResponse) SetHeaders(v map[string]*string) *ListSurveysResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListSurveysResponse) SetBody(v *ListSurveysResponseBody) *ListSurveysResponse {
 	s.Body = v
 	return s
 }
@@ -29148,8 +20228,9 @@ func (s *ListTransferableSkillGroupsResponseBodySkillGroups) SetUserCount(v int3
 }
 
 type ListTransferableSkillGroupsResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTransferableSkillGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTransferableSkillGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTransferableSkillGroupsResponse) String() string {
@@ -29162,6 +20243,11 @@ func (s ListTransferableSkillGroupsResponse) GoString() string {
 
 func (s *ListTransferableSkillGroupsResponse) SetHeaders(v map[string]*string) *ListTransferableSkillGroupsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTransferableSkillGroupsResponse) SetStatusCode(v int32) *ListTransferableSkillGroupsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -29241,8 +20327,9 @@ func (s *ListTrunkProvidersResponseBodyTrunkProviders) SetStatus(v string) *List
 }
 
 type ListTrunkProvidersResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTrunkProvidersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTrunkProvidersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTrunkProvidersResponse) String() string {
@@ -29255,6 +20342,11 @@ func (s ListTrunkProvidersResponse) GoString() string {
 
 func (s *ListTrunkProvidersResponse) SetHeaders(v map[string]*string) *ListTrunkProvidersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTrunkProvidersResponse) SetStatusCode(v int32) *ListTrunkProvidersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -29357,8 +20449,9 @@ func (s *ListTrunksOfSkillGroupResponseBodyTrunkConfigs) SetProviderName(v strin
 }
 
 type ListTrunksOfSkillGroupResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTrunksOfSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTrunksOfSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTrunksOfSkillGroupResponse) String() string {
@@ -29374,217 +20467,12 @@ func (s *ListTrunksOfSkillGroupResponse) SetHeaders(v map[string]*string) *ListT
 	return s
 }
 
+func (s *ListTrunksOfSkillGroupResponse) SetStatusCode(v int32) *ListTrunksOfSkillGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListTrunksOfSkillGroupResponse) SetBody(v *ListTrunksOfSkillGroupResponseBody) *ListTrunksOfSkillGroupResponse {
-	s.Body = v
-	return s
-}
-
-type ListUnreachableContactsRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s ListUnreachableContactsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUnreachableContactsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListUnreachableContactsRequest) SetInstanceId(v string) *ListUnreachableContactsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListUnreachableContactsRequest) SetJobGroupId(v string) *ListUnreachableContactsRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *ListUnreachableContactsRequest) SetPageNumber(v int32) *ListUnreachableContactsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListUnreachableContactsRequest) SetPageSize(v int32) *ListUnreachableContactsRequest {
-	s.PageSize = &v
-	return s
-}
-
-type ListUnreachableContactsResponseBody struct {
-	Code                *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode      *int32                                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message             *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId           *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success             *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-	UnreachableContacts *ListUnreachableContactsResponseBodyUnreachableContacts `json:"UnreachableContacts,omitempty" xml:"UnreachableContacts,omitempty" type:"Struct"`
-}
-
-func (s ListUnreachableContactsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUnreachableContactsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListUnreachableContactsResponseBody) SetCode(v string) *ListUnreachableContactsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListUnreachableContactsResponseBody) SetHttpStatusCode(v int32) *ListUnreachableContactsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListUnreachableContactsResponseBody) SetMessage(v string) *ListUnreachableContactsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListUnreachableContactsResponseBody) SetRequestId(v string) *ListUnreachableContactsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListUnreachableContactsResponseBody) SetSuccess(v bool) *ListUnreachableContactsResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListUnreachableContactsResponseBody) SetUnreachableContacts(v *ListUnreachableContactsResponseBodyUnreachableContacts) *ListUnreachableContactsResponseBody {
-	s.UnreachableContacts = v
-	return s
-}
-
-type ListUnreachableContactsResponseBodyUnreachableContacts struct {
-	List       []*ListUnreachableContactsResponseBodyUnreachableContactsList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNumber *int32                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListUnreachableContactsResponseBodyUnreachableContacts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUnreachableContactsResponseBodyUnreachableContacts) GoString() string {
-	return s.String()
-}
-
-func (s *ListUnreachableContactsResponseBodyUnreachableContacts) SetList(v []*ListUnreachableContactsResponseBodyUnreachableContactsList) *ListUnreachableContactsResponseBodyUnreachableContacts {
-	s.List = v
-	return s
-}
-
-func (s *ListUnreachableContactsResponseBodyUnreachableContacts) SetPageNumber(v int32) *ListUnreachableContactsResponseBodyUnreachableContacts {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListUnreachableContactsResponseBodyUnreachableContacts) SetPageSize(v int32) *ListUnreachableContactsResponseBodyUnreachableContacts {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListUnreachableContactsResponseBodyUnreachableContacts) SetTotalCount(v int32) *ListUnreachableContactsResponseBodyUnreachableContacts {
-	s.TotalCount = &v
-	return s
-}
-
-type ListUnreachableContactsResponseBodyUnreachableContactsList struct {
-	Contacts      []*ListUnreachableContactsResponseBodyUnreachableContactsListContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
-	TotalAttempts *int32                                                                `json:"TotalAttempts,omitempty" xml:"TotalAttempts,omitempty"`
-}
-
-func (s ListUnreachableContactsResponseBodyUnreachableContactsList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUnreachableContactsResponseBodyUnreachableContactsList) GoString() string {
-	return s.String()
-}
-
-func (s *ListUnreachableContactsResponseBodyUnreachableContactsList) SetContacts(v []*ListUnreachableContactsResponseBodyUnreachableContactsListContacts) *ListUnreachableContactsResponseBodyUnreachableContactsList {
-	s.Contacts = v
-	return s
-}
-
-func (s *ListUnreachableContactsResponseBodyUnreachableContactsList) SetTotalAttempts(v int32) *ListUnreachableContactsResponseBodyUnreachableContactsList {
-	s.TotalAttempts = &v
-	return s
-}
-
-type ListUnreachableContactsResponseBodyUnreachableContactsListContacts struct {
-	ContactId   *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	Role        *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
-}
-
-func (s ListUnreachableContactsResponseBodyUnreachableContactsListContacts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUnreachableContactsResponseBodyUnreachableContactsListContacts) GoString() string {
-	return s.String()
-}
-
-func (s *ListUnreachableContactsResponseBodyUnreachableContactsListContacts) SetContactId(v string) *ListUnreachableContactsResponseBodyUnreachableContactsListContacts {
-	s.ContactId = &v
-	return s
-}
-
-func (s *ListUnreachableContactsResponseBodyUnreachableContactsListContacts) SetContactName(v string) *ListUnreachableContactsResponseBodyUnreachableContactsListContacts {
-	s.ContactName = &v
-	return s
-}
-
-func (s *ListUnreachableContactsResponseBodyUnreachableContactsListContacts) SetPhoneNumber(v string) *ListUnreachableContactsResponseBodyUnreachableContactsListContacts {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *ListUnreachableContactsResponseBodyUnreachableContactsListContacts) SetReferenceId(v string) *ListUnreachableContactsResponseBodyUnreachableContactsListContacts {
-	s.ReferenceId = &v
-	return s
-}
-
-func (s *ListUnreachableContactsResponseBodyUnreachableContactsListContacts) SetRole(v string) *ListUnreachableContactsResponseBodyUnreachableContactsListContacts {
-	s.Role = &v
-	return s
-}
-
-func (s *ListUnreachableContactsResponseBodyUnreachableContactsListContacts) SetState(v string) *ListUnreachableContactsResponseBodyUnreachableContactsListContacts {
-	s.State = &v
-	return s
-}
-
-type ListUnreachableContactsResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUnreachableContactsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListUnreachableContactsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUnreachableContactsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListUnreachableContactsResponse) SetHeaders(v map[string]*string) *ListUnreachableContactsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListUnreachableContactsResponse) SetBody(v *ListUnreachableContactsResponseBody) *ListUnreachableContactsResponse {
 	s.Body = v
 	return s
 }
@@ -29951,8 +20839,9 @@ func (s *ListUsersResponseBodyUsersListUserSkillLevelsSkillLevelSkill) SetSkillG
 }
 
 type ListUsersResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListUsersResponse) String() string {
@@ -29965,6 +20854,11 @@ func (s ListUsersResponse) GoString() string {
 
 func (s *ListUsersResponse) SetHeaders(v map[string]*string) *ListUsersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListUsersResponse) SetStatusCode(v int32) *ListUsersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -30387,8 +21281,9 @@ func (s *ListUsersOfSkillGroupResponseBodyUsersListUserSkillLevelsSkillLevelSkil
 }
 
 type ListUsersOfSkillGroupResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUsersOfSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUsersOfSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListUsersOfSkillGroupResponse) String() string {
@@ -30401,6 +21296,11 @@ func (s ListUsersOfSkillGroupResponse) GoString() string {
 
 func (s *ListUsersOfSkillGroupResponse) SetHeaders(v map[string]*string) *ListUsersOfSkillGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListUsersOfSkillGroupResponse) SetStatusCode(v int32) *ListUsersOfSkillGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -30673,8 +21573,9 @@ func (s *ListVoiceAppraiseResponseBodyContactFlowVersionsContactFlowVersion) Set
 }
 
 type ListVoiceAppraiseResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVoiceAppraiseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVoiceAppraiseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVoiceAppraiseResponse) String() string {
@@ -30687,6 +21588,11 @@ func (s ListVoiceAppraiseResponse) GoString() string {
 
 func (s *ListVoiceAppraiseResponse) SetHeaders(v map[string]*string) *ListVoiceAppraiseResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListVoiceAppraiseResponse) SetStatusCode(v int32) *ListVoiceAppraiseResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -30766,8 +21672,9 @@ func (s *ModifyAgentDeviceResponseBody) SetSuccess(v bool) *ModifyAgentDeviceRes
 }
 
 type ModifyAgentDeviceResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyAgentDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyAgentDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyAgentDeviceResponse) String() string {
@@ -30783,270 +21690,12 @@ func (s *ModifyAgentDeviceResponse) SetHeaders(v map[string]*string) *ModifyAgen
 	return s
 }
 
+func (s *ModifyAgentDeviceResponse) SetStatusCode(v int32) *ModifyAgentDeviceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyAgentDeviceResponse) SetBody(v *ModifyAgentDeviceResponseBody) *ModifyAgentDeviceResponse {
-	s.Body = v
-	return s
-}
-
-type ModifyCabInstanceRequest struct {
-	CallCenterInstanceId      *string `json:"CallCenterInstanceId,omitempty" xml:"CallCenterInstanceId,omitempty"`
-	InstanceDescription       *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	InstanceId                *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName              *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MaxConcurrentConversation *int32  `json:"MaxConcurrentConversation,omitempty" xml:"MaxConcurrentConversation,omitempty"`
-}
-
-func (s ModifyCabInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyCabInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyCabInstanceRequest) SetCallCenterInstanceId(v string) *ModifyCabInstanceRequest {
-	s.CallCenterInstanceId = &v
-	return s
-}
-
-func (s *ModifyCabInstanceRequest) SetInstanceDescription(v string) *ModifyCabInstanceRequest {
-	s.InstanceDescription = &v
-	return s
-}
-
-func (s *ModifyCabInstanceRequest) SetInstanceId(v string) *ModifyCabInstanceRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ModifyCabInstanceRequest) SetInstanceName(v string) *ModifyCabInstanceRequest {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *ModifyCabInstanceRequest) SetMaxConcurrentConversation(v int32) *ModifyCabInstanceRequest {
-	s.MaxConcurrentConversation = &v
-	return s
-}
-
-type ModifyCabInstanceResponseBody struct {
-	Code           *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Instance       *ModifyCabInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
-	Message        *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ModifyCabInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyCabInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyCabInstanceResponseBody) SetCode(v string) *ModifyCabInstanceResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ModifyCabInstanceResponseBody) SetHttpStatusCode(v int32) *ModifyCabInstanceResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ModifyCabInstanceResponseBody) SetInstance(v *ModifyCabInstanceResponseBodyInstance) *ModifyCabInstanceResponseBody {
-	s.Instance = v
-	return s
-}
-
-func (s *ModifyCabInstanceResponseBody) SetMessage(v string) *ModifyCabInstanceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ModifyCabInstanceResponseBody) SetRequestId(v string) *ModifyCabInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ModifyCabInstanceResponseBody) SetSuccess(v bool) *ModifyCabInstanceResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ModifyCabInstanceResponseBodyInstance struct {
-	CallCenterInstanceId      *string `json:"CallCenterInstanceId,omitempty" xml:"CallCenterInstanceId,omitempty"`
-	CreationTime              *int64  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	InstanceDescription       *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	InstanceId                *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName              *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MaxConcurrentConversation *int32  `json:"MaxConcurrentConversation,omitempty" xml:"MaxConcurrentConversation,omitempty"`
-	Owner                     *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-}
-
-func (s ModifyCabInstanceResponseBodyInstance) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyCabInstanceResponseBodyInstance) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyCabInstanceResponseBodyInstance) SetCallCenterInstanceId(v string) *ModifyCabInstanceResponseBodyInstance {
-	s.CallCenterInstanceId = &v
-	return s
-}
-
-func (s *ModifyCabInstanceResponseBodyInstance) SetCreationTime(v int64) *ModifyCabInstanceResponseBodyInstance {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *ModifyCabInstanceResponseBodyInstance) SetInstanceDescription(v string) *ModifyCabInstanceResponseBodyInstance {
-	s.InstanceDescription = &v
-	return s
-}
-
-func (s *ModifyCabInstanceResponseBodyInstance) SetInstanceId(v string) *ModifyCabInstanceResponseBodyInstance {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ModifyCabInstanceResponseBodyInstance) SetInstanceName(v string) *ModifyCabInstanceResponseBodyInstance {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *ModifyCabInstanceResponseBodyInstance) SetMaxConcurrentConversation(v int32) *ModifyCabInstanceResponseBodyInstance {
-	s.MaxConcurrentConversation = &v
-	return s
-}
-
-func (s *ModifyCabInstanceResponseBodyInstance) SetOwner(v string) *ModifyCabInstanceResponseBodyInstance {
-	s.Owner = &v
-	return s
-}
-
-type ModifyCabInstanceResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyCabInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyCabInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyCabInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyCabInstanceResponse) SetHeaders(v map[string]*string) *ModifyCabInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyCabInstanceResponse) SetBody(v *ModifyCabInstanceResponseBody) *ModifyCabInstanceResponse {
-	s.Body = v
-	return s
-}
-
-type ModifyCallRatioRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId   *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	Ratio        *int32  `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-}
-
-func (s ModifyCallRatioRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyCallRatioRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyCallRatioRequest) SetInstanceId(v string) *ModifyCallRatioRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ModifyCallRatioRequest) SetJobGroupId(v string) *ModifyCallRatioRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *ModifyCallRatioRequest) SetRatio(v int32) *ModifyCallRatioRequest {
-	s.Ratio = &v
-	return s
-}
-
-func (s *ModifyCallRatioRequest) SetSkillGroupId(v string) *ModifyCallRatioRequest {
-	s.SkillGroupId = &v
-	return s
-}
-
-type ModifyCallRatioResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ModifyCallRatioResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyCallRatioResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyCallRatioResponseBody) SetCode(v string) *ModifyCallRatioResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ModifyCallRatioResponseBody) SetHttpStatusCode(v int32) *ModifyCallRatioResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ModifyCallRatioResponseBody) SetMessage(v string) *ModifyCallRatioResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ModifyCallRatioResponseBody) SetRequestId(v string) *ModifyCallRatioResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ModifyCallRatioResponseBody) SetSuccess(v bool) *ModifyCallRatioResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ModifyCallRatioResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyCallRatioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyCallRatioResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyCallRatioResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyCallRatioResponse) SetHeaders(v map[string]*string) *ModifyCallRatioResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyCallRatioResponse) SetBody(v *ModifyCallRatioResponseBody) *ModifyCallRatioResponse {
 	s.Body = v
 	return s
 }
@@ -31298,8 +21947,9 @@ func (s *ModifyPhoneNumberResponseBodyPhoneNumberSkillGroupsSkillGroup) SetSkill
 }
 
 type ModifyPhoneNumberResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyPhoneNumberResponse) String() string {
@@ -31312,6 +21962,11 @@ func (s ModifyPhoneNumberResponse) GoString() string {
 
 func (s *ModifyPhoneNumberResponse) SetHeaders(v map[string]*string) *ModifyPhoneNumberResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyPhoneNumberResponse) SetStatusCode(v int32) *ModifyPhoneNumberResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -31391,8 +22046,9 @@ func (s *ModifyPhoneTagsResponseBody) SetSuccess(v bool) *ModifyPhoneTagsRespons
 }
 
 type ModifyPhoneTagsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyPhoneTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyPhoneTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyPhoneTagsResponse) String() string {
@@ -31405,6 +22061,11 @@ func (s ModifyPhoneTagsResponse) GoString() string {
 
 func (s *ModifyPhoneTagsResponse) SetHeaders(v map[string]*string) *ModifyPhoneTagsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyPhoneTagsResponse) SetStatusCode(v int32) *ModifyPhoneTagsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -31484,8 +22145,9 @@ func (s *ModifyPrimaryTrunksOfSkillGroupResponseBody) SetSuccess(v bool) *Modify
 }
 
 type ModifyPrimaryTrunksOfSkillGroupResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyPrimaryTrunksOfSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyPrimaryTrunksOfSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyPrimaryTrunksOfSkillGroupResponse) String() string {
@@ -31498,6 +22160,11 @@ func (s ModifyPrimaryTrunksOfSkillGroupResponse) GoString() string {
 
 func (s *ModifyPrimaryTrunksOfSkillGroupResponse) SetHeaders(v map[string]*string) *ModifyPrimaryTrunksOfSkillGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyPrimaryTrunksOfSkillGroupResponse) SetStatusCode(v int32) *ModifyPrimaryTrunksOfSkillGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -31577,8 +22244,9 @@ func (s *ModifyPrivacyNumberCallDetailResponseBody) SetSuccess(v bool) *ModifyPr
 }
 
 type ModifyPrivacyNumberCallDetailResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyPrivacyNumberCallDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyPrivacyNumberCallDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyPrivacyNumberCallDetailResponse) String() string {
@@ -31594,400 +22262,12 @@ func (s *ModifyPrivacyNumberCallDetailResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *ModifyPrivacyNumberCallDetailResponse) SetStatusCode(v int32) *ModifyPrivacyNumberCallDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyPrivacyNumberCallDetailResponse) SetBody(v *ModifyPrivacyNumberCallDetailResponseBody) *ModifyPrivacyNumberCallDetailResponse {
-	s.Body = v
-	return s
-}
-
-type ModifyScenarioRequest struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ScenarioId  *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	Variables   *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
-}
-
-func (s ModifyScenarioRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyScenarioRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyScenarioRequest) SetDescription(v string) *ModifyScenarioRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *ModifyScenarioRequest) SetInstanceId(v string) *ModifyScenarioRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ModifyScenarioRequest) SetName(v string) *ModifyScenarioRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ModifyScenarioRequest) SetScenarioId(v string) *ModifyScenarioRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *ModifyScenarioRequest) SetVariables(v string) *ModifyScenarioRequest {
-	s.Variables = &v
-	return s
-}
-
-type ModifyScenarioResponseBody struct {
-	Code           *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scenario       *ModifyScenarioResponseBodyScenario `json:"Scenario,omitempty" xml:"Scenario,omitempty" type:"Struct"`
-	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ModifyScenarioResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyScenarioResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyScenarioResponseBody) SetCode(v string) *ModifyScenarioResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBody) SetHttpStatusCode(v int32) *ModifyScenarioResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBody) SetMessage(v string) *ModifyScenarioResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBody) SetRequestId(v string) *ModifyScenarioResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBody) SetScenario(v *ModifyScenarioResponseBodyScenario) *ModifyScenarioResponseBody {
-	s.Scenario = v
-	return s
-}
-
-func (s *ModifyScenarioResponseBody) SetSuccess(v bool) *ModifyScenarioResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ModifyScenarioResponseBodyScenario struct {
-	IsTemplate          *bool                                          `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	ScenarioDescription *string                                        `json:"ScenarioDescription,omitempty" xml:"ScenarioDescription,omitempty"`
-	ScenarioId          *string                                        `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	ScenarioName        *string                                        `json:"ScenarioName,omitempty" xml:"ScenarioName,omitempty"`
-	Strategy            *ModifyScenarioResponseBodyScenarioStrategy    `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
-	Surveys             []*ModifyScenarioResponseBodyScenarioSurveys   `json:"Surveys,omitempty" xml:"Surveys,omitempty" type:"Repeated"`
-	Type                *string                                        `json:"Type,omitempty" xml:"Type,omitempty"`
-	Variables           []*ModifyScenarioResponseBodyScenarioVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
-}
-
-func (s ModifyScenarioResponseBodyScenario) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyScenarioResponseBodyScenario) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyScenarioResponseBodyScenario) SetIsTemplate(v bool) *ModifyScenarioResponseBodyScenario {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenario) SetScenarioDescription(v string) *ModifyScenarioResponseBodyScenario {
-	s.ScenarioDescription = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenario) SetScenarioId(v string) *ModifyScenarioResponseBodyScenario {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenario) SetScenarioName(v string) *ModifyScenarioResponseBodyScenario {
-	s.ScenarioName = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenario) SetStrategy(v *ModifyScenarioResponseBodyScenarioStrategy) *ModifyScenarioResponseBodyScenario {
-	s.Strategy = v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenario) SetSurveys(v []*ModifyScenarioResponseBodyScenarioSurveys) *ModifyScenarioResponseBodyScenario {
-	s.Surveys = v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenario) SetType(v string) *ModifyScenarioResponseBodyScenario {
-	s.Type = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenario) SetVariables(v []*ModifyScenarioResponseBodyScenarioVariables) *ModifyScenarioResponseBodyScenario {
-	s.Variables = v
-	return s
-}
-
-type ModifyScenarioResponseBodyScenarioStrategy struct {
-	Customized          *string                                                  `json:"Customized,omitempty" xml:"Customized,omitempty"`
-	EndTime             *int64                                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FollowUpStrategy    *string                                                  `json:"FollowUpStrategy,omitempty" xml:"FollowUpStrategy,omitempty"`
-	IsTemplate          *bool                                                    `json:"IsTemplate,omitempty" xml:"IsTemplate,omitempty"`
-	MaxAttemptsPerDay   *int32                                                   `json:"MaxAttemptsPerDay,omitempty" xml:"MaxAttemptsPerDay,omitempty"`
-	MinAttemptInterval  *int32                                                   `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
-	RepeatBy            *string                                                  `json:"RepeatBy,omitempty" xml:"RepeatBy,omitempty"`
-	RepeatDays          []*string                                                `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RoutingStrategy     *string                                                  `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
-	StartTime           *int64                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StrategyDescription *string                                                  `json:"StrategyDescription,omitempty" xml:"StrategyDescription,omitempty"`
-	StrategyId          *string                                                  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	StrategyName        *string                                                  `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	Type                *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	WorkingTime         []*ModifyScenarioResponseBodyScenarioStrategyWorkingTime `json:"WorkingTime,omitempty" xml:"WorkingTime,omitempty" type:"Repeated"`
-}
-
-func (s ModifyScenarioResponseBodyScenarioStrategy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyScenarioResponseBodyScenarioStrategy) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetCustomized(v string) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.Customized = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetEndTime(v int64) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetFollowUpStrategy(v string) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.FollowUpStrategy = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetIsTemplate(v bool) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.IsTemplate = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetMaxAttemptsPerDay(v int32) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.MaxAttemptsPerDay = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetMinAttemptInterval(v int32) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.MinAttemptInterval = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetRepeatBy(v string) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.RepeatBy = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetRepeatDays(v []*string) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.RepeatDays = v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetRoutingStrategy(v string) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.RoutingStrategy = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetStartTime(v int64) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.StartTime = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetStrategyDescription(v string) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.StrategyDescription = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetStrategyId(v string) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.StrategyId = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetStrategyName(v string) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.StrategyName = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetType(v string) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.Type = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategy) SetWorkingTime(v []*ModifyScenarioResponseBodyScenarioStrategyWorkingTime) *ModifyScenarioResponseBodyScenarioStrategy {
-	s.WorkingTime = v
-	return s
-}
-
-type ModifyScenarioResponseBodyScenarioStrategyWorkingTime struct {
-	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s ModifyScenarioResponseBodyScenarioStrategyWorkingTime) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyScenarioResponseBodyScenarioStrategyWorkingTime) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategyWorkingTime) SetBeginTime(v string) *ModifyScenarioResponseBodyScenarioStrategyWorkingTime {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioStrategyWorkingTime) SetEndTime(v string) *ModifyScenarioResponseBodyScenarioStrategyWorkingTime {
-	s.EndTime = &v
-	return s
-}
-
-type ModifyScenarioResponseBodyScenarioSurveys struct {
-	BeebotId          *string                                             `json:"BeebotId,omitempty" xml:"BeebotId,omitempty"`
-	Intents           []*ModifyScenarioResponseBodyScenarioSurveysIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Repeated"`
-	Role              *string                                             `json:"Role,omitempty" xml:"Role,omitempty"`
-	Round             *int32                                              `json:"Round,omitempty" xml:"Round,omitempty"`
-	SurveyDescription *string                                             `json:"SurveyDescription,omitempty" xml:"SurveyDescription,omitempty"`
-	SurveyId          *string                                             `json:"SurveyId,omitempty" xml:"SurveyId,omitempty"`
-	SurveyName        *string                                             `json:"SurveyName,omitempty" xml:"SurveyName,omitempty"`
-}
-
-func (s ModifyScenarioResponseBodyScenarioSurveys) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyScenarioResponseBodyScenarioSurveys) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyScenarioResponseBodyScenarioSurveys) SetBeebotId(v string) *ModifyScenarioResponseBodyScenarioSurveys {
-	s.BeebotId = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioSurveys) SetIntents(v []*ModifyScenarioResponseBodyScenarioSurveysIntents) *ModifyScenarioResponseBodyScenarioSurveys {
-	s.Intents = v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioSurveys) SetRole(v string) *ModifyScenarioResponseBodyScenarioSurveys {
-	s.Role = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioSurveys) SetRound(v int32) *ModifyScenarioResponseBodyScenarioSurveys {
-	s.Round = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioSurveys) SetSurveyDescription(v string) *ModifyScenarioResponseBodyScenarioSurveys {
-	s.SurveyDescription = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioSurveys) SetSurveyId(v string) *ModifyScenarioResponseBodyScenarioSurveys {
-	s.SurveyId = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioSurveys) SetSurveyName(v string) *ModifyScenarioResponseBodyScenarioSurveys {
-	s.SurveyName = &v
-	return s
-}
-
-type ModifyScenarioResponseBodyScenarioSurveysIntents struct {
-	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-}
-
-func (s ModifyScenarioResponseBodyScenarioSurveysIntents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyScenarioResponseBodyScenarioSurveysIntents) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyScenarioResponseBodyScenarioSurveysIntents) SetIntentId(v string) *ModifyScenarioResponseBodyScenarioSurveysIntents {
-	s.IntentId = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioSurveysIntents) SetNodeId(v string) *ModifyScenarioResponseBodyScenarioSurveysIntents {
-	s.NodeId = &v
-	return s
-}
-
-type ModifyScenarioResponseBodyScenarioVariables struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ModifyScenarioResponseBodyScenarioVariables) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyScenarioResponseBodyScenarioVariables) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyScenarioResponseBodyScenarioVariables) SetKey(v string) *ModifyScenarioResponseBodyScenarioVariables {
-	s.Key = &v
-	return s
-}
-
-func (s *ModifyScenarioResponseBodyScenarioVariables) SetValue(v string) *ModifyScenarioResponseBodyScenarioVariables {
-	s.Value = &v
-	return s
-}
-
-type ModifyScenarioResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyScenarioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyScenarioResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyScenarioResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyScenarioResponse) SetHeaders(v map[string]*string) *ModifyScenarioResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyScenarioResponse) SetBody(v *ModifyScenarioResponseBody) *ModifyScenarioResponse {
 	s.Body = v
 	return s
 }
@@ -32099,8 +22379,9 @@ func (s *ModifySkillGroupResponseBody) SetSuccess(v bool) *ModifySkillGroupRespo
 }
 
 type ModifySkillGroupResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifySkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifySkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifySkillGroupResponse) String() string {
@@ -32116,7 +22397,129 @@ func (s *ModifySkillGroupResponse) SetHeaders(v map[string]*string) *ModifySkill
 	return s
 }
 
+func (s *ModifySkillGroupResponse) SetStatusCode(v int32) *ModifySkillGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifySkillGroupResponse) SetBody(v *ModifySkillGroupResponseBody) *ModifySkillGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ModifySkillGroupBasicInfoRequest struct {
+	AllowPrivateOutboundNumber *bool   `json:"AllowPrivateOutboundNumber,omitempty" xml:"AllowPrivateOutboundNumber,omitempty"`
+	Description                *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId                 *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name                       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RoutingStrategy            *string `json:"RoutingStrategy,omitempty" xml:"RoutingStrategy,omitempty"`
+	SkillGroupId               *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+}
+
+func (s ModifySkillGroupBasicInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySkillGroupBasicInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySkillGroupBasicInfoRequest) SetAllowPrivateOutboundNumber(v bool) *ModifySkillGroupBasicInfoRequest {
+	s.AllowPrivateOutboundNumber = &v
+	return s
+}
+
+func (s *ModifySkillGroupBasicInfoRequest) SetDescription(v string) *ModifySkillGroupBasicInfoRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifySkillGroupBasicInfoRequest) SetInstanceId(v string) *ModifySkillGroupBasicInfoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifySkillGroupBasicInfoRequest) SetName(v string) *ModifySkillGroupBasicInfoRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifySkillGroupBasicInfoRequest) SetRoutingStrategy(v string) *ModifySkillGroupBasicInfoRequest {
+	s.RoutingStrategy = &v
+	return s
+}
+
+func (s *ModifySkillGroupBasicInfoRequest) SetSkillGroupId(v string) *ModifySkillGroupBasicInfoRequest {
+	s.SkillGroupId = &v
+	return s
+}
+
+type ModifySkillGroupBasicInfoResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifySkillGroupBasicInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySkillGroupBasicInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySkillGroupBasicInfoResponseBody) SetCode(v string) *ModifySkillGroupBasicInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifySkillGroupBasicInfoResponseBody) SetHttpStatusCode(v int32) *ModifySkillGroupBasicInfoResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifySkillGroupBasicInfoResponseBody) SetMessage(v string) *ModifySkillGroupBasicInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifySkillGroupBasicInfoResponseBody) SetRequestId(v string) *ModifySkillGroupBasicInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifySkillGroupBasicInfoResponseBody) SetSuccess(v bool) *ModifySkillGroupBasicInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifySkillGroupBasicInfoResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifySkillGroupBasicInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifySkillGroupBasicInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySkillGroupBasicInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySkillGroupBasicInfoResponse) SetHeaders(v map[string]*string) *ModifySkillGroupBasicInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifySkillGroupBasicInfoResponse) SetStatusCode(v int32) *ModifySkillGroupBasicInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifySkillGroupBasicInfoResponse) SetBody(v *ModifySkillGroupBasicInfoResponseBody) *ModifySkillGroupBasicInfoResponse {
 	s.Body = v
 	return s
 }
@@ -32204,8 +22607,9 @@ func (s *ModifySkillGroupOfUserResponseBody) SetSuccess(v bool) *ModifySkillGrou
 }
 
 type ModifySkillGroupOfUserResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifySkillGroupOfUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifySkillGroupOfUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifySkillGroupOfUserResponse) String() string {
@@ -32218,6 +22622,11 @@ func (s ModifySkillGroupOfUserResponse) GoString() string {
 
 func (s *ModifySkillGroupOfUserResponse) SetHeaders(v map[string]*string) *ModifySkillGroupOfUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifySkillGroupOfUserResponse) SetStatusCode(v int32) *ModifySkillGroupOfUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -32303,8 +22712,9 @@ func (s *ModifySkillGroupOutboundNumbersResponseBody) SetSuccess(v bool) *Modify
 }
 
 type ModifySkillGroupOutboundNumbersResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifySkillGroupOutboundNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifySkillGroupOutboundNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifySkillGroupOutboundNumbersResponse) String() string {
@@ -32320,289 +22730,12 @@ func (s *ModifySkillGroupOutboundNumbersResponse) SetHeaders(v map[string]*strin
 	return s
 }
 
+func (s *ModifySkillGroupOutboundNumbersResponse) SetStatusCode(v int32) *ModifySkillGroupOutboundNumbersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifySkillGroupOutboundNumbersResponse) SetBody(v *ModifySkillGroupOutboundNumbersResponseBody) *ModifySkillGroupOutboundNumbersResponse {
-	s.Body = v
-	return s
-}
-
-type ModifySurveyRequest struct {
-	Corpora                 *string `json:"Corpora,omitempty" xml:"Corpora,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FlowId                  *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	FlowJson                *string `json:"FlowJson,omitempty" xml:"FlowJson,omitempty"`
-	GlobalQuestions         *string `json:"GlobalQuestions,omitempty" xml:"GlobalQuestions,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name                    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Role                    *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Round                   *int32  `json:"Round,omitempty" xml:"Round,omitempty"`
-	ScenarioId              *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	SpeechOptimizationParam *string `json:"SpeechOptimizationParam,omitempty" xml:"SpeechOptimizationParam,omitempty"`
-	SurveyId                *string `json:"SurveyId,omitempty" xml:"SurveyId,omitempty"`
-}
-
-func (s ModifySurveyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifySurveyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifySurveyRequest) SetCorpora(v string) *ModifySurveyRequest {
-	s.Corpora = &v
-	return s
-}
-
-func (s *ModifySurveyRequest) SetDescription(v string) *ModifySurveyRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *ModifySurveyRequest) SetFlowId(v string) *ModifySurveyRequest {
-	s.FlowId = &v
-	return s
-}
-
-func (s *ModifySurveyRequest) SetFlowJson(v string) *ModifySurveyRequest {
-	s.FlowJson = &v
-	return s
-}
-
-func (s *ModifySurveyRequest) SetGlobalQuestions(v string) *ModifySurveyRequest {
-	s.GlobalQuestions = &v
-	return s
-}
-
-func (s *ModifySurveyRequest) SetInstanceId(v string) *ModifySurveyRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ModifySurveyRequest) SetName(v string) *ModifySurveyRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ModifySurveyRequest) SetRole(v string) *ModifySurveyRequest {
-	s.Role = &v
-	return s
-}
-
-func (s *ModifySurveyRequest) SetRound(v int32) *ModifySurveyRequest {
-	s.Round = &v
-	return s
-}
-
-func (s *ModifySurveyRequest) SetScenarioId(v string) *ModifySurveyRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *ModifySurveyRequest) SetSpeechOptimizationParam(v string) *ModifySurveyRequest {
-	s.SpeechOptimizationParam = &v
-	return s
-}
-
-func (s *ModifySurveyRequest) SetSurveyId(v string) *ModifySurveyRequest {
-	s.SurveyId = &v
-	return s
-}
-
-type ModifySurveyResponseBody struct {
-	Code           *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Survey         *ModifySurveyResponseBodySurvey `json:"Survey,omitempty" xml:"Survey,omitempty" type:"Struct"`
-}
-
-func (s ModifySurveyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifySurveyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifySurveyResponseBody) SetCode(v string) *ModifySurveyResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBody) SetHttpStatusCode(v int32) *ModifySurveyResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBody) SetMessage(v string) *ModifySurveyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBody) SetRequestId(v string) *ModifySurveyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBody) SetSuccess(v bool) *ModifySurveyResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBody) SetSurvey(v *ModifySurveyResponseBodySurvey) *ModifySurveyResponseBody {
-	s.Survey = v
-	return s
-}
-
-type ModifySurveyResponseBodySurvey struct {
-	AsrCustomModel          *ModifySurveyResponseBodySurveyAsrCustomModel `json:"AsrCustomModel,omitempty" xml:"AsrCustomModel,omitempty" type:"Struct"`
-	Description             *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	Flow                    *ModifySurveyResponseBodySurveyFlow           `json:"Flow,omitempty" xml:"Flow,omitempty" type:"Struct"`
-	GlobalQuestions         *string                                       `json:"GlobalQuestions,omitempty" xml:"GlobalQuestions,omitempty"`
-	HotWords                *string                                       `json:"HotWords,omitempty" xml:"HotWords,omitempty"`
-	Id                      *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name                    *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	Role                    *string                                       `json:"Role,omitempty" xml:"Role,omitempty"`
-	Round                   *int32                                        `json:"Round,omitempty" xml:"Round,omitempty"`
-	ScenarioUuid            *string                                       `json:"ScenarioUuid,omitempty" xml:"ScenarioUuid,omitempty"`
-	SpeechOptimizationParam *string                                       `json:"SpeechOptimizationParam,omitempty" xml:"SpeechOptimizationParam,omitempty"`
-}
-
-func (s ModifySurveyResponseBodySurvey) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifySurveyResponseBodySurvey) GoString() string {
-	return s.String()
-}
-
-func (s *ModifySurveyResponseBodySurvey) SetAsrCustomModel(v *ModifySurveyResponseBodySurveyAsrCustomModel) *ModifySurveyResponseBodySurvey {
-	s.AsrCustomModel = v
-	return s
-}
-
-func (s *ModifySurveyResponseBodySurvey) SetDescription(v string) *ModifySurveyResponseBodySurvey {
-	s.Description = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBodySurvey) SetFlow(v *ModifySurveyResponseBodySurveyFlow) *ModifySurveyResponseBodySurvey {
-	s.Flow = v
-	return s
-}
-
-func (s *ModifySurveyResponseBodySurvey) SetGlobalQuestions(v string) *ModifySurveyResponseBodySurvey {
-	s.GlobalQuestions = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBodySurvey) SetHotWords(v string) *ModifySurveyResponseBodySurvey {
-	s.HotWords = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBodySurvey) SetId(v string) *ModifySurveyResponseBodySurvey {
-	s.Id = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBodySurvey) SetName(v string) *ModifySurveyResponseBodySurvey {
-	s.Name = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBodySurvey) SetRole(v string) *ModifySurveyResponseBodySurvey {
-	s.Role = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBodySurvey) SetRound(v int32) *ModifySurveyResponseBodySurvey {
-	s.Round = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBodySurvey) SetScenarioUuid(v string) *ModifySurveyResponseBodySurvey {
-	s.ScenarioUuid = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBodySurvey) SetSpeechOptimizationParam(v string) *ModifySurveyResponseBodySurvey {
-	s.SpeechOptimizationParam = &v
-	return s
-}
-
-type ModifySurveyResponseBodySurveyAsrCustomModel struct {
-	Corpora           *string `json:"Corpora,omitempty" xml:"Corpora,omitempty"`
-	CustomModelStatus *int32  `json:"CustomModelStatus,omitempty" xml:"CustomModelStatus,omitempty"`
-}
-
-func (s ModifySurveyResponseBodySurveyAsrCustomModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifySurveyResponseBodySurveyAsrCustomModel) GoString() string {
-	return s.String()
-}
-
-func (s *ModifySurveyResponseBodySurveyAsrCustomModel) SetCorpora(v string) *ModifySurveyResponseBodySurveyAsrCustomModel {
-	s.Corpora = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBodySurveyAsrCustomModel) SetCustomModelStatus(v int32) *ModifySurveyResponseBodySurveyAsrCustomModel {
-	s.CustomModelStatus = &v
-	return s
-}
-
-type ModifySurveyResponseBodySurveyFlow struct {
-	FlowId      *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	FlowJson    *string `json:"FlowJson,omitempty" xml:"FlowJson,omitempty"`
-	IsPublished *bool   `json:"IsPublished,omitempty" xml:"IsPublished,omitempty"`
-}
-
-func (s ModifySurveyResponseBodySurveyFlow) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifySurveyResponseBodySurveyFlow) GoString() string {
-	return s.String()
-}
-
-func (s *ModifySurveyResponseBodySurveyFlow) SetFlowId(v string) *ModifySurveyResponseBodySurveyFlow {
-	s.FlowId = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBodySurveyFlow) SetFlowJson(v string) *ModifySurveyResponseBodySurveyFlow {
-	s.FlowJson = &v
-	return s
-}
-
-func (s *ModifySurveyResponseBodySurveyFlow) SetIsPublished(v bool) *ModifySurveyResponseBodySurveyFlow {
-	s.IsPublished = &v
-	return s
-}
-
-type ModifySurveyResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifySurveyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifySurveyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifySurveyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifySurveyResponse) SetHeaders(v map[string]*string) *ModifySurveyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifySurveyResponse) SetBody(v *ModifySurveyResponseBody) *ModifySurveyResponse {
 	s.Body = v
 	return s
 }
@@ -32714,8 +22847,9 @@ func (s *ModifyUserResponseBody) SetSuccess(v bool) *ModifyUserResponseBody {
 }
 
 type ModifyUserResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyUserResponse) String() string {
@@ -32728,6 +22862,11 @@ func (s ModifyUserResponse) GoString() string {
 
 func (s *ModifyUserResponse) SetHeaders(v map[string]*string) *ModifyUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyUserResponse) SetStatusCode(v int32) *ModifyUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -32923,8 +23062,9 @@ func (s *PickGlobalOutboundNumbersResponseBodyDialNumberPairsDialNumberPairCalle
 }
 
 type PickGlobalOutboundNumbersResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PickGlobalOutboundNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PickGlobalOutboundNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PickGlobalOutboundNumbersResponse) String() string {
@@ -32937,6 +23077,11 @@ func (s PickGlobalOutboundNumbersResponse) GoString() string {
 
 func (s *PickGlobalOutboundNumbersResponse) SetHeaders(v map[string]*string) *PickGlobalOutboundNumbersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PickGlobalOutboundNumbersResponse) SetStatusCode(v int32) *PickGlobalOutboundNumbersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -33097,8 +23242,9 @@ func (s *PickLocalNumberResponseBodyDataCaller) SetProvince(v string) *PickLocal
 }
 
 type PickLocalNumberResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PickLocalNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PickLocalNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PickLocalNumberResponse) String() string {
@@ -33111,6 +23257,11 @@ func (s PickLocalNumberResponse) GoString() string {
 
 func (s *PickLocalNumberResponse) SetHeaders(v map[string]*string) *PickLocalNumberResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PickLocalNumberResponse) SetStatusCode(v int32) *PickLocalNumberResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -33300,8 +23451,9 @@ func (s *PickOutboundNumbersResponseBodyDialNumberPairsDialNumberPairCaller) Set
 }
 
 type PickOutboundNumbersResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PickOutboundNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PickOutboundNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PickOutboundNumbersResponse) String() string {
@@ -33314,6 +23466,11 @@ func (s PickOutboundNumbersResponse) GoString() string {
 
 func (s *PickOutboundNumbersResponse) SetHeaders(v map[string]*string) *PickOutboundNumbersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PickOutboundNumbersResponse) SetStatusCode(v int32) *PickOutboundNumbersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -33393,8 +23550,9 @@ func (s *PublishContactFlowVersionResponseBody) SetSuccess(v bool) *PublishConta
 }
 
 type PublishContactFlowVersionResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PublishContactFlowVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PublishContactFlowVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PublishContactFlowVersionResponse) String() string {
@@ -33410,193 +23568,12 @@ func (s *PublishContactFlowVersionResponse) SetHeaders(v map[string]*string) *Pu
 	return s
 }
 
+func (s *PublishContactFlowVersionResponse) SetStatusCode(v int32) *PublishContactFlowVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *PublishContactFlowVersionResponse) SetBody(v *PublishContactFlowVersionResponseBody) *PublishContactFlowVersionResponse {
-	s.Body = v
-	return s
-}
-
-type PublishPredictiveJobGroupRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId   *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-}
-
-func (s PublishPredictiveJobGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishPredictiveJobGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PublishPredictiveJobGroupRequest) SetInstanceId(v string) *PublishPredictiveJobGroupRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *PublishPredictiveJobGroupRequest) SetJobGroupId(v string) *PublishPredictiveJobGroupRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *PublishPredictiveJobGroupRequest) SetSkillGroupId(v string) *PublishPredictiveJobGroupRequest {
-	s.SkillGroupId = &v
-	return s
-}
-
-type PublishPredictiveJobGroupResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s PublishPredictiveJobGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishPredictiveJobGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PublishPredictiveJobGroupResponseBody) SetCode(v string) *PublishPredictiveJobGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *PublishPredictiveJobGroupResponseBody) SetHttpStatusCode(v int32) *PublishPredictiveJobGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *PublishPredictiveJobGroupResponseBody) SetMessage(v string) *PublishPredictiveJobGroupResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *PublishPredictiveJobGroupResponseBody) SetRequestId(v string) *PublishPredictiveJobGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *PublishPredictiveJobGroupResponseBody) SetSuccess(v bool) *PublishPredictiveJobGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-type PublishPredictiveJobGroupResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PublishPredictiveJobGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s PublishPredictiveJobGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishPredictiveJobGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PublishPredictiveJobGroupResponse) SetHeaders(v map[string]*string) *PublishPredictiveJobGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PublishPredictiveJobGroupResponse) SetBody(v *PublishPredictiveJobGroupResponseBody) *PublishPredictiveJobGroupResponse {
-	s.Body = v
-	return s
-}
-
-type PublishSurveyRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	SurveyId   *string `json:"SurveyId,omitempty" xml:"SurveyId,omitempty"`
-}
-
-func (s PublishSurveyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishSurveyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PublishSurveyRequest) SetInstanceId(v string) *PublishSurveyRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *PublishSurveyRequest) SetScenarioId(v string) *PublishSurveyRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *PublishSurveyRequest) SetSurveyId(v string) *PublishSurveyRequest {
-	s.SurveyId = &v
-	return s
-}
-
-type PublishSurveyResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s PublishSurveyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishSurveyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PublishSurveyResponseBody) SetCode(v string) *PublishSurveyResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *PublishSurveyResponseBody) SetHttpStatusCode(v int32) *PublishSurveyResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *PublishSurveyResponseBody) SetMessage(v string) *PublishSurveyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *PublishSurveyResponseBody) SetRequestId(v string) *PublishSurveyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *PublishSurveyResponseBody) SetSuccess(v bool) *PublishSurveyResponseBody {
-	s.Success = &v
-	return s
-}
-
-type PublishSurveyResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PublishSurveyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s PublishSurveyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishSurveyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PublishSurveyResponse) SetHeaders(v map[string]*string) *PublishSurveyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PublishSurveyResponse) SetBody(v *PublishSurveyResponseBody) *PublishSurveyResponse {
 	s.Body = v
 	return s
 }
@@ -33689,8 +23666,9 @@ func (s *RefreshTokenResponseBodyToken) SetSignature(v string) *RefreshTokenResp
 }
 
 type RefreshTokenResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RefreshTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RefreshTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RefreshTokenResponse) String() string {
@@ -33703,6 +23681,11 @@ func (s RefreshTokenResponse) GoString() string {
 
 func (s *RefreshTokenResponse) SetHeaders(v map[string]*string) *RefreshTokenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RefreshTokenResponse) SetStatusCode(v int32) *RefreshTokenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -33776,8 +23759,9 @@ func (s *RemovePhoneNumberResponseBody) SetSuccess(v bool) *RemovePhoneNumberRes
 }
 
 type RemovePhoneNumberResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemovePhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemovePhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemovePhoneNumberResponse) String() string {
@@ -33790,6 +23774,11 @@ func (s RemovePhoneNumberResponse) GoString() string {
 
 func (s *RemovePhoneNumberResponse) SetHeaders(v map[string]*string) *RemovePhoneNumberResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemovePhoneNumberResponse) SetStatusCode(v int32) *RemovePhoneNumberResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -33863,8 +23852,9 @@ func (s *RemoveUsersResponseBody) SetSuccess(v bool) *RemoveUsersResponseBody {
 }
 
 type RemoveUsersResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveUsersResponse) String() string {
@@ -33877,6 +23867,11 @@ func (s RemoveUsersResponse) GoString() string {
 
 func (s *RemoveUsersResponse) SetHeaders(v map[string]*string) *RemoveUsersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveUsersResponse) SetStatusCode(v int32) *RemoveUsersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -33956,8 +23951,9 @@ func (s *RemoveUsersFromSkillGroupResponseBody) SetSuccess(v bool) *RemoveUsersF
 }
 
 type RemoveUsersFromSkillGroupResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveUsersFromSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveUsersFromSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveUsersFromSkillGroupResponse) String() string {
@@ -33970,6 +23966,11 @@ func (s RemoveUsersFromSkillGroupResponse) GoString() string {
 
 func (s *RemoveUsersFromSkillGroupResponse) SetHeaders(v map[string]*string) *RemoveUsersFromSkillGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveUsersFromSkillGroupResponse) SetStatusCode(v int32) *RemoveUsersFromSkillGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -34178,8 +24179,9 @@ func (s *RequestLoginInfoResponseBodyLoginInfoRolesRole) SetRoleName(v string) *
 }
 
 type RequestLoginInfoResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RequestLoginInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RequestLoginInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RequestLoginInfoResponse) String() string {
@@ -34192,6 +24194,11 @@ func (s RequestLoginInfoResponse) GoString() string {
 
 func (s *RequestLoginInfoResponse) SetHeaders(v map[string]*string) *RequestLoginInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RequestLoginInfoResponse) SetStatusCode(v int32) *RequestLoginInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -34265,8 +24272,9 @@ func (s *ResetUserStatusResponseBody) SetSuccess(v bool) *ResetUserStatusRespons
 }
 
 type ResetUserStatusResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ResetUserStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResetUserStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ResetUserStatusResponse) String() string {
@@ -34282,493 +24290,12 @@ func (s *ResetUserStatusResponse) SetHeaders(v map[string]*string) *ResetUserSta
 	return s
 }
 
+func (s *ResetUserStatusResponse) SetStatusCode(v int32) *ResetUserStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ResetUserStatusResponse) SetBody(v *ResetUserStatusResponseBody) *ResetUserStatusResponse {
-	s.Body = v
-	return s
-}
-
-type ResumeJobsRequest struct {
-	All            *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	GroupId        *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId          []*string `json:"JobId,omitempty" xml:"JobId,omitempty" type:"Repeated"`
-	JobReferenceId []*string `json:"JobReferenceId,omitempty" xml:"JobReferenceId,omitempty" type:"Repeated"`
-	ScenarioId     *string   `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-}
-
-func (s ResumeJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResumeJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ResumeJobsRequest) SetAll(v bool) *ResumeJobsRequest {
-	s.All = &v
-	return s
-}
-
-func (s *ResumeJobsRequest) SetGroupId(v string) *ResumeJobsRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *ResumeJobsRequest) SetInstanceId(v string) *ResumeJobsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ResumeJobsRequest) SetJobId(v []*string) *ResumeJobsRequest {
-	s.JobId = v
-	return s
-}
-
-func (s *ResumeJobsRequest) SetJobReferenceId(v []*string) *ResumeJobsRequest {
-	s.JobReferenceId = v
-	return s
-}
-
-func (s *ResumeJobsRequest) SetScenarioId(v string) *ResumeJobsRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-type ResumeJobsResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ResumeJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResumeJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ResumeJobsResponseBody) SetCode(v string) *ResumeJobsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ResumeJobsResponseBody) SetHttpStatusCode(v int32) *ResumeJobsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ResumeJobsResponseBody) SetMessage(v string) *ResumeJobsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ResumeJobsResponseBody) SetRequestId(v string) *ResumeJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ResumeJobsResponseBody) SetSuccess(v bool) *ResumeJobsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ResumeJobsResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ResumeJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ResumeJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResumeJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ResumeJobsResponse) SetHeaders(v map[string]*string) *ResumeJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ResumeJobsResponse) SetBody(v *ResumeJobsResponseBody) *ResumeJobsResponse {
-	s.Body = v
-	return s
-}
-
-type ResumePredictiveJobsRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId   *string   `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	JobId        []*string `json:"JobId,omitempty" xml:"JobId,omitempty" type:"Repeated"`
-	SkillGroupId *string   `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-}
-
-func (s ResumePredictiveJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResumePredictiveJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ResumePredictiveJobsRequest) SetAll(v bool) *ResumePredictiveJobsRequest {
-	s.All = &v
-	return s
-}
-
-func (s *ResumePredictiveJobsRequest) SetInstanceId(v string) *ResumePredictiveJobsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ResumePredictiveJobsRequest) SetJobGroupId(v string) *ResumePredictiveJobsRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *ResumePredictiveJobsRequest) SetJobId(v []*string) *ResumePredictiveJobsRequest {
-	s.JobId = v
-	return s
-}
-
-func (s *ResumePredictiveJobsRequest) SetSkillGroupId(v string) *ResumePredictiveJobsRequest {
-	s.SkillGroupId = &v
-	return s
-}
-
-type ResumePredictiveJobsResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ResumePredictiveJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResumePredictiveJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ResumePredictiveJobsResponseBody) SetCode(v string) *ResumePredictiveJobsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ResumePredictiveJobsResponseBody) SetHttpStatusCode(v int32) *ResumePredictiveJobsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ResumePredictiveJobsResponseBody) SetMessage(v string) *ResumePredictiveJobsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ResumePredictiveJobsResponseBody) SetRequestId(v string) *ResumePredictiveJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ResumePredictiveJobsResponseBody) SetSuccess(v bool) *ResumePredictiveJobsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ResumePredictiveJobsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ResumePredictiveJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ResumePredictiveJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResumePredictiveJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ResumePredictiveJobsResponse) SetHeaders(v map[string]*string) *ResumePredictiveJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ResumePredictiveJobsResponse) SetBody(v *ResumePredictiveJobsResponseBody) *ResumePredictiveJobsResponse {
-	s.Body = v
-	return s
-}
-
-type SaveStatsRequest struct {
-	CallId        *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	CallStartTime *int64  `json:"CallStartTime,omitempty" xml:"CallStartTime,omitempty"`
-	CalleeNumber  *string `json:"CalleeNumber,omitempty" xml:"CalleeNumber,omitempty"`
-	CallerNumber  *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RecordTime    *int64  `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
-	Stats         *string `json:"Stats,omitempty" xml:"Stats,omitempty"`
-	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Uid           *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-}
-
-func (s SaveStatsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SaveStatsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SaveStatsRequest) SetCallId(v string) *SaveStatsRequest {
-	s.CallId = &v
-	return s
-}
-
-func (s *SaveStatsRequest) SetCallStartTime(v int64) *SaveStatsRequest {
-	s.CallStartTime = &v
-	return s
-}
-
-func (s *SaveStatsRequest) SetCalleeNumber(v string) *SaveStatsRequest {
-	s.CalleeNumber = &v
-	return s
-}
-
-func (s *SaveStatsRequest) SetCallerNumber(v string) *SaveStatsRequest {
-	s.CallerNumber = &v
-	return s
-}
-
-func (s *SaveStatsRequest) SetInstanceId(v string) *SaveStatsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *SaveStatsRequest) SetRecordTime(v int64) *SaveStatsRequest {
-	s.RecordTime = &v
-	return s
-}
-
-func (s *SaveStatsRequest) SetStats(v string) *SaveStatsRequest {
-	s.Stats = &v
-	return s
-}
-
-func (s *SaveStatsRequest) SetTenantId(v string) *SaveStatsRequest {
-	s.TenantId = &v
-	return s
-}
-
-func (s *SaveStatsRequest) SetUid(v string) *SaveStatsRequest {
-	s.Uid = &v
-	return s
-}
-
-type SaveStatsResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RowCount       *int64  `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SaveStatsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SaveStatsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SaveStatsResponseBody) SetCode(v string) *SaveStatsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SaveStatsResponseBody) SetHttpStatusCode(v int32) *SaveStatsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *SaveStatsResponseBody) SetMessage(v string) *SaveStatsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SaveStatsResponseBody) SetRequestId(v string) *SaveStatsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SaveStatsResponseBody) SetRowCount(v int64) *SaveStatsResponseBody {
-	s.RowCount = &v
-	return s
-}
-
-func (s *SaveStatsResponseBody) SetSuccess(v bool) *SaveStatsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SaveStatsResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SaveStatsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SaveStatsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SaveStatsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SaveStatsResponse) SetHeaders(v map[string]*string) *SaveStatsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SaveStatsResponse) SetBody(v *SaveStatsResponseBody) *SaveStatsResponse {
-	s.Body = v
-	return s
-}
-
-type SaveTerminalLogRequest struct {
-	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	CallId          *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DataType        *int32  `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId           *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	MethodName      *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UniqueRequestId *string `json:"UniqueRequestId,omitempty" xml:"UniqueRequestId,omitempty"`
-}
-
-func (s SaveTerminalLogRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SaveTerminalLogRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SaveTerminalLogRequest) SetAppName(v string) *SaveTerminalLogRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *SaveTerminalLogRequest) SetCallId(v string) *SaveTerminalLogRequest {
-	s.CallId = &v
-	return s
-}
-
-func (s *SaveTerminalLogRequest) SetContent(v string) *SaveTerminalLogRequest {
-	s.Content = &v
-	return s
-}
-
-func (s *SaveTerminalLogRequest) SetDataType(v int32) *SaveTerminalLogRequest {
-	s.DataType = &v
-	return s
-}
-
-func (s *SaveTerminalLogRequest) SetInstanceId(v string) *SaveTerminalLogRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *SaveTerminalLogRequest) SetJobId(v string) *SaveTerminalLogRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *SaveTerminalLogRequest) SetMethodName(v string) *SaveTerminalLogRequest {
-	s.MethodName = &v
-	return s
-}
-
-func (s *SaveTerminalLogRequest) SetStatus(v string) *SaveTerminalLogRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *SaveTerminalLogRequest) SetUniqueRequestId(v string) *SaveTerminalLogRequest {
-	s.UniqueRequestId = &v
-	return s
-}
-
-type SaveTerminalLogResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TimeStamp      *int64  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-}
-
-func (s SaveTerminalLogResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SaveTerminalLogResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SaveTerminalLogResponseBody) SetCode(v string) *SaveTerminalLogResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SaveTerminalLogResponseBody) SetHttpStatusCode(v int64) *SaveTerminalLogResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *SaveTerminalLogResponseBody) SetMessage(v string) *SaveTerminalLogResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SaveTerminalLogResponseBody) SetRequestId(v string) *SaveTerminalLogResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SaveTerminalLogResponseBody) SetSuccess(v bool) *SaveTerminalLogResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *SaveTerminalLogResponseBody) SetTimeStamp(v int64) *SaveTerminalLogResponseBody {
-	s.TimeStamp = &v
-	return s
-}
-
-type SaveTerminalLogResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SaveTerminalLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SaveTerminalLogResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SaveTerminalLogResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SaveTerminalLogResponse) SetHeaders(v map[string]*string) *SaveTerminalLogResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SaveTerminalLogResponse) SetBody(v *SaveTerminalLogResponseBody) *SaveTerminalLogResponse {
 	s.Body = v
 	return s
 }
@@ -34886,8 +24413,9 @@ func (s *SaveWebRTCStatsResponseBody) SetSuccess(v bool) *SaveWebRTCStatsRespons
 }
 
 type SaveWebRTCStatsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SaveWebRTCStatsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveWebRTCStatsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SaveWebRTCStatsResponse) String() string {
@@ -34900,6 +24428,11 @@ func (s SaveWebRTCStatsResponse) GoString() string {
 
 func (s *SaveWebRTCStatsResponse) SetHeaders(v map[string]*string) *SaveWebRTCStatsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SaveWebRTCStatsResponse) SetStatusCode(v int32) *SaveWebRTCStatsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -34991,8 +24524,9 @@ func (s *SendPredefinedShortMessageResponseBody) SetSuccess(v bool) *SendPredefi
 }
 
 type SendPredefinedShortMessageResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SendPredefinedShortMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendPredefinedShortMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SendPredefinedShortMessageResponse) String() string {
@@ -35005,6 +24539,11 @@ func (s SendPredefinedShortMessageResponse) GoString() string {
 
 func (s *SendPredefinedShortMessageResponse) SetHeaders(v map[string]*string) *SendPredefinedShortMessageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SendPredefinedShortMessageResponse) SetStatusCode(v int32) *SendPredefinedShortMessageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -35120,8 +24659,9 @@ func (s *StartBack2BackCallResponseBody) SetTimeStamp(v string) *StartBack2BackC
 }
 
 type StartBack2BackCallResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartBack2BackCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartBack2BackCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartBack2BackCallResponse) String() string {
@@ -35137,660 +24677,12 @@ func (s *StartBack2BackCallResponse) SetHeaders(v map[string]*string) *StartBack
 	return s
 }
 
+func (s *StartBack2BackCallResponse) SetStatusCode(v int32) *StartBack2BackCallResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *StartBack2BackCallResponse) SetBody(v *StartBack2BackCallResponseBody) *StartBack2BackCallResponse {
-	s.Body = v
-	return s
-}
-
-type StartJobRequest struct {
-	CallingNumber        []*string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty" type:"Repeated"`
-	GroupId              *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobJson              *string   `json:"JobJson,omitempty" xml:"JobJson,omitempty"`
-	ScenarioId           *string   `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	SelfHostedCallCenter *bool     `json:"SelfHostedCallCenter,omitempty" xml:"SelfHostedCallCenter,omitempty"`
-}
-
-func (s StartJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StartJobRequest) SetCallingNumber(v []*string) *StartJobRequest {
-	s.CallingNumber = v
-	return s
-}
-
-func (s *StartJobRequest) SetGroupId(v string) *StartJobRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *StartJobRequest) SetInstanceId(v string) *StartJobRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *StartJobRequest) SetJobJson(v string) *StartJobRequest {
-	s.JobJson = &v
-	return s
-}
-
-func (s *StartJobRequest) SetScenarioId(v string) *StartJobRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-func (s *StartJobRequest) SetSelfHostedCallCenter(v bool) *StartJobRequest {
-	s.SelfHostedCallCenter = &v
-	return s
-}
-
-type StartJobResponseBody struct {
-	Code           *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskIds        []*StartJobResponseBodyTaskIds `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-}
-
-func (s StartJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *StartJobResponseBody) SetCode(v string) *StartJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *StartJobResponseBody) SetHttpStatusCode(v int32) *StartJobResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *StartJobResponseBody) SetMessage(v string) *StartJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *StartJobResponseBody) SetRequestId(v string) *StartJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *StartJobResponseBody) SetSuccess(v bool) *StartJobResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *StartJobResponseBody) SetTaskIds(v []*StartJobResponseBodyTaskIds) *StartJobResponseBody {
-	s.TaskIds = v
-	return s
-}
-
-type StartJobResponseBodyTaskIds struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s StartJobResponseBodyTaskIds) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartJobResponseBodyTaskIds) GoString() string {
-	return s.String()
-}
-
-func (s *StartJobResponseBodyTaskIds) SetKey(v string) *StartJobResponseBodyTaskIds {
-	s.Key = &v
-	return s
-}
-
-func (s *StartJobResponseBodyTaskIds) SetValue(v string) *StartJobResponseBodyTaskIds {
-	s.Value = &v
-	return s
-}
-
-type StartJobResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s StartJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StartJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StartJobResponse) SetHeaders(v map[string]*string) *StartJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *StartJobResponse) SetBody(v *StartJobResponseBody) *StartJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitBatchJobsRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId *string `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-}
-
-func (s SubmitBatchJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitBatchJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitBatchJobsRequest) SetInstanceId(v string) *SubmitBatchJobsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *SubmitBatchJobsRequest) SetJobGroupId(v string) *SubmitBatchJobsRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-type SubmitBatchJobsResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SubmitBatchJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitBatchJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitBatchJobsResponseBody) SetCode(v string) *SubmitBatchJobsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitBatchJobsResponseBody) SetHttpStatusCode(v int32) *SubmitBatchJobsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *SubmitBatchJobsResponseBody) SetMessage(v string) *SubmitBatchJobsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitBatchJobsResponseBody) SetRequestId(v string) *SubmitBatchJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SubmitBatchJobsResponseBody) SetSuccess(v bool) *SubmitBatchJobsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SubmitBatchJobsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitBatchJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitBatchJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitBatchJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitBatchJobsResponse) SetHeaders(v map[string]*string) *SubmitBatchJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitBatchJobsResponse) SetBody(v *SubmitBatchJobsResponseBody) *SubmitBatchJobsResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitCabRecordingRequest struct {
-	EarlyMediaRecording *string `json:"EarlyMediaRecording,omitempty" xml:"EarlyMediaRecording,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceOwnerId     *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
-	MergedRecording     *string `json:"MergedRecording,omitempty" xml:"MergedRecording,omitempty"`
-	ResourceRecording   *string `json:"ResourceRecording,omitempty" xml:"ResourceRecording,omitempty"`
-	TaskId              *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s SubmitCabRecordingRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitCabRecordingRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitCabRecordingRequest) SetEarlyMediaRecording(v string) *SubmitCabRecordingRequest {
-	s.EarlyMediaRecording = &v
-	return s
-}
-
-func (s *SubmitCabRecordingRequest) SetInstanceId(v string) *SubmitCabRecordingRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *SubmitCabRecordingRequest) SetInstanceOwnerId(v int64) *SubmitCabRecordingRequest {
-	s.InstanceOwnerId = &v
-	return s
-}
-
-func (s *SubmitCabRecordingRequest) SetMergedRecording(v string) *SubmitCabRecordingRequest {
-	s.MergedRecording = &v
-	return s
-}
-
-func (s *SubmitCabRecordingRequest) SetResourceRecording(v string) *SubmitCabRecordingRequest {
-	s.ResourceRecording = &v
-	return s
-}
-
-func (s *SubmitCabRecordingRequest) SetTaskId(v string) *SubmitCabRecordingRequest {
-	s.TaskId = &v
-	return s
-}
-
-type SubmitCabRecordingResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SubmitCabRecordingResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitCabRecordingResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitCabRecordingResponseBody) SetCode(v string) *SubmitCabRecordingResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitCabRecordingResponseBody) SetHttpStatusCode(v int32) *SubmitCabRecordingResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *SubmitCabRecordingResponseBody) SetMessage(v string) *SubmitCabRecordingResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitCabRecordingResponseBody) SetRequestId(v string) *SubmitCabRecordingResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SubmitCabRecordingResponseBody) SetSuccess(v bool) *SubmitCabRecordingResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SubmitCabRecordingResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitCabRecordingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitCabRecordingResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitCabRecordingResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitCabRecordingResponse) SetHeaders(v map[string]*string) *SubmitCabRecordingResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitCabRecordingResponse) SetBody(v *SubmitCabRecordingResponseBody) *SubmitCabRecordingResponse {
-	s.Body = v
-	return s
-}
-
-type SuspendJobsRequest struct {
-	All            *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	GroupId        *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId          []*string `json:"JobId,omitempty" xml:"JobId,omitempty" type:"Repeated"`
-	JobReferenceId []*string `json:"JobReferenceId,omitempty" xml:"JobReferenceId,omitempty" type:"Repeated"`
-	ScenarioId     *string   `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-}
-
-func (s SuspendJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SuspendJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SuspendJobsRequest) SetAll(v bool) *SuspendJobsRequest {
-	s.All = &v
-	return s
-}
-
-func (s *SuspendJobsRequest) SetGroupId(v string) *SuspendJobsRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *SuspendJobsRequest) SetInstanceId(v string) *SuspendJobsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *SuspendJobsRequest) SetJobId(v []*string) *SuspendJobsRequest {
-	s.JobId = v
-	return s
-}
-
-func (s *SuspendJobsRequest) SetJobReferenceId(v []*string) *SuspendJobsRequest {
-	s.JobReferenceId = v
-	return s
-}
-
-func (s *SuspendJobsRequest) SetScenarioId(v string) *SuspendJobsRequest {
-	s.ScenarioId = &v
-	return s
-}
-
-type SuspendJobsResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SuspendJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SuspendJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SuspendJobsResponseBody) SetCode(v string) *SuspendJobsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SuspendJobsResponseBody) SetHttpStatusCode(v int32) *SuspendJobsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *SuspendJobsResponseBody) SetMessage(v string) *SuspendJobsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SuspendJobsResponseBody) SetRequestId(v string) *SuspendJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SuspendJobsResponseBody) SetSuccess(v bool) *SuspendJobsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SuspendJobsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SuspendJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SuspendJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SuspendJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SuspendJobsResponse) SetHeaders(v map[string]*string) *SuspendJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SuspendJobsResponse) SetBody(v *SuspendJobsResponseBody) *SuspendJobsResponse {
-	s.Body = v
-	return s
-}
-
-type SuspendPredictiveJobsRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobGroupId   *string   `json:"JobGroupId,omitempty" xml:"JobGroupId,omitempty"`
-	JobId        []*string `json:"JobId,omitempty" xml:"JobId,omitempty" type:"Repeated"`
-	SkillGroupId *string   `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-}
-
-func (s SuspendPredictiveJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SuspendPredictiveJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SuspendPredictiveJobsRequest) SetAll(v bool) *SuspendPredictiveJobsRequest {
-	s.All = &v
-	return s
-}
-
-func (s *SuspendPredictiveJobsRequest) SetInstanceId(v string) *SuspendPredictiveJobsRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *SuspendPredictiveJobsRequest) SetJobGroupId(v string) *SuspendPredictiveJobsRequest {
-	s.JobGroupId = &v
-	return s
-}
-
-func (s *SuspendPredictiveJobsRequest) SetJobId(v []*string) *SuspendPredictiveJobsRequest {
-	s.JobId = v
-	return s
-}
-
-func (s *SuspendPredictiveJobsRequest) SetSkillGroupId(v string) *SuspendPredictiveJobsRequest {
-	s.SkillGroupId = &v
-	return s
-}
-
-type SuspendPredictiveJobsResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SuspendPredictiveJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SuspendPredictiveJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SuspendPredictiveJobsResponseBody) SetCode(v string) *SuspendPredictiveJobsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SuspendPredictiveJobsResponseBody) SetHttpStatusCode(v int32) *SuspendPredictiveJobsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *SuspendPredictiveJobsResponseBody) SetMessage(v string) *SuspendPredictiveJobsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SuspendPredictiveJobsResponseBody) SetRequestId(v string) *SuspendPredictiveJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SuspendPredictiveJobsResponseBody) SetSuccess(v bool) *SuspendPredictiveJobsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SuspendPredictiveJobsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SuspendPredictiveJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SuspendPredictiveJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SuspendPredictiveJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SuspendPredictiveJobsResponse) SetHeaders(v map[string]*string) *SuspendPredictiveJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SuspendPredictiveJobsResponse) SetBody(v *SuspendPredictiveJobsResponseBody) *SuspendPredictiveJobsResponse {
-	s.Body = v
-	return s
-}
-
-type TaskPreparingRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceOwnerId *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
-	JobId           *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-}
-
-func (s TaskPreparingRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TaskPreparingRequest) GoString() string {
-	return s.String()
-}
-
-func (s *TaskPreparingRequest) SetInstanceId(v string) *TaskPreparingRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *TaskPreparingRequest) SetInstanceOwnerId(v int64) *TaskPreparingRequest {
-	s.InstanceOwnerId = &v
-	return s
-}
-
-func (s *TaskPreparingRequest) SetJobId(v string) *TaskPreparingRequest {
-	s.JobId = &v
-	return s
-}
-
-type TaskPreparingResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s TaskPreparingResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TaskPreparingResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *TaskPreparingResponseBody) SetCode(v string) *TaskPreparingResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *TaskPreparingResponseBody) SetHttpStatusCode(v int32) *TaskPreparingResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *TaskPreparingResponseBody) SetMessage(v string) *TaskPreparingResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *TaskPreparingResponseBody) SetRequestId(v string) *TaskPreparingResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *TaskPreparingResponseBody) SetSuccess(v bool) *TaskPreparingResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *TaskPreparingResponseBody) SetTaskId(v string) *TaskPreparingResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-type TaskPreparingResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TaskPreparingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s TaskPreparingResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TaskPreparingResponse) GoString() string {
-	return s.String()
-}
-
-func (s *TaskPreparingResponse) SetHeaders(v map[string]*string) *TaskPreparingResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *TaskPreparingResponse) SetBody(v *TaskPreparingResponseBody) *TaskPreparingResponse {
 	s.Body = v
 	return s
 }
@@ -35866,44 +24758,50 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AbortPredictiveJobsWithOptions(request *AbortPredictiveJobsRequest, runtime *util.RuntimeOptions) (_result *AbortPredictiveJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &AbortPredictiveJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AbortPredictiveJobs"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AbortPredictiveJobs(request *AbortPredictiveJobsRequest) (_result *AbortPredictiveJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AbortPredictiveJobsResponse{}
-	_body, _err := client.AbortPredictiveJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AddAgentDeviceWithOptions(request *AddAgentDeviceRequest, runtime *util.RuntimeOptions) (_result *AddAgentDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientIp)) {
+		query["ClientIp"] = request.ClientIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientPort)) {
+		query["ClientPort"] = request.ClientPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BrowserVersion)) {
+		body["BrowserVersion"] = request.BrowserVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		body["Remark"] = request.Remark
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddAgentDevice"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddAgentDeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddAgentDevice"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35927,11 +24825,43 @@ func (client *Client) AddBulkPhoneNumbersWithOptions(request *AddBulkPhoneNumber
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowId)) {
+		query["ContactFlowId"] = request.ContactFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Usage)) {
+		query["Usage"] = request.Usage
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddBulkPhoneNumbers"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddBulkPhoneNumbersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddBulkPhoneNumbers"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35950,44 +24880,44 @@ func (client *Client) AddBulkPhoneNumbers(request *AddBulkPhoneNumbersRequest) (
 	return _result, _err
 }
 
-func (client *Client) AddJobsToPredictiveJobGroupWithOptions(request *AddJobsToPredictiveJobGroupRequest, runtime *util.RuntimeOptions) (_result *AddJobsToPredictiveJobGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &AddJobsToPredictiveJobGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddJobsToPredictiveJobGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddJobsToPredictiveJobGroup(request *AddJobsToPredictiveJobGroupRequest) (_result *AddJobsToPredictiveJobGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddJobsToPredictiveJobGroupResponse{}
-	_body, _err := client.AddJobsToPredictiveJobGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AddPhoneNumberWithOptions(request *AddPhoneNumberRequest, runtime *util.RuntimeOptions) (_result *AddPhoneNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowId)) {
+		query["ContactFlowId"] = request.ContactFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Usage)) {
+		query["Usage"] = request.Usage
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddPhoneNumber"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddPhoneNumberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddPhoneNumber"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36011,11 +24941,59 @@ func (client *Client) AddPhoneTagsWithOptions(request *AddPhoneTagsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Concurrency)) {
+		query["Concurrency"] = request.Concurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumberList)) {
+		query["PhoneNumberList"] = request.PhoneNumberList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Provider)) {
+		query["Provider"] = request.Provider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionNameCity)) {
+		query["RegionNameCity"] = request.RegionNameCity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionNameProvince)) {
+		query["RegionNameProvince"] = request.RegionNameProvince
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceTag)) {
+		query["ServiceTag"] = request.ServiceTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SipTag)) {
+		query["SipTag"] = request.SipTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddPhoneTags"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddPhoneTagsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddPhoneTags"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36034,44 +25012,48 @@ func (client *Client) AddPhoneTags(request *AddPhoneTagsRequest) (_result *AddPh
 	return _result, _err
 }
 
-func (client *Client) AssignJobsWithOptions(request *AssignJobsRequest, runtime *util.RuntimeOptions) (_result *AssignJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &AssignJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AssignJobs"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AssignJobs(request *AssignJobsRequest) (_result *AssignJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AssignJobsResponse{}
-	_body, _err := client.AssignJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AssignUsersWithOptions(request *AssignUsersRequest, runtime *util.RuntimeOptions) (_result *AssignUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		query["RoleId"] = request.RoleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillLevel)) {
+		query["SkillLevel"] = request.SkillLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserRamId)) {
+		query["UserRamId"] = request.UserRamId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssignUsers"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AssignUsersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AssignUsers"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36095,11 +25077,35 @@ func (client *Client) CallOnlinePrivacyNumberWithOptions(request *CallOnlinePriv
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelA)) {
+		query["TelA"] = request.TelA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelB)) {
+		query["TelB"] = request.TelB
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CallOnlinePrivacyNumber"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CallOnlinePrivacyNumberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CallOnlinePrivacyNumber"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36118,44 +25124,40 @@ func (client *Client) CallOnlinePrivacyNumber(request *CallOnlinePrivacyNumberRe
 	return _result, _err
 }
 
-func (client *Client) CancelJobsWithOptions(request *CancelJobsRequest, runtime *util.RuntimeOptions) (_result *CancelJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CancelJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelJobs"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CancelJobs(request *CancelJobsRequest) (_result *CancelJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CancelJobsResponse{}
-	_body, _err := client.CancelJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CheckNumberAvaliableWithOptions(request *CheckNumberAvaliableRequest, runtime *util.RuntimeOptions) (_result *CheckNumberAvaliableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Callee)) {
+		query["Callee"] = request.Callee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Caller)) {
+		query["Caller"] = request.Caller
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckNumberAvaliable"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CheckNumberAvaliableResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CheckNumberAvaliable"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36179,11 +25181,41 @@ func (client *Client) CommitContactFlowVersionModificationWithOptions(request *C
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowVersionId)) {
+		query["ContactFlowVersionId"] = request.ContactFlowVersionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Canvas)) {
+		body["Canvas"] = request.Canvas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CommitContactFlowVersionModification"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CommitContactFlowVersionModificationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CommitContactFlowVersionModification"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36202,72 +25234,54 @@ func (client *Client) CommitContactFlowVersionModification(request *CommitContac
 	return _result, _err
 }
 
-func (client *Client) CreateBatchJobsWithOptions(request *CreateBatchJobsRequest, runtime *util.RuntimeOptions) (_result *CreateBatchJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateBatchJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateBatchJobs"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateBatchJobs(request *CreateBatchJobsRequest) (_result *CreateBatchJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateBatchJobsResponse{}
-	_body, _err := client.CreateBatchJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateCabInstanceWithOptions(request *CreateCabInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateCabInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateCabInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCabInstance"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateCabInstance(request *CreateCabInstanceRequest) (_result *CreateCabInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateCabInstanceResponse{}
-	_body, _err := client.CreateCabInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateContactFlowWithOptions(request *CreateContactFlowRequest, runtime *util.RuntimeOptions) (_result *CreateContactFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Canvas)) {
+		body["Canvas"] = request.Canvas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateContactFlow"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateContactFlowResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateContactFlow"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36291,11 +25305,103 @@ func (client *Client) CreateFaultWithOptions(request *CreateFaultRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentFilePath)) {
+		query["AgentFilePath"] = request.AgentFilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AgentId)) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AgentOssFileName)) {
+		query["AgentOssFileName"] = request.AgentOssFileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BrowserVersion)) {
+		query["BrowserVersion"] = request.BrowserVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientIp)) {
+		query["ClientIp"] = request.ClientIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientPort)) {
+		query["ClientPort"] = request.ClientPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectId)) {
+		query["ConnectId"] = request.ConnectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomFilePath)) {
+		query["CustomFilePath"] = request.CustomFilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomOssFileName)) {
+		query["CustomOssFileName"] = request.CustomOssFileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MicrophoneEquipment)) {
+		query["MicrophoneEquipment"] = request.MicrophoneEquipment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MicrophoneList)) {
+		query["MicrophoneList"] = request.MicrophoneList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatingSystemVersion)) {
+		query["OperatingSystemVersion"] = request.OperatingSystemVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceIp)) {
+		query["ServiceIp"] = request.ServiceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServicePort)) {
+		query["ServicePort"] = request.ServicePort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeakerEquipment)) {
+		query["SpeakerEquipment"] = request.SpeakerEquipment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeakerList)) {
+		query["SpeakerList"] = request.SpeakerList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFault"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateFaultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateFault"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36319,11 +25425,63 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdminRamId)) {
+		query["AdminRamId"] = request.AdminRamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumbers)) {
+		query["PhoneNumbers"] = request.PhoneNumbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageMaxDays)) {
+		query["StorageMaxDays"] = request.StorageMaxDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageMaxSize)) {
+		query["StorageMaxSize"] = request.StorageMaxSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserObject)) {
+		query["UserObject"] = request.UserObject
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstance"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateInstance"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36342,44 +25500,64 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
-func (client *Client) CreateJobGroupWithOptions(request *CreateJobGroupRequest, runtime *util.RuntimeOptions) (_result *CreateJobGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateJobGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateJobGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateJobGroup(request *CreateJobGroupRequest) (_result *CreateJobGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateJobGroupResponse{}
-	_body, _err := client.CreateJobGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateMediaWithOptions(request *CreateMediaRequest, runtime *util.RuntimeOptions) (_result *CreateMediaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssFileName)) {
+		query["OssFileName"] = request.OssFileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssFilePath)) {
+		query["OssFilePath"] = request.OssFilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadResult)) {
+		query["UploadResult"] = request.UploadResult
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMedia"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateMediaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateMedia"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36398,100 +25576,60 @@ func (client *Client) CreateMedia(request *CreateMediaRequest) (_result *CreateM
 	return _result, _err
 }
 
-func (client *Client) CreatePredictiveJobGroupWithOptions(request *CreatePredictiveJobGroupRequest, runtime *util.RuntimeOptions) (_result *CreatePredictiveJobGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreatePredictiveJobGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreatePredictiveJobGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreatePredictiveJobGroup(request *CreatePredictiveJobGroupRequest) (_result *CreatePredictiveJobGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreatePredictiveJobGroupResponse{}
-	_body, _err := client.CreatePredictiveJobGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateScenarioWithOptions(request *CreateScenarioRequest, runtime *util.RuntimeOptions) (_result *CreateScenarioResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateScenarioResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateScenario"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateScenario(request *CreateScenarioRequest) (_result *CreateScenarioResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateScenarioResponse{}
-	_body, _err := client.CreateScenarioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateScenarioFromTemplateWithOptions(request *CreateScenarioFromTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateScenarioFromTemplateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateScenarioFromTemplateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateScenarioFromTemplate"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateScenarioFromTemplate(request *CreateScenarioFromTemplateRequest) (_result *CreateScenarioFromTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateScenarioFromTemplateResponse{}
-	_body, _err := client.CreateScenarioFromTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateSkillGroupWithOptions(request *CreateSkillGroupRequest, runtime *util.RuntimeOptions) (_result *CreateSkillGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowPrivateOutboundNumber)) {
+		query["AllowPrivateOutboundNumber"] = request.AllowPrivateOutboundNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutboundPhoneNumberId)) {
+		query["OutboundPhoneNumberId"] = request.OutboundPhoneNumberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoutingStrategy)) {
+		query["RoutingStrategy"] = request.RoutingStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillLevel)) {
+		query["SkillLevel"] = request.SkillLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSkillGroup"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSkillGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateSkillGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36510,44 +25648,64 @@ func (client *Client) CreateSkillGroup(request *CreateSkillGroupRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) CreateSurveyWithOptions(request *CreateSurveyRequest, runtime *util.RuntimeOptions) (_result *CreateSurveyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateSurveyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateSurvey"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateSurvey(request *CreateSurveyRequest) (_result *CreateSurveyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateSurveyResponse{}
-	_body, _err := client.CreateSurveyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime *util.RuntimeOptions) (_result *CreateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginName)) {
+		query["LoginName"] = request.LoginName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phone)) {
+		query["Phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateOutboundNumberId)) {
+		query["PrivateOutboundNumberId"] = request.PrivateOutboundNumberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		query["RoleId"] = request.RoleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillLevel)) {
+		query["SkillLevel"] = request.SkillLevel
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUser"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateUser"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36571,11 +25729,41 @@ func (client *Client) CreateVoiceAppraiseWithOptions(request *CreateVoiceApprais
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowVersionId)) {
+		query["ContactFlowVersionId"] = request.ContactFlowVersionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAppraise)) {
+		query["IsAppraise"] = request.IsAppraise
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVoiceAppraise"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateVoiceAppraiseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateVoiceAppraise"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36599,11 +25787,27 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstance"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteInstance"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36622,44 +25826,36 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
-func (client *Client) DeleteJobGroupWithOptions(request *DeleteJobGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteJobGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteJobGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteJobGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteJobGroup(request *DeleteJobGroupRequest) (_result *DeleteJobGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteJobGroupResponse{}
-	_body, _err := client.DeleteJobGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteMediaWithOptions(request *DeleteMediaRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMedia"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMediaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteMedia"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36683,11 +25879,31 @@ func (client *Client) DeletePhoneTagsWithOptions(request *DeletePhoneTagsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumberList)) {
+		query["PhoneNumberList"] = request.PhoneNumberList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePhoneTags"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeletePhoneTagsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeletePhoneTags"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36711,11 +25927,31 @@ func (client *Client) DeleteSkillGroupWithOptions(request *DeleteSkillGroupReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSkillGroup"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSkillGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteSkillGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36734,44 +25970,52 @@ func (client *Client) DeleteSkillGroup(request *DeleteSkillGroupRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) DeleteSurveyWithOptions(request *DeleteSurveyRequest, runtime *util.RuntimeOptions) (_result *DeleteSurveyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteSurveyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteSurvey"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteSurvey(request *DeleteSurveyRequest) (_result *DeleteSurveyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteSurveyResponse{}
-	_body, _err := client.DeleteSurveyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DialExWithOptions(request *DialExRequest, runtime *util.RuntimeOptions) (_result *DialExResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnswerMode)) {
+		query["AnswerMode"] = request.AnswerMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Callee)) {
+		query["Callee"] = request.Callee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Caller)) {
+		query["Caller"] = request.Caller
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Provider)) {
+		query["Provider"] = request.Provider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoutPoint)) {
+		query["RoutPoint"] = request.RoutPoint
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DialEx"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DialExResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DialEx"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36790,44 +26034,32 @@ func (client *Client) DialEx(request *DialExRequest) (_result *DialExResponse, _
 	return _result, _err
 }
 
-func (client *Client) DialogueWithOptions(request *DialogueRequest, runtime *util.RuntimeOptions) (_result *DialogueResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DialogueResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("Dialogue"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) Dialogue(request *DialogueRequest) (_result *DialogueResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DialogueResponse{}
-	_body, _err := client.DialogueWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DisableTrunkProvidersWithOptions(request *DisableTrunkProvidersRequest, runtime *util.RuntimeOptions) (_result *DisableTrunkProvidersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProviderName)) {
+		query["ProviderName"] = request.ProviderName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableTrunkProviders"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DisableTrunkProvidersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DisableTrunkProviders"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36851,11 +26083,35 @@ func (client *Client) DownloadAllTypeRecordingWithOptions(request *DownloadAllTy
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Channel)) {
+		query["Channel"] = request.Channel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DownloadAllTypeRecording"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DownloadAllTypeRecordingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DownloadAllTypeRecording"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36874,72 +26130,40 @@ func (client *Client) DownloadAllTypeRecording(request *DownloadAllTypeRecording
 	return _result, _err
 }
 
-func (client *Client) DownloadCabRecordingWithOptions(request *DownloadCabRecordingRequest, runtime *util.RuntimeOptions) (_result *DownloadCabRecordingResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DownloadCabRecordingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DownloadCabRecording"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DownloadCabRecording(request *DownloadCabRecordingRequest) (_result *DownloadCabRecordingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DownloadCabRecordingResponse{}
-	_body, _err := client.DownloadCabRecordingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DownloadOriginalStatisticsReportWithOptions(request *DownloadOriginalStatisticsReportRequest, runtime *util.RuntimeOptions) (_result *DownloadOriginalStatisticsReportResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DownloadOriginalStatisticsReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DownloadOriginalStatisticsReport"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DownloadOriginalStatisticsReport(request *DownloadOriginalStatisticsReportRequest) (_result *DownloadOriginalStatisticsReportResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DownloadOriginalStatisticsReportResponse{}
-	_body, _err := client.DownloadOriginalStatisticsReportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DownloadRecordingWithOptions(request *DownloadRecordingRequest, runtime *util.RuntimeOptions) (_result *DownloadRecordingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Channel)) {
+		query["Channel"] = request.Channel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DownloadRecording"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DownloadRecordingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DownloadRecording"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36958,44 +26182,44 @@ func (client *Client) DownloadRecording(request *DownloadRecordingRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) DownloadUnreachableContactsWithOptions(request *DownloadUnreachableContactsRequest, runtime *util.RuntimeOptions) (_result *DownloadUnreachableContactsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DownloadUnreachableContactsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DownloadUnreachableContacts"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DownloadUnreachableContacts(request *DownloadUnreachableContactsRequest) (_result *DownloadUnreachableContactsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DownloadUnreachableContactsResponse{}
-	_body, _err := client.DownloadUnreachableContactsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) FindUsersWithOptions(request *FindUsersRequest, runtime *util.RuntimeOptions) (_result *FindUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Criteria)) {
+		query["Criteria"] = request.Criteria
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FindUsers"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &FindUsersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("FindUsers"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37019,11 +26243,47 @@ func (client *Client) GenerateAgentStatisticReportWithOptions(request *GenerateA
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentId)) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateAgentStatisticReport"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateAgentStatisticReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateAgentStatisticReport"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37047,11 +26307,47 @@ func (client *Client) GetAgentDataWithOptions(request *GetAgentDataRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndDay)) {
+		query["EndDay"] = request.EndDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDay)) {
+		query["StartDay"] = request.StartDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAgentData"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAgentDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAgentData"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37075,11 +26371,47 @@ func (client *Client) GetCallMeasureSummaryReportWithOptions(request *GetCallMea
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Day)) {
+		query["Day"] = request.Day
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntervalType)) {
+		query["IntervalType"] = request.IntervalType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Month)) {
+		query["Month"] = request.Month
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Year)) {
+		query["Year"] = request.Year
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCallMeasureSummaryReport"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetCallMeasureSummaryReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetCallMeasureSummaryReport"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37103,11 +26435,39 @@ func (client *Client) GetConfigWithOptions(request *GetConfigRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		query["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
+		query["ObjectType"] = request.ObjectType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConfig"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetConfig"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37126,44 +26486,44 @@ func (client *Client) GetConfig(request *GetConfigRequest) (_result *GetConfigRe
 	return _result, _err
 }
 
-func (client *Client) GetContactInfoByOutboundTaskIdWithOptions(request *GetContactInfoByOutboundTaskIdRequest, runtime *util.RuntimeOptions) (_result *GetContactInfoByOutboundTaskIdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetContactInfoByOutboundTaskIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetContactInfoByOutboundTaskId"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetContactInfoByOutboundTaskId(request *GetContactInfoByOutboundTaskIdRequest) (_result *GetContactInfoByOutboundTaskIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetContactInfoByOutboundTaskIdResponse{}
-	_body, _err := client.GetContactInfoByOutboundTaskIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetConversationDetailByContactIdWithOptions(request *GetConversationDetailByContactIdRequest, runtime *util.RuntimeOptions) (_result *GetConversationDetailByContactIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConversationDetailByContactId"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetConversationDetailByContactIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetConversationDetailByContactId"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37182,44 +26542,32 @@ func (client *Client) GetConversationDetailByContactId(request *GetConversationD
 	return _result, _err
 }
 
-func (client *Client) GetConversationListWithOptions(request *GetConversationListRequest, runtime *util.RuntimeOptions) (_result *GetConversationListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetConversationListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetConversationList"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetConversationList(request *GetConversationListRequest) (_result *GetConversationListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetConversationListResponse{}
-	_body, _err := client.GetConversationListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstance"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetInstance"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37243,11 +26591,27 @@ func (client *Client) GetInstanceStateWithOptions(request *GetInstanceStateReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceState"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetInstanceStateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetInstanceState"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37271,11 +26635,43 @@ func (client *Client) GetInstanceSummaryReportWithOptions(request *GetInstanceSu
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceSummaryReport"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetInstanceSummaryReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetInstanceSummaryReport"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37299,11 +26695,47 @@ func (client *Client) GetInstanceSummaryReportByIntervalWithOptions(request *Get
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceSummaryReportByInterval"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetInstanceSummaryReportByIntervalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetInstanceSummaryReportByInterval"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37327,11 +26759,35 @@ func (client *Client) GetInstanceSummaryReportSinceMidnightWithOptions(request *
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceSummaryReportSinceMidnight"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetInstanceSummaryReportSinceMidnightResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetInstanceSummaryReportSinceMidnight"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37350,212 +26806,36 @@ func (client *Client) GetInstanceSummaryReportSinceMidnight(request *GetInstance
 	return _result, _err
 }
 
-func (client *Client) GetJobWithOptions(request *GetJobRequest, runtime *util.RuntimeOptions) (_result *GetJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetJob"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetJob(request *GetJobRequest) (_result *GetJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetJobResponse{}
-	_body, _err := client.GetJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetJobDataUploadParamsWithOptions(request *GetJobDataUploadParamsRequest, runtime *util.RuntimeOptions) (_result *GetJobDataUploadParamsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetJobDataUploadParamsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetJobDataUploadParams"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetJobDataUploadParams(request *GetJobDataUploadParamsRequest) (_result *GetJobDataUploadParamsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetJobDataUploadParamsResponse{}
-	_body, _err := client.GetJobDataUploadParamsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetJobFileUploadUrlWithOptions(request *GetJobFileUploadUrlRequest, runtime *util.RuntimeOptions) (_result *GetJobFileUploadUrlResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetJobFileUploadUrlResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetJobFileUploadUrl"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetJobFileUploadUrl(request *GetJobFileUploadUrlRequest) (_result *GetJobFileUploadUrlResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetJobFileUploadUrlResponse{}
-	_body, _err := client.GetJobFileUploadUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetJobGroupWithOptions(request *GetJobGroupRequest, runtime *util.RuntimeOptions) (_result *GetJobGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetJobGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetJobGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetJobGroup(request *GetJobGroupRequest) (_result *GetJobGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetJobGroupResponse{}
-	_body, _err := client.GetJobGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetJobListWithOptions(request *GetJobListRequest, runtime *util.RuntimeOptions) (_result *GetJobListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetJobListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetJobList"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetJobList(request *GetJobListRequest) (_result *GetJobListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetJobListResponse{}
-	_body, _err := client.GetJobListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetJobStatusByCallIdWithOptions(request *GetJobStatusByCallIdRequest, runtime *util.RuntimeOptions) (_result *GetJobStatusByCallIdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetJobStatusByCallIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetJobStatusByCallId"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetJobStatusByCallId(request *GetJobStatusByCallIdRequest) (_result *GetJobStatusByCallIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetJobStatusByCallIdResponse{}
-	_body, _err := client.GetJobStatusByCallIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetJobTemplateDownloadParamsWithOptions(request *GetJobTemplateDownloadParamsRequest, runtime *util.RuntimeOptions) (_result *GetJobTemplateDownloadParamsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetJobTemplateDownloadParamsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetJobTemplateDownloadParams"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetJobTemplateDownloadParams(request *GetJobTemplateDownloadParamsRequest) (_result *GetJobTemplateDownloadParamsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetJobTemplateDownloadParamsResponse{}
-	_body, _err := client.GetJobTemplateDownloadParamsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetNumberRegionInfoWithOptions(request *GetNumberRegionInfoRequest, runtime *util.RuntimeOptions) (_result *GetNumberRegionInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetNumberRegionInfo"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetNumberRegionInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetNumberRegionInfo"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37574,73 +26854,36 @@ func (client *Client) GetNumberRegionInfo(request *GetNumberRegionInfoRequest) (
 	return _result, _err
 }
 
-func (client *Client) GetPredictiveJobGroupWithOptions(request *GetPredictiveJobGroupRequest, runtime *util.RuntimeOptions) (_result *GetPredictiveJobGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetPredictiveJobGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPredictiveJobGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetPredictiveJobGroup(request *GetPredictiveJobGroupRequest) (_result *GetPredictiveJobGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetPredictiveJobGroupResponse{}
-	_body, _err := client.GetPredictiveJobGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetPredictiveTaskDataWithOptions(request *GetPredictiveTaskDataRequest, runtime *util.RuntimeOptions) (_result *GetPredictiveTaskDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: query,
-	}
-	_result = &GetPredictiveTaskDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPredictiveTaskData"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetPredictiveTaskData(request *GetPredictiveTaskDataRequest) (_result *GetPredictiveTaskDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetPredictiveTaskDataResponse{}
-	_body, _err := client.GetPredictiveTaskDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetRecordOssUploadParamWithOptions(request *GetRecordOssUploadParamRequest, runtime *util.RuntimeOptions) (_result *GetRecordOssUploadParamResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRecordOssUploadParam"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetRecordOssUploadParamResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetRecordOssUploadParam"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37664,11 +26907,31 @@ func (client *Client) GetRoutePointWithOptions(request *GetRoutePointRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowId)) {
+		query["ContactFlowId"] = request.ContactFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRoutePoint"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetRoutePointResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetRoutePoint"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37687,44 +26950,36 @@ func (client *Client) GetRoutePoint(request *GetRoutePointRequest) (_result *Get
 	return _result, _err
 }
 
-func (client *Client) GetScenarioWithOptions(request *GetScenarioRequest, runtime *util.RuntimeOptions) (_result *GetScenarioResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetScenarioResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetScenario"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetScenario(request *GetScenarioRequest) (_result *GetScenarioResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetScenarioResponse{}
-	_body, _err := client.GetScenarioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetServiceExtensionsWithOptions(request *GetServiceExtensionsRequest, runtime *util.RuntimeOptions) (_result *GetServiceExtensionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceExtensions"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetServiceExtensionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetServiceExtensions"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37748,11 +27003,31 @@ func (client *Client) GetSmsConfigWithOptions(request *GetSmsConfigRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		query["Scenario"] = request.Scenario
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSmsConfig"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetSmsConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSmsConfig"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37771,44 +27046,36 @@ func (client *Client) GetSmsConfig(request *GetSmsConfigRequest) (_result *GetSm
 	return _result, _err
 }
 
-func (client *Client) GetSurveyWithOptions(request *GetSurveyRequest, runtime *util.RuntimeOptions) (_result *GetSurveyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetSurveyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSurvey"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetSurvey(request *GetSurveyRequest) (_result *GetSurveyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetSurveyResponse{}
-	_body, _err := client.GetSurveyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetTURNCredentialsWithOptions(request *GetTURNCredentialsRequest, runtime *util.RuntimeOptions) (_result *GetTURNCredentialsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTURNCredentials"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTURNCredentialsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTURNCredentials"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37832,11 +27099,27 @@ func (client *Client) GetTURNServerListWithOptions(request *GetTURNServerListReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTURNServerList"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTURNServerListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTURNServerList"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37855,44 +27138,36 @@ func (client *Client) GetTURNServerList(request *GetTURNServerListRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) GetTaskListWithOptions(request *GetTaskListRequest, runtime *util.RuntimeOptions) (_result *GetTaskListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetTaskListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTaskList"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetTaskList(request *GetTaskListRequest) (_result *GetTaskListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetTaskListResponse{}
-	_body, _err := client.GetTaskListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUser"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetUser"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37916,11 +27191,31 @@ func (client *Client) GetUserByExtensionWithOptions(request *GetUserByExtensionR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Extension)) {
+		query["Extension"] = request.Extension
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserByExtension"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetUserByExtensionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetUserByExtension"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37939,44 +27234,36 @@ func (client *Client) GetUserByExtension(request *GetUserByExtensionRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) InflightTaskTimeoutWithOptions(request *InflightTaskTimeoutRequest, runtime *util.RuntimeOptions) (_result *InflightTaskTimeoutResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &InflightTaskTimeoutResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("InflightTaskTimeout"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) InflightTaskTimeout(request *InflightTaskTimeoutRequest) (_result *InflightTaskTimeoutResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &InflightTaskTimeoutResponse{}
-	_body, _err := client.InflightTaskTimeoutWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) LaunchAppraiseWithOptions(request *LaunchAppraiseRequest, runtime *util.RuntimeOptions) (_result *LaunchAppraiseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Acid)) {
+		query["Acid"] = request.Acid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LaunchAppraise"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &LaunchAppraiseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("LaunchAppraise"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38000,11 +27287,43 @@ func (client *Client) LaunchShortMessageAppraiseWithOptions(request *LaunchShort
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Acid)) {
+		query["Acid"] = request.Acid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactType)) {
+		query["ContactType"] = request.ContactType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumbers)) {
+		query["PhoneNumbers"] = request.PhoneNumbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LaunchShortMessageAppraise"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &LaunchShortMessageAppraiseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("LaunchShortMessageAppraise"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38028,11 +27347,39 @@ func (client *Client) ListAgentDevicesWithOptions(request *ListAgentDevicesReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RamIds)) {
+		query["RamIds"] = request.RamIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopTime)) {
+		query["StopTime"] = request.StopTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAgentDevices"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAgentDevicesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAgentDevices"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38056,11 +27403,43 @@ func (client *Client) ListAgentEventsWithOptions(request *ListAgentEventsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Event)) {
+		query["Event"] = request.Event
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RamId)) {
+		query["RamId"] = request.RamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopTime)) {
+		query["StopTime"] = request.StopTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAgentEvents"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAgentEventsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAgentEvents"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38084,11 +27463,47 @@ func (client *Client) ListAgentStateLogsWithOptions(request *ListAgentStateLogsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RamId)) {
+		query["RamId"] = request.RamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAgentStateLogs"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAgentStateLogsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAgentStateLogs"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38112,11 +27527,47 @@ func (client *Client) ListAgentStatesWithOptions(request *ListAgentStatesRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentIds)) {
+		query["AgentIds"] = request.AgentIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAgentStates"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAgentStatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAgentStates"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38140,11 +27591,51 @@ func (client *Client) ListAgentSummaryReportsWithOptions(request *ListAgentSumma
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentIds)) {
+		query["AgentIds"] = request.AgentIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAgentSummaryReports"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAgentSummaryReportsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAgentSummaryReports"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38168,11 +27659,55 @@ func (client *Client) ListAgentSummaryReportsByIntervalWithOptions(request *List
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentIds)) {
+		query["AgentIds"] = request.AgentIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAgentSummaryReportsByInterval"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAgentSummaryReportsByIntervalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAgentSummaryReportsByInterval"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38196,11 +27731,43 @@ func (client *Client) ListAgentSummaryReportsSinceMidnightWithOptions(request *L
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentIds)) {
+		query["AgentIds"] = request.AgentIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAgentSummaryReportsSinceMidnight"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAgentSummaryReportsSinceMidnightResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAgentSummaryReportsSinceMidnight"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38219,44 +27786,76 @@ func (client *Client) ListAgentSummaryReportsSinceMidnight(request *ListAgentSum
 	return _result, _err
 }
 
-func (client *Client) ListBasicStatisticsReportSubItemsWithOptions(request *ListBasicStatisticsReportSubItemsRequest, runtime *util.RuntimeOptions) (_result *ListBasicStatisticsReportSubItemsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListBasicStatisticsReportSubItemsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListBasicStatisticsReportSubItems"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListBasicStatisticsReportSubItems(request *ListBasicStatisticsReportSubItemsRequest) (_result *ListBasicStatisticsReportSubItemsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListBasicStatisticsReportSubItemsResponse{}
-	_body, _err := client.ListBasicStatisticsReportSubItemsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListCallDetailRecordsWithOptions(request *ListCallDetailRecordsRequest, runtime *util.RuntimeOptions) (_result *ListCallDetailRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactDisposition)) {
+		query["ContactDisposition"] = request.ContactDisposition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactType)) {
+		query["ContactType"] = request.ContactType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Criteria)) {
+		query["Criteria"] = request.Criteria
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopTime)) {
+		query["StopTime"] = request.StopTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithRecording)) {
+		query["WithRecording"] = request.WithRecording
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCallDetailRecords"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListCallDetailRecordsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListCallDetailRecords"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38280,11 +27879,31 @@ func (client *Client) ListCallEventDetailByContactIdWithOptions(request *ListCal
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCallEventDetailByContactId"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListCallEventDetailByContactIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListCallEventDetailByContactId"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38308,11 +27927,27 @@ func (client *Client) ListCallMeasureSummaryReportsWithOptions(request *ListCall
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IntervalType)) {
+		query["IntervalType"] = request.IntervalType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCallMeasureSummaryReports"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListCallMeasureSummaryReportsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListCallMeasureSummaryReports"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38336,11 +27971,31 @@ func (client *Client) ListConfigWithOptions(request *ListConfigRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigItem)) {
+		query["ConfigItem"] = request.ConfigItem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConfig"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListConfig"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38364,11 +28019,27 @@ func (client *Client) ListContactFlowsWithOptions(request *ListContactFlowsReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListContactFlows"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListContactFlowsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListContactFlows"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38389,8 +28060,19 @@ func (client *Client) ListContactFlows(request *ListContactFlowsRequest) (_resul
 
 func (client *Client) ListInstancesOfUserWithOptions(runtime *util.RuntimeOptions) (_result *ListInstancesOfUserResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstancesOfUser"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListInstancesOfUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListInstancesOfUser"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38414,11 +28096,55 @@ func (client *Client) ListIvrTrackingDetailWithOptions(request *ListIvrTrackingD
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallingNumber)) {
+		query["CallingNumber"] = request.CallingNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopTime)) {
+		query["StopTime"] = request.StopTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIvrTrackingDetail"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListIvrTrackingDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListIvrTrackingDetail"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38437,100 +28163,44 @@ func (client *Client) ListIvrTrackingDetail(request *ListIvrTrackingDetailReques
 	return _result, _err
 }
 
-func (client *Client) ListJobGroupsWithOptions(request *ListJobGroupsRequest, runtime *util.RuntimeOptions) (_result *ListJobGroupsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListJobGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListJobGroups"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListJobGroups(request *ListJobGroupsRequest) (_result *ListJobGroupsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListJobGroupsResponse{}
-	_body, _err := client.ListJobGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListJobStatusWithOptions(request *ListJobStatusRequest, runtime *util.RuntimeOptions) (_result *ListJobStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListJobStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListJobStatus"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListJobStatus(request *ListJobStatusRequest) (_result *ListJobStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListJobStatusResponse{}
-	_body, _err := client.ListJobStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListJobsByGroupWithOptions(request *ListJobsByGroupRequest, runtime *util.RuntimeOptions) (_result *ListJobsByGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListJobsByGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListJobsByGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListJobsByGroup(request *ListJobsByGroupRequest) (_result *ListJobsByGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListJobsByGroupResponse{}
-	_body, _err := client.ListJobsByGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListMediasWithOptions(request *ListMediasRequest, runtime *util.RuntimeOptions) (_result *ListMediasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamePrefix)) {
+		query["NamePrefix"] = request.NamePrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMedias"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListMediasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListMedias"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38554,11 +28224,39 @@ func (client *Client) ListOutboundPhoneNumberOfUserWithOptions(request *ListOutb
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOutboundPhoneNumberOfUser"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListOutboundPhoneNumberOfUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListOutboundPhoneNumberOfUser"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38582,11 +28280,31 @@ func (client *Client) ListPhoneNumbersWithOptions(request *ListPhoneNumbersReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutboundOnly)) {
+		query["OutboundOnly"] = request.OutboundOnly
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPhoneNumbers"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListPhoneNumbersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListPhoneNumbers"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38610,11 +28328,47 @@ func (client *Client) ListPhoneTagsWithOptions(request *ListPhoneTagsRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberGroupIds)) {
+		query["NumberGroupIds"] = request.NumberGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutboundOnly)) {
+		query["OutboundOnly"] = request.OutboundOnly
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPhoneTags"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListPhoneTagsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListPhoneTags"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38638,11 +28392,27 @@ func (client *Client) ListRealTimeAgentWithOptions(request *ListRealTimeAgentReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRealTimeAgent"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListRealTimeAgentResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRealTimeAgent"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38666,11 +28436,47 @@ func (client *Client) ListRecentCallRecordsWithOptions(request *ListRecentCallRe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Criteria)) {
+		query["Criteria"] = request.Criteria
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopTime)) {
+		query["StopTime"] = request.StopTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRecentCallRecords"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListRecentCallRecordsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRecentCallRecords"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38694,11 +28500,59 @@ func (client *Client) ListRecordingOfDualTrackWithOptions(request *ListRecording
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentId)) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallingNumber)) {
+		query["CallingNumber"] = request.CallingNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectId)) {
+		query["ConnectId"] = request.ConnectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopTime)) {
+		query["StopTime"] = request.StopTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRecordingOfDualTrack"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListRecordingOfDualTrackResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRecordingOfDualTrack"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38722,11 +28576,55 @@ func (client *Client) ListRecordingsWithOptions(request *ListRecordingsRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentId)) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Criteria)) {
+		query["Criteria"] = request.Criteria
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StopTime)) {
+		query["StopTime"] = request.StopTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRecordings"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListRecordingsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRecordings"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38750,11 +28648,31 @@ func (client *Client) ListRecordingsByContactIdWithOptions(request *ListRecordin
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRecordingsByContactId"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListRecordingsByContactIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRecordingsByContactId"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38778,11 +28696,27 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRoles"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListRolesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListRoles"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38801,66 +28735,44 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 	return _result, _err
 }
 
-func (client *Client) ListScenarioTemplatesWithOptions(runtime *util.RuntimeOptions) (_result *ListScenarioTemplatesResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &ListScenarioTemplatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListScenarioTemplates"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListScenarioTemplates() (_result *ListScenarioTemplatesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListScenarioTemplatesResponse{}
-	_body, _err := client.ListScenarioTemplatesWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListScenariosWithOptions(request *ListScenariosRequest, runtime *util.RuntimeOptions) (_result *ListScenariosResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListScenariosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListScenarios"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListScenarios(request *ListScenariosRequest) (_result *ListScenariosResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListScenariosResponse{}
-	_body, _err := client.ListScenariosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListSkillGroupStatesWithOptions(request *ListSkillGroupStatesRequest, runtime *util.RuntimeOptions) (_result *ListSkillGroupStatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupIds)) {
+		query["SkillGroupIds"] = request.SkillGroupIds
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSkillGroupStates"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSkillGroupStatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSkillGroupStates"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38884,11 +28796,47 @@ func (client *Client) ListSkillGroupSummaryReportsWithOptions(request *ListSkill
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupIds)) {
+		query["SkillGroupIds"] = request.SkillGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSkillGroupSummaryReports"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSkillGroupSummaryReportsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSkillGroupSummaryReports"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38912,11 +28860,51 @@ func (client *Client) ListSkillGroupSummaryReportsByIntervalWithOptions(request 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupIds)) {
+		query["SkillGroupIds"] = request.SkillGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSkillGroupSummaryReportsByInterval"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSkillGroupSummaryReportsByIntervalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSkillGroupSummaryReportsByInterval"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38940,11 +28928,39 @@ func (client *Client) ListSkillGroupSummaryReportsSinceMidnightWithOptions(reque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroups)) {
+		query["SkillGroups"] = request.SkillGroups
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSkillGroupSummaryReportsSinceMidnight"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSkillGroupSummaryReportsSinceMidnightResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSkillGroupSummaryReportsSinceMidnight"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38968,11 +28984,35 @@ func (client *Client) ListSkillGroupsWithOptions(request *ListSkillGroupsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupName)) {
+		query["SkillGroupName"] = request.SkillGroupName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSkillGroups"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSkillGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSkillGroups"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38996,11 +29036,31 @@ func (client *Client) ListSkillGroupsOfUserWithOptions(request *ListSkillGroupsO
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSkillGroupsOfUser"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSkillGroupsOfUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSkillGroupsOfUser"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39019,44 +29079,32 @@ func (client *Client) ListSkillGroupsOfUser(request *ListSkillGroupsOfUserReques
 	return _result, _err
 }
 
-func (client *Client) ListSurveysWithOptions(request *ListSurveysRequest, runtime *util.RuntimeOptions) (_result *ListSurveysResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListSurveysResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSurveys"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListSurveys(request *ListSurveysRequest) (_result *ListSurveysResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListSurveysResponse{}
-	_body, _err := client.ListSurveysWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListTransferableSkillGroupsWithOptions(request *ListTransferableSkillGroupsRequest, runtime *util.RuntimeOptions) (_result *ListTransferableSkillGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTransferableSkillGroups"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTransferableSkillGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTransferableSkillGroups"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39077,8 +29125,19 @@ func (client *Client) ListTransferableSkillGroups(request *ListTransferableSkill
 
 func (client *Client) ListTrunkProvidersWithOptions(runtime *util.RuntimeOptions) (_result *ListTrunkProvidersResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListTrunkProviders"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListTrunkProvidersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTrunkProviders"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39102,11 +29161,31 @@ func (client *Client) ListTrunksOfSkillGroupWithOptions(request *ListTrunksOfSki
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTrunksOfSkillGroup"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTrunksOfSkillGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTrunksOfSkillGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39125,44 +29204,40 @@ func (client *Client) ListTrunksOfSkillGroup(request *ListTrunksOfSkillGroupRequ
 	return _result, _err
 }
 
-func (client *Client) ListUnreachableContactsWithOptions(request *ListUnreachableContactsRequest, runtime *util.RuntimeOptions) (_result *ListUnreachableContactsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListUnreachableContactsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListUnreachableContacts"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListUnreachableContacts(request *ListUnreachableContactsRequest) (_result *ListUnreachableContactsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListUnreachableContactsResponse{}
-	_body, _err := client.ListUnreachableContactsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *util.RuntimeOptions) (_result *ListUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUsers"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListUsersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListUsers"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39186,11 +29261,39 @@ func (client *Client) ListUsersOfSkillGroupWithOptions(request *ListUsersOfSkill
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUsersOfSkillGroup"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListUsersOfSkillGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListUsersOfSkillGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39214,11 +29317,27 @@ func (client *Client) ListVoiceAppraiseWithOptions(request *ListVoiceAppraiseReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVoiceAppraise"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListVoiceAppraiseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListVoiceAppraise"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39242,11 +29361,35 @@ func (client *Client) ModifyAgentDeviceWithOptions(request *ModifyAgentDeviceReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentDeviceId)) {
+		query["AgentDeviceId"] = request.AgentDeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsLogin)) {
+		query["IsLogin"] = request.IsLogin
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAgentDevice"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyAgentDeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyAgentDevice"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39265,72 +29408,48 @@ func (client *Client) ModifyAgentDevice(request *ModifyAgentDeviceRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) ModifyCabInstanceWithOptions(request *ModifyCabInstanceRequest, runtime *util.RuntimeOptions) (_result *ModifyCabInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ModifyCabInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyCabInstance"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyCabInstance(request *ModifyCabInstanceRequest) (_result *ModifyCabInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyCabInstanceResponse{}
-	_body, _err := client.ModifyCabInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ModifyCallRatioWithOptions(request *ModifyCallRatioRequest, runtime *util.RuntimeOptions) (_result *ModifyCallRatioResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ModifyCallRatioResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyCallRatio"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyCallRatio(request *ModifyCallRatioRequest) (_result *ModifyCallRatioResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyCallRatioResponse{}
-	_body, _err := client.ModifyCallRatioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ModifyPhoneNumberWithOptions(request *ModifyPhoneNumberRequest, runtime *util.RuntimeOptions) (_result *ModifyPhoneNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowId)) {
+		query["ContactFlowId"] = request.ContactFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumberId)) {
+		query["PhoneNumberId"] = request.PhoneNumberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Usage)) {
+		query["Usage"] = request.Usage
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPhoneNumber"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyPhoneNumberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyPhoneNumber"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39354,11 +29473,35 @@ func (client *Client) ModifyPhoneTagsWithOptions(request *ModifyPhoneTagsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceTag)) {
+		query["ServiceTag"] = request.ServiceTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupIdList)) {
+		query["SkillGroupIdList"] = request.SkillGroupIdList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPhoneTags"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyPhoneTagsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyPhoneTags"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39382,11 +29525,35 @@ func (client *Client) ModifyPrimaryTrunksOfSkillGroupWithOptions(request *Modify
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryProviderName)) {
+		query["PrimaryProviderName"] = request.PrimaryProviderName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPrimaryTrunksOfSkillGroup"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyPrimaryTrunksOfSkillGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyPrimaryTrunksOfSkillGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39410,11 +29577,35 @@ func (client *Client) ModifyPrivacyNumberCallDetailWithOptions(request *ModifyPr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPrivacyNumberCallDetail"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyPrivacyNumberCallDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyPrivacyNumberCallDetail"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39433,44 +29624,64 @@ func (client *Client) ModifyPrivacyNumberCallDetail(request *ModifyPrivacyNumber
 	return _result, _err
 }
 
-func (client *Client) ModifyScenarioWithOptions(request *ModifyScenarioRequest, runtime *util.RuntimeOptions) (_result *ModifyScenarioResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ModifyScenarioResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyScenario"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyScenario(request *ModifyScenarioRequest) (_result *ModifyScenarioResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyScenarioResponse{}
-	_body, _err := client.ModifyScenarioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ModifySkillGroupWithOptions(request *ModifySkillGroupRequest, runtime *util.RuntimeOptions) (_result *ModifySkillGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowPrivateOutboundNumber)) {
+		query["AllowPrivateOutboundNumber"] = request.AllowPrivateOutboundNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutboundPhoneNumberId)) {
+		query["OutboundPhoneNumberId"] = request.OutboundPhoneNumberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoutingStrategy)) {
+		query["RoutingStrategy"] = request.RoutingStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillLevel)) {
+		query["SkillLevel"] = request.SkillLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifySkillGroup"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifySkillGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifySkillGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39489,16 +29700,112 @@ func (client *Client) ModifySkillGroup(request *ModifySkillGroupRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) ModifySkillGroupBasicInfoWithOptions(request *ModifySkillGroupBasicInfoRequest, runtime *util.RuntimeOptions) (_result *ModifySkillGroupBasicInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowPrivateOutboundNumber)) {
+		query["AllowPrivateOutboundNumber"] = request.AllowPrivateOutboundNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoutingStrategy)) {
+		query["RoutingStrategy"] = request.RoutingStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifySkillGroupBasicInfo"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifySkillGroupBasicInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifySkillGroupBasicInfo(request *ModifySkillGroupBasicInfoRequest) (_result *ModifySkillGroupBasicInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifySkillGroupBasicInfoResponse{}
+	_body, _err := client.ModifySkillGroupBasicInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifySkillGroupOfUserWithOptions(request *ModifySkillGroupOfUserRequest, runtime *util.RuntimeOptions) (_result *ModifySkillGroupOfUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		query["RoleId"] = request.RoleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillLevel)) {
+		query["SkillLevel"] = request.SkillLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifySkillGroupOfUser"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifySkillGroupOfUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifySkillGroupOfUser"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39522,11 +29829,39 @@ func (client *Client) ModifySkillGroupOutboundNumbersWithOptions(request *Modify
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutboundPhoneNumberId)) {
+		query["OutboundPhoneNumberId"] = request.OutboundPhoneNumberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifySkillGroupOutboundNumbers"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifySkillGroupOutboundNumbersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifySkillGroupOutboundNumbers"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39545,44 +29880,64 @@ func (client *Client) ModifySkillGroupOutboundNumbers(request *ModifySkillGroupO
 	return _result, _err
 }
 
-func (client *Client) ModifySurveyWithOptions(request *ModifySurveyRequest, runtime *util.RuntimeOptions) (_result *ModifySurveyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ModifySurveyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifySurvey"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifySurvey(request *ModifySurveyRequest) (_result *ModifySurveyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifySurveyResponse{}
-	_body, _err := client.ModifySurveyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ModifyUserWithOptions(request *ModifyUserRequest, runtime *util.RuntimeOptions) (_result *ModifyUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phone)) {
+		query["Phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateOutboundNumberId)) {
+		query["PrivateOutboundNumberId"] = request.PrivateOutboundNumberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		query["RoleId"] = request.RoleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillLevel)) {
+		query["SkillLevel"] = request.SkillLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyUser"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyUser"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39606,11 +29961,43 @@ func (client *Client) PickGlobalOutboundNumbersWithOptions(request *PickGlobalOu
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CalleeNumber)) {
+		query["CalleeNumber"] = request.CalleeNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		query["Count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsVirtual)) {
+		query["IsVirtual"] = request.IsVirtual
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PickGlobalOutboundNumbers"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PickGlobalOutboundNumbersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PickGlobalOutboundNumbers"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39634,11 +30021,35 @@ func (client *Client) PickLocalNumberWithOptions(request *PickLocalNumberRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CalleeNumber)) {
+		query["CalleeNumber"] = request.CalleeNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CandidateNumber)) {
+		query["CandidateNumber"] = request.CandidateNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PickLocalNumber"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PickLocalNumberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PickLocalNumber"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39662,11 +30073,39 @@ func (client *Client) PickOutboundNumbersWithOptions(request *PickOutboundNumber
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CalleeNumber)) {
+		query["CalleeNumber"] = request.CalleeNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CandidateNumber)) {
+		query["CandidateNumber"] = request.CandidateNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		query["Count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PickOutboundNumbers"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PickOutboundNumbersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PickOutboundNumbers"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39690,11 +30129,35 @@ func (client *Client) PublishContactFlowVersionWithOptions(request *PublishConta
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowVersionId)) {
+		query["ContactFlowVersionId"] = request.ContactFlowVersionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseTianGong)) {
+		query["UseTianGong"] = request.UseTianGong
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishContactFlowVersion"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PublishContactFlowVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PublishContactFlowVersion"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39713,72 +30176,32 @@ func (client *Client) PublishContactFlowVersion(request *PublishContactFlowVersi
 	return _result, _err
 }
 
-func (client *Client) PublishPredictiveJobGroupWithOptions(request *PublishPredictiveJobGroupRequest, runtime *util.RuntimeOptions) (_result *PublishPredictiveJobGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &PublishPredictiveJobGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PublishPredictiveJobGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PublishPredictiveJobGroup(request *PublishPredictiveJobGroupRequest) (_result *PublishPredictiveJobGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &PublishPredictiveJobGroupResponse{}
-	_body, _err := client.PublishPredictiveJobGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) PublishSurveyWithOptions(request *PublishSurveyRequest, runtime *util.RuntimeOptions) (_result *PublishSurveyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &PublishSurveyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PublishSurvey"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PublishSurvey(request *PublishSurveyRequest) (_result *PublishSurveyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &PublishSurveyResponse{}
-	_body, _err := client.PublishSurveyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) RefreshTokenWithOptions(request *RefreshTokenRequest, runtime *util.RuntimeOptions) (_result *RefreshTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshToken"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RefreshTokenResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RefreshToken"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39802,11 +30225,31 @@ func (client *Client) RemovePhoneNumberWithOptions(request *RemovePhoneNumberReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumberId)) {
+		query["PhoneNumberId"] = request.PhoneNumberId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemovePhoneNumber"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemovePhoneNumberResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemovePhoneNumber"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39830,11 +30273,31 @@ func (client *Client) RemoveUsersWithOptions(request *RemoveUsersRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveUsers"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveUsersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveUsers"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39858,11 +30321,35 @@ func (client *Client) RemoveUsersFromSkillGroupWithOptions(request *RemoveUsersF
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveUsersFromSkillGroup"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveUsersFromSkillGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveUsersFromSkillGroup"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39886,11 +30373,31 @@ func (client *Client) RequestLoginInfoWithOptions(request *RequestLoginInfoReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RequestLoginInfo"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RequestLoginInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RequestLoginInfo"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39914,11 +30421,31 @@ func (client *Client) ResetUserStatusWithOptions(request *ResetUserStatusRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RamIdList)) {
+		query["RamIdList"] = request.RamIdList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResetUserStatus"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ResetUserStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ResetUserStatus"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39937,128 +30464,64 @@ func (client *Client) ResetUserStatus(request *ResetUserStatusRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) ResumeJobsWithOptions(request *ResumeJobsRequest, runtime *util.RuntimeOptions) (_result *ResumeJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ResumeJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ResumeJobs"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ResumeJobs(request *ResumeJobsRequest) (_result *ResumeJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ResumeJobsResponse{}
-	_body, _err := client.ResumeJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ResumePredictiveJobsWithOptions(request *ResumePredictiveJobsRequest, runtime *util.RuntimeOptions) (_result *ResumePredictiveJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ResumePredictiveJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ResumePredictiveJobs"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ResumePredictiveJobs(request *ResumePredictiveJobsRequest) (_result *ResumePredictiveJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ResumePredictiveJobsResponse{}
-	_body, _err := client.ResumePredictiveJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SaveStatsWithOptions(request *SaveStatsRequest, runtime *util.RuntimeOptions) (_result *SaveStatsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SaveStatsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SaveStats"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SaveStats(request *SaveStatsRequest) (_result *SaveStatsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SaveStatsResponse{}
-	_body, _err := client.SaveStatsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SaveTerminalLogWithOptions(request *SaveTerminalLogRequest, runtime *util.RuntimeOptions) (_result *SaveTerminalLogResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SaveTerminalLogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SaveTerminalLog"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SaveTerminalLog(request *SaveTerminalLogRequest) (_result *SaveTerminalLogResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SaveTerminalLogResponse{}
-	_body, _err := client.SaveTerminalLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SaveWebRTCStatsWithOptions(request *SaveWebRTCStatsRequest, runtime *util.RuntimeOptions) (_result *SaveWebRTCStatsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallId)) {
+		query["CallId"] = request.CallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallStartTime)) {
+		query["CallStartTime"] = request.CallStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalleeNumber)) {
+		query["CalleeNumber"] = request.CalleeNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallerNumber)) {
+		query["CallerNumber"] = request.CallerNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordTime)) {
+		query["RecordTime"] = request.RecordTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stats)) {
+		query["Stats"] = request.Stats
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["Uid"] = request.Uid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveWebRTCStats"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SaveWebRTCStatsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SaveWebRTCStats"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40082,11 +30545,39 @@ func (client *Client) SendPredefinedShortMessageWithOptions(request *SendPredefi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumbers)) {
+		query["PhoneNumbers"] = request.PhoneNumbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateParam)) {
+		query["TemplateParam"] = request.TemplateParam
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendPredefinedShortMessage"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SendPredefinedShortMessageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SendPredefinedShortMessage"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40110,11 +30601,43 @@ func (client *Client) StartBack2BackCallWithOptions(request *StartBack2BackCallR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallCenterNumber)) {
+		query["CallCenterNumber"] = request.CallCenterNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Callee)) {
+		query["Callee"] = request.Callee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Caller)) {
+		query["Caller"] = request.Caller
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		query["WorkflowId"] = request.WorkflowId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartBack2BackCall"),
+		Version:     tea.String("2017-07-05"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StartBack2BackCallResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartBack2BackCall"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40126,174 +30649,6 @@ func (client *Client) StartBack2BackCall(request *StartBack2BackCallRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &StartBack2BackCallResponse{}
 	_body, _err := client.StartBack2BackCallWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) StartJobWithOptions(request *StartJobRequest, runtime *util.RuntimeOptions) (_result *StartJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &StartJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartJob"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) StartJob(request *StartJobRequest) (_result *StartJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StartJobResponse{}
-	_body, _err := client.StartJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SubmitBatchJobsWithOptions(request *SubmitBatchJobsRequest, runtime *util.RuntimeOptions) (_result *SubmitBatchJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SubmitBatchJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitBatchJobs"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitBatchJobs(request *SubmitBatchJobsRequest) (_result *SubmitBatchJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitBatchJobsResponse{}
-	_body, _err := client.SubmitBatchJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SubmitCabRecordingWithOptions(request *SubmitCabRecordingRequest, runtime *util.RuntimeOptions) (_result *SubmitCabRecordingResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SubmitCabRecordingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitCabRecording"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitCabRecording(request *SubmitCabRecordingRequest) (_result *SubmitCabRecordingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitCabRecordingResponse{}
-	_body, _err := client.SubmitCabRecordingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SuspendJobsWithOptions(request *SuspendJobsRequest, runtime *util.RuntimeOptions) (_result *SuspendJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SuspendJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SuspendJobs"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SuspendJobs(request *SuspendJobsRequest) (_result *SuspendJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SuspendJobsResponse{}
-	_body, _err := client.SuspendJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SuspendPredictiveJobsWithOptions(request *SuspendPredictiveJobsRequest, runtime *util.RuntimeOptions) (_result *SuspendPredictiveJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SuspendPredictiveJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SuspendPredictiveJobs"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SuspendPredictiveJobs(request *SuspendPredictiveJobsRequest) (_result *SuspendPredictiveJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SuspendPredictiveJobsResponse{}
-	_body, _err := client.SuspendPredictiveJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) TaskPreparingWithOptions(request *TaskPreparingRequest, runtime *util.RuntimeOptions) (_result *TaskPreparingResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &TaskPreparingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TaskPreparing"), tea.String("2017-07-05"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) TaskPreparing(request *TaskPreparingRequest) (_result *TaskPreparingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &TaskPreparingResponse{}
-	_body, _err := client.TaskPreparingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
