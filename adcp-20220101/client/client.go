@@ -8,13 +8,14 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AttachClusterToHubRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterIds *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
+	AttachToMesh *bool   `json:"AttachToMesh,omitempty" xml:"AttachToMesh,omitempty"`
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterIds   *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
 }
 
 func (s AttachClusterToHubRequest) String() string {
@@ -23,6 +24,11 @@ func (s AttachClusterToHubRequest) String() string {
 
 func (s AttachClusterToHubRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AttachClusterToHubRequest) SetAttachToMesh(v bool) *AttachClusterToHubRequest {
+	s.AttachToMesh = &v
+	return s
 }
 
 func (s *AttachClusterToHubRequest) SetClusterId(v string) *AttachClusterToHubRequest {
@@ -39,6 +45,7 @@ type AttachClusterToHubResponseBody struct {
 	ClusterId         *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ManagedClusterIds []*string `json:"ManagedClusterIds,omitempty" xml:"ManagedClusterIds,omitempty" type:"Repeated"`
 	RequestId         *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId            *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s AttachClusterToHubResponseBody) String() string {
@@ -64,9 +71,15 @@ func (s *AttachClusterToHubResponseBody) SetRequestId(v string) *AttachClusterTo
 	return s
 }
 
+func (s *AttachClusterToHubResponseBody) SetTaskId(v string) *AttachClusterToHubResponseBody {
+	s.TaskId = &v
+	return s
+}
+
 type AttachClusterToHubResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AttachClusterToHubResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AttachClusterToHubResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AttachClusterToHubResponse) String() string {
@@ -82,26 +95,25 @@ func (s *AttachClusterToHubResponse) SetHeaders(v map[string]*string) *AttachClu
 	return s
 }
 
+func (s *AttachClusterToHubResponse) SetStatusCode(v int32) *AttachClusterToHubResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AttachClusterToHubResponse) SetBody(v *AttachClusterToHubResponseBody) *AttachClusterToHubResponse {
 	s.Body = v
 	return s
 }
 
 type CreateHubClusterRequest struct {
-	ApiServerPublicEip     *bool   `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
-	AuditLogEnabled        *bool   `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
-	AuditLogProject        *string `json:"AuditLogProject,omitempty" xml:"AuditLogProject,omitempty"`
-	AuditLogStoreTTL       *string `json:"AuditLogStoreTTL,omitempty" xml:"AuditLogStoreTTL,omitempty"`
-	ControlPlaneLogEnabled *bool   `json:"ControlPlaneLogEnabled,omitempty" xml:"ControlPlaneLogEnabled,omitempty"`
-	ControlPlaneLogProject *string `json:"ControlPlaneLogProject,omitempty" xml:"ControlPlaneLogProject,omitempty"`
-	ControlPlaneLogTTL     *string `json:"ControlPlaneLogTTL,omitempty" xml:"ControlPlaneLogTTL,omitempty"`
-	// 是否企业安全组
-	IsEnterpriseSecurityGroup *bool `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
-	// 集群名称
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VSwitches *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
-	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ApiServerPublicEip        *bool   `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
+	AuditLogEnabled           *bool   `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
+	IsEnterpriseSecurityGroup *bool   `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
+	Name                      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Profile                   *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VSwitches                 *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
+	VpcId                     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateHubClusterRequest) String() string {
@@ -122,31 +134,6 @@ func (s *CreateHubClusterRequest) SetAuditLogEnabled(v bool) *CreateHubClusterRe
 	return s
 }
 
-func (s *CreateHubClusterRequest) SetAuditLogProject(v string) *CreateHubClusterRequest {
-	s.AuditLogProject = &v
-	return s
-}
-
-func (s *CreateHubClusterRequest) SetAuditLogStoreTTL(v string) *CreateHubClusterRequest {
-	s.AuditLogStoreTTL = &v
-	return s
-}
-
-func (s *CreateHubClusterRequest) SetControlPlaneLogEnabled(v bool) *CreateHubClusterRequest {
-	s.ControlPlaneLogEnabled = &v
-	return s
-}
-
-func (s *CreateHubClusterRequest) SetControlPlaneLogProject(v string) *CreateHubClusterRequest {
-	s.ControlPlaneLogProject = &v
-	return s
-}
-
-func (s *CreateHubClusterRequest) SetControlPlaneLogTTL(v string) *CreateHubClusterRequest {
-	s.ControlPlaneLogTTL = &v
-	return s
-}
-
 func (s *CreateHubClusterRequest) SetIsEnterpriseSecurityGroup(v bool) *CreateHubClusterRequest {
 	s.IsEnterpriseSecurityGroup = &v
 	return s
@@ -154,6 +141,11 @@ func (s *CreateHubClusterRequest) SetIsEnterpriseSecurityGroup(v bool) *CreateHu
 
 func (s *CreateHubClusterRequest) SetName(v string) *CreateHubClusterRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateHubClusterRequest) SetProfile(v string) *CreateHubClusterRequest {
+	s.Profile = &v
 	return s
 }
 
@@ -202,8 +194,9 @@ func (s *CreateHubClusterResponseBody) SetTaskId(v string) *CreateHubClusterResp
 }
 
 type CreateHubClusterResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateHubClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHubClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateHubClusterResponse) String() string {
@@ -216,6 +209,11 @@ func (s CreateHubClusterResponse) GoString() string {
 
 func (s *CreateHubClusterResponse) SetHeaders(v map[string]*string) *CreateHubClusterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateHubClusterResponse) SetStatusCode(v int32) *CreateHubClusterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -277,8 +275,9 @@ func (s *DeleteHubClusterResponseBody) SetTaskId(v string) *DeleteHubClusterResp
 }
 
 type DeleteHubClusterResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteHubClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteHubClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteHubClusterResponse) String() string {
@@ -294,13 +293,17 @@ func (s *DeleteHubClusterResponse) SetHeaders(v map[string]*string) *DeleteHubCl
 	return s
 }
 
+func (s *DeleteHubClusterResponse) SetStatusCode(v int32) *DeleteHubClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteHubClusterResponse) SetBody(v *DeleteHubClusterResponseBody) *DeleteHubClusterResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeHubClusterDetailsRequest struct {
-	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -341,10 +344,13 @@ func (s *DescribeHubClusterDetailsResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeHubClusterDetailsResponseBodyCluster struct {
-	ApiServer   *DescribeHubClusterDetailsResponseBodyClusterApiServer   `json:"ApiServer,omitempty" xml:"ApiServer,omitempty" type:"Struct"`
-	ClusterInfo *DescribeHubClusterDetailsResponseBodyClusterClusterInfo `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
-	Endpoints   *DescribeHubClusterDetailsResponseBodyClusterEndpoints   `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
-	Network     *DescribeHubClusterDetailsResponseBodyClusterNetwork     `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	ApiServer   *DescribeHubClusterDetailsResponseBodyClusterApiServer    `json:"ApiServer,omitempty" xml:"ApiServer,omitempty" type:"Struct"`
+	ClusterInfo *DescribeHubClusterDetailsResponseBodyClusterClusterInfo  `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
+	Conditions  []*DescribeHubClusterDetailsResponseBodyClusterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	Endpoints   *DescribeHubClusterDetailsResponseBodyClusterEndpoints    `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	LogConfig   *DescribeHubClusterDetailsResponseBodyClusterLogConfig    `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
+	MeshConfig  *DescribeHubClusterDetailsResponseBodyClusterMeshConfig   `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
+	Network     *DescribeHubClusterDetailsResponseBodyClusterNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 }
 
 func (s DescribeHubClusterDetailsResponseBodyCluster) String() string {
@@ -365,8 +371,23 @@ func (s *DescribeHubClusterDetailsResponseBodyCluster) SetClusterInfo(v *Describ
 	return s
 }
 
+func (s *DescribeHubClusterDetailsResponseBodyCluster) SetConditions(v []*DescribeHubClusterDetailsResponseBodyClusterConditions) *DescribeHubClusterDetailsResponseBodyCluster {
+	s.Conditions = v
+	return s
+}
+
 func (s *DescribeHubClusterDetailsResponseBodyCluster) SetEndpoints(v *DescribeHubClusterDetailsResponseBodyClusterEndpoints) *DescribeHubClusterDetailsResponseBodyCluster {
 	s.Endpoints = v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyCluster) SetLogConfig(v *DescribeHubClusterDetailsResponseBodyClusterLogConfig) *DescribeHubClusterDetailsResponseBodyCluster {
+	s.LogConfig = v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyCluster) SetMeshConfig(v *DescribeHubClusterDetailsResponseBodyClusterMeshConfig) *DescribeHubClusterDetailsResponseBodyCluster {
+	s.MeshConfig = v
 	return s
 }
 
@@ -376,6 +397,7 @@ func (s *DescribeHubClusterDetailsResponseBodyCluster) SetNetwork(v *DescribeHub
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterApiServer struct {
+	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	EnabledPublic  *bool   `json:"EnabledPublic,omitempty" xml:"EnabledPublic,omitempty"`
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
@@ -386,6 +408,11 @@ func (s DescribeHubClusterDetailsResponseBodyClusterApiServer) String() string {
 
 func (s DescribeHubClusterDetailsResponseBodyClusterApiServer) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterApiServer) SetApiServerEipId(v string) *DescribeHubClusterDetailsResponseBodyClusterApiServer {
+	s.ApiServerEipId = &v
+	return s
 }
 
 func (s *DescribeHubClusterDetailsResponseBodyClusterApiServer) SetEnabledPublic(v bool) *DescribeHubClusterDetailsResponseBodyClusterApiServer {
@@ -469,6 +496,41 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetVersion(v s
 	return s
 }
 
+type DescribeHubClusterDetailsResponseBodyClusterConditions struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterConditions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterConditions) SetMessage(v string) *DescribeHubClusterDetailsResponseBodyClusterConditions {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterConditions) SetReason(v string) *DescribeHubClusterDetailsResponseBodyClusterConditions {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterConditions) SetStatus(v string) *DescribeHubClusterDetailsResponseBodyClusterConditions {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterConditions) SetType(v string) *DescribeHubClusterDetailsResponseBodyClusterConditions {
+	s.Type = &v
+	return s
+}
+
 type DescribeHubClusterDetailsResponseBodyClusterEndpoints struct {
 	IntranetApiServerEndpoint *string `json:"IntranetApiServerEndpoint,omitempty" xml:"IntranetApiServerEndpoint,omitempty"`
 	PublicApiServerEndpoint   *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
@@ -489,6 +551,58 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterEndpoints) SetIntranetApiSe
 
 func (s *DescribeHubClusterDetailsResponseBodyClusterEndpoints) SetPublicApiServerEndpoint(v string) *DescribeHubClusterDetailsResponseBodyClusterEndpoints {
 	s.PublicApiServerEndpoint = &v
+	return s
+}
+
+type DescribeHubClusterDetailsResponseBodyClusterLogConfig struct {
+	EnableLog   *bool   `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	LogProject  *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	LogStoreTTL *string `json:"LogStoreTTL,omitempty" xml:"LogStoreTTL,omitempty"`
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterLogConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterLogConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterLogConfig) SetEnableLog(v bool) *DescribeHubClusterDetailsResponseBodyClusterLogConfig {
+	s.EnableLog = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterLogConfig) SetLogProject(v string) *DescribeHubClusterDetailsResponseBodyClusterLogConfig {
+	s.LogProject = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterLogConfig) SetLogStoreTTL(v string) *DescribeHubClusterDetailsResponseBodyClusterLogConfig {
+	s.LogStoreTTL = &v
+	return s
+}
+
+type DescribeHubClusterDetailsResponseBodyClusterMeshConfig struct {
+	EnableMesh *bool   `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	MeshId     *string `json:"MeshId,omitempty" xml:"MeshId,omitempty"`
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterMeshConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClusterDetailsResponseBodyClusterMeshConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterMeshConfig) SetEnableMesh(v bool) *DescribeHubClusterDetailsResponseBodyClusterMeshConfig {
+	s.EnableMesh = &v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponseBodyClusterMeshConfig) SetMeshId(v string) *DescribeHubClusterDetailsResponseBodyClusterMeshConfig {
+	s.MeshId = &v
 	return s
 }
 
@@ -534,8 +648,9 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterNetwork) SetVpcId(v string)
 }
 
 type DescribeHubClusterDetailsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeHubClusterDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHubClusterDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeHubClusterDetailsResponse) String() string {
@@ -548,6 +663,11 @@ func (s DescribeHubClusterDetailsResponse) GoString() string {
 
 func (s *DescribeHubClusterDetailsResponse) SetHeaders(v map[string]*string) *DescribeHubClusterDetailsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeHubClusterDetailsResponse) SetStatusCode(v int32) *DescribeHubClusterDetailsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -603,8 +723,9 @@ func (s *DescribeHubClusterKubeconfigResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeHubClusterKubeconfigResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeHubClusterKubeconfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHubClusterKubeconfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeHubClusterKubeconfigResponse) String() string {
@@ -620,13 +741,17 @@ func (s *DescribeHubClusterKubeconfigResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *DescribeHubClusterKubeconfigResponse) SetStatusCode(v int32) *DescribeHubClusterKubeconfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeHubClusterKubeconfigResponse) SetBody(v *DescribeHubClusterKubeconfigResponseBody) *DescribeHubClusterKubeconfigResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeHubClusterLogsRequest struct {
-	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -644,9 +769,8 @@ func (s *DescribeHubClusterLogsRequest) SetClusterId(v string) *DescribeHubClust
 }
 
 type DescribeHubClusterLogsResponseBody struct {
-	Logs []*DescribeHubClusterLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Logs      []*DescribeHubClusterLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeHubClusterLogsResponseBody) String() string {
@@ -703,8 +827,9 @@ func (s *DescribeHubClusterLogsResponseBodyLogs) SetLogLevel(v string) *Describe
 }
 
 type DescribeHubClusterLogsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeHubClusterLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHubClusterLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeHubClusterLogsResponse) String() string {
@@ -720,8 +845,30 @@ func (s *DescribeHubClusterLogsResponse) SetHeaders(v map[string]*string) *Descr
 	return s
 }
 
+func (s *DescribeHubClusterLogsResponse) SetStatusCode(v int32) *DescribeHubClusterLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeHubClusterLogsResponse) SetBody(v *DescribeHubClusterLogsResponseBody) *DescribeHubClusterLogsResponse {
 	s.Body = v
+	return s
+}
+
+type DescribeHubClustersRequest struct {
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+}
+
+func (s DescribeHubClustersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClustersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClustersRequest) SetProfile(v string) *DescribeHubClustersRequest {
+	s.Profile = &v
 	return s
 }
 
@@ -749,10 +896,13 @@ func (s *DescribeHubClustersResponseBody) SetRequestId(v string) *DescribeHubClu
 }
 
 type DescribeHubClustersResponseBodyClusters struct {
-	ApiServer   *DescribeHubClustersResponseBodyClustersApiServer   `json:"ApiServer,omitempty" xml:"ApiServer,omitempty" type:"Struct"`
-	ClusterInfo *DescribeHubClustersResponseBodyClustersClusterInfo `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
-	Endpoints   *DescribeHubClustersResponseBodyClustersEndpoints   `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
-	Network     *DescribeHubClustersResponseBodyClustersNetwork     `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	ApiServer   *DescribeHubClustersResponseBodyClustersApiServer    `json:"ApiServer,omitempty" xml:"ApiServer,omitempty" type:"Struct"`
+	ClusterInfo *DescribeHubClustersResponseBodyClustersClusterInfo  `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
+	Conditions  []*DescribeHubClustersResponseBodyClustersConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	Endpoints   *DescribeHubClustersResponseBodyClustersEndpoints    `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	LogConfig   *DescribeHubClustersResponseBodyClustersLogConfig    `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
+	MeshConfig  *DescribeHubClustersResponseBodyClustersMeshConfig   `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
+	Network     *DescribeHubClustersResponseBodyClustersNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 }
 
 func (s DescribeHubClustersResponseBodyClusters) String() string {
@@ -773,8 +923,23 @@ func (s *DescribeHubClustersResponseBodyClusters) SetClusterInfo(v *DescribeHubC
 	return s
 }
 
+func (s *DescribeHubClustersResponseBodyClusters) SetConditions(v []*DescribeHubClustersResponseBodyClustersConditions) *DescribeHubClustersResponseBodyClusters {
+	s.Conditions = v
+	return s
+}
+
 func (s *DescribeHubClustersResponseBodyClusters) SetEndpoints(v *DescribeHubClustersResponseBodyClustersEndpoints) *DescribeHubClustersResponseBodyClusters {
 	s.Endpoints = v
+	return s
+}
+
+func (s *DescribeHubClustersResponseBodyClusters) SetLogConfig(v *DescribeHubClustersResponseBodyClustersLogConfig) *DescribeHubClustersResponseBodyClusters {
+	s.LogConfig = v
+	return s
+}
+
+func (s *DescribeHubClustersResponseBodyClusters) SetMeshConfig(v *DescribeHubClustersResponseBodyClustersMeshConfig) *DescribeHubClustersResponseBodyClusters {
+	s.MeshConfig = v
 	return s
 }
 
@@ -784,6 +949,7 @@ func (s *DescribeHubClustersResponseBodyClusters) SetNetwork(v *DescribeHubClust
 }
 
 type DescribeHubClustersResponseBodyClustersApiServer struct {
+	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	EnabledPublic  *bool   `json:"EnabledPublic,omitempty" xml:"EnabledPublic,omitempty"`
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
@@ -794,6 +960,11 @@ func (s DescribeHubClustersResponseBodyClustersApiServer) String() string {
 
 func (s DescribeHubClustersResponseBodyClustersApiServer) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeHubClustersResponseBodyClustersApiServer) SetApiServerEipId(v string) *DescribeHubClustersResponseBodyClustersApiServer {
+	s.ApiServerEipId = &v
+	return s
 }
 
 func (s *DescribeHubClustersResponseBodyClustersApiServer) SetEnabledPublic(v bool) *DescribeHubClustersResponseBodyClustersApiServer {
@@ -877,6 +1048,41 @@ func (s *DescribeHubClustersResponseBodyClustersClusterInfo) SetVersion(v string
 	return s
 }
 
+type DescribeHubClustersResponseBodyClustersConditions struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeHubClustersResponseBodyClustersConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClustersResponseBodyClustersConditions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClustersResponseBodyClustersConditions) SetMessage(v string) *DescribeHubClustersResponseBodyClustersConditions {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeHubClustersResponseBodyClustersConditions) SetReason(v string) *DescribeHubClustersResponseBodyClustersConditions {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeHubClustersResponseBodyClustersConditions) SetStatus(v string) *DescribeHubClustersResponseBodyClustersConditions {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeHubClustersResponseBodyClustersConditions) SetType(v string) *DescribeHubClustersResponseBodyClustersConditions {
+	s.Type = &v
+	return s
+}
+
 type DescribeHubClustersResponseBodyClustersEndpoints struct {
 	IntranetApiServerEndpoint *string `json:"IntranetApiServerEndpoint,omitempty" xml:"IntranetApiServerEndpoint,omitempty"`
 	PublicApiServerEndpoint   *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
@@ -897,6 +1103,58 @@ func (s *DescribeHubClustersResponseBodyClustersEndpoints) SetIntranetApiServerE
 
 func (s *DescribeHubClustersResponseBodyClustersEndpoints) SetPublicApiServerEndpoint(v string) *DescribeHubClustersResponseBodyClustersEndpoints {
 	s.PublicApiServerEndpoint = &v
+	return s
+}
+
+type DescribeHubClustersResponseBodyClustersLogConfig struct {
+	EnableLog   *bool   `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	LogProject  *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	LogStoreTTL *string `json:"LogStoreTTL,omitempty" xml:"LogStoreTTL,omitempty"`
+}
+
+func (s DescribeHubClustersResponseBodyClustersLogConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClustersResponseBodyClustersLogConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClustersResponseBodyClustersLogConfig) SetEnableLog(v bool) *DescribeHubClustersResponseBodyClustersLogConfig {
+	s.EnableLog = &v
+	return s
+}
+
+func (s *DescribeHubClustersResponseBodyClustersLogConfig) SetLogProject(v string) *DescribeHubClustersResponseBodyClustersLogConfig {
+	s.LogProject = &v
+	return s
+}
+
+func (s *DescribeHubClustersResponseBodyClustersLogConfig) SetLogStoreTTL(v string) *DescribeHubClustersResponseBodyClustersLogConfig {
+	s.LogStoreTTL = &v
+	return s
+}
+
+type DescribeHubClustersResponseBodyClustersMeshConfig struct {
+	EnableMesh *bool   `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	MeshId     *string `json:"MeshId,omitempty" xml:"MeshId,omitempty"`
+}
+
+func (s DescribeHubClustersResponseBodyClustersMeshConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHubClustersResponseBodyClustersMeshConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHubClustersResponseBodyClustersMeshConfig) SetEnableMesh(v bool) *DescribeHubClustersResponseBodyClustersMeshConfig {
+	s.EnableMesh = &v
+	return s
+}
+
+func (s *DescribeHubClustersResponseBodyClustersMeshConfig) SetMeshId(v string) *DescribeHubClustersResponseBodyClustersMeshConfig {
+	s.MeshId = &v
 	return s
 }
 
@@ -936,8 +1194,9 @@ func (s *DescribeHubClustersResponseBodyClustersNetwork) SetVpcId(v string) *Des
 }
 
 type DescribeHubClustersResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeHubClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHubClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeHubClustersResponse) String() string {
@@ -953,13 +1212,17 @@ func (s *DescribeHubClustersResponse) SetHeaders(v map[string]*string) *Describe
 	return s
 }
 
+func (s *DescribeHubClustersResponse) SetStatusCode(v int32) *DescribeHubClustersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeHubClustersResponse) SetBody(v *DescribeHubClustersResponseBody) *DescribeHubClustersResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeManagedClustersRequest struct {
-	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -1000,8 +1263,9 @@ func (s *DescribeManagedClustersResponseBody) SetRequestId(v string) *DescribeMa
 }
 
 type DescribeManagedClustersResponseBodyClusters struct {
-	Cluster *DescribeManagedClustersResponseBodyClustersCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
-	Status  *DescribeManagedClustersResponseBodyClustersStatus  `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
+	Cluster    *DescribeManagedClustersResponseBodyClustersCluster    `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
+	MeshStatus *DescribeManagedClustersResponseBodyClustersMeshStatus `json:"MeshStatus,omitempty" xml:"MeshStatus,omitempty" type:"Struct"`
+	Status     *DescribeManagedClustersResponseBodyClustersStatus     `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
 }
 
 func (s DescribeManagedClustersResponseBodyClusters) String() string {
@@ -1014,6 +1278,11 @@ func (s DescribeManagedClustersResponseBodyClusters) GoString() string {
 
 func (s *DescribeManagedClustersResponseBodyClusters) SetCluster(v *DescribeManagedClustersResponseBodyClustersCluster) *DescribeManagedClustersResponseBodyClusters {
 	s.Cluster = v
+	return s
+}
+
+func (s *DescribeManagedClustersResponseBodyClusters) SetMeshStatus(v *DescribeManagedClustersResponseBodyClustersMeshStatus) *DescribeManagedClustersResponseBodyClusters {
+	s.MeshStatus = v
 	return s
 }
 
@@ -1117,6 +1386,23 @@ func (s *DescribeManagedClustersResponseBodyClustersCluster) SetVpcID(v string) 
 	return s
 }
 
+type DescribeManagedClustersResponseBodyClustersMeshStatus struct {
+	InMesh *bool `json:"InMesh,omitempty" xml:"InMesh,omitempty"`
+}
+
+func (s DescribeManagedClustersResponseBodyClustersMeshStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeManagedClustersResponseBodyClustersMeshStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeManagedClustersResponseBodyClustersMeshStatus) SetInMesh(v bool) *DescribeManagedClustersResponseBodyClustersMeshStatus {
+	s.InMesh = &v
+	return s
+}
+
 type DescribeManagedClustersResponseBodyClustersStatus struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	State   *string `json:"State,omitempty" xml:"State,omitempty"`
@@ -1141,8 +1427,9 @@ func (s *DescribeManagedClustersResponseBodyClustersStatus) SetState(v string) *
 }
 
 type DescribeManagedClustersResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeManagedClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeManagedClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeManagedClustersResponse) String() string {
@@ -1158,15 +1445,36 @@ func (s *DescribeManagedClustersResponse) SetHeaders(v map[string]*string) *Desc
 	return s
 }
 
+func (s *DescribeManagedClustersResponse) SetStatusCode(v int32) *DescribeManagedClustersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeManagedClustersResponse) SetBody(v *DescribeManagedClustersResponseBody) *DescribeManagedClustersResponse {
 	s.Body = v
 	return s
 }
 
+type DescribeRegionsRequest struct {
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+}
+
+func (s DescribeRegionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsRequest) SetLanguage(v string) *DescribeRegionsRequest {
+	s.Language = &v
+	return s
+}
+
 type DescribeRegionsResponseBody struct {
-	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -1188,10 +1496,8 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	LocalName         *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionEndpoint    *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionVpcEndpoint *string `json:"RegionVpcEndpoint,omitempty" xml:"RegionVpcEndpoint,omitempty"`
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -1207,24 +1513,15 @@ func (s *DescribeRegionsResponseBodyRegions) SetLocalName(v string) *DescribeReg
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegions) SetRegionEndpoint(v string) *DescribeRegionsResponseBodyRegions {
-	s.RegionEndpoint = &v
-	return s
-}
-
 func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegionsResponseBodyRegions {
 	s.RegionId = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBodyRegions) SetRegionVpcEndpoint(v string) *DescribeRegionsResponseBodyRegions {
-	s.RegionVpcEndpoint = &v
-	return s
-}
-
 type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -1240,14 +1537,20 @@ func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegi
 	return s
 }
 
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
 	s.Body = v
 	return s
 }
 
 type DetachClusterFromHubRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterIds *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterIds     *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
+	DetachFromMesh *bool   `json:"DetachFromMesh,omitempty" xml:"DetachFromMesh,omitempty"`
 }
 
 func (s DetachClusterFromHubRequest) String() string {
@@ -1268,10 +1571,16 @@ func (s *DetachClusterFromHubRequest) SetClusterIds(v string) *DetachClusterFrom
 	return s
 }
 
+func (s *DetachClusterFromHubRequest) SetDetachFromMesh(v bool) *DetachClusterFromHubRequest {
+	s.DetachFromMesh = &v
+	return s
+}
+
 type DetachClusterFromHubResponseBody struct {
 	ClusterId         *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ManagedClusterIds []*string `json:"ManagedClusterIds,omitempty" xml:"ManagedClusterIds,omitempty" type:"Repeated"`
 	RequestId         *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId            *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DetachClusterFromHubResponseBody) String() string {
@@ -1297,9 +1606,15 @@ func (s *DetachClusterFromHubResponseBody) SetRequestId(v string) *DetachCluster
 	return s
 }
 
+func (s *DetachClusterFromHubResponseBody) SetTaskId(v string) *DetachClusterFromHubResponseBody {
+	s.TaskId = &v
+	return s
+}
+
 type DetachClusterFromHubResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetachClusterFromHubResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetachClusterFromHubResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetachClusterFromHubResponse) String() string {
@@ -1315,7 +1630,117 @@ func (s *DetachClusterFromHubResponse) SetHeaders(v map[string]*string) *DetachC
 	return s
 }
 
+func (s *DetachClusterFromHubResponse) SetStatusCode(v int32) *DetachClusterFromHubResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DetachClusterFromHubResponse) SetBody(v *DetachClusterFromHubResponseBody) *DetachClusterFromHubResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateHubClusterFeatureRequest struct {
+	ApiServerEipId         *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
+	AuditLogEnabled        *bool   `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
+	ClusterId              *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DeletionProtection     *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	EnableArgoCD           *bool   `json:"EnableArgoCD,omitempty" xml:"EnableArgoCD,omitempty"`
+	EnableMesh             *bool   `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PublicApiServerEnabled *bool   `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
+}
+
+func (s UpdateHubClusterFeatureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHubClusterFeatureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetApiServerEipId(v string) *UpdateHubClusterFeatureRequest {
+	s.ApiServerEipId = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetAuditLogEnabled(v bool) *UpdateHubClusterFeatureRequest {
+	s.AuditLogEnabled = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetClusterId(v string) *UpdateHubClusterFeatureRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetDeletionProtection(v bool) *UpdateHubClusterFeatureRequest {
+	s.DeletionProtection = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetEnableArgoCD(v bool) *UpdateHubClusterFeatureRequest {
+	s.EnableArgoCD = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetEnableMesh(v bool) *UpdateHubClusterFeatureRequest {
+	s.EnableMesh = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetName(v string) *UpdateHubClusterFeatureRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureRequest) SetPublicApiServerEnabled(v bool) *UpdateHubClusterFeatureRequest {
+	s.PublicApiServerEnabled = &v
+	return s
+}
+
+type UpdateHubClusterFeatureResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateHubClusterFeatureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHubClusterFeatureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHubClusterFeatureResponseBody) SetRequestId(v string) *UpdateHubClusterFeatureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateHubClusterFeatureResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateHubClusterFeatureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateHubClusterFeatureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHubClusterFeatureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHubClusterFeatureResponse) SetHeaders(v map[string]*string) *UpdateHubClusterFeatureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureResponse) SetStatusCode(v int32) *UpdateHubClusterFeatureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHubClusterFeatureResponse) SetBody(v *UpdateHubClusterFeatureResponseBody) *UpdateHubClusterFeatureResponse {
 	s.Body = v
 	return s
 }
@@ -1335,7 +1760,33 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("central")
+	client.EndpointMap = map[string]*string{
+		"cn-beijing":            tea.String("adcp.cn-beijing.aliyuncs.com"),
+		"cn-zhangjiakou":        tea.String("adcp.cn-zhangjiakou.aliyuncs.com"),
+		"cn-hangzhou":           tea.String("adcp.cn-hangzhou.aliyuncs.com"),
+		"cn-shanghai":           tea.String("adcp.cn-shanghai.aliyuncs.com"),
+		"cn-shenzhen":           tea.String("adcp.cn-shenzhen.aliyuncs.com"),
+		"cn-heyuan":             tea.String("adcp.cn-heyuan.aliyuncs.com"),
+		"cn-hongkong":           tea.String("adcp.cn-hongkong.aliyuncs.com"),
+		"ap-northeast-1":        tea.String("adcp.ap-northeast-1.aliyuncs.com"),
+		"ap-southeast-1":        tea.String("adcp.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-5":        tea.String("adcp.ap-southeast-5.aliyuncs.com"),
+		"ap-south-1":            tea.String("adcp.ap-south-1.aliyuncs.com"),
+		"ap-southeast-2":        tea.String("adcp.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-3":        tea.String("adcp.ap-southeast-3.aliyuncs.com"),
+		"cn-chengdu":            tea.String("adcp-vpc.cn-chengdu.aliyuncs.com"),
+		"cn-huhehaote":          tea.String("adcp.cn-huhehaote.aliyuncs.com"),
+		"cn-qingdao":            tea.String("adcp.cn-qingdao.aliyuncs.com"),
+		"cn-shanghai-finance-1": tea.String("adcp-vpc.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-wulanchabu":         tea.String("adcp.cn-wulanchabu.aliyuncs.com"),
+		"eu-central-1":          tea.String("adcp.eu-central-1.aliyuncs.com"),
+		"eu-west-1":             tea.String("adcp-vpc.eu-west-1.aliyuncs.com"),
+		"me-east-1":             tea.String("adcp.me-east-1.aliyuncs.com"),
+		"us-east-1":             tea.String("adcp.us-east-1.aliyuncs.com"),
+		"us-west-1":             tea.String("adcp.us-west-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -1373,6 +1824,10 @@ func (client *Client) AttachClusterToHubWithOptions(request *AttachClusterToHubR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttachToMesh)) {
+		query["AttachToMesh"] = request.AttachToMesh
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
 	}
@@ -1431,32 +1886,16 @@ func (client *Client) CreateHubClusterWithOptions(request *CreateHubClusterReque
 		body["AuditLogEnabled"] = request.AuditLogEnabled
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.AuditLogProject)) {
-		body["AuditLogProject"] = request.AuditLogProject
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AuditLogStoreTTL)) {
-		body["AuditLogStoreTTL"] = request.AuditLogStoreTTL
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ControlPlaneLogEnabled)) {
-		body["ControlPlaneLogEnabled"] = request.ControlPlaneLogEnabled
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ControlPlaneLogProject)) {
-		body["ControlPlaneLogProject"] = request.ControlPlaneLogProject
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ControlPlaneLogTTL)) {
-		body["ControlPlaneLogTTL"] = request.ControlPlaneLogTTL
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.IsEnterpriseSecurityGroup)) {
 		body["IsEnterpriseSecurityGroup"] = request.IsEnterpriseSecurityGroup
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Profile)) {
+		body["Profile"] = request.Profile
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -1689,8 +2128,19 @@ func (client *Client) DescribeHubClusterLogs(request *DescribeHubClusterLogsRequ
 	return _result, _err
 }
 
-func (client *Client) DescribeHubClustersWithOptions(runtime *util.RuntimeOptions) (_result *DescribeHubClustersResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) DescribeHubClustersWithOptions(request *DescribeHubClustersRequest, runtime *util.RuntimeOptions) (_result *DescribeHubClustersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Profile)) {
+		query["Profile"] = request.Profile
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeHubClusters"),
 		Version:     tea.String("2022-01-01"),
@@ -1711,10 +2161,10 @@ func (client *Client) DescribeHubClustersWithOptions(runtime *util.RuntimeOption
 	return _result, _err
 }
 
-func (client *Client) DescribeHubClusters() (_result *DescribeHubClustersResponse, _err error) {
+func (client *Client) DescribeHubClusters(request *DescribeHubClustersRequest) (_result *DescribeHubClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHubClustersResponse{}
-	_body, _err := client.DescribeHubClustersWithOptions(runtime)
+	_body, _err := client.DescribeHubClustersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1766,8 +2216,15 @@ func (client *Client) DescribeManagedClusters(request *DescribeManagedClustersRe
 	return _result, _err
 }
 
-func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRegions"),
 		Version:     tea.String("2022-01-01"),
@@ -1788,10 +2245,10 @@ func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
-func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(runtime)
+	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1807,6 +2264,10 @@ func (client *Client) DetachClusterFromHubWithOptions(request *DetachClusterFrom
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DetachFromMesh)) {
+		query["DetachFromMesh"] = request.DetachFromMesh
 	}
 
 	body := map[string]interface{}{}
@@ -1842,6 +2303,78 @@ func (client *Client) DetachClusterFromHub(request *DetachClusterFromHubRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachClusterFromHubResponse{}
 	_body, _err := client.DetachClusterFromHubWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateHubClusterFeatureWithOptions(request *UpdateHubClusterFeatureRequest, runtime *util.RuntimeOptions) (_result *UpdateHubClusterFeatureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiServerEipId)) {
+		query["ApiServerEipId"] = request.ApiServerEipId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuditLogEnabled)) {
+		query["AuditLogEnabled"] = request.AuditLogEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
+		query["DeletionProtection"] = request.DeletionProtection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableArgoCD)) {
+		query["EnableArgoCD"] = request.EnableArgoCD
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableMesh)) {
+		query["EnableMesh"] = request.EnableMesh
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicApiServerEnabled)) {
+		query["PublicApiServerEnabled"] = request.PublicApiServerEnabled
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHubClusterFeature"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateHubClusterFeatureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateHubClusterFeature(request *UpdateHubClusterFeatureRequest) (_result *UpdateHubClusterFeatureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateHubClusterFeatureResponse{}
+	_body, _err := client.UpdateHubClusterFeatureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
