@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -1724,7 +1724,6 @@ type DescribeBackupPlanBillingResponseBodyItem struct {
 	PaiedBytes           *int64  `json:"PaiedBytes,omitempty" xml:"PaiedBytes,omitempty"`
 	QuotaEndTimestamp    *int64  `json:"QuotaEndTimestamp,omitempty" xml:"QuotaEndTimestamp,omitempty"`
 	QuotaStartTimestamp  *int64  `json:"QuotaStartTimestamp,omitempty" xml:"QuotaStartTimestamp,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	TotalFreeBytes       *int64  `json:"TotalFreeBytes,omitempty" xml:"TotalFreeBytes,omitempty"`
 	UsedFullBytes        *int64  `json:"UsedFullBytes,omitempty" xml:"UsedFullBytes,omitempty"`
 	UsedIncrementBytes   *int64  `json:"UsedIncrementBytes,omitempty" xml:"UsedIncrementBytes,omitempty"`
@@ -1790,11 +1789,6 @@ func (s *DescribeBackupPlanBillingResponseBodyItem) SetQuotaEndTimestamp(v int64
 
 func (s *DescribeBackupPlanBillingResponseBodyItem) SetQuotaStartTimestamp(v int64) *DescribeBackupPlanBillingResponseBodyItem {
 	s.QuotaStartTimestamp = &v
-	return s
-}
-
-func (s *DescribeBackupPlanBillingResponseBodyItem) SetResourceGroupId(v string) *DescribeBackupPlanBillingResponseBodyItem {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2015,6 +2009,7 @@ type DescribeBackupPlanListResponseBodyItemsBackupPlanDetail struct {
 	BeginTimestampForRestore             *int64  `json:"BeginTimestampForRestore,omitempty" xml:"BeginTimestampForRestore,omitempty"`
 	CrossAliyunId                        *string `json:"CrossAliyunId,omitempty" xml:"CrossAliyunId,omitempty"`
 	CrossRoleName                        *string `json:"CrossRoleName,omitempty" xml:"CrossRoleName,omitempty"`
+	DatabaseType                         *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
 	DuplicationArchivePeriod             *int32  `json:"DuplicationArchivePeriod,omitempty" xml:"DuplicationArchivePeriod,omitempty"`
 	DuplicationInfrequentAccessPeriod    *int32  `json:"DuplicationInfrequentAccessPeriod,omitempty" xml:"DuplicationInfrequentAccessPeriod,omitempty"`
 	EnableBackupLog                      *bool   `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
@@ -2134,6 +2129,11 @@ func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetCrossAliyun
 
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetCrossRoleName(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
 	s.CrossRoleName = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetDatabaseType(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.DatabaseType = &v
 	return s
 }
 
