@@ -1,3 +1,6 @@
+2022-09-23 Version: v4.0.0
+- Generated golang 2018-01-29 for Domain.
+
 2022-07-21 Version: v3.14.8
 - Ram action config.
 

@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -4489,6 +4489,7 @@ type QueryDomainByDomainNameResponseBody struct {
 	DomainName                   *string                                     `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainNameProxyService       *bool                                       `json:"DomainNameProxyService,omitempty" xml:"DomainNameProxyService,omitempty"`
 	DomainNameVerificationStatus *string                                     `json:"DomainNameVerificationStatus,omitempty" xml:"DomainNameVerificationStatus,omitempty"`
+	DomainStatus                 *string                                     `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	DomainType                   *string                                     `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
 	Email                        *string                                     `json:"Email,omitempty" xml:"Email,omitempty"`
 	EmailVerificationClientHold  *bool                                       `json:"EmailVerificationClientHold,omitempty" xml:"EmailVerificationClientHold,omitempty"`
@@ -4514,7 +4515,6 @@ type QueryDomainByDomainNameResponseBody struct {
 	UserId                       *string                                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	ZhRegistrantName             *string                                     `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
 	ZhRegistrantOrganization     *string                                     `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
-	DomainStatus                 *string                                     `json:"domainStatus,omitempty" xml:"domainStatus,omitempty"`
 }
 
 func (s QueryDomainByDomainNameResponseBody) String() string {
@@ -4552,6 +4552,11 @@ func (s *QueryDomainByDomainNameResponseBody) SetDomainNameProxyService(v bool) 
 
 func (s *QueryDomainByDomainNameResponseBody) SetDomainNameVerificationStatus(v string) *QueryDomainByDomainNameResponseBody {
 	s.DomainNameVerificationStatus = &v
+	return s
+}
+
+func (s *QueryDomainByDomainNameResponseBody) SetDomainStatus(v string) *QueryDomainByDomainNameResponseBody {
+	s.DomainStatus = &v
 	return s
 }
 
@@ -4680,11 +4685,6 @@ func (s *QueryDomainByDomainNameResponseBody) SetZhRegistrantOrganization(v stri
 	return s
 }
 
-func (s *QueryDomainByDomainNameResponseBody) SetDomainStatus(v string) *QueryDomainByDomainNameResponseBody {
-	s.DomainStatus = &v
-	return s
-}
-
 type QueryDomainByDomainNameResponseBodyDnsList struct {
 	Dns []*string `json:"Dns,omitempty" xml:"Dns,omitempty" type:"Repeated"`
 }
@@ -4761,41 +4761,38 @@ func (s *QueryDomainByInstanceIdRequest) SetUserClientIp(v string) *QueryDomainB
 }
 
 type QueryDomainByInstanceIdResponseBody struct {
-	DnsList *QueryDomainByInstanceIdResponseBodyDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
-	// 域名分组ID
-	DomainGroupId *int64 `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	// 域名分组名称
-	DomainGroupName              *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
-	DomainName                   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainNameProxyService       *bool   `json:"DomainNameProxyService,omitempty" xml:"DomainNameProxyService,omitempty"`
-	DomainNameVerificationStatus *string `json:"DomainNameVerificationStatus,omitempty" xml:"DomainNameVerificationStatus,omitempty"`
-	DomainStatus                 *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	DomainType                   *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	Email                        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	EmailVerificationClientHold  *bool   `json:"EmailVerificationClientHold,omitempty" xml:"EmailVerificationClientHold,omitempty"`
-	EmailVerificationStatus      *int32  `json:"EmailVerificationStatus,omitempty" xml:"EmailVerificationStatus,omitempty"`
-	ExpirationCurrDateDiff       *int32  `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
-	ExpirationDate               *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	ExpirationDateLong           *int64  `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	ExpirationDateStatus         *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
-	InstanceId                   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Premium                      *bool   `json:"Premium,omitempty" xml:"Premium,omitempty"`
-	RealNameStatus               *string `json:"RealNameStatus,omitempty" xml:"RealNameStatus,omitempty"`
-	RegistrantName               *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	RegistrantOrganization       *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantType               *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	RegistrantUpdatingStatus     *string `json:"RegistrantUpdatingStatus,omitempty" xml:"RegistrantUpdatingStatus,omitempty"`
-	RegistrationDate             *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
-	RegistrationDateLong         *int64  `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
-	// 备注
-	Remark                   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RequestId                *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TransferOutStatus        *string `json:"TransferOutStatus,omitempty" xml:"TransferOutStatus,omitempty"`
-	TransferProhibitionLock  *string `json:"TransferProhibitionLock,omitempty" xml:"TransferProhibitionLock,omitempty"`
-	UpdateProhibitionLock    *string `json:"UpdateProhibitionLock,omitempty" xml:"UpdateProhibitionLock,omitempty"`
-	UserId                   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	ZhRegistrantName         *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
-	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
+	DnsList                      *QueryDomainByInstanceIdResponseBodyDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
+	DomainGroupId                *int64                                      `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	DomainGroupName              *string                                     `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	DomainName                   *string                                     `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainNameProxyService       *bool                                       `json:"DomainNameProxyService,omitempty" xml:"DomainNameProxyService,omitempty"`
+	DomainNameVerificationStatus *string                                     `json:"DomainNameVerificationStatus,omitempty" xml:"DomainNameVerificationStatus,omitempty"`
+	DomainStatus                 *string                                     `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	DomainType                   *string                                     `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	Email                        *string                                     `json:"Email,omitempty" xml:"Email,omitempty"`
+	EmailVerificationClientHold  *bool                                       `json:"EmailVerificationClientHold,omitempty" xml:"EmailVerificationClientHold,omitempty"`
+	EmailVerificationStatus      *int32                                      `json:"EmailVerificationStatus,omitempty" xml:"EmailVerificationStatus,omitempty"`
+	ExpirationCurrDateDiff       *int32                                      `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
+	ExpirationDate               *string                                     `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	ExpirationDateLong           *int64                                      `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	ExpirationDateStatus         *string                                     `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
+	InstanceId                   *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Premium                      *bool                                       `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	RealNameStatus               *string                                     `json:"RealNameStatus,omitempty" xml:"RealNameStatus,omitempty"`
+	RegistrantName               *string                                     `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	RegistrantOrganization       *string                                     `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	RegistrantType               *string                                     `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	RegistrantUpdatingStatus     *string                                     `json:"RegistrantUpdatingStatus,omitempty" xml:"RegistrantUpdatingStatus,omitempty"`
+	RegistrationDate             *string                                     `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
+	RegistrationDateLong         *int64                                      `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
+	Remark                       *string                                     `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RequestId                    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TransferOutStatus            *string                                     `json:"TransferOutStatus,omitempty" xml:"TransferOutStatus,omitempty"`
+	TransferProhibitionLock      *string                                     `json:"TransferProhibitionLock,omitempty" xml:"TransferProhibitionLock,omitempty"`
+	UpdateProhibitionLock        *string                                     `json:"UpdateProhibitionLock,omitempty" xml:"UpdateProhibitionLock,omitempty"`
+	UserId                       *string                                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ZhRegistrantName             *string                                     `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	ZhRegistrantOrganization     *string                                     `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
 func (s QueryDomainByInstanceIdResponseBody) String() string {
