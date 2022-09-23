@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -3085,7 +3085,6 @@ type DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesR
 	Layer                 *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
 	Level                 *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	MaliciousMd5          *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
-	MaliciousSource       *string `json:"MaliciousSource,omitempty" xml:"MaliciousSource,omitempty"`
 	Namespace             *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	Pod                   *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
 	RepoId                *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
@@ -3176,11 +3175,6 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileIma
 
 func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetMaliciousMd5(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
 	s.MaliciousMd5 = &v
-	return s
-}
-
-func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetMaliciousSource(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
-	s.MaliciousSource = &v
 	return s
 }
 
@@ -11794,7 +11788,6 @@ func (s *DescribeImageListWithBaselineNameResponseBody) SetRequestId(v string) *
 }
 
 type DescribeImageListWithBaselineNameResponseBodyImageInfos struct {
-	BaselineType    *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
 	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ClusterName     *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	ContainerId     *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
@@ -11828,11 +11821,6 @@ func (s DescribeImageListWithBaselineNameResponseBodyImageInfos) String() string
 
 func (s DescribeImageListWithBaselineNameResponseBodyImageInfos) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetBaselineType(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
-	s.BaselineType = &v
-	return s
 }
 
 func (s *DescribeImageListWithBaselineNameResponseBodyImageInfos) SetClusterId(v string) *DescribeImageListWithBaselineNameResponseBodyImageInfos {
