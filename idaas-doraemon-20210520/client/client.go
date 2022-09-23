@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -1875,6 +1875,152 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 	return s
 }
 
+type QuerySmsReportsRequest struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+}
+
+func (s QuerySmsReportsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsReportsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsReportsRequest) SetAppId(v string) *QuerySmsReportsRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *QuerySmsReportsRequest) SetEventId(v string) *QuerySmsReportsRequest {
+	s.EventId = &v
+	return s
+}
+
+type QuerySmsReportsResponseBody struct {
+	RequestId     *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SmsReports    []*QuerySmsReportsResponseBodySmsReports `json:"SmsReports,omitempty" xml:"SmsReports,omitempty" type:"Repeated"`
+	TotalElements *int64                                   `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+}
+
+func (s QuerySmsReportsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsReportsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsReportsResponseBody) SetRequestId(v string) *QuerySmsReportsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySmsReportsResponseBody) SetSmsReports(v []*QuerySmsReportsResponseBodySmsReports) *QuerySmsReportsResponseBody {
+	s.SmsReports = v
+	return s
+}
+
+func (s *QuerySmsReportsResponseBody) SetTotalElements(v int64) *QuerySmsReportsResponseBody {
+	s.TotalElements = &v
+	return s
+}
+
+type QuerySmsReportsResponseBodySmsReports struct {
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	EventId  *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	Mobile   *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Sn       *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Stat     *string `json:"Stat,omitempty" xml:"Stat,omitempty"`
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Tid      *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Time     *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s QuerySmsReportsResponseBodySmsReports) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsReportsResponseBodySmsReports) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsReportsResponseBodySmsReports) SetAppId(v string) *QuerySmsReportsResponseBodySmsReports {
+	s.AppId = &v
+	return s
+}
+
+func (s *QuerySmsReportsResponseBodySmsReports) SetCode(v string) *QuerySmsReportsResponseBodySmsReports {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySmsReportsResponseBodySmsReports) SetEventId(v string) *QuerySmsReportsResponseBodySmsReports {
+	s.EventId = &v
+	return s
+}
+
+func (s *QuerySmsReportsResponseBodySmsReports) SetMobile(v string) *QuerySmsReportsResponseBodySmsReports {
+	s.Mobile = &v
+	return s
+}
+
+func (s *QuerySmsReportsResponseBodySmsReports) SetSn(v string) *QuerySmsReportsResponseBodySmsReports {
+	s.Sn = &v
+	return s
+}
+
+func (s *QuerySmsReportsResponseBodySmsReports) SetStat(v string) *QuerySmsReportsResponseBodySmsReports {
+	s.Stat = &v
+	return s
+}
+
+func (s *QuerySmsReportsResponseBodySmsReports) SetTenantId(v string) *QuerySmsReportsResponseBodySmsReports {
+	s.TenantId = &v
+	return s
+}
+
+func (s *QuerySmsReportsResponseBodySmsReports) SetTid(v string) *QuerySmsReportsResponseBodySmsReports {
+	s.Tid = &v
+	return s
+}
+
+func (s *QuerySmsReportsResponseBodySmsReports) SetTime(v string) *QuerySmsReportsResponseBodySmsReports {
+	s.Time = &v
+	return s
+}
+
+type QuerySmsReportsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySmsReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySmsReportsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsReportsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsReportsResponse) SetHeaders(v map[string]*string) *QuerySmsReportsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySmsReportsResponse) SetStatusCode(v int32) *QuerySmsReportsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySmsReportsResponse) SetBody(v *QuerySmsReportsResponseBody) *QuerySmsReportsResponse {
+	s.Body = v
+	return s
+}
+
 type RegisterAuthenticatorRequest struct {
 	ApplicationExternalId      *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
 	AuthenticatorName          *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
@@ -2072,6 +2218,7 @@ func (s *ServiceInvokeRequest) SetXClientIp(v string) *ServiceInvokeRequest {
 type ServiceInvokeResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	IdToken   *string `json:"IdToken,omitempty" xml:"IdToken,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -2093,6 +2240,11 @@ func (s *ServiceInvokeResponseBody) SetCode(v string) *ServiceInvokeResponseBody
 
 func (s *ServiceInvokeResponseBody) SetData(v string) *ServiceInvokeResponseBody {
 	s.Data = &v
+	return s
+}
+
+func (s *ServiceInvokeResponseBody) SetEventId(v string) *ServiceInvokeResponseBody {
+	s.EventId = &v
 	return s
 }
 
@@ -3258,6 +3410,46 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersResponse{}
 	_body, _err := client.ListUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySmsReportsWithOptions(request *QuerySmsReportsRequest, runtime *util.RuntimeOptions) (_result *QuerySmsReportsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySmsReports"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySmsReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySmsReports(request *QuerySmsReportsRequest) (_result *QuerySmsReportsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySmsReportsResponse{}
+	_body, _err := client.QuerySmsReportsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
