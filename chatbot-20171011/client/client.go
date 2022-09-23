@@ -5,24 +5,19 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type Children struct {
-	// 地区代号
-	AreaCode *string `json:"AreaCode,omitempty" xml:"AreaCode,omitempty"`
-	// 分类Id
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// 子元素
-	Childrens []*Children `json:"Childrens,omitempty" xml:"Childrens,omitempty" type:"Repeated"`
-	// 名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 父分类Id
-	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	AreaCode         *string     `json:"AreaCode,omitempty" xml:"AreaCode,omitempty"`
+	CategoryId       *int64      `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Childrens        []*Children `json:"Childrens,omitempty" xml:"Childrens,omitempty" type:"Repeated"`
+	Name             *string     `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParentCategoryId *int64      `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
 }
 
 func (s Children) String() string {
@@ -59,15 +54,11 @@ func (s *Children) SetParentCategoryId(v int64) *Children {
 }
 
 type IntentCreateDTO struct {
-	// IntentId
-	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// RuleCheck
+	IntentId  *int64               `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	Name      *string              `json:"Name,omitempty" xml:"Name,omitempty"`
 	RuleCheck []*RuleMtopDTO       `json:"RuleCheck,omitempty" xml:"RuleCheck,omitempty" type:"Repeated"`
 	Slot      []*SlotrecordMtopDTO `json:"Slot,omitempty" xml:"Slot,omitempty" type:"Repeated"`
-	// UserSay
-	UserSay []*UsersayMtopDTO `json:"UserSay,omitempty" xml:"UserSay,omitempty" type:"Repeated"`
+	UserSay   []*UsersayMtopDTO    `json:"UserSay,omitempty" xml:"UserSay,omitempty" type:"Repeated"`
 }
 
 func (s IntentCreateDTO) String() string {
@@ -104,11 +95,8 @@ func (s *IntentCreateDTO) SetUserSay(v []*UsersayMtopDTO) *IntentCreateDTO {
 }
 
 type PaasButtonDTO struct {
-	// Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Text
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// Type
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -136,10 +124,8 @@ func (s *PaasButtonDTO) SetType(v string) *PaasButtonDTO {
 }
 
 type PaasButtonListDTO struct {
-	// Button
 	Button []*PaasButtonDTO `json:"Button,omitempty" xml:"Button,omitempty" type:"Repeated"`
-	// Intro
-	Intro *string `json:"Intro,omitempty" xml:"Intro,omitempty"`
+	Intro  *string          `json:"Intro,omitempty" xml:"Intro,omitempty"`
 }
 
 func (s PaasButtonListDTO) String() string {
@@ -161,15 +147,10 @@ func (s *PaasButtonListDTO) SetIntro(v string) *PaasButtonListDTO {
 }
 
 type PaasConditionEntryDTO struct {
-	// Id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Term
-	Term *string `json:"Term,omitempty" xml:"Term,omitempty"`
-	// Type
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Value
+	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Term  *string `json:"Term,omitempty" xml:"Term,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -207,7 +188,6 @@ func (s *PaasConditionEntryDTO) SetValue(v string) *PaasConditionEntryDTO {
 }
 
 type PaasConditionSetDTO struct {
-	// ConditionEntries
 	ConditionEntries []*PaasConditionEntryDTO `json:"ConditionEntries,omitempty" xml:"ConditionEntries,omitempty" type:"Repeated"`
 }
 
@@ -225,13 +205,9 @@ func (s *PaasConditionSetDTO) SetConditionEntries(v []*PaasConditionEntryDTO) *P
 }
 
 type PaasEdgeDTO struct {
-	// Id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Label
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// Source
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Label  *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// Target
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
@@ -264,7 +240,6 @@ func (s *PaasEdgeDTO) SetTarget(v string) *PaasEdgeDTO {
 }
 
 type PaasEntryDTO struct {
-	// PluginFieldDataEntry
 	PluginFieldDataEntry *PaasEntryPluginFieldDataDTO `json:"PluginFieldDataEntry,omitempty" xml:"PluginFieldDataEntry,omitempty"`
 }
 
@@ -282,12 +257,9 @@ func (s *PaasEntryDTO) SetPluginFieldDataEntry(v *PaasEntryPluginFieldDataDTO) *
 }
 
 type PaasEntryPluginFieldDataDTO struct {
-	// ContentEntry
 	ContentEntry []*PaasConditionSetDTO `json:"ContentEntry,omitempty" xml:"ContentEntry,omitempty" type:"Repeated"`
-	// LifeSpan
-	LifeSpan *int64 `json:"LifeSpan,omitempty" xml:"LifeSpan,omitempty"`
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	LifeSpan     *int64                 `json:"LifeSpan,omitempty" xml:"LifeSpan,omitempty"`
+	Name         *string                `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s PaasEntryPluginFieldDataDTO) String() string {
@@ -314,7 +286,6 @@ func (s *PaasEntryPluginFieldDataDTO) SetName(v string) *PaasEntryPluginFieldDat
 }
 
 type PaasFunctionDTO struct {
-	// PluginFieldDataFunction
 	PluginFieldDataFunction *PaasFunctionPluginFieldDataDTO `json:"PluginFieldDataFunction,omitempty" xml:"PluginFieldDataFunction,omitempty"`
 }
 
@@ -332,26 +303,16 @@ func (s *PaasFunctionDTO) SetPluginFieldDataFunction(v *PaasFunctionPluginFieldD
 }
 
 type PaasFunctionPluginFieldDataDTO struct {
-	// AliyunFunction
-	AliyunFunction *string `json:"AliyunFunction,omitempty" xml:"AliyunFunction,omitempty"`
-	// AliyunService
-	AliyunService *string `json:"AliyunService,omitempty" xml:"AliyunService,omitempty"`
-	// Code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// EndPoint
-	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	// Function
-	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Params
-	Params map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
-	// Switch
-	Switch []*PaasSwitchCaseDTO `json:"Switch,omitempty" xml:"Switch,omitempty" type:"Repeated"`
-	// Type
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AliyunFunction *string                `json:"AliyunFunction,omitempty" xml:"AliyunFunction,omitempty"`
+	AliyunService  *string                `json:"AliyunService,omitempty" xml:"AliyunService,omitempty"`
+	Code           *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Description    *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndPoint       *string                `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+	Function       *string                `json:"Function,omitempty" xml:"Function,omitempty"`
+	Name           *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Params         map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
+	Switch         []*PaasSwitchCaseDTO   `json:"Switch,omitempty" xml:"Switch,omitempty" type:"Repeated"`
+	Type           *string                `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s PaasFunctionPluginFieldDataDTO) String() string {
@@ -413,16 +374,11 @@ func (s *PaasFunctionPluginFieldDataDTO) SetType(v string) *PaasFunctionPluginFi
 }
 
 type PaasFunctionPluginParams struct {
-	// Body
-	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	// Header
+	Body   *string            `json:"Body,omitempty" xml:"Body,omitempty"`
 	Header map[string]*string `json:"Header,omitempty" xml:"Header,omitempty"`
-	// Method
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// Query
-	Query map[string]*string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// Url
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Method *string            `json:"Method,omitempty" xml:"Method,omitempty"`
+	Query  map[string]*string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Url    *string            `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s PaasFunctionPluginParams) String() string {
@@ -459,18 +415,12 @@ func (s *PaasFunctionPluginParams) SetUrl(v string) *PaasFunctionPluginParams {
 }
 
 type PaasNodeDTO struct {
-	// Code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Label
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// PluginData
+	Code       *string            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Id         *string            `json:"Id,omitempty" xml:"Id,omitempty"`
+	Label      *string            `json:"Label,omitempty" xml:"Label,omitempty"`
 	PluginData *PaasPluginDataDTO `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
-	// Xx
-	Xx *float64 `json:"Xx,omitempty" xml:"Xx,omitempty"`
-	// Yy
-	Yy *float64 `json:"Yy,omitempty" xml:"Yy,omitempty"`
+	Xx         *float64           `json:"Xx,omitempty" xml:"Xx,omitempty"`
+	Yy         *float64           `json:"Yy,omitempty" xml:"Yy,omitempty"`
 }
 
 func (s PaasNodeDTO) String() string {
@@ -547,9 +497,7 @@ func (s *PaasPluginDataDTO) SetSlot(v *PaasSlotDTO) *PaasPluginDataDTO {
 }
 
 type PaasProcessData struct {
-	// Edges
 	Edges []*PaasEdgeDTO `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Repeated"`
-	// Nodes
 	Nodes []*PaasNodeDTO `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -589,14 +537,10 @@ func (s *PaasResponseDTO) SetPluginFieldDataResponse(v *PaasResponsePluginFieldD
 }
 
 type PaasResponseNodeContentDTO struct {
-	// ButtonList
 	ButtonList *PaasButtonListDTO `json:"ButtonList,omitempty" xml:"ButtonList,omitempty"`
-	// Image
-	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// Text
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// Type
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Image      *string            `json:"Image,omitempty" xml:"Image,omitempty"`
+	Text       *string            `json:"Text,omitempty" xml:"Text,omitempty"`
+	Type       *string            `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s PaasResponseNodeContentDTO) String() string {
@@ -628,10 +572,8 @@ func (s *PaasResponseNodeContentDTO) SetType(v string) *PaasResponseNodeContentD
 }
 
 type PaasResponsePluginFieldDataDTO struct {
-	// ContentResponse
 	ContentResponse *PaasResponseNodeContentDTO `json:"ContentResponse,omitempty" xml:"ContentResponse,omitempty"`
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name            *string                     `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s PaasResponsePluginFieldDataDTO) String() string {
@@ -653,18 +595,12 @@ func (s *PaasResponsePluginFieldDataDTO) SetName(v string) *PaasResponsePluginFi
 }
 
 type PaasSlotConfigDTO struct {
-	// IsArray
-	IsArray *bool `json:"IsArray,omitempty" xml:"IsArray,omitempty"`
-	// IsNecessary
-	IsNecessary *bool `json:"IsNecessary,omitempty" xml:"IsNecessary,omitempty"`
-	// LifeSpan
-	LifeSpan *int32 `json:"LifeSpan,omitempty" xml:"LifeSpan,omitempty"`
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Question
-	Question []*string `json:"Question,omitempty" xml:"Question,omitempty" type:"Repeated"`
-	// Value
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	IsArray     *bool     `json:"IsArray,omitempty" xml:"IsArray,omitempty"`
+	IsNecessary *bool     `json:"IsNecessary,omitempty" xml:"IsNecessary,omitempty"`
+	LifeSpan    *int32    `json:"LifeSpan,omitempty" xml:"LifeSpan,omitempty"`
+	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Question    []*string `json:"Question,omitempty" xml:"Question,omitempty" type:"Repeated"`
+	Value       *string   `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s PaasSlotConfigDTO) String() string {
@@ -723,16 +659,11 @@ func (s *PaasSlotDTO) SetPluginFieldDataSlot(v *PaasSlotPluginFieldDataDTO) *Paa
 }
 
 type PaasSlotPluginFieldDataDTO struct {
-	// ContentSlot
 	ContentSlot []*PaasSlotConfigDTO `json:"ContentSlot,omitempty" xml:"ContentSlot,omitempty" type:"Repeated"`
-	// IntentId
-	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// IntentName
-	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// IsSysIntent
-	IsSysIntent *bool `json:"IsSysIntent,omitempty" xml:"IsSysIntent,omitempty"`
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	IntentId    *string              `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentName  *string              `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	IsSysIntent *bool                `json:"IsSysIntent,omitempty" xml:"IsSysIntent,omitempty"`
+	Name        *string              `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s PaasSlotPluginFieldDataDTO) String() string {
@@ -769,15 +700,10 @@ func (s *PaasSlotPluginFieldDataDTO) SetName(v string) *PaasSlotPluginFieldDataD
 }
 
 type PaasSwitchCaseDTO struct {
-	// Id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Label
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// Type
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Value
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// VariableName
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Label        *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
 }
 
@@ -815,13 +741,9 @@ func (s *PaasSwitchCaseDTO) SetVariableName(v string) *PaasSwitchCaseDTO {
 }
 
 type RuleMtopDTO struct {
-	// Error
-	Error []*string `json:"Error,omitempty" xml:"Error,omitempty" type:"Repeated"`
-	// Strict
-	Strict *bool `json:"Strict,omitempty" xml:"Strict,omitempty"`
-	// Text
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// Warning
+	Error   []*string `json:"Error,omitempty" xml:"Error,omitempty" type:"Repeated"`
+	Strict  *bool     `json:"Strict,omitempty" xml:"Strict,omitempty"`
+	Text    *string   `json:"Text,omitempty" xml:"Text,omitempty"`
 	Warning []*string `json:"Warning,omitempty" xml:"Warning,omitempty" type:"Repeated"`
 }
 
@@ -854,10 +776,8 @@ func (s *RuleMtopDTO) SetWarning(v []*string) *RuleMtopDTO {
 }
 
 type SectionMtopDTO struct {
-	// SlotId
 	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	// Text
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Text   *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s SectionMtopDTO) String() string {
@@ -879,22 +799,14 @@ func (s *SectionMtopDTO) SetText(v string) *SectionMtopDTO {
 }
 
 type SlotrecordMtopDTO struct {
-	// Id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// IsArray
-	IsArray *bool `json:"IsArray,omitempty" xml:"IsArray,omitempty"`
-	// IsNecessary
-	IsNecessary *bool `json:"IsNecessary,omitempty" xml:"IsNecessary,omitempty"`
-	// LifeSpan
-	LifeSpan *int32 `json:"LifeSpan,omitempty" xml:"LifeSpan,omitempty"`
-	// Name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Question
-	Question []*string `json:"Question,omitempty" xml:"Question,omitempty" type:"Repeated"`
-	// Tags
-	Tags []*TagMtopDTO `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Value
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Id          *string       `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsArray     *bool         `json:"IsArray,omitempty" xml:"IsArray,omitempty"`
+	IsNecessary *bool         `json:"IsNecessary,omitempty" xml:"IsNecessary,omitempty"`
+	LifeSpan    *int32        `json:"LifeSpan,omitempty" xml:"LifeSpan,omitempty"`
+	Name        *string       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Question    []*string     `json:"Question,omitempty" xml:"Question,omitempty" type:"Repeated"`
+	Tags        []*TagMtopDTO `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Value       *string       `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SlotrecordMtopDTO) String() string {
@@ -946,10 +858,8 @@ func (s *SlotrecordMtopDTO) SetValue(v string) *SlotrecordMtopDTO {
 }
 
 type TagMtopDTO struct {
-	// UserSayId
 	UserSayId *string `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
-	// Value
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s TagMtopDTO) String() string {
@@ -971,9 +881,7 @@ func (s *TagMtopDTO) SetValue(v string) *TagMtopDTO {
 }
 
 type UpdateDialogFlowModuleDefinition struct {
-	// Edges
 	Edges []*PaasEdgeDTO `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Repeated"`
-	// Nodes
 	Nodes []*PaasNodeDTO `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -996,12 +904,9 @@ func (s *UpdateDialogFlowModuleDefinition) SetNodes(v []*PaasNodeDTO) *UpdateDia
 }
 
 type UsersayMtopDTO struct {
-	// Data
-	Data []*SectionMtopDTO `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Strict
-	Strict *bool `json:"Strict,omitempty" xml:"Strict,omitempty"`
+	Data   []*SectionMtopDTO `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Id     *string           `json:"Id,omitempty" xml:"Id,omitempty"`
+	Strict *bool             `json:"Strict,omitempty" xml:"Strict,omitempty"`
 }
 
 func (s UsersayMtopDTO) String() string {
@@ -1028,7 +933,6 @@ func (s *UsersayMtopDTO) SetStrict(v bool) *UsersayMtopDTO {
 }
 
 type ActivatePerspectiveRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
 }
@@ -1098,7 +1002,6 @@ func (s *ActivatePerspectiveResponse) SetBody(v *ActivatePerspectiveResponseBody
 }
 
 type AddSynonymRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CoreWordName *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
 	Synonym      *string `json:"Synonym,omitempty" xml:"Synonym,omitempty"`
@@ -1174,7 +1077,6 @@ func (s *AddSynonymResponse) SetBody(v *AddSynonymResponseBody) *AddSynonymRespo
 }
 
 type AppendEntityMemberRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey  *string                          `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	ApplyType *string                          `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
 	EntityId  *int64                           `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
@@ -1233,7 +1135,6 @@ func (s *AppendEntityMemberRequestMember) SetSynonyms(v []*string) *AppendEntity
 }
 
 type AppendEntityMemberShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	ApplyType    *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
 	EntityId     *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
@@ -1572,11 +1473,9 @@ type ChatResponseBodyMessages struct {
 	Knowledge    *ChatResponseBodyMessagesKnowledge    `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
 	Recommends   []*ChatResponseBodyMessagesRecommends `json:"Recommends,omitempty" xml:"Recommends,omitempty" type:"Repeated"`
 	Text         *ChatResponseBodyMessagesText         `json:"Text,omitempty" xml:"Text,omitempty" type:"Struct"`
-	// 在线场景，反问标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 语音场景，澄清内容
-	VoiceTitle *string `json:"VoiceTitle,omitempty" xml:"VoiceTitle,omitempty"`
+	Title        *string                               `json:"Title,omitempty" xml:"Title,omitempty"`
+	Type         *string                               `json:"Type,omitempty" xml:"Type,omitempty"`
+	VoiceTitle   *string                               `json:"VoiceTitle,omitempty" xml:"VoiceTitle,omitempty"`
 }
 
 func (s ChatResponseBodyMessages) String() string {
@@ -1928,7 +1827,6 @@ func (s *ChatResponse) SetBody(v *ChatResponseBody) *ChatResponse {
 }
 
 type CreateBotRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Avatar       *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
@@ -2028,10 +1926,7 @@ func (s *CreateBotResponse) SetBody(v *CreateBotResponseBody) *CreateBotResponse
 }
 
 type CreateCategoryRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey         *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	BizCode          *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	KnowledgeType    *int32  `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
 }
@@ -2046,16 +1941,6 @@ func (s CreateCategoryRequest) GoString() string {
 
 func (s *CreateCategoryRequest) SetAgentKey(v string) *CreateCategoryRequest {
 	s.AgentKey = &v
-	return s
-}
-
-func (s *CreateCategoryRequest) SetBizCode(v string) *CreateCategoryRequest {
-	s.BizCode = &v
-	return s
-}
-
-func (s *CreateCategoryRequest) SetKnowledgeType(v int32) *CreateCategoryRequest {
-	s.KnowledgeType = &v
 	return s
 }
 
@@ -2128,7 +2013,6 @@ func (s *CreateCategoryResponse) SetBody(v *CreateCategoryResponseBody) *CreateC
 }
 
 type CreateCoreWordRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CoreWordName *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
 }
@@ -2204,7 +2088,6 @@ func (s *CreateCoreWordResponse) SetBody(v *CreateCoreWordResponseBody) *CreateC
 }
 
 type CreateDialogRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DialogName  *string `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
@@ -2292,7 +2175,6 @@ func (s *CreateDialogResponse) SetBody(v *CreateDialogResponseBody) *CreateDialo
 }
 
 type CreateEntityRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string                       `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId   *int64                        `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	EntityName *string                       `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
@@ -2363,7 +2245,6 @@ func (s *CreateEntityRequestMembers) SetSynonyms(v []*string) *CreateEntityReque
 }
 
 type CreateEntityShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId      *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	EntityName    *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
@@ -2463,7 +2344,6 @@ func (s *CreateEntityResponse) SetBody(v *CreateEntityResponseBody) *CreateEntit
 }
 
 type CreateIntentRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey         *string          `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId         *int64           `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	IntentDefinition *IntentCreateDTO `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty"`
@@ -2493,7 +2373,6 @@ func (s *CreateIntentRequest) SetIntentDefinition(v *IntentCreateDTO) *CreateInt
 }
 
 type CreateIntentShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey               *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId               *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	IntentDefinitionShrink *string `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty"`
@@ -2575,7 +2454,6 @@ func (s *CreateIntentResponse) SetBody(v *CreateIntentResponseBody) *CreateInten
 }
 
 type CreateKnowledgeRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey  *string                          `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Knowledge *CreateKnowledgeRequestKnowledge `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
 }
@@ -2733,7 +2611,6 @@ func (s *CreateKnowledgeRequestKnowledgeSolutions) SetPlainText(v string) *Creat
 }
 
 type CreateKnowledgeShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	KnowledgeShrink *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 }
@@ -2809,7 +2686,6 @@ func (s *CreateKnowledgeResponse) SetBody(v *CreateKnowledgeResponseBody) *Creat
 }
 
 type CreatePerspectiveRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
@@ -2885,7 +2761,6 @@ func (s *CreatePerspectiveResponse) SetBody(v *CreatePerspectiveResponseBody) *C
 }
 
 type DeleteBotRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
@@ -2955,7 +2830,6 @@ func (s *DeleteBotResponse) SetBody(v *DeleteBotResponseBody) *DeleteBotResponse
 }
 
 type DeleteCategoryRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
@@ -3031,7 +2905,6 @@ func (s *DeleteCategoryResponse) SetBody(v *DeleteCategoryResponseBody) *DeleteC
 }
 
 type DeleteCoreWordRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CoreWordName *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
 }
@@ -3107,7 +2980,6 @@ func (s *DeleteCoreWordResponse) SetBody(v *DeleteCoreWordResponseBody) *DeleteC
 }
 
 type DeleteDialogRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 }
@@ -3177,7 +3049,6 @@ func (s *DeleteDialogResponse) SetBody(v *DeleteDialogResponseBody) *DeleteDialo
 }
 
 type DeleteEntityRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EntityId *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 }
@@ -3253,7 +3124,6 @@ func (s *DeleteEntityResponse) SetBody(v *DeleteEntityResponseBody) *DeleteEntit
 }
 
 type DeleteIntentRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	IntentId *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 }
@@ -3329,7 +3199,6 @@ func (s *DeleteIntentResponse) SetBody(v *DeleteIntentResponseBody) *DeleteInten
 }
 
 type DeleteKnowledgeRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
@@ -3399,7 +3268,6 @@ func (s *DeleteKnowledgeResponse) SetBody(v *DeleteKnowledgeResponseBody) *Delet
 }
 
 type DeletePerspectiveRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
 }
@@ -3475,7 +3343,6 @@ func (s *DeletePerspectiveResponse) SetBody(v *DeletePerspectiveResponseBody) *D
 }
 
 type DescribeBotRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
@@ -3628,7 +3495,6 @@ func (s *DescribeBotResponse) SetBody(v *DescribeBotResponseBody) *DescribeBotRe
 }
 
 type DescribeCategoryRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
@@ -3716,7 +3582,6 @@ func (s *DescribeCategoryResponse) SetBody(v *DescribeCategoryResponseBody) *Des
 }
 
 type DescribeCoreWordRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CoreWordName *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
 }
@@ -3816,7 +3681,6 @@ func (s *DescribeCoreWordResponse) SetBody(v *DescribeCoreWordResponseBody) *Des
 }
 
 type DescribeDialogRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 }
@@ -3958,7 +3822,6 @@ func (s *DescribeDialogResponse) SetBody(v *DescribeDialogResponseBody) *Describ
 }
 
 type DescribeDialogFlowRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 }
@@ -4130,7 +3993,6 @@ func (s *DescribeDialogFlowResponse) SetBody(v *DescribeDialogFlowResponseBody) 
 }
 
 type DescribeEntitiesRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EntityId *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 }
@@ -4289,7 +4151,6 @@ func (s *DescribeEntitiesResponse) SetBody(v *DescribeEntitiesResponseBody) *Des
 }
 
 type DescribeIntentRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	IntentId *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 }
@@ -4606,7 +4467,6 @@ func (s *DescribeIntentResponse) SetBody(v *DescribeIntentResponseBody) *Describ
 }
 
 type DescribeKnowledgeRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
@@ -4895,7 +4755,6 @@ func (s *DescribeKnowledgeResponse) SetBody(v *DescribeKnowledgeResponseBody) *D
 }
 
 type DescribePerspectiveRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
 }
@@ -5019,7 +4878,6 @@ func (s *DescribePerspectiveResponse) SetBody(v *DescribePerspectiveResponseBody
 }
 
 type DisableDialogFlowRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 }
@@ -5089,7 +4947,6 @@ func (s *DisableDialogFlowResponse) SetBody(v *DisableDialogFlowResponseBody) *D
 }
 
 type DisableKnowledgeRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
@@ -5159,7 +5016,6 @@ func (s *DisableKnowledgeResponse) SetBody(v *DisableKnowledgeResponseBody) *Dis
 }
 
 type FeedbackRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Feedback   *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -5271,7 +5127,6 @@ func (s *FeedbackResponse) SetBody(v *FeedbackResponseBody) *FeedbackResponse {
 }
 
 type GetAsyncResultRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -5365,7 +5220,6 @@ func (s *GetAsyncResultResponse) SetBody(v *GetAsyncResultResponseBody) *GetAsyn
 }
 
 type GetBotChatDataRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
@@ -5459,7 +5313,6 @@ func (s *GetBotChatDataResponse) SetBody(v *GetBotChatDataResponseBody) *GetBotC
 }
 
 type GetBotDsStatDataRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
@@ -5553,7 +5406,6 @@ func (s *GetBotDsStatDataResponse) SetBody(v *GetBotDsStatDataResponseBody) *Get
 }
 
 type GetBotKnowledgeStatDataRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
@@ -5647,7 +5499,6 @@ func (s *GetBotKnowledgeStatDataResponse) SetBody(v *GetBotKnowledgeStatDataResp
 }
 
 type GetBotSessionDataRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
@@ -5741,7 +5592,6 @@ func (s *GetBotSessionDataResponse) SetBody(v *GetBotSessionDataResponseBody) *G
 }
 
 type GetConversationListRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -5871,7 +5721,6 @@ func (s *GetConversationListResponse) SetBody(v *GetConversationListResponseBody
 }
 
 type ListBotChatHistorysRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
@@ -5971,7 +5820,6 @@ func (s *ListBotChatHistorysResponse) SetBody(v *ListBotChatHistorysResponseBody
 }
 
 type ListBotColdDsDatasRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
@@ -6071,7 +5919,6 @@ func (s *ListBotColdDsDatasResponse) SetBody(v *ListBotColdDsDatasResponseBody) 
 }
 
 type ListBotColdKnowledgesRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
@@ -6171,7 +6018,6 @@ func (s *ListBotColdKnowledgesResponse) SetBody(v *ListBotColdKnowledgesResponse
 }
 
 type ListBotDsDetailsRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
@@ -6271,7 +6117,6 @@ func (s *ListBotDsDetailsResponse) SetBody(v *ListBotDsDetailsResponseBody) *Lis
 }
 
 type ListBotHotDsDatasRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
@@ -6371,7 +6216,6 @@ func (s *ListBotHotDsDatasResponse) SetBody(v *ListBotHotDsDatasResponseBody) *L
 }
 
 type ListBotHotKnowledgesRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
@@ -6471,7 +6315,6 @@ func (s *ListBotHotKnowledgesResponse) SetBody(v *ListBotHotKnowledgesResponseBo
 }
 
 type ListBotKnowledgeDetailsRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Limit           *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
@@ -6571,7 +6414,6 @@ func (s *ListBotKnowledgeDetailsResponse) SetBody(v *ListBotKnowledgeDetailsResp
 }
 
 type ListBotReceptionDetailDatasRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
@@ -6665,7 +6507,6 @@ func (s *ListBotReceptionDetailDatasResponse) SetBody(v *ListBotReceptionDetailD
 }
 
 type ListConversationLogsRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey  *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
@@ -6747,7 +6588,6 @@ func (s *ListConversationLogsResponse) SetBody(v *ListConversationLogsResponseBo
 }
 
 type MoveKnowledgeCategoryRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CategoryId  *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
@@ -6823,7 +6663,6 @@ func (s *MoveKnowledgeCategoryResponse) SetBody(v *MoveKnowledgeCategoryResponse
 }
 
 type PublishDialogFlowRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 }
@@ -6893,7 +6732,6 @@ func (s *PublishDialogFlowResponse) SetBody(v *PublishDialogFlowResponseBody) *P
 }
 
 type PublishKnowledgeRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Async       *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
@@ -6969,7 +6807,6 @@ func (s *PublishKnowledgeResponse) SetBody(v *PublishKnowledgeResponseBody) *Pub
 }
 
 type QueryBotsRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -7122,7 +6959,6 @@ func (s *QueryBotsResponse) SetBody(v *QueryBotsResponseBody) *QueryBotsResponse
 }
 
 type QueryCategoriesRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey         *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	KnowledgeType    *int64  `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
 	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
@@ -7210,7 +7046,6 @@ func (s *QueryCategoriesResponse) SetBody(v *QueryCategoriesResponseBody) *Query
 }
 
 type QueryCoreWordsRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CoreWordName *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
 	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -7363,7 +7198,6 @@ func (s *QueryCoreWordsResponse) SetBody(v *QueryCoreWordsResponseBody) *QueryCo
 }
 
 type QueryDialogsRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogName *string `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -7558,7 +7392,6 @@ func (s *QueryDialogsResponse) SetBody(v *QueryDialogsResponseBody) *QueryDialog
 }
 
 type QueryEntitiesRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId   *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
@@ -7770,10 +7603,8 @@ func (s *QueryEntitiesResponse) SetBody(v *QueryEntitiesResponseBody) *QueryEnti
 }
 
 type QueryIntentsRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DialogId *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
-	// 机器人实例 ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DialogId   *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -8135,7 +7966,6 @@ func (s *QueryIntentsResponse) SetBody(v *QueryIntentsResponseBody) *QueryIntent
 }
 
 type QueryKnowledgesRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey       *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CategoryId     *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	CoreWordName   *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
@@ -8336,7 +8166,6 @@ func (s *QueryKnowledgesResponse) SetBody(v *QueryKnowledgesResponseBody) *Query
 }
 
 type QueryPerspectivesRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 }
 
@@ -8471,7 +8300,6 @@ func (s *QueryPerspectivesResponse) SetBody(v *QueryPerspectivesResponseBody) *Q
 }
 
 type QuerySystemEntitiesRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 }
@@ -8576,7 +8404,6 @@ func (s *QuerySystemEntitiesResponse) SetBody(v *QuerySystemEntitiesResponseBody
 }
 
 type RemoveEntityMemberRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string                          `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EntityId   *int64                           `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	Member     *RemoveEntityMemberRequestMember `json:"Member,omitempty" xml:"Member,omitempty" type:"Struct"`
@@ -8635,7 +8462,6 @@ func (s *RemoveEntityMemberRequestMember) SetSynonyms(v []*string) *RemoveEntity
 }
 
 type RemoveEntityMemberShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EntityId     *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	MemberShrink *string `json:"Member,omitempty" xml:"Member,omitempty"`
@@ -8723,7 +8549,6 @@ func (s *RemoveEntityMemberResponse) SetBody(v *RemoveEntityMemberResponseBody) 
 }
 
 type RemoveSynonymRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CoreWordName *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
 	Synonym      *string `json:"Synonym,omitempty" xml:"Synonym,omitempty"`
@@ -8799,7 +8624,6 @@ func (s *RemoveSynonymResponse) SetBody(v *RemoveSynonymResponseBody) *RemoveSyn
 }
 
 type TestDialogFlowRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 }
@@ -8869,7 +8693,6 @@ func (s *TestDialogFlowResponse) SetBody(v *TestDialogFlowResponseBody) *TestDia
 }
 
 type UpdateCategoryRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -8951,7 +8774,6 @@ func (s *UpdateCategoryResponse) SetBody(v *UpdateCategoryResponseBody) *UpdateC
 }
 
 type UpdateCoreWordRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CoreWordCode *string `json:"CoreWordCode,omitempty" xml:"CoreWordCode,omitempty"`
 	CoreWordName *string `json:"CoreWordName,omitempty" xml:"CoreWordName,omitempty"`
@@ -9033,7 +8855,6 @@ func (s *UpdateCoreWordResponse) SetBody(v *UpdateCoreWordResponseBody) *UpdateC
 }
 
 type UpdateDialogRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DialogId    *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
@@ -9115,7 +8936,6 @@ func (s *UpdateDialogResponse) SetBody(v *UpdateDialogResponseBody) *UpdateDialo
 }
 
 type UpdateDialogFlowRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey         *string                                  `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId         *int64                                   `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	ModuleDefinition *UpdateDialogFlowRequestModuleDefinition `json:"ModuleDefinition,omitempty" xml:"ModuleDefinition,omitempty" type:"Struct"`
@@ -9168,7 +8988,6 @@ func (s *UpdateDialogFlowRequestModuleDefinition) SetModuleDefinition(v *PaasPro
 }
 
 type UpdateDialogFlowShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey               *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	DialogId               *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
 	ModuleDefinitionShrink *string `json:"ModuleDefinition,omitempty" xml:"ModuleDefinition,omitempty"`
@@ -9244,7 +9063,6 @@ func (s *UpdateDialogFlowResponse) SetBody(v *UpdateDialogFlowResponseBody) *Upd
 }
 
 type UpdateEntityRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string                       `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EntityId   *int64                        `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	EntityName *string                       `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
@@ -9315,7 +9133,6 @@ func (s *UpdateEntityRequestMembers) SetSynonyms(v []*string) *UpdateEntityReque
 }
 
 type UpdateEntityShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EntityId      *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	EntityName    *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
@@ -9415,7 +9232,6 @@ func (s *UpdateEntityResponse) SetBody(v *UpdateEntityResponseBody) *UpdateEntit
 }
 
 type UpdateIntentRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey         *string          `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	IntentDefinition *IntentCreateDTO `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty"`
 	IntentId         *int64           `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
@@ -9445,7 +9261,6 @@ func (s *UpdateIntentRequest) SetIntentId(v int64) *UpdateIntentRequest {
 }
 
 type UpdateIntentShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey               *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	IntentDefinitionShrink *string `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty"`
 	IntentId               *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
@@ -9527,7 +9342,6 @@ func (s *UpdateIntentResponse) SetBody(v *UpdateIntentResponseBody) *UpdateInten
 }
 
 type UpdateKnowledgeRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey  *string                          `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Knowledge *UpdateKnowledgeRequestKnowledge `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
 }
@@ -9721,7 +9535,6 @@ func (s *UpdateKnowledgeRequestKnowledgeSolutions) SetSolutionId(v int64) *Updat
 }
 
 type UpdateKnowledgeShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	KnowledgeShrink *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 }
@@ -9797,7 +9610,6 @@ func (s *UpdateKnowledgeResponse) SetBody(v *UpdateKnowledgeResponseBody) *Updat
 }
 
 type UpdatePerspectiveRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
@@ -10301,14 +10113,6 @@ func (client *Client) CreateCategoryWithOptions(request *CreateCategoryRequest, 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
 		query["AgentKey"] = request.AgentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
-		query["BizCode"] = request.BizCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KnowledgeType)) {
-		query["KnowledgeType"] = request.KnowledgeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
