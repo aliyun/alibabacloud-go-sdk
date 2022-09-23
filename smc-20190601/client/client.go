@@ -5,44 +5,151 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreateAccessTokenRequest struct {
+	Count                *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	TimeToLiveInDays     *string `json:"TimeToLiveInDays,omitempty" xml:"TimeToLiveInDays,omitempty"`
+}
+
+func (s CreateAccessTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessTokenRequest) SetCount(v string) *CreateAccessTokenRequest {
+	s.Count = &v
+	return s
+}
+
+func (s *CreateAccessTokenRequest) SetDescription(v string) *CreateAccessTokenRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAccessTokenRequest) SetName(v string) *CreateAccessTokenRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAccessTokenRequest) SetOwnerId(v int64) *CreateAccessTokenRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateAccessTokenRequest) SetResourceOwnerAccount(v string) *CreateAccessTokenRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateAccessTokenRequest) SetTimeToLiveInDays(v string) *CreateAccessTokenRequest {
+	s.TimeToLiveInDays = &v
+	return s
+}
+
+type CreateAccessTokenResponseBody struct {
+	AccessTokenCode *string `json:"AccessTokenCode,omitempty" xml:"AccessTokenCode,omitempty"`
+	AccessTokenId   *string `json:"AccessTokenId,omitempty" xml:"AccessTokenId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAccessTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessTokenResponseBody) SetAccessTokenCode(v string) *CreateAccessTokenResponseBody {
+	s.AccessTokenCode = &v
+	return s
+}
+
+func (s *CreateAccessTokenResponseBody) SetAccessTokenId(v string) *CreateAccessTokenResponseBody {
+	s.AccessTokenId = &v
+	return s
+}
+
+func (s *CreateAccessTokenResponseBody) SetRequestId(v string) *CreateAccessTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAccessTokenResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAccessTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAccessTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessTokenResponse) SetHeaders(v map[string]*string) *CreateAccessTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAccessTokenResponse) SetStatusCode(v int32) *CreateAccessTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAccessTokenResponse) SetBody(v *CreateAccessTokenResponseBody) *CreateAccessTokenResponse {
+	s.Body = v
+	return s
+}
+
 type CreateReplicationJobRequest struct {
-	OwnerId                *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount   *string                                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	RegionId               *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClientToken            *string                                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Name                   *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description            *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	SourceId               *string                                      `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	TargetType             *string                                      `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	ScheduledStartTime     *string                                      `json:"ScheduledStartTime,omitempty" xml:"ScheduledStartTime,omitempty"`
-	ValidTime              *string                                      `json:"ValidTime,omitempty" xml:"ValidTime,omitempty"`
-	ImageName              *string                                      `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	InstanceId             *string                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SystemDiskSize         *int32                                       `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	VpcId                  *string                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VSwitchId              *string                                      `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ReplicationParameters  *string                                      `json:"ReplicationParameters,omitempty" xml:"ReplicationParameters,omitempty"`
-	NetMode                *int32                                       `json:"NetMode,omitempty" xml:"NetMode,omitempty"`
-	RunOnce                *bool                                        `json:"RunOnce,omitempty" xml:"RunOnce,omitempty"`
-	Frequency              *int32                                       `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	MaxNumberOfImageToKeep *int32                                       `json:"MaxNumberOfImageToKeep,omitempty" xml:"MaxNumberOfImageToKeep,omitempty"`
-	InstanceType           *string                                      `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	LaunchTemplateId       *string                                      `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
-	LaunchTemplateVersion  *string                                      `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
-	InstanceRamRole        *string                                      `json:"InstanceRamRole,omitempty" xml:"InstanceRamRole,omitempty"`
 	ContainerNamespace     *string                                      `json:"ContainerNamespace,omitempty" xml:"ContainerNamespace,omitempty"`
 	ContainerRepository    *string                                      `json:"ContainerRepository,omitempty" xml:"ContainerRepository,omitempty"`
 	ContainerTag           *string                                      `json:"ContainerTag,omitempty" xml:"ContainerTag,omitempty"`
-	LicenseType            *string                                      `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
 	DataDisk               []*CreateReplicationJobRequestDataDisk       `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	Tag                    []*CreateReplicationJobRequestTag            `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Description            *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	Frequency              *int32                                       `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	ImageName              *string                                      `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	InstanceId             *string                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceRamRole        *string                                      `json:"InstanceRamRole,omitempty" xml:"InstanceRamRole,omitempty"`
+	InstanceType           *string                                      `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	JobType                *int32                                       `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	LaunchTemplateId       *string                                      `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	LaunchTemplateVersion  *string                                      `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
+	LicenseType            *string                                      `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
+	MaxNumberOfImageToKeep *int32                                       `json:"MaxNumberOfImageToKeep,omitempty" xml:"MaxNumberOfImageToKeep,omitempty"`
+	Name                   *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetMode                *int32                                       `json:"NetMode,omitempty" xml:"NetMode,omitempty"`
+	OwnerId                *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId               *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReplicationParameters  *string                                      `json:"ReplicationParameters,omitempty" xml:"ReplicationParameters,omitempty"`
+	ResourceOwnerAccount   *string                                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	RunOnce                *bool                                        `json:"RunOnce,omitempty" xml:"RunOnce,omitempty"`
+	ScheduledStartTime     *string                                      `json:"ScheduledStartTime,omitempty" xml:"ScheduledStartTime,omitempty"`
+	SourceId               *string                                      `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SystemDiskPart         []*CreateReplicationJobRequestSystemDiskPart `json:"SystemDiskPart,omitempty" xml:"SystemDiskPart,omitempty" type:"Repeated"`
+	SystemDiskSize         *int32                                       `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	Tag                    []*CreateReplicationJobRequestTag            `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TargetType             *string                                      `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	VSwitchId              *string                                      `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ValidTime              *string                                      `json:"ValidTime,omitempty" xml:"ValidTime,omitempty"`
+	VpcId                  *string                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateReplicationJobRequest) String() string {
@@ -53,123 +160,8 @@ func (s CreateReplicationJobRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateReplicationJobRequest) SetOwnerId(v int64) *CreateReplicationJobRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetResourceOwnerAccount(v string) *CreateReplicationJobRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetRegionId(v string) *CreateReplicationJobRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *CreateReplicationJobRequest) SetClientToken(v string) *CreateReplicationJobRequest {
 	s.ClientToken = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetName(v string) *CreateReplicationJobRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetDescription(v string) *CreateReplicationJobRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetSourceId(v string) *CreateReplicationJobRequest {
-	s.SourceId = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetTargetType(v string) *CreateReplicationJobRequest {
-	s.TargetType = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetScheduledStartTime(v string) *CreateReplicationJobRequest {
-	s.ScheduledStartTime = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetValidTime(v string) *CreateReplicationJobRequest {
-	s.ValidTime = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetImageName(v string) *CreateReplicationJobRequest {
-	s.ImageName = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetInstanceId(v string) *CreateReplicationJobRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetSystemDiskSize(v int32) *CreateReplicationJobRequest {
-	s.SystemDiskSize = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetVpcId(v string) *CreateReplicationJobRequest {
-	s.VpcId = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetVSwitchId(v string) *CreateReplicationJobRequest {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetReplicationParameters(v string) *CreateReplicationJobRequest {
-	s.ReplicationParameters = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetNetMode(v int32) *CreateReplicationJobRequest {
-	s.NetMode = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetRunOnce(v bool) *CreateReplicationJobRequest {
-	s.RunOnce = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetFrequency(v int32) *CreateReplicationJobRequest {
-	s.Frequency = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetMaxNumberOfImageToKeep(v int32) *CreateReplicationJobRequest {
-	s.MaxNumberOfImageToKeep = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetInstanceType(v string) *CreateReplicationJobRequest {
-	s.InstanceType = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetLaunchTemplateId(v string) *CreateReplicationJobRequest {
-	s.LaunchTemplateId = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetLaunchTemplateVersion(v string) *CreateReplicationJobRequest {
-	s.LaunchTemplateVersion = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequest) SetInstanceRamRole(v string) *CreateReplicationJobRequest {
-	s.InstanceRamRole = &v
 	return s
 }
 
@@ -188,13 +180,118 @@ func (s *CreateReplicationJobRequest) SetContainerTag(v string) *CreateReplicati
 	return s
 }
 
+func (s *CreateReplicationJobRequest) SetDataDisk(v []*CreateReplicationJobRequestDataDisk) *CreateReplicationJobRequest {
+	s.DataDisk = v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetDescription(v string) *CreateReplicationJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetFrequency(v int32) *CreateReplicationJobRequest {
+	s.Frequency = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetImageName(v string) *CreateReplicationJobRequest {
+	s.ImageName = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetInstanceId(v string) *CreateReplicationJobRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetInstanceRamRole(v string) *CreateReplicationJobRequest {
+	s.InstanceRamRole = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetInstanceType(v string) *CreateReplicationJobRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetJobType(v int32) *CreateReplicationJobRequest {
+	s.JobType = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetLaunchTemplateId(v string) *CreateReplicationJobRequest {
+	s.LaunchTemplateId = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetLaunchTemplateVersion(v string) *CreateReplicationJobRequest {
+	s.LaunchTemplateVersion = &v
+	return s
+}
+
 func (s *CreateReplicationJobRequest) SetLicenseType(v string) *CreateReplicationJobRequest {
 	s.LicenseType = &v
 	return s
 }
 
-func (s *CreateReplicationJobRequest) SetDataDisk(v []*CreateReplicationJobRequestDataDisk) *CreateReplicationJobRequest {
-	s.DataDisk = v
+func (s *CreateReplicationJobRequest) SetMaxNumberOfImageToKeep(v int32) *CreateReplicationJobRequest {
+	s.MaxNumberOfImageToKeep = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetName(v string) *CreateReplicationJobRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetNetMode(v int32) *CreateReplicationJobRequest {
+	s.NetMode = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetOwnerId(v int64) *CreateReplicationJobRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetRegionId(v string) *CreateReplicationJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetReplicationParameters(v string) *CreateReplicationJobRequest {
+	s.ReplicationParameters = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetResourceOwnerAccount(v string) *CreateReplicationJobRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetRunOnce(v bool) *CreateReplicationJobRequest {
+	s.RunOnce = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetScheduledStartTime(v string) *CreateReplicationJobRequest {
+	s.ScheduledStartTime = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetSourceId(v string) *CreateReplicationJobRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetSystemDiskPart(v []*CreateReplicationJobRequestSystemDiskPart) *CreateReplicationJobRequest {
+	s.SystemDiskPart = v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetSystemDiskSize(v int32) *CreateReplicationJobRequest {
+	s.SystemDiskSize = &v
 	return s
 }
 
@@ -203,8 +300,23 @@ func (s *CreateReplicationJobRequest) SetTag(v []*CreateReplicationJobRequestTag
 	return s
 }
 
-func (s *CreateReplicationJobRequest) SetSystemDiskPart(v []*CreateReplicationJobRequestSystemDiskPart) *CreateReplicationJobRequest {
-	s.SystemDiskPart = v
+func (s *CreateReplicationJobRequest) SetTargetType(v string) *CreateReplicationJobRequest {
+	s.TargetType = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetVSwitchId(v string) *CreateReplicationJobRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetValidTime(v string) *CreateReplicationJobRequest {
+	s.ValidTime = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequest) SetVpcId(v string) *CreateReplicationJobRequest {
+	s.VpcId = &v
 	return s
 }
 
@@ -238,9 +350,9 @@ func (s *CreateReplicationJobRequestDataDisk) SetSize(v int32) *CreateReplicatio
 }
 
 type CreateReplicationJobRequestDataDiskPart struct {
-	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
 	Block     *bool   `json:"Block,omitempty" xml:"Block,omitempty"`
 	Device    *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
 }
 
 func (s CreateReplicationJobRequestDataDiskPart) String() string {
@@ -251,11 +363,6 @@ func (s CreateReplicationJobRequestDataDiskPart) GoString() string {
 	return s.String()
 }
 
-func (s *CreateReplicationJobRequestDataDiskPart) SetSizeBytes(v int64) *CreateReplicationJobRequestDataDiskPart {
-	s.SizeBytes = &v
-	return s
-}
-
 func (s *CreateReplicationJobRequestDataDiskPart) SetBlock(v bool) *CreateReplicationJobRequestDataDiskPart {
 	s.Block = &v
 	return s
@@ -263,6 +370,40 @@ func (s *CreateReplicationJobRequestDataDiskPart) SetBlock(v bool) *CreateReplic
 
 func (s *CreateReplicationJobRequestDataDiskPart) SetDevice(v string) *CreateReplicationJobRequestDataDiskPart {
 	s.Device = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequestDataDiskPart) SetSizeBytes(v int64) *CreateReplicationJobRequestDataDiskPart {
+	s.SizeBytes = &v
+	return s
+}
+
+type CreateReplicationJobRequestSystemDiskPart struct {
+	Block     *bool   `json:"Block,omitempty" xml:"Block,omitempty"`
+	Device    *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
+}
+
+func (s CreateReplicationJobRequestSystemDiskPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateReplicationJobRequestSystemDiskPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateReplicationJobRequestSystemDiskPart) SetBlock(v bool) *CreateReplicationJobRequestSystemDiskPart {
+	s.Block = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequestSystemDiskPart) SetDevice(v string) *CreateReplicationJobRequestSystemDiskPart {
+	s.Device = &v
+	return s
+}
+
+func (s *CreateReplicationJobRequestSystemDiskPart) SetSizeBytes(v int64) *CreateReplicationJobRequestSystemDiskPart {
+	s.SizeBytes = &v
 	return s
 }
 
@@ -289,38 +430,9 @@ func (s *CreateReplicationJobRequestTag) SetValue(v string) *CreateReplicationJo
 	return s
 }
 
-type CreateReplicationJobRequestSystemDiskPart struct {
-	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
-	Block     *bool   `json:"Block,omitempty" xml:"Block,omitempty"`
-	Device    *string `json:"Device,omitempty" xml:"Device,omitempty"`
-}
-
-func (s CreateReplicationJobRequestSystemDiskPart) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateReplicationJobRequestSystemDiskPart) GoString() string {
-	return s.String()
-}
-
-func (s *CreateReplicationJobRequestSystemDiskPart) SetSizeBytes(v int64) *CreateReplicationJobRequestSystemDiskPart {
-	s.SizeBytes = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequestSystemDiskPart) SetBlock(v bool) *CreateReplicationJobRequestSystemDiskPart {
-	s.Block = &v
-	return s
-}
-
-func (s *CreateReplicationJobRequestSystemDiskPart) SetDevice(v string) *CreateReplicationJobRequestSystemDiskPart {
-	s.Device = &v
-	return s
-}
-
 type CreateReplicationJobResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateReplicationJobResponseBody) String() string {
@@ -331,19 +443,20 @@ func (s CreateReplicationJobResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateReplicationJobResponseBody) SetRequestId(v string) *CreateReplicationJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateReplicationJobResponseBody) SetJobId(v string) *CreateReplicationJobResponseBody {
 	s.JobId = &v
 	return s
 }
 
+func (s *CreateReplicationJobResponseBody) SetRequestId(v string) *CreateReplicationJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type CreateReplicationJobResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateReplicationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateReplicationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateReplicationJobResponse) String() string {
@@ -359,15 +472,20 @@ func (s *CreateReplicationJobResponse) SetHeaders(v map[string]*string) *CreateR
 	return s
 }
 
+func (s *CreateReplicationJobResponse) SetStatusCode(v int32) *CreateReplicationJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateReplicationJobResponse) SetBody(v *CreateReplicationJobResponseBody) *CreateReplicationJobResponse {
 	s.Body = v
 	return s
 }
 
 type CutOverReplicationJobRequest struct {
+	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	SyncData             *bool   `json:"SyncData,omitempty" xml:"SyncData,omitempty"`
 }
 
@@ -379,6 +497,11 @@ func (s CutOverReplicationJobRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CutOverReplicationJobRequest) SetJobId(v string) *CutOverReplicationJobRequest {
+	s.JobId = &v
+	return s
+}
+
 func (s *CutOverReplicationJobRequest) SetOwnerId(v int64) *CutOverReplicationJobRequest {
 	s.OwnerId = &v
 	return s
@@ -386,11 +509,6 @@ func (s *CutOverReplicationJobRequest) SetOwnerId(v int64) *CutOverReplicationJo
 
 func (s *CutOverReplicationJobRequest) SetResourceOwnerAccount(v string) *CutOverReplicationJobRequest {
 	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *CutOverReplicationJobRequest) SetJobId(v string) *CutOverReplicationJobRequest {
-	s.JobId = &v
 	return s
 }
 
@@ -417,8 +535,9 @@ func (s *CutOverReplicationJobResponseBody) SetRequestId(v string) *CutOverRepli
 }
 
 type CutOverReplicationJobResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CutOverReplicationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CutOverReplicationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CutOverReplicationJobResponse) String() string {
@@ -434,15 +553,95 @@ func (s *CutOverReplicationJobResponse) SetHeaders(v map[string]*string) *CutOve
 	return s
 }
 
+func (s *CutOverReplicationJobResponse) SetStatusCode(v int32) *CutOverReplicationJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CutOverReplicationJobResponse) SetBody(v *CutOverReplicationJobResponseBody) *CutOverReplicationJobResponse {
 	s.Body = v
 	return s
 }
 
-type DeleteReplicationJobRequest struct {
+type DeleteAccessTokenRequest struct {
+	AccessTokenId        *string `json:"AccessTokenId,omitempty" xml:"AccessTokenId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+}
+
+func (s DeleteAccessTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessTokenRequest) SetAccessTokenId(v string) *DeleteAccessTokenRequest {
+	s.AccessTokenId = &v
+	return s
+}
+
+func (s *DeleteAccessTokenRequest) SetOwnerId(v int64) *DeleteAccessTokenRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteAccessTokenRequest) SetResourceOwnerAccount(v string) *DeleteAccessTokenRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+type DeleteAccessTokenResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAccessTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessTokenResponseBody) SetRequestId(v string) *DeleteAccessTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAccessTokenResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAccessTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAccessTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessTokenResponse) SetHeaders(v map[string]*string) *DeleteAccessTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAccessTokenResponse) SetStatusCode(v int32) *DeleteAccessTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAccessTokenResponse) SetBody(v *DeleteAccessTokenResponseBody) *DeleteAccessTokenResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteReplicationJobRequest struct {
 	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
 
 func (s DeleteReplicationJobRequest) String() string {
@@ -453,6 +652,11 @@ func (s DeleteReplicationJobRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteReplicationJobRequest) SetJobId(v string) *DeleteReplicationJobRequest {
+	s.JobId = &v
+	return s
+}
+
 func (s *DeleteReplicationJobRequest) SetOwnerId(v int64) *DeleteReplicationJobRequest {
 	s.OwnerId = &v
 	return s
@@ -460,11 +664,6 @@ func (s *DeleteReplicationJobRequest) SetOwnerId(v int64) *DeleteReplicationJobR
 
 func (s *DeleteReplicationJobRequest) SetResourceOwnerAccount(v string) *DeleteReplicationJobRequest {
 	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DeleteReplicationJobRequest) SetJobId(v string) *DeleteReplicationJobRequest {
-	s.JobId = &v
 	return s
 }
 
@@ -486,8 +685,9 @@ func (s *DeleteReplicationJobResponseBody) SetRequestId(v string) *DeleteReplica
 }
 
 type DeleteReplicationJobResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteReplicationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteReplicationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteReplicationJobResponse) String() string {
@@ -503,16 +703,21 @@ func (s *DeleteReplicationJobResponse) SetHeaders(v map[string]*string) *DeleteR
 	return s
 }
 
+func (s *DeleteReplicationJobResponse) SetStatusCode(v int32) *DeleteReplicationJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteReplicationJobResponse) SetBody(v *DeleteReplicationJobResponseBody) *DeleteReplicationJobResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteSourceServerRequest struct {
+	Force                *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	SourceId             *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	Force                *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 }
 
 func (s DeleteSourceServerRequest) String() string {
@@ -521,6 +726,11 @@ func (s DeleteSourceServerRequest) String() string {
 
 func (s DeleteSourceServerRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteSourceServerRequest) SetForce(v bool) *DeleteSourceServerRequest {
+	s.Force = &v
+	return s
 }
 
 func (s *DeleteSourceServerRequest) SetOwnerId(v int64) *DeleteSourceServerRequest {
@@ -535,11 +745,6 @@ func (s *DeleteSourceServerRequest) SetResourceOwnerAccount(v string) *DeleteSou
 
 func (s *DeleteSourceServerRequest) SetSourceId(v string) *DeleteSourceServerRequest {
 	s.SourceId = &v
-	return s
-}
-
-func (s *DeleteSourceServerRequest) SetForce(v bool) *DeleteSourceServerRequest {
-	s.Force = &v
 	return s
 }
 
@@ -561,8 +766,9 @@ func (s *DeleteSourceServerResponseBody) SetRequestId(v string) *DeleteSourceSer
 }
 
 type DeleteSourceServerResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSourceServerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSourceServerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSourceServerResponse) String() string {
@@ -578,22 +784,29 @@ func (s *DeleteSourceServerResponse) SetHeaders(v map[string]*string) *DeleteSou
 	return s
 }
 
+func (s *DeleteSourceServerResponse) SetStatusCode(v int32) *DeleteSourceServerResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteSourceServerResponse) SetBody(v *DeleteSourceServerResponseBody) *DeleteSourceServerResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeReplicationJobsRequest struct {
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 	BusinessStatus       *string   `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	InstanceId           []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	JobId                []*string `json:"JobId,omitempty" xml:"JobId,omitempty" type:"Repeated"`
+	JobType              *int32    `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber           *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	SourceId             []*string `json:"SourceId,omitempty" xml:"SourceId,omitempty" type:"Repeated"`
-	JobId                []*string `json:"JobId,omitempty" xml:"JobId,omitempty" type:"Repeated"`
+	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeReplicationJobsRequest) String() string {
@@ -604,13 +817,23 @@ func (s DescribeReplicationJobsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeReplicationJobsRequest) SetOwnerId(v int64) *DescribeReplicationJobsRequest {
-	s.OwnerId = &v
+func (s *DescribeReplicationJobsRequest) SetBusinessStatus(v string) *DescribeReplicationJobsRequest {
+	s.BusinessStatus = &v
 	return s
 }
 
-func (s *DescribeReplicationJobsRequest) SetResourceOwnerAccount(v string) *DescribeReplicationJobsRequest {
-	s.ResourceOwnerAccount = &v
+func (s *DescribeReplicationJobsRequest) SetInstanceId(v []*string) *DescribeReplicationJobsRequest {
+	s.InstanceId = v
+	return s
+}
+
+func (s *DescribeReplicationJobsRequest) SetJobId(v []*string) *DescribeReplicationJobsRequest {
+	s.JobId = v
+	return s
+}
+
+func (s *DescribeReplicationJobsRequest) SetJobType(v int32) *DescribeReplicationJobsRequest {
+	s.JobType = &v
 	return s
 }
 
@@ -619,18 +842,8 @@ func (s *DescribeReplicationJobsRequest) SetName(v string) *DescribeReplicationJ
 	return s
 }
 
-func (s *DescribeReplicationJobsRequest) SetRegionId(v string) *DescribeReplicationJobsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsRequest) SetStatus(v string) *DescribeReplicationJobsRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsRequest) SetBusinessStatus(v string) *DescribeReplicationJobsRequest {
-	s.BusinessStatus = &v
+func (s *DescribeReplicationJobsRequest) SetOwnerId(v int64) *DescribeReplicationJobsRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -644,22 +857,32 @@ func (s *DescribeReplicationJobsRequest) SetPageSize(v int32) *DescribeReplicati
 	return s
 }
 
+func (s *DescribeReplicationJobsRequest) SetRegionId(v string) *DescribeReplicationJobsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsRequest) SetResourceOwnerAccount(v string) *DescribeReplicationJobsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
 func (s *DescribeReplicationJobsRequest) SetSourceId(v []*string) *DescribeReplicationJobsRequest {
 	s.SourceId = v
 	return s
 }
 
-func (s *DescribeReplicationJobsRequest) SetJobId(v []*string) *DescribeReplicationJobsRequest {
-	s.JobId = v
+func (s *DescribeReplicationJobsRequest) SetStatus(v string) *DescribeReplicationJobsRequest {
+	s.Status = &v
 	return s
 }
 
 type DescribeReplicationJobsResponseBody struct {
-	TotalCount      *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	ReplicationJobs *DescribeReplicationJobsResponseBodyReplicationJobs `json:"ReplicationJobs,omitempty" xml:"ReplicationJobs,omitempty" type:"Struct"`
-	PageSize        *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PageNumber      *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ReplicationJobs *DescribeReplicationJobsResponseBodyReplicationJobs `json:"ReplicationJobs,omitempty" xml:"ReplicationJobs,omitempty" type:"Struct"`
+	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount      *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeReplicationJobsResponseBody) String() string {
@@ -670,13 +893,8 @@ func (s DescribeReplicationJobsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeReplicationJobsResponseBody) SetTotalCount(v int32) *DescribeReplicationJobsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBody) SetReplicationJobs(v *DescribeReplicationJobsResponseBodyReplicationJobs) *DescribeReplicationJobsResponseBody {
-	s.ReplicationJobs = v
+func (s *DescribeReplicationJobsResponseBody) SetPageNumber(v int32) *DescribeReplicationJobsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -685,13 +903,18 @@ func (s *DescribeReplicationJobsResponseBody) SetPageSize(v int32) *DescribeRepl
 	return s
 }
 
+func (s *DescribeReplicationJobsResponseBody) SetReplicationJobs(v *DescribeReplicationJobsResponseBodyReplicationJobs) *DescribeReplicationJobsResponseBody {
+	s.ReplicationJobs = v
+	return s
+}
+
 func (s *DescribeReplicationJobsResponseBody) SetRequestId(v string) *DescribeReplicationJobsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeReplicationJobsResponseBody) SetPageNumber(v int32) *DescribeReplicationJobsResponseBody {
-	s.PageNumber = &v
+func (s *DescribeReplicationJobsResponseBody) SetTotalCount(v int32) *DescribeReplicationJobsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -713,45 +936,46 @@ func (s *DescribeReplicationJobsResponseBodyReplicationJobs) SetReplicationJob(v
 }
 
 type DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob struct {
-	Frequency              *int32                                                                              `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	VpcId                  *string                                                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	CreationTime           *string                                                                             `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Status                 *string                                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	ScheduledStartTime     *string                                                                             `json:"ScheduledStartTime,omitempty" xml:"ScheduledStartTime,omitempty"`
-	MaxNumberOfImageToKeep *int32                                                                              `json:"MaxNumberOfImageToKeep,omitempty" xml:"MaxNumberOfImageToKeep,omitempty"`
-	ContainerNamespace     *string                                                                             `json:"ContainerNamespace,omitempty" xml:"ContainerNamespace,omitempty"`
-	DataDisks              *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisks          `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
-	StatusInfo             *string                                                                             `json:"StatusInfo,omitempty" xml:"StatusInfo,omitempty"`
-	InstanceRamRole        *string                                                                             `json:"InstanceRamRole,omitempty" xml:"InstanceRamRole,omitempty"`
-	SystemDiskSize         *int32                                                                              `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	Description            *string                                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	ReplicationParameters  *string                                                                             `json:"ReplicationParameters,omitempty" xml:"ReplicationParameters,omitempty"`
-	ErrorCode              *string                                                                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ValidTime              *string                                                                             `json:"ValidTime,omitempty" xml:"ValidTime,omitempty"`
-	NetMode                *int32                                                                              `json:"NetMode,omitempty" xml:"NetMode,omitempty"`
-	ContainerTag           *string                                                                             `json:"ContainerTag,omitempty" xml:"ContainerTag,omitempty"`
-	LicenseType            *string                                                                             `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
-	Name                   *string                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	ImageId                *string                                                                             `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	Progress               *float32                                                                            `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RunOnce                *bool                                                                               `json:"RunOnce,omitempty" xml:"RunOnce,omitempty"`
-	LaunchTemplateId       *string                                                                             `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
-	ContainerRepository    *string                                                                             `json:"ContainerRepository,omitempty" xml:"ContainerRepository,omitempty"`
-	InstanceId             *string                                                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SystemDiskParts        *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskParts    `json:"SystemDiskParts,omitempty" xml:"SystemDiskParts,omitempty" type:"Struct"`
-	InstanceType           *string                                                                             `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	SourceId               *string                                                                             `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	LaunchTemplateVersion  *string                                                                             `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
-	RegionId               *string                                                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TransitionInstanceId   *string                                                                             `json:"TransitionInstanceId,omitempty" xml:"TransitionInstanceId,omitempty"`
-	EndTime                *string                                                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime              *string                                                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	VSwitchId              *string                                                                             `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	JobId                  *string                                                                             `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ImageName              *string                                                                             `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	BusinessStatus         *string                                                                             `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	ContainerNamespace     *string                                                                             `json:"ContainerNamespace,omitempty" xml:"ContainerNamespace,omitempty"`
+	ContainerRepository    *string                                                                             `json:"ContainerRepository,omitempty" xml:"ContainerRepository,omitempty"`
+	ContainerTag           *string                                                                             `json:"ContainerTag,omitempty" xml:"ContainerTag,omitempty"`
+	CreationTime           *string                                                                             `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DataDisks              *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisks          `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
+	Description            *string                                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime                *string                                                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ErrorCode              *string                                                                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Frequency              *int32                                                                              `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	ImageId                *string                                                                             `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName              *string                                                                             `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	InstanceId             *string                                                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceRamRole        *string                                                                             `json:"InstanceRamRole,omitempty" xml:"InstanceRamRole,omitempty"`
+	InstanceType           *string                                                                             `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	JobId                  *string                                                                             `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobType                *int32                                                                              `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	LaunchTemplateId       *string                                                                             `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	LaunchTemplateVersion  *string                                                                             `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
+	LicenseType            *string                                                                             `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
+	MaxNumberOfImageToKeep *int32                                                                              `json:"MaxNumberOfImageToKeep,omitempty" xml:"MaxNumberOfImageToKeep,omitempty"`
+	Name                   *string                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetMode                *int32                                                                              `json:"NetMode,omitempty" xml:"NetMode,omitempty"`
+	Progress               *float32                                                                            `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	RegionId               *string                                                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReplicationJobRuns     *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplicationJobRuns `json:"ReplicationJobRuns,omitempty" xml:"ReplicationJobRuns,omitempty" type:"Struct"`
+	ReplicationParameters  *string                                                                             `json:"ReplicationParameters,omitempty" xml:"ReplicationParameters,omitempty"`
+	RunOnce                *bool                                                                               `json:"RunOnce,omitempty" xml:"RunOnce,omitempty"`
+	ScheduledStartTime     *string                                                                             `json:"ScheduledStartTime,omitempty" xml:"ScheduledStartTime,omitempty"`
+	SourceId               *string                                                                             `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	StartTime              *string                                                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status                 *string                                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusInfo             *string                                                                             `json:"StatusInfo,omitempty" xml:"StatusInfo,omitempty"`
+	SystemDiskParts        *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskParts    `json:"SystemDiskParts,omitempty" xml:"SystemDiskParts,omitempty" type:"Struct"`
+	SystemDiskSize         *int32                                                                              `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	TargetType             *string                                                                             `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	TransitionInstanceId   *string                                                                             `json:"TransitionInstanceId,omitempty" xml:"TransitionInstanceId,omitempty"`
+	VSwitchId              *string                                                                             `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ValidTime              *string                                                                             `json:"ValidTime,omitempty" xml:"ValidTime,omitempty"`
+	VpcId                  *string                                                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) String() string {
@@ -762,33 +986,8 @@ func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) GoStri
 	return s.String()
 }
 
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetFrequency(v int32) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.Frequency = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetVpcId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetCreationTime(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetStatus(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetScheduledStartTime(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.ScheduledStartTime = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetMaxNumberOfImageToKeep(v int32) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.MaxNumberOfImageToKeep = &v
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetBusinessStatus(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.BusinessStatus = &v
 	return s
 }
 
@@ -797,48 +996,8 @@ func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetCo
 	return s
 }
 
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetDataDisks(v *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisks) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.DataDisks = v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetStatusInfo(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.StatusInfo = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetInstanceRamRole(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.InstanceRamRole = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetSystemDiskSize(v int32) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.SystemDiskSize = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetDescription(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetReplicationParameters(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.ReplicationParameters = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetErrorCode(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetValidTime(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.ValidTime = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetNetMode(v int32) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.NetMode = &v
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetContainerRepository(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.ContainerRepository = &v
 	return s
 }
 
@@ -847,73 +1006,18 @@ func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetCo
 	return s
 }
 
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetLicenseType(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.LicenseType = &v
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetCreationTime(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.CreationTime = &v
 	return s
 }
 
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetName(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.Name = &v
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetDataDisks(v *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisks) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.DataDisks = v
 	return s
 }
 
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetImageId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.ImageId = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetProgress(v float32) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.Progress = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetRunOnce(v bool) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.RunOnce = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetLaunchTemplateId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.LaunchTemplateId = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetContainerRepository(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.ContainerRepository = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetInstanceId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetSystemDiskParts(v *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskParts) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.SystemDiskParts = v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetInstanceType(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.InstanceType = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetSourceId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.SourceId = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetLaunchTemplateVersion(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.LaunchTemplateVersion = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetRegionId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetTransitionInstanceId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.TransitionInstanceId = &v
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetDescription(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.Description = &v
 	return s
 }
 
@@ -922,18 +1026,18 @@ func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetEn
 	return s
 }
 
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetStartTime(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.StartTime = &v
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetErrorCode(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.ErrorCode = &v
 	return s
 }
 
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetVSwitchId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.VSwitchId = &v
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetFrequency(v int32) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.Frequency = &v
 	return s
 }
 
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetJobId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.JobId = &v
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetImageId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.ImageId = &v
 	return s
 }
 
@@ -942,8 +1046,68 @@ func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetIm
 	return s
 }
 
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetBusinessStatus(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
-	s.BusinessStatus = &v
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetInstanceId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetInstanceRamRole(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.InstanceRamRole = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetInstanceType(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetJobId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetJobType(v int32) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.JobType = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetLaunchTemplateId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.LaunchTemplateId = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetLaunchTemplateVersion(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.LaunchTemplateVersion = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetLicenseType(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.LicenseType = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetMaxNumberOfImageToKeep(v int32) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.MaxNumberOfImageToKeep = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetName(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetNetMode(v int32) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.NetMode = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetProgress(v float32) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetRegionId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.RegionId = &v
 	return s
 }
 
@@ -952,8 +1116,73 @@ func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetRe
 	return s
 }
 
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetReplicationParameters(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.ReplicationParameters = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetRunOnce(v bool) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.RunOnce = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetScheduledStartTime(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.ScheduledStartTime = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetSourceId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.SourceId = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetStartTime(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetStatus(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetStatusInfo(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.StatusInfo = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetSystemDiskParts(v *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskParts) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.SystemDiskParts = v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetSystemDiskSize(v int32) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.SystemDiskSize = &v
+	return s
+}
+
 func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetTargetType(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
 	s.TargetType = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetTransitionInstanceId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.TransitionInstanceId = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetVSwitchId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetValidTime(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.ValidTime = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob) SetVpcId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob {
+	s.VpcId = &v
 	return s
 }
 
@@ -976,8 +1205,8 @@ func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDis
 
 type DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDisk struct {
 	Index *int32                                                                                  `json:"Index,omitempty" xml:"Index,omitempty"`
-	Size  *int32                                                                                  `json:"Size,omitempty" xml:"Size,omitempty"`
 	Parts *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDiskParts `json:"Parts,omitempty" xml:"Parts,omitempty" type:"Struct"`
+	Size  *int32                                                                                  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDisk) String() string {
@@ -993,13 +1222,13 @@ func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDis
 	return s
 }
 
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDisk) SetSize(v int32) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDisk {
-	s.Size = &v
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDisk) SetParts(v *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDiskParts) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDisk {
+	s.Parts = v
 	return s
 }
 
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDisk) SetParts(v *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDiskParts) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDisk {
-	s.Parts = v
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDisk) SetSize(v int32) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDisk {
+	s.Size = &v
 	return s
 }
 
@@ -1021,9 +1250,9 @@ func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDis
 }
 
 type DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDiskPartsPart struct {
-	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
 	Block     *bool   `json:"Block,omitempty" xml:"Block,omitempty"`
 	Device    *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
 }
 
 func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDiskPartsPart) String() string {
@@ -1032,11 +1261,6 @@ func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisk
 
 func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDiskPartsPart) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDiskPartsPart) SetSizeBytes(v int64) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDiskPartsPart {
-	s.SizeBytes = &v
-	return s
 }
 
 func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDiskPartsPart) SetBlock(v bool) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDiskPartsPart {
@@ -1049,49 +1273,8 @@ func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDis
 	return s
 }
 
-type DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskParts struct {
-	SystemDiskPart []*DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart `json:"SystemDiskPart,omitempty" xml:"SystemDiskPart,omitempty" type:"Repeated"`
-}
-
-func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskParts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskParts) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskParts) SetSystemDiskPart(v []*DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskParts {
-	s.SystemDiskPart = v
-	return s
-}
-
-type DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart struct {
-	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
-	Block     *bool   `json:"Block,omitempty" xml:"Block,omitempty"`
-	Device    *string `json:"Device,omitempty" xml:"Device,omitempty"`
-}
-
-func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart) SetSizeBytes(v int64) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart {
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDiskPartsPart) SetSizeBytes(v int64) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobDataDisksDataDiskPartsPart {
 	s.SizeBytes = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart) SetBlock(v bool) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart {
-	s.Block = &v
-	return s
-}
-
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart) SetDevice(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart {
-	s.Device = &v
 	return s
 }
 
@@ -1114,9 +1297,9 @@ func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplica
 
 type DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplicationJobRunsReplicationJobRun struct {
 	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplicationJobRunsReplicationJobRun) String() string {
@@ -1132,8 +1315,8 @@ func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplica
 	return s
 }
 
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplicationJobRunsReplicationJobRun) SetType(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplicationJobRunsReplicationJobRun {
-	s.Type = &v
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplicationJobRunsReplicationJobRun) SetImageId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplicationJobRunsReplicationJobRun {
+	s.ImageId = &v
 	return s
 }
 
@@ -1142,14 +1325,61 @@ func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplica
 	return s
 }
 
-func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplicationJobRunsReplicationJobRun) SetImageId(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplicationJobRunsReplicationJobRun {
-	s.ImageId = &v
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplicationJobRunsReplicationJobRun) SetType(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobReplicationJobRunsReplicationJobRun {
+	s.Type = &v
+	return s
+}
+
+type DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskParts struct {
+	SystemDiskPart []*DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart `json:"SystemDiskPart,omitempty" xml:"SystemDiskPart,omitempty" type:"Repeated"`
+}
+
+func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskParts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskParts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskParts) SetSystemDiskPart(v []*DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskParts {
+	s.SystemDiskPart = v
+	return s
+}
+
+type DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart struct {
+	Block     *bool   `json:"Block,omitempty" xml:"Block,omitempty"`
+	Device    *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
+}
+
+func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart) SetBlock(v bool) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart {
+	s.Block = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart) SetDevice(v string) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart {
+	s.Device = &v
+	return s
+}
+
+func (s *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart) SetSizeBytes(v int64) *DescribeReplicationJobsResponseBodyReplicationJobsReplicationJobSystemDiskPartsSystemDiskPart {
+	s.SizeBytes = &v
 	return s
 }
 
 type DescribeReplicationJobsResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeReplicationJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeReplicationJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeReplicationJobsResponse) String() string {
@@ -1165,20 +1395,25 @@ func (s *DescribeReplicationJobsResponse) SetHeaders(v map[string]*string) *Desc
 	return s
 }
 
+func (s *DescribeReplicationJobsResponse) SetStatusCode(v int32) *DescribeReplicationJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeReplicationJobsResponse) SetBody(v *DescribeReplicationJobsResponseBody) *DescribeReplicationJobsResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeSourceServersRequest struct {
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	JobId                *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	State                *string   `json:"State,omitempty" xml:"State,omitempty"`
 	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber           *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	SourceId             []*string `json:"SourceId,omitempty" xml:"SourceId,omitempty" type:"Repeated"`
+	State                *string   `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeSourceServersRequest) String() string {
@@ -1189,28 +1424,18 @@ func (s DescribeSourceServersRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSourceServersRequest) SetOwnerId(v int64) *DescribeSourceServersRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeSourceServersRequest) SetResourceOwnerAccount(v string) *DescribeSourceServersRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
 func (s *DescribeSourceServersRequest) SetJobId(v string) *DescribeSourceServersRequest {
 	s.JobId = &v
 	return s
 }
 
-func (s *DescribeSourceServersRequest) SetState(v string) *DescribeSourceServersRequest {
-	s.State = &v
+func (s *DescribeSourceServersRequest) SetName(v string) *DescribeSourceServersRequest {
+	s.Name = &v
 	return s
 }
 
-func (s *DescribeSourceServersRequest) SetName(v string) *DescribeSourceServersRequest {
-	s.Name = &v
+func (s *DescribeSourceServersRequest) SetOwnerId(v int64) *DescribeSourceServersRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -1224,17 +1449,27 @@ func (s *DescribeSourceServersRequest) SetPageSize(v int32) *DescribeSourceServe
 	return s
 }
 
+func (s *DescribeSourceServersRequest) SetResourceOwnerAccount(v string) *DescribeSourceServersRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
 func (s *DescribeSourceServersRequest) SetSourceId(v []*string) *DescribeSourceServersRequest {
 	s.SourceId = v
 	return s
 }
 
+func (s *DescribeSourceServersRequest) SetState(v string) *DescribeSourceServersRequest {
+	s.State = &v
+	return s
+}
+
 type DescribeSourceServersResponseBody struct {
-	SourceServers *DescribeSourceServersResponseBodySourceServers `json:"SourceServers,omitempty" xml:"SourceServers,omitempty" type:"Struct"`
-	TotalCount    *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber    *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber    *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	SourceServers *DescribeSourceServersResponseBodySourceServers `json:"SourceServers,omitempty" xml:"SourceServers,omitempty" type:"Struct"`
+	TotalCount    *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSourceServersResponseBody) String() string {
@@ -1245,13 +1480,8 @@ func (s DescribeSourceServersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSourceServersResponseBody) SetSourceServers(v *DescribeSourceServersResponseBodySourceServers) *DescribeSourceServersResponseBody {
-	s.SourceServers = v
-	return s
-}
-
-func (s *DescribeSourceServersResponseBody) SetTotalCount(v int32) *DescribeSourceServersResponseBody {
-	s.TotalCount = &v
+func (s *DescribeSourceServersResponseBody) SetPageNumber(v int32) *DescribeSourceServersResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -1265,8 +1495,13 @@ func (s *DescribeSourceServersResponseBody) SetRequestId(v string) *DescribeSour
 	return s
 }
 
-func (s *DescribeSourceServersResponseBody) SetPageNumber(v int32) *DescribeSourceServersResponseBody {
-	s.PageNumber = &v
+func (s *DescribeSourceServersResponseBody) SetSourceServers(v *DescribeSourceServersResponseBodySourceServers) *DescribeSourceServersResponseBody {
+	s.SourceServers = v
+	return s
+}
+
+func (s *DescribeSourceServersResponseBody) SetTotalCount(v int32) *DescribeSourceServersResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -1288,24 +1523,24 @@ func (s *DescribeSourceServersResponseBodySourceServers) SetSourceServer(v []*De
 }
 
 type DescribeSourceServersResponseBodySourceServersSourceServer struct {
-	CreationTime      *string                                                                    `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	HeartbeatRate     *int32                                                                     `json:"HeartbeatRate,omitempty" xml:"HeartbeatRate,omitempty"`
-	State             *string                                                                    `json:"State,omitempty" xml:"State,omitempty"`
-	DataDisks         *DescribeSourceServersResponseBodySourceServersSourceServerDataDisks       `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
-	SystemDiskParts   *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskParts `json:"SystemDiskParts,omitempty" xml:"SystemDiskParts,omitempty" type:"Struct"`
-	KernelLevel       *int32                                                                     `json:"KernelLevel,omitempty" xml:"KernelLevel,omitempty"`
-	SourceId          *string                                                                    `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	AgentVersion      *string                                                                    `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
-	StatusInfo        *string                                                                    `json:"StatusInfo,omitempty" xml:"StatusInfo,omitempty"`
-	SystemDiskSize    *int32                                                                     `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	Architecture      *string                                                                    `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	CreationTime      *string                                                                    `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DataDisks         *DescribeSourceServersResponseBodySourceServersSourceServerDataDisks       `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
 	Description       *string                                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
 	ErrorCode         *string                                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HeartbeatRate     *int32                                                                     `json:"HeartbeatRate,omitempty" xml:"HeartbeatRate,omitempty"`
 	JobId             *string                                                                    `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	KernelLevel       *int32                                                                     `json:"KernelLevel,omitempty" xml:"KernelLevel,omitempty"`
+	Name              *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
 	Platform          *string                                                                    `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	ReplicationDriver *string                                                                    `json:"ReplicationDriver,omitempty" xml:"ReplicationDriver,omitempty"`
-	Name              *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	SourceId          *string                                                                    `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	State             *string                                                                    `json:"State,omitempty" xml:"State,omitempty"`
+	StatusInfo        *string                                                                    `json:"StatusInfo,omitempty" xml:"StatusInfo,omitempty"`
+	SystemDiskParts   *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskParts `json:"SystemDiskParts,omitempty" xml:"SystemDiskParts,omitempty" type:"Struct"`
+	SystemDiskSize    *int32                                                                     `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	SystemInfo        *string                                                                    `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty"`
-	Architecture      *string                                                                    `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
 }
 
 func (s DescribeSourceServersResponseBodySourceServersSourceServer) String() string {
@@ -1316,53 +1551,23 @@ func (s DescribeSourceServersResponseBodySourceServersSourceServer) GoString() s
 	return s.String()
 }
 
-func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetCreationTime(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetHeartbeatRate(v int32) *DescribeSourceServersResponseBodySourceServersSourceServer {
-	s.HeartbeatRate = &v
-	return s
-}
-
-func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetState(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetDataDisks(v *DescribeSourceServersResponseBodySourceServersSourceServerDataDisks) *DescribeSourceServersResponseBodySourceServersSourceServer {
-	s.DataDisks = v
-	return s
-}
-
-func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetSystemDiskParts(v *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskParts) *DescribeSourceServersResponseBodySourceServersSourceServer {
-	s.SystemDiskParts = v
-	return s
-}
-
-func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetKernelLevel(v int32) *DescribeSourceServersResponseBodySourceServersSourceServer {
-	s.KernelLevel = &v
-	return s
-}
-
-func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetSourceId(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
-	s.SourceId = &v
-	return s
-}
-
 func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetAgentVersion(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
 	s.AgentVersion = &v
 	return s
 }
 
-func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetStatusInfo(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
-	s.StatusInfo = &v
+func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetArchitecture(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
+	s.Architecture = &v
 	return s
 }
 
-func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetSystemDiskSize(v int32) *DescribeSourceServersResponseBodySourceServersSourceServer {
-	s.SystemDiskSize = &v
+func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetCreationTime(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetDataDisks(v *DescribeSourceServersResponseBodySourceServersSourceServerDataDisks) *DescribeSourceServersResponseBodySourceServersSourceServer {
+	s.DataDisks = v
 	return s
 }
 
@@ -1376,8 +1581,23 @@ func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetErrorCod
 	return s
 }
 
+func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetHeartbeatRate(v int32) *DescribeSourceServersResponseBodySourceServersSourceServer {
+	s.HeartbeatRate = &v
+	return s
+}
+
 func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetJobId(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
 	s.JobId = &v
+	return s
+}
+
+func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetKernelLevel(v int32) *DescribeSourceServersResponseBodySourceServersSourceServer {
+	s.KernelLevel = &v
+	return s
+}
+
+func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetName(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
+	s.Name = &v
 	return s
 }
 
@@ -1391,18 +1611,33 @@ func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetReplicat
 	return s
 }
 
-func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetName(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
-	s.Name = &v
+func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetSourceId(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
+	s.SourceId = &v
+	return s
+}
+
+func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetState(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetStatusInfo(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
+	s.StatusInfo = &v
+	return s
+}
+
+func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetSystemDiskParts(v *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskParts) *DescribeSourceServersResponseBodySourceServersSourceServer {
+	s.SystemDiskParts = v
+	return s
+}
+
+func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetSystemDiskSize(v int32) *DescribeSourceServersResponseBodySourceServersSourceServer {
+	s.SystemDiskSize = &v
 	return s
 }
 
 func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetSystemInfo(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
 	s.SystemInfo = &v
-	return s
-}
-
-func (s *DescribeSourceServersResponseBodySourceServersSourceServer) SetArchitecture(v string) *DescribeSourceServersResponseBodySourceServersSourceServer {
-	s.Architecture = &v
 	return s
 }
 
@@ -1425,9 +1660,9 @@ func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisks) Se
 
 type DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDisk struct {
 	Index *int32                                                                            `json:"Index,omitempty" xml:"Index,omitempty"`
-	Size  *int32                                                                            `json:"Size,omitempty" xml:"Size,omitempty"`
 	Parts *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskParts `json:"Parts,omitempty" xml:"Parts,omitempty" type:"Struct"`
 	Path  *string                                                                           `json:"Path,omitempty" xml:"Path,omitempty"`
+	Size  *int32                                                                            `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDisk) String() string {
@@ -1443,11 +1678,6 @@ func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksData
 	return s
 }
 
-func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDisk) SetSize(v int32) *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDisk {
-	s.Size = &v
-	return s
-}
-
 func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDisk) SetParts(v *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskParts) *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDisk {
 	s.Parts = v
 	return s
@@ -1455,6 +1685,11 @@ func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksData
 
 func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDisk) SetPath(v string) *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDisk {
 	s.Path = &v
+	return s
+}
+
+func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDisk) SetSize(v int32) *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDisk {
+	s.Size = &v
 	return s
 }
 
@@ -1477,10 +1712,10 @@ func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksData
 
 type DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskPartsPart struct {
 	CanBlock  *bool   `json:"CanBlock,omitempty" xml:"CanBlock,omitempty"`
-	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
-	Need      *bool   `json:"Need,omitempty" xml:"Need,omitempty"`
 	Device    *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	Need      *bool   `json:"Need,omitempty" xml:"Need,omitempty"`
 	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
 }
 
 func (s DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskPartsPart) String() string {
@@ -1496,8 +1731,8 @@ func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksData
 	return s
 }
 
-func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskPartsPart) SetSizeBytes(v int64) *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskPartsPart {
-	s.SizeBytes = &v
+func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskPartsPart) SetDevice(v string) *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskPartsPart {
+	s.Device = &v
 	return s
 }
 
@@ -1506,13 +1741,13 @@ func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksData
 	return s
 }
 
-func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskPartsPart) SetDevice(v string) *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskPartsPart {
-	s.Device = &v
+func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskPartsPart) SetPath(v string) *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskPartsPart {
+	s.Path = &v
 	return s
 }
 
-func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskPartsPart) SetPath(v string) *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskPartsPart {
-	s.Path = &v
+func (s *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskPartsPart) SetSizeBytes(v int64) *DescribeSourceServersResponseBodySourceServersSourceServerDataDisksDataDiskPartsPart {
+	s.SizeBytes = &v
 	return s
 }
 
@@ -1535,10 +1770,10 @@ func (s *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPar
 
 type DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPartsSystemDiskPart struct {
 	CanBlock  *bool   `json:"CanBlock,omitempty" xml:"CanBlock,omitempty"`
-	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
-	Need      *bool   `json:"Need,omitempty" xml:"Need,omitempty"`
 	Device    *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	Need      *bool   `json:"Need,omitempty" xml:"Need,omitempty"`
 	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
 }
 
 func (s DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPartsSystemDiskPart) String() string {
@@ -1554,8 +1789,8 @@ func (s *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPar
 	return s
 }
 
-func (s *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPartsSystemDiskPart) SetSizeBytes(v int64) *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPartsSystemDiskPart {
-	s.SizeBytes = &v
+func (s *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPartsSystemDiskPart) SetDevice(v string) *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPartsSystemDiskPart {
+	s.Device = &v
 	return s
 }
 
@@ -1564,19 +1799,20 @@ func (s *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPar
 	return s
 }
 
-func (s *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPartsSystemDiskPart) SetDevice(v string) *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPartsSystemDiskPart {
-	s.Device = &v
-	return s
-}
-
 func (s *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPartsSystemDiskPart) SetPath(v string) *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPartsSystemDiskPart {
 	s.Path = &v
 	return s
 }
 
+func (s *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPartsSystemDiskPart) SetSizeBytes(v int64) *DescribeSourceServersResponseBodySourceServersSourceServerSystemDiskPartsSystemDiskPart {
+	s.SizeBytes = &v
+	return s
+}
+
 type DescribeSourceServersResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSourceServersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSourceServersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSourceServersResponse) String() string {
@@ -1592,17 +1828,284 @@ func (s *DescribeSourceServersResponse) SetHeaders(v map[string]*string) *Descri
 	return s
 }
 
+func (s *DescribeSourceServersResponse) SetStatusCode(v int32) *DescribeSourceServersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeSourceServersResponse) SetBody(v *DescribeSourceServersResponseBody) *DescribeSourceServersResponse {
 	s.Body = v
 	return s
 }
 
+type DisableAccessTokenRequest struct {
+	AccessTokenId        *string `json:"AccessTokenId,omitempty" xml:"AccessTokenId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+}
+
+func (s DisableAccessTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAccessTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAccessTokenRequest) SetAccessTokenId(v string) *DisableAccessTokenRequest {
+	s.AccessTokenId = &v
+	return s
+}
+
+func (s *DisableAccessTokenRequest) SetOwnerId(v int64) *DisableAccessTokenRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DisableAccessTokenRequest) SetResourceOwnerAccount(v string) *DisableAccessTokenRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+type DisableAccessTokenResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableAccessTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAccessTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAccessTokenResponseBody) SetRequestId(v string) *DisableAccessTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableAccessTokenResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableAccessTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableAccessTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAccessTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAccessTokenResponse) SetHeaders(v map[string]*string) *DisableAccessTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableAccessTokenResponse) SetStatusCode(v int32) *DisableAccessTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableAccessTokenResponse) SetBody(v *DisableAccessTokenResponseBody) *DisableAccessTokenResponse {
+	s.Body = v
+	return s
+}
+
+type ListAccessTokensRequest struct {
+	AccessTokenId        []*string `json:"AccessTokenId,omitempty" xml:"AccessTokenId,omitempty" type:"Repeated"`
+	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListAccessTokensRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessTokensRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessTokensRequest) SetAccessTokenId(v []*string) *ListAccessTokensRequest {
+	s.AccessTokenId = v
+	return s
+}
+
+func (s *ListAccessTokensRequest) SetName(v string) *ListAccessTokensRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAccessTokensRequest) SetOwnerId(v int64) *ListAccessTokensRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListAccessTokensRequest) SetResourceOwnerAccount(v string) *ListAccessTokensRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListAccessTokensRequest) SetStatus(v string) *ListAccessTokensRequest {
+	s.Status = &v
+	return s
+}
+
+type ListAccessTokensResponseBody struct {
+	AccessTokens *ListAccessTokensResponseBodyAccessTokens `json:"AccessTokens,omitempty" xml:"AccessTokens,omitempty" type:"Struct"`
+	PageNumber   *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAccessTokensResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessTokensResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessTokensResponseBody) SetAccessTokens(v *ListAccessTokensResponseBodyAccessTokens) *ListAccessTokensResponseBody {
+	s.AccessTokens = v
+	return s
+}
+
+func (s *ListAccessTokensResponseBody) SetPageNumber(v int32) *ListAccessTokensResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAccessTokensResponseBody) SetPageSize(v int32) *ListAccessTokensResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAccessTokensResponseBody) SetRequestId(v string) *ListAccessTokensResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAccessTokensResponseBody) SetTotalCount(v int32) *ListAccessTokensResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAccessTokensResponseBodyAccessTokens struct {
+	AccessToken []*ListAccessTokensResponseBodyAccessTokensAccessToken `json:"AccessToken,omitempty" xml:"AccessToken,omitempty" type:"Repeated"`
+}
+
+func (s ListAccessTokensResponseBodyAccessTokens) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessTokensResponseBodyAccessTokens) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessTokensResponseBodyAccessTokens) SetAccessToken(v []*ListAccessTokensResponseBodyAccessTokensAccessToken) *ListAccessTokensResponseBodyAccessTokens {
+	s.AccessToken = v
+	return s
+}
+
+type ListAccessTokensResponseBodyAccessTokensAccessToken struct {
+	AccessTokenId    *string `json:"AccessTokenId,omitempty" xml:"AccessTokenId,omitempty"`
+	Count            *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegisteredCount  *string `json:"RegisteredCount,omitempty" xml:"RegisteredCount,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TimeToLiveInDays *string `json:"TimeToLiveInDays,omitempty" xml:"TimeToLiveInDays,omitempty"`
+}
+
+func (s ListAccessTokensResponseBodyAccessTokensAccessToken) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessTokensResponseBodyAccessTokensAccessToken) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessTokensResponseBodyAccessTokensAccessToken) SetAccessTokenId(v string) *ListAccessTokensResponseBodyAccessTokensAccessToken {
+	s.AccessTokenId = &v
+	return s
+}
+
+func (s *ListAccessTokensResponseBodyAccessTokensAccessToken) SetCount(v string) *ListAccessTokensResponseBodyAccessTokensAccessToken {
+	s.Count = &v
+	return s
+}
+
+func (s *ListAccessTokensResponseBodyAccessTokensAccessToken) SetCreationTime(v string) *ListAccessTokensResponseBodyAccessTokensAccessToken {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *ListAccessTokensResponseBodyAccessTokensAccessToken) SetDescription(v string) *ListAccessTokensResponseBodyAccessTokensAccessToken {
+	s.Description = &v
+	return s
+}
+
+func (s *ListAccessTokensResponseBodyAccessTokensAccessToken) SetName(v string) *ListAccessTokensResponseBodyAccessTokensAccessToken {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAccessTokensResponseBodyAccessTokensAccessToken) SetRegisteredCount(v string) *ListAccessTokensResponseBodyAccessTokensAccessToken {
+	s.RegisteredCount = &v
+	return s
+}
+
+func (s *ListAccessTokensResponseBodyAccessTokensAccessToken) SetStatus(v string) *ListAccessTokensResponseBodyAccessTokensAccessToken {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAccessTokensResponseBodyAccessTokensAccessToken) SetTimeToLiveInDays(v string) *ListAccessTokensResponseBodyAccessTokensAccessToken {
+	s.TimeToLiveInDays = &v
+	return s
+}
+
+type ListAccessTokensResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAccessTokensResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAccessTokensResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessTokensResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessTokensResponse) SetHeaders(v map[string]*string) *ListAccessTokensResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAccessTokensResponse) SetStatusCode(v int32) *ListAccessTokensResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAccessTokensResponse) SetBody(v *ListAccessTokensResponseBody) *ListAccessTokensResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
+	NextToken            *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceId           []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceType         *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	NextToken            *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceId           []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	Tag                  []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -1614,8 +2117,18 @@ func (s ListTagResourcesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
 func (s *ListTagResourcesRequest) SetOwnerId(v int64) *ListTagResourcesRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
 	return s
 }
 
@@ -1626,16 +2139,6 @@ func (s *ListTagResourcesRequest) SetResourceOwnerAccount(v string) *ListTagReso
 
 func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
 	s.ResourceType = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
-	s.ResourceId = v
 	return s
 }
 
@@ -1714,10 +2217,10 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -1728,18 +2231,13 @@ func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.TagValue = &v
-	return s
-}
-
 func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceId(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceType = &v
 	return s
 }
 
@@ -1748,9 +2246,15 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagKey(v string
 	return s
 }
 
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagValue = &v
+	return s
+}
+
 type ListTagResourcesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -1766,34 +2270,39 @@ func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagReso
 	return s
 }
 
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyReplicationJobAttributeRequest struct {
-	OwnerId                *int64                                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount   *string                                               `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	JobId                  *string                                               `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Name                   *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description            *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	TargetType             *string                                               `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	ScheduledStartTime     *string                                               `json:"ScheduledStartTime,omitempty" xml:"ScheduledStartTime,omitempty"`
-	ImageName              *string                                               `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	InstanceId             *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SystemDiskSize         *int32                                                `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	Frequency              *int32                                                `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	MaxNumberOfImageToKeep *int32                                                `json:"MaxNumberOfImageToKeep,omitempty" xml:"MaxNumberOfImageToKeep,omitempty"`
-	InstanceType           *string                                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	LaunchTemplateId       *string                                               `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
-	LaunchTemplateVersion  *string                                               `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
-	InstanceRamRole        *string                                               `json:"InstanceRamRole,omitempty" xml:"InstanceRamRole,omitempty"`
 	ContainerNamespace     *string                                               `json:"ContainerNamespace,omitempty" xml:"ContainerNamespace,omitempty"`
 	ContainerRepository    *string                                               `json:"ContainerRepository,omitempty" xml:"ContainerRepository,omitempty"`
 	ContainerTag           *string                                               `json:"ContainerTag,omitempty" xml:"ContainerTag,omitempty"`
-	ValidTime              *string                                               `json:"ValidTime,omitempty" xml:"ValidTime,omitempty"`
-	SystemDiskPart         []*ModifyReplicationJobAttributeRequestSystemDiskPart `json:"SystemDiskPart,omitempty" xml:"SystemDiskPart,omitempty" type:"Repeated"`
 	DataDisk               []*ModifyReplicationJobAttributeRequestDataDisk       `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	Description            *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	Frequency              *int32                                                `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	ImageName              *string                                               `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	InstanceId             *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceRamRole        *string                                               `json:"InstanceRamRole,omitempty" xml:"InstanceRamRole,omitempty"`
+	InstanceType           *string                                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	JobId                  *string                                               `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	LaunchTemplateId       *string                                               `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	LaunchTemplateVersion  *string                                               `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
+	MaxNumberOfImageToKeep *int32                                                `json:"MaxNumberOfImageToKeep,omitempty" xml:"MaxNumberOfImageToKeep,omitempty"`
+	Name                   *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId                *int64                                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string                                               `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScheduledStartTime     *string                                               `json:"ScheduledStartTime,omitempty" xml:"ScheduledStartTime,omitempty"`
+	SystemDiskPart         []*ModifyReplicationJobAttributeRequestSystemDiskPart `json:"SystemDiskPart,omitempty" xml:"SystemDiskPart,omitempty" type:"Repeated"`
+	SystemDiskSize         *int32                                                `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	TargetType             *string                                               `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	ValidTime              *string                                               `json:"ValidTime,omitempty" xml:"ValidTime,omitempty"`
 }
 
 func (s ModifyReplicationJobAttributeRequest) String() string {
@@ -1802,86 +2311,6 @@ func (s ModifyReplicationJobAttributeRequest) String() string {
 
 func (s ModifyReplicationJobAttributeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetOwnerId(v int64) *ModifyReplicationJobAttributeRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetResourceOwnerAccount(v string) *ModifyReplicationJobAttributeRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetJobId(v string) *ModifyReplicationJobAttributeRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetName(v string) *ModifyReplicationJobAttributeRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetDescription(v string) *ModifyReplicationJobAttributeRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetTargetType(v string) *ModifyReplicationJobAttributeRequest {
-	s.TargetType = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetScheduledStartTime(v string) *ModifyReplicationJobAttributeRequest {
-	s.ScheduledStartTime = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetImageName(v string) *ModifyReplicationJobAttributeRequest {
-	s.ImageName = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetInstanceId(v string) *ModifyReplicationJobAttributeRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetSystemDiskSize(v int32) *ModifyReplicationJobAttributeRequest {
-	s.SystemDiskSize = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetFrequency(v int32) *ModifyReplicationJobAttributeRequest {
-	s.Frequency = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetMaxNumberOfImageToKeep(v int32) *ModifyReplicationJobAttributeRequest {
-	s.MaxNumberOfImageToKeep = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetInstanceType(v string) *ModifyReplicationJobAttributeRequest {
-	s.InstanceType = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetLaunchTemplateId(v string) *ModifyReplicationJobAttributeRequest {
-	s.LaunchTemplateId = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetLaunchTemplateVersion(v string) *ModifyReplicationJobAttributeRequest {
-	s.LaunchTemplateVersion = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequest) SetInstanceRamRole(v string) *ModifyReplicationJobAttributeRequest {
-	s.InstanceRamRole = &v
-	return s
 }
 
 func (s *ModifyReplicationJobAttributeRequest) SetContainerNamespace(v string) *ModifyReplicationJobAttributeRequest {
@@ -1899,8 +2328,78 @@ func (s *ModifyReplicationJobAttributeRequest) SetContainerTag(v string) *Modify
 	return s
 }
 
-func (s *ModifyReplicationJobAttributeRequest) SetValidTime(v string) *ModifyReplicationJobAttributeRequest {
-	s.ValidTime = &v
+func (s *ModifyReplicationJobAttributeRequest) SetDataDisk(v []*ModifyReplicationJobAttributeRequestDataDisk) *ModifyReplicationJobAttributeRequest {
+	s.DataDisk = v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetDescription(v string) *ModifyReplicationJobAttributeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetFrequency(v int32) *ModifyReplicationJobAttributeRequest {
+	s.Frequency = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetImageName(v string) *ModifyReplicationJobAttributeRequest {
+	s.ImageName = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetInstanceId(v string) *ModifyReplicationJobAttributeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetInstanceRamRole(v string) *ModifyReplicationJobAttributeRequest {
+	s.InstanceRamRole = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetInstanceType(v string) *ModifyReplicationJobAttributeRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetJobId(v string) *ModifyReplicationJobAttributeRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetLaunchTemplateId(v string) *ModifyReplicationJobAttributeRequest {
+	s.LaunchTemplateId = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetLaunchTemplateVersion(v string) *ModifyReplicationJobAttributeRequest {
+	s.LaunchTemplateVersion = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetMaxNumberOfImageToKeep(v int32) *ModifyReplicationJobAttributeRequest {
+	s.MaxNumberOfImageToKeep = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetName(v string) *ModifyReplicationJobAttributeRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetOwnerId(v int64) *ModifyReplicationJobAttributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetResourceOwnerAccount(v string) *ModifyReplicationJobAttributeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequest) SetScheduledStartTime(v string) *ModifyReplicationJobAttributeRequest {
+	s.ScheduledStartTime = &v
 	return s
 }
 
@@ -1909,37 +2408,18 @@ func (s *ModifyReplicationJobAttributeRequest) SetSystemDiskPart(v []*ModifyRepl
 	return s
 }
 
-func (s *ModifyReplicationJobAttributeRequest) SetDataDisk(v []*ModifyReplicationJobAttributeRequestDataDisk) *ModifyReplicationJobAttributeRequest {
-	s.DataDisk = v
+func (s *ModifyReplicationJobAttributeRequest) SetSystemDiskSize(v int32) *ModifyReplicationJobAttributeRequest {
+	s.SystemDiskSize = &v
 	return s
 }
 
-type ModifyReplicationJobAttributeRequestSystemDiskPart struct {
-	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
-	Block     *bool   `json:"Block,omitempty" xml:"Block,omitempty"`
-	Device    *string `json:"Device,omitempty" xml:"Device,omitempty"`
-}
-
-func (s ModifyReplicationJobAttributeRequestSystemDiskPart) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyReplicationJobAttributeRequestSystemDiskPart) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyReplicationJobAttributeRequestSystemDiskPart) SetSizeBytes(v int64) *ModifyReplicationJobAttributeRequestSystemDiskPart {
-	s.SizeBytes = &v
+func (s *ModifyReplicationJobAttributeRequest) SetTargetType(v string) *ModifyReplicationJobAttributeRequest {
+	s.TargetType = &v
 	return s
 }
 
-func (s *ModifyReplicationJobAttributeRequestSystemDiskPart) SetBlock(v bool) *ModifyReplicationJobAttributeRequestSystemDiskPart {
-	s.Block = &v
-	return s
-}
-
-func (s *ModifyReplicationJobAttributeRequestSystemDiskPart) SetDevice(v string) *ModifyReplicationJobAttributeRequestSystemDiskPart {
-	s.Device = &v
+func (s *ModifyReplicationJobAttributeRequest) SetValidTime(v string) *ModifyReplicationJobAttributeRequest {
+	s.ValidTime = &v
 	return s
 }
 
@@ -1973,9 +2453,9 @@ func (s *ModifyReplicationJobAttributeRequestDataDisk) SetSize(v int32) *ModifyR
 }
 
 type ModifyReplicationJobAttributeRequestDataDiskPart struct {
-	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
 	Block     *bool   `json:"Block,omitempty" xml:"Block,omitempty"`
 	Device    *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
 }
 
 func (s ModifyReplicationJobAttributeRequestDataDiskPart) String() string {
@@ -1986,11 +2466,6 @@ func (s ModifyReplicationJobAttributeRequestDataDiskPart) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyReplicationJobAttributeRequestDataDiskPart) SetSizeBytes(v int64) *ModifyReplicationJobAttributeRequestDataDiskPart {
-	s.SizeBytes = &v
-	return s
-}
-
 func (s *ModifyReplicationJobAttributeRequestDataDiskPart) SetBlock(v bool) *ModifyReplicationJobAttributeRequestDataDiskPart {
 	s.Block = &v
 	return s
@@ -1998,6 +2473,40 @@ func (s *ModifyReplicationJobAttributeRequestDataDiskPart) SetBlock(v bool) *Mod
 
 func (s *ModifyReplicationJobAttributeRequestDataDiskPart) SetDevice(v string) *ModifyReplicationJobAttributeRequestDataDiskPart {
 	s.Device = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequestDataDiskPart) SetSizeBytes(v int64) *ModifyReplicationJobAttributeRequestDataDiskPart {
+	s.SizeBytes = &v
+	return s
+}
+
+type ModifyReplicationJobAttributeRequestSystemDiskPart struct {
+	Block     *bool   `json:"Block,omitempty" xml:"Block,omitempty"`
+	Device    *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	SizeBytes *int64  `json:"SizeBytes,omitempty" xml:"SizeBytes,omitempty"`
+}
+
+func (s ModifyReplicationJobAttributeRequestSystemDiskPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyReplicationJobAttributeRequestSystemDiskPart) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyReplicationJobAttributeRequestSystemDiskPart) SetBlock(v bool) *ModifyReplicationJobAttributeRequestSystemDiskPart {
+	s.Block = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequestSystemDiskPart) SetDevice(v string) *ModifyReplicationJobAttributeRequestSystemDiskPart {
+	s.Device = &v
+	return s
+}
+
+func (s *ModifyReplicationJobAttributeRequestSystemDiskPart) SetSizeBytes(v int64) *ModifyReplicationJobAttributeRequestSystemDiskPart {
+	s.SizeBytes = &v
 	return s
 }
 
@@ -2019,8 +2528,9 @@ func (s *ModifyReplicationJobAttributeResponseBody) SetRequestId(v string) *Modi
 }
 
 type ModifyReplicationJobAttributeResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyReplicationJobAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyReplicationJobAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyReplicationJobAttributeResponse) String() string {
@@ -2036,17 +2546,22 @@ func (s *ModifyReplicationJobAttributeResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *ModifyReplicationJobAttributeResponse) SetStatusCode(v int32) *ModifyReplicationJobAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyReplicationJobAttributeResponse) SetBody(v *ModifyReplicationJobAttributeResponseBody) *ModifyReplicationJobAttributeResponse {
 	s.Body = v
 	return s
 }
 
 type ModifySourceServerAttributeRequest struct {
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	SourceId             *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s ModifySourceServerAttributeRequest) String() string {
@@ -2055,6 +2570,16 @@ func (s ModifySourceServerAttributeRequest) String() string {
 
 func (s ModifySourceServerAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifySourceServerAttributeRequest) SetDescription(v string) *ModifySourceServerAttributeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifySourceServerAttributeRequest) SetName(v string) *ModifySourceServerAttributeRequest {
+	s.Name = &v
+	return s
 }
 
 func (s *ModifySourceServerAttributeRequest) SetOwnerId(v int64) *ModifySourceServerAttributeRequest {
@@ -2069,16 +2594,6 @@ func (s *ModifySourceServerAttributeRequest) SetResourceOwnerAccount(v string) *
 
 func (s *ModifySourceServerAttributeRequest) SetSourceId(v string) *ModifySourceServerAttributeRequest {
 	s.SourceId = &v
-	return s
-}
-
-func (s *ModifySourceServerAttributeRequest) SetName(v string) *ModifySourceServerAttributeRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ModifySourceServerAttributeRequest) SetDescription(v string) *ModifySourceServerAttributeRequest {
-	s.Description = &v
 	return s
 }
 
@@ -2100,8 +2615,9 @@ func (s *ModifySourceServerAttributeResponseBody) SetRequestId(v string) *Modify
 }
 
 type ModifySourceServerAttributeResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifySourceServerAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifySourceServerAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifySourceServerAttributeResponse) String() string {
@@ -2117,15 +2633,20 @@ func (s *ModifySourceServerAttributeResponse) SetHeaders(v map[string]*string) *
 	return s
 }
 
+func (s *ModifySourceServerAttributeResponse) SetStatusCode(v int32) *ModifySourceServerAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifySourceServerAttributeResponse) SetBody(v *ModifySourceServerAttributeResponseBody) *ModifySourceServerAttributeResponse {
 	s.Body = v
 	return s
 }
 
 type StartReplicationJobRequest struct {
+	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s StartReplicationJobRequest) String() string {
@@ -2136,6 +2657,11 @@ func (s StartReplicationJobRequest) GoString() string {
 	return s.String()
 }
 
+func (s *StartReplicationJobRequest) SetJobId(v string) *StartReplicationJobRequest {
+	s.JobId = &v
+	return s
+}
+
 func (s *StartReplicationJobRequest) SetOwnerId(v int64) *StartReplicationJobRequest {
 	s.OwnerId = &v
 	return s
@@ -2143,11 +2669,6 @@ func (s *StartReplicationJobRequest) SetOwnerId(v int64) *StartReplicationJobReq
 
 func (s *StartReplicationJobRequest) SetResourceOwnerAccount(v string) *StartReplicationJobRequest {
 	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *StartReplicationJobRequest) SetJobId(v string) *StartReplicationJobRequest {
-	s.JobId = &v
 	return s
 }
 
@@ -2169,8 +2690,9 @@ func (s *StartReplicationJobResponseBody) SetRequestId(v string) *StartReplicati
 }
 
 type StartReplicationJobResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartReplicationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartReplicationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartReplicationJobResponse) String() string {
@@ -2186,15 +2708,20 @@ func (s *StartReplicationJobResponse) SetHeaders(v map[string]*string) *StartRep
 	return s
 }
 
+func (s *StartReplicationJobResponse) SetStatusCode(v int32) *StartReplicationJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *StartReplicationJobResponse) SetBody(v *StartReplicationJobResponseBody) *StartReplicationJobResponse {
 	s.Body = v
 	return s
 }
 
 type StopReplicationJobRequest struct {
+	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s StopReplicationJobRequest) String() string {
@@ -2205,6 +2732,11 @@ func (s StopReplicationJobRequest) GoString() string {
 	return s.String()
 }
 
+func (s *StopReplicationJobRequest) SetJobId(v string) *StopReplicationJobRequest {
+	s.JobId = &v
+	return s
+}
+
 func (s *StopReplicationJobRequest) SetOwnerId(v int64) *StopReplicationJobRequest {
 	s.OwnerId = &v
 	return s
@@ -2212,11 +2744,6 @@ func (s *StopReplicationJobRequest) SetOwnerId(v int64) *StopReplicationJobReque
 
 func (s *StopReplicationJobRequest) SetResourceOwnerAccount(v string) *StopReplicationJobRequest {
 	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *StopReplicationJobRequest) SetJobId(v string) *StopReplicationJobRequest {
-	s.JobId = &v
 	return s
 }
 
@@ -2238,8 +2765,9 @@ func (s *StopReplicationJobResponseBody) SetRequestId(v string) *StopReplication
 }
 
 type StopReplicationJobResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopReplicationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopReplicationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StopReplicationJobResponse) String() string {
@@ -2255,6 +2783,11 @@ func (s *StopReplicationJobResponse) SetHeaders(v map[string]*string) *StopRepli
 	return s
 }
 
+func (s *StopReplicationJobResponse) SetStatusCode(v int32) *StopReplicationJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *StopReplicationJobResponse) SetBody(v *StopReplicationJobResponseBody) *StopReplicationJobResponse {
 	s.Body = v
 	return s
@@ -2262,9 +2795,9 @@ func (s *StopReplicationJobResponse) SetBody(v *StopReplicationJobResponseBody) 
 
 type TagResourcesRequest struct {
 	OwnerId              *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceId           []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceType         *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceId           []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	Tag                  []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -2281,6 +2814,11 @@ func (s *TagResourcesRequest) SetOwnerId(v int64) *TagResourcesRequest {
 	return s
 }
 
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
 func (s *TagResourcesRequest) SetResourceOwnerAccount(v string) *TagResourcesRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -2288,11 +2826,6 @@ func (s *TagResourcesRequest) SetResourceOwnerAccount(v string) *TagResourcesReq
 
 func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
 	s.ResourceType = &v
-	return s
-}
-
-func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
-	s.ResourceId = v
 	return s
 }
 
@@ -2342,8 +2875,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -2359,17 +2893,22 @@ func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesRes
 	return s
 }
 
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
 	s.Body = v
 	return s
 }
 
 type UntagResourcesRequest struct {
+	All                  *bool     `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	All                  *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	TagKey               []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
@@ -2381,8 +2920,18 @@ func (s UntagResourcesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
 func (s *UntagResourcesRequest) SetOwnerId(v int64) *UntagResourcesRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
+	s.ResourceId = v
 	return s
 }
 
@@ -2393,16 +2942,6 @@ func (s *UntagResourcesRequest) SetResourceOwnerAccount(v string) *UntagResource
 
 func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
 	s.ResourceType = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
-	s.All = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
-	s.ResourceId = v
 	return s
 }
 
@@ -2429,8 +2968,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -2443,6 +2983,11 @@ func (s UntagResourcesResponse) GoString() string {
 
 func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2498,16 +3043,220 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) CreateAccessTokenWithOptions(request *CreateAccessTokenRequest, runtime *util.RuntimeOptions) (_result *CreateAccessTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		query["Count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeToLiveInDays)) {
+		query["TimeToLiveInDays"] = request.TimeToLiveInDays
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAccessToken"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAccessTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAccessToken(request *CreateAccessTokenRequest) (_result *CreateAccessTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAccessTokenResponse{}
+	_body, _err := client.CreateAccessTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateReplicationJobWithOptions(request *CreateReplicationJobRequest, runtime *util.RuntimeOptions) (_result *CreateReplicationJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerNamespace)) {
+		query["ContainerNamespace"] = request.ContainerNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerRepository)) {
+		query["ContainerRepository"] = request.ContainerRepository
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerTag)) {
+		query["ContainerTag"] = request.ContainerTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataDisk)) {
+		query["DataDisk"] = request.DataDisk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Frequency)) {
+		query["Frequency"] = request.Frequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+		query["ImageName"] = request.ImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceRamRole)) {
+		query["InstanceRamRole"] = request.InstanceRamRole
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobType)) {
+		query["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LaunchTemplateId)) {
+		query["LaunchTemplateId"] = request.LaunchTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LaunchTemplateVersion)) {
+		query["LaunchTemplateVersion"] = request.LaunchTemplateVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LicenseType)) {
+		query["LicenseType"] = request.LicenseType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxNumberOfImageToKeep)) {
+		query["MaxNumberOfImageToKeep"] = request.MaxNumberOfImageToKeep
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetMode)) {
+		query["NetMode"] = request.NetMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplicationParameters)) {
+		query["ReplicationParameters"] = request.ReplicationParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunOnce)) {
+		query["RunOnce"] = request.RunOnce
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduledStartTime)) {
+		query["ScheduledStartTime"] = request.ScheduledStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskPart)) {
+		query["SystemDiskPart"] = request.SystemDiskPart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskSize)) {
+		query["SystemDiskSize"] = request.SystemDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidTime)) {
+		query["ValidTime"] = request.ValidTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateReplicationJob"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateReplicationJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateReplicationJob"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2531,11 +3280,39 @@ func (client *Client) CutOverReplicationJobWithOptions(request *CutOverReplicati
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncData)) {
+		query["SyncData"] = request.SyncData
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CutOverReplicationJob"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CutOverReplicationJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CutOverReplicationJob"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2554,16 +3331,92 @@ func (client *Client) CutOverReplicationJob(request *CutOverReplicationJobReques
 	return _result, _err
 }
 
+func (client *Client) DeleteAccessTokenWithOptions(request *DeleteAccessTokenRequest, runtime *util.RuntimeOptions) (_result *DeleteAccessTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessTokenId)) {
+		query["AccessTokenId"] = request.AccessTokenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAccessToken"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAccessTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAccessToken(request *DeleteAccessTokenRequest) (_result *DeleteAccessTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAccessTokenResponse{}
+	_body, _err := client.DeleteAccessTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteReplicationJobWithOptions(request *DeleteReplicationJobRequest, runtime *util.RuntimeOptions) (_result *DeleteReplicationJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteReplicationJob"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteReplicationJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteReplicationJob"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2587,11 +3440,39 @@ func (client *Client) DeleteSourceServerWithOptions(request *DeleteSourceServerR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSourceServer"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSourceServerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteSourceServer"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2615,11 +3496,71 @@ func (client *Client) DescribeReplicationJobsWithOptions(request *DescribeReplic
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessStatus)) {
+		query["BusinessStatus"] = request.BusinessStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobType)) {
+		query["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeReplicationJobs"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeReplicationJobsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeReplicationJobs"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2643,11 +3584,55 @@ func (client *Client) DescribeSourceServersWithOptions(request *DescribeSourceSe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSourceServers"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSourceServersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSourceServers"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2666,16 +3651,164 @@ func (client *Client) DescribeSourceServers(request *DescribeSourceServersReques
 	return _result, _err
 }
 
+func (client *Client) DisableAccessTokenWithOptions(request *DisableAccessTokenRequest, runtime *util.RuntimeOptions) (_result *DisableAccessTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessTokenId)) {
+		query["AccessTokenId"] = request.AccessTokenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableAccessToken"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableAccessTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableAccessToken(request *DisableAccessTokenRequest) (_result *DisableAccessTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableAccessTokenResponse{}
+	_body, _err := client.DisableAccessTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAccessTokensWithOptions(request *ListAccessTokensRequest, runtime *util.RuntimeOptions) (_result *ListAccessTokensResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessTokenId)) {
+		query["AccessTokenId"] = request.AccessTokenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccessTokens"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAccessTokensResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAccessTokens(request *ListAccessTokensRequest) (_result *ListAccessTokensResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAccessTokensResponse{}
+	_body, _err := client.ListAccessTokensWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTagResources"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2699,11 +3832,111 @@ func (client *Client) ModifyReplicationJobAttributeWithOptions(request *ModifyRe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContainerNamespace)) {
+		query["ContainerNamespace"] = request.ContainerNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerRepository)) {
+		query["ContainerRepository"] = request.ContainerRepository
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerTag)) {
+		query["ContainerTag"] = request.ContainerTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataDisk)) {
+		query["DataDisk"] = request.DataDisk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Frequency)) {
+		query["Frequency"] = request.Frequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+		query["ImageName"] = request.ImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceRamRole)) {
+		query["InstanceRamRole"] = request.InstanceRamRole
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LaunchTemplateId)) {
+		query["LaunchTemplateId"] = request.LaunchTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LaunchTemplateVersion)) {
+		query["LaunchTemplateVersion"] = request.LaunchTemplateVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxNumberOfImageToKeep)) {
+		query["MaxNumberOfImageToKeep"] = request.MaxNumberOfImageToKeep
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduledStartTime)) {
+		query["ScheduledStartTime"] = request.ScheduledStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskPart)) {
+		query["SystemDiskPart"] = request.SystemDiskPart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskSize)) {
+		query["SystemDiskSize"] = request.SystemDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidTime)) {
+		query["ValidTime"] = request.ValidTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyReplicationJobAttribute"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyReplicationJobAttributeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyReplicationJobAttribute"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2727,11 +3960,43 @@ func (client *Client) ModifySourceServerAttributeWithOptions(request *ModifySour
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifySourceServerAttribute"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifySourceServerAttributeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifySourceServerAttribute"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2755,11 +4020,35 @@ func (client *Client) StartReplicationJobWithOptions(request *StartReplicationJo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartReplicationJob"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StartReplicationJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartReplicationJob"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2783,11 +4072,35 @@ func (client *Client) StopReplicationJobWithOptions(request *StopReplicationJobR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopReplicationJob"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StopReplicationJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StopReplicationJob"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2811,11 +4124,43 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TagResources"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2839,11 +4184,47 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UntagResources"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
