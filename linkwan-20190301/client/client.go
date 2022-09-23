@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -53,8 +53,9 @@ func (s *AcceptJoinPermissionAuthOrderResponseBody) SetSuccess(v bool) *AcceptJo
 }
 
 type AcceptJoinPermissionAuthOrderResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AcceptJoinPermissionAuthOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AcceptJoinPermissionAuthOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AcceptJoinPermissionAuthOrderResponse) String() string {
@@ -70,6 +71,11 @@ func (s *AcceptJoinPermissionAuthOrderResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *AcceptJoinPermissionAuthOrderResponse) SetStatusCode(v int32) *AcceptJoinPermissionAuthOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AcceptJoinPermissionAuthOrderResponse) SetBody(v *AcceptJoinPermissionAuthOrderResponseBody) *AcceptJoinPermissionAuthOrderResponse {
 	s.Body = v
 	return s
@@ -77,8 +83,8 @@ func (s *AcceptJoinPermissionAuthOrderResponse) SetBody(v *AcceptJoinPermissionA
 
 type AddNodeToGroupRequest struct {
 	DevEui      *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	PinCode     *string `json:"PinCode,omitempty" xml:"PinCode,omitempty"`
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	PinCode     *string `json:"PinCode,omitempty" xml:"PinCode,omitempty"`
 }
 
 func (s AddNodeToGroupRequest) String() string {
@@ -94,13 +100,13 @@ func (s *AddNodeToGroupRequest) SetDevEui(v string) *AddNodeToGroupRequest {
 	return s
 }
 
-func (s *AddNodeToGroupRequest) SetPinCode(v string) *AddNodeToGroupRequest {
-	s.PinCode = &v
+func (s *AddNodeToGroupRequest) SetNodeGroupId(v string) *AddNodeToGroupRequest {
+	s.NodeGroupId = &v
 	return s
 }
 
-func (s *AddNodeToGroupRequest) SetNodeGroupId(v string) *AddNodeToGroupRequest {
-	s.NodeGroupId = &v
+func (s *AddNodeToGroupRequest) SetPinCode(v string) *AddNodeToGroupRequest {
+	s.PinCode = &v
 	return s
 }
 
@@ -128,8 +134,9 @@ func (s *AddNodeToGroupResponseBody) SetSuccess(v bool) *AddNodeToGroupResponseB
 }
 
 type AddNodeToGroupResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddNodeToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddNodeToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddNodeToGroupResponse) String() string {
@@ -145,17 +152,22 @@ func (s *AddNodeToGroupResponse) SetHeaders(v map[string]*string) *AddNodeToGrou
 	return s
 }
 
+func (s *AddNodeToGroupResponse) SetStatusCode(v int32) *AddNodeToGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AddNodeToGroupResponse) SetBody(v *AddNodeToGroupResponseBody) *AddNodeToGroupResponse {
 	s.Body = v
 	return s
 }
 
 type ApplyRoamingJoinPermissionRequest struct {
-	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
 	ClassMode           *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
+	DataRate            *int64  `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
+	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
 	JoinPermissionName  *string `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
 	RxDelay             *int64  `json:"RxDelay,omitempty" xml:"RxDelay,omitempty"`
-	DataRate            *int64  `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
 }
 
 func (s ApplyRoamingJoinPermissionRequest) String() string {
@@ -166,13 +178,18 @@ func (s ApplyRoamingJoinPermissionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ApplyRoamingJoinPermissionRequest) SetFreqBandPlanGroupId(v int64) *ApplyRoamingJoinPermissionRequest {
-	s.FreqBandPlanGroupId = &v
+func (s *ApplyRoamingJoinPermissionRequest) SetClassMode(v string) *ApplyRoamingJoinPermissionRequest {
+	s.ClassMode = &v
 	return s
 }
 
-func (s *ApplyRoamingJoinPermissionRequest) SetClassMode(v string) *ApplyRoamingJoinPermissionRequest {
-	s.ClassMode = &v
+func (s *ApplyRoamingJoinPermissionRequest) SetDataRate(v int64) *ApplyRoamingJoinPermissionRequest {
+	s.DataRate = &v
+	return s
+}
+
+func (s *ApplyRoamingJoinPermissionRequest) SetFreqBandPlanGroupId(v int64) *ApplyRoamingJoinPermissionRequest {
+	s.FreqBandPlanGroupId = &v
 	return s
 }
 
@@ -186,14 +203,9 @@ func (s *ApplyRoamingJoinPermissionRequest) SetRxDelay(v int64) *ApplyRoamingJoi
 	return s
 }
 
-func (s *ApplyRoamingJoinPermissionRequest) SetDataRate(v int64) *ApplyRoamingJoinPermissionRequest {
-	s.DataRate = &v
-	return s
-}
-
 type ApplyRoamingJoinPermissionResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -205,13 +217,13 @@ func (s ApplyRoamingJoinPermissionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ApplyRoamingJoinPermissionResponseBody) SetRequestId(v string) *ApplyRoamingJoinPermissionResponseBody {
-	s.RequestId = &v
+func (s *ApplyRoamingJoinPermissionResponseBody) SetData(v string) *ApplyRoamingJoinPermissionResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *ApplyRoamingJoinPermissionResponseBody) SetData(v string) *ApplyRoamingJoinPermissionResponseBody {
-	s.Data = &v
+func (s *ApplyRoamingJoinPermissionResponseBody) SetRequestId(v string) *ApplyRoamingJoinPermissionResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -221,8 +233,9 @@ func (s *ApplyRoamingJoinPermissionResponseBody) SetSuccess(v bool) *ApplyRoamin
 }
 
 type ApplyRoamingJoinPermissionResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ApplyRoamingJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ApplyRoamingJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ApplyRoamingJoinPermissionResponse) String() string {
@@ -238,14 +251,19 @@ func (s *ApplyRoamingJoinPermissionResponse) SetHeaders(v map[string]*string) *A
 	return s
 }
 
+func (s *ApplyRoamingJoinPermissionResponse) SetStatusCode(v int32) *ApplyRoamingJoinPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ApplyRoamingJoinPermissionResponse) SetBody(v *ApplyRoamingJoinPermissionResponseBody) *ApplyRoamingJoinPermissionResponse {
 	s.Body = v
 	return s
 }
 
 type BindJoinPermissionToNodeGroupRequest struct {
-	NodeGroupId      *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	JoinPermissionId *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
+	NodeGroupId      *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 }
 
 func (s BindJoinPermissionToNodeGroupRequest) String() string {
@@ -256,13 +274,13 @@ func (s BindJoinPermissionToNodeGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *BindJoinPermissionToNodeGroupRequest) SetNodeGroupId(v string) *BindJoinPermissionToNodeGroupRequest {
-	s.NodeGroupId = &v
+func (s *BindJoinPermissionToNodeGroupRequest) SetJoinPermissionId(v string) *BindJoinPermissionToNodeGroupRequest {
+	s.JoinPermissionId = &v
 	return s
 }
 
-func (s *BindJoinPermissionToNodeGroupRequest) SetJoinPermissionId(v string) *BindJoinPermissionToNodeGroupRequest {
-	s.JoinPermissionId = &v
+func (s *BindJoinPermissionToNodeGroupRequest) SetNodeGroupId(v string) *BindJoinPermissionToNodeGroupRequest {
+	s.NodeGroupId = &v
 	return s
 }
 
@@ -290,8 +308,9 @@ func (s *BindJoinPermissionToNodeGroupResponseBody) SetSuccess(v bool) *BindJoin
 }
 
 type BindJoinPermissionToNodeGroupResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BindJoinPermissionToNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BindJoinPermissionToNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BindJoinPermissionToNodeGroupResponse) String() string {
@@ -304,6 +323,11 @@ func (s BindJoinPermissionToNodeGroupResponse) GoString() string {
 
 func (s *BindJoinPermissionToNodeGroupResponse) SetHeaders(v map[string]*string) *BindJoinPermissionToNodeGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *BindJoinPermissionToNodeGroupResponse) SetStatusCode(v int32) *BindJoinPermissionToNodeGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -353,8 +377,9 @@ func (s *CancelJoinPermissionAuthOrderResponseBody) SetSuccess(v bool) *CancelJo
 }
 
 type CancelJoinPermissionAuthOrderResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CancelJoinPermissionAuthOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelJoinPermissionAuthOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CancelJoinPermissionAuthOrderResponse) String() string {
@@ -367,6 +392,11 @@ func (s CancelJoinPermissionAuthOrderResponse) GoString() string {
 
 func (s *CancelJoinPermissionAuthOrderResponse) SetHeaders(v map[string]*string) *CancelJoinPermissionAuthOrderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CancelJoinPermissionAuthOrderResponse) SetStatusCode(v int32) *CancelJoinPermissionAuthOrderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -393,8 +423,8 @@ func (s *CheckCloudProductOpenStatusRequest) SetServiceCode(v string) *CheckClou
 }
 
 type CheckCloudProductOpenStatusResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -406,13 +436,13 @@ func (s CheckCloudProductOpenStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CheckCloudProductOpenStatusResponseBody) SetRequestId(v string) *CheckCloudProductOpenStatusResponseBody {
-	s.RequestId = &v
+func (s *CheckCloudProductOpenStatusResponseBody) SetData(v bool) *CheckCloudProductOpenStatusResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CheckCloudProductOpenStatusResponseBody) SetData(v bool) *CheckCloudProductOpenStatusResponseBody {
-	s.Data = &v
+func (s *CheckCloudProductOpenStatusResponseBody) SetRequestId(v string) *CheckCloudProductOpenStatusResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -422,8 +452,9 @@ func (s *CheckCloudProductOpenStatusResponseBody) SetSuccess(v bool) *CheckCloud
 }
 
 type CheckCloudProductOpenStatusResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckCloudProductOpenStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckCloudProductOpenStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckCloudProductOpenStatusResponse) String() string {
@@ -439,14 +470,19 @@ func (s *CheckCloudProductOpenStatusResponse) SetHeaders(v map[string]*string) *
 	return s
 }
 
+func (s *CheckCloudProductOpenStatusResponse) SetStatusCode(v int32) *CheckCloudProductOpenStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CheckCloudProductOpenStatusResponse) SetBody(v *CheckCloudProductOpenStatusResponseBody) *CheckCloudProductOpenStatusResponse {
 	s.Body = v
 	return s
 }
 
 type CheckUserChargeStatusResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -458,13 +494,13 @@ func (s CheckUserChargeStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CheckUserChargeStatusResponseBody) SetRequestId(v string) *CheckUserChargeStatusResponseBody {
-	s.RequestId = &v
+func (s *CheckUserChargeStatusResponseBody) SetData(v string) *CheckUserChargeStatusResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CheckUserChargeStatusResponseBody) SetData(v string) *CheckUserChargeStatusResponseBody {
-	s.Data = &v
+func (s *CheckUserChargeStatusResponseBody) SetRequestId(v string) *CheckUserChargeStatusResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -474,8 +510,9 @@ func (s *CheckUserChargeStatusResponseBody) SetSuccess(v bool) *CheckUserChargeS
 }
 
 type CheckUserChargeStatusResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckUserChargeStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckUserChargeStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckUserChargeStatusResponse) String() string {
@@ -491,112 +528,12 @@ func (s *CheckUserChargeStatusResponse) SetHeaders(v map[string]*string) *CheckU
 	return s
 }
 
+func (s *CheckUserChargeStatusResponse) SetStatusCode(v int32) *CheckUserChargeStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CheckUserChargeStatusResponse) SetBody(v *CheckUserChargeStatusResponseBody) *CheckUserChargeStatusResponse {
-	s.Body = v
-	return s
-}
-
-type CountGatewaysRequest struct {
-	IotInstanceId       *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	OnlineState         *string `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
-	FuzzyGwEui          *string `json:"FuzzyGwEui,omitempty" xml:"FuzzyGwEui,omitempty"`
-	FuzzyCity           *string `json:"FuzzyCity,omitempty" xml:"FuzzyCity,omitempty"`
-	FuzzyName           *string `json:"FuzzyName,omitempty" xml:"FuzzyName,omitempty"`
-	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	IsEnabled           *bool   `json:"IsEnabled,omitempty" xml:"IsEnabled,omitempty"`
-}
-
-func (s CountGatewaysRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CountGatewaysRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CountGatewaysRequest) SetIotInstanceId(v string) *CountGatewaysRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *CountGatewaysRequest) SetOnlineState(v string) *CountGatewaysRequest {
-	s.OnlineState = &v
-	return s
-}
-
-func (s *CountGatewaysRequest) SetFuzzyGwEui(v string) *CountGatewaysRequest {
-	s.FuzzyGwEui = &v
-	return s
-}
-
-func (s *CountGatewaysRequest) SetFuzzyCity(v string) *CountGatewaysRequest {
-	s.FuzzyCity = &v
-	return s
-}
-
-func (s *CountGatewaysRequest) SetFuzzyName(v string) *CountGatewaysRequest {
-	s.FuzzyName = &v
-	return s
-}
-
-func (s *CountGatewaysRequest) SetFreqBandPlanGroupId(v int64) *CountGatewaysRequest {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *CountGatewaysRequest) SetIsEnabled(v bool) *CountGatewaysRequest {
-	s.IsEnabled = &v
-	return s
-}
-
-type CountGatewaysResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CountGatewaysResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CountGatewaysResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CountGatewaysResponseBody) SetRequestId(v string) *CountGatewaysResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CountGatewaysResponseBody) SetData(v int64) *CountGatewaysResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CountGatewaysResponseBody) SetSuccess(v bool) *CountGatewaysResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CountGatewaysResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CountGatewaysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CountGatewaysResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CountGatewaysResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CountGatewaysResponse) SetHeaders(v map[string]*string) *CountGatewaysResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CountGatewaysResponse) SetBody(v *CountGatewaysResponseBody) *CountGatewaysResponse {
 	s.Body = v
 	return s
 }
@@ -619,8 +556,8 @@ func (s *CountGatewayTupleOrdersRequest) SetStates(v []*string) *CountGatewayTup
 }
 
 type CountGatewayTupleOrdersResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -632,13 +569,13 @@ func (s CountGatewayTupleOrdersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CountGatewayTupleOrdersResponseBody) SetRequestId(v string) *CountGatewayTupleOrdersResponseBody {
-	s.RequestId = &v
+func (s *CountGatewayTupleOrdersResponseBody) SetData(v int64) *CountGatewayTupleOrdersResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CountGatewayTupleOrdersResponseBody) SetData(v int64) *CountGatewayTupleOrdersResponseBody {
-	s.Data = &v
+func (s *CountGatewayTupleOrdersResponseBody) SetRequestId(v string) *CountGatewayTupleOrdersResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -648,8 +585,9 @@ func (s *CountGatewayTupleOrdersResponseBody) SetSuccess(v bool) *CountGatewayTu
 }
 
 type CountGatewayTupleOrdersResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CountGatewayTupleOrdersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CountGatewayTupleOrdersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CountGatewayTupleOrdersResponse) String() string {
@@ -665,16 +603,132 @@ func (s *CountGatewayTupleOrdersResponse) SetHeaders(v map[string]*string) *Coun
 	return s
 }
 
+func (s *CountGatewayTupleOrdersResponse) SetStatusCode(v int32) *CountGatewayTupleOrdersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CountGatewayTupleOrdersResponse) SetBody(v *CountGatewayTupleOrdersResponseBody) *CountGatewayTupleOrdersResponse {
 	s.Body = v
 	return s
 }
 
+type CountGatewaysRequest struct {
+	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	FuzzyCity           *string `json:"FuzzyCity,omitempty" xml:"FuzzyCity,omitempty"`
+	FuzzyGwEui          *string `json:"FuzzyGwEui,omitempty" xml:"FuzzyGwEui,omitempty"`
+	FuzzyName           *string `json:"FuzzyName,omitempty" xml:"FuzzyName,omitempty"`
+	IotInstanceId       *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	IsEnabled           *bool   `json:"IsEnabled,omitempty" xml:"IsEnabled,omitempty"`
+	OnlineState         *string `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
+}
+
+func (s CountGatewaysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountGatewaysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CountGatewaysRequest) SetFreqBandPlanGroupId(v int64) *CountGatewaysRequest {
+	s.FreqBandPlanGroupId = &v
+	return s
+}
+
+func (s *CountGatewaysRequest) SetFuzzyCity(v string) *CountGatewaysRequest {
+	s.FuzzyCity = &v
+	return s
+}
+
+func (s *CountGatewaysRequest) SetFuzzyGwEui(v string) *CountGatewaysRequest {
+	s.FuzzyGwEui = &v
+	return s
+}
+
+func (s *CountGatewaysRequest) SetFuzzyName(v string) *CountGatewaysRequest {
+	s.FuzzyName = &v
+	return s
+}
+
+func (s *CountGatewaysRequest) SetIotInstanceId(v string) *CountGatewaysRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CountGatewaysRequest) SetIsEnabled(v bool) *CountGatewaysRequest {
+	s.IsEnabled = &v
+	return s
+}
+
+func (s *CountGatewaysRequest) SetOnlineState(v string) *CountGatewaysRequest {
+	s.OnlineState = &v
+	return s
+}
+
+type CountGatewaysResponseBody struct {
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CountGatewaysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountGatewaysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CountGatewaysResponseBody) SetData(v int64) *CountGatewaysResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CountGatewaysResponseBody) SetRequestId(v string) *CountGatewaysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CountGatewaysResponseBody) SetSuccess(v bool) *CountGatewaysResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CountGatewaysResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CountGatewaysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CountGatewaysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountGatewaysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CountGatewaysResponse) SetHeaders(v map[string]*string) *CountGatewaysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CountGatewaysResponse) SetStatusCode(v int32) *CountGatewaysResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CountGatewaysResponse) SetBody(v *CountGatewaysResponseBody) *CountGatewaysResponse {
+	s.Body = v
+	return s
+}
+
 type CountNodeGroupsRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	FuzzyName     *string `json:"FuzzyName,omitempty" xml:"FuzzyName,omitempty"`
-	FuzzyJoinEui  *string `json:"FuzzyJoinEui,omitempty" xml:"FuzzyJoinEui,omitempty"`
 	FuzzyDevEui   *string `json:"FuzzyDevEui,omitempty" xml:"FuzzyDevEui,omitempty"`
+	FuzzyJoinEui  *string `json:"FuzzyJoinEui,omitempty" xml:"FuzzyJoinEui,omitempty"`
+	FuzzyName     *string `json:"FuzzyName,omitempty" xml:"FuzzyName,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 }
 
 func (s CountNodeGroupsRequest) String() string {
@@ -685,13 +739,8 @@ func (s CountNodeGroupsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CountNodeGroupsRequest) SetIotInstanceId(v string) *CountNodeGroupsRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *CountNodeGroupsRequest) SetFuzzyName(v string) *CountNodeGroupsRequest {
-	s.FuzzyName = &v
+func (s *CountNodeGroupsRequest) SetFuzzyDevEui(v string) *CountNodeGroupsRequest {
+	s.FuzzyDevEui = &v
 	return s
 }
 
@@ -700,14 +749,19 @@ func (s *CountNodeGroupsRequest) SetFuzzyJoinEui(v string) *CountNodeGroupsReque
 	return s
 }
 
-func (s *CountNodeGroupsRequest) SetFuzzyDevEui(v string) *CountNodeGroupsRequest {
-	s.FuzzyDevEui = &v
+func (s *CountNodeGroupsRequest) SetFuzzyName(v string) *CountNodeGroupsRequest {
+	s.FuzzyName = &v
+	return s
+}
+
+func (s *CountNodeGroupsRequest) SetIotInstanceId(v string) *CountNodeGroupsRequest {
+	s.IotInstanceId = &v
 	return s
 }
 
 type CountNodeGroupsResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -719,13 +773,13 @@ func (s CountNodeGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CountNodeGroupsResponseBody) SetRequestId(v string) *CountNodeGroupsResponseBody {
-	s.RequestId = &v
+func (s *CountNodeGroupsResponseBody) SetData(v int64) *CountNodeGroupsResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CountNodeGroupsResponseBody) SetData(v int64) *CountNodeGroupsResponseBody {
-	s.Data = &v
+func (s *CountNodeGroupsResponseBody) SetRequestId(v string) *CountNodeGroupsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -735,8 +789,9 @@ func (s *CountNodeGroupsResponseBody) SetSuccess(v bool) *CountNodeGroupsRespons
 }
 
 type CountNodeGroupsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CountNodeGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CountNodeGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CountNodeGroupsResponse) String() string {
@@ -752,157 +807,12 @@ func (s *CountNodeGroupsResponse) SetHeaders(v map[string]*string) *CountNodeGro
 	return s
 }
 
+func (s *CountNodeGroupsResponse) SetStatusCode(v int32) *CountNodeGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CountNodeGroupsResponse) SetBody(v *CountNodeGroupsResponseBody) *CountNodeGroupsResponse {
-	s.Body = v
-	return s
-}
-
-type CountNodesByNodeGroupIdRequest struct {
-	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	FuzzyDevEui *string `json:"FuzzyDevEui,omitempty" xml:"FuzzyDevEui,omitempty"`
-}
-
-func (s CountNodesByNodeGroupIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CountNodesByNodeGroupIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CountNodesByNodeGroupIdRequest) SetNodeGroupId(v string) *CountNodesByNodeGroupIdRequest {
-	s.NodeGroupId = &v
-	return s
-}
-
-func (s *CountNodesByNodeGroupIdRequest) SetFuzzyDevEui(v string) *CountNodesByNodeGroupIdRequest {
-	s.FuzzyDevEui = &v
-	return s
-}
-
-type CountNodesByNodeGroupIdResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CountNodesByNodeGroupIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CountNodesByNodeGroupIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CountNodesByNodeGroupIdResponseBody) SetRequestId(v string) *CountNodesByNodeGroupIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CountNodesByNodeGroupIdResponseBody) SetData(v int64) *CountNodesByNodeGroupIdResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CountNodesByNodeGroupIdResponseBody) SetSuccess(v bool) *CountNodesByNodeGroupIdResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CountNodesByNodeGroupIdResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CountNodesByNodeGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CountNodesByNodeGroupIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CountNodesByNodeGroupIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CountNodesByNodeGroupIdResponse) SetHeaders(v map[string]*string) *CountNodesByNodeGroupIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CountNodesByNodeGroupIdResponse) SetBody(v *CountNodesByNodeGroupIdResponseBody) *CountNodesByNodeGroupIdResponse {
-	s.Body = v
-	return s
-}
-
-type CountNodesByOwnedJoinPermissionIdRequest struct {
-	JoinPermissionId *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
-	FuzzyDevEui      *string `json:"FuzzyDevEui,omitempty" xml:"FuzzyDevEui,omitempty"`
-}
-
-func (s CountNodesByOwnedJoinPermissionIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CountNodesByOwnedJoinPermissionIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CountNodesByOwnedJoinPermissionIdRequest) SetJoinPermissionId(v string) *CountNodesByOwnedJoinPermissionIdRequest {
-	s.JoinPermissionId = &v
-	return s
-}
-
-func (s *CountNodesByOwnedJoinPermissionIdRequest) SetFuzzyDevEui(v string) *CountNodesByOwnedJoinPermissionIdRequest {
-	s.FuzzyDevEui = &v
-	return s
-}
-
-type CountNodesByOwnedJoinPermissionIdResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CountNodesByOwnedJoinPermissionIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CountNodesByOwnedJoinPermissionIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CountNodesByOwnedJoinPermissionIdResponseBody) SetRequestId(v string) *CountNodesByOwnedJoinPermissionIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CountNodesByOwnedJoinPermissionIdResponseBody) SetData(v int64) *CountNodesByOwnedJoinPermissionIdResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CountNodesByOwnedJoinPermissionIdResponseBody) SetSuccess(v bool) *CountNodesByOwnedJoinPermissionIdResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CountNodesByOwnedJoinPermissionIdResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CountNodesByOwnedJoinPermissionIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CountNodesByOwnedJoinPermissionIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CountNodesByOwnedJoinPermissionIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CountNodesByOwnedJoinPermissionIdResponse) SetHeaders(v map[string]*string) *CountNodesByOwnedJoinPermissionIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CountNodesByOwnedJoinPermissionIdResponse) SetBody(v *CountNodesByOwnedJoinPermissionIdResponseBody) *CountNodesByOwnedJoinPermissionIdResponse {
 	s.Body = v
 	return s
 }
@@ -931,8 +841,8 @@ func (s *CountNodeTupleOrdersRequest) SetStates(v []*string) *CountNodeTupleOrde
 }
 
 type CountNodeTupleOrdersResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -944,13 +854,13 @@ func (s CountNodeTupleOrdersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CountNodeTupleOrdersResponseBody) SetRequestId(v string) *CountNodeTupleOrdersResponseBody {
-	s.RequestId = &v
+func (s *CountNodeTupleOrdersResponseBody) SetData(v int64) *CountNodeTupleOrdersResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CountNodeTupleOrdersResponseBody) SetData(v int64) *CountNodeTupleOrdersResponseBody {
-	s.Data = &v
+func (s *CountNodeTupleOrdersResponseBody) SetRequestId(v string) *CountNodeTupleOrdersResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -960,8 +870,9 @@ func (s *CountNodeTupleOrdersResponseBody) SetSuccess(v bool) *CountNodeTupleOrd
 }
 
 type CountNodeTupleOrdersResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CountNodeTupleOrdersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CountNodeTupleOrdersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CountNodeTupleOrdersResponse) String() string {
@@ -977,16 +888,183 @@ func (s *CountNodeTupleOrdersResponse) SetHeaders(v map[string]*string) *CountNo
 	return s
 }
 
+func (s *CountNodeTupleOrdersResponse) SetStatusCode(v int32) *CountNodeTupleOrdersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CountNodeTupleOrdersResponse) SetBody(v *CountNodeTupleOrdersResponseBody) *CountNodeTupleOrdersResponse {
 	s.Body = v
 	return s
 }
 
+type CountNodesByNodeGroupIdRequest struct {
+	FuzzyDevEui *string `json:"FuzzyDevEui,omitempty" xml:"FuzzyDevEui,omitempty"`
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+}
+
+func (s CountNodesByNodeGroupIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountNodesByNodeGroupIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CountNodesByNodeGroupIdRequest) SetFuzzyDevEui(v string) *CountNodesByNodeGroupIdRequest {
+	s.FuzzyDevEui = &v
+	return s
+}
+
+func (s *CountNodesByNodeGroupIdRequest) SetNodeGroupId(v string) *CountNodesByNodeGroupIdRequest {
+	s.NodeGroupId = &v
+	return s
+}
+
+type CountNodesByNodeGroupIdResponseBody struct {
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CountNodesByNodeGroupIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountNodesByNodeGroupIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CountNodesByNodeGroupIdResponseBody) SetData(v int64) *CountNodesByNodeGroupIdResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CountNodesByNodeGroupIdResponseBody) SetRequestId(v string) *CountNodesByNodeGroupIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CountNodesByNodeGroupIdResponseBody) SetSuccess(v bool) *CountNodesByNodeGroupIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CountNodesByNodeGroupIdResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CountNodesByNodeGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CountNodesByNodeGroupIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountNodesByNodeGroupIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CountNodesByNodeGroupIdResponse) SetHeaders(v map[string]*string) *CountNodesByNodeGroupIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CountNodesByNodeGroupIdResponse) SetStatusCode(v int32) *CountNodesByNodeGroupIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CountNodesByNodeGroupIdResponse) SetBody(v *CountNodesByNodeGroupIdResponseBody) *CountNodesByNodeGroupIdResponse {
+	s.Body = v
+	return s
+}
+
+type CountNodesByOwnedJoinPermissionIdRequest struct {
+	FuzzyDevEui      *string `json:"FuzzyDevEui,omitempty" xml:"FuzzyDevEui,omitempty"`
+	JoinPermissionId *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
+}
+
+func (s CountNodesByOwnedJoinPermissionIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountNodesByOwnedJoinPermissionIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CountNodesByOwnedJoinPermissionIdRequest) SetFuzzyDevEui(v string) *CountNodesByOwnedJoinPermissionIdRequest {
+	s.FuzzyDevEui = &v
+	return s
+}
+
+func (s *CountNodesByOwnedJoinPermissionIdRequest) SetJoinPermissionId(v string) *CountNodesByOwnedJoinPermissionIdRequest {
+	s.JoinPermissionId = &v
+	return s
+}
+
+type CountNodesByOwnedJoinPermissionIdResponseBody struct {
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CountNodesByOwnedJoinPermissionIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountNodesByOwnedJoinPermissionIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CountNodesByOwnedJoinPermissionIdResponseBody) SetData(v int64) *CountNodesByOwnedJoinPermissionIdResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CountNodesByOwnedJoinPermissionIdResponseBody) SetRequestId(v string) *CountNodesByOwnedJoinPermissionIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CountNodesByOwnedJoinPermissionIdResponseBody) SetSuccess(v bool) *CountNodesByOwnedJoinPermissionIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CountNodesByOwnedJoinPermissionIdResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CountNodesByOwnedJoinPermissionIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CountNodesByOwnedJoinPermissionIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountNodesByOwnedJoinPermissionIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CountNodesByOwnedJoinPermissionIdResponse) SetHeaders(v map[string]*string) *CountNodesByOwnedJoinPermissionIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CountNodesByOwnedJoinPermissionIdResponse) SetStatusCode(v int32) *CountNodesByOwnedJoinPermissionIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CountNodesByOwnedJoinPermissionIdResponse) SetBody(v *CountNodesByOwnedJoinPermissionIdResponseBody) *CountNodesByOwnedJoinPermissionIdResponse {
+	s.Body = v
+	return s
+}
+
 type CountNotificationsRequest struct {
-	HandleState *string   `json:"HandleState,omitempty" xml:"HandleState,omitempty"`
 	BeginMillis *int64    `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
-	EndMillis   *int64    `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
 	Category    []*string `json:"Category,omitempty" xml:"Category,omitempty" type:"Repeated"`
+	EndMillis   *int64    `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
+	HandleState *string   `json:"HandleState,omitempty" xml:"HandleState,omitempty"`
 }
 
 func (s CountNotificationsRequest) String() string {
@@ -997,18 +1075,8 @@ func (s CountNotificationsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CountNotificationsRequest) SetHandleState(v string) *CountNotificationsRequest {
-	s.HandleState = &v
-	return s
-}
-
 func (s *CountNotificationsRequest) SetBeginMillis(v int64) *CountNotificationsRequest {
 	s.BeginMillis = &v
-	return s
-}
-
-func (s *CountNotificationsRequest) SetEndMillis(v int64) *CountNotificationsRequest {
-	s.EndMillis = &v
 	return s
 }
 
@@ -1017,9 +1085,19 @@ func (s *CountNotificationsRequest) SetCategory(v []*string) *CountNotifications
 	return s
 }
 
+func (s *CountNotificationsRequest) SetEndMillis(v int64) *CountNotificationsRequest {
+	s.EndMillis = &v
+	return s
+}
+
+func (s *CountNotificationsRequest) SetHandleState(v string) *CountNotificationsRequest {
+	s.HandleState = &v
+	return s
+}
+
 type CountNotificationsResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1031,13 +1109,13 @@ func (s CountNotificationsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CountNotificationsResponseBody) SetRequestId(v string) *CountNotificationsResponseBody {
-	s.RequestId = &v
+func (s *CountNotificationsResponseBody) SetData(v int64) *CountNotificationsResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CountNotificationsResponseBody) SetData(v int64) *CountNotificationsResponseBody {
-	s.Data = &v
+func (s *CountNotificationsResponseBody) SetRequestId(v string) *CountNotificationsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1047,8 +1125,9 @@ func (s *CountNotificationsResponseBody) SetSuccess(v bool) *CountNotificationsR
 }
 
 type CountNotificationsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CountNotificationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CountNotificationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CountNotificationsResponse) String() string {
@@ -1064,16 +1143,21 @@ func (s *CountNotificationsResponse) SetHeaders(v map[string]*string) *CountNoti
 	return s
 }
 
+func (s *CountNotificationsResponse) SetStatusCode(v int32) *CountNotificationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CountNotificationsResponse) SetBody(v *CountNotificationsResponseBody) *CountNotificationsResponse {
 	s.Body = v
 	return s
 }
 
 type CountOwnedJoinPermissionsRequest struct {
-	FuzzyRenterAliyunId     *string `json:"FuzzyRenterAliyunId,omitempty" xml:"FuzzyRenterAliyunId,omitempty"`
-	FuzzyJoinEui            *string `json:"FuzzyJoinEui,omitempty" xml:"FuzzyJoinEui,omitempty"`
 	Enabled                 *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	FuzzyJoinEui            *string `json:"FuzzyJoinEui,omitempty" xml:"FuzzyJoinEui,omitempty"`
 	FuzzyJoinPermissionName *string `json:"FuzzyJoinPermissionName,omitempty" xml:"FuzzyJoinPermissionName,omitempty"`
+	FuzzyRenterAliyunId     *string `json:"FuzzyRenterAliyunId,omitempty" xml:"FuzzyRenterAliyunId,omitempty"`
 }
 
 func (s CountOwnedJoinPermissionsRequest) String() string {
@@ -1084,8 +1168,8 @@ func (s CountOwnedJoinPermissionsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CountOwnedJoinPermissionsRequest) SetFuzzyRenterAliyunId(v string) *CountOwnedJoinPermissionsRequest {
-	s.FuzzyRenterAliyunId = &v
+func (s *CountOwnedJoinPermissionsRequest) SetEnabled(v bool) *CountOwnedJoinPermissionsRequest {
+	s.Enabled = &v
 	return s
 }
 
@@ -1094,19 +1178,19 @@ func (s *CountOwnedJoinPermissionsRequest) SetFuzzyJoinEui(v string) *CountOwned
 	return s
 }
 
-func (s *CountOwnedJoinPermissionsRequest) SetEnabled(v bool) *CountOwnedJoinPermissionsRequest {
-	s.Enabled = &v
-	return s
-}
-
 func (s *CountOwnedJoinPermissionsRequest) SetFuzzyJoinPermissionName(v string) *CountOwnedJoinPermissionsRequest {
 	s.FuzzyJoinPermissionName = &v
 	return s
 }
 
+func (s *CountOwnedJoinPermissionsRequest) SetFuzzyRenterAliyunId(v string) *CountOwnedJoinPermissionsRequest {
+	s.FuzzyRenterAliyunId = &v
+	return s
+}
+
 type CountOwnedJoinPermissionsResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1118,13 +1202,13 @@ func (s CountOwnedJoinPermissionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CountOwnedJoinPermissionsResponseBody) SetRequestId(v string) *CountOwnedJoinPermissionsResponseBody {
-	s.RequestId = &v
+func (s *CountOwnedJoinPermissionsResponseBody) SetData(v int64) *CountOwnedJoinPermissionsResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CountOwnedJoinPermissionsResponseBody) SetData(v int64) *CountOwnedJoinPermissionsResponseBody {
-	s.Data = &v
+func (s *CountOwnedJoinPermissionsResponseBody) SetRequestId(v string) *CountOwnedJoinPermissionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1134,8 +1218,9 @@ func (s *CountOwnedJoinPermissionsResponseBody) SetSuccess(v bool) *CountOwnedJo
 }
 
 type CountOwnedJoinPermissionsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CountOwnedJoinPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CountOwnedJoinPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CountOwnedJoinPermissionsResponse) String() string {
@@ -1151,18 +1236,23 @@ func (s *CountOwnedJoinPermissionsResponse) SetHeaders(v map[string]*string) *Co
 	return s
 }
 
+func (s *CountOwnedJoinPermissionsResponse) SetStatusCode(v int32) *CountOwnedJoinPermissionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CountOwnedJoinPermissionsResponse) SetBody(v *CountOwnedJoinPermissionsResponseBody) *CountOwnedJoinPermissionsResponse {
 	s.Body = v
 	return s
 }
 
 type CountRentedJoinPermissionsRequest struct {
-	FuzzyOwnerAliyunId      *string `json:"FuzzyOwnerAliyunId,omitempty" xml:"FuzzyOwnerAliyunId,omitempty"`
-	FuzzyJoinEui            *string `json:"FuzzyJoinEui,omitempty" xml:"FuzzyJoinEui,omitempty"`
-	Enabled                 *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	BoundNodeGroup          *bool   `json:"BoundNodeGroup,omitempty" xml:"BoundNodeGroup,omitempty"`
-	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Enabled                 *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	FuzzyJoinEui            *string `json:"FuzzyJoinEui,omitempty" xml:"FuzzyJoinEui,omitempty"`
 	FuzzyJoinPermissionName *string `json:"FuzzyJoinPermissionName,omitempty" xml:"FuzzyJoinPermissionName,omitempty"`
+	FuzzyOwnerAliyunId      *string `json:"FuzzyOwnerAliyunId,omitempty" xml:"FuzzyOwnerAliyunId,omitempty"`
+	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CountRentedJoinPermissionsRequest) String() string {
@@ -1173,13 +1263,8 @@ func (s CountRentedJoinPermissionsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CountRentedJoinPermissionsRequest) SetFuzzyOwnerAliyunId(v string) *CountRentedJoinPermissionsRequest {
-	s.FuzzyOwnerAliyunId = &v
-	return s
-}
-
-func (s *CountRentedJoinPermissionsRequest) SetFuzzyJoinEui(v string) *CountRentedJoinPermissionsRequest {
-	s.FuzzyJoinEui = &v
+func (s *CountRentedJoinPermissionsRequest) SetBoundNodeGroup(v bool) *CountRentedJoinPermissionsRequest {
+	s.BoundNodeGroup = &v
 	return s
 }
 
@@ -1188,13 +1273,8 @@ func (s *CountRentedJoinPermissionsRequest) SetEnabled(v bool) *CountRentedJoinP
 	return s
 }
 
-func (s *CountRentedJoinPermissionsRequest) SetBoundNodeGroup(v bool) *CountRentedJoinPermissionsRequest {
-	s.BoundNodeGroup = &v
-	return s
-}
-
-func (s *CountRentedJoinPermissionsRequest) SetType(v string) *CountRentedJoinPermissionsRequest {
-	s.Type = &v
+func (s *CountRentedJoinPermissionsRequest) SetFuzzyJoinEui(v string) *CountRentedJoinPermissionsRequest {
+	s.FuzzyJoinEui = &v
 	return s
 }
 
@@ -1203,9 +1283,19 @@ func (s *CountRentedJoinPermissionsRequest) SetFuzzyJoinPermissionName(v string)
 	return s
 }
 
+func (s *CountRentedJoinPermissionsRequest) SetFuzzyOwnerAliyunId(v string) *CountRentedJoinPermissionsRequest {
+	s.FuzzyOwnerAliyunId = &v
+	return s
+}
+
+func (s *CountRentedJoinPermissionsRequest) SetType(v string) *CountRentedJoinPermissionsRequest {
+	s.Type = &v
+	return s
+}
+
 type CountRentedJoinPermissionsResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1217,13 +1307,13 @@ func (s CountRentedJoinPermissionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CountRentedJoinPermissionsResponseBody) SetRequestId(v string) *CountRentedJoinPermissionsResponseBody {
-	s.RequestId = &v
+func (s *CountRentedJoinPermissionsResponseBody) SetData(v int64) *CountRentedJoinPermissionsResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CountRentedJoinPermissionsResponseBody) SetData(v int64) *CountRentedJoinPermissionsResponseBody {
-	s.Data = &v
+func (s *CountRentedJoinPermissionsResponseBody) SetRequestId(v string) *CountRentedJoinPermissionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1233,8 +1323,9 @@ func (s *CountRentedJoinPermissionsResponseBody) SetSuccess(v bool) *CountRented
 }
 
 type CountRentedJoinPermissionsResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CountRentedJoinPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CountRentedJoinPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CountRentedJoinPermissionsResponse) String() string {
@@ -1250,113 +1341,31 @@ func (s *CountRentedJoinPermissionsResponse) SetHeaders(v map[string]*string) *C
 	return s
 }
 
+func (s *CountRentedJoinPermissionsResponse) SetStatusCode(v int32) *CountRentedJoinPermissionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CountRentedJoinPermissionsResponse) SetBody(v *CountRentedJoinPermissionsResponseBody) *CountRentedJoinPermissionsResponse {
 	s.Body = v
 	return s
 }
 
-type CreateCustomLocalJoinPermissionRequest struct {
-	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	ClassMode           *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	JoinEui             *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
-	JoinPermissionName  *string `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
-}
-
-func (s CreateCustomLocalJoinPermissionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCustomLocalJoinPermissionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCustomLocalJoinPermissionRequest) SetFreqBandPlanGroupId(v int64) *CreateCustomLocalJoinPermissionRequest {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *CreateCustomLocalJoinPermissionRequest) SetClassMode(v string) *CreateCustomLocalJoinPermissionRequest {
-	s.ClassMode = &v
-	return s
-}
-
-func (s *CreateCustomLocalJoinPermissionRequest) SetJoinEui(v string) *CreateCustomLocalJoinPermissionRequest {
-	s.JoinEui = &v
-	return s
-}
-
-func (s *CreateCustomLocalJoinPermissionRequest) SetJoinPermissionName(v string) *CreateCustomLocalJoinPermissionRequest {
-	s.JoinPermissionName = &v
-	return s
-}
-
-type CreateCustomLocalJoinPermissionResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateCustomLocalJoinPermissionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCustomLocalJoinPermissionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCustomLocalJoinPermissionResponseBody) SetRequestId(v string) *CreateCustomLocalJoinPermissionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateCustomLocalJoinPermissionResponseBody) SetData(v string) *CreateCustomLocalJoinPermissionResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CreateCustomLocalJoinPermissionResponseBody) SetSuccess(v bool) *CreateCustomLocalJoinPermissionResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateCustomLocalJoinPermissionResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCustomLocalJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateCustomLocalJoinPermissionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateCustomLocalJoinPermissionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateCustomLocalJoinPermissionResponse) SetHeaders(v map[string]*string) *CreateCustomLocalJoinPermissionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateCustomLocalJoinPermissionResponse) SetBody(v *CreateCustomLocalJoinPermissionResponseBody) *CreateCustomLocalJoinPermissionResponse {
-	s.Body = v
-	return s
-}
-
 type CreateGatewayRequest struct {
-	IotInstanceId       *string  `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	GwEui               *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	PinCode             *string  `json:"PinCode,omitempty" xml:"PinCode,omitempty"`
-	Name                *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description         *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	FreqBandPlanGroupId *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	CommunicationMode   *string  `json:"CommunicationMode,omitempty" xml:"CommunicationMode,omitempty"`
-	City                *string  `json:"City,omitempty" xml:"City,omitempty"`
-	District            *string  `json:"District,omitempty" xml:"District,omitempty"`
 	Address             *string  `json:"Address,omitempty" xml:"Address,omitempty"`
-	GisCoordinateSystem *string  `json:"GisCoordinateSystem,omitempty" xml:"GisCoordinateSystem,omitempty"`
-	Longitude           *float32 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
-	Latitude            *float32 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
 	AddressCode         *int64   `json:"AddressCode,omitempty" xml:"AddressCode,omitempty"`
+	City                *string  `json:"City,omitempty" xml:"City,omitempty"`
+	CommunicationMode   *string  `json:"CommunicationMode,omitempty" xml:"CommunicationMode,omitempty"`
+	Description         *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	District            *string  `json:"District,omitempty" xml:"District,omitempty"`
+	FreqBandPlanGroupId *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	GisCoordinateSystem *string  `json:"GisCoordinateSystem,omitempty" xml:"GisCoordinateSystem,omitempty"`
+	GwEui               *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	IotInstanceId       *string  `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Latitude            *float32 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	Longitude           *float32 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	Name                *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	PinCode             *string  `json:"PinCode,omitempty" xml:"PinCode,omitempty"`
 }
 
 func (s CreateGatewayRequest) String() string {
@@ -1367,38 +1376,13 @@ func (s CreateGatewayRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateGatewayRequest) SetIotInstanceId(v string) *CreateGatewayRequest {
-	s.IotInstanceId = &v
+func (s *CreateGatewayRequest) SetAddress(v string) *CreateGatewayRequest {
+	s.Address = &v
 	return s
 }
 
-func (s *CreateGatewayRequest) SetGwEui(v string) *CreateGatewayRequest {
-	s.GwEui = &v
-	return s
-}
-
-func (s *CreateGatewayRequest) SetPinCode(v string) *CreateGatewayRequest {
-	s.PinCode = &v
-	return s
-}
-
-func (s *CreateGatewayRequest) SetName(v string) *CreateGatewayRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateGatewayRequest) SetDescription(v string) *CreateGatewayRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateGatewayRequest) SetFreqBandPlanGroupId(v int64) *CreateGatewayRequest {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *CreateGatewayRequest) SetCommunicationMode(v string) *CreateGatewayRequest {
-	s.CommunicationMode = &v
+func (s *CreateGatewayRequest) SetAddressCode(v int64) *CreateGatewayRequest {
+	s.AddressCode = &v
 	return s
 }
 
@@ -1407,13 +1391,23 @@ func (s *CreateGatewayRequest) SetCity(v string) *CreateGatewayRequest {
 	return s
 }
 
+func (s *CreateGatewayRequest) SetCommunicationMode(v string) *CreateGatewayRequest {
+	s.CommunicationMode = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetDescription(v string) *CreateGatewayRequest {
+	s.Description = &v
+	return s
+}
+
 func (s *CreateGatewayRequest) SetDistrict(v string) *CreateGatewayRequest {
 	s.District = &v
 	return s
 }
 
-func (s *CreateGatewayRequest) SetAddress(v string) *CreateGatewayRequest {
-	s.Address = &v
+func (s *CreateGatewayRequest) SetFreqBandPlanGroupId(v int64) *CreateGatewayRequest {
+	s.FreqBandPlanGroupId = &v
 	return s
 }
 
@@ -1422,8 +1416,13 @@ func (s *CreateGatewayRequest) SetGisCoordinateSystem(v string) *CreateGatewayRe
 	return s
 }
 
-func (s *CreateGatewayRequest) SetLongitude(v float32) *CreateGatewayRequest {
-	s.Longitude = &v
+func (s *CreateGatewayRequest) SetGwEui(v string) *CreateGatewayRequest {
+	s.GwEui = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetIotInstanceId(v string) *CreateGatewayRequest {
+	s.IotInstanceId = &v
 	return s
 }
 
@@ -1432,8 +1431,18 @@ func (s *CreateGatewayRequest) SetLatitude(v float32) *CreateGatewayRequest {
 	return s
 }
 
-func (s *CreateGatewayRequest) SetAddressCode(v int64) *CreateGatewayRequest {
-	s.AddressCode = &v
+func (s *CreateGatewayRequest) SetLongitude(v float32) *CreateGatewayRequest {
+	s.Longitude = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetName(v string) *CreateGatewayRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetPinCode(v string) *CreateGatewayRequest {
+	s.PinCode = &v
 	return s
 }
 
@@ -1461,8 +1470,9 @@ func (s *CreateGatewayResponseBody) SetSuccess(v bool) *CreateGatewayResponseBod
 }
 
 type CreateGatewayResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGatewayResponse) String() string {
@@ -1478,20 +1488,25 @@ func (s *CreateGatewayResponse) SetHeaders(v map[string]*string) *CreateGatewayR
 	return s
 }
 
+func (s *CreateGatewayResponse) SetStatusCode(v int32) *CreateGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateGatewayResponse) SetBody(v *CreateGatewayResponseBody) *CreateGatewayResponse {
 	s.Body = v
 	return s
 }
 
 type CreateLocalJoinPermissionRequest struct {
-	IotInstanceId       *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
 	ClassMode           *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	UseDefaultJoinEui   *bool   `json:"UseDefaultJoinEui,omitempty" xml:"UseDefaultJoinEui,omitempty"`
+	DataRate            *int64  `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
+	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	IotInstanceId       *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	JoinEui             *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
 	JoinPermissionName  *string `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
 	RxDelay             *int64  `json:"RxDelay,omitempty" xml:"RxDelay,omitempty"`
-	DataRate            *int64  `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
-	JoinEui             *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
+	UseDefaultJoinEui   *bool   `json:"UseDefaultJoinEui,omitempty" xml:"UseDefaultJoinEui,omitempty"`
 }
 
 func (s CreateLocalJoinPermissionRequest) String() string {
@@ -1502,8 +1517,13 @@ func (s CreateLocalJoinPermissionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateLocalJoinPermissionRequest) SetIotInstanceId(v string) *CreateLocalJoinPermissionRequest {
-	s.IotInstanceId = &v
+func (s *CreateLocalJoinPermissionRequest) SetClassMode(v string) *CreateLocalJoinPermissionRequest {
+	s.ClassMode = &v
+	return s
+}
+
+func (s *CreateLocalJoinPermissionRequest) SetDataRate(v int64) *CreateLocalJoinPermissionRequest {
+	s.DataRate = &v
 	return s
 }
 
@@ -1512,13 +1532,13 @@ func (s *CreateLocalJoinPermissionRequest) SetFreqBandPlanGroupId(v int64) *Crea
 	return s
 }
 
-func (s *CreateLocalJoinPermissionRequest) SetClassMode(v string) *CreateLocalJoinPermissionRequest {
-	s.ClassMode = &v
+func (s *CreateLocalJoinPermissionRequest) SetIotInstanceId(v string) *CreateLocalJoinPermissionRequest {
+	s.IotInstanceId = &v
 	return s
 }
 
-func (s *CreateLocalJoinPermissionRequest) SetUseDefaultJoinEui(v bool) *CreateLocalJoinPermissionRequest {
-	s.UseDefaultJoinEui = &v
+func (s *CreateLocalJoinPermissionRequest) SetJoinEui(v string) *CreateLocalJoinPermissionRequest {
+	s.JoinEui = &v
 	return s
 }
 
@@ -1532,19 +1552,14 @@ func (s *CreateLocalJoinPermissionRequest) SetRxDelay(v int64) *CreateLocalJoinP
 	return s
 }
 
-func (s *CreateLocalJoinPermissionRequest) SetDataRate(v int64) *CreateLocalJoinPermissionRequest {
-	s.DataRate = &v
-	return s
-}
-
-func (s *CreateLocalJoinPermissionRequest) SetJoinEui(v string) *CreateLocalJoinPermissionRequest {
-	s.JoinEui = &v
+func (s *CreateLocalJoinPermissionRequest) SetUseDefaultJoinEui(v bool) *CreateLocalJoinPermissionRequest {
+	s.UseDefaultJoinEui = &v
 	return s
 }
 
 type CreateLocalJoinPermissionResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1556,13 +1571,13 @@ func (s CreateLocalJoinPermissionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateLocalJoinPermissionResponseBody) SetRequestId(v string) *CreateLocalJoinPermissionResponseBody {
-	s.RequestId = &v
+func (s *CreateLocalJoinPermissionResponseBody) SetData(v string) *CreateLocalJoinPermissionResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CreateLocalJoinPermissionResponseBody) SetData(v string) *CreateLocalJoinPermissionResponseBody {
-	s.Data = &v
+func (s *CreateLocalJoinPermissionResponseBody) SetRequestId(v string) *CreateLocalJoinPermissionResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1572,8 +1587,9 @@ func (s *CreateLocalJoinPermissionResponseBody) SetSuccess(v bool) *CreateLocalJ
 }
 
 type CreateLocalJoinPermissionResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateLocalJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateLocalJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateLocalJoinPermissionResponse) String() string {
@@ -1589,14 +1605,19 @@ func (s *CreateLocalJoinPermissionResponse) SetHeaders(v map[string]*string) *Cr
 	return s
 }
 
+func (s *CreateLocalJoinPermissionResponse) SetStatusCode(v int32) *CreateLocalJoinPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateLocalJoinPermissionResponse) SetBody(v *CreateLocalJoinPermissionResponseBody) *CreateLocalJoinPermissionResponse {
 	s.Body = v
 	return s
 }
 
 type CreateNodeGroupRequest struct {
-	NodeGroupName    *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
 	JoinPermissionId *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
+	NodeGroupName    *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
 }
 
 func (s CreateNodeGroupRequest) String() string {
@@ -1607,19 +1628,19 @@ func (s CreateNodeGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateNodeGroupRequest) SetNodeGroupName(v string) *CreateNodeGroupRequest {
-	s.NodeGroupName = &v
-	return s
-}
-
 func (s *CreateNodeGroupRequest) SetJoinPermissionId(v string) *CreateNodeGroupRequest {
 	s.JoinPermissionId = &v
 	return s
 }
 
+func (s *CreateNodeGroupRequest) SetNodeGroupName(v string) *CreateNodeGroupRequest {
+	s.NodeGroupName = &v
+	return s
+}
+
 type CreateNodeGroupResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1631,13 +1652,13 @@ func (s CreateNodeGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateNodeGroupResponseBody) SetRequestId(v string) *CreateNodeGroupResponseBody {
-	s.RequestId = &v
+func (s *CreateNodeGroupResponseBody) SetData(v string) *CreateNodeGroupResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *CreateNodeGroupResponseBody) SetData(v string) *CreateNodeGroupResponseBody {
-	s.Data = &v
+func (s *CreateNodeGroupResponseBody) SetRequestId(v string) *CreateNodeGroupResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1647,8 +1668,9 @@ func (s *CreateNodeGroupResponseBody) SetSuccess(v bool) *CreateNodeGroupRespons
 }
 
 type CreateNodeGroupResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateNodeGroupResponse) String() string {
@@ -1664,14 +1686,19 @@ func (s *CreateNodeGroupResponse) SetHeaders(v map[string]*string) *CreateNodeGr
 	return s
 }
 
+func (s *CreateNodeGroupResponse) SetStatusCode(v int32) *CreateNodeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateNodeGroupResponse) SetBody(v *CreateNodeGroupResponseBody) *CreateNodeGroupResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteGatewayRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 }
 
 func (s DeleteGatewayRequest) String() string {
@@ -1682,13 +1709,13 @@ func (s DeleteGatewayRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteGatewayRequest) SetIotInstanceId(v string) *DeleteGatewayRequest {
-	s.IotInstanceId = &v
+func (s *DeleteGatewayRequest) SetGwEui(v string) *DeleteGatewayRequest {
+	s.GwEui = &v
 	return s
 }
 
-func (s *DeleteGatewayRequest) SetGwEui(v string) *DeleteGatewayRequest {
-	s.GwEui = &v
+func (s *DeleteGatewayRequest) SetIotInstanceId(v string) *DeleteGatewayRequest {
+	s.IotInstanceId = &v
 	return s
 }
 
@@ -1716,8 +1743,9 @@ func (s *DeleteGatewayResponseBody) SetSuccess(v bool) *DeleteGatewayResponseBod
 }
 
 type DeleteGatewayResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteGatewayResponse) String() string {
@@ -1730,6 +1758,11 @@ func (s DeleteGatewayResponse) GoString() string {
 
 func (s *DeleteGatewayResponse) SetHeaders(v map[string]*string) *DeleteGatewayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayResponse) SetStatusCode(v int32) *DeleteGatewayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1785,8 +1818,9 @@ func (s *DeleteLocalJoinPermissionResponseBody) SetSuccess(v bool) *DeleteLocalJ
 }
 
 type DeleteLocalJoinPermissionResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteLocalJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteLocalJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteLocalJoinPermissionResponse) String() string {
@@ -1799,6 +1833,11 @@ func (s DeleteLocalJoinPermissionResponse) GoString() string {
 
 func (s *DeleteLocalJoinPermissionResponse) SetHeaders(v map[string]*string) *DeleteLocalJoinPermissionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteLocalJoinPermissionResponse) SetStatusCode(v int32) *DeleteLocalJoinPermissionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1848,8 +1887,9 @@ func (s *DeleteNodeGroupResponseBody) SetSuccess(v bool) *DeleteNodeGroupRespons
 }
 
 type DeleteNodeGroupResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteNodeGroupResponse) String() string {
@@ -1865,82 +1905,12 @@ func (s *DeleteNodeGroupResponse) SetHeaders(v map[string]*string) *DeleteNodeGr
 	return s
 }
 
+func (s *DeleteNodeGroupResponse) SetStatusCode(v int32) *DeleteNodeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteNodeGroupResponse) SetBody(v *DeleteNodeGroupResponseBody) *DeleteNodeGroupResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRegionsResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      []*DescribeRegionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeRegionsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRegionsResponseBody) SetData(v []*DescribeRegionsResponseBodyData) *DescribeRegionsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeRegionsResponseBody) SetSuccess(v bool) *DescribeRegionsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeRegionsResponseBodyData struct {
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DescribeRegionsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionsResponseBodyData) SetLocalName(v string) *DescribeRegionsResponseBodyData {
-	s.LocalName = &v
-	return s
-}
-
-func (s *DescribeRegionsResponseBodyData) SetRegionId(v string) *DescribeRegionsResponseBodyData {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRegionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
 	s.Body = v
 	return s
 }
@@ -1963,8 +1933,8 @@ func (s *GetFreqBandPlanGroupRequest) SetGroupId(v int64) *GetFreqBandPlanGroupR
 }
 
 type GetFreqBandPlanGroupResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetFreqBandPlanGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1976,13 +1946,13 @@ func (s GetFreqBandPlanGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetFreqBandPlanGroupResponseBody) SetRequestId(v string) *GetFreqBandPlanGroupResponseBody {
-	s.RequestId = &v
+func (s *GetFreqBandPlanGroupResponseBody) SetData(v *GetFreqBandPlanGroupResponseBodyData) *GetFreqBandPlanGroupResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *GetFreqBandPlanGroupResponseBody) SetData(v *GetFreqBandPlanGroupResponseBodyData) *GetFreqBandPlanGroupResponseBody {
-	s.Data = v
+func (s *GetFreqBandPlanGroupResponseBody) SetRequestId(v string) *GetFreqBandPlanGroupResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1992,11 +1962,11 @@ func (s *GetFreqBandPlanGroupResponseBody) SetSuccess(v bool) *GetFreqBandPlanGr
 }
 
 type GetFreqBandPlanGroupResponseBodyData struct {
-	EndFrequency      *int64  `json:"EndFrequency,omitempty" xml:"EndFrequency,omitempty"`
-	GroupId           *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	BeginFrequency    *int64  `json:"BeginFrequency,omitempty" xml:"BeginFrequency,omitempty"`
-	FrequencyType     *string `json:"FrequencyType,omitempty" xml:"FrequencyType,omitempty"`
+	EndFrequency      *int64  `json:"EndFrequency,omitempty" xml:"EndFrequency,omitempty"`
 	FrequencyRegionId *string `json:"FrequencyRegionId,omitempty" xml:"FrequencyRegionId,omitempty"`
+	FrequencyType     *string `json:"FrequencyType,omitempty" xml:"FrequencyType,omitempty"`
+	GroupId           *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
 func (s GetFreqBandPlanGroupResponseBodyData) String() string {
@@ -2007,23 +1977,13 @@ func (s GetFreqBandPlanGroupResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetFreqBandPlanGroupResponseBodyData) SetEndFrequency(v int64) *GetFreqBandPlanGroupResponseBodyData {
-	s.EndFrequency = &v
-	return s
-}
-
-func (s *GetFreqBandPlanGroupResponseBodyData) SetGroupId(v int64) *GetFreqBandPlanGroupResponseBodyData {
-	s.GroupId = &v
-	return s
-}
-
 func (s *GetFreqBandPlanGroupResponseBodyData) SetBeginFrequency(v int64) *GetFreqBandPlanGroupResponseBodyData {
 	s.BeginFrequency = &v
 	return s
 }
 
-func (s *GetFreqBandPlanGroupResponseBodyData) SetFrequencyType(v string) *GetFreqBandPlanGroupResponseBodyData {
-	s.FrequencyType = &v
+func (s *GetFreqBandPlanGroupResponseBodyData) SetEndFrequency(v int64) *GetFreqBandPlanGroupResponseBodyData {
+	s.EndFrequency = &v
 	return s
 }
 
@@ -2032,9 +1992,20 @@ func (s *GetFreqBandPlanGroupResponseBodyData) SetFrequencyRegionId(v string) *G
 	return s
 }
 
+func (s *GetFreqBandPlanGroupResponseBodyData) SetFrequencyType(v string) *GetFreqBandPlanGroupResponseBodyData {
+	s.FrequencyType = &v
+	return s
+}
+
+func (s *GetFreqBandPlanGroupResponseBodyData) SetGroupId(v int64) *GetFreqBandPlanGroupResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
 type GetFreqBandPlanGroupResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetFreqBandPlanGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFreqBandPlanGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetFreqBandPlanGroupResponse) String() string {
@@ -2050,14 +2021,19 @@ func (s *GetFreqBandPlanGroupResponse) SetHeaders(v map[string]*string) *GetFreq
 	return s
 }
 
+func (s *GetFreqBandPlanGroupResponse) SetStatusCode(v int32) *GetFreqBandPlanGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetFreqBandPlanGroupResponse) SetBody(v *GetFreqBandPlanGroupResponseBody) *GetFreqBandPlanGroupResponse {
 	s.Body = v
 	return s
 }
 
 type GetGatewayRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 }
 
 func (s GetGatewayRequest) String() string {
@@ -2068,19 +2044,19 @@ func (s GetGatewayRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetGatewayRequest) SetIotInstanceId(v string) *GetGatewayRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
 func (s *GetGatewayRequest) SetGwEui(v string) *GetGatewayRequest {
 	s.GwEui = &v
 	return s
 }
 
+func (s *GetGatewayRequest) SetIotInstanceId(v string) *GetGatewayRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
 type GetGatewayResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetGatewayResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2092,13 +2068,13 @@ func (s GetGatewayResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetGatewayResponseBody) SetRequestId(v string) *GetGatewayResponseBody {
-	s.RequestId = &v
+func (s *GetGatewayResponseBody) SetData(v *GetGatewayResponseBodyData) *GetGatewayResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *GetGatewayResponseBody) SetData(v *GetGatewayResponseBodyData) *GetGatewayResponseBody {
-	s.Data = v
+func (s *GetGatewayResponseBody) SetRequestId(v string) *GetGatewayResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2108,27 +2084,27 @@ func (s *GetGatewayResponseBody) SetSuccess(v bool) *GetGatewayResponseBody {
 }
 
 type GetGatewayResponseBodyData struct {
-	ChargeStatus             *string  `json:"ChargeStatus,omitempty" xml:"ChargeStatus,omitempty"`
-	ClassBSupported          *bool    `json:"ClassBSupported,omitempty" xml:"ClassBSupported,omitempty"`
-	District                 *string  `json:"District,omitempty" xml:"District,omitempty"`
-	FreqBandPlanGroupId      *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	GisCoordinateSystem      *string  `json:"GisCoordinateSystem,omitempty" xml:"GisCoordinateSystem,omitempty"`
-	City                     *string  `json:"City,omitempty" xml:"City,omitempty"`
-	OnlineState              *string  `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
-	TimeCorrectable          *bool    `json:"TimeCorrectable,omitempty" xml:"TimeCorrectable,omitempty"`
+	Address                  *string  `json:"Address,omitempty" xml:"Address,omitempty"`
+	AddressCode              *int64   `json:"AddressCode,omitempty" xml:"AddressCode,omitempty"`
 	AuthTypes                *string  `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty"`
-	OnlineStateChangedMillis *int64   `json:"OnlineStateChangedMillis,omitempty" xml:"OnlineStateChangedMillis,omitempty"`
+	ChargeStatus             *string  `json:"ChargeStatus,omitempty" xml:"ChargeStatus,omitempty"`
+	City                     *string  `json:"City,omitempty" xml:"City,omitempty"`
+	ClassBSupported          *bool    `json:"ClassBSupported,omitempty" xml:"ClassBSupported,omitempty"`
+	ClassBWorking            *bool    `json:"ClassBWorking,omitempty" xml:"ClassBWorking,omitempty"`
 	CommunicationMode        *string  `json:"CommunicationMode,omitempty" xml:"CommunicationMode,omitempty"`
 	Description              *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enabled                  *bool    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	ClassBWorking            *bool    `json:"ClassBWorking,omitempty" xml:"ClassBWorking,omitempty"`
-	Address                  *string  `json:"Address,omitempty" xml:"Address,omitempty"`
-	Longitude                *float32 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	District                 *string  `json:"District,omitempty" xml:"District,omitempty"`
 	EmbeddedNsId             *string  `json:"EmbeddedNsId,omitempty" xml:"EmbeddedNsId,omitempty"`
-	Latitude                 *float32 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
-	Name                     *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Enabled                  *bool    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	FreqBandPlanGroupId      *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	GisCoordinateSystem      *string  `json:"GisCoordinateSystem,omitempty" xml:"GisCoordinateSystem,omitempty"`
 	GwEui                    *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	AddressCode              *int64   `json:"AddressCode,omitempty" xml:"AddressCode,omitempty"`
+	Latitude                 *float32 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	Longitude                *float32 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	Name                     *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	OnlineState              *string  `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
+	OnlineStateChangedMillis *int64   `json:"OnlineStateChangedMillis,omitempty" xml:"OnlineStateChangedMillis,omitempty"`
+	TimeCorrectable          *bool    `json:"TimeCorrectable,omitempty" xml:"TimeCorrectable,omitempty"`
 }
 
 func (s GetGatewayResponseBodyData) String() string {
@@ -2139,43 +2115,13 @@ func (s GetGatewayResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetGatewayResponseBodyData) SetChargeStatus(v string) *GetGatewayResponseBodyData {
-	s.ChargeStatus = &v
+func (s *GetGatewayResponseBodyData) SetAddress(v string) *GetGatewayResponseBodyData {
+	s.Address = &v
 	return s
 }
 
-func (s *GetGatewayResponseBodyData) SetClassBSupported(v bool) *GetGatewayResponseBodyData {
-	s.ClassBSupported = &v
-	return s
-}
-
-func (s *GetGatewayResponseBodyData) SetDistrict(v string) *GetGatewayResponseBodyData {
-	s.District = &v
-	return s
-}
-
-func (s *GetGatewayResponseBodyData) SetFreqBandPlanGroupId(v int64) *GetGatewayResponseBodyData {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *GetGatewayResponseBodyData) SetGisCoordinateSystem(v string) *GetGatewayResponseBodyData {
-	s.GisCoordinateSystem = &v
-	return s
-}
-
-func (s *GetGatewayResponseBodyData) SetCity(v string) *GetGatewayResponseBodyData {
-	s.City = &v
-	return s
-}
-
-func (s *GetGatewayResponseBodyData) SetOnlineState(v string) *GetGatewayResponseBodyData {
-	s.OnlineState = &v
-	return s
-}
-
-func (s *GetGatewayResponseBodyData) SetTimeCorrectable(v bool) *GetGatewayResponseBodyData {
-	s.TimeCorrectable = &v
+func (s *GetGatewayResponseBodyData) SetAddressCode(v int64) *GetGatewayResponseBodyData {
+	s.AddressCode = &v
 	return s
 }
 
@@ -2184,8 +2130,23 @@ func (s *GetGatewayResponseBodyData) SetAuthTypes(v string) *GetGatewayResponseB
 	return s
 }
 
-func (s *GetGatewayResponseBodyData) SetOnlineStateChangedMillis(v int64) *GetGatewayResponseBodyData {
-	s.OnlineStateChangedMillis = &v
+func (s *GetGatewayResponseBodyData) SetChargeStatus(v string) *GetGatewayResponseBodyData {
+	s.ChargeStatus = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetCity(v string) *GetGatewayResponseBodyData {
+	s.City = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetClassBSupported(v bool) *GetGatewayResponseBodyData {
+	s.ClassBSupported = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetClassBWorking(v bool) *GetGatewayResponseBodyData {
+	s.ClassBWorking = &v
 	return s
 }
 
@@ -2199,23 +2160,8 @@ func (s *GetGatewayResponseBodyData) SetDescription(v string) *GetGatewayRespons
 	return s
 }
 
-func (s *GetGatewayResponseBodyData) SetEnabled(v bool) *GetGatewayResponseBodyData {
-	s.Enabled = &v
-	return s
-}
-
-func (s *GetGatewayResponseBodyData) SetClassBWorking(v bool) *GetGatewayResponseBodyData {
-	s.ClassBWorking = &v
-	return s
-}
-
-func (s *GetGatewayResponseBodyData) SetAddress(v string) *GetGatewayResponseBodyData {
-	s.Address = &v
-	return s
-}
-
-func (s *GetGatewayResponseBodyData) SetLongitude(v float32) *GetGatewayResponseBodyData {
-	s.Longitude = &v
+func (s *GetGatewayResponseBodyData) SetDistrict(v string) *GetGatewayResponseBodyData {
+	s.District = &v
 	return s
 }
 
@@ -2224,13 +2170,18 @@ func (s *GetGatewayResponseBodyData) SetEmbeddedNsId(v string) *GetGatewayRespon
 	return s
 }
 
-func (s *GetGatewayResponseBodyData) SetLatitude(v float32) *GetGatewayResponseBodyData {
-	s.Latitude = &v
+func (s *GetGatewayResponseBodyData) SetEnabled(v bool) *GetGatewayResponseBodyData {
+	s.Enabled = &v
 	return s
 }
 
-func (s *GetGatewayResponseBodyData) SetName(v string) *GetGatewayResponseBodyData {
-	s.Name = &v
+func (s *GetGatewayResponseBodyData) SetFreqBandPlanGroupId(v int64) *GetGatewayResponseBodyData {
+	s.FreqBandPlanGroupId = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetGisCoordinateSystem(v string) *GetGatewayResponseBodyData {
+	s.GisCoordinateSystem = &v
 	return s
 }
 
@@ -2239,14 +2190,40 @@ func (s *GetGatewayResponseBodyData) SetGwEui(v string) *GetGatewayResponseBodyD
 	return s
 }
 
-func (s *GetGatewayResponseBodyData) SetAddressCode(v int64) *GetGatewayResponseBodyData {
-	s.AddressCode = &v
+func (s *GetGatewayResponseBodyData) SetLatitude(v float32) *GetGatewayResponseBodyData {
+	s.Latitude = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetLongitude(v float32) *GetGatewayResponseBodyData {
+	s.Longitude = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetName(v string) *GetGatewayResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetOnlineState(v string) *GetGatewayResponseBodyData {
+	s.OnlineState = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetOnlineStateChangedMillis(v int64) *GetGatewayResponseBodyData {
+	s.OnlineStateChangedMillis = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetTimeCorrectable(v bool) *GetGatewayResponseBodyData {
+	s.TimeCorrectable = &v
 	return s
 }
 
 type GetGatewayResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetGatewayResponse) String() string {
@@ -2262,16 +2239,21 @@ func (s *GetGatewayResponse) SetHeaders(v map[string]*string) *GetGatewayRespons
 	return s
 }
 
+func (s *GetGatewayResponse) SetStatusCode(v int32) *GetGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetGatewayResponse) SetBody(v *GetGatewayResponseBody) *GetGatewayResponse {
 	s.Body = v
 	return s
 }
 
 type GetGatewayPacketStatRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
 	BeginMillis   *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
 	EndMillis     *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
+	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 }
 
 func (s GetGatewayPacketStatRequest) String() string {
@@ -2280,16 +2262,6 @@ func (s GetGatewayPacketStatRequest) String() string {
 
 func (s GetGatewayPacketStatRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetGatewayPacketStatRequest) SetIotInstanceId(v string) *GetGatewayPacketStatRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *GetGatewayPacketStatRequest) SetGwEui(v string) *GetGatewayPacketStatRequest {
-	s.GwEui = &v
-	return s
 }
 
 func (s *GetGatewayPacketStatRequest) SetBeginMillis(v int64) *GetGatewayPacketStatRequest {
@@ -2302,9 +2274,19 @@ func (s *GetGatewayPacketStatRequest) SetEndMillis(v int64) *GetGatewayPacketSta
 	return s
 }
 
+func (s *GetGatewayPacketStatRequest) SetGwEui(v string) *GetGatewayPacketStatRequest {
+	s.GwEui = &v
+	return s
+}
+
+func (s *GetGatewayPacketStatRequest) SetIotInstanceId(v string) *GetGatewayPacketStatRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
 type GetGatewayPacketStatResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetGatewayPacketStatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2316,13 +2298,13 @@ func (s GetGatewayPacketStatResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetGatewayPacketStatResponseBody) SetRequestId(v string) *GetGatewayPacketStatResponseBody {
-	s.RequestId = &v
+func (s *GetGatewayPacketStatResponseBody) SetData(v *GetGatewayPacketStatResponseBodyData) *GetGatewayPacketStatResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *GetGatewayPacketStatResponseBody) SetData(v *GetGatewayPacketStatResponseBodyData) *GetGatewayPacketStatResponseBody {
-	s.Data = v
+func (s *GetGatewayPacketStatResponseBody) SetRequestId(v string) *GetGatewayPacketStatResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2332,8 +2314,8 @@ func (s *GetGatewayPacketStatResponseBody) SetSuccess(v bool) *GetGatewayPacketS
 }
 
 type GetGatewayPacketStatResponseBodyData struct {
-	DownlinkValid   *int32 `json:"DownlinkValid,omitempty" xml:"DownlinkValid,omitempty"`
 	DownlinkInvalid *int32 `json:"DownlinkInvalid,omitempty" xml:"DownlinkInvalid,omitempty"`
+	DownlinkValid   *int32 `json:"DownlinkValid,omitempty" xml:"DownlinkValid,omitempty"`
 	UplinkInvalid   *int32 `json:"UplinkInvalid,omitempty" xml:"UplinkInvalid,omitempty"`
 	UplinkValid     *int32 `json:"UplinkValid,omitempty" xml:"UplinkValid,omitempty"`
 }
@@ -2346,13 +2328,13 @@ func (s GetGatewayPacketStatResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetGatewayPacketStatResponseBodyData) SetDownlinkValid(v int32) *GetGatewayPacketStatResponseBodyData {
-	s.DownlinkValid = &v
+func (s *GetGatewayPacketStatResponseBodyData) SetDownlinkInvalid(v int32) *GetGatewayPacketStatResponseBodyData {
+	s.DownlinkInvalid = &v
 	return s
 }
 
-func (s *GetGatewayPacketStatResponseBodyData) SetDownlinkInvalid(v int32) *GetGatewayPacketStatResponseBodyData {
-	s.DownlinkInvalid = &v
+func (s *GetGatewayPacketStatResponseBodyData) SetDownlinkValid(v int32) *GetGatewayPacketStatResponseBodyData {
+	s.DownlinkValid = &v
 	return s
 }
 
@@ -2367,8 +2349,9 @@ func (s *GetGatewayPacketStatResponseBodyData) SetUplinkValid(v int32) *GetGatew
 }
 
 type GetGatewayPacketStatResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetGatewayPacketStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetGatewayPacketStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetGatewayPacketStatResponse) String() string {
@@ -2384,14 +2367,19 @@ func (s *GetGatewayPacketStatResponse) SetHeaders(v map[string]*string) *GetGate
 	return s
 }
 
+func (s *GetGatewayPacketStatResponse) SetStatusCode(v int32) *GetGatewayPacketStatResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetGatewayPacketStatResponse) SetBody(v *GetGatewayPacketStatResponseBody) *GetGatewayPacketStatResponse {
 	s.Body = v
 	return s
 }
 
 type GetGatewayStatusStatRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 }
 
 func (s GetGatewayStatusStatRequest) String() string {
@@ -2402,19 +2390,19 @@ func (s GetGatewayStatusStatRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetGatewayStatusStatRequest) SetIotInstanceId(v string) *GetGatewayStatusStatRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
 func (s *GetGatewayStatusStatRequest) SetGwEui(v string) *GetGatewayStatusStatRequest {
 	s.GwEui = &v
 	return s
 }
 
+func (s *GetGatewayStatusStatRequest) SetIotInstanceId(v string) *GetGatewayStatusStatRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
 type GetGatewayStatusStatResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetGatewayStatusStatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2426,13 +2414,13 @@ func (s GetGatewayStatusStatResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetGatewayStatusStatResponseBody) SetRequestId(v string) *GetGatewayStatusStatResponseBody {
-	s.RequestId = &v
+func (s *GetGatewayStatusStatResponseBody) SetData(v *GetGatewayStatusStatResponseBodyData) *GetGatewayStatusStatResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *GetGatewayStatusStatResponseBody) SetData(v *GetGatewayStatusStatResponseBodyData) *GetGatewayStatusStatResponseBody {
-	s.Data = v
+func (s *GetGatewayStatusStatResponseBody) SetRequestId(v string) *GetGatewayStatusStatResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2442,14 +2430,14 @@ func (s *GetGatewayStatusStatResponseBody) SetSuccess(v bool) *GetGatewayStatusS
 }
 
 type GetGatewayStatusStatResponseBodyData struct {
+	CpuRadio    *float32 `json:"CpuRadio,omitempty" xml:"CpuRadio,omitempty"`
+	Enabled     *bool    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	GwEui       *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
 	MemoryRadio *float32 `json:"MemoryRadio,omitempty" xml:"MemoryRadio,omitempty"`
 	OnlineHour  *int64   `json:"OnlineHour,omitempty" xml:"OnlineHour,omitempty"`
-	Enabled     *bool    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	TxCount     *int64   `json:"TxCount,omitempty" xml:"TxCount,omitempty"`
-	RxCount     *int64   `json:"RxCount,omitempty" xml:"RxCount,omitempty"`
-	GwEui       *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
 	OnlineState *string  `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
-	CpuRadio    *float32 `json:"CpuRadio,omitempty" xml:"CpuRadio,omitempty"`
+	RxCount     *int64   `json:"RxCount,omitempty" xml:"RxCount,omitempty"`
+	TxCount     *int64   `json:"TxCount,omitempty" xml:"TxCount,omitempty"`
 }
 
 func (s GetGatewayStatusStatResponseBodyData) String() string {
@@ -2458,6 +2446,21 @@ func (s GetGatewayStatusStatResponseBodyData) String() string {
 
 func (s GetGatewayStatusStatResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetGatewayStatusStatResponseBodyData) SetCpuRadio(v float32) *GetGatewayStatusStatResponseBodyData {
+	s.CpuRadio = &v
+	return s
+}
+
+func (s *GetGatewayStatusStatResponseBodyData) SetEnabled(v bool) *GetGatewayStatusStatResponseBodyData {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetGatewayStatusStatResponseBodyData) SetGwEui(v string) *GetGatewayStatusStatResponseBodyData {
+	s.GwEui = &v
+	return s
 }
 
 func (s *GetGatewayStatusStatResponseBodyData) SetMemoryRadio(v float32) *GetGatewayStatusStatResponseBodyData {
@@ -2470,13 +2473,8 @@ func (s *GetGatewayStatusStatResponseBodyData) SetOnlineHour(v int64) *GetGatewa
 	return s
 }
 
-func (s *GetGatewayStatusStatResponseBodyData) SetEnabled(v bool) *GetGatewayStatusStatResponseBodyData {
-	s.Enabled = &v
-	return s
-}
-
-func (s *GetGatewayStatusStatResponseBodyData) SetTxCount(v int64) *GetGatewayStatusStatResponseBodyData {
-	s.TxCount = &v
+func (s *GetGatewayStatusStatResponseBodyData) SetOnlineState(v string) *GetGatewayStatusStatResponseBodyData {
+	s.OnlineState = &v
 	return s
 }
 
@@ -2485,24 +2483,15 @@ func (s *GetGatewayStatusStatResponseBodyData) SetRxCount(v int64) *GetGatewaySt
 	return s
 }
 
-func (s *GetGatewayStatusStatResponseBodyData) SetGwEui(v string) *GetGatewayStatusStatResponseBodyData {
-	s.GwEui = &v
-	return s
-}
-
-func (s *GetGatewayStatusStatResponseBodyData) SetOnlineState(v string) *GetGatewayStatusStatResponseBodyData {
-	s.OnlineState = &v
-	return s
-}
-
-func (s *GetGatewayStatusStatResponseBodyData) SetCpuRadio(v float32) *GetGatewayStatusStatResponseBodyData {
-	s.CpuRadio = &v
+func (s *GetGatewayStatusStatResponseBodyData) SetTxCount(v int64) *GetGatewayStatusStatResponseBodyData {
+	s.TxCount = &v
 	return s
 }
 
 type GetGatewayStatusStatResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetGatewayStatusStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetGatewayStatusStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetGatewayStatusStatResponse) String() string {
@@ -2518,20 +2507,25 @@ func (s *GetGatewayStatusStatResponse) SetHeaders(v map[string]*string) *GetGate
 	return s
 }
 
+func (s *GetGatewayStatusStatResponse) SetStatusCode(v int32) *GetGatewayStatusStatResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetGatewayStatusStatResponse) SetBody(v *GetGatewayStatusStatResponseBody) *GetGatewayStatusStatResponse {
 	s.Body = v
 	return s
 }
 
 type GetGatewayTransferPacketsDownloadUrlRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	DevEui        *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	Category      *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	BeginMillis   *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
-	EndMillis     *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
-	SortingField  *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 	Ascending     *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	BeginMillis   *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
+	Category      *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DevEui        *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	EndMillis     *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
+	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	SortingField  *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 }
 
 func (s GetGatewayTransferPacketsDownloadUrlRequest) String() string {
@@ -2542,23 +2536,8 @@ func (s GetGatewayTransferPacketsDownloadUrlRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetGatewayTransferPacketsDownloadUrlRequest) SetIotInstanceId(v string) *GetGatewayTransferPacketsDownloadUrlRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *GetGatewayTransferPacketsDownloadUrlRequest) SetGwEui(v string) *GetGatewayTransferPacketsDownloadUrlRequest {
-	s.GwEui = &v
-	return s
-}
-
-func (s *GetGatewayTransferPacketsDownloadUrlRequest) SetDevEui(v string) *GetGatewayTransferPacketsDownloadUrlRequest {
-	s.DevEui = &v
-	return s
-}
-
-func (s *GetGatewayTransferPacketsDownloadUrlRequest) SetCategory(v string) *GetGatewayTransferPacketsDownloadUrlRequest {
-	s.Category = &v
+func (s *GetGatewayTransferPacketsDownloadUrlRequest) SetAscending(v bool) *GetGatewayTransferPacketsDownloadUrlRequest {
+	s.Ascending = &v
 	return s
 }
 
@@ -2567,8 +2546,28 @@ func (s *GetGatewayTransferPacketsDownloadUrlRequest) SetBeginMillis(v int64) *G
 	return s
 }
 
+func (s *GetGatewayTransferPacketsDownloadUrlRequest) SetCategory(v string) *GetGatewayTransferPacketsDownloadUrlRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *GetGatewayTransferPacketsDownloadUrlRequest) SetDevEui(v string) *GetGatewayTransferPacketsDownloadUrlRequest {
+	s.DevEui = &v
+	return s
+}
+
 func (s *GetGatewayTransferPacketsDownloadUrlRequest) SetEndMillis(v int64) *GetGatewayTransferPacketsDownloadUrlRequest {
 	s.EndMillis = &v
+	return s
+}
+
+func (s *GetGatewayTransferPacketsDownloadUrlRequest) SetGwEui(v string) *GetGatewayTransferPacketsDownloadUrlRequest {
+	s.GwEui = &v
+	return s
+}
+
+func (s *GetGatewayTransferPacketsDownloadUrlRequest) SetIotInstanceId(v string) *GetGatewayTransferPacketsDownloadUrlRequest {
+	s.IotInstanceId = &v
 	return s
 }
 
@@ -2577,14 +2576,9 @@ func (s *GetGatewayTransferPacketsDownloadUrlRequest) SetSortingField(v string) 
 	return s
 }
 
-func (s *GetGatewayTransferPacketsDownloadUrlRequest) SetAscending(v bool) *GetGatewayTransferPacketsDownloadUrlRequest {
-	s.Ascending = &v
-	return s
-}
-
 type GetGatewayTransferPacketsDownloadUrlResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2596,13 +2590,13 @@ func (s GetGatewayTransferPacketsDownloadUrlResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetGatewayTransferPacketsDownloadUrlResponseBody) SetRequestId(v string) *GetGatewayTransferPacketsDownloadUrlResponseBody {
-	s.RequestId = &v
+func (s *GetGatewayTransferPacketsDownloadUrlResponseBody) SetData(v string) *GetGatewayTransferPacketsDownloadUrlResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *GetGatewayTransferPacketsDownloadUrlResponseBody) SetData(v string) *GetGatewayTransferPacketsDownloadUrlResponseBody {
-	s.Data = &v
+func (s *GetGatewayTransferPacketsDownloadUrlResponseBody) SetRequestId(v string) *GetGatewayTransferPacketsDownloadUrlResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2612,8 +2606,9 @@ func (s *GetGatewayTransferPacketsDownloadUrlResponseBody) SetSuccess(v bool) *G
 }
 
 type GetGatewayTransferPacketsDownloadUrlResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetGatewayTransferPacketsDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetGatewayTransferPacketsDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetGatewayTransferPacketsDownloadUrlResponse) String() string {
@@ -2626,6 +2621,11 @@ func (s GetGatewayTransferPacketsDownloadUrlResponse) GoString() string {
 
 func (s *GetGatewayTransferPacketsDownloadUrlResponse) SetHeaders(v map[string]*string) *GetGatewayTransferPacketsDownloadUrlResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetGatewayTransferPacketsDownloadUrlResponse) SetStatusCode(v int32) *GetGatewayTransferPacketsDownloadUrlResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2652,8 +2652,8 @@ func (s *GetGatewayTupleOrderRequest) SetOrderId(v string) *GetGatewayTupleOrder
 }
 
 type GetGatewayTupleOrderResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetGatewayTupleOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2665,13 +2665,13 @@ func (s GetGatewayTupleOrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetGatewayTupleOrderResponseBody) SetRequestId(v string) *GetGatewayTupleOrderResponseBody {
-	s.RequestId = &v
+func (s *GetGatewayTupleOrderResponseBody) SetData(v *GetGatewayTupleOrderResponseBodyData) *GetGatewayTupleOrderResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *GetGatewayTupleOrderResponseBody) SetData(v *GetGatewayTupleOrderResponseBodyData) *GetGatewayTupleOrderResponseBody {
-	s.Data = v
+func (s *GetGatewayTupleOrderResponseBody) SetRequestId(v string) *GetGatewayTupleOrderResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2681,11 +2681,11 @@ func (s *GetGatewayTupleOrderResponseBody) SetSuccess(v bool) *GetGatewayTupleOr
 }
 
 type GetGatewayTupleOrderResponseBodyData struct {
-	RequiredCount  *int64  `json:"RequiredCount,omitempty" xml:"RequiredCount,omitempty"`
-	CreatedMillis  *int64  `json:"CreatedMillis,omitempty" xml:"CreatedMillis,omitempty"`
 	AcceptedMillis *int64  `json:"AcceptedMillis,omitempty" xml:"AcceptedMillis,omitempty"`
-	OrderState     *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	CreatedMillis  *int64  `json:"CreatedMillis,omitempty" xml:"CreatedMillis,omitempty"`
 	OrderId        *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderState     *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	RequiredCount  *int64  `json:"RequiredCount,omitempty" xml:"RequiredCount,omitempty"`
 }
 
 func (s GetGatewayTupleOrderResponseBodyData) String() string {
@@ -2696,8 +2696,8 @@ func (s GetGatewayTupleOrderResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetGatewayTupleOrderResponseBodyData) SetRequiredCount(v int64) *GetGatewayTupleOrderResponseBodyData {
-	s.RequiredCount = &v
+func (s *GetGatewayTupleOrderResponseBodyData) SetAcceptedMillis(v int64) *GetGatewayTupleOrderResponseBodyData {
+	s.AcceptedMillis = &v
 	return s
 }
 
@@ -2706,8 +2706,8 @@ func (s *GetGatewayTupleOrderResponseBodyData) SetCreatedMillis(v int64) *GetGat
 	return s
 }
 
-func (s *GetGatewayTupleOrderResponseBodyData) SetAcceptedMillis(v int64) *GetGatewayTupleOrderResponseBodyData {
-	s.AcceptedMillis = &v
+func (s *GetGatewayTupleOrderResponseBodyData) SetOrderId(v string) *GetGatewayTupleOrderResponseBodyData {
+	s.OrderId = &v
 	return s
 }
 
@@ -2716,14 +2716,15 @@ func (s *GetGatewayTupleOrderResponseBodyData) SetOrderState(v string) *GetGatew
 	return s
 }
 
-func (s *GetGatewayTupleOrderResponseBodyData) SetOrderId(v string) *GetGatewayTupleOrderResponseBodyData {
-	s.OrderId = &v
+func (s *GetGatewayTupleOrderResponseBodyData) SetRequiredCount(v int64) *GetGatewayTupleOrderResponseBodyData {
+	s.RequiredCount = &v
 	return s
 }
 
 type GetGatewayTupleOrderResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetGatewayTupleOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetGatewayTupleOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetGatewayTupleOrderResponse) String() string {
@@ -2736,6 +2737,11 @@ func (s GetGatewayTupleOrderResponse) GoString() string {
 
 func (s *GetGatewayTupleOrderResponse) SetHeaders(v map[string]*string) *GetGatewayTupleOrderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetGatewayTupleOrderResponse) SetStatusCode(v int32) *GetGatewayTupleOrderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2762,8 +2768,8 @@ func (s *GetGatewayTuplesDownloadUrlRequest) SetOrderId(v string) *GetGatewayTup
 }
 
 type GetGatewayTuplesDownloadUrlResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2775,13 +2781,13 @@ func (s GetGatewayTuplesDownloadUrlResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetGatewayTuplesDownloadUrlResponseBody) SetRequestId(v string) *GetGatewayTuplesDownloadUrlResponseBody {
-	s.RequestId = &v
+func (s *GetGatewayTuplesDownloadUrlResponseBody) SetData(v string) *GetGatewayTuplesDownloadUrlResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *GetGatewayTuplesDownloadUrlResponseBody) SetData(v string) *GetGatewayTuplesDownloadUrlResponseBody {
-	s.Data = &v
+func (s *GetGatewayTuplesDownloadUrlResponseBody) SetRequestId(v string) *GetGatewayTuplesDownloadUrlResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2791,8 +2797,9 @@ func (s *GetGatewayTuplesDownloadUrlResponseBody) SetSuccess(v bool) *GetGateway
 }
 
 type GetGatewayTuplesDownloadUrlResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetGatewayTuplesDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetGatewayTuplesDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetGatewayTuplesDownloadUrlResponse) String() string {
@@ -2805,6 +2812,11 @@ func (s GetGatewayTuplesDownloadUrlResponse) GoString() string {
 
 func (s *GetGatewayTuplesDownloadUrlResponse) SetHeaders(v map[string]*string) *GetGatewayTuplesDownloadUrlResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetGatewayTuplesDownloadUrlResponse) SetStatusCode(v int32) *GetGatewayTuplesDownloadUrlResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2831,8 +2843,8 @@ func (s *GetJoinPermissionAuthOrderRequest) SetOrderId(v string) *GetJoinPermiss
 }
 
 type GetJoinPermissionAuthOrderResponseBody struct {
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetJoinPermissionAuthOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2844,13 +2856,13 @@ func (s GetJoinPermissionAuthOrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetJoinPermissionAuthOrderResponseBody) SetRequestId(v string) *GetJoinPermissionAuthOrderResponseBody {
-	s.RequestId = &v
+func (s *GetJoinPermissionAuthOrderResponseBody) SetData(v *GetJoinPermissionAuthOrderResponseBodyData) *GetJoinPermissionAuthOrderResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *GetJoinPermissionAuthOrderResponseBody) SetData(v *GetJoinPermissionAuthOrderResponseBodyData) *GetJoinPermissionAuthOrderResponseBody {
-	s.Data = v
+func (s *GetJoinPermissionAuthOrderResponseBody) SetRequestId(v string) *GetJoinPermissionAuthOrderResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2860,15 +2872,15 @@ func (s *GetJoinPermissionAuthOrderResponseBody) SetSuccess(v bool) *GetJoinPerm
 }
 
 type GetJoinPermissionAuthOrderResponseBodyData struct {
-	CanceledMillis   *int64  `json:"CanceledMillis,omitempty" xml:"CanceledMillis,omitempty"`
-	ApplyingMillis   *int64  `json:"ApplyingMillis,omitempty" xml:"ApplyingMillis,omitempty"`
-	RenterAliyunId   *string `json:"RenterAliyunId,omitempty" xml:"RenterAliyunId,omitempty"`
 	AcceptedMillis   *int64  `json:"AcceptedMillis,omitempty" xml:"AcceptedMillis,omitempty"`
+	ApplyingMillis   *int64  `json:"ApplyingMillis,omitempty" xml:"ApplyingMillis,omitempty"`
+	CanceledMillis   *int64  `json:"CanceledMillis,omitempty" xml:"CanceledMillis,omitempty"`
+	JoinPermissionId *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
+	OrderId          *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderState       *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
 	OwnerAliyunId    *string `json:"OwnerAliyunId,omitempty" xml:"OwnerAliyunId,omitempty"`
 	RejectedMillis   *int64  `json:"RejectedMillis,omitempty" xml:"RejectedMillis,omitempty"`
-	JoinPermissionId *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
-	OrderState       *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
-	OrderId          *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RenterAliyunId   *string `json:"RenterAliyunId,omitempty" xml:"RenterAliyunId,omitempty"`
 }
 
 func (s GetJoinPermissionAuthOrderResponseBodyData) String() string {
@@ -2879,8 +2891,8 @@ func (s GetJoinPermissionAuthOrderResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetJoinPermissionAuthOrderResponseBodyData) SetCanceledMillis(v int64) *GetJoinPermissionAuthOrderResponseBodyData {
-	s.CanceledMillis = &v
+func (s *GetJoinPermissionAuthOrderResponseBodyData) SetAcceptedMillis(v int64) *GetJoinPermissionAuthOrderResponseBodyData {
+	s.AcceptedMillis = &v
 	return s
 }
 
@@ -2889,13 +2901,23 @@ func (s *GetJoinPermissionAuthOrderResponseBodyData) SetApplyingMillis(v int64) 
 	return s
 }
 
-func (s *GetJoinPermissionAuthOrderResponseBodyData) SetRenterAliyunId(v string) *GetJoinPermissionAuthOrderResponseBodyData {
-	s.RenterAliyunId = &v
+func (s *GetJoinPermissionAuthOrderResponseBodyData) SetCanceledMillis(v int64) *GetJoinPermissionAuthOrderResponseBodyData {
+	s.CanceledMillis = &v
 	return s
 }
 
-func (s *GetJoinPermissionAuthOrderResponseBodyData) SetAcceptedMillis(v int64) *GetJoinPermissionAuthOrderResponseBodyData {
-	s.AcceptedMillis = &v
+func (s *GetJoinPermissionAuthOrderResponseBodyData) SetJoinPermissionId(v string) *GetJoinPermissionAuthOrderResponseBodyData {
+	s.JoinPermissionId = &v
+	return s
+}
+
+func (s *GetJoinPermissionAuthOrderResponseBodyData) SetOrderId(v string) *GetJoinPermissionAuthOrderResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetJoinPermissionAuthOrderResponseBodyData) SetOrderState(v string) *GetJoinPermissionAuthOrderResponseBodyData {
+	s.OrderState = &v
 	return s
 }
 
@@ -2909,24 +2931,15 @@ func (s *GetJoinPermissionAuthOrderResponseBodyData) SetRejectedMillis(v int64) 
 	return s
 }
 
-func (s *GetJoinPermissionAuthOrderResponseBodyData) SetJoinPermissionId(v string) *GetJoinPermissionAuthOrderResponseBodyData {
-	s.JoinPermissionId = &v
-	return s
-}
-
-func (s *GetJoinPermissionAuthOrderResponseBodyData) SetOrderState(v string) *GetJoinPermissionAuthOrderResponseBodyData {
-	s.OrderState = &v
-	return s
-}
-
-func (s *GetJoinPermissionAuthOrderResponseBodyData) SetOrderId(v string) *GetJoinPermissionAuthOrderResponseBodyData {
-	s.OrderId = &v
+func (s *GetJoinPermissionAuthOrderResponseBodyData) SetRenterAliyunId(v string) *GetJoinPermissionAuthOrderResponseBodyData {
+	s.RenterAliyunId = &v
 	return s
 }
 
 type GetJoinPermissionAuthOrderResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJoinPermissionAuthOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJoinPermissionAuthOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetJoinPermissionAuthOrderResponse) String() string {
@@ -2942,171 +2955,12 @@ func (s *GetJoinPermissionAuthOrderResponse) SetHeaders(v map[string]*string) *G
 	return s
 }
 
+func (s *GetJoinPermissionAuthOrderResponse) SetStatusCode(v int32) *GetJoinPermissionAuthOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetJoinPermissionAuthOrderResponse) SetBody(v *GetJoinPermissionAuthOrderResponseBody) *GetJoinPermissionAuthOrderResponse {
-	s.Body = v
-	return s
-}
-
-type GetLocalConfigSyncTaskRequest struct {
-	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s GetLocalConfigSyncTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLocalConfigSyncTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetLocalConfigSyncTaskRequest) SetTaskId(v int64) *GetLocalConfigSyncTaskRequest {
-	s.TaskId = &v
-	return s
-}
-
-type GetLocalConfigSyncTaskResponseBody struct {
-	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetLocalConfigSyncTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetLocalConfigSyncTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLocalConfigSyncTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetLocalConfigSyncTaskResponseBody) SetRequestId(v string) *GetLocalConfigSyncTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBody) SetData(v *GetLocalConfigSyncTaskResponseBodyData) *GetLocalConfigSyncTaskResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBody) SetErrorMessage(v string) *GetLocalConfigSyncTaskResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBody) SetCode(v string) *GetLocalConfigSyncTaskResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBody) SetSuccess(v bool) *GetLocalConfigSyncTaskResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetLocalConfigSyncTaskResponseBodyData struct {
-	D2dAddr          *string `json:"D2dAddr,omitempty" xml:"D2dAddr,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	ProcessingMillis *int64  `json:"ProcessingMillis,omitempty" xml:"ProcessingMillis,omitempty"`
-	D2dKey           *string `json:"D2dKey,omitempty" xml:"D2dKey,omitempty"`
-	TaskTYpe         *string `json:"TaskTYpe,omitempty" xml:"TaskTYpe,omitempty"`
-	Eui              *string `json:"Eui,omitempty" xml:"Eui,omitempty"`
-	Datr             *int32  `json:"Datr,omitempty" xml:"Datr,omitempty"`
-	ModifiedMillis   *int64  `json:"ModifiedMillis,omitempty" xml:"ModifiedMillis,omitempty"`
-	CreateMillis     *int64  `json:"CreateMillis,omitempty" xml:"CreateMillis,omitempty"`
-	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Freq             *int32  `json:"Freq,omitempty" xml:"Freq,omitempty"`
-	DevType          *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
-}
-
-func (s GetLocalConfigSyncTaskResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLocalConfigSyncTaskResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetLocalConfigSyncTaskResponseBodyData) SetD2dAddr(v string) *GetLocalConfigSyncTaskResponseBodyData {
-	s.D2dAddr = &v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBodyData) SetState(v string) *GetLocalConfigSyncTaskResponseBodyData {
-	s.State = &v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBodyData) SetProcessingMillis(v int64) *GetLocalConfigSyncTaskResponseBodyData {
-	s.ProcessingMillis = &v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBodyData) SetD2dKey(v string) *GetLocalConfigSyncTaskResponseBodyData {
-	s.D2dKey = &v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBodyData) SetTaskTYpe(v string) *GetLocalConfigSyncTaskResponseBodyData {
-	s.TaskTYpe = &v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBodyData) SetEui(v string) *GetLocalConfigSyncTaskResponseBodyData {
-	s.Eui = &v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBodyData) SetDatr(v int32) *GetLocalConfigSyncTaskResponseBodyData {
-	s.Datr = &v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBodyData) SetModifiedMillis(v int64) *GetLocalConfigSyncTaskResponseBodyData {
-	s.ModifiedMillis = &v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBodyData) SetCreateMillis(v int64) *GetLocalConfigSyncTaskResponseBodyData {
-	s.CreateMillis = &v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBodyData) SetId(v int64) *GetLocalConfigSyncTaskResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBodyData) SetFreq(v int32) *GetLocalConfigSyncTaskResponseBodyData {
-	s.Freq = &v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponseBodyData) SetDevType(v string) *GetLocalConfigSyncTaskResponseBodyData {
-	s.DevType = &v
-	return s
-}
-
-type GetLocalConfigSyncTaskResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetLocalConfigSyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetLocalConfigSyncTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLocalConfigSyncTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetLocalConfigSyncTaskResponse) SetHeaders(v map[string]*string) *GetLocalConfigSyncTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetLocalConfigSyncTaskResponse) SetBody(v *GetLocalConfigSyncTaskResponseBody) *GetLocalConfigSyncTaskResponse {
 	s.Body = v
 	return s
 }
@@ -3129,8 +2983,8 @@ func (s *GetNodeRequest) SetDevEui(v string) *GetNodeRequest {
 }
 
 type GetNodeResponseBody struct {
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetNodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3142,13 +2996,13 @@ func (s GetNodeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeResponseBody) SetRequestId(v string) *GetNodeResponseBody {
-	s.RequestId = &v
+func (s *GetNodeResponseBody) SetData(v *GetNodeResponseBodyData) *GetNodeResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *GetNodeResponseBody) SetData(v *GetNodeResponseBodyData) *GetNodeResponseBody {
-	s.Data = v
+func (s *GetNodeResponseBody) SetRequestId(v string) *GetNodeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3158,12 +3012,12 @@ func (s *GetNodeResponseBody) SetSuccess(v bool) *GetNodeResponseBody {
 }
 
 type GetNodeResponseBodyData struct {
-	DevAddr        *string `json:"DevAddr,omitempty" xml:"DevAddr,omitempty"`
-	LastJoinMillis *int64  `json:"LastJoinMillis,omitempty" xml:"LastJoinMillis,omitempty"`
-	DevEui         *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	AuthTypes      *string `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty"`
 	BoundMillis    *int64  `json:"BoundMillis,omitempty" xml:"BoundMillis,omitempty"`
 	ClassMode      *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	AuthTypes      *string `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty"`
+	DevAddr        *string `json:"DevAddr,omitempty" xml:"DevAddr,omitempty"`
+	DevEui         *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	LastJoinMillis *int64  `json:"LastJoinMillis,omitempty" xml:"LastJoinMillis,omitempty"`
 }
 
 func (s GetNodeResponseBodyData) String() string {
@@ -3174,18 +3028,8 @@ func (s GetNodeResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeResponseBodyData) SetDevAddr(v string) *GetNodeResponseBodyData {
-	s.DevAddr = &v
-	return s
-}
-
-func (s *GetNodeResponseBodyData) SetLastJoinMillis(v int64) *GetNodeResponseBodyData {
-	s.LastJoinMillis = &v
-	return s
-}
-
-func (s *GetNodeResponseBodyData) SetDevEui(v string) *GetNodeResponseBodyData {
-	s.DevEui = &v
+func (s *GetNodeResponseBodyData) SetAuthTypes(v string) *GetNodeResponseBodyData {
+	s.AuthTypes = &v
 	return s
 }
 
@@ -3199,14 +3043,25 @@ func (s *GetNodeResponseBodyData) SetClassMode(v string) *GetNodeResponseBodyDat
 	return s
 }
 
-func (s *GetNodeResponseBodyData) SetAuthTypes(v string) *GetNodeResponseBodyData {
-	s.AuthTypes = &v
+func (s *GetNodeResponseBodyData) SetDevAddr(v string) *GetNodeResponseBodyData {
+	s.DevAddr = &v
+	return s
+}
+
+func (s *GetNodeResponseBodyData) SetDevEui(v string) *GetNodeResponseBodyData {
+	s.DevEui = &v
+	return s
+}
+
+func (s *GetNodeResponseBodyData) SetLastJoinMillis(v int64) *GetNodeResponseBodyData {
+	s.LastJoinMillis = &v
 	return s
 }
 
 type GetNodeResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetNodeResponse) String() string {
@@ -3219,6 +3074,11 @@ func (s GetNodeResponse) GoString() string {
 
 func (s *GetNodeResponse) SetHeaders(v map[string]*string) *GetNodeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetNodeResponse) SetStatusCode(v int32) *GetNodeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3251,8 +3111,8 @@ func (s *GetNodeGroupRequest) SetNodeGroupId(v string) *GetNodeGroupRequest {
 }
 
 type GetNodeGroupResponseBody struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetNodeGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3264,13 +3124,13 @@ func (s GetNodeGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeGroupResponseBody) SetRequestId(v string) *GetNodeGroupResponseBody {
-	s.RequestId = &v
+func (s *GetNodeGroupResponseBody) SetData(v *GetNodeGroupResponseBodyData) *GetNodeGroupResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *GetNodeGroupResponseBody) SetData(v *GetNodeGroupResponseBodyData) *GetNodeGroupResponseBody {
-	s.Data = v
+func (s *GetNodeGroupResponseBody) SetRequestId(v string) *GetNodeGroupResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3280,29 +3140,29 @@ func (s *GetNodeGroupResponseBody) SetSuccess(v bool) *GetNodeGroupResponseBody 
 }
 
 type GetNodeGroupResponseBodyData struct {
-	RxMonthSum                  *int64                                          `json:"RxMonthSum,omitempty" xml:"RxMonthSum,omitempty"`
+	ClassMode                   *string                                         `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
+	CreateMillis                *int64                                          `json:"CreateMillis,omitempty" xml:"CreateMillis,omitempty"`
 	DataDispatchConfig          *GetNodeGroupResponseBodyDataDataDispatchConfig `json:"DataDispatchConfig,omitempty" xml:"DataDispatchConfig,omitempty" type:"Struct"`
-	NodeGroupName               *string                                         `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	JoinPermissionOwnerAliyunId *string                                         `json:"JoinPermissionOwnerAliyunId,omitempty" xml:"JoinPermissionOwnerAliyunId,omitempty"`
-	MulticastNodeCapacity       *int32                                          `json:"MulticastNodeCapacity,omitempty" xml:"MulticastNodeCapacity,omitempty"`
-	TxMonthSum                  *int64                                          `json:"TxMonthSum,omitempty" xml:"TxMonthSum,omitempty"`
-	MulticastEnabled            *bool                                           `json:"MulticastEnabled,omitempty" xml:"MulticastEnabled,omitempty"`
+	DataDispatchEnabled         *bool                                           `json:"DataDispatchEnabled,omitempty" xml:"DataDispatchEnabled,omitempty"`
 	FreqBandPlanGroupId         *int64                                          `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	TxDailySum                  *int64                                          `json:"TxDailySum,omitempty" xml:"TxDailySum,omitempty"`
+	JoinEui                     *string                                         `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
 	JoinPermissionEnabled       *bool                                           `json:"JoinPermissionEnabled,omitempty" xml:"JoinPermissionEnabled,omitempty"`
 	JoinPermissionId            *string                                         `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
-	ClassMode                   *string                                         `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	NodeGroupId                 *string                                         `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	MulticastNodeCount          *int32                                          `json:"MulticastNodeCount,omitempty" xml:"MulticastNodeCount,omitempty"`
-	DataDispatchEnabled         *bool                                           `json:"DataDispatchEnabled,omitempty" xml:"DataDispatchEnabled,omitempty"`
-	Locks                       []*GetNodeGroupResponseBodyDataLocks            `json:"Locks,omitempty" xml:"Locks,omitempty" type:"Repeated"`
-	MulticastGroupId            *string                                         `json:"MulticastGroupId,omitempty" xml:"MulticastGroupId,omitempty"`
-	RxDailySum                  *string                                         `json:"RxDailySum,omitempty" xml:"RxDailySum,omitempty"`
-	JoinEui                     *string                                         `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
-	CreateMillis                *int64                                          `json:"CreateMillis,omitempty" xml:"CreateMillis,omitempty"`
-	JoinPermissionType          *string                                         `json:"JoinPermissionType,omitempty" xml:"JoinPermissionType,omitempty"`
-	NodesCnt                    *int64                                          `json:"NodesCnt,omitempty" xml:"NodesCnt,omitempty"`
 	JoinPermissionName          *string                                         `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
+	JoinPermissionOwnerAliyunId *string                                         `json:"JoinPermissionOwnerAliyunId,omitempty" xml:"JoinPermissionOwnerAliyunId,omitempty"`
+	JoinPermissionType          *string                                         `json:"JoinPermissionType,omitempty" xml:"JoinPermissionType,omitempty"`
+	Locks                       []*GetNodeGroupResponseBodyDataLocks            `json:"Locks,omitempty" xml:"Locks,omitempty" type:"Repeated"`
+	MulticastEnabled            *bool                                           `json:"MulticastEnabled,omitempty" xml:"MulticastEnabled,omitempty"`
+	MulticastGroupId            *string                                         `json:"MulticastGroupId,omitempty" xml:"MulticastGroupId,omitempty"`
+	MulticastNodeCapacity       *int32                                          `json:"MulticastNodeCapacity,omitempty" xml:"MulticastNodeCapacity,omitempty"`
+	MulticastNodeCount          *int32                                          `json:"MulticastNodeCount,omitempty" xml:"MulticastNodeCount,omitempty"`
+	NodeGroupId                 *string                                         `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupName               *string                                         `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	NodesCnt                    *int64                                          `json:"NodesCnt,omitempty" xml:"NodesCnt,omitempty"`
+	RxDailySum                  *string                                         `json:"RxDailySum,omitempty" xml:"RxDailySum,omitempty"`
+	RxMonthSum                  *int64                                          `json:"RxMonthSum,omitempty" xml:"RxMonthSum,omitempty"`
+	TxDailySum                  *int64                                          `json:"TxDailySum,omitempty" xml:"TxDailySum,omitempty"`
+	TxMonthSum                  *int64                                          `json:"TxMonthSum,omitempty" xml:"TxMonthSum,omitempty"`
 }
 
 func (s GetNodeGroupResponseBodyData) String() string {
@@ -3313,8 +3173,13 @@ func (s GetNodeGroupResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeGroupResponseBodyData) SetRxMonthSum(v int64) *GetNodeGroupResponseBodyData {
-	s.RxMonthSum = &v
+func (s *GetNodeGroupResponseBodyData) SetClassMode(v string) *GetNodeGroupResponseBodyData {
+	s.ClassMode = &v
+	return s
+}
+
+func (s *GetNodeGroupResponseBodyData) SetCreateMillis(v int64) *GetNodeGroupResponseBodyData {
+	s.CreateMillis = &v
 	return s
 }
 
@@ -3323,28 +3188,8 @@ func (s *GetNodeGroupResponseBodyData) SetDataDispatchConfig(v *GetNodeGroupResp
 	return s
 }
 
-func (s *GetNodeGroupResponseBodyData) SetNodeGroupName(v string) *GetNodeGroupResponseBodyData {
-	s.NodeGroupName = &v
-	return s
-}
-
-func (s *GetNodeGroupResponseBodyData) SetJoinPermissionOwnerAliyunId(v string) *GetNodeGroupResponseBodyData {
-	s.JoinPermissionOwnerAliyunId = &v
-	return s
-}
-
-func (s *GetNodeGroupResponseBodyData) SetMulticastNodeCapacity(v int32) *GetNodeGroupResponseBodyData {
-	s.MulticastNodeCapacity = &v
-	return s
-}
-
-func (s *GetNodeGroupResponseBodyData) SetTxMonthSum(v int64) *GetNodeGroupResponseBodyData {
-	s.TxMonthSum = &v
-	return s
-}
-
-func (s *GetNodeGroupResponseBodyData) SetMulticastEnabled(v bool) *GetNodeGroupResponseBodyData {
-	s.MulticastEnabled = &v
+func (s *GetNodeGroupResponseBodyData) SetDataDispatchEnabled(v bool) *GetNodeGroupResponseBodyData {
+	s.DataDispatchEnabled = &v
 	return s
 }
 
@@ -3353,8 +3198,8 @@ func (s *GetNodeGroupResponseBodyData) SetFreqBandPlanGroupId(v int64) *GetNodeG
 	return s
 }
 
-func (s *GetNodeGroupResponseBodyData) SetTxDailySum(v int64) *GetNodeGroupResponseBodyData {
-	s.TxDailySum = &v
+func (s *GetNodeGroupResponseBodyData) SetJoinEui(v string) *GetNodeGroupResponseBodyData {
+	s.JoinEui = &v
 	return s
 }
 
@@ -3368,48 +3213,13 @@ func (s *GetNodeGroupResponseBodyData) SetJoinPermissionId(v string) *GetNodeGro
 	return s
 }
 
-func (s *GetNodeGroupResponseBodyData) SetClassMode(v string) *GetNodeGroupResponseBodyData {
-	s.ClassMode = &v
+func (s *GetNodeGroupResponseBodyData) SetJoinPermissionName(v string) *GetNodeGroupResponseBodyData {
+	s.JoinPermissionName = &v
 	return s
 }
 
-func (s *GetNodeGroupResponseBodyData) SetNodeGroupId(v string) *GetNodeGroupResponseBodyData {
-	s.NodeGroupId = &v
-	return s
-}
-
-func (s *GetNodeGroupResponseBodyData) SetMulticastNodeCount(v int32) *GetNodeGroupResponseBodyData {
-	s.MulticastNodeCount = &v
-	return s
-}
-
-func (s *GetNodeGroupResponseBodyData) SetDataDispatchEnabled(v bool) *GetNodeGroupResponseBodyData {
-	s.DataDispatchEnabled = &v
-	return s
-}
-
-func (s *GetNodeGroupResponseBodyData) SetLocks(v []*GetNodeGroupResponseBodyDataLocks) *GetNodeGroupResponseBodyData {
-	s.Locks = v
-	return s
-}
-
-func (s *GetNodeGroupResponseBodyData) SetMulticastGroupId(v string) *GetNodeGroupResponseBodyData {
-	s.MulticastGroupId = &v
-	return s
-}
-
-func (s *GetNodeGroupResponseBodyData) SetRxDailySum(v string) *GetNodeGroupResponseBodyData {
-	s.RxDailySum = &v
-	return s
-}
-
-func (s *GetNodeGroupResponseBodyData) SetJoinEui(v string) *GetNodeGroupResponseBodyData {
-	s.JoinEui = &v
-	return s
-}
-
-func (s *GetNodeGroupResponseBodyData) SetCreateMillis(v int64) *GetNodeGroupResponseBodyData {
-	s.CreateMillis = &v
+func (s *GetNodeGroupResponseBodyData) SetJoinPermissionOwnerAliyunId(v string) *GetNodeGroupResponseBodyData {
+	s.JoinPermissionOwnerAliyunId = &v
 	return s
 }
 
@@ -3418,19 +3228,69 @@ func (s *GetNodeGroupResponseBodyData) SetJoinPermissionType(v string) *GetNodeG
 	return s
 }
 
+func (s *GetNodeGroupResponseBodyData) SetLocks(v []*GetNodeGroupResponseBodyDataLocks) *GetNodeGroupResponseBodyData {
+	s.Locks = v
+	return s
+}
+
+func (s *GetNodeGroupResponseBodyData) SetMulticastEnabled(v bool) *GetNodeGroupResponseBodyData {
+	s.MulticastEnabled = &v
+	return s
+}
+
+func (s *GetNodeGroupResponseBodyData) SetMulticastGroupId(v string) *GetNodeGroupResponseBodyData {
+	s.MulticastGroupId = &v
+	return s
+}
+
+func (s *GetNodeGroupResponseBodyData) SetMulticastNodeCapacity(v int32) *GetNodeGroupResponseBodyData {
+	s.MulticastNodeCapacity = &v
+	return s
+}
+
+func (s *GetNodeGroupResponseBodyData) SetMulticastNodeCount(v int32) *GetNodeGroupResponseBodyData {
+	s.MulticastNodeCount = &v
+	return s
+}
+
+func (s *GetNodeGroupResponseBodyData) SetNodeGroupId(v string) *GetNodeGroupResponseBodyData {
+	s.NodeGroupId = &v
+	return s
+}
+
+func (s *GetNodeGroupResponseBodyData) SetNodeGroupName(v string) *GetNodeGroupResponseBodyData {
+	s.NodeGroupName = &v
+	return s
+}
+
 func (s *GetNodeGroupResponseBodyData) SetNodesCnt(v int64) *GetNodeGroupResponseBodyData {
 	s.NodesCnt = &v
 	return s
 }
 
-func (s *GetNodeGroupResponseBodyData) SetJoinPermissionName(v string) *GetNodeGroupResponseBodyData {
-	s.JoinPermissionName = &v
+func (s *GetNodeGroupResponseBodyData) SetRxDailySum(v string) *GetNodeGroupResponseBodyData {
+	s.RxDailySum = &v
+	return s
+}
+
+func (s *GetNodeGroupResponseBodyData) SetRxMonthSum(v int64) *GetNodeGroupResponseBodyData {
+	s.RxMonthSum = &v
+	return s
+}
+
+func (s *GetNodeGroupResponseBodyData) SetTxDailySum(v int64) *GetNodeGroupResponseBodyData {
+	s.TxDailySum = &v
+	return s
+}
+
+func (s *GetNodeGroupResponseBodyData) SetTxMonthSum(v int64) *GetNodeGroupResponseBodyData {
+	s.TxMonthSum = &v
 	return s
 }
 
 type GetNodeGroupResponseBodyDataDataDispatchConfig struct {
-	IotProduct  *GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct `json:"IotProduct,omitempty" xml:"IotProduct,omitempty" type:"Struct"`
 	Destination *string                                                   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	IotProduct  *GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct `json:"IotProduct,omitempty" xml:"IotProduct,omitempty" type:"Struct"`
 	OnsTopics   *GetNodeGroupResponseBodyDataDataDispatchConfigOnsTopics  `json:"OnsTopics,omitempty" xml:"OnsTopics,omitempty" type:"Struct"`
 }
 
@@ -3442,13 +3302,13 @@ func (s GetNodeGroupResponseBodyDataDataDispatchConfig) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeGroupResponseBodyDataDataDispatchConfig) SetIotProduct(v *GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct) *GetNodeGroupResponseBodyDataDataDispatchConfig {
-	s.IotProduct = v
+func (s *GetNodeGroupResponseBodyDataDataDispatchConfig) SetDestination(v string) *GetNodeGroupResponseBodyDataDataDispatchConfig {
+	s.Destination = &v
 	return s
 }
 
-func (s *GetNodeGroupResponseBodyDataDataDispatchConfig) SetDestination(v string) *GetNodeGroupResponseBodyDataDataDispatchConfig {
-	s.Destination = &v
+func (s *GetNodeGroupResponseBodyDataDataDispatchConfig) SetIotProduct(v *GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct) *GetNodeGroupResponseBodyDataDataDispatchConfig {
+	s.IotProduct = v
 	return s
 }
 
@@ -3458,10 +3318,10 @@ func (s *GetNodeGroupResponseBodyDataDataDispatchConfig) SetOnsTopics(v *GetNode
 }
 
 type GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct struct {
+	DebugSwitch *bool   `json:"DebugSwitch,omitempty" xml:"DebugSwitch,omitempty"`
 	ProductKey  *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	DebugSwitch *bool   `json:"DebugSwitch,omitempty" xml:"DebugSwitch,omitempty"`
 }
 
 func (s GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct) String() string {
@@ -3470,6 +3330,11 @@ func (s GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct) String() strin
 
 func (s GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct) GoString() string {
 	return s.String()
+}
+
+func (s *GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct) SetDebugSwitch(v bool) *GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct {
+	s.DebugSwitch = &v
+	return s
 }
 
 func (s *GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct) SetProductKey(v string) *GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct {
@@ -3487,16 +3352,11 @@ func (s *GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct) SetProductTyp
 	return s
 }
 
-func (s *GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct) SetDebugSwitch(v bool) *GetNodeGroupResponseBodyDataDataDispatchConfigIotProduct {
-	s.DebugSwitch = &v
-	return s
-}
-
 type GetNodeGroupResponseBodyDataDataDispatchConfigOnsTopics struct {
-	UplinkTopic        *string `json:"UplinkTopic,omitempty" xml:"UplinkTopic,omitempty"`
+	DownlinkRegionName *string `json:"DownlinkRegionName,omitempty" xml:"DownlinkRegionName,omitempty"`
 	DownlinkTopic      *string `json:"DownlinkTopic,omitempty" xml:"DownlinkTopic,omitempty"`
 	UplinkRegionName   *string `json:"UplinkRegionName,omitempty" xml:"UplinkRegionName,omitempty"`
-	DownlinkRegionName *string `json:"DownlinkRegionName,omitempty" xml:"DownlinkRegionName,omitempty"`
+	UplinkTopic        *string `json:"UplinkTopic,omitempty" xml:"UplinkTopic,omitempty"`
 }
 
 func (s GetNodeGroupResponseBodyDataDataDispatchConfigOnsTopics) String() string {
@@ -3507,8 +3367,8 @@ func (s GetNodeGroupResponseBodyDataDataDispatchConfigOnsTopics) GoString() stri
 	return s.String()
 }
 
-func (s *GetNodeGroupResponseBodyDataDataDispatchConfigOnsTopics) SetUplinkTopic(v string) *GetNodeGroupResponseBodyDataDataDispatchConfigOnsTopics {
-	s.UplinkTopic = &v
+func (s *GetNodeGroupResponseBodyDataDataDispatchConfigOnsTopics) SetDownlinkRegionName(v string) *GetNodeGroupResponseBodyDataDataDispatchConfigOnsTopics {
+	s.DownlinkRegionName = &v
 	return s
 }
 
@@ -3522,16 +3382,16 @@ func (s *GetNodeGroupResponseBodyDataDataDispatchConfigOnsTopics) SetUplinkRegio
 	return s
 }
 
-func (s *GetNodeGroupResponseBodyDataDataDispatchConfigOnsTopics) SetDownlinkRegionName(v string) *GetNodeGroupResponseBodyDataDataDispatchConfigOnsTopics {
-	s.DownlinkRegionName = &v
+func (s *GetNodeGroupResponseBodyDataDataDispatchConfigOnsTopics) SetUplinkTopic(v string) *GetNodeGroupResponseBodyDataDataDispatchConfigOnsTopics {
+	s.UplinkTopic = &v
 	return s
 }
 
 type GetNodeGroupResponseBodyDataLocks struct {
-	LockId       *string `json:"LockId,omitempty" xml:"LockId,omitempty"`
-	LockType     *string `json:"LockType,omitempty" xml:"LockType,omitempty"`
 	CreateMillis *int64  `json:"CreateMillis,omitempty" xml:"CreateMillis,omitempty"`
 	Enabled      *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	LockId       *string `json:"LockId,omitempty" xml:"LockId,omitempty"`
+	LockType     *string `json:"LockType,omitempty" xml:"LockType,omitempty"`
 }
 
 func (s GetNodeGroupResponseBodyDataLocks) String() string {
@@ -3540,16 +3400,6 @@ func (s GetNodeGroupResponseBodyDataLocks) String() string {
 
 func (s GetNodeGroupResponseBodyDataLocks) GoString() string {
 	return s.String()
-}
-
-func (s *GetNodeGroupResponseBodyDataLocks) SetLockId(v string) *GetNodeGroupResponseBodyDataLocks {
-	s.LockId = &v
-	return s
-}
-
-func (s *GetNodeGroupResponseBodyDataLocks) SetLockType(v string) *GetNodeGroupResponseBodyDataLocks {
-	s.LockType = &v
-	return s
 }
 
 func (s *GetNodeGroupResponseBodyDataLocks) SetCreateMillis(v int64) *GetNodeGroupResponseBodyDataLocks {
@@ -3562,9 +3412,20 @@ func (s *GetNodeGroupResponseBodyDataLocks) SetEnabled(v bool) *GetNodeGroupResp
 	return s
 }
 
+func (s *GetNodeGroupResponseBodyDataLocks) SetLockId(v string) *GetNodeGroupResponseBodyDataLocks {
+	s.LockId = &v
+	return s
+}
+
+func (s *GetNodeGroupResponseBodyDataLocks) SetLockType(v string) *GetNodeGroupResponseBodyDataLocks {
+	s.LockType = &v
+	return s
+}
+
 type GetNodeGroupResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetNodeGroupResponse) String() string {
@@ -3580,20 +3441,25 @@ func (s *GetNodeGroupResponse) SetHeaders(v map[string]*string) *GetNodeGroupRes
 	return s
 }
 
+func (s *GetNodeGroupResponse) SetStatusCode(v int32) *GetNodeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetNodeGroupResponse) SetBody(v *GetNodeGroupResponseBody) *GetNodeGroupResponse {
 	s.Body = v
 	return s
 }
 
 type GetNodeGroupTransferPacketsDownloadUrlRequest struct {
+	Ascending     *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	BeginMillis   *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
+	Category      *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DevEui        *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	EndMillis     *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	NodeGroupId   *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	DevEui        *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	Category      *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	BeginMillis   *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
-	EndMillis     *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
 	SortingField  *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
-	Ascending     *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
 }
 
 func (s GetNodeGroupTransferPacketsDownloadUrlRequest) String() string {
@@ -3602,6 +3468,31 @@ func (s GetNodeGroupTransferPacketsDownloadUrlRequest) String() string {
 
 func (s GetNodeGroupTransferPacketsDownloadUrlRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetNodeGroupTransferPacketsDownloadUrlRequest) SetAscending(v bool) *GetNodeGroupTransferPacketsDownloadUrlRequest {
+	s.Ascending = &v
+	return s
+}
+
+func (s *GetNodeGroupTransferPacketsDownloadUrlRequest) SetBeginMillis(v int64) *GetNodeGroupTransferPacketsDownloadUrlRequest {
+	s.BeginMillis = &v
+	return s
+}
+
+func (s *GetNodeGroupTransferPacketsDownloadUrlRequest) SetCategory(v string) *GetNodeGroupTransferPacketsDownloadUrlRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *GetNodeGroupTransferPacketsDownloadUrlRequest) SetDevEui(v string) *GetNodeGroupTransferPacketsDownloadUrlRequest {
+	s.DevEui = &v
+	return s
+}
+
+func (s *GetNodeGroupTransferPacketsDownloadUrlRequest) SetEndMillis(v int64) *GetNodeGroupTransferPacketsDownloadUrlRequest {
+	s.EndMillis = &v
+	return s
 }
 
 func (s *GetNodeGroupTransferPacketsDownloadUrlRequest) SetIotInstanceId(v string) *GetNodeGroupTransferPacketsDownloadUrlRequest {
@@ -3614,39 +3505,14 @@ func (s *GetNodeGroupTransferPacketsDownloadUrlRequest) SetNodeGroupId(v string)
 	return s
 }
 
-func (s *GetNodeGroupTransferPacketsDownloadUrlRequest) SetDevEui(v string) *GetNodeGroupTransferPacketsDownloadUrlRequest {
-	s.DevEui = &v
-	return s
-}
-
-func (s *GetNodeGroupTransferPacketsDownloadUrlRequest) SetCategory(v string) *GetNodeGroupTransferPacketsDownloadUrlRequest {
-	s.Category = &v
-	return s
-}
-
-func (s *GetNodeGroupTransferPacketsDownloadUrlRequest) SetBeginMillis(v int64) *GetNodeGroupTransferPacketsDownloadUrlRequest {
-	s.BeginMillis = &v
-	return s
-}
-
-func (s *GetNodeGroupTransferPacketsDownloadUrlRequest) SetEndMillis(v int64) *GetNodeGroupTransferPacketsDownloadUrlRequest {
-	s.EndMillis = &v
-	return s
-}
-
 func (s *GetNodeGroupTransferPacketsDownloadUrlRequest) SetSortingField(v string) *GetNodeGroupTransferPacketsDownloadUrlRequest {
 	s.SortingField = &v
 	return s
 }
 
-func (s *GetNodeGroupTransferPacketsDownloadUrlRequest) SetAscending(v bool) *GetNodeGroupTransferPacketsDownloadUrlRequest {
-	s.Ascending = &v
-	return s
-}
-
 type GetNodeGroupTransferPacketsDownloadUrlResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3658,13 +3524,13 @@ func (s GetNodeGroupTransferPacketsDownloadUrlResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeGroupTransferPacketsDownloadUrlResponseBody) SetRequestId(v string) *GetNodeGroupTransferPacketsDownloadUrlResponseBody {
-	s.RequestId = &v
+func (s *GetNodeGroupTransferPacketsDownloadUrlResponseBody) SetData(v string) *GetNodeGroupTransferPacketsDownloadUrlResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *GetNodeGroupTransferPacketsDownloadUrlResponseBody) SetData(v string) *GetNodeGroupTransferPacketsDownloadUrlResponseBody {
-	s.Data = &v
+func (s *GetNodeGroupTransferPacketsDownloadUrlResponseBody) SetRequestId(v string) *GetNodeGroupTransferPacketsDownloadUrlResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3674,8 +3540,9 @@ func (s *GetNodeGroupTransferPacketsDownloadUrlResponseBody) SetSuccess(v bool) 
 }
 
 type GetNodeGroupTransferPacketsDownloadUrlResponse struct {
-	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetNodeGroupTransferPacketsDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetNodeGroupTransferPacketsDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetNodeGroupTransferPacketsDownloadUrlResponse) String() string {
@@ -3691,161 +3558,20 @@ func (s *GetNodeGroupTransferPacketsDownloadUrlResponse) SetHeaders(v map[string
 	return s
 }
 
+func (s *GetNodeGroupTransferPacketsDownloadUrlResponse) SetStatusCode(v int32) *GetNodeGroupTransferPacketsDownloadUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetNodeGroupTransferPacketsDownloadUrlResponse) SetBody(v *GetNodeGroupTransferPacketsDownloadUrlResponseBody) *GetNodeGroupTransferPacketsDownloadUrlResponse {
 	s.Body = v
 	return s
 }
 
-type GetNodeLocalConfigRequest struct {
-	DevEui *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-}
-
-func (s GetNodeLocalConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetNodeLocalConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetNodeLocalConfigRequest) SetDevEui(v string) *GetNodeLocalConfigRequest {
-	s.DevEui = &v
-	return s
-}
-
-type GetNodeLocalConfigResponseBody struct {
-	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetNodeLocalConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetNodeLocalConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetNodeLocalConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetNodeLocalConfigResponseBody) SetRequestId(v string) *GetNodeLocalConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetNodeLocalConfigResponseBody) SetData(v *GetNodeLocalConfigResponseBodyData) *GetNodeLocalConfigResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetNodeLocalConfigResponseBody) SetErrorMessage(v string) *GetNodeLocalConfigResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetNodeLocalConfigResponseBody) SetCode(v string) *GetNodeLocalConfigResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetNodeLocalConfigResponseBody) SetSuccess(v bool) *GetNodeLocalConfigResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetNodeLocalConfigResponseBodyData struct {
-	Datr           *int32  `json:"Datr,omitempty" xml:"Datr,omitempty"`
-	D2dAddr        *string `json:"D2dAddr,omitempty" xml:"D2dAddr,omitempty"`
-	ModifiedMillis *int64  `json:"ModifiedMillis,omitempty" xml:"ModifiedMillis,omitempty"`
-	CreateMillis   *int64  `json:"CreateMillis,omitempty" xml:"CreateMillis,omitempty"`
-	D2dKey         *string `json:"D2dKey,omitempty" xml:"D2dKey,omitempty"`
-	TaskId         *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Eui            *string `json:"Eui,omitempty" xml:"Eui,omitempty"`
-	Freq           *int32  `json:"Freq,omitempty" xml:"Freq,omitempty"`
-	DevType        *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
-}
-
-func (s GetNodeLocalConfigResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetNodeLocalConfigResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetNodeLocalConfigResponseBodyData) SetDatr(v int32) *GetNodeLocalConfigResponseBodyData {
-	s.Datr = &v
-	return s
-}
-
-func (s *GetNodeLocalConfigResponseBodyData) SetD2dAddr(v string) *GetNodeLocalConfigResponseBodyData {
-	s.D2dAddr = &v
-	return s
-}
-
-func (s *GetNodeLocalConfigResponseBodyData) SetModifiedMillis(v int64) *GetNodeLocalConfigResponseBodyData {
-	s.ModifiedMillis = &v
-	return s
-}
-
-func (s *GetNodeLocalConfigResponseBodyData) SetCreateMillis(v int64) *GetNodeLocalConfigResponseBodyData {
-	s.CreateMillis = &v
-	return s
-}
-
-func (s *GetNodeLocalConfigResponseBodyData) SetD2dKey(v string) *GetNodeLocalConfigResponseBodyData {
-	s.D2dKey = &v
-	return s
-}
-
-func (s *GetNodeLocalConfigResponseBodyData) SetTaskId(v int64) *GetNodeLocalConfigResponseBodyData {
-	s.TaskId = &v
-	return s
-}
-
-func (s *GetNodeLocalConfigResponseBodyData) SetEui(v string) *GetNodeLocalConfigResponseBodyData {
-	s.Eui = &v
-	return s
-}
-
-func (s *GetNodeLocalConfigResponseBodyData) SetFreq(v int32) *GetNodeLocalConfigResponseBodyData {
-	s.Freq = &v
-	return s
-}
-
-func (s *GetNodeLocalConfigResponseBodyData) SetDevType(v string) *GetNodeLocalConfigResponseBodyData {
-	s.DevType = &v
-	return s
-}
-
-type GetNodeLocalConfigResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetNodeLocalConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetNodeLocalConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetNodeLocalConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetNodeLocalConfigResponse) SetHeaders(v map[string]*string) *GetNodeLocalConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetNodeLocalConfigResponse) SetBody(v *GetNodeLocalConfigResponseBody) *GetNodeLocalConfigResponse {
-	s.Body = v
-	return s
-}
-
 type GetNodeTransferPacketRequest struct {
-	IotInstanceId           *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	DevEui                  *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
 	Base64EncodedMacPayload *string `json:"Base64EncodedMacPayload,omitempty" xml:"Base64EncodedMacPayload,omitempty"`
+	DevEui                  *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	IotInstanceId           *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	LogMillis               *int64  `json:"LogMillis,omitempty" xml:"LogMillis,omitempty"`
 }
 
@@ -3857,8 +3583,8 @@ func (s GetNodeTransferPacketRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeTransferPacketRequest) SetIotInstanceId(v string) *GetNodeTransferPacketRequest {
-	s.IotInstanceId = &v
+func (s *GetNodeTransferPacketRequest) SetBase64EncodedMacPayload(v string) *GetNodeTransferPacketRequest {
+	s.Base64EncodedMacPayload = &v
 	return s
 }
 
@@ -3867,8 +3593,8 @@ func (s *GetNodeTransferPacketRequest) SetDevEui(v string) *GetNodeTransferPacke
 	return s
 }
 
-func (s *GetNodeTransferPacketRequest) SetBase64EncodedMacPayload(v string) *GetNodeTransferPacketRequest {
-	s.Base64EncodedMacPayload = &v
+func (s *GetNodeTransferPacketRequest) SetIotInstanceId(v string) *GetNodeTransferPacketRequest {
+	s.IotInstanceId = &v
 	return s
 }
 
@@ -3878,8 +3604,8 @@ func (s *GetNodeTransferPacketRequest) SetLogMillis(v int64) *GetNodeTransferPac
 }
 
 type GetNodeTransferPacketResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetNodeTransferPacketResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3891,13 +3617,13 @@ func (s GetNodeTransferPacketResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeTransferPacketResponseBody) SetRequestId(v string) *GetNodeTransferPacketResponseBody {
-	s.RequestId = &v
+func (s *GetNodeTransferPacketResponseBody) SetData(v *GetNodeTransferPacketResponseBodyData) *GetNodeTransferPacketResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *GetNodeTransferPacketResponseBody) SetData(v *GetNodeTransferPacketResponseBodyData) *GetNodeTransferPacketResponseBody {
-	s.Data = v
+func (s *GetNodeTransferPacketResponseBody) SetRequestId(v string) *GetNodeTransferPacketResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3907,25 +3633,25 @@ func (s *GetNodeTransferPacketResponseBody) SetSuccess(v bool) *GetNodeTransferP
 }
 
 type GetNodeTransferPacketResponseBodyData struct {
-	LogMillis               *int64                   `json:"LogMillis,omitempty" xml:"LogMillis,omitempty"`
-	GwOwnerAliyunId         *string                  `json:"GwOwnerAliyunId,omitempty" xml:"GwOwnerAliyunId,omitempty"`
 	Base64EncodedMacPayload *string                  `json:"Base64EncodedMacPayload,omitempty" xml:"Base64EncodedMacPayload,omitempty"`
-	ProcessEvent            *string                  `json:"ProcessEvent,omitempty" xml:"ProcessEvent,omitempty"`
-	FPort                   *int32                   `json:"FPort,omitempty" xml:"FPort,omitempty"`
-	Lsnr                    *float32                 `json:"Lsnr,omitempty" xml:"Lsnr,omitempty"`
-	FreqBandPlanGroupId     *int64                   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	HasData                 *bool                    `json:"HasData,omitempty" xml:"HasData,omitempty"`
 	ClassMode               *string                  `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	MacPayloadSize          *int32                   `json:"MacPayloadSize,omitempty" xml:"MacPayloadSize,omitempty"`
 	Datr                    *string                  `json:"Datr,omitempty" xml:"Datr,omitempty"`
-	MessageType             *string                  `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 	DevAddr                 *string                  `json:"DevAddr,omitempty" xml:"DevAddr,omitempty"`
 	DevEui                  *string                  `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	MacCommandCIDs          []map[string]interface{} `json:"MacCommandCIDs,omitempty" xml:"MacCommandCIDs,omitempty" type:"Repeated"`
-	GwEui                   *string                  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	Rssi                    *int32                   `json:"Rssi,omitempty" xml:"Rssi,omitempty"`
-	HasMacCommand           *bool                    `json:"HasMacCommand,omitempty" xml:"HasMacCommand,omitempty"`
+	FPort                   *int32                   `json:"FPort,omitempty" xml:"FPort,omitempty"`
 	Freq                    *float32                 `json:"Freq,omitempty" xml:"Freq,omitempty"`
+	FreqBandPlanGroupId     *int64                   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	GwEui                   *string                  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	GwOwnerAliyunId         *string                  `json:"GwOwnerAliyunId,omitempty" xml:"GwOwnerAliyunId,omitempty"`
+	HasData                 *bool                    `json:"HasData,omitempty" xml:"HasData,omitempty"`
+	HasMacCommand           *bool                    `json:"HasMacCommand,omitempty" xml:"HasMacCommand,omitempty"`
+	LogMillis               *int64                   `json:"LogMillis,omitempty" xml:"LogMillis,omitempty"`
+	Lsnr                    *float32                 `json:"Lsnr,omitempty" xml:"Lsnr,omitempty"`
+	MacCommandCIDs          []map[string]interface{} `json:"MacCommandCIDs,omitempty" xml:"MacCommandCIDs,omitempty" type:"Repeated"`
+	MacPayloadSize          *int32                   `json:"MacPayloadSize,omitempty" xml:"MacPayloadSize,omitempty"`
+	MessageType             *string                  `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	ProcessEvent            *string                  `json:"ProcessEvent,omitempty" xml:"ProcessEvent,omitempty"`
+	Rssi                    *int32                   `json:"Rssi,omitempty" xml:"Rssi,omitempty"`
 }
 
 func (s GetNodeTransferPacketResponseBodyData) String() string {
@@ -3936,43 +3662,8 @@ func (s GetNodeTransferPacketResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeTransferPacketResponseBodyData) SetLogMillis(v int64) *GetNodeTransferPacketResponseBodyData {
-	s.LogMillis = &v
-	return s
-}
-
-func (s *GetNodeTransferPacketResponseBodyData) SetGwOwnerAliyunId(v string) *GetNodeTransferPacketResponseBodyData {
-	s.GwOwnerAliyunId = &v
-	return s
-}
-
 func (s *GetNodeTransferPacketResponseBodyData) SetBase64EncodedMacPayload(v string) *GetNodeTransferPacketResponseBodyData {
 	s.Base64EncodedMacPayload = &v
-	return s
-}
-
-func (s *GetNodeTransferPacketResponseBodyData) SetProcessEvent(v string) *GetNodeTransferPacketResponseBodyData {
-	s.ProcessEvent = &v
-	return s
-}
-
-func (s *GetNodeTransferPacketResponseBodyData) SetFPort(v int32) *GetNodeTransferPacketResponseBodyData {
-	s.FPort = &v
-	return s
-}
-
-func (s *GetNodeTransferPacketResponseBodyData) SetLsnr(v float32) *GetNodeTransferPacketResponseBodyData {
-	s.Lsnr = &v
-	return s
-}
-
-func (s *GetNodeTransferPacketResponseBodyData) SetFreqBandPlanGroupId(v int64) *GetNodeTransferPacketResponseBodyData {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *GetNodeTransferPacketResponseBodyData) SetHasData(v bool) *GetNodeTransferPacketResponseBodyData {
-	s.HasData = &v
 	return s
 }
 
@@ -3981,18 +3672,8 @@ func (s *GetNodeTransferPacketResponseBodyData) SetClassMode(v string) *GetNodeT
 	return s
 }
 
-func (s *GetNodeTransferPacketResponseBodyData) SetMacPayloadSize(v int32) *GetNodeTransferPacketResponseBodyData {
-	s.MacPayloadSize = &v
-	return s
-}
-
 func (s *GetNodeTransferPacketResponseBodyData) SetDatr(v string) *GetNodeTransferPacketResponseBodyData {
 	s.Datr = &v
-	return s
-}
-
-func (s *GetNodeTransferPacketResponseBodyData) SetMessageType(v string) *GetNodeTransferPacketResponseBodyData {
-	s.MessageType = &v
 	return s
 }
 
@@ -4006,23 +3687,8 @@ func (s *GetNodeTransferPacketResponseBodyData) SetDevEui(v string) *GetNodeTran
 	return s
 }
 
-func (s *GetNodeTransferPacketResponseBodyData) SetMacCommandCIDs(v []map[string]interface{}) *GetNodeTransferPacketResponseBodyData {
-	s.MacCommandCIDs = v
-	return s
-}
-
-func (s *GetNodeTransferPacketResponseBodyData) SetGwEui(v string) *GetNodeTransferPacketResponseBodyData {
-	s.GwEui = &v
-	return s
-}
-
-func (s *GetNodeTransferPacketResponseBodyData) SetRssi(v int32) *GetNodeTransferPacketResponseBodyData {
-	s.Rssi = &v
-	return s
-}
-
-func (s *GetNodeTransferPacketResponseBodyData) SetHasMacCommand(v bool) *GetNodeTransferPacketResponseBodyData {
-	s.HasMacCommand = &v
+func (s *GetNodeTransferPacketResponseBodyData) SetFPort(v int32) *GetNodeTransferPacketResponseBodyData {
+	s.FPort = &v
 	return s
 }
 
@@ -4031,9 +3697,70 @@ func (s *GetNodeTransferPacketResponseBodyData) SetFreq(v float32) *GetNodeTrans
 	return s
 }
 
+func (s *GetNodeTransferPacketResponseBodyData) SetFreqBandPlanGroupId(v int64) *GetNodeTransferPacketResponseBodyData {
+	s.FreqBandPlanGroupId = &v
+	return s
+}
+
+func (s *GetNodeTransferPacketResponseBodyData) SetGwEui(v string) *GetNodeTransferPacketResponseBodyData {
+	s.GwEui = &v
+	return s
+}
+
+func (s *GetNodeTransferPacketResponseBodyData) SetGwOwnerAliyunId(v string) *GetNodeTransferPacketResponseBodyData {
+	s.GwOwnerAliyunId = &v
+	return s
+}
+
+func (s *GetNodeTransferPacketResponseBodyData) SetHasData(v bool) *GetNodeTransferPacketResponseBodyData {
+	s.HasData = &v
+	return s
+}
+
+func (s *GetNodeTransferPacketResponseBodyData) SetHasMacCommand(v bool) *GetNodeTransferPacketResponseBodyData {
+	s.HasMacCommand = &v
+	return s
+}
+
+func (s *GetNodeTransferPacketResponseBodyData) SetLogMillis(v int64) *GetNodeTransferPacketResponseBodyData {
+	s.LogMillis = &v
+	return s
+}
+
+func (s *GetNodeTransferPacketResponseBodyData) SetLsnr(v float32) *GetNodeTransferPacketResponseBodyData {
+	s.Lsnr = &v
+	return s
+}
+
+func (s *GetNodeTransferPacketResponseBodyData) SetMacCommandCIDs(v []map[string]interface{}) *GetNodeTransferPacketResponseBodyData {
+	s.MacCommandCIDs = v
+	return s
+}
+
+func (s *GetNodeTransferPacketResponseBodyData) SetMacPayloadSize(v int32) *GetNodeTransferPacketResponseBodyData {
+	s.MacPayloadSize = &v
+	return s
+}
+
+func (s *GetNodeTransferPacketResponseBodyData) SetMessageType(v string) *GetNodeTransferPacketResponseBodyData {
+	s.MessageType = &v
+	return s
+}
+
+func (s *GetNodeTransferPacketResponseBodyData) SetProcessEvent(v string) *GetNodeTransferPacketResponseBodyData {
+	s.ProcessEvent = &v
+	return s
+}
+
+func (s *GetNodeTransferPacketResponseBodyData) SetRssi(v int32) *GetNodeTransferPacketResponseBodyData {
+	s.Rssi = &v
+	return s
+}
+
 type GetNodeTransferPacketResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetNodeTransferPacketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetNodeTransferPacketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetNodeTransferPacketResponse) String() string {
@@ -4049,19 +3776,24 @@ func (s *GetNodeTransferPacketResponse) SetHeaders(v map[string]*string) *GetNod
 	return s
 }
 
+func (s *GetNodeTransferPacketResponse) SetStatusCode(v int32) *GetNodeTransferPacketResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetNodeTransferPacketResponse) SetBody(v *GetNodeTransferPacketResponseBody) *GetNodeTransferPacketResponse {
 	s.Body = v
 	return s
 }
 
 type GetNodeTransferPacketsDownloadUrlRequest struct {
-	GwEui        *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	DevEui       *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	BeginMillis  *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
-	EndMillis    *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
-	SortingField *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 	Ascending    *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	BeginMillis  *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DevEui       *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	EndMillis    *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
+	GwEui        *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	SortingField *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 }
 
 func (s GetNodeTransferPacketsDownloadUrlRequest) String() string {
@@ -4072,18 +3804,8 @@ func (s GetNodeTransferPacketsDownloadUrlRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeTransferPacketsDownloadUrlRequest) SetGwEui(v string) *GetNodeTransferPacketsDownloadUrlRequest {
-	s.GwEui = &v
-	return s
-}
-
-func (s *GetNodeTransferPacketsDownloadUrlRequest) SetDevEui(v string) *GetNodeTransferPacketsDownloadUrlRequest {
-	s.DevEui = &v
-	return s
-}
-
-func (s *GetNodeTransferPacketsDownloadUrlRequest) SetCategory(v string) *GetNodeTransferPacketsDownloadUrlRequest {
-	s.Category = &v
+func (s *GetNodeTransferPacketsDownloadUrlRequest) SetAscending(v bool) *GetNodeTransferPacketsDownloadUrlRequest {
+	s.Ascending = &v
 	return s
 }
 
@@ -4092,8 +3814,23 @@ func (s *GetNodeTransferPacketsDownloadUrlRequest) SetBeginMillis(v int64) *GetN
 	return s
 }
 
+func (s *GetNodeTransferPacketsDownloadUrlRequest) SetCategory(v string) *GetNodeTransferPacketsDownloadUrlRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *GetNodeTransferPacketsDownloadUrlRequest) SetDevEui(v string) *GetNodeTransferPacketsDownloadUrlRequest {
+	s.DevEui = &v
+	return s
+}
+
 func (s *GetNodeTransferPacketsDownloadUrlRequest) SetEndMillis(v int64) *GetNodeTransferPacketsDownloadUrlRequest {
 	s.EndMillis = &v
+	return s
+}
+
+func (s *GetNodeTransferPacketsDownloadUrlRequest) SetGwEui(v string) *GetNodeTransferPacketsDownloadUrlRequest {
+	s.GwEui = &v
 	return s
 }
 
@@ -4102,14 +3839,9 @@ func (s *GetNodeTransferPacketsDownloadUrlRequest) SetSortingField(v string) *Ge
 	return s
 }
 
-func (s *GetNodeTransferPacketsDownloadUrlRequest) SetAscending(v bool) *GetNodeTransferPacketsDownloadUrlRequest {
-	s.Ascending = &v
-	return s
-}
-
 type GetNodeTransferPacketsDownloadUrlResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4121,13 +3853,13 @@ func (s GetNodeTransferPacketsDownloadUrlResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeTransferPacketsDownloadUrlResponseBody) SetRequestId(v string) *GetNodeTransferPacketsDownloadUrlResponseBody {
-	s.RequestId = &v
+func (s *GetNodeTransferPacketsDownloadUrlResponseBody) SetData(v string) *GetNodeTransferPacketsDownloadUrlResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *GetNodeTransferPacketsDownloadUrlResponseBody) SetData(v string) *GetNodeTransferPacketsDownloadUrlResponseBody {
-	s.Data = &v
+func (s *GetNodeTransferPacketsDownloadUrlResponseBody) SetRequestId(v string) *GetNodeTransferPacketsDownloadUrlResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4137,8 +3869,9 @@ func (s *GetNodeTransferPacketsDownloadUrlResponseBody) SetSuccess(v bool) *GetN
 }
 
 type GetNodeTransferPacketsDownloadUrlResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetNodeTransferPacketsDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetNodeTransferPacketsDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetNodeTransferPacketsDownloadUrlResponse) String() string {
@@ -4151,6 +3884,11 @@ func (s GetNodeTransferPacketsDownloadUrlResponse) GoString() string {
 
 func (s *GetNodeTransferPacketsDownloadUrlResponse) SetHeaders(v map[string]*string) *GetNodeTransferPacketsDownloadUrlResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetNodeTransferPacketsDownloadUrlResponse) SetStatusCode(v int32) *GetNodeTransferPacketsDownloadUrlResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4177,8 +3915,8 @@ func (s *GetNodeTupleOrderRequest) SetOrderId(v string) *GetNodeTupleOrderReques
 }
 
 type GetNodeTupleOrderResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetNodeTupleOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4190,13 +3928,13 @@ func (s GetNodeTupleOrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeTupleOrderResponseBody) SetRequestId(v string) *GetNodeTupleOrderResponseBody {
-	s.RequestId = &v
+func (s *GetNodeTupleOrderResponseBody) SetData(v *GetNodeTupleOrderResponseBodyData) *GetNodeTupleOrderResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *GetNodeTupleOrderResponseBody) SetData(v *GetNodeTupleOrderResponseBodyData) *GetNodeTupleOrderResponseBody {
-	s.Data = v
+func (s *GetNodeTupleOrderResponseBody) SetRequestId(v string) *GetNodeTupleOrderResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4206,12 +3944,12 @@ func (s *GetNodeTupleOrderResponseBody) SetSuccess(v bool) *GetNodeTupleOrderRes
 }
 
 type GetNodeTupleOrderResponseBodyData struct {
-	RequiredCount  *int64  `json:"RequiredCount,omitempty" xml:"RequiredCount,omitempty"`
+	AcceptedMillis *int64  `json:"AcceptedMillis,omitempty" xml:"AcceptedMillis,omitempty"`
 	CreatedMillis  *int64  `json:"CreatedMillis,omitempty" xml:"CreatedMillis,omitempty"`
 	IsKpm          *bool   `json:"IsKpm,omitempty" xml:"IsKpm,omitempty"`
-	AcceptedMillis *int64  `json:"AcceptedMillis,omitempty" xml:"AcceptedMillis,omitempty"`
 	OrderId        *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OrderState     *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	RequiredCount  *int64  `json:"RequiredCount,omitempty" xml:"RequiredCount,omitempty"`
 }
 
 func (s GetNodeTupleOrderResponseBodyData) String() string {
@@ -4222,8 +3960,8 @@ func (s GetNodeTupleOrderResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeTupleOrderResponseBodyData) SetRequiredCount(v int64) *GetNodeTupleOrderResponseBodyData {
-	s.RequiredCount = &v
+func (s *GetNodeTupleOrderResponseBodyData) SetAcceptedMillis(v int64) *GetNodeTupleOrderResponseBodyData {
+	s.AcceptedMillis = &v
 	return s
 }
 
@@ -4237,11 +3975,6 @@ func (s *GetNodeTupleOrderResponseBodyData) SetIsKpm(v bool) *GetNodeTupleOrderR
 	return s
 }
 
-func (s *GetNodeTupleOrderResponseBodyData) SetAcceptedMillis(v int64) *GetNodeTupleOrderResponseBodyData {
-	s.AcceptedMillis = &v
-	return s
-}
-
 func (s *GetNodeTupleOrderResponseBodyData) SetOrderId(v string) *GetNodeTupleOrderResponseBodyData {
 	s.OrderId = &v
 	return s
@@ -4252,9 +3985,15 @@ func (s *GetNodeTupleOrderResponseBodyData) SetOrderState(v string) *GetNodeTupl
 	return s
 }
 
+func (s *GetNodeTupleOrderResponseBodyData) SetRequiredCount(v int64) *GetNodeTupleOrderResponseBodyData {
+	s.RequiredCount = &v
+	return s
+}
+
 type GetNodeTupleOrderResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetNodeTupleOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetNodeTupleOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetNodeTupleOrderResponse) String() string {
@@ -4267,6 +4006,11 @@ func (s GetNodeTupleOrderResponse) GoString() string {
 
 func (s *GetNodeTupleOrderResponse) SetHeaders(v map[string]*string) *GetNodeTupleOrderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetNodeTupleOrderResponse) SetStatusCode(v int32) *GetNodeTupleOrderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4293,8 +4037,8 @@ func (s *GetNodeTuplesDownloadUrlRequest) SetOrderId(v string) *GetNodeTuplesDow
 }
 
 type GetNodeTuplesDownloadUrlResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4306,13 +4050,13 @@ func (s GetNodeTuplesDownloadUrlResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetNodeTuplesDownloadUrlResponseBody) SetRequestId(v string) *GetNodeTuplesDownloadUrlResponseBody {
-	s.RequestId = &v
+func (s *GetNodeTuplesDownloadUrlResponseBody) SetData(v string) *GetNodeTuplesDownloadUrlResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *GetNodeTuplesDownloadUrlResponseBody) SetData(v string) *GetNodeTuplesDownloadUrlResponseBody {
-	s.Data = &v
+func (s *GetNodeTuplesDownloadUrlResponseBody) SetRequestId(v string) *GetNodeTuplesDownloadUrlResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4322,8 +4066,9 @@ func (s *GetNodeTuplesDownloadUrlResponseBody) SetSuccess(v bool) *GetNodeTuples
 }
 
 type GetNodeTuplesDownloadUrlResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetNodeTuplesDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetNodeTuplesDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetNodeTuplesDownloadUrlResponse) String() string {
@@ -4336,6 +4081,11 @@ func (s GetNodeTuplesDownloadUrlResponse) GoString() string {
 
 func (s *GetNodeTuplesDownloadUrlResponse) SetHeaders(v map[string]*string) *GetNodeTuplesDownloadUrlResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetNodeTuplesDownloadUrlResponse) SetStatusCode(v int32) *GetNodeTuplesDownloadUrlResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4362,8 +4112,8 @@ func (s *GetNotificationRequest) SetNotificationId(v string) *GetNotificationReq
 }
 
 type GetNotificationResponseBody struct {
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetNotificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4375,13 +4125,13 @@ func (s GetNotificationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetNotificationResponseBody) SetRequestId(v string) *GetNotificationResponseBody {
-	s.RequestId = &v
+func (s *GetNotificationResponseBody) SetData(v *GetNotificationResponseBodyData) *GetNotificationResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *GetNotificationResponseBody) SetData(v *GetNotificationResponseBodyData) *GetNotificationResponseBody {
-	s.Data = v
+func (s *GetNotificationResponseBody) SetRequestId(v string) *GetNotificationResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4391,13 +4141,13 @@ func (s *GetNotificationResponseBody) SetSuccess(v bool) *GetNotificationRespons
 }
 
 type GetNotificationResponseBodyData struct {
-	NoticeMillis           *int64                                                 `json:"NoticeMillis,omitempty" xml:"NoticeMillis,omitempty"`
-	HandleState            *string                                                `json:"HandleState,omitempty" xml:"HandleState,omitempty"`
-	NotificationId         *string                                                `json:"NotificationId,omitempty" xml:"NotificationId,omitempty"`
-	JoinPermissionAuthInfo *GetNotificationResponseBodyDataJoinPermissionAuthInfo `json:"JoinPermissionAuthInfo,omitempty" xml:"JoinPermissionAuthInfo,omitempty" type:"Struct"`
-	GatewayOfflineInfo     *GetNotificationResponseBodyDataGatewayOfflineInfo     `json:"GatewayOfflineInfo,omitempty" xml:"GatewayOfflineInfo,omitempty" type:"Struct"`
 	Category               *string                                                `json:"Category,omitempty" xml:"Category,omitempty"`
+	GatewayOfflineInfo     *GetNotificationResponseBodyDataGatewayOfflineInfo     `json:"GatewayOfflineInfo,omitempty" xml:"GatewayOfflineInfo,omitempty" type:"Struct"`
+	HandleState            *string                                                `json:"HandleState,omitempty" xml:"HandleState,omitempty"`
 	HandledMillis          *int64                                                 `json:"HandledMillis,omitempty" xml:"HandledMillis,omitempty"`
+	JoinPermissionAuthInfo *GetNotificationResponseBodyDataJoinPermissionAuthInfo `json:"JoinPermissionAuthInfo,omitempty" xml:"JoinPermissionAuthInfo,omitempty" type:"Struct"`
+	NoticeMillis           *int64                                                 `json:"NoticeMillis,omitempty" xml:"NoticeMillis,omitempty"`
+	NotificationId         *string                                                `json:"NotificationId,omitempty" xml:"NotificationId,omitempty"`
 }
 
 func (s GetNotificationResponseBodyData) String() string {
@@ -4408,23 +4158,8 @@ func (s GetNotificationResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetNotificationResponseBodyData) SetNoticeMillis(v int64) *GetNotificationResponseBodyData {
-	s.NoticeMillis = &v
-	return s
-}
-
-func (s *GetNotificationResponseBodyData) SetHandleState(v string) *GetNotificationResponseBodyData {
-	s.HandleState = &v
-	return s
-}
-
-func (s *GetNotificationResponseBodyData) SetNotificationId(v string) *GetNotificationResponseBodyData {
-	s.NotificationId = &v
-	return s
-}
-
-func (s *GetNotificationResponseBodyData) SetJoinPermissionAuthInfo(v *GetNotificationResponseBodyDataJoinPermissionAuthInfo) *GetNotificationResponseBodyData {
-	s.JoinPermissionAuthInfo = v
+func (s *GetNotificationResponseBodyData) SetCategory(v string) *GetNotificationResponseBodyData {
+	s.Category = &v
 	return s
 }
 
@@ -4433,8 +4168,8 @@ func (s *GetNotificationResponseBodyData) SetGatewayOfflineInfo(v *GetNotificati
 	return s
 }
 
-func (s *GetNotificationResponseBodyData) SetCategory(v string) *GetNotificationResponseBodyData {
-	s.Category = &v
+func (s *GetNotificationResponseBodyData) SetHandleState(v string) *GetNotificationResponseBodyData {
+	s.HandleState = &v
 	return s
 }
 
@@ -4443,18 +4178,56 @@ func (s *GetNotificationResponseBodyData) SetHandledMillis(v int64) *GetNotifica
 	return s
 }
 
+func (s *GetNotificationResponseBodyData) SetJoinPermissionAuthInfo(v *GetNotificationResponseBodyDataJoinPermissionAuthInfo) *GetNotificationResponseBodyData {
+	s.JoinPermissionAuthInfo = v
+	return s
+}
+
+func (s *GetNotificationResponseBodyData) SetNoticeMillis(v int64) *GetNotificationResponseBodyData {
+	s.NoticeMillis = &v
+	return s
+}
+
+func (s *GetNotificationResponseBodyData) SetNotificationId(v string) *GetNotificationResponseBodyData {
+	s.NotificationId = &v
+	return s
+}
+
+type GetNotificationResponseBodyDataGatewayOfflineInfo struct {
+	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	OfflineMillis *int64  `json:"OfflineMillis,omitempty" xml:"OfflineMillis,omitempty"`
+}
+
+func (s GetNotificationResponseBodyDataGatewayOfflineInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNotificationResponseBodyDataGatewayOfflineInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetNotificationResponseBodyDataGatewayOfflineInfo) SetGwEui(v string) *GetNotificationResponseBodyDataGatewayOfflineInfo {
+	s.GwEui = &v
+	return s
+}
+
+func (s *GetNotificationResponseBodyDataGatewayOfflineInfo) SetOfflineMillis(v int64) *GetNotificationResponseBodyDataGatewayOfflineInfo {
+	s.OfflineMillis = &v
+	return s
+}
+
 type GetNotificationResponseBodyDataJoinPermissionAuthInfo struct {
-	CanceledMillis     *int64  `json:"CanceledMillis,omitempty" xml:"CanceledMillis,omitempty"`
-	ApplyingMillis     *int64  `json:"ApplyingMillis,omitempty" xml:"ApplyingMillis,omitempty"`
-	JoinEui            *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
-	RenterAliyunId     *string `json:"RenterAliyunId,omitempty" xml:"RenterAliyunId,omitempty"`
 	AcceptedMillis     *int64  `json:"AcceptedMillis,omitempty" xml:"AcceptedMillis,omitempty"`
-	OwnerAliyunId      *string `json:"OwnerAliyunId,omitempty" xml:"OwnerAliyunId,omitempty"`
-	RejectedMillis     *int64  `json:"RejectedMillis,omitempty" xml:"RejectedMillis,omitempty"`
+	ApplyingMillis     *int64  `json:"ApplyingMillis,omitempty" xml:"ApplyingMillis,omitempty"`
+	CanceledMillis     *int64  `json:"CanceledMillis,omitempty" xml:"CanceledMillis,omitempty"`
+	JoinEui            *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
 	JoinPermissionId   *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
 	JoinPermissionName *string `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
-	OrderState         *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
 	OrderId            *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderState         *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	OwnerAliyunId      *string `json:"OwnerAliyunId,omitempty" xml:"OwnerAliyunId,omitempty"`
+	RejectedMillis     *int64  `json:"RejectedMillis,omitempty" xml:"RejectedMillis,omitempty"`
+	RenterAliyunId     *string `json:"RenterAliyunId,omitempty" xml:"RenterAliyunId,omitempty"`
 }
 
 func (s GetNotificationResponseBodyDataJoinPermissionAuthInfo) String() string {
@@ -4465,8 +4238,8 @@ func (s GetNotificationResponseBodyDataJoinPermissionAuthInfo) GoString() string
 	return s.String()
 }
 
-func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetCanceledMillis(v int64) *GetNotificationResponseBodyDataJoinPermissionAuthInfo {
-	s.CanceledMillis = &v
+func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetAcceptedMillis(v int64) *GetNotificationResponseBodyDataJoinPermissionAuthInfo {
+	s.AcceptedMillis = &v
 	return s
 }
 
@@ -4475,28 +4248,13 @@ func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetApplyingMilli
 	return s
 }
 
+func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetCanceledMillis(v int64) *GetNotificationResponseBodyDataJoinPermissionAuthInfo {
+	s.CanceledMillis = &v
+	return s
+}
+
 func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetJoinEui(v string) *GetNotificationResponseBodyDataJoinPermissionAuthInfo {
 	s.JoinEui = &v
-	return s
-}
-
-func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetRenterAliyunId(v string) *GetNotificationResponseBodyDataJoinPermissionAuthInfo {
-	s.RenterAliyunId = &v
-	return s
-}
-
-func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetAcceptedMillis(v int64) *GetNotificationResponseBodyDataJoinPermissionAuthInfo {
-	s.AcceptedMillis = &v
-	return s
-}
-
-func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetOwnerAliyunId(v string) *GetNotificationResponseBodyDataJoinPermissionAuthInfo {
-	s.OwnerAliyunId = &v
-	return s
-}
-
-func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetRejectedMillis(v int64) *GetNotificationResponseBodyDataJoinPermissionAuthInfo {
-	s.RejectedMillis = &v
 	return s
 }
 
@@ -4510,42 +4268,35 @@ func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetJoinPermissio
 	return s
 }
 
-func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetOrderState(v string) *GetNotificationResponseBodyDataJoinPermissionAuthInfo {
-	s.OrderState = &v
-	return s
-}
-
 func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetOrderId(v string) *GetNotificationResponseBodyDataJoinPermissionAuthInfo {
 	s.OrderId = &v
 	return s
 }
 
-type GetNotificationResponseBodyDataGatewayOfflineInfo struct {
-	OfflineMillis *int64  `json:"OfflineMillis,omitempty" xml:"OfflineMillis,omitempty"`
-	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-}
-
-func (s GetNotificationResponseBodyDataGatewayOfflineInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetNotificationResponseBodyDataGatewayOfflineInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetNotificationResponseBodyDataGatewayOfflineInfo) SetOfflineMillis(v int64) *GetNotificationResponseBodyDataGatewayOfflineInfo {
-	s.OfflineMillis = &v
+func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetOrderState(v string) *GetNotificationResponseBodyDataJoinPermissionAuthInfo {
+	s.OrderState = &v
 	return s
 }
 
-func (s *GetNotificationResponseBodyDataGatewayOfflineInfo) SetGwEui(v string) *GetNotificationResponseBodyDataGatewayOfflineInfo {
-	s.GwEui = &v
+func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetOwnerAliyunId(v string) *GetNotificationResponseBodyDataJoinPermissionAuthInfo {
+	s.OwnerAliyunId = &v
+	return s
+}
+
+func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetRejectedMillis(v int64) *GetNotificationResponseBodyDataJoinPermissionAuthInfo {
+	s.RejectedMillis = &v
+	return s
+}
+
+func (s *GetNotificationResponseBodyDataJoinPermissionAuthInfo) SetRenterAliyunId(v string) *GetNotificationResponseBodyDataJoinPermissionAuthInfo {
+	s.RenterAliyunId = &v
 	return s
 }
 
 type GetNotificationResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetNotificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetNotificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetNotificationResponse) String() string {
@@ -4558,6 +4309,11 @@ func (s GetNotificationResponse) GoString() string {
 
 func (s *GetNotificationResponse) SetHeaders(v map[string]*string) *GetNotificationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetNotificationResponse) SetStatusCode(v int32) *GetNotificationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4590,8 +4346,8 @@ func (s *GetOwnedJoinPermissionRequest) SetJoinPermissionId(v string) *GetOwnedJ
 }
 
 type GetOwnedJoinPermissionResponseBody struct {
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetOwnedJoinPermissionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4603,13 +4359,13 @@ func (s GetOwnedJoinPermissionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetOwnedJoinPermissionResponseBody) SetRequestId(v string) *GetOwnedJoinPermissionResponseBody {
-	s.RequestId = &v
+func (s *GetOwnedJoinPermissionResponseBody) SetData(v *GetOwnedJoinPermissionResponseBodyData) *GetOwnedJoinPermissionResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *GetOwnedJoinPermissionResponseBody) SetData(v *GetOwnedJoinPermissionResponseBodyData) *GetOwnedJoinPermissionResponseBody {
-	s.Data = v
+func (s *GetOwnedJoinPermissionResponseBody) SetRequestId(v string) *GetOwnedJoinPermissionResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4619,27 +4375,27 @@ func (s *GetOwnedJoinPermissionResponseBody) SetSuccess(v bool) *GetOwnedJoinPer
 }
 
 type GetOwnedJoinPermissionResponseBodyData struct {
-	RxMonthSum              *int64  `json:"RxMonthSum,omitempty" xml:"RxMonthSum,omitempty"`
-	MulticastNodeCapacity   *int32  `json:"MulticastNodeCapacity,omitempty" xml:"MulticastNodeCapacity,omitempty"`
-	TxMonthSum              *int64  `json:"TxMonthSum,omitempty" xml:"TxMonthSum,omitempty"`
-	MulticastEnabled        *bool   `json:"MulticastEnabled,omitempty" xml:"MulticastEnabled,omitempty"`
-	FreqBandPlanGroupId     *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	TxDailySum              *int64  `json:"TxDailySum,omitempty" xml:"TxDailySum,omitempty"`
-	BoundProductName        *string `json:"BoundProductName,omitempty" xml:"BoundProductName,omitempty"`
-	DataRate                *int64  `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
-	JoinPermissionId        *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
-	ClassMode               *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	DataDispatchDestination *string `json:"DataDispatchDestination,omitempty" xml:"DataDispatchDestination,omitempty"`
-	MulticastNodeCount      *int32  `json:"MulticastNodeCount,omitempty" xml:"MulticastNodeCount,omitempty"`
-	RxDailySum              *int64  `json:"RxDailySum,omitempty" xml:"RxDailySum,omitempty"`
-	JoinEui                 *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
-	CreateMillis            *int64  `json:"CreateMillis,omitempty" xml:"CreateMillis,omitempty"`
-	Enabled                 *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	RxDelay                 *int64  `json:"RxDelay,omitempty" xml:"RxDelay,omitempty"`
-	RenterAliyunId          *string `json:"RenterAliyunId,omitempty" xml:"RenterAliyunId,omitempty"`
-	NodesCnt                *int64  `json:"NodesCnt,omitempty" xml:"NodesCnt,omitempty"`
-	JoinPermissionName      *string `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
 	AuthState               *string `json:"AuthState,omitempty" xml:"AuthState,omitempty"`
+	BoundProductName        *string `json:"BoundProductName,omitempty" xml:"BoundProductName,omitempty"`
+	ClassMode               *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
+	CreateMillis            *int64  `json:"CreateMillis,omitempty" xml:"CreateMillis,omitempty"`
+	DataDispatchDestination *string `json:"DataDispatchDestination,omitempty" xml:"DataDispatchDestination,omitempty"`
+	DataRate                *int64  `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
+	Enabled                 *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	FreqBandPlanGroupId     *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	JoinEui                 *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
+	JoinPermissionId        *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
+	JoinPermissionName      *string `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
+	MulticastEnabled        *bool   `json:"MulticastEnabled,omitempty" xml:"MulticastEnabled,omitempty"`
+	MulticastNodeCapacity   *int32  `json:"MulticastNodeCapacity,omitempty" xml:"MulticastNodeCapacity,omitempty"`
+	MulticastNodeCount      *int32  `json:"MulticastNodeCount,omitempty" xml:"MulticastNodeCount,omitempty"`
+	NodesCnt                *int64  `json:"NodesCnt,omitempty" xml:"NodesCnt,omitempty"`
+	RenterAliyunId          *string `json:"RenterAliyunId,omitempty" xml:"RenterAliyunId,omitempty"`
+	RxDailySum              *int64  `json:"RxDailySum,omitempty" xml:"RxDailySum,omitempty"`
+	RxDelay                 *int64  `json:"RxDelay,omitempty" xml:"RxDelay,omitempty"`
+	RxMonthSum              *int64  `json:"RxMonthSum,omitempty" xml:"RxMonthSum,omitempty"`
+	TxDailySum              *int64  `json:"TxDailySum,omitempty" xml:"TxDailySum,omitempty"`
+	TxMonthSum              *int64  `json:"TxMonthSum,omitempty" xml:"TxMonthSum,omitempty"`
 }
 
 func (s GetOwnedJoinPermissionResponseBodyData) String() string {
@@ -4650,33 +4406,8 @@ func (s GetOwnedJoinPermissionResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetOwnedJoinPermissionResponseBodyData) SetRxMonthSum(v int64) *GetOwnedJoinPermissionResponseBodyData {
-	s.RxMonthSum = &v
-	return s
-}
-
-func (s *GetOwnedJoinPermissionResponseBodyData) SetMulticastNodeCapacity(v int32) *GetOwnedJoinPermissionResponseBodyData {
-	s.MulticastNodeCapacity = &v
-	return s
-}
-
-func (s *GetOwnedJoinPermissionResponseBodyData) SetTxMonthSum(v int64) *GetOwnedJoinPermissionResponseBodyData {
-	s.TxMonthSum = &v
-	return s
-}
-
-func (s *GetOwnedJoinPermissionResponseBodyData) SetMulticastEnabled(v bool) *GetOwnedJoinPermissionResponseBodyData {
-	s.MulticastEnabled = &v
-	return s
-}
-
-func (s *GetOwnedJoinPermissionResponseBodyData) SetFreqBandPlanGroupId(v int64) *GetOwnedJoinPermissionResponseBodyData {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *GetOwnedJoinPermissionResponseBodyData) SetTxDailySum(v int64) *GetOwnedJoinPermissionResponseBodyData {
-	s.TxDailySum = &v
+func (s *GetOwnedJoinPermissionResponseBodyData) SetAuthState(v string) *GetOwnedJoinPermissionResponseBodyData {
+	s.AuthState = &v
 	return s
 }
 
@@ -4685,38 +4416,8 @@ func (s *GetOwnedJoinPermissionResponseBodyData) SetBoundProductName(v string) *
 	return s
 }
 
-func (s *GetOwnedJoinPermissionResponseBodyData) SetDataRate(v int64) *GetOwnedJoinPermissionResponseBodyData {
-	s.DataRate = &v
-	return s
-}
-
-func (s *GetOwnedJoinPermissionResponseBodyData) SetJoinPermissionId(v string) *GetOwnedJoinPermissionResponseBodyData {
-	s.JoinPermissionId = &v
-	return s
-}
-
 func (s *GetOwnedJoinPermissionResponseBodyData) SetClassMode(v string) *GetOwnedJoinPermissionResponseBodyData {
 	s.ClassMode = &v
-	return s
-}
-
-func (s *GetOwnedJoinPermissionResponseBodyData) SetDataDispatchDestination(v string) *GetOwnedJoinPermissionResponseBodyData {
-	s.DataDispatchDestination = &v
-	return s
-}
-
-func (s *GetOwnedJoinPermissionResponseBodyData) SetMulticastNodeCount(v int32) *GetOwnedJoinPermissionResponseBodyData {
-	s.MulticastNodeCount = &v
-	return s
-}
-
-func (s *GetOwnedJoinPermissionResponseBodyData) SetRxDailySum(v int64) *GetOwnedJoinPermissionResponseBodyData {
-	s.RxDailySum = &v
-	return s
-}
-
-func (s *GetOwnedJoinPermissionResponseBodyData) SetJoinEui(v string) *GetOwnedJoinPermissionResponseBodyData {
-	s.JoinEui = &v
 	return s
 }
 
@@ -4725,23 +4426,33 @@ func (s *GetOwnedJoinPermissionResponseBodyData) SetCreateMillis(v int64) *GetOw
 	return s
 }
 
+func (s *GetOwnedJoinPermissionResponseBodyData) SetDataDispatchDestination(v string) *GetOwnedJoinPermissionResponseBodyData {
+	s.DataDispatchDestination = &v
+	return s
+}
+
+func (s *GetOwnedJoinPermissionResponseBodyData) SetDataRate(v int64) *GetOwnedJoinPermissionResponseBodyData {
+	s.DataRate = &v
+	return s
+}
+
 func (s *GetOwnedJoinPermissionResponseBodyData) SetEnabled(v bool) *GetOwnedJoinPermissionResponseBodyData {
 	s.Enabled = &v
 	return s
 }
 
-func (s *GetOwnedJoinPermissionResponseBodyData) SetRxDelay(v int64) *GetOwnedJoinPermissionResponseBodyData {
-	s.RxDelay = &v
+func (s *GetOwnedJoinPermissionResponseBodyData) SetFreqBandPlanGroupId(v int64) *GetOwnedJoinPermissionResponseBodyData {
+	s.FreqBandPlanGroupId = &v
 	return s
 }
 
-func (s *GetOwnedJoinPermissionResponseBodyData) SetRenterAliyunId(v string) *GetOwnedJoinPermissionResponseBodyData {
-	s.RenterAliyunId = &v
+func (s *GetOwnedJoinPermissionResponseBodyData) SetJoinEui(v string) *GetOwnedJoinPermissionResponseBodyData {
+	s.JoinEui = &v
 	return s
 }
 
-func (s *GetOwnedJoinPermissionResponseBodyData) SetNodesCnt(v int64) *GetOwnedJoinPermissionResponseBodyData {
-	s.NodesCnt = &v
+func (s *GetOwnedJoinPermissionResponseBodyData) SetJoinPermissionId(v string) *GetOwnedJoinPermissionResponseBodyData {
+	s.JoinPermissionId = &v
 	return s
 }
 
@@ -4750,14 +4461,60 @@ func (s *GetOwnedJoinPermissionResponseBodyData) SetJoinPermissionName(v string)
 	return s
 }
 
-func (s *GetOwnedJoinPermissionResponseBodyData) SetAuthState(v string) *GetOwnedJoinPermissionResponseBodyData {
-	s.AuthState = &v
+func (s *GetOwnedJoinPermissionResponseBodyData) SetMulticastEnabled(v bool) *GetOwnedJoinPermissionResponseBodyData {
+	s.MulticastEnabled = &v
+	return s
+}
+
+func (s *GetOwnedJoinPermissionResponseBodyData) SetMulticastNodeCapacity(v int32) *GetOwnedJoinPermissionResponseBodyData {
+	s.MulticastNodeCapacity = &v
+	return s
+}
+
+func (s *GetOwnedJoinPermissionResponseBodyData) SetMulticastNodeCount(v int32) *GetOwnedJoinPermissionResponseBodyData {
+	s.MulticastNodeCount = &v
+	return s
+}
+
+func (s *GetOwnedJoinPermissionResponseBodyData) SetNodesCnt(v int64) *GetOwnedJoinPermissionResponseBodyData {
+	s.NodesCnt = &v
+	return s
+}
+
+func (s *GetOwnedJoinPermissionResponseBodyData) SetRenterAliyunId(v string) *GetOwnedJoinPermissionResponseBodyData {
+	s.RenterAliyunId = &v
+	return s
+}
+
+func (s *GetOwnedJoinPermissionResponseBodyData) SetRxDailySum(v int64) *GetOwnedJoinPermissionResponseBodyData {
+	s.RxDailySum = &v
+	return s
+}
+
+func (s *GetOwnedJoinPermissionResponseBodyData) SetRxDelay(v int64) *GetOwnedJoinPermissionResponseBodyData {
+	s.RxDelay = &v
+	return s
+}
+
+func (s *GetOwnedJoinPermissionResponseBodyData) SetRxMonthSum(v int64) *GetOwnedJoinPermissionResponseBodyData {
+	s.RxMonthSum = &v
+	return s
+}
+
+func (s *GetOwnedJoinPermissionResponseBodyData) SetTxDailySum(v int64) *GetOwnedJoinPermissionResponseBodyData {
+	s.TxDailySum = &v
+	return s
+}
+
+func (s *GetOwnedJoinPermissionResponseBodyData) SetTxMonthSum(v int64) *GetOwnedJoinPermissionResponseBodyData {
+	s.TxMonthSum = &v
 	return s
 }
 
 type GetOwnedJoinPermissionResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetOwnedJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOwnedJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetOwnedJoinPermissionResponse) String() string {
@@ -4770,6 +4527,11 @@ func (s GetOwnedJoinPermissionResponse) GoString() string {
 
 func (s *GetOwnedJoinPermissionResponse) SetHeaders(v map[string]*string) *GetOwnedJoinPermissionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetOwnedJoinPermissionResponse) SetStatusCode(v int32) *GetOwnedJoinPermissionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4796,8 +4558,8 @@ func (s *GetRentedJoinPermissionRequest) SetJoinPermissionId(v string) *GetRente
 }
 
 type GetRentedJoinPermissionResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetRentedJoinPermissionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4809,13 +4571,13 @@ func (s GetRentedJoinPermissionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetRentedJoinPermissionResponseBody) SetRequestId(v string) *GetRentedJoinPermissionResponseBody {
-	s.RequestId = &v
+func (s *GetRentedJoinPermissionResponseBody) SetData(v *GetRentedJoinPermissionResponseBodyData) *GetRentedJoinPermissionResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *GetRentedJoinPermissionResponseBody) SetData(v *GetRentedJoinPermissionResponseBodyData) *GetRentedJoinPermissionResponseBody {
-	s.Data = v
+func (s *GetRentedJoinPermissionResponseBody) SetRequestId(v string) *GetRentedJoinPermissionResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4825,23 +4587,23 @@ func (s *GetRentedJoinPermissionResponseBody) SetSuccess(v bool) *GetRentedJoinP
 }
 
 type GetRentedJoinPermissionResponseBodyData struct {
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	RxMonthSum          *int64  `json:"RxMonthSum,omitempty" xml:"RxMonthSum,omitempty"`
-	BoundNodeGroupName  *string `json:"BoundNodeGroupName,omitempty" xml:"BoundNodeGroupName,omitempty"`
-	TxMonthSum          *int64  `json:"TxMonthSum,omitempty" xml:"TxMonthSum,omitempty"`
-	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	TxDailySum          *int64  `json:"TxDailySum,omitempty" xml:"TxDailySum,omitempty"`
-	DataRate            *int64  `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
-	JoinPermissionId    *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
-	ClassMode           *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	RxDailySum          *int64  `json:"RxDailySum,omitempty" xml:"RxDailySum,omitempty"`
-	JoinEui             *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
-	CreateMillis        *int64  `json:"CreateMillis,omitempty" xml:"CreateMillis,omitempty"`
-	Enabled             *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	RxDelay             *int64  `json:"RxDelay,omitempty" xml:"RxDelay,omitempty"`
 	BoundNodeGroupId    *string `json:"BoundNodeGroupId,omitempty" xml:"BoundNodeGroupId,omitempty"`
-	NodesCnt            *int64  `json:"NodesCnt,omitempty" xml:"NodesCnt,omitempty"`
+	BoundNodeGroupName  *string `json:"BoundNodeGroupName,omitempty" xml:"BoundNodeGroupName,omitempty"`
+	ClassMode           *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
+	CreateMillis        *int64  `json:"CreateMillis,omitempty" xml:"CreateMillis,omitempty"`
+	DataRate            *int64  `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
+	Enabled             *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	JoinEui             *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
+	JoinPermissionId    *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
 	JoinPermissionName  *string `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
+	NodesCnt            *int64  `json:"NodesCnt,omitempty" xml:"NodesCnt,omitempty"`
+	RxDailySum          *int64  `json:"RxDailySum,omitempty" xml:"RxDailySum,omitempty"`
+	RxDelay             *int64  `json:"RxDelay,omitempty" xml:"RxDelay,omitempty"`
+	RxMonthSum          *int64  `json:"RxMonthSum,omitempty" xml:"RxMonthSum,omitempty"`
+	TxDailySum          *int64  `json:"TxDailySum,omitempty" xml:"TxDailySum,omitempty"`
+	TxMonthSum          *int64  `json:"TxMonthSum,omitempty" xml:"TxMonthSum,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetRentedJoinPermissionResponseBodyData) String() string {
@@ -4852,13 +4614,8 @@ func (s GetRentedJoinPermissionResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetRentedJoinPermissionResponseBodyData) SetType(v string) *GetRentedJoinPermissionResponseBodyData {
-	s.Type = &v
-	return s
-}
-
-func (s *GetRentedJoinPermissionResponseBodyData) SetRxMonthSum(v int64) *GetRentedJoinPermissionResponseBodyData {
-	s.RxMonthSum = &v
+func (s *GetRentedJoinPermissionResponseBodyData) SetBoundNodeGroupId(v string) *GetRentedJoinPermissionResponseBodyData {
+	s.BoundNodeGroupId = &v
 	return s
 }
 
@@ -4867,43 +4624,8 @@ func (s *GetRentedJoinPermissionResponseBodyData) SetBoundNodeGroupName(v string
 	return s
 }
 
-func (s *GetRentedJoinPermissionResponseBodyData) SetTxMonthSum(v int64) *GetRentedJoinPermissionResponseBodyData {
-	s.TxMonthSum = &v
-	return s
-}
-
-func (s *GetRentedJoinPermissionResponseBodyData) SetFreqBandPlanGroupId(v int64) *GetRentedJoinPermissionResponseBodyData {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *GetRentedJoinPermissionResponseBodyData) SetTxDailySum(v int64) *GetRentedJoinPermissionResponseBodyData {
-	s.TxDailySum = &v
-	return s
-}
-
-func (s *GetRentedJoinPermissionResponseBodyData) SetDataRate(v int64) *GetRentedJoinPermissionResponseBodyData {
-	s.DataRate = &v
-	return s
-}
-
-func (s *GetRentedJoinPermissionResponseBodyData) SetJoinPermissionId(v string) *GetRentedJoinPermissionResponseBodyData {
-	s.JoinPermissionId = &v
-	return s
-}
-
 func (s *GetRentedJoinPermissionResponseBodyData) SetClassMode(v string) *GetRentedJoinPermissionResponseBodyData {
 	s.ClassMode = &v
-	return s
-}
-
-func (s *GetRentedJoinPermissionResponseBodyData) SetRxDailySum(v int64) *GetRentedJoinPermissionResponseBodyData {
-	s.RxDailySum = &v
-	return s
-}
-
-func (s *GetRentedJoinPermissionResponseBodyData) SetJoinEui(v string) *GetRentedJoinPermissionResponseBodyData {
-	s.JoinEui = &v
 	return s
 }
 
@@ -4912,23 +4634,28 @@ func (s *GetRentedJoinPermissionResponseBodyData) SetCreateMillis(v int64) *GetR
 	return s
 }
 
+func (s *GetRentedJoinPermissionResponseBodyData) SetDataRate(v int64) *GetRentedJoinPermissionResponseBodyData {
+	s.DataRate = &v
+	return s
+}
+
 func (s *GetRentedJoinPermissionResponseBodyData) SetEnabled(v bool) *GetRentedJoinPermissionResponseBodyData {
 	s.Enabled = &v
 	return s
 }
 
-func (s *GetRentedJoinPermissionResponseBodyData) SetRxDelay(v int64) *GetRentedJoinPermissionResponseBodyData {
-	s.RxDelay = &v
+func (s *GetRentedJoinPermissionResponseBodyData) SetFreqBandPlanGroupId(v int64) *GetRentedJoinPermissionResponseBodyData {
+	s.FreqBandPlanGroupId = &v
 	return s
 }
 
-func (s *GetRentedJoinPermissionResponseBodyData) SetBoundNodeGroupId(v string) *GetRentedJoinPermissionResponseBodyData {
-	s.BoundNodeGroupId = &v
+func (s *GetRentedJoinPermissionResponseBodyData) SetJoinEui(v string) *GetRentedJoinPermissionResponseBodyData {
+	s.JoinEui = &v
 	return s
 }
 
-func (s *GetRentedJoinPermissionResponseBodyData) SetNodesCnt(v int64) *GetRentedJoinPermissionResponseBodyData {
-	s.NodesCnt = &v
+func (s *GetRentedJoinPermissionResponseBodyData) SetJoinPermissionId(v string) *GetRentedJoinPermissionResponseBodyData {
+	s.JoinPermissionId = &v
 	return s
 }
 
@@ -4937,9 +4664,45 @@ func (s *GetRentedJoinPermissionResponseBodyData) SetJoinPermissionName(v string
 	return s
 }
 
+func (s *GetRentedJoinPermissionResponseBodyData) SetNodesCnt(v int64) *GetRentedJoinPermissionResponseBodyData {
+	s.NodesCnt = &v
+	return s
+}
+
+func (s *GetRentedJoinPermissionResponseBodyData) SetRxDailySum(v int64) *GetRentedJoinPermissionResponseBodyData {
+	s.RxDailySum = &v
+	return s
+}
+
+func (s *GetRentedJoinPermissionResponseBodyData) SetRxDelay(v int64) *GetRentedJoinPermissionResponseBodyData {
+	s.RxDelay = &v
+	return s
+}
+
+func (s *GetRentedJoinPermissionResponseBodyData) SetRxMonthSum(v int64) *GetRentedJoinPermissionResponseBodyData {
+	s.RxMonthSum = &v
+	return s
+}
+
+func (s *GetRentedJoinPermissionResponseBodyData) SetTxDailySum(v int64) *GetRentedJoinPermissionResponseBodyData {
+	s.TxDailySum = &v
+	return s
+}
+
+func (s *GetRentedJoinPermissionResponseBodyData) SetTxMonthSum(v int64) *GetRentedJoinPermissionResponseBodyData {
+	s.TxMonthSum = &v
+	return s
+}
+
+func (s *GetRentedJoinPermissionResponseBodyData) SetType(v string) *GetRentedJoinPermissionResponseBodyData {
+	s.Type = &v
+	return s
+}
+
 type GetRentedJoinPermissionResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRentedJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRentedJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetRentedJoinPermissionResponse) String() string {
@@ -4955,14 +4718,19 @@ func (s *GetRentedJoinPermissionResponse) SetHeaders(v map[string]*string) *GetR
 	return s
 }
 
+func (s *GetRentedJoinPermissionResponse) SetStatusCode(v int32) *GetRentedJoinPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetRentedJoinPermissionResponse) SetBody(v *GetRentedJoinPermissionResponseBody) *GetRentedJoinPermissionResponse {
 	s.Body = v
 	return s
 }
 
 type GetUserLicenseResponseBody struct {
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetUserLicenseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4974,13 +4742,13 @@ func (s GetUserLicenseResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetUserLicenseResponseBody) SetRequestId(v string) *GetUserLicenseResponseBody {
-	s.RequestId = &v
+func (s *GetUserLicenseResponseBody) SetData(v *GetUserLicenseResponseBodyData) *GetUserLicenseResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *GetUserLicenseResponseBody) SetData(v *GetUserLicenseResponseBodyData) *GetUserLicenseResponseBody {
-	s.Data = v
+func (s *GetUserLicenseResponseBody) SetRequestId(v string) *GetUserLicenseResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4990,42 +4758,42 @@ func (s *GetUserLicenseResponseBody) SetSuccess(v bool) *GetUserLicenseResponseB
 }
 
 type GetUserLicenseResponseBodyData struct {
-	RoamingJoinPermissionCount     *int64  `json:"RoamingJoinPermissionCount,omitempty" xml:"RoamingJoinPermissionCount,omitempty"`
-	GatewayTupleCount              *int64  `json:"GatewayTupleCount,omitempty" xml:"GatewayTupleCount,omitempty"`
-	GatewayTupleSingleChannelCount *int64  `json:"GatewayTupleSingleChannelCount,omitempty" xml:"GatewayTupleSingleChannelCount,omitempty"`
-	GatewayFreeLimit               *int64  `json:"GatewayFreeLimit,omitempty" xml:"GatewayFreeLimit,omitempty"`
-	NodeTupleFreeLimit             *int64  `json:"NodeTupleFreeLimit,omitempty" xml:"NodeTupleFreeLimit,omitempty"`
-	NodeFreeLimit                  *int64  `json:"NodeFreeLimit,omitempty" xml:"NodeFreeLimit,omitempty"`
-	GatewayTupleHybridLimit        *int64  `json:"GatewayTupleHybridLimit,omitempty" xml:"GatewayTupleHybridLimit,omitempty"`
-	GatewayTupleStandardCount      *int64  `json:"GatewayTupleStandardCount,omitempty" xml:"GatewayTupleStandardCount,omitempty"`
-	GatewayTupleFreeLimit          *int64  `json:"GatewayTupleFreeLimit,omitempty" xml:"GatewayTupleFreeLimit,omitempty"`
 	GatewayCount                   *int64  `json:"GatewayCount,omitempty" xml:"GatewayCount,omitempty"`
-	NodeTupleRelayLimit            *int64  `json:"NodeTupleRelayLimit,omitempty" xml:"NodeTupleRelayLimit,omitempty"`
-	GatewayTupleLimit              *int64  `json:"GatewayTupleLimit,omitempty" xml:"GatewayTupleLimit,omitempty"`
-	GatewayLimit                   *int64  `json:"GatewayLimit,omitempty" xml:"GatewayLimit,omitempty"`
-	NodeLimit                      *int64  `json:"NodeLimit,omitempty" xml:"NodeLimit,omitempty"`
-	LocalJoinPermissionFreeLimit   *int64  `json:"LocalJoinPermissionFreeLimit,omitempty" xml:"LocalJoinPermissionFreeLimit,omitempty"`
-	RoamingJoinPermissionLimit     *int64  `json:"RoamingJoinPermissionLimit,omitempty" xml:"RoamingJoinPermissionLimit,omitempty"`
-	GatewayTupleSingleChannelLimit *int64  `json:"GatewayTupleSingleChannelLimit,omitempty" xml:"GatewayTupleSingleChannelLimit,omitempty"`
-	Oui                            *string `json:"Oui,omitempty" xml:"Oui,omitempty"`
-	LocalJoinPermissionLimit       *int64  `json:"LocalJoinPermissionLimit,omitempty" xml:"LocalJoinPermissionLimit,omitempty"`
-	RelayLimit                     *int64  `json:"RelayLimit,omitempty" xml:"RelayLimit,omitempty"`
-	GatewayTupleHybridCount        *int64  `json:"GatewayTupleHybridCount,omitempty" xml:"GatewayTupleHybridCount,omitempty"`
-	LocalJoinPermissionCount       *int64  `json:"LocalJoinPermissionCount,omitempty" xml:"LocalJoinPermissionCount,omitempty"`
-	NodeTupleStandardCount         *int64  `json:"NodeTupleStandardCount,omitempty" xml:"NodeTupleStandardCount,omitempty"`
-	NodeTupleCount                 *int64  `json:"NodeTupleCount,omitempty" xml:"NodeTupleCount,omitempty"`
-	GatewayDingTalkLimit           *int64  `json:"GatewayDingTalkLimit,omitempty" xml:"GatewayDingTalkLimit,omitempty"`
-	GatewayProfessionalLimit       *int64  `json:"GatewayProfessionalLimit,omitempty" xml:"GatewayProfessionalLimit,omitempty"`
-	GatewayProfessionalCount       *int64  `json:"GatewayProfessionalCount,omitempty" xml:"GatewayProfessionalCount,omitempty"`
-	RelayCount                     *int64  `json:"RelayCount,omitempty" xml:"RelayCount,omitempty"`
-	NodeTupleStandardLimit         *int64  `json:"NodeTupleStandardLimit,omitempty" xml:"NodeTupleStandardLimit,omitempty"`
-	RoamingJoinPermissionFreeLimit *int64  `json:"RoamingJoinPermissionFreeLimit,omitempty" xml:"RoamingJoinPermissionFreeLimit,omitempty"`
-	NodeTupleLimit                 *int64  `json:"NodeTupleLimit,omitempty" xml:"NodeTupleLimit,omitempty"`
-	NodeCount                      *int64  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
 	GatewayDingTalkCount           *int64  `json:"GatewayDingTalkCount,omitempty" xml:"GatewayDingTalkCount,omitempty"`
-	GatewayTupleStandardLimit      *int64  `json:"GatewayTupleStandardLimit,omitempty" xml:"GatewayTupleStandardLimit,omitempty"`
+	GatewayDingTalkLimit           *int64  `json:"GatewayDingTalkLimit,omitempty" xml:"GatewayDingTalkLimit,omitempty"`
+	GatewayFreeLimit               *int64  `json:"GatewayFreeLimit,omitempty" xml:"GatewayFreeLimit,omitempty"`
+	GatewayLimit                   *int64  `json:"GatewayLimit,omitempty" xml:"GatewayLimit,omitempty"`
 	GatewayPrePayCount             *int64  `json:"GatewayPrePayCount,omitempty" xml:"GatewayPrePayCount,omitempty"`
+	GatewayProfessionalCount       *int64  `json:"GatewayProfessionalCount,omitempty" xml:"GatewayProfessionalCount,omitempty"`
+	GatewayProfessionalLimit       *int64  `json:"GatewayProfessionalLimit,omitempty" xml:"GatewayProfessionalLimit,omitempty"`
+	GatewayTupleCount              *int64  `json:"GatewayTupleCount,omitempty" xml:"GatewayTupleCount,omitempty"`
+	GatewayTupleFreeLimit          *int64  `json:"GatewayTupleFreeLimit,omitempty" xml:"GatewayTupleFreeLimit,omitempty"`
+	GatewayTupleHybridCount        *int64  `json:"GatewayTupleHybridCount,omitempty" xml:"GatewayTupleHybridCount,omitempty"`
+	GatewayTupleHybridLimit        *int64  `json:"GatewayTupleHybridLimit,omitempty" xml:"GatewayTupleHybridLimit,omitempty"`
+	GatewayTupleLimit              *int64  `json:"GatewayTupleLimit,omitempty" xml:"GatewayTupleLimit,omitempty"`
+	GatewayTupleSingleChannelCount *int64  `json:"GatewayTupleSingleChannelCount,omitempty" xml:"GatewayTupleSingleChannelCount,omitempty"`
+	GatewayTupleSingleChannelLimit *int64  `json:"GatewayTupleSingleChannelLimit,omitempty" xml:"GatewayTupleSingleChannelLimit,omitempty"`
+	GatewayTupleStandardCount      *int64  `json:"GatewayTupleStandardCount,omitempty" xml:"GatewayTupleStandardCount,omitempty"`
+	GatewayTupleStandardLimit      *int64  `json:"GatewayTupleStandardLimit,omitempty" xml:"GatewayTupleStandardLimit,omitempty"`
+	LocalJoinPermissionCount       *int64  `json:"LocalJoinPermissionCount,omitempty" xml:"LocalJoinPermissionCount,omitempty"`
+	LocalJoinPermissionFreeLimit   *int64  `json:"LocalJoinPermissionFreeLimit,omitempty" xml:"LocalJoinPermissionFreeLimit,omitempty"`
+	LocalJoinPermissionLimit       *int64  `json:"LocalJoinPermissionLimit,omitempty" xml:"LocalJoinPermissionLimit,omitempty"`
+	NodeCount                      *int64  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	NodeFreeLimit                  *int64  `json:"NodeFreeLimit,omitempty" xml:"NodeFreeLimit,omitempty"`
+	NodeLimit                      *int64  `json:"NodeLimit,omitempty" xml:"NodeLimit,omitempty"`
+	NodeTupleCount                 *int64  `json:"NodeTupleCount,omitempty" xml:"NodeTupleCount,omitempty"`
+	NodeTupleFreeLimit             *int64  `json:"NodeTupleFreeLimit,omitempty" xml:"NodeTupleFreeLimit,omitempty"`
+	NodeTupleLimit                 *int64  `json:"NodeTupleLimit,omitempty" xml:"NodeTupleLimit,omitempty"`
 	NodeTupleRelayCount            *int64  `json:"NodeTupleRelayCount,omitempty" xml:"NodeTupleRelayCount,omitempty"`
+	NodeTupleRelayLimit            *int64  `json:"NodeTupleRelayLimit,omitempty" xml:"NodeTupleRelayLimit,omitempty"`
+	NodeTupleStandardCount         *int64  `json:"NodeTupleStandardCount,omitempty" xml:"NodeTupleStandardCount,omitempty"`
+	NodeTupleStandardLimit         *int64  `json:"NodeTupleStandardLimit,omitempty" xml:"NodeTupleStandardLimit,omitempty"`
+	Oui                            *string `json:"Oui,omitempty" xml:"Oui,omitempty"`
+	RelayCount                     *int64  `json:"RelayCount,omitempty" xml:"RelayCount,omitempty"`
+	RelayLimit                     *int64  `json:"RelayLimit,omitempty" xml:"RelayLimit,omitempty"`
+	RoamingJoinPermissionCount     *int64  `json:"RoamingJoinPermissionCount,omitempty" xml:"RoamingJoinPermissionCount,omitempty"`
+	RoamingJoinPermissionFreeLimit *int64  `json:"RoamingJoinPermissionFreeLimit,omitempty" xml:"RoamingJoinPermissionFreeLimit,omitempty"`
+	RoamingJoinPermissionLimit     *int64  `json:"RoamingJoinPermissionLimit,omitempty" xml:"RoamingJoinPermissionLimit,omitempty"`
 }
 
 func (s GetUserLicenseResponseBodyData) String() string {
@@ -5036,163 +4804,8 @@ func (s GetUserLicenseResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetUserLicenseResponseBodyData) SetRoamingJoinPermissionCount(v int64) *GetUserLicenseResponseBodyData {
-	s.RoamingJoinPermissionCount = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetGatewayTupleCount(v int64) *GetUserLicenseResponseBodyData {
-	s.GatewayTupleCount = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetGatewayTupleSingleChannelCount(v int64) *GetUserLicenseResponseBodyData {
-	s.GatewayTupleSingleChannelCount = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetGatewayFreeLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.GatewayFreeLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetNodeTupleFreeLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.NodeTupleFreeLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetNodeFreeLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.NodeFreeLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetGatewayTupleHybridLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.GatewayTupleHybridLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetGatewayTupleStandardCount(v int64) *GetUserLicenseResponseBodyData {
-	s.GatewayTupleStandardCount = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetGatewayTupleFreeLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.GatewayTupleFreeLimit = &v
-	return s
-}
-
 func (s *GetUserLicenseResponseBodyData) SetGatewayCount(v int64) *GetUserLicenseResponseBodyData {
 	s.GatewayCount = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetNodeTupleRelayLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.NodeTupleRelayLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetGatewayTupleLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.GatewayTupleLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetGatewayLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.GatewayLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetNodeLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.NodeLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetLocalJoinPermissionFreeLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.LocalJoinPermissionFreeLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetRoamingJoinPermissionLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.RoamingJoinPermissionLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetGatewayTupleSingleChannelLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.GatewayTupleSingleChannelLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetOui(v string) *GetUserLicenseResponseBodyData {
-	s.Oui = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetLocalJoinPermissionLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.LocalJoinPermissionLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetRelayLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.RelayLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetGatewayTupleHybridCount(v int64) *GetUserLicenseResponseBodyData {
-	s.GatewayTupleHybridCount = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetLocalJoinPermissionCount(v int64) *GetUserLicenseResponseBodyData {
-	s.LocalJoinPermissionCount = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetNodeTupleStandardCount(v int64) *GetUserLicenseResponseBodyData {
-	s.NodeTupleStandardCount = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetNodeTupleCount(v int64) *GetUserLicenseResponseBodyData {
-	s.NodeTupleCount = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetGatewayDingTalkLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.GatewayDingTalkLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetGatewayProfessionalLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.GatewayProfessionalLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetGatewayProfessionalCount(v int64) *GetUserLicenseResponseBodyData {
-	s.GatewayProfessionalCount = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetRelayCount(v int64) *GetUserLicenseResponseBodyData {
-	s.RelayCount = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetNodeTupleStandardLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.NodeTupleStandardLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetRoamingJoinPermissionFreeLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.RoamingJoinPermissionFreeLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetNodeTupleLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.NodeTupleLimit = &v
-	return s
-}
-
-func (s *GetUserLicenseResponseBodyData) SetNodeCount(v int64) *GetUserLicenseResponseBodyData {
-	s.NodeCount = &v
 	return s
 }
 
@@ -5201,8 +4814,18 @@ func (s *GetUserLicenseResponseBodyData) SetGatewayDingTalkCount(v int64) *GetUs
 	return s
 }
 
-func (s *GetUserLicenseResponseBodyData) SetGatewayTupleStandardLimit(v int64) *GetUserLicenseResponseBodyData {
-	s.GatewayTupleStandardLimit = &v
+func (s *GetUserLicenseResponseBodyData) SetGatewayDingTalkLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.GatewayDingTalkLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetGatewayFreeLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.GatewayFreeLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetGatewayLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.GatewayLimit = &v
 	return s
 }
 
@@ -5211,14 +4834,160 @@ func (s *GetUserLicenseResponseBodyData) SetGatewayPrePayCount(v int64) *GetUser
 	return s
 }
 
+func (s *GetUserLicenseResponseBodyData) SetGatewayProfessionalCount(v int64) *GetUserLicenseResponseBodyData {
+	s.GatewayProfessionalCount = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetGatewayProfessionalLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.GatewayProfessionalLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetGatewayTupleCount(v int64) *GetUserLicenseResponseBodyData {
+	s.GatewayTupleCount = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetGatewayTupleFreeLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.GatewayTupleFreeLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetGatewayTupleHybridCount(v int64) *GetUserLicenseResponseBodyData {
+	s.GatewayTupleHybridCount = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetGatewayTupleHybridLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.GatewayTupleHybridLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetGatewayTupleLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.GatewayTupleLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetGatewayTupleSingleChannelCount(v int64) *GetUserLicenseResponseBodyData {
+	s.GatewayTupleSingleChannelCount = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetGatewayTupleSingleChannelLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.GatewayTupleSingleChannelLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetGatewayTupleStandardCount(v int64) *GetUserLicenseResponseBodyData {
+	s.GatewayTupleStandardCount = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetGatewayTupleStandardLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.GatewayTupleStandardLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetLocalJoinPermissionCount(v int64) *GetUserLicenseResponseBodyData {
+	s.LocalJoinPermissionCount = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetLocalJoinPermissionFreeLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.LocalJoinPermissionFreeLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetLocalJoinPermissionLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.LocalJoinPermissionLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetNodeCount(v int64) *GetUserLicenseResponseBodyData {
+	s.NodeCount = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetNodeFreeLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.NodeFreeLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetNodeLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.NodeLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetNodeTupleCount(v int64) *GetUserLicenseResponseBodyData {
+	s.NodeTupleCount = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetNodeTupleFreeLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.NodeTupleFreeLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetNodeTupleLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.NodeTupleLimit = &v
+	return s
+}
+
 func (s *GetUserLicenseResponseBodyData) SetNodeTupleRelayCount(v int64) *GetUserLicenseResponseBodyData {
 	s.NodeTupleRelayCount = &v
 	return s
 }
 
+func (s *GetUserLicenseResponseBodyData) SetNodeTupleRelayLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.NodeTupleRelayLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetNodeTupleStandardCount(v int64) *GetUserLicenseResponseBodyData {
+	s.NodeTupleStandardCount = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetNodeTupleStandardLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.NodeTupleStandardLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetOui(v string) *GetUserLicenseResponseBodyData {
+	s.Oui = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetRelayCount(v int64) *GetUserLicenseResponseBodyData {
+	s.RelayCount = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetRelayLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.RelayLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetRoamingJoinPermissionCount(v int64) *GetUserLicenseResponseBodyData {
+	s.RoamingJoinPermissionCount = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetRoamingJoinPermissionFreeLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.RoamingJoinPermissionFreeLimit = &v
+	return s
+}
+
+func (s *GetUserLicenseResponseBodyData) SetRoamingJoinPermissionLimit(v int64) *GetUserLicenseResponseBodyData {
+	s.RoamingJoinPermissionLimit = &v
+	return s
+}
+
 type GetUserLicenseResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetUserLicenseResponse) String() string {
@@ -5234,94 +5003,12 @@ func (s *GetUserLicenseResponse) SetHeaders(v map[string]*string) *GetUserLicens
 	return s
 }
 
+func (s *GetUserLicenseResponse) SetStatusCode(v int32) *GetUserLicenseResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetUserLicenseResponse) SetBody(v *GetUserLicenseResponseBody) *GetUserLicenseResponse {
-	s.Body = v
-	return s
-}
-
-type GetUserNetProfileDescriptionResponseBody struct {
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *GetUserNetProfileDescriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetUserNetProfileDescriptionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserNetProfileDescriptionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserNetProfileDescriptionResponseBody) SetRequestId(v string) *GetUserNetProfileDescriptionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetUserNetProfileDescriptionResponseBody) SetData(v *GetUserNetProfileDescriptionResponseBodyData) *GetUserNetProfileDescriptionResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetUserNetProfileDescriptionResponseBody) SetErrorMessage(v string) *GetUserNetProfileDescriptionResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetUserNetProfileDescriptionResponseBody) SetCode(v string) *GetUserNetProfileDescriptionResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetUserNetProfileDescriptionResponseBody) SetSuccess(v bool) *GetUserNetProfileDescriptionResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetUserNetProfileDescriptionResponseBodyData struct {
-	Isolated               *bool  `json:"Isolated,omitempty" xml:"Isolated,omitempty"`
-	IsoUpdatedRemainingSec *int64 `json:"IsoUpdatedRemainingSec,omitempty" xml:"IsoUpdatedRemainingSec,omitempty"`
-}
-
-func (s GetUserNetProfileDescriptionResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserNetProfileDescriptionResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserNetProfileDescriptionResponseBodyData) SetIsolated(v bool) *GetUserNetProfileDescriptionResponseBodyData {
-	s.Isolated = &v
-	return s
-}
-
-func (s *GetUserNetProfileDescriptionResponseBodyData) SetIsoUpdatedRemainingSec(v int64) *GetUserNetProfileDescriptionResponseBodyData {
-	s.IsoUpdatedRemainingSec = &v
-	return s
-}
-
-type GetUserNetProfileDescriptionResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserNetProfileDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserNetProfileDescriptionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserNetProfileDescriptionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserNetProfileDescriptionResponse) SetHeaders(v map[string]*string) *GetUserNetProfileDescriptionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserNetProfileDescriptionResponse) SetBody(v *GetUserNetProfileDescriptionResponseBody) *GetUserNetProfileDescriptionResponse {
 	s.Body = v
 	return s
 }
@@ -5344,8 +5031,8 @@ func (s *ListActivatedFeaturesRequest) SetEnvironment(v string) *ListActivatedFe
 }
 
 type ListActivatedFeaturesResponseBody struct {
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5357,13 +5044,13 @@ func (s ListActivatedFeaturesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListActivatedFeaturesResponseBody) SetRequestId(v string) *ListActivatedFeaturesResponseBody {
-	s.RequestId = &v
+func (s *ListActivatedFeaturesResponseBody) SetData(v []*string) *ListActivatedFeaturesResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListActivatedFeaturesResponseBody) SetData(v []*string) *ListActivatedFeaturesResponseBody {
-	s.Data = v
+func (s *ListActivatedFeaturesResponseBody) SetRequestId(v string) *ListActivatedFeaturesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5373,8 +5060,9 @@ func (s *ListActivatedFeaturesResponseBody) SetSuccess(v bool) *ListActivatedFea
 }
 
 type ListActivatedFeaturesResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListActivatedFeaturesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListActivatedFeaturesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListActivatedFeaturesResponse) String() string {
@@ -5390,14 +5078,19 @@ func (s *ListActivatedFeaturesResponse) SetHeaders(v map[string]*string) *ListAc
 	return s
 }
 
+func (s *ListActivatedFeaturesResponse) SetStatusCode(v int32) *ListActivatedFeaturesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListActivatedFeaturesResponse) SetBody(v *ListActivatedFeaturesResponseBody) *ListActivatedFeaturesResponse {
 	s.Body = v
 	return s
 }
 
 type ListActiveGatewaysResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      []*ListActiveGatewaysResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5409,13 +5102,13 @@ func (s ListActiveGatewaysResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListActiveGatewaysResponseBody) SetRequestId(v string) *ListActiveGatewaysResponseBody {
-	s.RequestId = &v
+func (s *ListActiveGatewaysResponseBody) SetData(v []*ListActiveGatewaysResponseBodyData) *ListActiveGatewaysResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListActiveGatewaysResponseBody) SetData(v []*ListActiveGatewaysResponseBodyData) *ListActiveGatewaysResponseBody {
-	s.Data = v
+func (s *ListActiveGatewaysResponseBody) SetRequestId(v string) *ListActiveGatewaysResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5425,20 +5118,20 @@ func (s *ListActiveGatewaysResponseBody) SetSuccess(v bool) *ListActiveGatewaysR
 }
 
 type ListActiveGatewaysResponseBodyData struct {
+	Address             *string  `json:"Address,omitempty" xml:"Address,omitempty"`
+	AddressCode         *int64   `json:"AddressCode,omitempty" xml:"AddressCode,omitempty"`
 	ChargeStatus        *string  `json:"ChargeStatus,omitempty" xml:"ChargeStatus,omitempty"`
-	FreqBandPlanGroupId *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	District            *string  `json:"District,omitempty" xml:"District,omitempty"`
-	GisCoordinateSystem *string  `json:"GisCoordinateSystem,omitempty" xml:"GisCoordinateSystem,omitempty"`
 	City                *string  `json:"City,omitempty" xml:"City,omitempty"`
-	OnlineState         *string  `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
 	CommunicationMode   *string  `json:"CommunicationMode,omitempty" xml:"CommunicationMode,omitempty"`
 	Description         *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Address             *string  `json:"Address,omitempty" xml:"Address,omitempty"`
-	Longitude           *float32 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
-	Latitude            *float32 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	District            *string  `json:"District,omitempty" xml:"District,omitempty"`
+	FreqBandPlanGroupId *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	GisCoordinateSystem *string  `json:"GisCoordinateSystem,omitempty" xml:"GisCoordinateSystem,omitempty"`
 	GwEui               *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	Latitude            *float32 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	Longitude           *float32 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
 	Name                *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	AddressCode         *int64   `json:"AddressCode,omitempty" xml:"AddressCode,omitempty"`
+	OnlineState         *string  `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
 }
 
 func (s ListActiveGatewaysResponseBodyData) String() string {
@@ -5449,33 +5142,23 @@ func (s ListActiveGatewaysResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ListActiveGatewaysResponseBodyData) SetAddress(v string) *ListActiveGatewaysResponseBodyData {
+	s.Address = &v
+	return s
+}
+
+func (s *ListActiveGatewaysResponseBodyData) SetAddressCode(v int64) *ListActiveGatewaysResponseBodyData {
+	s.AddressCode = &v
+	return s
+}
+
 func (s *ListActiveGatewaysResponseBodyData) SetChargeStatus(v string) *ListActiveGatewaysResponseBodyData {
 	s.ChargeStatus = &v
 	return s
 }
 
-func (s *ListActiveGatewaysResponseBodyData) SetFreqBandPlanGroupId(v int64) *ListActiveGatewaysResponseBodyData {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *ListActiveGatewaysResponseBodyData) SetDistrict(v string) *ListActiveGatewaysResponseBodyData {
-	s.District = &v
-	return s
-}
-
-func (s *ListActiveGatewaysResponseBodyData) SetGisCoordinateSystem(v string) *ListActiveGatewaysResponseBodyData {
-	s.GisCoordinateSystem = &v
-	return s
-}
-
 func (s *ListActiveGatewaysResponseBodyData) SetCity(v string) *ListActiveGatewaysResponseBodyData {
 	s.City = &v
-	return s
-}
-
-func (s *ListActiveGatewaysResponseBodyData) SetOnlineState(v string) *ListActiveGatewaysResponseBodyData {
-	s.OnlineState = &v
 	return s
 }
 
@@ -5489,18 +5172,18 @@ func (s *ListActiveGatewaysResponseBodyData) SetDescription(v string) *ListActiv
 	return s
 }
 
-func (s *ListActiveGatewaysResponseBodyData) SetAddress(v string) *ListActiveGatewaysResponseBodyData {
-	s.Address = &v
+func (s *ListActiveGatewaysResponseBodyData) SetDistrict(v string) *ListActiveGatewaysResponseBodyData {
+	s.District = &v
 	return s
 }
 
-func (s *ListActiveGatewaysResponseBodyData) SetLongitude(v float32) *ListActiveGatewaysResponseBodyData {
-	s.Longitude = &v
+func (s *ListActiveGatewaysResponseBodyData) SetFreqBandPlanGroupId(v int64) *ListActiveGatewaysResponseBodyData {
+	s.FreqBandPlanGroupId = &v
 	return s
 }
 
-func (s *ListActiveGatewaysResponseBodyData) SetLatitude(v float32) *ListActiveGatewaysResponseBodyData {
-	s.Latitude = &v
+func (s *ListActiveGatewaysResponseBodyData) SetGisCoordinateSystem(v string) *ListActiveGatewaysResponseBodyData {
+	s.GisCoordinateSystem = &v
 	return s
 }
 
@@ -5509,19 +5192,30 @@ func (s *ListActiveGatewaysResponseBodyData) SetGwEui(v string) *ListActiveGatew
 	return s
 }
 
+func (s *ListActiveGatewaysResponseBodyData) SetLatitude(v float32) *ListActiveGatewaysResponseBodyData {
+	s.Latitude = &v
+	return s
+}
+
+func (s *ListActiveGatewaysResponseBodyData) SetLongitude(v float32) *ListActiveGatewaysResponseBodyData {
+	s.Longitude = &v
+	return s
+}
+
 func (s *ListActiveGatewaysResponseBodyData) SetName(v string) *ListActiveGatewaysResponseBodyData {
 	s.Name = &v
 	return s
 }
 
-func (s *ListActiveGatewaysResponseBodyData) SetAddressCode(v int64) *ListActiveGatewaysResponseBodyData {
-	s.AddressCode = &v
+func (s *ListActiveGatewaysResponseBodyData) SetOnlineState(v string) *ListActiveGatewaysResponseBodyData {
+	s.OnlineState = &v
 	return s
 }
 
 type ListActiveGatewaysResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListActiveGatewaysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListActiveGatewaysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListActiveGatewaysResponse) String() string {
@@ -5537,14 +5231,19 @@ func (s *ListActiveGatewaysResponse) SetHeaders(v map[string]*string) *ListActiv
 	return s
 }
 
+func (s *ListActiveGatewaysResponse) SetStatusCode(v int32) *ListActiveGatewaysResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListActiveGatewaysResponse) SetBody(v *ListActiveGatewaysResponseBody) *ListActiveGatewaysResponse {
 	s.Body = v
 	return s
 }
 
 type ListFreqBandPlanGroupsResponseBody struct {
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      []*ListFreqBandPlanGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5556,13 +5255,13 @@ func (s ListFreqBandPlanGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListFreqBandPlanGroupsResponseBody) SetRequestId(v string) *ListFreqBandPlanGroupsResponseBody {
-	s.RequestId = &v
+func (s *ListFreqBandPlanGroupsResponseBody) SetData(v []*ListFreqBandPlanGroupsResponseBodyData) *ListFreqBandPlanGroupsResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListFreqBandPlanGroupsResponseBody) SetData(v []*ListFreqBandPlanGroupsResponseBodyData) *ListFreqBandPlanGroupsResponseBody {
-	s.Data = v
+func (s *ListFreqBandPlanGroupsResponseBody) SetRequestId(v string) *ListFreqBandPlanGroupsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5572,11 +5271,11 @@ func (s *ListFreqBandPlanGroupsResponseBody) SetSuccess(v bool) *ListFreqBandPla
 }
 
 type ListFreqBandPlanGroupsResponseBodyData struct {
-	EndFrequency      *int64  `json:"EndFrequency,omitempty" xml:"EndFrequency,omitempty"`
-	GroupId           *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	BeginFrequency    *int64  `json:"BeginFrequency,omitempty" xml:"BeginFrequency,omitempty"`
-	FrequencyType     *string `json:"FrequencyType,omitempty" xml:"FrequencyType,omitempty"`
+	EndFrequency      *int64  `json:"EndFrequency,omitempty" xml:"EndFrequency,omitempty"`
 	FrequencyRegionId *string `json:"FrequencyRegionId,omitempty" xml:"FrequencyRegionId,omitempty"`
+	FrequencyType     *string `json:"FrequencyType,omitempty" xml:"FrequencyType,omitempty"`
+	GroupId           *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
 func (s ListFreqBandPlanGroupsResponseBodyData) String() string {
@@ -5587,23 +5286,13 @@ func (s ListFreqBandPlanGroupsResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ListFreqBandPlanGroupsResponseBodyData) SetEndFrequency(v int64) *ListFreqBandPlanGroupsResponseBodyData {
-	s.EndFrequency = &v
-	return s
-}
-
-func (s *ListFreqBandPlanGroupsResponseBodyData) SetGroupId(v int64) *ListFreqBandPlanGroupsResponseBodyData {
-	s.GroupId = &v
-	return s
-}
-
 func (s *ListFreqBandPlanGroupsResponseBodyData) SetBeginFrequency(v int64) *ListFreqBandPlanGroupsResponseBodyData {
 	s.BeginFrequency = &v
 	return s
 }
 
-func (s *ListFreqBandPlanGroupsResponseBodyData) SetFrequencyType(v string) *ListFreqBandPlanGroupsResponseBodyData {
-	s.FrequencyType = &v
+func (s *ListFreqBandPlanGroupsResponseBodyData) SetEndFrequency(v int64) *ListFreqBandPlanGroupsResponseBodyData {
+	s.EndFrequency = &v
 	return s
 }
 
@@ -5612,9 +5301,20 @@ func (s *ListFreqBandPlanGroupsResponseBodyData) SetFrequencyRegionId(v string) 
 	return s
 }
 
+func (s *ListFreqBandPlanGroupsResponseBodyData) SetFrequencyType(v string) *ListFreqBandPlanGroupsResponseBodyData {
+	s.FrequencyType = &v
+	return s
+}
+
+func (s *ListFreqBandPlanGroupsResponseBodyData) SetGroupId(v int64) *ListFreqBandPlanGroupsResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
 type ListFreqBandPlanGroupsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListFreqBandPlanGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListFreqBandPlanGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListFreqBandPlanGroupsResponse) String() string {
@@ -5630,163 +5330,22 @@ func (s *ListFreqBandPlanGroupsResponse) SetHeaders(v map[string]*string) *ListF
 	return s
 }
 
+func (s *ListFreqBandPlanGroupsResponse) SetStatusCode(v int32) *ListFreqBandPlanGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListFreqBandPlanGroupsResponse) SetBody(v *ListFreqBandPlanGroupsResponseBody) *ListFreqBandPlanGroupsResponse {
 	s.Body = v
 	return s
 }
 
-type ListGatewayLocalConfigsRequest struct {
-	GwEui *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-}
-
-func (s ListGatewayLocalConfigsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewayLocalConfigsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewayLocalConfigsRequest) SetGwEui(v string) *ListGatewayLocalConfigsRequest {
-	s.GwEui = &v
-	return s
-}
-
-type ListGatewayLocalConfigsResponseBody struct {
-	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         []*ListGatewayLocalConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListGatewayLocalConfigsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewayLocalConfigsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewayLocalConfigsResponseBody) SetRequestId(v string) *ListGatewayLocalConfigsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListGatewayLocalConfigsResponseBody) SetData(v []*ListGatewayLocalConfigsResponseBodyData) *ListGatewayLocalConfigsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListGatewayLocalConfigsResponseBody) SetErrorMessage(v string) *ListGatewayLocalConfigsResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListGatewayLocalConfigsResponseBody) SetCode(v string) *ListGatewayLocalConfigsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListGatewayLocalConfigsResponseBody) SetSuccess(v bool) *ListGatewayLocalConfigsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListGatewayLocalConfigsResponseBodyData struct {
-	Datr           *int32  `json:"Datr,omitempty" xml:"Datr,omitempty"`
-	D2dAddr        *string `json:"D2dAddr,omitempty" xml:"D2dAddr,omitempty"`
-	ModifiedMillis *int64  `json:"ModifiedMillis,omitempty" xml:"ModifiedMillis,omitempty"`
-	CreateMillis   *int64  `json:"CreateMillis,omitempty" xml:"CreateMillis,omitempty"`
-	D2dKey         *string `json:"D2dKey,omitempty" xml:"D2dKey,omitempty"`
-	TaskId         *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Eui            *string `json:"Eui,omitempty" xml:"Eui,omitempty"`
-	Freq           *int32  `json:"Freq,omitempty" xml:"Freq,omitempty"`
-	DevType        *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
-}
-
-func (s ListGatewayLocalConfigsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewayLocalConfigsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewayLocalConfigsResponseBodyData) SetDatr(v int32) *ListGatewayLocalConfigsResponseBodyData {
-	s.Datr = &v
-	return s
-}
-
-func (s *ListGatewayLocalConfigsResponseBodyData) SetD2dAddr(v string) *ListGatewayLocalConfigsResponseBodyData {
-	s.D2dAddr = &v
-	return s
-}
-
-func (s *ListGatewayLocalConfigsResponseBodyData) SetModifiedMillis(v int64) *ListGatewayLocalConfigsResponseBodyData {
-	s.ModifiedMillis = &v
-	return s
-}
-
-func (s *ListGatewayLocalConfigsResponseBodyData) SetCreateMillis(v int64) *ListGatewayLocalConfigsResponseBodyData {
-	s.CreateMillis = &v
-	return s
-}
-
-func (s *ListGatewayLocalConfigsResponseBodyData) SetD2dKey(v string) *ListGatewayLocalConfigsResponseBodyData {
-	s.D2dKey = &v
-	return s
-}
-
-func (s *ListGatewayLocalConfigsResponseBodyData) SetTaskId(v int64) *ListGatewayLocalConfigsResponseBodyData {
-	s.TaskId = &v
-	return s
-}
-
-func (s *ListGatewayLocalConfigsResponseBodyData) SetEui(v string) *ListGatewayLocalConfigsResponseBodyData {
-	s.Eui = &v
-	return s
-}
-
-func (s *ListGatewayLocalConfigsResponseBodyData) SetFreq(v int32) *ListGatewayLocalConfigsResponseBodyData {
-	s.Freq = &v
-	return s
-}
-
-func (s *ListGatewayLocalConfigsResponseBodyData) SetDevType(v string) *ListGatewayLocalConfigsResponseBodyData {
-	s.DevType = &v
-	return s
-}
-
-type ListGatewayLocalConfigsResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGatewayLocalConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListGatewayLocalConfigsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewayLocalConfigsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewayLocalConfigsResponse) SetHeaders(v map[string]*string) *ListGatewayLocalConfigsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListGatewayLocalConfigsResponse) SetBody(v *ListGatewayLocalConfigsResponseBody) *ListGatewayLocalConfigsResponse {
-	s.Body = v
-	return s
-}
-
 type ListGatewayOnlineRecordsRequest struct {
-	GwEui        *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	OffSet       *int64  `json:"OffSet,omitempty" xml:"OffSet,omitempty"`
-	Limit        *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	SortingField *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 	Ascending    *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	GwEui        *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	Limit        *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	OffSet       *int64  `json:"OffSet,omitempty" xml:"OffSet,omitempty"`
+	SortingField *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 }
 
 func (s ListGatewayOnlineRecordsRequest) String() string {
@@ -5797,13 +5356,13 @@ func (s ListGatewayOnlineRecordsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListGatewayOnlineRecordsRequest) SetGwEui(v string) *ListGatewayOnlineRecordsRequest {
-	s.GwEui = &v
+func (s *ListGatewayOnlineRecordsRequest) SetAscending(v bool) *ListGatewayOnlineRecordsRequest {
+	s.Ascending = &v
 	return s
 }
 
-func (s *ListGatewayOnlineRecordsRequest) SetOffSet(v int64) *ListGatewayOnlineRecordsRequest {
-	s.OffSet = &v
+func (s *ListGatewayOnlineRecordsRequest) SetGwEui(v string) *ListGatewayOnlineRecordsRequest {
+	s.GwEui = &v
 	return s
 }
 
@@ -5812,19 +5371,19 @@ func (s *ListGatewayOnlineRecordsRequest) SetLimit(v int64) *ListGatewayOnlineRe
 	return s
 }
 
+func (s *ListGatewayOnlineRecordsRequest) SetOffSet(v int64) *ListGatewayOnlineRecordsRequest {
+	s.OffSet = &v
+	return s
+}
+
 func (s *ListGatewayOnlineRecordsRequest) SetSortingField(v string) *ListGatewayOnlineRecordsRequest {
 	s.SortingField = &v
 	return s
 }
 
-func (s *ListGatewayOnlineRecordsRequest) SetAscending(v bool) *ListGatewayOnlineRecordsRequest {
-	s.Ascending = &v
-	return s
-}
-
 type ListGatewayOnlineRecordsResponseBody struct {
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListGatewayOnlineRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5836,13 +5395,13 @@ func (s ListGatewayOnlineRecordsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListGatewayOnlineRecordsResponseBody) SetRequestId(v string) *ListGatewayOnlineRecordsResponseBody {
-	s.RequestId = &v
+func (s *ListGatewayOnlineRecordsResponseBody) SetData(v *ListGatewayOnlineRecordsResponseBodyData) *ListGatewayOnlineRecordsResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListGatewayOnlineRecordsResponseBody) SetData(v *ListGatewayOnlineRecordsResponseBodyData) *ListGatewayOnlineRecordsResponseBody {
-	s.Data = v
+func (s *ListGatewayOnlineRecordsResponseBody) SetRequestId(v string) *ListGatewayOnlineRecordsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5875,9 +5434,9 @@ func (s *ListGatewayOnlineRecordsResponseBodyData) SetTotalCount(v int64) *ListG
 }
 
 type ListGatewayOnlineRecordsResponseBodyDataList struct {
-	StateChangedMillis *int64  `json:"StateChangedMillis,omitempty" xml:"StateChangedMillis,omitempty"`
-	OnlineState        *string `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
 	GwEui              *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	OnlineState        *string `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
+	StateChangedMillis *int64  `json:"StateChangedMillis,omitempty" xml:"StateChangedMillis,omitempty"`
 }
 
 func (s ListGatewayOnlineRecordsResponseBodyDataList) String() string {
@@ -5888,8 +5447,8 @@ func (s ListGatewayOnlineRecordsResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
-func (s *ListGatewayOnlineRecordsResponseBodyDataList) SetStateChangedMillis(v int64) *ListGatewayOnlineRecordsResponseBodyDataList {
-	s.StateChangedMillis = &v
+func (s *ListGatewayOnlineRecordsResponseBodyDataList) SetGwEui(v string) *ListGatewayOnlineRecordsResponseBodyDataList {
+	s.GwEui = &v
 	return s
 }
 
@@ -5898,14 +5457,15 @@ func (s *ListGatewayOnlineRecordsResponseBodyDataList) SetOnlineState(v string) 
 	return s
 }
 
-func (s *ListGatewayOnlineRecordsResponseBodyDataList) SetGwEui(v string) *ListGatewayOnlineRecordsResponseBodyDataList {
-	s.GwEui = &v
+func (s *ListGatewayOnlineRecordsResponseBodyDataList) SetStateChangedMillis(v int64) *ListGatewayOnlineRecordsResponseBodyDataList {
+	s.StateChangedMillis = &v
 	return s
 }
 
 type ListGatewayOnlineRecordsResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGatewayOnlineRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGatewayOnlineRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListGatewayOnlineRecordsResponse) String() string {
@@ -5921,567 +5481,21 @@ func (s *ListGatewayOnlineRecordsResponse) SetHeaders(v map[string]*string) *Lis
 	return s
 }
 
+func (s *ListGatewayOnlineRecordsResponse) SetStatusCode(v int32) *ListGatewayOnlineRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListGatewayOnlineRecordsResponse) SetBody(v *ListGatewayOnlineRecordsResponseBody) *ListGatewayOnlineRecordsResponse {
 	s.Body = v
 	return s
 }
 
-type ListGatewaysRequest struct {
-	IotInstanceId       *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	OnlineState         *string `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
-	FuzzyGwEui          *string `json:"FuzzyGwEui,omitempty" xml:"FuzzyGwEui,omitempty"`
-	FuzzyCity           *string `json:"FuzzyCity,omitempty" xml:"FuzzyCity,omitempty"`
-	FuzzyName           *string `json:"FuzzyName,omitempty" xml:"FuzzyName,omitempty"`
-	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	IsEnabled           *bool   `json:"IsEnabled,omitempty" xml:"IsEnabled,omitempty"`
-	Offset              *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Limit               *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	SortingField        *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
-	Ascending           *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
-}
-
-func (s ListGatewaysRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewaysRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewaysRequest) SetIotInstanceId(v string) *ListGatewaysRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *ListGatewaysRequest) SetOnlineState(v string) *ListGatewaysRequest {
-	s.OnlineState = &v
-	return s
-}
-
-func (s *ListGatewaysRequest) SetFuzzyGwEui(v string) *ListGatewaysRequest {
-	s.FuzzyGwEui = &v
-	return s
-}
-
-func (s *ListGatewaysRequest) SetFuzzyCity(v string) *ListGatewaysRequest {
-	s.FuzzyCity = &v
-	return s
-}
-
-func (s *ListGatewaysRequest) SetFuzzyName(v string) *ListGatewaysRequest {
-	s.FuzzyName = &v
-	return s
-}
-
-func (s *ListGatewaysRequest) SetFreqBandPlanGroupId(v int64) *ListGatewaysRequest {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *ListGatewaysRequest) SetIsEnabled(v bool) *ListGatewaysRequest {
-	s.IsEnabled = &v
-	return s
-}
-
-func (s *ListGatewaysRequest) SetOffset(v int64) *ListGatewaysRequest {
-	s.Offset = &v
-	return s
-}
-
-func (s *ListGatewaysRequest) SetLimit(v int64) *ListGatewaysRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListGatewaysRequest) SetSortingField(v string) *ListGatewaysRequest {
-	s.SortingField = &v
-	return s
-}
-
-func (s *ListGatewaysRequest) SetAscending(v bool) *ListGatewaysRequest {
-	s.Ascending = &v
-	return s
-}
-
-type ListGatewaysResponseBody struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ListGatewaysResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListGatewaysResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewaysResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewaysResponseBody) SetRequestId(v string) *ListGatewaysResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBody) SetData(v *ListGatewaysResponseBodyData) *ListGatewaysResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListGatewaysResponseBody) SetSuccess(v bool) *ListGatewaysResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListGatewaysResponseBodyData struct {
-	List       []*ListGatewaysResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	TotalCount *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListGatewaysResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewaysResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewaysResponseBodyData) SetList(v []*ListGatewaysResponseBodyDataList) *ListGatewaysResponseBodyData {
-	s.List = v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyData) SetTotalCount(v int64) *ListGatewaysResponseBodyData {
-	s.TotalCount = &v
-	return s
-}
-
-type ListGatewaysResponseBodyDataList struct {
-	ChargeStatus             *string  `json:"ChargeStatus,omitempty" xml:"ChargeStatus,omitempty"`
-	ClassBSupported          *bool    `json:"ClassBSupported,omitempty" xml:"ClassBSupported,omitempty"`
-	District                 *string  `json:"District,omitempty" xml:"District,omitempty"`
-	FreqBandPlanGroupId      *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	GisCoordinateSystem      *string  `json:"GisCoordinateSystem,omitempty" xml:"GisCoordinateSystem,omitempty"`
-	City                     *string  `json:"City,omitempty" xml:"City,omitempty"`
-	OnlineState              *string  `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
-	TimeCorrectable          *bool    `json:"TimeCorrectable,omitempty" xml:"TimeCorrectable,omitempty"`
-	AuthTypes                *string  `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty"`
-	OnlineStateChangedMillis *int64   `json:"OnlineStateChangedMillis,omitempty" xml:"OnlineStateChangedMillis,omitempty"`
-	CommunicationMode        *string  `json:"CommunicationMode,omitempty" xml:"CommunicationMode,omitempty"`
-	Description              *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Enabled                  *bool    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	ClassBWorking            *bool    `json:"ClassBWorking,omitempty" xml:"ClassBWorking,omitempty"`
-	Address                  *string  `json:"Address,omitempty" xml:"Address,omitempty"`
-	Longitude                *float32 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
-	EmbeddedNsId             *string  `json:"EmbeddedNsId,omitempty" xml:"EmbeddedNsId,omitempty"`
-	Latitude                 *float32 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
-	Name                     *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	GwEui                    *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	AddressCode              *int64   `json:"AddressCode,omitempty" xml:"AddressCode,omitempty"`
-}
-
-func (s ListGatewaysResponseBodyDataList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewaysResponseBodyDataList) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetChargeStatus(v string) *ListGatewaysResponseBodyDataList {
-	s.ChargeStatus = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetClassBSupported(v bool) *ListGatewaysResponseBodyDataList {
-	s.ClassBSupported = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetDistrict(v string) *ListGatewaysResponseBodyDataList {
-	s.District = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetFreqBandPlanGroupId(v int64) *ListGatewaysResponseBodyDataList {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetGisCoordinateSystem(v string) *ListGatewaysResponseBodyDataList {
-	s.GisCoordinateSystem = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetCity(v string) *ListGatewaysResponseBodyDataList {
-	s.City = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetOnlineState(v string) *ListGatewaysResponseBodyDataList {
-	s.OnlineState = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetTimeCorrectable(v bool) *ListGatewaysResponseBodyDataList {
-	s.TimeCorrectable = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetAuthTypes(v string) *ListGatewaysResponseBodyDataList {
-	s.AuthTypes = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetOnlineStateChangedMillis(v int64) *ListGatewaysResponseBodyDataList {
-	s.OnlineStateChangedMillis = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetCommunicationMode(v string) *ListGatewaysResponseBodyDataList {
-	s.CommunicationMode = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetDescription(v string) *ListGatewaysResponseBodyDataList {
-	s.Description = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetEnabled(v bool) *ListGatewaysResponseBodyDataList {
-	s.Enabled = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetClassBWorking(v bool) *ListGatewaysResponseBodyDataList {
-	s.ClassBWorking = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetAddress(v string) *ListGatewaysResponseBodyDataList {
-	s.Address = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetLongitude(v float32) *ListGatewaysResponseBodyDataList {
-	s.Longitude = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetEmbeddedNsId(v string) *ListGatewaysResponseBodyDataList {
-	s.EmbeddedNsId = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetLatitude(v float32) *ListGatewaysResponseBodyDataList {
-	s.Latitude = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetName(v string) *ListGatewaysResponseBodyDataList {
-	s.Name = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetGwEui(v string) *ListGatewaysResponseBodyDataList {
-	s.GwEui = &v
-	return s
-}
-
-func (s *ListGatewaysResponseBodyDataList) SetAddressCode(v int64) *ListGatewaysResponseBodyDataList {
-	s.AddressCode = &v
-	return s
-}
-
-type ListGatewaysResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGatewaysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListGatewaysResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewaysResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewaysResponse) SetHeaders(v map[string]*string) *ListGatewaysResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListGatewaysResponse) SetBody(v *ListGatewaysResponseBody) *ListGatewaysResponse {
-	s.Body = v
-	return s
-}
-
-type ListGatewaysGisInfoRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-}
-
-func (s ListGatewaysGisInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewaysGisInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewaysGisInfoRequest) SetIotInstanceId(v string) *ListGatewaysGisInfoRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-type ListGatewaysGisInfoResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      []*ListGatewaysGisInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListGatewaysGisInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewaysGisInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewaysGisInfoResponseBody) SetRequestId(v string) *ListGatewaysGisInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListGatewaysGisInfoResponseBody) SetData(v []*ListGatewaysGisInfoResponseBodyData) *ListGatewaysGisInfoResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListGatewaysGisInfoResponseBody) SetSuccess(v bool) *ListGatewaysGisInfoResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListGatewaysGisInfoResponseBodyData struct {
-	ChargeStatus        *string  `json:"ChargeStatus,omitempty" xml:"ChargeStatus,omitempty"`
-	GisSourceType       *string  `json:"GisSourceType,omitempty" xml:"GisSourceType,omitempty"`
-	FreqBandPlanGroupId *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	Enabled             *bool    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	GisCoordinateSystem *string  `json:"GisCoordinateSystem,omitempty" xml:"GisCoordinateSystem,omitempty"`
-	Longitude           *float32 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
-	Latitude            *float32 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
-	OnlineState         *string  `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
-	Name                *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	GwEui               *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	AuthTypes           *string  `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty"`
-}
-
-func (s ListGatewaysGisInfoResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewaysGisInfoResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewaysGisInfoResponseBodyData) SetChargeStatus(v string) *ListGatewaysGisInfoResponseBodyData {
-	s.ChargeStatus = &v
-	return s
-}
-
-func (s *ListGatewaysGisInfoResponseBodyData) SetGisSourceType(v string) *ListGatewaysGisInfoResponseBodyData {
-	s.GisSourceType = &v
-	return s
-}
-
-func (s *ListGatewaysGisInfoResponseBodyData) SetFreqBandPlanGroupId(v int64) *ListGatewaysGisInfoResponseBodyData {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *ListGatewaysGisInfoResponseBodyData) SetEnabled(v bool) *ListGatewaysGisInfoResponseBodyData {
-	s.Enabled = &v
-	return s
-}
-
-func (s *ListGatewaysGisInfoResponseBodyData) SetGisCoordinateSystem(v string) *ListGatewaysGisInfoResponseBodyData {
-	s.GisCoordinateSystem = &v
-	return s
-}
-
-func (s *ListGatewaysGisInfoResponseBodyData) SetLongitude(v float32) *ListGatewaysGisInfoResponseBodyData {
-	s.Longitude = &v
-	return s
-}
-
-func (s *ListGatewaysGisInfoResponseBodyData) SetLatitude(v float32) *ListGatewaysGisInfoResponseBodyData {
-	s.Latitude = &v
-	return s
-}
-
-func (s *ListGatewaysGisInfoResponseBodyData) SetOnlineState(v string) *ListGatewaysGisInfoResponseBodyData {
-	s.OnlineState = &v
-	return s
-}
-
-func (s *ListGatewaysGisInfoResponseBodyData) SetName(v string) *ListGatewaysGisInfoResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *ListGatewaysGisInfoResponseBodyData) SetGwEui(v string) *ListGatewaysGisInfoResponseBodyData {
-	s.GwEui = &v
-	return s
-}
-
-func (s *ListGatewaysGisInfoResponseBodyData) SetAuthTypes(v string) *ListGatewaysGisInfoResponseBodyData {
-	s.AuthTypes = &v
-	return s
-}
-
-type ListGatewaysGisInfoResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGatewaysGisInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListGatewaysGisInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewaysGisInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewaysGisInfoResponse) SetHeaders(v map[string]*string) *ListGatewaysGisInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListGatewaysGisInfoResponse) SetBody(v *ListGatewaysGisInfoResponseBody) *ListGatewaysGisInfoResponse {
-	s.Body = v
-	return s
-}
-
-type ListGatewaysPacketStatRequest struct {
-	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	BeginMillis   *int64    `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
-	EndMillis     *int64    `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
-	GwEuiList     []*string `json:"GwEuiList,omitempty" xml:"GwEuiList,omitempty" type:"Repeated"`
-}
-
-func (s ListGatewaysPacketStatRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewaysPacketStatRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewaysPacketStatRequest) SetIotInstanceId(v string) *ListGatewaysPacketStatRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *ListGatewaysPacketStatRequest) SetBeginMillis(v int64) *ListGatewaysPacketStatRequest {
-	s.BeginMillis = &v
-	return s
-}
-
-func (s *ListGatewaysPacketStatRequest) SetEndMillis(v int64) *ListGatewaysPacketStatRequest {
-	s.EndMillis = &v
-	return s
-}
-
-func (s *ListGatewaysPacketStatRequest) SetGwEuiList(v []*string) *ListGatewaysPacketStatRequest {
-	s.GwEuiList = v
-	return s
-}
-
-type ListGatewaysPacketStatResponseBody struct {
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      []*ListGatewaysPacketStatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListGatewaysPacketStatResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewaysPacketStatResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewaysPacketStatResponseBody) SetRequestId(v string) *ListGatewaysPacketStatResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListGatewaysPacketStatResponseBody) SetData(v []*ListGatewaysPacketStatResponseBodyData) *ListGatewaysPacketStatResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListGatewaysPacketStatResponseBody) SetSuccess(v bool) *ListGatewaysPacketStatResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListGatewaysPacketStatResponseBodyData struct {
-	DownlinkCount *int32  `json:"DownlinkCount,omitempty" xml:"DownlinkCount,omitempty"`
-	UplinkCount   *int32  `json:"UplinkCount,omitempty" xml:"UplinkCount,omitempty"`
-	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-}
-
-func (s ListGatewaysPacketStatResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewaysPacketStatResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewaysPacketStatResponseBodyData) SetDownlinkCount(v int32) *ListGatewaysPacketStatResponseBodyData {
-	s.DownlinkCount = &v
-	return s
-}
-
-func (s *ListGatewaysPacketStatResponseBodyData) SetUplinkCount(v int32) *ListGatewaysPacketStatResponseBodyData {
-	s.UplinkCount = &v
-	return s
-}
-
-func (s *ListGatewaysPacketStatResponseBodyData) SetGwEui(v string) *ListGatewaysPacketStatResponseBodyData {
-	s.GwEui = &v
-	return s
-}
-
-type ListGatewaysPacketStatResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGatewaysPacketStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListGatewaysPacketStatResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewaysPacketStatResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewaysPacketStatResponse) SetHeaders(v map[string]*string) *ListGatewaysPacketStatResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListGatewaysPacketStatResponse) SetBody(v *ListGatewaysPacketStatResponseBody) *ListGatewaysPacketStatResponse {
-	s.Body = v
-	return s
-}
-
 type ListGatewayTransferFlowStatsRequest struct {
-	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	GwEui            *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
 	BeginMillis      *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
 	EndMillis        *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
+	GwEui            *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	TimeIntervalUnit *string `json:"TimeIntervalUnit,omitempty" xml:"TimeIntervalUnit,omitempty"`
 }
 
@@ -6491,16 +5505,6 @@ func (s ListGatewayTransferFlowStatsRequest) String() string {
 
 func (s ListGatewayTransferFlowStatsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListGatewayTransferFlowStatsRequest) SetIotInstanceId(v string) *ListGatewayTransferFlowStatsRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *ListGatewayTransferFlowStatsRequest) SetGwEui(v string) *ListGatewayTransferFlowStatsRequest {
-	s.GwEui = &v
-	return s
 }
 
 func (s *ListGatewayTransferFlowStatsRequest) SetBeginMillis(v int64) *ListGatewayTransferFlowStatsRequest {
@@ -6513,14 +5517,24 @@ func (s *ListGatewayTransferFlowStatsRequest) SetEndMillis(v int64) *ListGateway
 	return s
 }
 
+func (s *ListGatewayTransferFlowStatsRequest) SetGwEui(v string) *ListGatewayTransferFlowStatsRequest {
+	s.GwEui = &v
+	return s
+}
+
+func (s *ListGatewayTransferFlowStatsRequest) SetIotInstanceId(v string) *ListGatewayTransferFlowStatsRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
 func (s *ListGatewayTransferFlowStatsRequest) SetTimeIntervalUnit(v string) *ListGatewayTransferFlowStatsRequest {
 	s.TimeIntervalUnit = &v
 	return s
 }
 
 type ListGatewayTransferFlowStatsResponseBody struct {
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      []*ListGatewayTransferFlowStatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6532,13 +5546,13 @@ func (s ListGatewayTransferFlowStatsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListGatewayTransferFlowStatsResponseBody) SetRequestId(v string) *ListGatewayTransferFlowStatsResponseBody {
-	s.RequestId = &v
+func (s *ListGatewayTransferFlowStatsResponseBody) SetData(v []*ListGatewayTransferFlowStatsResponseBodyData) *ListGatewayTransferFlowStatsResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListGatewayTransferFlowStatsResponseBody) SetData(v []*ListGatewayTransferFlowStatsResponseBodyData) *ListGatewayTransferFlowStatsResponseBody {
-	s.Data = v
+func (s *ListGatewayTransferFlowStatsResponseBody) SetRequestId(v string) *ListGatewayTransferFlowStatsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6549,8 +5563,8 @@ func (s *ListGatewayTransferFlowStatsResponseBody) SetSuccess(v bool) *ListGatew
 
 type ListGatewayTransferFlowStatsResponseBodyData struct {
 	DownlinkCount *int64  `json:"DownlinkCount,omitempty" xml:"DownlinkCount,omitempty"`
-	UplinkCount   *int64  `json:"UplinkCount,omitempty" xml:"UplinkCount,omitempty"`
 	StatMillis    *string `json:"StatMillis,omitempty" xml:"StatMillis,omitempty"`
+	UplinkCount   *int64  `json:"UplinkCount,omitempty" xml:"UplinkCount,omitempty"`
 }
 
 func (s ListGatewayTransferFlowStatsResponseBodyData) String() string {
@@ -6566,19 +5580,20 @@ func (s *ListGatewayTransferFlowStatsResponseBodyData) SetDownlinkCount(v int64)
 	return s
 }
 
-func (s *ListGatewayTransferFlowStatsResponseBodyData) SetUplinkCount(v int64) *ListGatewayTransferFlowStatsResponseBodyData {
-	s.UplinkCount = &v
-	return s
-}
-
 func (s *ListGatewayTransferFlowStatsResponseBodyData) SetStatMillis(v string) *ListGatewayTransferFlowStatsResponseBodyData {
 	s.StatMillis = &v
 	return s
 }
 
+func (s *ListGatewayTransferFlowStatsResponseBodyData) SetUplinkCount(v int64) *ListGatewayTransferFlowStatsResponseBodyData {
+	s.UplinkCount = &v
+	return s
+}
+
 type ListGatewayTransferFlowStatsResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGatewayTransferFlowStatsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGatewayTransferFlowStatsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListGatewayTransferFlowStatsResponse) String() string {
@@ -6594,22 +5609,27 @@ func (s *ListGatewayTransferFlowStatsResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *ListGatewayTransferFlowStatsResponse) SetStatusCode(v int32) *ListGatewayTransferFlowStatsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListGatewayTransferFlowStatsResponse) SetBody(v *ListGatewayTransferFlowStatsResponseBody) *ListGatewayTransferFlowStatsResponse {
 	s.Body = v
 	return s
 }
 
 type ListGatewayTransferPacketsRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	DevEui        *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	Ascending     *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	BeginMillis   *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
 	Category      *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DevEui        *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	EndMillis     *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
+	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	BeginMillis   *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
-	EndMillis     *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
 	SortingField  *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
-	Ascending     *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
 }
 
 func (s ListGatewayTransferPacketsRequest) String() string {
@@ -6620,13 +5640,18 @@ func (s ListGatewayTransferPacketsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListGatewayTransferPacketsRequest) SetIotInstanceId(v string) *ListGatewayTransferPacketsRequest {
-	s.IotInstanceId = &v
+func (s *ListGatewayTransferPacketsRequest) SetAscending(v bool) *ListGatewayTransferPacketsRequest {
+	s.Ascending = &v
 	return s
 }
 
-func (s *ListGatewayTransferPacketsRequest) SetGwEui(v string) *ListGatewayTransferPacketsRequest {
-	s.GwEui = &v
+func (s *ListGatewayTransferPacketsRequest) SetBeginMillis(v int64) *ListGatewayTransferPacketsRequest {
+	s.BeginMillis = &v
+	return s
+}
+
+func (s *ListGatewayTransferPacketsRequest) SetCategory(v string) *ListGatewayTransferPacketsRequest {
+	s.Category = &v
 	return s
 }
 
@@ -6635,8 +5660,18 @@ func (s *ListGatewayTransferPacketsRequest) SetDevEui(v string) *ListGatewayTran
 	return s
 }
 
-func (s *ListGatewayTransferPacketsRequest) SetCategory(v string) *ListGatewayTransferPacketsRequest {
-	s.Category = &v
+func (s *ListGatewayTransferPacketsRequest) SetEndMillis(v int64) *ListGatewayTransferPacketsRequest {
+	s.EndMillis = &v
+	return s
+}
+
+func (s *ListGatewayTransferPacketsRequest) SetGwEui(v string) *ListGatewayTransferPacketsRequest {
+	s.GwEui = &v
+	return s
+}
+
+func (s *ListGatewayTransferPacketsRequest) SetIotInstanceId(v string) *ListGatewayTransferPacketsRequest {
+	s.IotInstanceId = &v
 	return s
 }
 
@@ -6650,29 +5685,14 @@ func (s *ListGatewayTransferPacketsRequest) SetPageSize(v int32) *ListGatewayTra
 	return s
 }
 
-func (s *ListGatewayTransferPacketsRequest) SetBeginMillis(v int64) *ListGatewayTransferPacketsRequest {
-	s.BeginMillis = &v
-	return s
-}
-
-func (s *ListGatewayTransferPacketsRequest) SetEndMillis(v int64) *ListGatewayTransferPacketsRequest {
-	s.EndMillis = &v
-	return s
-}
-
 func (s *ListGatewayTransferPacketsRequest) SetSortingField(v string) *ListGatewayTransferPacketsRequest {
 	s.SortingField = &v
 	return s
 }
 
-func (s *ListGatewayTransferPacketsRequest) SetAscending(v bool) *ListGatewayTransferPacketsRequest {
-	s.Ascending = &v
-	return s
-}
-
 type ListGatewayTransferPacketsResponseBody struct {
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListGatewayTransferPacketsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6684,13 +5704,13 @@ func (s ListGatewayTransferPacketsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListGatewayTransferPacketsResponseBody) SetRequestId(v string) *ListGatewayTransferPacketsResponseBody {
-	s.RequestId = &v
+func (s *ListGatewayTransferPacketsResponseBody) SetData(v *ListGatewayTransferPacketsResponseBodyData) *ListGatewayTransferPacketsResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListGatewayTransferPacketsResponseBody) SetData(v *ListGatewayTransferPacketsResponseBodyData) *ListGatewayTransferPacketsResponseBody {
-	s.Data = v
+func (s *ListGatewayTransferPacketsResponseBody) SetRequestId(v string) *ListGatewayTransferPacketsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6723,24 +5743,24 @@ func (s *ListGatewayTransferPacketsResponseBodyData) SetTotalCount(v int64) *Lis
 }
 
 type ListGatewayTransferPacketsResponseBodyDataList struct {
-	LogMillis               *string                  `json:"LogMillis,omitempty" xml:"LogMillis,omitempty"`
 	Base64EncodedMacPayload *string                  `json:"Base64EncodedMacPayload,omitempty" xml:"Base64EncodedMacPayload,omitempty"`
-	ProcessEvent            *string                  `json:"ProcessEvent,omitempty" xml:"ProcessEvent,omitempty"`
-	FPort                   *int32                   `json:"FPort,omitempty" xml:"FPort,omitempty"`
-	Lsnr                    *float32                 `json:"Lsnr,omitempty" xml:"Lsnr,omitempty"`
-	HasData                 *bool                    `json:"HasData,omitempty" xml:"HasData,omitempty"`
 	ClassMode               *string                  `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	MacPayloadSize          *int64                   `json:"MacPayloadSize,omitempty" xml:"MacPayloadSize,omitempty"`
 	Datr                    *string                  `json:"Datr,omitempty" xml:"Datr,omitempty"`
-	MessageType             *string                  `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 	DevAddr                 *string                  `json:"DevAddr,omitempty" xml:"DevAddr,omitempty"`
 	DevEui                  *string                  `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	NodeOwnerAliyunId       *string                  `json:"NodeOwnerAliyunId,omitempty" xml:"NodeOwnerAliyunId,omitempty"`
-	MacCommandCIDs          []map[string]interface{} `json:"MacCommandCIDs,omitempty" xml:"MacCommandCIDs,omitempty" type:"Repeated"`
-	GwEui                   *string                  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	Rssi                    *int32                   `json:"Rssi,omitempty" xml:"Rssi,omitempty"`
-	HasMacCommand           *bool                    `json:"HasMacCommand,omitempty" xml:"HasMacCommand,omitempty"`
+	FPort                   *int32                   `json:"FPort,omitempty" xml:"FPort,omitempty"`
 	Freq                    *string                  `json:"Freq,omitempty" xml:"Freq,omitempty"`
+	GwEui                   *string                  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	HasData                 *bool                    `json:"HasData,omitempty" xml:"HasData,omitempty"`
+	HasMacCommand           *bool                    `json:"HasMacCommand,omitempty" xml:"HasMacCommand,omitempty"`
+	LogMillis               *string                  `json:"LogMillis,omitempty" xml:"LogMillis,omitempty"`
+	Lsnr                    *float32                 `json:"Lsnr,omitempty" xml:"Lsnr,omitempty"`
+	MacCommandCIDs          []map[string]interface{} `json:"MacCommandCIDs,omitempty" xml:"MacCommandCIDs,omitempty" type:"Repeated"`
+	MacPayloadSize          *int64                   `json:"MacPayloadSize,omitempty" xml:"MacPayloadSize,omitempty"`
+	MessageType             *string                  `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	NodeOwnerAliyunId       *string                  `json:"NodeOwnerAliyunId,omitempty" xml:"NodeOwnerAliyunId,omitempty"`
+	ProcessEvent            *string                  `json:"ProcessEvent,omitempty" xml:"ProcessEvent,omitempty"`
+	Rssi                    *int32                   `json:"Rssi,omitempty" xml:"Rssi,omitempty"`
 }
 
 func (s ListGatewayTransferPacketsResponseBodyDataList) String() string {
@@ -6751,33 +5771,8 @@ func (s ListGatewayTransferPacketsResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
-func (s *ListGatewayTransferPacketsResponseBodyDataList) SetLogMillis(v string) *ListGatewayTransferPacketsResponseBodyDataList {
-	s.LogMillis = &v
-	return s
-}
-
 func (s *ListGatewayTransferPacketsResponseBodyDataList) SetBase64EncodedMacPayload(v string) *ListGatewayTransferPacketsResponseBodyDataList {
 	s.Base64EncodedMacPayload = &v
-	return s
-}
-
-func (s *ListGatewayTransferPacketsResponseBodyDataList) SetProcessEvent(v string) *ListGatewayTransferPacketsResponseBodyDataList {
-	s.ProcessEvent = &v
-	return s
-}
-
-func (s *ListGatewayTransferPacketsResponseBodyDataList) SetFPort(v int32) *ListGatewayTransferPacketsResponseBodyDataList {
-	s.FPort = &v
-	return s
-}
-
-func (s *ListGatewayTransferPacketsResponseBodyDataList) SetLsnr(v float32) *ListGatewayTransferPacketsResponseBodyDataList {
-	s.Lsnr = &v
-	return s
-}
-
-func (s *ListGatewayTransferPacketsResponseBodyDataList) SetHasData(v bool) *ListGatewayTransferPacketsResponseBodyDataList {
-	s.HasData = &v
 	return s
 }
 
@@ -6786,18 +5781,8 @@ func (s *ListGatewayTransferPacketsResponseBodyDataList) SetClassMode(v string) 
 	return s
 }
 
-func (s *ListGatewayTransferPacketsResponseBodyDataList) SetMacPayloadSize(v int64) *ListGatewayTransferPacketsResponseBodyDataList {
-	s.MacPayloadSize = &v
-	return s
-}
-
 func (s *ListGatewayTransferPacketsResponseBodyDataList) SetDatr(v string) *ListGatewayTransferPacketsResponseBodyDataList {
 	s.Datr = &v
-	return s
-}
-
-func (s *ListGatewayTransferPacketsResponseBodyDataList) SetMessageType(v string) *ListGatewayTransferPacketsResponseBodyDataList {
-	s.MessageType = &v
 	return s
 }
 
@@ -6811,28 +5796,8 @@ func (s *ListGatewayTransferPacketsResponseBodyDataList) SetDevEui(v string) *Li
 	return s
 }
 
-func (s *ListGatewayTransferPacketsResponseBodyDataList) SetNodeOwnerAliyunId(v string) *ListGatewayTransferPacketsResponseBodyDataList {
-	s.NodeOwnerAliyunId = &v
-	return s
-}
-
-func (s *ListGatewayTransferPacketsResponseBodyDataList) SetMacCommandCIDs(v []map[string]interface{}) *ListGatewayTransferPacketsResponseBodyDataList {
-	s.MacCommandCIDs = v
-	return s
-}
-
-func (s *ListGatewayTransferPacketsResponseBodyDataList) SetGwEui(v string) *ListGatewayTransferPacketsResponseBodyDataList {
-	s.GwEui = &v
-	return s
-}
-
-func (s *ListGatewayTransferPacketsResponseBodyDataList) SetRssi(v int32) *ListGatewayTransferPacketsResponseBodyDataList {
-	s.Rssi = &v
-	return s
-}
-
-func (s *ListGatewayTransferPacketsResponseBodyDataList) SetHasMacCommand(v bool) *ListGatewayTransferPacketsResponseBodyDataList {
-	s.HasMacCommand = &v
+func (s *ListGatewayTransferPacketsResponseBodyDataList) SetFPort(v int32) *ListGatewayTransferPacketsResponseBodyDataList {
+	s.FPort = &v
 	return s
 }
 
@@ -6841,9 +5806,65 @@ func (s *ListGatewayTransferPacketsResponseBodyDataList) SetFreq(v string) *List
 	return s
 }
 
+func (s *ListGatewayTransferPacketsResponseBodyDataList) SetGwEui(v string) *ListGatewayTransferPacketsResponseBodyDataList {
+	s.GwEui = &v
+	return s
+}
+
+func (s *ListGatewayTransferPacketsResponseBodyDataList) SetHasData(v bool) *ListGatewayTransferPacketsResponseBodyDataList {
+	s.HasData = &v
+	return s
+}
+
+func (s *ListGatewayTransferPacketsResponseBodyDataList) SetHasMacCommand(v bool) *ListGatewayTransferPacketsResponseBodyDataList {
+	s.HasMacCommand = &v
+	return s
+}
+
+func (s *ListGatewayTransferPacketsResponseBodyDataList) SetLogMillis(v string) *ListGatewayTransferPacketsResponseBodyDataList {
+	s.LogMillis = &v
+	return s
+}
+
+func (s *ListGatewayTransferPacketsResponseBodyDataList) SetLsnr(v float32) *ListGatewayTransferPacketsResponseBodyDataList {
+	s.Lsnr = &v
+	return s
+}
+
+func (s *ListGatewayTransferPacketsResponseBodyDataList) SetMacCommandCIDs(v []map[string]interface{}) *ListGatewayTransferPacketsResponseBodyDataList {
+	s.MacCommandCIDs = v
+	return s
+}
+
+func (s *ListGatewayTransferPacketsResponseBodyDataList) SetMacPayloadSize(v int64) *ListGatewayTransferPacketsResponseBodyDataList {
+	s.MacPayloadSize = &v
+	return s
+}
+
+func (s *ListGatewayTransferPacketsResponseBodyDataList) SetMessageType(v string) *ListGatewayTransferPacketsResponseBodyDataList {
+	s.MessageType = &v
+	return s
+}
+
+func (s *ListGatewayTransferPacketsResponseBodyDataList) SetNodeOwnerAliyunId(v string) *ListGatewayTransferPacketsResponseBodyDataList {
+	s.NodeOwnerAliyunId = &v
+	return s
+}
+
+func (s *ListGatewayTransferPacketsResponseBodyDataList) SetProcessEvent(v string) *ListGatewayTransferPacketsResponseBodyDataList {
+	s.ProcessEvent = &v
+	return s
+}
+
+func (s *ListGatewayTransferPacketsResponseBodyDataList) SetRssi(v int32) *ListGatewayTransferPacketsResponseBodyDataList {
+	s.Rssi = &v
+	return s
+}
+
 type ListGatewayTransferPacketsResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGatewayTransferPacketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGatewayTransferPacketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListGatewayTransferPacketsResponse) String() string {
@@ -6859,16 +5880,21 @@ func (s *ListGatewayTransferPacketsResponse) SetHeaders(v map[string]*string) *L
 	return s
 }
 
+func (s *ListGatewayTransferPacketsResponse) SetStatusCode(v int32) *ListGatewayTransferPacketsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListGatewayTransferPacketsResponse) SetBody(v *ListGatewayTransferPacketsResponseBody) *ListGatewayTransferPacketsResponse {
 	s.Body = v
 	return s
 }
 
 type ListGatewayTupleOrdersRequest struct {
-	Offset       *int64    `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Limit        *int64    `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	SortingField *string   `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 	Ascending    *bool     `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	Limit        *int64    `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Offset       *int64    `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	SortingField *string   `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 	State        []*string `json:"State,omitempty" xml:"State,omitempty" type:"Repeated"`
 }
 
@@ -6880,8 +5906,8 @@ func (s ListGatewayTupleOrdersRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListGatewayTupleOrdersRequest) SetOffset(v int64) *ListGatewayTupleOrdersRequest {
-	s.Offset = &v
+func (s *ListGatewayTupleOrdersRequest) SetAscending(v bool) *ListGatewayTupleOrdersRequest {
+	s.Ascending = &v
 	return s
 }
 
@@ -6890,13 +5916,13 @@ func (s *ListGatewayTupleOrdersRequest) SetLimit(v int64) *ListGatewayTupleOrder
 	return s
 }
 
-func (s *ListGatewayTupleOrdersRequest) SetSortingField(v string) *ListGatewayTupleOrdersRequest {
-	s.SortingField = &v
+func (s *ListGatewayTupleOrdersRequest) SetOffset(v int64) *ListGatewayTupleOrdersRequest {
+	s.Offset = &v
 	return s
 }
 
-func (s *ListGatewayTupleOrdersRequest) SetAscending(v bool) *ListGatewayTupleOrdersRequest {
-	s.Ascending = &v
+func (s *ListGatewayTupleOrdersRequest) SetSortingField(v string) *ListGatewayTupleOrdersRequest {
+	s.SortingField = &v
 	return s
 }
 
@@ -6906,8 +5932,8 @@ func (s *ListGatewayTupleOrdersRequest) SetState(v []*string) *ListGatewayTupleO
 }
 
 type ListGatewayTupleOrdersResponseBody struct {
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListGatewayTupleOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6919,13 +5945,13 @@ func (s ListGatewayTupleOrdersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListGatewayTupleOrdersResponseBody) SetRequestId(v string) *ListGatewayTupleOrdersResponseBody {
-	s.RequestId = &v
+func (s *ListGatewayTupleOrdersResponseBody) SetData(v *ListGatewayTupleOrdersResponseBodyData) *ListGatewayTupleOrdersResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListGatewayTupleOrdersResponseBody) SetData(v *ListGatewayTupleOrdersResponseBodyData) *ListGatewayTupleOrdersResponseBody {
-	s.Data = v
+func (s *ListGatewayTupleOrdersResponseBody) SetRequestId(v string) *ListGatewayTupleOrdersResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6958,12 +5984,12 @@ func (s *ListGatewayTupleOrdersResponseBodyData) SetTotalCount(v int64) *ListGat
 }
 
 type ListGatewayTupleOrdersResponseBodyDataList struct {
-	RequiredCount  *int64  `json:"RequiredCount,omitempty" xml:"RequiredCount,omitempty"`
-	CreatedMillis  *int64  `json:"CreatedMillis,omitempty" xml:"CreatedMillis,omitempty"`
-	TupleType      *string `json:"TupleType,omitempty" xml:"TupleType,omitempty"`
 	AcceptedMillis *int64  `json:"AcceptedMillis,omitempty" xml:"AcceptedMillis,omitempty"`
+	CreatedMillis  *int64  `json:"CreatedMillis,omitempty" xml:"CreatedMillis,omitempty"`
 	OrderId        *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OrderState     *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	RequiredCount  *int64  `json:"RequiredCount,omitempty" xml:"RequiredCount,omitempty"`
+	TupleType      *string `json:"TupleType,omitempty" xml:"TupleType,omitempty"`
 }
 
 func (s ListGatewayTupleOrdersResponseBodyDataList) String() string {
@@ -6974,23 +6000,13 @@ func (s ListGatewayTupleOrdersResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
-func (s *ListGatewayTupleOrdersResponseBodyDataList) SetRequiredCount(v int64) *ListGatewayTupleOrdersResponseBodyDataList {
-	s.RequiredCount = &v
+func (s *ListGatewayTupleOrdersResponseBodyDataList) SetAcceptedMillis(v int64) *ListGatewayTupleOrdersResponseBodyDataList {
+	s.AcceptedMillis = &v
 	return s
 }
 
 func (s *ListGatewayTupleOrdersResponseBodyDataList) SetCreatedMillis(v int64) *ListGatewayTupleOrdersResponseBodyDataList {
 	s.CreatedMillis = &v
-	return s
-}
-
-func (s *ListGatewayTupleOrdersResponseBodyDataList) SetTupleType(v string) *ListGatewayTupleOrdersResponseBodyDataList {
-	s.TupleType = &v
-	return s
-}
-
-func (s *ListGatewayTupleOrdersResponseBodyDataList) SetAcceptedMillis(v int64) *ListGatewayTupleOrdersResponseBodyDataList {
-	s.AcceptedMillis = &v
 	return s
 }
 
@@ -7004,9 +6020,20 @@ func (s *ListGatewayTupleOrdersResponseBodyDataList) SetOrderState(v string) *Li
 	return s
 }
 
+func (s *ListGatewayTupleOrdersResponseBodyDataList) SetRequiredCount(v int64) *ListGatewayTupleOrdersResponseBodyDataList {
+	s.RequiredCount = &v
+	return s
+}
+
+func (s *ListGatewayTupleOrdersResponseBodyDataList) SetTupleType(v string) *ListGatewayTupleOrdersResponseBodyDataList {
+	s.TupleType = &v
+	return s
+}
+
 type ListGatewayTupleOrdersResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGatewayTupleOrdersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGatewayTupleOrdersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListGatewayTupleOrdersResponse) String() string {
@@ -7022,525 +6049,468 @@ func (s *ListGatewayTupleOrdersResponse) SetHeaders(v map[string]*string) *ListG
 	return s
 }
 
+func (s *ListGatewayTupleOrdersResponse) SetStatusCode(v int32) *ListGatewayTupleOrdersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListGatewayTupleOrdersResponse) SetBody(v *ListGatewayTupleOrdersResponseBody) *ListGatewayTupleOrdersResponse {
 	s.Body = v
 	return s
 }
 
-type ListNodeGroupsRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	FuzzyName     *string `json:"FuzzyName,omitempty" xml:"FuzzyName,omitempty"`
-	FuzzyJoinEui  *string `json:"FuzzyJoinEui,omitempty" xml:"FuzzyJoinEui,omitempty"`
-	FuzzyDevEui   *string `json:"FuzzyDevEui,omitempty" xml:"FuzzyDevEui,omitempty"`
-	Offset        *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Limit         *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	SortingField  *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
-	Ascending     *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+type ListGatewaysRequest struct {
+	Ascending           *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	FuzzyCity           *string `json:"FuzzyCity,omitempty" xml:"FuzzyCity,omitempty"`
+	FuzzyGwEui          *string `json:"FuzzyGwEui,omitempty" xml:"FuzzyGwEui,omitempty"`
+	FuzzyName           *string `json:"FuzzyName,omitempty" xml:"FuzzyName,omitempty"`
+	IotInstanceId       *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	IsEnabled           *bool   `json:"IsEnabled,omitempty" xml:"IsEnabled,omitempty"`
+	Limit               *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Offset              *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	OnlineState         *string `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
+	SortingField        *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 }
 
-func (s ListNodeGroupsRequest) String() string {
+func (s ListGatewaysRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNodeGroupsRequest) GoString() string {
+func (s ListGatewaysRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeGroupsRequest) SetIotInstanceId(v string) *ListNodeGroupsRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *ListNodeGroupsRequest) SetFuzzyName(v string) *ListNodeGroupsRequest {
-	s.FuzzyName = &v
-	return s
-}
-
-func (s *ListNodeGroupsRequest) SetFuzzyJoinEui(v string) *ListNodeGroupsRequest {
-	s.FuzzyJoinEui = &v
-	return s
-}
-
-func (s *ListNodeGroupsRequest) SetFuzzyDevEui(v string) *ListNodeGroupsRequest {
-	s.FuzzyDevEui = &v
-	return s
-}
-
-func (s *ListNodeGroupsRequest) SetOffset(v int64) *ListNodeGroupsRequest {
-	s.Offset = &v
-	return s
-}
-
-func (s *ListNodeGroupsRequest) SetLimit(v int64) *ListNodeGroupsRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListNodeGroupsRequest) SetSortingField(v string) *ListNodeGroupsRequest {
-	s.SortingField = &v
-	return s
-}
-
-func (s *ListNodeGroupsRequest) SetAscending(v bool) *ListNodeGroupsRequest {
+func (s *ListGatewaysRequest) SetAscending(v bool) *ListGatewaysRequest {
 	s.Ascending = &v
 	return s
 }
 
-type ListNodeGroupsResponseBody struct {
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ListNodeGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListNodeGroupsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNodeGroupsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListNodeGroupsResponseBody) SetRequestId(v string) *ListNodeGroupsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBody) SetData(v *ListNodeGroupsResponseBodyData) *ListNodeGroupsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBody) SetSuccess(v bool) *ListNodeGroupsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListNodeGroupsResponseBodyData struct {
-	List       []*ListNodeGroupsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListNodeGroupsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNodeGroupsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListNodeGroupsResponseBodyData) SetList(v []*ListNodeGroupsResponseBodyDataList) *ListNodeGroupsResponseBodyData {
-	s.List = v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyData) SetTotalCount(v int64) *ListNodeGroupsResponseBodyData {
-	s.TotalCount = &v
-	return s
-}
-
-type ListNodeGroupsResponseBodyDataList struct {
-	RxMonthSum                  *int64                                                `json:"RxMonthSum,omitempty" xml:"RxMonthSum,omitempty"`
-	DataDispatchConfig          *ListNodeGroupsResponseBodyDataListDataDispatchConfig `json:"DataDispatchConfig,omitempty" xml:"DataDispatchConfig,omitempty" type:"Struct"`
-	NodeGroupName               *string                                               `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	JoinPermissionOwnerAliyunId *string                                               `json:"JoinPermissionOwnerAliyunId,omitempty" xml:"JoinPermissionOwnerAliyunId,omitempty"`
-	TxMonthSum                  *int64                                                `json:"TxMonthSum,omitempty" xml:"TxMonthSum,omitempty"`
-	FreqBandPlanGroupId         *int64                                                `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	TxDailySum                  *int64                                                `json:"TxDailySum,omitempty" xml:"TxDailySum,omitempty"`
-	JoinPermissionEnabled       *bool                                                 `json:"JoinPermissionEnabled,omitempty" xml:"JoinPermissionEnabled,omitempty"`
-	JoinPermissionId            *string                                               `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
-	ClassMode                   *string                                               `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	NodeGroupId                 *string                                               `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	DataDispatchEnabled         *bool                                                 `json:"DataDispatchEnabled,omitempty" xml:"DataDispatchEnabled,omitempty"`
-	Locks                       []*ListNodeGroupsResponseBodyDataListLocks            `json:"Locks,omitempty" xml:"Locks,omitempty" type:"Repeated"`
-	RxDailySum                  *int64                                                `json:"RxDailySum,omitempty" xml:"RxDailySum,omitempty"`
-	JoinEui                     *string                                               `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
-	CreateMillis                *int64                                                `json:"CreateMillis,omitempty" xml:"CreateMillis,omitempty"`
-	JoinPermissionType          *string                                               `json:"JoinPermissionType,omitempty" xml:"JoinPermissionType,omitempty"`
-	NodesCnt                    *int64                                                `json:"NodesCnt,omitempty" xml:"NodesCnt,omitempty"`
-	JoinPermissionName          *string                                               `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
-}
-
-func (s ListNodeGroupsResponseBodyDataList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNodeGroupsResponseBodyDataList) GoString() string {
-	return s.String()
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetRxMonthSum(v int64) *ListNodeGroupsResponseBodyDataList {
-	s.RxMonthSum = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetDataDispatchConfig(v *ListNodeGroupsResponseBodyDataListDataDispatchConfig) *ListNodeGroupsResponseBodyDataList {
-	s.DataDispatchConfig = v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetNodeGroupName(v string) *ListNodeGroupsResponseBodyDataList {
-	s.NodeGroupName = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetJoinPermissionOwnerAliyunId(v string) *ListNodeGroupsResponseBodyDataList {
-	s.JoinPermissionOwnerAliyunId = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetTxMonthSum(v int64) *ListNodeGroupsResponseBodyDataList {
-	s.TxMonthSum = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetFreqBandPlanGroupId(v int64) *ListNodeGroupsResponseBodyDataList {
+func (s *ListGatewaysRequest) SetFreqBandPlanGroupId(v int64) *ListGatewaysRequest {
 	s.FreqBandPlanGroupId = &v
 	return s
 }
 
-func (s *ListNodeGroupsResponseBodyDataList) SetTxDailySum(v int64) *ListNodeGroupsResponseBodyDataList {
-	s.TxDailySum = &v
+func (s *ListGatewaysRequest) SetFuzzyCity(v string) *ListGatewaysRequest {
+	s.FuzzyCity = &v
 	return s
 }
 
-func (s *ListNodeGroupsResponseBodyDataList) SetJoinPermissionEnabled(v bool) *ListNodeGroupsResponseBodyDataList {
-	s.JoinPermissionEnabled = &v
+func (s *ListGatewaysRequest) SetFuzzyGwEui(v string) *ListGatewaysRequest {
+	s.FuzzyGwEui = &v
 	return s
 }
 
-func (s *ListNodeGroupsResponseBodyDataList) SetJoinPermissionId(v string) *ListNodeGroupsResponseBodyDataList {
-	s.JoinPermissionId = &v
+func (s *ListGatewaysRequest) SetFuzzyName(v string) *ListGatewaysRequest {
+	s.FuzzyName = &v
 	return s
 }
 
-func (s *ListNodeGroupsResponseBodyDataList) SetClassMode(v string) *ListNodeGroupsResponseBodyDataList {
-	s.ClassMode = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetNodeGroupId(v string) *ListNodeGroupsResponseBodyDataList {
-	s.NodeGroupId = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetDataDispatchEnabled(v bool) *ListNodeGroupsResponseBodyDataList {
-	s.DataDispatchEnabled = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetLocks(v []*ListNodeGroupsResponseBodyDataListLocks) *ListNodeGroupsResponseBodyDataList {
-	s.Locks = v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetRxDailySum(v int64) *ListNodeGroupsResponseBodyDataList {
-	s.RxDailySum = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetJoinEui(v string) *ListNodeGroupsResponseBodyDataList {
-	s.JoinEui = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetCreateMillis(v int64) *ListNodeGroupsResponseBodyDataList {
-	s.CreateMillis = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetJoinPermissionType(v string) *ListNodeGroupsResponseBodyDataList {
-	s.JoinPermissionType = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetNodesCnt(v int64) *ListNodeGroupsResponseBodyDataList {
-	s.NodesCnt = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataList) SetJoinPermissionName(v string) *ListNodeGroupsResponseBodyDataList {
-	s.JoinPermissionName = &v
-	return s
-}
-
-type ListNodeGroupsResponseBodyDataListDataDispatchConfig struct {
-	IotProduct  *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct `json:"IotProduct,omitempty" xml:"IotProduct,omitempty" type:"Struct"`
-	Destination *string                                                         `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	OnsTopics   *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics  `json:"OnsTopics,omitempty" xml:"OnsTopics,omitempty" type:"Struct"`
-}
-
-func (s ListNodeGroupsResponseBodyDataListDataDispatchConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNodeGroupsResponseBodyDataListDataDispatchConfig) GoString() string {
-	return s.String()
-}
-
-func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfig) SetIotProduct(v *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct) *ListNodeGroupsResponseBodyDataListDataDispatchConfig {
-	s.IotProduct = v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfig) SetDestination(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfig {
-	s.Destination = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfig) SetOnsTopics(v *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics) *ListNodeGroupsResponseBodyDataListDataDispatchConfig {
-	s.OnsTopics = v
-	return s
-}
-
-type ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct struct {
-	ProductKey  *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	DebugSwitch *bool   `json:"DebugSwitch,omitempty" xml:"DebugSwitch,omitempty"`
-}
-
-func (s ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct) GoString() string {
-	return s.String()
-}
-
-func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct) SetProductKey(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct {
-	s.ProductKey = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct) SetProductName(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct {
-	s.ProductName = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct) SetProductType(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct {
-	s.ProductType = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct) SetDebugSwitch(v bool) *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct {
-	s.DebugSwitch = &v
-	return s
-}
-
-type ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics struct {
-	UplinkTopic        *string `json:"UplinkTopic,omitempty" xml:"UplinkTopic,omitempty"`
-	DownlinkTopic      *string `json:"DownlinkTopic,omitempty" xml:"DownlinkTopic,omitempty"`
-	UplinkRegionName   *string `json:"UplinkRegionName,omitempty" xml:"UplinkRegionName,omitempty"`
-	DownlinkRegionName *string `json:"DownlinkRegionName,omitempty" xml:"DownlinkRegionName,omitempty"`
-}
-
-func (s ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics) GoString() string {
-	return s.String()
-}
-
-func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics) SetUplinkTopic(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics {
-	s.UplinkTopic = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics) SetDownlinkTopic(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics {
-	s.DownlinkTopic = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics) SetUplinkRegionName(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics {
-	s.UplinkRegionName = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics) SetDownlinkRegionName(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics {
-	s.DownlinkRegionName = &v
-	return s
-}
-
-type ListNodeGroupsResponseBodyDataListLocks struct {
-	LockId       *string `json:"LockId,omitempty" xml:"LockId,omitempty"`
-	LockType     *string `json:"LockType,omitempty" xml:"LockType,omitempty"`
-	CreateMillis *int64  `json:"CreateMillis,omitempty" xml:"CreateMillis,omitempty"`
-	Enabled      *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-}
-
-func (s ListNodeGroupsResponseBodyDataListLocks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNodeGroupsResponseBodyDataListLocks) GoString() string {
-	return s.String()
-}
-
-func (s *ListNodeGroupsResponseBodyDataListLocks) SetLockId(v string) *ListNodeGroupsResponseBodyDataListLocks {
-	s.LockId = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataListLocks) SetLockType(v string) *ListNodeGroupsResponseBodyDataListLocks {
-	s.LockType = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataListLocks) SetCreateMillis(v int64) *ListNodeGroupsResponseBodyDataListLocks {
-	s.CreateMillis = &v
-	return s
-}
-
-func (s *ListNodeGroupsResponseBodyDataListLocks) SetEnabled(v bool) *ListNodeGroupsResponseBodyDataListLocks {
-	s.Enabled = &v
-	return s
-}
-
-type ListNodeGroupsResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNodeGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListNodeGroupsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNodeGroupsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListNodeGroupsResponse) SetHeaders(v map[string]*string) *ListNodeGroupsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListNodeGroupsResponse) SetBody(v *ListNodeGroupsResponseBody) *ListNodeGroupsResponse {
-	s.Body = v
-	return s
-}
-
-type ListNodeGroupsPacketStatRequest struct {
-	IotInstanceId   *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	BeginMillis     *int64    `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
-	EndMillis       *int64    `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
-	NodeGroupIdList []*string `json:"NodeGroupIdList,omitempty" xml:"NodeGroupIdList,omitempty" type:"Repeated"`
-}
-
-func (s ListNodeGroupsPacketStatRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNodeGroupsPacketStatRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListNodeGroupsPacketStatRequest) SetIotInstanceId(v string) *ListNodeGroupsPacketStatRequest {
+func (s *ListGatewaysRequest) SetIotInstanceId(v string) *ListGatewaysRequest {
 	s.IotInstanceId = &v
 	return s
 }
 
-func (s *ListNodeGroupsPacketStatRequest) SetBeginMillis(v int64) *ListNodeGroupsPacketStatRequest {
-	s.BeginMillis = &v
+func (s *ListGatewaysRequest) SetIsEnabled(v bool) *ListGatewaysRequest {
+	s.IsEnabled = &v
 	return s
 }
 
-func (s *ListNodeGroupsPacketStatRequest) SetEndMillis(v int64) *ListNodeGroupsPacketStatRequest {
-	s.EndMillis = &v
+func (s *ListGatewaysRequest) SetLimit(v int64) *ListGatewaysRequest {
+	s.Limit = &v
 	return s
 }
 
-func (s *ListNodeGroupsPacketStatRequest) SetNodeGroupIdList(v []*string) *ListNodeGroupsPacketStatRequest {
-	s.NodeGroupIdList = v
+func (s *ListGatewaysRequest) SetOffset(v int64) *ListGatewaysRequest {
+	s.Offset = &v
 	return s
 }
 
-type ListNodeGroupsPacketStatResponseBody struct {
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      []*ListNodeGroupsPacketStatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+func (s *ListGatewaysRequest) SetOnlineState(v string) *ListGatewaysRequest {
+	s.OnlineState = &v
+	return s
 }
 
-func (s ListNodeGroupsPacketStatResponseBody) String() string {
+func (s *ListGatewaysRequest) SetSortingField(v string) *ListGatewaysRequest {
+	s.SortingField = &v
+	return s
+}
+
+type ListGatewaysResponseBody struct {
+	Data      *ListGatewaysResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListGatewaysResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNodeGroupsPacketStatResponseBody) GoString() string {
+func (s ListGatewaysResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeGroupsPacketStatResponseBody) SetRequestId(v string) *ListNodeGroupsPacketStatResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListNodeGroupsPacketStatResponseBody) SetData(v []*ListNodeGroupsPacketStatResponseBodyData) *ListNodeGroupsPacketStatResponseBody {
+func (s *ListGatewaysResponseBody) SetData(v *ListGatewaysResponseBodyData) *ListGatewaysResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *ListNodeGroupsPacketStatResponseBody) SetSuccess(v bool) *ListNodeGroupsPacketStatResponseBody {
+func (s *ListGatewaysResponseBody) SetRequestId(v string) *ListGatewaysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBody) SetSuccess(v bool) *ListGatewaysResponseBody {
 	s.Success = &v
 	return s
 }
 
-type ListNodeGroupsPacketStatResponseBodyData struct {
-	DownlinkCount *int32  `json:"DownlinkCount,omitempty" xml:"DownlinkCount,omitempty"`
-	UplinkCount   *int32  `json:"UplinkCount,omitempty" xml:"UplinkCount,omitempty"`
-	NodeGroupId   *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+type ListGatewaysResponseBodyData struct {
+	List       []*ListGatewaysResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	TotalCount *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
-func (s ListNodeGroupsPacketStatResponseBodyData) String() string {
+func (s ListGatewaysResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNodeGroupsPacketStatResponseBodyData) GoString() string {
+func (s ListGatewaysResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeGroupsPacketStatResponseBodyData) SetDownlinkCount(v int32) *ListNodeGroupsPacketStatResponseBodyData {
-	s.DownlinkCount = &v
+func (s *ListGatewaysResponseBodyData) SetList(v []*ListGatewaysResponseBodyDataList) *ListGatewaysResponseBodyData {
+	s.List = v
 	return s
 }
 
-func (s *ListNodeGroupsPacketStatResponseBodyData) SetUplinkCount(v int32) *ListNodeGroupsPacketStatResponseBodyData {
-	s.UplinkCount = &v
+func (s *ListGatewaysResponseBodyData) SetTotalCount(v int64) *ListGatewaysResponseBodyData {
+	s.TotalCount = &v
 	return s
 }
 
-func (s *ListNodeGroupsPacketStatResponseBodyData) SetNodeGroupId(v string) *ListNodeGroupsPacketStatResponseBodyData {
-	s.NodeGroupId = &v
-	return s
+type ListGatewaysResponseBodyDataList struct {
+	Address                  *string  `json:"Address,omitempty" xml:"Address,omitempty"`
+	AddressCode              *int64   `json:"AddressCode,omitempty" xml:"AddressCode,omitempty"`
+	AuthTypes                *string  `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty"`
+	ChargeStatus             *string  `json:"ChargeStatus,omitempty" xml:"ChargeStatus,omitempty"`
+	City                     *string  `json:"City,omitempty" xml:"City,omitempty"`
+	ClassBSupported          *bool    `json:"ClassBSupported,omitempty" xml:"ClassBSupported,omitempty"`
+	ClassBWorking            *bool    `json:"ClassBWorking,omitempty" xml:"ClassBWorking,omitempty"`
+	CommunicationMode        *string  `json:"CommunicationMode,omitempty" xml:"CommunicationMode,omitempty"`
+	Description              *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	District                 *string  `json:"District,omitempty" xml:"District,omitempty"`
+	EmbeddedNsId             *string  `json:"EmbeddedNsId,omitempty" xml:"EmbeddedNsId,omitempty"`
+	Enabled                  *bool    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	FreqBandPlanGroupId      *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	GisCoordinateSystem      *string  `json:"GisCoordinateSystem,omitempty" xml:"GisCoordinateSystem,omitempty"`
+	GwEui                    *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	Latitude                 *float32 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	Longitude                *float32 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	Name                     *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	OnlineState              *string  `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
+	OnlineStateChangedMillis *int64   `json:"OnlineStateChangedMillis,omitempty" xml:"OnlineStateChangedMillis,omitempty"`
+	TimeCorrectable          *bool    `json:"TimeCorrectable,omitempty" xml:"TimeCorrectable,omitempty"`
 }
 
-type ListNodeGroupsPacketStatResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNodeGroupsPacketStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListNodeGroupsPacketStatResponse) String() string {
+func (s ListGatewaysResponseBodyDataList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNodeGroupsPacketStatResponse) GoString() string {
+func (s ListGatewaysResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeGroupsPacketStatResponse) SetHeaders(v map[string]*string) *ListNodeGroupsPacketStatResponse {
+func (s *ListGatewaysResponseBodyDataList) SetAddress(v string) *ListGatewaysResponseBodyDataList {
+	s.Address = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetAddressCode(v int64) *ListGatewaysResponseBodyDataList {
+	s.AddressCode = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetAuthTypes(v string) *ListGatewaysResponseBodyDataList {
+	s.AuthTypes = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetChargeStatus(v string) *ListGatewaysResponseBodyDataList {
+	s.ChargeStatus = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetCity(v string) *ListGatewaysResponseBodyDataList {
+	s.City = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetClassBSupported(v bool) *ListGatewaysResponseBodyDataList {
+	s.ClassBSupported = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetClassBWorking(v bool) *ListGatewaysResponseBodyDataList {
+	s.ClassBWorking = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetCommunicationMode(v string) *ListGatewaysResponseBodyDataList {
+	s.CommunicationMode = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetDescription(v string) *ListGatewaysResponseBodyDataList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetDistrict(v string) *ListGatewaysResponseBodyDataList {
+	s.District = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetEmbeddedNsId(v string) *ListGatewaysResponseBodyDataList {
+	s.EmbeddedNsId = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetEnabled(v bool) *ListGatewaysResponseBodyDataList {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetFreqBandPlanGroupId(v int64) *ListGatewaysResponseBodyDataList {
+	s.FreqBandPlanGroupId = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetGisCoordinateSystem(v string) *ListGatewaysResponseBodyDataList {
+	s.GisCoordinateSystem = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetGwEui(v string) *ListGatewaysResponseBodyDataList {
+	s.GwEui = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetLatitude(v float32) *ListGatewaysResponseBodyDataList {
+	s.Latitude = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetLongitude(v float32) *ListGatewaysResponseBodyDataList {
+	s.Longitude = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetName(v string) *ListGatewaysResponseBodyDataList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetOnlineState(v string) *ListGatewaysResponseBodyDataList {
+	s.OnlineState = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetOnlineStateChangedMillis(v int64) *ListGatewaysResponseBodyDataList {
+	s.OnlineStateChangedMillis = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataList) SetTimeCorrectable(v bool) *ListGatewaysResponseBodyDataList {
+	s.TimeCorrectable = &v
+	return s
+}
+
+type ListGatewaysResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGatewaysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGatewaysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewaysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysResponse) SetHeaders(v map[string]*string) *ListGatewaysResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ListNodeGroupsPacketStatResponse) SetBody(v *ListNodeGroupsPacketStatResponseBody) *ListNodeGroupsPacketStatResponse {
+func (s *ListGatewaysResponse) SetStatusCode(v int32) *ListGatewaysResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGatewaysResponse) SetBody(v *ListGatewaysResponseBody) *ListGatewaysResponse {
+	s.Body = v
+	return s
+}
+
+type ListGatewaysGisInfoRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s ListGatewaysGisInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewaysGisInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysGisInfoRequest) SetIotInstanceId(v string) *ListGatewaysGisInfoRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type ListGatewaysGisInfoResponseBody struct {
+	Data      []*ListGatewaysGisInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListGatewaysGisInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewaysGisInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysGisInfoResponseBody) SetData(v []*ListGatewaysGisInfoResponseBodyData) *ListGatewaysGisInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListGatewaysGisInfoResponseBody) SetRequestId(v string) *ListGatewaysGisInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGatewaysGisInfoResponseBody) SetSuccess(v bool) *ListGatewaysGisInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListGatewaysGisInfoResponseBodyData struct {
+	AuthTypes           *string  `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty"`
+	ChargeStatus        *string  `json:"ChargeStatus,omitempty" xml:"ChargeStatus,omitempty"`
+	Enabled             *bool    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	FreqBandPlanGroupId *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	GisCoordinateSystem *string  `json:"GisCoordinateSystem,omitempty" xml:"GisCoordinateSystem,omitempty"`
+	GisSourceType       *string  `json:"GisSourceType,omitempty" xml:"GisSourceType,omitempty"`
+	GwEui               *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	Latitude            *float32 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	Longitude           *float32 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	Name                *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	OnlineState         *string  `json:"OnlineState,omitempty" xml:"OnlineState,omitempty"`
+}
+
+func (s ListGatewaysGisInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewaysGisInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysGisInfoResponseBodyData) SetAuthTypes(v string) *ListGatewaysGisInfoResponseBodyData {
+	s.AuthTypes = &v
+	return s
+}
+
+func (s *ListGatewaysGisInfoResponseBodyData) SetChargeStatus(v string) *ListGatewaysGisInfoResponseBodyData {
+	s.ChargeStatus = &v
+	return s
+}
+
+func (s *ListGatewaysGisInfoResponseBodyData) SetEnabled(v bool) *ListGatewaysGisInfoResponseBodyData {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListGatewaysGisInfoResponseBodyData) SetFreqBandPlanGroupId(v int64) *ListGatewaysGisInfoResponseBodyData {
+	s.FreqBandPlanGroupId = &v
+	return s
+}
+
+func (s *ListGatewaysGisInfoResponseBodyData) SetGisCoordinateSystem(v string) *ListGatewaysGisInfoResponseBodyData {
+	s.GisCoordinateSystem = &v
+	return s
+}
+
+func (s *ListGatewaysGisInfoResponseBodyData) SetGisSourceType(v string) *ListGatewaysGisInfoResponseBodyData {
+	s.GisSourceType = &v
+	return s
+}
+
+func (s *ListGatewaysGisInfoResponseBodyData) SetGwEui(v string) *ListGatewaysGisInfoResponseBodyData {
+	s.GwEui = &v
+	return s
+}
+
+func (s *ListGatewaysGisInfoResponseBodyData) SetLatitude(v float32) *ListGatewaysGisInfoResponseBodyData {
+	s.Latitude = &v
+	return s
+}
+
+func (s *ListGatewaysGisInfoResponseBodyData) SetLongitude(v float32) *ListGatewaysGisInfoResponseBodyData {
+	s.Longitude = &v
+	return s
+}
+
+func (s *ListGatewaysGisInfoResponseBodyData) SetName(v string) *ListGatewaysGisInfoResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGatewaysGisInfoResponseBodyData) SetOnlineState(v string) *ListGatewaysGisInfoResponseBodyData {
+	s.OnlineState = &v
+	return s
+}
+
+type ListGatewaysGisInfoResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGatewaysGisInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGatewaysGisInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewaysGisInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysGisInfoResponse) SetHeaders(v map[string]*string) *ListGatewaysGisInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGatewaysGisInfoResponse) SetStatusCode(v int32) *ListGatewaysGisInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGatewaysGisInfoResponse) SetBody(v *ListGatewaysGisInfoResponseBody) *ListGatewaysGisInfoResponse {
 	s.Body = v
 	return s
 }
 
 type ListNodeGroupTransferFlowStatsRequest struct {
-	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	NodeGroupId      *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	BeginMillis      *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
 	EndMillis        *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
+	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	NodeGroupId      *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	TimeIntervalUnit *string `json:"TimeIntervalUnit,omitempty" xml:"TimeIntervalUnit,omitempty"`
 }
 
@@ -7550,16 +6520,6 @@ func (s ListNodeGroupTransferFlowStatsRequest) String() string {
 
 func (s ListNodeGroupTransferFlowStatsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListNodeGroupTransferFlowStatsRequest) SetIotInstanceId(v string) *ListNodeGroupTransferFlowStatsRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *ListNodeGroupTransferFlowStatsRequest) SetNodeGroupId(v string) *ListNodeGroupTransferFlowStatsRequest {
-	s.NodeGroupId = &v
-	return s
 }
 
 func (s *ListNodeGroupTransferFlowStatsRequest) SetBeginMillis(v int64) *ListNodeGroupTransferFlowStatsRequest {
@@ -7572,14 +6532,24 @@ func (s *ListNodeGroupTransferFlowStatsRequest) SetEndMillis(v int64) *ListNodeG
 	return s
 }
 
+func (s *ListNodeGroupTransferFlowStatsRequest) SetIotInstanceId(v string) *ListNodeGroupTransferFlowStatsRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferFlowStatsRequest) SetNodeGroupId(v string) *ListNodeGroupTransferFlowStatsRequest {
+	s.NodeGroupId = &v
+	return s
+}
+
 func (s *ListNodeGroupTransferFlowStatsRequest) SetTimeIntervalUnit(v string) *ListNodeGroupTransferFlowStatsRequest {
 	s.TimeIntervalUnit = &v
 	return s
 }
 
 type ListNodeGroupTransferFlowStatsResponseBody struct {
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      []*ListNodeGroupTransferFlowStatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7591,13 +6561,13 @@ func (s ListNodeGroupTransferFlowStatsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeGroupTransferFlowStatsResponseBody) SetRequestId(v string) *ListNodeGroupTransferFlowStatsResponseBody {
-	s.RequestId = &v
+func (s *ListNodeGroupTransferFlowStatsResponseBody) SetData(v []*ListNodeGroupTransferFlowStatsResponseBodyData) *ListNodeGroupTransferFlowStatsResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListNodeGroupTransferFlowStatsResponseBody) SetData(v []*ListNodeGroupTransferFlowStatsResponseBodyData) *ListNodeGroupTransferFlowStatsResponseBody {
-	s.Data = v
+func (s *ListNodeGroupTransferFlowStatsResponseBody) SetRequestId(v string) *ListNodeGroupTransferFlowStatsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7608,8 +6578,8 @@ func (s *ListNodeGroupTransferFlowStatsResponseBody) SetSuccess(v bool) *ListNod
 
 type ListNodeGroupTransferFlowStatsResponseBodyData struct {
 	DownlinkCount *int64 `json:"DownlinkCount,omitempty" xml:"DownlinkCount,omitempty"`
-	UplinkCount   *int64 `json:"UplinkCount,omitempty" xml:"UplinkCount,omitempty"`
 	StatMillis    *int64 `json:"StatMillis,omitempty" xml:"StatMillis,omitempty"`
+	UplinkCount   *int64 `json:"UplinkCount,omitempty" xml:"UplinkCount,omitempty"`
 }
 
 func (s ListNodeGroupTransferFlowStatsResponseBodyData) String() string {
@@ -7625,19 +6595,20 @@ func (s *ListNodeGroupTransferFlowStatsResponseBodyData) SetDownlinkCount(v int6
 	return s
 }
 
-func (s *ListNodeGroupTransferFlowStatsResponseBodyData) SetUplinkCount(v int64) *ListNodeGroupTransferFlowStatsResponseBodyData {
-	s.UplinkCount = &v
-	return s
-}
-
 func (s *ListNodeGroupTransferFlowStatsResponseBodyData) SetStatMillis(v int64) *ListNodeGroupTransferFlowStatsResponseBodyData {
 	s.StatMillis = &v
 	return s
 }
 
+func (s *ListNodeGroupTransferFlowStatsResponseBodyData) SetUplinkCount(v int64) *ListNodeGroupTransferFlowStatsResponseBodyData {
+	s.UplinkCount = &v
+	return s
+}
+
 type ListNodeGroupTransferFlowStatsResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNodeGroupTransferFlowStatsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListNodeGroupTransferFlowStatsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListNodeGroupTransferFlowStatsResponse) String() string {
@@ -7653,22 +6624,27 @@ func (s *ListNodeGroupTransferFlowStatsResponse) SetHeaders(v map[string]*string
 	return s
 }
 
+func (s *ListNodeGroupTransferFlowStatsResponse) SetStatusCode(v int32) *ListNodeGroupTransferFlowStatsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListNodeGroupTransferFlowStatsResponse) SetBody(v *ListNodeGroupTransferFlowStatsResponseBody) *ListNodeGroupTransferFlowStatsResponse {
 	s.Body = v
 	return s
 }
 
 type ListNodeGroupTransferPacketsRequest struct {
+	Ascending     *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	BeginMillis   *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
+	Category      *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DevEui        *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	EndMillis     *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	NodeGroupId   *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	DevEui        *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	Category      *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	BeginMillis   *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
-	EndMillis     *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
 	SortingField  *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
-	Ascending     *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
 }
 
 func (s ListNodeGroupTransferPacketsRequest) String() string {
@@ -7679,13 +6655,18 @@ func (s ListNodeGroupTransferPacketsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeGroupTransferPacketsRequest) SetIotInstanceId(v string) *ListNodeGroupTransferPacketsRequest {
-	s.IotInstanceId = &v
+func (s *ListNodeGroupTransferPacketsRequest) SetAscending(v bool) *ListNodeGroupTransferPacketsRequest {
+	s.Ascending = &v
 	return s
 }
 
-func (s *ListNodeGroupTransferPacketsRequest) SetNodeGroupId(v string) *ListNodeGroupTransferPacketsRequest {
-	s.NodeGroupId = &v
+func (s *ListNodeGroupTransferPacketsRequest) SetBeginMillis(v int64) *ListNodeGroupTransferPacketsRequest {
+	s.BeginMillis = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferPacketsRequest) SetCategory(v string) *ListNodeGroupTransferPacketsRequest {
+	s.Category = &v
 	return s
 }
 
@@ -7694,8 +6675,18 @@ func (s *ListNodeGroupTransferPacketsRequest) SetDevEui(v string) *ListNodeGroup
 	return s
 }
 
-func (s *ListNodeGroupTransferPacketsRequest) SetCategory(v string) *ListNodeGroupTransferPacketsRequest {
-	s.Category = &v
+func (s *ListNodeGroupTransferPacketsRequest) SetEndMillis(v int64) *ListNodeGroupTransferPacketsRequest {
+	s.EndMillis = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferPacketsRequest) SetIotInstanceId(v string) *ListNodeGroupTransferPacketsRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferPacketsRequest) SetNodeGroupId(v string) *ListNodeGroupTransferPacketsRequest {
+	s.NodeGroupId = &v
 	return s
 }
 
@@ -7709,29 +6700,14 @@ func (s *ListNodeGroupTransferPacketsRequest) SetPageSize(v int32) *ListNodeGrou
 	return s
 }
 
-func (s *ListNodeGroupTransferPacketsRequest) SetBeginMillis(v int64) *ListNodeGroupTransferPacketsRequest {
-	s.BeginMillis = &v
-	return s
-}
-
-func (s *ListNodeGroupTransferPacketsRequest) SetEndMillis(v int64) *ListNodeGroupTransferPacketsRequest {
-	s.EndMillis = &v
-	return s
-}
-
 func (s *ListNodeGroupTransferPacketsRequest) SetSortingField(v string) *ListNodeGroupTransferPacketsRequest {
 	s.SortingField = &v
 	return s
 }
 
-func (s *ListNodeGroupTransferPacketsRequest) SetAscending(v bool) *ListNodeGroupTransferPacketsRequest {
-	s.Ascending = &v
-	return s
-}
-
 type ListNodeGroupTransferPacketsResponseBody struct {
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListNodeGroupTransferPacketsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7743,13 +6719,13 @@ func (s ListNodeGroupTransferPacketsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeGroupTransferPacketsResponseBody) SetRequestId(v string) *ListNodeGroupTransferPacketsResponseBody {
-	s.RequestId = &v
+func (s *ListNodeGroupTransferPacketsResponseBody) SetData(v *ListNodeGroupTransferPacketsResponseBodyData) *ListNodeGroupTransferPacketsResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListNodeGroupTransferPacketsResponseBody) SetData(v *ListNodeGroupTransferPacketsResponseBodyData) *ListNodeGroupTransferPacketsResponseBody {
-	s.Data = v
+func (s *ListNodeGroupTransferPacketsResponseBody) SetRequestId(v string) *ListNodeGroupTransferPacketsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7782,27 +6758,27 @@ func (s *ListNodeGroupTransferPacketsResponseBodyData) SetTotalCount(v int64) *L
 }
 
 type ListNodeGroupTransferPacketsResponseBodyDataList struct {
-	GwOwnerAliyunId         *string  `json:"GwOwnerAliyunId,omitempty" xml:"GwOwnerAliyunId,omitempty"`
-	LogMillis               *int64   `json:"LogMillis,omitempty" xml:"LogMillis,omitempty"`
 	Base64EncodedMacPayload *string  `json:"Base64EncodedMacPayload,omitempty" xml:"Base64EncodedMacPayload,omitempty"`
-	ProcessEvent            *string  `json:"ProcessEvent,omitempty" xml:"ProcessEvent,omitempty"`
-	FPort                   *int32   `json:"FPort,omitempty" xml:"FPort,omitempty"`
-	Lsnr                    *float32 `json:"Lsnr,omitempty" xml:"Lsnr,omitempty"`
-	FreqBandPlanGroupId     *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	HasData                 *bool    `json:"HasData,omitempty" xml:"HasData,omitempty"`
-	FcntUp                  *int64   `json:"FcntUp,omitempty" xml:"FcntUp,omitempty"`
 	ClassMode               *string  `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	MacPayloadSize          *int64   `json:"MacPayloadSize,omitempty" xml:"MacPayloadSize,omitempty"`
-	MessageType             *string  `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 	Datr                    *string  `json:"Datr,omitempty" xml:"Datr,omitempty"`
 	DevAddr                 *string  `json:"DevAddr,omitempty" xml:"DevAddr,omitempty"`
 	DevEui                  *string  `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	FPort                   *int32   `json:"FPort,omitempty" xml:"FPort,omitempty"`
 	FcntDown                *int64   `json:"FcntDown,omitempty" xml:"FcntDown,omitempty"`
-	MacCommandCIDs          *string  `json:"MacCommandCIDs,omitempty" xml:"MacCommandCIDs,omitempty"`
-	GwEui                   *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	Rssi                    *int32   `json:"Rssi,omitempty" xml:"Rssi,omitempty"`
-	HasMacCommand           *bool    `json:"HasMacCommand,omitempty" xml:"HasMacCommand,omitempty"`
+	FcntUp                  *int64   `json:"FcntUp,omitempty" xml:"FcntUp,omitempty"`
 	Freq                    *float32 `json:"Freq,omitempty" xml:"Freq,omitempty"`
+	FreqBandPlanGroupId     *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	GwEui                   *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	GwOwnerAliyunId         *string  `json:"GwOwnerAliyunId,omitempty" xml:"GwOwnerAliyunId,omitempty"`
+	HasData                 *bool    `json:"HasData,omitempty" xml:"HasData,omitempty"`
+	HasMacCommand           *bool    `json:"HasMacCommand,omitempty" xml:"HasMacCommand,omitempty"`
+	LogMillis               *int64   `json:"LogMillis,omitempty" xml:"LogMillis,omitempty"`
+	Lsnr                    *float32 `json:"Lsnr,omitempty" xml:"Lsnr,omitempty"`
+	MacCommandCIDs          *string  `json:"MacCommandCIDs,omitempty" xml:"MacCommandCIDs,omitempty"`
+	MacPayloadSize          *int64   `json:"MacPayloadSize,omitempty" xml:"MacPayloadSize,omitempty"`
+	MessageType             *string  `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	ProcessEvent            *string  `json:"ProcessEvent,omitempty" xml:"ProcessEvent,omitempty"`
+	Rssi                    *int32   `json:"Rssi,omitempty" xml:"Rssi,omitempty"`
 }
 
 func (s ListNodeGroupTransferPacketsResponseBodyDataList) String() string {
@@ -7813,63 +6789,13 @@ func (s ListNodeGroupTransferPacketsResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetGwOwnerAliyunId(v string) *ListNodeGroupTransferPacketsResponseBodyDataList {
-	s.GwOwnerAliyunId = &v
-	return s
-}
-
-func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetLogMillis(v int64) *ListNodeGroupTransferPacketsResponseBodyDataList {
-	s.LogMillis = &v
-	return s
-}
-
 func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetBase64EncodedMacPayload(v string) *ListNodeGroupTransferPacketsResponseBodyDataList {
 	s.Base64EncodedMacPayload = &v
 	return s
 }
 
-func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetProcessEvent(v string) *ListNodeGroupTransferPacketsResponseBodyDataList {
-	s.ProcessEvent = &v
-	return s
-}
-
-func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetFPort(v int32) *ListNodeGroupTransferPacketsResponseBodyDataList {
-	s.FPort = &v
-	return s
-}
-
-func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetLsnr(v float32) *ListNodeGroupTransferPacketsResponseBodyDataList {
-	s.Lsnr = &v
-	return s
-}
-
-func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetFreqBandPlanGroupId(v int64) *ListNodeGroupTransferPacketsResponseBodyDataList {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetHasData(v bool) *ListNodeGroupTransferPacketsResponseBodyDataList {
-	s.HasData = &v
-	return s
-}
-
-func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetFcntUp(v int64) *ListNodeGroupTransferPacketsResponseBodyDataList {
-	s.FcntUp = &v
-	return s
-}
-
 func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetClassMode(v string) *ListNodeGroupTransferPacketsResponseBodyDataList {
 	s.ClassMode = &v
-	return s
-}
-
-func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetMacPayloadSize(v int64) *ListNodeGroupTransferPacketsResponseBodyDataList {
-	s.MacPayloadSize = &v
-	return s
-}
-
-func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetMessageType(v string) *ListNodeGroupTransferPacketsResponseBodyDataList {
-	s.MessageType = &v
 	return s
 }
 
@@ -7888,28 +6814,18 @@ func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetDevEui(v string) *
 	return s
 }
 
+func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetFPort(v int32) *ListNodeGroupTransferPacketsResponseBodyDataList {
+	s.FPort = &v
+	return s
+}
+
 func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetFcntDown(v int64) *ListNodeGroupTransferPacketsResponseBodyDataList {
 	s.FcntDown = &v
 	return s
 }
 
-func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetMacCommandCIDs(v string) *ListNodeGroupTransferPacketsResponseBodyDataList {
-	s.MacCommandCIDs = &v
-	return s
-}
-
-func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetGwEui(v string) *ListNodeGroupTransferPacketsResponseBodyDataList {
-	s.GwEui = &v
-	return s
-}
-
-func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetRssi(v int32) *ListNodeGroupTransferPacketsResponseBodyDataList {
-	s.Rssi = &v
-	return s
-}
-
-func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetHasMacCommand(v bool) *ListNodeGroupTransferPacketsResponseBodyDataList {
-	s.HasMacCommand = &v
+func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetFcntUp(v int64) *ListNodeGroupTransferPacketsResponseBodyDataList {
+	s.FcntUp = &v
 	return s
 }
 
@@ -7918,9 +6834,70 @@ func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetFreq(v float32) *L
 	return s
 }
 
+func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetFreqBandPlanGroupId(v int64) *ListNodeGroupTransferPacketsResponseBodyDataList {
+	s.FreqBandPlanGroupId = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetGwEui(v string) *ListNodeGroupTransferPacketsResponseBodyDataList {
+	s.GwEui = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetGwOwnerAliyunId(v string) *ListNodeGroupTransferPacketsResponseBodyDataList {
+	s.GwOwnerAliyunId = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetHasData(v bool) *ListNodeGroupTransferPacketsResponseBodyDataList {
+	s.HasData = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetHasMacCommand(v bool) *ListNodeGroupTransferPacketsResponseBodyDataList {
+	s.HasMacCommand = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetLogMillis(v int64) *ListNodeGroupTransferPacketsResponseBodyDataList {
+	s.LogMillis = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetLsnr(v float32) *ListNodeGroupTransferPacketsResponseBodyDataList {
+	s.Lsnr = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetMacCommandCIDs(v string) *ListNodeGroupTransferPacketsResponseBodyDataList {
+	s.MacCommandCIDs = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetMacPayloadSize(v int64) *ListNodeGroupTransferPacketsResponseBodyDataList {
+	s.MacPayloadSize = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetMessageType(v string) *ListNodeGroupTransferPacketsResponseBodyDataList {
+	s.MessageType = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetProcessEvent(v string) *ListNodeGroupTransferPacketsResponseBodyDataList {
+	s.ProcessEvent = &v
+	return s
+}
+
+func (s *ListNodeGroupTransferPacketsResponseBodyDataList) SetRssi(v int32) *ListNodeGroupTransferPacketsResponseBodyDataList {
+	s.Rssi = &v
+	return s
+}
+
 type ListNodeGroupTransferPacketsResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNodeGroupTransferPacketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListNodeGroupTransferPacketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListNodeGroupTransferPacketsResponse) String() string {
@@ -7936,383 +6913,419 @@ func (s *ListNodeGroupTransferPacketsResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *ListNodeGroupTransferPacketsResponse) SetStatusCode(v int32) *ListNodeGroupTransferPacketsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListNodeGroupTransferPacketsResponse) SetBody(v *ListNodeGroupTransferPacketsResponseBody) *ListNodeGroupTransferPacketsResponse {
 	s.Body = v
 	return s
 }
 
-type ListNodesByNodeGroupIdRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	NodeGroupId   *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	FuzzyDevEui   *string `json:"FuzzyDevEui,omitempty" xml:"FuzzyDevEui,omitempty"`
-	Offset        *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Limit         *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	SortingField  *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
+type ListNodeGroupsRequest struct {
 	Ascending     *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	FuzzyDevEui   *string `json:"FuzzyDevEui,omitempty" xml:"FuzzyDevEui,omitempty"`
+	FuzzyJoinEui  *string `json:"FuzzyJoinEui,omitempty" xml:"FuzzyJoinEui,omitempty"`
+	FuzzyName     *string `json:"FuzzyName,omitempty" xml:"FuzzyName,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Limit         *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Offset        *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	SortingField  *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 }
 
-func (s ListNodesByNodeGroupIdRequest) String() string {
+func (s ListNodeGroupsRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNodesByNodeGroupIdRequest) GoString() string {
+func (s ListNodeGroupsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodesByNodeGroupIdRequest) SetIotInstanceId(v string) *ListNodesByNodeGroupIdRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *ListNodesByNodeGroupIdRequest) SetNodeGroupId(v string) *ListNodesByNodeGroupIdRequest {
-	s.NodeGroupId = &v
-	return s
-}
-
-func (s *ListNodesByNodeGroupIdRequest) SetFuzzyDevEui(v string) *ListNodesByNodeGroupIdRequest {
-	s.FuzzyDevEui = &v
-	return s
-}
-
-func (s *ListNodesByNodeGroupIdRequest) SetOffset(v int64) *ListNodesByNodeGroupIdRequest {
-	s.Offset = &v
-	return s
-}
-
-func (s *ListNodesByNodeGroupIdRequest) SetLimit(v int64) *ListNodesByNodeGroupIdRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListNodesByNodeGroupIdRequest) SetSortingField(v string) *ListNodesByNodeGroupIdRequest {
-	s.SortingField = &v
-	return s
-}
-
-func (s *ListNodesByNodeGroupIdRequest) SetAscending(v bool) *ListNodesByNodeGroupIdRequest {
+func (s *ListNodeGroupsRequest) SetAscending(v bool) *ListNodeGroupsRequest {
 	s.Ascending = &v
 	return s
 }
 
-type ListNodesByNodeGroupIdResponseBody struct {
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ListNodesByNodeGroupIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListNodesByNodeGroupIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNodesByNodeGroupIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListNodesByNodeGroupIdResponseBody) SetRequestId(v string) *ListNodesByNodeGroupIdResponseBody {
-	s.RequestId = &v
+func (s *ListNodeGroupsRequest) SetFuzzyDevEui(v string) *ListNodeGroupsRequest {
+	s.FuzzyDevEui = &v
 	return s
 }
 
-func (s *ListNodesByNodeGroupIdResponseBody) SetData(v *ListNodesByNodeGroupIdResponseBodyData) *ListNodesByNodeGroupIdResponseBody {
+func (s *ListNodeGroupsRequest) SetFuzzyJoinEui(v string) *ListNodeGroupsRequest {
+	s.FuzzyJoinEui = &v
+	return s
+}
+
+func (s *ListNodeGroupsRequest) SetFuzzyName(v string) *ListNodeGroupsRequest {
+	s.FuzzyName = &v
+	return s
+}
+
+func (s *ListNodeGroupsRequest) SetIotInstanceId(v string) *ListNodeGroupsRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ListNodeGroupsRequest) SetLimit(v int64) *ListNodeGroupsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListNodeGroupsRequest) SetOffset(v int64) *ListNodeGroupsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListNodeGroupsRequest) SetSortingField(v string) *ListNodeGroupsRequest {
+	s.SortingField = &v
+	return s
+}
+
+type ListNodeGroupsResponseBody struct {
+	Data      *ListNodeGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListNodeGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodeGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodeGroupsResponseBody) SetData(v *ListNodeGroupsResponseBodyData) *ListNodeGroupsResponseBody {
 	s.Data = v
 	return s
 }
 
-func (s *ListNodesByNodeGroupIdResponseBody) SetSuccess(v bool) *ListNodesByNodeGroupIdResponseBody {
+func (s *ListNodeGroupsResponseBody) SetRequestId(v string) *ListNodeGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBody) SetSuccess(v bool) *ListNodeGroupsResponseBody {
 	s.Success = &v
 	return s
 }
 
-type ListNodesByNodeGroupIdResponseBodyData struct {
-	List       []*ListNodesByNodeGroupIdResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+type ListNodeGroupsResponseBodyData struct {
+	List       []*ListNodeGroupsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
-func (s ListNodesByNodeGroupIdResponseBodyData) String() string {
+func (s ListNodeGroupsResponseBodyData) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNodesByNodeGroupIdResponseBodyData) GoString() string {
+func (s ListNodeGroupsResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodesByNodeGroupIdResponseBodyData) SetList(v []*ListNodesByNodeGroupIdResponseBodyDataList) *ListNodesByNodeGroupIdResponseBodyData {
+func (s *ListNodeGroupsResponseBodyData) SetList(v []*ListNodeGroupsResponseBodyDataList) *ListNodeGroupsResponseBodyData {
 	s.List = v
 	return s
 }
 
-func (s *ListNodesByNodeGroupIdResponseBodyData) SetTotalCount(v int64) *ListNodesByNodeGroupIdResponseBodyData {
+func (s *ListNodeGroupsResponseBodyData) SetTotalCount(v int64) *ListNodeGroupsResponseBodyData {
 	s.TotalCount = &v
 	return s
 }
 
-type ListNodesByNodeGroupIdResponseBodyDataList struct {
-	LastJoinMillis   *int64  `json:"LastJoinMillis,omitempty" xml:"LastJoinMillis,omitempty"`
-	DevAddr          *string `json:"DevAddr,omitempty" xml:"DevAddr,omitempty"`
-	MulticastGroupId *string `json:"MulticastGroupId,omitempty" xml:"MulticastGroupId,omitempty"`
-	DevEui           *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	NodeType         *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	JoinEui          *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
-	BoundMillis      *int64  `json:"BoundMillis,omitempty" xml:"BoundMillis,omitempty"`
-	ClassMode        *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	AuthTypes        *string `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty"`
-	Appkey           *string `json:"Appkey,omitempty" xml:"Appkey,omitempty"`
+type ListNodeGroupsResponseBodyDataList struct {
+	ClassMode                   *string                                               `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
+	CreateMillis                *int64                                                `json:"CreateMillis,omitempty" xml:"CreateMillis,omitempty"`
+	DataDispatchConfig          *ListNodeGroupsResponseBodyDataListDataDispatchConfig `json:"DataDispatchConfig,omitempty" xml:"DataDispatchConfig,omitempty" type:"Struct"`
+	DataDispatchEnabled         *bool                                                 `json:"DataDispatchEnabled,omitempty" xml:"DataDispatchEnabled,omitempty"`
+	FreqBandPlanGroupId         *int64                                                `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	JoinEui                     *string                                               `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
+	JoinPermissionEnabled       *bool                                                 `json:"JoinPermissionEnabled,omitempty" xml:"JoinPermissionEnabled,omitempty"`
+	JoinPermissionId            *string                                               `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
+	JoinPermissionName          *string                                               `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
+	JoinPermissionOwnerAliyunId *string                                               `json:"JoinPermissionOwnerAliyunId,omitempty" xml:"JoinPermissionOwnerAliyunId,omitempty"`
+	JoinPermissionType          *string                                               `json:"JoinPermissionType,omitempty" xml:"JoinPermissionType,omitempty"`
+	Locks                       []*ListNodeGroupsResponseBodyDataListLocks            `json:"Locks,omitempty" xml:"Locks,omitempty" type:"Repeated"`
+	NodeGroupId                 *string                                               `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupName               *string                                               `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	NodesCnt                    *int64                                                `json:"NodesCnt,omitempty" xml:"NodesCnt,omitempty"`
+	RxDailySum                  *int64                                                `json:"RxDailySum,omitempty" xml:"RxDailySum,omitempty"`
+	RxMonthSum                  *int64                                                `json:"RxMonthSum,omitempty" xml:"RxMonthSum,omitempty"`
+	TxDailySum                  *int64                                                `json:"TxDailySum,omitempty" xml:"TxDailySum,omitempty"`
+	TxMonthSum                  *int64                                                `json:"TxMonthSum,omitempty" xml:"TxMonthSum,omitempty"`
 }
 
-func (s ListNodesByNodeGroupIdResponseBodyDataList) String() string {
+func (s ListNodeGroupsResponseBodyDataList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNodesByNodeGroupIdResponseBodyDataList) GoString() string {
+func (s ListNodeGroupsResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetLastJoinMillis(v int64) *ListNodesByNodeGroupIdResponseBodyDataList {
-	s.LastJoinMillis = &v
+func (s *ListNodeGroupsResponseBodyDataList) SetClassMode(v string) *ListNodeGroupsResponseBodyDataList {
+	s.ClassMode = &v
 	return s
 }
 
-func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetDevAddr(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
-	s.DevAddr = &v
+func (s *ListNodeGroupsResponseBodyDataList) SetCreateMillis(v int64) *ListNodeGroupsResponseBodyDataList {
+	s.CreateMillis = &v
 	return s
 }
 
-func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetMulticastGroupId(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
-	s.MulticastGroupId = &v
+func (s *ListNodeGroupsResponseBodyDataList) SetDataDispatchConfig(v *ListNodeGroupsResponseBodyDataListDataDispatchConfig) *ListNodeGroupsResponseBodyDataList {
+	s.DataDispatchConfig = v
 	return s
 }
 
-func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetDevEui(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
-	s.DevEui = &v
+func (s *ListNodeGroupsResponseBodyDataList) SetDataDispatchEnabled(v bool) *ListNodeGroupsResponseBodyDataList {
+	s.DataDispatchEnabled = &v
 	return s
 }
 
-func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetNodeType(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
-	s.NodeType = &v
+func (s *ListNodeGroupsResponseBodyDataList) SetFreqBandPlanGroupId(v int64) *ListNodeGroupsResponseBodyDataList {
+	s.FreqBandPlanGroupId = &v
 	return s
 }
 
-func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetJoinEui(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
+func (s *ListNodeGroupsResponseBodyDataList) SetJoinEui(v string) *ListNodeGroupsResponseBodyDataList {
 	s.JoinEui = &v
 	return s
 }
 
-func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetBoundMillis(v int64) *ListNodesByNodeGroupIdResponseBodyDataList {
-	s.BoundMillis = &v
+func (s *ListNodeGroupsResponseBodyDataList) SetJoinPermissionEnabled(v bool) *ListNodeGroupsResponseBodyDataList {
+	s.JoinPermissionEnabled = &v
 	return s
 }
 
-func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetClassMode(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
-	s.ClassMode = &v
-	return s
-}
-
-func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetAuthTypes(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
-	s.AuthTypes = &v
-	return s
-}
-
-func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetAppkey(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
-	s.Appkey = &v
-	return s
-}
-
-type ListNodesByNodeGroupIdResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNodesByNodeGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListNodesByNodeGroupIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNodesByNodeGroupIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListNodesByNodeGroupIdResponse) SetHeaders(v map[string]*string) *ListNodesByNodeGroupIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListNodesByNodeGroupIdResponse) SetBody(v *ListNodesByNodeGroupIdResponseBody) *ListNodesByNodeGroupIdResponse {
-	s.Body = v
-	return s
-}
-
-type ListNodesByOwnedJoinPermissionIdRequest struct {
-	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	JoinPermissionId *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
-	FuzzyDevEui      *string `json:"FuzzyDevEui,omitempty" xml:"FuzzyDevEui,omitempty"`
-	Offset           *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Limit            *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	SortingField     *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
-	Ascending        *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
-}
-
-func (s ListNodesByOwnedJoinPermissionIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNodesByOwnedJoinPermissionIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListNodesByOwnedJoinPermissionIdRequest) SetIotInstanceId(v string) *ListNodesByOwnedJoinPermissionIdRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *ListNodesByOwnedJoinPermissionIdRequest) SetJoinPermissionId(v string) *ListNodesByOwnedJoinPermissionIdRequest {
+func (s *ListNodeGroupsResponseBodyDataList) SetJoinPermissionId(v string) *ListNodeGroupsResponseBodyDataList {
 	s.JoinPermissionId = &v
 	return s
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdRequest) SetFuzzyDevEui(v string) *ListNodesByOwnedJoinPermissionIdRequest {
-	s.FuzzyDevEui = &v
+func (s *ListNodeGroupsResponseBodyDataList) SetJoinPermissionName(v string) *ListNodeGroupsResponseBodyDataList {
+	s.JoinPermissionName = &v
 	return s
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdRequest) SetOffset(v int64) *ListNodesByOwnedJoinPermissionIdRequest {
-	s.Offset = &v
+func (s *ListNodeGroupsResponseBodyDataList) SetJoinPermissionOwnerAliyunId(v string) *ListNodeGroupsResponseBodyDataList {
+	s.JoinPermissionOwnerAliyunId = &v
 	return s
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdRequest) SetLimit(v int64) *ListNodesByOwnedJoinPermissionIdRequest {
-	s.Limit = &v
+func (s *ListNodeGroupsResponseBodyDataList) SetJoinPermissionType(v string) *ListNodeGroupsResponseBodyDataList {
+	s.JoinPermissionType = &v
 	return s
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdRequest) SetSortingField(v string) *ListNodesByOwnedJoinPermissionIdRequest {
-	s.SortingField = &v
+func (s *ListNodeGroupsResponseBodyDataList) SetLocks(v []*ListNodeGroupsResponseBodyDataListLocks) *ListNodeGroupsResponseBodyDataList {
+	s.Locks = v
 	return s
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdRequest) SetAscending(v bool) *ListNodesByOwnedJoinPermissionIdRequest {
-	s.Ascending = &v
+func (s *ListNodeGroupsResponseBodyDataList) SetNodeGroupId(v string) *ListNodeGroupsResponseBodyDataList {
+	s.NodeGroupId = &v
 	return s
 }
 
-type ListNodesByOwnedJoinPermissionIdResponseBody struct {
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *ListNodesByOwnedJoinPermissionIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+func (s *ListNodeGroupsResponseBodyDataList) SetNodeGroupName(v string) *ListNodeGroupsResponseBodyDataList {
+	s.NodeGroupName = &v
+	return s
 }
 
-func (s ListNodesByOwnedJoinPermissionIdResponseBody) String() string {
+func (s *ListNodeGroupsResponseBodyDataList) SetNodesCnt(v int64) *ListNodeGroupsResponseBodyDataList {
+	s.NodesCnt = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyDataList) SetRxDailySum(v int64) *ListNodeGroupsResponseBodyDataList {
+	s.RxDailySum = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyDataList) SetRxMonthSum(v int64) *ListNodeGroupsResponseBodyDataList {
+	s.RxMonthSum = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyDataList) SetTxDailySum(v int64) *ListNodeGroupsResponseBodyDataList {
+	s.TxDailySum = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyDataList) SetTxMonthSum(v int64) *ListNodeGroupsResponseBodyDataList {
+	s.TxMonthSum = &v
+	return s
+}
+
+type ListNodeGroupsResponseBodyDataListDataDispatchConfig struct {
+	Destination *string                                                         `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	IotProduct  *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct `json:"IotProduct,omitempty" xml:"IotProduct,omitempty" type:"Struct"`
+	OnsTopics   *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics  `json:"OnsTopics,omitempty" xml:"OnsTopics,omitempty" type:"Struct"`
+}
+
+func (s ListNodeGroupsResponseBodyDataListDataDispatchConfig) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNodesByOwnedJoinPermissionIdResponseBody) GoString() string {
+func (s ListNodeGroupsResponseBodyDataListDataDispatchConfig) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdResponseBody) SetRequestId(v string) *ListNodesByOwnedJoinPermissionIdResponseBody {
-	s.RequestId = &v
+func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfig) SetDestination(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfig {
+	s.Destination = &v
 	return s
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdResponseBody) SetData(v *ListNodesByOwnedJoinPermissionIdResponseBodyData) *ListNodesByOwnedJoinPermissionIdResponseBody {
-	s.Data = v
+func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfig) SetIotProduct(v *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct) *ListNodeGroupsResponseBodyDataListDataDispatchConfig {
+	s.IotProduct = v
 	return s
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdResponseBody) SetSuccess(v bool) *ListNodesByOwnedJoinPermissionIdResponseBody {
-	s.Success = &v
+func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfig) SetOnsTopics(v *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics) *ListNodeGroupsResponseBodyDataListDataDispatchConfig {
+	s.OnsTopics = v
 	return s
 }
 
-type ListNodesByOwnedJoinPermissionIdResponseBodyData struct {
-	List       []*ListNodesByOwnedJoinPermissionIdResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	TotalCount *int64                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+type ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct struct {
+	DebugSwitch *bool   `json:"DebugSwitch,omitempty" xml:"DebugSwitch,omitempty"`
+	ProductKey  *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
-func (s ListNodesByOwnedJoinPermissionIdResponseBodyData) String() string {
+func (s ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNodesByOwnedJoinPermissionIdResponseBodyData) GoString() string {
+func (s ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdResponseBodyData) SetList(v []*ListNodesByOwnedJoinPermissionIdResponseBodyDataList) *ListNodesByOwnedJoinPermissionIdResponseBodyData {
-	s.List = v
+func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct) SetDebugSwitch(v bool) *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct {
+	s.DebugSwitch = &v
 	return s
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdResponseBodyData) SetTotalCount(v int64) *ListNodesByOwnedJoinPermissionIdResponseBodyData {
-	s.TotalCount = &v
+func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct) SetProductKey(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct {
+	s.ProductKey = &v
 	return s
 }
 
-type ListNodesByOwnedJoinPermissionIdResponseBodyDataList struct {
-	LastJoinMillis *int64  `json:"LastJoinMillis,omitempty" xml:"LastJoinMillis,omitempty"`
-	DevAddr        *string `json:"DevAddr,omitempty" xml:"DevAddr,omitempty"`
-	DevEui         *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	BoundMillis    *int64  `json:"BoundMillis,omitempty" xml:"BoundMillis,omitempty"`
-	ClassMode      *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
+func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct) SetProductName(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct {
+	s.ProductName = &v
+	return s
 }
 
-func (s ListNodesByOwnedJoinPermissionIdResponseBodyDataList) String() string {
+func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct) SetProductType(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfigIotProduct {
+	s.ProductType = &v
+	return s
+}
+
+type ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics struct {
+	DownlinkRegionName *string `json:"DownlinkRegionName,omitempty" xml:"DownlinkRegionName,omitempty"`
+	DownlinkTopic      *string `json:"DownlinkTopic,omitempty" xml:"DownlinkTopic,omitempty"`
+	UplinkRegionName   *string `json:"UplinkRegionName,omitempty" xml:"UplinkRegionName,omitempty"`
+	UplinkTopic        *string `json:"UplinkTopic,omitempty" xml:"UplinkTopic,omitempty"`
+}
+
+func (s ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNodesByOwnedJoinPermissionIdResponseBodyDataList) GoString() string {
+func (s ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdResponseBodyDataList) SetLastJoinMillis(v int64) *ListNodesByOwnedJoinPermissionIdResponseBodyDataList {
-	s.LastJoinMillis = &v
+func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics) SetDownlinkRegionName(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics {
+	s.DownlinkRegionName = &v
 	return s
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdResponseBodyDataList) SetDevAddr(v string) *ListNodesByOwnedJoinPermissionIdResponseBodyDataList {
-	s.DevAddr = &v
+func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics) SetDownlinkTopic(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics {
+	s.DownlinkTopic = &v
 	return s
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdResponseBodyDataList) SetDevEui(v string) *ListNodesByOwnedJoinPermissionIdResponseBodyDataList {
-	s.DevEui = &v
+func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics) SetUplinkRegionName(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics {
+	s.UplinkRegionName = &v
 	return s
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdResponseBodyDataList) SetBoundMillis(v int64) *ListNodesByOwnedJoinPermissionIdResponseBodyDataList {
-	s.BoundMillis = &v
+func (s *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics) SetUplinkTopic(v string) *ListNodeGroupsResponseBodyDataListDataDispatchConfigOnsTopics {
+	s.UplinkTopic = &v
 	return s
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdResponseBodyDataList) SetClassMode(v string) *ListNodesByOwnedJoinPermissionIdResponseBodyDataList {
-	s.ClassMode = &v
-	return s
+type ListNodeGroupsResponseBodyDataListLocks struct {
+	CreateMillis *int64  `json:"CreateMillis,omitempty" xml:"CreateMillis,omitempty"`
+	Enabled      *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	LockId       *string `json:"LockId,omitempty" xml:"LockId,omitempty"`
+	LockType     *string `json:"LockType,omitempty" xml:"LockType,omitempty"`
 }
 
-type ListNodesByOwnedJoinPermissionIdResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNodesByOwnedJoinPermissionIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListNodesByOwnedJoinPermissionIdResponse) String() string {
+func (s ListNodeGroupsResponseBodyDataListLocks) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNodesByOwnedJoinPermissionIdResponse) GoString() string {
+func (s ListNodeGroupsResponseBodyDataListLocks) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdResponse) SetHeaders(v map[string]*string) *ListNodesByOwnedJoinPermissionIdResponse {
+func (s *ListNodeGroupsResponseBodyDataListLocks) SetCreateMillis(v int64) *ListNodeGroupsResponseBodyDataListLocks {
+	s.CreateMillis = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyDataListLocks) SetEnabled(v bool) *ListNodeGroupsResponseBodyDataListLocks {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyDataListLocks) SetLockId(v string) *ListNodeGroupsResponseBodyDataListLocks {
+	s.LockId = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyDataListLocks) SetLockType(v string) *ListNodeGroupsResponseBodyDataListLocks {
+	s.LockType = &v
+	return s
+}
+
+type ListNodeGroupsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListNodeGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListNodeGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodeGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodeGroupsResponse) SetHeaders(v map[string]*string) *ListNodeGroupsResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ListNodesByOwnedJoinPermissionIdResponse) SetBody(v *ListNodesByOwnedJoinPermissionIdResponseBody) *ListNodesByOwnedJoinPermissionIdResponse {
+func (s *ListNodeGroupsResponse) SetStatusCode(v int32) *ListNodeGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponse) SetBody(v *ListNodeGroupsResponseBody) *ListNodeGroupsResponse {
 	s.Body = v
 	return s
 }
 
 type ListNodeTransferPacketPathsRequest struct {
-	IotInstanceId           *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	DevEui                  *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
 	Base64EncodedMacPayload *string `json:"Base64EncodedMacPayload,omitempty" xml:"Base64EncodedMacPayload,omitempty"`
+	DevEui                  *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	IotInstanceId           *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	LogMillis               *int64  `json:"LogMillis,omitempty" xml:"LogMillis,omitempty"`
 	PageNumber              *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -8326,8 +7339,8 @@ func (s ListNodeTransferPacketPathsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeTransferPacketPathsRequest) SetIotInstanceId(v string) *ListNodeTransferPacketPathsRequest {
-	s.IotInstanceId = &v
+func (s *ListNodeTransferPacketPathsRequest) SetBase64EncodedMacPayload(v string) *ListNodeTransferPacketPathsRequest {
+	s.Base64EncodedMacPayload = &v
 	return s
 }
 
@@ -8336,8 +7349,8 @@ func (s *ListNodeTransferPacketPathsRequest) SetDevEui(v string) *ListNodeTransf
 	return s
 }
 
-func (s *ListNodeTransferPacketPathsRequest) SetBase64EncodedMacPayload(v string) *ListNodeTransferPacketPathsRequest {
-	s.Base64EncodedMacPayload = &v
+func (s *ListNodeTransferPacketPathsRequest) SetIotInstanceId(v string) *ListNodeTransferPacketPathsRequest {
+	s.IotInstanceId = &v
 	return s
 }
 
@@ -8357,8 +7370,8 @@ func (s *ListNodeTransferPacketPathsRequest) SetPageSize(v int32) *ListNodeTrans
 }
 
 type ListNodeTransferPacketPathsResponseBody struct {
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListNodeTransferPacketPathsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8370,13 +7383,13 @@ func (s ListNodeTransferPacketPathsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeTransferPacketPathsResponseBody) SetRequestId(v string) *ListNodeTransferPacketPathsResponseBody {
-	s.RequestId = &v
+func (s *ListNodeTransferPacketPathsResponseBody) SetData(v *ListNodeTransferPacketPathsResponseBodyData) *ListNodeTransferPacketPathsResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListNodeTransferPacketPathsResponseBody) SetData(v *ListNodeTransferPacketPathsResponseBodyData) *ListNodeTransferPacketPathsResponseBody {
-	s.Data = v
+func (s *ListNodeTransferPacketPathsResponseBody) SetRequestId(v string) *ListNodeTransferPacketPathsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8411,8 +7424,8 @@ func (s *ListNodeTransferPacketPathsResponseBodyData) SetTotalCount(v int64) *Li
 type ListNodeTransferPacketPathsResponseBodyDataList struct {
 	BestPath *bool    `json:"BestPath,omitempty" xml:"BestPath,omitempty"`
 	DevEui   *string  `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	Lsnr     *float32 `json:"Lsnr,omitempty" xml:"Lsnr,omitempty"`
 	GwEui    *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	Lsnr     *float32 `json:"Lsnr,omitempty" xml:"Lsnr,omitempty"`
 	Rssi     *int32   `json:"Rssi,omitempty" xml:"Rssi,omitempty"`
 }
 
@@ -8434,13 +7447,13 @@ func (s *ListNodeTransferPacketPathsResponseBodyDataList) SetDevEui(v string) *L
 	return s
 }
 
-func (s *ListNodeTransferPacketPathsResponseBodyDataList) SetLsnr(v float32) *ListNodeTransferPacketPathsResponseBodyDataList {
-	s.Lsnr = &v
+func (s *ListNodeTransferPacketPathsResponseBodyDataList) SetGwEui(v string) *ListNodeTransferPacketPathsResponseBodyDataList {
+	s.GwEui = &v
 	return s
 }
 
-func (s *ListNodeTransferPacketPathsResponseBodyDataList) SetGwEui(v string) *ListNodeTransferPacketPathsResponseBodyDataList {
-	s.GwEui = &v
+func (s *ListNodeTransferPacketPathsResponseBodyDataList) SetLsnr(v float32) *ListNodeTransferPacketPathsResponseBodyDataList {
+	s.Lsnr = &v
 	return s
 }
 
@@ -8450,8 +7463,9 @@ func (s *ListNodeTransferPacketPathsResponseBodyDataList) SetRssi(v int32) *List
 }
 
 type ListNodeTransferPacketPathsResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNodeTransferPacketPathsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListNodeTransferPacketPathsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListNodeTransferPacketPathsResponse) String() string {
@@ -8467,21 +7481,26 @@ func (s *ListNodeTransferPacketPathsResponse) SetHeaders(v map[string]*string) *
 	return s
 }
 
+func (s *ListNodeTransferPacketPathsResponse) SetStatusCode(v int32) *ListNodeTransferPacketPathsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListNodeTransferPacketPathsResponse) SetBody(v *ListNodeTransferPacketPathsResponseBody) *ListNodeTransferPacketPathsResponse {
 	s.Body = v
 	return s
 }
 
 type ListNodeTransferPacketsRequest struct {
-	DevEui       *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	Ascending    *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	BeginMillis  *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
 	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DevEui       *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	EndMillis    *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
 	GwEui        *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
 	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	BeginMillis  *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
-	EndMillis    *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
 	SortingField *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
-	Ascending    *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
 }
 
 func (s ListNodeTransferPacketsRequest) String() string {
@@ -8492,13 +7511,28 @@ func (s ListNodeTransferPacketsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeTransferPacketsRequest) SetDevEui(v string) *ListNodeTransferPacketsRequest {
-	s.DevEui = &v
+func (s *ListNodeTransferPacketsRequest) SetAscending(v bool) *ListNodeTransferPacketsRequest {
+	s.Ascending = &v
+	return s
+}
+
+func (s *ListNodeTransferPacketsRequest) SetBeginMillis(v int64) *ListNodeTransferPacketsRequest {
+	s.BeginMillis = &v
 	return s
 }
 
 func (s *ListNodeTransferPacketsRequest) SetCategory(v string) *ListNodeTransferPacketsRequest {
 	s.Category = &v
+	return s
+}
+
+func (s *ListNodeTransferPacketsRequest) SetDevEui(v string) *ListNodeTransferPacketsRequest {
+	s.DevEui = &v
+	return s
+}
+
+func (s *ListNodeTransferPacketsRequest) SetEndMillis(v int64) *ListNodeTransferPacketsRequest {
+	s.EndMillis = &v
 	return s
 }
 
@@ -8517,29 +7551,14 @@ func (s *ListNodeTransferPacketsRequest) SetPageSize(v int32) *ListNodeTransferP
 	return s
 }
 
-func (s *ListNodeTransferPacketsRequest) SetBeginMillis(v int64) *ListNodeTransferPacketsRequest {
-	s.BeginMillis = &v
-	return s
-}
-
-func (s *ListNodeTransferPacketsRequest) SetEndMillis(v int64) *ListNodeTransferPacketsRequest {
-	s.EndMillis = &v
-	return s
-}
-
 func (s *ListNodeTransferPacketsRequest) SetSortingField(v string) *ListNodeTransferPacketsRequest {
 	s.SortingField = &v
 	return s
 }
 
-func (s *ListNodeTransferPacketsRequest) SetAscending(v bool) *ListNodeTransferPacketsRequest {
-	s.Ascending = &v
-	return s
-}
-
 type ListNodeTransferPacketsResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListNodeTransferPacketsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8551,13 +7570,13 @@ func (s ListNodeTransferPacketsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeTransferPacketsResponseBody) SetRequestId(v string) *ListNodeTransferPacketsResponseBody {
-	s.RequestId = &v
+func (s *ListNodeTransferPacketsResponseBody) SetData(v *ListNodeTransferPacketsResponseBodyData) *ListNodeTransferPacketsResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListNodeTransferPacketsResponseBody) SetData(v *ListNodeTransferPacketsResponseBodyData) *ListNodeTransferPacketsResponseBody {
-	s.Data = v
+func (s *ListNodeTransferPacketsResponseBody) SetRequestId(v string) *ListNodeTransferPacketsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8590,14 +7609,14 @@ func (s *ListNodeTransferPacketsResponseBodyData) SetTotalCount(v int64) *ListNo
 }
 
 type ListNodeTransferPacketsResponseBodyDataList struct {
-	LogMillis *int64   `json:"LogMillis,omitempty" xml:"LogMillis,omitempty"`
-	Datr      *string  `json:"Datr,omitempty" xml:"Datr,omitempty"`
-	Snr       *float32 `json:"Snr,omitempty" xml:"Snr,omitempty"`
-	DevEui    *string  `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	GwEui     *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
 	ClassMode *string  `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	Rssi      *int32   `json:"Rssi,omitempty" xml:"Rssi,omitempty"`
+	Datr      *string  `json:"Datr,omitempty" xml:"Datr,omitempty"`
+	DevEui    *string  `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
 	Freq      *float32 `json:"Freq,omitempty" xml:"Freq,omitempty"`
+	GwEui     *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	LogMillis *int64   `json:"LogMillis,omitempty" xml:"LogMillis,omitempty"`
+	Rssi      *int32   `json:"Rssi,omitempty" xml:"Rssi,omitempty"`
+	Snr       *float32 `json:"Snr,omitempty" xml:"Snr,omitempty"`
 }
 
 func (s ListNodeTransferPacketsResponseBodyDataList) String() string {
@@ -8608,8 +7627,8 @@ func (s ListNodeTransferPacketsResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeTransferPacketsResponseBodyDataList) SetLogMillis(v int64) *ListNodeTransferPacketsResponseBodyDataList {
-	s.LogMillis = &v
+func (s *ListNodeTransferPacketsResponseBodyDataList) SetClassMode(v string) *ListNodeTransferPacketsResponseBodyDataList {
+	s.ClassMode = &v
 	return s
 }
 
@@ -8618,28 +7637,8 @@ func (s *ListNodeTransferPacketsResponseBodyDataList) SetDatr(v string) *ListNod
 	return s
 }
 
-func (s *ListNodeTransferPacketsResponseBodyDataList) SetSnr(v float32) *ListNodeTransferPacketsResponseBodyDataList {
-	s.Snr = &v
-	return s
-}
-
 func (s *ListNodeTransferPacketsResponseBodyDataList) SetDevEui(v string) *ListNodeTransferPacketsResponseBodyDataList {
 	s.DevEui = &v
-	return s
-}
-
-func (s *ListNodeTransferPacketsResponseBodyDataList) SetGwEui(v string) *ListNodeTransferPacketsResponseBodyDataList {
-	s.GwEui = &v
-	return s
-}
-
-func (s *ListNodeTransferPacketsResponseBodyDataList) SetClassMode(v string) *ListNodeTransferPacketsResponseBodyDataList {
-	s.ClassMode = &v
-	return s
-}
-
-func (s *ListNodeTransferPacketsResponseBodyDataList) SetRssi(v int32) *ListNodeTransferPacketsResponseBodyDataList {
-	s.Rssi = &v
 	return s
 }
 
@@ -8648,9 +7647,30 @@ func (s *ListNodeTransferPacketsResponseBodyDataList) SetFreq(v float32) *ListNo
 	return s
 }
 
+func (s *ListNodeTransferPacketsResponseBodyDataList) SetGwEui(v string) *ListNodeTransferPacketsResponseBodyDataList {
+	s.GwEui = &v
+	return s
+}
+
+func (s *ListNodeTransferPacketsResponseBodyDataList) SetLogMillis(v int64) *ListNodeTransferPacketsResponseBodyDataList {
+	s.LogMillis = &v
+	return s
+}
+
+func (s *ListNodeTransferPacketsResponseBodyDataList) SetRssi(v int32) *ListNodeTransferPacketsResponseBodyDataList {
+	s.Rssi = &v
+	return s
+}
+
+func (s *ListNodeTransferPacketsResponseBodyDataList) SetSnr(v float32) *ListNodeTransferPacketsResponseBodyDataList {
+	s.Snr = &v
+	return s
+}
+
 type ListNodeTransferPacketsResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNodeTransferPacketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListNodeTransferPacketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListNodeTransferPacketsResponse) String() string {
@@ -8666,17 +7686,22 @@ func (s *ListNodeTransferPacketsResponse) SetHeaders(v map[string]*string) *List
 	return s
 }
 
+func (s *ListNodeTransferPacketsResponse) SetStatusCode(v int32) *ListNodeTransferPacketsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListNodeTransferPacketsResponse) SetBody(v *ListNodeTransferPacketsResponseBody) *ListNodeTransferPacketsResponse {
 	s.Body = v
 	return s
 }
 
 type ListNodeTupleOrdersRequest struct {
-	IsKpm        *bool     `json:"IsKpm,omitempty" xml:"IsKpm,omitempty"`
-	Offset       *int64    `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Limit        *int64    `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	SortingField *string   `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 	Ascending    *bool     `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	IsKpm        *bool     `json:"IsKpm,omitempty" xml:"IsKpm,omitempty"`
+	Limit        *int64    `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Offset       *int64    `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	SortingField *string   `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 	State        []*string `json:"State,omitempty" xml:"State,omitempty" type:"Repeated"`
 }
 
@@ -8688,13 +7713,13 @@ func (s ListNodeTupleOrdersRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeTupleOrdersRequest) SetIsKpm(v bool) *ListNodeTupleOrdersRequest {
-	s.IsKpm = &v
+func (s *ListNodeTupleOrdersRequest) SetAscending(v bool) *ListNodeTupleOrdersRequest {
+	s.Ascending = &v
 	return s
 }
 
-func (s *ListNodeTupleOrdersRequest) SetOffset(v int64) *ListNodeTupleOrdersRequest {
-	s.Offset = &v
+func (s *ListNodeTupleOrdersRequest) SetIsKpm(v bool) *ListNodeTupleOrdersRequest {
+	s.IsKpm = &v
 	return s
 }
 
@@ -8703,13 +7728,13 @@ func (s *ListNodeTupleOrdersRequest) SetLimit(v int64) *ListNodeTupleOrdersReque
 	return s
 }
 
-func (s *ListNodeTupleOrdersRequest) SetSortingField(v string) *ListNodeTupleOrdersRequest {
-	s.SortingField = &v
+func (s *ListNodeTupleOrdersRequest) SetOffset(v int64) *ListNodeTupleOrdersRequest {
+	s.Offset = &v
 	return s
 }
 
-func (s *ListNodeTupleOrdersRequest) SetAscending(v bool) *ListNodeTupleOrdersRequest {
-	s.Ascending = &v
+func (s *ListNodeTupleOrdersRequest) SetSortingField(v string) *ListNodeTupleOrdersRequest {
+	s.SortingField = &v
 	return s
 }
 
@@ -8719,8 +7744,8 @@ func (s *ListNodeTupleOrdersRequest) SetState(v []*string) *ListNodeTupleOrdersR
 }
 
 type ListNodeTupleOrdersResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListNodeTupleOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8732,13 +7757,13 @@ func (s ListNodeTupleOrdersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeTupleOrdersResponseBody) SetRequestId(v string) *ListNodeTupleOrdersResponseBody {
-	s.RequestId = &v
+func (s *ListNodeTupleOrdersResponseBody) SetData(v *ListNodeTupleOrdersResponseBodyData) *ListNodeTupleOrdersResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListNodeTupleOrdersResponseBody) SetData(v *ListNodeTupleOrdersResponseBodyData) *ListNodeTupleOrdersResponseBody {
-	s.Data = v
+func (s *ListNodeTupleOrdersResponseBody) SetRequestId(v string) *ListNodeTupleOrdersResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8771,16 +7796,16 @@ func (s *ListNodeTupleOrdersResponseBodyData) SetTotalCount(v int64) *ListNodeTu
 }
 
 type ListNodeTupleOrdersResponseBodyDataList struct {
-	FailedCount    *int64  `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	RequiredCount  *int64  `json:"RequiredCount,omitempty" xml:"RequiredCount,omitempty"`
-	CreatedMillis  *int64  `json:"CreatedMillis,omitempty" xml:"CreatedMillis,omitempty"`
-	IsKpm          *bool   `json:"IsKpm,omitempty" xml:"IsKpm,omitempty"`
-	TupleType      *string `json:"TupleType,omitempty" xml:"TupleType,omitempty"`
 	AcceptedMillis *int64  `json:"AcceptedMillis,omitempty" xml:"AcceptedMillis,omitempty"`
-	SuccessCount   *int64  `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	CreatedMillis  *int64  `json:"CreatedMillis,omitempty" xml:"CreatedMillis,omitempty"`
+	FailedCount    *int64  `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	IsKpm          *bool   `json:"IsKpm,omitempty" xml:"IsKpm,omitempty"`
 	LoraVersion    *string `json:"LoraVersion,omitempty" xml:"LoraVersion,omitempty"`
-	OrderState     *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
 	OrderId        *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderState     *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	RequiredCount  *int64  `json:"RequiredCount,omitempty" xml:"RequiredCount,omitempty"`
+	SuccessCount   *int64  `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	TupleType      *string `json:"TupleType,omitempty" xml:"TupleType,omitempty"`
 }
 
 func (s ListNodeTupleOrdersResponseBodyDataList) String() string {
@@ -8791,13 +7816,8 @@ func (s ListNodeTupleOrdersResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
-func (s *ListNodeTupleOrdersResponseBodyDataList) SetFailedCount(v int64) *ListNodeTupleOrdersResponseBodyDataList {
-	s.FailedCount = &v
-	return s
-}
-
-func (s *ListNodeTupleOrdersResponseBodyDataList) SetRequiredCount(v int64) *ListNodeTupleOrdersResponseBodyDataList {
-	s.RequiredCount = &v
+func (s *ListNodeTupleOrdersResponseBodyDataList) SetAcceptedMillis(v int64) *ListNodeTupleOrdersResponseBodyDataList {
+	s.AcceptedMillis = &v
 	return s
 }
 
@@ -8806,23 +7826,13 @@ func (s *ListNodeTupleOrdersResponseBodyDataList) SetCreatedMillis(v int64) *Lis
 	return s
 }
 
+func (s *ListNodeTupleOrdersResponseBodyDataList) SetFailedCount(v int64) *ListNodeTupleOrdersResponseBodyDataList {
+	s.FailedCount = &v
+	return s
+}
+
 func (s *ListNodeTupleOrdersResponseBodyDataList) SetIsKpm(v bool) *ListNodeTupleOrdersResponseBodyDataList {
 	s.IsKpm = &v
-	return s
-}
-
-func (s *ListNodeTupleOrdersResponseBodyDataList) SetTupleType(v string) *ListNodeTupleOrdersResponseBodyDataList {
-	s.TupleType = &v
-	return s
-}
-
-func (s *ListNodeTupleOrdersResponseBodyDataList) SetAcceptedMillis(v int64) *ListNodeTupleOrdersResponseBodyDataList {
-	s.AcceptedMillis = &v
-	return s
-}
-
-func (s *ListNodeTupleOrdersResponseBodyDataList) SetSuccessCount(v int64) *ListNodeTupleOrdersResponseBodyDataList {
-	s.SuccessCount = &v
 	return s
 }
 
@@ -8831,19 +7841,35 @@ func (s *ListNodeTupleOrdersResponseBodyDataList) SetLoraVersion(v string) *List
 	return s
 }
 
-func (s *ListNodeTupleOrdersResponseBodyDataList) SetOrderState(v string) *ListNodeTupleOrdersResponseBodyDataList {
-	s.OrderState = &v
-	return s
-}
-
 func (s *ListNodeTupleOrdersResponseBodyDataList) SetOrderId(v string) *ListNodeTupleOrdersResponseBodyDataList {
 	s.OrderId = &v
 	return s
 }
 
+func (s *ListNodeTupleOrdersResponseBodyDataList) SetOrderState(v string) *ListNodeTupleOrdersResponseBodyDataList {
+	s.OrderState = &v
+	return s
+}
+
+func (s *ListNodeTupleOrdersResponseBodyDataList) SetRequiredCount(v int64) *ListNodeTupleOrdersResponseBodyDataList {
+	s.RequiredCount = &v
+	return s
+}
+
+func (s *ListNodeTupleOrdersResponseBodyDataList) SetSuccessCount(v int64) *ListNodeTupleOrdersResponseBodyDataList {
+	s.SuccessCount = &v
+	return s
+}
+
+func (s *ListNodeTupleOrdersResponseBodyDataList) SetTupleType(v string) *ListNodeTupleOrdersResponseBodyDataList {
+	s.TupleType = &v
+	return s
+}
+
 type ListNodeTupleOrdersResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNodeTupleOrdersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListNodeTupleOrdersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListNodeTupleOrdersResponse) String() string {
@@ -8859,20 +7885,405 @@ func (s *ListNodeTupleOrdersResponse) SetHeaders(v map[string]*string) *ListNode
 	return s
 }
 
+func (s *ListNodeTupleOrdersResponse) SetStatusCode(v int32) *ListNodeTupleOrdersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListNodeTupleOrdersResponse) SetBody(v *ListNodeTupleOrdersResponseBody) *ListNodeTupleOrdersResponse {
 	s.Body = v
 	return s
 }
 
+type ListNodesByNodeGroupIdRequest struct {
+	Ascending     *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	FuzzyDevEui   *string `json:"FuzzyDevEui,omitempty" xml:"FuzzyDevEui,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Limit         *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	NodeGroupId   *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	Offset        *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	SortingField  *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
+}
+
+func (s ListNodesByNodeGroupIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodesByNodeGroupIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesByNodeGroupIdRequest) SetAscending(v bool) *ListNodesByNodeGroupIdRequest {
+	s.Ascending = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdRequest) SetFuzzyDevEui(v string) *ListNodesByNodeGroupIdRequest {
+	s.FuzzyDevEui = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdRequest) SetIotInstanceId(v string) *ListNodesByNodeGroupIdRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdRequest) SetLimit(v int64) *ListNodesByNodeGroupIdRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdRequest) SetNodeGroupId(v string) *ListNodesByNodeGroupIdRequest {
+	s.NodeGroupId = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdRequest) SetOffset(v int64) *ListNodesByNodeGroupIdRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdRequest) SetSortingField(v string) *ListNodesByNodeGroupIdRequest {
+	s.SortingField = &v
+	return s
+}
+
+type ListNodesByNodeGroupIdResponseBody struct {
+	Data      *ListNodesByNodeGroupIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListNodesByNodeGroupIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodesByNodeGroupIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesByNodeGroupIdResponseBody) SetData(v *ListNodesByNodeGroupIdResponseBodyData) *ListNodesByNodeGroupIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdResponseBody) SetRequestId(v string) *ListNodesByNodeGroupIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdResponseBody) SetSuccess(v bool) *ListNodesByNodeGroupIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListNodesByNodeGroupIdResponseBodyData struct {
+	List       []*ListNodesByNodeGroupIdResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListNodesByNodeGroupIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodesByNodeGroupIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesByNodeGroupIdResponseBodyData) SetList(v []*ListNodesByNodeGroupIdResponseBodyDataList) *ListNodesByNodeGroupIdResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdResponseBodyData) SetTotalCount(v int64) *ListNodesByNodeGroupIdResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListNodesByNodeGroupIdResponseBodyDataList struct {
+	Appkey           *string `json:"Appkey,omitempty" xml:"Appkey,omitempty"`
+	AuthTypes        *string `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty"`
+	BoundMillis      *int64  `json:"BoundMillis,omitempty" xml:"BoundMillis,omitempty"`
+	ClassMode        *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
+	DevAddr          *string `json:"DevAddr,omitempty" xml:"DevAddr,omitempty"`
+	DevEui           *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	JoinEui          *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
+	LastJoinMillis   *int64  `json:"LastJoinMillis,omitempty" xml:"LastJoinMillis,omitempty"`
+	MulticastGroupId *string `json:"MulticastGroupId,omitempty" xml:"MulticastGroupId,omitempty"`
+	NodeType         *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+}
+
+func (s ListNodesByNodeGroupIdResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodesByNodeGroupIdResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetAppkey(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
+	s.Appkey = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetAuthTypes(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
+	s.AuthTypes = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetBoundMillis(v int64) *ListNodesByNodeGroupIdResponseBodyDataList {
+	s.BoundMillis = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetClassMode(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
+	s.ClassMode = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetDevAddr(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
+	s.DevAddr = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetDevEui(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
+	s.DevEui = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetJoinEui(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
+	s.JoinEui = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetLastJoinMillis(v int64) *ListNodesByNodeGroupIdResponseBodyDataList {
+	s.LastJoinMillis = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetMulticastGroupId(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
+	s.MulticastGroupId = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdResponseBodyDataList) SetNodeType(v string) *ListNodesByNodeGroupIdResponseBodyDataList {
+	s.NodeType = &v
+	return s
+}
+
+type ListNodesByNodeGroupIdResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListNodesByNodeGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListNodesByNodeGroupIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodesByNodeGroupIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesByNodeGroupIdResponse) SetHeaders(v map[string]*string) *ListNodesByNodeGroupIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdResponse) SetStatusCode(v int32) *ListNodesByNodeGroupIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNodesByNodeGroupIdResponse) SetBody(v *ListNodesByNodeGroupIdResponseBody) *ListNodesByNodeGroupIdResponse {
+	s.Body = v
+	return s
+}
+
+type ListNodesByOwnedJoinPermissionIdRequest struct {
+	Ascending        *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	FuzzyDevEui      *string `json:"FuzzyDevEui,omitempty" xml:"FuzzyDevEui,omitempty"`
+	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	JoinPermissionId *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
+	Limit            *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Offset           *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	SortingField     *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
+}
+
+func (s ListNodesByOwnedJoinPermissionIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodesByOwnedJoinPermissionIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdRequest) SetAscending(v bool) *ListNodesByOwnedJoinPermissionIdRequest {
+	s.Ascending = &v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdRequest) SetFuzzyDevEui(v string) *ListNodesByOwnedJoinPermissionIdRequest {
+	s.FuzzyDevEui = &v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdRequest) SetIotInstanceId(v string) *ListNodesByOwnedJoinPermissionIdRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdRequest) SetJoinPermissionId(v string) *ListNodesByOwnedJoinPermissionIdRequest {
+	s.JoinPermissionId = &v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdRequest) SetLimit(v int64) *ListNodesByOwnedJoinPermissionIdRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdRequest) SetOffset(v int64) *ListNodesByOwnedJoinPermissionIdRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdRequest) SetSortingField(v string) *ListNodesByOwnedJoinPermissionIdRequest {
+	s.SortingField = &v
+	return s
+}
+
+type ListNodesByOwnedJoinPermissionIdResponseBody struct {
+	Data      *ListNodesByOwnedJoinPermissionIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListNodesByOwnedJoinPermissionIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodesByOwnedJoinPermissionIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdResponseBody) SetData(v *ListNodesByOwnedJoinPermissionIdResponseBodyData) *ListNodesByOwnedJoinPermissionIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdResponseBody) SetRequestId(v string) *ListNodesByOwnedJoinPermissionIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdResponseBody) SetSuccess(v bool) *ListNodesByOwnedJoinPermissionIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListNodesByOwnedJoinPermissionIdResponseBodyData struct {
+	List       []*ListNodesByOwnedJoinPermissionIdResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	TotalCount *int64                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListNodesByOwnedJoinPermissionIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodesByOwnedJoinPermissionIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdResponseBodyData) SetList(v []*ListNodesByOwnedJoinPermissionIdResponseBodyDataList) *ListNodesByOwnedJoinPermissionIdResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdResponseBodyData) SetTotalCount(v int64) *ListNodesByOwnedJoinPermissionIdResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListNodesByOwnedJoinPermissionIdResponseBodyDataList struct {
+	BoundMillis    *int64  `json:"BoundMillis,omitempty" xml:"BoundMillis,omitempty"`
+	ClassMode      *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
+	DevAddr        *string `json:"DevAddr,omitempty" xml:"DevAddr,omitempty"`
+	DevEui         *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	LastJoinMillis *int64  `json:"LastJoinMillis,omitempty" xml:"LastJoinMillis,omitempty"`
+}
+
+func (s ListNodesByOwnedJoinPermissionIdResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodesByOwnedJoinPermissionIdResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdResponseBodyDataList) SetBoundMillis(v int64) *ListNodesByOwnedJoinPermissionIdResponseBodyDataList {
+	s.BoundMillis = &v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdResponseBodyDataList) SetClassMode(v string) *ListNodesByOwnedJoinPermissionIdResponseBodyDataList {
+	s.ClassMode = &v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdResponseBodyDataList) SetDevAddr(v string) *ListNodesByOwnedJoinPermissionIdResponseBodyDataList {
+	s.DevAddr = &v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdResponseBodyDataList) SetDevEui(v string) *ListNodesByOwnedJoinPermissionIdResponseBodyDataList {
+	s.DevEui = &v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdResponseBodyDataList) SetLastJoinMillis(v int64) *ListNodesByOwnedJoinPermissionIdResponseBodyDataList {
+	s.LastJoinMillis = &v
+	return s
+}
+
+type ListNodesByOwnedJoinPermissionIdResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListNodesByOwnedJoinPermissionIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListNodesByOwnedJoinPermissionIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodesByOwnedJoinPermissionIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdResponse) SetHeaders(v map[string]*string) *ListNodesByOwnedJoinPermissionIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdResponse) SetStatusCode(v int32) *ListNodesByOwnedJoinPermissionIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNodesByOwnedJoinPermissionIdResponse) SetBody(v *ListNodesByOwnedJoinPermissionIdResponseBody) *ListNodesByOwnedJoinPermissionIdResponse {
+	s.Body = v
+	return s
+}
+
 type ListNotificationsRequest struct {
-	HandleState  *string   `json:"HandleState,omitempty" xml:"HandleState,omitempty"`
-	Offset       *int64    `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Limit        *int64    `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	BeginMillis  *int64    `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
-	EndMillis    *int64    `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
-	SortingField *string   `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 	Ascending    *bool     `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	BeginMillis  *int64    `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
 	Category     []*string `json:"Category,omitempty" xml:"Category,omitempty" type:"Repeated"`
+	EndMillis    *int64    `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
+	HandleState  *string   `json:"HandleState,omitempty" xml:"HandleState,omitempty"`
+	Limit        *int64    `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Offset       *int64    `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	SortingField *string   `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 }
 
 func (s ListNotificationsRequest) String() string {
@@ -8883,18 +8294,8 @@ func (s ListNotificationsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListNotificationsRequest) SetHandleState(v string) *ListNotificationsRequest {
-	s.HandleState = &v
-	return s
-}
-
-func (s *ListNotificationsRequest) SetOffset(v int64) *ListNotificationsRequest {
-	s.Offset = &v
-	return s
-}
-
-func (s *ListNotificationsRequest) SetLimit(v int64) *ListNotificationsRequest {
-	s.Limit = &v
+func (s *ListNotificationsRequest) SetAscending(v bool) *ListNotificationsRequest {
+	s.Ascending = &v
 	return s
 }
 
@@ -8903,8 +8304,28 @@ func (s *ListNotificationsRequest) SetBeginMillis(v int64) *ListNotificationsReq
 	return s
 }
 
+func (s *ListNotificationsRequest) SetCategory(v []*string) *ListNotificationsRequest {
+	s.Category = v
+	return s
+}
+
 func (s *ListNotificationsRequest) SetEndMillis(v int64) *ListNotificationsRequest {
 	s.EndMillis = &v
+	return s
+}
+
+func (s *ListNotificationsRequest) SetHandleState(v string) *ListNotificationsRequest {
+	s.HandleState = &v
+	return s
+}
+
+func (s *ListNotificationsRequest) SetLimit(v int64) *ListNotificationsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListNotificationsRequest) SetOffset(v int64) *ListNotificationsRequest {
+	s.Offset = &v
 	return s
 }
 
@@ -8913,19 +8334,9 @@ func (s *ListNotificationsRequest) SetSortingField(v string) *ListNotificationsR
 	return s
 }
 
-func (s *ListNotificationsRequest) SetAscending(v bool) *ListNotificationsRequest {
-	s.Ascending = &v
-	return s
-}
-
-func (s *ListNotificationsRequest) SetCategory(v []*string) *ListNotificationsRequest {
-	s.Category = v
-	return s
-}
-
 type ListNotificationsResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListNotificationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8937,13 +8348,13 @@ func (s ListNotificationsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListNotificationsResponseBody) SetRequestId(v string) *ListNotificationsResponseBody {
-	s.RequestId = &v
+func (s *ListNotificationsResponseBody) SetData(v *ListNotificationsResponseBodyData) *ListNotificationsResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListNotificationsResponseBody) SetData(v *ListNotificationsResponseBodyData) *ListNotificationsResponseBody {
-	s.Data = v
+func (s *ListNotificationsResponseBody) SetRequestId(v string) *ListNotificationsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8976,14 +8387,14 @@ func (s *ListNotificationsResponseBodyData) SetTotalCount(v int64) *ListNotifica
 }
 
 type ListNotificationsResponseBodyDataList struct {
-	NoticeMillis           *int64                                                       `json:"NoticeMillis,omitempty" xml:"NoticeMillis,omitempty"`
-	HandleState            *string                                                      `json:"HandleState,omitempty" xml:"HandleState,omitempty"`
-	NotificationId         *string                                                      `json:"NotificationId,omitempty" xml:"NotificationId,omitempty"`
-	GatewayDataflowLimit   *ListNotificationsResponseBodyDataListGatewayDataflowLimit   `json:"GatewayDataflowLimit,omitempty" xml:"GatewayDataflowLimit,omitempty" type:"Struct"`
-	JoinPermissionAuthInfo *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo `json:"JoinPermissionAuthInfo,omitempty" xml:"JoinPermissionAuthInfo,omitempty" type:"Struct"`
-	GatewayOfflineInfo     *ListNotificationsResponseBodyDataListGatewayOfflineInfo     `json:"GatewayOfflineInfo,omitempty" xml:"GatewayOfflineInfo,omitempty" type:"Struct"`
 	Category               *string                                                      `json:"Category,omitempty" xml:"Category,omitempty"`
+	GatewayDataflowLimit   *ListNotificationsResponseBodyDataListGatewayDataflowLimit   `json:"GatewayDataflowLimit,omitempty" xml:"GatewayDataflowLimit,omitempty" type:"Struct"`
+	GatewayOfflineInfo     *ListNotificationsResponseBodyDataListGatewayOfflineInfo     `json:"GatewayOfflineInfo,omitempty" xml:"GatewayOfflineInfo,omitempty" type:"Struct"`
+	HandleState            *string                                                      `json:"HandleState,omitempty" xml:"HandleState,omitempty"`
 	HandledMillis          *int64                                                       `json:"HandledMillis,omitempty" xml:"HandledMillis,omitempty"`
+	JoinPermissionAuthInfo *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo `json:"JoinPermissionAuthInfo,omitempty" xml:"JoinPermissionAuthInfo,omitempty" type:"Struct"`
+	NoticeMillis           *int64                                                       `json:"NoticeMillis,omitempty" xml:"NoticeMillis,omitempty"`
+	NotificationId         *string                                                      `json:"NotificationId,omitempty" xml:"NotificationId,omitempty"`
 }
 
 func (s ListNotificationsResponseBodyDataList) String() string {
@@ -8994,18 +8405,8 @@ func (s ListNotificationsResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
-func (s *ListNotificationsResponseBodyDataList) SetNoticeMillis(v int64) *ListNotificationsResponseBodyDataList {
-	s.NoticeMillis = &v
-	return s
-}
-
-func (s *ListNotificationsResponseBodyDataList) SetHandleState(v string) *ListNotificationsResponseBodyDataList {
-	s.HandleState = &v
-	return s
-}
-
-func (s *ListNotificationsResponseBodyDataList) SetNotificationId(v string) *ListNotificationsResponseBodyDataList {
-	s.NotificationId = &v
+func (s *ListNotificationsResponseBodyDataList) SetCategory(v string) *ListNotificationsResponseBodyDataList {
+	s.Category = &v
 	return s
 }
 
@@ -9014,23 +8415,33 @@ func (s *ListNotificationsResponseBodyDataList) SetGatewayDataflowLimit(v *ListN
 	return s
 }
 
-func (s *ListNotificationsResponseBodyDataList) SetJoinPermissionAuthInfo(v *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) *ListNotificationsResponseBodyDataList {
-	s.JoinPermissionAuthInfo = v
-	return s
-}
-
 func (s *ListNotificationsResponseBodyDataList) SetGatewayOfflineInfo(v *ListNotificationsResponseBodyDataListGatewayOfflineInfo) *ListNotificationsResponseBodyDataList {
 	s.GatewayOfflineInfo = v
 	return s
 }
 
-func (s *ListNotificationsResponseBodyDataList) SetCategory(v string) *ListNotificationsResponseBodyDataList {
-	s.Category = &v
+func (s *ListNotificationsResponseBodyDataList) SetHandleState(v string) *ListNotificationsResponseBodyDataList {
+	s.HandleState = &v
 	return s
 }
 
 func (s *ListNotificationsResponseBodyDataList) SetHandledMillis(v int64) *ListNotificationsResponseBodyDataList {
 	s.HandledMillis = &v
+	return s
+}
+
+func (s *ListNotificationsResponseBodyDataList) SetJoinPermissionAuthInfo(v *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) *ListNotificationsResponseBodyDataList {
+	s.JoinPermissionAuthInfo = v
+	return s
+}
+
+func (s *ListNotificationsResponseBodyDataList) SetNoticeMillis(v int64) *ListNotificationsResponseBodyDataList {
+	s.NoticeMillis = &v
+	return s
+}
+
+func (s *ListNotificationsResponseBodyDataList) SetNotificationId(v string) *ListNotificationsResponseBodyDataList {
+	s.NotificationId = &v
 	return s
 }
 
@@ -9063,18 +8474,41 @@ func (s *ListNotificationsResponseBodyDataListGatewayDataflowLimit) SetGwEui(v s
 	return s
 }
 
+type ListNotificationsResponseBodyDataListGatewayOfflineInfo struct {
+	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	OfflineMillis *int64  `json:"OfflineMillis,omitempty" xml:"OfflineMillis,omitempty"`
+}
+
+func (s ListNotificationsResponseBodyDataListGatewayOfflineInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNotificationsResponseBodyDataListGatewayOfflineInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListNotificationsResponseBodyDataListGatewayOfflineInfo) SetGwEui(v string) *ListNotificationsResponseBodyDataListGatewayOfflineInfo {
+	s.GwEui = &v
+	return s
+}
+
+func (s *ListNotificationsResponseBodyDataListGatewayOfflineInfo) SetOfflineMillis(v int64) *ListNotificationsResponseBodyDataListGatewayOfflineInfo {
+	s.OfflineMillis = &v
+	return s
+}
+
 type ListNotificationsResponseBodyDataListJoinPermissionAuthInfo struct {
-	CanceledMillis     *int64  `json:"CanceledMillis,omitempty" xml:"CanceledMillis,omitempty"`
-	ApplyingMillis     *int64  `json:"ApplyingMillis,omitempty" xml:"ApplyingMillis,omitempty"`
-	JoinEui            *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
-	RenterAliyunId     *string `json:"RenterAliyunId,omitempty" xml:"RenterAliyunId,omitempty"`
 	AcceptedMillis     *int64  `json:"AcceptedMillis,omitempty" xml:"AcceptedMillis,omitempty"`
-	OwnerAliyunId      *string `json:"OwnerAliyunId,omitempty" xml:"OwnerAliyunId,omitempty"`
-	RejectedMillis     *int64  `json:"RejectedMillis,omitempty" xml:"RejectedMillis,omitempty"`
+	ApplyingMillis     *int64  `json:"ApplyingMillis,omitempty" xml:"ApplyingMillis,omitempty"`
+	CanceledMillis     *int64  `json:"CanceledMillis,omitempty" xml:"CanceledMillis,omitempty"`
+	JoinEui            *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
 	JoinPermissionId   *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
 	JoinPermissionName *string `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
-	OrderState         *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
 	OrderId            *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderState         *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	OwnerAliyunId      *string `json:"OwnerAliyunId,omitempty" xml:"OwnerAliyunId,omitempty"`
+	RejectedMillis     *int64  `json:"RejectedMillis,omitempty" xml:"RejectedMillis,omitempty"`
+	RenterAliyunId     *string `json:"RenterAliyunId,omitempty" xml:"RenterAliyunId,omitempty"`
 }
 
 func (s ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) String() string {
@@ -9085,8 +8519,8 @@ func (s ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) GoString() 
 	return s.String()
 }
 
-func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetCanceledMillis(v int64) *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo {
-	s.CanceledMillis = &v
+func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetAcceptedMillis(v int64) *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo {
+	s.AcceptedMillis = &v
 	return s
 }
 
@@ -9095,28 +8529,13 @@ func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetApplyin
 	return s
 }
 
+func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetCanceledMillis(v int64) *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo {
+	s.CanceledMillis = &v
+	return s
+}
+
 func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetJoinEui(v string) *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo {
 	s.JoinEui = &v
-	return s
-}
-
-func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetRenterAliyunId(v string) *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo {
-	s.RenterAliyunId = &v
-	return s
-}
-
-func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetAcceptedMillis(v int64) *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo {
-	s.AcceptedMillis = &v
-	return s
-}
-
-func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetOwnerAliyunId(v string) *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo {
-	s.OwnerAliyunId = &v
-	return s
-}
-
-func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetRejectedMillis(v int64) *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo {
-	s.RejectedMillis = &v
 	return s
 }
 
@@ -9130,42 +8549,35 @@ func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetJoinPer
 	return s
 }
 
-func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetOrderState(v string) *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo {
-	s.OrderState = &v
-	return s
-}
-
 func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetOrderId(v string) *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo {
 	s.OrderId = &v
 	return s
 }
 
-type ListNotificationsResponseBodyDataListGatewayOfflineInfo struct {
-	OfflineMillis *int64  `json:"OfflineMillis,omitempty" xml:"OfflineMillis,omitempty"`
-	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-}
-
-func (s ListNotificationsResponseBodyDataListGatewayOfflineInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNotificationsResponseBodyDataListGatewayOfflineInfo) GoString() string {
-	return s.String()
-}
-
-func (s *ListNotificationsResponseBodyDataListGatewayOfflineInfo) SetOfflineMillis(v int64) *ListNotificationsResponseBodyDataListGatewayOfflineInfo {
-	s.OfflineMillis = &v
+func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetOrderState(v string) *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo {
+	s.OrderState = &v
 	return s
 }
 
-func (s *ListNotificationsResponseBodyDataListGatewayOfflineInfo) SetGwEui(v string) *ListNotificationsResponseBodyDataListGatewayOfflineInfo {
-	s.GwEui = &v
+func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetOwnerAliyunId(v string) *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo {
+	s.OwnerAliyunId = &v
+	return s
+}
+
+func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetRejectedMillis(v int64) *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo {
+	s.RejectedMillis = &v
+	return s
+}
+
+func (s *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo) SetRenterAliyunId(v string) *ListNotificationsResponseBodyDataListJoinPermissionAuthInfo {
+	s.RenterAliyunId = &v
 	return s
 }
 
 type ListNotificationsResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNotificationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListNotificationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListNotificationsResponse) String() string {
@@ -9181,21 +8593,26 @@ func (s *ListNotificationsResponse) SetHeaders(v map[string]*string) *ListNotifi
 	return s
 }
 
+func (s *ListNotificationsResponse) SetStatusCode(v int32) *ListNotificationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListNotificationsResponse) SetBody(v *ListNotificationsResponseBody) *ListNotificationsResponse {
 	s.Body = v
 	return s
 }
 
 type ListOwnedJoinPermissionsRequest struct {
-	IotInstanceId           *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	FuzzyRenterAliyunId     *string `json:"FuzzyRenterAliyunId,omitempty" xml:"FuzzyRenterAliyunId,omitempty"`
-	FuzzyJoinEui            *string `json:"FuzzyJoinEui,omitempty" xml:"FuzzyJoinEui,omitempty"`
-	Enabled                 *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	FuzzyJoinPermissionName *string `json:"FuzzyJoinPermissionName,omitempty" xml:"FuzzyJoinPermissionName,omitempty"`
-	Offset                  *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Limit                   *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	SortingField            *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 	Ascending               *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	Enabled                 *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	FuzzyJoinEui            *string `json:"FuzzyJoinEui,omitempty" xml:"FuzzyJoinEui,omitempty"`
+	FuzzyJoinPermissionName *string `json:"FuzzyJoinPermissionName,omitempty" xml:"FuzzyJoinPermissionName,omitempty"`
+	FuzzyRenterAliyunId     *string `json:"FuzzyRenterAliyunId,omitempty" xml:"FuzzyRenterAliyunId,omitempty"`
+	IotInstanceId           *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Limit                   *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Offset                  *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	SortingField            *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 }
 
 func (s ListOwnedJoinPermissionsRequest) String() string {
@@ -9206,18 +8623,8 @@ func (s ListOwnedJoinPermissionsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListOwnedJoinPermissionsRequest) SetIotInstanceId(v string) *ListOwnedJoinPermissionsRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *ListOwnedJoinPermissionsRequest) SetFuzzyRenterAliyunId(v string) *ListOwnedJoinPermissionsRequest {
-	s.FuzzyRenterAliyunId = &v
-	return s
-}
-
-func (s *ListOwnedJoinPermissionsRequest) SetFuzzyJoinEui(v string) *ListOwnedJoinPermissionsRequest {
-	s.FuzzyJoinEui = &v
+func (s *ListOwnedJoinPermissionsRequest) SetAscending(v bool) *ListOwnedJoinPermissionsRequest {
+	s.Ascending = &v
 	return s
 }
 
@@ -9226,13 +8633,23 @@ func (s *ListOwnedJoinPermissionsRequest) SetEnabled(v bool) *ListOwnedJoinPermi
 	return s
 }
 
+func (s *ListOwnedJoinPermissionsRequest) SetFuzzyJoinEui(v string) *ListOwnedJoinPermissionsRequest {
+	s.FuzzyJoinEui = &v
+	return s
+}
+
 func (s *ListOwnedJoinPermissionsRequest) SetFuzzyJoinPermissionName(v string) *ListOwnedJoinPermissionsRequest {
 	s.FuzzyJoinPermissionName = &v
 	return s
 }
 
-func (s *ListOwnedJoinPermissionsRequest) SetOffset(v int64) *ListOwnedJoinPermissionsRequest {
-	s.Offset = &v
+func (s *ListOwnedJoinPermissionsRequest) SetFuzzyRenterAliyunId(v string) *ListOwnedJoinPermissionsRequest {
+	s.FuzzyRenterAliyunId = &v
+	return s
+}
+
+func (s *ListOwnedJoinPermissionsRequest) SetIotInstanceId(v string) *ListOwnedJoinPermissionsRequest {
+	s.IotInstanceId = &v
 	return s
 }
 
@@ -9241,19 +8658,19 @@ func (s *ListOwnedJoinPermissionsRequest) SetLimit(v int64) *ListOwnedJoinPermis
 	return s
 }
 
+func (s *ListOwnedJoinPermissionsRequest) SetOffset(v int64) *ListOwnedJoinPermissionsRequest {
+	s.Offset = &v
+	return s
+}
+
 func (s *ListOwnedJoinPermissionsRequest) SetSortingField(v string) *ListOwnedJoinPermissionsRequest {
 	s.SortingField = &v
 	return s
 }
 
-func (s *ListOwnedJoinPermissionsRequest) SetAscending(v bool) *ListOwnedJoinPermissionsRequest {
-	s.Ascending = &v
-	return s
-}
-
 type ListOwnedJoinPermissionsResponseBody struct {
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListOwnedJoinPermissionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9265,13 +8682,13 @@ func (s ListOwnedJoinPermissionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListOwnedJoinPermissionsResponseBody) SetRequestId(v string) *ListOwnedJoinPermissionsResponseBody {
-	s.RequestId = &v
+func (s *ListOwnedJoinPermissionsResponseBody) SetData(v *ListOwnedJoinPermissionsResponseBodyData) *ListOwnedJoinPermissionsResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListOwnedJoinPermissionsResponseBody) SetData(v *ListOwnedJoinPermissionsResponseBodyData) *ListOwnedJoinPermissionsResponseBody {
-	s.Data = v
+func (s *ListOwnedJoinPermissionsResponseBody) SetRequestId(v string) *ListOwnedJoinPermissionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9304,16 +8721,16 @@ func (s *ListOwnedJoinPermissionsResponseBodyData) SetTotalCount(v int64) *ListO
 }
 
 type ListOwnedJoinPermissionsResponseBodyDataList struct {
-	JoinEui             *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
-	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	Enabled             *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	RxDelay             *int64  `json:"RxDelay,omitempty" xml:"RxDelay,omitempty"`
-	RenterAliyunId      *string `json:"RenterAliyunId,omitempty" xml:"RenterAliyunId,omitempty"`
+	AuthState           *string `json:"AuthState,omitempty" xml:"AuthState,omitempty"`
+	ClassMode           *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
 	DataRate            *int64  `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
+	Enabled             *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	JoinEui             *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
 	JoinPermissionId    *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
 	JoinPermissionName  *string `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
-	ClassMode           *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	AuthState           *string `json:"AuthState,omitempty" xml:"AuthState,omitempty"`
+	RenterAliyunId      *string `json:"RenterAliyunId,omitempty" xml:"RenterAliyunId,omitempty"`
+	RxDelay             *int64  `json:"RxDelay,omitempty" xml:"RxDelay,omitempty"`
 }
 
 func (s ListOwnedJoinPermissionsResponseBodyDataList) String() string {
@@ -9324,13 +8741,18 @@ func (s ListOwnedJoinPermissionsResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
-func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetJoinEui(v string) *ListOwnedJoinPermissionsResponseBodyDataList {
-	s.JoinEui = &v
+func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetAuthState(v string) *ListOwnedJoinPermissionsResponseBodyDataList {
+	s.AuthState = &v
 	return s
 }
 
-func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetFreqBandPlanGroupId(v int64) *ListOwnedJoinPermissionsResponseBodyDataList {
-	s.FreqBandPlanGroupId = &v
+func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetClassMode(v string) *ListOwnedJoinPermissionsResponseBodyDataList {
+	s.ClassMode = &v
+	return s
+}
+
+func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetDataRate(v int64) *ListOwnedJoinPermissionsResponseBodyDataList {
+	s.DataRate = &v
 	return s
 }
 
@@ -9339,18 +8761,13 @@ func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetEnabled(v bool) *ListO
 	return s
 }
 
-func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetRxDelay(v int64) *ListOwnedJoinPermissionsResponseBodyDataList {
-	s.RxDelay = &v
+func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetFreqBandPlanGroupId(v int64) *ListOwnedJoinPermissionsResponseBodyDataList {
+	s.FreqBandPlanGroupId = &v
 	return s
 }
 
-func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetRenterAliyunId(v string) *ListOwnedJoinPermissionsResponseBodyDataList {
-	s.RenterAliyunId = &v
-	return s
-}
-
-func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetDataRate(v int64) *ListOwnedJoinPermissionsResponseBodyDataList {
-	s.DataRate = &v
+func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetJoinEui(v string) *ListOwnedJoinPermissionsResponseBodyDataList {
+	s.JoinEui = &v
 	return s
 }
 
@@ -9364,19 +8781,20 @@ func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetJoinPermissionName(v s
 	return s
 }
 
-func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetClassMode(v string) *ListOwnedJoinPermissionsResponseBodyDataList {
-	s.ClassMode = &v
+func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetRenterAliyunId(v string) *ListOwnedJoinPermissionsResponseBodyDataList {
+	s.RenterAliyunId = &v
 	return s
 }
 
-func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetAuthState(v string) *ListOwnedJoinPermissionsResponseBodyDataList {
-	s.AuthState = &v
+func (s *ListOwnedJoinPermissionsResponseBodyDataList) SetRxDelay(v int64) *ListOwnedJoinPermissionsResponseBodyDataList {
+	s.RxDelay = &v
 	return s
 }
 
 type ListOwnedJoinPermissionsResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListOwnedJoinPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListOwnedJoinPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListOwnedJoinPermissionsResponse) String() string {
@@ -9392,23 +8810,28 @@ func (s *ListOwnedJoinPermissionsResponse) SetHeaders(v map[string]*string) *Lis
 	return s
 }
 
+func (s *ListOwnedJoinPermissionsResponse) SetStatusCode(v int32) *ListOwnedJoinPermissionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListOwnedJoinPermissionsResponse) SetBody(v *ListOwnedJoinPermissionsResponseBody) *ListOwnedJoinPermissionsResponse {
 	s.Body = v
 	return s
 }
 
 type ListRentedJoinPermissionsRequest struct {
-	IotInstanceId           *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	FuzzyOwnerAliyunId      *string `json:"FuzzyOwnerAliyunId,omitempty" xml:"FuzzyOwnerAliyunId,omitempty"`
-	FuzzyJoinEui            *string `json:"FuzzyJoinEui,omitempty" xml:"FuzzyJoinEui,omitempty"`
-	Enabled                 *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	BoundNodeGroup          *bool   `json:"BoundNodeGroup,omitempty" xml:"BoundNodeGroup,omitempty"`
-	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	FuzzyJoinPermissionName *string `json:"FuzzyJoinPermissionName,omitempty" xml:"FuzzyJoinPermissionName,omitempty"`
-	Offset                  *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	Limit                   *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	SortingField            *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
 	Ascending               *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
+	BoundNodeGroup          *bool   `json:"BoundNodeGroup,omitempty" xml:"BoundNodeGroup,omitempty"`
+	Enabled                 *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	FuzzyJoinEui            *string `json:"FuzzyJoinEui,omitempty" xml:"FuzzyJoinEui,omitempty"`
+	FuzzyJoinPermissionName *string `json:"FuzzyJoinPermissionName,omitempty" xml:"FuzzyJoinPermissionName,omitempty"`
+	FuzzyOwnerAliyunId      *string `json:"FuzzyOwnerAliyunId,omitempty" xml:"FuzzyOwnerAliyunId,omitempty"`
+	IotInstanceId           *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Limit                   *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Offset                  *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	SortingField            *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
+	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListRentedJoinPermissionsRequest) String() string {
@@ -9419,23 +8842,8 @@ func (s ListRentedJoinPermissionsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListRentedJoinPermissionsRequest) SetIotInstanceId(v string) *ListRentedJoinPermissionsRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *ListRentedJoinPermissionsRequest) SetFuzzyOwnerAliyunId(v string) *ListRentedJoinPermissionsRequest {
-	s.FuzzyOwnerAliyunId = &v
-	return s
-}
-
-func (s *ListRentedJoinPermissionsRequest) SetFuzzyJoinEui(v string) *ListRentedJoinPermissionsRequest {
-	s.FuzzyJoinEui = &v
-	return s
-}
-
-func (s *ListRentedJoinPermissionsRequest) SetEnabled(v bool) *ListRentedJoinPermissionsRequest {
-	s.Enabled = &v
+func (s *ListRentedJoinPermissionsRequest) SetAscending(v bool) *ListRentedJoinPermissionsRequest {
+	s.Ascending = &v
 	return s
 }
 
@@ -9444,8 +8852,13 @@ func (s *ListRentedJoinPermissionsRequest) SetBoundNodeGroup(v bool) *ListRented
 	return s
 }
 
-func (s *ListRentedJoinPermissionsRequest) SetType(v string) *ListRentedJoinPermissionsRequest {
-	s.Type = &v
+func (s *ListRentedJoinPermissionsRequest) SetEnabled(v bool) *ListRentedJoinPermissionsRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListRentedJoinPermissionsRequest) SetFuzzyJoinEui(v string) *ListRentedJoinPermissionsRequest {
+	s.FuzzyJoinEui = &v
 	return s
 }
 
@@ -9454,8 +8867,13 @@ func (s *ListRentedJoinPermissionsRequest) SetFuzzyJoinPermissionName(v string) 
 	return s
 }
 
-func (s *ListRentedJoinPermissionsRequest) SetOffset(v int64) *ListRentedJoinPermissionsRequest {
-	s.Offset = &v
+func (s *ListRentedJoinPermissionsRequest) SetFuzzyOwnerAliyunId(v string) *ListRentedJoinPermissionsRequest {
+	s.FuzzyOwnerAliyunId = &v
+	return s
+}
+
+func (s *ListRentedJoinPermissionsRequest) SetIotInstanceId(v string) *ListRentedJoinPermissionsRequest {
+	s.IotInstanceId = &v
 	return s
 }
 
@@ -9464,19 +8882,24 @@ func (s *ListRentedJoinPermissionsRequest) SetLimit(v int64) *ListRentedJoinPerm
 	return s
 }
 
+func (s *ListRentedJoinPermissionsRequest) SetOffset(v int64) *ListRentedJoinPermissionsRequest {
+	s.Offset = &v
+	return s
+}
+
 func (s *ListRentedJoinPermissionsRequest) SetSortingField(v string) *ListRentedJoinPermissionsRequest {
 	s.SortingField = &v
 	return s
 }
 
-func (s *ListRentedJoinPermissionsRequest) SetAscending(v bool) *ListRentedJoinPermissionsRequest {
-	s.Ascending = &v
+func (s *ListRentedJoinPermissionsRequest) SetType(v string) *ListRentedJoinPermissionsRequest {
+	s.Type = &v
 	return s
 }
 
 type ListRentedJoinPermissionsResponseBody struct {
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ListRentedJoinPermissionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9488,13 +8911,13 @@ func (s ListRentedJoinPermissionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListRentedJoinPermissionsResponseBody) SetRequestId(v string) *ListRentedJoinPermissionsResponseBody {
-	s.RequestId = &v
+func (s *ListRentedJoinPermissionsResponseBody) SetData(v *ListRentedJoinPermissionsResponseBodyData) *ListRentedJoinPermissionsResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ListRentedJoinPermissionsResponseBody) SetData(v *ListRentedJoinPermissionsResponseBodyData) *ListRentedJoinPermissionsResponseBody {
-	s.Data = v
+func (s *ListRentedJoinPermissionsResponseBody) SetRequestId(v string) *ListRentedJoinPermissionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9527,20 +8950,20 @@ func (s *ListRentedJoinPermissionsResponseBodyData) SetTotalCount(v int64) *List
 }
 
 type ListRentedJoinPermissionsResponseBodyDataList struct {
-	Type                *string                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
-	DataDispatchConfig  *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig `json:"DataDispatchConfig,omitempty" xml:"DataDispatchConfig,omitempty" type:"Struct"`
-	BoundNodeGroupName  *string                                                          `json:"BoundNodeGroupName,omitempty" xml:"BoundNodeGroupName,omitempty"`
-	FreqBandPlanGroupId *string                                                          `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	DataRate            *string                                                          `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
-	JoinPermissionId    *string                                                          `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
-	ClassMode           *string                                                          `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	JoinEui             *string                                                          `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
 	BoundNodeGroup      *bool                                                            `json:"BoundNodeGroup,omitempty" xml:"BoundNodeGroup,omitempty"`
-	Enabled             *bool                                                            `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	RxDelay             *string                                                          `json:"RxDelay,omitempty" xml:"RxDelay,omitempty"`
 	BoundNodeGroupId    *string                                                          `json:"BoundNodeGroupId,omitempty" xml:"BoundNodeGroupId,omitempty"`
-	OwnerAliyunId       *string                                                          `json:"OwnerAliyunId,omitempty" xml:"OwnerAliyunId,omitempty"`
+	BoundNodeGroupName  *string                                                          `json:"BoundNodeGroupName,omitempty" xml:"BoundNodeGroupName,omitempty"`
+	ClassMode           *string                                                          `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
+	DataDispatchConfig  *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig `json:"DataDispatchConfig,omitempty" xml:"DataDispatchConfig,omitempty" type:"Struct"`
+	DataRate            *string                                                          `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
+	Enabled             *bool                                                            `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	FreqBandPlanGroupId *string                                                          `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	JoinEui             *string                                                          `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
+	JoinPermissionId    *string                                                          `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
 	JoinPermissionName  *string                                                          `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
+	OwnerAliyunId       *string                                                          `json:"OwnerAliyunId,omitempty" xml:"OwnerAliyunId,omitempty"`
+	RxDelay             *string                                                          `json:"RxDelay,omitempty" xml:"RxDelay,omitempty"`
+	Type                *string                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListRentedJoinPermissionsResponseBodyDataList) String() string {
@@ -9551,58 +8974,8 @@ func (s ListRentedJoinPermissionsResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
-func (s *ListRentedJoinPermissionsResponseBodyDataList) SetType(v string) *ListRentedJoinPermissionsResponseBodyDataList {
-	s.Type = &v
-	return s
-}
-
-func (s *ListRentedJoinPermissionsResponseBodyDataList) SetDataDispatchConfig(v *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig) *ListRentedJoinPermissionsResponseBodyDataList {
-	s.DataDispatchConfig = v
-	return s
-}
-
-func (s *ListRentedJoinPermissionsResponseBodyDataList) SetBoundNodeGroupName(v string) *ListRentedJoinPermissionsResponseBodyDataList {
-	s.BoundNodeGroupName = &v
-	return s
-}
-
-func (s *ListRentedJoinPermissionsResponseBodyDataList) SetFreqBandPlanGroupId(v string) *ListRentedJoinPermissionsResponseBodyDataList {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *ListRentedJoinPermissionsResponseBodyDataList) SetDataRate(v string) *ListRentedJoinPermissionsResponseBodyDataList {
-	s.DataRate = &v
-	return s
-}
-
-func (s *ListRentedJoinPermissionsResponseBodyDataList) SetJoinPermissionId(v string) *ListRentedJoinPermissionsResponseBodyDataList {
-	s.JoinPermissionId = &v
-	return s
-}
-
-func (s *ListRentedJoinPermissionsResponseBodyDataList) SetClassMode(v string) *ListRentedJoinPermissionsResponseBodyDataList {
-	s.ClassMode = &v
-	return s
-}
-
-func (s *ListRentedJoinPermissionsResponseBodyDataList) SetJoinEui(v string) *ListRentedJoinPermissionsResponseBodyDataList {
-	s.JoinEui = &v
-	return s
-}
-
 func (s *ListRentedJoinPermissionsResponseBodyDataList) SetBoundNodeGroup(v bool) *ListRentedJoinPermissionsResponseBodyDataList {
 	s.BoundNodeGroup = &v
-	return s
-}
-
-func (s *ListRentedJoinPermissionsResponseBodyDataList) SetEnabled(v bool) *ListRentedJoinPermissionsResponseBodyDataList {
-	s.Enabled = &v
-	return s
-}
-
-func (s *ListRentedJoinPermissionsResponseBodyDataList) SetRxDelay(v string) *ListRentedJoinPermissionsResponseBodyDataList {
-	s.RxDelay = &v
 	return s
 }
 
@@ -9611,8 +8984,43 @@ func (s *ListRentedJoinPermissionsResponseBodyDataList) SetBoundNodeGroupId(v st
 	return s
 }
 
-func (s *ListRentedJoinPermissionsResponseBodyDataList) SetOwnerAliyunId(v string) *ListRentedJoinPermissionsResponseBodyDataList {
-	s.OwnerAliyunId = &v
+func (s *ListRentedJoinPermissionsResponseBodyDataList) SetBoundNodeGroupName(v string) *ListRentedJoinPermissionsResponseBodyDataList {
+	s.BoundNodeGroupName = &v
+	return s
+}
+
+func (s *ListRentedJoinPermissionsResponseBodyDataList) SetClassMode(v string) *ListRentedJoinPermissionsResponseBodyDataList {
+	s.ClassMode = &v
+	return s
+}
+
+func (s *ListRentedJoinPermissionsResponseBodyDataList) SetDataDispatchConfig(v *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig) *ListRentedJoinPermissionsResponseBodyDataList {
+	s.DataDispatchConfig = v
+	return s
+}
+
+func (s *ListRentedJoinPermissionsResponseBodyDataList) SetDataRate(v string) *ListRentedJoinPermissionsResponseBodyDataList {
+	s.DataRate = &v
+	return s
+}
+
+func (s *ListRentedJoinPermissionsResponseBodyDataList) SetEnabled(v bool) *ListRentedJoinPermissionsResponseBodyDataList {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListRentedJoinPermissionsResponseBodyDataList) SetFreqBandPlanGroupId(v string) *ListRentedJoinPermissionsResponseBodyDataList {
+	s.FreqBandPlanGroupId = &v
+	return s
+}
+
+func (s *ListRentedJoinPermissionsResponseBodyDataList) SetJoinEui(v string) *ListRentedJoinPermissionsResponseBodyDataList {
+	s.JoinEui = &v
+	return s
+}
+
+func (s *ListRentedJoinPermissionsResponseBodyDataList) SetJoinPermissionId(v string) *ListRentedJoinPermissionsResponseBodyDataList {
+	s.JoinPermissionId = &v
 	return s
 }
 
@@ -9621,9 +9029,24 @@ func (s *ListRentedJoinPermissionsResponseBodyDataList) SetJoinPermissionName(v 
 	return s
 }
 
+func (s *ListRentedJoinPermissionsResponseBodyDataList) SetOwnerAliyunId(v string) *ListRentedJoinPermissionsResponseBodyDataList {
+	s.OwnerAliyunId = &v
+	return s
+}
+
+func (s *ListRentedJoinPermissionsResponseBodyDataList) SetRxDelay(v string) *ListRentedJoinPermissionsResponseBodyDataList {
+	s.RxDelay = &v
+	return s
+}
+
+func (s *ListRentedJoinPermissionsResponseBodyDataList) SetType(v string) *ListRentedJoinPermissionsResponseBodyDataList {
+	s.Type = &v
+	return s
+}
+
 type ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig struct {
-	IotProduct  *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProduct `json:"IotProduct,omitempty" xml:"IotProduct,omitempty" type:"Struct"`
 	Destination *string                                                                    `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	IotProduct  *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProduct `json:"IotProduct,omitempty" xml:"IotProduct,omitempty" type:"Struct"`
 	OnsTopics   *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigOnsTopics  `json:"OnsTopics,omitempty" xml:"OnsTopics,omitempty" type:"Struct"`
 }
 
@@ -9635,13 +9058,13 @@ func (s ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig) GoStrin
 	return s.String()
 }
 
-func (s *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig) SetIotProduct(v *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProduct) *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig {
-	s.IotProduct = v
+func (s *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig) SetDestination(v string) *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig {
+	s.Destination = &v
 	return s
 }
 
-func (s *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig) SetDestination(v string) *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig {
-	s.Destination = &v
+func (s *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig) SetIotProduct(v *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProduct) *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig {
+	s.IotProduct = v
 	return s
 }
 
@@ -9651,10 +9074,10 @@ func (s *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfig) SetOns
 }
 
 type ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProduct struct {
+	DebugSwitch *bool   `json:"DebugSwitch,omitempty" xml:"DebugSwitch,omitempty"`
 	ProductKey  *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	DebugSwitch *bool   `json:"DebugSwitch,omitempty" xml:"DebugSwitch,omitempty"`
 }
 
 func (s ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProduct) String() string {
@@ -9663,6 +9086,11 @@ func (s ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProduc
 
 func (s ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProduct) GoString() string {
 	return s.String()
+}
+
+func (s *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProduct) SetDebugSwitch(v bool) *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProduct {
+	s.DebugSwitch = &v
+	return s
 }
 
 func (s *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProduct) SetProductKey(v string) *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProduct {
@@ -9680,16 +9108,11 @@ func (s *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProdu
 	return s
 }
 
-func (s *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProduct) SetDebugSwitch(v bool) *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigIotProduct {
-	s.DebugSwitch = &v
-	return s
-}
-
 type ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigOnsTopics struct {
-	UplinkTopic        *string `json:"UplinkTopic,omitempty" xml:"UplinkTopic,omitempty"`
+	DownlinkRegionName *string `json:"DownlinkRegionName,omitempty" xml:"DownlinkRegionName,omitempty"`
 	DownlinkTopic      *string `json:"DownlinkTopic,omitempty" xml:"DownlinkTopic,omitempty"`
 	UplinkRegionName   *string `json:"UplinkRegionName,omitempty" xml:"UplinkRegionName,omitempty"`
-	DownlinkRegionName *string `json:"DownlinkRegionName,omitempty" xml:"DownlinkRegionName,omitempty"`
+	UplinkTopic        *string `json:"UplinkTopic,omitempty" xml:"UplinkTopic,omitempty"`
 }
 
 func (s ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigOnsTopics) String() string {
@@ -9700,8 +9123,8 @@ func (s ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigOnsTopics
 	return s.String()
 }
 
-func (s *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigOnsTopics) SetUplinkTopic(v string) *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigOnsTopics {
-	s.UplinkTopic = &v
+func (s *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigOnsTopics) SetDownlinkRegionName(v string) *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigOnsTopics {
+	s.DownlinkRegionName = &v
 	return s
 }
 
@@ -9715,14 +9138,15 @@ func (s *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigOnsTopic
 	return s
 }
 
-func (s *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigOnsTopics) SetDownlinkRegionName(v string) *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigOnsTopics {
-	s.DownlinkRegionName = &v
+func (s *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigOnsTopics) SetUplinkTopic(v string) *ListRentedJoinPermissionsResponseBodyDataListDataDispatchConfigOnsTopics {
+	s.UplinkTopic = &v
 	return s
 }
 
 type ListRentedJoinPermissionsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRentedJoinPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRentedJoinPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRentedJoinPermissionsResponse) String() string {
@@ -9738,283 +9162,12 @@ func (s *ListRentedJoinPermissionsResponse) SetHeaders(v map[string]*string) *Li
 	return s
 }
 
+func (s *ListRentedJoinPermissionsResponse) SetStatusCode(v int32) *ListRentedJoinPermissionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListRentedJoinPermissionsResponse) SetBody(v *ListRentedJoinPermissionsResponseBody) *ListRentedJoinPermissionsResponse {
-	s.Body = v
-	return s
-}
-
-type ListTransferPacketRequest struct {
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	BeginMillis  *int64  `json:"BeginMillis,omitempty" xml:"BeginMillis,omitempty"`
-	EndMillis    *int64  `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
-	SortingField *string `json:"SortingField,omitempty" xml:"SortingField,omitempty"`
-	Ascending    *bool   `json:"Ascending,omitempty" xml:"Ascending,omitempty"`
-}
-
-func (s ListTransferPacketRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTransferPacketRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListTransferPacketRequest) SetPageNumber(v int32) *ListTransferPacketRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListTransferPacketRequest) SetPageSize(v int32) *ListTransferPacketRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListTransferPacketRequest) SetBeginMillis(v int64) *ListTransferPacketRequest {
-	s.BeginMillis = &v
-	return s
-}
-
-func (s *ListTransferPacketRequest) SetEndMillis(v int64) *ListTransferPacketRequest {
-	s.EndMillis = &v
-	return s
-}
-
-func (s *ListTransferPacketRequest) SetSortingField(v string) *ListTransferPacketRequest {
-	s.SortingField = &v
-	return s
-}
-
-func (s *ListTransferPacketRequest) SetAscending(v bool) *ListTransferPacketRequest {
-	s.Ascending = &v
-	return s
-}
-
-type ListTransferPacketResponseBody struct {
-	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *ListTransferPacketResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListTransferPacketResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTransferPacketResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListTransferPacketResponseBody) SetRequestId(v string) *ListTransferPacketResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBody) SetData(v *ListTransferPacketResponseBodyData) *ListTransferPacketResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListTransferPacketResponseBody) SetErrorMessage(v string) *ListTransferPacketResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBody) SetCode(v string) *ListTransferPacketResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBody) SetSuccess(v bool) *ListTransferPacketResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListTransferPacketResponseBodyData struct {
-	List       *ListTransferPacketResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
-	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListTransferPacketResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTransferPacketResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListTransferPacketResponseBodyData) SetList(v *ListTransferPacketResponseBodyDataList) *ListTransferPacketResponseBodyData {
-	s.List = v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyData) SetTotalCount(v int64) *ListTransferPacketResponseBodyData {
-	s.TotalCount = &v
-	return s
-}
-
-type ListTransferPacketResponseBodyDataList struct {
-	Packet []*ListTransferPacketResponseBodyDataListPacket `json:"Packet,omitempty" xml:"Packet,omitempty" type:"Repeated"`
-}
-
-func (s ListTransferPacketResponseBodyDataList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTransferPacketResponseBodyDataList) GoString() string {
-	return s.String()
-}
-
-func (s *ListTransferPacketResponseBodyDataList) SetPacket(v []*ListTransferPacketResponseBodyDataListPacket) *ListTransferPacketResponseBodyDataList {
-	s.Packet = v
-	return s
-}
-
-type ListTransferPacketResponseBodyDataListPacket struct {
-	LogMillis               *int64   `json:"LogMillis,omitempty" xml:"LogMillis,omitempty"`
-	Base64EncodedMacPayload *string  `json:"Base64EncodedMacPayload,omitempty" xml:"Base64EncodedMacPayload,omitempty"`
-	ProcessEvent            *string  `json:"ProcessEvent,omitempty" xml:"ProcessEvent,omitempty"`
-	FPort                   *int32   `json:"FPort,omitempty" xml:"FPort,omitempty"`
-	Lsnr                    *float32 `json:"Lsnr,omitempty" xml:"Lsnr,omitempty"`
-	FreqBandPlanGroupId     *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	HasData                 *bool    `json:"HasData,omitempty" xml:"HasData,omitempty"`
-	FcntUp                  *int64   `json:"FcntUp,omitempty" xml:"FcntUp,omitempty"`
-	ClassMode               *string  `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
-	MacPayloadSize          *int64   `json:"MacPayloadSize,omitempty" xml:"MacPayloadSize,omitempty"`
-	Datr                    *string  `json:"Datr,omitempty" xml:"Datr,omitempty"`
-	MessageType             *string  `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
-	DevAddr                 *string  `json:"DevAddr,omitempty" xml:"DevAddr,omitempty"`
-	DevEui                  *string  `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	FcntDown                *int64   `json:"FcntDown,omitempty" xml:"FcntDown,omitempty"`
-	GwEui                   *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	Rssi                    *int32   `json:"Rssi,omitempty" xml:"Rssi,omitempty"`
-	HasMacCommand           *bool    `json:"HasMacCommand,omitempty" xml:"HasMacCommand,omitempty"`
-	Freq                    *float32 `json:"Freq,omitempty" xml:"Freq,omitempty"`
-}
-
-func (s ListTransferPacketResponseBodyDataListPacket) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTransferPacketResponseBodyDataListPacket) GoString() string {
-	return s.String()
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetLogMillis(v int64) *ListTransferPacketResponseBodyDataListPacket {
-	s.LogMillis = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetBase64EncodedMacPayload(v string) *ListTransferPacketResponseBodyDataListPacket {
-	s.Base64EncodedMacPayload = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetProcessEvent(v string) *ListTransferPacketResponseBodyDataListPacket {
-	s.ProcessEvent = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetFPort(v int32) *ListTransferPacketResponseBodyDataListPacket {
-	s.FPort = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetLsnr(v float32) *ListTransferPacketResponseBodyDataListPacket {
-	s.Lsnr = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetFreqBandPlanGroupId(v int64) *ListTransferPacketResponseBodyDataListPacket {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetHasData(v bool) *ListTransferPacketResponseBodyDataListPacket {
-	s.HasData = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetFcntUp(v int64) *ListTransferPacketResponseBodyDataListPacket {
-	s.FcntUp = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetClassMode(v string) *ListTransferPacketResponseBodyDataListPacket {
-	s.ClassMode = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetMacPayloadSize(v int64) *ListTransferPacketResponseBodyDataListPacket {
-	s.MacPayloadSize = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetDatr(v string) *ListTransferPacketResponseBodyDataListPacket {
-	s.Datr = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetMessageType(v string) *ListTransferPacketResponseBodyDataListPacket {
-	s.MessageType = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetDevAddr(v string) *ListTransferPacketResponseBodyDataListPacket {
-	s.DevAddr = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetDevEui(v string) *ListTransferPacketResponseBodyDataListPacket {
-	s.DevEui = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetFcntDown(v int64) *ListTransferPacketResponseBodyDataListPacket {
-	s.FcntDown = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetGwEui(v string) *ListTransferPacketResponseBodyDataListPacket {
-	s.GwEui = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetRssi(v int32) *ListTransferPacketResponseBodyDataListPacket {
-	s.Rssi = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetHasMacCommand(v bool) *ListTransferPacketResponseBodyDataListPacket {
-	s.HasMacCommand = &v
-	return s
-}
-
-func (s *ListTransferPacketResponseBodyDataListPacket) SetFreq(v float32) *ListTransferPacketResponseBodyDataListPacket {
-	s.Freq = &v
-	return s
-}
-
-type ListTransferPacketResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTransferPacketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListTransferPacketResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTransferPacketResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListTransferPacketResponse) SetHeaders(v map[string]*string) *ListTransferPacketResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListTransferPacketResponse) SetBody(v *ListTransferPacketResponseBody) *ListTransferPacketResponse {
 	s.Body = v
 	return s
 }
@@ -10060,8 +9213,9 @@ func (s *RejectJoinPermissionAuthOrderResponseBody) SetSuccess(v bool) *RejectJo
 }
 
 type RejectJoinPermissionAuthOrderResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RejectJoinPermissionAuthOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RejectJoinPermissionAuthOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RejectJoinPermissionAuthOrderResponse) String() string {
@@ -10074,6 +9228,11 @@ func (s RejectJoinPermissionAuthOrderResponse) GoString() string {
 
 func (s *RejectJoinPermissionAuthOrderResponse) SetHeaders(v map[string]*string) *RejectJoinPermissionAuthOrderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RejectJoinPermissionAuthOrderResponse) SetStatusCode(v int32) *RejectJoinPermissionAuthOrderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10129,8 +9288,9 @@ func (s *RemoveNodeFromGroupResponseBody) SetSuccess(v bool) *RemoveNodeFromGrou
 }
 
 type RemoveNodeFromGroupResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveNodeFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveNodeFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveNodeFromGroupResponse) String() string {
@@ -10143,6 +9303,11 @@ func (s RemoveNodeFromGroupResponse) GoString() string {
 
 func (s *RemoveNodeFromGroupResponse) SetHeaders(v map[string]*string) *RemoveNodeFromGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveNodeFromGroupResponse) SetStatusCode(v int32) *RemoveNodeFromGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10198,8 +9363,9 @@ func (s *ReturnJoinPermissionResponseBody) SetSuccess(v bool) *ReturnJoinPermiss
 }
 
 type ReturnJoinPermissionResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReturnJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReturnJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReturnJoinPermissionResponse) String() string {
@@ -10215,19 +9381,24 @@ func (s *ReturnJoinPermissionResponse) SetHeaders(v map[string]*string) *ReturnJ
 	return s
 }
 
+func (s *ReturnJoinPermissionResponse) SetStatusCode(v int32) *ReturnJoinPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ReturnJoinPermissionResponse) SetBody(v *ReturnJoinPermissionResponseBody) *ReturnJoinPermissionResponse {
 	s.Body = v
 	return s
 }
 
 type SendUnicastCommandRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	DevEui        *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	MaxRetries    *int32  `json:"MaxRetries,omitempty" xml:"MaxRetries,omitempty"`
 	CleanUp       *bool   `json:"CleanUp,omitempty" xml:"CleanUp,omitempty"`
-	FPort         *int32  `json:"FPort,omitempty" xml:"FPort,omitempty"`
 	Confirmed     *bool   `json:"Confirmed,omitempty" xml:"Confirmed,omitempty"`
 	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DevEui        *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
+	FPort         *int32  `json:"FPort,omitempty" xml:"FPort,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	MaxRetries    *int32  `json:"MaxRetries,omitempty" xml:"MaxRetries,omitempty"`
 }
 
 func (s SendUnicastCommandRequest) String() string {
@@ -10238,28 +9409,8 @@ func (s SendUnicastCommandRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SendUnicastCommandRequest) SetIotInstanceId(v string) *SendUnicastCommandRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *SendUnicastCommandRequest) SetDevEui(v string) *SendUnicastCommandRequest {
-	s.DevEui = &v
-	return s
-}
-
-func (s *SendUnicastCommandRequest) SetMaxRetries(v int32) *SendUnicastCommandRequest {
-	s.MaxRetries = &v
-	return s
-}
-
 func (s *SendUnicastCommandRequest) SetCleanUp(v bool) *SendUnicastCommandRequest {
 	s.CleanUp = &v
-	return s
-}
-
-func (s *SendUnicastCommandRequest) SetFPort(v int32) *SendUnicastCommandRequest {
-	s.FPort = &v
 	return s
 }
 
@@ -10270,6 +9421,26 @@ func (s *SendUnicastCommandRequest) SetConfirmed(v bool) *SendUnicastCommandRequ
 
 func (s *SendUnicastCommandRequest) SetContent(v string) *SendUnicastCommandRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *SendUnicastCommandRequest) SetDevEui(v string) *SendUnicastCommandRequest {
+	s.DevEui = &v
+	return s
+}
+
+func (s *SendUnicastCommandRequest) SetFPort(v int32) *SendUnicastCommandRequest {
+	s.FPort = &v
+	return s
+}
+
+func (s *SendUnicastCommandRequest) SetIotInstanceId(v string) *SendUnicastCommandRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *SendUnicastCommandRequest) SetMaxRetries(v int32) *SendUnicastCommandRequest {
+	s.MaxRetries = &v
 	return s
 }
 
@@ -10297,8 +9468,9 @@ func (s *SendUnicastCommandResponseBody) SetSuccess(v bool) *SendUnicastCommandR
 }
 
 type SendUnicastCommandResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SendUnicastCommandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendUnicastCommandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SendUnicastCommandResponse) String() string {
@@ -10314,199 +9486,12 @@ func (s *SendUnicastCommandResponse) SetHeaders(v map[string]*string) *SendUnica
 	return s
 }
 
+func (s *SendUnicastCommandResponse) SetStatusCode(v int32) *SendUnicastCommandResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SendUnicastCommandResponse) SetBody(v *SendUnicastCommandResponseBody) *SendUnicastCommandResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitGatewayLocalConfigAddingTaskRequest struct {
-	GwEui   *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	Datr    *int32  `json:"Datr,omitempty" xml:"Datr,omitempty"`
-	D2dAddr *string `json:"D2dAddr,omitempty" xml:"D2dAddr,omitempty"`
-	Freq    *int32  `json:"Freq,omitempty" xml:"Freq,omitempty"`
-	D2dKey  *string `json:"D2dKey,omitempty" xml:"D2dKey,omitempty"`
-}
-
-func (s SubmitGatewayLocalConfigAddingTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitGatewayLocalConfigAddingTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitGatewayLocalConfigAddingTaskRequest) SetGwEui(v string) *SubmitGatewayLocalConfigAddingTaskRequest {
-	s.GwEui = &v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigAddingTaskRequest) SetDatr(v int32) *SubmitGatewayLocalConfigAddingTaskRequest {
-	s.Datr = &v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigAddingTaskRequest) SetD2dAddr(v string) *SubmitGatewayLocalConfigAddingTaskRequest {
-	s.D2dAddr = &v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigAddingTaskRequest) SetFreq(v int32) *SubmitGatewayLocalConfigAddingTaskRequest {
-	s.Freq = &v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigAddingTaskRequest) SetD2dKey(v string) *SubmitGatewayLocalConfigAddingTaskRequest {
-	s.D2dKey = &v
-	return s
-}
-
-type SubmitGatewayLocalConfigAddingTaskResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SubmitGatewayLocalConfigAddingTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitGatewayLocalConfigAddingTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitGatewayLocalConfigAddingTaskResponseBody) SetRequestId(v string) *SubmitGatewayLocalConfigAddingTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigAddingTaskResponseBody) SetData(v int64) *SubmitGatewayLocalConfigAddingTaskResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigAddingTaskResponseBody) SetErrorMessage(v string) *SubmitGatewayLocalConfigAddingTaskResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigAddingTaskResponseBody) SetCode(v string) *SubmitGatewayLocalConfigAddingTaskResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigAddingTaskResponseBody) SetSuccess(v bool) *SubmitGatewayLocalConfigAddingTaskResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SubmitGatewayLocalConfigAddingTaskResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitGatewayLocalConfigAddingTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitGatewayLocalConfigAddingTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitGatewayLocalConfigAddingTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitGatewayLocalConfigAddingTaskResponse) SetHeaders(v map[string]*string) *SubmitGatewayLocalConfigAddingTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigAddingTaskResponse) SetBody(v *SubmitGatewayLocalConfigAddingTaskResponseBody) *SubmitGatewayLocalConfigAddingTaskResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitGatewayLocalConfigDeletingTaskRequest struct {
-	GwEui   *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	D2dAddr *string `json:"D2dAddr,omitempty" xml:"D2dAddr,omitempty"`
-}
-
-func (s SubmitGatewayLocalConfigDeletingTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitGatewayLocalConfigDeletingTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitGatewayLocalConfigDeletingTaskRequest) SetGwEui(v string) *SubmitGatewayLocalConfigDeletingTaskRequest {
-	s.GwEui = &v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigDeletingTaskRequest) SetD2dAddr(v string) *SubmitGatewayLocalConfigDeletingTaskRequest {
-	s.D2dAddr = &v
-	return s
-}
-
-type SubmitGatewayLocalConfigDeletingTaskResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SubmitGatewayLocalConfigDeletingTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitGatewayLocalConfigDeletingTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitGatewayLocalConfigDeletingTaskResponseBody) SetRequestId(v string) *SubmitGatewayLocalConfigDeletingTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigDeletingTaskResponseBody) SetData(v int64) *SubmitGatewayLocalConfigDeletingTaskResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigDeletingTaskResponseBody) SetErrorMessage(v string) *SubmitGatewayLocalConfigDeletingTaskResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigDeletingTaskResponseBody) SetCode(v string) *SubmitGatewayLocalConfigDeletingTaskResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigDeletingTaskResponseBody) SetSuccess(v bool) *SubmitGatewayLocalConfigDeletingTaskResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SubmitGatewayLocalConfigDeletingTaskResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitGatewayLocalConfigDeletingTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitGatewayLocalConfigDeletingTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitGatewayLocalConfigDeletingTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitGatewayLocalConfigDeletingTaskResponse) SetHeaders(v map[string]*string) *SubmitGatewayLocalConfigDeletingTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitGatewayLocalConfigDeletingTaskResponse) SetBody(v *SubmitGatewayLocalConfigDeletingTaskResponseBody) *SubmitGatewayLocalConfigDeletingTaskResponse {
 	s.Body = v
 	return s
 }
@@ -10535,8 +9520,8 @@ func (s *SubmitGatewayTupleOrderRequest) SetTupleType(v string) *SubmitGatewayTu
 }
 
 type SubmitGatewayTupleOrderResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10548,13 +9533,13 @@ func (s SubmitGatewayTupleOrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitGatewayTupleOrderResponseBody) SetRequestId(v string) *SubmitGatewayTupleOrderResponseBody {
-	s.RequestId = &v
+func (s *SubmitGatewayTupleOrderResponseBody) SetData(v string) *SubmitGatewayTupleOrderResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *SubmitGatewayTupleOrderResponseBody) SetData(v string) *SubmitGatewayTupleOrderResponseBody {
-	s.Data = &v
+func (s *SubmitGatewayTupleOrderResponseBody) SetRequestId(v string) *SubmitGatewayTupleOrderResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10564,8 +9549,9 @@ func (s *SubmitGatewayTupleOrderResponseBody) SetSuccess(v bool) *SubmitGatewayT
 }
 
 type SubmitGatewayTupleOrderResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitGatewayTupleOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitGatewayTupleOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SubmitGatewayTupleOrderResponse) String() string {
@@ -10578,6 +9564,11 @@ func (s SubmitGatewayTupleOrderResponse) GoString() string {
 
 func (s *SubmitGatewayTupleOrderResponse) SetHeaders(v map[string]*string) *SubmitGatewayTupleOrderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SubmitGatewayTupleOrderResponse) SetStatusCode(v int32) *SubmitGatewayTupleOrderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10610,8 +9601,8 @@ func (s *SubmitJoinPermissionAuthOrderRequest) SetRenterAliyunId(v string) *Subm
 }
 
 type SubmitJoinPermissionAuthOrderResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10623,13 +9614,13 @@ func (s SubmitJoinPermissionAuthOrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitJoinPermissionAuthOrderResponseBody) SetRequestId(v string) *SubmitJoinPermissionAuthOrderResponseBody {
-	s.RequestId = &v
+func (s *SubmitJoinPermissionAuthOrderResponseBody) SetData(v int64) *SubmitJoinPermissionAuthOrderResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *SubmitJoinPermissionAuthOrderResponseBody) SetData(v int64) *SubmitJoinPermissionAuthOrderResponseBody {
-	s.Data = &v
+func (s *SubmitJoinPermissionAuthOrderResponseBody) SetRequestId(v string) *SubmitJoinPermissionAuthOrderResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10639,8 +9630,9 @@ func (s *SubmitJoinPermissionAuthOrderResponseBody) SetSuccess(v bool) *SubmitJo
 }
 
 type SubmitJoinPermissionAuthOrderResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitJoinPermissionAuthOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitJoinPermissionAuthOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SubmitJoinPermissionAuthOrderResponse) String() string {
@@ -10656,274 +9648,12 @@ func (s *SubmitJoinPermissionAuthOrderResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *SubmitJoinPermissionAuthOrderResponse) SetStatusCode(v int32) *SubmitJoinPermissionAuthOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SubmitJoinPermissionAuthOrderResponse) SetBody(v *SubmitJoinPermissionAuthOrderResponseBody) *SubmitJoinPermissionAuthOrderResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitKpmEncryptedNodeTupleOrderRequest struct {
-	LoraVersion   *string `json:"LoraVersion,omitempty" xml:"LoraVersion,omitempty"`
-	RequiredCount *int64  `json:"RequiredCount,omitempty" xml:"RequiredCount,omitempty"`
-	TupleType     *string `json:"TupleType,omitempty" xml:"TupleType,omitempty"`
-}
-
-func (s SubmitKpmEncryptedNodeTupleOrderRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitKpmEncryptedNodeTupleOrderRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitKpmEncryptedNodeTupleOrderRequest) SetLoraVersion(v string) *SubmitKpmEncryptedNodeTupleOrderRequest {
-	s.LoraVersion = &v
-	return s
-}
-
-func (s *SubmitKpmEncryptedNodeTupleOrderRequest) SetRequiredCount(v int64) *SubmitKpmEncryptedNodeTupleOrderRequest {
-	s.RequiredCount = &v
-	return s
-}
-
-func (s *SubmitKpmEncryptedNodeTupleOrderRequest) SetTupleType(v string) *SubmitKpmEncryptedNodeTupleOrderRequest {
-	s.TupleType = &v
-	return s
-}
-
-type SubmitKpmEncryptedNodeTupleOrderResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SubmitKpmEncryptedNodeTupleOrderResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitKpmEncryptedNodeTupleOrderResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitKpmEncryptedNodeTupleOrderResponseBody) SetRequestId(v string) *SubmitKpmEncryptedNodeTupleOrderResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SubmitKpmEncryptedNodeTupleOrderResponseBody) SetOrderId(v string) *SubmitKpmEncryptedNodeTupleOrderResponseBody {
-	s.OrderId = &v
-	return s
-}
-
-func (s *SubmitKpmEncryptedNodeTupleOrderResponseBody) SetSuccess(v bool) *SubmitKpmEncryptedNodeTupleOrderResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SubmitKpmEncryptedNodeTupleOrderResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitKpmEncryptedNodeTupleOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitKpmEncryptedNodeTupleOrderResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitKpmEncryptedNodeTupleOrderResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitKpmEncryptedNodeTupleOrderResponse) SetHeaders(v map[string]*string) *SubmitKpmEncryptedNodeTupleOrderResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitKpmEncryptedNodeTupleOrderResponse) SetBody(v *SubmitKpmEncryptedNodeTupleOrderResponseBody) *SubmitKpmEncryptedNodeTupleOrderResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitNodeLocalConfigAddingTaskRequest struct {
-	DevEui  *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	Datr    *int32  `json:"Datr,omitempty" xml:"Datr,omitempty"`
-	D2dAddr *string `json:"D2dAddr,omitempty" xml:"D2dAddr,omitempty"`
-	Freq    *int32  `json:"Freq,omitempty" xml:"Freq,omitempty"`
-	D2dKey  *string `json:"D2dKey,omitempty" xml:"D2dKey,omitempty"`
-}
-
-func (s SubmitNodeLocalConfigAddingTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitNodeLocalConfigAddingTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitNodeLocalConfigAddingTaskRequest) SetDevEui(v string) *SubmitNodeLocalConfigAddingTaskRequest {
-	s.DevEui = &v
-	return s
-}
-
-func (s *SubmitNodeLocalConfigAddingTaskRequest) SetDatr(v int32) *SubmitNodeLocalConfigAddingTaskRequest {
-	s.Datr = &v
-	return s
-}
-
-func (s *SubmitNodeLocalConfigAddingTaskRequest) SetD2dAddr(v string) *SubmitNodeLocalConfigAddingTaskRequest {
-	s.D2dAddr = &v
-	return s
-}
-
-func (s *SubmitNodeLocalConfigAddingTaskRequest) SetFreq(v int32) *SubmitNodeLocalConfigAddingTaskRequest {
-	s.Freq = &v
-	return s
-}
-
-func (s *SubmitNodeLocalConfigAddingTaskRequest) SetD2dKey(v string) *SubmitNodeLocalConfigAddingTaskRequest {
-	s.D2dKey = &v
-	return s
-}
-
-type SubmitNodeLocalConfigAddingTaskResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SubmitNodeLocalConfigAddingTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitNodeLocalConfigAddingTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitNodeLocalConfigAddingTaskResponseBody) SetRequestId(v string) *SubmitNodeLocalConfigAddingTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SubmitNodeLocalConfigAddingTaskResponseBody) SetData(v int64) *SubmitNodeLocalConfigAddingTaskResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *SubmitNodeLocalConfigAddingTaskResponseBody) SetErrorMessage(v string) *SubmitNodeLocalConfigAddingTaskResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *SubmitNodeLocalConfigAddingTaskResponseBody) SetCode(v string) *SubmitNodeLocalConfigAddingTaskResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitNodeLocalConfigAddingTaskResponseBody) SetSuccess(v bool) *SubmitNodeLocalConfigAddingTaskResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SubmitNodeLocalConfigAddingTaskResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitNodeLocalConfigAddingTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitNodeLocalConfigAddingTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitNodeLocalConfigAddingTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitNodeLocalConfigAddingTaskResponse) SetHeaders(v map[string]*string) *SubmitNodeLocalConfigAddingTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitNodeLocalConfigAddingTaskResponse) SetBody(v *SubmitNodeLocalConfigAddingTaskResponseBody) *SubmitNodeLocalConfigAddingTaskResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitNodeLocalConfigDeletingTaskRequest struct {
-	DevEui *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-}
-
-func (s SubmitNodeLocalConfigDeletingTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitNodeLocalConfigDeletingTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitNodeLocalConfigDeletingTaskRequest) SetDevEui(v string) *SubmitNodeLocalConfigDeletingTaskRequest {
-	s.DevEui = &v
-	return s
-}
-
-type SubmitNodeLocalConfigDeletingTaskResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data         *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SubmitNodeLocalConfigDeletingTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitNodeLocalConfigDeletingTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitNodeLocalConfigDeletingTaskResponseBody) SetRequestId(v string) *SubmitNodeLocalConfigDeletingTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SubmitNodeLocalConfigDeletingTaskResponseBody) SetData(v int64) *SubmitNodeLocalConfigDeletingTaskResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *SubmitNodeLocalConfigDeletingTaskResponseBody) SetErrorMessage(v string) *SubmitNodeLocalConfigDeletingTaskResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *SubmitNodeLocalConfigDeletingTaskResponseBody) SetCode(v string) *SubmitNodeLocalConfigDeletingTaskResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitNodeLocalConfigDeletingTaskResponseBody) SetSuccess(v bool) *SubmitNodeLocalConfigDeletingTaskResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SubmitNodeLocalConfigDeletingTaskResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitNodeLocalConfigDeletingTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitNodeLocalConfigDeletingTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitNodeLocalConfigDeletingTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitNodeLocalConfigDeletingTaskResponse) SetHeaders(v map[string]*string) *SubmitNodeLocalConfigDeletingTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitNodeLocalConfigDeletingTaskResponse) SetBody(v *SubmitNodeLocalConfigDeletingTaskResponseBody) *SubmitNodeLocalConfigDeletingTaskResponse {
 	s.Body = v
 	return s
 }
@@ -10958,8 +9688,8 @@ func (s *SubmitNodeTupleOrderRequest) SetTupleType(v string) *SubmitNodeTupleOrd
 }
 
 type SubmitNodeTupleOrderResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10971,13 +9701,13 @@ func (s SubmitNodeTupleOrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitNodeTupleOrderResponseBody) SetRequestId(v string) *SubmitNodeTupleOrderResponseBody {
-	s.RequestId = &v
+func (s *SubmitNodeTupleOrderResponseBody) SetData(v string) *SubmitNodeTupleOrderResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *SubmitNodeTupleOrderResponseBody) SetData(v string) *SubmitNodeTupleOrderResponseBody {
-	s.Data = &v
+func (s *SubmitNodeTupleOrderResponseBody) SetRequestId(v string) *SubmitNodeTupleOrderResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10987,8 +9717,9 @@ func (s *SubmitNodeTupleOrderResponseBody) SetSuccess(v bool) *SubmitNodeTupleOr
 }
 
 type SubmitNodeTupleOrderResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitNodeTupleOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitNodeTupleOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SubmitNodeTupleOrderResponse) String() string {
@@ -11004,14 +9735,19 @@ func (s *SubmitNodeTupleOrderResponse) SetHeaders(v map[string]*string) *SubmitN
 	return s
 }
 
+func (s *SubmitNodeTupleOrderResponse) SetStatusCode(v int32) *SubmitNodeTupleOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SubmitNodeTupleOrderResponse) SetBody(v *SubmitNodeTupleOrderResponseBody) *SubmitNodeTupleOrderResponse {
 	s.Body = v
 	return s
 }
 
 type UnbindJoinPermissionFromNodeGroupRequest struct {
-	NodeGroupId      *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	JoinPermissionId *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
+	NodeGroupId      *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 }
 
 func (s UnbindJoinPermissionFromNodeGroupRequest) String() string {
@@ -11022,13 +9758,13 @@ func (s UnbindJoinPermissionFromNodeGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UnbindJoinPermissionFromNodeGroupRequest) SetNodeGroupId(v string) *UnbindJoinPermissionFromNodeGroupRequest {
-	s.NodeGroupId = &v
+func (s *UnbindJoinPermissionFromNodeGroupRequest) SetJoinPermissionId(v string) *UnbindJoinPermissionFromNodeGroupRequest {
+	s.JoinPermissionId = &v
 	return s
 }
 
-func (s *UnbindJoinPermissionFromNodeGroupRequest) SetJoinPermissionId(v string) *UnbindJoinPermissionFromNodeGroupRequest {
-	s.JoinPermissionId = &v
+func (s *UnbindJoinPermissionFromNodeGroupRequest) SetNodeGroupId(v string) *UnbindJoinPermissionFromNodeGroupRequest {
+	s.NodeGroupId = &v
 	return s
 }
 
@@ -11056,8 +9792,9 @@ func (s *UnbindJoinPermissionFromNodeGroupResponseBody) SetSuccess(v bool) *Unbi
 }
 
 type UnbindJoinPermissionFromNodeGroupResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UnbindJoinPermissionFromNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnbindJoinPermissionFromNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UnbindJoinPermissionFromNodeGroupResponse) String() string {
@@ -11073,18 +9810,23 @@ func (s *UnbindJoinPermissionFromNodeGroupResponse) SetHeaders(v map[string]*str
 	return s
 }
 
+func (s *UnbindJoinPermissionFromNodeGroupResponse) SetStatusCode(v int32) *UnbindJoinPermissionFromNodeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UnbindJoinPermissionFromNodeGroupResponse) SetBody(v *UnbindJoinPermissionFromNodeGroupResponseBody) *UnbindJoinPermissionFromNodeGroupResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateDataDispatchConfigRequest struct {
-	NodeGroupId             *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	DataDispatchDestination *string `json:"DataDispatchDestination,omitempty" xml:"DataDispatchDestination,omitempty"`
-	ProductType             *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	ProductName             *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	ProductKey              *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	DebugSwitch             *bool   `json:"DebugSwitch,omitempty" xml:"DebugSwitch,omitempty"`
+	NodeGroupId             *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	ProductKey              *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ProductName             *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType             *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	UplinkRegionName        *string `json:"UplinkRegionName,omitempty" xml:"UplinkRegionName,omitempty"`
 	UplinkTopic             *string `json:"UplinkTopic,omitempty" xml:"UplinkTopic,omitempty"`
 }
@@ -11097,23 +9839,18 @@ func (s UpdateDataDispatchConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateDataDispatchConfigRequest) SetNodeGroupId(v string) *UpdateDataDispatchConfigRequest {
-	s.NodeGroupId = &v
-	return s
-}
-
 func (s *UpdateDataDispatchConfigRequest) SetDataDispatchDestination(v string) *UpdateDataDispatchConfigRequest {
 	s.DataDispatchDestination = &v
 	return s
 }
 
-func (s *UpdateDataDispatchConfigRequest) SetProductType(v string) *UpdateDataDispatchConfigRequest {
-	s.ProductType = &v
+func (s *UpdateDataDispatchConfigRequest) SetDebugSwitch(v bool) *UpdateDataDispatchConfigRequest {
+	s.DebugSwitch = &v
 	return s
 }
 
-func (s *UpdateDataDispatchConfigRequest) SetProductName(v string) *UpdateDataDispatchConfigRequest {
-	s.ProductName = &v
+func (s *UpdateDataDispatchConfigRequest) SetNodeGroupId(v string) *UpdateDataDispatchConfigRequest {
+	s.NodeGroupId = &v
 	return s
 }
 
@@ -11122,8 +9859,13 @@ func (s *UpdateDataDispatchConfigRequest) SetProductKey(v string) *UpdateDataDis
 	return s
 }
 
-func (s *UpdateDataDispatchConfigRequest) SetDebugSwitch(v bool) *UpdateDataDispatchConfigRequest {
-	s.DebugSwitch = &v
+func (s *UpdateDataDispatchConfigRequest) SetProductName(v string) *UpdateDataDispatchConfigRequest {
+	s.ProductName = &v
+	return s
+}
+
+func (s *UpdateDataDispatchConfigRequest) SetProductType(v string) *UpdateDataDispatchConfigRequest {
+	s.ProductType = &v
 	return s
 }
 
@@ -11161,8 +9903,9 @@ func (s *UpdateDataDispatchConfigResponseBody) SetSuccess(v bool) *UpdateDataDis
 }
 
 type UpdateDataDispatchConfigResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDataDispatchConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDataDispatchConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateDataDispatchConfigResponse) String() string {
@@ -11178,14 +9921,19 @@ func (s *UpdateDataDispatchConfigResponse) SetHeaders(v map[string]*string) *Upd
 	return s
 }
 
+func (s *UpdateDataDispatchConfigResponse) SetStatusCode(v int32) *UpdateDataDispatchConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateDataDispatchConfigResponse) SetBody(v *UpdateDataDispatchConfigResponseBody) *UpdateDataDispatchConfigResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateDataDispatchEnablingStateRequest struct {
-	NodeGroupId         *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	DataDispatchEnabled *bool   `json:"DataDispatchEnabled,omitempty" xml:"DataDispatchEnabled,omitempty"`
+	NodeGroupId         *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 }
 
 func (s UpdateDataDispatchEnablingStateRequest) String() string {
@@ -11196,13 +9944,13 @@ func (s UpdateDataDispatchEnablingStateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateDataDispatchEnablingStateRequest) SetNodeGroupId(v string) *UpdateDataDispatchEnablingStateRequest {
-	s.NodeGroupId = &v
+func (s *UpdateDataDispatchEnablingStateRequest) SetDataDispatchEnabled(v bool) *UpdateDataDispatchEnablingStateRequest {
+	s.DataDispatchEnabled = &v
 	return s
 }
 
-func (s *UpdateDataDispatchEnablingStateRequest) SetDataDispatchEnabled(v bool) *UpdateDataDispatchEnablingStateRequest {
-	s.DataDispatchEnabled = &v
+func (s *UpdateDataDispatchEnablingStateRequest) SetNodeGroupId(v string) *UpdateDataDispatchEnablingStateRequest {
+	s.NodeGroupId = &v
 	return s
 }
 
@@ -11230,8 +9978,9 @@ func (s *UpdateDataDispatchEnablingStateResponseBody) SetSuccess(v bool) *Update
 }
 
 type UpdateDataDispatchEnablingStateResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDataDispatchEnablingStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDataDispatchEnablingStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateDataDispatchEnablingStateResponse) String() string {
@@ -11247,25 +9996,30 @@ func (s *UpdateDataDispatchEnablingStateResponse) SetHeaders(v map[string]*strin
 	return s
 }
 
+func (s *UpdateDataDispatchEnablingStateResponse) SetStatusCode(v int32) *UpdateDataDispatchEnablingStateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateDataDispatchEnablingStateResponse) SetBody(v *UpdateDataDispatchEnablingStateResponseBody) *UpdateDataDispatchEnablingStateResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateGatewayRequest struct {
-	IotInstanceId       *string  `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	GwEui               *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	Name                *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Description         *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	FreqBandPlanGroupId *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
-	CommunicationMode   *string  `json:"CommunicationMode,omitempty" xml:"CommunicationMode,omitempty"`
+	Address             *string  `json:"Address,omitempty" xml:"Address,omitempty"`
 	AddressCode         *int64   `json:"AddressCode,omitempty" xml:"AddressCode,omitempty"`
 	City                *string  `json:"City,omitempty" xml:"City,omitempty"`
+	CommunicationMode   *string  `json:"CommunicationMode,omitempty" xml:"CommunicationMode,omitempty"`
+	Description         *string  `json:"Description,omitempty" xml:"Description,omitempty"`
 	District            *string  `json:"District,omitempty" xml:"District,omitempty"`
-	Address             *string  `json:"Address,omitempty" xml:"Address,omitempty"`
+	FreqBandPlanGroupId *int64   `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
 	GisCoordinateSystem *string  `json:"GisCoordinateSystem,omitempty" xml:"GisCoordinateSystem,omitempty"`
-	Longitude           *float32 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	GwEui               *string  `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	IotInstanceId       *string  `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	Latitude            *float32 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	Longitude           *float32 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	Name                *string  `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateGatewayRequest) String() string {
@@ -11276,33 +10030,8 @@ func (s UpdateGatewayRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateGatewayRequest) SetIotInstanceId(v string) *UpdateGatewayRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *UpdateGatewayRequest) SetGwEui(v string) *UpdateGatewayRequest {
-	s.GwEui = &v
-	return s
-}
-
-func (s *UpdateGatewayRequest) SetName(v string) *UpdateGatewayRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *UpdateGatewayRequest) SetDescription(v string) *UpdateGatewayRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateGatewayRequest) SetFreqBandPlanGroupId(v int64) *UpdateGatewayRequest {
-	s.FreqBandPlanGroupId = &v
-	return s
-}
-
-func (s *UpdateGatewayRequest) SetCommunicationMode(v string) *UpdateGatewayRequest {
-	s.CommunicationMode = &v
+func (s *UpdateGatewayRequest) SetAddress(v string) *UpdateGatewayRequest {
+	s.Address = &v
 	return s
 }
 
@@ -11316,13 +10045,23 @@ func (s *UpdateGatewayRequest) SetCity(v string) *UpdateGatewayRequest {
 	return s
 }
 
+func (s *UpdateGatewayRequest) SetCommunicationMode(v string) *UpdateGatewayRequest {
+	s.CommunicationMode = &v
+	return s
+}
+
+func (s *UpdateGatewayRequest) SetDescription(v string) *UpdateGatewayRequest {
+	s.Description = &v
+	return s
+}
+
 func (s *UpdateGatewayRequest) SetDistrict(v string) *UpdateGatewayRequest {
 	s.District = &v
 	return s
 }
 
-func (s *UpdateGatewayRequest) SetAddress(v string) *UpdateGatewayRequest {
-	s.Address = &v
+func (s *UpdateGatewayRequest) SetFreqBandPlanGroupId(v int64) *UpdateGatewayRequest {
+	s.FreqBandPlanGroupId = &v
 	return s
 }
 
@@ -11331,13 +10070,28 @@ func (s *UpdateGatewayRequest) SetGisCoordinateSystem(v string) *UpdateGatewayRe
 	return s
 }
 
-func (s *UpdateGatewayRequest) SetLongitude(v float32) *UpdateGatewayRequest {
-	s.Longitude = &v
+func (s *UpdateGatewayRequest) SetGwEui(v string) *UpdateGatewayRequest {
+	s.GwEui = &v
+	return s
+}
+
+func (s *UpdateGatewayRequest) SetIotInstanceId(v string) *UpdateGatewayRequest {
+	s.IotInstanceId = &v
 	return s
 }
 
 func (s *UpdateGatewayRequest) SetLatitude(v float32) *UpdateGatewayRequest {
 	s.Latitude = &v
+	return s
+}
+
+func (s *UpdateGatewayRequest) SetLongitude(v float32) *UpdateGatewayRequest {
+	s.Longitude = &v
+	return s
+}
+
+func (s *UpdateGatewayRequest) SetName(v string) *UpdateGatewayRequest {
+	s.Name = &v
 	return s
 }
 
@@ -11365,8 +10119,9 @@ func (s *UpdateGatewayResponseBody) SetSuccess(v bool) *UpdateGatewayResponseBod
 }
 
 type UpdateGatewayResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateGatewayResponse) String() string {
@@ -11382,15 +10137,20 @@ func (s *UpdateGatewayResponse) SetHeaders(v map[string]*string) *UpdateGatewayR
 	return s
 }
 
+func (s *UpdateGatewayResponse) SetStatusCode(v int32) *UpdateGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateGatewayResponse) SetBody(v *UpdateGatewayResponseBody) *UpdateGatewayResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateGatewayEnablingStateRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
 	Enabled       *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 }
 
 func (s UpdateGatewayEnablingStateRequest) String() string {
@@ -11401,8 +10161,8 @@ func (s UpdateGatewayEnablingStateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateGatewayEnablingStateRequest) SetIotInstanceId(v string) *UpdateGatewayEnablingStateRequest {
-	s.IotInstanceId = &v
+func (s *UpdateGatewayEnablingStateRequest) SetEnabled(v bool) *UpdateGatewayEnablingStateRequest {
+	s.Enabled = &v
 	return s
 }
 
@@ -11411,8 +10171,8 @@ func (s *UpdateGatewayEnablingStateRequest) SetGwEui(v string) *UpdateGatewayEna
 	return s
 }
 
-func (s *UpdateGatewayEnablingStateRequest) SetEnabled(v bool) *UpdateGatewayEnablingStateRequest {
-	s.Enabled = &v
+func (s *UpdateGatewayEnablingStateRequest) SetIotInstanceId(v string) *UpdateGatewayEnablingStateRequest {
+	s.IotInstanceId = &v
 	return s
 }
 
@@ -11440,8 +10200,9 @@ func (s *UpdateGatewayEnablingStateResponseBody) SetSuccess(v bool) *UpdateGatew
 }
 
 type UpdateGatewayEnablingStateResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateGatewayEnablingStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGatewayEnablingStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateGatewayEnablingStateResponse) String() string {
@@ -11457,163 +10218,12 @@ func (s *UpdateGatewayEnablingStateResponse) SetHeaders(v map[string]*string) *U
 	return s
 }
 
+func (s *UpdateGatewayEnablingStateResponse) SetStatusCode(v int32) *UpdateGatewayEnablingStateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateGatewayEnablingStateResponse) SetBody(v *UpdateGatewayEnablingStateResponseBody) *UpdateGatewayEnablingStateResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateGatewaySshCtrlRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	GwEui         *string `json:"GwEui,omitempty" xml:"GwEui,omitempty"`
-	Enabled       *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-}
-
-func (s UpdateGatewaySshCtrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateGatewaySshCtrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateGatewaySshCtrlRequest) SetIotInstanceId(v string) *UpdateGatewaySshCtrlRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *UpdateGatewaySshCtrlRequest) SetGwEui(v string) *UpdateGatewaySshCtrlRequest {
-	s.GwEui = &v
-	return s
-}
-
-func (s *UpdateGatewaySshCtrlRequest) SetEnabled(v bool) *UpdateGatewaySshCtrlRequest {
-	s.Enabled = &v
-	return s
-}
-
-type UpdateGatewaySshCtrlResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateGatewaySshCtrlResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateGatewaySshCtrlResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateGatewaySshCtrlResponseBody) SetRequestId(v string) *UpdateGatewaySshCtrlResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateGatewaySshCtrlResponseBody) SetSuccess(v bool) *UpdateGatewaySshCtrlResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateGatewaySshCtrlResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateGatewaySshCtrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateGatewaySshCtrlResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateGatewaySshCtrlResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateGatewaySshCtrlResponse) SetHeaders(v map[string]*string) *UpdateGatewaySshCtrlResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateGatewaySshCtrlResponse) SetBody(v *UpdateGatewaySshCtrlResponseBody) *UpdateGatewaySshCtrlResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateNodeEnablingStateRequest struct {
-	DevEui   *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	IsEnable *bool   `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
-}
-
-func (s UpdateNodeEnablingStateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateNodeEnablingStateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateNodeEnablingStateRequest) SetDevEui(v string) *UpdateNodeEnablingStateRequest {
-	s.DevEui = &v
-	return s
-}
-
-func (s *UpdateNodeEnablingStateRequest) SetIsEnable(v bool) *UpdateNodeEnablingStateRequest {
-	s.IsEnable = &v
-	return s
-}
-
-type UpdateNodeEnablingStateResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateNodeEnablingStateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateNodeEnablingStateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateNodeEnablingStateResponseBody) SetRequestId(v string) *UpdateNodeEnablingStateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateNodeEnablingStateResponseBody) SetErrorMessage(v string) *UpdateNodeEnablingStateResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *UpdateNodeEnablingStateResponseBody) SetCode(v string) *UpdateNodeEnablingStateResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateNodeEnablingStateResponseBody) SetSuccess(v bool) *UpdateNodeEnablingStateResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateNodeEnablingStateResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateNodeEnablingStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateNodeEnablingStateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateNodeEnablingStateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateNodeEnablingStateResponse) SetHeaders(v map[string]*string) *UpdateNodeEnablingStateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateNodeEnablingStateResponse) SetBody(v *UpdateNodeEnablingStateResponseBody) *UpdateNodeEnablingStateResponse {
 	s.Body = v
 	return s
 }
@@ -11665,8 +10275,9 @@ func (s *UpdateNodeGroupResponseBody) SetSuccess(v bool) *UpdateNodeGroupRespons
 }
 
 type UpdateNodeGroupResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateNodeGroupResponse) String() string {
@@ -11682,14 +10293,19 @@ func (s *UpdateNodeGroupResponse) SetHeaders(v map[string]*string) *UpdateNodeGr
 	return s
 }
 
+func (s *UpdateNodeGroupResponse) SetStatusCode(v int32) *UpdateNodeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateNodeGroupResponse) SetBody(v *UpdateNodeGroupResponseBody) *UpdateNodeGroupResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateNotificationsHandleStateRequest struct {
-	TargetHandleState *string `json:"TargetHandleState,omitempty" xml:"TargetHandleState,omitempty"`
-	NotificationId    []*int  `json:"NotificationId,omitempty" xml:"NotificationId,omitempty" type:"Repeated"`
+	NotificationId    []*int64 `json:"NotificationId,omitempty" xml:"NotificationId,omitempty" type:"Repeated"`
+	TargetHandleState *string  `json:"TargetHandleState,omitempty" xml:"TargetHandleState,omitempty"`
 }
 
 func (s UpdateNotificationsHandleStateRequest) String() string {
@@ -11700,13 +10316,13 @@ func (s UpdateNotificationsHandleStateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateNotificationsHandleStateRequest) SetTargetHandleState(v string) *UpdateNotificationsHandleStateRequest {
-	s.TargetHandleState = &v
+func (s *UpdateNotificationsHandleStateRequest) SetNotificationId(v []*int64) *UpdateNotificationsHandleStateRequest {
+	s.NotificationId = v
 	return s
 }
 
-func (s *UpdateNotificationsHandleStateRequest) SetNotificationId(v []*int) *UpdateNotificationsHandleStateRequest {
-	s.NotificationId = v
+func (s *UpdateNotificationsHandleStateRequest) SetTargetHandleState(v string) *UpdateNotificationsHandleStateRequest {
+	s.TargetHandleState = &v
 	return s
 }
 
@@ -11734,8 +10350,9 @@ func (s *UpdateNotificationsHandleStateResponseBody) SetSuccess(v bool) *UpdateN
 }
 
 type UpdateNotificationsHandleStateResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateNotificationsHandleStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateNotificationsHandleStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateNotificationsHandleStateResponse) String() string {
@@ -11751,20 +10368,25 @@ func (s *UpdateNotificationsHandleStateResponse) SetHeaders(v map[string]*string
 	return s
 }
 
+func (s *UpdateNotificationsHandleStateResponse) SetStatusCode(v int32) *UpdateNotificationsHandleStateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateNotificationsHandleStateResponse) SetBody(v *UpdateNotificationsHandleStateResponseBody) *UpdateNotificationsHandleStateResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateOwnedLocalJoinPermissionRequest struct {
-	IotInstanceId       *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	JoinPermissionId    *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
-	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
 	ClassMode           *string `json:"ClassMode,omitempty" xml:"ClassMode,omitempty"`
+	DataRate            *string `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
+	FreqBandPlanGroupId *int64  `json:"FreqBandPlanGroupId,omitempty" xml:"FreqBandPlanGroupId,omitempty"`
+	IotInstanceId       *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	JoinEui             *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
+	JoinPermissionId    *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
 	JoinPermissionName  *string `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
 	RxDelay             *string `json:"RxDelay,omitempty" xml:"RxDelay,omitempty"`
-	DataRate            *string `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
-	JoinEui             *string `json:"JoinEui,omitempty" xml:"JoinEui,omitempty"`
 }
 
 func (s UpdateOwnedLocalJoinPermissionRequest) String() string {
@@ -11775,13 +10397,13 @@ func (s UpdateOwnedLocalJoinPermissionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateOwnedLocalJoinPermissionRequest) SetIotInstanceId(v string) *UpdateOwnedLocalJoinPermissionRequest {
-	s.IotInstanceId = &v
+func (s *UpdateOwnedLocalJoinPermissionRequest) SetClassMode(v string) *UpdateOwnedLocalJoinPermissionRequest {
+	s.ClassMode = &v
 	return s
 }
 
-func (s *UpdateOwnedLocalJoinPermissionRequest) SetJoinPermissionId(v string) *UpdateOwnedLocalJoinPermissionRequest {
-	s.JoinPermissionId = &v
+func (s *UpdateOwnedLocalJoinPermissionRequest) SetDataRate(v string) *UpdateOwnedLocalJoinPermissionRequest {
+	s.DataRate = &v
 	return s
 }
 
@@ -11790,8 +10412,18 @@ func (s *UpdateOwnedLocalJoinPermissionRequest) SetFreqBandPlanGroupId(v int64) 
 	return s
 }
 
-func (s *UpdateOwnedLocalJoinPermissionRequest) SetClassMode(v string) *UpdateOwnedLocalJoinPermissionRequest {
-	s.ClassMode = &v
+func (s *UpdateOwnedLocalJoinPermissionRequest) SetIotInstanceId(v string) *UpdateOwnedLocalJoinPermissionRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *UpdateOwnedLocalJoinPermissionRequest) SetJoinEui(v string) *UpdateOwnedLocalJoinPermissionRequest {
+	s.JoinEui = &v
+	return s
+}
+
+func (s *UpdateOwnedLocalJoinPermissionRequest) SetJoinPermissionId(v string) *UpdateOwnedLocalJoinPermissionRequest {
+	s.JoinPermissionId = &v
 	return s
 }
 
@@ -11802,16 +10434,6 @@ func (s *UpdateOwnedLocalJoinPermissionRequest) SetJoinPermissionName(v string) 
 
 func (s *UpdateOwnedLocalJoinPermissionRequest) SetRxDelay(v string) *UpdateOwnedLocalJoinPermissionRequest {
 	s.RxDelay = &v
-	return s
-}
-
-func (s *UpdateOwnedLocalJoinPermissionRequest) SetDataRate(v string) *UpdateOwnedLocalJoinPermissionRequest {
-	s.DataRate = &v
-	return s
-}
-
-func (s *UpdateOwnedLocalJoinPermissionRequest) SetJoinEui(v string) *UpdateOwnedLocalJoinPermissionRequest {
-	s.JoinEui = &v
 	return s
 }
 
@@ -11839,8 +10461,9 @@ func (s *UpdateOwnedLocalJoinPermissionResponseBody) SetSuccess(v bool) *UpdateO
 }
 
 type UpdateOwnedLocalJoinPermissionResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateOwnedLocalJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateOwnedLocalJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateOwnedLocalJoinPermissionResponse) String() string {
@@ -11856,15 +10479,20 @@ func (s *UpdateOwnedLocalJoinPermissionResponse) SetHeaders(v map[string]*string
 	return s
 }
 
+func (s *UpdateOwnedLocalJoinPermissionResponse) SetStatusCode(v int32) *UpdateOwnedLocalJoinPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateOwnedLocalJoinPermissionResponse) SetBody(v *UpdateOwnedLocalJoinPermissionResponseBody) *UpdateOwnedLocalJoinPermissionResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateOwnedLocalJoinPermissionEnablingStateRequest struct {
+	Enabled          *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	JoinPermissionId *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
-	Enabled          *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 }
 
 func (s UpdateOwnedLocalJoinPermissionEnablingStateRequest) String() string {
@@ -11875,6 +10503,11 @@ func (s UpdateOwnedLocalJoinPermissionEnablingStateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateOwnedLocalJoinPermissionEnablingStateRequest) SetEnabled(v bool) *UpdateOwnedLocalJoinPermissionEnablingStateRequest {
+	s.Enabled = &v
+	return s
+}
+
 func (s *UpdateOwnedLocalJoinPermissionEnablingStateRequest) SetIotInstanceId(v string) *UpdateOwnedLocalJoinPermissionEnablingStateRequest {
 	s.IotInstanceId = &v
 	return s
@@ -11882,11 +10515,6 @@ func (s *UpdateOwnedLocalJoinPermissionEnablingStateRequest) SetIotInstanceId(v 
 
 func (s *UpdateOwnedLocalJoinPermissionEnablingStateRequest) SetJoinPermissionId(v string) *UpdateOwnedLocalJoinPermissionEnablingStateRequest {
 	s.JoinPermissionId = &v
-	return s
-}
-
-func (s *UpdateOwnedLocalJoinPermissionEnablingStateRequest) SetEnabled(v bool) *UpdateOwnedLocalJoinPermissionEnablingStateRequest {
-	s.Enabled = &v
 	return s
 }
 
@@ -11914,8 +10542,9 @@ func (s *UpdateOwnedLocalJoinPermissionEnablingStateResponseBody) SetSuccess(v b
 }
 
 type UpdateOwnedLocalJoinPermissionEnablingStateResponse struct {
-	Headers map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateOwnedLocalJoinPermissionEnablingStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateOwnedLocalJoinPermissionEnablingStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateOwnedLocalJoinPermissionEnablingStateResponse) String() string {
@@ -11931,16 +10560,21 @@ func (s *UpdateOwnedLocalJoinPermissionEnablingStateResponse) SetHeaders(v map[s
 	return s
 }
 
+func (s *UpdateOwnedLocalJoinPermissionEnablingStateResponse) SetStatusCode(v int32) *UpdateOwnedLocalJoinPermissionEnablingStateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateOwnedLocalJoinPermissionEnablingStateResponse) SetBody(v *UpdateOwnedLocalJoinPermissionEnablingStateResponseBody) *UpdateOwnedLocalJoinPermissionEnablingStateResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateRoamingJoinPermissionRequest struct {
+	DataRate           *string `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
 	JoinPermissionId   *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
 	JoinPermissionName *string `json:"JoinPermissionName,omitempty" xml:"JoinPermissionName,omitempty"`
 	RxDelay            *string `json:"RxDelay,omitempty" xml:"RxDelay,omitempty"`
-	DataRate           *string `json:"DataRate,omitempty" xml:"DataRate,omitempty"`
 }
 
 func (s UpdateRoamingJoinPermissionRequest) String() string {
@@ -11949,6 +10583,11 @@ func (s UpdateRoamingJoinPermissionRequest) String() string {
 
 func (s UpdateRoamingJoinPermissionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateRoamingJoinPermissionRequest) SetDataRate(v string) *UpdateRoamingJoinPermissionRequest {
+	s.DataRate = &v
+	return s
 }
 
 func (s *UpdateRoamingJoinPermissionRequest) SetJoinPermissionId(v string) *UpdateRoamingJoinPermissionRequest {
@@ -11963,11 +10602,6 @@ func (s *UpdateRoamingJoinPermissionRequest) SetJoinPermissionName(v string) *Up
 
 func (s *UpdateRoamingJoinPermissionRequest) SetRxDelay(v string) *UpdateRoamingJoinPermissionRequest {
 	s.RxDelay = &v
-	return s
-}
-
-func (s *UpdateRoamingJoinPermissionRequest) SetDataRate(v string) *UpdateRoamingJoinPermissionRequest {
-	s.DataRate = &v
 	return s
 }
 
@@ -11995,8 +10629,9 @@ func (s *UpdateRoamingJoinPermissionResponseBody) SetSuccess(v bool) *UpdateRoam
 }
 
 type UpdateRoamingJoinPermissionResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateRoamingJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateRoamingJoinPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateRoamingJoinPermissionResponse) String() string {
@@ -12012,14 +10647,19 @@ func (s *UpdateRoamingJoinPermissionResponse) SetHeaders(v map[string]*string) *
 	return s
 }
 
+func (s *UpdateRoamingJoinPermissionResponse) SetStatusCode(v int32) *UpdateRoamingJoinPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateRoamingJoinPermissionResponse) SetBody(v *UpdateRoamingJoinPermissionResponseBody) *UpdateRoamingJoinPermissionResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateRoamingJoinPermissionEnablingStateRequest struct {
-	JoinPermissionId *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
 	Enabled          *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	JoinPermissionId *string `json:"JoinPermissionId,omitempty" xml:"JoinPermissionId,omitempty"`
 }
 
 func (s UpdateRoamingJoinPermissionEnablingStateRequest) String() string {
@@ -12030,13 +10670,13 @@ func (s UpdateRoamingJoinPermissionEnablingStateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateRoamingJoinPermissionEnablingStateRequest) SetJoinPermissionId(v string) *UpdateRoamingJoinPermissionEnablingStateRequest {
-	s.JoinPermissionId = &v
+func (s *UpdateRoamingJoinPermissionEnablingStateRequest) SetEnabled(v bool) *UpdateRoamingJoinPermissionEnablingStateRequest {
+	s.Enabled = &v
 	return s
 }
 
-func (s *UpdateRoamingJoinPermissionEnablingStateRequest) SetEnabled(v bool) *UpdateRoamingJoinPermissionEnablingStateRequest {
-	s.Enabled = &v
+func (s *UpdateRoamingJoinPermissionEnablingStateRequest) SetJoinPermissionId(v string) *UpdateRoamingJoinPermissionEnablingStateRequest {
+	s.JoinPermissionId = &v
 	return s
 }
 
@@ -12064,8 +10704,9 @@ func (s *UpdateRoamingJoinPermissionEnablingStateResponseBody) SetSuccess(v bool
 }
 
 type UpdateRoamingJoinPermissionEnablingStateResponse struct {
-	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateRoamingJoinPermissionEnablingStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateRoamingJoinPermissionEnablingStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateRoamingJoinPermissionEnablingStateResponse) String() string {
@@ -12081,82 +10722,12 @@ func (s *UpdateRoamingJoinPermissionEnablingStateResponse) SetHeaders(v map[stri
 	return s
 }
 
+func (s *UpdateRoamingJoinPermissionEnablingStateResponse) SetStatusCode(v int32) *UpdateRoamingJoinPermissionEnablingStateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateRoamingJoinPermissionEnablingStateResponse) SetBody(v *UpdateRoamingJoinPermissionEnablingStateResponseBody) *UpdateRoamingJoinPermissionEnablingStateResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateUserIsolationStateRequest struct {
-	Isolated *bool `json:"Isolated,omitempty" xml:"Isolated,omitempty"`
-}
-
-func (s UpdateUserIsolationStateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateUserIsolationStateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateUserIsolationStateRequest) SetIsolated(v bool) *UpdateUserIsolationStateRequest {
-	s.Isolated = &v
-	return s
-}
-
-type UpdateUserIsolationStateResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateUserIsolationStateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateUserIsolationStateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateUserIsolationStateResponseBody) SetRequestId(v string) *UpdateUserIsolationStateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateUserIsolationStateResponseBody) SetErrorMessage(v string) *UpdateUserIsolationStateResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *UpdateUserIsolationStateResponseBody) SetCode(v string) *UpdateUserIsolationStateResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateUserIsolationStateResponseBody) SetSuccess(v bool) *UpdateUserIsolationStateResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateUserIsolationStateResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateUserIsolationStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateUserIsolationStateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateUserIsolationStateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateUserIsolationStateResponse) SetHeaders(v map[string]*string) *UpdateUserIsolationStateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateUserIsolationStateResponse) SetBody(v *UpdateUserIsolationStateResponseBody) *UpdateUserIsolationStateResponse {
 	s.Body = v
 	return s
 }
@@ -12214,10 +10785,12 @@ func (client *Client) AcceptJoinPermissionAuthOrderWithOptions(request *AcceptJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AcceptJoinPermissionAuthOrder"),
@@ -12227,7 +10800,7 @@ func (client *Client) AcceptJoinPermissionAuthOrderWithOptions(request *AcceptJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AcceptJoinPermissionAuthOrderResponse{}
@@ -12256,12 +10829,20 @@ func (client *Client) AddNodeToGroupWithOptions(request *AddNodeToGroupRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DevEui"] = request.DevEui
-	query["PinCode"] = request.PinCode
-	query["NodeGroupId"] = request.NodeGroupId
+	if !tea.BoolValue(util.IsUnset(request.DevEui)) {
+		query["DevEui"] = request.DevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PinCode)) {
+		query["PinCode"] = request.PinCode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddNodeToGroup"),
@@ -12271,7 +10852,7 @@ func (client *Client) AddNodeToGroupWithOptions(request *AddNodeToGroupRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddNodeToGroupResponse{}
@@ -12300,14 +10881,28 @@ func (client *Client) ApplyRoamingJoinPermissionWithOptions(request *ApplyRoamin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
-	query["ClassMode"] = request.ClassMode
-	query["JoinPermissionName"] = request.JoinPermissionName
-	query["RxDelay"] = request.RxDelay
-	query["DataRate"] = request.DataRate
+	if !tea.BoolValue(util.IsUnset(request.ClassMode)) {
+		query["ClassMode"] = request.ClassMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRate)) {
+		query["DataRate"] = request.DataRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FreqBandPlanGroupId)) {
+		query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionName)) {
+		query["JoinPermissionName"] = request.JoinPermissionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RxDelay)) {
+		query["RxDelay"] = request.RxDelay
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ApplyRoamingJoinPermission"),
@@ -12317,7 +10912,7 @@ func (client *Client) ApplyRoamingJoinPermissionWithOptions(request *ApplyRoamin
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ApplyRoamingJoinPermissionResponse{}
@@ -12346,11 +10941,16 @@ func (client *Client) BindJoinPermissionToNodeGroupWithOptions(request *BindJoin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NodeGroupId"] = request.NodeGroupId
-	query["JoinPermissionId"] = request.JoinPermissionId
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionId)) {
+		query["JoinPermissionId"] = request.JoinPermissionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BindJoinPermissionToNodeGroup"),
@@ -12360,7 +10960,7 @@ func (client *Client) BindJoinPermissionToNodeGroupWithOptions(request *BindJoin
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &BindJoinPermissionToNodeGroupResponse{}
@@ -12389,10 +10989,12 @@ func (client *Client) CancelJoinPermissionAuthOrderWithOptions(request *CancelJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CancelJoinPermissionAuthOrder"),
@@ -12402,7 +11004,7 @@ func (client *Client) CancelJoinPermissionAuthOrderWithOptions(request *CancelJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CancelJoinPermissionAuthOrderResponse{}
@@ -12431,10 +11033,12 @@ func (client *Client) CheckCloudProductOpenStatusWithOptions(request *CheckCloud
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ServiceCode"] = request.ServiceCode
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckCloudProductOpenStatus"),
@@ -12444,7 +11048,7 @@ func (client *Client) CheckCloudProductOpenStatusWithOptions(request *CheckCloud
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckCloudProductOpenStatusResponse{}
@@ -12477,7 +11081,7 @@ func (client *Client) CheckUserChargeStatusWithOptions(runtime *util.RuntimeOpti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckUserChargeStatusResponse{}
@@ -12500,64 +11104,18 @@ func (client *Client) CheckUserChargeStatus() (_result *CheckUserChargeStatusRes
 	return _result, _err
 }
 
-func (client *Client) CountGatewaysWithOptions(request *CountGatewaysRequest, runtime *util.RuntimeOptions) (_result *CountGatewaysResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["OnlineState"] = request.OnlineState
-	query["FuzzyGwEui"] = request.FuzzyGwEui
-	query["FuzzyCity"] = request.FuzzyCity
-	query["FuzzyName"] = request.FuzzyName
-	query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
-	query["IsEnabled"] = request.IsEnabled
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CountGateways"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CountGatewaysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CountGateways(request *CountGatewaysRequest) (_result *CountGatewaysResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CountGatewaysResponse{}
-	_body, _err := client.CountGatewaysWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CountGatewayTupleOrdersWithOptions(request *CountGatewayTupleOrdersRequest, runtime *util.RuntimeOptions) (_result *CountGatewayTupleOrdersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["States"] = request.States
+	if !tea.BoolValue(util.IsUnset(request.States)) {
+		query["States"] = request.States
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CountGatewayTupleOrders"),
@@ -12567,7 +11125,7 @@ func (client *Client) CountGatewayTupleOrdersWithOptions(request *CountGatewayTu
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CountGatewayTupleOrdersResponse{}
@@ -12590,19 +11148,98 @@ func (client *Client) CountGatewayTupleOrders(request *CountGatewayTupleOrdersRe
 	return _result, _err
 }
 
+func (client *Client) CountGatewaysWithOptions(request *CountGatewaysRequest, runtime *util.RuntimeOptions) (_result *CountGatewaysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FreqBandPlanGroupId)) {
+		query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyCity)) {
+		query["FuzzyCity"] = request.FuzzyCity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyGwEui)) {
+		query["FuzzyGwEui"] = request.FuzzyGwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyName)) {
+		query["FuzzyName"] = request.FuzzyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsEnabled)) {
+		query["IsEnabled"] = request.IsEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OnlineState)) {
+		query["OnlineState"] = request.OnlineState
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CountGateways"),
+		Version:     tea.String("2019-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CountGatewaysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CountGateways(request *CountGatewaysRequest) (_result *CountGatewaysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CountGatewaysResponse{}
+	_body, _err := client.CountGatewaysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CountNodeGroupsWithOptions(request *CountNodeGroupsRequest, runtime *util.RuntimeOptions) (_result *CountNodeGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["FuzzyName"] = request.FuzzyName
-	query["FuzzyJoinEui"] = request.FuzzyJoinEui
-	query["FuzzyDevEui"] = request.FuzzyDevEui
+	if !tea.BoolValue(util.IsUnset(request.FuzzyDevEui)) {
+		query["FuzzyDevEui"] = request.FuzzyDevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyJoinEui)) {
+		query["FuzzyJoinEui"] = request.FuzzyJoinEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyName)) {
+		query["FuzzyName"] = request.FuzzyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CountNodeGroups"),
@@ -12612,7 +11249,7 @@ func (client *Client) CountNodeGroupsWithOptions(request *CountNodeGroupsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CountNodeGroupsResponse{}
@@ -12635,17 +11272,70 @@ func (client *Client) CountNodeGroups(request *CountNodeGroupsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) CountNodeTupleOrdersWithOptions(request *CountNodeTupleOrdersRequest, runtime *util.RuntimeOptions) (_result *CountNodeTupleOrdersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsKpm)) {
+		query["IsKpm"] = request.IsKpm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.States)) {
+		query["States"] = request.States
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CountNodeTupleOrders"),
+		Version:     tea.String("2019-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CountNodeTupleOrdersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CountNodeTupleOrders(request *CountNodeTupleOrdersRequest) (_result *CountNodeTupleOrdersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CountNodeTupleOrdersResponse{}
+	_body, _err := client.CountNodeTupleOrdersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CountNodesByNodeGroupIdWithOptions(request *CountNodesByNodeGroupIdRequest, runtime *util.RuntimeOptions) (_result *CountNodesByNodeGroupIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NodeGroupId"] = request.NodeGroupId
-	query["FuzzyDevEui"] = request.FuzzyDevEui
+	if !tea.BoolValue(util.IsUnset(request.FuzzyDevEui)) {
+		query["FuzzyDevEui"] = request.FuzzyDevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CountNodesByNodeGroupId"),
@@ -12655,7 +11345,7 @@ func (client *Client) CountNodesByNodeGroupIdWithOptions(request *CountNodesByNo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CountNodesByNodeGroupIdResponse{}
@@ -12684,11 +11374,16 @@ func (client *Client) CountNodesByOwnedJoinPermissionIdWithOptions(request *Coun
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JoinPermissionId"] = request.JoinPermissionId
-	query["FuzzyDevEui"] = request.FuzzyDevEui
+	if !tea.BoolValue(util.IsUnset(request.FuzzyDevEui)) {
+		query["FuzzyDevEui"] = request.FuzzyDevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionId)) {
+		query["JoinPermissionId"] = request.JoinPermissionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CountNodesByOwnedJoinPermissionId"),
@@ -12698,7 +11393,7 @@ func (client *Client) CountNodesByOwnedJoinPermissionIdWithOptions(request *Coun
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CountNodesByOwnedJoinPermissionIdResponse{}
@@ -12721,62 +11416,30 @@ func (client *Client) CountNodesByOwnedJoinPermissionId(request *CountNodesByOwn
 	return _result, _err
 }
 
-func (client *Client) CountNodeTupleOrdersWithOptions(request *CountNodeTupleOrdersRequest, runtime *util.RuntimeOptions) (_result *CountNodeTupleOrdersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["IsKpm"] = request.IsKpm
-	query["States"] = request.States
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CountNodeTupleOrders"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CountNodeTupleOrdersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CountNodeTupleOrders(request *CountNodeTupleOrdersRequest) (_result *CountNodeTupleOrdersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CountNodeTupleOrdersResponse{}
-	_body, _err := client.CountNodeTupleOrdersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CountNotificationsWithOptions(request *CountNotificationsRequest, runtime *util.RuntimeOptions) (_result *CountNotificationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["HandleState"] = request.HandleState
-	query["BeginMillis"] = request.BeginMillis
-	query["EndMillis"] = request.EndMillis
-	query["Category"] = request.Category
+	if !tea.BoolValue(util.IsUnset(request.BeginMillis)) {
+		query["BeginMillis"] = request.BeginMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndMillis)) {
+		query["EndMillis"] = request.EndMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HandleState)) {
+		query["HandleState"] = request.HandleState
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CountNotifications"),
@@ -12786,7 +11449,7 @@ func (client *Client) CountNotificationsWithOptions(request *CountNotificationsR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CountNotificationsResponse{}
@@ -12815,13 +11478,24 @@ func (client *Client) CountOwnedJoinPermissionsWithOptions(request *CountOwnedJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FuzzyRenterAliyunId"] = request.FuzzyRenterAliyunId
-	query["FuzzyJoinEui"] = request.FuzzyJoinEui
-	query["Enabled"] = request.Enabled
-	query["FuzzyJoinPermissionName"] = request.FuzzyJoinPermissionName
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyJoinEui)) {
+		query["FuzzyJoinEui"] = request.FuzzyJoinEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyJoinPermissionName)) {
+		query["FuzzyJoinPermissionName"] = request.FuzzyJoinPermissionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyRenterAliyunId)) {
+		query["FuzzyRenterAliyunId"] = request.FuzzyRenterAliyunId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CountOwnedJoinPermissions"),
@@ -12831,7 +11505,7 @@ func (client *Client) CountOwnedJoinPermissionsWithOptions(request *CountOwnedJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CountOwnedJoinPermissionsResponse{}
@@ -12860,15 +11534,32 @@ func (client *Client) CountRentedJoinPermissionsWithOptions(request *CountRented
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FuzzyOwnerAliyunId"] = request.FuzzyOwnerAliyunId
-	query["FuzzyJoinEui"] = request.FuzzyJoinEui
-	query["Enabled"] = request.Enabled
-	query["BoundNodeGroup"] = request.BoundNodeGroup
-	query["Type"] = request.Type
-	query["FuzzyJoinPermissionName"] = request.FuzzyJoinPermissionName
+	if !tea.BoolValue(util.IsUnset(request.BoundNodeGroup)) {
+		query["BoundNodeGroup"] = request.BoundNodeGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyJoinEui)) {
+		query["FuzzyJoinEui"] = request.FuzzyJoinEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyJoinPermissionName)) {
+		query["FuzzyJoinPermissionName"] = request.FuzzyJoinPermissionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyOwnerAliyunId)) {
+		query["FuzzyOwnerAliyunId"] = request.FuzzyOwnerAliyunId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CountRentedJoinPermissions"),
@@ -12878,7 +11569,7 @@ func (client *Client) CountRentedJoinPermissionsWithOptions(request *CountRented
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CountRentedJoinPermissionsResponse{}
@@ -12901,74 +11592,70 @@ func (client *Client) CountRentedJoinPermissions(request *CountRentedJoinPermiss
 	return _result, _err
 }
 
-func (client *Client) CreateCustomLocalJoinPermissionWithOptions(request *CreateCustomLocalJoinPermissionRequest, runtime *util.RuntimeOptions) (_result *CreateCustomLocalJoinPermissionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
-	query["ClassMode"] = request.ClassMode
-	query["JoinEui"] = request.JoinEui
-	query["JoinPermissionName"] = request.JoinPermissionName
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateCustomLocalJoinPermission"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateCustomLocalJoinPermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateCustomLocalJoinPermission(request *CreateCustomLocalJoinPermissionRequest) (_result *CreateCustomLocalJoinPermissionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateCustomLocalJoinPermissionResponse{}
-	_body, _err := client.CreateCustomLocalJoinPermissionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, runtime *util.RuntimeOptions) (_result *CreateGatewayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["GwEui"] = request.GwEui
-	query["PinCode"] = request.PinCode
-	query["Name"] = request.Name
-	query["Description"] = request.Description
-	query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
-	query["CommunicationMode"] = request.CommunicationMode
-	query["City"] = request.City
-	query["District"] = request.District
-	query["Address"] = request.Address
-	query["GisCoordinateSystem"] = request.GisCoordinateSystem
-	query["Longitude"] = request.Longitude
-	query["Latitude"] = request.Latitude
-	query["AddressCode"] = request.AddressCode
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressCode)) {
+		query["AddressCode"] = request.AddressCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.City)) {
+		query["City"] = request.City
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommunicationMode)) {
+		query["CommunicationMode"] = request.CommunicationMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.District)) {
+		query["District"] = request.District
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FreqBandPlanGroupId)) {
+		query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GisCoordinateSystem)) {
+		query["GisCoordinateSystem"] = request.GisCoordinateSystem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GwEui)) {
+		query["GwEui"] = request.GwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Latitude)) {
+		query["Latitude"] = request.Latitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Longitude)) {
+		query["Longitude"] = request.Longitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PinCode)) {
+		query["PinCode"] = request.PinCode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateGateway"),
@@ -12978,7 +11665,7 @@ func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateGatewayResponse{}
@@ -13007,17 +11694,40 @@ func (client *Client) CreateLocalJoinPermissionWithOptions(request *CreateLocalJ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
-	query["ClassMode"] = request.ClassMode
-	query["UseDefaultJoinEui"] = request.UseDefaultJoinEui
-	query["JoinPermissionName"] = request.JoinPermissionName
-	query["RxDelay"] = request.RxDelay
-	query["DataRate"] = request.DataRate
-	query["JoinEui"] = request.JoinEui
+	if !tea.BoolValue(util.IsUnset(request.ClassMode)) {
+		query["ClassMode"] = request.ClassMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRate)) {
+		query["DataRate"] = request.DataRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FreqBandPlanGroupId)) {
+		query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinEui)) {
+		query["JoinEui"] = request.JoinEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionName)) {
+		query["JoinPermissionName"] = request.JoinPermissionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RxDelay)) {
+		query["RxDelay"] = request.RxDelay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseDefaultJoinEui)) {
+		query["UseDefaultJoinEui"] = request.UseDefaultJoinEui
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateLocalJoinPermission"),
@@ -13027,7 +11737,7 @@ func (client *Client) CreateLocalJoinPermissionWithOptions(request *CreateLocalJ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateLocalJoinPermissionResponse{}
@@ -13056,11 +11766,16 @@ func (client *Client) CreateNodeGroupWithOptions(request *CreateNodeGroupRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NodeGroupName"] = request.NodeGroupName
-	query["JoinPermissionId"] = request.JoinPermissionId
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionId)) {
+		query["JoinPermissionId"] = request.JoinPermissionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupName)) {
+		query["NodeGroupName"] = request.NodeGroupName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateNodeGroup"),
@@ -13070,7 +11785,7 @@ func (client *Client) CreateNodeGroupWithOptions(request *CreateNodeGroupRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateNodeGroupResponse{}
@@ -13099,11 +11814,16 @@ func (client *Client) DeleteGatewayWithOptions(request *DeleteGatewayRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["GwEui"] = request.GwEui
+	if !tea.BoolValue(util.IsUnset(request.GwEui)) {
+		query["GwEui"] = request.GwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteGateway"),
@@ -13113,7 +11833,7 @@ func (client *Client) DeleteGatewayWithOptions(request *DeleteGatewayRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGatewayResponse{}
@@ -13142,11 +11862,16 @@ func (client *Client) DeleteLocalJoinPermissionWithOptions(request *DeleteLocalJ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["JoinPermissionId"] = request.JoinPermissionId
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionId)) {
+		query["JoinPermissionId"] = request.JoinPermissionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteLocalJoinPermission"),
@@ -13156,7 +11881,7 @@ func (client *Client) DeleteLocalJoinPermissionWithOptions(request *DeleteLocalJ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteLocalJoinPermissionResponse{}
@@ -13185,10 +11910,12 @@ func (client *Client) DeleteNodeGroupWithOptions(request *DeleteNodeGroupRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NodeGroupId"] = request.NodeGroupId
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteNodeGroup"),
@@ -13198,7 +11925,7 @@ func (client *Client) DeleteNodeGroupWithOptions(request *DeleteNodeGroupRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteNodeGroupResponse{}
@@ -13221,49 +11948,18 @@ func (client *Client) DeleteNodeGroup(request *DeleteNodeGroupRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRegions"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetFreqBandPlanGroupWithOptions(request *GetFreqBandPlanGroupRequest, runtime *util.RuntimeOptions) (_result *GetFreqBandPlanGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupId"] = request.GroupId
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetFreqBandPlanGroup"),
@@ -13273,7 +11969,7 @@ func (client *Client) GetFreqBandPlanGroupWithOptions(request *GetFreqBandPlanGr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetFreqBandPlanGroupResponse{}
@@ -13302,11 +11998,16 @@ func (client *Client) GetGatewayWithOptions(request *GetGatewayRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["GwEui"] = request.GwEui
+	if !tea.BoolValue(util.IsUnset(request.GwEui)) {
+		query["GwEui"] = request.GwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetGateway"),
@@ -13316,7 +12017,7 @@ func (client *Client) GetGatewayWithOptions(request *GetGatewayRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetGatewayResponse{}
@@ -13345,13 +12046,24 @@ func (client *Client) GetGatewayPacketStatWithOptions(request *GetGatewayPacketS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["GwEui"] = request.GwEui
-	query["BeginMillis"] = request.BeginMillis
-	query["EndMillis"] = request.EndMillis
+	if !tea.BoolValue(util.IsUnset(request.BeginMillis)) {
+		query["BeginMillis"] = request.BeginMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndMillis)) {
+		query["EndMillis"] = request.EndMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GwEui)) {
+		query["GwEui"] = request.GwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetGatewayPacketStat"),
@@ -13361,7 +12073,7 @@ func (client *Client) GetGatewayPacketStatWithOptions(request *GetGatewayPacketS
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetGatewayPacketStatResponse{}
@@ -13390,11 +12102,16 @@ func (client *Client) GetGatewayStatusStatWithOptions(request *GetGatewayStatusS
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["GwEui"] = request.GwEui
+	if !tea.BoolValue(util.IsUnset(request.GwEui)) {
+		query["GwEui"] = request.GwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetGatewayStatusStat"),
@@ -13404,7 +12121,7 @@ func (client *Client) GetGatewayStatusStatWithOptions(request *GetGatewayStatusS
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetGatewayStatusStatResponse{}
@@ -13433,17 +12150,40 @@ func (client *Client) GetGatewayTransferPacketsDownloadUrlWithOptions(request *G
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["GwEui"] = request.GwEui
-	query["DevEui"] = request.DevEui
-	query["Category"] = request.Category
-	query["BeginMillis"] = request.BeginMillis
-	query["EndMillis"] = request.EndMillis
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginMillis)) {
+		query["BeginMillis"] = request.BeginMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevEui)) {
+		query["DevEui"] = request.DevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndMillis)) {
+		query["EndMillis"] = request.EndMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GwEui)) {
+		query["GwEui"] = request.GwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetGatewayTransferPacketsDownloadUrl"),
@@ -13453,7 +12193,7 @@ func (client *Client) GetGatewayTransferPacketsDownloadUrlWithOptions(request *G
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetGatewayTransferPacketsDownloadUrlResponse{}
@@ -13482,10 +12222,12 @@ func (client *Client) GetGatewayTupleOrderWithOptions(request *GetGatewayTupleOr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetGatewayTupleOrder"),
@@ -13495,7 +12237,7 @@ func (client *Client) GetGatewayTupleOrderWithOptions(request *GetGatewayTupleOr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetGatewayTupleOrderResponse{}
@@ -13524,10 +12266,12 @@ func (client *Client) GetGatewayTuplesDownloadUrlWithOptions(request *GetGateway
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetGatewayTuplesDownloadUrl"),
@@ -13537,7 +12281,7 @@ func (client *Client) GetGatewayTuplesDownloadUrlWithOptions(request *GetGateway
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetGatewayTuplesDownloadUrlResponse{}
@@ -13566,10 +12310,12 @@ func (client *Client) GetJoinPermissionAuthOrderWithOptions(request *GetJoinPerm
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetJoinPermissionAuthOrder"),
@@ -13579,7 +12325,7 @@ func (client *Client) GetJoinPermissionAuthOrderWithOptions(request *GetJoinPerm
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetJoinPermissionAuthOrderResponse{}
@@ -13602,58 +12348,18 @@ func (client *Client) GetJoinPermissionAuthOrder(request *GetJoinPermissionAuthO
 	return _result, _err
 }
 
-func (client *Client) GetLocalConfigSyncTaskWithOptions(request *GetLocalConfigSyncTaskRequest, runtime *util.RuntimeOptions) (_result *GetLocalConfigSyncTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["TaskId"] = request.TaskId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetLocalConfigSyncTask"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetLocalConfigSyncTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetLocalConfigSyncTask(request *GetLocalConfigSyncTaskRequest) (_result *GetLocalConfigSyncTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetLocalConfigSyncTaskResponse{}
-	_body, _err := client.GetLocalConfigSyncTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetNodeWithOptions(request *GetNodeRequest, runtime *util.RuntimeOptions) (_result *GetNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DevEui"] = request.DevEui
+	if !tea.BoolValue(util.IsUnset(request.DevEui)) {
+		query["DevEui"] = request.DevEui
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNode"),
@@ -13663,7 +12369,7 @@ func (client *Client) GetNodeWithOptions(request *GetNodeRequest, runtime *util.
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetNodeResponse{}
@@ -13692,11 +12398,16 @@ func (client *Client) GetNodeGroupWithOptions(request *GetNodeGroupRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["NodeGroupId"] = request.NodeGroupId
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNodeGroup"),
@@ -13706,7 +12417,7 @@ func (client *Client) GetNodeGroupWithOptions(request *GetNodeGroupRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetNodeGroupResponse{}
@@ -13735,17 +12446,40 @@ func (client *Client) GetNodeGroupTransferPacketsDownloadUrlWithOptions(request 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["NodeGroupId"] = request.NodeGroupId
-	query["DevEui"] = request.DevEui
-	query["Category"] = request.Category
-	query["BeginMillis"] = request.BeginMillis
-	query["EndMillis"] = request.EndMillis
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginMillis)) {
+		query["BeginMillis"] = request.BeginMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevEui)) {
+		query["DevEui"] = request.DevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndMillis)) {
+		query["EndMillis"] = request.EndMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNodeGroupTransferPacketsDownloadUrl"),
@@ -13755,7 +12489,7 @@ func (client *Client) GetNodeGroupTransferPacketsDownloadUrlWithOptions(request 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetNodeGroupTransferPacketsDownloadUrlResponse{}
@@ -13778,61 +12512,30 @@ func (client *Client) GetNodeGroupTransferPacketsDownloadUrl(request *GetNodeGro
 	return _result, _err
 }
 
-func (client *Client) GetNodeLocalConfigWithOptions(request *GetNodeLocalConfigRequest, runtime *util.RuntimeOptions) (_result *GetNodeLocalConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DevEui"] = request.DevEui
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetNodeLocalConfig"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetNodeLocalConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetNodeLocalConfig(request *GetNodeLocalConfigRequest) (_result *GetNodeLocalConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetNodeLocalConfigResponse{}
-	_body, _err := client.GetNodeLocalConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetNodeTransferPacketWithOptions(request *GetNodeTransferPacketRequest, runtime *util.RuntimeOptions) (_result *GetNodeTransferPacketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["DevEui"] = request.DevEui
-	query["Base64EncodedMacPayload"] = request.Base64EncodedMacPayload
-	query["LogMillis"] = request.LogMillis
+	if !tea.BoolValue(util.IsUnset(request.Base64EncodedMacPayload)) {
+		query["Base64EncodedMacPayload"] = request.Base64EncodedMacPayload
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevEui)) {
+		query["DevEui"] = request.DevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogMillis)) {
+		query["LogMillis"] = request.LogMillis
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNodeTransferPacket"),
@@ -13842,7 +12545,7 @@ func (client *Client) GetNodeTransferPacketWithOptions(request *GetNodeTransferP
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetNodeTransferPacketResponse{}
@@ -13871,16 +12574,36 @@ func (client *Client) GetNodeTransferPacketsDownloadUrlWithOptions(request *GetN
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GwEui"] = request.GwEui
-	query["DevEui"] = request.DevEui
-	query["Category"] = request.Category
-	query["BeginMillis"] = request.BeginMillis
-	query["EndMillis"] = request.EndMillis
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginMillis)) {
+		query["BeginMillis"] = request.BeginMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevEui)) {
+		query["DevEui"] = request.DevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndMillis)) {
+		query["EndMillis"] = request.EndMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GwEui)) {
+		query["GwEui"] = request.GwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNodeTransferPacketsDownloadUrl"),
@@ -13890,7 +12613,7 @@ func (client *Client) GetNodeTransferPacketsDownloadUrlWithOptions(request *GetN
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetNodeTransferPacketsDownloadUrlResponse{}
@@ -13919,10 +12642,12 @@ func (client *Client) GetNodeTupleOrderWithOptions(request *GetNodeTupleOrderReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNodeTupleOrder"),
@@ -13932,7 +12657,7 @@ func (client *Client) GetNodeTupleOrderWithOptions(request *GetNodeTupleOrderReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetNodeTupleOrderResponse{}
@@ -13961,10 +12686,12 @@ func (client *Client) GetNodeTuplesDownloadUrlWithOptions(request *GetNodeTuples
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNodeTuplesDownloadUrl"),
@@ -13974,7 +12701,7 @@ func (client *Client) GetNodeTuplesDownloadUrlWithOptions(request *GetNodeTuples
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetNodeTuplesDownloadUrlResponse{}
@@ -14003,10 +12730,12 @@ func (client *Client) GetNotificationWithOptions(request *GetNotificationRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NotificationId"] = request.NotificationId
+	if !tea.BoolValue(util.IsUnset(request.NotificationId)) {
+		query["NotificationId"] = request.NotificationId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNotification"),
@@ -14016,7 +12745,7 @@ func (client *Client) GetNotificationWithOptions(request *GetNotificationRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetNotificationResponse{}
@@ -14045,11 +12774,16 @@ func (client *Client) GetOwnedJoinPermissionWithOptions(request *GetOwnedJoinPer
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["JoinPermissionId"] = request.JoinPermissionId
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionId)) {
+		query["JoinPermissionId"] = request.JoinPermissionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetOwnedJoinPermission"),
@@ -14059,7 +12793,7 @@ func (client *Client) GetOwnedJoinPermissionWithOptions(request *GetOwnedJoinPer
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetOwnedJoinPermissionResponse{}
@@ -14088,10 +12822,12 @@ func (client *Client) GetRentedJoinPermissionWithOptions(request *GetRentedJoinP
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JoinPermissionId"] = request.JoinPermissionId
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionId)) {
+		query["JoinPermissionId"] = request.JoinPermissionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRentedJoinPermission"),
@@ -14101,7 +12837,7 @@ func (client *Client) GetRentedJoinPermissionWithOptions(request *GetRentedJoinP
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRentedJoinPermissionResponse{}
@@ -14134,7 +12870,7 @@ func (client *Client) GetUserLicenseWithOptions(runtime *util.RuntimeOptions) (_
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetUserLicenseResponse{}
@@ -14157,49 +12893,18 @@ func (client *Client) GetUserLicense() (_result *GetUserLicenseResponse, _err er
 	return _result, _err
 }
 
-func (client *Client) GetUserNetProfileDescriptionWithOptions(runtime *util.RuntimeOptions) (_result *GetUserNetProfileDescriptionResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	params := &openapi.Params{
-		Action:      tea.String("GetUserNetProfileDescription"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetUserNetProfileDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetUserNetProfileDescription() (_result *GetUserNetProfileDescriptionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetUserNetProfileDescriptionResponse{}
-	_body, _err := client.GetUserNetProfileDescriptionWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListActivatedFeaturesWithOptions(request *ListActivatedFeaturesRequest, runtime *util.RuntimeOptions) (_result *ListActivatedFeaturesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Environment"] = request.Environment
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		query["Environment"] = request.Environment
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListActivatedFeatures"),
@@ -14209,7 +12914,7 @@ func (client *Client) ListActivatedFeaturesWithOptions(request *ListActivatedFea
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListActivatedFeaturesResponse{}
@@ -14242,7 +12947,7 @@ func (client *Client) ListActiveGatewaysWithOptions(runtime *util.RuntimeOptions
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListActiveGatewaysResponse{}
@@ -14275,7 +12980,7 @@ func (client *Client) ListFreqBandPlanGroupsWithOptions(runtime *util.RuntimeOpt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListFreqBandPlanGroupsResponse{}
@@ -14298,62 +13003,34 @@ func (client *Client) ListFreqBandPlanGroups() (_result *ListFreqBandPlanGroupsR
 	return _result, _err
 }
 
-func (client *Client) ListGatewayLocalConfigsWithOptions(request *ListGatewayLocalConfigsRequest, runtime *util.RuntimeOptions) (_result *ListGatewayLocalConfigsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["GwEui"] = request.GwEui
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListGatewayLocalConfigs"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListGatewayLocalConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListGatewayLocalConfigs(request *ListGatewayLocalConfigsRequest) (_result *ListGatewayLocalConfigsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListGatewayLocalConfigsResponse{}
-	_body, _err := client.ListGatewayLocalConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListGatewayOnlineRecordsWithOptions(request *ListGatewayOnlineRecordsRequest, runtime *util.RuntimeOptions) (_result *ListGatewayOnlineRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GwEui"] = request.GwEui
-	query["OffSet"] = request.OffSet
-	query["Limit"] = request.Limit
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GwEui)) {
+		query["GwEui"] = request.GwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OffSet)) {
+		query["OffSet"] = request.OffSet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListGatewayOnlineRecords"),
@@ -14363,7 +13040,7 @@ func (client *Client) ListGatewayOnlineRecordsWithOptions(request *ListGatewayOn
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListGatewayOnlineRecordsResponse{}
@@ -14386,159 +13063,34 @@ func (client *Client) ListGatewayOnlineRecords(request *ListGatewayOnlineRecords
 	return _result, _err
 }
 
-func (client *Client) ListGatewaysWithOptions(request *ListGatewaysRequest, runtime *util.RuntimeOptions) (_result *ListGatewaysResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["OnlineState"] = request.OnlineState
-	query["FuzzyGwEui"] = request.FuzzyGwEui
-	query["FuzzyCity"] = request.FuzzyCity
-	query["FuzzyName"] = request.FuzzyName
-	query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
-	query["IsEnabled"] = request.IsEnabled
-	query["Offset"] = request.Offset
-	query["Limit"] = request.Limit
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListGateways"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListGatewaysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListGateways(request *ListGatewaysRequest) (_result *ListGatewaysResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListGatewaysResponse{}
-	_body, _err := client.ListGatewaysWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListGatewaysGisInfoWithOptions(request *ListGatewaysGisInfoRequest, runtime *util.RuntimeOptions) (_result *ListGatewaysGisInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListGatewaysGisInfo"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListGatewaysGisInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListGatewaysGisInfo(request *ListGatewaysGisInfoRequest) (_result *ListGatewaysGisInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListGatewaysGisInfoResponse{}
-	_body, _err := client.ListGatewaysGisInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListGatewaysPacketStatWithOptions(request *ListGatewaysPacketStatRequest, runtime *util.RuntimeOptions) (_result *ListGatewaysPacketStatResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["BeginMillis"] = request.BeginMillis
-	query["EndMillis"] = request.EndMillis
-	query["GwEuiList"] = request.GwEuiList
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListGatewaysPacketStat"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListGatewaysPacketStatResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListGatewaysPacketStat(request *ListGatewaysPacketStatRequest) (_result *ListGatewaysPacketStatResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListGatewaysPacketStatResponse{}
-	_body, _err := client.ListGatewaysPacketStatWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListGatewayTransferFlowStatsWithOptions(request *ListGatewayTransferFlowStatsRequest, runtime *util.RuntimeOptions) (_result *ListGatewayTransferFlowStatsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["GwEui"] = request.GwEui
-	query["BeginMillis"] = request.BeginMillis
-	query["EndMillis"] = request.EndMillis
-	query["TimeIntervalUnit"] = request.TimeIntervalUnit
+	if !tea.BoolValue(util.IsUnset(request.BeginMillis)) {
+		query["BeginMillis"] = request.BeginMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndMillis)) {
+		query["EndMillis"] = request.EndMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GwEui)) {
+		query["GwEui"] = request.GwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeIntervalUnit)) {
+		query["TimeIntervalUnit"] = request.TimeIntervalUnit
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListGatewayTransferFlowStats"),
@@ -14548,7 +13100,7 @@ func (client *Client) ListGatewayTransferFlowStatsWithOptions(request *ListGatew
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListGatewayTransferFlowStatsResponse{}
@@ -14577,19 +13129,48 @@ func (client *Client) ListGatewayTransferPacketsWithOptions(request *ListGateway
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["GwEui"] = request.GwEui
-	query["DevEui"] = request.DevEui
-	query["Category"] = request.Category
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["BeginMillis"] = request.BeginMillis
-	query["EndMillis"] = request.EndMillis
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginMillis)) {
+		query["BeginMillis"] = request.BeginMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevEui)) {
+		query["DevEui"] = request.DevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndMillis)) {
+		query["EndMillis"] = request.EndMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GwEui)) {
+		query["GwEui"] = request.GwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListGatewayTransferPackets"),
@@ -14599,7 +13180,7 @@ func (client *Client) ListGatewayTransferPacketsWithOptions(request *ListGateway
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListGatewayTransferPacketsResponse{}
@@ -14628,14 +13209,28 @@ func (client *Client) ListGatewayTupleOrdersWithOptions(request *ListGatewayTupl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Offset"] = request.Offset
-	query["Limit"] = request.Limit
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListGatewayTupleOrders"),
@@ -14645,7 +13240,7 @@ func (client *Client) ListGatewayTupleOrdersWithOptions(request *ListGatewayTupl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListGatewayTupleOrdersResponse{}
@@ -14668,36 +13263,71 @@ func (client *Client) ListGatewayTupleOrders(request *ListGatewayTupleOrdersRequ
 	return _result, _err
 }
 
-func (client *Client) ListNodeGroupsWithOptions(request *ListNodeGroupsRequest, runtime *util.RuntimeOptions) (_result *ListNodeGroupsResponse, _err error) {
+func (client *Client) ListGatewaysWithOptions(request *ListGatewaysRequest, runtime *util.RuntimeOptions) (_result *ListGatewaysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["FuzzyName"] = request.FuzzyName
-	query["FuzzyJoinEui"] = request.FuzzyJoinEui
-	query["FuzzyDevEui"] = request.FuzzyDevEui
-	query["Offset"] = request.Offset
-	query["Limit"] = request.Limit
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FreqBandPlanGroupId)) {
+		query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyCity)) {
+		query["FuzzyCity"] = request.FuzzyCity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyGwEui)) {
+		query["FuzzyGwEui"] = request.FuzzyGwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyName)) {
+		query["FuzzyName"] = request.FuzzyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsEnabled)) {
+		query["IsEnabled"] = request.IsEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OnlineState)) {
+		query["OnlineState"] = request.OnlineState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("ListNodeGroups"),
+		Action:      tea.String("ListGateways"),
 		Version:     tea.String("2019-03-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListNodeGroupsResponse{}
+	_result = &ListGatewaysResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14706,10 +13336,10 @@ func (client *Client) ListNodeGroupsWithOptions(request *ListNodeGroupsRequest, 
 	return _result, _err
 }
 
-func (client *Client) ListNodeGroups(request *ListNodeGroupsRequest) (_result *ListNodeGroupsResponse, _err error) {
+func (client *Client) ListGateways(request *ListGatewaysRequest) (_result *ListGatewaysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &ListNodeGroupsResponse{}
-	_body, _err := client.ListNodeGroupsWithOptions(request, runtime)
+	_result = &ListGatewaysResponse{}
+	_body, _err := client.ListGatewaysWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14717,32 +13347,31 @@ func (client *Client) ListNodeGroups(request *ListNodeGroupsRequest) (_result *L
 	return _result, _err
 }
 
-func (client *Client) ListNodeGroupsPacketStatWithOptions(request *ListNodeGroupsPacketStatRequest, runtime *util.RuntimeOptions) (_result *ListNodeGroupsPacketStatResponse, _err error) {
+func (client *Client) ListGatewaysGisInfoWithOptions(request *ListGatewaysGisInfoRequest, runtime *util.RuntimeOptions) (_result *ListGatewaysGisInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["BeginMillis"] = request.BeginMillis
-	query["EndMillis"] = request.EndMillis
-	query["NodeGroupIdList"] = request.NodeGroupIdList
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("ListNodeGroupsPacketStat"),
+		Action:      tea.String("ListGatewaysGisInfo"),
 		Version:     tea.String("2019-03-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListNodeGroupsPacketStatResponse{}
+	_result = &ListGatewaysGisInfoResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14751,10 +13380,10 @@ func (client *Client) ListNodeGroupsPacketStatWithOptions(request *ListNodeGroup
 	return _result, _err
 }
 
-func (client *Client) ListNodeGroupsPacketStat(request *ListNodeGroupsPacketStatRequest) (_result *ListNodeGroupsPacketStatResponse, _err error) {
+func (client *Client) ListGatewaysGisInfo(request *ListGatewaysGisInfoRequest) (_result *ListGatewaysGisInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &ListNodeGroupsPacketStatResponse{}
-	_body, _err := client.ListNodeGroupsPacketStatWithOptions(request, runtime)
+	_result = &ListGatewaysGisInfoResponse{}
+	_body, _err := client.ListGatewaysGisInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14768,14 +13397,28 @@ func (client *Client) ListNodeGroupTransferFlowStatsWithOptions(request *ListNod
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["NodeGroupId"] = request.NodeGroupId
-	query["BeginMillis"] = request.BeginMillis
-	query["EndMillis"] = request.EndMillis
-	query["TimeIntervalUnit"] = request.TimeIntervalUnit
+	if !tea.BoolValue(util.IsUnset(request.BeginMillis)) {
+		query["BeginMillis"] = request.BeginMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndMillis)) {
+		query["EndMillis"] = request.EndMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeIntervalUnit)) {
+		query["TimeIntervalUnit"] = request.TimeIntervalUnit
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListNodeGroupTransferFlowStats"),
@@ -14785,7 +13428,7 @@ func (client *Client) ListNodeGroupTransferFlowStatsWithOptions(request *ListNod
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListNodeGroupTransferFlowStatsResponse{}
@@ -14814,19 +13457,48 @@ func (client *Client) ListNodeGroupTransferPacketsWithOptions(request *ListNodeG
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["NodeGroupId"] = request.NodeGroupId
-	query["DevEui"] = request.DevEui
-	query["Category"] = request.Category
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["BeginMillis"] = request.BeginMillis
-	query["EndMillis"] = request.EndMillis
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginMillis)) {
+		query["BeginMillis"] = request.BeginMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevEui)) {
+		query["DevEui"] = request.DevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndMillis)) {
+		query["EndMillis"] = request.EndMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListNodeGroupTransferPackets"),
@@ -14836,7 +13508,7 @@ func (client *Client) ListNodeGroupTransferPacketsWithOptions(request *ListNodeG
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListNodeGroupTransferPacketsResponse{}
@@ -14859,35 +13531,59 @@ func (client *Client) ListNodeGroupTransferPackets(request *ListNodeGroupTransfe
 	return _result, _err
 }
 
-func (client *Client) ListNodesByNodeGroupIdWithOptions(request *ListNodesByNodeGroupIdRequest, runtime *util.RuntimeOptions) (_result *ListNodesByNodeGroupIdResponse, _err error) {
+func (client *Client) ListNodeGroupsWithOptions(request *ListNodeGroupsRequest, runtime *util.RuntimeOptions) (_result *ListNodeGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["NodeGroupId"] = request.NodeGroupId
-	query["FuzzyDevEui"] = request.FuzzyDevEui
-	query["Offset"] = request.Offset
-	query["Limit"] = request.Limit
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyDevEui)) {
+		query["FuzzyDevEui"] = request.FuzzyDevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyJoinEui)) {
+		query["FuzzyJoinEui"] = request.FuzzyJoinEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyName)) {
+		query["FuzzyName"] = request.FuzzyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("ListNodesByNodeGroupId"),
+		Action:      tea.String("ListNodeGroups"),
 		Version:     tea.String("2019-03-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListNodesByNodeGroupIdResponse{}
+	_result = &ListNodeGroupsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14896,58 +13592,10 @@ func (client *Client) ListNodesByNodeGroupIdWithOptions(request *ListNodesByNode
 	return _result, _err
 }
 
-func (client *Client) ListNodesByNodeGroupId(request *ListNodesByNodeGroupIdRequest) (_result *ListNodesByNodeGroupIdResponse, _err error) {
+func (client *Client) ListNodeGroups(request *ListNodeGroupsRequest) (_result *ListNodeGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &ListNodesByNodeGroupIdResponse{}
-	_body, _err := client.ListNodesByNodeGroupIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListNodesByOwnedJoinPermissionIdWithOptions(request *ListNodesByOwnedJoinPermissionIdRequest, runtime *util.RuntimeOptions) (_result *ListNodesByOwnedJoinPermissionIdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["JoinPermissionId"] = request.JoinPermissionId
-	query["FuzzyDevEui"] = request.FuzzyDevEui
-	query["Offset"] = request.Offset
-	query["Limit"] = request.Limit
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListNodesByOwnedJoinPermissionId"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListNodesByOwnedJoinPermissionIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListNodesByOwnedJoinPermissionId(request *ListNodesByOwnedJoinPermissionIdRequest) (_result *ListNodesByOwnedJoinPermissionIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListNodesByOwnedJoinPermissionIdResponse{}
-	_body, _err := client.ListNodesByOwnedJoinPermissionIdWithOptions(request, runtime)
+	_result = &ListNodeGroupsResponse{}
+	_body, _err := client.ListNodeGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14961,15 +13609,32 @@ func (client *Client) ListNodeTransferPacketPathsWithOptions(request *ListNodeTr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["DevEui"] = request.DevEui
-	query["Base64EncodedMacPayload"] = request.Base64EncodedMacPayload
-	query["LogMillis"] = request.LogMillis
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.Base64EncodedMacPayload)) {
+		query["Base64EncodedMacPayload"] = request.Base64EncodedMacPayload
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevEui)) {
+		query["DevEui"] = request.DevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogMillis)) {
+		query["LogMillis"] = request.LogMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListNodeTransferPacketPaths"),
@@ -14979,7 +13644,7 @@ func (client *Client) ListNodeTransferPacketPathsWithOptions(request *ListNodeTr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListNodeTransferPacketPathsResponse{}
@@ -15008,18 +13673,44 @@ func (client *Client) ListNodeTransferPacketsWithOptions(request *ListNodeTransf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DevEui"] = request.DevEui
-	query["Category"] = request.Category
-	query["GwEui"] = request.GwEui
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["BeginMillis"] = request.BeginMillis
-	query["EndMillis"] = request.EndMillis
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginMillis)) {
+		query["BeginMillis"] = request.BeginMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevEui)) {
+		query["DevEui"] = request.DevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndMillis)) {
+		query["EndMillis"] = request.EndMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GwEui)) {
+		query["GwEui"] = request.GwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListNodeTransferPackets"),
@@ -15029,7 +13720,7 @@ func (client *Client) ListNodeTransferPacketsWithOptions(request *ListNodeTransf
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListNodeTransferPacketsResponse{}
@@ -15058,15 +13749,32 @@ func (client *Client) ListNodeTupleOrdersWithOptions(request *ListNodeTupleOrder
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IsKpm"] = request.IsKpm
-	query["Offset"] = request.Offset
-	query["Limit"] = request.Limit
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
-	query["State"] = request.State
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsKpm)) {
+		query["IsKpm"] = request.IsKpm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListNodeTupleOrders"),
@@ -15076,7 +13784,7 @@ func (client *Client) ListNodeTupleOrdersWithOptions(request *ListNodeTupleOrder
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListNodeTupleOrdersResponse{}
@@ -15099,23 +13807,182 @@ func (client *Client) ListNodeTupleOrders(request *ListNodeTupleOrdersRequest) (
 	return _result, _err
 }
 
+func (client *Client) ListNodesByNodeGroupIdWithOptions(request *ListNodesByNodeGroupIdRequest, runtime *util.RuntimeOptions) (_result *ListNodesByNodeGroupIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyDevEui)) {
+		query["FuzzyDevEui"] = request.FuzzyDevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNodesByNodeGroupId"),
+		Version:     tea.String("2019-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNodesByNodeGroupIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListNodesByNodeGroupId(request *ListNodesByNodeGroupIdRequest) (_result *ListNodesByNodeGroupIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNodesByNodeGroupIdResponse{}
+	_body, _err := client.ListNodesByNodeGroupIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListNodesByOwnedJoinPermissionIdWithOptions(request *ListNodesByOwnedJoinPermissionIdRequest, runtime *util.RuntimeOptions) (_result *ListNodesByOwnedJoinPermissionIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyDevEui)) {
+		query["FuzzyDevEui"] = request.FuzzyDevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionId)) {
+		query["JoinPermissionId"] = request.JoinPermissionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNodesByOwnedJoinPermissionId"),
+		Version:     tea.String("2019-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNodesByOwnedJoinPermissionIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListNodesByOwnedJoinPermissionId(request *ListNodesByOwnedJoinPermissionIdRequest) (_result *ListNodesByOwnedJoinPermissionIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNodesByOwnedJoinPermissionIdResponse{}
+	_body, _err := client.ListNodesByOwnedJoinPermissionIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListNotificationsWithOptions(request *ListNotificationsRequest, runtime *util.RuntimeOptions) (_result *ListNotificationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["HandleState"] = request.HandleState
-	query["Offset"] = request.Offset
-	query["Limit"] = request.Limit
-	query["BeginMillis"] = request.BeginMillis
-	query["EndMillis"] = request.EndMillis
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
-	query["Category"] = request.Category
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginMillis)) {
+		query["BeginMillis"] = request.BeginMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndMillis)) {
+		query["EndMillis"] = request.EndMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HandleState)) {
+		query["HandleState"] = request.HandleState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListNotifications"),
@@ -15125,7 +13992,7 @@ func (client *Client) ListNotificationsWithOptions(request *ListNotificationsReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListNotificationsResponse{}
@@ -15154,18 +14021,44 @@ func (client *Client) ListOwnedJoinPermissionsWithOptions(request *ListOwnedJoin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["FuzzyRenterAliyunId"] = request.FuzzyRenterAliyunId
-	query["FuzzyJoinEui"] = request.FuzzyJoinEui
-	query["Enabled"] = request.Enabled
-	query["FuzzyJoinPermissionName"] = request.FuzzyJoinPermissionName
-	query["Offset"] = request.Offset
-	query["Limit"] = request.Limit
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyJoinEui)) {
+		query["FuzzyJoinEui"] = request.FuzzyJoinEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyJoinPermissionName)) {
+		query["FuzzyJoinPermissionName"] = request.FuzzyJoinPermissionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyRenterAliyunId)) {
+		query["FuzzyRenterAliyunId"] = request.FuzzyRenterAliyunId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListOwnedJoinPermissions"),
@@ -15175,7 +14068,7 @@ func (client *Client) ListOwnedJoinPermissionsWithOptions(request *ListOwnedJoin
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListOwnedJoinPermissionsResponse{}
@@ -15204,20 +14097,52 @@ func (client *Client) ListRentedJoinPermissionsWithOptions(request *ListRentedJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["FuzzyOwnerAliyunId"] = request.FuzzyOwnerAliyunId
-	query["FuzzyJoinEui"] = request.FuzzyJoinEui
-	query["Enabled"] = request.Enabled
-	query["BoundNodeGroup"] = request.BoundNodeGroup
-	query["Type"] = request.Type
-	query["FuzzyJoinPermissionName"] = request.FuzzyJoinPermissionName
-	query["Offset"] = request.Offset
-	query["Limit"] = request.Limit
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
+	if !tea.BoolValue(util.IsUnset(request.Ascending)) {
+		query["Ascending"] = request.Ascending
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BoundNodeGroup)) {
+		query["BoundNodeGroup"] = request.BoundNodeGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyJoinEui)) {
+		query["FuzzyJoinEui"] = request.FuzzyJoinEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyJoinPermissionName)) {
+		query["FuzzyJoinPermissionName"] = request.FuzzyJoinPermissionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyOwnerAliyunId)) {
+		query["FuzzyOwnerAliyunId"] = request.FuzzyOwnerAliyunId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["Offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortingField)) {
+		query["SortingField"] = request.SortingField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRentedJoinPermissions"),
@@ -15227,7 +14152,7 @@ func (client *Client) ListRentedJoinPermissionsWithOptions(request *ListRentedJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRentedJoinPermissionsResponse{}
@@ -15250,63 +14175,18 @@ func (client *Client) ListRentedJoinPermissions(request *ListRentedJoinPermissio
 	return _result, _err
 }
 
-func (client *Client) ListTransferPacketWithOptions(request *ListTransferPacketRequest, runtime *util.RuntimeOptions) (_result *ListTransferPacketResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["BeginMillis"] = request.BeginMillis
-	query["EndMillis"] = request.EndMillis
-	query["SortingField"] = request.SortingField
-	query["Ascending"] = request.Ascending
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListTransferPacket"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListTransferPacketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListTransferPacket(request *ListTransferPacketRequest) (_result *ListTransferPacketResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListTransferPacketResponse{}
-	_body, _err := client.ListTransferPacketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) RejectJoinPermissionAuthOrderWithOptions(request *RejectJoinPermissionAuthOrderRequest, runtime *util.RuntimeOptions) (_result *RejectJoinPermissionAuthOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RejectJoinPermissionAuthOrder"),
@@ -15316,7 +14196,7 @@ func (client *Client) RejectJoinPermissionAuthOrderWithOptions(request *RejectJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RejectJoinPermissionAuthOrderResponse{}
@@ -15345,11 +14225,16 @@ func (client *Client) RemoveNodeFromGroupWithOptions(request *RemoveNodeFromGrou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DevEui"] = request.DevEui
-	query["NodeGroupId"] = request.NodeGroupId
+	if !tea.BoolValue(util.IsUnset(request.DevEui)) {
+		query["DevEui"] = request.DevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveNodeFromGroup"),
@@ -15359,7 +14244,7 @@ func (client *Client) RemoveNodeFromGroupWithOptions(request *RemoveNodeFromGrou
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveNodeFromGroupResponse{}
@@ -15388,11 +14273,16 @@ func (client *Client) ReturnJoinPermissionWithOptions(request *ReturnJoinPermiss
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JoinPermissionId"] = request.JoinPermissionId
-	query["JoinPermissionType"] = request.JoinPermissionType
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionId)) {
+		query["JoinPermissionId"] = request.JoinPermissionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionType)) {
+		query["JoinPermissionType"] = request.JoinPermissionType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReturnJoinPermission"),
@@ -15402,7 +14292,7 @@ func (client *Client) ReturnJoinPermissionWithOptions(request *ReturnJoinPermiss
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReturnJoinPermissionResponse{}
@@ -15431,16 +14321,36 @@ func (client *Client) SendUnicastCommandWithOptions(request *SendUnicastCommandR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["DevEui"] = request.DevEui
-	query["MaxRetries"] = request.MaxRetries
-	query["CleanUp"] = request.CleanUp
-	query["FPort"] = request.FPort
-	query["Confirmed"] = request.Confirmed
-	query["Content"] = request.Content
+	if !tea.BoolValue(util.IsUnset(request.CleanUp)) {
+		query["CleanUp"] = request.CleanUp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Confirmed)) {
+		query["Confirmed"] = request.Confirmed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevEui)) {
+		query["DevEui"] = request.DevEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FPort)) {
+		query["FPort"] = request.FPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxRetries)) {
+		query["MaxRetries"] = request.MaxRetries
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SendUnicastCommand"),
@@ -15450,7 +14360,7 @@ func (client *Client) SendUnicastCommandWithOptions(request *SendUnicastCommandR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SendUnicastCommandResponse{}
@@ -15473,106 +14383,22 @@ func (client *Client) SendUnicastCommand(request *SendUnicastCommandRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) SubmitGatewayLocalConfigAddingTaskWithOptions(request *SubmitGatewayLocalConfigAddingTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitGatewayLocalConfigAddingTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["GwEui"] = request.GwEui
-	query["Datr"] = request.Datr
-	query["D2dAddr"] = request.D2dAddr
-	query["Freq"] = request.Freq
-	query["D2dKey"] = request.D2dKey
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitGatewayLocalConfigAddingTask"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SubmitGatewayLocalConfigAddingTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitGatewayLocalConfigAddingTask(request *SubmitGatewayLocalConfigAddingTaskRequest) (_result *SubmitGatewayLocalConfigAddingTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitGatewayLocalConfigAddingTaskResponse{}
-	_body, _err := client.SubmitGatewayLocalConfigAddingTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SubmitGatewayLocalConfigDeletingTaskWithOptions(request *SubmitGatewayLocalConfigDeletingTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitGatewayLocalConfigDeletingTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["GwEui"] = request.GwEui
-	query["D2dAddr"] = request.D2dAddr
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitGatewayLocalConfigDeletingTask"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SubmitGatewayLocalConfigDeletingTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitGatewayLocalConfigDeletingTask(request *SubmitGatewayLocalConfigDeletingTaskRequest) (_result *SubmitGatewayLocalConfigDeletingTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitGatewayLocalConfigDeletingTaskResponse{}
-	_body, _err := client.SubmitGatewayLocalConfigDeletingTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SubmitGatewayTupleOrderWithOptions(request *SubmitGatewayTupleOrderRequest, runtime *util.RuntimeOptions) (_result *SubmitGatewayTupleOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RequiredCount"] = request.RequiredCount
-	query["TupleType"] = request.TupleType
+	if !tea.BoolValue(util.IsUnset(request.RequiredCount)) {
+		query["RequiredCount"] = request.RequiredCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TupleType)) {
+		query["TupleType"] = request.TupleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitGatewayTupleOrder"),
@@ -15582,7 +14408,7 @@ func (client *Client) SubmitGatewayTupleOrderWithOptions(request *SubmitGatewayT
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitGatewayTupleOrderResponse{}
@@ -15611,11 +14437,16 @@ func (client *Client) SubmitJoinPermissionAuthOrderWithOptions(request *SubmitJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JoinPermissionId"] = request.JoinPermissionId
-	query["RenterAliyunId"] = request.RenterAliyunId
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionId)) {
+		query["JoinPermissionId"] = request.JoinPermissionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenterAliyunId)) {
+		query["RenterAliyunId"] = request.RenterAliyunId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitJoinPermissionAuthOrder"),
@@ -15625,7 +14456,7 @@ func (client *Client) SubmitJoinPermissionAuthOrderWithOptions(request *SubmitJo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitJoinPermissionAuthOrderResponse{}
@@ -15648,150 +14479,26 @@ func (client *Client) SubmitJoinPermissionAuthOrder(request *SubmitJoinPermissio
 	return _result, _err
 }
 
-func (client *Client) SubmitKpmEncryptedNodeTupleOrderWithOptions(request *SubmitKpmEncryptedNodeTupleOrderRequest, runtime *util.RuntimeOptions) (_result *SubmitKpmEncryptedNodeTupleOrderResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["LoraVersion"] = request.LoraVersion
-	query["RequiredCount"] = request.RequiredCount
-	query["TupleType"] = request.TupleType
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitKpmEncryptedNodeTupleOrder"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SubmitKpmEncryptedNodeTupleOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitKpmEncryptedNodeTupleOrder(request *SubmitKpmEncryptedNodeTupleOrderRequest) (_result *SubmitKpmEncryptedNodeTupleOrderResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitKpmEncryptedNodeTupleOrderResponse{}
-	_body, _err := client.SubmitKpmEncryptedNodeTupleOrderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SubmitNodeLocalConfigAddingTaskWithOptions(request *SubmitNodeLocalConfigAddingTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitNodeLocalConfigAddingTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DevEui"] = request.DevEui
-	query["Datr"] = request.Datr
-	query["D2dAddr"] = request.D2dAddr
-	query["Freq"] = request.Freq
-	query["D2dKey"] = request.D2dKey
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitNodeLocalConfigAddingTask"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SubmitNodeLocalConfigAddingTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitNodeLocalConfigAddingTask(request *SubmitNodeLocalConfigAddingTaskRequest) (_result *SubmitNodeLocalConfigAddingTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitNodeLocalConfigAddingTaskResponse{}
-	_body, _err := client.SubmitNodeLocalConfigAddingTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SubmitNodeLocalConfigDeletingTaskWithOptions(request *SubmitNodeLocalConfigDeletingTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitNodeLocalConfigDeletingTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DevEui"] = request.DevEui
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitNodeLocalConfigDeletingTask"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SubmitNodeLocalConfigDeletingTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitNodeLocalConfigDeletingTask(request *SubmitNodeLocalConfigDeletingTaskRequest) (_result *SubmitNodeLocalConfigDeletingTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitNodeLocalConfigDeletingTaskResponse{}
-	_body, _err := client.SubmitNodeLocalConfigDeletingTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SubmitNodeTupleOrderWithOptions(request *SubmitNodeTupleOrderRequest, runtime *util.RuntimeOptions) (_result *SubmitNodeTupleOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["LoraVersion"] = request.LoraVersion
-	query["RequiredCount"] = request.RequiredCount
-	query["TupleType"] = request.TupleType
+	if !tea.BoolValue(util.IsUnset(request.LoraVersion)) {
+		query["LoraVersion"] = request.LoraVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequiredCount)) {
+		query["RequiredCount"] = request.RequiredCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TupleType)) {
+		query["TupleType"] = request.TupleType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitNodeTupleOrder"),
@@ -15801,7 +14508,7 @@ func (client *Client) SubmitNodeTupleOrderWithOptions(request *SubmitNodeTupleOr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitNodeTupleOrderResponse{}
@@ -15830,11 +14537,16 @@ func (client *Client) UnbindJoinPermissionFromNodeGroupWithOptions(request *Unbi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NodeGroupId"] = request.NodeGroupId
-	query["JoinPermissionId"] = request.JoinPermissionId
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionId)) {
+		query["JoinPermissionId"] = request.JoinPermissionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UnbindJoinPermissionFromNodeGroup"),
@@ -15844,7 +14556,7 @@ func (client *Client) UnbindJoinPermissionFromNodeGroupWithOptions(request *Unbi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UnbindJoinPermissionFromNodeGroupResponse{}
@@ -15873,17 +14585,40 @@ func (client *Client) UpdateDataDispatchConfigWithOptions(request *UpdateDataDis
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NodeGroupId"] = request.NodeGroupId
-	query["DataDispatchDestination"] = request.DataDispatchDestination
-	query["ProductType"] = request.ProductType
-	query["ProductName"] = request.ProductName
-	query["ProductKey"] = request.ProductKey
-	query["DebugSwitch"] = request.DebugSwitch
-	query["UplinkRegionName"] = request.UplinkRegionName
-	query["UplinkTopic"] = request.UplinkTopic
+	if !tea.BoolValue(util.IsUnset(request.DataDispatchDestination)) {
+		query["DataDispatchDestination"] = request.DataDispatchDestination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DebugSwitch)) {
+		query["DebugSwitch"] = request.DebugSwitch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
+		query["ProductName"] = request.ProductName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UplinkRegionName)) {
+		query["UplinkRegionName"] = request.UplinkRegionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UplinkTopic)) {
+		query["UplinkTopic"] = request.UplinkTopic
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateDataDispatchConfig"),
@@ -15893,7 +14628,7 @@ func (client *Client) UpdateDataDispatchConfigWithOptions(request *UpdateDataDis
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateDataDispatchConfigResponse{}
@@ -15922,11 +14657,16 @@ func (client *Client) UpdateDataDispatchEnablingStateWithOptions(request *Update
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NodeGroupId"] = request.NodeGroupId
-	query["DataDispatchEnabled"] = request.DataDispatchEnabled
+	if !tea.BoolValue(util.IsUnset(request.DataDispatchEnabled)) {
+		query["DataDispatchEnabled"] = request.DataDispatchEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateDataDispatchEnablingState"),
@@ -15936,7 +14676,7 @@ func (client *Client) UpdateDataDispatchEnablingStateWithOptions(request *Update
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateDataDispatchEnablingStateResponse{}
@@ -15965,22 +14705,60 @@ func (client *Client) UpdateGatewayWithOptions(request *UpdateGatewayRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["GwEui"] = request.GwEui
-	query["Name"] = request.Name
-	query["Description"] = request.Description
-	query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
-	query["CommunicationMode"] = request.CommunicationMode
-	query["AddressCode"] = request.AddressCode
-	query["City"] = request.City
-	query["District"] = request.District
-	query["Address"] = request.Address
-	query["GisCoordinateSystem"] = request.GisCoordinateSystem
-	query["Longitude"] = request.Longitude
-	query["Latitude"] = request.Latitude
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressCode)) {
+		query["AddressCode"] = request.AddressCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.City)) {
+		query["City"] = request.City
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommunicationMode)) {
+		query["CommunicationMode"] = request.CommunicationMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.District)) {
+		query["District"] = request.District
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FreqBandPlanGroupId)) {
+		query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GisCoordinateSystem)) {
+		query["GisCoordinateSystem"] = request.GisCoordinateSystem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GwEui)) {
+		query["GwEui"] = request.GwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Latitude)) {
+		query["Latitude"] = request.Latitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Longitude)) {
+		query["Longitude"] = request.Longitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateGateway"),
@@ -15990,7 +14768,7 @@ func (client *Client) UpdateGatewayWithOptions(request *UpdateGatewayRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateGatewayResponse{}
@@ -16019,12 +14797,20 @@ func (client *Client) UpdateGatewayEnablingStateWithOptions(request *UpdateGatew
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["GwEui"] = request.GwEui
-	query["Enabled"] = request.Enabled
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GwEui)) {
+		query["GwEui"] = request.GwEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateGatewayEnablingState"),
@@ -16034,7 +14820,7 @@ func (client *Client) UpdateGatewayEnablingStateWithOptions(request *UpdateGatew
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateGatewayEnablingStateResponse{}
@@ -16057,104 +14843,22 @@ func (client *Client) UpdateGatewayEnablingState(request *UpdateGatewayEnablingS
 	return _result, _err
 }
 
-func (client *Client) UpdateGatewaySshCtrlWithOptions(request *UpdateGatewaySshCtrlRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewaySshCtrlResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["GwEui"] = request.GwEui
-	query["Enabled"] = request.Enabled
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateGatewaySshCtrl"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateGatewaySshCtrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateGatewaySshCtrl(request *UpdateGatewaySshCtrlRequest) (_result *UpdateGatewaySshCtrlResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateGatewaySshCtrlResponse{}
-	_body, _err := client.UpdateGatewaySshCtrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateNodeEnablingStateWithOptions(request *UpdateNodeEnablingStateRequest, runtime *util.RuntimeOptions) (_result *UpdateNodeEnablingStateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DevEui"] = request.DevEui
-	query["IsEnable"] = request.IsEnable
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateNodeEnablingState"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateNodeEnablingStateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateNodeEnablingState(request *UpdateNodeEnablingStateRequest) (_result *UpdateNodeEnablingStateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateNodeEnablingStateResponse{}
-	_body, _err := client.UpdateNodeEnablingStateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) UpdateNodeGroupWithOptions(request *UpdateNodeGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateNodeGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NodeGroupId"] = request.NodeGroupId
-	query["NodeGroupName"] = request.NodeGroupName
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupName)) {
+		query["NodeGroupName"] = request.NodeGroupName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateNodeGroup"),
@@ -16164,7 +14868,7 @@ func (client *Client) UpdateNodeGroupWithOptions(request *UpdateNodeGroupRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateNodeGroupResponse{}
@@ -16193,11 +14897,16 @@ func (client *Client) UpdateNotificationsHandleStateWithOptions(request *UpdateN
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TargetHandleState"] = request.TargetHandleState
-	query["NotificationId"] = request.NotificationId
+	if !tea.BoolValue(util.IsUnset(request.NotificationId)) {
+		query["NotificationId"] = request.NotificationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetHandleState)) {
+		query["TargetHandleState"] = request.TargetHandleState
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateNotificationsHandleState"),
@@ -16207,7 +14916,7 @@ func (client *Client) UpdateNotificationsHandleStateWithOptions(request *UpdateN
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateNotificationsHandleStateResponse{}
@@ -16236,17 +14945,40 @@ func (client *Client) UpdateOwnedLocalJoinPermissionWithOptions(request *UpdateO
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["JoinPermissionId"] = request.JoinPermissionId
-	query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
-	query["ClassMode"] = request.ClassMode
-	query["JoinPermissionName"] = request.JoinPermissionName
-	query["RxDelay"] = request.RxDelay
-	query["DataRate"] = request.DataRate
-	query["JoinEui"] = request.JoinEui
+	if !tea.BoolValue(util.IsUnset(request.ClassMode)) {
+		query["ClassMode"] = request.ClassMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRate)) {
+		query["DataRate"] = request.DataRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FreqBandPlanGroupId)) {
+		query["FreqBandPlanGroupId"] = request.FreqBandPlanGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinEui)) {
+		query["JoinEui"] = request.JoinEui
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionId)) {
+		query["JoinPermissionId"] = request.JoinPermissionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionName)) {
+		query["JoinPermissionName"] = request.JoinPermissionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RxDelay)) {
+		query["RxDelay"] = request.RxDelay
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateOwnedLocalJoinPermission"),
@@ -16256,7 +14988,7 @@ func (client *Client) UpdateOwnedLocalJoinPermissionWithOptions(request *UpdateO
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateOwnedLocalJoinPermissionResponse{}
@@ -16285,12 +15017,20 @@ func (client *Client) UpdateOwnedLocalJoinPermissionEnablingStateWithOptions(req
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IotInstanceId"] = request.IotInstanceId
-	query["JoinPermissionId"] = request.JoinPermissionId
-	query["Enabled"] = request.Enabled
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionId)) {
+		query["JoinPermissionId"] = request.JoinPermissionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateOwnedLocalJoinPermissionEnablingState"),
@@ -16300,7 +15040,7 @@ func (client *Client) UpdateOwnedLocalJoinPermissionEnablingStateWithOptions(req
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateOwnedLocalJoinPermissionEnablingStateResponse{}
@@ -16329,13 +15069,24 @@ func (client *Client) UpdateRoamingJoinPermissionWithOptions(request *UpdateRoam
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JoinPermissionId"] = request.JoinPermissionId
-	query["JoinPermissionName"] = request.JoinPermissionName
-	query["RxDelay"] = request.RxDelay
-	query["DataRate"] = request.DataRate
+	if !tea.BoolValue(util.IsUnset(request.DataRate)) {
+		query["DataRate"] = request.DataRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionId)) {
+		query["JoinPermissionId"] = request.JoinPermissionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionName)) {
+		query["JoinPermissionName"] = request.JoinPermissionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RxDelay)) {
+		query["RxDelay"] = request.RxDelay
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateRoamingJoinPermission"),
@@ -16345,7 +15096,7 @@ func (client *Client) UpdateRoamingJoinPermissionWithOptions(request *UpdateRoam
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRoamingJoinPermissionResponse{}
@@ -16374,11 +15125,16 @@ func (client *Client) UpdateRoamingJoinPermissionEnablingStateWithOptions(reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["JoinPermissionId"] = request.JoinPermissionId
-	query["Enabled"] = request.Enabled
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JoinPermissionId)) {
+		query["JoinPermissionId"] = request.JoinPermissionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateRoamingJoinPermissionEnablingState"),
@@ -16388,7 +15144,7 @@ func (client *Client) UpdateRoamingJoinPermissionEnablingStateWithOptions(reques
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRoamingJoinPermissionEnablingStateResponse{}
@@ -16404,48 +15160,6 @@ func (client *Client) UpdateRoamingJoinPermissionEnablingState(request *UpdateRo
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRoamingJoinPermissionEnablingStateResponse{}
 	_body, _err := client.UpdateRoamingJoinPermissionEnablingStateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateUserIsolationStateWithOptions(request *UpdateUserIsolationStateRequest, runtime *util.RuntimeOptions) (_result *UpdateUserIsolationStateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["Isolated"] = request.Isolated
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateUserIsolationState"),
-		Version:     tea.String("2019-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateUserIsolationStateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateUserIsolationState(request *UpdateUserIsolationStateRequest) (_result *UpdateUserIsolationStateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateUserIsolationStateResponse{}
-	_body, _err := client.UpdateUserIsolationStateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
