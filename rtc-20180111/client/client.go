@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -27,6 +27,7 @@ type AddRecordTemplateRequest struct {
 	MnsQueue           *string                                 `json:"MnsQueue,omitempty" xml:"MnsQueue,omitempty"`
 	Name               *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
 	OssBucket          *string                                 `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string                                 `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 	OssFilePrefix      *string                                 `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
 	OwnerId            *int64                                  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	TaskProfile        *string                                 `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
@@ -108,6 +109,11 @@ func (s *AddRecordTemplateRequest) SetName(v string) *AddRecordTemplateRequest {
 
 func (s *AddRecordTemplateRequest) SetOssBucket(v string) *AddRecordTemplateRequest {
 	s.OssBucket = &v
+	return s
+}
+
+func (s *AddRecordTemplateRequest) SetOssEndpoint(v string) *AddRecordTemplateRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -314,8 +320,9 @@ func (s *AddRecordTemplateResponseBody) SetTemplateId(v string) *AddRecordTempla
 }
 
 type AddRecordTemplateResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddRecordTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddRecordTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddRecordTemplateResponse) String() string {
@@ -328,6 +335,11 @@ func (s AddRecordTemplateResponse) GoString() string {
 
 func (s *AddRecordTemplateResponse) SetHeaders(v map[string]*string) *AddRecordTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddRecordTemplateResponse) SetStatusCode(v int32) *AddRecordTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -419,8 +431,9 @@ func (s *CreateAutoLiveStreamRuleResponseBody) SetRuleId(v int64) *CreateAutoLiv
 }
 
 type CreateAutoLiveStreamRuleResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateAutoLiveStreamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAutoLiveStreamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateAutoLiveStreamRuleResponse) String() string {
@@ -433,6 +446,11 @@ func (s CreateAutoLiveStreamRuleResponse) GoString() string {
 
 func (s *CreateAutoLiveStreamRuleResponse) SetHeaders(v map[string]*string) *CreateAutoLiveStreamRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateAutoLiveStreamRuleResponse) SetStatusCode(v int32) *CreateAutoLiveStreamRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -449,6 +467,7 @@ type CreateEventSubscribeRequest struct {
 	Events           []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 	NeedCallbackAuth *bool     `json:"NeedCallbackAuth,omitempty" xml:"NeedCallbackAuth,omitempty"`
 	OwnerId          *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Role             *int64    `json:"Role,omitempty" xml:"Role,omitempty"`
 	Users            []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -495,6 +514,11 @@ func (s *CreateEventSubscribeRequest) SetOwnerId(v int64) *CreateEventSubscribeR
 	return s
 }
 
+func (s *CreateEventSubscribeRequest) SetRole(v int64) *CreateEventSubscribeRequest {
+	s.Role = &v
+	return s
+}
+
 func (s *CreateEventSubscribeRequest) SetUsers(v []*string) *CreateEventSubscribeRequest {
 	s.Users = v
 	return s
@@ -524,8 +548,9 @@ func (s *CreateEventSubscribeResponseBody) SetSubscribeId(v string) *CreateEvent
 }
 
 type CreateEventSubscribeResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateEventSubscribeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateEventSubscribeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateEventSubscribeResponse) String() string {
@@ -538,6 +563,11 @@ func (s CreateEventSubscribeResponse) GoString() string {
 
 func (s *CreateEventSubscribeResponse) SetHeaders(v map[string]*string) *CreateEventSubscribeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateEventSubscribeResponse) SetStatusCode(v int32) *CreateEventSubscribeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -664,8 +694,9 @@ func (s *CreateMPULayoutResponseBody) SetRequestId(v string) *CreateMPULayoutRes
 }
 
 type CreateMPULayoutResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateMPULayoutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMPULayoutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateMPULayoutResponse) String() string {
@@ -678,6 +709,11 @@ func (s CreateMPULayoutResponse) GoString() string {
 
 func (s *CreateMPULayoutResponse) SetHeaders(v map[string]*string) *CreateMPULayoutResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateMPULayoutResponse) SetStatusCode(v int32) *CreateMPULayoutResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -733,8 +769,9 @@ func (s *DeleteAutoLiveStreamRuleResponseBody) SetRequestId(v string) *DeleteAut
 }
 
 type DeleteAutoLiveStreamRuleResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAutoLiveStreamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAutoLiveStreamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteAutoLiveStreamRuleResponse) String() string {
@@ -747,6 +784,11 @@ func (s DeleteAutoLiveStreamRuleResponse) GoString() string {
 
 func (s *DeleteAutoLiveStreamRuleResponse) SetHeaders(v map[string]*string) *DeleteAutoLiveStreamRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteAutoLiveStreamRuleResponse) SetStatusCode(v int32) *DeleteAutoLiveStreamRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -802,8 +844,9 @@ func (s *DeleteChannelResponseBody) SetRequestId(v string) *DeleteChannelRespons
 }
 
 type DeleteChannelResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteChannelResponse) String() string {
@@ -816,6 +859,11 @@ func (s DeleteChannelResponse) GoString() string {
 
 func (s *DeleteChannelResponse) SetHeaders(v map[string]*string) *DeleteChannelResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteChannelResponse) SetStatusCode(v int32) *DeleteChannelResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -871,8 +919,9 @@ func (s *DeleteEventSubscribeResponseBody) SetRequestId(v string) *DeleteEventSu
 }
 
 type DeleteEventSubscribeResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteEventSubscribeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEventSubscribeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteEventSubscribeResponse) String() string {
@@ -885,6 +934,11 @@ func (s DeleteEventSubscribeResponse) GoString() string {
 
 func (s *DeleteEventSubscribeResponse) SetHeaders(v map[string]*string) *DeleteEventSubscribeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteEventSubscribeResponse) SetStatusCode(v int32) *DeleteEventSubscribeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -940,8 +994,9 @@ func (s *DeleteMPULayoutResponseBody) SetRequestId(v string) *DeleteMPULayoutRes
 }
 
 type DeleteMPULayoutResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMPULayoutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMPULayoutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteMPULayoutResponse) String() string {
@@ -954,6 +1009,11 @@ func (s DeleteMPULayoutResponse) GoString() string {
 
 func (s *DeleteMPULayoutResponse) SetHeaders(v map[string]*string) *DeleteMPULayoutResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteMPULayoutResponse) SetStatusCode(v int32) *DeleteMPULayoutResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1009,8 +1069,9 @@ func (s *DeleteRecordTemplateResponseBody) SetRequestId(v string) *DeleteRecordT
 }
 
 type DeleteRecordTemplateResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteRecordTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteRecordTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteRecordTemplateResponse) String() string {
@@ -1023,6 +1084,11 @@ func (s DeleteRecordTemplateResponse) GoString() string {
 
 func (s *DeleteRecordTemplateResponse) SetHeaders(v map[string]*string) *DeleteRecordTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteRecordTemplateResponse) SetStatusCode(v int32) *DeleteRecordTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1078,8 +1144,9 @@ func (s *DescribeAppKeyResponseBody) SetRequestId(v string) *DescribeAppKeyRespo
 }
 
 type DescribeAppKeyResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAppKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAppKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAppKeyResponse) String() string {
@@ -1092,6 +1159,11 @@ func (s DescribeAppKeyResponse) GoString() string {
 
 func (s *DescribeAppKeyResponse) SetHeaders(v map[string]*string) *DescribeAppKeyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppKeyResponse) SetStatusCode(v int32) *DescribeAppKeyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1276,8 +1348,9 @@ func (s *DescribeAppsResponseBodyAppListAppServiceAreas) SetServiceArea(v []*str
 }
 
 type DescribeAppsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAppsResponse) String() string {
@@ -1290,6 +1363,11 @@ func (s DescribeAppsResponse) GoString() string {
 
 func (s *DescribeAppsResponse) SetHeaders(v map[string]*string) *DescribeAppsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppsResponse) SetStatusCode(v int32) *DescribeAppsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1410,8 +1488,9 @@ func (s *DescribeAutoLiveStreamRuleResponseBodyRules) SetStatus(v string) *Descr
 }
 
 type DescribeAutoLiveStreamRuleResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAutoLiveStreamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAutoLiveStreamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAutoLiveStreamRuleResponse) String() string {
@@ -1424,6 +1503,11 @@ func (s DescribeAutoLiveStreamRuleResponse) GoString() string {
 
 func (s *DescribeAutoLiveStreamRuleResponse) SetHeaders(v map[string]*string) *DescribeAutoLiveStreamRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAutoLiveStreamRuleResponse) SetStatusCode(v int32) *DescribeAutoLiveStreamRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1538,8 +1622,9 @@ func (s *DescribeChannelParticipantsResponseBodyUserList) SetUser(v []*string) *
 }
 
 type DescribeChannelParticipantsResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeChannelParticipantsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeChannelParticipantsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeChannelParticipantsResponse) String() string {
@@ -1552,6 +1637,11 @@ func (s DescribeChannelParticipantsResponse) GoString() string {
 
 func (s *DescribeChannelParticipantsResponse) SetHeaders(v map[string]*string) *DescribeChannelParticipantsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeChannelParticipantsResponse) SetStatusCode(v int32) *DescribeChannelParticipantsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1661,8 +1751,9 @@ func (s *DescribeChannelUsersResponseBody) SetUserList(v []*string) *DescribeCha
 }
 
 type DescribeChannelUsersResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeChannelUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeChannelUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeChannelUsersResponse) String() string {
@@ -1675,6 +1766,11 @@ func (s DescribeChannelUsersResponse) GoString() string {
 
 func (s *DescribeChannelUsersResponse) SetHeaders(v map[string]*string) *DescribeChannelUsersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeChannelUsersResponse) SetStatusCode(v int32) *DescribeChannelUsersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1888,8 +1984,9 @@ func (s *DescribeMPULayoutInfoListResponseBodyLayoutsLayoutPanesPanes) SetZOrder
 }
 
 type DescribeMPULayoutInfoListResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMPULayoutInfoListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMPULayoutInfoListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMPULayoutInfoListResponse) String() string {
@@ -1902,6 +1999,11 @@ func (s DescribeMPULayoutInfoListResponse) GoString() string {
 
 func (s *DescribeMPULayoutInfoListResponse) SetHeaders(v map[string]*string) *DescribeMPULayoutInfoListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMPULayoutInfoListResponse) SetStatusCode(v int32) *DescribeMPULayoutInfoListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2064,8 +2166,9 @@ func (s *DescribeRecordFilesResponseBodyRecordFiles) SetUrl(v string) *DescribeR
 }
 
 type DescribeRecordFilesResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRecordFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRecordFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRecordFilesResponse) String() string {
@@ -2078,6 +2181,11 @@ func (s DescribeRecordFilesResponse) GoString() string {
 
 func (s *DescribeRecordFilesResponse) SetHeaders(v map[string]*string) *DescribeRecordFilesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRecordFilesResponse) SetStatusCode(v int32) *DescribeRecordFilesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2441,8 +2549,9 @@ func (s *DescribeRecordTemplatesResponseBodyTemplatesWatermarks) SetZOrder(v int
 }
 
 type DescribeRecordTemplatesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRecordTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRecordTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRecordTemplatesResponse) String() string {
@@ -2458,7 +2567,937 @@ func (s *DescribeRecordTemplatesResponse) SetHeaders(v map[string]*string) *Desc
 	return s
 }
 
+func (s *DescribeRecordTemplatesResponse) SetStatusCode(v int32) *DescribeRecordTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeRecordTemplatesResponse) SetBody(v *DescribeRecordTemplatesResponseBody) *DescribeRecordTemplatesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRtcChannelListRequest struct {
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNo      *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ServiceArea *string `json:"ServiceArea,omitempty" xml:"ServiceArea,omitempty"`
+	SortType    *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	TimePoint   *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeRtcChannelListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcChannelListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcChannelListRequest) SetAppId(v string) *DescribeRtcChannelListRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListRequest) SetChannelId(v string) *DescribeRtcChannelListRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListRequest) SetOwnerId(v int64) *DescribeRtcChannelListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListRequest) SetPageNo(v int64) *DescribeRtcChannelListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListRequest) SetPageSize(v int64) *DescribeRtcChannelListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListRequest) SetServiceArea(v string) *DescribeRtcChannelListRequest {
+	s.ServiceArea = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListRequest) SetSortType(v string) *DescribeRtcChannelListRequest {
+	s.SortType = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListRequest) SetTimePoint(v string) *DescribeRtcChannelListRequest {
+	s.TimePoint = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListRequest) SetUserId(v string) *DescribeRtcChannelListRequest {
+	s.UserId = &v
+	return s
+}
+
+type DescribeRtcChannelListResponseBody struct {
+	ChannelList *DescribeRtcChannelListResponseBodyChannelList `json:"ChannelList,omitempty" xml:"ChannelList,omitempty" type:"Struct"`
+	PageNo      *int64                                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize    *int64                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCnt    *int64                                         `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
+}
+
+func (s DescribeRtcChannelListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcChannelListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcChannelListResponseBody) SetChannelList(v *DescribeRtcChannelListResponseBodyChannelList) *DescribeRtcChannelListResponseBody {
+	s.ChannelList = v
+	return s
+}
+
+func (s *DescribeRtcChannelListResponseBody) SetPageNo(v int64) *DescribeRtcChannelListResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListResponseBody) SetPageSize(v int64) *DescribeRtcChannelListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListResponseBody) SetRequestId(v string) *DescribeRtcChannelListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListResponseBody) SetTotalCnt(v int64) *DescribeRtcChannelListResponseBody {
+	s.TotalCnt = &v
+	return s
+}
+
+type DescribeRtcChannelListResponseBodyChannelList struct {
+	ChannelList []*DescribeRtcChannelListResponseBodyChannelListChannelList `json:"ChannelList,omitempty" xml:"ChannelList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRtcChannelListResponseBodyChannelList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcChannelListResponseBodyChannelList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcChannelListResponseBodyChannelList) SetChannelList(v []*DescribeRtcChannelListResponseBodyChannelListChannelList) *DescribeRtcChannelListResponseBodyChannelList {
+	s.ChannelList = v
+	return s
+}
+
+type DescribeRtcChannelListResponseBodyChannelListChannelList struct {
+	CallArea     *DescribeRtcChannelListResponseBodyChannelListChannelListCallArea `json:"CallArea,omitempty" xml:"CallArea,omitempty" type:"Struct"`
+	ChannelId    *string                                                           `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	EndTime      *string                                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime    *string                                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalUserCnt *int64                                                            `json:"TotalUserCnt,omitempty" xml:"TotalUserCnt,omitempty"`
+}
+
+func (s DescribeRtcChannelListResponseBodyChannelListChannelList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcChannelListResponseBodyChannelListChannelList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcChannelListResponseBodyChannelListChannelList) SetCallArea(v *DescribeRtcChannelListResponseBodyChannelListChannelListCallArea) *DescribeRtcChannelListResponseBodyChannelListChannelList {
+	s.CallArea = v
+	return s
+}
+
+func (s *DescribeRtcChannelListResponseBodyChannelListChannelList) SetChannelId(v string) *DescribeRtcChannelListResponseBodyChannelListChannelList {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListResponseBodyChannelListChannelList) SetEndTime(v string) *DescribeRtcChannelListResponseBodyChannelListChannelList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListResponseBodyChannelListChannelList) SetStartTime(v string) *DescribeRtcChannelListResponseBodyChannelListChannelList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListResponseBodyChannelListChannelList) SetTotalUserCnt(v int64) *DescribeRtcChannelListResponseBodyChannelListChannelList {
+	s.TotalUserCnt = &v
+	return s
+}
+
+type DescribeRtcChannelListResponseBodyChannelListChannelListCallArea struct {
+	CallArea []*string `json:"CallArea,omitempty" xml:"CallArea,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRtcChannelListResponseBodyChannelListChannelListCallArea) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcChannelListResponseBodyChannelListChannelListCallArea) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcChannelListResponseBodyChannelListChannelListCallArea) SetCallArea(v []*string) *DescribeRtcChannelListResponseBodyChannelListChannelListCallArea {
+	s.CallArea = v
+	return s
+}
+
+type DescribeRtcChannelListResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRtcChannelListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRtcChannelListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcChannelListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcChannelListResponse) SetHeaders(v map[string]*string) *DescribeRtcChannelListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRtcChannelListResponse) SetStatusCode(v int32) *DescribeRtcChannelListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRtcChannelListResponse) SetBody(v *DescribeRtcChannelListResponseBody) *DescribeRtcChannelListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRtcChannelMetricRequest struct {
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	TimePoint *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
+}
+
+func (s DescribeRtcChannelMetricRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcChannelMetricRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcChannelMetricRequest) SetAppId(v string) *DescribeRtcChannelMetricRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricRequest) SetChannelId(v string) *DescribeRtcChannelMetricRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricRequest) SetOwnerId(v int64) *DescribeRtcChannelMetricRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricRequest) SetTimePoint(v string) *DescribeRtcChannelMetricRequest {
+	s.TimePoint = &v
+	return s
+}
+
+type DescribeRtcChannelMetricResponseBody struct {
+	ChannelMetricInfo *DescribeRtcChannelMetricResponseBodyChannelMetricInfo `json:"ChannelMetricInfo,omitempty" xml:"ChannelMetricInfo,omitempty" type:"Struct"`
+	RequestId         *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRtcChannelMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcChannelMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcChannelMetricResponseBody) SetChannelMetricInfo(v *DescribeRtcChannelMetricResponseBodyChannelMetricInfo) *DescribeRtcChannelMetricResponseBody {
+	s.ChannelMetricInfo = v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBody) SetRequestId(v string) *DescribeRtcChannelMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRtcChannelMetricResponseBodyChannelMetricInfo struct {
+	ChannelMetric *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric `json:"ChannelMetric,omitempty" xml:"ChannelMetric,omitempty" type:"Struct"`
+	Duration      *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration      `json:"Duration,omitempty" xml:"Duration,omitempty" type:"Struct"`
+}
+
+func (s DescribeRtcChannelMetricResponseBodyChannelMetricInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcChannelMetricResponseBodyChannelMetricInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfo) SetChannelMetric(v *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric) *DescribeRtcChannelMetricResponseBodyChannelMetricInfo {
+	s.ChannelMetric = v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfo) SetDuration(v *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration) *DescribeRtcChannelMetricResponseBodyChannelMetricInfo {
+	s.Duration = v
+	return s
+}
+
+type DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric struct {
+	ChannelId    *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PubUserCount *int32  `json:"PubUserCount,omitempty" xml:"PubUserCount,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	SubUserCount *int32  `json:"SubUserCount,omitempty" xml:"SubUserCount,omitempty"`
+	UserCount    *int32  `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
+}
+
+func (s DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric) SetChannelId(v string) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric) SetEndTime(v string) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric) SetPubUserCount(v int32) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric {
+	s.PubUserCount = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric) SetStartTime(v string) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric) SetSubUserCount(v int32) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric {
+	s.SubUserCount = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric) SetUserCount(v int32) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric {
+	s.UserCount = &v
+	return s
+}
+
+type DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration struct {
+	PubDuration *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration `json:"PubDuration,omitempty" xml:"PubDuration,omitempty" type:"Struct"`
+	SubDuration *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration `json:"SubDuration,omitempty" xml:"SubDuration,omitempty" type:"Struct"`
+}
+
+func (s DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration) SetPubDuration(v *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration {
+	s.PubDuration = v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration) SetSubDuration(v *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration {
+	s.SubDuration = v
+	return s
+}
+
+type DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration struct {
+	Audio     *int32 `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	Content   *int32 `json:"Content,omitempty" xml:"Content,omitempty"`
+	Video1080 *int32 `json:"Video1080,omitempty" xml:"Video1080,omitempty"`
+	Video360  *int32 `json:"Video360,omitempty" xml:"Video360,omitempty"`
+	Video720  *int32 `json:"Video720,omitempty" xml:"Video720,omitempty"`
+}
+
+func (s DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration) SetAudio(v int32) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration {
+	s.Audio = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration) SetContent(v int32) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration {
+	s.Content = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration) SetVideo1080(v int32) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration {
+	s.Video1080 = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration) SetVideo360(v int32) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration {
+	s.Video360 = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration) SetVideo720(v int32) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration {
+	s.Video720 = &v
+	return s
+}
+
+type DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration struct {
+	Audio     *int32 `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	Content   *int32 `json:"Content,omitempty" xml:"Content,omitempty"`
+	Video1080 *int32 `json:"Video1080,omitempty" xml:"Video1080,omitempty"`
+	Video360  *int32 `json:"Video360,omitempty" xml:"Video360,omitempty"`
+	Video720  *int32 `json:"Video720,omitempty" xml:"Video720,omitempty"`
+}
+
+func (s DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration) SetAudio(v int32) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration {
+	s.Audio = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration) SetContent(v int32) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration {
+	s.Content = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration) SetVideo1080(v int32) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration {
+	s.Video1080 = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration) SetVideo360(v int32) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration {
+	s.Video360 = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration) SetVideo720(v int32) *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration {
+	s.Video720 = &v
+	return s
+}
+
+type DescribeRtcChannelMetricResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRtcChannelMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRtcChannelMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcChannelMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcChannelMetricResponse) SetHeaders(v map[string]*string) *DescribeRtcChannelMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponse) SetStatusCode(v int32) *DescribeRtcChannelMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricResponse) SetBody(v *DescribeRtcChannelMetricResponseBody) *DescribeRtcChannelMetricResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRtcDurationDataRequest struct {
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval    *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ServiceArea *string `json:"ServiceArea,omitempty" xml:"ServiceArea,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeRtcDurationDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcDurationDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcDurationDataRequest) SetAppId(v string) *DescribeRtcDurationDataRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeRtcDurationDataRequest) SetEndTime(v string) *DescribeRtcDurationDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeRtcDurationDataRequest) SetInterval(v string) *DescribeRtcDurationDataRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeRtcDurationDataRequest) SetOwnerId(v int64) *DescribeRtcDurationDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRtcDurationDataRequest) SetServiceArea(v string) *DescribeRtcDurationDataRequest {
+	s.ServiceArea = &v
+	return s
+}
+
+func (s *DescribeRtcDurationDataRequest) SetStartTime(v string) *DescribeRtcDurationDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeRtcDurationDataResponseBody struct {
+	DurationDataPerInterval *DescribeRtcDurationDataResponseBodyDurationDataPerInterval `json:"DurationDataPerInterval,omitempty" xml:"DurationDataPerInterval,omitempty" type:"Struct"`
+	RequestId               *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRtcDurationDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcDurationDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcDurationDataResponseBody) SetDurationDataPerInterval(v *DescribeRtcDurationDataResponseBodyDurationDataPerInterval) *DescribeRtcDurationDataResponseBody {
+	s.DurationDataPerInterval = v
+	return s
+}
+
+func (s *DescribeRtcDurationDataResponseBody) SetRequestId(v string) *DescribeRtcDurationDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRtcDurationDataResponseBodyDurationDataPerInterval struct {
+	DurationModule []*DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule `json:"DurationModule,omitempty" xml:"DurationModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRtcDurationDataResponseBodyDurationDataPerInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcDurationDataResponseBodyDurationDataPerInterval) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcDurationDataResponseBodyDurationDataPerInterval) SetDurationModule(v []*DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule) *DescribeRtcDurationDataResponseBodyDurationDataPerInterval {
+	s.DurationModule = v
+	return s
+}
+
+type DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule struct {
+	AudioDuration   *int64  `json:"AudioDuration,omitempty" xml:"AudioDuration,omitempty"`
+	ContentDuration *int64  `json:"ContentDuration,omitempty" xml:"ContentDuration,omitempty"`
+	TimeStamp       *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TotalDuration   *int64  `json:"TotalDuration,omitempty" xml:"TotalDuration,omitempty"`
+	V1080Duration   *int64  `json:"V1080Duration,omitempty" xml:"V1080Duration,omitempty"`
+	V360Duration    *int64  `json:"V360Duration,omitempty" xml:"V360Duration,omitempty"`
+	V720Duration    *int64  `json:"V720Duration,omitempty" xml:"V720Duration,omitempty"`
+}
+
+func (s DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule) SetAudioDuration(v int64) *DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule {
+	s.AudioDuration = &v
+	return s
+}
+
+func (s *DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule) SetContentDuration(v int64) *DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule {
+	s.ContentDuration = &v
+	return s
+}
+
+func (s *DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule) SetTimeStamp(v string) *DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule) SetTotalDuration(v int64) *DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule {
+	s.TotalDuration = &v
+	return s
+}
+
+func (s *DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule) SetV1080Duration(v int64) *DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule {
+	s.V1080Duration = &v
+	return s
+}
+
+func (s *DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule) SetV360Duration(v int64) *DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule {
+	s.V360Duration = &v
+	return s
+}
+
+func (s *DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule) SetV720Duration(v int64) *DescribeRtcDurationDataResponseBodyDurationDataPerIntervalDurationModule {
+	s.V720Duration = &v
+	return s
+}
+
+type DescribeRtcDurationDataResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRtcDurationDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRtcDurationDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcDurationDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcDurationDataResponse) SetHeaders(v map[string]*string) *DescribeRtcDurationDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRtcDurationDataResponse) SetStatusCode(v int32) *DescribeRtcDurationDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRtcDurationDataResponse) SetBody(v *DescribeRtcDurationDataResponseBody) *DescribeRtcDurationDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRtcPeakChannelCntDataRequest struct {
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval    *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ServiceArea *string `json:"ServiceArea,omitempty" xml:"ServiceArea,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeRtcPeakChannelCntDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcPeakChannelCntDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcPeakChannelCntDataRequest) SetAppId(v string) *DescribeRtcPeakChannelCntDataRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeRtcPeakChannelCntDataRequest) SetEndTime(v string) *DescribeRtcPeakChannelCntDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeRtcPeakChannelCntDataRequest) SetInterval(v string) *DescribeRtcPeakChannelCntDataRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeRtcPeakChannelCntDataRequest) SetOwnerId(v int64) *DescribeRtcPeakChannelCntDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRtcPeakChannelCntDataRequest) SetServiceArea(v string) *DescribeRtcPeakChannelCntDataRequest {
+	s.ServiceArea = &v
+	return s
+}
+
+func (s *DescribeRtcPeakChannelCntDataRequest) SetStartTime(v string) *DescribeRtcPeakChannelCntDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeRtcPeakChannelCntDataResponseBody struct {
+	PeakChannelCntDataPerInterval *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerInterval `json:"PeakChannelCntDataPerInterval,omitempty" xml:"PeakChannelCntDataPerInterval,omitempty" type:"Struct"`
+	RequestId                     *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRtcPeakChannelCntDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcPeakChannelCntDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcPeakChannelCntDataResponseBody) SetPeakChannelCntDataPerInterval(v *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerInterval) *DescribeRtcPeakChannelCntDataResponseBody {
+	s.PeakChannelCntDataPerInterval = v
+	return s
+}
+
+func (s *DescribeRtcPeakChannelCntDataResponseBody) SetRequestId(v string) *DescribeRtcPeakChannelCntDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerInterval struct {
+	PeakChannelCntModule []*DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule `json:"PeakChannelCntModule,omitempty" xml:"PeakChannelCntModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerInterval) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerInterval) SetPeakChannelCntModule(v []*DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule) *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerInterval {
+	s.PeakChannelCntModule = v
+	return s
+}
+
+type DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule struct {
+	ActiveChannelPeak     *int64  `json:"ActiveChannelPeak,omitempty" xml:"ActiveChannelPeak,omitempty"`
+	ActiveChannelPeakTime *string `json:"ActiveChannelPeakTime,omitempty" xml:"ActiveChannelPeakTime,omitempty"`
+	TimeStamp             *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+}
+
+func (s DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule) SetActiveChannelPeak(v int64) *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule {
+	s.ActiveChannelPeak = &v
+	return s
+}
+
+func (s *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule) SetActiveChannelPeakTime(v string) *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule {
+	s.ActiveChannelPeakTime = &v
+	return s
+}
+
+func (s *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule) SetTimeStamp(v string) *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerIntervalPeakChannelCntModule {
+	s.TimeStamp = &v
+	return s
+}
+
+type DescribeRtcPeakChannelCntDataResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRtcPeakChannelCntDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRtcPeakChannelCntDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcPeakChannelCntDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcPeakChannelCntDataResponse) SetHeaders(v map[string]*string) *DescribeRtcPeakChannelCntDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRtcPeakChannelCntDataResponse) SetStatusCode(v int32) *DescribeRtcPeakChannelCntDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRtcPeakChannelCntDataResponse) SetBody(v *DescribeRtcPeakChannelCntDataResponseBody) *DescribeRtcPeakChannelCntDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRtcUserCntDataRequest struct {
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval    *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ServiceArea *string `json:"ServiceArea,omitempty" xml:"ServiceArea,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeRtcUserCntDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcUserCntDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcUserCntDataRequest) SetAppId(v string) *DescribeRtcUserCntDataRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeRtcUserCntDataRequest) SetEndTime(v string) *DescribeRtcUserCntDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeRtcUserCntDataRequest) SetInterval(v string) *DescribeRtcUserCntDataRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeRtcUserCntDataRequest) SetOwnerId(v int64) *DescribeRtcUserCntDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRtcUserCntDataRequest) SetServiceArea(v string) *DescribeRtcUserCntDataRequest {
+	s.ServiceArea = &v
+	return s
+}
+
+func (s *DescribeRtcUserCntDataRequest) SetStartTime(v string) *DescribeRtcUserCntDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeRtcUserCntDataResponseBody struct {
+	RequestId              *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserCntDataPerInterval *DescribeRtcUserCntDataResponseBodyUserCntDataPerInterval `json:"UserCntDataPerInterval,omitempty" xml:"UserCntDataPerInterval,omitempty" type:"Struct"`
+}
+
+func (s DescribeRtcUserCntDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcUserCntDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcUserCntDataResponseBody) SetRequestId(v string) *DescribeRtcUserCntDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRtcUserCntDataResponseBody) SetUserCntDataPerInterval(v *DescribeRtcUserCntDataResponseBodyUserCntDataPerInterval) *DescribeRtcUserCntDataResponseBody {
+	s.UserCntDataPerInterval = v
+	return s
+}
+
+type DescribeRtcUserCntDataResponseBodyUserCntDataPerInterval struct {
+	UserCntModule []*DescribeRtcUserCntDataResponseBodyUserCntDataPerIntervalUserCntModule `json:"UserCntModule,omitempty" xml:"UserCntModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRtcUserCntDataResponseBodyUserCntDataPerInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcUserCntDataResponseBodyUserCntDataPerInterval) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcUserCntDataResponseBodyUserCntDataPerInterval) SetUserCntModule(v []*DescribeRtcUserCntDataResponseBodyUserCntDataPerIntervalUserCntModule) *DescribeRtcUserCntDataResponseBodyUserCntDataPerInterval {
+	s.UserCntModule = v
+	return s
+}
+
+type DescribeRtcUserCntDataResponseBodyUserCntDataPerIntervalUserCntModule struct {
+	ActiveUserCnt *int64  `json:"ActiveUserCnt,omitempty" xml:"ActiveUserCnt,omitempty"`
+	TimeStamp     *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+}
+
+func (s DescribeRtcUserCntDataResponseBodyUserCntDataPerIntervalUserCntModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcUserCntDataResponseBodyUserCntDataPerIntervalUserCntModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcUserCntDataResponseBodyUserCntDataPerIntervalUserCntModule) SetActiveUserCnt(v int64) *DescribeRtcUserCntDataResponseBodyUserCntDataPerIntervalUserCntModule {
+	s.ActiveUserCnt = &v
+	return s
+}
+
+func (s *DescribeRtcUserCntDataResponseBodyUserCntDataPerIntervalUserCntModule) SetTimeStamp(v string) *DescribeRtcUserCntDataResponseBodyUserCntDataPerIntervalUserCntModule {
+	s.TimeStamp = &v
+	return s
+}
+
+type DescribeRtcUserCntDataResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRtcUserCntDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRtcUserCntDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcUserCntDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcUserCntDataResponse) SetHeaders(v map[string]*string) *DescribeRtcUserCntDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRtcUserCntDataResponse) SetStatusCode(v int32) *DescribeRtcUserCntDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRtcUserCntDataResponse) SetBody(v *DescribeRtcUserCntDataResponseBody) *DescribeRtcUserCntDataResponse {
 	s.Body = v
 	return s
 }
@@ -2569,8 +3608,9 @@ func (s *DescribeUserInfoInChannelResponseBodyProperty) SetSession(v string) *De
 }
 
 type DescribeUserInfoInChannelResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUserInfoInChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUserInfoInChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeUserInfoInChannelResponse) String() string {
@@ -2583,6 +3623,11 @@ func (s DescribeUserInfoInChannelResponse) GoString() string {
 
 func (s *DescribeUserInfoInChannelResponse) SetHeaders(v map[string]*string) *DescribeUserInfoInChannelResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserInfoInChannelResponse) SetStatusCode(v int32) *DescribeUserInfoInChannelResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2638,8 +3683,9 @@ func (s *DisableAutoLiveStreamRuleResponseBody) SetRequestId(v string) *DisableA
 }
 
 type DisableAutoLiveStreamRuleResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableAutoLiveStreamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableAutoLiveStreamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableAutoLiveStreamRuleResponse) String() string {
@@ -2652,6 +3698,11 @@ func (s DisableAutoLiveStreamRuleResponse) GoString() string {
 
 func (s *DisableAutoLiveStreamRuleResponse) SetHeaders(v map[string]*string) *DisableAutoLiveStreamRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableAutoLiveStreamRuleResponse) SetStatusCode(v int32) *DisableAutoLiveStreamRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2707,8 +3758,9 @@ func (s *EnableAutoLiveStreamRuleResponseBody) SetRequestId(v string) *EnableAut
 }
 
 type EnableAutoLiveStreamRuleResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableAutoLiveStreamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableAutoLiveStreamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableAutoLiveStreamRuleResponse) String() string {
@@ -2721,6 +3773,11 @@ func (s EnableAutoLiveStreamRuleResponse) GoString() string {
 
 func (s *EnableAutoLiveStreamRuleResponse) SetHeaders(v map[string]*string) *EnableAutoLiveStreamRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableAutoLiveStreamRuleResponse) SetStatusCode(v int32) *EnableAutoLiveStreamRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2782,8 +3839,9 @@ func (s *GetMPUTaskStatusResponseBody) SetStatus(v int32) *GetMPUTaskStatusRespo
 }
 
 type GetMPUTaskStatusResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetMPUTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMPUTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetMPUTaskStatusResponse) String() string {
@@ -2796,6 +3854,11 @@ func (s GetMPUTaskStatusResponse) GoString() string {
 
 func (s *GetMPUTaskStatusResponse) SetHeaders(v map[string]*string) *GetMPUTaskStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetMPUTaskStatusResponse) SetStatusCode(v int32) *GetMPUTaskStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2851,8 +3914,9 @@ func (s *ModifyAppResponseBody) SetRequestId(v string) *ModifyAppResponseBody {
 }
 
 type ModifyAppResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyAppResponse) String() string {
@@ -2865,6 +3929,11 @@ func (s ModifyAppResponse) GoString() string {
 
 func (s *ModifyAppResponse) SetHeaders(v map[string]*string) *ModifyAppResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyAppResponse) SetStatusCode(v int32) *ModifyAppResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2991,8 +4060,9 @@ func (s *ModifyMPULayoutResponseBody) SetRequestId(v string) *ModifyMPULayoutRes
 }
 
 type ModifyMPULayoutResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyMPULayoutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyMPULayoutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyMPULayoutResponse) String() string {
@@ -3005,6 +4075,11 @@ func (s ModifyMPULayoutResponse) GoString() string {
 
 func (s *ModifyMPULayoutResponse) SetHeaders(v map[string]*string) *ModifyMPULayoutResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyMPULayoutResponse) SetStatusCode(v int32) *ModifyMPULayoutResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3118,8 +4193,9 @@ func (s *RemoveTerminalsResponseBodyTerminalsTerminal) SetMessage(v string) *Rem
 }
 
 type RemoveTerminalsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveTerminalsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveTerminalsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveTerminalsResponse) String() string {
@@ -3132,6 +4208,11 @@ func (s RemoveTerminalsResponse) GoString() string {
 
 func (s *RemoveTerminalsResponse) SetHeaders(v map[string]*string) *RemoveTerminalsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveTerminalsResponse) SetStatusCode(v int32) *RemoveTerminalsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3750,8 +4831,9 @@ func (s *StartMPUTaskResponseBody) SetRequestId(v string) *StartMPUTaskResponseB
 }
 
 type StartMPUTaskResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartMPUTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartMPUTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartMPUTaskResponse) String() string {
@@ -3764,6 +4846,11 @@ func (s StartMPUTaskResponse) GoString() string {
 
 func (s *StartMPUTaskResponse) SetHeaders(v map[string]*string) *StartMPUTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StartMPUTaskResponse) SetStatusCode(v int32) *StartMPUTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4068,8 +5155,9 @@ func (s *StartRecordTaskResponseBody) SetRequestId(v string) *StartRecordTaskRes
 }
 
 type StartRecordTaskResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartRecordTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartRecordTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartRecordTaskResponse) String() string {
@@ -4082,6 +5170,11 @@ func (s StartRecordTaskResponse) GoString() string {
 
 func (s *StartRecordTaskResponse) SetHeaders(v map[string]*string) *StartRecordTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StartRecordTaskResponse) SetStatusCode(v int32) *StartRecordTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4137,8 +5230,9 @@ func (s *StopMPUTaskResponseBody) SetRequestId(v string) *StopMPUTaskResponseBod
 }
 
 type StopMPUTaskResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopMPUTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopMPUTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StopMPUTaskResponse) String() string {
@@ -4151,6 +5245,11 @@ func (s StopMPUTaskResponse) GoString() string {
 
 func (s *StopMPUTaskResponse) SetHeaders(v map[string]*string) *StopMPUTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StopMPUTaskResponse) SetStatusCode(v int32) *StopMPUTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4206,8 +5305,9 @@ func (s *StopRecordTaskResponseBody) SetRequestId(v string) *StopRecordTaskRespo
 }
 
 type StopRecordTaskResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopRecordTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopRecordTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StopRecordTaskResponse) String() string {
@@ -4220,6 +5320,11 @@ func (s StopRecordTaskResponse) GoString() string {
 
 func (s *StopRecordTaskResponse) SetHeaders(v map[string]*string) *StopRecordTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StopRecordTaskResponse) SetStatusCode(v int32) *StopRecordTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4311,8 +5416,9 @@ func (s *UpdateAutoLiveStreamRuleResponseBody) SetRequestId(v string) *UpdateAut
 }
 
 type UpdateAutoLiveStreamRuleResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateAutoLiveStreamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAutoLiveStreamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateAutoLiveStreamRuleResponse) String() string {
@@ -4325,6 +5431,11 @@ func (s UpdateAutoLiveStreamRuleResponse) GoString() string {
 
 func (s *UpdateAutoLiveStreamRuleResponse) SetHeaders(v map[string]*string) *UpdateAutoLiveStreamRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateAutoLiveStreamRuleResponse) SetStatusCode(v int32) *UpdateAutoLiveStreamRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4872,8 +5983,9 @@ func (s *UpdateMPUTaskResponseBody) SetRequestId(v string) *UpdateMPUTaskRespons
 }
 
 type UpdateMPUTaskResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateMPUTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateMPUTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateMPUTaskResponse) String() string {
@@ -4889,6 +6001,11 @@ func (s *UpdateMPUTaskResponse) SetHeaders(v map[string]*string) *UpdateMPUTaskR
 	return s
 }
 
+func (s *UpdateMPUTaskResponse) SetStatusCode(v int32) *UpdateMPUTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateMPUTaskResponse) SetBody(v *UpdateMPUTaskResponseBody) *UpdateMPUTaskResponse {
 	s.Body = v
 	return s
@@ -4897,13 +6014,16 @@ func (s *UpdateMPUTaskResponse) SetBody(v *UpdateMPUTaskResponseBody) *UpdateMPU
 type UpdateRecordTaskRequest struct {
 	AppId                     *string                             `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ChannelId                 *string                             `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CropMode                  *int64                              `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
 	LayoutIds                 []*int64                            `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	MediaEncode               *int64                              `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
 	OwnerId                   *int64                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SubSpecAudioUsers         []*string                           `json:"SubSpecAudioUsers,omitempty" xml:"SubSpecAudioUsers,omitempty" type:"Repeated"`
 	SubSpecCameraUsers        []*string                           `json:"SubSpecCameraUsers,omitempty" xml:"SubSpecCameraUsers,omitempty" type:"Repeated"`
 	SubSpecShareScreenUsers   []*string                           `json:"SubSpecShareScreenUsers,omitempty" xml:"SubSpecShareScreenUsers,omitempty" type:"Repeated"`
 	SubSpecUsers              []*string                           `json:"SubSpecUsers,omitempty" xml:"SubSpecUsers,omitempty" type:"Repeated"`
 	TaskId                    *string                             `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskProfile               *string                             `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
 	TemplateId                *string                             `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	UnsubSpecAudioUsers       []*string                           `json:"UnsubSpecAudioUsers,omitempty" xml:"UnsubSpecAudioUsers,omitempty" type:"Repeated"`
 	UnsubSpecCameraUsers      []*string                           `json:"UnsubSpecCameraUsers,omitempty" xml:"UnsubSpecCameraUsers,omitempty" type:"Repeated"`
@@ -4929,8 +6049,18 @@ func (s *UpdateRecordTaskRequest) SetChannelId(v string) *UpdateRecordTaskReques
 	return s
 }
 
+func (s *UpdateRecordTaskRequest) SetCropMode(v int64) *UpdateRecordTaskRequest {
+	s.CropMode = &v
+	return s
+}
+
 func (s *UpdateRecordTaskRequest) SetLayoutIds(v []*int64) *UpdateRecordTaskRequest {
 	s.LayoutIds = v
+	return s
+}
+
+func (s *UpdateRecordTaskRequest) SetMediaEncode(v int64) *UpdateRecordTaskRequest {
+	s.MediaEncode = &v
 	return s
 }
 
@@ -4961,6 +6091,11 @@ func (s *UpdateRecordTaskRequest) SetSubSpecUsers(v []*string) *UpdateRecordTask
 
 func (s *UpdateRecordTaskRequest) SetTaskId(v string) *UpdateRecordTaskRequest {
 	s.TaskId = &v
+	return s
+}
+
+func (s *UpdateRecordTaskRequest) SetTaskProfile(v string) *UpdateRecordTaskRequest {
+	s.TaskProfile = &v
 	return s
 }
 
@@ -5154,8 +6289,9 @@ func (s *UpdateRecordTaskResponseBody) SetRequestId(v string) *UpdateRecordTaskR
 }
 
 type UpdateRecordTaskResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateRecordTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateRecordTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateRecordTaskResponse) String() string {
@@ -5168,6 +6304,11 @@ func (s UpdateRecordTaskResponse) GoString() string {
 
 func (s *UpdateRecordTaskResponse) SetHeaders(v map[string]*string) *UpdateRecordTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateRecordTaskResponse) SetStatusCode(v int32) *UpdateRecordTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5191,6 +6332,7 @@ type UpdateRecordTemplateRequest struct {
 	MnsQueue           *string                                    `json:"MnsQueue,omitempty" xml:"MnsQueue,omitempty"`
 	Name               *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
 	OssBucket          *string                                    `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string                                    `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 	OssFilePrefix      *string                                    `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
 	OwnerId            *int64                                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	TaskProfile        *string                                    `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
@@ -5273,6 +6415,11 @@ func (s *UpdateRecordTemplateRequest) SetName(v string) *UpdateRecordTemplateReq
 
 func (s *UpdateRecordTemplateRequest) SetOssBucket(v string) *UpdateRecordTemplateRequest {
 	s.OssBucket = &v
+	return s
+}
+
+func (s *UpdateRecordTemplateRequest) SetOssEndpoint(v string) *UpdateRecordTemplateRequest {
+	s.OssEndpoint = &v
 	return s
 }
 
@@ -5484,8 +6631,9 @@ func (s *UpdateRecordTemplateResponseBody) SetTemplateId(v string) *UpdateRecord
 }
 
 type UpdateRecordTemplateResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateRecordTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateRecordTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateRecordTemplateResponse) String() string {
@@ -5498,6 +6646,11 @@ func (s UpdateRecordTemplateResponse) GoString() string {
 
 func (s *UpdateRecordTemplateResponse) SetHeaders(v map[string]*string) *UpdateRecordTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateRecordTemplateResponse) SetStatusCode(v int32) *UpdateRecordTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5613,6 +6766,10 @@ func (client *Client) AddRecordTemplateWithOptions(request *AddRecordTemplateReq
 
 	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
 		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OssFilePrefix)) {
@@ -5769,6 +6926,10 @@ func (client *Client) CreateEventSubscribeWithOptions(request *CreateEventSubscr
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Users)) {
@@ -6594,6 +7755,330 @@ func (client *Client) DescribeRecordTemplates(request *DescribeRecordTemplatesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRecordTemplatesResponse{}
 	_body, _err := client.DescribeRecordTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRtcChannelListWithOptions(request *DescribeRtcChannelListRequest, runtime *util.RuntimeOptions) (_result *DescribeRtcChannelListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceArea)) {
+		query["ServiceArea"] = request.ServiceArea
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		query["SortType"] = request.SortType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimePoint)) {
+		query["TimePoint"] = request.TimePoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRtcChannelList"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRtcChannelListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRtcChannelList(request *DescribeRtcChannelListRequest) (_result *DescribeRtcChannelListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRtcChannelListResponse{}
+	_body, _err := client.DescribeRtcChannelListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRtcChannelMetricWithOptions(request *DescribeRtcChannelMetricRequest, runtime *util.RuntimeOptions) (_result *DescribeRtcChannelMetricResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimePoint)) {
+		query["TimePoint"] = request.TimePoint
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRtcChannelMetric"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRtcChannelMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRtcChannelMetric(request *DescribeRtcChannelMetricRequest) (_result *DescribeRtcChannelMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRtcChannelMetricResponse{}
+	_body, _err := client.DescribeRtcChannelMetricWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRtcDurationDataWithOptions(request *DescribeRtcDurationDataRequest, runtime *util.RuntimeOptions) (_result *DescribeRtcDurationDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceArea)) {
+		query["ServiceArea"] = request.ServiceArea
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRtcDurationData"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRtcDurationDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRtcDurationData(request *DescribeRtcDurationDataRequest) (_result *DescribeRtcDurationDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRtcDurationDataResponse{}
+	_body, _err := client.DescribeRtcDurationDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRtcPeakChannelCntDataWithOptions(request *DescribeRtcPeakChannelCntDataRequest, runtime *util.RuntimeOptions) (_result *DescribeRtcPeakChannelCntDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceArea)) {
+		query["ServiceArea"] = request.ServiceArea
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRtcPeakChannelCntData"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRtcPeakChannelCntDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRtcPeakChannelCntData(request *DescribeRtcPeakChannelCntDataRequest) (_result *DescribeRtcPeakChannelCntDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRtcPeakChannelCntDataResponse{}
+	_body, _err := client.DescribeRtcPeakChannelCntDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRtcUserCntDataWithOptions(request *DescribeRtcUserCntDataRequest, runtime *util.RuntimeOptions) (_result *DescribeRtcUserCntDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceArea)) {
+		query["ServiceArea"] = request.ServiceArea
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRtcUserCntData"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRtcUserCntDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRtcUserCntData(request *DescribeRtcUserCntDataRequest) (_result *DescribeRtcUserCntDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRtcUserCntDataResponse{}
+	_body, _err := client.DescribeRtcUserCntDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7588,8 +9073,16 @@ func (client *Client) UpdateRecordTaskWithOptions(request *UpdateRecordTaskReque
 		query["ChannelId"] = request.ChannelId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CropMode)) {
+		query["CropMode"] = request.CropMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LayoutIds)) {
 		query["LayoutIds"] = request.LayoutIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaEncode)) {
+		query["MediaEncode"] = request.MediaEncode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
@@ -7614,6 +9107,10 @@ func (client *Client) UpdateRecordTaskWithOptions(request *UpdateRecordTaskReque
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskProfile)) {
+		query["TaskProfile"] = request.TaskProfile
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
@@ -7730,6 +9227,10 @@ func (client *Client) UpdateRecordTemplateWithOptions(request *UpdateRecordTempl
 
 	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
 		query["OssBucket"] = request.OssBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OssFilePrefix)) {
