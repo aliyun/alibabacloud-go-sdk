@@ -1,3 +1,6 @@
+2022-09-23 Version: v4.0.0
+- Generated golang 2020-04-18 for DBFS.
+
 2022-08-23 Version: v3.1.8
 - Bugfix.
 
