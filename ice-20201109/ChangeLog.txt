@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2020-11-09 for ICE.
+
 2022-09-22 Version: v1.3.2
 - SubmitLiveEditingJob response add VodMediaId.
 
