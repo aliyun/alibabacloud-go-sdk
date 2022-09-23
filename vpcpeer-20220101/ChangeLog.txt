@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2022-01-01 for VpcPeer.
+
 2022-08-09 Version: v1.0.6
 - Publish.
 
