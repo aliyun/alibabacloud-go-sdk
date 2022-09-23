@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -251,8 +251,9 @@ func (s *CompareImageFacesResponseBodyFaceBFaceAttributesFaceBoundary) SetWidth(
 }
 
 type CompareImageFacesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CompareImageFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CompareImageFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CompareImageFacesResponse) String() string {
@@ -265,6 +266,11 @@ func (s CompareImageFacesResponse) GoString() string {
 
 func (s *CompareImageFacesResponse) SetHeaders(v map[string]*string) *CompareImageFacesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CompareImageFacesResponse) SetStatusCode(v int32) *CompareImageFacesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -428,8 +434,9 @@ func (s *ConvertOfficeFormatResponseBody) SetRequestId(v string) *ConvertOfficeF
 }
 
 type ConvertOfficeFormatResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ConvertOfficeFormatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ConvertOfficeFormatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ConvertOfficeFormatResponse) String() string {
@@ -442,6 +449,11 @@ func (s ConvertOfficeFormatResponse) GoString() string {
 
 func (s *ConvertOfficeFormatResponse) SetHeaders(v map[string]*string) *ConvertOfficeFormatResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ConvertOfficeFormatResponse) SetStatusCode(v int32) *ConvertOfficeFormatResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -527,8 +539,9 @@ func (s *CreateGrabFrameTaskResponseBody) SetTaskType(v string) *CreateGrabFrame
 }
 
 type CreateGrabFrameTaskResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGrabFrameTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGrabFrameTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGrabFrameTaskResponse) String() string {
@@ -541,6 +554,11 @@ func (s CreateGrabFrameTaskResponse) GoString() string {
 
 func (s *CreateGrabFrameTaskResponse) SetHeaders(v map[string]*string) *CreateGrabFrameTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateGrabFrameTaskResponse) SetStatusCode(v int32) *CreateGrabFrameTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -620,8 +638,9 @@ func (s *CreateGroupFacesJobResponseBody) SetSetId(v string) *CreateGroupFacesJo
 }
 
 type CreateGroupFacesJobResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGroupFacesJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGroupFacesJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGroupFacesJobResponse) String() string {
@@ -634,6 +653,11 @@ func (s CreateGroupFacesJobResponse) GoString() string {
 
 func (s *CreateGroupFacesJobResponse) SetHeaders(v map[string]*string) *CreateGroupFacesJobResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateGroupFacesJobResponse) SetStatusCode(v int32) *CreateGroupFacesJobResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -743,8 +767,9 @@ func (s *CreateMergeFaceGroupsJobResponseBody) SetSetId(v string) *CreateMergeFa
 }
 
 type CreateMergeFaceGroupsJobResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateMergeFaceGroupsJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMergeFaceGroupsJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateMergeFaceGroupsJobResponse) String() string {
@@ -757,6 +782,11 @@ func (s CreateMergeFaceGroupsJobResponse) GoString() string {
 
 func (s *CreateMergeFaceGroupsJobResponse) SetHeaders(v map[string]*string) *CreateMergeFaceGroupsJobResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateMergeFaceGroupsJobResponse) SetStatusCode(v int32) *CreateMergeFaceGroupsJobResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -974,8 +1004,9 @@ func (s *CreateOfficeConversionTaskResponseBody) SetTgtLoc(v string) *CreateOffi
 }
 
 type CreateOfficeConversionTaskResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateOfficeConversionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateOfficeConversionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateOfficeConversionTaskResponse) String() string {
@@ -988,6 +1019,11 @@ func (s CreateOfficeConversionTaskResponse) GoString() string {
 
 func (s *CreateOfficeConversionTaskResponse) SetHeaders(v map[string]*string) *CreateOfficeConversionTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskResponse) SetStatusCode(v int32) *CreateOfficeConversionTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1091,8 +1127,9 @@ func (s *CreateSetResponseBody) SetVideoLength(v int32) *CreateSetResponseBody {
 }
 
 type CreateSetResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateSetResponse) String() string {
@@ -1105,6 +1142,11 @@ func (s CreateSetResponse) GoString() string {
 
 func (s *CreateSetResponse) SetHeaders(v map[string]*string) *CreateSetResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateSetResponse) SetStatusCode(v int32) *CreateSetResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1202,8 +1244,9 @@ func (s *CreateVideoCompressTaskResponseBody) SetTaskType(v string) *CreateVideo
 }
 
 type CreateVideoCompressTaskResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVideoCompressTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVideoCompressTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateVideoCompressTaskResponse) String() string {
@@ -1216,6 +1259,11 @@ func (s CreateVideoCompressTaskResponse) GoString() string {
 
 func (s *CreateVideoCompressTaskResponse) SetHeaders(v map[string]*string) *CreateVideoCompressTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateVideoCompressTaskResponse) SetStatusCode(v int32) *CreateVideoCompressTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1295,8 +1343,9 @@ func (s *DecodeBlindWatermarkResponseBody) SetTargetUri(v string) *DecodeBlindWa
 }
 
 type DecodeBlindWatermarkResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DecodeBlindWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DecodeBlindWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DecodeBlindWatermarkResponse) String() string {
@@ -1309,6 +1358,11 @@ func (s DecodeBlindWatermarkResponse) GoString() string {
 
 func (s *DecodeBlindWatermarkResponse) SetHeaders(v map[string]*string) *DecodeBlindWatermarkResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DecodeBlindWatermarkResponse) SetStatusCode(v int32) *DecodeBlindWatermarkResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1376,8 +1430,9 @@ func (s *DeleteImageResponseBody) SetSetId(v string) *DeleteImageResponseBody {
 }
 
 type DeleteImageResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteImageResponse) String() string {
@@ -1390,6 +1445,11 @@ func (s DeleteImageResponse) GoString() string {
 
 func (s *DeleteImageResponse) SetHeaders(v map[string]*string) *DeleteImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteImageResponse) SetStatusCode(v int32) *DeleteImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1439,8 +1499,9 @@ func (s *DeleteOfficeConversionTaskResponseBody) SetRequestId(v string) *DeleteO
 }
 
 type DeleteOfficeConversionTaskResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteOfficeConversionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteOfficeConversionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteOfficeConversionTaskResponse) String() string {
@@ -1453,6 +1514,11 @@ func (s DeleteOfficeConversionTaskResponse) GoString() string {
 
 func (s *DeleteOfficeConversionTaskResponse) SetHeaders(v map[string]*string) *DeleteOfficeConversionTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteOfficeConversionTaskResponse) SetStatusCode(v int32) *DeleteOfficeConversionTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1496,8 +1562,9 @@ func (s *DeleteProjectResponseBody) SetRequestId(v string) *DeleteProjectRespons
 }
 
 type DeleteProjectResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteProjectResponse) String() string {
@@ -1510,6 +1577,11 @@ func (s DeleteProjectResponse) GoString() string {
 
 func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1565,8 +1637,9 @@ func (s *DeleteSetResponseBody) SetSetId(v string) *DeleteSetResponseBody {
 }
 
 type DeleteSetResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSetResponse) String() string {
@@ -1579,6 +1652,11 @@ func (s DeleteSetResponse) GoString() string {
 
 func (s *DeleteSetResponse) SetHeaders(v map[string]*string) *DeleteSetResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteSetResponse) SetStatusCode(v int32) *DeleteSetResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1652,8 +1730,9 @@ func (s *DeleteVideoResponseBody) SetVideoUri(v string) *DeleteVideoResponseBody
 }
 
 type DeleteVideoResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteVideoResponse) String() string {
@@ -1666,6 +1745,11 @@ func (s DeleteVideoResponse) GoString() string {
 
 func (s *DeleteVideoResponse) SetHeaders(v map[string]*string) *DeleteVideoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteVideoResponse) SetStatusCode(v int32) *DeleteVideoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1721,8 +1805,9 @@ func (s *DeleteVideoTaskResponseBody) SetRequestId(v string) *DeleteVideoTaskRes
 }
 
 type DeleteVideoTaskResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteVideoTaskResponse) String() string {
@@ -1735,6 +1820,11 @@ func (s DeleteVideoTaskResponse) GoString() string {
 
 func (s *DeleteVideoTaskResponse) SetHeaders(v map[string]*string) *DeleteVideoTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteVideoTaskResponse) SetStatusCode(v int32) *DeleteVideoTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1854,8 +1944,9 @@ func (s *DetectImageBodiesResponseBodyBodiesBodyBoundary) SetWidth(v int32) *Det
 }
 
 type DetectImageBodiesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectImageBodiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectImageBodiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectImageBodiesResponse) String() string {
@@ -1868,6 +1959,11 @@ func (s DetectImageBodiesResponse) GoString() string {
 
 func (s *DetectImageBodiesResponse) SetHeaders(v map[string]*string) *DetectImageBodiesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectImageBodiesResponse) SetStatusCode(v int32) *DetectImageBodiesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2194,8 +2290,9 @@ func (s *DetectImageFacesResponseBodyFacesFaceAttributesHeadPose) SetYaw(v float
 }
 
 type DetectImageFacesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectImageFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectImageFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectImageFacesResponse) String() string {
@@ -2208,6 +2305,11 @@ func (s DetectImageFacesResponse) GoString() string {
 
 func (s *DetectImageFacesResponse) SetHeaders(v map[string]*string) *DetectImageFacesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectImageFacesResponse) SetStatusCode(v int32) *DetectImageFacesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2327,8 +2429,9 @@ func (s *DetectImageQRCodesResponseBodyQRCodesQRCodeBoundary) SetWidth(v int32) 
 }
 
 type DetectImageQRCodesResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectImageQRCodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectImageQRCodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectImageQRCodesResponse) String() string {
@@ -2341,6 +2444,11 @@ func (s DetectImageQRCodesResponse) GoString() string {
 
 func (s *DetectImageQRCodesResponse) SetHeaders(v map[string]*string) *DetectImageQRCodesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectImageQRCodesResponse) SetStatusCode(v int32) *DetectImageQRCodesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2455,8 +2563,9 @@ func (s *DetectImageTagsResponseBodyTags) SetTagName(v string) *DetectImageTagsR
 }
 
 type DetectImageTagsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectImageTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectImageTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectImageTagsResponse) String() string {
@@ -2469,6 +2578,11 @@ func (s DetectImageTagsResponse) GoString() string {
 
 func (s *DetectImageTagsResponse) SetHeaders(v map[string]*string) *DetectImageTagsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectImageTagsResponse) SetStatusCode(v int32) *DetectImageTagsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2640,8 +2754,9 @@ func (s *DetectQRCodesResponseBodySuccessDetailsQRCodesQRCodesRectangle) SetWidt
 }
 
 type DetectQRCodesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectQRCodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectQRCodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectQRCodesResponse) String() string {
@@ -2654,6 +2769,11 @@ func (s DetectQRCodesResponse) GoString() string {
 
 func (s *DetectQRCodesResponse) SetHeaders(v map[string]*string) *DetectQRCodesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectQRCodesResponse) SetStatusCode(v int32) *DetectQRCodesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2751,8 +2871,9 @@ func (s *EncodeBlindWatermarkResponseBody) SetTargetUri(v string) *EncodeBlindWa
 }
 
 type EncodeBlindWatermarkResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EncodeBlindWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EncodeBlindWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EncodeBlindWatermarkResponse) String() string {
@@ -2765,6 +2886,11 @@ func (s EncodeBlindWatermarkResponse) GoString() string {
 
 func (s *EncodeBlindWatermarkResponse) SetHeaders(v map[string]*string) *EncodeBlindWatermarkResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EncodeBlindWatermarkResponse) SetStatusCode(v int32) *EncodeBlindWatermarkResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3821,8 +3947,9 @@ func (s *FindImagesResponseBodyImagesTags) SetTagName(v string) *FindImagesRespo
 }
 
 type FindImagesResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FindImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FindImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FindImagesResponse) String() string {
@@ -3835,6 +3962,11 @@ func (s FindImagesResponse) GoString() string {
 
 func (s *FindImagesResponse) SetHeaders(v map[string]*string) *FindImagesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FindImagesResponse) SetStatusCode(v int32) *FindImagesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4112,8 +4244,9 @@ func (s *FindSimilarFacesResponseBodyFacesSimilarFacesFaceAttributesFaceBoundary
 }
 
 type FindSimilarFacesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FindSimilarFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FindSimilarFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FindSimilarFacesResponse) String() string {
@@ -4126,6 +4259,11 @@ func (s FindSimilarFacesResponse) GoString() string {
 
 func (s *FindSimilarFacesResponse) SetHeaders(v map[string]*string) *FindSimilarFacesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FindSimilarFacesResponse) SetStatusCode(v int32) *FindSimilarFacesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5003,8 +5141,9 @@ func (s *GetImageResponseBodyTags) SetTagName(v string) *GetImageResponseBodyTag
 }
 
 type GetImageResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetImageResponse) String() string {
@@ -5017,6 +5156,11 @@ func (s GetImageResponse) GoString() string {
 
 func (s *GetImageResponse) SetHeaders(v map[string]*string) *GetImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetImageResponse) SetStatusCode(v int32) *GetImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5148,8 +5292,9 @@ func (s *GetImageCroppingSuggestionsResponseBodyCroppingSuggestionsCroppingBound
 }
 
 type GetImageCroppingSuggestionsResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetImageCroppingSuggestionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetImageCroppingSuggestionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetImageCroppingSuggestionsResponse) String() string {
@@ -5162,6 +5307,11 @@ func (s GetImageCroppingSuggestionsResponse) GoString() string {
 
 func (s *GetImageCroppingSuggestionsResponse) SetHeaders(v map[string]*string) *GetImageCroppingSuggestionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetImageCroppingSuggestionsResponse) SetStatusCode(v int32) *GetImageCroppingSuggestionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5294,8 +5444,9 @@ func (s *GetImageQualityResponseBodyImageQuality) SetOverallScore(v float32) *Ge
 }
 
 type GetImageQualityResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetImageQualityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetImageQualityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetImageQualityResponse) String() string {
@@ -5308,6 +5459,11 @@ func (s GetImageQualityResponse) GoString() string {
 
 func (s *GetImageQualityResponse) SetHeaders(v map[string]*string) *GetImageQualityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetImageQualityResponse) SetStatusCode(v int32) *GetImageQualityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5889,8 +6045,9 @@ func (s *GetMediaMetaResponseBodyMediaMetaMediaStreamsVideoStreams) SetWidth(v i
 }
 
 type GetMediaMetaResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetMediaMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMediaMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetMediaMetaResponse) String() string {
@@ -5903,6 +6060,11 @@ func (s GetMediaMetaResponse) GoString() string {
 
 func (s *GetMediaMetaResponse) SetHeaders(v map[string]*string) *GetMediaMetaResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetMediaMetaResponse) SetStatusCode(v int32) *GetMediaMetaResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6053,8 +6215,9 @@ func (s *GetOfficeConversionTaskResponseBodyFailDetail) SetCode(v string) *GetOf
 }
 
 type GetOfficeConversionTaskResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetOfficeConversionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOfficeConversionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetOfficeConversionTaskResponse) String() string {
@@ -6067,6 +6230,11 @@ func (s GetOfficeConversionTaskResponse) GoString() string {
 
 func (s *GetOfficeConversionTaskResponse) SetHeaders(v map[string]*string) *GetOfficeConversionTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetOfficeConversionTaskResponse) SetStatusCode(v int32) *GetOfficeConversionTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6194,8 +6362,9 @@ func (s *GetOfficePreviewURLResponseBody) SetRequestId(v string) *GetOfficePrevi
 }
 
 type GetOfficePreviewURLResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetOfficePreviewURLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOfficePreviewURLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetOfficePreviewURLResponse) String() string {
@@ -6208,6 +6377,11 @@ func (s GetOfficePreviewURLResponse) GoString() string {
 
 func (s *GetOfficePreviewURLResponse) SetHeaders(v map[string]*string) *GetOfficePreviewURLResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetOfficePreviewURLResponse) SetStatusCode(v int32) *GetOfficePreviewURLResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6305,8 +6479,9 @@ func (s *GetProjectResponseBody) SetType(v string) *GetProjectResponseBody {
 }
 
 type GetProjectResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetProjectResponse) String() string {
@@ -6319,6 +6494,11 @@ func (s GetProjectResponse) GoString() string {
 
 func (s *GetProjectResponse) SetHeaders(v map[string]*string) *GetProjectResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetProjectResponse) SetStatusCode(v int32) *GetProjectResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6416,8 +6596,9 @@ func (s *GetSetResponseBody) SetVideoLength(v int32) *GetSetResponseBody {
 }
 
 type GetSetResponse struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSetResponse) String() string {
@@ -6430,6 +6611,11 @@ func (s GetSetResponse) GoString() string {
 
 func (s *GetSetResponse) SetHeaders(v map[string]*string) *GetSetResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetSetResponse) SetStatusCode(v int32) *GetSetResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6748,8 +6934,9 @@ func (s *GetVideoResponseBodyVideoTags) SetTagName(v string) *GetVideoResponseBo
 }
 
 type GetVideoResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetVideoResponse) String() string {
@@ -6762,6 +6949,11 @@ func (s GetVideoResponse) GoString() string {
 
 func (s *GetVideoResponse) SetHeaders(v map[string]*string) *GetVideoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetVideoResponse) SetStatusCode(v int32) *GetVideoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6883,8 +7075,9 @@ func (s *GetVideoTaskResponseBody) SetTaskType(v string) *GetVideoTaskResponseBo
 }
 
 type GetVideoTaskResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetVideoTaskResponse) String() string {
@@ -6897,6 +7090,11 @@ func (s GetVideoTaskResponse) GoString() string {
 
 func (s *GetVideoTaskResponse) SetHeaders(v map[string]*string) *GetVideoTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetVideoTaskResponse) SetStatusCode(v int32) *GetVideoTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7024,8 +7222,9 @@ func (s *GetWebofficeURLResponseBody) SetWebofficeURL(v string) *GetWebofficeURL
 }
 
 type GetWebofficeURLResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetWebofficeURLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetWebofficeURLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetWebofficeURLResponse) String() string {
@@ -7038,6 +7237,11 @@ func (s GetWebofficeURLResponse) GoString() string {
 
 func (s *GetWebofficeURLResponse) SetHeaders(v map[string]*string) *GetWebofficeURLResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetWebofficeURLResponse) SetStatusCode(v int32) *GetWebofficeURLResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7231,8 +7435,9 @@ func (s *IndexImageResponseBody) SetSetId(v string) *IndexImageResponseBody {
 }
 
 type IndexImageResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *IndexImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *IndexImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s IndexImageResponse) String() string {
@@ -7245,6 +7450,11 @@ func (s IndexImageResponse) GoString() string {
 
 func (s *IndexImageResponse) SetHeaders(v map[string]*string) *IndexImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *IndexImageResponse) SetStatusCode(v int32) *IndexImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7402,8 +7612,9 @@ func (s *IndexVideoResponseBody) SetVideoUri(v string) *IndexVideoResponseBody {
 }
 
 type IndexVideoResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *IndexVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *IndexVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s IndexVideoResponse) String() string {
@@ -7416,6 +7627,11 @@ func (s IndexVideoResponse) GoString() string {
 
 func (s *IndexVideoResponse) SetHeaders(v map[string]*string) *IndexVideoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *IndexVideoResponse) SetStatusCode(v int32) *IndexVideoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7744,8 +7960,9 @@ func (s *ListFaceGroupsResponseBodyFaceGroupsGroupCoverFaceFaceBoundary) SetWidt
 }
 
 type ListFaceGroupsResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListFaceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListFaceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListFaceGroupsResponse) String() string {
@@ -7758,6 +7975,11 @@ func (s ListFaceGroupsResponse) GoString() string {
 
 func (s *ListFaceGroupsResponse) SetHeaders(v map[string]*string) *ListFaceGroupsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListFaceGroupsResponse) SetStatusCode(v int32) *ListFaceGroupsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8670,8 +8892,9 @@ func (s *ListImagesResponseBodyImagesTags) SetTagName(v string) *ListImagesRespo
 }
 
 type ListImagesResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListImagesResponse) String() string {
@@ -8684,6 +8907,11 @@ func (s ListImagesResponse) GoString() string {
 
 func (s *ListImagesResponse) SetHeaders(v map[string]*string) *ListImagesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListImagesResponse) SetStatusCode(v int32) *ListImagesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8840,8 +9068,9 @@ func (s *ListOfficeConversionTaskResponseBodyTasks) SetTgtUri(v string) *ListOff
 }
 
 type ListOfficeConversionTaskResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListOfficeConversionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListOfficeConversionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListOfficeConversionTaskResponse) String() string {
@@ -8854,6 +9083,11 @@ func (s ListOfficeConversionTaskResponse) GoString() string {
 
 func (s *ListOfficeConversionTaskResponse) SetHeaders(v map[string]*string) *ListOfficeConversionTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListOfficeConversionTaskResponse) SetStatusCode(v int32) *ListOfficeConversionTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8980,8 +9214,9 @@ func (s *ListProjectsResponseBodyProjects) SetType(v string) *ListProjectsRespon
 }
 
 type ListProjectsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListProjectsResponse) String() string {
@@ -8994,6 +9229,11 @@ func (s ListProjectsResponse) GoString() string {
 
 func (s *ListProjectsResponse) SetHeaders(v map[string]*string) *ListProjectsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListProjectsResponse) SetStatusCode(v int32) *ListProjectsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9084,8 +9324,9 @@ func (s *ListSetTagsResponseBodyTags) SetTagName(v string) *ListSetTagsResponseB
 }
 
 type ListSetTagsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSetTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSetTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSetTagsResponse) String() string {
@@ -9098,6 +9339,11 @@ func (s ListSetTagsResponse) GoString() string {
 
 func (s *ListSetTagsResponse) SetHeaders(v map[string]*string) *ListSetTagsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListSetTagsResponse) SetStatusCode(v int32) *ListSetTagsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9218,8 +9464,9 @@ func (s *ListSetsResponseBodySets) SetVideoLength(v int32) *ListSetsResponseBody
 }
 
 type ListSetsResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSetsResponse) String() string {
@@ -9235,974 +9482,12 @@ func (s *ListSetsResponse) SetHeaders(v map[string]*string) *ListSetsResponse {
 	return s
 }
 
+func (s *ListSetsResponse) SetStatusCode(v int32) *ListSetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListSetsResponse) SetBody(v *ListSetsResponseBody) *ListSetsResponse {
-	s.Body = v
-	return s
-}
-
-type ListVideoAudiosRequest struct {
-	Marker   *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	SetId    *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
-	VideoUri *string `json:"VideoUri,omitempty" xml:"VideoUri,omitempty"`
-}
-
-func (s ListVideoAudiosRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoAudiosRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoAudiosRequest) SetMarker(v string) *ListVideoAudiosRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *ListVideoAudiosRequest) SetProject(v string) *ListVideoAudiosRequest {
-	s.Project = &v
-	return s
-}
-
-func (s *ListVideoAudiosRequest) SetSetId(v string) *ListVideoAudiosRequest {
-	s.SetId = &v
-	return s
-}
-
-func (s *ListVideoAudiosRequest) SetVideoUri(v string) *ListVideoAudiosRequest {
-	s.VideoUri = &v
-	return s
-}
-
-type ListVideoAudiosResponseBody struct {
-	Audios     []*ListVideoAudiosResponseBodyAudios `json:"Audios,omitempty" xml:"Audios,omitempty" type:"Repeated"`
-	NextMarker *string                              `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SetId      *string                              `json:"SetId,omitempty" xml:"SetId,omitempty"`
-	VideoUri   *string                              `json:"VideoUri,omitempty" xml:"VideoUri,omitempty"`
-}
-
-func (s ListVideoAudiosResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoAudiosResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoAudiosResponseBody) SetAudios(v []*ListVideoAudiosResponseBodyAudios) *ListVideoAudiosResponseBody {
-	s.Audios = v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBody) SetNextMarker(v string) *ListVideoAudiosResponseBody {
-	s.NextMarker = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBody) SetRequestId(v string) *ListVideoAudiosResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBody) SetSetId(v string) *ListVideoAudiosResponseBody {
-	s.SetId = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBody) SetVideoUri(v string) *ListVideoAudiosResponseBody {
-	s.VideoUri = &v
-	return s
-}
-
-type ListVideoAudiosResponseBodyAudios struct {
-	AudioDuration        *float32                                       `json:"AudioDuration,omitempty" xml:"AudioDuration,omitempty"`
-	AudioFormat          *string                                        `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
-	AudioRate            *int32                                         `json:"AudioRate,omitempty" xml:"AudioRate,omitempty"`
-	AudioTexts           []*ListVideoAudiosResponseBodyAudiosAudioTexts `json:"AudioTexts,omitempty" xml:"AudioTexts,omitempty" type:"Repeated"`
-	AudioTextsFailReason *string                                        `json:"AudioTextsFailReason,omitempty" xml:"AudioTextsFailReason,omitempty"`
-	AudioTextsModifyTime *string                                        `json:"AudioTextsModifyTime,omitempty" xml:"AudioTextsModifyTime,omitempty"`
-	AudioTextsStatus     *string                                        `json:"AudioTextsStatus,omitempty" xml:"AudioTextsStatus,omitempty"`
-	AudioUri             *string                                        `json:"AudioUri,omitempty" xml:"AudioUri,omitempty"`
-	CreateTime           *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExternalId           *string                                        `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
-	FileSize             *int32                                         `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	ModifyTime           *string                                        `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ProcessFailReason    *string                                        `json:"ProcessFailReason,omitempty" xml:"ProcessFailReason,omitempty"`
-	ProcessModifyTime    *string                                        `json:"ProcessModifyTime,omitempty" xml:"ProcessModifyTime,omitempty"`
-	ProcessStatus        *string                                        `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
-	RemarksA             *string                                        `json:"RemarksA,omitempty" xml:"RemarksA,omitempty"`
-	RemarksB             *string                                        `json:"RemarksB,omitempty" xml:"RemarksB,omitempty"`
-	RemarksC             *string                                        `json:"RemarksC,omitempty" xml:"RemarksC,omitempty"`
-	RemarksD             *string                                        `json:"RemarksD,omitempty" xml:"RemarksD,omitempty"`
-	SourcePosition       *string                                        `json:"SourcePosition,omitempty" xml:"SourcePosition,omitempty"`
-	SourceType           *string                                        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SourceUri            *string                                        `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
-}
-
-func (s ListVideoAudiosResponseBodyAudios) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoAudiosResponseBodyAudios) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetAudioDuration(v float32) *ListVideoAudiosResponseBodyAudios {
-	s.AudioDuration = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetAudioFormat(v string) *ListVideoAudiosResponseBodyAudios {
-	s.AudioFormat = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetAudioRate(v int32) *ListVideoAudiosResponseBodyAudios {
-	s.AudioRate = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetAudioTexts(v []*ListVideoAudiosResponseBodyAudiosAudioTexts) *ListVideoAudiosResponseBodyAudios {
-	s.AudioTexts = v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetAudioTextsFailReason(v string) *ListVideoAudiosResponseBodyAudios {
-	s.AudioTextsFailReason = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetAudioTextsModifyTime(v string) *ListVideoAudiosResponseBodyAudios {
-	s.AudioTextsModifyTime = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetAudioTextsStatus(v string) *ListVideoAudiosResponseBodyAudios {
-	s.AudioTextsStatus = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetAudioUri(v string) *ListVideoAudiosResponseBodyAudios {
-	s.AudioUri = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetCreateTime(v string) *ListVideoAudiosResponseBodyAudios {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetExternalId(v string) *ListVideoAudiosResponseBodyAudios {
-	s.ExternalId = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetFileSize(v int32) *ListVideoAudiosResponseBodyAudios {
-	s.FileSize = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetModifyTime(v string) *ListVideoAudiosResponseBodyAudios {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetProcessFailReason(v string) *ListVideoAudiosResponseBodyAudios {
-	s.ProcessFailReason = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetProcessModifyTime(v string) *ListVideoAudiosResponseBodyAudios {
-	s.ProcessModifyTime = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetProcessStatus(v string) *ListVideoAudiosResponseBodyAudios {
-	s.ProcessStatus = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetRemarksA(v string) *ListVideoAudiosResponseBodyAudios {
-	s.RemarksA = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetRemarksB(v string) *ListVideoAudiosResponseBodyAudios {
-	s.RemarksB = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetRemarksC(v string) *ListVideoAudiosResponseBodyAudios {
-	s.RemarksC = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetRemarksD(v string) *ListVideoAudiosResponseBodyAudios {
-	s.RemarksD = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetSourcePosition(v string) *ListVideoAudiosResponseBodyAudios {
-	s.SourcePosition = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetSourceType(v string) *ListVideoAudiosResponseBodyAudios {
-	s.SourceType = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudios) SetSourceUri(v string) *ListVideoAudiosResponseBodyAudios {
-	s.SourceUri = &v
-	return s
-}
-
-type ListVideoAudiosResponseBodyAudiosAudioTexts struct {
-	BeginTime       *float32 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	ChannelId       *int32   `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Confidence      *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	EmotionValue    *float32 `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	EndTime         *float32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Library         *string  `json:"Library,omitempty" xml:"Library,omitempty"`
-	Person          *string  `json:"Person,omitempty" xml:"Person,omitempty"`
-	SilenceDuration *float32 `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
-	SpeechRate      *int32   `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Text            *string  `json:"Text,omitempty" xml:"Text,omitempty"`
-}
-
-func (s ListVideoAudiosResponseBodyAudiosAudioTexts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoAudiosResponseBodyAudiosAudioTexts) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoAudiosResponseBodyAudiosAudioTexts) SetBeginTime(v float32) *ListVideoAudiosResponseBodyAudiosAudioTexts {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudiosAudioTexts) SetChannelId(v int32) *ListVideoAudiosResponseBodyAudiosAudioTexts {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudiosAudioTexts) SetConfidence(v float32) *ListVideoAudiosResponseBodyAudiosAudioTexts {
-	s.Confidence = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudiosAudioTexts) SetEmotionValue(v float32) *ListVideoAudiosResponseBodyAudiosAudioTexts {
-	s.EmotionValue = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudiosAudioTexts) SetEndTime(v float32) *ListVideoAudiosResponseBodyAudiosAudioTexts {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudiosAudioTexts) SetLibrary(v string) *ListVideoAudiosResponseBodyAudiosAudioTexts {
-	s.Library = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudiosAudioTexts) SetPerson(v string) *ListVideoAudiosResponseBodyAudiosAudioTexts {
-	s.Person = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudiosAudioTexts) SetSilenceDuration(v float32) *ListVideoAudiosResponseBodyAudiosAudioTexts {
-	s.SilenceDuration = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudiosAudioTexts) SetSpeechRate(v int32) *ListVideoAudiosResponseBodyAudiosAudioTexts {
-	s.SpeechRate = &v
-	return s
-}
-
-func (s *ListVideoAudiosResponseBodyAudiosAudioTexts) SetText(v string) *ListVideoAudiosResponseBodyAudiosAudioTexts {
-	s.Text = &v
-	return s
-}
-
-type ListVideoAudiosResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVideoAudiosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListVideoAudiosResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoAudiosResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoAudiosResponse) SetHeaders(v map[string]*string) *ListVideoAudiosResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListVideoAudiosResponse) SetBody(v *ListVideoAudiosResponseBody) *ListVideoAudiosResponse {
-	s.Body = v
-	return s
-}
-
-type ListVideoFramesRequest struct {
-	Marker   *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	SetId    *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
-	VideoUri *string `json:"VideoUri,omitempty" xml:"VideoUri,omitempty"`
-}
-
-func (s ListVideoFramesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesRequest) SetMarker(v string) *ListVideoFramesRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *ListVideoFramesRequest) SetProject(v string) *ListVideoFramesRequest {
-	s.Project = &v
-	return s
-}
-
-func (s *ListVideoFramesRequest) SetSetId(v string) *ListVideoFramesRequest {
-	s.SetId = &v
-	return s
-}
-
-func (s *ListVideoFramesRequest) SetVideoUri(v string) *ListVideoFramesRequest {
-	s.VideoUri = &v
-	return s
-}
-
-type ListVideoFramesResponseBody struct {
-	Frames     []*ListVideoFramesResponseBodyFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
-	NextMarker *string                              `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SetId      *string                              `json:"SetId,omitempty" xml:"SetId,omitempty"`
-	VideoUri   *string                              `json:"VideoUri,omitempty" xml:"VideoUri,omitempty"`
-}
-
-func (s ListVideoFramesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBody) SetFrames(v []*ListVideoFramesResponseBodyFrames) *ListVideoFramesResponseBody {
-	s.Frames = v
-	return s
-}
-
-func (s *ListVideoFramesResponseBody) SetNextMarker(v string) *ListVideoFramesResponseBody {
-	s.NextMarker = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBody) SetRequestId(v string) *ListVideoFramesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBody) SetSetId(v string) *ListVideoFramesResponseBody {
-	s.SetId = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBody) SetVideoUri(v string) *ListVideoFramesResponseBody {
-	s.VideoUri = &v
-	return s
-}
-
-type ListVideoFramesResponseBodyFrames struct {
-	CreateTime      *string                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Exif            *string                                   `json:"Exif,omitempty" xml:"Exif,omitempty"`
-	ExternalId      *string                                   `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
-	Faces           []*ListVideoFramesResponseBodyFramesFaces `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
-	FacesFailReason *string                                   `json:"FacesFailReason,omitempty" xml:"FacesFailReason,omitempty"`
-	FacesModifyTime *string                                   `json:"FacesModifyTime,omitempty" xml:"FacesModifyTime,omitempty"`
-	FacesStatus     *string                                   `json:"FacesStatus,omitempty" xml:"FacesStatus,omitempty"`
-	FileSize        *int32                                    `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	ImageFormat     *string                                   `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
-	ImageHeight     *int32                                    `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
-	ImageTime       *string                                   `json:"ImageTime,omitempty" xml:"ImageTime,omitempty"`
-	ImageUri        *string                                   `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	ImageWidth      *int32                                    `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
-	Location        *string                                   `json:"Location,omitempty" xml:"Location,omitempty"`
-	ModifyTime      *string                                   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	OCR             []*ListVideoFramesResponseBodyFramesOCR   `json:"OCR,omitempty" xml:"OCR,omitempty" type:"Repeated"`
-	OCRFailReason   *string                                   `json:"OCRFailReason,omitempty" xml:"OCRFailReason,omitempty"`
-	OCRModifyTime   *string                                   `json:"OCRModifyTime,omitempty" xml:"OCRModifyTime,omitempty"`
-	OCRStatus       *string                                   `json:"OCRStatus,omitempty" xml:"OCRStatus,omitempty"`
-	Orientation     *string                                   `json:"Orientation,omitempty" xml:"Orientation,omitempty"`
-	RemarksA        *string                                   `json:"RemarksA,omitempty" xml:"RemarksA,omitempty"`
-	RemarksB        *string                                   `json:"RemarksB,omitempty" xml:"RemarksB,omitempty"`
-	RemarksC        *string                                   `json:"RemarksC,omitempty" xml:"RemarksC,omitempty"`
-	RemarksD        *string                                   `json:"RemarksD,omitempty" xml:"RemarksD,omitempty"`
-	SourcePosition  *string                                   `json:"SourcePosition,omitempty" xml:"SourcePosition,omitempty"`
-	SourceType      *string                                   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SourceUri       *string                                   `json:"SourceUri,omitempty" xml:"SourceUri,omitempty"`
-	Tags            []*ListVideoFramesResponseBodyFramesTags  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TagsFailReason  *string                                   `json:"TagsFailReason,omitempty" xml:"TagsFailReason,omitempty"`
-	TagsModifyTime  *string                                   `json:"TagsModifyTime,omitempty" xml:"TagsModifyTime,omitempty"`
-	TagsStatus      *string                                   `json:"TagsStatus,omitempty" xml:"TagsStatus,omitempty"`
-}
-
-func (s ListVideoFramesResponseBodyFrames) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFrames) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetCreateTime(v string) *ListVideoFramesResponseBodyFrames {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetExif(v string) *ListVideoFramesResponseBodyFrames {
-	s.Exif = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetExternalId(v string) *ListVideoFramesResponseBodyFrames {
-	s.ExternalId = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetFaces(v []*ListVideoFramesResponseBodyFramesFaces) *ListVideoFramesResponseBodyFrames {
-	s.Faces = v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetFacesFailReason(v string) *ListVideoFramesResponseBodyFrames {
-	s.FacesFailReason = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetFacesModifyTime(v string) *ListVideoFramesResponseBodyFrames {
-	s.FacesModifyTime = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetFacesStatus(v string) *ListVideoFramesResponseBodyFrames {
-	s.FacesStatus = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetFileSize(v int32) *ListVideoFramesResponseBodyFrames {
-	s.FileSize = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetImageFormat(v string) *ListVideoFramesResponseBodyFrames {
-	s.ImageFormat = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetImageHeight(v int32) *ListVideoFramesResponseBodyFrames {
-	s.ImageHeight = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetImageTime(v string) *ListVideoFramesResponseBodyFrames {
-	s.ImageTime = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetImageUri(v string) *ListVideoFramesResponseBodyFrames {
-	s.ImageUri = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetImageWidth(v int32) *ListVideoFramesResponseBodyFrames {
-	s.ImageWidth = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetLocation(v string) *ListVideoFramesResponseBodyFrames {
-	s.Location = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetModifyTime(v string) *ListVideoFramesResponseBodyFrames {
-	s.ModifyTime = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetOCR(v []*ListVideoFramesResponseBodyFramesOCR) *ListVideoFramesResponseBodyFrames {
-	s.OCR = v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetOCRFailReason(v string) *ListVideoFramesResponseBodyFrames {
-	s.OCRFailReason = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetOCRModifyTime(v string) *ListVideoFramesResponseBodyFrames {
-	s.OCRModifyTime = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetOCRStatus(v string) *ListVideoFramesResponseBodyFrames {
-	s.OCRStatus = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetOrientation(v string) *ListVideoFramesResponseBodyFrames {
-	s.Orientation = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetRemarksA(v string) *ListVideoFramesResponseBodyFrames {
-	s.RemarksA = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetRemarksB(v string) *ListVideoFramesResponseBodyFrames {
-	s.RemarksB = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetRemarksC(v string) *ListVideoFramesResponseBodyFrames {
-	s.RemarksC = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetRemarksD(v string) *ListVideoFramesResponseBodyFrames {
-	s.RemarksD = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetSourcePosition(v string) *ListVideoFramesResponseBodyFrames {
-	s.SourcePosition = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetSourceType(v string) *ListVideoFramesResponseBodyFrames {
-	s.SourceType = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetSourceUri(v string) *ListVideoFramesResponseBodyFrames {
-	s.SourceUri = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetTags(v []*ListVideoFramesResponseBodyFramesTags) *ListVideoFramesResponseBodyFrames {
-	s.Tags = v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetTagsFailReason(v string) *ListVideoFramesResponseBodyFrames {
-	s.TagsFailReason = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetTagsModifyTime(v string) *ListVideoFramesResponseBodyFrames {
-	s.TagsModifyTime = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFrames) SetTagsStatus(v string) *ListVideoFramesResponseBodyFrames {
-	s.TagsStatus = &v
-	return s
-}
-
-type ListVideoFramesResponseBodyFramesFaces struct {
-	Age               *int32                                                `json:"Age,omitempty" xml:"Age,omitempty"`
-	Attractive        *float32                                              `json:"Attractive,omitempty" xml:"Attractive,omitempty"`
-	Emotion           *string                                               `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
-	EmotionConfidence *float32                                              `json:"EmotionConfidence,omitempty" xml:"EmotionConfidence,omitempty"`
-	EmotionDetails    *ListVideoFramesResponseBodyFramesFacesEmotionDetails `json:"EmotionDetails,omitempty" xml:"EmotionDetails,omitempty" type:"Struct"`
-	FaceAttributes    *ListVideoFramesResponseBodyFramesFacesFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
-	FaceConfidence    *float32                                              `json:"FaceConfidence,omitempty" xml:"FaceConfidence,omitempty"`
-	FaceId            *string                                               `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
-	FaceQuality       *float32                                              `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
-	Gender            *string                                               `json:"Gender,omitempty" xml:"Gender,omitempty"`
-	GenderConfidence  *float32                                              `json:"GenderConfidence,omitempty" xml:"GenderConfidence,omitempty"`
-	GroupId           *string                                               `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-}
-
-func (s ListVideoFramesResponseBodyFramesFaces) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFramesFaces) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetAge(v int32) *ListVideoFramesResponseBodyFramesFaces {
-	s.Age = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetAttractive(v float32) *ListVideoFramesResponseBodyFramesFaces {
-	s.Attractive = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetEmotion(v string) *ListVideoFramesResponseBodyFramesFaces {
-	s.Emotion = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetEmotionConfidence(v float32) *ListVideoFramesResponseBodyFramesFaces {
-	s.EmotionConfidence = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetEmotionDetails(v *ListVideoFramesResponseBodyFramesFacesEmotionDetails) *ListVideoFramesResponseBodyFramesFaces {
-	s.EmotionDetails = v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetFaceAttributes(v *ListVideoFramesResponseBodyFramesFacesFaceAttributes) *ListVideoFramesResponseBodyFramesFaces {
-	s.FaceAttributes = v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetFaceConfidence(v float32) *ListVideoFramesResponseBodyFramesFaces {
-	s.FaceConfidence = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetFaceId(v string) *ListVideoFramesResponseBodyFramesFaces {
-	s.FaceId = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetFaceQuality(v float32) *ListVideoFramesResponseBodyFramesFaces {
-	s.FaceQuality = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetGender(v string) *ListVideoFramesResponseBodyFramesFaces {
-	s.Gender = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetGenderConfidence(v float32) *ListVideoFramesResponseBodyFramesFaces {
-	s.GenderConfidence = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFaces) SetGroupId(v string) *ListVideoFramesResponseBodyFramesFaces {
-	s.GroupId = &v
-	return s
-}
-
-type ListVideoFramesResponseBodyFramesFacesEmotionDetails struct {
-	ANGRY     *float32 `json:"ANGRY,omitempty" xml:"ANGRY,omitempty"`
-	CALM      *float32 `json:"CALM,omitempty" xml:"CALM,omitempty"`
-	DISGUSTED *float32 `json:"DISGUSTED,omitempty" xml:"DISGUSTED,omitempty"`
-	HAPPY     *float32 `json:"HAPPY,omitempty" xml:"HAPPY,omitempty"`
-	SAD       *float32 `json:"SAD,omitempty" xml:"SAD,omitempty"`
-	SCARED    *float32 `json:"SCARED,omitempty" xml:"SCARED,omitempty"`
-	SURPRISED *float32 `json:"SURPRISED,omitempty" xml:"SURPRISED,omitempty"`
-}
-
-func (s ListVideoFramesResponseBodyFramesFacesEmotionDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFramesFacesEmotionDetails) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesEmotionDetails) SetANGRY(v float32) *ListVideoFramesResponseBodyFramesFacesEmotionDetails {
-	s.ANGRY = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesEmotionDetails) SetCALM(v float32) *ListVideoFramesResponseBodyFramesFacesEmotionDetails {
-	s.CALM = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesEmotionDetails) SetDISGUSTED(v float32) *ListVideoFramesResponseBodyFramesFacesEmotionDetails {
-	s.DISGUSTED = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesEmotionDetails) SetHAPPY(v float32) *ListVideoFramesResponseBodyFramesFacesEmotionDetails {
-	s.HAPPY = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesEmotionDetails) SetSAD(v float32) *ListVideoFramesResponseBodyFramesFacesEmotionDetails {
-	s.SAD = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesEmotionDetails) SetSCARED(v float32) *ListVideoFramesResponseBodyFramesFacesEmotionDetails {
-	s.SCARED = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesEmotionDetails) SetSURPRISED(v float32) *ListVideoFramesResponseBodyFramesFacesEmotionDetails {
-	s.SURPRISED = &v
-	return s
-}
-
-type ListVideoFramesResponseBodyFramesFacesFaceAttributes struct {
-	Beard             *string                                                           `json:"Beard,omitempty" xml:"Beard,omitempty"`
-	BeardConfidence   *float32                                                          `json:"BeardConfidence,omitempty" xml:"BeardConfidence,omitempty"`
-	FaceBoundary      *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary `json:"FaceBoundary,omitempty" xml:"FaceBoundary,omitempty" type:"Struct"`
-	Glasses           *string                                                           `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
-	GlassesConfidence *float32                                                          `json:"GlassesConfidence,omitempty" xml:"GlassesConfidence,omitempty"`
-	HeadPose          *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose     `json:"HeadPose,omitempty" xml:"HeadPose,omitempty" type:"Struct"`
-	Mask              *string                                                           `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	MaskConfidence    *float32                                                          `json:"MaskConfidence,omitempty" xml:"MaskConfidence,omitempty"`
-}
-
-func (s ListVideoFramesResponseBodyFramesFacesFaceAttributes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFramesFacesFaceAttributes) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetBeard(v string) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.Beard = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetBeardConfidence(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.BeardConfidence = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetFaceBoundary(v *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.FaceBoundary = v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetGlasses(v string) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.Glasses = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetGlassesConfidence(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.GlassesConfidence = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetHeadPose(v *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.HeadPose = v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetMask(v string) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.Mask = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributes) SetMaskConfidence(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributes {
-	s.MaskConfidence = &v
-	return s
-}
-
-type ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary struct {
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-}
-
-func (s ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) SetHeight(v int32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary {
-	s.Height = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) SetLeft(v int32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary {
-	s.Left = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) SetTop(v int32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary {
-	s.Top = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary) SetWidth(v int32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesFaceBoundary {
-	s.Width = &v
-	return s
-}
-
-type ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose struct {
-	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
-	Roll  *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
-	Yaw   *float32 `json:"Yaw,omitempty" xml:"Yaw,omitempty"`
-}
-
-func (s ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) SetPitch(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose {
-	s.Pitch = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) SetRoll(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose {
-	s.Roll = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose) SetYaw(v float32) *ListVideoFramesResponseBodyFramesFacesFaceAttributesHeadPose {
-	s.Yaw = &v
-	return s
-}
-
-type ListVideoFramesResponseBodyFramesOCR struct {
-	OCRBoundary   *ListVideoFramesResponseBodyFramesOCROCRBoundary `json:"OCRBoundary,omitempty" xml:"OCRBoundary,omitempty" type:"Struct"`
-	OCRConfidence *float32                                         `json:"OCRConfidence,omitempty" xml:"OCRConfidence,omitempty"`
-	OCRContents   *string                                          `json:"OCRContents,omitempty" xml:"OCRContents,omitempty"`
-}
-
-func (s ListVideoFramesResponseBodyFramesOCR) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFramesOCR) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFramesOCR) SetOCRBoundary(v *ListVideoFramesResponseBodyFramesOCROCRBoundary) *ListVideoFramesResponseBodyFramesOCR {
-	s.OCRBoundary = v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesOCR) SetOCRConfidence(v float32) *ListVideoFramesResponseBodyFramesOCR {
-	s.OCRConfidence = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesOCR) SetOCRContents(v string) *ListVideoFramesResponseBodyFramesOCR {
-	s.OCRContents = &v
-	return s
-}
-
-type ListVideoFramesResponseBodyFramesOCROCRBoundary struct {
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-}
-
-func (s ListVideoFramesResponseBodyFramesOCROCRBoundary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFramesOCROCRBoundary) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFramesOCROCRBoundary) SetHeight(v int32) *ListVideoFramesResponseBodyFramesOCROCRBoundary {
-	s.Height = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesOCROCRBoundary) SetLeft(v int32) *ListVideoFramesResponseBodyFramesOCROCRBoundary {
-	s.Left = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesOCROCRBoundary) SetTop(v int32) *ListVideoFramesResponseBodyFramesOCROCRBoundary {
-	s.Top = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesOCROCRBoundary) SetWidth(v int32) *ListVideoFramesResponseBodyFramesOCROCRBoundary {
-	s.Width = &v
-	return s
-}
-
-type ListVideoFramesResponseBodyFramesTags struct {
-	ParentTagName *string  `json:"ParentTagName,omitempty" xml:"ParentTagName,omitempty"`
-	TagConfidence *float32 `json:"TagConfidence,omitempty" xml:"TagConfidence,omitempty"`
-	TagLevel      *int32   `json:"TagLevel,omitempty" xml:"TagLevel,omitempty"`
-	TagName       *string  `json:"TagName,omitempty" xml:"TagName,omitempty"`
-}
-
-func (s ListVideoFramesResponseBodyFramesTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponseBodyFramesTags) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponseBodyFramesTags) SetParentTagName(v string) *ListVideoFramesResponseBodyFramesTags {
-	s.ParentTagName = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesTags) SetTagConfidence(v float32) *ListVideoFramesResponseBodyFramesTags {
-	s.TagConfidence = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesTags) SetTagLevel(v int32) *ListVideoFramesResponseBodyFramesTags {
-	s.TagLevel = &v
-	return s
-}
-
-func (s *ListVideoFramesResponseBodyFramesTags) SetTagName(v string) *ListVideoFramesResponseBodyFramesTags {
-	s.TagName = &v
-	return s
-}
-
-type ListVideoFramesResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVideoFramesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListVideoFramesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVideoFramesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListVideoFramesResponse) SetHeaders(v map[string]*string) *ListVideoFramesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListVideoFramesResponse) SetBody(v *ListVideoFramesResponseBody) *ListVideoFramesResponse {
 	s.Body = v
 	return s
 }
@@ -10349,8 +9634,9 @@ func (s *ListVideoTasksResponseBodyTasks) SetTaskType(v string) *ListVideoTasksR
 }
 
 type ListVideoTasksResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVideoTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVideoTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVideoTasksResponse) String() string {
@@ -10363,6 +9649,11 @@ func (s ListVideoTasksResponse) GoString() string {
 
 func (s *ListVideoTasksResponse) SetHeaders(v map[string]*string) *ListVideoTasksResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListVideoTasksResponse) SetStatusCode(v int32) *ListVideoTasksResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10632,8 +9923,9 @@ func (s *ListVideosResponseBodyVideosVideoTags) SetTagName(v string) *ListVideos
 }
 
 type ListVideosResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVideosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVideosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVideosResponse) String() string {
@@ -10646,6 +9938,11 @@ func (s ListVideosResponse) GoString() string {
 
 func (s *ListVideosResponse) SetHeaders(v map[string]*string) *ListVideosResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListVideosResponse) SetStatusCode(v int32) *ListVideosResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10695,8 +9992,9 @@ func (s *OpenImmServiceResponseBody) SetRequestId(v string) *OpenImmServiceRespo
 }
 
 type OpenImmServiceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *OpenImmServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenImmServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s OpenImmServiceResponse) String() string {
@@ -10709,6 +10007,11 @@ func (s OpenImmServiceResponse) GoString() string {
 
 func (s *OpenImmServiceResponse) SetHeaders(v map[string]*string) *OpenImmServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *OpenImmServiceResponse) SetStatusCode(v int32) *OpenImmServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10812,8 +10115,9 @@ func (s *PutProjectResponseBody) SetType(v string) *PutProjectResponseBody {
 }
 
 type PutProjectResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutProjectResponse) String() string {
@@ -10826,6 +10130,11 @@ func (s PutProjectResponse) GoString() string {
 
 func (s *PutProjectResponse) SetHeaders(v map[string]*string) *PutProjectResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutProjectResponse) SetStatusCode(v int32) *PutProjectResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10905,8 +10214,9 @@ func (s *RefreshOfficePreviewTokenResponseBody) SetRequestId(v string) *RefreshO
 }
 
 type RefreshOfficePreviewTokenResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RefreshOfficePreviewTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RefreshOfficePreviewTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RefreshOfficePreviewTokenResponse) String() string {
@@ -10919,6 +10229,11 @@ func (s RefreshOfficePreviewTokenResponse) GoString() string {
 
 func (s *RefreshOfficePreviewTokenResponse) SetHeaders(v map[string]*string) *RefreshOfficePreviewTokenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RefreshOfficePreviewTokenResponse) SetStatusCode(v int32) *RefreshOfficePreviewTokenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10998,8 +10313,9 @@ func (s *RefreshWebofficeTokenResponseBody) SetRequestId(v string) *RefreshWebof
 }
 
 type RefreshWebofficeTokenResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RefreshWebofficeTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RefreshWebofficeTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RefreshWebofficeTokenResponse) String() string {
@@ -11012,6 +10328,11 @@ func (s RefreshWebofficeTokenResponse) GoString() string {
 
 func (s *RefreshWebofficeTokenResponse) SetHeaders(v map[string]*string) *RefreshWebofficeTokenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RefreshWebofficeTokenResponse) SetStatusCode(v int32) *RefreshWebofficeTokenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11139,8 +10460,9 @@ func (s *UpdateFaceGroupResponseBody) SetSetId(v string) *UpdateFaceGroupRespons
 }
 
 type UpdateFaceGroupResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateFaceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateFaceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateFaceGroupResponse) String() string {
@@ -11153,6 +10475,11 @@ func (s UpdateFaceGroupResponse) GoString() string {
 
 func (s *UpdateFaceGroupResponse) SetHeaders(v map[string]*string) *UpdateFaceGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateFaceGroupResponse) SetStatusCode(v int32) *UpdateFaceGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11458,8 +10785,9 @@ func (s *UpdateImageResponseBody) SetSetId(v string) *UpdateImageResponseBody {
 }
 
 type UpdateImageResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateImageResponse) String() string {
@@ -11472,6 +10800,11 @@ func (s UpdateImageResponse) GoString() string {
 
 func (s *UpdateImageResponse) SetHeaders(v map[string]*string) *UpdateImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateImageResponse) SetStatusCode(v int32) *UpdateImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11569,8 +10902,9 @@ func (s *UpdateProjectResponseBody) SetType(v string) *UpdateProjectResponseBody
 }
 
 type UpdateProjectResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateProjectResponse) String() string {
@@ -11583,6 +10917,11 @@ func (s UpdateProjectResponse) GoString() string {
 
 func (s *UpdateProjectResponse) SetHeaders(v map[string]*string) *UpdateProjectResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateProjectResponse) SetStatusCode(v int32) *UpdateProjectResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11662,8 +11001,9 @@ func (s *UpdateSetResponseBody) SetSetName(v string) *UpdateSetResponseBody {
 }
 
 type UpdateSetResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateSetResponse) String() string {
@@ -11676,6 +11016,11 @@ func (s UpdateSetResponse) GoString() string {
 
 func (s *UpdateSetResponse) SetHeaders(v map[string]*string) *UpdateSetResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateSetResponse) SetStatusCode(v int32) *UpdateSetResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14399,118 +13744,6 @@ func (client *Client) ListSets(request *ListSetsRequest) (_result *ListSetsRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSetsResponse{}
 	_body, _err := client.ListSetsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListVideoAudiosWithOptions(request *ListVideoAudiosRequest, runtime *util.RuntimeOptions) (_result *ListVideoAudiosResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Marker)) {
-		query["Marker"] = request.Marker
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Project)) {
-		query["Project"] = request.Project
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SetId)) {
-		query["SetId"] = request.SetId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VideoUri)) {
-		query["VideoUri"] = request.VideoUri
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListVideoAudios"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListVideoAudiosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListVideoAudios(request *ListVideoAudiosRequest) (_result *ListVideoAudiosResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListVideoAudiosResponse{}
-	_body, _err := client.ListVideoAudiosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListVideoFramesWithOptions(request *ListVideoFramesRequest, runtime *util.RuntimeOptions) (_result *ListVideoFramesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Marker)) {
-		query["Marker"] = request.Marker
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Project)) {
-		query["Project"] = request.Project
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SetId)) {
-		query["SetId"] = request.SetId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VideoUri)) {
-		query["VideoUri"] = request.VideoUri
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListVideoFrames"),
-		Version:     tea.String("2017-09-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListVideoFramesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListVideoFrames(request *ListVideoFramesRequest) (_result *ListVideoFramesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListVideoFramesResponse{}
-	_body, _err := client.ListVideoFramesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

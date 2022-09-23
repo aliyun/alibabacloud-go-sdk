@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2017-09-06 for imm.
+
 2022-04-11 Version: v1.23.8
 - Drop Content parameter for DecodeBlindWatermark.
 
