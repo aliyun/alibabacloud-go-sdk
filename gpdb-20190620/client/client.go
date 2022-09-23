@@ -5,9 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -35,13 +36,13 @@ func (s *DescribeDBInstanceForDmsRequest) SetPort(v int64) *DescribeDBInstanceFo
 }
 
 type DescribeDBInstanceForDmsResponseBody struct {
+	Code           *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count          *int64                                        `json:"Count,omitempty" xml:"Count,omitempty"`
 	HttpStatusCode *int32                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Instance       *DescribeDBInstanceForDmsResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	Message        *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success        *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
-	Code           *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message        *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	Count          *int64                                        `json:"Count,omitempty" xml:"Count,omitempty"`
-	Instance       *DescribeDBInstanceForDmsResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBInstanceForDmsResponseBody) String() string {
@@ -52,8 +53,28 @@ func (s DescribeDBInstanceForDmsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDBInstanceForDmsResponseBody) SetCode(v string) *DescribeDBInstanceForDmsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeDBInstanceForDmsResponseBody) SetCount(v int64) *DescribeDBInstanceForDmsResponseBody {
+	s.Count = &v
+	return s
+}
+
 func (s *DescribeDBInstanceForDmsResponseBody) SetHttpStatusCode(v int32) *DescribeDBInstanceForDmsResponseBody {
 	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceForDmsResponseBody) SetInstance(v *DescribeDBInstanceForDmsResponseBodyInstance) *DescribeDBInstanceForDmsResponseBody {
+	s.Instance = v
+	return s
+}
+
+func (s *DescribeDBInstanceForDmsResponseBody) SetMessage(v string) *DescribeDBInstanceForDmsResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -67,40 +88,20 @@ func (s *DescribeDBInstanceForDmsResponseBody) SetSuccess(v bool) *DescribeDBIns
 	return s
 }
 
-func (s *DescribeDBInstanceForDmsResponseBody) SetCode(v string) *DescribeDBInstanceForDmsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeDBInstanceForDmsResponseBody) SetMessage(v string) *DescribeDBInstanceForDmsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeDBInstanceForDmsResponseBody) SetCount(v int64) *DescribeDBInstanceForDmsResponseBody {
-	s.Count = &v
-	return s
-}
-
-func (s *DescribeDBInstanceForDmsResponseBody) SetInstance(v *DescribeDBInstanceForDmsResponseBodyInstance) *DescribeDBInstanceForDmsResponseBody {
-	s.Instance = v
-	return s
-}
-
 type DescribeDBInstanceForDmsResponseBodyInstance struct {
-	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	AliUid              *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Port                *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	Bid                 *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	VpcCloudInstanceId  *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	VSwitchId           *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DbType              *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	Version             *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	ConnectionString    *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	Region              *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	DbInstanceName      *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	DbType              *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	Port                *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region              *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	VSwitchId           *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	Version             *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	VpcCloudInstanceId  *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
+	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VpcIp               *string `json:"VpcIp,omitempty" xml:"VpcIp,omitempty"`
 }
 
@@ -112,18 +113,8 @@ func (s DescribeDBInstanceForDmsResponseBodyInstance) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetVpcId(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
-	s.VpcId = &v
-	return s
-}
-
 func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetAliUid(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
 	s.AliUid = &v
-	return s
-}
-
-func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetPort(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
-	s.Port = &v
 	return s
 }
 
@@ -132,18 +123,13 @@ func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetBid(v string) *Describ
 	return s
 }
 
-func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetVpcCloudInstanceId(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
-	s.VpcCloudInstanceId = &v
+func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetConnectionString(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
+	s.ConnectionString = &v
 	return s
 }
 
-func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetVSwitchId(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetDescription(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
-	s.Description = &v
+func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetDbInstanceName(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
+	s.DbInstanceName = &v
 	return s
 }
 
@@ -152,18 +138,8 @@ func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetDbType(v string) *Desc
 	return s
 }
 
-func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetVersion(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
-	s.Version = &v
-	return s
-}
-
-func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetConnectionString(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
-	s.ConnectionString = &v
-	return s
-}
-
-func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetRegion(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
-	s.Region = &v
+func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetDescription(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
+	s.Description = &v
 	return s
 }
 
@@ -172,8 +148,33 @@ func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetInstanceNetworkType(v 
 	return s
 }
 
-func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetDbInstanceName(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
-	s.DbInstanceName = &v
+func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetPort(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetRegion(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetVSwitchId(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetVersion(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
+	s.Version = &v
+	return s
+}
+
+func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetVpcCloudInstanceId(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
+	s.VpcCloudInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetVpcId(v string) *DescribeDBInstanceForDmsResponseBodyInstance {
+	s.VpcId = &v
 	return s
 }
 
@@ -183,8 +184,9 @@ func (s *DescribeDBInstanceForDmsResponseBodyInstance) SetVpcIp(v string) *Descr
 }
 
 type DescribeDBInstanceForDmsResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDBInstanceForDmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDBInstanceForDmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDBInstanceForDmsResponse) String() string {
@@ -197,6 +199,11 @@ func (s DescribeDBInstanceForDmsResponse) GoString() string {
 
 func (s *DescribeDBInstanceForDmsResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceForDmsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstanceForDmsResponse) SetStatusCode(v int32) *DescribeDBInstanceForDmsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -223,13 +230,13 @@ func (s *DescribeDBInstanceSecurityIpsRequest) SetInstanceId(v string) *Describe
 }
 
 type DescribeDBInstanceSecurityIpsResponseBody struct {
-	HttpStatusCode *int32                                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
 	Code           *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message        *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	Count          *int64                                             `json:"Count,omitempty" xml:"Count,omitempty"`
+	HttpStatusCode *int32                                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result         []*DescribeDBInstanceSecurityIpsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Success        *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDBInstanceSecurityIpsResponseBody) String() string {
@@ -240,28 +247,8 @@ func (s DescribeDBInstanceSecurityIpsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstanceSecurityIpsResponseBody) SetHttpStatusCode(v int32) *DescribeDBInstanceSecurityIpsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DescribeDBInstanceSecurityIpsResponseBody) SetRequestId(v string) *DescribeDBInstanceSecurityIpsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceSecurityIpsResponseBody) SetSuccess(v bool) *DescribeDBInstanceSecurityIpsResponseBody {
-	s.Success = &v
-	return s
-}
-
 func (s *DescribeDBInstanceSecurityIpsResponseBody) SetCode(v string) *DescribeDBInstanceSecurityIpsResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *DescribeDBInstanceSecurityIpsResponseBody) SetMessage(v string) *DescribeDBInstanceSecurityIpsResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -270,8 +257,28 @@ func (s *DescribeDBInstanceSecurityIpsResponseBody) SetCount(v int64) *DescribeD
 	return s
 }
 
+func (s *DescribeDBInstanceSecurityIpsResponseBody) SetHttpStatusCode(v int32) *DescribeDBInstanceSecurityIpsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSecurityIpsResponseBody) SetMessage(v string) *DescribeDBInstanceSecurityIpsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSecurityIpsResponseBody) SetRequestId(v string) *DescribeDBInstanceSecurityIpsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *DescribeDBInstanceSecurityIpsResponseBody) SetResult(v []*DescribeDBInstanceSecurityIpsResponseBodyResult) *DescribeDBInstanceSecurityIpsResponseBody {
 	s.Result = v
+	return s
+}
+
+func (s *DescribeDBInstanceSecurityIpsResponseBody) SetSuccess(v bool) *DescribeDBInstanceSecurityIpsResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -299,8 +306,9 @@ func (s *DescribeDBInstanceSecurityIpsResponseBodyResult) SetWhiteList(v []*stri
 }
 
 type DescribeDBInstanceSecurityIpsResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDBInstanceSecurityIpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDBInstanceSecurityIpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDBInstanceSecurityIpsResponse) String() string {
@@ -313,6 +321,11 @@ func (s DescribeDBInstanceSecurityIpsResponse) GoString() string {
 
 func (s *DescribeDBInstanceSecurityIpsResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceSecurityIpsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstanceSecurityIpsResponse) SetStatusCode(v int32) *DescribeDBInstanceSecurityIpsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -339,13 +352,13 @@ func (s *DescribeDBInstancesForDmsRequest) SetAliUid(v int64) *DescribeDBInstanc
 }
 
 type DescribeDBInstancesForDmsResponseBody struct {
+	Code           *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count          *int64                                            `json:"Count,omitempty" xml:"Count,omitempty"`
 	HttpStatusCode *int32                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Instances      []*DescribeDBInstancesForDmsResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	Message        *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success        *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	Code           *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message        *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	Count          *int64                                            `json:"Count,omitempty" xml:"Count,omitempty"`
-	Instances      []*DescribeDBInstancesForDmsResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBInstancesForDmsResponseBody) String() string {
@@ -356,8 +369,28 @@ func (s DescribeDBInstancesForDmsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDBInstancesForDmsResponseBody) SetCode(v string) *DescribeDBInstancesForDmsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeDBInstancesForDmsResponseBody) SetCount(v int64) *DescribeDBInstancesForDmsResponseBody {
+	s.Count = &v
+	return s
+}
+
 func (s *DescribeDBInstancesForDmsResponseBody) SetHttpStatusCode(v int32) *DescribeDBInstancesForDmsResponseBody {
 	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeDBInstancesForDmsResponseBody) SetInstances(v []*DescribeDBInstancesForDmsResponseBodyInstances) *DescribeDBInstancesForDmsResponseBody {
+	s.Instances = v
+	return s
+}
+
+func (s *DescribeDBInstancesForDmsResponseBody) SetMessage(v string) *DescribeDBInstancesForDmsResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -371,40 +404,20 @@ func (s *DescribeDBInstancesForDmsResponseBody) SetSuccess(v bool) *DescribeDBIn
 	return s
 }
 
-func (s *DescribeDBInstancesForDmsResponseBody) SetCode(v string) *DescribeDBInstancesForDmsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeDBInstancesForDmsResponseBody) SetMessage(v string) *DescribeDBInstancesForDmsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeDBInstancesForDmsResponseBody) SetCount(v int64) *DescribeDBInstancesForDmsResponseBody {
-	s.Count = &v
-	return s
-}
-
-func (s *DescribeDBInstancesForDmsResponseBody) SetInstances(v []*DescribeDBInstancesForDmsResponseBodyInstances) *DescribeDBInstancesForDmsResponseBody {
-	s.Instances = v
-	return s
-}
-
 type DescribeDBInstancesForDmsResponseBodyInstances struct {
-	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	AliUid              *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Port                *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	Bid                 *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	VpcCloudInstanceId  *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	VSwitchId           *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DbType              *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	Version             *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	ConnectionString    *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	Region              *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	DbInstanceName      *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	DbType              *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	Port                *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region              *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	VSwitchId           *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	Version             *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	VpcCloudInstanceId  *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
+	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VpcIp               *string `json:"VpcIp,omitempty" xml:"VpcIp,omitempty"`
 }
 
@@ -416,18 +429,8 @@ func (s DescribeDBInstancesForDmsResponseBodyInstances) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetVpcId(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
-	s.VpcId = &v
-	return s
-}
-
 func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetAliUid(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
 	s.AliUid = &v
-	return s
-}
-
-func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetPort(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
-	s.Port = &v
 	return s
 }
 
@@ -436,18 +439,13 @@ func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetBid(v string) *Descr
 	return s
 }
 
-func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetVpcCloudInstanceId(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
-	s.VpcCloudInstanceId = &v
+func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetConnectionString(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
+	s.ConnectionString = &v
 	return s
 }
 
-func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetVSwitchId(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetDescription(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
-	s.Description = &v
+func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetDbInstanceName(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
+	s.DbInstanceName = &v
 	return s
 }
 
@@ -456,18 +454,8 @@ func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetDbType(v string) *De
 	return s
 }
 
-func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetVersion(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
-	s.Version = &v
-	return s
-}
-
-func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetConnectionString(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
-	s.ConnectionString = &v
-	return s
-}
-
-func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetRegion(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
-	s.Region = &v
+func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetDescription(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
+	s.Description = &v
 	return s
 }
 
@@ -476,8 +464,33 @@ func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetInstanceNetworkType(
 	return s
 }
 
-func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetDbInstanceName(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
-	s.DbInstanceName = &v
+func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetPort(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetRegion(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetVSwitchId(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetVersion(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
+	s.Version = &v
+	return s
+}
+
+func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetVpcCloudInstanceId(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
+	s.VpcCloudInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetVpcId(v string) *DescribeDBInstancesForDmsResponseBodyInstances {
+	s.VpcId = &v
 	return s
 }
 
@@ -487,8 +500,9 @@ func (s *DescribeDBInstancesForDmsResponseBodyInstances) SetVpcIp(v string) *Des
 }
 
 type DescribeDBInstancesForDmsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDBInstancesForDmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDBInstancesForDmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDBInstancesForDmsResponse) String() string {
@@ -504,6 +518,11 @@ func (s *DescribeDBInstancesForDmsResponse) SetHeaders(v map[string]*string) *De
 	return s
 }
 
+func (s *DescribeDBInstancesForDmsResponse) SetStatusCode(v int32) *DescribeDBInstancesForDmsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeDBInstancesForDmsResponse) SetBody(v *DescribeDBInstancesForDmsResponseBody) *DescribeDBInstancesForDmsResponse {
 	s.Body = v
 	return s
@@ -511,8 +530,8 @@ func (s *DescribeDBInstancesForDmsResponse) SetBody(v *DescribeDBInstancesForDms
 
 type ModifyDBInstanceSecurityIpsRequest struct {
 	AliUid     *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	WhileList  *string `json:"WhileList,omitempty" xml:"WhileList,omitempty"`
 }
 
@@ -529,13 +548,13 @@ func (s *ModifyDBInstanceSecurityIpsRequest) SetAliUid(v int64) *ModifyDBInstanc
 	return s
 }
 
-func (s *ModifyDBInstanceSecurityIpsRequest) SetInstanceId(v string) *ModifyDBInstanceSecurityIpsRequest {
-	s.InstanceId = &v
+func (s *ModifyDBInstanceSecurityIpsRequest) SetGroupName(v string) *ModifyDBInstanceSecurityIpsRequest {
+	s.GroupName = &v
 	return s
 }
 
-func (s *ModifyDBInstanceSecurityIpsRequest) SetGroupName(v string) *ModifyDBInstanceSecurityIpsRequest {
-	s.GroupName = &v
+func (s *ModifyDBInstanceSecurityIpsRequest) SetInstanceId(v string) *ModifyDBInstanceSecurityIpsRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -586,8 +605,9 @@ func (s *ModifyDBInstanceSecurityIpsResponseBody) SetSuccess(v bool) *ModifyDBIn
 }
 
 type ModifyDBInstanceSecurityIpsResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDBInstanceSecurityIpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDBInstanceSecurityIpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyDBInstanceSecurityIpsResponse) String() string {
@@ -600,6 +620,11 @@ func (s ModifyDBInstanceSecurityIpsResponse) GoString() string {
 
 func (s *ModifyDBInstanceSecurityIpsResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceSecurityIpsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityIpsResponse) SetStatusCode(v int32) *ModifyDBInstanceSecurityIpsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -675,11 +700,31 @@ func (client *Client) DescribeDBInstanceForDmsWithOptions(request *DescribeDBIns
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstanceForDms"),
+		Version:     tea.String("2019-06-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDBInstanceForDmsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDBInstanceForDms"), tea.String("2019-06-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -703,11 +748,27 @@ func (client *Client) DescribeDBInstanceSecurityIpsWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstanceSecurityIps"),
+		Version:     tea.String("2019-06-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDBInstanceSecurityIpsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDBInstanceSecurityIps"), tea.String("2019-06-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -731,11 +792,27 @@ func (client *Client) DescribeDBInstancesForDmsWithOptions(request *DescribeDBIn
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		query["AliUid"] = request.AliUid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstancesForDms"),
+		Version:     tea.String("2019-06-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDBInstancesForDmsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDBInstancesForDms"), tea.String("2019-06-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -759,11 +836,39 @@ func (client *Client) ModifyDBInstanceSecurityIpsWithOptions(request *ModifyDBIn
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		query["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WhileList)) {
+		query["WhileList"] = request.WhileList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBInstanceSecurityIps"),
+		Version:     tea.String("2019-06-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDBInstanceSecurityIpsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyDBInstanceSecurityIps"), tea.String("2019-06-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
