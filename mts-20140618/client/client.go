@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -935,6 +935,8 @@ type AddSmarttagTemplateRequest struct {
 	KnowledgeConfig        *string `json:"KnowledgeConfig,omitempty" xml:"KnowledgeConfig,omitempty"`
 	LabelType              *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
 	LabelVersion           *string `json:"LabelVersion,omitempty" xml:"LabelVersion,omitempty"`
+	LandmarkGroupIds       *string `json:"LandmarkGroupIds,omitempty" xml:"LandmarkGroupIds,omitempty"`
+	ObjectGroupIds         *string `json:"ObjectGroupIds,omitempty" xml:"ObjectGroupIds,omitempty"`
 	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -993,6 +995,16 @@ func (s *AddSmarttagTemplateRequest) SetLabelType(v string) *AddSmarttagTemplate
 
 func (s *AddSmarttagTemplateRequest) SetLabelVersion(v string) *AddSmarttagTemplateRequest {
 	s.LabelVersion = &v
+	return s
+}
+
+func (s *AddSmarttagTemplateRequest) SetLandmarkGroupIds(v string) *AddSmarttagTemplateRequest {
+	s.LandmarkGroupIds = &v
+	return s
+}
+
+func (s *AddSmarttagTemplateRequest) SetObjectGroupIds(v string) *AddSmarttagTemplateRequest {
+	s.ObjectGroupIds = &v
 	return s
 }
 
@@ -2201,6 +2213,222 @@ func (s *CancelJobResponse) SetBody(v *CancelJobResponseBody) *CancelJobResponse
 	return s
 }
 
+type CreateCustomEntityRequest struct {
+	Algorithm            *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CustomEntityInfo     *string `json:"CustomEntityInfo,omitempty" xml:"CustomEntityInfo,omitempty"`
+	CustomEntityName     *string `json:"CustomEntityName,omitempty" xml:"CustomEntityName,omitempty"`
+	CustomGroupId        *string `json:"CustomGroupId,omitempty" xml:"CustomGroupId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateCustomEntityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomEntityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomEntityRequest) SetAlgorithm(v string) *CreateCustomEntityRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateCustomEntityRequest) SetCustomEntityInfo(v string) *CreateCustomEntityRequest {
+	s.CustomEntityInfo = &v
+	return s
+}
+
+func (s *CreateCustomEntityRequest) SetCustomEntityName(v string) *CreateCustomEntityRequest {
+	s.CustomEntityName = &v
+	return s
+}
+
+func (s *CreateCustomEntityRequest) SetCustomGroupId(v string) *CreateCustomEntityRequest {
+	s.CustomGroupId = &v
+	return s
+}
+
+func (s *CreateCustomEntityRequest) SetOwnerAccount(v string) *CreateCustomEntityRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateCustomEntityRequest) SetOwnerId(v int64) *CreateCustomEntityRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateCustomEntityRequest) SetResourceOwnerAccount(v string) *CreateCustomEntityRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateCustomEntityRequest) SetResourceOwnerId(v int64) *CreateCustomEntityRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateCustomEntityResponseBody struct {
+	CustomEntityId *string `json:"CustomEntityId,omitempty" xml:"CustomEntityId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCustomEntityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomEntityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomEntityResponseBody) SetCustomEntityId(v string) *CreateCustomEntityResponseBody {
+	s.CustomEntityId = &v
+	return s
+}
+
+func (s *CreateCustomEntityResponseBody) SetRequestId(v string) *CreateCustomEntityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCustomEntityResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCustomEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCustomEntityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomEntityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomEntityResponse) SetHeaders(v map[string]*string) *CreateCustomEntityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCustomEntityResponse) SetStatusCode(v int32) *CreateCustomEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCustomEntityResponse) SetBody(v *CreateCustomEntityResponseBody) *CreateCustomEntityResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCustomGroupRequest struct {
+	Algorithm              *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CustomGroupDescription *string `json:"CustomGroupDescription,omitempty" xml:"CustomGroupDescription,omitempty"`
+	CustomGroupName        *string `json:"CustomGroupName,omitempty" xml:"CustomGroupName,omitempty"`
+	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateCustomGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomGroupRequest) SetAlgorithm(v string) *CreateCustomGroupRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateCustomGroupRequest) SetCustomGroupDescription(v string) *CreateCustomGroupRequest {
+	s.CustomGroupDescription = &v
+	return s
+}
+
+func (s *CreateCustomGroupRequest) SetCustomGroupName(v string) *CreateCustomGroupRequest {
+	s.CustomGroupName = &v
+	return s
+}
+
+func (s *CreateCustomGroupRequest) SetOwnerAccount(v string) *CreateCustomGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateCustomGroupRequest) SetOwnerId(v int64) *CreateCustomGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateCustomGroupRequest) SetResourceOwnerAccount(v string) *CreateCustomGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateCustomGroupRequest) SetResourceOwnerId(v int64) *CreateCustomGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateCustomGroupResponseBody struct {
+	CustomGroupId *string `json:"CustomGroupId,omitempty" xml:"CustomGroupId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCustomGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomGroupResponseBody) SetCustomGroupId(v string) *CreateCustomGroupResponseBody {
+	s.CustomGroupId = &v
+	return s
+}
+
+func (s *CreateCustomGroupResponseBody) SetRequestId(v string) *CreateCustomGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCustomGroupResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCustomGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCustomGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomGroupResponse) SetHeaders(v map[string]*string) *CreateCustomGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCustomGroupResponse) SetStatusCode(v int32) *CreateCustomGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCustomGroupResponse) SetBody(v *CreateCustomGroupResponseBody) *CreateCustomGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateFpShotDBRequest struct {
 	Config               *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -2489,6 +2717,303 @@ func (s *DeactivateMediaWorkflowResponse) SetStatusCode(v int32) *DeactivateMedi
 }
 
 func (s *DeactivateMediaWorkflowResponse) SetBody(v *DeactivateMediaWorkflowResponseBody) *DeactivateMediaWorkflowResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomEntityRequest struct {
+	Algorithm            *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CustomEntityId       *string `json:"CustomEntityId,omitempty" xml:"CustomEntityId,omitempty"`
+	CustomGroupId        *string `json:"CustomGroupId,omitempty" xml:"CustomGroupId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteCustomEntityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomEntityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomEntityRequest) SetAlgorithm(v string) *DeleteCustomEntityRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *DeleteCustomEntityRequest) SetCustomEntityId(v string) *DeleteCustomEntityRequest {
+	s.CustomEntityId = &v
+	return s
+}
+
+func (s *DeleteCustomEntityRequest) SetCustomGroupId(v string) *DeleteCustomEntityRequest {
+	s.CustomGroupId = &v
+	return s
+}
+
+func (s *DeleteCustomEntityRequest) SetOwnerAccount(v string) *DeleteCustomEntityRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteCustomEntityRequest) SetOwnerId(v int64) *DeleteCustomEntityRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteCustomEntityRequest) SetResourceOwnerAccount(v string) *DeleteCustomEntityRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteCustomEntityRequest) SetResourceOwnerId(v int64) *DeleteCustomEntityRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteCustomEntityResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCustomEntityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomEntityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomEntityResponseBody) SetRequestId(v string) *DeleteCustomEntityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCustomEntityResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCustomEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCustomEntityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomEntityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomEntityResponse) SetHeaders(v map[string]*string) *DeleteCustomEntityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomEntityResponse) SetStatusCode(v int32) *DeleteCustomEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomEntityResponse) SetBody(v *DeleteCustomEntityResponseBody) *DeleteCustomEntityResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomGroupRequest struct {
+	Algorithm            *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CustomGroupId        *string `json:"CustomGroupId,omitempty" xml:"CustomGroupId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteCustomGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomGroupRequest) SetAlgorithm(v string) *DeleteCustomGroupRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *DeleteCustomGroupRequest) SetCustomGroupId(v string) *DeleteCustomGroupRequest {
+	s.CustomGroupId = &v
+	return s
+}
+
+func (s *DeleteCustomGroupRequest) SetOwnerAccount(v string) *DeleteCustomGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteCustomGroupRequest) SetOwnerId(v int64) *DeleteCustomGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteCustomGroupRequest) SetResourceOwnerAccount(v string) *DeleteCustomGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteCustomGroupRequest) SetResourceOwnerId(v int64) *DeleteCustomGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteCustomGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCustomGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomGroupResponseBody) SetRequestId(v string) *DeleteCustomGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCustomGroupResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCustomGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCustomGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomGroupResponse) SetHeaders(v map[string]*string) *DeleteCustomGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomGroupResponse) SetStatusCode(v int32) *DeleteCustomGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomGroupResponse) SetBody(v *DeleteCustomGroupResponseBody) *DeleteCustomGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomViewRequest struct {
+	Algorithm            *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CustomEntityId       *string `json:"CustomEntityId,omitempty" xml:"CustomEntityId,omitempty"`
+	CustomGroupId        *string `json:"CustomGroupId,omitempty" xml:"CustomGroupId,omitempty"`
+	CustomViewId         *string `json:"CustomViewId,omitempty" xml:"CustomViewId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteCustomViewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomViewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomViewRequest) SetAlgorithm(v string) *DeleteCustomViewRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *DeleteCustomViewRequest) SetCustomEntityId(v string) *DeleteCustomViewRequest {
+	s.CustomEntityId = &v
+	return s
+}
+
+func (s *DeleteCustomViewRequest) SetCustomGroupId(v string) *DeleteCustomViewRequest {
+	s.CustomGroupId = &v
+	return s
+}
+
+func (s *DeleteCustomViewRequest) SetCustomViewId(v string) *DeleteCustomViewRequest {
+	s.CustomViewId = &v
+	return s
+}
+
+func (s *DeleteCustomViewRequest) SetOwnerAccount(v string) *DeleteCustomViewRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteCustomViewRequest) SetOwnerId(v int64) *DeleteCustomViewRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteCustomViewRequest) SetResourceOwnerAccount(v string) *DeleteCustomViewRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteCustomViewRequest) SetResourceOwnerId(v int64) *DeleteCustomViewRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteCustomViewResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCustomViewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomViewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomViewResponseBody) SetRequestId(v string) *DeleteCustomViewResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCustomViewResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCustomViewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCustomViewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomViewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomViewResponse) SetHeaders(v map[string]*string) *DeleteCustomViewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomViewResponse) SetStatusCode(v int32) *DeleteCustomViewResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomViewResponse) SetBody(v *DeleteCustomViewResponseBody) *DeleteCustomViewResponse {
 	s.Body = v
 	return s
 }
@@ -3338,10 +3863,18 @@ func (s *ImAuditResponseBodyImageResultsResult) SetUrl(v string) *ImAuditRespons
 }
 
 type ImAuditResponseBodyImageResultsResultResults struct {
-	Label      *string  `json:"Label,omitempty" xml:"Label,omitempty"`
-	Rate       *float64 `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	Scene      *string  `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	Suggestion *string  `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	Label           *string                                                        `json:"Label,omitempty" xml:"Label,omitempty"`
+	Rate            *float64                                                       `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Scene           *string                                                        `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Suggestion      *string                                                        `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	Frames          []*ImAuditResponseBodyImageResultsResultResultsFrames          `json:"frames,omitempty" xml:"frames,omitempty" type:"Repeated"`
+	HintWordsInfo   []*ImAuditResponseBodyImageResultsResultResultsHintWordsInfo   `json:"hintWordsInfo,omitempty" xml:"hintWordsInfo,omitempty" type:"Repeated"`
+	LogoData        []*ImAuditResponseBodyImageResultsResultResultsLogoData        `json:"logoData,omitempty" xml:"logoData,omitempty" type:"Repeated"`
+	OcrData         []*string                                                      `json:"ocrData,omitempty" xml:"ocrData,omitempty" type:"Repeated"`
+	ProgramCodeData []*ImAuditResponseBodyImageResultsResultResultsProgramCodeData `json:"programCodeData,omitempty" xml:"programCodeData,omitempty" type:"Repeated"`
+	QrcodeData      []*string                                                      `json:"qrcodeData,omitempty" xml:"qrcodeData,omitempty" type:"Repeated"`
+	QrcodeLocations []*ImAuditResponseBodyImageResultsResultResultsQrcodeLocations `json:"qrcodeLocations,omitempty" xml:"qrcodeLocations,omitempty" type:"Repeated"`
+	SfaceData       []*ImAuditResponseBodyImageResultsResultResultsSfaceData       `json:"sfaceData,omitempty" xml:"sfaceData,omitempty" type:"Repeated"`
 }
 
 func (s ImAuditResponseBodyImageResultsResultResults) String() string {
@@ -3369,6 +3902,279 @@ func (s *ImAuditResponseBodyImageResultsResultResults) SetScene(v string) *ImAud
 
 func (s *ImAuditResponseBodyImageResultsResultResults) SetSuggestion(v string) *ImAuditResponseBodyImageResultsResultResults {
 	s.Suggestion = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResults) SetFrames(v []*ImAuditResponseBodyImageResultsResultResultsFrames) *ImAuditResponseBodyImageResultsResultResults {
+	s.Frames = v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResults) SetHintWordsInfo(v []*ImAuditResponseBodyImageResultsResultResultsHintWordsInfo) *ImAuditResponseBodyImageResultsResultResults {
+	s.HintWordsInfo = v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResults) SetLogoData(v []*ImAuditResponseBodyImageResultsResultResultsLogoData) *ImAuditResponseBodyImageResultsResultResults {
+	s.LogoData = v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResults) SetOcrData(v []*string) *ImAuditResponseBodyImageResultsResultResults {
+	s.OcrData = v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResults) SetProgramCodeData(v []*ImAuditResponseBodyImageResultsResultResultsProgramCodeData) *ImAuditResponseBodyImageResultsResultResults {
+	s.ProgramCodeData = v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResults) SetQrcodeData(v []*string) *ImAuditResponseBodyImageResultsResultResults {
+	s.QrcodeData = v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResults) SetQrcodeLocations(v []*ImAuditResponseBodyImageResultsResultResultsQrcodeLocations) *ImAuditResponseBodyImageResultsResultResults {
+	s.QrcodeLocations = v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResults) SetSfaceData(v []*ImAuditResponseBodyImageResultsResultResultsSfaceData) *ImAuditResponseBodyImageResultsResultResults {
+	s.SfaceData = v
+	return s
+}
+
+type ImAuditResponseBodyImageResultsResultResultsFrames struct {
+	Rate *float32 `json:"rate,omitempty" xml:"rate,omitempty"`
+	Url  *string  `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s ImAuditResponseBodyImageResultsResultResultsFrames) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImAuditResponseBodyImageResultsResultResultsFrames) GoString() string {
+	return s.String()
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsFrames) SetRate(v float32) *ImAuditResponseBodyImageResultsResultResultsFrames {
+	s.Rate = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsFrames) SetUrl(v string) *ImAuditResponseBodyImageResultsResultResultsFrames {
+	s.Url = &v
+	return s
+}
+
+type ImAuditResponseBodyImageResultsResultResultsHintWordsInfo struct {
+	Context *string `json:"context,omitempty" xml:"context,omitempty"`
+}
+
+func (s ImAuditResponseBodyImageResultsResultResultsHintWordsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImAuditResponseBodyImageResultsResultResultsHintWordsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsHintWordsInfo) SetContext(v string) *ImAuditResponseBodyImageResultsResultResultsHintWordsInfo {
+	s.Context = &v
+	return s
+}
+
+type ImAuditResponseBodyImageResultsResultResultsLogoData struct {
+	H    *float32 `json:"h,omitempty" xml:"h,omitempty"`
+	Name *string  `json:"name,omitempty" xml:"name,omitempty"`
+	Type *string  `json:"type,omitempty" xml:"type,omitempty"`
+	W    *float32 `json:"w,omitempty" xml:"w,omitempty"`
+	X    *float32 `json:"x,omitempty" xml:"x,omitempty"`
+	Y    *float32 `json:"y,omitempty" xml:"y,omitempty"`
+}
+
+func (s ImAuditResponseBodyImageResultsResultResultsLogoData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImAuditResponseBodyImageResultsResultResultsLogoData) GoString() string {
+	return s.String()
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsLogoData) SetH(v float32) *ImAuditResponseBodyImageResultsResultResultsLogoData {
+	s.H = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsLogoData) SetName(v string) *ImAuditResponseBodyImageResultsResultResultsLogoData {
+	s.Name = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsLogoData) SetType(v string) *ImAuditResponseBodyImageResultsResultResultsLogoData {
+	s.Type = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsLogoData) SetW(v float32) *ImAuditResponseBodyImageResultsResultResultsLogoData {
+	s.W = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsLogoData) SetX(v float32) *ImAuditResponseBodyImageResultsResultResultsLogoData {
+	s.X = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsLogoData) SetY(v float32) *ImAuditResponseBodyImageResultsResultResultsLogoData {
+	s.Y = &v
+	return s
+}
+
+type ImAuditResponseBodyImageResultsResultResultsProgramCodeData struct {
+	H *float32 `json:"h,omitempty" xml:"h,omitempty"`
+	W *float32 `json:"w,omitempty" xml:"w,omitempty"`
+	X *float32 `json:"x,omitempty" xml:"x,omitempty"`
+	Y *float32 `json:"y,omitempty" xml:"y,omitempty"`
+}
+
+func (s ImAuditResponseBodyImageResultsResultResultsProgramCodeData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImAuditResponseBodyImageResultsResultResultsProgramCodeData) GoString() string {
+	return s.String()
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsProgramCodeData) SetH(v float32) *ImAuditResponseBodyImageResultsResultResultsProgramCodeData {
+	s.H = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsProgramCodeData) SetW(v float32) *ImAuditResponseBodyImageResultsResultResultsProgramCodeData {
+	s.W = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsProgramCodeData) SetX(v float32) *ImAuditResponseBodyImageResultsResultResultsProgramCodeData {
+	s.X = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsProgramCodeData) SetY(v float32) *ImAuditResponseBodyImageResultsResultResultsProgramCodeData {
+	s.Y = &v
+	return s
+}
+
+type ImAuditResponseBodyImageResultsResultResultsQrcodeLocations struct {
+	H      *float32 `json:"h,omitempty" xml:"h,omitempty"`
+	Qrcode *string  `json:"qrcode,omitempty" xml:"qrcode,omitempty"`
+	W      *float32 `json:"w,omitempty" xml:"w,omitempty"`
+	X      *float32 `json:"x,omitempty" xml:"x,omitempty"`
+	Y      *float32 `json:"y,omitempty" xml:"y,omitempty"`
+}
+
+func (s ImAuditResponseBodyImageResultsResultResultsQrcodeLocations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImAuditResponseBodyImageResultsResultResultsQrcodeLocations) GoString() string {
+	return s.String()
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsQrcodeLocations) SetH(v float32) *ImAuditResponseBodyImageResultsResultResultsQrcodeLocations {
+	s.H = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsQrcodeLocations) SetQrcode(v string) *ImAuditResponseBodyImageResultsResultResultsQrcodeLocations {
+	s.Qrcode = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsQrcodeLocations) SetW(v float32) *ImAuditResponseBodyImageResultsResultResultsQrcodeLocations {
+	s.W = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsQrcodeLocations) SetX(v float32) *ImAuditResponseBodyImageResultsResultResultsQrcodeLocations {
+	s.X = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsQrcodeLocations) SetY(v float32) *ImAuditResponseBodyImageResultsResultResultsQrcodeLocations {
+	s.Y = &v
+	return s
+}
+
+type ImAuditResponseBodyImageResultsResultResultsSfaceData struct {
+	Faces []*ImAuditResponseBodyImageResultsResultResultsSfaceDataFaces `json:"faces,omitempty" xml:"faces,omitempty" type:"Repeated"`
+	H     *float32                                                      `json:"h,omitempty" xml:"h,omitempty"`
+	W     *float32                                                      `json:"w,omitempty" xml:"w,omitempty"`
+	X     *float32                                                      `json:"x,omitempty" xml:"x,omitempty"`
+	Y     *float32                                                      `json:"y,omitempty" xml:"y,omitempty"`
+}
+
+func (s ImAuditResponseBodyImageResultsResultResultsSfaceData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImAuditResponseBodyImageResultsResultResultsSfaceData) GoString() string {
+	return s.String()
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsSfaceData) SetFaces(v []*ImAuditResponseBodyImageResultsResultResultsSfaceDataFaces) *ImAuditResponseBodyImageResultsResultResultsSfaceData {
+	s.Faces = v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsSfaceData) SetH(v float32) *ImAuditResponseBodyImageResultsResultResultsSfaceData {
+	s.H = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsSfaceData) SetW(v float32) *ImAuditResponseBodyImageResultsResultResultsSfaceData {
+	s.W = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsSfaceData) SetX(v float32) *ImAuditResponseBodyImageResultsResultResultsSfaceData {
+	s.X = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsSfaceData) SetY(v float32) *ImAuditResponseBodyImageResultsResultResultsSfaceData {
+	s.Y = &v
+	return s
+}
+
+type ImAuditResponseBodyImageResultsResultResultsSfaceDataFaces struct {
+	Idid *string  `json:"idid,omitempty" xml:"idid,omitempty"`
+	Name *string  `json:"name,omitempty" xml:"name,omitempty"`
+	Re   *float32 `json:"re,omitempty" xml:"re,omitempty"`
+}
+
+func (s ImAuditResponseBodyImageResultsResultResultsSfaceDataFaces) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImAuditResponseBodyImageResultsResultResultsSfaceDataFaces) GoString() string {
+	return s.String()
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsSfaceDataFaces) SetIdid(v string) *ImAuditResponseBodyImageResultsResultResultsSfaceDataFaces {
+	s.Idid = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsSfaceDataFaces) SetName(v string) *ImAuditResponseBodyImageResultsResultResultsSfaceDataFaces {
+	s.Name = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyImageResultsResultResultsSfaceDataFaces) SetRe(v float32) *ImAuditResponseBodyImageResultsResultResultsSfaceDataFaces {
+	s.Re = &v
 	return s
 }
 
@@ -3478,7 +4284,8 @@ func (s *ImAuditResponseBodyTextResultsResultResults) SetSuggestion(v string) *I
 }
 
 type ImAuditResponseBodyTextResultsResultResultsDetails struct {
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Label    *string                                                       `json:"Label,omitempty" xml:"Label,omitempty"`
+	Contexts []*ImAuditResponseBodyTextResultsResultResultsDetailsContexts `json:"contexts,omitempty" xml:"contexts,omitempty" type:"Repeated"`
 }
 
 func (s ImAuditResponseBodyTextResultsResultResultsDetails) String() string {
@@ -3491,6 +4298,52 @@ func (s ImAuditResponseBodyTextResultsResultResultsDetails) GoString() string {
 
 func (s *ImAuditResponseBodyTextResultsResultResultsDetails) SetLabel(v string) *ImAuditResponseBodyTextResultsResultResultsDetails {
 	s.Label = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyTextResultsResultResultsDetails) SetContexts(v []*ImAuditResponseBodyTextResultsResultResultsDetailsContexts) *ImAuditResponseBodyTextResultsResultResultsDetails {
+	s.Contexts = v
+	return s
+}
+
+type ImAuditResponseBodyTextResultsResultResultsDetailsContexts struct {
+	Context   *string   `json:"context,omitempty" xml:"context,omitempty"`
+	LibCode   *string   `json:"libCode,omitempty" xml:"libCode,omitempty"`
+	LibName   *string   `json:"libName,omitempty" xml:"libName,omitempty"`
+	Positions []*string `json:"positions,omitempty" xml:"positions,omitempty" type:"Repeated"`
+	RuleType  *string   `json:"ruleType,omitempty" xml:"ruleType,omitempty"`
+}
+
+func (s ImAuditResponseBodyTextResultsResultResultsDetailsContexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImAuditResponseBodyTextResultsResultResultsDetailsContexts) GoString() string {
+	return s.String()
+}
+
+func (s *ImAuditResponseBodyTextResultsResultResultsDetailsContexts) SetContext(v string) *ImAuditResponseBodyTextResultsResultResultsDetailsContexts {
+	s.Context = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyTextResultsResultResultsDetailsContexts) SetLibCode(v string) *ImAuditResponseBodyTextResultsResultResultsDetailsContexts {
+	s.LibCode = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyTextResultsResultResultsDetailsContexts) SetLibName(v string) *ImAuditResponseBodyTextResultsResultResultsDetailsContexts {
+	s.LibName = &v
+	return s
+}
+
+func (s *ImAuditResponseBodyTextResultsResultResultsDetailsContexts) SetPositions(v []*string) *ImAuditResponseBodyTextResultsResultResultsDetailsContexts {
+	s.Positions = v
+	return s
+}
+
+func (s *ImAuditResponseBodyTextResultsResultResultsDetailsContexts) SetRuleType(v string) *ImAuditResponseBodyTextResultsResultResultsDetailsContexts {
+	s.RuleType = &v
 	return s
 }
 
@@ -3589,8 +4442,7 @@ func (s *ImportFpShotJobRequest) SetUserData(v string) *ImportFpShotJobRequest {
 }
 
 type ImportFpShotJobResponseBody struct {
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3788,6 +4640,350 @@ func (s *ListAllMediaBucketResponse) SetStatusCode(v int32) *ListAllMediaBucketR
 }
 
 func (s *ListAllMediaBucketResponse) SetBody(v *ListAllMediaBucketResponseBody) *ListAllMediaBucketResponse {
+	s.Body = v
+	return s
+}
+
+type ListCustomEntitiesRequest struct {
+	Algorithm            *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CustomGroupId        *string `json:"CustomGroupId,omitempty" xml:"CustomGroupId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListCustomEntitiesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomEntitiesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomEntitiesRequest) SetAlgorithm(v string) *ListCustomEntitiesRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListCustomEntitiesRequest) SetCustomGroupId(v string) *ListCustomEntitiesRequest {
+	s.CustomGroupId = &v
+	return s
+}
+
+func (s *ListCustomEntitiesRequest) SetOwnerAccount(v string) *ListCustomEntitiesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListCustomEntitiesRequest) SetOwnerId(v int64) *ListCustomEntitiesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListCustomEntitiesRequest) SetPageNumber(v int32) *ListCustomEntitiesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomEntitiesRequest) SetPageSize(v int32) *ListCustomEntitiesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomEntitiesRequest) SetResourceOwnerAccount(v string) *ListCustomEntitiesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListCustomEntitiesRequest) SetResourceOwnerId(v int64) *ListCustomEntitiesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListCustomEntitiesResponseBody struct {
+	CustomEntities *ListCustomEntitiesResponseBodyCustomEntities `json:"CustomEntities,omitempty" xml:"CustomEntities,omitempty" type:"Struct"`
+	PageNumber     *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCustomEntitiesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomEntitiesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomEntitiesResponseBody) SetCustomEntities(v *ListCustomEntitiesResponseBodyCustomEntities) *ListCustomEntitiesResponseBody {
+	s.CustomEntities = v
+	return s
+}
+
+func (s *ListCustomEntitiesResponseBody) SetPageNumber(v int32) *ListCustomEntitiesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomEntitiesResponseBody) SetPageSize(v int32) *ListCustomEntitiesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomEntitiesResponseBody) SetRequestId(v string) *ListCustomEntitiesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomEntitiesResponseBody) SetTotalCount(v int64) *ListCustomEntitiesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCustomEntitiesResponseBodyCustomEntities struct {
+	CustomEntity []*ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity `json:"CustomEntity,omitempty" xml:"CustomEntity,omitempty" type:"Repeated"`
+}
+
+func (s ListCustomEntitiesResponseBodyCustomEntities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomEntitiesResponseBodyCustomEntities) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomEntitiesResponseBodyCustomEntities) SetCustomEntity(v []*ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity) *ListCustomEntitiesResponseBodyCustomEntities {
+	s.CustomEntity = v
+	return s
+}
+
+type ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity struct {
+	CustomEntityId   *string `json:"CustomEntityId,omitempty" xml:"CustomEntityId,omitempty"`
+	CustomEntityInfo *string `json:"CustomEntityInfo,omitempty" xml:"CustomEntityInfo,omitempty"`
+	CustomEntityName *string `json:"CustomEntityName,omitempty" xml:"CustomEntityName,omitempty"`
+}
+
+func (s ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity) SetCustomEntityId(v string) *ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity {
+	s.CustomEntityId = &v
+	return s
+}
+
+func (s *ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity) SetCustomEntityInfo(v string) *ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity {
+	s.CustomEntityInfo = &v
+	return s
+}
+
+func (s *ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity) SetCustomEntityName(v string) *ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity {
+	s.CustomEntityName = &v
+	return s
+}
+
+type ListCustomEntitiesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCustomEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCustomEntitiesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomEntitiesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomEntitiesResponse) SetHeaders(v map[string]*string) *ListCustomEntitiesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomEntitiesResponse) SetStatusCode(v int32) *ListCustomEntitiesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomEntitiesResponse) SetBody(v *ListCustomEntitiesResponseBody) *ListCustomEntitiesResponse {
+	s.Body = v
+	return s
+}
+
+type ListCustomGroupsRequest struct {
+	Algorithm            *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListCustomGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomGroupsRequest) SetAlgorithm(v string) *ListCustomGroupsRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListCustomGroupsRequest) SetOwnerAccount(v string) *ListCustomGroupsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListCustomGroupsRequest) SetOwnerId(v int64) *ListCustomGroupsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListCustomGroupsRequest) SetPageNumber(v int32) *ListCustomGroupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomGroupsRequest) SetPageSize(v int32) *ListCustomGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomGroupsRequest) SetResourceOwnerAccount(v string) *ListCustomGroupsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListCustomGroupsRequest) SetResourceOwnerId(v int64) *ListCustomGroupsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListCustomGroupsResponseBody struct {
+	CustomGroups *ListCustomGroupsResponseBodyCustomGroups `json:"CustomGroups,omitempty" xml:"CustomGroups,omitempty" type:"Struct"`
+	PageNumber   *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCustomGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomGroupsResponseBody) SetCustomGroups(v *ListCustomGroupsResponseBodyCustomGroups) *ListCustomGroupsResponseBody {
+	s.CustomGroups = v
+	return s
+}
+
+func (s *ListCustomGroupsResponseBody) SetPageNumber(v int32) *ListCustomGroupsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomGroupsResponseBody) SetPageSize(v int32) *ListCustomGroupsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomGroupsResponseBody) SetRequestId(v string) *ListCustomGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomGroupsResponseBody) SetTotalCount(v int64) *ListCustomGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCustomGroupsResponseBodyCustomGroups struct {
+	CustomGroup []*ListCustomGroupsResponseBodyCustomGroupsCustomGroup `json:"CustomGroup,omitempty" xml:"CustomGroup,omitempty" type:"Repeated"`
+}
+
+func (s ListCustomGroupsResponseBodyCustomGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomGroupsResponseBodyCustomGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomGroupsResponseBodyCustomGroups) SetCustomGroup(v []*ListCustomGroupsResponseBodyCustomGroupsCustomGroup) *ListCustomGroupsResponseBodyCustomGroups {
+	s.CustomGroup = v
+	return s
+}
+
+type ListCustomGroupsResponseBodyCustomGroupsCustomGroup struct {
+	CustomGroupDescription *string `json:"CustomGroupDescription,omitempty" xml:"CustomGroupDescription,omitempty"`
+	CustomGroupId          *string `json:"CustomGroupId,omitempty" xml:"CustomGroupId,omitempty"`
+	CustomGroupName        *string `json:"CustomGroupName,omitempty" xml:"CustomGroupName,omitempty"`
+}
+
+func (s ListCustomGroupsResponseBodyCustomGroupsCustomGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomGroupsResponseBodyCustomGroupsCustomGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomGroupsResponseBodyCustomGroupsCustomGroup) SetCustomGroupDescription(v string) *ListCustomGroupsResponseBodyCustomGroupsCustomGroup {
+	s.CustomGroupDescription = &v
+	return s
+}
+
+func (s *ListCustomGroupsResponseBodyCustomGroupsCustomGroup) SetCustomGroupId(v string) *ListCustomGroupsResponseBodyCustomGroupsCustomGroup {
+	s.CustomGroupId = &v
+	return s
+}
+
+func (s *ListCustomGroupsResponseBodyCustomGroupsCustomGroup) SetCustomGroupName(v string) *ListCustomGroupsResponseBodyCustomGroupsCustomGroup {
+	s.CustomGroupName = &v
+	return s
+}
+
+type ListCustomGroupsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCustomGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCustomGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomGroupsResponse) SetHeaders(v map[string]*string) *ListCustomGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomGroupsResponse) SetStatusCode(v int32) *ListCustomGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomGroupsResponse) SetBody(v *ListCustomGroupsResponseBody) *ListCustomGroupsResponse {
 	s.Body = v
 	return s
 }
@@ -4035,6 +5231,181 @@ func (s *ListCustomPersonsResponse) SetBody(v *ListCustomPersonsResponseBody) *L
 	return s
 }
 
+type ListCustomViewsRequest struct {
+	Algorithm            *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CustomEntityId       *string `json:"CustomEntityId,omitempty" xml:"CustomEntityId,omitempty"`
+	CustomGroupId        *string `json:"CustomGroupId,omitempty" xml:"CustomGroupId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListCustomViewsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomViewsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomViewsRequest) SetAlgorithm(v string) *ListCustomViewsRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListCustomViewsRequest) SetCustomEntityId(v string) *ListCustomViewsRequest {
+	s.CustomEntityId = &v
+	return s
+}
+
+func (s *ListCustomViewsRequest) SetCustomGroupId(v string) *ListCustomViewsRequest {
+	s.CustomGroupId = &v
+	return s
+}
+
+func (s *ListCustomViewsRequest) SetOwnerAccount(v string) *ListCustomViewsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListCustomViewsRequest) SetOwnerId(v int64) *ListCustomViewsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListCustomViewsRequest) SetPageNumber(v int32) *ListCustomViewsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomViewsRequest) SetPageSize(v int32) *ListCustomViewsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomViewsRequest) SetResourceOwnerAccount(v string) *ListCustomViewsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListCustomViewsRequest) SetResourceOwnerId(v int64) *ListCustomViewsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListCustomViewsResponseBody struct {
+	CustomViews *ListCustomViewsResponseBodyCustomViews `json:"CustomViews,omitempty" xml:"CustomViews,omitempty" type:"Struct"`
+	PageNumber  *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCustomViewsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomViewsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomViewsResponseBody) SetCustomViews(v *ListCustomViewsResponseBodyCustomViews) *ListCustomViewsResponseBody {
+	s.CustomViews = v
+	return s
+}
+
+func (s *ListCustomViewsResponseBody) SetPageNumber(v int32) *ListCustomViewsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomViewsResponseBody) SetPageSize(v int32) *ListCustomViewsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomViewsResponseBody) SetRequestId(v string) *ListCustomViewsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomViewsResponseBody) SetTotalCount(v int64) *ListCustomViewsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCustomViewsResponseBodyCustomViews struct {
+	CustomView []*ListCustomViewsResponseBodyCustomViewsCustomView `json:"CustomView,omitempty" xml:"CustomView,omitempty" type:"Repeated"`
+}
+
+func (s ListCustomViewsResponseBodyCustomViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomViewsResponseBodyCustomViews) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomViewsResponseBodyCustomViews) SetCustomView(v []*ListCustomViewsResponseBodyCustomViewsCustomView) *ListCustomViewsResponseBodyCustomViews {
+	s.CustomView = v
+	return s
+}
+
+type ListCustomViewsResponseBodyCustomViewsCustomView struct {
+	CustomViewId *string `json:"CustomViewId,omitempty" xml:"CustomViewId,omitempty"`
+	ImageUrl     *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+}
+
+func (s ListCustomViewsResponseBodyCustomViewsCustomView) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomViewsResponseBodyCustomViewsCustomView) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomViewsResponseBodyCustomViewsCustomView) SetCustomViewId(v string) *ListCustomViewsResponseBodyCustomViewsCustomView {
+	s.CustomViewId = &v
+	return s
+}
+
+func (s *ListCustomViewsResponseBodyCustomViewsCustomView) SetImageUrl(v string) *ListCustomViewsResponseBodyCustomViewsCustomView {
+	s.ImageUrl = &v
+	return s
+}
+
+type ListCustomViewsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCustomViewsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCustomViewsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomViewsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomViewsResponse) SetHeaders(v map[string]*string) *ListCustomViewsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomViewsResponse) SetStatusCode(v int32) *ListCustomViewsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomViewsResponse) SetBody(v *ListCustomViewsResponseBody) *ListCustomViewsResponse {
+	s.Body = v
+	return s
+}
+
 type ListFpShotDBRequest struct {
 	FpDBIds              *string `json:"FpDBIds,omitempty" xml:"FpDBIds,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -4210,6 +5581,7 @@ func (s *ListFpShotDBResponse) SetBody(v *ListFpShotDBResponseBody) *ListFpShotD
 }
 
 type ListFpShotFilesRequest struct {
+	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	FpDBId               *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
 	NextPageToken        *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -4217,6 +5589,7 @@ type ListFpShotFilesRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListFpShotFilesRequest) String() string {
@@ -4225,6 +5598,11 @@ func (s ListFpShotFilesRequest) String() string {
 
 func (s ListFpShotFilesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListFpShotFilesRequest) SetEndTime(v string) *ListFpShotFilesRequest {
+	s.EndTime = &v
+	return s
 }
 
 func (s *ListFpShotFilesRequest) SetFpDBId(v string) *ListFpShotFilesRequest {
@@ -4259,6 +5637,11 @@ func (s *ListFpShotFilesRequest) SetResourceOwnerAccount(v string) *ListFpShotFi
 
 func (s *ListFpShotFilesRequest) SetResourceOwnerId(v int64) *ListFpShotFilesRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListFpShotFilesRequest) SetStartTime(v string) *ListFpShotFilesRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -4312,6 +5695,7 @@ type ListFpShotFilesResponseBodyFpShotFileListFpShotFile struct {
 	FileId     *string                                                       `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	InputFile  *ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile `json:"InputFile,omitempty" xml:"InputFile,omitempty" type:"Struct"`
 	PrimaryKey *string                                                       `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	StoreTime  *string                                                       `json:"StoreTime,omitempty" xml:"StoreTime,omitempty"`
 }
 
 func (s ListFpShotFilesResponseBodyFpShotFileListFpShotFile) String() string {
@@ -4334,6 +5718,11 @@ func (s *ListFpShotFilesResponseBodyFpShotFileListFpShotFile) SetInputFile(v *Li
 
 func (s *ListFpShotFilesResponseBodyFpShotFileListFpShotFile) SetPrimaryKey(v string) *ListFpShotFilesResponseBodyFpShotFileListFpShotFile {
 	s.PrimaryKey = &v
+	return s
+}
+
+func (s *ListFpShotFilesResponseBodyFpShotFileListFpShotFile) SetStoreTime(v string) *ListFpShotFilesResponseBodyFpShotFileListFpShotFile {
+	s.StoreTime = &v
 	return s
 }
 
@@ -4439,8 +5828,7 @@ func (s *ListFpShotImportJobRequest) SetResourceOwnerId(v int64) *ListFpShotImpo
 type ListFpShotImportJobResponseBody struct {
 	FpShotImportJobList []*ListFpShotImportJobResponseBodyFpShotImportJobList `json:"FpShotImportJobList,omitempty" xml:"FpShotImportJobList,omitempty" type:"Repeated"`
 	NonExistIds         []*string                                             `json:"NonExistIds,omitempty" xml:"NonExistIds,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId           *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListFpShotImportJobResponseBody) String() string {
@@ -11533,13 +12921,12 @@ func (s *QueryJobListResponseBodyJobListJobMNSMessageResult) SetMessageId(v stri
 }
 
 type QueryJobListResponseBodyJobListJobOutput struct {
-	Audio          *QueryJobListResponseBodyJobListJobOutputAudio      `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	AudioStreamMap *string                                             `json:"AudioStreamMap,omitempty" xml:"AudioStreamMap,omitempty"`
-	Clip           *QueryJobListResponseBodyJobListJobOutputClip       `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Struct"`
-	Container      *QueryJobListResponseBodyJobListJobOutputContainer  `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	DeWatermark    *string                                             `json:"DeWatermark,omitempty" xml:"DeWatermark,omitempty"`
-	Encryption     *QueryJobListResponseBodyJobListJobOutputEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
-	// 扩展字段
+	Audio                  *QueryJobListResponseBodyJobListJobOutputAudio                  `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	AudioStreamMap         *string                                                         `json:"AudioStreamMap,omitempty" xml:"AudioStreamMap,omitempty"`
+	Clip                   *QueryJobListResponseBodyJobListJobOutputClip                   `json:"Clip,omitempty" xml:"Clip,omitempty" type:"Struct"`
+	Container              *QueryJobListResponseBodyJobListJobOutputContainer              `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	DeWatermark            *string                                                         `json:"DeWatermark,omitempty" xml:"DeWatermark,omitempty"`
+	Encryption             *QueryJobListResponseBodyJobListJobOutputEncryption             `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
 	ExtendData             *string                                                         `json:"ExtendData,omitempty" xml:"ExtendData,omitempty"`
 	M3U8NonStandardSupport *QueryJobListResponseBodyJobListJobOutputM3U8NonStandardSupport `json:"M3U8NonStandardSupport,omitempty" xml:"M3U8NonStandardSupport,omitempty" type:"Struct"`
 	MergeConfigUrl         *string                                                         `json:"MergeConfigUrl,omitempty" xml:"MergeConfigUrl,omitempty"`
@@ -18951,6 +20338,8 @@ type QuerySmarttagTemplateListResponseBodyTemplatesTemplate struct {
 	KnowledgeConfig        *string `json:"KnowledgeConfig,omitempty" xml:"KnowledgeConfig,omitempty"`
 	LabelType              *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
 	LabelVersion           *string `json:"LabelVersion,omitempty" xml:"LabelVersion,omitempty"`
+	LandmarkGroupIds       *string `json:"LandmarkGroupIds,omitempty" xml:"LandmarkGroupIds,omitempty"`
+	ObjectGroupIds         *string `json:"ObjectGroupIds,omitempty" xml:"ObjectGroupIds,omitempty"`
 	Scene                  *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	TemplateId             *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateName           *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
@@ -19006,6 +20395,16 @@ func (s *QuerySmarttagTemplateListResponseBodyTemplatesTemplate) SetLabelType(v 
 
 func (s *QuerySmarttagTemplateListResponseBodyTemplatesTemplate) SetLabelVersion(v string) *QuerySmarttagTemplateListResponseBodyTemplatesTemplate {
 	s.LabelVersion = &v
+	return s
+}
+
+func (s *QuerySmarttagTemplateListResponseBodyTemplatesTemplate) SetLandmarkGroupIds(v string) *QuerySmarttagTemplateListResponseBodyTemplatesTemplate {
+	s.LandmarkGroupIds = &v
+	return s
+}
+
+func (s *QuerySmarttagTemplateListResponseBodyTemplatesTemplate) SetObjectGroupIds(v string) *QuerySmarttagTemplateListResponseBodyTemplatesTemplate {
+	s.ObjectGroupIds = &v
 	return s
 }
 
@@ -20663,6 +22062,117 @@ func (s *RegisterCustomFaceResponse) SetStatusCode(v int32) *RegisterCustomFaceR
 }
 
 func (s *RegisterCustomFaceResponse) SetBody(v *RegisterCustomFaceResponseBody) *RegisterCustomFaceResponse {
+	s.Body = v
+	return s
+}
+
+type RegisterCustomViewRequest struct {
+	Algorithm            *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CustomEntityId       *string `json:"CustomEntityId,omitempty" xml:"CustomEntityId,omitempty"`
+	CustomGroupId        *string `json:"CustomGroupId,omitempty" xml:"CustomGroupId,omitempty"`
+	ImageUrl             *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s RegisterCustomViewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterCustomViewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterCustomViewRequest) SetAlgorithm(v string) *RegisterCustomViewRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *RegisterCustomViewRequest) SetCustomEntityId(v string) *RegisterCustomViewRequest {
+	s.CustomEntityId = &v
+	return s
+}
+
+func (s *RegisterCustomViewRequest) SetCustomGroupId(v string) *RegisterCustomViewRequest {
+	s.CustomGroupId = &v
+	return s
+}
+
+func (s *RegisterCustomViewRequest) SetImageUrl(v string) *RegisterCustomViewRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *RegisterCustomViewRequest) SetOwnerAccount(v string) *RegisterCustomViewRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *RegisterCustomViewRequest) SetOwnerId(v int64) *RegisterCustomViewRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RegisterCustomViewRequest) SetResourceOwnerAccount(v string) *RegisterCustomViewRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RegisterCustomViewRequest) SetResourceOwnerId(v int64) *RegisterCustomViewRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type RegisterCustomViewResponseBody struct {
+	CustomViewId *string `json:"CustomViewId,omitempty" xml:"CustomViewId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RegisterCustomViewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterCustomViewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterCustomViewResponseBody) SetCustomViewId(v string) *RegisterCustomViewResponseBody {
+	s.CustomViewId = &v
+	return s
+}
+
+func (s *RegisterCustomViewResponseBody) SetRequestId(v string) *RegisterCustomViewResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RegisterCustomViewResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RegisterCustomViewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RegisterCustomViewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterCustomViewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterCustomViewResponse) SetHeaders(v map[string]*string) *RegisterCustomViewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterCustomViewResponse) SetStatusCode(v int32) *RegisterCustomViewResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RegisterCustomViewResponse) SetBody(v *RegisterCustomViewResponseBody) *RegisterCustomViewResponse {
 	s.Body = v
 	return s
 }
@@ -25260,6 +26770,7 @@ type SubmitFpFileDeleteJobRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PipelineId           *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	PrimaryKeys          *string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
@@ -25295,6 +26806,11 @@ func (s *SubmitFpFileDeleteJobRequest) SetOwnerId(v int64) *SubmitFpFileDeleteJo
 
 func (s *SubmitFpFileDeleteJobRequest) SetPipelineId(v string) *SubmitFpFileDeleteJobRequest {
 	s.PipelineId = &v
+	return s
+}
+
+func (s *SubmitFpFileDeleteJobRequest) SetPrimaryKeys(v string) *SubmitFpFileDeleteJobRequest {
+	s.PrimaryKeys = &v
 	return s
 }
 
@@ -31007,6 +32523,8 @@ type UpdateSmarttagTemplateRequest struct {
 	KnowledgeConfig        *string `json:"KnowledgeConfig,omitempty" xml:"KnowledgeConfig,omitempty"`
 	LabelType              *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
 	LabelVersion           *string `json:"LabelVersion,omitempty" xml:"LabelVersion,omitempty"`
+	LandmarkGroupIds       *string `json:"LandmarkGroupIds,omitempty" xml:"LandmarkGroupIds,omitempty"`
+	ObjectGroupIds         *string `json:"ObjectGroupIds,omitempty" xml:"ObjectGroupIds,omitempty"`
 	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -31066,6 +32584,16 @@ func (s *UpdateSmarttagTemplateRequest) SetLabelType(v string) *UpdateSmarttagTe
 
 func (s *UpdateSmarttagTemplateRequest) SetLabelVersion(v string) *UpdateSmarttagTemplateRequest {
 	s.LabelVersion = &v
+	return s
+}
+
+func (s *UpdateSmarttagTemplateRequest) SetLandmarkGroupIds(v string) *UpdateSmarttagTemplateRequest {
+	s.LandmarkGroupIds = &v
+	return s
+}
+
+func (s *UpdateSmarttagTemplateRequest) SetObjectGroupIds(v string) *UpdateSmarttagTemplateRequest {
+	s.ObjectGroupIds = &v
 	return s
 }
 
@@ -32468,6 +33996,14 @@ func (client *Client) AddSmarttagTemplateWithOptions(request *AddSmarttagTemplat
 		query["LabelVersion"] = request.LabelVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LandmarkGroupIds)) {
+		query["LandmarkGroupIds"] = request.LandmarkGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectGroupIds)) {
+		query["ObjectGroupIds"] = request.ObjectGroupIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -32862,6 +34398,146 @@ func (client *Client) CancelJob(request *CancelJobRequest) (_result *CancelJobRe
 	return _result, _err
 }
 
+func (client *Client) CreateCustomEntityWithOptions(request *CreateCustomEntityRequest, runtime *util.RuntimeOptions) (_result *CreateCustomEntityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomEntityInfo)) {
+		query["CustomEntityInfo"] = request.CustomEntityInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomEntityName)) {
+		query["CustomEntityName"] = request.CustomEntityName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomGroupId)) {
+		query["CustomGroupId"] = request.CustomGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCustomEntity"),
+		Version:     tea.String("2014-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCustomEntityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCustomEntity(request *CreateCustomEntityRequest) (_result *CreateCustomEntityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCustomEntityResponse{}
+	_body, _err := client.CreateCustomEntityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateCustomGroupWithOptions(request *CreateCustomGroupRequest, runtime *util.RuntimeOptions) (_result *CreateCustomGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomGroupDescription)) {
+		query["CustomGroupDescription"] = request.CustomGroupDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomGroupName)) {
+		query["CustomGroupName"] = request.CustomGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCustomGroup"),
+		Version:     tea.String("2014-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCustomGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCustomGroup(request *CreateCustomGroupRequest) (_result *CreateCustomGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCustomGroupResponse{}
+	_body, _err := client.CreateCustomGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateFpShotDBWithOptions(request *CreateFpShotDBRequest, runtime *util.RuntimeOptions) (_result *CreateFpShotDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32987,6 +34663,210 @@ func (client *Client) DeactivateMediaWorkflow(request *DeactivateMediaWorkflowRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DeactivateMediaWorkflowResponse{}
 	_body, _err := client.DeactivateMediaWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomEntityWithOptions(request *DeleteCustomEntityRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomEntityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomEntityId)) {
+		query["CustomEntityId"] = request.CustomEntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomGroupId)) {
+		query["CustomGroupId"] = request.CustomGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomEntity"),
+		Version:     tea.String("2014-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomEntityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomEntity(request *DeleteCustomEntityRequest) (_result *DeleteCustomEntityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomEntityResponse{}
+	_body, _err := client.DeleteCustomEntityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomGroupWithOptions(request *DeleteCustomGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomGroupId)) {
+		query["CustomGroupId"] = request.CustomGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomGroup"),
+		Version:     tea.String("2014-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomGroup(request *DeleteCustomGroupRequest) (_result *DeleteCustomGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomGroupResponse{}
+	_body, _err := client.DeleteCustomGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomViewWithOptions(request *DeleteCustomViewRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomViewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomEntityId)) {
+		query["CustomEntityId"] = request.CustomEntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomGroupId)) {
+		query["CustomGroupId"] = request.CustomGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomViewId)) {
+		query["CustomViewId"] = request.CustomViewId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomView"),
+		Version:     tea.String("2014-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomViewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomView(request *DeleteCustomViewRequest) (_result *DeleteCustomViewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomViewResponse{}
+	_body, _err := client.DeleteCustomViewWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33626,6 +35506,146 @@ func (client *Client) ListAllMediaBucket(request *ListAllMediaBucketRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) ListCustomEntitiesWithOptions(request *ListCustomEntitiesRequest, runtime *util.RuntimeOptions) (_result *ListCustomEntitiesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomGroupId)) {
+		query["CustomGroupId"] = request.CustomGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomEntities"),
+		Version:     tea.String("2014-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomEntitiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCustomEntities(request *ListCustomEntitiesRequest) (_result *ListCustomEntitiesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCustomEntitiesResponse{}
+	_body, _err := client.ListCustomEntitiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCustomGroupsWithOptions(request *ListCustomGroupsRequest, runtime *util.RuntimeOptions) (_result *ListCustomGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomGroups"),
+		Version:     tea.String("2014-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCustomGroups(request *ListCustomGroupsRequest) (_result *ListCustomGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCustomGroupsResponse{}
+	_body, _err := client.ListCustomGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListCustomPersonsWithOptions(request *ListCustomPersonsRequest, runtime *util.RuntimeOptions) (_result *ListCustomPersonsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33683,6 +35703,82 @@ func (client *Client) ListCustomPersons(request *ListCustomPersonsRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCustomPersonsResponse{}
 	_body, _err := client.ListCustomPersonsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCustomViewsWithOptions(request *ListCustomViewsRequest, runtime *util.RuntimeOptions) (_result *ListCustomViewsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomEntityId)) {
+		query["CustomEntityId"] = request.CustomEntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomGroupId)) {
+		query["CustomGroupId"] = request.CustomGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomViews"),
+		Version:     tea.String("2014-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomViewsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCustomViews(request *ListCustomViewsRequest) (_result *ListCustomViewsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCustomViewsResponse{}
+	_body, _err := client.ListCustomViewsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33756,6 +35852,10 @@ func (client *Client) ListFpShotFilesWithOptions(request *ListFpShotFilesRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FpDBId)) {
 		query["FpDBId"] = request.FpDBId
 	}
@@ -33782,6 +35882,10 @@ func (client *Client) ListFpShotFilesWithOptions(request *ListFpShotFilesRequest
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -35442,6 +37546,78 @@ func (client *Client) RegisterCustomFace(request *RegisterCustomFaceRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) RegisterCustomViewWithOptions(request *RegisterCustomViewRequest, runtime *util.RuntimeOptions) (_result *RegisterCustomViewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomEntityId)) {
+		query["CustomEntityId"] = request.CustomEntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomGroupId)) {
+		query["CustomGroupId"] = request.CustomGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RegisterCustomView"),
+		Version:     tea.String("2014-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RegisterCustomViewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RegisterCustomView(request *RegisterCustomViewRequest) (_result *RegisterCustomViewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RegisterCustomViewResponse{}
+	_body, _err := client.RegisterCustomViewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ReportFpShotJobResultWithOptions(request *ReportFpShotJobResultRequest, runtime *util.RuntimeOptions) (_result *ReportFpShotJobResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36042,6 +38218,10 @@ func (client *Client) SubmitFpFileDeleteJobWithOptions(request *SubmitFpFileDele
 
 	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
 		query["PipelineId"] = request.PipelineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryKeys)) {
+		query["PrimaryKeys"] = request.PrimaryKeys
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -37530,6 +39710,14 @@ func (client *Client) UpdateSmarttagTemplateWithOptions(request *UpdateSmarttagT
 
 	if !tea.BoolValue(util.IsUnset(request.LabelVersion)) {
 		query["LabelVersion"] = request.LabelVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LandmarkGroupIds)) {
+		query["LandmarkGroupIds"] = request.LandmarkGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectGroupIds)) {
+		query["ObjectGroupIds"] = request.ObjectGroupIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
