@@ -1,3 +1,6 @@
+2022-09-23 Version: v4.0.0
+- Generated golang 2019-05-21 for saf.
+
 2021-12-01 Version: v3.0.0
 - Supported RequestDecision For YN.
 
