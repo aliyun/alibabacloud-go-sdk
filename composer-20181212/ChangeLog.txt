@@ -1,3 +1,6 @@
+2022-09-23 Version: v3.0.0
+- Generated golang 2018-12-12 for composer.
+
 2021-10-27 Version: v2.0.1
 - Supported Python2, C plus plus and java-async.
 
