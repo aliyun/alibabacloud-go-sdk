@@ -5,16 +5,17 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type CreateClusterRequest struct {
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateClusterRequest) String() string {
@@ -23,11 +24,6 @@ func (s CreateClusterRequest) String() string {
 
 func (s CreateClusterRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateClusterRequest) SetVpcId(v string) *CreateClusterRequest {
-	s.VpcId = &v
-	return s
 }
 
 func (s *CreateClusterRequest) SetClusterType(v string) *CreateClusterRequest {
@@ -40,9 +36,14 @@ func (s *CreateClusterRequest) SetVSwitchId(v string) *CreateClusterRequest {
 	return s
 }
 
+func (s *CreateClusterRequest) SetVpcId(v string) *CreateClusterRequest {
+	s.VpcId = &v
+	return s
+}
+
 type CreateClusterResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateClusterResponseBody) String() string {
@@ -53,19 +54,20 @@ func (s CreateClusterResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateClusterResponseBody) SetRequestId(v string) *CreateClusterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateClusterResponseBody) SetClusterId(v string) *CreateClusterResponseBody {
 	s.ClusterId = &v
 	return s
 }
 
+func (s *CreateClusterResponseBody) SetRequestId(v string) *CreateClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type CreateClusterResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateClusterResponse) String() string {
@@ -78,6 +80,11 @@ func (s CreateClusterResponse) GoString() string {
 
 func (s *CreateClusterResponse) SetHeaders(v map[string]*string) *CreateClusterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateClusterResponse) SetStatusCode(v int32) *CreateClusterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -110,8 +117,8 @@ func (s *CreateImageRequest) SetName(v string) *CreateImageRequest {
 }
 
 type CreateImageResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateImageResponseBody) String() string {
@@ -122,19 +129,20 @@ func (s CreateImageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateImageResponseBody) SetRequestId(v string) *CreateImageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateImageResponseBody) SetImageId(v string) *CreateImageResponseBody {
 	s.ImageId = &v
 	return s
 }
 
+func (s *CreateImageResponseBody) SetRequestId(v string) *CreateImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type CreateImageResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateImageResponse) String() string {
@@ -150,29 +158,34 @@ func (s *CreateImageResponse) SetHeaders(v map[string]*string) *CreateImageRespo
 	return s
 }
 
+func (s *CreateImageResponse) SetStatusCode(v int32) *CreateImageResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateImageResponse) SetBody(v *CreateImageResponseBody) *CreateImageResponse {
 	s.Body = v
 	return s
 }
 
 type CreateInstanceRequest struct {
-	ClusterId               *string                         `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	VSwitchId               *string                         `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	Name                    *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	ImageId                 *string                         `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	SystemDiskSize          *int32                          `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	SystemDiskCategory      *string                         `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
 	AllocatePublicAddress   *string                         `json:"AllocatePublicAddress,omitempty" xml:"AllocatePublicAddress,omitempty"`
+	AppList                 []*CreateInstanceRequestAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Repeated"`
+	AutoRenew               *string                         `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ClusterId               *string                         `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ImageId                 *string                         `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceChargeType      *string                         `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceType            *string                         `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	InternetChargeType      *string                         `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	InternetMaxBandwidthIn  *int32                          `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
 	InternetMaxBandwidthOut *int32                          `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	InstanceType            *string                         `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InstanceChargeType      *string                         `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	AutoRenew               *string                         `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	Name                    *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
 	Period                  *int32                          `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodUnit              *string                         `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	SystemDiskCategory      *string                         `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	SystemDiskSize          *int32                          `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	VSwitchId               *string                         `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	WorkMode                *string                         `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
-	AppList                 []*CreateInstanceRequestAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Repeated"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -183,18 +196,23 @@ func (s CreateInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateInstanceRequest) SetAllocatePublicAddress(v string) *CreateInstanceRequest {
+	s.AllocatePublicAddress = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetAppList(v []*CreateInstanceRequestAppList) *CreateInstanceRequest {
+	s.AppList = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetAutoRenew(v string) *CreateInstanceRequest {
+	s.AutoRenew = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetClusterId(v string) *CreateInstanceRequest {
 	s.ClusterId = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetVSwitchId(v string) *CreateInstanceRequest {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetName(v string) *CreateInstanceRequest {
-	s.Name = &v
 	return s
 }
 
@@ -203,18 +221,13 @@ func (s *CreateInstanceRequest) SetImageId(v string) *CreateInstanceRequest {
 	return s
 }
 
-func (s *CreateInstanceRequest) SetSystemDiskSize(v int32) *CreateInstanceRequest {
-	s.SystemDiskSize = &v
+func (s *CreateInstanceRequest) SetInstanceChargeType(v string) *CreateInstanceRequest {
+	s.InstanceChargeType = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetSystemDiskCategory(v string) *CreateInstanceRequest {
-	s.SystemDiskCategory = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetAllocatePublicAddress(v string) *CreateInstanceRequest {
-	s.AllocatePublicAddress = &v
+func (s *CreateInstanceRequest) SetInstanceType(v string) *CreateInstanceRequest {
+	s.InstanceType = &v
 	return s
 }
 
@@ -233,18 +246,8 @@ func (s *CreateInstanceRequest) SetInternetMaxBandwidthOut(v int32) *CreateInsta
 	return s
 }
 
-func (s *CreateInstanceRequest) SetInstanceType(v string) *CreateInstanceRequest {
-	s.InstanceType = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetInstanceChargeType(v string) *CreateInstanceRequest {
-	s.InstanceChargeType = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetAutoRenew(v string) *CreateInstanceRequest {
-	s.AutoRenew = &v
+func (s *CreateInstanceRequest) SetName(v string) *CreateInstanceRequest {
+	s.Name = &v
 	return s
 }
 
@@ -258,20 +261,30 @@ func (s *CreateInstanceRequest) SetPeriodUnit(v string) *CreateInstanceRequest {
 	return s
 }
 
+func (s *CreateInstanceRequest) SetSystemDiskCategory(v string) *CreateInstanceRequest {
+	s.SystemDiskCategory = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetSystemDiskSize(v int32) *CreateInstanceRequest {
+	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetVSwitchId(v string) *CreateInstanceRequest {
+	s.VSwitchId = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetWorkMode(v string) *CreateInstanceRequest {
 	s.WorkMode = &v
 	return s
 }
 
-func (s *CreateInstanceRequest) SetAppList(v []*CreateInstanceRequestAppList) *CreateInstanceRequest {
-	s.AppList = v
-	return s
-}
-
 type CreateInstanceRequestAppList struct {
+	AppArgs *string `json:"AppArgs,omitempty" xml:"AppArgs,omitempty"`
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	AppPath *string `json:"AppPath,omitempty" xml:"AppPath,omitempty"`
-	AppArgs *string `json:"AppArgs,omitempty" xml:"AppArgs,omitempty"`
 }
 
 func (s CreateInstanceRequestAppList) String() string {
@@ -280,6 +293,11 @@ func (s CreateInstanceRequestAppList) String() string {
 
 func (s CreateInstanceRequestAppList) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstanceRequestAppList) SetAppArgs(v string) *CreateInstanceRequestAppList {
+	s.AppArgs = &v
+	return s
 }
 
 func (s *CreateInstanceRequestAppList) SetAppName(v string) *CreateInstanceRequestAppList {
@@ -292,14 +310,9 @@ func (s *CreateInstanceRequestAppList) SetAppPath(v string) *CreateInstanceReque
 	return s
 }
 
-func (s *CreateInstanceRequestAppList) SetAppArgs(v string) *CreateInstanceRequestAppList {
-	s.AppArgs = &v
-	return s
-}
-
 type CreateInstanceResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -310,19 +323,20 @@ func (s CreateInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateInstanceResponseBody) SetRequestId(v string) *CreateInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateInstanceResponseBody) SetInstanceId(v string) *CreateInstanceResponseBody {
 	s.InstanceId = &v
 	return s
 }
 
+func (s *CreateInstanceResponseBody) SetRequestId(v string) *CreateInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type CreateInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateInstanceResponse) String() string {
@@ -338,14 +352,19 @@ func (s *CreateInstanceResponse) SetHeaders(v map[string]*string) *CreateInstanc
 	return s
 }
 
+func (s *CreateInstanceResponse) SetStatusCode(v int32) *CreateInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type CreateServiceLinkedRoleResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AlreadyExists *bool   `json:"AlreadyExists,omitempty" xml:"AlreadyExists,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateServiceLinkedRoleResponseBody) String() string {
@@ -356,19 +375,20 @@ func (s CreateServiceLinkedRoleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateServiceLinkedRoleResponseBody) SetRequestId(v string) *CreateServiceLinkedRoleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateServiceLinkedRoleResponseBody) SetAlreadyExists(v bool) *CreateServiceLinkedRoleResponseBody {
 	s.AlreadyExists = &v
 	return s
 }
 
+func (s *CreateServiceLinkedRoleResponseBody) SetRequestId(v string) *CreateServiceLinkedRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type CreateServiceLinkedRoleResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateServiceLinkedRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceLinkedRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateServiceLinkedRoleResponse) String() string {
@@ -381,6 +401,11 @@ func (s CreateServiceLinkedRoleResponse) GoString() string {
 
 func (s *CreateServiceLinkedRoleResponse) SetHeaders(v map[string]*string) *CreateServiceLinkedRoleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceLinkedRoleResponse) SetStatusCode(v int32) *CreateServiceLinkedRoleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -424,8 +449,9 @@ func (s *DeleteClusterResponseBody) SetRequestId(v string) *DeleteClusterRespons
 }
 
 type DeleteClusterResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteClusterResponse) String() string {
@@ -438,6 +464,11 @@ func (s DeleteClusterResponse) GoString() string {
 
 func (s *DeleteClusterResponse) SetHeaders(v map[string]*string) *DeleteClusterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteClusterResponse) SetStatusCode(v int32) *DeleteClusterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -481,8 +512,9 @@ func (s *DeleteImageResponseBody) SetRequestId(v string) *DeleteImageResponseBod
 }
 
 type DeleteImageResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteImageResponse) String() string {
@@ -495,6 +527,11 @@ func (s DeleteImageResponse) GoString() string {
 
 func (s *DeleteImageResponse) SetHeaders(v map[string]*string) *DeleteImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteImageResponse) SetStatusCode(v int32) *DeleteImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -538,8 +575,9 @@ func (s *DeleteInstanceResponseBody) SetRequestId(v string) *DeleteInstanceRespo
 }
 
 type DeleteInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteInstanceResponse) String() string {
@@ -555,14 +593,19 @@ func (s *DeleteInstanceResponse) SetHeaders(v map[string]*string) *DeleteInstanc
 	return s
 }
 
+func (s *DeleteInstanceResponse) SetStatusCode(v int32) *DeleteInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeAvailableResourceResponseBody struct {
-	RequestId          *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AvailableResources []*DescribeAvailableResourceResponseBodyAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Repeated"`
+	RequestId          *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBody) String() string {
@@ -573,13 +616,13 @@ func (s DescribeAvailableResourceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAvailableResourceResponseBody) SetRequestId(v string) *DescribeAvailableResourceResponseBody {
-	s.RequestId = &v
+func (s *DescribeAvailableResourceResponseBody) SetAvailableResources(v []*DescribeAvailableResourceResponseBodyAvailableResources) *DescribeAvailableResourceResponseBody {
+	s.AvailableResources = v
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBody) SetAvailableResources(v []*DescribeAvailableResourceResponseBodyAvailableResources) *DescribeAvailableResourceResponseBody {
-	s.AvailableResources = v
+func (s *DescribeAvailableResourceResponseBody) SetRequestId(v string) *DescribeAvailableResourceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -607,8 +650,9 @@ func (s *DescribeAvailableResourceResponseBodyAvailableResources) SetZone(v stri
 }
 
 type DescribeAvailableResourceResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAvailableResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAvailableResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAvailableResourceResponse) String() string {
@@ -621,6 +665,11 @@ func (s DescribeAvailableResourceResponse) GoString() string {
 
 func (s *DescribeAvailableResourceResponse) SetHeaders(v map[string]*string) *DescribeAvailableResourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAvailableResourceResponse) SetStatusCode(v int32) *DescribeAvailableResourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -653,12 +702,12 @@ func (s *DescribeClusterADDomainRequest) SetTaskId(v string) *DescribeClusterADD
 }
 
 type DescribeClusterADDomainResponseBody struct {
-	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	TaskFinished *bool   `json:"TaskFinished,omitempty" xml:"TaskFinished,omitempty"`
-	IsSupported  *bool   `json:"IsSupported,omitempty" xml:"IsSupported,omitempty"`
 	DomainDnsIp  *string `json:"DomainDnsIp,omitempty" xml:"DomainDnsIp,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	IsSupported  *bool   `json:"IsSupported,omitempty" xml:"IsSupported,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskFinished *bool   `json:"TaskFinished,omitempty" xml:"TaskFinished,omitempty"`
+	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribeClusterADDomainResponseBody) String() string {
@@ -669,13 +718,8 @@ func (s DescribeClusterADDomainResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeClusterADDomainResponseBody) SetTaskId(v string) *DescribeClusterADDomainResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-func (s *DescribeClusterADDomainResponseBody) SetRequestId(v string) *DescribeClusterADDomainResponseBody {
-	s.RequestId = &v
+func (s *DescribeClusterADDomainResponseBody) SetDomainDnsIp(v string) *DescribeClusterADDomainResponseBody {
+	s.DomainDnsIp = &v
 	return s
 }
 
@@ -684,24 +728,30 @@ func (s *DescribeClusterADDomainResponseBody) SetDomainName(v string) *DescribeC
 	return s
 }
 
-func (s *DescribeClusterADDomainResponseBody) SetTaskFinished(v bool) *DescribeClusterADDomainResponseBody {
-	s.TaskFinished = &v
-	return s
-}
-
 func (s *DescribeClusterADDomainResponseBody) SetIsSupported(v bool) *DescribeClusterADDomainResponseBody {
 	s.IsSupported = &v
 	return s
 }
 
-func (s *DescribeClusterADDomainResponseBody) SetDomainDnsIp(v string) *DescribeClusterADDomainResponseBody {
-	s.DomainDnsIp = &v
+func (s *DescribeClusterADDomainResponseBody) SetRequestId(v string) *DescribeClusterADDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeClusterADDomainResponseBody) SetTaskFinished(v bool) *DescribeClusterADDomainResponseBody {
+	s.TaskFinished = &v
+	return s
+}
+
+func (s *DescribeClusterADDomainResponseBody) SetTaskId(v string) *DescribeClusterADDomainResponseBody {
+	s.TaskId = &v
 	return s
 }
 
 type DescribeClusterADDomainResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeClusterADDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeClusterADDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeClusterADDomainResponse) String() string {
@@ -717,6 +767,11 @@ func (s *DescribeClusterADDomainResponse) SetHeaders(v map[string]*string) *Desc
 	return s
 }
 
+func (s *DescribeClusterADDomainResponse) SetStatusCode(v int32) *DescribeClusterADDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeClusterADDomainResponse) SetBody(v *DescribeClusterADDomainResponseBody) *DescribeClusterADDomainResponse {
 	s.Body = v
 	return s
@@ -724,8 +779,8 @@ func (s *DescribeClusterADDomainResponse) SetBody(v *DescribeClusterADDomainResp
 
 type DescribeClusterConnectionsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -742,13 +797,13 @@ func (s *DescribeClusterConnectionsRequest) SetClusterId(v string) *DescribeClus
 	return s
 }
 
-func (s *DescribeClusterConnectionsRequest) SetStartTime(v string) *DescribeClusterConnectionsRequest {
-	s.StartTime = &v
+func (s *DescribeClusterConnectionsRequest) SetEndTime(v string) *DescribeClusterConnectionsRequest {
+	s.EndTime = &v
 	return s
 }
 
-func (s *DescribeClusterConnectionsRequest) SetEndTime(v string) *DescribeClusterConnectionsRequest {
-	s.EndTime = &v
+func (s *DescribeClusterConnectionsRequest) SetStartTime(v string) *DescribeClusterConnectionsRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -759,10 +814,10 @@ func (s *DescribeClusterConnectionsRequest) SetTaskId(v string) *DescribeCluster
 
 type DescribeClusterConnectionsResponseBody struct {
 	Connections  []*DescribeClusterConnectionsResponseBodyConnections `json:"Connections,omitempty" xml:"Connections,omitempty" type:"Repeated"`
-	TotalCount   *int64                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TaskId       *string                                              `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskFinished *bool                                                `json:"TaskFinished,omitempty" xml:"TaskFinished,omitempty"`
+	TaskId       *string                                              `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TotalCount   *int64                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeClusterConnectionsResponseBody) String() string {
@@ -778,16 +833,6 @@ func (s *DescribeClusterConnectionsResponseBody) SetConnections(v []*DescribeClu
 	return s
 }
 
-func (s *DescribeClusterConnectionsResponseBody) SetTotalCount(v int64) *DescribeClusterConnectionsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeClusterConnectionsResponseBody) SetTaskId(v string) *DescribeClusterConnectionsResponseBody {
-	s.TaskId = &v
-	return s
-}
-
 func (s *DescribeClusterConnectionsResponseBody) SetRequestId(v string) *DescribeClusterConnectionsResponseBody {
 	s.RequestId = &v
 	return s
@@ -798,14 +843,24 @@ func (s *DescribeClusterConnectionsResponseBody) SetTaskFinished(v bool) *Descri
 	return s
 }
 
+func (s *DescribeClusterConnectionsResponseBody) SetTaskId(v string) *DescribeClusterConnectionsResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeClusterConnectionsResponseBody) SetTotalCount(v int64) *DescribeClusterConnectionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 type DescribeClusterConnectionsResponseBodyConnections struct {
-	LogoffStatus *string `json:"LogoffStatus,omitempty" xml:"LogoffStatus,omitempty"`
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	LogonTime    *string `json:"LogonTime,omitempty" xml:"LogonTime,omitempty"`
-	HostName     *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	LogoffTime   *string `json:"LogoffTime,omitempty" xml:"LogoffTime,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ClientName   *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	HostName     *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	LogoffStatus *string `json:"LogoffStatus,omitempty" xml:"LogoffStatus,omitempty"`
+	LogoffTime   *string `json:"LogoffTime,omitempty" xml:"LogoffTime,omitempty"`
+	LogonTime    *string `json:"LogonTime,omitempty" xml:"LogonTime,omitempty"`
 }
 
 func (s DescribeClusterConnectionsResponseBodyConnections) String() string {
@@ -816,18 +871,8 @@ func (s DescribeClusterConnectionsResponseBodyConnections) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeClusterConnectionsResponseBodyConnections) SetLogoffStatus(v string) *DescribeClusterConnectionsResponseBodyConnections {
-	s.LogoffStatus = &v
-	return s
-}
-
-func (s *DescribeClusterConnectionsResponseBodyConnections) SetInstanceName(v string) *DescribeClusterConnectionsResponseBodyConnections {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeClusterConnectionsResponseBodyConnections) SetLogonTime(v string) *DescribeClusterConnectionsResponseBodyConnections {
-	s.LogonTime = &v
+func (s *DescribeClusterConnectionsResponseBodyConnections) SetClientName(v string) *DescribeClusterConnectionsResponseBodyConnections {
+	s.ClientName = &v
 	return s
 }
 
@@ -836,24 +881,35 @@ func (s *DescribeClusterConnectionsResponseBodyConnections) SetHostName(v string
 	return s
 }
 
-func (s *DescribeClusterConnectionsResponseBodyConnections) SetLogoffTime(v string) *DescribeClusterConnectionsResponseBodyConnections {
-	s.LogoffTime = &v
-	return s
-}
-
 func (s *DescribeClusterConnectionsResponseBodyConnections) SetInstanceId(v string) *DescribeClusterConnectionsResponseBodyConnections {
 	s.InstanceId = &v
 	return s
 }
 
-func (s *DescribeClusterConnectionsResponseBodyConnections) SetClientName(v string) *DescribeClusterConnectionsResponseBodyConnections {
-	s.ClientName = &v
+func (s *DescribeClusterConnectionsResponseBodyConnections) SetInstanceName(v string) *DescribeClusterConnectionsResponseBodyConnections {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeClusterConnectionsResponseBodyConnections) SetLogoffStatus(v string) *DescribeClusterConnectionsResponseBodyConnections {
+	s.LogoffStatus = &v
+	return s
+}
+
+func (s *DescribeClusterConnectionsResponseBodyConnections) SetLogoffTime(v string) *DescribeClusterConnectionsResponseBodyConnections {
+	s.LogoffTime = &v
+	return s
+}
+
+func (s *DescribeClusterConnectionsResponseBodyConnections) SetLogonTime(v string) *DescribeClusterConnectionsResponseBodyConnections {
+	s.LogonTime = &v
 	return s
 }
 
 type DescribeClusterConnectionsResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeClusterConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeClusterConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeClusterConnectionsResponse) String() string {
@@ -869,15 +925,20 @@ func (s *DescribeClusterConnectionsResponse) SetHeaders(v map[string]*string) *D
 	return s
 }
 
+func (s *DescribeClusterConnectionsResponse) SetStatusCode(v int32) *DescribeClusterConnectionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeClusterConnectionsResponse) SetBody(v *DescribeClusterConnectionsResponseBody) *DescribeClusterConnectionsResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeClusterPolicyRequest struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	AsyncMode *bool   `json:"AsyncMode,omitempty" xml:"AsyncMode,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribeClusterPolicyRequest) String() string {
@@ -886,11 +947,6 @@ func (s DescribeClusterPolicyRequest) String() string {
 
 func (s DescribeClusterPolicyRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeClusterPolicyRequest) SetTaskId(v string) *DescribeClusterPolicyRequest {
-	s.TaskId = &v
-	return s
 }
 
 func (s *DescribeClusterPolicyRequest) SetAsyncMode(v bool) *DescribeClusterPolicyRequest {
@@ -903,15 +959,21 @@ func (s *DescribeClusterPolicyRequest) SetClusterId(v string) *DescribeClusterPo
 	return s
 }
 
+func (s *DescribeClusterPolicyRequest) SetTaskId(v string) *DescribeClusterPolicyRequest {
+	s.TaskId = &v
+	return s
+}
+
 type DescribeClusterPolicyResponseBody struct {
-	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	UdpPort      *string `json:"UdpPort,omitempty" xml:"UdpPort,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	LocalDrive   *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
-	UsbRedirect  *string `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
-	TaskFinished *bool   `json:"TaskFinished,omitempty" xml:"TaskFinished,omitempty"`
+	Audio        *string `json:"Audio,omitempty" xml:"Audio,omitempty"`
 	Clipboard    *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
 	DomainList   *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
+	LocalDrive   *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskFinished *bool   `json:"TaskFinished,omitempty" xml:"TaskFinished,omitempty"`
+	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	UdpPort      *string `json:"UdpPort,omitempty" xml:"UdpPort,omitempty"`
+	UsbRedirect  *string `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
 	Watermark    *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
 }
 
@@ -923,33 +985,8 @@ func (s DescribeClusterPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeClusterPolicyResponseBody) SetTaskId(v string) *DescribeClusterPolicyResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-func (s *DescribeClusterPolicyResponseBody) SetUdpPort(v string) *DescribeClusterPolicyResponseBody {
-	s.UdpPort = &v
-	return s
-}
-
-func (s *DescribeClusterPolicyResponseBody) SetRequestId(v string) *DescribeClusterPolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeClusterPolicyResponseBody) SetLocalDrive(v string) *DescribeClusterPolicyResponseBody {
-	s.LocalDrive = &v
-	return s
-}
-
-func (s *DescribeClusterPolicyResponseBody) SetUsbRedirect(v string) *DescribeClusterPolicyResponseBody {
-	s.UsbRedirect = &v
-	return s
-}
-
-func (s *DescribeClusterPolicyResponseBody) SetTaskFinished(v bool) *DescribeClusterPolicyResponseBody {
-	s.TaskFinished = &v
+func (s *DescribeClusterPolicyResponseBody) SetAudio(v string) *DescribeClusterPolicyResponseBody {
+	s.Audio = &v
 	return s
 }
 
@@ -963,14 +1000,45 @@ func (s *DescribeClusterPolicyResponseBody) SetDomainList(v string) *DescribeClu
 	return s
 }
 
+func (s *DescribeClusterPolicyResponseBody) SetLocalDrive(v string) *DescribeClusterPolicyResponseBody {
+	s.LocalDrive = &v
+	return s
+}
+
+func (s *DescribeClusterPolicyResponseBody) SetRequestId(v string) *DescribeClusterPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeClusterPolicyResponseBody) SetTaskFinished(v bool) *DescribeClusterPolicyResponseBody {
+	s.TaskFinished = &v
+	return s
+}
+
+func (s *DescribeClusterPolicyResponseBody) SetTaskId(v string) *DescribeClusterPolicyResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeClusterPolicyResponseBody) SetUdpPort(v string) *DescribeClusterPolicyResponseBody {
+	s.UdpPort = &v
+	return s
+}
+
+func (s *DescribeClusterPolicyResponseBody) SetUsbRedirect(v string) *DescribeClusterPolicyResponseBody {
+	s.UsbRedirect = &v
+	return s
+}
+
 func (s *DescribeClusterPolicyResponseBody) SetWatermark(v string) *DescribeClusterPolicyResponseBody {
 	s.Watermark = &v
 	return s
 }
 
 type DescribeClusterPolicyResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeClusterPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeClusterPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeClusterPolicyResponse) String() string {
@@ -983,6 +1051,11 @@ func (s DescribeClusterPolicyResponse) GoString() string {
 
 func (s *DescribeClusterPolicyResponse) SetHeaders(v map[string]*string) *DescribeClusterPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeClusterPolicyResponse) SetStatusCode(v int32) *DescribeClusterPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1021,11 +1094,11 @@ func (s *DescribeClustersRequest) SetPageSize(v int64) *DescribeClustersRequest 
 }
 
 type DescribeClustersResponseBody struct {
-	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Clusters   []*DescribeClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	PageNumber *int64                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int64                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Clusters   []*DescribeClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeClustersResponseBody) String() string {
@@ -1036,8 +1109,13 @@ func (s DescribeClustersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeClustersResponseBody) SetTotalCount(v int64) *DescribeClustersResponseBody {
-	s.TotalCount = &v
+func (s *DescribeClustersResponseBody) SetClusters(v []*DescribeClustersResponseBodyClusters) *DescribeClustersResponseBody {
+	s.Clusters = v
+	return s
+}
+
+func (s *DescribeClustersResponseBody) SetPageNumber(v int64) *DescribeClustersResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -1051,27 +1129,22 @@ func (s *DescribeClustersResponseBody) SetRequestId(v string) *DescribeClustersR
 	return s
 }
 
-func (s *DescribeClustersResponseBody) SetPageNumber(v int64) *DescribeClustersResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetClusters(v []*DescribeClustersResponseBodyClusters) *DescribeClustersResponseBody {
-	s.Clusters = v
+func (s *DescribeClustersResponseBody) SetTotalCount(v int64) *DescribeClustersResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 type DescribeClustersResponseBodyClusters struct {
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	NatId         *string `json:"NatId,omitempty" xml:"NatId,omitempty"`
-	InstanceCount *int64  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	NatEip        *string `json:"NatEip,omitempty" xml:"NatEip,omitempty"`
-	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	InstanceCount *int64  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NatEip        *string `json:"NatEip,omitempty" xml:"NatEip,omitempty"`
+	NatId         *string `json:"NatId,omitempty" xml:"NatId,omitempty"`
+	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeClustersResponseBodyClusters) String() string {
@@ -1082,23 +1155,8 @@ func (s DescribeClustersResponseBodyClusters) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeClustersResponseBodyClusters) SetVpcId(v string) *DescribeClustersResponseBodyClusters {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBodyClusters) SetStatus(v string) *DescribeClustersResponseBodyClusters {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBodyClusters) SetNatId(v string) *DescribeClustersResponseBodyClusters {
-	s.NatId = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBodyClusters) SetInstanceCount(v int64) *DescribeClustersResponseBodyClusters {
-	s.InstanceCount = &v
+func (s *DescribeClustersResponseBodyClusters) SetClusterId(v string) *DescribeClustersResponseBodyClusters {
+	s.ClusterId = &v
 	return s
 }
 
@@ -1107,13 +1165,13 @@ func (s *DescribeClustersResponseBodyClusters) SetCreateTime(v string) *Describe
 	return s
 }
 
-func (s *DescribeClustersResponseBodyClusters) SetNatEip(v string) *DescribeClustersResponseBodyClusters {
-	s.NatEip = &v
+func (s *DescribeClustersResponseBodyClusters) SetDomainName(v string) *DescribeClustersResponseBodyClusters {
+	s.DomainName = &v
 	return s
 }
 
-func (s *DescribeClustersResponseBodyClusters) SetSecurityGroup(v string) *DescribeClustersResponseBodyClusters {
-	s.SecurityGroup = &v
+func (s *DescribeClustersResponseBodyClusters) SetInstanceCount(v int64) *DescribeClustersResponseBodyClusters {
+	s.InstanceCount = &v
 	return s
 }
 
@@ -1122,19 +1180,35 @@ func (s *DescribeClustersResponseBodyClusters) SetName(v string) *DescribeCluste
 	return s
 }
 
-func (s *DescribeClustersResponseBodyClusters) SetDomainName(v string) *DescribeClustersResponseBodyClusters {
-	s.DomainName = &v
+func (s *DescribeClustersResponseBodyClusters) SetNatEip(v string) *DescribeClustersResponseBodyClusters {
+	s.NatEip = &v
 	return s
 }
 
-func (s *DescribeClustersResponseBodyClusters) SetClusterId(v string) *DescribeClustersResponseBodyClusters {
-	s.ClusterId = &v
+func (s *DescribeClustersResponseBodyClusters) SetNatId(v string) *DescribeClustersResponseBodyClusters {
+	s.NatId = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBodyClusters) SetSecurityGroup(v string) *DescribeClustersResponseBodyClusters {
+	s.SecurityGroup = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBodyClusters) SetStatus(v string) *DescribeClustersResponseBodyClusters {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeClustersResponseBodyClusters) SetVpcId(v string) *DescribeClustersResponseBodyClusters {
+	s.VpcId = &v
 	return s
 }
 
 type DescribeClustersResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeClustersResponse) String() string {
@@ -1147,6 +1221,11 @@ func (s DescribeClustersResponse) GoString() string {
 
 func (s *DescribeClustersResponse) SetHeaders(v map[string]*string) *DescribeClustersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeClustersResponse) SetStatusCode(v int32) *DescribeClustersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1173,11 +1252,11 @@ func (s *DescribeImagesRequest) SetInstanceType(v string) *DescribeImagesRequest
 }
 
 type DescribeImagesResponseBody struct {
-	TotalCount *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Images     []*DescribeImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	PageNumber *int64                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int64                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int64                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Images     []*DescribeImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	TotalCount *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeImagesResponseBody) String() string {
@@ -1188,8 +1267,13 @@ func (s DescribeImagesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeImagesResponseBody) SetTotalCount(v int64) *DescribeImagesResponseBody {
-	s.TotalCount = &v
+func (s *DescribeImagesResponseBody) SetImages(v []*DescribeImagesResponseBodyImages) *DescribeImagesResponseBody {
+	s.Images = v
+	return s
+}
+
+func (s *DescribeImagesResponseBody) SetPageNumber(v int64) *DescribeImagesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -1203,25 +1287,20 @@ func (s *DescribeImagesResponseBody) SetRequestId(v string) *DescribeImagesRespo
 	return s
 }
 
-func (s *DescribeImagesResponseBody) SetPageNumber(v int64) *DescribeImagesResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeImagesResponseBody) SetImages(v []*DescribeImagesResponseBodyImages) *DescribeImagesResponseBody {
-	s.Images = v
+func (s *DescribeImagesResponseBody) SetTotalCount(v int64) *DescribeImagesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 type DescribeImagesResponseBodyImages struct {
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageType   *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	Progress    *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	Size        *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeImagesResponseBodyImages) String() string {
@@ -1232,13 +1311,28 @@ func (s DescribeImagesResponseBodyImages) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeImagesResponseBodyImages) SetStatus(v string) *DescribeImagesResponseBodyImages {
-	s.Status = &v
+func (s *DescribeImagesResponseBodyImages) SetCreateTime(v string) *DescribeImagesResponseBodyImages {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeImagesResponseBodyImages) SetImageId(v string) *DescribeImagesResponseBodyImages {
+	s.ImageId = &v
 	return s
 }
 
 func (s *DescribeImagesResponseBodyImages) SetImageType(v string) *DescribeImagesResponseBodyImages {
 	s.ImageType = &v
+	return s
+}
+
+func (s *DescribeImagesResponseBodyImages) SetName(v string) *DescribeImagesResponseBodyImages {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeImagesResponseBodyImages) SetProductCode(v string) *DescribeImagesResponseBodyImages {
+	s.ProductCode = &v
 	return s
 }
 
@@ -1252,29 +1346,15 @@ func (s *DescribeImagesResponseBodyImages) SetSize(v int64) *DescribeImagesRespo
 	return s
 }
 
-func (s *DescribeImagesResponseBodyImages) SetCreateTime(v string) *DescribeImagesResponseBodyImages {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeImagesResponseBodyImages) SetName(v string) *DescribeImagesResponseBodyImages {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeImagesResponseBodyImages) SetImageId(v string) *DescribeImagesResponseBodyImages {
-	s.ImageId = &v
-	return s
-}
-
-func (s *DescribeImagesResponseBodyImages) SetProductCode(v string) *DescribeImagesResponseBodyImages {
-	s.ProductCode = &v
+func (s *DescribeImagesResponseBodyImages) SetStatus(v string) *DescribeImagesResponseBodyImages {
+	s.Status = &v
 	return s
 }
 
 type DescribeImagesResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeImagesResponse) String() string {
@@ -1290,15 +1370,20 @@ func (s *DescribeImagesResponse) SetHeaders(v map[string]*string) *DescribeImage
 	return s
 }
 
+func (s *DescribeImagesResponse) SetStatusCode(v int32) *DescribeImagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeImagesResponse) SetBody(v *DescribeImagesResponseBody) *DescribeImagesResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeInstancePolicyRequest struct {
+	AsyncMode  *bool   `json:"AsyncMode,omitempty" xml:"AsyncMode,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	AsyncMode  *bool   `json:"AsyncMode,omitempty" xml:"AsyncMode,omitempty"`
 }
 
 func (s DescribeInstancePolicyRequest) String() string {
@@ -1307,6 +1392,11 @@ func (s DescribeInstancePolicyRequest) String() string {
 
 func (s DescribeInstancePolicyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstancePolicyRequest) SetAsyncMode(v bool) *DescribeInstancePolicyRequest {
+	s.AsyncMode = &v
+	return s
 }
 
 func (s *DescribeInstancePolicyRequest) SetInstanceId(v string) *DescribeInstancePolicyRequest {
@@ -1319,17 +1409,12 @@ func (s *DescribeInstancePolicyRequest) SetTaskId(v string) *DescribeInstancePol
 	return s
 }
 
-func (s *DescribeInstancePolicyRequest) SetAsyncMode(v bool) *DescribeInstancePolicyRequest {
-	s.AsyncMode = &v
-	return s
-}
-
 type DescribeInstancePolicyResponseBody struct {
-	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	OptimizeFor3d  *string `json:"OptimizeFor3d,omitempty" xml:"OptimizeFor3d,omitempty"`
 	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskFinished   *bool   `json:"TaskFinished,omitempty" xml:"TaskFinished,omitempty"`
+	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	VisualLossless *string `json:"VisualLossless,omitempty" xml:"VisualLossless,omitempty"`
-	OptimizeFor3d  *string `json:"OptimizeFor3d,omitempty" xml:"OptimizeFor3d,omitempty"`
 }
 
 func (s DescribeInstancePolicyResponseBody) String() string {
@@ -1340,8 +1425,8 @@ func (s DescribeInstancePolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstancePolicyResponseBody) SetTaskId(v string) *DescribeInstancePolicyResponseBody {
-	s.TaskId = &v
+func (s *DescribeInstancePolicyResponseBody) SetOptimizeFor3d(v string) *DescribeInstancePolicyResponseBody {
+	s.OptimizeFor3d = &v
 	return s
 }
 
@@ -1355,19 +1440,20 @@ func (s *DescribeInstancePolicyResponseBody) SetTaskFinished(v bool) *DescribeIn
 	return s
 }
 
+func (s *DescribeInstancePolicyResponseBody) SetTaskId(v string) *DescribeInstancePolicyResponseBody {
+	s.TaskId = &v
+	return s
+}
+
 func (s *DescribeInstancePolicyResponseBody) SetVisualLossless(v string) *DescribeInstancePolicyResponseBody {
 	s.VisualLossless = &v
 	return s
 }
 
-func (s *DescribeInstancePolicyResponseBody) SetOptimizeFor3d(v string) *DescribeInstancePolicyResponseBody {
-	s.OptimizeFor3d = &v
-	return s
-}
-
 type DescribeInstancePolicyResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeInstancePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstancePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeInstancePolicyResponse) String() string {
@@ -1383,18 +1469,23 @@ func (s *DescribeInstancePolicyResponse) SetHeaders(v map[string]*string) *Descr
 	return s
 }
 
+func (s *DescribeInstancePolicyResponse) SetStatusCode(v int32) *DescribeInstancePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeInstancePolicyResponse) SetBody(v *DescribeInstancePolicyResponseBody) *DescribeInstancePolicyResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeInstancesRequest struct {
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	UserUid    *int64  `json:"UserUid,omitempty" xml:"UserUid,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	UserUid    *int64  `json:"UserUid,omitempty" xml:"UserUid,omitempty"`
 }
 
 func (s DescribeInstancesRequest) String() string {
@@ -1403,16 +1494,6 @@ func (s DescribeInstancesRequest) String() string {
 
 func (s DescribeInstancesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeInstancesRequest) SetPageNumber(v int64) *DescribeInstancesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeInstancesRequest) SetPageSize(v int64) *DescribeInstancesRequest {
-	s.PageSize = &v
-	return s
 }
 
 func (s *DescribeInstancesRequest) SetClusterId(v string) *DescribeInstancesRequest {
@@ -1425,8 +1506,13 @@ func (s *DescribeInstancesRequest) SetInstanceId(v string) *DescribeInstancesReq
 	return s
 }
 
-func (s *DescribeInstancesRequest) SetUserUid(v int64) *DescribeInstancesRequest {
-	s.UserUid = &v
+func (s *DescribeInstancesRequest) SetPageNumber(v int64) *DescribeInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetPageSize(v int64) *DescribeInstancesRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -1435,12 +1521,17 @@ func (s *DescribeInstancesRequest) SetUserName(v string) *DescribeInstancesReque
 	return s
 }
 
+func (s *DescribeInstancesRequest) SetUserUid(v int64) *DescribeInstancesRequest {
+	s.UserUid = &v
+	return s
+}
+
 type DescribeInstancesResponseBody struct {
 	Instances  []*DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	TotalCount *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int64                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int64                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstancesResponseBody) String() string {
@@ -1456,8 +1547,8 @@ func (s *DescribeInstancesResponseBody) SetInstances(v []*DescribeInstancesRespo
 	return s
 }
 
-func (s *DescribeInstancesResponseBody) SetTotalCount(v int64) *DescribeInstancesResponseBody {
-	s.TotalCount = &v
+func (s *DescribeInstancesResponseBody) SetPageNumber(v int64) *DescribeInstancesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -1471,30 +1562,31 @@ func (s *DescribeInstancesResponseBody) SetRequestId(v string) *DescribeInstance
 	return s
 }
 
-func (s *DescribeInstancesResponseBody) SetPageNumber(v int64) *DescribeInstancesResponseBody {
-	s.PageNumber = &v
+func (s *DescribeInstancesResponseBody) SetTotalCount(v int64) *DescribeInstancesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
 type DescribeInstancesResponseBodyInstances struct {
-	Status             *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	WorkMode           *string                                          `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
-	ExpireTime         *string                                          `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	AppList            []*DescribeInstancesResponseBodyInstancesAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Repeated"`
+	ClusterId          *string                                          `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CreateTime         *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	StoppedMode        *string                                          `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
-	UserUid            *int64                                           `json:"UserUid,omitempty" xml:"UserUid,omitempty"`
+	DomainName         *string                                          `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ExpireTime         *string                                          `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HostName           *string                                          `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	ImageId            *string                                          `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceChargeType *string                                          `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	InstanceId         *string                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType       *string                                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	DomainName         *string                                          `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	InstanceChargeType *string                                          `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	AppList            []*DescribeInstancesResponseBodyInstancesAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Repeated"`
-	MaxBandwidthIn     *int64                                           `json:"MaxBandwidthIn,omitempty" xml:"MaxBandwidthIn,omitempty"`
 	IsBoundUser        *bool                                            `json:"IsBoundUser,omitempty" xml:"IsBoundUser,omitempty"`
+	MaxBandwidthIn     *int64                                           `json:"MaxBandwidthIn,omitempty" xml:"MaxBandwidthIn,omitempty"`
 	MaxBandwidthOut    *int64                                           `json:"MaxBandwidthOut,omitempty" xml:"MaxBandwidthOut,omitempty"`
 	Name               *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status             *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	StoppedMode        *string                                          `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
 	UserName           *string                                          `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	ImageId            *string                                          `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ClusterId          *string                                          `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	UserUid            *int64                                           `json:"UserUid,omitempty" xml:"UserUid,omitempty"`
+	WorkMode           *string                                          `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstances) String() string {
@@ -1505,18 +1597,13 @@ func (s DescribeInstancesResponseBodyInstances) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstancesResponseBodyInstances) SetStatus(v string) *DescribeInstancesResponseBodyInstances {
-	s.Status = &v
+func (s *DescribeInstancesResponseBodyInstances) SetAppList(v []*DescribeInstancesResponseBodyInstancesAppList) *DescribeInstancesResponseBodyInstances {
+	s.AppList = v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstances) SetWorkMode(v string) *DescribeInstancesResponseBodyInstances {
-	s.WorkMode = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstances) SetExpireTime(v string) *DescribeInstancesResponseBodyInstances {
-	s.ExpireTime = &v
+func (s *DescribeInstancesResponseBodyInstances) SetClusterId(v string) *DescribeInstancesResponseBodyInstances {
+	s.ClusterId = &v
 	return s
 }
 
@@ -1525,13 +1612,28 @@ func (s *DescribeInstancesResponseBodyInstances) SetCreateTime(v string) *Descri
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstances) SetStoppedMode(v string) *DescribeInstancesResponseBodyInstances {
-	s.StoppedMode = &v
+func (s *DescribeInstancesResponseBodyInstances) SetDomainName(v string) *DescribeInstancesResponseBodyInstances {
+	s.DomainName = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstances) SetUserUid(v int64) *DescribeInstancesResponseBodyInstances {
-	s.UserUid = &v
+func (s *DescribeInstancesResponseBodyInstances) SetExpireTime(v string) *DescribeInstancesResponseBodyInstances {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetHostName(v string) *DescribeInstancesResponseBodyInstances {
+	s.HostName = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetImageId(v string) *DescribeInstancesResponseBodyInstances {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetInstanceChargeType(v string) *DescribeInstancesResponseBodyInstances {
+	s.InstanceChargeType = &v
 	return s
 }
 
@@ -1545,28 +1647,13 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstanceType(v string) *Desc
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstances) SetDomainName(v string) *DescribeInstancesResponseBodyInstances {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstances) SetInstanceChargeType(v string) *DescribeInstancesResponseBodyInstances {
-	s.InstanceChargeType = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstances) SetAppList(v []*DescribeInstancesResponseBodyInstancesAppList) *DescribeInstancesResponseBodyInstances {
-	s.AppList = v
+func (s *DescribeInstancesResponseBodyInstances) SetIsBoundUser(v bool) *DescribeInstancesResponseBodyInstances {
+	s.IsBoundUser = &v
 	return s
 }
 
 func (s *DescribeInstancesResponseBodyInstances) SetMaxBandwidthIn(v int64) *DescribeInstancesResponseBodyInstances {
 	s.MaxBandwidthIn = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstances) SetIsBoundUser(v bool) *DescribeInstancesResponseBodyInstances {
-	s.IsBoundUser = &v
 	return s
 }
 
@@ -1580,25 +1667,35 @@ func (s *DescribeInstancesResponseBodyInstances) SetName(v string) *DescribeInst
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstances) SetStatus(v string) *DescribeInstancesResponseBodyInstances {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetStoppedMode(v string) *DescribeInstancesResponseBodyInstances {
+	s.StoppedMode = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstances) SetUserName(v string) *DescribeInstancesResponseBodyInstances {
 	s.UserName = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstances) SetImageId(v string) *DescribeInstancesResponseBodyInstances {
-	s.ImageId = &v
+func (s *DescribeInstancesResponseBodyInstances) SetUserUid(v int64) *DescribeInstancesResponseBodyInstances {
+	s.UserUid = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstances) SetClusterId(v string) *DescribeInstancesResponseBodyInstances {
-	s.ClusterId = &v
+func (s *DescribeInstancesResponseBodyInstances) SetWorkMode(v string) *DescribeInstancesResponseBodyInstances {
+	s.WorkMode = &v
 	return s
 }
 
 type DescribeInstancesResponseBodyInstancesAppList struct {
+	AppArgs *string `json:"AppArgs,omitempty" xml:"AppArgs,omitempty"`
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	AppPath *string `json:"AppPath,omitempty" xml:"AppPath,omitempty"`
-	AppArgs *string `json:"AppArgs,omitempty" xml:"AppArgs,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesAppList) String() string {
@@ -1607,6 +1704,11 @@ func (s DescribeInstancesResponseBodyInstancesAppList) String() string {
 
 func (s DescribeInstancesResponseBodyInstancesAppList) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesAppList) SetAppArgs(v string) *DescribeInstancesResponseBodyInstancesAppList {
+	s.AppArgs = &v
+	return s
 }
 
 func (s *DescribeInstancesResponseBodyInstancesAppList) SetAppName(v string) *DescribeInstancesResponseBodyInstancesAppList {
@@ -1619,14 +1721,10 @@ func (s *DescribeInstancesResponseBodyInstancesAppList) SetAppPath(v string) *De
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstancesAppList) SetAppArgs(v string) *DescribeInstancesResponseBodyInstancesAppList {
-	s.AppArgs = &v
-	return s
-}
-
 type DescribeInstancesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeInstancesResponse) String() string {
@@ -1642,18 +1740,24 @@ func (s *DescribeInstancesResponse) SetHeaders(v map[string]*string) *DescribeIn
 	return s
 }
 
+func (s *DescribeInstancesResponse) SetStatusCode(v int32) *DescribeInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *DescribeInstancesResponse {
 	s.Body = v
 	return s
 }
 
 type GetConnectTicketRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	Password   *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	AsyncMode  *bool   `json:"AsyncMode,omitempty" xml:"AsyncMode,omitempty"`
+	AppName      *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AsyncMode    *bool   `json:"AsyncMode,omitempty" xml:"AsyncMode,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	UsePrivateIp *bool   `json:"UsePrivateIp,omitempty" xml:"UsePrivateIp,omitempty"`
+	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s GetConnectTicketRequest) String() string {
@@ -1664,18 +1768,18 @@ func (s GetConnectTicketRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetConnectTicketRequest) SetInstanceId(v string) *GetConnectTicketRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *GetConnectTicketRequest) SetAppName(v string) *GetConnectTicketRequest {
 	s.AppName = &v
 	return s
 }
 
-func (s *GetConnectTicketRequest) SetUserName(v string) *GetConnectTicketRequest {
-	s.UserName = &v
+func (s *GetConnectTicketRequest) SetAsyncMode(v bool) *GetConnectTicketRequest {
+	s.AsyncMode = &v
+	return s
+}
+
+func (s *GetConnectTicketRequest) SetInstanceId(v string) *GetConnectTicketRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -1689,16 +1793,21 @@ func (s *GetConnectTicketRequest) SetTaskId(v string) *GetConnectTicketRequest {
 	return s
 }
 
-func (s *GetConnectTicketRequest) SetAsyncMode(v bool) *GetConnectTicketRequest {
-	s.AsyncMode = &v
+func (s *GetConnectTicketRequest) SetUsePrivateIp(v bool) *GetConnectTicketRequest {
+	s.UsePrivateIp = &v
+	return s
+}
+
+func (s *GetConnectTicketRequest) SetUserName(v string) *GetConnectTicketRequest {
+	s.UserName = &v
 	return s
 }
 
 type GetConnectTicketResponseBody struct {
-	Ticket       *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
-	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskFinished *bool   `json:"TaskFinished,omitempty" xml:"TaskFinished,omitempty"`
+	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Ticket       *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
 }
 
 func (s GetConnectTicketResponseBody) String() string {
@@ -1707,16 +1816,6 @@ func (s GetConnectTicketResponseBody) String() string {
 
 func (s GetConnectTicketResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *GetConnectTicketResponseBody) SetTicket(v string) *GetConnectTicketResponseBody {
-	s.Ticket = &v
-	return s
-}
-
-func (s *GetConnectTicketResponseBody) SetTaskId(v string) *GetConnectTicketResponseBody {
-	s.TaskId = &v
-	return s
 }
 
 func (s *GetConnectTicketResponseBody) SetRequestId(v string) *GetConnectTicketResponseBody {
@@ -1729,9 +1828,20 @@ func (s *GetConnectTicketResponseBody) SetTaskFinished(v bool) *GetConnectTicket
 	return s
 }
 
+func (s *GetConnectTicketResponseBody) SetTaskId(v string) *GetConnectTicketResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetConnectTicketResponseBody) SetTicket(v string) *GetConnectTicketResponseBody {
+	s.Ticket = &v
+	return s
+}
+
 type GetConnectTicketResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetConnectTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetConnectTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetConnectTicketResponse) String() string {
@@ -1747,6 +1857,11 @@ func (s *GetConnectTicketResponse) SetHeaders(v map[string]*string) *GetConnectT
 	return s
 }
 
+func (s *GetConnectTicketResponse) SetStatusCode(v int32) *GetConnectTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetConnectTicketResponse) SetBody(v *GetConnectTicketResponseBody) *GetConnectTicketResponse {
 	s.Body = v
 	return s
@@ -1754,8 +1869,8 @@ func (s *GetConnectTicketResponse) SetBody(v *GetConnectTicketResponseBody) *Get
 
 type IsUserAdminResponseBody struct {
 	IsAdmin   *bool   `json:"IsAdmin,omitempty" xml:"IsAdmin,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	IsAllow   *bool   `json:"IsAllow,omitempty" xml:"IsAllow,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s IsUserAdminResponseBody) String() string {
@@ -1771,19 +1886,20 @@ func (s *IsUserAdminResponseBody) SetIsAdmin(v bool) *IsUserAdminResponseBody {
 	return s
 }
 
-func (s *IsUserAdminResponseBody) SetRequestId(v string) *IsUserAdminResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *IsUserAdminResponseBody) SetIsAllow(v bool) *IsUserAdminResponseBody {
 	s.IsAllow = &v
 	return s
 }
 
+func (s *IsUserAdminResponseBody) SetRequestId(v string) *IsUserAdminResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type IsUserAdminResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *IsUserAdminResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *IsUserAdminResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s IsUserAdminResponse) String() string {
@@ -1796,6 +1912,11 @@ func (s IsUserAdminResponse) GoString() string {
 
 func (s *IsUserAdminResponse) SetHeaders(v map[string]*string) *IsUserAdminResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *IsUserAdminResponse) SetStatusCode(v int32) *IsUserAdminResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1839,8 +1960,9 @@ func (s *RestartInstanceResponseBody) SetRequestId(v string) *RestartInstanceRes
 }
 
 type RestartInstanceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RestartInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RestartInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RestartInstanceResponse) String() string {
@@ -1856,6 +1978,11 @@ func (s *RestartInstanceResponse) SetHeaders(v map[string]*string) *RestartInsta
 	return s
 }
 
+func (s *RestartInstanceResponse) SetStatusCode(v int32) *RestartInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RestartInstanceResponse) SetBody(v *RestartInstanceResponseBody) *RestartInstanceResponse {
 	s.Body = v
 	return s
@@ -1863,11 +1990,11 @@ func (s *RestartInstanceResponse) SetBody(v *RestartInstanceResponseBody) *Resta
 
 type SetClusterADDomainRequest struct {
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DomainAdmin    *string `json:"DomainAdmin,omitempty" xml:"DomainAdmin,omitempty"`
+	DomainDelete   *bool   `json:"DomainDelete,omitempty" xml:"DomainDelete,omitempty"`
 	DomainDnsIp    *string `json:"DomainDnsIp,omitempty" xml:"DomainDnsIp,omitempty"`
 	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainPassword *string `json:"DomainPassword,omitempty" xml:"DomainPassword,omitempty"`
-	DomainAdmin    *string `json:"DomainAdmin,omitempty" xml:"DomainAdmin,omitempty"`
-	DomainDelete   *bool   `json:"DomainDelete,omitempty" xml:"DomainDelete,omitempty"`
 }
 
 func (s SetClusterADDomainRequest) String() string {
@@ -1880,6 +2007,16 @@ func (s SetClusterADDomainRequest) GoString() string {
 
 func (s *SetClusterADDomainRequest) SetClusterId(v string) *SetClusterADDomainRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *SetClusterADDomainRequest) SetDomainAdmin(v string) *SetClusterADDomainRequest {
+	s.DomainAdmin = &v
+	return s
+}
+
+func (s *SetClusterADDomainRequest) SetDomainDelete(v bool) *SetClusterADDomainRequest {
+	s.DomainDelete = &v
 	return s
 }
 
@@ -1898,19 +2035,9 @@ func (s *SetClusterADDomainRequest) SetDomainPassword(v string) *SetClusterADDom
 	return s
 }
 
-func (s *SetClusterADDomainRequest) SetDomainAdmin(v string) *SetClusterADDomainRequest {
-	s.DomainAdmin = &v
-	return s
-}
-
-func (s *SetClusterADDomainRequest) SetDomainDelete(v bool) *SetClusterADDomainRequest {
-	s.DomainDelete = &v
-	return s
-}
-
 type SetClusterADDomainResponseBody struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SetClusterADDomainResponseBody) String() string {
@@ -1921,19 +2048,20 @@ func (s SetClusterADDomainResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SetClusterADDomainResponseBody) SetTaskId(v string) *SetClusterADDomainResponseBody {
-	s.TaskId = &v
-	return s
-}
-
 func (s *SetClusterADDomainResponseBody) SetRequestId(v string) *SetClusterADDomainResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *SetClusterADDomainResponseBody) SetTaskId(v string) *SetClusterADDomainResponseBody {
+	s.TaskId = &v
+	return s
+}
+
 type SetClusterADDomainResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetClusterADDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetClusterADDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetClusterADDomainResponse) String() string {
@@ -1949,6 +2077,11 @@ func (s *SetClusterADDomainResponse) SetHeaders(v map[string]*string) *SetCluste
 	return s
 }
 
+func (s *SetClusterADDomainResponse) SetStatusCode(v int32) *SetClusterADDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SetClusterADDomainResponse) SetBody(v *SetClusterADDomainResponseBody) *SetClusterADDomainResponse {
 	s.Body = v
 	return s
@@ -1956,8 +2089,8 @@ func (s *SetClusterADDomainResponse) SetBody(v *SetClusterADDomainResponseBody) 
 
 type SetClusterDnatRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	NatId     *string `json:"NatId,omitempty" xml:"NatId,omitempty"`
 	NatEip    *string `json:"NatEip,omitempty" xml:"NatEip,omitempty"`
+	NatId     *string `json:"NatId,omitempty" xml:"NatId,omitempty"`
 }
 
 func (s SetClusterDnatRequest) String() string {
@@ -1973,13 +2106,13 @@ func (s *SetClusterDnatRequest) SetClusterId(v string) *SetClusterDnatRequest {
 	return s
 }
 
-func (s *SetClusterDnatRequest) SetNatId(v string) *SetClusterDnatRequest {
-	s.NatId = &v
+func (s *SetClusterDnatRequest) SetNatEip(v string) *SetClusterDnatRequest {
+	s.NatEip = &v
 	return s
 }
 
-func (s *SetClusterDnatRequest) SetNatEip(v string) *SetClusterDnatRequest {
-	s.NatEip = &v
+func (s *SetClusterDnatRequest) SetNatId(v string) *SetClusterDnatRequest {
+	s.NatId = &v
 	return s
 }
 
@@ -2001,8 +2134,9 @@ func (s *SetClusterDnatResponseBody) SetRequestId(v string) *SetClusterDnatRespo
 }
 
 type SetClusterDnatResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetClusterDnatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetClusterDnatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetClusterDnatResponse) String() string {
@@ -2015,6 +2149,11 @@ func (s SetClusterDnatResponse) GoString() string {
 
 func (s *SetClusterDnatResponse) SetHeaders(v map[string]*string) *SetClusterDnatResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SetClusterDnatResponse) SetStatusCode(v int32) *SetClusterDnatResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2064,8 +2203,9 @@ func (s *SetClusterNameResponseBody) SetRequestId(v string) *SetClusterNameRespo
 }
 
 type SetClusterNameResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetClusterNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetClusterNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetClusterNameResponse) String() string {
@@ -2081,20 +2221,26 @@ func (s *SetClusterNameResponse) SetHeaders(v map[string]*string) *SetClusterNam
 	return s
 }
 
+func (s *SetClusterNameResponse) SetStatusCode(v int32) *SetClusterNameResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SetClusterNameResponse) SetBody(v *SetClusterNameResponseBody) *SetClusterNameResponse {
 	s.Body = v
 	return s
 }
 
 type SetClusterPolicyRequest struct {
+	AsyncMode   *bool   `json:"AsyncMode,omitempty" xml:"AsyncMode,omitempty"`
+	Audio       *string `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	Clipboard   *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
 	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DomainList  *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
+	LocalDrive  *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	UdpPort     *string `json:"UdpPort,omitempty" xml:"UdpPort,omitempty"`
 	UsbRedirect *string `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
 	Watermark   *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
-	LocalDrive  *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
-	Clipboard   *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	UdpPort     *string `json:"UdpPort,omitempty" xml:"UdpPort,omitempty"`
-	DomainList  *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
-	AsyncMode   *bool   `json:"AsyncMode,omitempty" xml:"AsyncMode,omitempty"`
 }
 
 func (s SetClusterPolicyRequest) String() string {
@@ -2105,8 +2251,38 @@ func (s SetClusterPolicyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SetClusterPolicyRequest) SetAsyncMode(v bool) *SetClusterPolicyRequest {
+	s.AsyncMode = &v
+	return s
+}
+
+func (s *SetClusterPolicyRequest) SetAudio(v string) *SetClusterPolicyRequest {
+	s.Audio = &v
+	return s
+}
+
+func (s *SetClusterPolicyRequest) SetClipboard(v string) *SetClusterPolicyRequest {
+	s.Clipboard = &v
+	return s
+}
+
 func (s *SetClusterPolicyRequest) SetClusterId(v string) *SetClusterPolicyRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *SetClusterPolicyRequest) SetDomainList(v string) *SetClusterPolicyRequest {
+	s.DomainList = &v
+	return s
+}
+
+func (s *SetClusterPolicyRequest) SetLocalDrive(v string) *SetClusterPolicyRequest {
+	s.LocalDrive = &v
+	return s
+}
+
+func (s *SetClusterPolicyRequest) SetUdpPort(v string) *SetClusterPolicyRequest {
+	s.UdpPort = &v
 	return s
 }
 
@@ -2120,34 +2296,9 @@ func (s *SetClusterPolicyRequest) SetWatermark(v string) *SetClusterPolicyReques
 	return s
 }
 
-func (s *SetClusterPolicyRequest) SetLocalDrive(v string) *SetClusterPolicyRequest {
-	s.LocalDrive = &v
-	return s
-}
-
-func (s *SetClusterPolicyRequest) SetClipboard(v string) *SetClusterPolicyRequest {
-	s.Clipboard = &v
-	return s
-}
-
-func (s *SetClusterPolicyRequest) SetUdpPort(v string) *SetClusterPolicyRequest {
-	s.UdpPort = &v
-	return s
-}
-
-func (s *SetClusterPolicyRequest) SetDomainList(v string) *SetClusterPolicyRequest {
-	s.DomainList = &v
-	return s
-}
-
-func (s *SetClusterPolicyRequest) SetAsyncMode(v bool) *SetClusterPolicyRequest {
-	s.AsyncMode = &v
-	return s
-}
-
 type SetClusterPolicyResponseBody struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SetClusterPolicyResponseBody) String() string {
@@ -2158,19 +2309,20 @@ func (s SetClusterPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SetClusterPolicyResponseBody) SetTaskId(v string) *SetClusterPolicyResponseBody {
-	s.TaskId = &v
-	return s
-}
-
 func (s *SetClusterPolicyResponseBody) SetRequestId(v string) *SetClusterPolicyResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *SetClusterPolicyResponseBody) SetTaskId(v string) *SetClusterPolicyResponseBody {
+	s.TaskId = &v
+	return s
+}
+
 type SetClusterPolicyResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetClusterPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetClusterPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetClusterPolicyResponse) String() string {
@@ -2183,6 +2335,11 @@ func (s SetClusterPolicyResponse) GoString() string {
 
 func (s *SetClusterPolicyResponse) SetHeaders(v map[string]*string) *SetClusterPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SetClusterPolicyResponse) SetStatusCode(v int32) *SetClusterPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2232,8 +2389,9 @@ func (s *SetImageNameResponseBody) SetRequestId(v string) *SetImageNameResponseB
 }
 
 type SetImageNameResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetImageNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetImageNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetImageNameResponse) String() string {
@@ -2246,6 +2404,11 @@ func (s SetImageNameResponse) GoString() string {
 
 func (s *SetImageNameResponse) SetHeaders(v map[string]*string) *SetImageNameResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SetImageNameResponse) SetStatusCode(v int32) *SetImageNameResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2295,8 +2458,9 @@ func (s *SetInstanceNameResponseBody) SetRequestId(v string) *SetInstanceNameRes
 }
 
 type SetInstanceNameResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetInstanceNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetInstanceNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetInstanceNameResponse) String() string {
@@ -2312,16 +2476,21 @@ func (s *SetInstanceNameResponse) SetHeaders(v map[string]*string) *SetInstanceN
 	return s
 }
 
+func (s *SetInstanceNameResponse) SetStatusCode(v int32) *SetInstanceNameResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SetInstanceNameResponse) SetBody(v *SetInstanceNameResponseBody) *SetInstanceNameResponse {
 	s.Body = v
 	return s
 }
 
 type SetInstancePolicyRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	VisualLossless *string `json:"VisualLossless,omitempty" xml:"VisualLossless,omitempty"`
-	OptimizeFor3d  *string `json:"OptimizeFor3d,omitempty" xml:"OptimizeFor3d,omitempty"`
 	AsyncMode      *bool   `json:"AsyncMode,omitempty" xml:"AsyncMode,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OptimizeFor3d  *string `json:"OptimizeFor3d,omitempty" xml:"OptimizeFor3d,omitempty"`
+	VisualLossless *string `json:"VisualLossless,omitempty" xml:"VisualLossless,omitempty"`
 }
 
 func (s SetInstancePolicyRequest) String() string {
@@ -2332,13 +2501,13 @@ func (s SetInstancePolicyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SetInstancePolicyRequest) SetInstanceId(v string) *SetInstancePolicyRequest {
-	s.InstanceId = &v
+func (s *SetInstancePolicyRequest) SetAsyncMode(v bool) *SetInstancePolicyRequest {
+	s.AsyncMode = &v
 	return s
 }
 
-func (s *SetInstancePolicyRequest) SetVisualLossless(v string) *SetInstancePolicyRequest {
-	s.VisualLossless = &v
+func (s *SetInstancePolicyRequest) SetInstanceId(v string) *SetInstancePolicyRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -2347,14 +2516,14 @@ func (s *SetInstancePolicyRequest) SetOptimizeFor3d(v string) *SetInstancePolicy
 	return s
 }
 
-func (s *SetInstancePolicyRequest) SetAsyncMode(v bool) *SetInstancePolicyRequest {
-	s.AsyncMode = &v
+func (s *SetInstancePolicyRequest) SetVisualLossless(v string) *SetInstancePolicyRequest {
+	s.VisualLossless = &v
 	return s
 }
 
 type SetInstancePolicyResponseBody struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SetInstancePolicyResponseBody) String() string {
@@ -2365,19 +2534,20 @@ func (s SetInstancePolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SetInstancePolicyResponseBody) SetTaskId(v string) *SetInstancePolicyResponseBody {
-	s.TaskId = &v
-	return s
-}
-
 func (s *SetInstancePolicyResponseBody) SetRequestId(v string) *SetInstancePolicyResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *SetInstancePolicyResponseBody) SetTaskId(v string) *SetInstancePolicyResponseBody {
+	s.TaskId = &v
+	return s
+}
+
 type SetInstancePolicyResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetInstancePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetInstancePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetInstancePolicyResponse) String() string {
@@ -2393,6 +2563,11 @@ func (s *SetInstancePolicyResponse) SetHeaders(v map[string]*string) *SetInstanc
 	return s
 }
 
+func (s *SetInstancePolicyResponse) SetStatusCode(v int32) *SetInstancePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SetInstancePolicyResponse) SetBody(v *SetInstancePolicyResponseBody) *SetInstancePolicyResponse {
 	s.Body = v
 	return s
@@ -2400,8 +2575,8 @@ func (s *SetInstancePolicyResponse) SetBody(v *SetInstancePolicyResponseBody) *S
 
 type SetInstanceUserRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	UserUid    *int64  `json:"UserUid,omitempty" xml:"UserUid,omitempty"`
 	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	UserUid    *int64  `json:"UserUid,omitempty" xml:"UserUid,omitempty"`
 }
 
 func (s SetInstanceUserRequest) String() string {
@@ -2417,13 +2592,13 @@ func (s *SetInstanceUserRequest) SetInstanceId(v string) *SetInstanceUserRequest
 	return s
 }
 
-func (s *SetInstanceUserRequest) SetUserUid(v int64) *SetInstanceUserRequest {
-	s.UserUid = &v
+func (s *SetInstanceUserRequest) SetUserName(v string) *SetInstanceUserRequest {
+	s.UserName = &v
 	return s
 }
 
-func (s *SetInstanceUserRequest) SetUserName(v string) *SetInstanceUserRequest {
-	s.UserName = &v
+func (s *SetInstanceUserRequest) SetUserUid(v int64) *SetInstanceUserRequest {
+	s.UserUid = &v
 	return s
 }
 
@@ -2445,8 +2620,9 @@ func (s *SetInstanceUserResponseBody) SetRequestId(v string) *SetInstanceUserRes
 }
 
 type SetInstanceUserResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetInstanceUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetInstanceUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetInstanceUserResponse) String() string {
@@ -2459,6 +2635,11 @@ func (s SetInstanceUserResponse) GoString() string {
 
 func (s *SetInstanceUserResponse) SetHeaders(v map[string]*string) *SetInstanceUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SetInstanceUserResponse) SetStatusCode(v int32) *SetInstanceUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2502,8 +2683,9 @@ func (s *StartInstanceResponseBody) SetRequestId(v string) *StartInstanceRespons
 }
 
 type StartInstanceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartInstanceResponse) String() string {
@@ -2516,6 +2698,11 @@ func (s StartInstanceResponse) GoString() string {
 
 func (s *StartInstanceResponse) SetHeaders(v map[string]*string) *StartInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StartInstanceResponse) SetStatusCode(v int32) *StartInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2559,8 +2746,9 @@ func (s *StopInstanceResponseBody) SetRequestId(v string) *StopInstanceResponseB
 }
 
 type StopInstanceResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StopInstanceResponse) String() string {
@@ -2573,6 +2761,11 @@ func (s StopInstanceResponse) GoString() string {
 
 func (s *StopInstanceResponse) SetHeaders(v map[string]*string) *StopInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StopInstanceResponse) SetStatusCode(v int32) *StopInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2637,11 +2830,35 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["ClusterType"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCluster"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCluster"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2665,11 +2882,31 @@ func (client *Client) CreateImageWithOptions(request *CreateImageRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateImage"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateImage"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2693,11 +2930,91 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllocatePublicAddress)) {
+		query["AllocatePublicAddress"] = request.AllocatePublicAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppList)) {
+		query["AppList"] = request.AppList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
+		query["InstanceChargeType"] = request.InstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetMaxBandwidthIn)) {
+		query["InternetMaxBandwidthIn"] = request.InternetMaxBandwidthIn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetMaxBandwidthOut)) {
+		query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskCategory)) {
+		query["SystemDiskCategory"] = request.SystemDiskCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskSize)) {
+		query["SystemDiskSize"] = request.SystemDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkMode)) {
+		query["WorkMode"] = request.WorkMode
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstance"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateInstance"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2718,8 +3035,19 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 func (client *Client) CreateServiceLinkedRoleWithOptions(runtime *util.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceLinkedRole"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateServiceLinkedRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateServiceLinkedRole"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2743,11 +3071,27 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCluster"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteCluster"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2771,11 +3115,27 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteImage"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteImage"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2799,11 +3159,27 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstance"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteInstance"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2824,8 +3200,19 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 
 func (client *Client) DescribeAvailableResourceWithOptions(runtime *util.RuntimeOptions) (_result *DescribeAvailableResourceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAvailableResource"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeAvailableResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAvailableResource"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2849,11 +3236,31 @@ func (client *Client) DescribeClusterADDomainWithOptions(request *DescribeCluste
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterADDomain"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeClusterADDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeClusterADDomain"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2877,11 +3284,39 @@ func (client *Client) DescribeClusterConnectionsWithOptions(request *DescribeClu
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterConnections"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeClusterConnectionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeClusterConnections"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2905,11 +3340,35 @@ func (client *Client) DescribeClusterPolicyWithOptions(request *DescribeClusterP
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AsyncMode)) {
+		query["AsyncMode"] = request.AsyncMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterPolicy"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeClusterPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeClusterPolicy"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2933,11 +3392,35 @@ func (client *Client) DescribeClustersWithOptions(request *DescribeClustersReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusters"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeClustersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeClusters"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2961,11 +3444,27 @@ func (client *Client) DescribeImagesWithOptions(request *DescribeImagesRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImages"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeImagesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeImages"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2989,11 +3488,35 @@ func (client *Client) DescribeInstancePolicyWithOptions(request *DescribeInstanc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AsyncMode)) {
+		query["AsyncMode"] = request.AsyncMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstancePolicy"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstancePolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstancePolicy"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3017,11 +3540,47 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserUid)) {
+		query["UserUid"] = request.UserUid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstances"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstances"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3045,11 +3604,51 @@ func (client *Client) GetConnectTicketWithOptions(request *GetConnectTicketReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AsyncMode)) {
+		query["AsyncMode"] = request.AsyncMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsePrivateIp)) {
+		query["UsePrivateIp"] = request.UsePrivateIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConnectTicket"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetConnectTicketResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetConnectTicket"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3070,8 +3669,19 @@ func (client *Client) GetConnectTicket(request *GetConnectTicketRequest) (_resul
 
 func (client *Client) IsUserAdminWithOptions(runtime *util.RuntimeOptions) (_result *IsUserAdminResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("IsUserAdmin"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &IsUserAdminResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("IsUserAdmin"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3095,11 +3705,27 @@ func (client *Client) RestartInstanceWithOptions(request *RestartInstanceRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartInstance"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RestartInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RestartInstance"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3123,11 +3749,47 @@ func (client *Client) SetClusterADDomainWithOptions(request *SetClusterADDomainR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainAdmin)) {
+		query["DomainAdmin"] = request.DomainAdmin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainDelete)) {
+		query["DomainDelete"] = request.DomainDelete
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainDnsIp)) {
+		query["DomainDnsIp"] = request.DomainDnsIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainPassword)) {
+		query["DomainPassword"] = request.DomainPassword
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetClusterADDomain"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetClusterADDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetClusterADDomain"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3151,11 +3813,35 @@ func (client *Client) SetClusterDnatWithOptions(request *SetClusterDnatRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatEip)) {
+		query["NatEip"] = request.NatEip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatId)) {
+		query["NatId"] = request.NatId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetClusterDnat"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetClusterDnatResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetClusterDnat"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3179,11 +3865,31 @@ func (client *Client) SetClusterNameWithOptions(request *SetClusterNameRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetClusterName"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetClusterNameResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetClusterName"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3207,11 +3913,59 @@ func (client *Client) SetClusterPolicyWithOptions(request *SetClusterPolicyReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AsyncMode)) {
+		query["AsyncMode"] = request.AsyncMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Audio)) {
+		query["Audio"] = request.Audio
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Clipboard)) {
+		query["Clipboard"] = request.Clipboard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainList)) {
+		query["DomainList"] = request.DomainList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalDrive)) {
+		query["LocalDrive"] = request.LocalDrive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdpPort)) {
+		query["UdpPort"] = request.UdpPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsbRedirect)) {
+		query["UsbRedirect"] = request.UsbRedirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Watermark)) {
+		query["Watermark"] = request.Watermark
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetClusterPolicy"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetClusterPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetClusterPolicy"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3235,11 +3989,31 @@ func (client *Client) SetImageNameWithOptions(request *SetImageNameRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetImageName"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetImageNameResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetImageName"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3263,11 +4037,31 @@ func (client *Client) SetInstanceNameWithOptions(request *SetInstanceNameRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetInstanceName"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetInstanceNameResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetInstanceName"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3291,11 +4085,39 @@ func (client *Client) SetInstancePolicyWithOptions(request *SetInstancePolicyReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AsyncMode)) {
+		query["AsyncMode"] = request.AsyncMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OptimizeFor3d)) {
+		query["OptimizeFor3d"] = request.OptimizeFor3d
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VisualLossless)) {
+		query["VisualLossless"] = request.VisualLossless
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetInstancePolicy"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetInstancePolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetInstancePolicy"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3319,11 +4141,35 @@ func (client *Client) SetInstanceUserWithOptions(request *SetInstanceUserRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserUid)) {
+		query["UserUid"] = request.UserUid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetInstanceUser"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetInstanceUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetInstanceUser"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3347,11 +4193,27 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartInstance"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StartInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartInstance"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3375,11 +4237,27 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopInstance"),
+		Version:     tea.String("2019-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StopInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StopInstance"), tea.String("2019-06-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
