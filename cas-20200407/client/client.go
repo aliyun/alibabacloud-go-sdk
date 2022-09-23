@@ -8,7 +8,7 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -1621,7 +1621,7 @@ func (s *UploadPCACertResponse) SetBody(v *UploadPCACertResponseBody) *UploadPCA
 }
 
 type VerifyRequest struct {
-	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	CertIdentifier   *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	MessageType      *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 	SignatureValue   *string `json:"SignatureValue,omitempty" xml:"SignatureValue,omitempty"`
@@ -1636,8 +1636,8 @@ func (s VerifyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *VerifyRequest) SetIdentifier(v string) *VerifyRequest {
-	s.Identifier = &v
+func (s *VerifyRequest) SetCertIdentifier(v string) *VerifyRequest {
+	s.CertIdentifier = &v
 	return s
 }
 
@@ -2621,8 +2621,8 @@ func (client *Client) VerifyWithOptions(request *VerifyRequest, runtime *util.Ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
-		query["Identifier"] = request.Identifier
+	if !tea.BoolValue(util.IsUnset(request.CertIdentifier)) {
+		query["CertIdentifier"] = request.CertIdentifier
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Message)) {
