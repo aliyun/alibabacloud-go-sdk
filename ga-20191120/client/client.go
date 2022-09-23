@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -77,8 +77,7 @@ func (s *AddEntriesToAclRequestAclEntries) SetEntryDescription(v string) *AddEnt
 }
 
 type AddEntriesToAclResponseBody struct {
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// Id of the request
+	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -179,8 +178,7 @@ func (s *AssociateAclsWithListenerRequest) SetRegionId(v string) *AssociateAclsW
 type AssociateAclsWithListenerResponseBody struct {
 	AclIds     []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
 	ListenerId *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AssociateAclsWithListenerResponseBody) String() string {
@@ -504,7 +502,6 @@ func (s *AttachLogStoreToEndpointGroupRequest) SetSlsRegionId(v string) *AttachL
 }
 
 type AttachLogStoreToEndpointGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1052,8 +1049,7 @@ func (s *CreateAclRequestAclEntries) SetEntryDescription(v string) *CreateAclReq
 }
 
 type CreateAclResponseBody struct {
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// Id of the request
+	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1182,7 +1178,6 @@ func (s *CreateApplicationMonitorRequest) SetTaskName(v string) *CreateApplicati
 }
 
 type CreateApplicationMonitorResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -1400,22 +1395,14 @@ func (s *CreateBandwidthPackageResponse) SetBody(v *CreateBandwidthPackageRespon
 }
 
 type CreateBasicAcceleratorRequest struct {
-	// 自动续费
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// 自动续费
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// 续费周期
-	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
-	// 自动使用优惠券
-	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// 客户端Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 购买时长
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 时长单位
-	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AutoPay           *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew         *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewDuration *int32  `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
+	AutoUseCoupon     *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Duration          *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	PricingCycle      *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateBasicAcceleratorRequest) String() string {
@@ -1467,12 +1454,9 @@ func (s *CreateBasicAcceleratorRequest) SetRegionId(v string) *CreateBasicAccele
 }
 
 type CreateBasicAcceleratorResponseBody struct {
-	// 全球加速实例ID
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// 订单Id
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OrderId       *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateBasicAcceleratorResponseBody) String() string {
@@ -1528,22 +1512,14 @@ func (s *CreateBasicAcceleratorResponse) SetBody(v *CreateBasicAcceleratorRespon
 }
 
 type CreateBasicEndpointGroupRequest struct {
-	// 全球加速实例Id
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// 客户端Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 终端节点组描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 终端节点地址
-	EndpointAddress *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
-	// 终端节点组所在地域
+	AcceleratorId       *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndpointAddress     *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	// 终端节点类型
-	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// 终端节点组名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Regionid
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	EndpointType        *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateBasicEndpointGroupRequest) String() string {
@@ -1595,10 +1571,8 @@ func (s *CreateBasicEndpointGroupRequest) SetRegionId(v string) *CreateBasicEndp
 }
 
 type CreateBasicEndpointGroupResponseBody struct {
-	// 终端节点组Id
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateBasicEndpointGroupResponseBody) String() string {
@@ -1649,16 +1623,11 @@ func (s *CreateBasicEndpointGroupResponse) SetBody(v *CreateBasicEndpointGroupRe
 }
 
 type CreateBasicIpSetRequest struct {
-	// 加速地域Id
 	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
-	// 基础版全球加速实例Id
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// 客户端Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 公网质量类型
-	IspType *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AcceleratorId      *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	IspType            *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateBasicIpSetRequest) String() string {
@@ -1695,9 +1664,7 @@ func (s *CreateBasicIpSetRequest) SetRegionId(v string) *CreateBasicIpSetRequest
 }
 
 type CreateBasicIpSetResponseBody struct {
-	// 加速地域接入点Id
-	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
-	// 请求Id
+	IpSetId   *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1744,6 +1711,679 @@ func (s *CreateBasicIpSetResponse) SetStatusCode(v int32) *CreateBasicIpSetRespo
 }
 
 func (s *CreateBasicIpSetResponse) SetBody(v *CreateBasicIpSetResponseBody) *CreateBasicIpSetResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCustomRoutingEndpointGroupDestinationsRequest struct {
+	ClientToken               *string                                                                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DestinationConfigurations []*CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations `json:"DestinationConfigurations,omitempty" xml:"DestinationConfigurations,omitempty" type:"Repeated"`
+	DryRun                    *bool                                                                           `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EndpointGroupId           *string                                                                         `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	RegionId                  *string                                                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointGroupDestinationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointGroupDestinationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointGroupDestinationsRequest) SetClientToken(v string) *CreateCustomRoutingEndpointGroupDestinationsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupDestinationsRequest) SetDestinationConfigurations(v []*CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations) *CreateCustomRoutingEndpointGroupDestinationsRequest {
+	s.DestinationConfigurations = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupDestinationsRequest) SetDryRun(v bool) *CreateCustomRoutingEndpointGroupDestinationsRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupDestinationsRequest) SetEndpointGroupId(v string) *CreateCustomRoutingEndpointGroupDestinationsRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupDestinationsRequest) SetRegionId(v string) *CreateCustomRoutingEndpointGroupDestinationsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations struct {
+	FromPort  *int32    `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	Protocols []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	ToPort    *int32    `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations) SetFromPort(v int32) *CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations {
+	s.FromPort = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations) SetProtocols(v []*string) *CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations {
+	s.Protocols = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations) SetToPort(v int32) *CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations {
+	s.ToPort = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointGroupDestinationsResponseBody struct {
+	DestinationIds []*string `json:"DestinationIds,omitempty" xml:"DestinationIds,omitempty" type:"Repeated"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointGroupDestinationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointGroupDestinationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointGroupDestinationsResponseBody) SetDestinationIds(v []*string) *CreateCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.DestinationIds = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupDestinationsResponseBody) SetRequestId(v string) *CreateCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointGroupDestinationsResponse struct {
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCustomRoutingEndpointGroupDestinationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCustomRoutingEndpointGroupDestinationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointGroupDestinationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointGroupDestinationsResponse) SetHeaders(v map[string]*string) *CreateCustomRoutingEndpointGroupDestinationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupDestinationsResponse) SetStatusCode(v int32) *CreateCustomRoutingEndpointGroupDestinationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupDestinationsResponse) SetBody(v *CreateCustomRoutingEndpointGroupDestinationsResponseBody) *CreateCustomRoutingEndpointGroupDestinationsResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCustomRoutingEndpointGroupsRequest struct {
+	AcceleratorId               *string                                                                `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ClientToken                 *string                                                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                      *bool                                                                  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EndpointGroupConfigurations []*CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations `json:"EndpointGroupConfigurations,omitempty" xml:"EndpointGroupConfigurations,omitempty" type:"Repeated"`
+	ListenerId                  *string                                                                `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RegionId                    *string                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequest) SetAcceleratorId(v string) *CreateCustomRoutingEndpointGroupsRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequest) SetClientToken(v string) *CreateCustomRoutingEndpointGroupsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequest) SetDryRun(v bool) *CreateCustomRoutingEndpointGroupsRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequest) SetEndpointGroupConfigurations(v []*CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations) *CreateCustomRoutingEndpointGroupsRequest {
+	s.EndpointGroupConfigurations = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequest) SetListenerId(v string) *CreateCustomRoutingEndpointGroupsRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequest) SetRegionId(v string) *CreateCustomRoutingEndpointGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations struct {
+	Description               *string                                                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationConfigurations []*CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsDestinationConfigurations `json:"DestinationConfigurations,omitempty" xml:"DestinationConfigurations,omitempty" type:"Repeated"`
+	EndpointConfigurations    []*CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations    `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
+	EndpointGroupRegion       *string                                                                                         `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	Name                      *string                                                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations) SetDescription(v string) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations) SetDestinationConfigurations(v []*CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsDestinationConfigurations) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations {
+	s.DestinationConfigurations = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointConfigurations(v []*CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations {
+	s.EndpointConfigurations = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations) SetEndpointGroupRegion(v string) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations {
+	s.EndpointGroupRegion = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations) SetName(v string) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurations {
+	s.Name = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsDestinationConfigurations struct {
+	FromPort  *int32    `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	Protocols []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	ToPort    *int32    `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsDestinationConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsDestinationConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsDestinationConfigurations) SetFromPort(v int32) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsDestinationConfigurations {
+	s.FromPort = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsDestinationConfigurations) SetProtocols(v []*string) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsDestinationConfigurations {
+	s.Protocols = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsDestinationConfigurations) SetToPort(v int32) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsDestinationConfigurations {
+	s.ToPort = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations struct {
+	Endpoint                *string                                                                                                          `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	PolicyConfigurations    []*CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations `json:"PolicyConfigurations,omitempty" xml:"PolicyConfigurations,omitempty" type:"Repeated"`
+	TrafficToEndpointPolicy *string                                                                                                          `json:"TrafficToEndpointPolicy,omitempty" xml:"TrafficToEndpointPolicy,omitempty"`
+	Type                    *string                                                                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetEndpoint(v string) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetPolicyConfigurations(v []*CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.PolicyConfigurations = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetTrafficToEndpointPolicy(v string) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.TrafficToEndpointPolicy = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetType(v string) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.Type = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations struct {
+	Address    *string                                                                                                                    `json:"Address,omitempty" xml:"Address,omitempty"`
+	PortRanges []*CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+}
+
+func (s CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations) SetAddress(v string) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations {
+	s.Address = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations) SetPortRanges(v []*CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations {
+	s.PortRanges = v
+	return s
+}
+
+type CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges struct {
+	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	ToPort   *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges) SetFromPort(v int32) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges {
+	s.FromPort = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges) SetToPort(v int32) *CreateCustomRoutingEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges {
+	s.ToPort = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointGroupsResponseBody struct {
+	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
+	RequestId        *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointGroupsResponseBody) SetEndpointGroupIds(v []*string) *CreateCustomRoutingEndpointGroupsResponseBody {
+	s.EndpointGroupIds = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsResponseBody) SetRequestId(v string) *CreateCustomRoutingEndpointGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointGroupsResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCustomRoutingEndpointGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCustomRoutingEndpointGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointGroupsResponse) SetHeaders(v map[string]*string) *CreateCustomRoutingEndpointGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsResponse) SetStatusCode(v int32) *CreateCustomRoutingEndpointGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointGroupsResponse) SetBody(v *CreateCustomRoutingEndpointGroupsResponseBody) *CreateCustomRoutingEndpointGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCustomRoutingEndpointTrafficPoliciesRequest struct {
+	ClientToken          *string                                                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointId           *string                                                                  `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	PolicyConfigurations []*CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations `json:"PolicyConfigurations,omitempty" xml:"PolicyConfigurations,omitempty" type:"Repeated"`
+	RegionId             *string                                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointTrafficPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointTrafficPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointTrafficPoliciesRequest) SetClientToken(v string) *CreateCustomRoutingEndpointTrafficPoliciesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointTrafficPoliciesRequest) SetEndpointId(v string) *CreateCustomRoutingEndpointTrafficPoliciesRequest {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointTrafficPoliciesRequest) SetPolicyConfigurations(v []*CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations) *CreateCustomRoutingEndpointTrafficPoliciesRequest {
+	s.PolicyConfigurations = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointTrafficPoliciesRequest) SetRegionId(v string) *CreateCustomRoutingEndpointTrafficPoliciesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations struct {
+	Address    *string                                                                            `json:"Address,omitempty" xml:"Address,omitempty"`
+	PortRanges []*CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+}
+
+func (s CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations) SetAddress(v string) *CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations {
+	s.Address = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations) SetPortRanges(v []*CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges) *CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations {
+	s.PortRanges = v
+	return s
+}
+
+type CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges struct {
+	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	ToPort   *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges) SetFromPort(v int32) *CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges {
+	s.FromPort = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges) SetToPort(v int32) *CreateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges {
+	s.ToPort = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointTrafficPoliciesResponseBody struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointTrafficPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointTrafficPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointTrafficPoliciesResponseBody) SetPolicyIds(v []*string) *CreateCustomRoutingEndpointTrafficPoliciesResponseBody {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointTrafficPoliciesResponseBody) SetRequestId(v string) *CreateCustomRoutingEndpointTrafficPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointTrafficPoliciesResponse struct {
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCustomRoutingEndpointTrafficPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCustomRoutingEndpointTrafficPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointTrafficPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointTrafficPoliciesResponse) SetHeaders(v map[string]*string) *CreateCustomRoutingEndpointTrafficPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointTrafficPoliciesResponse) SetStatusCode(v int32) *CreateCustomRoutingEndpointTrafficPoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointTrafficPoliciesResponse) SetBody(v *CreateCustomRoutingEndpointTrafficPoliciesResponseBody) *CreateCustomRoutingEndpointTrafficPoliciesResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCustomRoutingEndpointsRequest struct {
+	ClientToken            *string                                                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointConfigurations []*CreateCustomRoutingEndpointsRequestEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
+	EndpointGroupId        *string                                                      `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	RegionId               *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointsRequest) SetClientToken(v string) *CreateCustomRoutingEndpointsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointsRequest) SetEndpointConfigurations(v []*CreateCustomRoutingEndpointsRequestEndpointConfigurations) *CreateCustomRoutingEndpointsRequest {
+	s.EndpointConfigurations = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointsRequest) SetEndpointGroupId(v string) *CreateCustomRoutingEndpointsRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointsRequest) SetRegionId(v string) *CreateCustomRoutingEndpointsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointsRequestEndpointConfigurations struct {
+	Endpoint                *string                                                                          `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	PolicyConfigurations    []*CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations `json:"PolicyConfigurations,omitempty" xml:"PolicyConfigurations,omitempty" type:"Repeated"`
+	TrafficToEndpointPolicy *string                                                                          `json:"TrafficToEndpointPolicy,omitempty" xml:"TrafficToEndpointPolicy,omitempty"`
+	Type                    *string                                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointsRequestEndpointConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointsRequestEndpointConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointsRequestEndpointConfigurations) SetEndpoint(v string) *CreateCustomRoutingEndpointsRequestEndpointConfigurations {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointsRequestEndpointConfigurations) SetPolicyConfigurations(v []*CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations) *CreateCustomRoutingEndpointsRequestEndpointConfigurations {
+	s.PolicyConfigurations = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointsRequestEndpointConfigurations) SetTrafficToEndpointPolicy(v string) *CreateCustomRoutingEndpointsRequestEndpointConfigurations {
+	s.TrafficToEndpointPolicy = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointsRequestEndpointConfigurations) SetType(v string) *CreateCustomRoutingEndpointsRequestEndpointConfigurations {
+	s.Type = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations struct {
+	Address    *string                                                                                    `json:"Address,omitempty" xml:"Address,omitempty"`
+	PortRanges []*CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+}
+
+func (s CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations) SetAddress(v string) *CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations {
+	s.Address = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations) SetPortRanges(v []*CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges) *CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations {
+	s.PortRanges = v
+	return s
+}
+
+type CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges struct {
+	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	ToPort   *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges) SetFromPort(v int32) *CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges {
+	s.FromPort = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges) SetToPort(v int32) *CreateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges {
+	s.ToPort = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointsResponseBody struct {
+	EndpointIds []*string `json:"EndpointIds,omitempty" xml:"EndpointIds,omitempty" type:"Repeated"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCustomRoutingEndpointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointsResponseBody) SetEndpointIds(v []*string) *CreateCustomRoutingEndpointsResponseBody {
+	s.EndpointIds = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointsResponseBody) SetRequestId(v string) *CreateCustomRoutingEndpointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCustomRoutingEndpointsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCustomRoutingEndpointsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCustomRoutingEndpointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomRoutingEndpointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomRoutingEndpointsResponse) SetHeaders(v map[string]*string) *CreateCustomRoutingEndpointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointsResponse) SetStatusCode(v int32) *CreateCustomRoutingEndpointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCustomRoutingEndpointsResponse) SetBody(v *CreateCustomRoutingEndpointsResponseBody) *CreateCustomRoutingEndpointsResponse {
 	s.Body = v
 	return s
 }
@@ -2185,8 +2825,7 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) Se
 
 type CreateEndpointGroupsResponseBody struct {
 	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateEndpointGroupsResponseBody) String() string {
@@ -2677,18 +3316,21 @@ func (s *CreateIpSetsResponse) SetBody(v *CreateIpSetsResponseBody) *CreateIpSet
 }
 
 type CreateListenerRequest struct {
-	AcceleratorId       *string                                   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	Certificates        []*CreateListenerRequestCertificates      `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	ClientAffinity      *string                                   `json:"ClientAffinity,omitempty" xml:"ClientAffinity,omitempty"`
-	ClientToken         *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description         *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PortRanges          []*CreateListenerRequestPortRanges        `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	Protocol            *string                                   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	ProxyProtocol       *bool                                     `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
-	RegionId            *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityPolicyId    *string                                   `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	XForwardedForConfig *CreateListenerRequestXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
+	AcceleratorId                            *string                                                          `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Certificates                             []*CreateListenerRequestCertificates                             `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	ClientAffinity                           *string                                                          `json:"ClientAffinity,omitempty" xml:"ClientAffinity,omitempty"`
+	ClientToken                              *string                                                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CustomRoutingEndpointGroupConfigurations []*CreateListenerRequestCustomRoutingEndpointGroupConfigurations `json:"CustomRoutingEndpointGroupConfigurations,omitempty" xml:"CustomRoutingEndpointGroupConfigurations,omitempty" type:"Repeated"`
+	Description                              *string                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndpointGroupConfigurations              []*CreateListenerRequestEndpointGroupConfigurations              `json:"EndpointGroupConfigurations,omitempty" xml:"EndpointGroupConfigurations,omitempty" type:"Repeated"`
+	Name                                     *string                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	PortRanges                               []*CreateListenerRequestPortRanges                               `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	Protocol                                 *string                                                          `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	ProxyProtocol                            *bool                                                            `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
+	RegionId                                 *string                                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityPolicyId                         *string                                                          `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
+	Type                                     *string                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
+	XForwardedForConfig                      *CreateListenerRequestXForwardedForConfig                        `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
 func (s CreateListenerRequest) String() string {
@@ -2719,8 +3361,18 @@ func (s *CreateListenerRequest) SetClientToken(v string) *CreateListenerRequest 
 	return s
 }
 
+func (s *CreateListenerRequest) SetCustomRoutingEndpointGroupConfigurations(v []*CreateListenerRequestCustomRoutingEndpointGroupConfigurations) *CreateListenerRequest {
+	s.CustomRoutingEndpointGroupConfigurations = v
+	return s
+}
+
 func (s *CreateListenerRequest) SetDescription(v string) *CreateListenerRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateListenerRequest) SetEndpointGroupConfigurations(v []*CreateListenerRequestEndpointGroupConfigurations) *CreateListenerRequest {
+	s.EndpointGroupConfigurations = v
 	return s
 }
 
@@ -2754,6 +3406,11 @@ func (s *CreateListenerRequest) SetSecurityPolicyId(v string) *CreateListenerReq
 	return s
 }
 
+func (s *CreateListenerRequest) SetType(v string) *CreateListenerRequest {
+	s.Type = &v
+	return s
+}
+
 func (s *CreateListenerRequest) SetXForwardedForConfig(v *CreateListenerRequestXForwardedForConfig) *CreateListenerRequest {
 	s.XForwardedForConfig = v
 	return s
@@ -2773,6 +3430,316 @@ func (s CreateListenerRequestCertificates) GoString() string {
 
 func (s *CreateListenerRequestCertificates) SetId(v string) *CreateListenerRequestCertificates {
 	s.Id = &v
+	return s
+}
+
+type CreateListenerRequestCustomRoutingEndpointGroupConfigurations struct {
+	Description               *string                                                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationConfigurations []*CreateListenerRequestCustomRoutingEndpointGroupConfigurationsDestinationConfigurations `json:"DestinationConfigurations,omitempty" xml:"DestinationConfigurations,omitempty" type:"Repeated"`
+	EndpointConfigurations    []*CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurations    `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
+	EndpointGroupRegion       *string                                                                                   `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	Name                      *string                                                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateListenerRequestCustomRoutingEndpointGroupConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateListenerRequestCustomRoutingEndpointGroupConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurations) SetDescription(v string) *CreateListenerRequestCustomRoutingEndpointGroupConfigurations {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurations) SetDestinationConfigurations(v []*CreateListenerRequestCustomRoutingEndpointGroupConfigurationsDestinationConfigurations) *CreateListenerRequestCustomRoutingEndpointGroupConfigurations {
+	s.DestinationConfigurations = v
+	return s
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurations) SetEndpointConfigurations(v []*CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurations) *CreateListenerRequestCustomRoutingEndpointGroupConfigurations {
+	s.EndpointConfigurations = v
+	return s
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurations) SetEndpointGroupRegion(v string) *CreateListenerRequestCustomRoutingEndpointGroupConfigurations {
+	s.EndpointGroupRegion = &v
+	return s
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurations) SetName(v string) *CreateListenerRequestCustomRoutingEndpointGroupConfigurations {
+	s.Name = &v
+	return s
+}
+
+type CreateListenerRequestCustomRoutingEndpointGroupConfigurationsDestinationConfigurations struct {
+	FromPort  *int32    `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	Protocols []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	ToPort    *int32    `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s CreateListenerRequestCustomRoutingEndpointGroupConfigurationsDestinationConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateListenerRequestCustomRoutingEndpointGroupConfigurationsDestinationConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsDestinationConfigurations) SetFromPort(v int32) *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsDestinationConfigurations {
+	s.FromPort = &v
+	return s
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsDestinationConfigurations) SetProtocols(v []*string) *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsDestinationConfigurations {
+	s.Protocols = v
+	return s
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsDestinationConfigurations) SetToPort(v int32) *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsDestinationConfigurations {
+	s.ToPort = &v
+	return s
+}
+
+type CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurations struct {
+	Endpoint                *string                                                                                                    `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	PolicyConfigurations    []*CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations `json:"PolicyConfigurations,omitempty" xml:"PolicyConfigurations,omitempty" type:"Repeated"`
+	TrafficToEndpointPolicy *string                                                                                                    `json:"TrafficToEndpointPolicy,omitempty" xml:"TrafficToEndpointPolicy,omitempty"`
+	Type                    *string                                                                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurations) SetEndpoint(v string) *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurations {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurations) SetPolicyConfigurations(v []*CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations) *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurations {
+	s.PolicyConfigurations = v
+	return s
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurations) SetTrafficToEndpointPolicy(v string) *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurations {
+	s.TrafficToEndpointPolicy = &v
+	return s
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurations) SetType(v string) *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurations {
+	s.Type = &v
+	return s
+}
+
+type CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations struct {
+	Address    *string                                                                                                              `json:"Address,omitempty" xml:"Address,omitempty"`
+	PortRanges []*CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+}
+
+func (s CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations) SetAddress(v string) *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations {
+	s.Address = &v
+	return s
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations) SetPortRanges(v []*CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges) *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurations {
+	s.PortRanges = v
+	return s
+}
+
+type CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges struct {
+	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	ToPort   *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges) GoString() string {
+	return s.String()
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges) SetFromPort(v int32) *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges {
+	s.FromPort = &v
+	return s
+}
+
+func (s *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges) SetToPort(v int32) *CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges {
+	s.ToPort = &v
+	return s
+}
+
+type CreateListenerRequestEndpointGroupConfigurations struct {
+	EnableClientIPPreservationProxyProtocol *bool                                                                     `json:"EnableClientIPPreservationProxyProtocol,omitempty" xml:"EnableClientIPPreservationProxyProtocol,omitempty"`
+	EnableClientIPPreservationToa           *bool                                                                     `json:"EnableClientIPPreservationToa,omitempty" xml:"EnableClientIPPreservationToa,omitempty"`
+	EndpointConfigurations                  []*CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
+	EndpointGroupDescription                *string                                                                   `json:"EndpointGroupDescription,omitempty" xml:"EndpointGroupDescription,omitempty"`
+	EndpointGroupName                       *string                                                                   `json:"EndpointGroupName,omitempty" xml:"EndpointGroupName,omitempty"`
+	EndpointGroupRegion                     *string                                                                   `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	EndpointGroupType                       *string                                                                   `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	EndpointRequestProtocol                 *string                                                                   `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
+	HealthCheckEnabled                      *bool                                                                     `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckIntervalSeconds              *int64                                                                    `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
+	HealthCheckPath                         *string                                                                   `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	HealthCheckPort                         *int64                                                                    `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	HealthCheckProtocol                     *string                                                                   `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	PortOverrides                           []*CreateListenerRequestEndpointGroupConfigurationsPortOverrides          `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
+	ThresholdCount                          *int64                                                                    `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
+	TrafficPercentage                       *int64                                                                    `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
+}
+
+func (s CreateListenerRequestEndpointGroupConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateListenerRequestEndpointGroupConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetEnableClientIPPreservationProxyProtocol(v bool) *CreateListenerRequestEndpointGroupConfigurations {
+	s.EnableClientIPPreservationProxyProtocol = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetEnableClientIPPreservationToa(v bool) *CreateListenerRequestEndpointGroupConfigurations {
+	s.EnableClientIPPreservationToa = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetEndpointConfigurations(v []*CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) *CreateListenerRequestEndpointGroupConfigurations {
+	s.EndpointConfigurations = v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetEndpointGroupDescription(v string) *CreateListenerRequestEndpointGroupConfigurations {
+	s.EndpointGroupDescription = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetEndpointGroupName(v string) *CreateListenerRequestEndpointGroupConfigurations {
+	s.EndpointGroupName = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetEndpointGroupRegion(v string) *CreateListenerRequestEndpointGroupConfigurations {
+	s.EndpointGroupRegion = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetEndpointGroupType(v string) *CreateListenerRequestEndpointGroupConfigurations {
+	s.EndpointGroupType = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetEndpointRequestProtocol(v string) *CreateListenerRequestEndpointGroupConfigurations {
+	s.EndpointRequestProtocol = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetHealthCheckEnabled(v bool) *CreateListenerRequestEndpointGroupConfigurations {
+	s.HealthCheckEnabled = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetHealthCheckIntervalSeconds(v int64) *CreateListenerRequestEndpointGroupConfigurations {
+	s.HealthCheckIntervalSeconds = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetHealthCheckPath(v string) *CreateListenerRequestEndpointGroupConfigurations {
+	s.HealthCheckPath = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetHealthCheckPort(v int64) *CreateListenerRequestEndpointGroupConfigurations {
+	s.HealthCheckPort = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetHealthCheckProtocol(v string) *CreateListenerRequestEndpointGroupConfigurations {
+	s.HealthCheckProtocol = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetPortOverrides(v []*CreateListenerRequestEndpointGroupConfigurationsPortOverrides) *CreateListenerRequestEndpointGroupConfigurations {
+	s.PortOverrides = v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetThresholdCount(v int64) *CreateListenerRequestEndpointGroupConfigurations {
+	s.ThresholdCount = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurations) SetTrafficPercentage(v int64) *CreateListenerRequestEndpointGroupConfigurations {
+	s.TrafficPercentage = &v
+	return s
+}
+
+type CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations struct {
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *int64  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) SetEndpoint(v string) *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) SetType(v string) *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) SetWeight(v int64) *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.Weight = &v
+	return s
+}
+
+type CreateListenerRequestEndpointGroupConfigurationsPortOverrides struct {
+	EndpointPort *int64 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
+	ListenerPort *int64 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+}
+
+func (s CreateListenerRequestEndpointGroupConfigurationsPortOverrides) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateListenerRequestEndpointGroupConfigurationsPortOverrides) GoString() string {
+	return s.String()
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurationsPortOverrides) SetEndpointPort(v int64) *CreateListenerRequestEndpointGroupConfigurationsPortOverrides {
+	s.EndpointPort = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurationsPortOverrides) SetListenerPort(v int64) *CreateListenerRequestEndpointGroupConfigurationsPortOverrides {
+	s.ListenerPort = &v
 	return s
 }
 
@@ -2934,7 +3901,6 @@ func (s *CreateSpareIpsRequest) SetSpareIps(v []*string) *CreateSpareIpsRequest 
 }
 
 type CreateSpareIpsResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3091,8 +4057,7 @@ func (s *DeleteAclRequest) SetRegionId(v string) *DeleteAclRequest {
 }
 
 type DeleteAclResponseBody struct {
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// Id of the request
+	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3300,10 +4265,8 @@ func (s *DeleteBandwidthPackageResponse) SetBody(v *DeleteBandwidthPackageRespon
 }
 
 type DeleteBasicAcceleratorRequest struct {
-	// 全球加速实例Id
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteBasicAcceleratorRequest) String() string {
@@ -3325,10 +4288,8 @@ func (s *DeleteBasicAcceleratorRequest) SetRegionId(v string) *DeleteBasicAccele
 }
 
 type DeleteBasicAcceleratorResponseBody struct {
-	// 全球加速实例Id
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteBasicAcceleratorResponseBody) String() string {
@@ -3379,9 +4340,7 @@ func (s *DeleteBasicAcceleratorResponse) SetBody(v *DeleteBasicAcceleratorRespon
 }
 
 type DeleteBasicEndpointGroupRequest struct {
-	// 客户端Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 终端节点组Id
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 }
 
@@ -3404,7 +4363,6 @@ func (s *DeleteBasicEndpointGroupRequest) SetEndpointGroupId(v string) *DeleteBa
 }
 
 type DeleteBasicEndpointGroupResponseBody struct {
-	// 请求Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3451,12 +4409,9 @@ func (s *DeleteBasicEndpointGroupResponse) SetBody(v *DeleteBasicEndpointGroupRe
 }
 
 type DeleteBasicIpSetRequest struct {
-	// 客户端Token
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 加速接入点Id
-	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	IpSetId     *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteBasicIpSetRequest) String() string {
@@ -3483,7 +4438,6 @@ func (s *DeleteBasicIpSetRequest) SetRegionId(v string) *DeleteBasicIpSetRequest
 }
 
 type DeleteBasicIpSetResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3525,6 +4479,342 @@ func (s *DeleteBasicIpSetResponse) SetStatusCode(v int32) *DeleteBasicIpSetRespo
 }
 
 func (s *DeleteBasicIpSetResponse) SetBody(v *DeleteBasicIpSetResponseBody) *DeleteBasicIpSetResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomRoutingEndpointGroupDestinationsRequest struct {
+	ClientToken     *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DestinationIds  []*string `json:"DestinationIds,omitempty" xml:"DestinationIds,omitempty" type:"Repeated"`
+	DryRun          *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EndpointGroupId *string   `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteCustomRoutingEndpointGroupDestinationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoutingEndpointGroupDestinationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoutingEndpointGroupDestinationsRequest) SetClientToken(v string) *DeleteCustomRoutingEndpointGroupDestinationsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointGroupDestinationsRequest) SetDestinationIds(v []*string) *DeleteCustomRoutingEndpointGroupDestinationsRequest {
+	s.DestinationIds = v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointGroupDestinationsRequest) SetDryRun(v bool) *DeleteCustomRoutingEndpointGroupDestinationsRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointGroupDestinationsRequest) SetEndpointGroupId(v string) *DeleteCustomRoutingEndpointGroupDestinationsRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointGroupDestinationsRequest) SetRegionId(v string) *DeleteCustomRoutingEndpointGroupDestinationsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteCustomRoutingEndpointGroupDestinationsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCustomRoutingEndpointGroupDestinationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoutingEndpointGroupDestinationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoutingEndpointGroupDestinationsResponseBody) SetRequestId(v string) *DeleteCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCustomRoutingEndpointGroupDestinationsResponse struct {
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCustomRoutingEndpointGroupDestinationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCustomRoutingEndpointGroupDestinationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoutingEndpointGroupDestinationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoutingEndpointGroupDestinationsResponse) SetHeaders(v map[string]*string) *DeleteCustomRoutingEndpointGroupDestinationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointGroupDestinationsResponse) SetStatusCode(v int32) *DeleteCustomRoutingEndpointGroupDestinationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointGroupDestinationsResponse) SetBody(v *DeleteCustomRoutingEndpointGroupDestinationsResponseBody) *DeleteCustomRoutingEndpointGroupDestinationsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomRoutingEndpointGroupsRequest struct {
+	AcceleratorId    *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	ClientToken      *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun           *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
+	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteCustomRoutingEndpointGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoutingEndpointGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoutingEndpointGroupsRequest) SetAcceleratorId(v string) *DeleteCustomRoutingEndpointGroupsRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointGroupsRequest) SetClientToken(v string) *DeleteCustomRoutingEndpointGroupsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointGroupsRequest) SetDryRun(v bool) *DeleteCustomRoutingEndpointGroupsRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointGroupsRequest) SetEndpointGroupIds(v []*string) *DeleteCustomRoutingEndpointGroupsRequest {
+	s.EndpointGroupIds = v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointGroupsRequest) SetRegionId(v string) *DeleteCustomRoutingEndpointGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteCustomRoutingEndpointGroupsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCustomRoutingEndpointGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoutingEndpointGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoutingEndpointGroupsResponseBody) SetRequestId(v string) *DeleteCustomRoutingEndpointGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCustomRoutingEndpointGroupsResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCustomRoutingEndpointGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCustomRoutingEndpointGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoutingEndpointGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoutingEndpointGroupsResponse) SetHeaders(v map[string]*string) *DeleteCustomRoutingEndpointGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointGroupsResponse) SetStatusCode(v int32) *DeleteCustomRoutingEndpointGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointGroupsResponse) SetBody(v *DeleteCustomRoutingEndpointGroupsResponseBody) *DeleteCustomRoutingEndpointGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomRoutingEndpointTrafficPoliciesRequest struct {
+	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointId  *string   `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	PolicyIds   []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteCustomRoutingEndpointTrafficPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoutingEndpointTrafficPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoutingEndpointTrafficPoliciesRequest) SetClientToken(v string) *DeleteCustomRoutingEndpointTrafficPoliciesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointTrafficPoliciesRequest) SetEndpointId(v string) *DeleteCustomRoutingEndpointTrafficPoliciesRequest {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointTrafficPoliciesRequest) SetPolicyIds(v []*string) *DeleteCustomRoutingEndpointTrafficPoliciesRequest {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointTrafficPoliciesRequest) SetRegionId(v string) *DeleteCustomRoutingEndpointTrafficPoliciesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteCustomRoutingEndpointTrafficPoliciesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCustomRoutingEndpointTrafficPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoutingEndpointTrafficPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoutingEndpointTrafficPoliciesResponseBody) SetRequestId(v string) *DeleteCustomRoutingEndpointTrafficPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCustomRoutingEndpointTrafficPoliciesResponse struct {
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCustomRoutingEndpointTrafficPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCustomRoutingEndpointTrafficPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoutingEndpointTrafficPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoutingEndpointTrafficPoliciesResponse) SetHeaders(v map[string]*string) *DeleteCustomRoutingEndpointTrafficPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointTrafficPoliciesResponse) SetStatusCode(v int32) *DeleteCustomRoutingEndpointTrafficPoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointTrafficPoliciesResponse) SetBody(v *DeleteCustomRoutingEndpointTrafficPoliciesResponseBody) *DeleteCustomRoutingEndpointTrafficPoliciesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomRoutingEndpointsRequest struct {
+	ClientToken     *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointGroupId *string   `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointIds     []*string `json:"EndpointIds,omitempty" xml:"EndpointIds,omitempty" type:"Repeated"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteCustomRoutingEndpointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoutingEndpointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoutingEndpointsRequest) SetClientToken(v string) *DeleteCustomRoutingEndpointsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointsRequest) SetEndpointGroupId(v string) *DeleteCustomRoutingEndpointsRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointsRequest) SetEndpointIds(v []*string) *DeleteCustomRoutingEndpointsRequest {
+	s.EndpointIds = v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointsRequest) SetRegionId(v string) *DeleteCustomRoutingEndpointsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteCustomRoutingEndpointsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCustomRoutingEndpointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoutingEndpointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoutingEndpointsResponseBody) SetRequestId(v string) *DeleteCustomRoutingEndpointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCustomRoutingEndpointsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCustomRoutingEndpointsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCustomRoutingEndpointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomRoutingEndpointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomRoutingEndpointsResponse) SetHeaders(v map[string]*string) *DeleteCustomRoutingEndpointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointsResponse) SetStatusCode(v int32) *DeleteCustomRoutingEndpointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomRoutingEndpointsResponse) SetBody(v *DeleteCustomRoutingEndpointsResponseBody) *DeleteCustomRoutingEndpointsResponse {
 	s.Body = v
 	return s
 }
@@ -3640,7 +4930,6 @@ func (s *DeleteEndpointGroupsRequest) SetRegionId(v string) *DeleteEndpointGroup
 }
 
 type DeleteEndpointGroupsResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4063,7 +5352,6 @@ func (s *DeleteSpareIpsRequest) SetSpareIps(v []*string) *DeleteSpareIpsRequest 
 }
 
 type DeleteSpareIpsResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4876,6 +6164,521 @@ func (s *DescribeBandwidthPackageAutoRenewAttributeResponse) SetBody(v *Describe
 	return s
 }
 
+type DescribeCustomRoutingEndPointTrafficPolicyRequest struct {
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeCustomRoutingEndPointTrafficPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomRoutingEndPointTrafficPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyRequest) SetPolicyId(v string) *DescribeCustomRoutingEndPointTrafficPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyRequest) SetRegionId(v string) *DescribeCustomRoutingEndPointTrafficPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeCustomRoutingEndPointTrafficPolicyResponseBody struct {
+	AcceleratorId   *string                                                             `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Address         *string                                                             `json:"Address,omitempty" xml:"Address,omitempty"`
+	Endpoint        *string                                                             `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	EndpointGroupId *string                                                             `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointId      *string                                                             `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	ListenerId      *string                                                             `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	PolicyId        *string                                                             `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PortRanges      []*DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	RequestId       *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCustomRoutingEndPointTrafficPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomRoutingEndPointTrafficPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBody) SetAcceleratorId(v string) *DescribeCustomRoutingEndPointTrafficPolicyResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBody) SetAddress(v string) *DescribeCustomRoutingEndPointTrafficPolicyResponseBody {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBody) SetEndpoint(v string) *DescribeCustomRoutingEndPointTrafficPolicyResponseBody {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBody) SetEndpointGroupId(v string) *DescribeCustomRoutingEndPointTrafficPolicyResponseBody {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBody) SetEndpointId(v string) *DescribeCustomRoutingEndPointTrafficPolicyResponseBody {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBody) SetListenerId(v string) *DescribeCustomRoutingEndPointTrafficPolicyResponseBody {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBody) SetPolicyId(v string) *DescribeCustomRoutingEndPointTrafficPolicyResponseBody {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBody) SetPortRanges(v []*DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges) *DescribeCustomRoutingEndPointTrafficPolicyResponseBody {
+	s.PortRanges = v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBody) SetRequestId(v string) *DescribeCustomRoutingEndPointTrafficPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges struct {
+	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	ToPort   *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges) SetFromPort(v int32) *DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges {
+	s.FromPort = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges) SetToPort(v int32) *DescribeCustomRoutingEndPointTrafficPolicyResponseBodyPortRanges {
+	s.ToPort = &v
+	return s
+}
+
+type DescribeCustomRoutingEndPointTrafficPolicyResponse struct {
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCustomRoutingEndPointTrafficPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCustomRoutingEndPointTrafficPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomRoutingEndPointTrafficPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyResponse) SetHeaders(v map[string]*string) *DescribeCustomRoutingEndPointTrafficPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyResponse) SetStatusCode(v int32) *DescribeCustomRoutingEndPointTrafficPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndPointTrafficPolicyResponse) SetBody(v *DescribeCustomRoutingEndPointTrafficPolicyResponseBody) *DescribeCustomRoutingEndPointTrafficPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCustomRoutingEndpointRequest struct {
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeCustomRoutingEndpointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomRoutingEndpointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomRoutingEndpointRequest) SetEndpointId(v string) *DescribeCustomRoutingEndpointRequest {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointRequest) SetRegionId(v string) *DescribeCustomRoutingEndpointRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeCustomRoutingEndpointResponseBody struct {
+	AcceleratorId           *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Endpoint                *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	EndpointGroupId         *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointId              *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	ListenerId              *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TrafficToEndpointPolicy *string `json:"TrafficToEndpointPolicy,omitempty" xml:"TrafficToEndpointPolicy,omitempty"`
+	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCustomRoutingEndpointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomRoutingEndpointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomRoutingEndpointResponseBody) SetAcceleratorId(v string) *DescribeCustomRoutingEndpointResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointResponseBody) SetEndpoint(v string) *DescribeCustomRoutingEndpointResponseBody {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointResponseBody) SetEndpointGroupId(v string) *DescribeCustomRoutingEndpointResponseBody {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointResponseBody) SetEndpointId(v string) *DescribeCustomRoutingEndpointResponseBody {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointResponseBody) SetListenerId(v string) *DescribeCustomRoutingEndpointResponseBody {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointResponseBody) SetRequestId(v string) *DescribeCustomRoutingEndpointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointResponseBody) SetTrafficToEndpointPolicy(v string) *DescribeCustomRoutingEndpointResponseBody {
+	s.TrafficToEndpointPolicy = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointResponseBody) SetType(v string) *DescribeCustomRoutingEndpointResponseBody {
+	s.Type = &v
+	return s
+}
+
+type DescribeCustomRoutingEndpointResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCustomRoutingEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCustomRoutingEndpointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomRoutingEndpointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomRoutingEndpointResponse) SetHeaders(v map[string]*string) *DescribeCustomRoutingEndpointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointResponse) SetStatusCode(v int32) *DescribeCustomRoutingEndpointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointResponse) SetBody(v *DescribeCustomRoutingEndpointResponseBody) *DescribeCustomRoutingEndpointResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCustomRoutingEndpointGroupRequest struct {
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeCustomRoutingEndpointGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomRoutingEndpointGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomRoutingEndpointGroupRequest) SetEndpointGroupId(v string) *DescribeCustomRoutingEndpointGroupRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupRequest) SetRegionId(v string) *DescribeCustomRoutingEndpointGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeCustomRoutingEndpointGroupResponseBody struct {
+	AcceleratorId                  *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	AccessLogSwitch                *string   `json:"AccessLogSwitch,omitempty" xml:"AccessLogSwitch,omitempty"`
+	Description                    *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableAccessLog                *bool     `json:"EnableAccessLog,omitempty" xml:"EnableAccessLog,omitempty"`
+	EndpointGroupId                *string   `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointGroupIpList            []*string `json:"EndpointGroupIpList,omitempty" xml:"EndpointGroupIpList,omitempty" type:"Repeated"`
+	EndpointGroupRegion            *string   `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	EndpointGroupUnconfirmedIpList []*string `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
+	ListenerId                     *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Name                           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId                      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SlsLogStoreName                *string   `json:"SlsLogStoreName,omitempty" xml:"SlsLogStoreName,omitempty"`
+	SlsProjectName                 *string   `json:"SlsProjectName,omitempty" xml:"SlsProjectName,omitempty"`
+	SlsRegion                      *string   `json:"SlsRegion,omitempty" xml:"SlsRegion,omitempty"`
+	State                          *string   `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s DescribeCustomRoutingEndpointGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomRoutingEndpointGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetAcceleratorId(v string) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetAccessLogSwitch(v string) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.AccessLogSwitch = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetDescription(v string) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetEnableAccessLog(v bool) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.EnableAccessLog = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetEndpointGroupId(v string) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetEndpointGroupIpList(v []*string) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.EndpointGroupIpList = v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetEndpointGroupRegion(v string) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.EndpointGroupRegion = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetEndpointGroupUnconfirmedIpList(v []*string) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.EndpointGroupUnconfirmedIpList = v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetListenerId(v string) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetName(v string) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetRequestId(v string) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetSlsLogStoreName(v string) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.SlsLogStoreName = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetSlsProjectName(v string) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.SlsProjectName = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetSlsRegion(v string) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.SlsRegion = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetState(v string) *DescribeCustomRoutingEndpointGroupResponseBody {
+	s.State = &v
+	return s
+}
+
+type DescribeCustomRoutingEndpointGroupResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCustomRoutingEndpointGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCustomRoutingEndpointGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomRoutingEndpointGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponse) SetHeaders(v map[string]*string) *DescribeCustomRoutingEndpointGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponse) SetStatusCode(v int32) *DescribeCustomRoutingEndpointGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupResponse) SetBody(v *DescribeCustomRoutingEndpointGroupResponseBody) *DescribeCustomRoutingEndpointGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCustomRoutingEndpointGroupDestinationsRequest struct {
+	DestinationId *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeCustomRoutingEndpointGroupDestinationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomRoutingEndpointGroupDestinationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomRoutingEndpointGroupDestinationsRequest) SetDestinationId(v string) *DescribeCustomRoutingEndpointGroupDestinationsRequest {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupDestinationsRequest) SetRegionId(v string) *DescribeCustomRoutingEndpointGroupDestinationsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeCustomRoutingEndpointGroupDestinationsResponseBody struct {
+	AcceleratorId   *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	DestinationId   *string   `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	EndpointGroupId *string   `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	FromPort        *int32    `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	ListenerId      *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Protocols       []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	RequestId       *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ToPort          *int32    `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s DescribeCustomRoutingEndpointGroupDestinationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomRoutingEndpointGroupDestinationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomRoutingEndpointGroupDestinationsResponseBody) SetAcceleratorId(v string) *DescribeCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupDestinationsResponseBody) SetDestinationId(v string) *DescribeCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupDestinationsResponseBody) SetEndpointGroupId(v string) *DescribeCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupDestinationsResponseBody) SetFromPort(v int32) *DescribeCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.FromPort = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupDestinationsResponseBody) SetListenerId(v string) *DescribeCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupDestinationsResponseBody) SetProtocols(v []*string) *DescribeCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.Protocols = v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupDestinationsResponseBody) SetRequestId(v string) *DescribeCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupDestinationsResponseBody) SetToPort(v int32) *DescribeCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.ToPort = &v
+	return s
+}
+
+type DescribeCustomRoutingEndpointGroupDestinationsResponse struct {
+	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCustomRoutingEndpointGroupDestinationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCustomRoutingEndpointGroupDestinationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomRoutingEndpointGroupDestinationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomRoutingEndpointGroupDestinationsResponse) SetHeaders(v map[string]*string) *DescribeCustomRoutingEndpointGroupDestinationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupDestinationsResponse) SetStatusCode(v int32) *DescribeCustomRoutingEndpointGroupDestinationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCustomRoutingEndpointGroupDestinationsResponse) SetBody(v *DescribeCustomRoutingEndpointGroupDestinationsResponseBody) *DescribeCustomRoutingEndpointGroupDestinationsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeEndpointGroupRequest struct {
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -5328,6 +7131,7 @@ type DescribeListenerResponseBody struct {
 	RequestId           *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityPolicyId    *string                                          `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	State               *string                                          `json:"State,omitempty" xml:"State,omitempty"`
+	Type                *string                                          `json:"Type,omitempty" xml:"Type,omitempty"`
 	XForwardedForConfig *DescribeListenerResponseBodyXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
@@ -5416,6 +7220,11 @@ func (s *DescribeListenerResponseBody) SetSecurityPolicyId(v string) *DescribeLi
 
 func (s *DescribeListenerResponseBody) SetState(v string) *DescribeListenerResponseBody {
 	s.State = &v
+	return s
+}
+
+func (s *DescribeListenerResponseBody) SetType(v string) *DescribeListenerResponseBody {
+	s.Type = &v
 	return s
 }
 
@@ -5795,7 +7604,6 @@ func (s *DetachLogStoreFromEndpointGroupRequest) SetRegionId(v string) *DetachLo
 }
 
 type DetachLogStoreFromEndpointGroupResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6035,8 +7843,7 @@ func (s *DissociateAclsFromListenerRequest) SetRegionId(v string) *DissociateAcl
 type DissociateAclsFromListenerResponseBody struct {
 	AclIds     []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
 	ListenerId *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DissociateAclsFromListenerResponseBody) String() string {
@@ -6133,7 +7940,6 @@ func (s *DissociateAdditionalCertificatesFromListenerRequest) SetRegionId(v stri
 }
 
 type DissociateAdditionalCertificatesFromListenerResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6284,8 +8090,7 @@ type GetAclResponseBody struct {
 	AclStatus        *string                               `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	AddressIPVersion *string                               `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 	RelatedListeners []*GetAclResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAclResponseBody) String() string {
@@ -6413,10 +8218,8 @@ func (s *GetAclResponse) SetBody(v *GetAclResponseBody) *GetAclResponse {
 }
 
 type GetBasicAcceleratorRequest struct {
-	// 全球加速实例Id
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetBasicAcceleratorRequest) String() string {
@@ -6438,34 +8241,20 @@ func (s *GetBasicAcceleratorRequest) SetRegionId(v string) *GetBasicAcceleratorR
 }
 
 type GetBasicAcceleratorResponseBody struct {
-	// 全球加速实例Id
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// 绑定的基础带宽包
-	BasicBandwidthPackage *GetBasicAcceleratorResponseBodyBasicBandwidthPackage `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
-	// 全球加速实例下车点Id
-	BasicEndpointGroupId *string `json:"BasicEndpointGroupId,omitempty" xml:"BasicEndpointGroupId,omitempty"`
-	// 全球加速实例上车点Id
-	BasicIpSetId *string `json:"BasicIpSetId,omitempty" xml:"BasicIpSetId,omitempty"`
-	// 使用的云企业网Id
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// 全球加速实例创建时间
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 绑定的跨境带宽包
+	AcceleratorId               *string                                                     `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	BasicBandwidthPackage       *GetBasicAcceleratorResponseBodyBasicBandwidthPackage       `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
+	BasicEndpointGroupId        *string                                                     `json:"BasicEndpointGroupId,omitempty" xml:"BasicEndpointGroupId,omitempty"`
+	BasicIpSetId                *string                                                     `json:"BasicIpSetId,omitempty" xml:"BasicIpSetId,omitempty"`
+	CenId                       *string                                                     `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CreateTime                  *int64                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CrossDomainBandwidthPackage *GetBasicAcceleratorResponseBodyCrossDomainBandwidthPackage `json:"CrossDomainBandwidthPackage,omitempty" xml:"CrossDomainBandwidthPackage,omitempty" type:"Struct"`
-	// 全球加速实例描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 到期时间
-	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// 全球加速实例收费类型
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// 全球加速实例名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 实例状态
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	Description                 *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime                 *int64                                                      `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	InstanceChargeType          *string                                                     `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	Name                        *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId                    *string                                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId                   *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State                       *string                                                     `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s GetBasicAcceleratorResponseBody) String() string {
@@ -6547,12 +8336,9 @@ func (s *GetBasicAcceleratorResponseBody) SetState(v string) *GetBasicAccelerato
 }
 
 type GetBasicAcceleratorResponseBodyBasicBandwidthPackage struct {
-	// 基础带宽包带宽
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// 基础带宽包类型
+	Bandwidth     *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
-	// 基础带宽包Id
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetBasicAcceleratorResponseBodyBasicBandwidthPackage) String() string {
@@ -6579,9 +8365,7 @@ func (s *GetBasicAcceleratorResponseBodyBasicBandwidthPackage) SetInstanceId(v s
 }
 
 type GetBasicAcceleratorResponseBodyCrossDomainBandwidthPackage struct {
-	// 跨境带宽包带宽
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// 跨境带宽包Id
+	Bandwidth  *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -6633,12 +8417,9 @@ func (s *GetBasicAcceleratorResponse) SetBody(v *GetBasicAcceleratorResponseBody
 }
 
 type GetBasicEndpointGroupRequest struct {
-	// 客户端Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 终端节点组Id
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetBasicEndpointGroupRequest) String() string {
@@ -6665,24 +8446,15 @@ func (s *GetBasicEndpointGroupRequest) SetRegionId(v string) *GetBasicEndpointGr
 }
 
 type GetBasicEndpointGroupResponseBody struct {
-	// 全球加速实例Id
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// 终端节点组描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 终端节点组地址
-	EndpointAddress *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
-	// 终端节点组Id
-	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// 终端节点组所在地域
+	AcceleratorId       *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndpointAddress     *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
+	EndpointGroupId     *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	// 终端节点类型
-	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// 终端节点组名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 终端节点组状态
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	EndpointType        *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State               *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s GetBasicEndpointGroupResponseBody) String() string {
@@ -6768,12 +8540,9 @@ func (s *GetBasicEndpointGroupResponse) SetBody(v *GetBasicEndpointGroupResponse
 }
 
 type GetBasicIpSetRequest struct {
-	// 客户端Token
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 加速接入点Id
-	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	IpSetId     *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetBasicIpSetRequest) String() string {
@@ -6800,24 +8569,15 @@ func (s *GetBasicIpSetRequest) SetRegionId(v string) *GetBasicIpSetRequest {
 }
 
 type GetBasicIpSetResponseBody struct {
-	// 加速地域Id
 	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
-	// 全球加速实例Id
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// 加速地域带宽
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// 加速接入点IP地址
-	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// 加速接入点id
-	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
-	// 加速接入点地址类型
-	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// 公网质量类型
-	IspType *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 加速接入点状态
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	AcceleratorId      *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Bandwidth          *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	IpAddress          *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	IpSetId            *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	IpVersion          *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IspType            *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State              *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s GetBasicIpSetResponseBody) String() string {
@@ -6947,8 +8707,7 @@ type GetHealthStatusResponseBody struct {
 	EndpointGroups []*GetHealthStatusResponseBodyEndpointGroups `json:"EndpointGroups,omitempty" xml:"EndpointGroups,omitempty" type:"Repeated"`
 	HealthStatus   *string                                      `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
 	ListenerId     *string                                      `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetHealthStatusResponseBody) String() string {
@@ -7138,7 +8897,6 @@ func (s *GetSpareIpRequest) SetSpareIp(v string) *GetSpareIpRequest {
 }
 
 type GetSpareIpResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	State     *string `json:"State,omitempty" xml:"State,omitempty"`
 }
@@ -7405,14 +9163,13 @@ type ListAcceleratorsResponseBodyAccelerators struct {
 	DnsName                     *string                                                              `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
 	ExpiredTime                 *int64                                                               `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	InstanceChargeType          *string                                                              `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// 加速区配置
-	IpSetConfig   *ListAcceleratorsResponseBodyAcceleratorsIpSetConfig `json:"IpSetConfig,omitempty" xml:"IpSetConfig,omitempty" type:"Struct"`
-	Name          *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId      *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecondDnsName *string                                              `json:"SecondDnsName,omitempty" xml:"SecondDnsName,omitempty"`
-	Spec          *string                                              `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	State         *string                                              `json:"State,omitempty" xml:"State,omitempty"`
-	Type          *string                                              `json:"Type,omitempty" xml:"Type,omitempty"`
+	IpSetConfig                 *ListAcceleratorsResponseBodyAcceleratorsIpSetConfig                 `json:"IpSetConfig,omitempty" xml:"IpSetConfig,omitempty" type:"Struct"`
+	Name                        *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId                    *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecondDnsName               *string                                                              `json:"SecondDnsName,omitempty" xml:"SecondDnsName,omitempty"`
+	Spec                        *string                                                              `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	State                       *string                                                              `json:"State,omitempty" xml:"State,omitempty"`
+	Type                        *string                                                              `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAcceleratorsResponseBodyAccelerators) String() string {
@@ -7566,7 +9323,6 @@ func (s *ListAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage) Se
 }
 
 type ListAcceleratorsResponseBodyAcceleratorsIpSetConfig struct {
-	// 加速区接入方式
 	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
 }
 
@@ -8760,16 +10516,11 @@ func (s *ListBandwidthackagesResponse) SetBody(v *ListBandwidthackagesResponseBo
 }
 
 type ListBasicAcceleratorsRequest struct {
-	// 全球加速实例Id
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// 分页页码
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 全球加速实例状态
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	State         *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListBasicAcceleratorsRequest) String() string {
@@ -8806,16 +10557,11 @@ func (s *ListBasicAcceleratorsRequest) SetState(v string) *ListBasicAccelerators
 }
 
 type ListBasicAcceleratorsResponseBody struct {
-	// 全球加速实例列表
 	Accelerators []*ListBasicAcceleratorsResponseBodyAccelerators `json:"Accelerators,omitempty" xml:"Accelerators,omitempty" type:"Repeated"`
-	// 页码
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 全球加速实例总数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber   *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListBasicAcceleratorsResponseBody) String() string {
@@ -8852,32 +10598,19 @@ func (s *ListBasicAcceleratorsResponseBody) SetTotalCount(v int32) *ListBasicAcc
 }
 
 type ListBasicAcceleratorsResponseBodyAccelerators struct {
-	// 全球加速实例Id
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// 绑定的基础带宽包
-	BasicBandwidthPackage *ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
-	// 全球加速实例下车点Id
-	BasicEndpointGroupId *string `json:"BasicEndpointGroupId,omitempty" xml:"BasicEndpointGroupId,omitempty"`
-	// 全球加速实例上车点Id
-	BasicIpSetId *string `json:"BasicIpSetId,omitempty" xml:"BasicIpSetId,omitempty"`
-	// 创建时间
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 绑定的跨境带宽包
+	AcceleratorId               *string                                                                   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	BasicBandwidthPackage       *ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage       `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
+	BasicEndpointGroupId        *string                                                                   `json:"BasicEndpointGroupId,omitempty" xml:"BasicEndpointGroupId,omitempty"`
+	BasicIpSetId                *string                                                                   `json:"BasicIpSetId,omitempty" xml:"BasicIpSetId,omitempty"`
+	CreateTime                  *int64                                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CrossDomainBandwidthPackage *ListBasicAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage `json:"CrossDomainBandwidthPackage,omitempty" xml:"CrossDomainBandwidthPackage,omitempty" type:"Struct"`
-	// 全球加速实例描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 到期时间
-	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// 全球加速实例计费类型
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// 全球加速实例名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 全球加速实例状态
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// 全球加速实例类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Description                 *string                                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime                 *int64                                                                    `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	InstanceChargeType          *string                                                                   `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	Name                        *string                                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId                    *string                                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	State                       *string                                                                   `json:"State,omitempty" xml:"State,omitempty"`
+	Type                        *string                                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListBasicAcceleratorsResponseBodyAccelerators) String() string {
@@ -8954,12 +10687,9 @@ func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetType(v string) *ListB
 }
 
 type ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage struct {
-	// 基础带宽包带宽
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// 基础带宽包类型
+	Bandwidth     *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
-	// 基础带宽包Id
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage) String() string {
@@ -8986,9 +10716,7 @@ func (s *ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage) Set
 }
 
 type ListBasicAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage struct {
-	// 跨境带宽包带宽
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// 跨境带宽包Id
+	Bandwidth  *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9127,6 +10855,1167 @@ func (s *ListBusiRegionsResponse) SetStatusCode(v int32) *ListBusiRegionsRespons
 }
 
 func (s *ListBusiRegionsResponse) SetBody(v *ListBusiRegionsResponseBody) *ListBusiRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListCustomRoutingEndpointGroupDestinationsRequest struct {
+	AcceleratorId   *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	EndpointGroupId *string   `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	FromPort        *int32    `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	ListenerId      *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	PageNumber      *string   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Protocols       []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ToPort          *int32    `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s ListCustomRoutingEndpointGroupDestinationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointGroupDestinationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsRequest) SetAcceleratorId(v string) *ListCustomRoutingEndpointGroupDestinationsRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsRequest) SetEndpointGroupId(v string) *ListCustomRoutingEndpointGroupDestinationsRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsRequest) SetFromPort(v int32) *ListCustomRoutingEndpointGroupDestinationsRequest {
+	s.FromPort = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsRequest) SetListenerId(v string) *ListCustomRoutingEndpointGroupDestinationsRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsRequest) SetPageNumber(v string) *ListCustomRoutingEndpointGroupDestinationsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsRequest) SetPageSize(v string) *ListCustomRoutingEndpointGroupDestinationsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsRequest) SetProtocols(v []*string) *ListCustomRoutingEndpointGroupDestinationsRequest {
+	s.Protocols = v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsRequest) SetRegionId(v string) *ListCustomRoutingEndpointGroupDestinationsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsRequest) SetToPort(v int32) *ListCustomRoutingEndpointGroupDestinationsRequest {
+	s.ToPort = &v
+	return s
+}
+
+type ListCustomRoutingEndpointGroupDestinationsResponseBody struct {
+	Destinations []*ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations `json:"Destinations,omitempty" xml:"Destinations,omitempty" type:"Repeated"`
+	PageNumber   *int32                                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCustomRoutingEndpointGroupDestinationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointGroupDestinationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponseBody) SetDestinations(v []*ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations) *ListCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.Destinations = v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponseBody) SetPageNumber(v int32) *ListCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponseBody) SetPageSize(v int32) *ListCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponseBody) SetRequestId(v string) *ListCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponseBody) SetTotalCount(v int32) *ListCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations struct {
+	AcceleratorId   *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	DestinationId   *string   `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	EndpointGroupId *string   `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	FromPort        *int32    `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	ListenerId      *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Protocols       []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	ToPort          *int32    `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations) SetAcceleratorId(v string) *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations) SetDestinationId(v string) *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations) SetEndpointGroupId(v string) *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations) SetFromPort(v int32) *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations {
+	s.FromPort = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations) SetListenerId(v string) *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations) SetProtocols(v []*string) *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations {
+	s.Protocols = v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations) SetToPort(v int32) *ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations {
+	s.ToPort = &v
+	return s
+}
+
+type ListCustomRoutingEndpointGroupDestinationsResponse struct {
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCustomRoutingEndpointGroupDestinationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCustomRoutingEndpointGroupDestinationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointGroupDestinationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponse) SetHeaders(v map[string]*string) *ListCustomRoutingEndpointGroupDestinationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponse) SetStatusCode(v int32) *ListCustomRoutingEndpointGroupDestinationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupDestinationsResponse) SetBody(v *ListCustomRoutingEndpointGroupDestinationsResponseBody) *ListCustomRoutingEndpointGroupDestinationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListCustomRoutingEndpointGroupsRequest struct {
+	AcceleratorId   *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	ListenerId      *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	PageNumber      *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListCustomRoutingEndpointGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointGroupsRequest) SetAcceleratorId(v string) *ListCustomRoutingEndpointGroupsRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsRequest) SetEndpointGroupId(v string) *ListCustomRoutingEndpointGroupsRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsRequest) SetListenerId(v string) *ListCustomRoutingEndpointGroupsRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsRequest) SetPageNumber(v string) *ListCustomRoutingEndpointGroupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsRequest) SetPageSize(v string) *ListCustomRoutingEndpointGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsRequest) SetRegionId(v string) *ListCustomRoutingEndpointGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListCustomRoutingEndpointGroupsResponseBody struct {
+	EndpointGroups []*ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups `json:"EndpointGroups,omitempty" xml:"EndpointGroups,omitempty" type:"Repeated"`
+	PageNumber     *int32                                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCustomRoutingEndpointGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponseBody) SetEndpointGroups(v []*ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups) *ListCustomRoutingEndpointGroupsResponseBody {
+	s.EndpointGroups = v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponseBody) SetPageNumber(v int32) *ListCustomRoutingEndpointGroupsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponseBody) SetPageSize(v int32) *ListCustomRoutingEndpointGroupsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponseBody) SetRequestId(v string) *ListCustomRoutingEndpointGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponseBody) SetTotalCount(v int32) *ListCustomRoutingEndpointGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups struct {
+	AcceleratorId                  *string   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Description                    *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndpointGroupId                *string   `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointGroupIpList            []*string `json:"EndpointGroupIpList,omitempty" xml:"EndpointGroupIpList,omitempty" type:"Repeated"`
+	EndpointGroupRegion            *string   `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	EndpointGroupUnconfirmedIpList []*string `json:"EndpointGroupUnconfirmedIpList,omitempty" xml:"EndpointGroupUnconfirmedIpList,omitempty" type:"Repeated"`
+	ListenerId                     *string   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Name                           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	State                          *string   `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups) SetAcceleratorId(v string) *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups) SetDescription(v string) *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups {
+	s.Description = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups) SetEndpointGroupId(v string) *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups) SetEndpointGroupIpList(v []*string) *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups {
+	s.EndpointGroupIpList = v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups) SetEndpointGroupRegion(v string) *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups {
+	s.EndpointGroupRegion = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups) SetEndpointGroupUnconfirmedIpList(v []*string) *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups {
+	s.EndpointGroupUnconfirmedIpList = v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups) SetListenerId(v string) *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups) SetName(v string) *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups) SetState(v string) *ListCustomRoutingEndpointGroupsResponseBodyEndpointGroups {
+	s.State = &v
+	return s
+}
+
+type ListCustomRoutingEndpointGroupsResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCustomRoutingEndpointGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCustomRoutingEndpointGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponse) SetHeaders(v map[string]*string) *ListCustomRoutingEndpointGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponse) SetStatusCode(v int32) *ListCustomRoutingEndpointGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointGroupsResponse) SetBody(v *ListCustomRoutingEndpointGroupsResponseBody) *ListCustomRoutingEndpointGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListCustomRoutingEndpointTrafficPoliciesRequest struct {
+	AcceleratorId   *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Address         *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointId      *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	ListenerId      *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	PageNumber      *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListCustomRoutingEndpointTrafficPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointTrafficPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesRequest) SetAcceleratorId(v string) *ListCustomRoutingEndpointTrafficPoliciesRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesRequest) SetAddress(v string) *ListCustomRoutingEndpointTrafficPoliciesRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesRequest) SetEndpointGroupId(v string) *ListCustomRoutingEndpointTrafficPoliciesRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesRequest) SetEndpointId(v string) *ListCustomRoutingEndpointTrafficPoliciesRequest {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesRequest) SetListenerId(v string) *ListCustomRoutingEndpointTrafficPoliciesRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesRequest) SetPageNumber(v string) *ListCustomRoutingEndpointTrafficPoliciesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesRequest) SetPageSize(v string) *ListCustomRoutingEndpointTrafficPoliciesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesRequest) SetRegionId(v string) *ListCustomRoutingEndpointTrafficPoliciesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListCustomRoutingEndpointTrafficPoliciesResponseBody struct {
+	PageNumber *int32                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Policies   []*ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	RequestId  *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCustomRoutingEndpointTrafficPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointTrafficPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBody) SetPageNumber(v int32) *ListCustomRoutingEndpointTrafficPoliciesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBody) SetPageSize(v int32) *ListCustomRoutingEndpointTrafficPoliciesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBody) SetPolicies(v []*ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies) *ListCustomRoutingEndpointTrafficPoliciesResponseBody {
+	s.Policies = v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBody) SetRequestId(v string) *ListCustomRoutingEndpointTrafficPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBody) SetTotalCount(v int32) *ListCustomRoutingEndpointTrafficPoliciesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies struct {
+	AcceleratorId   *string                                                                   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Address         *string                                                                   `json:"Address,omitempty" xml:"Address,omitempty"`
+	EndpointGroupId *string                                                                   `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointId      *string                                                                   `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	ListenerId      *string                                                                   `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	PolicyId        *string                                                                   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PortRanges      []*ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+}
+
+func (s ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies) SetAcceleratorId(v string) *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies) SetAddress(v string) *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies {
+	s.Address = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies) SetEndpointGroupId(v string) *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies) SetEndpointId(v string) *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies) SetListenerId(v string) *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies) SetPolicyId(v string) *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies) SetPortRanges(v []*ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges) *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPolicies {
+	s.PortRanges = v
+	return s
+}
+
+type ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges struct {
+	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	ToPort   *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges) SetFromPort(v int32) *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges {
+	s.FromPort = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges) SetToPort(v int32) *ListCustomRoutingEndpointTrafficPoliciesResponseBodyPoliciesPortRanges {
+	s.ToPort = &v
+	return s
+}
+
+type ListCustomRoutingEndpointTrafficPoliciesResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCustomRoutingEndpointTrafficPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCustomRoutingEndpointTrafficPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointTrafficPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponse) SetHeaders(v map[string]*string) *ListCustomRoutingEndpointTrafficPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponse) SetStatusCode(v int32) *ListCustomRoutingEndpointTrafficPoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointTrafficPoliciesResponse) SetBody(v *ListCustomRoutingEndpointTrafficPoliciesResponseBody) *ListCustomRoutingEndpointTrafficPoliciesResponse {
+	s.Body = v
+	return s
+}
+
+type ListCustomRoutingEndpointsRequest struct {
+	AcceleratorId   *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	ListenerId      *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	PageNumber      *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListCustomRoutingEndpointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointsRequest) SetAcceleratorId(v string) *ListCustomRoutingEndpointsRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsRequest) SetEndpointGroupId(v string) *ListCustomRoutingEndpointsRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsRequest) SetListenerId(v string) *ListCustomRoutingEndpointsRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsRequest) SetPageNumber(v string) *ListCustomRoutingEndpointsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsRequest) SetPageSize(v string) *ListCustomRoutingEndpointsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsRequest) SetRegionId(v string) *ListCustomRoutingEndpointsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListCustomRoutingEndpointsResponseBody struct {
+	Endpoints  []*ListCustomRoutingEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	PageNumber *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCustomRoutingEndpointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointsResponseBody) SetEndpoints(v []*ListCustomRoutingEndpointsResponseBodyEndpoints) *ListCustomRoutingEndpointsResponseBody {
+	s.Endpoints = v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsResponseBody) SetPageNumber(v int32) *ListCustomRoutingEndpointsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsResponseBody) SetPageSize(v int32) *ListCustomRoutingEndpointsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsResponseBody) SetRequestId(v string) *ListCustomRoutingEndpointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsResponseBody) SetTotalCount(v int32) *ListCustomRoutingEndpointsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCustomRoutingEndpointsResponseBodyEndpoints struct {
+	AcceleratorId           *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Endpoint                *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	EndpointGroupId         *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointId              *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	ListenerId              *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	TrafficToEndpointPolicy *string `json:"TrafficToEndpointPolicy,omitempty" xml:"TrafficToEndpointPolicy,omitempty"`
+	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListCustomRoutingEndpointsResponseBodyEndpoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointsResponseBodyEndpoints) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointsResponseBodyEndpoints) SetAcceleratorId(v string) *ListCustomRoutingEndpointsResponseBodyEndpoints {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsResponseBodyEndpoints) SetEndpoint(v string) *ListCustomRoutingEndpointsResponseBodyEndpoints {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsResponseBodyEndpoints) SetEndpointGroupId(v string) *ListCustomRoutingEndpointsResponseBodyEndpoints {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsResponseBodyEndpoints) SetEndpointId(v string) *ListCustomRoutingEndpointsResponseBodyEndpoints {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsResponseBodyEndpoints) SetListenerId(v string) *ListCustomRoutingEndpointsResponseBodyEndpoints {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsResponseBodyEndpoints) SetTrafficToEndpointPolicy(v string) *ListCustomRoutingEndpointsResponseBodyEndpoints {
+	s.TrafficToEndpointPolicy = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsResponseBodyEndpoints) SetType(v string) *ListCustomRoutingEndpointsResponseBodyEndpoints {
+	s.Type = &v
+	return s
+}
+
+type ListCustomRoutingEndpointsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCustomRoutingEndpointsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCustomRoutingEndpointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingEndpointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingEndpointsResponse) SetHeaders(v map[string]*string) *ListCustomRoutingEndpointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsResponse) SetStatusCode(v int32) *ListCustomRoutingEndpointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomRoutingEndpointsResponse) SetBody(v *ListCustomRoutingEndpointsResponseBody) *ListCustomRoutingEndpointsResponse {
+	s.Body = v
+	return s
+}
+
+type ListCustomRoutingPortMappingsRequest struct {
+	AcceleratorId   *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	ListenerId      *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	PageNumber      *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListCustomRoutingPortMappingsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingPortMappingsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingPortMappingsRequest) SetAcceleratorId(v string) *ListCustomRoutingPortMappingsRequest {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsRequest) SetEndpointGroupId(v string) *ListCustomRoutingPortMappingsRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsRequest) SetListenerId(v string) *ListCustomRoutingPortMappingsRequest {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsRequest) SetPageNumber(v string) *ListCustomRoutingPortMappingsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsRequest) SetPageSize(v string) *ListCustomRoutingPortMappingsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsRequest) SetRegionId(v string) *ListCustomRoutingPortMappingsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListCustomRoutingPortMappingsResponseBody struct {
+	PageNumber   *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PortMappings []*ListCustomRoutingPortMappingsResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
+	RequestId    *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCustomRoutingPortMappingsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingPortMappingsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBody) SetPageNumber(v int32) *ListCustomRoutingPortMappingsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBody) SetPageSize(v int32) *ListCustomRoutingPortMappingsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBody) SetPortMappings(v []*ListCustomRoutingPortMappingsResponseBodyPortMappings) *ListCustomRoutingPortMappingsResponseBody {
+	s.PortMappings = v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBody) SetRequestId(v string) *ListCustomRoutingPortMappingsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBody) SetTotalCount(v int32) *ListCustomRoutingPortMappingsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCustomRoutingPortMappingsResponseBodyPortMappings struct {
+	AcceleratorId            *string                                                                        `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	AcceleratorPort          *int32                                                                         `json:"AcceleratorPort,omitempty" xml:"AcceleratorPort,omitempty"`
+	DestinationSocketAddress *ListCustomRoutingPortMappingsResponseBodyPortMappingsDestinationSocketAddress `json:"DestinationSocketAddress,omitempty" xml:"DestinationSocketAddress,omitempty" type:"Struct"`
+	DestinationTrafficState  *string                                                                        `json:"DestinationTrafficState,omitempty" xml:"DestinationTrafficState,omitempty"`
+	EndpointGroupId          *string                                                                        `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointGroupRegion      *string                                                                        `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	EndpointId               *string                                                                        `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	ListenerId               *string                                                                        `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Protocols                []*string                                                                      `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	Vswitch                  *string                                                                        `json:"Vswitch,omitempty" xml:"Vswitch,omitempty"`
+}
+
+func (s ListCustomRoutingPortMappingsResponseBodyPortMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingPortMappingsResponseBodyPortMappings) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBodyPortMappings) SetAcceleratorId(v string) *ListCustomRoutingPortMappingsResponseBodyPortMappings {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBodyPortMappings) SetAcceleratorPort(v int32) *ListCustomRoutingPortMappingsResponseBodyPortMappings {
+	s.AcceleratorPort = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBodyPortMappings) SetDestinationSocketAddress(v *ListCustomRoutingPortMappingsResponseBodyPortMappingsDestinationSocketAddress) *ListCustomRoutingPortMappingsResponseBodyPortMappings {
+	s.DestinationSocketAddress = v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBodyPortMappings) SetDestinationTrafficState(v string) *ListCustomRoutingPortMappingsResponseBodyPortMappings {
+	s.DestinationTrafficState = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBodyPortMappings) SetEndpointGroupId(v string) *ListCustomRoutingPortMappingsResponseBodyPortMappings {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBodyPortMappings) SetEndpointGroupRegion(v string) *ListCustomRoutingPortMappingsResponseBodyPortMappings {
+	s.EndpointGroupRegion = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBodyPortMappings) SetEndpointId(v string) *ListCustomRoutingPortMappingsResponseBodyPortMappings {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBodyPortMappings) SetListenerId(v string) *ListCustomRoutingPortMappingsResponseBodyPortMappings {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBodyPortMappings) SetProtocols(v []*string) *ListCustomRoutingPortMappingsResponseBodyPortMappings {
+	s.Protocols = v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBodyPortMappings) SetVswitch(v string) *ListCustomRoutingPortMappingsResponseBodyPortMappings {
+	s.Vswitch = &v
+	return s
+}
+
+type ListCustomRoutingPortMappingsResponseBodyPortMappingsDestinationSocketAddress struct {
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	Port      *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s ListCustomRoutingPortMappingsResponseBodyPortMappingsDestinationSocketAddress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingPortMappingsResponseBodyPortMappingsDestinationSocketAddress) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBodyPortMappingsDestinationSocketAddress) SetIpAddress(v string) *ListCustomRoutingPortMappingsResponseBodyPortMappingsDestinationSocketAddress {
+	s.IpAddress = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponseBodyPortMappingsDestinationSocketAddress) SetPort(v int32) *ListCustomRoutingPortMappingsResponseBodyPortMappingsDestinationSocketAddress {
+	s.Port = &v
+	return s
+}
+
+type ListCustomRoutingPortMappingsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCustomRoutingPortMappingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCustomRoutingPortMappingsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingPortMappingsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingPortMappingsResponse) SetHeaders(v map[string]*string) *ListCustomRoutingPortMappingsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponse) SetStatusCode(v int32) *ListCustomRoutingPortMappingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsResponse) SetBody(v *ListCustomRoutingPortMappingsResponseBody) *ListCustomRoutingPortMappingsResponse {
+	s.Body = v
+	return s
+}
+
+type ListCustomRoutingPortMappingsByDestinationRequest struct {
+	DestinationAddress *string `json:"DestinationAddress,omitempty" xml:"DestinationAddress,omitempty"`
+	EndpointId         *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	PageNumber         *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListCustomRoutingPortMappingsByDestinationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingPortMappingsByDestinationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationRequest) SetDestinationAddress(v string) *ListCustomRoutingPortMappingsByDestinationRequest {
+	s.DestinationAddress = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationRequest) SetEndpointId(v string) *ListCustomRoutingPortMappingsByDestinationRequest {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationRequest) SetPageNumber(v string) *ListCustomRoutingPortMappingsByDestinationRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationRequest) SetPageSize(v string) *ListCustomRoutingPortMappingsByDestinationRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationRequest) SetRegionId(v string) *ListCustomRoutingPortMappingsByDestinationRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListCustomRoutingPortMappingsByDestinationResponseBody struct {
+	PageNumber   *int32                                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PortMappings []*ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
+	RequestId    *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCustomRoutingPortMappingsByDestinationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingPortMappingsByDestinationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBody) SetPageNumber(v int32) *ListCustomRoutingPortMappingsByDestinationResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBody) SetPageSize(v int32) *ListCustomRoutingPortMappingsByDestinationResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBody) SetPortMappings(v []*ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings) *ListCustomRoutingPortMappingsByDestinationResponseBody {
+	s.PortMappings = v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBody) SetRequestId(v string) *ListCustomRoutingPortMappingsByDestinationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBody) SetTotalCount(v int32) *ListCustomRoutingPortMappingsByDestinationResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings struct {
+	AcceleratorId            *string                                                                                     `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	AcceleratorPort          *int32                                                                                      `json:"AcceleratorPort,omitempty" xml:"AcceleratorPort,omitempty"`
+	DestinationSocketAddress *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappingsDestinationSocketAddress `json:"DestinationSocketAddress,omitempty" xml:"DestinationSocketAddress,omitempty" type:"Struct"`
+	DestinationTrafficState  *string                                                                                     `json:"DestinationTrafficState,omitempty" xml:"DestinationTrafficState,omitempty"`
+	EndpointGroupId          *string                                                                                     `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointGroupRegion      *string                                                                                     `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	EndpointId               *string                                                                                     `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	ListenerId               *string                                                                                     `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Protocols                []*string                                                                                   `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	Vswitch                  *string                                                                                     `json:"Vswitch,omitempty" xml:"Vswitch,omitempty"`
+}
+
+func (s ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings) SetAcceleratorId(v string) *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings {
+	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings) SetAcceleratorPort(v int32) *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings {
+	s.AcceleratorPort = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings) SetDestinationSocketAddress(v *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappingsDestinationSocketAddress) *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings {
+	s.DestinationSocketAddress = v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings) SetDestinationTrafficState(v string) *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings {
+	s.DestinationTrafficState = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings) SetEndpointGroupId(v string) *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings) SetEndpointGroupRegion(v string) *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings {
+	s.EndpointGroupRegion = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings) SetEndpointId(v string) *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings) SetListenerId(v string) *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings {
+	s.ListenerId = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings) SetProtocols(v []*string) *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings {
+	s.Protocols = v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings) SetVswitch(v string) *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings {
+	s.Vswitch = &v
+	return s
+}
+
+type ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappingsDestinationSocketAddress struct {
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	Port      *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappingsDestinationSocketAddress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappingsDestinationSocketAddress) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappingsDestinationSocketAddress) SetIpAddress(v string) *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappingsDestinationSocketAddress {
+	s.IpAddress = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappingsDestinationSocketAddress) SetPort(v int32) *ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappingsDestinationSocketAddress {
+	s.Port = &v
+	return s
+}
+
+type ListCustomRoutingPortMappingsByDestinationResponse struct {
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCustomRoutingPortMappingsByDestinationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCustomRoutingPortMappingsByDestinationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCustomRoutingPortMappingsByDestinationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponse) SetHeaders(v map[string]*string) *ListCustomRoutingPortMappingsByDestinationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponse) SetStatusCode(v int32) *ListCustomRoutingPortMappingsByDestinationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCustomRoutingPortMappingsByDestinationResponse) SetBody(v *ListCustomRoutingPortMappingsByDestinationResponseBody) *ListCustomRoutingPortMappingsByDestinationResponse {
 	s.Body = v
 	return s
 }
@@ -10181,6 +13070,7 @@ type ListListenersResponseBodyListeners struct {
 	ProxyProtocol       *bool                                                  `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
 	SecurityPolicyId    *string                                                `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	State               *string                                                `json:"State,omitempty" xml:"State,omitempty"`
+	Type                *string                                                `json:"Type,omitempty" xml:"Type,omitempty"`
 	XForwardedForConfig *ListListenersResponseBodyListenersXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
@@ -10254,6 +13144,11 @@ func (s *ListListenersResponseBodyListeners) SetSecurityPolicyId(v string) *List
 
 func (s *ListListenersResponseBodyListeners) SetState(v string) *ListListenersResponseBodyListeners {
 	s.State = &v
+	return s
+}
+
+func (s *ListListenersResponseBodyListeners) SetType(v string) *ListListenersResponseBodyListeners {
+	s.Type = &v
 	return s
 }
 
@@ -10437,7 +13332,6 @@ func (s *ListSpareIpsRequest) SetRegionId(v string) *ListSpareIpsRequest {
 }
 
 type ListSpareIpsResponseBody struct {
-	// Id of the request
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SpareIps  []*ListSpareIpsResponseBodySpareIps `json:"SpareIps,omitempty" xml:"SpareIps,omitempty" type:"Repeated"`
 }
@@ -10542,9 +13436,8 @@ func (s *ListSystemSecurityPoliciesRequest) SetRegionId(v string) *ListSystemSec
 }
 
 type ListSystemSecurityPoliciesResponseBody struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	PageNumber       *int32                                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId        *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityPolicies []*ListSystemSecurityPoliciesResponseBodySecurityPolicies `json:"SecurityPolicies,omitempty" xml:"SecurityPolicies,omitempty" type:"Repeated"`
 	TotalCount       *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -10700,8 +13593,7 @@ func (s *RemoveEntriesFromAclRequestAclEntries) SetEntry(v string) *RemoveEntrie
 }
 
 type RemoveEntriesFromAclResponseBody struct {
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// Id of the request
+	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11148,8 +14040,7 @@ func (s *UpdateAclAttributeRequest) SetRegionId(v string) *UpdateAclAttributeReq
 }
 
 type UpdateAclAttributeResponseBody struct {
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// Id of the request
+	AclId     *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11552,16 +14443,11 @@ func (s *UpdateBandwidthPackageResponse) SetBody(v *UpdateBandwidthPackageRespon
 }
 
 type UpdateBasicAcceleratorRequest struct {
-	// 全球加速实例Id
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	// 客户端Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 全球加速实例描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 全球加速实例名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// RegionId
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateBasicAcceleratorRequest) String() string {
@@ -11598,7 +14484,6 @@ func (s *UpdateBasicAcceleratorRequest) SetRegionId(v string) *UpdateBasicAccele
 }
 
 type UpdateBasicAcceleratorResponseBody struct {
-	// 请求Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11645,20 +14530,13 @@ func (s *UpdateBasicAcceleratorResponse) SetBody(v *UpdateBasicAcceleratorRespon
 }
 
 type UpdateBasicEndpointGroupRequest struct {
-	// 客户端Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 终端节点组描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 终端节点地址
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EndpointAddress *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
-	// 终端节点组Id
 	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// 终端节点类型
-	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// 终端节点组名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Regionid
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	EndpointType    *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateBasicEndpointGroupRequest) String() string {
@@ -11705,7 +14583,6 @@ func (s *UpdateBasicEndpointGroupRequest) SetRegionId(v string) *UpdateBasicEndp
 }
 
 type UpdateBasicEndpointGroupResponseBody struct {
-	// 请求Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11747,6 +14624,516 @@ func (s *UpdateBasicEndpointGroupResponse) SetStatusCode(v int32) *UpdateBasicEn
 }
 
 func (s *UpdateBasicEndpointGroupResponse) SetBody(v *UpdateBasicEndpointGroupResponseBody) *UpdateBasicEndpointGroupResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCustomRoutingEndpointGroupAttributeRequest struct {
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateCustomRoutingEndpointGroupAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointGroupAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointGroupAttributeRequest) SetClientToken(v string) *UpdateCustomRoutingEndpointGroupAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupAttributeRequest) SetDescription(v string) *UpdateCustomRoutingEndpointGroupAttributeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupAttributeRequest) SetEndpointGroupId(v string) *UpdateCustomRoutingEndpointGroupAttributeRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupAttributeRequest) SetName(v string) *UpdateCustomRoutingEndpointGroupAttributeRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupAttributeRequest) SetRegionId(v string) *UpdateCustomRoutingEndpointGroupAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateCustomRoutingEndpointGroupAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateCustomRoutingEndpointGroupAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointGroupAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointGroupAttributeResponseBody) SetRequestId(v string) *UpdateCustomRoutingEndpointGroupAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateCustomRoutingEndpointGroupAttributeResponse struct {
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateCustomRoutingEndpointGroupAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateCustomRoutingEndpointGroupAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointGroupAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointGroupAttributeResponse) SetHeaders(v map[string]*string) *UpdateCustomRoutingEndpointGroupAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupAttributeResponse) SetStatusCode(v int32) *UpdateCustomRoutingEndpointGroupAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupAttributeResponse) SetBody(v *UpdateCustomRoutingEndpointGroupAttributeResponseBody) *UpdateCustomRoutingEndpointGroupAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCustomRoutingEndpointGroupDestinationsRequest struct {
+	ClientToken               *string                                                                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DestinationConfigurations []*UpdateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations `json:"DestinationConfigurations,omitempty" xml:"DestinationConfigurations,omitempty" type:"Repeated"`
+	DryRun                    *bool                                                                           `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EndpointGroupId           *string                                                                         `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	RegionId                  *string                                                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateCustomRoutingEndpointGroupDestinationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointGroupDestinationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointGroupDestinationsRequest) SetClientToken(v string) *UpdateCustomRoutingEndpointGroupDestinationsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupDestinationsRequest) SetDestinationConfigurations(v []*UpdateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations) *UpdateCustomRoutingEndpointGroupDestinationsRequest {
+	s.DestinationConfigurations = v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupDestinationsRequest) SetDryRun(v bool) *UpdateCustomRoutingEndpointGroupDestinationsRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupDestinationsRequest) SetEndpointGroupId(v string) *UpdateCustomRoutingEndpointGroupDestinationsRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupDestinationsRequest) SetRegionId(v string) *UpdateCustomRoutingEndpointGroupDestinationsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations struct {
+	DestinationId *string   `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	FromPort      *int32    `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	Protocols     []*string `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	ToPort        *int32    `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s UpdateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations) SetDestinationId(v string) *UpdateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations) SetFromPort(v int32) *UpdateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations {
+	s.FromPort = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations) SetProtocols(v []*string) *UpdateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations {
+	s.Protocols = v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations) SetToPort(v int32) *UpdateCustomRoutingEndpointGroupDestinationsRequestDestinationConfigurations {
+	s.ToPort = &v
+	return s
+}
+
+type UpdateCustomRoutingEndpointGroupDestinationsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateCustomRoutingEndpointGroupDestinationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointGroupDestinationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointGroupDestinationsResponseBody) SetRequestId(v string) *UpdateCustomRoutingEndpointGroupDestinationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateCustomRoutingEndpointGroupDestinationsResponse struct {
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateCustomRoutingEndpointGroupDestinationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateCustomRoutingEndpointGroupDestinationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointGroupDestinationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointGroupDestinationsResponse) SetHeaders(v map[string]*string) *UpdateCustomRoutingEndpointGroupDestinationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupDestinationsResponse) SetStatusCode(v int32) *UpdateCustomRoutingEndpointGroupDestinationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointGroupDestinationsResponse) SetBody(v *UpdateCustomRoutingEndpointGroupDestinationsResponseBody) *UpdateCustomRoutingEndpointGroupDestinationsResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCustomRoutingEndpointTrafficPoliciesRequest struct {
+	ClientToken          *string                                                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointId           *string                                                                  `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	PolicyConfigurations []*UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations `json:"PolicyConfigurations,omitempty" xml:"PolicyConfigurations,omitempty" type:"Repeated"`
+	RegionId             *string                                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateCustomRoutingEndpointTrafficPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointTrafficPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointTrafficPoliciesRequest) SetClientToken(v string) *UpdateCustomRoutingEndpointTrafficPoliciesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointTrafficPoliciesRequest) SetEndpointId(v string) *UpdateCustomRoutingEndpointTrafficPoliciesRequest {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointTrafficPoliciesRequest) SetPolicyConfigurations(v []*UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations) *UpdateCustomRoutingEndpointTrafficPoliciesRequest {
+	s.PolicyConfigurations = v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointTrafficPoliciesRequest) SetRegionId(v string) *UpdateCustomRoutingEndpointTrafficPoliciesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations struct {
+	Address    *string                                                                            `json:"Address,omitempty" xml:"Address,omitempty"`
+	PolicyId   *string                                                                            `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PortRanges []*UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+}
+
+func (s UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations) SetAddress(v string) *UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations {
+	s.Address = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations) SetPolicyId(v string) *UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations) SetPortRanges(v []*UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges) *UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurations {
+	s.PortRanges = v
+	return s
+}
+
+type UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges struct {
+	FromPort *int32 `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	ToPort   *int32 `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges) SetFromPort(v int32) *UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges {
+	s.FromPort = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges) SetToPort(v int32) *UpdateCustomRoutingEndpointTrafficPoliciesRequestPolicyConfigurationsPortRanges {
+	s.ToPort = &v
+	return s
+}
+
+type UpdateCustomRoutingEndpointTrafficPoliciesResponseBody struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateCustomRoutingEndpointTrafficPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointTrafficPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointTrafficPoliciesResponseBody) SetPolicyIds(v []*string) *UpdateCustomRoutingEndpointTrafficPoliciesResponseBody {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointTrafficPoliciesResponseBody) SetRequestId(v string) *UpdateCustomRoutingEndpointTrafficPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateCustomRoutingEndpointTrafficPoliciesResponse struct {
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateCustomRoutingEndpointTrafficPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateCustomRoutingEndpointTrafficPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointTrafficPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointTrafficPoliciesResponse) SetHeaders(v map[string]*string) *UpdateCustomRoutingEndpointTrafficPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointTrafficPoliciesResponse) SetStatusCode(v int32) *UpdateCustomRoutingEndpointTrafficPoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointTrafficPoliciesResponse) SetBody(v *UpdateCustomRoutingEndpointTrafficPoliciesResponseBody) *UpdateCustomRoutingEndpointTrafficPoliciesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCustomRoutingEndpointsRequest struct {
+	ClientToken            *string                                                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EndpointConfigurations []*UpdateCustomRoutingEndpointsRequestEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
+	EndpointGroupId        *string                                                      `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	RegionId               *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateCustomRoutingEndpointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointsRequest) SetClientToken(v string) *UpdateCustomRoutingEndpointsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointsRequest) SetEndpointConfigurations(v []*UpdateCustomRoutingEndpointsRequestEndpointConfigurations) *UpdateCustomRoutingEndpointsRequest {
+	s.EndpointConfigurations = v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointsRequest) SetEndpointGroupId(v string) *UpdateCustomRoutingEndpointsRequest {
+	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointsRequest) SetRegionId(v string) *UpdateCustomRoutingEndpointsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateCustomRoutingEndpointsRequestEndpointConfigurations struct {
+	EndpointId              *string                                                                          `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	PolicyConfigurations    []*UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations `json:"PolicyConfigurations,omitempty" xml:"PolicyConfigurations,omitempty" type:"Repeated"`
+	TrafficToEndpointPolicy *string                                                                          `json:"TrafficToEndpointPolicy,omitempty" xml:"TrafficToEndpointPolicy,omitempty"`
+}
+
+func (s UpdateCustomRoutingEndpointsRequestEndpointConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointsRequestEndpointConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointsRequestEndpointConfigurations) SetEndpointId(v string) *UpdateCustomRoutingEndpointsRequestEndpointConfigurations {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointsRequestEndpointConfigurations) SetPolicyConfigurations(v []*UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations) *UpdateCustomRoutingEndpointsRequestEndpointConfigurations {
+	s.PolicyConfigurations = v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointsRequestEndpointConfigurations) SetTrafficToEndpointPolicy(v string) *UpdateCustomRoutingEndpointsRequestEndpointConfigurations {
+	s.TrafficToEndpointPolicy = &v
+	return s
+}
+
+type UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations struct {
+	Address    *string                                                                                    `json:"Address,omitempty" xml:"Address,omitempty"`
+	PortRanges []*UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+}
+
+func (s UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations) SetAddress(v string) *UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations {
+	s.Address = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations) SetPortRanges(v []*UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges) *UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurations {
+	s.PortRanges = v
+	return s
+}
+
+type UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges struct {
+	FromPort *string `json:"FromPort,omitempty" xml:"FromPort,omitempty"`
+	ToPort   *string `json:"ToPort,omitempty" xml:"ToPort,omitempty"`
+}
+
+func (s UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges) SetFromPort(v string) *UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges {
+	s.FromPort = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges) SetToPort(v string) *UpdateCustomRoutingEndpointsRequestEndpointConfigurationsPolicyConfigurationsPortRanges {
+	s.ToPort = &v
+	return s
+}
+
+type UpdateCustomRoutingEndpointsResponseBody struct {
+	EndpointIds []*string `json:"EndpointIds,omitempty" xml:"EndpointIds,omitempty" type:"Repeated"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateCustomRoutingEndpointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointsResponseBody) SetEndpointIds(v []*string) *UpdateCustomRoutingEndpointsResponseBody {
+	s.EndpointIds = v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointsResponseBody) SetRequestId(v string) *UpdateCustomRoutingEndpointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateCustomRoutingEndpointsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateCustomRoutingEndpointsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateCustomRoutingEndpointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomRoutingEndpointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomRoutingEndpointsResponse) SetHeaders(v map[string]*string) *UpdateCustomRoutingEndpointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointsResponse) SetStatusCode(v int32) *UpdateCustomRoutingEndpointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCustomRoutingEndpointsResponse) SetBody(v *UpdateCustomRoutingEndpointsResponseBody) *UpdateCustomRoutingEndpointsResponse {
 	s.Body = v
 	return s
 }
@@ -12245,8 +15632,7 @@ func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) Se
 
 type UpdateEndpointGroupsResponseBody struct {
 	EndpointGroupIds []*string `json:"EndpointGroupIds,omitempty" xml:"EndpointGroupIds,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateEndpointGroupsResponseBody) String() string {
@@ -14078,6 +17464,242 @@ func (client *Client) CreateBasicIpSet(request *CreateBasicIpSetRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) CreateCustomRoutingEndpointGroupDestinationsWithOptions(request *CreateCustomRoutingEndpointGroupDestinationsRequest, runtime *util.RuntimeOptions) (_result *CreateCustomRoutingEndpointGroupDestinationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationConfigurations)) {
+		query["DestinationConfigurations"] = request.DestinationConfigurations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCustomRoutingEndpointGroupDestinations"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCustomRoutingEndpointGroupDestinationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCustomRoutingEndpointGroupDestinations(request *CreateCustomRoutingEndpointGroupDestinationsRequest) (_result *CreateCustomRoutingEndpointGroupDestinationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCustomRoutingEndpointGroupDestinationsResponse{}
+	_body, _err := client.CreateCustomRoutingEndpointGroupDestinationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateCustomRoutingEndpointGroupsWithOptions(request *CreateCustomRoutingEndpointGroupsRequest, runtime *util.RuntimeOptions) (_result *CreateCustomRoutingEndpointGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorId)) {
+		query["AcceleratorId"] = request.AcceleratorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupConfigurations)) {
+		query["EndpointGroupConfigurations"] = request.EndpointGroupConfigurations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCustomRoutingEndpointGroups"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCustomRoutingEndpointGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCustomRoutingEndpointGroups(request *CreateCustomRoutingEndpointGroupsRequest) (_result *CreateCustomRoutingEndpointGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCustomRoutingEndpointGroupsResponse{}
+	_body, _err := client.CreateCustomRoutingEndpointGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateCustomRoutingEndpointTrafficPoliciesWithOptions(request *CreateCustomRoutingEndpointTrafficPoliciesRequest, runtime *util.RuntimeOptions) (_result *CreateCustomRoutingEndpointTrafficPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyConfigurations)) {
+		query["PolicyConfigurations"] = request.PolicyConfigurations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCustomRoutingEndpointTrafficPolicies"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCustomRoutingEndpointTrafficPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCustomRoutingEndpointTrafficPolicies(request *CreateCustomRoutingEndpointTrafficPoliciesRequest) (_result *CreateCustomRoutingEndpointTrafficPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCustomRoutingEndpointTrafficPoliciesResponse{}
+	_body, _err := client.CreateCustomRoutingEndpointTrafficPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateCustomRoutingEndpointsWithOptions(request *CreateCustomRoutingEndpointsRequest, runtime *util.RuntimeOptions) (_result *CreateCustomRoutingEndpointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointConfigurations)) {
+		query["EndpointConfigurations"] = request.EndpointConfigurations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCustomRoutingEndpoints"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCustomRoutingEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCustomRoutingEndpoints(request *CreateCustomRoutingEndpointsRequest) (_result *CreateCustomRoutingEndpointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCustomRoutingEndpointsResponse{}
+	_body, _err := client.CreateCustomRoutingEndpointsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateEndpointGroupWithOptions(request *CreateEndpointGroupRequest, runtime *util.RuntimeOptions) (_result *CreateEndpointGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14392,8 +18014,16 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustomRoutingEndpointGroupConfigurations)) {
+		query["CustomRoutingEndpointGroupConfigurations"] = request.CustomRoutingEndpointGroupConfigurations
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupConfigurations)) {
+		query["EndpointGroupConfigurations"] = request.EndpointGroupConfigurations
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -14418,6 +18048,10 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyId)) {
 		query["SecurityPolicyId"] = request.SecurityPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
 	}
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.XForwardedForConfig))) {
@@ -14867,6 +18501,238 @@ func (client *Client) DeleteBasicIpSet(request *DeleteBasicIpSetRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBasicIpSetResponse{}
 	_body, _err := client.DeleteBasicIpSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomRoutingEndpointGroupDestinationsWithOptions(request *DeleteCustomRoutingEndpointGroupDestinationsRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomRoutingEndpointGroupDestinationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationIds)) {
+		query["DestinationIds"] = request.DestinationIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomRoutingEndpointGroupDestinations"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomRoutingEndpointGroupDestinationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomRoutingEndpointGroupDestinations(request *DeleteCustomRoutingEndpointGroupDestinationsRequest) (_result *DeleteCustomRoutingEndpointGroupDestinationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomRoutingEndpointGroupDestinationsResponse{}
+	_body, _err := client.DeleteCustomRoutingEndpointGroupDestinationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomRoutingEndpointGroupsWithOptions(request *DeleteCustomRoutingEndpointGroupsRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomRoutingEndpointGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorId)) {
+		query["AcceleratorId"] = request.AcceleratorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupIds)) {
+		query["EndpointGroupIds"] = request.EndpointGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomRoutingEndpointGroups"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomRoutingEndpointGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomRoutingEndpointGroups(request *DeleteCustomRoutingEndpointGroupsRequest) (_result *DeleteCustomRoutingEndpointGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomRoutingEndpointGroupsResponse{}
+	_body, _err := client.DeleteCustomRoutingEndpointGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomRoutingEndpointTrafficPoliciesWithOptions(request *DeleteCustomRoutingEndpointTrafficPoliciesRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomRoutingEndpointTrafficPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyIds)) {
+		query["PolicyIds"] = request.PolicyIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomRoutingEndpointTrafficPolicies"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomRoutingEndpointTrafficPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomRoutingEndpointTrafficPolicies(request *DeleteCustomRoutingEndpointTrafficPoliciesRequest) (_result *DeleteCustomRoutingEndpointTrafficPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomRoutingEndpointTrafficPoliciesResponse{}
+	_body, _err := client.DeleteCustomRoutingEndpointTrafficPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomRoutingEndpointsWithOptions(request *DeleteCustomRoutingEndpointsRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomRoutingEndpointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointIds)) {
+		query["EndpointIds"] = request.EndpointIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomRoutingEndpoints"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomRoutingEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCustomRoutingEndpoints(request *DeleteCustomRoutingEndpointsRequest) (_result *DeleteCustomRoutingEndpointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomRoutingEndpointsResponse{}
+	_body, _err := client.DeleteCustomRoutingEndpointsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15495,6 +19361,198 @@ func (client *Client) DescribeBandwidthPackageAutoRenewAttribute(request *Descri
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBandwidthPackageAutoRenewAttributeResponse{}
 	_body, _err := client.DescribeBandwidthPackageAutoRenewAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCustomRoutingEndPointTrafficPolicyWithOptions(request *DescribeCustomRoutingEndPointTrafficPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeCustomRoutingEndPointTrafficPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCustomRoutingEndPointTrafficPolicy"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCustomRoutingEndPointTrafficPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCustomRoutingEndPointTrafficPolicy(request *DescribeCustomRoutingEndPointTrafficPolicyRequest) (_result *DescribeCustomRoutingEndPointTrafficPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCustomRoutingEndPointTrafficPolicyResponse{}
+	_body, _err := client.DescribeCustomRoutingEndPointTrafficPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCustomRoutingEndpointWithOptions(request *DescribeCustomRoutingEndpointRequest, runtime *util.RuntimeOptions) (_result *DescribeCustomRoutingEndpointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCustomRoutingEndpoint"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCustomRoutingEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCustomRoutingEndpoint(request *DescribeCustomRoutingEndpointRequest) (_result *DescribeCustomRoutingEndpointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCustomRoutingEndpointResponse{}
+	_body, _err := client.DescribeCustomRoutingEndpointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCustomRoutingEndpointGroupWithOptions(request *DescribeCustomRoutingEndpointGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeCustomRoutingEndpointGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCustomRoutingEndpointGroup"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCustomRoutingEndpointGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCustomRoutingEndpointGroup(request *DescribeCustomRoutingEndpointGroupRequest) (_result *DescribeCustomRoutingEndpointGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCustomRoutingEndpointGroupResponse{}
+	_body, _err := client.DescribeCustomRoutingEndpointGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCustomRoutingEndpointGroupDestinationsWithOptions(request *DescribeCustomRoutingEndpointGroupDestinationsRequest, runtime *util.RuntimeOptions) (_result *DescribeCustomRoutingEndpointGroupDestinationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestinationId)) {
+		query["DestinationId"] = request.DestinationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCustomRoutingEndpointGroupDestinations"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCustomRoutingEndpointGroupDestinationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCustomRoutingEndpointGroupDestinations(request *DescribeCustomRoutingEndpointGroupDestinationsRequest) (_result *DescribeCustomRoutingEndpointGroupDestinationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCustomRoutingEndpointGroupDestinationsResponse{}
+	_body, _err := client.DescribeCustomRoutingEndpointGroupDestinationsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16998,6 +21056,406 @@ func (client *Client) ListBusiRegions(request *ListBusiRegionsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) ListCustomRoutingEndpointGroupDestinationsWithOptions(request *ListCustomRoutingEndpointGroupDestinationsRequest, runtime *util.RuntimeOptions) (_result *ListCustomRoutingEndpointGroupDestinationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorId)) {
+		query["AcceleratorId"] = request.AcceleratorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FromPort)) {
+		query["FromPort"] = request.FromPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocols)) {
+		query["Protocols"] = request.Protocols
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToPort)) {
+		query["ToPort"] = request.ToPort
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomRoutingEndpointGroupDestinations"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomRoutingEndpointGroupDestinationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCustomRoutingEndpointGroupDestinations(request *ListCustomRoutingEndpointGroupDestinationsRequest) (_result *ListCustomRoutingEndpointGroupDestinationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCustomRoutingEndpointGroupDestinationsResponse{}
+	_body, _err := client.ListCustomRoutingEndpointGroupDestinationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCustomRoutingEndpointGroupsWithOptions(request *ListCustomRoutingEndpointGroupsRequest, runtime *util.RuntimeOptions) (_result *ListCustomRoutingEndpointGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorId)) {
+		query["AcceleratorId"] = request.AcceleratorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomRoutingEndpointGroups"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomRoutingEndpointGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCustomRoutingEndpointGroups(request *ListCustomRoutingEndpointGroupsRequest) (_result *ListCustomRoutingEndpointGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCustomRoutingEndpointGroupsResponse{}
+	_body, _err := client.ListCustomRoutingEndpointGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCustomRoutingEndpointTrafficPoliciesWithOptions(request *ListCustomRoutingEndpointTrafficPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListCustomRoutingEndpointTrafficPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorId)) {
+		query["AcceleratorId"] = request.AcceleratorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomRoutingEndpointTrafficPolicies"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomRoutingEndpointTrafficPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCustomRoutingEndpointTrafficPolicies(request *ListCustomRoutingEndpointTrafficPoliciesRequest) (_result *ListCustomRoutingEndpointTrafficPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCustomRoutingEndpointTrafficPoliciesResponse{}
+	_body, _err := client.ListCustomRoutingEndpointTrafficPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCustomRoutingEndpointsWithOptions(request *ListCustomRoutingEndpointsRequest, runtime *util.RuntimeOptions) (_result *ListCustomRoutingEndpointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorId)) {
+		query["AcceleratorId"] = request.AcceleratorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomRoutingEndpoints"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomRoutingEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCustomRoutingEndpoints(request *ListCustomRoutingEndpointsRequest) (_result *ListCustomRoutingEndpointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCustomRoutingEndpointsResponse{}
+	_body, _err := client.ListCustomRoutingEndpointsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCustomRoutingPortMappingsWithOptions(request *ListCustomRoutingPortMappingsRequest, runtime *util.RuntimeOptions) (_result *ListCustomRoutingPortMappingsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorId)) {
+		query["AcceleratorId"] = request.AcceleratorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
+		query["ListenerId"] = request.ListenerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomRoutingPortMappings"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomRoutingPortMappingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCustomRoutingPortMappings(request *ListCustomRoutingPortMappingsRequest) (_result *ListCustomRoutingPortMappingsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCustomRoutingPortMappingsResponse{}
+	_body, _err := client.ListCustomRoutingPortMappingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCustomRoutingPortMappingsByDestinationWithOptions(request *ListCustomRoutingPortMappingsByDestinationRequest, runtime *util.RuntimeOptions) (_result *ListCustomRoutingPortMappingsByDestinationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestinationAddress)) {
+		query["DestinationAddress"] = request.DestinationAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCustomRoutingPortMappingsByDestination"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCustomRoutingPortMappingsByDestinationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCustomRoutingPortMappingsByDestination(request *ListCustomRoutingPortMappingsByDestinationRequest) (_result *ListCustomRoutingPortMappingsByDestinationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCustomRoutingPortMappingsByDestinationResponse{}
+	_body, _err := client.ListCustomRoutingPortMappingsByDestinationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListEndpointGroupsWithOptions(request *ListEndpointGroupsRequest, runtime *util.RuntimeOptions) (_result *ListEndpointGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18127,6 +22585,238 @@ func (client *Client) UpdateBasicEndpointGroup(request *UpdateBasicEndpointGroup
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateBasicEndpointGroupResponse{}
 	_body, _err := client.UpdateBasicEndpointGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomRoutingEndpointGroupAttributeWithOptions(request *UpdateCustomRoutingEndpointGroupAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateCustomRoutingEndpointGroupAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCustomRoutingEndpointGroupAttribute"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCustomRoutingEndpointGroupAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomRoutingEndpointGroupAttribute(request *UpdateCustomRoutingEndpointGroupAttributeRequest) (_result *UpdateCustomRoutingEndpointGroupAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCustomRoutingEndpointGroupAttributeResponse{}
+	_body, _err := client.UpdateCustomRoutingEndpointGroupAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomRoutingEndpointGroupDestinationsWithOptions(request *UpdateCustomRoutingEndpointGroupDestinationsRequest, runtime *util.RuntimeOptions) (_result *UpdateCustomRoutingEndpointGroupDestinationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationConfigurations)) {
+		query["DestinationConfigurations"] = request.DestinationConfigurations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCustomRoutingEndpointGroupDestinations"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCustomRoutingEndpointGroupDestinationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomRoutingEndpointGroupDestinations(request *UpdateCustomRoutingEndpointGroupDestinationsRequest) (_result *UpdateCustomRoutingEndpointGroupDestinationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCustomRoutingEndpointGroupDestinationsResponse{}
+	_body, _err := client.UpdateCustomRoutingEndpointGroupDestinationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomRoutingEndpointTrafficPoliciesWithOptions(request *UpdateCustomRoutingEndpointTrafficPoliciesRequest, runtime *util.RuntimeOptions) (_result *UpdateCustomRoutingEndpointTrafficPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyConfigurations)) {
+		query["PolicyConfigurations"] = request.PolicyConfigurations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCustomRoutingEndpointTrafficPolicies"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCustomRoutingEndpointTrafficPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomRoutingEndpointTrafficPolicies(request *UpdateCustomRoutingEndpointTrafficPoliciesRequest) (_result *UpdateCustomRoutingEndpointTrafficPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCustomRoutingEndpointTrafficPoliciesResponse{}
+	_body, _err := client.UpdateCustomRoutingEndpointTrafficPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomRoutingEndpointsWithOptions(request *UpdateCustomRoutingEndpointsRequest, runtime *util.RuntimeOptions) (_result *UpdateCustomRoutingEndpointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointConfigurations)) {
+		query["EndpointConfigurations"] = request.EndpointConfigurations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointGroupId)) {
+		query["EndpointGroupId"] = request.EndpointGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCustomRoutingEndpoints"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCustomRoutingEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCustomRoutingEndpoints(request *UpdateCustomRoutingEndpointsRequest) (_result *UpdateCustomRoutingEndpointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCustomRoutingEndpointsResponse{}
+	_body, _err := client.UpdateCustomRoutingEndpointsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
