@@ -5,327 +5,93 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type AddAccountRequest struct {
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	AccountName       *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	Password          *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	IsShort           *bool   `json:"IsShort,omitempty" xml:"IsShort,omitempty"`
-	EnableKMS         *bool   `json:"EnableKMS,omitempty" xml:"EnableKMS,omitempty"`
-	Remark            *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RamUid            *string `json:"RamUid,omitempty" xml:"RamUid,omitempty"`
-	UseRandomPassword *bool   `json:"UseRandomPassword,omitempty" xml:"UseRandomPassword,omitempty"`
+type CancelSparkStatementRequest struct {
+	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	StatementId *string `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
 }
 
-func (s AddAccountRequest) String() string {
+func (s CancelSparkStatementRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s AddAccountRequest) GoString() string {
+func (s CancelSparkStatementRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AddAccountRequest) SetRegionId(v string) *AddAccountRequest {
-	s.RegionId = &v
+func (s *CancelSparkStatementRequest) SetJobId(v string) *CancelSparkStatementRequest {
+	s.JobId = &v
 	return s
 }
 
-func (s *AddAccountRequest) SetAccountName(v string) *AddAccountRequest {
-	s.AccountName = &v
+func (s *CancelSparkStatementRequest) SetStatementId(v string) *CancelSparkStatementRequest {
+	s.StatementId = &v
 	return s
 }
 
-func (s *AddAccountRequest) SetPassword(v string) *AddAccountRequest {
-	s.Password = &v
-	return s
+type CancelSparkStatementResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s *AddAccountRequest) SetIsShort(v bool) *AddAccountRequest {
-	s.IsShort = &v
-	return s
-}
-
-func (s *AddAccountRequest) SetEnableKMS(v bool) *AddAccountRequest {
-	s.EnableKMS = &v
-	return s
-}
-
-func (s *AddAccountRequest) SetRemark(v string) *AddAccountRequest {
-	s.Remark = &v
-	return s
-}
-
-func (s *AddAccountRequest) SetRamUid(v string) *AddAccountRequest {
-	s.RamUid = &v
-	return s
-}
-
-func (s *AddAccountRequest) SetUseRandomPassword(v bool) *AddAccountRequest {
-	s.UseRandomPassword = &v
-	return s
-}
-
-type AddAccountResponseBody struct {
-	Account   *AddAccountResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RegionId  *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s AddAccountResponseBody) String() string {
+func (s CancelSparkStatementResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s AddAccountResponseBody) GoString() string {
+func (s CancelSparkStatementResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *AddAccountResponseBody) SetAccount(v *AddAccountResponseBodyAccount) *AddAccountResponseBody {
-	s.Account = v
+func (s *CancelSparkStatementResponseBody) SetData(v string) *CancelSparkStatementResponseBody {
+	s.Data = &v
 	return s
 }
 
-func (s *AddAccountResponseBody) SetRequestId(v string) *AddAccountResponseBody {
+func (s *CancelSparkStatementResponseBody) SetRequestId(v string) *CancelSparkStatementResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *AddAccountResponseBody) SetRegionId(v string) *AddAccountResponseBody {
-	s.RegionId = &v
-	return s
+type CancelSparkStatementResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelSparkStatementResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type AddAccountResponseBodyAccount struct {
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-}
-
-func (s AddAccountResponseBodyAccount) String() string {
+func (s CancelSparkStatementResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s AddAccountResponseBodyAccount) GoString() string {
+func (s CancelSparkStatementResponse) GoString() string {
 	return s.String()
 }
 
-func (s *AddAccountResponseBodyAccount) SetPassword(v string) *AddAccountResponseBodyAccount {
-	s.Password = &v
-	return s
-}
-
-func (s *AddAccountResponseBodyAccount) SetUserName(v string) *AddAccountResponseBodyAccount {
-	s.UserName = &v
-	return s
-}
-
-type AddAccountResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddAccountResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddAccountResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddAccountResponse) SetHeaders(v map[string]*string) *AddAccountResponse {
+func (s *CancelSparkStatementResponse) SetHeaders(v map[string]*string) *CancelSparkStatementResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *AddAccountResponse) SetBody(v *AddAccountResponseBody) *AddAccountResponse {
-	s.Body = v
+func (s *CancelSparkStatementResponse) SetStatusCode(v int32) *CancelSparkStatementResponse {
+	s.StatusCode = &v
 	return s
 }
 
-type AddEndPointRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	VpcID       *string `json:"VpcID,omitempty" xml:"VpcID,omitempty"`
-	Vswitch     *string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty"`
-	Zone        *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
-	Product     *string `json:"Product,omitempty" xml:"Product,omitempty"`
-}
-
-func (s AddEndPointRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddEndPointRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddEndPointRequest) SetRegionId(v string) *AddEndPointRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *AddEndPointRequest) SetNetworkType(v string) *AddEndPointRequest {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *AddEndPointRequest) SetVpcID(v string) *AddEndPointRequest {
-	s.VpcID = &v
-	return s
-}
-
-func (s *AddEndPointRequest) SetVswitch(v string) *AddEndPointRequest {
-	s.Vswitch = &v
-	return s
-}
-
-func (s *AddEndPointRequest) SetZone(v string) *AddEndPointRequest {
-	s.Zone = &v
-	return s
-}
-
-func (s *AddEndPointRequest) SetProduct(v string) *AddEndPointRequest {
-	s.Product = &v
-	return s
-}
-
-type AddEndPointResponseBody struct {
-	RequestId    *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	EndPointInfo *AddEndPointResponseBodyEndPointInfo `json:"EndPointInfo,omitempty" xml:"EndPointInfo,omitempty" type:"Struct"`
-	RegionId     *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s AddEndPointResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddEndPointResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddEndPointResponseBody) SetRequestId(v string) *AddEndPointResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AddEndPointResponseBody) SetEndPointInfo(v *AddEndPointResponseBodyEndPointInfo) *AddEndPointResponseBody {
-	s.EndPointInfo = v
-	return s
-}
-
-func (s *AddEndPointResponseBody) SetRegionId(v string) *AddEndPointResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-type AddEndPointResponseBodyEndPointInfo struct {
-	Product     *string `json:"product,omitempty" xml:"product,omitempty"`
-	Zone        *string `json:"zone,omitempty" xml:"zone,omitempty"`
-	DomainURL   *string `json:"domainURL,omitempty" xml:"domainURL,omitempty"`
-	VSwitch     *string `json:"vSwitch,omitempty" xml:"vSwitch,omitempty"`
-	Host        *string `json:"host,omitempty" xml:"host,omitempty"`
-	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
-	EndPointID  *string `json:"endPointID,omitempty" xml:"endPointID,omitempty"`
-	AllowIP     *string `json:"allowIP,omitempty" xml:"allowIP,omitempty"`
-	VpcID       *string `json:"vpcID,omitempty" xml:"vpcID,omitempty"`
-	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	Port        *string `json:"port,omitempty" xml:"port,omitempty"`
-}
-
-func (s AddEndPointResponseBodyEndPointInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddEndPointResponseBodyEndPointInfo) GoString() string {
-	return s.String()
-}
-
-func (s *AddEndPointResponseBodyEndPointInfo) SetProduct(v string) *AddEndPointResponseBodyEndPointInfo {
-	s.Product = &v
-	return s
-}
-
-func (s *AddEndPointResponseBodyEndPointInfo) SetZone(v string) *AddEndPointResponseBodyEndPointInfo {
-	s.Zone = &v
-	return s
-}
-
-func (s *AddEndPointResponseBodyEndPointInfo) SetDomainURL(v string) *AddEndPointResponseBodyEndPointInfo {
-	s.DomainURL = &v
-	return s
-}
-
-func (s *AddEndPointResponseBodyEndPointInfo) SetVSwitch(v string) *AddEndPointResponseBodyEndPointInfo {
-	s.VSwitch = &v
-	return s
-}
-
-func (s *AddEndPointResponseBodyEndPointInfo) SetHost(v string) *AddEndPointResponseBodyEndPointInfo {
-	s.Host = &v
-	return s
-}
-
-func (s *AddEndPointResponseBodyEndPointInfo) SetStatus(v string) *AddEndPointResponseBodyEndPointInfo {
-	s.Status = &v
-	return s
-}
-
-func (s *AddEndPointResponseBodyEndPointInfo) SetEndPointID(v string) *AddEndPointResponseBodyEndPointInfo {
-	s.EndPointID = &v
-	return s
-}
-
-func (s *AddEndPointResponseBodyEndPointInfo) SetAllowIP(v string) *AddEndPointResponseBodyEndPointInfo {
-	s.AllowIP = &v
-	return s
-}
-
-func (s *AddEndPointResponseBodyEndPointInfo) SetVpcID(v string) *AddEndPointResponseBodyEndPointInfo {
-	s.VpcID = &v
-	return s
-}
-
-func (s *AddEndPointResponseBodyEndPointInfo) SetNetworkType(v string) *AddEndPointResponseBodyEndPointInfo {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *AddEndPointResponseBodyEndPointInfo) SetPort(v string) *AddEndPointResponseBodyEndPointInfo {
-	s.Port = &v
-	return s
-}
-
-type AddEndPointResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddEndPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddEndPointResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddEndPointResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddEndPointResponse) SetHeaders(v map[string]*string) *AddEndPointResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddEndPointResponse) SetBody(v *AddEndPointResponseBody) *AddEndPointResponse {
+func (s *CancelSparkStatementResponse) SetBody(v *CancelSparkStatementResponseBody) *CancelSparkStatementResponse {
 	s.Body = v
 	return s
 }
 
 type CreateInstanceRequest struct {
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ChargeType   *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	Component    *string `json:"Component,omitempty" xml:"Component,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -336,18 +102,8 @@ func (s CreateInstanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateInstanceRequest) SetRegionId(v string) *CreateInstanceRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *CreateInstanceRequest) SetChargeType(v string) *CreateInstanceRequest {
 	s.ChargeType = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetInstanceType(v string) *CreateInstanceRequest {
-	s.InstanceType = &v
 	return s
 }
 
@@ -356,12 +112,22 @@ func (s *CreateInstanceRequest) SetComponent(v string) *CreateInstanceRequest {
 	return s
 }
 
+func (s *CreateInstanceRequest) SetInstanceType(v string) *CreateInstanceRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetRegionId(v string) *CreateInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
 type CreateInstanceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -372,8 +138,8 @@ func (s CreateInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateInstanceResponseBody) SetRequestId(v string) *CreateInstanceResponseBody {
-	s.RequestId = &v
+func (s *CreateInstanceResponseBody) SetErrorCode(v string) *CreateInstanceResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -382,13 +148,8 @@ func (s *CreateInstanceResponseBody) SetErrorInfo(v string) *CreateInstanceRespo
 	return s
 }
 
-func (s *CreateInstanceResponseBody) SetErrorCode(v string) *CreateInstanceResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateInstanceResponseBody) SetSuccess(v bool) *CreateInstanceResponseBody {
-	s.Success = &v
+func (s *CreateInstanceResponseBody) SetRequestId(v string) *CreateInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -397,9 +158,15 @@ func (s *CreateInstanceResponseBody) SetResult(v string) *CreateInstanceResponse
 	return s
 }
 
+func (s *CreateInstanceResponseBody) SetSuccess(v bool) *CreateInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
 type CreateInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateInstanceResponse) String() string {
@@ -415,479 +182,174 @@ func (s *CreateInstanceResponse) SetHeaders(v map[string]*string) *CreateInstanc
 	return s
 }
 
+func (s *CreateInstanceResponse) SetStatusCode(v int32) *CreateInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateInstanceResponse {
 	s.Body = v
 	return s
 }
 
-type DeleteAccountRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	AccountName   *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	IsShort       *bool   `json:"IsShort,omitempty" xml:"IsShort,omitempty"`
-	IsServiceUser *bool   `json:"IsServiceUser,omitempty" xml:"IsServiceUser,omitempty"`
+type ExecuteSparkStatementRequest struct {
+	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Kind  *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
 }
 
-func (s DeleteAccountRequest) String() string {
+func (s ExecuteSparkStatementRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteAccountRequest) GoString() string {
+func (s ExecuteSparkStatementRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteAccountRequest) SetRegionId(v string) *DeleteAccountRequest {
-	s.RegionId = &v
+func (s *ExecuteSparkStatementRequest) SetCode(v string) *ExecuteSparkStatementRequest {
+	s.Code = &v
 	return s
 }
 
-func (s *DeleteAccountRequest) SetAccountName(v string) *DeleteAccountRequest {
-	s.AccountName = &v
+func (s *ExecuteSparkStatementRequest) SetJobId(v string) *ExecuteSparkStatementRequest {
+	s.JobId = &v
 	return s
 }
 
-func (s *DeleteAccountRequest) SetIsShort(v bool) *DeleteAccountRequest {
-	s.IsShort = &v
+func (s *ExecuteSparkStatementRequest) SetKind(v string) *ExecuteSparkStatementRequest {
+	s.Kind = &v
 	return s
 }
 
-func (s *DeleteAccountRequest) SetIsServiceUser(v bool) *DeleteAccountRequest {
-	s.IsServiceUser = &v
-	return s
-}
-
-type DeleteAccountResponseBody struct {
+type ExecuteSparkStatementResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
-func (s DeleteAccountResponseBody) String() string {
+func (s ExecuteSparkStatementResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteAccountResponseBody) GoString() string {
+func (s ExecuteSparkStatementResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteAccountResponseBody) SetRequestId(v string) *DeleteAccountResponseBody {
+func (s *ExecuteSparkStatementResponseBody) SetData(v string) *ExecuteSparkStatementResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ExecuteSparkStatementResponseBody) SetRequestId(v string) *ExecuteSparkStatementResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DeleteAccountResponseBody) SetRegionId(v string) *DeleteAccountResponseBody {
-	s.RegionId = &v
-	return s
+type ExecuteSparkStatementResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExecuteSparkStatementResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type DeleteAccountResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteAccountResponse) String() string {
+func (s ExecuteSparkStatementResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteAccountResponse) GoString() string {
+func (s ExecuteSparkStatementResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteAccountResponse) SetHeaders(v map[string]*string) *DeleteAccountResponse {
+func (s *ExecuteSparkStatementResponse) SetHeaders(v map[string]*string) *ExecuteSparkStatementResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAccountResponse {
+func (s *ExecuteSparkStatementResponse) SetStatusCode(v int32) *ExecuteSparkStatementResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteSparkStatementResponse) SetBody(v *ExecuteSparkStatementResponseBody) *ExecuteSparkStatementResponse {
 	s.Body = v
 	return s
 }
 
-type GetAllowIPRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Product     *string `json:"Product,omitempty" xml:"Product,omitempty"`
+type GetJobAttemptLogRequest struct {
+	JobAttemptId *string `json:"JobAttemptId,omitempty" xml:"JobAttemptId,omitempty"`
+	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	VcName       *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
-func (s GetAllowIPRequest) String() string {
+func (s GetJobAttemptLogRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAllowIPRequest) GoString() string {
+func (s GetJobAttemptLogRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetAllowIPRequest) SetRegionId(v string) *GetAllowIPRequest {
-	s.RegionId = &v
+func (s *GetJobAttemptLogRequest) SetJobAttemptId(v string) *GetJobAttemptLogRequest {
+	s.JobAttemptId = &v
 	return s
 }
 
-func (s *GetAllowIPRequest) SetNetworkType(v string) *GetAllowIPRequest {
-	s.NetworkType = &v
+func (s *GetJobAttemptLogRequest) SetJobId(v string) *GetJobAttemptLogRequest {
+	s.JobId = &v
 	return s
 }
 
-func (s *GetAllowIPRequest) SetProduct(v string) *GetAllowIPRequest {
-	s.Product = &v
+func (s *GetJobAttemptLogRequest) SetVcName(v string) *GetJobAttemptLogRequest {
+	s.VcName = &v
 	return s
 }
 
-type GetAllowIPResponseBody struct {
+type GetJobAttemptLogResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AllowIP   *string `json:"AllowIP,omitempty" xml:"AllowIP,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
-func (s GetAllowIPResponseBody) String() string {
+func (s GetJobAttemptLogResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAllowIPResponseBody) GoString() string {
+func (s GetJobAttemptLogResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetAllowIPResponseBody) SetRequestId(v string) *GetAllowIPResponseBody {
+func (s *GetJobAttemptLogResponseBody) SetData(v string) *GetJobAttemptLogResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetJobAttemptLogResponseBody) SetRequestId(v string) *GetJobAttemptLogResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetAllowIPResponseBody) SetAllowIP(v string) *GetAllowIPResponseBody {
-	s.AllowIP = &v
-	return s
+type GetJobAttemptLogResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJobAttemptLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s *GetAllowIPResponseBody) SetRegionId(v string) *GetAllowIPResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-type GetAllowIPResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAllowIPResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetAllowIPResponse) String() string {
+func (s GetJobAttemptLogResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAllowIPResponse) GoString() string {
+func (s GetJobAttemptLogResponse) GoString() string {
 	return s.String()
 }
 
-func (s *GetAllowIPResponse) SetHeaders(v map[string]*string) *GetAllowIPResponse {
+func (s *GetJobAttemptLogResponse) SetHeaders(v map[string]*string) *GetJobAttemptLogResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *GetAllowIPResponse) SetBody(v *GetAllowIPResponseBody) *GetAllowIPResponse {
-	s.Body = v
+func (s *GetJobAttemptLogResponse) SetStatusCode(v int32) *GetJobAttemptLogResponse {
+	s.StatusCode = &v
 	return s
 }
 
-type GetEndPointRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	EndPointID *string `json:"EndPointID,omitempty" xml:"EndPointID,omitempty"`
-}
-
-func (s GetEndPointRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEndPointRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetEndPointRequest) SetRegionId(v string) *GetEndPointRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetEndPointRequest) SetEndPointID(v string) *GetEndPointRequest {
-	s.EndPointID = &v
-	return s
-}
-
-type GetEndPointResponseBody struct {
-	RequestId    *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	EndPointInfo *GetEndPointResponseBodyEndPointInfo `json:"EndPointInfo,omitempty" xml:"EndPointInfo,omitempty" type:"Struct"`
-	RegionId     *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s GetEndPointResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEndPointResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetEndPointResponseBody) SetRequestId(v string) *GetEndPointResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetEndPointResponseBody) SetEndPointInfo(v *GetEndPointResponseBodyEndPointInfo) *GetEndPointResponseBody {
-	s.EndPointInfo = v
-	return s
-}
-
-func (s *GetEndPointResponseBody) SetRegionId(v string) *GetEndPointResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-type GetEndPointResponseBodyEndPointInfo struct {
-	Product     *string `json:"product,omitempty" xml:"product,omitempty"`
-	Zone        *string `json:"zone,omitempty" xml:"zone,omitempty"`
-	DomainURL   *string `json:"domainURL,omitempty" xml:"domainURL,omitempty"`
-	VSwitch     *string `json:"vSwitch,omitempty" xml:"vSwitch,omitempty"`
-	Host        *string `json:"host,omitempty" xml:"host,omitempty"`
-	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
-	AllowIP     *string `json:"allowIP,omitempty" xml:"allowIP,omitempty"`
-	VpcID       *string `json:"vpcID,omitempty" xml:"vpcID,omitempty"`
-	EndPointID  *string `json:"endPointID,omitempty" xml:"endPointID,omitempty"`
-	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	Port        *string `json:"port,omitempty" xml:"port,omitempty"`
-}
-
-func (s GetEndPointResponseBodyEndPointInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEndPointResponseBodyEndPointInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetEndPointResponseBodyEndPointInfo) SetProduct(v string) *GetEndPointResponseBodyEndPointInfo {
-	s.Product = &v
-	return s
-}
-
-func (s *GetEndPointResponseBodyEndPointInfo) SetZone(v string) *GetEndPointResponseBodyEndPointInfo {
-	s.Zone = &v
-	return s
-}
-
-func (s *GetEndPointResponseBodyEndPointInfo) SetDomainURL(v string) *GetEndPointResponseBodyEndPointInfo {
-	s.DomainURL = &v
-	return s
-}
-
-func (s *GetEndPointResponseBodyEndPointInfo) SetVSwitch(v string) *GetEndPointResponseBodyEndPointInfo {
-	s.VSwitch = &v
-	return s
-}
-
-func (s *GetEndPointResponseBodyEndPointInfo) SetHost(v string) *GetEndPointResponseBodyEndPointInfo {
-	s.Host = &v
-	return s
-}
-
-func (s *GetEndPointResponseBodyEndPointInfo) SetStatus(v string) *GetEndPointResponseBodyEndPointInfo {
-	s.Status = &v
-	return s
-}
-
-func (s *GetEndPointResponseBodyEndPointInfo) SetAllowIP(v string) *GetEndPointResponseBodyEndPointInfo {
-	s.AllowIP = &v
-	return s
-}
-
-func (s *GetEndPointResponseBodyEndPointInfo) SetVpcID(v string) *GetEndPointResponseBodyEndPointInfo {
-	s.VpcID = &v
-	return s
-}
-
-func (s *GetEndPointResponseBodyEndPointInfo) SetEndPointID(v string) *GetEndPointResponseBodyEndPointInfo {
-	s.EndPointID = &v
-	return s
-}
-
-func (s *GetEndPointResponseBodyEndPointInfo) SetNetworkType(v string) *GetEndPointResponseBodyEndPointInfo {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *GetEndPointResponseBodyEndPointInfo) SetPort(v string) *GetEndPointResponseBodyEndPointInfo {
-	s.Port = &v
-	return s
-}
-
-type GetEndPointResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetEndPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetEndPointResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEndPointResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetEndPointResponse) SetHeaders(v map[string]*string) *GetEndPointResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetEndPointResponse) SetBody(v *GetEndPointResponseBody) *GetEndPointResponse {
-	s.Body = v
-	return s
-}
-
-type GetEndPointByDomainRequest struct {
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	DomainURL *string `json:"DomainURL,omitempty" xml:"DomainURL,omitempty"`
-	RegionID  *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
-}
-
-func (s GetEndPointByDomainRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEndPointByDomainRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetEndPointByDomainRequest) SetRegionId(v string) *GetEndPointByDomainRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetEndPointByDomainRequest) SetDomainURL(v string) *GetEndPointByDomainRequest {
-	s.DomainURL = &v
-	return s
-}
-
-func (s *GetEndPointByDomainRequest) SetRegionID(v string) *GetEndPointByDomainRequest {
-	s.RegionID = &v
-	return s
-}
-
-type GetEndPointByDomainResponseBody struct {
-	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	EndPointInfo *GetEndPointByDomainResponseBodyEndPointInfo `json:"EndPointInfo,omitempty" xml:"EndPointInfo,omitempty" type:"Struct"`
-	RegionId     *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s GetEndPointByDomainResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEndPointByDomainResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetEndPointByDomainResponseBody) SetRequestId(v string) *GetEndPointByDomainResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetEndPointByDomainResponseBody) SetEndPointInfo(v *GetEndPointByDomainResponseBodyEndPointInfo) *GetEndPointByDomainResponseBody {
-	s.EndPointInfo = v
-	return s
-}
-
-func (s *GetEndPointByDomainResponseBody) SetRegionId(v string) *GetEndPointByDomainResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-type GetEndPointByDomainResponseBodyEndPointInfo struct {
-	Product         *string `json:"product,omitempty" xml:"product,omitempty"`
-	CloudInstanceID *string `json:"cloudInstanceID,omitempty" xml:"cloudInstanceID,omitempty"`
-	Zone            *string `json:"zone,omitempty" xml:"zone,omitempty"`
-	DomainURL       *string `json:"domainURL,omitempty" xml:"domainURL,omitempty"`
-	VSwitch         *string `json:"vSwitch,omitempty" xml:"vSwitch,omitempty"`
-	Host            *string `json:"host,omitempty" xml:"host,omitempty"`
-	AllowIP         *string `json:"allowIP,omitempty" xml:"allowIP,omitempty"`
-	VpcID           *string `json:"vpcID,omitempty" xml:"vpcID,omitempty"`
-	EndPointID      *string `json:"endPointID,omitempty" xml:"endPointID,omitempty"`
-	NetworkType     *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	Port            *string `json:"port,omitempty" xml:"port,omitempty"`
-}
-
-func (s GetEndPointByDomainResponseBodyEndPointInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEndPointByDomainResponseBodyEndPointInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetEndPointByDomainResponseBodyEndPointInfo) SetProduct(v string) *GetEndPointByDomainResponseBodyEndPointInfo {
-	s.Product = &v
-	return s
-}
-
-func (s *GetEndPointByDomainResponseBodyEndPointInfo) SetCloudInstanceID(v string) *GetEndPointByDomainResponseBodyEndPointInfo {
-	s.CloudInstanceID = &v
-	return s
-}
-
-func (s *GetEndPointByDomainResponseBodyEndPointInfo) SetZone(v string) *GetEndPointByDomainResponseBodyEndPointInfo {
-	s.Zone = &v
-	return s
-}
-
-func (s *GetEndPointByDomainResponseBodyEndPointInfo) SetDomainURL(v string) *GetEndPointByDomainResponseBodyEndPointInfo {
-	s.DomainURL = &v
-	return s
-}
-
-func (s *GetEndPointByDomainResponseBodyEndPointInfo) SetVSwitch(v string) *GetEndPointByDomainResponseBodyEndPointInfo {
-	s.VSwitch = &v
-	return s
-}
-
-func (s *GetEndPointByDomainResponseBodyEndPointInfo) SetHost(v string) *GetEndPointByDomainResponseBodyEndPointInfo {
-	s.Host = &v
-	return s
-}
-
-func (s *GetEndPointByDomainResponseBodyEndPointInfo) SetAllowIP(v string) *GetEndPointByDomainResponseBodyEndPointInfo {
-	s.AllowIP = &v
-	return s
-}
-
-func (s *GetEndPointByDomainResponseBodyEndPointInfo) SetVpcID(v string) *GetEndPointByDomainResponseBodyEndPointInfo {
-	s.VpcID = &v
-	return s
-}
-
-func (s *GetEndPointByDomainResponseBodyEndPointInfo) SetEndPointID(v string) *GetEndPointByDomainResponseBodyEndPointInfo {
-	s.EndPointID = &v
-	return s
-}
-
-func (s *GetEndPointByDomainResponseBodyEndPointInfo) SetNetworkType(v string) *GetEndPointByDomainResponseBodyEndPointInfo {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *GetEndPointByDomainResponseBodyEndPointInfo) SetPort(v string) *GetEndPointByDomainResponseBodyEndPointInfo {
-	s.Port = &v
-	return s
-}
-
-type GetEndPointByDomainResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetEndPointByDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetEndPointByDomainResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEndPointByDomainResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetEndPointByDomainResponse) SetHeaders(v map[string]*string) *GetEndPointByDomainResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetEndPointByDomainResponse) SetBody(v *GetEndPointByDomainResponseBody) *GetEndPointByDomainResponse {
+func (s *GetJobAttemptLogResponse) SetBody(v *GetJobAttemptLogResponseBody) *GetJobAttemptLogResponse {
 	s.Body = v
 	return s
 }
@@ -939,21 +401,22 @@ func (s *GetJobDetailResponseBody) SetRequestId(v string) *GetJobDetailResponseB
 }
 
 type GetJobDetailResponseBodyJobDetail struct {
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime           *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	ExecutorResourceSpec *string `json:"ExecutorResourceSpec,omitempty" xml:"ExecutorResourceSpec,omitempty"`
 	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CreateTimeValue      *string `json:"CreateTimeValue,omitempty" xml:"CreateTimeValue,omitempty"`
-	DriverResourceSpec   *string `json:"DriverResourceSpec,omitempty" xml:"DriverResourceSpec,omitempty"`
-	UpdateTimeValue      *string `json:"UpdateTimeValue,omitempty" xml:"UpdateTimeValue,omitempty"`
-	SparkUI              *string `json:"SparkUI,omitempty" xml:"SparkUI,omitempty"`
-	SubmitTimeValue      *string `json:"SubmitTimeValue,omitempty" xml:"SubmitTimeValue,omitempty"`
-	JobName              *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ExecutorInstances    *string `json:"ExecutorInstances,omitempty" xml:"ExecutorInstances,omitempty"`
-	VcName               *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
-	SubmitTime           *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
 	Detail               *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	DriverResourceSpec   *string `json:"DriverResourceSpec,omitempty" xml:"DriverResourceSpec,omitempty"`
+	ExecutorInstances    *string `json:"ExecutorInstances,omitempty" xml:"ExecutorInstances,omitempty"`
+	ExecutorResourceSpec *string `json:"ExecutorResourceSpec,omitempty" xml:"ExecutorResourceSpec,omitempty"`
+	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName              *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	LastJobAttemptId     *string `json:"LastJobAttemptId,omitempty" xml:"LastJobAttemptId,omitempty"`
+	SparkUI              *string `json:"SparkUI,omitempty" xml:"SparkUI,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmitTime           *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	SubmitTimeValue      *string `json:"SubmitTimeValue,omitempty" xml:"SubmitTimeValue,omitempty"`
+	UpdateTime           *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimeValue      *string `json:"UpdateTimeValue,omitempty" xml:"UpdateTimeValue,omitempty"`
+	VcName               *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
 func (s GetJobDetailResponseBodyJobDetail) String() string {
@@ -962,21 +425,6 @@ func (s GetJobDetailResponseBodyJobDetail) String() string {
 
 func (s GetJobDetailResponseBodyJobDetail) GoString() string {
 	return s.String()
-}
-
-func (s *GetJobDetailResponseBodyJobDetail) SetStatus(v string) *GetJobDetailResponseBodyJobDetail {
-	s.Status = &v
-	return s
-}
-
-func (s *GetJobDetailResponseBodyJobDetail) SetUpdateTime(v string) *GetJobDetailResponseBodyJobDetail {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *GetJobDetailResponseBodyJobDetail) SetExecutorResourceSpec(v string) *GetJobDetailResponseBodyJobDetail {
-	s.ExecutorResourceSpec = &v
-	return s
 }
 
 func (s *GetJobDetailResponseBodyJobDetail) SetCreateTime(v string) *GetJobDetailResponseBodyJobDetail {
@@ -989,33 +437,13 @@ func (s *GetJobDetailResponseBodyJobDetail) SetCreateTimeValue(v string) *GetJob
 	return s
 }
 
+func (s *GetJobDetailResponseBodyJobDetail) SetDetail(v string) *GetJobDetailResponseBodyJobDetail {
+	s.Detail = &v
+	return s
+}
+
 func (s *GetJobDetailResponseBodyJobDetail) SetDriverResourceSpec(v string) *GetJobDetailResponseBodyJobDetail {
 	s.DriverResourceSpec = &v
-	return s
-}
-
-func (s *GetJobDetailResponseBodyJobDetail) SetUpdateTimeValue(v string) *GetJobDetailResponseBodyJobDetail {
-	s.UpdateTimeValue = &v
-	return s
-}
-
-func (s *GetJobDetailResponseBodyJobDetail) SetSparkUI(v string) *GetJobDetailResponseBodyJobDetail {
-	s.SparkUI = &v
-	return s
-}
-
-func (s *GetJobDetailResponseBodyJobDetail) SetSubmitTimeValue(v string) *GetJobDetailResponseBodyJobDetail {
-	s.SubmitTimeValue = &v
-	return s
-}
-
-func (s *GetJobDetailResponseBodyJobDetail) SetJobName(v string) *GetJobDetailResponseBodyJobDetail {
-	s.JobName = &v
-	return s
-}
-
-func (s *GetJobDetailResponseBodyJobDetail) SetJobId(v string) *GetJobDetailResponseBodyJobDetail {
-	s.JobId = &v
 	return s
 }
 
@@ -1024,8 +452,33 @@ func (s *GetJobDetailResponseBodyJobDetail) SetExecutorInstances(v string) *GetJ
 	return s
 }
 
-func (s *GetJobDetailResponseBodyJobDetail) SetVcName(v string) *GetJobDetailResponseBodyJobDetail {
-	s.VcName = &v
+func (s *GetJobDetailResponseBodyJobDetail) SetExecutorResourceSpec(v string) *GetJobDetailResponseBodyJobDetail {
+	s.ExecutorResourceSpec = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyJobDetail) SetJobId(v string) *GetJobDetailResponseBodyJobDetail {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyJobDetail) SetJobName(v string) *GetJobDetailResponseBodyJobDetail {
+	s.JobName = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyJobDetail) SetLastJobAttemptId(v string) *GetJobDetailResponseBodyJobDetail {
+	s.LastJobAttemptId = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyJobDetail) SetSparkUI(v string) *GetJobDetailResponseBodyJobDetail {
+	s.SparkUI = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyJobDetail) SetStatus(v string) *GetJobDetailResponseBodyJobDetail {
+	s.Status = &v
 	return s
 }
 
@@ -1034,14 +487,30 @@ func (s *GetJobDetailResponseBodyJobDetail) SetSubmitTime(v string) *GetJobDetai
 	return s
 }
 
-func (s *GetJobDetailResponseBodyJobDetail) SetDetail(v string) *GetJobDetailResponseBodyJobDetail {
-	s.Detail = &v
+func (s *GetJobDetailResponseBodyJobDetail) SetSubmitTimeValue(v string) *GetJobDetailResponseBodyJobDetail {
+	s.SubmitTimeValue = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyJobDetail) SetUpdateTime(v string) *GetJobDetailResponseBodyJobDetail {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyJobDetail) SetUpdateTimeValue(v string) *GetJobDetailResponseBodyJobDetail {
+	s.UpdateTimeValue = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyJobDetail) SetVcName(v string) *GetJobDetailResponseBodyJobDetail {
+	s.VcName = &v
 	return s
 }
 
 type GetJobDetailResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetJobDetailResponse) String() string {
@@ -1054,6 +523,11 @@ func (s GetJobDetailResponse) GoString() string {
 
 func (s *GetJobDetailResponse) SetHeaders(v map[string]*string) *GetJobDetailResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetJobDetailResponse) SetStatusCode(v int32) *GetJobDetailResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1086,8 +560,8 @@ func (s *GetJobLogRequest) SetVcName(v string) *GetJobLogRequest {
 }
 
 type GetJobLogResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetJobLogResponseBody) String() string {
@@ -1098,19 +572,20 @@ func (s GetJobLogResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetJobLogResponseBody) SetRequestId(v string) *GetJobLogResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetJobLogResponseBody) SetData(v string) *GetJobLogResponseBody {
 	s.Data = &v
 	return s
 }
 
+func (s *GetJobLogResponseBody) SetRequestId(v string) *GetJobLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetJobLogResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJobLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetJobLogResponse) String() string {
@@ -1123,6 +598,11 @@ func (s GetJobLogResponse) GoString() string {
 
 func (s *GetJobLogResponse) SetHeaders(v map[string]*string) *GetJobLogResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetJobLogResponse) SetStatusCode(v int32) *GetJobLogResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1155,8 +635,8 @@ func (s *GetJobStatusRequest) SetVcName(v string) *GetJobStatusRequest {
 }
 
 type GetJobStatusResponseBody struct {
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetJobStatusResponseBody) String() string {
@@ -1167,19 +647,20 @@ func (s GetJobStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetJobStatusResponseBody) SetStatus(v string) *GetJobStatusResponseBody {
-	s.Status = &v
-	return s
-}
-
 func (s *GetJobStatusResponseBody) SetRequestId(v string) *GetJobStatusResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *GetJobStatusResponseBody) SetStatus(v string) *GetJobStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
 type GetJobStatusResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetJobStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJobStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetJobStatusResponse) String() string {
@@ -1195,14 +676,216 @@ func (s *GetJobStatusResponse) SetHeaders(v map[string]*string) *GetJobStatusRes
 	return s
 }
 
+func (s *GetJobStatusResponse) SetStatusCode(v int32) *GetJobStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetJobStatusResponse) SetBody(v *GetJobStatusResponseBody) *GetJobStatusResponse {
 	s.Body = v
 	return s
 }
 
+type GetSparkSessionStateRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s GetSparkSessionStateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkSessionStateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkSessionStateRequest) SetJobId(v string) *GetSparkSessionStateRequest {
+	s.JobId = &v
+	return s
+}
+
+type GetSparkSessionStateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s GetSparkSessionStateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkSessionStateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkSessionStateResponseBody) SetRequestId(v string) *GetSparkSessionStateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSparkSessionStateResponseBody) SetState(v string) *GetSparkSessionStateResponseBody {
+	s.State = &v
+	return s
+}
+
+type GetSparkSessionStateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSparkSessionStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSparkSessionStateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkSessionStateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkSessionStateResponse) SetHeaders(v map[string]*string) *GetSparkSessionStateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSparkSessionStateResponse) SetStatusCode(v int32) *GetSparkSessionStateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSparkSessionStateResponse) SetBody(v *GetSparkSessionStateResponseBody) *GetSparkSessionStateResponse {
+	s.Body = v
+	return s
+}
+
+type GetSparkStatementRequest struct {
+	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	StatementId *int32  `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
+}
+
+func (s GetSparkStatementRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkStatementRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkStatementRequest) SetJobId(v string) *GetSparkStatementRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetSparkStatementRequest) SetStatementId(v int32) *GetSparkStatementRequest {
+	s.StatementId = &v
+	return s
+}
+
+type GetSparkStatementResponseBody struct {
+	Data      *GetSparkStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSparkStatementResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkStatementResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkStatementResponseBody) SetData(v *GetSparkStatementResponseBodyData) *GetSparkStatementResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSparkStatementResponseBody) SetRequestId(v string) *GetSparkStatementResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSparkStatementResponseBodyData struct {
+	Code          *string  `json:"Code,omitempty" xml:"Code,omitempty"`
+	CompletedTime *int64   `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
+	Id            *int32   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Output        *string  `json:"Output,omitempty" xml:"Output,omitempty"`
+	Process       *float32 `json:"Process,omitempty" xml:"Process,omitempty"`
+	StartedTime   *int64   `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	State         *string  `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s GetSparkStatementResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkStatementResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkStatementResponseBodyData) SetCode(v string) *GetSparkStatementResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSparkStatementResponseBodyData) SetCompletedTime(v int64) *GetSparkStatementResponseBodyData {
+	s.CompletedTime = &v
+	return s
+}
+
+func (s *GetSparkStatementResponseBodyData) SetId(v int32) *GetSparkStatementResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetSparkStatementResponseBodyData) SetOutput(v string) *GetSparkStatementResponseBodyData {
+	s.Output = &v
+	return s
+}
+
+func (s *GetSparkStatementResponseBodyData) SetProcess(v float32) *GetSparkStatementResponseBodyData {
+	s.Process = &v
+	return s
+}
+
+func (s *GetSparkStatementResponseBodyData) SetStartedTime(v int64) *GetSparkStatementResponseBodyData {
+	s.StartedTime = &v
+	return s
+}
+
+func (s *GetSparkStatementResponseBodyData) SetState(v string) *GetSparkStatementResponseBodyData {
+	s.State = &v
+	return s
+}
+
+type GetSparkStatementResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSparkStatementResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSparkStatementResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkStatementResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkStatementResponse) SetHeaders(v map[string]*string) *GetSparkStatementResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSparkStatementResponse) SetStatusCode(v int32) *GetSparkStatementResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSparkStatementResponse) SetBody(v *GetSparkStatementResponseBody) *GetSparkStatementResponse {
+	s.Body = v
+	return s
+}
+
 type KillSparkJobRequest struct {
-	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
 func (s KillSparkJobRequest) String() string {
@@ -1213,19 +896,19 @@ func (s KillSparkJobRequest) GoString() string {
 	return s.String()
 }
 
-func (s *KillSparkJobRequest) SetVcName(v string) *KillSparkJobRequest {
-	s.VcName = &v
-	return s
-}
-
 func (s *KillSparkJobRequest) SetJobId(v string) *KillSparkJobRequest {
 	s.JobId = &v
 	return s
 }
 
+func (s *KillSparkJobRequest) SetVcName(v string) *KillSparkJobRequest {
+	s.VcName = &v
+	return s
+}
+
 type KillSparkJobResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s KillSparkJobResponseBody) String() string {
@@ -1236,19 +919,20 @@ func (s KillSparkJobResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *KillSparkJobResponseBody) SetRequestId(v string) *KillSparkJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *KillSparkJobResponseBody) SetData(v string) *KillSparkJobResponseBody {
 	s.Data = &v
 	return s
 }
 
+func (s *KillSparkJobResponseBody) SetRequestId(v string) *KillSparkJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type KillSparkJobResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *KillSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *KillSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s KillSparkJobResponse) String() string {
@@ -1264,15 +948,21 @@ func (s *KillSparkJobResponse) SetHeaders(v map[string]*string) *KillSparkJobRes
 	return s
 }
 
+func (s *KillSparkJobResponse) SetStatusCode(v int32) *KillSparkJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *KillSparkJobResponse) SetBody(v *KillSparkJobResponseBody) *KillSparkJobResponse {
 	s.Body = v
 	return s
 }
 
 type ListSparkJobRequest struct {
-	VcName     *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Condition  map[string]interface{} `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	PageNumber *int32                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	VcName     *string                `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
 func (s ListSparkJobRequest) String() string {
@@ -1283,8 +973,8 @@ func (s ListSparkJobRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListSparkJobRequest) SetVcName(v string) *ListSparkJobRequest {
-	s.VcName = &v
+func (s *ListSparkJobRequest) SetCondition(v map[string]interface{}) *ListSparkJobRequest {
+	s.Condition = v
 	return s
 }
 
@@ -1295,6 +985,46 @@ func (s *ListSparkJobRequest) SetPageNumber(v int32) *ListSparkJobRequest {
 
 func (s *ListSparkJobRequest) SetPageSize(v int32) *ListSparkJobRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListSparkJobRequest) SetVcName(v string) *ListSparkJobRequest {
+	s.VcName = &v
+	return s
+}
+
+type ListSparkJobShrinkRequest struct {
+	ConditionShrink *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	VcName          *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
+}
+
+func (s ListSparkJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSparkJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSparkJobShrinkRequest) SetConditionShrink(v string) *ListSparkJobShrinkRequest {
+	s.ConditionShrink = &v
+	return s
+}
+
+func (s *ListSparkJobShrinkRequest) SetPageNumber(v int32) *ListSparkJobShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSparkJobShrinkRequest) SetPageSize(v int32) *ListSparkJobShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSparkJobShrinkRequest) SetVcName(v string) *ListSparkJobShrinkRequest {
+	s.VcName = &v
 	return s
 }
 
@@ -1357,21 +1087,21 @@ func (s *ListSparkJobResponseBodyDataResult) SetTotalCount(v string) *ListSparkJ
 }
 
 type ListSparkJobResponseBodyDataResultJobList struct {
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime           *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	ExecutorResourceSpec *string `json:"ExecutorResourceSpec,omitempty" xml:"ExecutorResourceSpec,omitempty"`
 	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DriverResourceSpec   *string `json:"DriverResourceSpec,omitempty" xml:"DriverResourceSpec,omitempty"`
 	CreateTimeValue      *string `json:"CreateTimeValue,omitempty" xml:"CreateTimeValue,omitempty"`
-	UpdateTimeValue      *string `json:"UpdateTimeValue,omitempty" xml:"UpdateTimeValue,omitempty"`
-	SparkUI              *string `json:"SparkUI,omitempty" xml:"SparkUI,omitempty"`
-	SubmitTimeValue      *string `json:"SubmitTimeValue,omitempty" xml:"SubmitTimeValue,omitempty"`
-	JobName              *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	VcName               *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
-	ExecutorInstances    *string `json:"ExecutorInstances,omitempty" xml:"ExecutorInstances,omitempty"`
-	SubmitTime           *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
 	Detail               *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	DriverResourceSpec   *string `json:"DriverResourceSpec,omitempty" xml:"DriverResourceSpec,omitempty"`
+	ExecutorInstances    *string `json:"ExecutorInstances,omitempty" xml:"ExecutorInstances,omitempty"`
+	ExecutorResourceSpec *string `json:"ExecutorResourceSpec,omitempty" xml:"ExecutorResourceSpec,omitempty"`
+	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName              *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	SparkUI              *string `json:"SparkUI,omitempty" xml:"SparkUI,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmitTime           *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	SubmitTimeValue      *string `json:"SubmitTimeValue,omitempty" xml:"SubmitTimeValue,omitempty"`
+	UpdateTime           *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimeValue      *string `json:"UpdateTimeValue,omitempty" xml:"UpdateTimeValue,omitempty"`
+	VcName               *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
 func (s ListSparkJobResponseBodyDataResultJobList) String() string {
@@ -1382,28 +1112,8 @@ func (s ListSparkJobResponseBodyDataResultJobList) GoString() string {
 	return s.String()
 }
 
-func (s *ListSparkJobResponseBodyDataResultJobList) SetStatus(v string) *ListSparkJobResponseBodyDataResultJobList {
-	s.Status = &v
-	return s
-}
-
-func (s *ListSparkJobResponseBodyDataResultJobList) SetUpdateTime(v string) *ListSparkJobResponseBodyDataResultJobList {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *ListSparkJobResponseBodyDataResultJobList) SetExecutorResourceSpec(v string) *ListSparkJobResponseBodyDataResultJobList {
-	s.ExecutorResourceSpec = &v
-	return s
-}
-
 func (s *ListSparkJobResponseBodyDataResultJobList) SetCreateTime(v string) *ListSparkJobResponseBodyDataResultJobList {
 	s.CreateTime = &v
-	return s
-}
-
-func (s *ListSparkJobResponseBodyDataResultJobList) SetDriverResourceSpec(v string) *ListSparkJobResponseBodyDataResultJobList {
-	s.DriverResourceSpec = &v
 	return s
 }
 
@@ -1412,33 +1122,13 @@ func (s *ListSparkJobResponseBodyDataResultJobList) SetCreateTimeValue(v string)
 	return s
 }
 
-func (s *ListSparkJobResponseBodyDataResultJobList) SetUpdateTimeValue(v string) *ListSparkJobResponseBodyDataResultJobList {
-	s.UpdateTimeValue = &v
+func (s *ListSparkJobResponseBodyDataResultJobList) SetDetail(v string) *ListSparkJobResponseBodyDataResultJobList {
+	s.Detail = &v
 	return s
 }
 
-func (s *ListSparkJobResponseBodyDataResultJobList) SetSparkUI(v string) *ListSparkJobResponseBodyDataResultJobList {
-	s.SparkUI = &v
-	return s
-}
-
-func (s *ListSparkJobResponseBodyDataResultJobList) SetSubmitTimeValue(v string) *ListSparkJobResponseBodyDataResultJobList {
-	s.SubmitTimeValue = &v
-	return s
-}
-
-func (s *ListSparkJobResponseBodyDataResultJobList) SetJobName(v string) *ListSparkJobResponseBodyDataResultJobList {
-	s.JobName = &v
-	return s
-}
-
-func (s *ListSparkJobResponseBodyDataResultJobList) SetJobId(v string) *ListSparkJobResponseBodyDataResultJobList {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListSparkJobResponseBodyDataResultJobList) SetVcName(v string) *ListSparkJobResponseBodyDataResultJobList {
-	s.VcName = &v
+func (s *ListSparkJobResponseBodyDataResultJobList) SetDriverResourceSpec(v string) *ListSparkJobResponseBodyDataResultJobList {
+	s.DriverResourceSpec = &v
 	return s
 }
 
@@ -1447,19 +1137,60 @@ func (s *ListSparkJobResponseBodyDataResultJobList) SetExecutorInstances(v strin
 	return s
 }
 
+func (s *ListSparkJobResponseBodyDataResultJobList) SetExecutorResourceSpec(v string) *ListSparkJobResponseBodyDataResultJobList {
+	s.ExecutorResourceSpec = &v
+	return s
+}
+
+func (s *ListSparkJobResponseBodyDataResultJobList) SetJobId(v string) *ListSparkJobResponseBodyDataResultJobList {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListSparkJobResponseBodyDataResultJobList) SetJobName(v string) *ListSparkJobResponseBodyDataResultJobList {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListSparkJobResponseBodyDataResultJobList) SetSparkUI(v string) *ListSparkJobResponseBodyDataResultJobList {
+	s.SparkUI = &v
+	return s
+}
+
+func (s *ListSparkJobResponseBodyDataResultJobList) SetStatus(v string) *ListSparkJobResponseBodyDataResultJobList {
+	s.Status = &v
+	return s
+}
+
 func (s *ListSparkJobResponseBodyDataResultJobList) SetSubmitTime(v string) *ListSparkJobResponseBodyDataResultJobList {
 	s.SubmitTime = &v
 	return s
 }
 
-func (s *ListSparkJobResponseBodyDataResultJobList) SetDetail(v string) *ListSparkJobResponseBodyDataResultJobList {
-	s.Detail = &v
+func (s *ListSparkJobResponseBodyDataResultJobList) SetSubmitTimeValue(v string) *ListSparkJobResponseBodyDataResultJobList {
+	s.SubmitTimeValue = &v
+	return s
+}
+
+func (s *ListSparkJobResponseBodyDataResultJobList) SetUpdateTime(v string) *ListSparkJobResponseBodyDataResultJobList {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListSparkJobResponseBodyDataResultJobList) SetUpdateTimeValue(v string) *ListSparkJobResponseBodyDataResultJobList {
+	s.UpdateTimeValue = &v
+	return s
+}
+
+func (s *ListSparkJobResponseBodyDataResultJobList) SetVcName(v string) *ListSparkJobResponseBodyDataResultJobList {
+	s.VcName = &v
 	return s
 }
 
 type ListSparkJobResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSparkJobResponse) String() string {
@@ -1475,300 +1206,399 @@ func (s *ListSparkJobResponse) SetHeaders(v map[string]*string) *ListSparkJobRes
 	return s
 }
 
+func (s *ListSparkJobResponse) SetStatusCode(v int32) *ListSparkJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListSparkJobResponse) SetBody(v *ListSparkJobResponseBody) *ListSparkJobResponse {
 	s.Body = v
 	return s
 }
 
-type QueryAccountListRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+type ListSparkJobAttemptRequest struct {
+	Condition  map[string]interface{} `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	JobId      *string                `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	PageNumber *int32                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	VcName     *string                `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
-func (s QueryAccountListRequest) String() string {
+func (s ListSparkJobAttemptRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryAccountListRequest) GoString() string {
+func (s ListSparkJobAttemptRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryAccountListRequest) SetRegionId(v string) *QueryAccountListRequest {
-	s.RegionId = &v
+func (s *ListSparkJobAttemptRequest) SetCondition(v map[string]interface{}) *ListSparkJobAttemptRequest {
+	s.Condition = v
 	return s
 }
 
-func (s *QueryAccountListRequest) SetPageSize(v int32) *QueryAccountListRequest {
-	s.PageSize = &v
+func (s *ListSparkJobAttemptRequest) SetJobId(v string) *ListSparkJobAttemptRequest {
+	s.JobId = &v
 	return s
 }
 
-func (s *QueryAccountListRequest) SetPageNumber(v int32) *QueryAccountListRequest {
+func (s *ListSparkJobAttemptRequest) SetPageNumber(v int32) *ListSparkJobAttemptRequest {
 	s.PageNumber = &v
 	return s
 }
 
-type QueryAccountListResponseBody struct {
-	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize   *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Data       []*QueryAccountListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RegionId   *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+func (s *ListSparkJobAttemptRequest) SetPageSize(v int32) *ListSparkJobAttemptRequest {
+	s.PageSize = &v
+	return s
 }
 
-func (s QueryAccountListResponseBody) String() string {
+func (s *ListSparkJobAttemptRequest) SetVcName(v string) *ListSparkJobAttemptRequest {
+	s.VcName = &v
+	return s
+}
+
+type ListSparkJobAttemptShrinkRequest struct {
+	ConditionShrink *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	JobId           *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	VcName          *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
+}
+
+func (s ListSparkJobAttemptShrinkRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryAccountListResponseBody) GoString() string {
+func (s ListSparkJobAttemptShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryAccountListResponseBody) SetTotalCount(v int32) *QueryAccountListResponseBody {
+func (s *ListSparkJobAttemptShrinkRequest) SetConditionShrink(v string) *ListSparkJobAttemptShrinkRequest {
+	s.ConditionShrink = &v
+	return s
+}
+
+func (s *ListSparkJobAttemptShrinkRequest) SetJobId(v string) *ListSparkJobAttemptShrinkRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListSparkJobAttemptShrinkRequest) SetPageNumber(v int32) *ListSparkJobAttemptShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSparkJobAttemptShrinkRequest) SetPageSize(v int32) *ListSparkJobAttemptShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSparkJobAttemptShrinkRequest) SetVcName(v string) *ListSparkJobAttemptShrinkRequest {
+	s.VcName = &v
+	return s
+}
+
+type ListSparkJobAttemptResponseBody struct {
+	DataResult *ListSparkJobAttemptResponseBodyDataResult `json:"DataResult,omitempty" xml:"DataResult,omitempty" type:"Struct"`
+	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListSparkJobAttemptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSparkJobAttemptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSparkJobAttemptResponseBody) SetDataResult(v *ListSparkJobAttemptResponseBodyDataResult) *ListSparkJobAttemptResponseBody {
+	s.DataResult = v
+	return s
+}
+
+func (s *ListSparkJobAttemptResponseBody) SetRequestId(v string) *ListSparkJobAttemptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListSparkJobAttemptResponseBodyDataResult struct {
+	JobAttemptList []*ListSparkJobAttemptResponseBodyDataResultJobAttemptList `json:"JobAttemptList,omitempty" xml:"JobAttemptList,omitempty" type:"Repeated"`
+	PageNumber     *string                                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *string                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount     *string                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSparkJobAttemptResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSparkJobAttemptResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListSparkJobAttemptResponseBodyDataResult) SetJobAttemptList(v []*ListSparkJobAttemptResponseBodyDataResultJobAttemptList) *ListSparkJobAttemptResponseBodyDataResult {
+	s.JobAttemptList = v
+	return s
+}
+
+func (s *ListSparkJobAttemptResponseBodyDataResult) SetPageNumber(v string) *ListSparkJobAttemptResponseBodyDataResult {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSparkJobAttemptResponseBodyDataResult) SetPageSize(v string) *ListSparkJobAttemptResponseBodyDataResult {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSparkJobAttemptResponseBodyDataResult) SetTotalCount(v string) *ListSparkJobAttemptResponseBodyDataResult {
 	s.TotalCount = &v
 	return s
 }
 
-func (s *QueryAccountListResponseBody) SetPageSize(v int32) *QueryAccountListResponseBody {
-	s.PageSize = &v
-	return s
+type ListSparkJobAttemptResponseBodyDataResultJobAttemptList struct {
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimeValue     *string `json:"CreateTimeValue,omitempty" xml:"CreateTimeValue,omitempty"`
+	Detail              *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	DurationTime        *string `json:"DurationTime,omitempty" xml:"DurationTime,omitempty"`
+	DurationTimeValue   *string `json:"DurationTimeValue,omitempty" xml:"DurationTimeValue,omitempty"`
+	JobAttemptId        *string `json:"JobAttemptId,omitempty" xml:"JobAttemptId,omitempty"`
+	JobId               *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName             *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	SparkUI             *string `json:"SparkUI,omitempty" xml:"SparkUI,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TerminatedTime      *string `json:"TerminatedTime,omitempty" xml:"TerminatedTime,omitempty"`
+	TerminatedTimeValue *string `json:"TerminatedTimeValue,omitempty" xml:"TerminatedTimeValue,omitempty"`
+	VcName              *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
-func (s *QueryAccountListResponseBody) SetRequestId(v string) *QueryAccountListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryAccountListResponseBody) SetPageNumber(v int32) *QueryAccountListResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *QueryAccountListResponseBody) SetData(v []*QueryAccountListResponseBodyData) *QueryAccountListResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryAccountListResponseBody) SetRegionId(v string) *QueryAccountListResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-type QueryAccountListResponseBodyData struct {
-	Remark    *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RamUid    *string `json:"RamUid,omitempty" xml:"RamUid,omitempty"`
-	ShortName *string `json:"ShortName,omitempty" xml:"ShortName,omitempty"`
-	Role      *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-}
-
-func (s QueryAccountListResponseBodyData) String() string {
+func (s ListSparkJobAttemptResponseBodyDataResultJobAttemptList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryAccountListResponseBodyData) GoString() string {
+func (s ListSparkJobAttemptResponseBodyDataResultJobAttemptList) GoString() string {
 	return s.String()
 }
 
-func (s *QueryAccountListResponseBodyData) SetRemark(v string) *QueryAccountListResponseBodyData {
-	s.Remark = &v
+func (s *ListSparkJobAttemptResponseBodyDataResultJobAttemptList) SetCreateTime(v string) *ListSparkJobAttemptResponseBodyDataResultJobAttemptList {
+	s.CreateTime = &v
 	return s
 }
 
-func (s *QueryAccountListResponseBodyData) SetRamUid(v string) *QueryAccountListResponseBodyData {
-	s.RamUid = &v
+func (s *ListSparkJobAttemptResponseBodyDataResultJobAttemptList) SetCreateTimeValue(v string) *ListSparkJobAttemptResponseBodyDataResultJobAttemptList {
+	s.CreateTimeValue = &v
 	return s
 }
 
-func (s *QueryAccountListResponseBodyData) SetShortName(v string) *QueryAccountListResponseBodyData {
-	s.ShortName = &v
+func (s *ListSparkJobAttemptResponseBodyDataResultJobAttemptList) SetDetail(v string) *ListSparkJobAttemptResponseBodyDataResultJobAttemptList {
+	s.Detail = &v
 	return s
 }
 
-func (s *QueryAccountListResponseBodyData) SetRole(v string) *QueryAccountListResponseBodyData {
-	s.Role = &v
+func (s *ListSparkJobAttemptResponseBodyDataResultJobAttemptList) SetDurationTime(v string) *ListSparkJobAttemptResponseBodyDataResultJobAttemptList {
+	s.DurationTime = &v
 	return s
 }
 
-func (s *QueryAccountListResponseBodyData) SetUserName(v string) *QueryAccountListResponseBodyData {
-	s.UserName = &v
+func (s *ListSparkJobAttemptResponseBodyDataResultJobAttemptList) SetDurationTimeValue(v string) *ListSparkJobAttemptResponseBodyDataResultJobAttemptList {
+	s.DurationTimeValue = &v
 	return s
 }
 
-type QueryAccountListResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryAccountListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryAccountListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryAccountListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryAccountListResponse) SetHeaders(v map[string]*string) *QueryAccountListResponse {
-	s.Headers = v
+func (s *ListSparkJobAttemptResponseBodyDataResultJobAttemptList) SetJobAttemptId(v string) *ListSparkJobAttemptResponseBodyDataResultJobAttemptList {
+	s.JobAttemptId = &v
 	return s
 }
 
-func (s *QueryAccountListResponse) SetBody(v *QueryAccountListResponseBody) *QueryAccountListResponse {
-	s.Body = v
+func (s *ListSparkJobAttemptResponseBodyDataResultJobAttemptList) SetJobId(v string) *ListSparkJobAttemptResponseBodyDataResultJobAttemptList {
+	s.JobId = &v
 	return s
 }
 
-type QueryEndPointListRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s QueryEndPointListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEndPointListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEndPointListRequest) SetRegionId(v string) *QueryEndPointListRequest {
-	s.RegionId = &v
+func (s *ListSparkJobAttemptResponseBodyDataResultJobAttemptList) SetJobName(v string) *ListSparkJobAttemptResponseBodyDataResultJobAttemptList {
+	s.JobName = &v
 	return s
 }
 
-type QueryEndPointListResponseBody struct {
-	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	EndPointList []*QueryEndPointListResponseBodyEndPointList `json:"EndPointList,omitempty" xml:"EndPointList,omitempty" type:"Repeated"`
-	RegionId     *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s QueryEndPointListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEndPointListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEndPointListResponseBody) SetRequestId(v string) *QueryEndPointListResponseBody {
-	s.RequestId = &v
+func (s *ListSparkJobAttemptResponseBodyDataResultJobAttemptList) SetSparkUI(v string) *ListSparkJobAttemptResponseBodyDataResultJobAttemptList {
+	s.SparkUI = &v
 	return s
 }
 
-func (s *QueryEndPointListResponseBody) SetEndPointList(v []*QueryEndPointListResponseBodyEndPointList) *QueryEndPointListResponseBody {
-	s.EndPointList = v
-	return s
-}
-
-func (s *QueryEndPointListResponseBody) SetRegionId(v string) *QueryEndPointListResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-type QueryEndPointListResponseBodyEndPointList struct {
-	Product     *string `json:"product,omitempty" xml:"product,omitempty"`
-	DomainURL   *string `json:"domainURL,omitempty" xml:"domainURL,omitempty"`
-	Zone        *string `json:"zone,omitempty" xml:"zone,omitempty"`
-	VSwitch     *string `json:"vSwitch,omitempty" xml:"vSwitch,omitempty"`
-	Host        *string `json:"host,omitempty" xml:"host,omitempty"`
-	AllowIP     *string `json:"allowIP,omitempty" xml:"allowIP,omitempty"`
-	VpcID       *string `json:"vpcID,omitempty" xml:"vpcID,omitempty"`
-	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
-	EndPointID  *string `json:"endPointID,omitempty" xml:"endPointID,omitempty"`
-	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	Port        *string `json:"port,omitempty" xml:"port,omitempty"`
-}
-
-func (s QueryEndPointListResponseBodyEndPointList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryEndPointListResponseBodyEndPointList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryEndPointListResponseBodyEndPointList) SetProduct(v string) *QueryEndPointListResponseBodyEndPointList {
-	s.Product = &v
-	return s
-}
-
-func (s *QueryEndPointListResponseBodyEndPointList) SetDomainURL(v string) *QueryEndPointListResponseBodyEndPointList {
-	s.DomainURL = &v
-	return s
-}
-
-func (s *QueryEndPointListResponseBodyEndPointList) SetZone(v string) *QueryEndPointListResponseBodyEndPointList {
-	s.Zone = &v
-	return s
-}
-
-func (s *QueryEndPointListResponseBodyEndPointList) SetVSwitch(v string) *QueryEndPointListResponseBodyEndPointList {
-	s.VSwitch = &v
-	return s
-}
-
-func (s *QueryEndPointListResponseBodyEndPointList) SetHost(v string) *QueryEndPointListResponseBodyEndPointList {
-	s.Host = &v
-	return s
-}
-
-func (s *QueryEndPointListResponseBodyEndPointList) SetAllowIP(v string) *QueryEndPointListResponseBodyEndPointList {
-	s.AllowIP = &v
-	return s
-}
-
-func (s *QueryEndPointListResponseBodyEndPointList) SetVpcID(v string) *QueryEndPointListResponseBodyEndPointList {
-	s.VpcID = &v
-	return s
-}
-
-func (s *QueryEndPointListResponseBodyEndPointList) SetStatus(v string) *QueryEndPointListResponseBodyEndPointList {
+func (s *ListSparkJobAttemptResponseBodyDataResultJobAttemptList) SetStatus(v string) *ListSparkJobAttemptResponseBodyDataResultJobAttemptList {
 	s.Status = &v
 	return s
 }
 
-func (s *QueryEndPointListResponseBodyEndPointList) SetEndPointID(v string) *QueryEndPointListResponseBodyEndPointList {
-	s.EndPointID = &v
+func (s *ListSparkJobAttemptResponseBodyDataResultJobAttemptList) SetTerminatedTime(v string) *ListSparkJobAttemptResponseBodyDataResultJobAttemptList {
+	s.TerminatedTime = &v
 	return s
 }
 
-func (s *QueryEndPointListResponseBodyEndPointList) SetNetworkType(v string) *QueryEndPointListResponseBodyEndPointList {
-	s.NetworkType = &v
+func (s *ListSparkJobAttemptResponseBodyDataResultJobAttemptList) SetTerminatedTimeValue(v string) *ListSparkJobAttemptResponseBodyDataResultJobAttemptList {
+	s.TerminatedTimeValue = &v
 	return s
 }
 
-func (s *QueryEndPointListResponseBodyEndPointList) SetPort(v string) *QueryEndPointListResponseBodyEndPointList {
-	s.Port = &v
+func (s *ListSparkJobAttemptResponseBodyDataResultJobAttemptList) SetVcName(v string) *ListSparkJobAttemptResponseBodyDataResultJobAttemptList {
+	s.VcName = &v
 	return s
 }
 
-type QueryEndPointListResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryEndPointListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type ListSparkJobAttemptResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSparkJobAttemptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s QueryEndPointListResponse) String() string {
+func (s ListSparkJobAttemptResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s QueryEndPointListResponse) GoString() string {
+func (s ListSparkJobAttemptResponse) GoString() string {
 	return s.String()
 }
 
-func (s *QueryEndPointListResponse) SetHeaders(v map[string]*string) *QueryEndPointListResponse {
+func (s *ListSparkJobAttemptResponse) SetHeaders(v map[string]*string) *ListSparkJobAttemptResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *QueryEndPointListResponse) SetBody(v *QueryEndPointListResponseBody) *QueryEndPointListResponse {
+func (s *ListSparkJobAttemptResponse) SetStatusCode(v int32) *ListSparkJobAttemptResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSparkJobAttemptResponse) SetBody(v *ListSparkJobAttemptResponseBody) *ListSparkJobAttemptResponse {
+	s.Body = v
+	return s
+}
+
+type ListSparkStatementsRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s ListSparkStatementsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSparkStatementsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSparkStatementsRequest) SetJobId(v string) *ListSparkStatementsRequest {
+	s.JobId = &v
+	return s
+}
+
+type ListSparkStatementsResponseBody struct {
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Statements []*ListSparkStatementsResponseBodyStatements `json:"Statements,omitempty" xml:"Statements,omitempty" type:"Repeated"`
+}
+
+func (s ListSparkStatementsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSparkStatementsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSparkStatementsResponseBody) SetRequestId(v string) *ListSparkStatementsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSparkStatementsResponseBody) SetStatements(v []*ListSparkStatementsResponseBodyStatements) *ListSparkStatementsResponseBody {
+	s.Statements = v
+	return s
+}
+
+type ListSparkStatementsResponseBodyStatements struct {
+	Code          *string  `json:"Code,omitempty" xml:"Code,omitempty"`
+	CompletedTime *int64   `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
+	Id            *int32   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Output        *string  `json:"Output,omitempty" xml:"Output,omitempty"`
+	Progress      *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	StartedTime   *int64   `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	State         *string  `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListSparkStatementsResponseBodyStatements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSparkStatementsResponseBodyStatements) GoString() string {
+	return s.String()
+}
+
+func (s *ListSparkStatementsResponseBodyStatements) SetCode(v string) *ListSparkStatementsResponseBodyStatements {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSparkStatementsResponseBodyStatements) SetCompletedTime(v int64) *ListSparkStatementsResponseBodyStatements {
+	s.CompletedTime = &v
+	return s
+}
+
+func (s *ListSparkStatementsResponseBodyStatements) SetId(v int32) *ListSparkStatementsResponseBodyStatements {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSparkStatementsResponseBodyStatements) SetOutput(v string) *ListSparkStatementsResponseBodyStatements {
+	s.Output = &v
+	return s
+}
+
+func (s *ListSparkStatementsResponseBodyStatements) SetProgress(v float32) *ListSparkStatementsResponseBodyStatements {
+	s.Progress = &v
+	return s
+}
+
+func (s *ListSparkStatementsResponseBodyStatements) SetStartedTime(v int64) *ListSparkStatementsResponseBodyStatements {
+	s.StartedTime = &v
+	return s
+}
+
+func (s *ListSparkStatementsResponseBodyStatements) SetState(v string) *ListSparkStatementsResponseBodyStatements {
+	s.State = &v
+	return s
+}
+
+type ListSparkStatementsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSparkStatementsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSparkStatementsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSparkStatementsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSparkStatementsResponse) SetHeaders(v map[string]*string) *ListSparkStatementsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSparkStatementsResponse) SetStatusCode(v int32) *ListSparkStatementsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSparkStatementsResponse) SetBody(v *ListSparkStatementsResponseBody) *ListSparkStatementsResponse {
 	s.Body = v
 	return s
 }
 
 type ReleaseInstanceRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ReleaseInstanceRequest) String() string {
@@ -1779,22 +1609,22 @@ func (s ReleaseInstanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ReleaseInstanceRequest) SetRegionId(v string) *ReleaseInstanceRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *ReleaseInstanceRequest) SetInstanceId(v string) *ReleaseInstanceRequest {
 	s.InstanceId = &v
 	return s
 }
 
+func (s *ReleaseInstanceRequest) SetRegionId(v string) *ReleaseInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
 type ReleaseInstanceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ReleaseInstanceResponseBody) String() string {
@@ -1805,8 +1635,8 @@ func (s ReleaseInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ReleaseInstanceResponseBody) SetRequestId(v string) *ReleaseInstanceResponseBody {
-	s.RequestId = &v
+func (s *ReleaseInstanceResponseBody) SetErrorCode(v string) *ReleaseInstanceResponseBody {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -1815,13 +1645,8 @@ func (s *ReleaseInstanceResponseBody) SetErrorInfo(v string) *ReleaseInstanceRes
 	return s
 }
 
-func (s *ReleaseInstanceResponseBody) SetErrorCode(v string) *ReleaseInstanceResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ReleaseInstanceResponseBody) SetSuccess(v bool) *ReleaseInstanceResponseBody {
-	s.Success = &v
+func (s *ReleaseInstanceResponseBody) SetRequestId(v string) *ReleaseInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1830,9 +1655,15 @@ func (s *ReleaseInstanceResponseBody) SetResult(v string) *ReleaseInstanceRespon
 	return s
 }
 
+func (s *ReleaseInstanceResponseBody) SetSuccess(v bool) *ReleaseInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
 type ReleaseInstanceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReleaseInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReleaseInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReleaseInstanceResponse) String() string {
@@ -1848,298 +1679,19 @@ func (s *ReleaseInstanceResponse) SetHeaders(v map[string]*string) *ReleaseInsta
 	return s
 }
 
+func (s *ReleaseInstanceResponse) SetStatusCode(v int32) *ReleaseInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ReleaseInstanceResponse) SetBody(v *ReleaseInstanceResponseBody) *ReleaseInstanceResponse {
 	s.Body = v
 	return s
 }
 
-type RemoveEndPointRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	EndPointID *string `json:"EndPointID,omitempty" xml:"EndPointID,omitempty"`
-}
-
-func (s RemoveEndPointRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveEndPointRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveEndPointRequest) SetRegionId(v string) *RemoveEndPointRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *RemoveEndPointRequest) SetEndPointID(v string) *RemoveEndPointRequest {
-	s.EndPointID = &v
-	return s
-}
-
-type RemoveEndPointResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s RemoveEndPointResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveEndPointResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveEndPointResponseBody) SetRequestId(v string) *RemoveEndPointResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RemoveEndPointResponseBody) SetRegionId(v string) *RemoveEndPointResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-type RemoveEndPointResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveEndPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RemoveEndPointResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveEndPointResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveEndPointResponse) SetHeaders(v map[string]*string) *RemoveEndPointResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RemoveEndPointResponse) SetBody(v *RemoveEndPointResponseBody) *RemoveEndPointResponse {
-	s.Body = v
-	return s
-}
-
-type ResetMainPasswordRequest struct {
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UseRandomPassword    *bool   `json:"UseRandomPassword,omitempty" xml:"UseRandomPassword,omitempty"`
-	InitPassword         *string `json:"InitPassword,omitempty" xml:"InitPassword,omitempty"`
-	EnableKMS            *bool   `json:"EnableKMS,omitempty" xml:"EnableKMS,omitempty"`
-	ExternalUid          *string `json:"ExternalUid,omitempty" xml:"ExternalUid,omitempty"`
-	ExternalAliyunUid    *string `json:"ExternalAliyunUid,omitempty" xml:"ExternalAliyunUid,omitempty"`
-	ExternalBizAliyunUid *string `json:"ExternalBizAliyunUid,omitempty" xml:"ExternalBizAliyunUid,omitempty"`
-}
-
-func (s ResetMainPasswordRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResetMainPasswordRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ResetMainPasswordRequest) SetRegionId(v string) *ResetMainPasswordRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ResetMainPasswordRequest) SetUseRandomPassword(v bool) *ResetMainPasswordRequest {
-	s.UseRandomPassword = &v
-	return s
-}
-
-func (s *ResetMainPasswordRequest) SetInitPassword(v string) *ResetMainPasswordRequest {
-	s.InitPassword = &v
-	return s
-}
-
-func (s *ResetMainPasswordRequest) SetEnableKMS(v bool) *ResetMainPasswordRequest {
-	s.EnableKMS = &v
-	return s
-}
-
-func (s *ResetMainPasswordRequest) SetExternalUid(v string) *ResetMainPasswordRequest {
-	s.ExternalUid = &v
-	return s
-}
-
-func (s *ResetMainPasswordRequest) SetExternalAliyunUid(v string) *ResetMainPasswordRequest {
-	s.ExternalAliyunUid = &v
-	return s
-}
-
-func (s *ResetMainPasswordRequest) SetExternalBizAliyunUid(v string) *ResetMainPasswordRequest {
-	s.ExternalBizAliyunUid = &v
-	return s
-}
-
-type ResetMainPasswordResponseBody struct {
-	Account   *ResetMainPasswordResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RegionId  *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s ResetMainPasswordResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResetMainPasswordResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ResetMainPasswordResponseBody) SetAccount(v *ResetMainPasswordResponseBodyAccount) *ResetMainPasswordResponseBody {
-	s.Account = v
-	return s
-}
-
-func (s *ResetMainPasswordResponseBody) SetRequestId(v string) *ResetMainPasswordResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ResetMainPasswordResponseBody) SetRegionId(v string) *ResetMainPasswordResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-type ResetMainPasswordResponseBodyAccount struct {
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-}
-
-func (s ResetMainPasswordResponseBodyAccount) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResetMainPasswordResponseBodyAccount) GoString() string {
-	return s.String()
-}
-
-func (s *ResetMainPasswordResponseBodyAccount) SetPassword(v string) *ResetMainPasswordResponseBodyAccount {
-	s.Password = &v
-	return s
-}
-
-func (s *ResetMainPasswordResponseBodyAccount) SetUserName(v string) *ResetMainPasswordResponseBodyAccount {
-	s.UserName = &v
-	return s
-}
-
-type ResetMainPasswordResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ResetMainPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ResetMainPasswordResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResetMainPasswordResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ResetMainPasswordResponse) SetHeaders(v map[string]*string) *ResetMainPasswordResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ResetMainPasswordResponse) SetBody(v *ResetMainPasswordResponseBody) *ResetMainPasswordResponse {
-	s.Body = v
-	return s
-}
-
-type SetAllowIPRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Product     *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	AllowIP     *string `json:"AllowIP,omitempty" xml:"AllowIP,omitempty"`
-	Append      *bool   `json:"Append,omitempty" xml:"Append,omitempty"`
-}
-
-func (s SetAllowIPRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetAllowIPRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetAllowIPRequest) SetRegionId(v string) *SetAllowIPRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *SetAllowIPRequest) SetNetworkType(v string) *SetAllowIPRequest {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *SetAllowIPRequest) SetProduct(v string) *SetAllowIPRequest {
-	s.Product = &v
-	return s
-}
-
-func (s *SetAllowIPRequest) SetAllowIP(v string) *SetAllowIPRequest {
-	s.AllowIP = &v
-	return s
-}
-
-func (s *SetAllowIPRequest) SetAppend(v bool) *SetAllowIPRequest {
-	s.Append = &v
-	return s
-}
-
-type SetAllowIPResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s SetAllowIPResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetAllowIPResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetAllowIPResponseBody) SetRequestId(v string) *SetAllowIPResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SetAllowIPResponseBody) SetRegionId(v string) *SetAllowIPResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-type SetAllowIPResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetAllowIPResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetAllowIPResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetAllowIPResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetAllowIPResponse) SetHeaders(v map[string]*string) *SetAllowIPResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetAllowIPResponse) SetBody(v *SetAllowIPResponseBody) *SetAllowIPResponse {
-	s.Body = v
-	return s
-}
-
 type SubmitSparkJobRequest struct {
-	VcName     *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 	ConfigJson *string `json:"ConfigJson,omitempty" xml:"ConfigJson,omitempty"`
+	VcName     *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
 func (s SubmitSparkJobRequest) String() string {
@@ -2150,19 +1702,19 @@ func (s SubmitSparkJobRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitSparkJobRequest) SetVcName(v string) *SubmitSparkJobRequest {
-	s.VcName = &v
-	return s
-}
-
 func (s *SubmitSparkJobRequest) SetConfigJson(v string) *SubmitSparkJobRequest {
 	s.ConfigJson = &v
 	return s
 }
 
+func (s *SubmitSparkJobRequest) SetVcName(v string) *SubmitSparkJobRequest {
+	s.VcName = &v
+	return s
+}
+
 type SubmitSparkJobResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SubmitSparkJobResponseBody) String() string {
@@ -2173,19 +1725,20 @@ func (s SubmitSparkJobResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitSparkJobResponseBody) SetRequestId(v string) *SubmitSparkJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *SubmitSparkJobResponseBody) SetJobId(v string) *SubmitSparkJobResponseBody {
 	s.JobId = &v
 	return s
 }
 
+func (s *SubmitSparkJobResponseBody) SetRequestId(v string) *SubmitSparkJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type SubmitSparkJobResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SubmitSparkJobResponse) String() string {
@@ -2201,297 +1754,87 @@ func (s *SubmitSparkJobResponse) SetHeaders(v map[string]*string) *SubmitSparkJo
 	return s
 }
 
+func (s *SubmitSparkJobResponse) SetStatusCode(v int32) *SubmitSparkJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SubmitSparkJobResponse) SetBody(v *SubmitSparkJobResponseBody) *SubmitSparkJobResponse {
 	s.Body = v
 	return s
 }
 
-type UnSubscribeRegionRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+type SubmitSparkSQLRequest struct {
+	Sql    *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	VcName *string `json:"VcName,omitempty" xml:"VcName,omitempty"`
 }
 
-func (s UnSubscribeRegionRequest) String() string {
+func (s SubmitSparkSQLRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UnSubscribeRegionRequest) GoString() string {
+func (s SubmitSparkSQLRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UnSubscribeRegionRequest) SetRegionId(v string) *UnSubscribeRegionRequest {
-	s.RegionId = &v
+func (s *SubmitSparkSQLRequest) SetSql(v string) *SubmitSparkSQLRequest {
+	s.Sql = &v
 	return s
 }
 
-type UnSubscribeRegionResponseBody struct {
+func (s *SubmitSparkSQLRequest) SetVcName(v string) *SubmitSparkSQLRequest {
+	s.VcName = &v
+	return s
+}
+
+type SubmitSparkSQLResponseBody struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
-func (s UnSubscribeRegionResponseBody) String() string {
+func (s SubmitSparkSQLResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UnSubscribeRegionResponseBody) GoString() string {
+func (s SubmitSparkSQLResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UnSubscribeRegionResponseBody) SetRequestId(v string) *UnSubscribeRegionResponseBody {
+func (s *SubmitSparkSQLResponseBody) SetJobId(v string) *SubmitSparkSQLResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitSparkSQLResponseBody) SetRequestId(v string) *SubmitSparkSQLResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *UnSubscribeRegionResponseBody) SetRegionId(v string) *UnSubscribeRegionResponseBody {
-	s.RegionId = &v
-	return s
+type SubmitSparkSQLResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitSparkSQLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-type UnSubscribeRegionResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UnSubscribeRegionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UnSubscribeRegionResponse) String() string {
+func (s SubmitSparkSQLResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UnSubscribeRegionResponse) GoString() string {
+func (s SubmitSparkSQLResponse) GoString() string {
 	return s.String()
 }
 
-func (s *UnSubscribeRegionResponse) SetHeaders(v map[string]*string) *UnSubscribeRegionResponse {
+func (s *SubmitSparkSQLResponse) SetHeaders(v map[string]*string) *SubmitSparkSQLResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *UnSubscribeRegionResponse) SetBody(v *UnSubscribeRegionResponseBody) *UnSubscribeRegionResponse {
-	s.Body = v
+func (s *SubmitSparkSQLResponse) SetStatusCode(v int32) *SubmitSparkSQLResponse {
+	s.StatusCode = &v
 	return s
 }
 
-type UpdateAccountPasswordRequest struct {
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	AccountName       *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	IsShort           *bool   `json:"IsShort,omitempty" xml:"IsShort,omitempty"`
-	Password          *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	EnableKMS         *bool   `json:"EnableKMS,omitempty" xml:"EnableKMS,omitempty"`
-	UseRandomPassword *bool   `json:"UseRandomPassword,omitempty" xml:"UseRandomPassword,omitempty"`
-}
-
-func (s UpdateAccountPasswordRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAccountPasswordRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAccountPasswordRequest) SetRegionId(v string) *UpdateAccountPasswordRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UpdateAccountPasswordRequest) SetAccountName(v string) *UpdateAccountPasswordRequest {
-	s.AccountName = &v
-	return s
-}
-
-func (s *UpdateAccountPasswordRequest) SetIsShort(v bool) *UpdateAccountPasswordRequest {
-	s.IsShort = &v
-	return s
-}
-
-func (s *UpdateAccountPasswordRequest) SetPassword(v string) *UpdateAccountPasswordRequest {
-	s.Password = &v
-	return s
-}
-
-func (s *UpdateAccountPasswordRequest) SetEnableKMS(v bool) *UpdateAccountPasswordRequest {
-	s.EnableKMS = &v
-	return s
-}
-
-func (s *UpdateAccountPasswordRequest) SetUseRandomPassword(v bool) *UpdateAccountPasswordRequest {
-	s.UseRandomPassword = &v
-	return s
-}
-
-type UpdateAccountPasswordResponseBody struct {
-	Account   *UpdateAccountPasswordResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RegionId  *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s UpdateAccountPasswordResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAccountPasswordResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAccountPasswordResponseBody) SetAccount(v *UpdateAccountPasswordResponseBodyAccount) *UpdateAccountPasswordResponseBody {
-	s.Account = v
-	return s
-}
-
-func (s *UpdateAccountPasswordResponseBody) SetRequestId(v string) *UpdateAccountPasswordResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateAccountPasswordResponseBody) SetRegionId(v string) *UpdateAccountPasswordResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-type UpdateAccountPasswordResponseBodyAccount struct {
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-}
-
-func (s UpdateAccountPasswordResponseBodyAccount) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAccountPasswordResponseBodyAccount) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAccountPasswordResponseBodyAccount) SetPassword(v string) *UpdateAccountPasswordResponseBodyAccount {
-	s.Password = &v
-	return s
-}
-
-func (s *UpdateAccountPasswordResponseBodyAccount) SetUserName(v string) *UpdateAccountPasswordResponseBodyAccount {
-	s.UserName = &v
-	return s
-}
-
-type UpdateAccountPasswordResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateAccountPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateAccountPasswordResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateAccountPasswordResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateAccountPasswordResponse) SetHeaders(v map[string]*string) *UpdateAccountPasswordResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateAccountPasswordResponse) SetBody(v *UpdateAccountPasswordResponseBody) *UpdateAccountPasswordResponse {
-	s.Body = v
-	return s
-}
-
-type UpgradeInstanceRequest struct {
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ChargeType   *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Component    *string `json:"Component,omitempty" xml:"Component,omitempty"`
-}
-
-func (s UpgradeInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpgradeInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpgradeInstanceRequest) SetRegionId(v string) *UpgradeInstanceRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UpgradeInstanceRequest) SetInstanceId(v string) *UpgradeInstanceRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *UpgradeInstanceRequest) SetChargeType(v string) *UpgradeInstanceRequest {
-	s.ChargeType = &v
-	return s
-}
-
-func (s *UpgradeInstanceRequest) SetInstanceType(v string) *UpgradeInstanceRequest {
-	s.InstanceType = &v
-	return s
-}
-
-func (s *UpgradeInstanceRequest) SetComponent(v string) *UpgradeInstanceRequest {
-	s.Component = &v
-	return s
-}
-
-type UpgradeInstanceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-}
-
-func (s UpgradeInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpgradeInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpgradeInstanceResponseBody) SetRequestId(v string) *UpgradeInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpgradeInstanceResponseBody) SetErrorInfo(v string) *UpgradeInstanceResponseBody {
-	s.ErrorInfo = &v
-	return s
-}
-
-func (s *UpgradeInstanceResponseBody) SetErrorCode(v string) *UpgradeInstanceResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UpgradeInstanceResponseBody) SetSuccess(v bool) *UpgradeInstanceResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *UpgradeInstanceResponseBody) SetResult(v string) *UpgradeInstanceResponseBody {
-	s.Result = &v
-	return s
-}
-
-type UpgradeInstanceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpgradeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpgradeInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpgradeInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpgradeInstanceResponse) SetHeaders(v map[string]*string) *UpgradeInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpgradeInstanceResponse) SetBody(v *UpgradeInstanceResponseBody) *UpgradeInstanceResponse {
+func (s *SubmitSparkSQLResponse) SetBody(v *SubmitSparkSQLResponseBody) *SubmitSparkSQLResponse {
 	s.Body = v
 	return s
 }
@@ -2514,8 +1857,8 @@ func (s *ValidateVirtualClusterNameRequest) SetVcName(v string) *ValidateVirtual
 }
 
 type ValidateVirtualClusterNameResponseBody struct {
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ValidateVirtualClusterNameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ValidateVirtualClusterNameResponseBody) String() string {
@@ -2526,19 +1869,19 @@ func (s ValidateVirtualClusterNameResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ValidateVirtualClusterNameResponseBody) SetRequestId(v string) *ValidateVirtualClusterNameResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *ValidateVirtualClusterNameResponseBody) SetData(v *ValidateVirtualClusterNameResponseBodyData) *ValidateVirtualClusterNameResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *ValidateVirtualClusterNameResponseBody) SetRequestId(v string) *ValidateVirtualClusterNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ValidateVirtualClusterNameResponseBodyData struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Legal   *string `json:"Legal,omitempty" xml:"Legal,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s ValidateVirtualClusterNameResponseBodyData) String() string {
@@ -2549,19 +1892,20 @@ func (s ValidateVirtualClusterNameResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *ValidateVirtualClusterNameResponseBodyData) SetMessage(v string) *ValidateVirtualClusterNameResponseBodyData {
-	s.Message = &v
-	return s
-}
-
 func (s *ValidateVirtualClusterNameResponseBodyData) SetLegal(v string) *ValidateVirtualClusterNameResponseBodyData {
 	s.Legal = &v
 	return s
 }
 
+func (s *ValidateVirtualClusterNameResponseBodyData) SetMessage(v string) *ValidateVirtualClusterNameResponseBodyData {
+	s.Message = &v
+	return s
+}
+
 type ValidateVirtualClusterNameResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ValidateVirtualClusterNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ValidateVirtualClusterNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ValidateVirtualClusterNameResponse) String() string {
@@ -2574,6 +1918,11 @@ func (s ValidateVirtualClusterNameResponse) GoString() string {
 
 func (s *ValidateVirtualClusterNameResponse) SetHeaders(v map[string]*string) *ValidateVirtualClusterNameResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ValidateVirtualClusterNameResponse) SetStatusCode(v int32) *ValidateVirtualClusterNameResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2685,16 +2034,36 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AddAccountWithOptions(request *AddAccountRequest, runtime *util.RuntimeOptions) (_result *AddAccountResponse, _err error) {
+func (client *Client) CancelSparkStatementWithOptions(request *CancelSparkStatementRequest, runtime *util.RuntimeOptions) (_result *CancelSparkStatementResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
 	}
-	_result = &AddAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddAccount"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+
+	if !tea.BoolValue(util.IsUnset(request.StatementId)) {
+		body["StatementId"] = request.StatementId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelSparkStatement"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelSparkStatementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2702,38 +2071,10 @@ func (client *Client) AddAccountWithOptions(request *AddAccountRequest, runtime 
 	return _result, _err
 }
 
-func (client *Client) AddAccount(request *AddAccountRequest) (_result *AddAccountResponse, _err error) {
+func (client *Client) CancelSparkStatement(request *CancelSparkStatementRequest) (_result *CancelSparkStatementResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &AddAccountResponse{}
-	_body, _err := client.AddAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AddEndPointWithOptions(request *AddEndPointRequest, runtime *util.RuntimeOptions) (_result *AddEndPointResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &AddEndPointResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddEndPoint"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddEndPoint(request *AddEndPointRequest) (_result *AddEndPointResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddEndPointResponse{}
-	_body, _err := client.AddEndPointWithOptions(request, runtime)
+	_result = &CancelSparkStatementResponse{}
+	_body, _err := client.CancelSparkStatementWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2746,11 +2087,39 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		body["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Component)) {
+		body["Component"] = request.Component
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstance"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateInstance"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2769,16 +2138,40 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
-func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
+func (client *Client) ExecuteSparkStatementWithOptions(request *ExecuteSparkStatementRequest, runtime *util.RuntimeOptions) (_result *ExecuteSparkStatementResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["Code"] = request.Code
 	}
-	_result = &DeleteAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAccount"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Kind)) {
+		body["Kind"] = request.Kind
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteSparkStatement"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteSparkStatementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2786,10 +2179,10 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 	return _result, _err
 }
 
-func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *DeleteAccountResponse, _err error) {
+func (client *Client) ExecuteSparkStatement(request *ExecuteSparkStatementRequest) (_result *ExecuteSparkStatementResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DeleteAccountResponse{}
-	_body, _err := client.DeleteAccountWithOptions(request, runtime)
+	_result = &ExecuteSparkStatementResponse{}
+	_body, _err := client.ExecuteSparkStatementWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2797,16 +2190,40 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 	return _result, _err
 }
 
-func (client *Client) GetAllowIPWithOptions(request *GetAllowIPRequest, runtime *util.RuntimeOptions) (_result *GetAllowIPResponse, _err error) {
+func (client *Client) GetJobAttemptLogWithOptions(request *GetJobAttemptLogRequest, runtime *util.RuntimeOptions) (_result *GetJobAttemptLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobAttemptId)) {
+		body["JobAttemptId"] = request.JobAttemptId
 	}
-	_result = &GetAllowIPResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAllowIP"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VcName)) {
+		body["VcName"] = request.VcName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobAttemptLog"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetJobAttemptLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2814,66 +2231,10 @@ func (client *Client) GetAllowIPWithOptions(request *GetAllowIPRequest, runtime 
 	return _result, _err
 }
 
-func (client *Client) GetAllowIP(request *GetAllowIPRequest) (_result *GetAllowIPResponse, _err error) {
+func (client *Client) GetJobAttemptLog(request *GetJobAttemptLogRequest) (_result *GetJobAttemptLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &GetAllowIPResponse{}
-	_body, _err := client.GetAllowIPWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetEndPointWithOptions(request *GetEndPointRequest, runtime *util.RuntimeOptions) (_result *GetEndPointResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetEndPointResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetEndPoint"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetEndPoint(request *GetEndPointRequest) (_result *GetEndPointResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetEndPointResponse{}
-	_body, _err := client.GetEndPointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetEndPointByDomainWithOptions(request *GetEndPointByDomainRequest, runtime *util.RuntimeOptions) (_result *GetEndPointByDomainResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &GetEndPointByDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetEndPointByDomain"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetEndPointByDomain(request *GetEndPointByDomainRequest) (_result *GetEndPointByDomainResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetEndPointByDomainResponse{}
-	_body, _err := client.GetEndPointByDomainWithOptions(request, runtime)
+	_result = &GetJobAttemptLogResponse{}
+	_body, _err := client.GetJobAttemptLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2886,11 +2247,31 @@ func (client *Client) GetJobDetailWithOptions(request *GetJobDetailRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VcName)) {
+		body["VcName"] = request.VcName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobDetail"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetJobDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetJobDetail"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2914,11 +2295,31 @@ func (client *Client) GetJobLogWithOptions(request *GetJobLogRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VcName)) {
+		body["VcName"] = request.VcName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobLog"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetJobLogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetJobLog"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2942,11 +2343,31 @@ func (client *Client) GetJobStatusWithOptions(request *GetJobStatusRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VcName)) {
+		body["VcName"] = request.VcName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobStatus"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetJobStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetJobStatus"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2965,16 +2386,128 @@ func (client *Client) GetJobStatus(request *GetJobStatusRequest) (_result *GetJo
 	return _result, _err
 }
 
+func (client *Client) GetSparkSessionStateWithOptions(request *GetSparkSessionStateRequest, runtime *util.RuntimeOptions) (_result *GetSparkSessionStateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSparkSessionState"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSparkSessionStateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSparkSessionState(request *GetSparkSessionStateRequest) (_result *GetSparkSessionStateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSparkSessionStateResponse{}
+	_body, _err := client.GetSparkSessionStateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSparkStatementWithOptions(request *GetSparkStatementRequest, runtime *util.RuntimeOptions) (_result *GetSparkStatementResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatementId)) {
+		body["StatementId"] = request.StatementId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSparkStatement"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSparkStatementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSparkStatement(request *GetSparkStatementRequest) (_result *GetSparkStatementResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSparkStatementResponse{}
+	_body, _err := client.GetSparkStatementWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) KillSparkJobWithOptions(request *KillSparkJobRequest, runtime *util.RuntimeOptions) (_result *KillSparkJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VcName)) {
+		body["VcName"] = request.VcName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("KillSparkJob"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &KillSparkJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("KillSparkJob"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2993,16 +2526,50 @@ func (client *Client) KillSparkJob(request *KillSparkJobRequest) (_result *KillS
 	return _result, _err
 }
 
-func (client *Client) ListSparkJobWithOptions(request *ListSparkJobRequest, runtime *util.RuntimeOptions) (_result *ListSparkJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListSparkJobWithOptions(tmpReq *ListSparkJobRequest, runtime *util.RuntimeOptions) (_result *ListSparkJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListSparkJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Condition)) {
+		request.ConditionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Condition, tea.String("Condition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConditionShrink)) {
+		query["Condition"] = request.ConditionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VcName)) {
+		query["VcName"] = request.VcName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSparkJob"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSparkJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSparkJob"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3021,16 +2588,54 @@ func (client *Client) ListSparkJob(request *ListSparkJobRequest) (_result *ListS
 	return _result, _err
 }
 
-func (client *Client) QueryAccountListWithOptions(request *QueryAccountListRequest, runtime *util.RuntimeOptions) (_result *QueryAccountListResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListSparkJobAttemptWithOptions(tmpReq *ListSparkJobAttemptRequest, runtime *util.RuntimeOptions) (_result *ListSparkJobAttemptResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+	request := &ListSparkJobAttemptShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Condition)) {
+		request.ConditionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Condition, tea.String("Condition"), tea.String("json"))
 	}
-	_result = &QueryAccountListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryAccountList"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConditionShrink)) {
+		query["Condition"] = request.ConditionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VcName)) {
+		query["VcName"] = request.VcName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSparkJobAttempt"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSparkJobAttemptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3038,10 +2643,10 @@ func (client *Client) QueryAccountListWithOptions(request *QueryAccountListReque
 	return _result, _err
 }
 
-func (client *Client) QueryAccountList(request *QueryAccountListRequest) (_result *QueryAccountListResponse, _err error) {
+func (client *Client) ListSparkJobAttempt(request *ListSparkJobAttemptRequest) (_result *ListSparkJobAttemptResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &QueryAccountListResponse{}
-	_body, _err := client.QueryAccountListWithOptions(request, runtime)
+	_result = &ListSparkJobAttemptResponse{}
+	_body, _err := client.ListSparkJobAttemptWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3049,16 +2654,32 @@ func (client *Client) QueryAccountList(request *QueryAccountListRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) QueryEndPointListWithOptions(request *QueryEndPointListRequest, runtime *util.RuntimeOptions) (_result *QueryEndPointListResponse, _err error) {
+func (client *Client) ListSparkStatementsWithOptions(request *ListSparkStatementsRequest, runtime *util.RuntimeOptions) (_result *ListSparkStatementsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
 	}
-	_result = &QueryEndPointListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryEndPointList"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSparkStatements"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSparkStatementsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3066,10 +2687,10 @@ func (client *Client) QueryEndPointListWithOptions(request *QueryEndPointListReq
 	return _result, _err
 }
 
-func (client *Client) QueryEndPointList(request *QueryEndPointListRequest) (_result *QueryEndPointListResponse, _err error) {
+func (client *Client) ListSparkStatements(request *ListSparkStatementsRequest) (_result *ListSparkStatementsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &QueryEndPointListResponse{}
-	_body, _err := client.QueryEndPointListWithOptions(request, runtime)
+	_result = &ListSparkStatementsResponse{}
+	_body, _err := client.ListSparkStatementsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3082,11 +2703,31 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseInstance"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ReleaseInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ReleaseInstance"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3105,100 +2746,36 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) RemoveEndPointWithOptions(request *RemoveEndPointRequest, runtime *util.RuntimeOptions) (_result *RemoveEndPointResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &RemoveEndPointResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveEndPoint"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RemoveEndPoint(request *RemoveEndPointRequest) (_result *RemoveEndPointResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RemoveEndPointResponse{}
-	_body, _err := client.RemoveEndPointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ResetMainPasswordWithOptions(request *ResetMainPasswordRequest, runtime *util.RuntimeOptions) (_result *ResetMainPasswordResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ResetMainPasswordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ResetMainPassword"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ResetMainPassword(request *ResetMainPasswordRequest) (_result *ResetMainPasswordResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ResetMainPasswordResponse{}
-	_body, _err := client.ResetMainPasswordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SetAllowIPWithOptions(request *SetAllowIPRequest, runtime *util.RuntimeOptions) (_result *SetAllowIPResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SetAllowIPResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetAllowIP"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetAllowIP(request *SetAllowIPRequest) (_result *SetAllowIPResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetAllowIPResponse{}
-	_body, _err := client.SetAllowIPWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SubmitSparkJobWithOptions(request *SubmitSparkJobRequest, runtime *util.RuntimeOptions) (_result *SubmitSparkJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigJson)) {
+		body["ConfigJson"] = request.ConfigJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VcName)) {
+		body["VcName"] = request.VcName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSparkJob"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitSparkJobResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitSparkJob"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3217,16 +2794,36 @@ func (client *Client) SubmitSparkJob(request *SubmitSparkJobRequest) (_result *S
 	return _result, _err
 }
 
-func (client *Client) UnSubscribeRegionWithOptions(request *UnSubscribeRegionRequest, runtime *util.RuntimeOptions) (_result *UnSubscribeRegionResponse, _err error) {
+func (client *Client) SubmitSparkSQLWithOptions(request *SubmitSparkSQLRequest, runtime *util.RuntimeOptions) (_result *SubmitSparkSQLResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Sql)) {
+		body["Sql"] = request.Sql
 	}
-	_result = &UnSubscribeRegionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UnSubscribeRegion"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+
+	if !tea.BoolValue(util.IsUnset(request.VcName)) {
+		body["VcName"] = request.VcName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSparkSQL"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitSparkSQLResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3234,66 +2831,10 @@ func (client *Client) UnSubscribeRegionWithOptions(request *UnSubscribeRegionReq
 	return _result, _err
 }
 
-func (client *Client) UnSubscribeRegion(request *UnSubscribeRegionRequest) (_result *UnSubscribeRegionResponse, _err error) {
+func (client *Client) SubmitSparkSQL(request *SubmitSparkSQLRequest) (_result *SubmitSparkSQLResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &UnSubscribeRegionResponse{}
-	_body, _err := client.UnSubscribeRegionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateAccountPasswordWithOptions(request *UpdateAccountPasswordRequest, runtime *util.RuntimeOptions) (_result *UpdateAccountPasswordResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpdateAccountPasswordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAccountPassword"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateAccountPassword(request *UpdateAccountPasswordRequest) (_result *UpdateAccountPasswordResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateAccountPasswordResponse{}
-	_body, _err := client.UpdateAccountPasswordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpgradeInstanceWithOptions(request *UpgradeInstanceRequest, runtime *util.RuntimeOptions) (_result *UpgradeInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &UpgradeInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpgradeInstance"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpgradeInstance(request *UpgradeInstanceRequest) (_result *UpgradeInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpgradeInstanceResponse{}
-	_body, _err := client.UpgradeInstanceWithOptions(request, runtime)
+	_result = &SubmitSparkSQLResponse{}
+	_body, _err := client.SubmitSparkSQLWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3306,11 +2847,27 @@ func (client *Client) ValidateVirtualClusterNameWithOptions(request *ValidateVir
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VcName)) {
+		body["VcName"] = request.VcName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidateVirtualClusterName"),
+		Version:     tea.String("2018-06-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ValidateVirtualClusterNameResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ValidateVirtualClusterName"), tea.String("2018-06-19"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
