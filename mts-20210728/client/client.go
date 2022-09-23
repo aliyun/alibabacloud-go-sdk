@@ -5,26 +5,20 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type QueryCopyrightRequest struct {
-	// 创建时间截止
-	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// 创建时间起始
-	CreateTimeStart *int64 `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	// 任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 水印强度
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 翻页下标
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页数量
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CreateTimeEnd   *int64  `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	CreateTimeStart *int64  `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	JobId           *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Level           *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
+	PageNumber      *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryCopyrightRequest) String() string {
@@ -66,10 +60,9 @@ func (s *QueryCopyrightRequest) SetPageSize(v int64) *QueryCopyrightRequest {
 }
 
 type QueryCopyrightResponseBody struct {
-	Data      []*QueryCopyrightResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestID *string                           `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Data       []*QueryCopyrightResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestID  *string                           `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	StatusCode *int64                            `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s QueryCopyrightResponseBody) String() string {
@@ -96,32 +89,19 @@ func (s *QueryCopyrightResponseBody) SetStatusCode(v int64) *QueryCopyrightRespo
 }
 
 type QueryCopyrightResponseBodyData struct {
-	// 回调url
-	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 修改时间
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 水印视频输入
-	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// 任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 水印强度
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 水印信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 水印信息id
-	MessageId *int64 `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// 水印视频输出
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// 任务结果
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// 用户ID
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Callback    *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Input       *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Level       *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageId   *int64  `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	Output      *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Result      *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserId      *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryCopyrightResponseBodyData) String() string {
@@ -227,7 +207,6 @@ func (s *QueryCopyrightResponse) SetBody(v *QueryCopyrightResponseBody) *QueryCo
 }
 
 type QueryCopyrightExtractRequest struct {
-	// 任务id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -245,12 +224,10 @@ func (s *QueryCopyrightExtractRequest) SetJobId(v string) *QueryCopyrightExtract
 }
 
 type QueryCopyrightExtractResponseBody struct {
-	Data *QueryCopyrightExtractResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Data       *QueryCopyrightExtractResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message    *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestID  *string                                `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	StatusCode *int64                                 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s QueryCopyrightExtractResponseBody) String() string {
@@ -282,7 +259,6 @@ func (s *QueryCopyrightExtractResponseBody) SetStatusCode(v int64) *QueryCopyrig
 }
 
 type QueryCopyrightExtractResponseBodyData struct {
-	// 版权水印信息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -329,9 +305,7 @@ func (s *QueryCopyrightExtractResponse) SetBody(v *QueryCopyrightExtractResponse
 }
 
 type QueryTraceAbRequest struct {
-	// 任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 媒体id
+	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
@@ -354,14 +328,10 @@ func (s *QueryTraceAbRequest) SetMediaId(v string) *QueryTraceAbRequest {
 }
 
 type QueryTraceAbResponseBody struct {
-	// 返回结构
-	Data []*QueryTraceAbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 返回信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求id
-	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Data       []*QueryTraceAbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message    *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestID  *string                         `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	StatusCode *int64                          `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s QueryTraceAbResponseBody) String() string {
@@ -393,30 +363,18 @@ func (s *QueryTraceAbResponseBody) SetStatusCode(v int64) *QueryTraceAbResponseB
 }
 
 type QueryTraceAbResponseBodyData struct {
-	// 任务结果回调
-	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 最后修改时间
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 输入oss地址
-	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// 任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 水印强度
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 媒体id
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 输出地址
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// 任务结果
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 用户数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// uid
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Callback    *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Input       *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Level       *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
+	MediaId     *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	Output      *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Result      *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserId      *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryTraceAbResponseBodyData) String() string {
@@ -517,7 +475,6 @@ func (s *QueryTraceAbResponse) SetBody(v *QueryTraceAbResponseBody) *QueryTraceA
 }
 
 type QueryTraceExtractRequest struct {
-	// 任务id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -535,12 +492,10 @@ func (s *QueryTraceExtractRequest) SetJobId(v string) *QueryTraceExtractRequest 
 }
 
 type QueryTraceExtractResponseBody struct {
-	Data *QueryTraceExtractResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Data       *QueryTraceExtractResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message    *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestID  *string                            `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	StatusCode *int64                             `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s QueryTraceExtractResponseBody) String() string {
@@ -572,7 +527,6 @@ func (s *QueryTraceExtractResponseBody) SetStatusCode(v int64) *QueryTraceExtrac
 }
 
 type QueryTraceExtractResponseBodyData struct {
-	// 溯源水印信息
 	Trace *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
 }
 
@@ -619,20 +573,13 @@ func (s *QueryTraceExtractResponse) SetBody(v *QueryTraceExtractResponseBody) *Q
 }
 
 type QueryTraceMuRequest struct {
-	// 创建时间起始
-	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// 创建时间截止
-	CreateTimeStart *int64 `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	// 任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 水印强度
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 水印信息id
-	MessageId *int64 `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// 页偏移
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页数量
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CreateTimeEnd   *int64  `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	CreateTimeStart *int64  `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	JobId           *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Level           *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
+	MessageId       *int64  `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	PageNumber      *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryTraceMuRequest) String() string {
@@ -679,14 +626,10 @@ func (s *QueryTraceMuRequest) SetPageSize(v int64) *QueryTraceMuRequest {
 }
 
 type QueryTraceMuResponseBody struct {
-	// 返回数据结构
-	Data []*QueryTraceMuResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 返回信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求id
-	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Data       []*QueryTraceMuResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message    *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestID  *string                         `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	StatusCode *int64                          `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s QueryTraceMuResponseBody) String() string {
@@ -718,26 +661,16 @@ func (s *QueryTraceMuResponseBody) SetStatusCode(v int64) *QueryTraceMuResponseB
 }
 
 type QueryTraceMuResponseBodyData struct {
-	// 创建时间
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 最后修改时间
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 媒体id
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 输出oss地址
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 溯源水印信息
-	Trace *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
-	// 溯源水印信息id
-	TraceId *int64 `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	// 用户自定义数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// uid
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MediaId     *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	Output      *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Trace       *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
+	TraceId     *int64  `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserId      *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryTraceMuResponseBodyData) String() string {
@@ -828,13 +761,9 @@ func (s *QueryTraceMuResponse) SetBody(v *QueryTraceMuResponseBody) *QueryTraceM
 }
 
 type SubmitCopyrightExtractRequest struct {
-	// 任务完成回调
 	CallBack *string `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
-	// 输入文件oss地址
-	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// url链接
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 用户数据
+	Input    *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -867,12 +796,10 @@ func (s *SubmitCopyrightExtractRequest) SetUserData(v string) *SubmitCopyrightEx
 }
 
 type SubmitCopyrightExtractResponseBody struct {
-	Data *SubmitCopyrightExtractResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回消息
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Data       *SubmitCopyrightExtractResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message    *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestID  *string                                 `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	StatusCode *int64                                  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s SubmitCopyrightExtractResponseBody) String() string {
@@ -904,7 +831,6 @@ func (s *SubmitCopyrightExtractResponseBody) SetStatusCode(v int64) *SubmitCopyr
 }
 
 type SubmitCopyrightExtractResponseBodyData struct {
-	// 任务id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -951,27 +877,16 @@ func (s *SubmitCopyrightExtractResponse) SetBody(v *SubmitCopyrightExtractRespon
 }
 
 type SubmitCopyrightJobRequest struct {
-	// 任务结果回调url
-	CallBack *string `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
-	// 水印信息描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 输入的视频，oss三元组
-	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// 水印强度，取值1，2，3
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 水印信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 输出的视频，oss三元组
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// 水印起始时间(单位是秒)，不填写默认为0
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 水印结束时间(单位是秒)，不填默认为60000
-	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
-	// 外部url链接(Input和url二选一)
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 用户自定义数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// 可见水印(必须是英文字符)
+	CallBack       *string `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Input          *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Level          *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Output         *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalTime      *int64  `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	UserData       *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	VisibleMessage *string `json:"VisibleMessage,omitempty" xml:"VisibleMessage,omitempty"`
 }
 
@@ -1039,14 +954,10 @@ func (s *SubmitCopyrightJobRequest) SetVisibleMessage(v string) *SubmitCopyright
 }
 
 type SubmitCopyrightJobResponseBody struct {
-	// 返回数据
-	Data *SubmitCopyrightJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求Id
-	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Data       *SubmitCopyrightJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message    *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestID  *string                             `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	StatusCode *int64                              `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s SubmitCopyrightJobResponseBody) String() string {
@@ -1078,7 +989,6 @@ func (s *SubmitCopyrightJobResponseBody) SetStatusCode(v int64) *SubmitCopyright
 }
 
 type SubmitCopyrightJobResponseBodyData struct {
-	// 任务id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -1125,16 +1035,11 @@ func (s *SubmitCopyrightJobResponse) SetBody(v *SubmitCopyrightJobResponseBody) 
 }
 
 type SubmitImageCopyrightRequest struct {
-	// 需要加水印的图片oss地址(Input和url二选一)
-	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// 水印强度
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 水印信息
+	Input   *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Level   *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 水印图片输出oss地址
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// 外部url链接(Input和url二选一)
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Output  *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Url     *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s SubmitImageCopyrightRequest) String() string {
@@ -1171,14 +1076,10 @@ func (s *SubmitImageCopyrightRequest) SetUrl(v string) *SubmitImageCopyrightRequ
 }
 
 type SubmitImageCopyrightResponseBody struct {
-	// 返回数据
-	Data *SubmitImageCopyrightResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求id
-	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Data       *SubmitImageCopyrightResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestID  *string                               `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	StatusCode *int64                                `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s SubmitImageCopyrightResponseBody) String() string {
@@ -1210,7 +1111,6 @@ func (s *SubmitImageCopyrightResponseBody) SetStatusCode(v int64) *SubmitImageCo
 }
 
 type SubmitImageCopyrightResponseBodyData struct {
-	// 任务id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -1257,24 +1157,15 @@ func (s *SubmitImageCopyrightResponse) SetBody(v *SubmitImageCopyrightResponseBo
 }
 
 type SubmitTraceAbRequest struct {
-	// 任务结果回调
-	CallBack *string `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
-	// 密钥base64串
+	CallBack       *string `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
 	CipherBase64ed *string `json:"CipherBase64ed,omitempty" xml:"CipherBase64ed,omitempty"`
-	// 溯源水印ab流处理视频输入
-	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// 水印强度
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 溯源水印ab流处理输出
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// 嵌入水印开始时间
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 嵌入水印总时长
-	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
-	// 外部url链接(Input和url二选一)
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 用户自定义数据，最大长度1024个字节
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Input          *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Level          *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
+	Output         *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalTime      *int64  `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	UserData       *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitTraceAbRequest) String() string {
@@ -1331,14 +1222,10 @@ func (s *SubmitTraceAbRequest) SetUserData(v string) *SubmitTraceAbRequest {
 }
 
 type SubmitTraceAbResponseBody struct {
-	// 返回数据
-	Data *SubmitTraceAbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求Id
-	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Data       *SubmitTraceAbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message    *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestID  *string                        `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	StatusCode *int64                         `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s SubmitTraceAbResponseBody) String() string {
@@ -1370,9 +1257,7 @@ func (s *SubmitTraceAbResponseBody) SetStatusCode(v int64) *SubmitTraceAbRespons
 }
 
 type SubmitTraceAbResponseBodyData struct {
-	// 任务ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 媒体id
+	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
@@ -1424,13 +1309,9 @@ func (s *SubmitTraceAbResponse) SetBody(v *SubmitTraceAbResponseBody) *SubmitTra
 }
 
 type SubmitTraceExtractRequest struct {
-	// 任务完成回调
 	CallBack *string `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
-	// 输入文件oss地址
-	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// url链接
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// 用户数据
+	Input    *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -1463,12 +1344,10 @@ func (s *SubmitTraceExtractRequest) SetUserData(v string) *SubmitTraceExtractReq
 }
 
 type SubmitTraceExtractResponseBody struct {
-	Data *SubmitTraceExtractResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回消息
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Data       *SubmitTraceExtractResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message    *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestID  *string                             `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	StatusCode *int64                              `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s SubmitTraceExtractResponseBody) String() string {
@@ -1500,7 +1379,6 @@ func (s *SubmitTraceExtractResponseBody) SetStatusCode(v int64) *SubmitTraceExtr
 }
 
 type SubmitTraceExtractResponseBodyData struct {
-	// 任务id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -1547,14 +1425,10 @@ func (s *SubmitTraceExtractResponse) SetBody(v *SubmitTraceExtractResponseBody) 
 }
 
 type SubmitTracemuRequest struct {
-	// 密钥服务器uri
-	KeyUri *string `json:"KeyUri,omitempty" xml:"KeyUri,omitempty"`
-	// ab流处理后的媒体id
+	KeyUri  *string `json:"KeyUri,omitempty" xml:"KeyUri,omitempty"`
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// m3u8文件输出oss地址
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// 溯源水印信息
-	Trace *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
+	Output  *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Trace   *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
 }
 
 func (s SubmitTracemuRequest) String() string {
@@ -1586,14 +1460,10 @@ func (s *SubmitTracemuRequest) SetTrace(v string) *SubmitTracemuRequest {
 }
 
 type SubmitTracemuResponseBody struct {
-	// 返回数据
-	Data *SubmitTracemuResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求Id
-	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Data       *SubmitTracemuResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message    *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestID  *string                        `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	StatusCode *int64                         `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 }
 
 func (s SubmitTracemuResponseBody) String() string {
@@ -1625,9 +1495,7 @@ func (s *SubmitTracemuResponseBody) SetStatusCode(v int64) *SubmitTracemuRespons
 }
 
 type SubmitTracemuResponseBodyData struct {
-	// 生成m3u8文件的code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 任务id
+	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
