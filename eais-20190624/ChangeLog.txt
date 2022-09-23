@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2019-06-24 for eais.
+
 2021-07-28 Version: v1.0.2
 - DesccribeEais api adds PageNumber, PageSize parameters.
 - The api frequency of DescribeEais is set to 100.
