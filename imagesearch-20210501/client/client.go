@@ -5,15 +5,14 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
@@ -343,8 +342,9 @@ func (s *GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission) SetMaxC
 }
 
 type GetProductInfoByIdsResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetProductInfoByIdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetProductInfoByIdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetProductInfoByIdsResponse) String() string {
@@ -357,6 +357,11 @@ func (s GetProductInfoByIdsResponse) GoString() string {
 
 func (s *GetProductInfoByIdsResponse) SetHeaders(v map[string]*string) *GetProductInfoByIdsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponse) SetStatusCode(v int32) *GetProductInfoByIdsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -437,11 +442,11 @@ func (s *SearchByPicRequest) SetUserType(v int64) *SearchByPicRequest {
 }
 
 type SearchByPicAdvanceRequest struct {
-	PicContentObject io.Reader `json:"PicContentObject,omitempty" xml:"PicContentObject,omitempty" require:"true"`
 	CategoryId       *int32    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Crop             *bool     `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	Fields           *string   `json:"Fields,omitempty" xml:"Fields,omitempty"`
 	Num              *int32    `json:"Num,omitempty" xml:"Num,omitempty"`
+	PicContentObject io.Reader `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
 	Pid              *string   `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	Region           *string   `json:"Region,omitempty" xml:"Region,omitempty"`
 	RelationId       *int64    `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
@@ -455,11 +460,6 @@ func (s SearchByPicAdvanceRequest) String() string {
 
 func (s SearchByPicAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SearchByPicAdvanceRequest) SetPicContentObject(v io.Reader) *SearchByPicAdvanceRequest {
-	s.PicContentObject = v
-	return s
 }
 
 func (s *SearchByPicAdvanceRequest) SetCategoryId(v int32) *SearchByPicAdvanceRequest {
@@ -479,6 +479,11 @@ func (s *SearchByPicAdvanceRequest) SetFields(v string) *SearchByPicAdvanceReque
 
 func (s *SearchByPicAdvanceRequest) SetNum(v int32) *SearchByPicAdvanceRequest {
 	s.Num = &v
+	return s
+}
+
+func (s *SearchByPicAdvanceRequest) SetPicContentObject(v io.Reader) *SearchByPicAdvanceRequest {
+	s.PicContentObject = v
 	return s
 }
 
@@ -895,8 +900,9 @@ func (s *SearchByPicResponseBodyPicInfoMultiRegion) SetRegion(v string) *SearchB
 }
 
 type SearchByPicResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SearchByPicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchByPicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SearchByPicResponse) String() string {
@@ -909,6 +915,11 @@ func (s SearchByPicResponse) GoString() string {
 
 func (s *SearchByPicResponse) SetHeaders(v map[string]*string) *SearchByPicResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SearchByPicResponse) SetStatusCode(v int32) *SearchByPicResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1376,8 +1387,9 @@ func (s *SearchByUrlResponseBodyPicInfoMultiRegion) SetRegion(v string) *SearchB
 }
 
 type SearchByUrlResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SearchByUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchByUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SearchByUrlResponse) String() string {
@@ -1390,6 +1402,11 @@ func (s SearchByUrlResponse) GoString() string {
 
 func (s *SearchByUrlResponse) SetHeaders(v map[string]*string) *SearchByUrlResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SearchByUrlResponse) SetStatusCode(v int32) *SearchByUrlResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1450,8 +1467,21 @@ func (client *Client) GetProductInfoByIdsWithOptions(request *GetProductInfoById
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Fields)) {
+		body["Fields"] = request.Fields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemIds)) {
+		body["ItemIds"] = request.ItemIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pid)) {
+		body["Pid"] = request.Pid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetProductInfoByIds"),
@@ -1490,10 +1520,50 @@ func (client *Client) SearchByPicWithOptions(request *SearchByPicRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["UserType"] = request.UserType
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		query["UserType"] = request.UserType
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		body["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Crop)) {
+		body["Crop"] = request.Crop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fields)) {
+		body["Fields"] = request.Fields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Num)) {
+		body["Num"] = request.Num
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PicContent)) {
+		body["PicContent"] = request.PicContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pid)) {
+		body["Pid"] = request.Pid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		body["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationId)) {
+		body["RelationId"] = request.RelationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		body["Start"] = request.Start
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchByPic"),
@@ -1553,7 +1623,7 @@ func (client *Client) SearchByPicAdvance(request *SearchByPicAdvanceRequest, run
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -1592,35 +1662,35 @@ func (client *Client) SearchByPicAdvance(request *SearchByPicAdvanceRequest, run
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.PicContentObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		searchByPicReq.PicContent = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		searchByPicReq.PicContent = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	searchByPicResp, _err := client.SearchByPicWithOptions(searchByPicReq, runtime)
@@ -1638,10 +1708,50 @@ func (client *Client) SearchByUrlWithOptions(request *SearchByUrlRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["UserType"] = request.UserType
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		query["UserType"] = request.UserType
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		body["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Crop)) {
+		body["Crop"] = request.Crop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fields)) {
+		body["Fields"] = request.Fields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Num)) {
+		body["Num"] = request.Num
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PicUrl)) {
+		body["PicUrl"] = request.PicUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pid)) {
+		body["Pid"] = request.Pid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		body["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationId)) {
+		body["RelationId"] = request.RelationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		body["Start"] = request.Start
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchByUrl"),
