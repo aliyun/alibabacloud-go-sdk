@@ -1,3 +1,6 @@
+2022-09-23 Version: v4.0.0
+- Generated golang 2018-01-20 for Iot.
+
 2022-09-22 Version: v3.0.12
 - Generated golang 2018-01-20 for Iot.
 
