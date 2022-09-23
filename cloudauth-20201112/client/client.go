@@ -5,26 +5,25 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
 
 type CompareFacesRequest struct {
-	SourceImageUrl    *string `json:"SourceImageUrl,omitempty" xml:"SourceImageUrl,omitempty"`
-	SourceImageBase64 *string `json:"SourceImageBase64,omitempty" xml:"SourceImageBase64,omitempty"`
-	TargetImageUrl    *string `json:"TargetImageUrl,omitempty" xml:"TargetImageUrl,omitempty"`
-	TargetImageBase64 *string `json:"TargetImageBase64,omitempty" xml:"TargetImageBase64,omitempty"`
 	BizId             *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	BizType           *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	SourceImageBase64 *string `json:"SourceImageBase64,omitempty" xml:"SourceImageBase64,omitempty"`
+	SourceImageUrl    *string `json:"SourceImageUrl,omitempty" xml:"SourceImageUrl,omitempty"`
+	TargetImageBase64 *string `json:"TargetImageBase64,omitempty" xml:"TargetImageBase64,omitempty"`
+	TargetImageUrl    *string `json:"TargetImageUrl,omitempty" xml:"TargetImageUrl,omitempty"`
 }
 
 func (s CompareFacesRequest) String() string {
@@ -33,26 +32,6 @@ func (s CompareFacesRequest) String() string {
 
 func (s CompareFacesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CompareFacesRequest) SetSourceImageUrl(v string) *CompareFacesRequest {
-	s.SourceImageUrl = &v
-	return s
-}
-
-func (s *CompareFacesRequest) SetSourceImageBase64(v string) *CompareFacesRequest {
-	s.SourceImageBase64 = &v
-	return s
-}
-
-func (s *CompareFacesRequest) SetTargetImageUrl(v string) *CompareFacesRequest {
-	s.TargetImageUrl = &v
-	return s
-}
-
-func (s *CompareFacesRequest) SetTargetImageBase64(v string) *CompareFacesRequest {
-	s.TargetImageBase64 = &v
-	return s
 }
 
 func (s *CompareFacesRequest) SetBizId(v string) *CompareFacesRequest {
@@ -65,11 +44,32 @@ func (s *CompareFacesRequest) SetBizType(v string) *CompareFacesRequest {
 	return s
 }
 
+func (s *CompareFacesRequest) SetSourceImageBase64(v string) *CompareFacesRequest {
+	s.SourceImageBase64 = &v
+	return s
+}
+
+func (s *CompareFacesRequest) SetSourceImageUrl(v string) *CompareFacesRequest {
+	s.SourceImageUrl = &v
+	return s
+}
+
+func (s *CompareFacesRequest) SetTargetImageBase64(v string) *CompareFacesRequest {
+	s.TargetImageBase64 = &v
+	return s
+}
+
+func (s *CompareFacesRequest) SetTargetImageUrl(v string) *CompareFacesRequest {
+	s.TargetImageUrl = &v
+	return s
+}
+
 type CompareFacesResponseBody struct {
 	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *CompareFacesResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CompareFacesResponseBody) String() string {
@@ -100,9 +100,14 @@ func (s *CompareFacesResponseBody) SetResultObject(v *CompareFacesResponseBodyRe
 	return s
 }
 
+func (s *CompareFacesResponseBody) SetSuccess(v bool) *CompareFacesResponseBody {
+	s.Success = &v
+	return s
+}
+
 type CompareFacesResponseBodyResultObject struct {
-	SimilarityScore      *float32 `json:"SimilarityScore,omitempty" xml:"SimilarityScore,omitempty"`
 	ConfidenceThresholds *string  `json:"ConfidenceThresholds,omitempty" xml:"ConfidenceThresholds,omitempty"`
+	SimilarityScore      *float32 `json:"SimilarityScore,omitempty" xml:"SimilarityScore,omitempty"`
 }
 
 func (s CompareFacesResponseBodyResultObject) String() string {
@@ -113,19 +118,20 @@ func (s CompareFacesResponseBodyResultObject) GoString() string {
 	return s.String()
 }
 
-func (s *CompareFacesResponseBodyResultObject) SetSimilarityScore(v float32) *CompareFacesResponseBodyResultObject {
-	s.SimilarityScore = &v
-	return s
-}
-
 func (s *CompareFacesResponseBodyResultObject) SetConfidenceThresholds(v string) *CompareFacesResponseBodyResultObject {
 	s.ConfidenceThresholds = &v
 	return s
 }
 
+func (s *CompareFacesResponseBodyResultObject) SetSimilarityScore(v float32) *CompareFacesResponseBodyResultObject {
+	s.SimilarityScore = &v
+	return s
+}
+
 type CompareFacesResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CompareFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CompareFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CompareFacesResponse) String() string {
@@ -138,6 +144,11 @@ func (s CompareFacesResponse) GoString() string {
 
 func (s *CompareFacesResponse) SetHeaders(v map[string]*string) *CompareFacesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CompareFacesResponse) SetStatusCode(v int32) *CompareFacesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -174,6 +185,7 @@ type DescribeVerifyResultResponseBody struct {
 	Message      *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *DescribeVerifyResultResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	Success      *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeVerifyResultResponseBody) String() string {
@@ -204,12 +216,17 @@ func (s *DescribeVerifyResultResponseBody) SetResultObject(v *DescribeVerifyResu
 	return s
 }
 
+func (s *DescribeVerifyResultResponseBody) SetSuccess(v bool) *DescribeVerifyResultResponseBody {
+	s.Success = &v
+	return s
+}
+
 type DescribeVerifyResultResponseBodyResultObject struct {
 	AuthorityComparisionScore *float32                                              `json:"AuthorityComparisionScore,omitempty" xml:"AuthorityComparisionScore,omitempty"`
-	VerifyStatus              *int32                                                `json:"VerifyStatus,omitempty" xml:"VerifyStatus,omitempty"`
 	FaceComparisonScore       *float32                                              `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
 	IdCardFaceComparisonScore *float32                                              `json:"IdCardFaceComparisonScore,omitempty" xml:"IdCardFaceComparisonScore,omitempty"`
 	Material                  *DescribeVerifyResultResponseBodyResultObjectMaterial `json:"Material,omitempty" xml:"Material,omitempty" type:"Struct"`
+	VerifyStatus              *int32                                                `json:"VerifyStatus,omitempty" xml:"VerifyStatus,omitempty"`
 }
 
 func (s DescribeVerifyResultResponseBodyResultObject) String() string {
@@ -222,11 +239,6 @@ func (s DescribeVerifyResultResponseBodyResultObject) GoString() string {
 
 func (s *DescribeVerifyResultResponseBodyResultObject) SetAuthorityComparisionScore(v float32) *DescribeVerifyResultResponseBodyResultObject {
 	s.AuthorityComparisionScore = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyResultObject) SetVerifyStatus(v int32) *DescribeVerifyResultResponseBodyResultObject {
-	s.VerifyStatus = &v
 	return s
 }
 
@@ -245,15 +257,20 @@ func (s *DescribeVerifyResultResponseBodyResultObject) SetMaterial(v *DescribeVe
 	return s
 }
 
+func (s *DescribeVerifyResultResponseBodyResultObject) SetVerifyStatus(v int32) *DescribeVerifyResultResponseBodyResultObject {
+	s.VerifyStatus = &v
+	return s
+}
+
 type DescribeVerifyResultResponseBodyResultObjectMaterial struct {
-	IdCardNumber  *string                                                         `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
 	FaceGlobalUrl *string                                                         `json:"FaceGlobalUrl,omitempty" xml:"FaceGlobalUrl,omitempty"`
 	FaceImageUrl  *string                                                         `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
 	FaceMask      *bool                                                           `json:"FaceMask,omitempty" xml:"FaceMask,omitempty"`
-	IdCardName    *string                                                         `json:"IdCardName,omitempty" xml:"IdCardName,omitempty"`
 	FaceQuality   *string                                                         `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
-	VideoUrls     []*string                                                       `json:"VideoUrls,omitempty" xml:"VideoUrls,omitempty" type:"Repeated"`
 	IdCardInfo    *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo `json:"IdCardInfo,omitempty" xml:"IdCardInfo,omitempty" type:"Struct"`
+	IdCardName    *string                                                         `json:"IdCardName,omitempty" xml:"IdCardName,omitempty"`
+	IdCardNumber  *string                                                         `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
+	VideoUrls     []*string                                                       `json:"VideoUrls,omitempty" xml:"VideoUrls,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVerifyResultResponseBodyResultObjectMaterial) String() string {
@@ -262,11 +279,6 @@ func (s DescribeVerifyResultResponseBodyResultObjectMaterial) String() string {
 
 func (s DescribeVerifyResultResponseBodyResultObjectMaterial) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeVerifyResultResponseBodyResultObjectMaterial) SetIdCardNumber(v string) *DescribeVerifyResultResponseBodyResultObjectMaterial {
-	s.IdCardNumber = &v
-	return s
 }
 
 func (s *DescribeVerifyResultResponseBodyResultObjectMaterial) SetFaceGlobalUrl(v string) *DescribeVerifyResultResponseBodyResultObjectMaterial {
@@ -284,18 +296,8 @@ func (s *DescribeVerifyResultResponseBodyResultObjectMaterial) SetFaceMask(v boo
 	return s
 }
 
-func (s *DescribeVerifyResultResponseBodyResultObjectMaterial) SetIdCardName(v string) *DescribeVerifyResultResponseBodyResultObjectMaterial {
-	s.IdCardName = &v
-	return s
-}
-
 func (s *DescribeVerifyResultResponseBodyResultObjectMaterial) SetFaceQuality(v string) *DescribeVerifyResultResponseBodyResultObjectMaterial {
 	s.FaceQuality = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyResultObjectMaterial) SetVideoUrls(v []*string) *DescribeVerifyResultResponseBodyResultObjectMaterial {
-	s.VideoUrls = v
 	return s
 }
 
@@ -304,18 +306,32 @@ func (s *DescribeVerifyResultResponseBodyResultObjectMaterial) SetIdCardInfo(v *
 	return s
 }
 
+func (s *DescribeVerifyResultResponseBodyResultObjectMaterial) SetIdCardName(v string) *DescribeVerifyResultResponseBodyResultObjectMaterial {
+	s.IdCardName = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseBodyResultObjectMaterial) SetIdCardNumber(v string) *DescribeVerifyResultResponseBodyResultObjectMaterial {
+	s.IdCardNumber = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseBodyResultObjectMaterial) SetVideoUrls(v []*string) *DescribeVerifyResultResponseBodyResultObjectMaterial {
+	s.VideoUrls = v
+	return s
+}
+
 type DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo struct {
-	Sex           *string `json:"Sex,omitempty" xml:"Sex,omitempty"`
-	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Authority     *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
 	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Authority     *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
+	BackImageUrl  *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty"`
+	Birth         *string `json:"Birth,omitempty" xml:"Birth,omitempty"`
+	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	FrontImageUrl *string `json:"FrontImageUrl,omitempty" xml:"FrontImageUrl,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Nationality   *string `json:"Nationality,omitempty" xml:"Nationality,omitempty"`
 	Number        *string `json:"Number,omitempty" xml:"Number,omitempty"`
 	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	BackImageUrl  *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty"`
-	Nationality   *string `json:"Nationality,omitempty" xml:"Nationality,omitempty"`
-	Birth         *string `json:"Birth,omitempty" xml:"Birth,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	FrontImageUrl *string `json:"FrontImageUrl,omitempty" xml:"FrontImageUrl,omitempty"`
 }
 
 func (s DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) String() string {
@@ -326,13 +342,8 @@ func (s DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) GoString
 	return s.String()
 }
 
-func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetSex(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
-	s.Sex = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetEndDate(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
-	s.EndDate = &v
+func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetAddress(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
+	s.Address = &v
 	return s
 }
 
@@ -341,8 +352,33 @@ func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetAuth
 	return s
 }
 
-func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetAddress(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
-	s.Address = &v
+func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetBackImageUrl(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
+	s.BackImageUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetBirth(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
+	s.Birth = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetEndDate(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetFrontImageUrl(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
+	s.FrontImageUrl = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetName(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetNationality(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
+	s.Nationality = &v
 	return s
 }
 
@@ -356,34 +392,10 @@ func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetStar
 	return s
 }
 
-func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetBackImageUrl(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
-	s.BackImageUrl = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetNationality(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
-	s.Nationality = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetBirth(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
-	s.Birth = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetName(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo) SetFrontImageUrl(v string) *DescribeVerifyResultResponseBodyResultObjectMaterialIdCardInfo {
-	s.FrontImageUrl = &v
-	return s
-}
-
 type DescribeVerifyResultResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVerifyResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVerifyResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVerifyResultResponse) String() string {
@@ -399,20 +411,25 @@ func (s *DescribeVerifyResultResponse) SetHeaders(v map[string]*string) *Describ
 	return s
 }
 
+func (s *DescribeVerifyResultResponse) SetStatusCode(v int32) *DescribeVerifyResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeVerifyResultResponse) SetBody(v *DescribeVerifyResultResponseBody) *DescribeVerifyResultResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeVerifyTokenRequest struct {
-	IdCardBackImageUrl   *string `json:"IdCardBackImageUrl,omitempty" xml:"IdCardBackImageUrl,omitempty"`
+	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	FaceRetainedImageUrl *string `json:"FaceRetainedImageUrl,omitempty" xml:"FaceRetainedImageUrl,omitempty"`
+	IdCardBackImageUrl   *string `json:"IdCardBackImageUrl,omitempty" xml:"IdCardBackImageUrl,omitempty"`
 	IdCardFrontImageUrl  *string `json:"IdCardFrontImageUrl,omitempty" xml:"IdCardFrontImageUrl,omitempty"`
-	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	IdCardNumber         *string `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserIp               *string `json:"UserIp,omitempty" xml:"UserIp,omitempty"`
 	UserPhoneNumber      *string `json:"UserPhoneNumber,omitempty" xml:"UserPhoneNumber,omitempty"`
 	UserRegistTime       *int64  `json:"UserRegistTime,omitempty" xml:"UserRegistTime,omitempty"`
@@ -426,8 +443,8 @@ func (s DescribeVerifyTokenRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeVerifyTokenRequest) SetIdCardBackImageUrl(v string) *DescribeVerifyTokenRequest {
-	s.IdCardBackImageUrl = &v
+func (s *DescribeVerifyTokenRequest) SetBizId(v string) *DescribeVerifyTokenRequest {
+	s.BizId = &v
 	return s
 }
 
@@ -441,18 +458,18 @@ func (s *DescribeVerifyTokenRequest) SetFaceRetainedImageUrl(v string) *Describe
 	return s
 }
 
+func (s *DescribeVerifyTokenRequest) SetIdCardBackImageUrl(v string) *DescribeVerifyTokenRequest {
+	s.IdCardBackImageUrl = &v
+	return s
+}
+
 func (s *DescribeVerifyTokenRequest) SetIdCardFrontImageUrl(v string) *DescribeVerifyTokenRequest {
 	s.IdCardFrontImageUrl = &v
 	return s
 }
 
-func (s *DescribeVerifyTokenRequest) SetUserId(v string) *DescribeVerifyTokenRequest {
-	s.UserId = &v
-	return s
-}
-
-func (s *DescribeVerifyTokenRequest) SetBizId(v string) *DescribeVerifyTokenRequest {
-	s.BizId = &v
+func (s *DescribeVerifyTokenRequest) SetIdCardNumber(v string) *DescribeVerifyTokenRequest {
+	s.IdCardNumber = &v
 	return s
 }
 
@@ -461,8 +478,8 @@ func (s *DescribeVerifyTokenRequest) SetName(v string) *DescribeVerifyTokenReque
 	return s
 }
 
-func (s *DescribeVerifyTokenRequest) SetIdCardNumber(v string) *DescribeVerifyTokenRequest {
-	s.IdCardNumber = &v
+func (s *DescribeVerifyTokenRequest) SetUserId(v string) *DescribeVerifyTokenRequest {
+	s.UserId = &v
 	return s
 }
 
@@ -486,6 +503,7 @@ type DescribeVerifyTokenResponseBody struct {
 	Message      *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *DescribeVerifyTokenResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	Success      *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeVerifyTokenResponseBody) String() string {
@@ -516,6 +534,11 @@ func (s *DescribeVerifyTokenResponseBody) SetResultObject(v *DescribeVerifyToken
 	return s
 }
 
+func (s *DescribeVerifyTokenResponseBody) SetSuccess(v bool) *DescribeVerifyTokenResponseBody {
+	s.Success = &v
+	return s
+}
+
 type DescribeVerifyTokenResponseBodyResultObject struct {
 	VerifyPageUrl *string `json:"VerifyPageUrl,omitempty" xml:"VerifyPageUrl,omitempty"`
 	VerifyToken   *string `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
@@ -540,8 +563,9 @@ func (s *DescribeVerifyTokenResponseBodyResultObject) SetVerifyToken(v string) *
 }
 
 type DescribeVerifyTokenResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVerifyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVerifyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVerifyTokenResponse) String() string {
@@ -557,16 +581,21 @@ func (s *DescribeVerifyTokenResponse) SetHeaders(v map[string]*string) *Describe
 	return s
 }
 
+func (s *DescribeVerifyTokenResponse) SetStatusCode(v int32) *DescribeVerifyTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeVerifyTokenResponse) SetBody(v *DescribeVerifyTokenResponseBody) *DescribeVerifyTokenResponse {
 	s.Body = v
 	return s
 }
 
 type DetectFaceAttributesRequest struct {
-	BizType   *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	BizId     *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	ImageUrl  *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	BizType   *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	ImageFile *string `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
+	ImageUrl  *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 }
 
 func (s DetectFaceAttributesRequest) String() string {
@@ -577,18 +606,13 @@ func (s DetectFaceAttributesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetectFaceAttributesRequest) SetBizType(v string) *DetectFaceAttributesRequest {
-	s.BizType = &v
-	return s
-}
-
 func (s *DetectFaceAttributesRequest) SetBizId(v string) *DetectFaceAttributesRequest {
 	s.BizId = &v
 	return s
 }
 
-func (s *DetectFaceAttributesRequest) SetImageUrl(v string) *DetectFaceAttributesRequest {
-	s.ImageUrl = &v
+func (s *DetectFaceAttributesRequest) SetBizType(v string) *DetectFaceAttributesRequest {
+	s.BizType = &v
 	return s
 }
 
@@ -597,10 +621,15 @@ func (s *DetectFaceAttributesRequest) SetImageFile(v string) *DetectFaceAttribut
 	return s
 }
 
+func (s *DetectFaceAttributesRequest) SetImageUrl(v string) *DetectFaceAttributesRequest {
+	s.ImageUrl = &v
+	return s
+}
+
 type DetectFaceAttributesAdvanceRequest struct {
-	ImageFileObject io.Reader `json:"ImageFileObject,omitempty" xml:"ImageFileObject,omitempty" require:"true"`
-	BizType         *string   `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	BizId           *string   `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizType         *string   `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	ImageFileObject io.Reader `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
 	ImageUrl        *string   `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 }
 
@@ -612,8 +641,8 @@ func (s DetectFaceAttributesAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetectFaceAttributesAdvanceRequest) SetImageFileObject(v io.Reader) *DetectFaceAttributesAdvanceRequest {
-	s.ImageFileObject = v
+func (s *DetectFaceAttributesAdvanceRequest) SetBizId(v string) *DetectFaceAttributesAdvanceRequest {
+	s.BizId = &v
 	return s
 }
 
@@ -622,8 +651,8 @@ func (s *DetectFaceAttributesAdvanceRequest) SetBizType(v string) *DetectFaceAtt
 	return s
 }
 
-func (s *DetectFaceAttributesAdvanceRequest) SetBizId(v string) *DetectFaceAttributesAdvanceRequest {
-	s.BizId = &v
+func (s *DetectFaceAttributesAdvanceRequest) SetImageFileObject(v io.Reader) *DetectFaceAttributesAdvanceRequest {
+	s.ImageFileObject = v
 	return s
 }
 
@@ -636,8 +665,8 @@ type DetectFaceAttributesResponseBody struct {
 	Code         *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message      *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
 	ResultObject *DetectFaceAttributesResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	Success      *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DetectFaceAttributesResponseBody) String() string {
@@ -663,20 +692,20 @@ func (s *DetectFaceAttributesResponseBody) SetRequestId(v string) *DetectFaceAtt
 	return s
 }
 
-func (s *DetectFaceAttributesResponseBody) SetSuccess(v bool) *DetectFaceAttributesResponseBody {
-	s.Success = &v
-	return s
-}
-
 func (s *DetectFaceAttributesResponseBody) SetResultObject(v *DetectFaceAttributesResponseBodyResultObject) *DetectFaceAttributesResponseBody {
 	s.ResultObject = v
 	return s
 }
 
+func (s *DetectFaceAttributesResponseBody) SetSuccess(v bool) *DetectFaceAttributesResponseBody {
+	s.Success = &v
+	return s
+}
+
 type DetectFaceAttributesResponseBodyResultObject struct {
+	FaceInfos *DetectFaceAttributesResponseBodyResultObjectFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" type:"Struct"`
 	ImgHeight *int32                                                 `json:"ImgHeight,omitempty" xml:"ImgHeight,omitempty"`
 	ImgWidth  *int32                                                 `json:"ImgWidth,omitempty" xml:"ImgWidth,omitempty"`
-	FaceInfos *DetectFaceAttributesResponseBodyResultObjectFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" type:"Struct"`
 }
 
 func (s DetectFaceAttributesResponseBodyResultObject) String() string {
@@ -687,6 +716,11 @@ func (s DetectFaceAttributesResponseBodyResultObject) GoString() string {
 	return s.String()
 }
 
+func (s *DetectFaceAttributesResponseBodyResultObject) SetFaceInfos(v *DetectFaceAttributesResponseBodyResultObjectFaceInfos) *DetectFaceAttributesResponseBodyResultObject {
+	s.FaceInfos = v
+	return s
+}
+
 func (s *DetectFaceAttributesResponseBodyResultObject) SetImgHeight(v int32) *DetectFaceAttributesResponseBodyResultObject {
 	s.ImgHeight = &v
 	return s
@@ -694,11 +728,6 @@ func (s *DetectFaceAttributesResponseBodyResultObject) SetImgHeight(v int32) *De
 
 func (s *DetectFaceAttributesResponseBodyResultObject) SetImgWidth(v int32) *DetectFaceAttributesResponseBodyResultObject {
 	s.ImgWidth = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyResultObject) SetFaceInfos(v *DetectFaceAttributesResponseBodyResultObjectFaceInfos) *DetectFaceAttributesResponseBodyResultObject {
-	s.FaceInfos = v
 	return s
 }
 
@@ -720,8 +749,8 @@ func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfos) SetFaceAttribute
 }
 
 type DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfo struct {
-	FaceRect       *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect       `json:"FaceRect,omitempty" xml:"FaceRect,omitempty" type:"Struct"`
 	FaceAttributes *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
+	FaceRect       *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect       `json:"FaceRect,omitempty" xml:"FaceRect,omitempty" type:"Struct"`
 }
 
 func (s DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfo) String() string {
@@ -732,61 +761,25 @@ func (s DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetec
 	return s.String()
 }
 
-func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfo) SetFaceRect(v *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfo {
-	s.FaceRect = v
-	return s
-}
-
 func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfo) SetFaceAttributes(v *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfo {
 	s.FaceAttributes = v
 	return s
 }
 
-type DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect struct {
-	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
-	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
-	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-}
-
-func (s DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect) GoString() string {
-	return s.String()
-}
-
-func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect) SetLeft(v int32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect {
-	s.Left = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect) SetTop(v int32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect {
-	s.Top = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect) SetWidth(v int32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect {
-	s.Width = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect) SetHeight(v int32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect {
-	s.Height = &v
+func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfo) SetFaceRect(v *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfo {
+	s.FaceRect = v
 	return s
 }
 
 type DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes struct {
-	Glasses         *string                                                                                              `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
-	Facequal        *float32                                                                                             `json:"Facequal,omitempty" xml:"Facequal,omitempty"`
-	Integrity       *int32                                                                                               `json:"Integrity,omitempty" xml:"Integrity,omitempty"`
-	Facetype        *string                                                                                              `json:"Facetype,omitempty" xml:"Facetype,omitempty"`
-	Respirator      *string                                                                                              `json:"Respirator,omitempty" xml:"Respirator,omitempty"`
-	AppearanceScore *float32                                                                                             `json:"AppearanceScore,omitempty" xml:"AppearanceScore,omitempty"`
-	Blur            *float32                                                                                             `json:"Blur,omitempty" xml:"Blur,omitempty"`
-	Smiling         *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling  `json:"Smiling,omitempty" xml:"Smiling,omitempty" type:"Struct"`
-	Headpose        *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose `json:"Headpose,omitempty" xml:"Headpose,omitempty" type:"Struct"`
+	Blur       *float32                                                                                             `json:"Blur,omitempty" xml:"Blur,omitempty"`
+	Facequal   *float32                                                                                             `json:"Facequal,omitempty" xml:"Facequal,omitempty"`
+	Facetype   *string                                                                                              `json:"Facetype,omitempty" xml:"Facetype,omitempty"`
+	Glasses    *string                                                                                              `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
+	Headpose   *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose `json:"Headpose,omitempty" xml:"Headpose,omitempty" type:"Struct"`
+	Integrity  *int32                                                                                               `json:"Integrity,omitempty" xml:"Integrity,omitempty"`
+	Respirator *string                                                                                              `json:"Respirator,omitempty" xml:"Respirator,omitempty"`
+	Smiling    *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling  `json:"Smiling,omitempty" xml:"Smiling,omitempty" type:"Struct"`
 }
 
 func (s DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes) String() string {
@@ -797,8 +790,8 @@ func (s DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetec
 	return s.String()
 }
 
-func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes) SetGlasses(v string) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes {
-	s.Glasses = &v
+func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes) SetBlur(v float32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes {
+	s.Blur = &v
 	return s
 }
 
@@ -807,33 +800,13 @@ func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDete
 	return s
 }
 
-func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes) SetIntegrity(v int32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes {
-	s.Integrity = &v
-	return s
-}
-
 func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes) SetFacetype(v string) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes {
 	s.Facetype = &v
 	return s
 }
 
-func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes) SetRespirator(v string) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes {
-	s.Respirator = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes) SetAppearanceScore(v float32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes {
-	s.AppearanceScore = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes) SetBlur(v float32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes {
-	s.Blur = &v
-	return s
-}
-
-func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes) SetSmiling(v *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes {
-	s.Smiling = v
+func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes) SetGlasses(v string) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes {
+	s.Glasses = &v
 	return s
 }
 
@@ -842,26 +815,18 @@ func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDete
 	return s
 }
 
-type DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling struct {
-	Value     *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
-	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-}
-
-func (s DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) GoString() string {
-	return s.String()
-}
-
-func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) SetValue(v float32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling {
-	s.Value = &v
+func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes) SetIntegrity(v int32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes {
+	s.Integrity = &v
 	return s
 }
 
-func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) SetThreshold(v float32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling {
-	s.Threshold = &v
+func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes) SetRespirator(v string) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes {
+	s.Respirator = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes) SetSmiling(v *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributes {
+	s.Smiling = v
 	return s
 }
 
@@ -894,9 +859,68 @@ func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDete
 	return s
 }
 
+type DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling struct {
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Value     *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) GoString() string {
+	return s.String()
+}
+
+func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) SetThreshold(v float32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling {
+	s.Threshold = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling) SetValue(v float32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling {
+	s.Value = &v
+	return s
+}
+
+type DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect struct {
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Left   *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top    *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
+	Width  *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect) GoString() string {
+	return s.String()
+}
+
+func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect) SetHeight(v int32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect {
+	s.Height = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect) SetLeft(v int32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect {
+	s.Left = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect) SetTop(v int32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect {
+	s.Top = &v
+	return s
+}
+
+func (s *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect) SetWidth(v int32) *DetectFaceAttributesResponseBodyResultObjectFaceInfosFaceAttributesDetectInfoFaceRect {
+	s.Width = &v
+	return s
+}
+
 type DetectFaceAttributesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectFaceAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectFaceAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectFaceAttributesResponse) String() string {
@@ -912,17 +936,22 @@ func (s *DetectFaceAttributesResponse) SetHeaders(v map[string]*string) *DetectF
 	return s
 }
 
+func (s *DetectFaceAttributesResponse) SetStatusCode(v int32) *DetectFaceAttributesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DetectFaceAttributesResponse) SetBody(v *DetectFaceAttributesResponseBody) *DetectFaceAttributesResponse {
 	s.Body = v
 	return s
 }
 
 type LivenessDetectRequest struct {
-	BizType       *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	BizId         *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizType       *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	MediaCategory *string `json:"MediaCategory,omitempty" xml:"MediaCategory,omitempty"`
-	MediaUrl      *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
 	MediaFile     *string `json:"MediaFile,omitempty" xml:"MediaFile,omitempty"`
+	MediaUrl      *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
 }
 
 func (s LivenessDetectRequest) String() string {
@@ -933,13 +962,13 @@ func (s LivenessDetectRequest) GoString() string {
 	return s.String()
 }
 
-func (s *LivenessDetectRequest) SetBizType(v string) *LivenessDetectRequest {
-	s.BizType = &v
+func (s *LivenessDetectRequest) SetBizId(v string) *LivenessDetectRequest {
+	s.BizId = &v
 	return s
 }
 
-func (s *LivenessDetectRequest) SetBizId(v string) *LivenessDetectRequest {
-	s.BizId = &v
+func (s *LivenessDetectRequest) SetBizType(v string) *LivenessDetectRequest {
+	s.BizType = &v
 	return s
 }
 
@@ -948,21 +977,21 @@ func (s *LivenessDetectRequest) SetMediaCategory(v string) *LivenessDetectReques
 	return s
 }
 
-func (s *LivenessDetectRequest) SetMediaUrl(v string) *LivenessDetectRequest {
-	s.MediaUrl = &v
-	return s
-}
-
 func (s *LivenessDetectRequest) SetMediaFile(v string) *LivenessDetectRequest {
 	s.MediaFile = &v
 	return s
 }
 
+func (s *LivenessDetectRequest) SetMediaUrl(v string) *LivenessDetectRequest {
+	s.MediaUrl = &v
+	return s
+}
+
 type LivenessDetectAdvanceRequest struct {
-	MediaFileObject io.Reader `json:"MediaFileObject,omitempty" xml:"MediaFileObject,omitempty" require:"true"`
-	BizType         *string   `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	BizId           *string   `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizType         *string   `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	MediaCategory   *string   `json:"MediaCategory,omitempty" xml:"MediaCategory,omitempty"`
+	MediaFileObject io.Reader `json:"MediaFile,omitempty" xml:"MediaFile,omitempty"`
 	MediaUrl        *string   `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
 }
 
@@ -974,8 +1003,8 @@ func (s LivenessDetectAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *LivenessDetectAdvanceRequest) SetMediaFileObject(v io.Reader) *LivenessDetectAdvanceRequest {
-	s.MediaFileObject = v
+func (s *LivenessDetectAdvanceRequest) SetBizId(v string) *LivenessDetectAdvanceRequest {
+	s.BizId = &v
 	return s
 }
 
@@ -984,13 +1013,13 @@ func (s *LivenessDetectAdvanceRequest) SetBizType(v string) *LivenessDetectAdvan
 	return s
 }
 
-func (s *LivenessDetectAdvanceRequest) SetBizId(v string) *LivenessDetectAdvanceRequest {
-	s.BizId = &v
+func (s *LivenessDetectAdvanceRequest) SetMediaCategory(v string) *LivenessDetectAdvanceRequest {
+	s.MediaCategory = &v
 	return s
 }
 
-func (s *LivenessDetectAdvanceRequest) SetMediaCategory(v string) *LivenessDetectAdvanceRequest {
-	s.MediaCategory = &v
+func (s *LivenessDetectAdvanceRequest) SetMediaFileObject(v io.Reader) *LivenessDetectAdvanceRequest {
+	s.MediaFileObject = v
 	return s
 }
 
@@ -1004,6 +1033,7 @@ type LivenessDetectResponseBody struct {
 	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *LivenessDetectResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	Success      *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s LivenessDetectResponseBody) String() string {
@@ -1034,10 +1064,15 @@ func (s *LivenessDetectResponseBody) SetResultObject(v *LivenessDetectResponseBo
 	return s
 }
 
+func (s *LivenessDetectResponseBody) SetSuccess(v bool) *LivenessDetectResponseBody {
+	s.Success = &v
+	return s
+}
+
 type LivenessDetectResponseBodyResultObject struct {
-	Score    *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	FrameUrl *string  `json:"FrameUrl,omitempty" xml:"FrameUrl,omitempty"`
 	Passed   *string  `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	Score    *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
 }
 
 func (s LivenessDetectResponseBodyResultObject) String() string {
@@ -1046,11 +1081,6 @@ func (s LivenessDetectResponseBodyResultObject) String() string {
 
 func (s LivenessDetectResponseBodyResultObject) GoString() string {
 	return s.String()
-}
-
-func (s *LivenessDetectResponseBodyResultObject) SetScore(v float32) *LivenessDetectResponseBodyResultObject {
-	s.Score = &v
-	return s
 }
 
 func (s *LivenessDetectResponseBodyResultObject) SetFrameUrl(v string) *LivenessDetectResponseBodyResultObject {
@@ -1063,9 +1093,15 @@ func (s *LivenessDetectResponseBodyResultObject) SetPassed(v string) *LivenessDe
 	return s
 }
 
+func (s *LivenessDetectResponseBodyResultObject) SetScore(v float32) *LivenessDetectResponseBodyResultObject {
+	s.Score = &v
+	return s
+}
+
 type LivenessDetectResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *LivenessDetectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *LivenessDetectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s LivenessDetectResponse) String() string {
@@ -1081,19 +1117,24 @@ func (s *LivenessDetectResponse) SetHeaders(v map[string]*string) *LivenessDetec
 	return s
 }
 
+func (s *LivenessDetectResponse) SetStatusCode(v int32) *LivenessDetectResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *LivenessDetectResponse) SetBody(v *LivenessDetectResponseBody) *LivenessDetectResponse {
 	s.Body = v
 	return s
 }
 
 type VerifyMaterialRequest struct {
-	IdCardBackImageUrl  *string `json:"IdCardBackImageUrl,omitempty" xml:"IdCardBackImageUrl,omitempty"`
-	FaceImageUrl        *string `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
-	BizType             *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	BizId               *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	IdCardNumber        *string `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
+	BizType             *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	FaceImageUrl        *string `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
+	IdCardBackImageUrl  *string `json:"IdCardBackImageUrl,omitempty" xml:"IdCardBackImageUrl,omitempty"`
 	IdCardFrontImageUrl *string `json:"IdCardFrontImageUrl,omitempty" xml:"IdCardFrontImageUrl,omitempty"`
+	IdCardNumber        *string `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -1105,13 +1146,8 @@ func (s VerifyMaterialRequest) GoString() string {
 	return s.String()
 }
 
-func (s *VerifyMaterialRequest) SetIdCardBackImageUrl(v string) *VerifyMaterialRequest {
-	s.IdCardBackImageUrl = &v
-	return s
-}
-
-func (s *VerifyMaterialRequest) SetFaceImageUrl(v string) *VerifyMaterialRequest {
-	s.FaceImageUrl = &v
+func (s *VerifyMaterialRequest) SetBizId(v string) *VerifyMaterialRequest {
+	s.BizId = &v
 	return s
 }
 
@@ -1120,13 +1156,18 @@ func (s *VerifyMaterialRequest) SetBizType(v string) *VerifyMaterialRequest {
 	return s
 }
 
-func (s *VerifyMaterialRequest) SetBizId(v string) *VerifyMaterialRequest {
-	s.BizId = &v
+func (s *VerifyMaterialRequest) SetFaceImageUrl(v string) *VerifyMaterialRequest {
+	s.FaceImageUrl = &v
 	return s
 }
 
-func (s *VerifyMaterialRequest) SetName(v string) *VerifyMaterialRequest {
-	s.Name = &v
+func (s *VerifyMaterialRequest) SetIdCardBackImageUrl(v string) *VerifyMaterialRequest {
+	s.IdCardBackImageUrl = &v
+	return s
+}
+
+func (s *VerifyMaterialRequest) SetIdCardFrontImageUrl(v string) *VerifyMaterialRequest {
+	s.IdCardFrontImageUrl = &v
 	return s
 }
 
@@ -1135,8 +1176,8 @@ func (s *VerifyMaterialRequest) SetIdCardNumber(v string) *VerifyMaterialRequest
 	return s
 }
 
-func (s *VerifyMaterialRequest) SetIdCardFrontImageUrl(v string) *VerifyMaterialRequest {
-	s.IdCardFrontImageUrl = &v
+func (s *VerifyMaterialRequest) SetName(v string) *VerifyMaterialRequest {
+	s.Name = &v
 	return s
 }
 
@@ -1150,6 +1191,7 @@ type VerifyMaterialResponseBody struct {
 	Message      *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultObject *VerifyMaterialResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+	Success      *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s VerifyMaterialResponseBody) String() string {
@@ -1180,12 +1222,17 @@ func (s *VerifyMaterialResponseBody) SetResultObject(v *VerifyMaterialResponseBo
 	return s
 }
 
+func (s *VerifyMaterialResponseBody) SetSuccess(v bool) *VerifyMaterialResponseBody {
+	s.Success = &v
+	return s
+}
+
 type VerifyMaterialResponseBodyResultObject struct {
 	AuthorityComparisionScore *float32                                        `json:"AuthorityComparisionScore,omitempty" xml:"AuthorityComparisionScore,omitempty"`
-	VerifyStatus              *int32                                          `json:"VerifyStatus,omitempty" xml:"VerifyStatus,omitempty"`
-	VerifyToken               *string                                         `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
 	IdCardFaceComparisonScore *float32                                        `json:"IdCardFaceComparisonScore,omitempty" xml:"IdCardFaceComparisonScore,omitempty"`
 	Material                  *VerifyMaterialResponseBodyResultObjectMaterial `json:"Material,omitempty" xml:"Material,omitempty" type:"Struct"`
+	VerifyStatus              *int32                                          `json:"VerifyStatus,omitempty" xml:"VerifyStatus,omitempty"`
+	VerifyToken               *string                                         `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
 }
 
 func (s VerifyMaterialResponseBodyResultObject) String() string {
@@ -1201,16 +1248,6 @@ func (s *VerifyMaterialResponseBodyResultObject) SetAuthorityComparisionScore(v 
 	return s
 }
 
-func (s *VerifyMaterialResponseBodyResultObject) SetVerifyStatus(v int32) *VerifyMaterialResponseBodyResultObject {
-	s.VerifyStatus = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyResultObject) SetVerifyToken(v string) *VerifyMaterialResponseBodyResultObject {
-	s.VerifyToken = &v
-	return s
-}
-
 func (s *VerifyMaterialResponseBodyResultObject) SetIdCardFaceComparisonScore(v float32) *VerifyMaterialResponseBodyResultObject {
 	s.IdCardFaceComparisonScore = &v
 	return s
@@ -1221,14 +1258,24 @@ func (s *VerifyMaterialResponseBodyResultObject) SetMaterial(v *VerifyMaterialRe
 	return s
 }
 
+func (s *VerifyMaterialResponseBodyResultObject) SetVerifyStatus(v int32) *VerifyMaterialResponseBodyResultObject {
+	s.VerifyStatus = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseBodyResultObject) SetVerifyToken(v string) *VerifyMaterialResponseBodyResultObject {
+	s.VerifyToken = &v
+	return s
+}
+
 type VerifyMaterialResponseBodyResultObjectMaterial struct {
-	IdCardNumber  *string                                                   `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
 	FaceGlobalUrl *string                                                   `json:"FaceGlobalUrl,omitempty" xml:"FaceGlobalUrl,omitempty"`
 	FaceImageUrl  *string                                                   `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
 	FaceMask      *string                                                   `json:"FaceMask,omitempty" xml:"FaceMask,omitempty"`
-	IdCardName    *string                                                   `json:"IdCardName,omitempty" xml:"IdCardName,omitempty"`
 	FaceQuality   *string                                                   `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
 	IdCardInfo    *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo `json:"IdCardInfo,omitempty" xml:"IdCardInfo,omitempty" type:"Struct"`
+	IdCardName    *string                                                   `json:"IdCardName,omitempty" xml:"IdCardName,omitempty"`
+	IdCardNumber  *string                                                   `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
 }
 
 func (s VerifyMaterialResponseBodyResultObjectMaterial) String() string {
@@ -1237,11 +1284,6 @@ func (s VerifyMaterialResponseBodyResultObjectMaterial) String() string {
 
 func (s VerifyMaterialResponseBodyResultObjectMaterial) GoString() string {
 	return s.String()
-}
-
-func (s *VerifyMaterialResponseBodyResultObjectMaterial) SetIdCardNumber(v string) *VerifyMaterialResponseBodyResultObjectMaterial {
-	s.IdCardNumber = &v
-	return s
 }
 
 func (s *VerifyMaterialResponseBodyResultObjectMaterial) SetFaceGlobalUrl(v string) *VerifyMaterialResponseBodyResultObjectMaterial {
@@ -1259,11 +1301,6 @@ func (s *VerifyMaterialResponseBodyResultObjectMaterial) SetFaceMask(v string) *
 	return s
 }
 
-func (s *VerifyMaterialResponseBodyResultObjectMaterial) SetIdCardName(v string) *VerifyMaterialResponseBodyResultObjectMaterial {
-	s.IdCardName = &v
-	return s
-}
-
 func (s *VerifyMaterialResponseBodyResultObjectMaterial) SetFaceQuality(v string) *VerifyMaterialResponseBodyResultObjectMaterial {
 	s.FaceQuality = &v
 	return s
@@ -1274,18 +1311,27 @@ func (s *VerifyMaterialResponseBodyResultObjectMaterial) SetIdCardInfo(v *Verify
 	return s
 }
 
+func (s *VerifyMaterialResponseBodyResultObjectMaterial) SetIdCardName(v string) *VerifyMaterialResponseBodyResultObjectMaterial {
+	s.IdCardName = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseBodyResultObjectMaterial) SetIdCardNumber(v string) *VerifyMaterialResponseBodyResultObjectMaterial {
+	s.IdCardNumber = &v
+	return s
+}
+
 type VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo struct {
-	Sex           *string `json:"Sex,omitempty" xml:"Sex,omitempty"`
-	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Authority     *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
 	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Authority     *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
+	BackImageUrl  *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty"`
+	Birth         *string `json:"Birth,omitempty" xml:"Birth,omitempty"`
+	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	FrontImageUrl *string `json:"FrontImageUrl,omitempty" xml:"FrontImageUrl,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Nationality   *string `json:"Nationality,omitempty" xml:"Nationality,omitempty"`
 	Number        *string `json:"Number,omitempty" xml:"Number,omitempty"`
 	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	BackImageUrl  *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty"`
-	Nationality   *string `json:"Nationality,omitempty" xml:"Nationality,omitempty"`
-	Birth         *string `json:"Birth,omitempty" xml:"Birth,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	FrontImageUrl *string `json:"FrontImageUrl,omitempty" xml:"FrontImageUrl,omitempty"`
 }
 
 func (s VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) String() string {
@@ -1296,13 +1342,8 @@ func (s VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) GoString() str
 	return s.String()
 }
 
-func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetSex(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
-	s.Sex = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetEndDate(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
-	s.EndDate = &v
+func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetAddress(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
+	s.Address = &v
 	return s
 }
 
@@ -1311,8 +1352,33 @@ func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetAuthority(
 	return s
 }
 
-func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetAddress(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
-	s.Address = &v
+func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetBackImageUrl(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
+	s.BackImageUrl = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetBirth(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
+	s.Birth = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetEndDate(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
+	s.EndDate = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetFrontImageUrl(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
+	s.FrontImageUrl = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetName(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetNationality(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
+	s.Nationality = &v
 	return s
 }
 
@@ -1326,34 +1392,10 @@ func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetStartDate(
 	return s
 }
 
-func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetBackImageUrl(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
-	s.BackImageUrl = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetNationality(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
-	s.Nationality = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetBirth(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
-	s.Birth = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetName(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo) SetFrontImageUrl(v string) *VerifyMaterialResponseBodyResultObjectMaterialIdCardInfo {
-	s.FrontImageUrl = &v
-	return s
-}
-
 type VerifyMaterialResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *VerifyMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VerifyMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s VerifyMaterialResponse) String() string {
@@ -1366,6 +1408,11 @@ func (s VerifyMaterialResponse) GoString() string {
 
 func (s *VerifyMaterialResponse) SetHeaders(v map[string]*string) *VerifyMaterialResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VerifyMaterialResponse) SetStatusCode(v int32) *VerifyMaterialResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1426,11 +1473,47 @@ func (client *Client) CompareFacesWithOptions(request *CompareFacesRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		body["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceImageBase64)) {
+		body["SourceImageBase64"] = request.SourceImageBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceImageUrl)) {
+		body["SourceImageUrl"] = request.SourceImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetImageBase64)) {
+		body["TargetImageBase64"] = request.TargetImageBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetImageUrl)) {
+		body["TargetImageUrl"] = request.TargetImageUrl
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CompareFaces"),
+		Version:     tea.String("2020-11-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CompareFacesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CompareFaces"), tea.String("2020-11-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1454,11 +1537,31 @@ func (client *Client) DescribeVerifyResultWithOptions(request *DescribeVerifyRes
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVerifyResult"),
+		Version:     tea.String("2020-11-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVerifyResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVerifyResult"), tea.String("2020-11-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1482,11 +1585,67 @@ func (client *Client) DescribeVerifyTokenWithOptions(request *DescribeVerifyToke
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceRetainedImageUrl)) {
+		query["FaceRetainedImageUrl"] = request.FaceRetainedImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdCardBackImageUrl)) {
+		query["IdCardBackImageUrl"] = request.IdCardBackImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdCardFrontImageUrl)) {
+		query["IdCardFrontImageUrl"] = request.IdCardFrontImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdCardNumber)) {
+		query["IdCardNumber"] = request.IdCardNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIp)) {
+		query["UserIp"] = request.UserIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPhoneNumber)) {
+		query["UserPhoneNumber"] = request.UserPhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserRegistTime)) {
+		query["UserRegistTime"] = request.UserRegistTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVerifyToken"),
+		Version:     tea.String("2020-11-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVerifyTokenResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeVerifyToken"), tea.String("2020-11-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1510,11 +1669,39 @@ func (client *Client) DetectFaceAttributesWithOptions(request *DetectFaceAttribu
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		body["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageFile)) {
+		body["ImageFile"] = request.ImageFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectFaceAttributes"),
+		Version:     tea.String("2020-11-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectFaceAttributesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectFaceAttributes"), tea.String("2020-11-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1560,7 +1747,7 @@ func (client *Client) DetectFaceAttributesAdvance(request *DetectFaceAttributesA
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -1599,35 +1786,35 @@ func (client *Client) DetectFaceAttributesAdvance(request *DetectFaceAttributesA
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageFileObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectFaceAttributesReq.ImageFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectFaceAttributesReq.ImageFile = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectFaceAttributesResp, _err := client.DetectFaceAttributesWithOptions(detectFaceAttributesReq, runtime)
@@ -1644,11 +1831,43 @@ func (client *Client) LivenessDetectWithOptions(request *LivenessDetectRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		body["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaCategory)) {
+		body["MediaCategory"] = request.MediaCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaFile)) {
+		body["MediaFile"] = request.MediaFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaUrl)) {
+		body["MediaUrl"] = request.MediaUrl
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LivenessDetect"),
+		Version:     tea.String("2020-11-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &LivenessDetectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("LivenessDetect"), tea.String("2020-11-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1694,7 +1913,7 @@ func (client *Client) LivenessDetectAdvance(request *LivenessDetectAdvanceReques
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -1733,35 +1952,35 @@ func (client *Client) LivenessDetectAdvance(request *LivenessDetectAdvanceReques
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.MediaFileObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		livenessDetectReq.MediaFile = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		livenessDetectReq.MediaFile = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	livenessDetectResp, _err := client.LivenessDetectWithOptions(livenessDetectReq, runtime)
@@ -1778,11 +1997,55 @@ func (client *Client) VerifyMaterialWithOptions(request *VerifyMaterialRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceImageUrl)) {
+		query["FaceImageUrl"] = request.FaceImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdCardBackImageUrl)) {
+		query["IdCardBackImageUrl"] = request.IdCardBackImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdCardFrontImageUrl)) {
+		query["IdCardFrontImageUrl"] = request.IdCardFrontImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdCardNumber)) {
+		query["IdCardNumber"] = request.IdCardNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyMaterial"),
+		Version:     tea.String("2020-11-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &VerifyMaterialResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("VerifyMaterial"), tea.String("2020-11-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
