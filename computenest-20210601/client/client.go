@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -65,8 +65,9 @@ func (s *ContinueDeployServiceInstanceResponseBody) SetRequestId(v string) *Cont
 }
 
 type ContinueDeployServiceInstanceResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ContinueDeployServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ContinueDeployServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ContinueDeployServiceInstanceResponse) String() string {
@@ -82,6 +83,11 @@ func (s *ContinueDeployServiceInstanceResponse) SetHeaders(v map[string]*string)
 	return s
 }
 
+func (s *ContinueDeployServiceInstanceResponse) SetStatusCode(v int32) *ContinueDeployServiceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ContinueDeployServiceInstanceResponse) SetBody(v *ContinueDeployServiceInstanceResponseBody) *ContinueDeployServiceInstanceResponse {
 	s.Body = v
 	return s
@@ -89,16 +95,18 @@ func (s *ContinueDeployServiceInstanceResponse) SetBody(v *ContinueDeployService
 
 type CreateServiceInstanceRequest struct {
 	ClientToken       *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EnableAccountOps  *bool                                          `json:"EnableAccountOps,omitempty" xml:"EnableAccountOps,omitempty"`
+	ContactGroup      *string                                        `json:"ContactGroup,omitempty" xml:"ContactGroup,omitempty"`
 	EnableInstanceOps *bool                                          `json:"EnableInstanceOps,omitempty" xml:"EnableInstanceOps,omitempty"`
 	OperationMetadata *CreateServiceInstanceRequestOperationMetadata `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty" type:"Struct"`
 	Parameters        map[string]interface{}                         `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	RegionId          *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestTag        []*CreateServiceInstanceRequestRequestTag      `json:"RequestTag,omitempty" xml:"RequestTag,omitempty" type:"Repeated"`
 	ResourceGroupId   *string                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceId         *string                                        `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceVersion    *string                                        `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	SpecificationName *string                                        `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	Tag               []*CreateServiceInstanceRequestTag             `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	TemplateName      *string                                        `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TrialType         *string                                        `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
 }
 
 func (s CreateServiceInstanceRequest) String() string {
@@ -114,8 +122,8 @@ func (s *CreateServiceInstanceRequest) SetClientToken(v string) *CreateServiceIn
 	return s
 }
 
-func (s *CreateServiceInstanceRequest) SetEnableAccountOps(v bool) *CreateServiceInstanceRequest {
-	s.EnableAccountOps = &v
+func (s *CreateServiceInstanceRequest) SetContactGroup(v string) *CreateServiceInstanceRequest {
+	s.ContactGroup = &v
 	return s
 }
 
@@ -139,11 +147,6 @@ func (s *CreateServiceInstanceRequest) SetRegionId(v string) *CreateServiceInsta
 	return s
 }
 
-func (s *CreateServiceInstanceRequest) SetRequestTag(v []*CreateServiceInstanceRequestRequestTag) *CreateServiceInstanceRequest {
-	s.RequestTag = v
-	return s
-}
-
 func (s *CreateServiceInstanceRequest) SetResourceGroupId(v string) *CreateServiceInstanceRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -159,8 +162,23 @@ func (s *CreateServiceInstanceRequest) SetServiceVersion(v string) *CreateServic
 	return s
 }
 
+func (s *CreateServiceInstanceRequest) SetSpecificationName(v string) *CreateServiceInstanceRequest {
+	s.SpecificationName = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetTag(v []*CreateServiceInstanceRequestTag) *CreateServiceInstanceRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateServiceInstanceRequest) SetTemplateName(v string) *CreateServiceInstanceRequest {
 	s.TemplateName = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetTrialType(v string) *CreateServiceInstanceRequest {
+	s.TrialType = &v
 	return s
 }
 
@@ -199,41 +217,43 @@ func (s *CreateServiceInstanceRequestOperationMetadata) SetStartTime(v string) *
 	return s
 }
 
-type CreateServiceInstanceRequestRequestTag struct {
+type CreateServiceInstanceRequestTag struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
-func (s CreateServiceInstanceRequestRequestTag) String() string {
+func (s CreateServiceInstanceRequestTag) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateServiceInstanceRequestRequestTag) GoString() string {
+func (s CreateServiceInstanceRequestTag) GoString() string {
 	return s.String()
 }
 
-func (s *CreateServiceInstanceRequestRequestTag) SetKey(v string) *CreateServiceInstanceRequestRequestTag {
+func (s *CreateServiceInstanceRequestTag) SetKey(v string) *CreateServiceInstanceRequestTag {
 	s.Key = &v
 	return s
 }
 
-func (s *CreateServiceInstanceRequestRequestTag) SetValue(v string) *CreateServiceInstanceRequestRequestTag {
+func (s *CreateServiceInstanceRequestTag) SetValue(v string) *CreateServiceInstanceRequestTag {
 	s.Value = &v
 	return s
 }
 
 type CreateServiceInstanceShrinkRequest struct {
 	ClientToken       *string                                              `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EnableAccountOps  *bool                                                `json:"EnableAccountOps,omitempty" xml:"EnableAccountOps,omitempty"`
+	ContactGroup      *string                                              `json:"ContactGroup,omitempty" xml:"ContactGroup,omitempty"`
 	EnableInstanceOps *bool                                                `json:"EnableInstanceOps,omitempty" xml:"EnableInstanceOps,omitempty"`
 	OperationMetadata *CreateServiceInstanceShrinkRequestOperationMetadata `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty" type:"Struct"`
 	ParametersShrink  *string                                              `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	RegionId          *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestTag        []*CreateServiceInstanceShrinkRequestRequestTag      `json:"RequestTag,omitempty" xml:"RequestTag,omitempty" type:"Repeated"`
 	ResourceGroupId   *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceId         *string                                              `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceVersion    *string                                              `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	SpecificationName *string                                              `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	Tag               []*CreateServiceInstanceShrinkRequestTag             `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	TemplateName      *string                                              `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TrialType         *string                                              `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
 }
 
 func (s CreateServiceInstanceShrinkRequest) String() string {
@@ -249,8 +269,8 @@ func (s *CreateServiceInstanceShrinkRequest) SetClientToken(v string) *CreateSer
 	return s
 }
 
-func (s *CreateServiceInstanceShrinkRequest) SetEnableAccountOps(v bool) *CreateServiceInstanceShrinkRequest {
-	s.EnableAccountOps = &v
+func (s *CreateServiceInstanceShrinkRequest) SetContactGroup(v string) *CreateServiceInstanceShrinkRequest {
+	s.ContactGroup = &v
 	return s
 }
 
@@ -274,11 +294,6 @@ func (s *CreateServiceInstanceShrinkRequest) SetRegionId(v string) *CreateServic
 	return s
 }
 
-func (s *CreateServiceInstanceShrinkRequest) SetRequestTag(v []*CreateServiceInstanceShrinkRequestRequestTag) *CreateServiceInstanceShrinkRequest {
-	s.RequestTag = v
-	return s
-}
-
 func (s *CreateServiceInstanceShrinkRequest) SetResourceGroupId(v string) *CreateServiceInstanceShrinkRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -294,8 +309,23 @@ func (s *CreateServiceInstanceShrinkRequest) SetServiceVersion(v string) *Create
 	return s
 }
 
+func (s *CreateServiceInstanceShrinkRequest) SetSpecificationName(v string) *CreateServiceInstanceShrinkRequest {
+	s.SpecificationName = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetTag(v []*CreateServiceInstanceShrinkRequestTag) *CreateServiceInstanceShrinkRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateServiceInstanceShrinkRequest) SetTemplateName(v string) *CreateServiceInstanceShrinkRequest {
 	s.TemplateName = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetTrialType(v string) *CreateServiceInstanceShrinkRequest {
+	s.TrialType = &v
 	return s
 }
 
@@ -334,25 +364,25 @@ func (s *CreateServiceInstanceShrinkRequestOperationMetadata) SetStartTime(v str
 	return s
 }
 
-type CreateServiceInstanceShrinkRequestRequestTag struct {
+type CreateServiceInstanceShrinkRequestTag struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
-func (s CreateServiceInstanceShrinkRequestRequestTag) String() string {
+func (s CreateServiceInstanceShrinkRequestTag) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateServiceInstanceShrinkRequestRequestTag) GoString() string {
+func (s CreateServiceInstanceShrinkRequestTag) GoString() string {
 	return s.String()
 }
 
-func (s *CreateServiceInstanceShrinkRequestRequestTag) SetKey(v string) *CreateServiceInstanceShrinkRequestRequestTag {
+func (s *CreateServiceInstanceShrinkRequestTag) SetKey(v string) *CreateServiceInstanceShrinkRequestTag {
 	s.Key = &v
 	return s
 }
 
-func (s *CreateServiceInstanceShrinkRequestRequestTag) SetValue(v string) *CreateServiceInstanceShrinkRequestRequestTag {
+func (s *CreateServiceInstanceShrinkRequestTag) SetValue(v string) *CreateServiceInstanceShrinkRequestTag {
 	s.Value = &v
 	return s
 }
@@ -387,8 +417,9 @@ func (s *CreateServiceInstanceResponseBody) SetStatus(v string) *CreateServiceIn
 }
 
 type CreateServiceInstanceResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateServiceInstanceResponse) String() string {
@@ -401,6 +432,11 @@ func (s CreateServiceInstanceResponse) GoString() string {
 
 func (s *CreateServiceInstanceResponse) SetHeaders(v map[string]*string) *CreateServiceInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceInstanceResponse) SetStatusCode(v int32) *CreateServiceInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -456,8 +492,9 @@ func (s *DeleteServiceInstancesResponseBody) SetRequestId(v string) *DeleteServi
 }
 
 type DeleteServiceInstancesResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteServiceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteServiceInstancesResponse) String() string {
@@ -470,6 +507,11 @@ func (s DeleteServiceInstancesResponse) GoString() string {
 
 func (s *DeleteServiceInstancesResponse) SetHeaders(v map[string]*string) *DeleteServiceInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceInstancesResponse) SetStatusCode(v int32) *DeleteServiceInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -502,23 +544,32 @@ func (s *GetServiceInstanceRequest) SetServiceInstanceId(v string) *GetServiceIn
 }
 
 type GetServiceInstanceResponseBody struct {
-	CreateTime                *string                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnableInstanceOps         *bool                                  `json:"EnableInstanceOps,omitempty" xml:"EnableInstanceOps,omitempty"`
-	IsOperated                *bool                                  `json:"IsOperated,omitempty" xml:"IsOperated,omitempty"`
-	OperatedServiceInstanceId *string                                `json:"OperatedServiceInstanceId,omitempty" xml:"OperatedServiceInstanceId,omitempty"`
-	OperationEndTime          *string                                `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
-	OperationStartTime        *string                                `json:"OperationStartTime,omitempty" xml:"OperationStartTime,omitempty"`
-	Outputs                   *string                                `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
-	Parameters                *string                                `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	Progress                  *int64                                 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RequestId                 *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resources                 *string                                `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	Service                   *GetServiceInstanceResponseBodyService `json:"Service,omitempty" xml:"Service,omitempty" type:"Struct"`
-	ServiceInstanceId         *string                                `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	Status                    *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusDetail              *string                                `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
-	TemplateName              *string                                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	UpdateTime                *string                                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime                *string                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableInstanceOps         *bool                                        `json:"EnableInstanceOps,omitempty" xml:"EnableInstanceOps,omitempty"`
+	EndTime                   *string                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IsOperated                *bool                                        `json:"IsOperated,omitempty" xml:"IsOperated,omitempty"`
+	LicenseEndTime            *string                                      `json:"LicenseEndTime,omitempty" xml:"LicenseEndTime,omitempty"`
+	NetworkConfig             *GetServiceInstanceResponseBodyNetworkConfig `json:"NetworkConfig,omitempty" xml:"NetworkConfig,omitempty" type:"Struct"`
+	OperatedServiceInstanceId *string                                      `json:"OperatedServiceInstanceId,omitempty" xml:"OperatedServiceInstanceId,omitempty"`
+	OperationEndTime          *string                                      `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
+	OperationStartTime        *string                                      `json:"OperationStartTime,omitempty" xml:"OperationStartTime,omitempty"`
+	Outputs                   *string                                      `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
+	Parameters                *string                                      `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	PayType                   *string                                      `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Progress                  *int64                                       `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	RequestId                 *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resources                 *string                                      `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	Service                   *GetServiceInstanceResponseBodyService       `json:"Service,omitempty" xml:"Service,omitempty" type:"Struct"`
+	ServiceInstanceId         *string                                      `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	ServiceType               *string                                      `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Source                    *string                                      `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status                    *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusDetail              *string                                      `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
+	SupplierUid               *int64                                       `json:"SupplierUid,omitempty" xml:"SupplierUid,omitempty"`
+	Tags                      []*GetServiceInstanceResponseBodyTags        `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateName              *string                                      `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	UpdateTime                *string                                      `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserId                    *int64                                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetServiceInstanceResponseBody) String() string {
@@ -539,8 +590,23 @@ func (s *GetServiceInstanceResponseBody) SetEnableInstanceOps(v bool) *GetServic
 	return s
 }
 
+func (s *GetServiceInstanceResponseBody) SetEndTime(v string) *GetServiceInstanceResponseBody {
+	s.EndTime = &v
+	return s
+}
+
 func (s *GetServiceInstanceResponseBody) SetIsOperated(v bool) *GetServiceInstanceResponseBody {
 	s.IsOperated = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBody) SetLicenseEndTime(v string) *GetServiceInstanceResponseBody {
+	s.LicenseEndTime = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBody) SetNetworkConfig(v *GetServiceInstanceResponseBodyNetworkConfig) *GetServiceInstanceResponseBody {
+	s.NetworkConfig = v
 	return s
 }
 
@@ -569,6 +635,11 @@ func (s *GetServiceInstanceResponseBody) SetParameters(v string) *GetServiceInst
 	return s
 }
 
+func (s *GetServiceInstanceResponseBody) SetPayType(v string) *GetServiceInstanceResponseBody {
+	s.PayType = &v
+	return s
+}
+
 func (s *GetServiceInstanceResponseBody) SetProgress(v int64) *GetServiceInstanceResponseBody {
 	s.Progress = &v
 	return s
@@ -594,6 +665,16 @@ func (s *GetServiceInstanceResponseBody) SetServiceInstanceId(v string) *GetServ
 	return s
 }
 
+func (s *GetServiceInstanceResponseBody) SetServiceType(v string) *GetServiceInstanceResponseBody {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBody) SetSource(v string) *GetServiceInstanceResponseBody {
+	s.Source = &v
+	return s
+}
+
 func (s *GetServiceInstanceResponseBody) SetStatus(v string) *GetServiceInstanceResponseBody {
 	s.Status = &v
 	return s
@@ -601,6 +682,16 @@ func (s *GetServiceInstanceResponseBody) SetStatus(v string) *GetServiceInstance
 
 func (s *GetServiceInstanceResponseBody) SetStatusDetail(v string) *GetServiceInstanceResponseBody {
 	s.StatusDetail = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBody) SetSupplierUid(v int64) *GetServiceInstanceResponseBody {
+	s.SupplierUid = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBody) SetTags(v []*GetServiceInstanceResponseBodyTags) *GetServiceInstanceResponseBody {
+	s.Tags = v
 	return s
 }
 
@@ -614,17 +705,100 @@ func (s *GetServiceInstanceResponseBody) SetUpdateTime(v string) *GetServiceInst
 	return s
 }
 
+func (s *GetServiceInstanceResponseBody) SetUserId(v int64) *GetServiceInstanceResponseBody {
+	s.UserId = &v
+	return s
+}
+
+type GetServiceInstanceResponseBodyNetworkConfig struct {
+	EndpointId                   *string                                                                    `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	PrivateVpcConnections        []*GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections        `json:"PrivateVpcConnections,omitempty" xml:"PrivateVpcConnections,omitempty" type:"Repeated"`
+	PrivateZoneId                *string                                                                    `json:"PrivateZoneId,omitempty" xml:"PrivateZoneId,omitempty"`
+	ReversePrivateVpcConnections []*GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections `json:"ReversePrivateVpcConnections,omitempty" xml:"ReversePrivateVpcConnections,omitempty" type:"Repeated"`
+}
+
+func (s GetServiceInstanceResponseBodyNetworkConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInstanceResponseBodyNetworkConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInstanceResponseBodyNetworkConfig) SetEndpointId(v string) *GetServiceInstanceResponseBodyNetworkConfig {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBodyNetworkConfig) SetPrivateVpcConnections(v []*GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections) *GetServiceInstanceResponseBodyNetworkConfig {
+	s.PrivateVpcConnections = v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBodyNetworkConfig) SetPrivateZoneId(v string) *GetServiceInstanceResponseBodyNetworkConfig {
+	s.PrivateZoneId = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBodyNetworkConfig) SetReversePrivateVpcConnections(v []*GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections) *GetServiceInstanceResponseBodyNetworkConfig {
+	s.ReversePrivateVpcConnections = v
+	return s
+}
+
+type GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections struct {
+	EndpointId    *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	PrivateZoneId *string `json:"PrivateZoneId,omitempty" xml:"PrivateZoneId,omitempty"`
+}
+
+func (s GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections) SetEndpointId(v string) *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections) SetPrivateZoneId(v string) *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections {
+	s.PrivateZoneId = &v
+	return s
+}
+
+type GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections struct {
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+}
+
+func (s GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections) SetEndpointId(v string) *GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections {
+	s.EndpointId = &v
+	return s
+}
+
 type GetServiceInstanceResponseBodyService struct {
-	DeployMetadata *string                                              `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
-	DeployType     *string                                              `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	PublishTime    *string                                              `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	ServiceId      *string                                              `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceInfos   []*GetServiceInstanceResponseBodyServiceServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
-	ServiceType    *string                                              `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	Status         *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupplierName   *string                                              `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
-	SupplierUrl    *string                                              `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
-	Version        *string                                              `json:"Version,omitempty" xml:"Version,omitempty"`
+	DeployMetadata            *string                                              `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
+	DeployType                *string                                              `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	PublishTime               *string                                              `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	ServiceId                 *string                                              `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceInfos              []*GetServiceInstanceResponseBodyServiceServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	ServiceType               *string                                              `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Status                    *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupplierName              *string                                              `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	SupplierUrl               *string                                              `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	UpgradableServiceVersions []*string                                            `json:"UpgradableServiceVersions,omitempty" xml:"UpgradableServiceVersions,omitempty" type:"Repeated"`
+	UpgradeMetadata           *string                                              `json:"UpgradeMetadata,omitempty" xml:"UpgradeMetadata,omitempty"`
+	Version                   *string                                              `json:"Version,omitempty" xml:"Version,omitempty"`
+	VersionName               *string                                              `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s GetServiceInstanceResponseBodyService) String() string {
@@ -680,8 +854,23 @@ func (s *GetServiceInstanceResponseBodyService) SetSupplierUrl(v string) *GetSer
 	return s
 }
 
+func (s *GetServiceInstanceResponseBodyService) SetUpgradableServiceVersions(v []*string) *GetServiceInstanceResponseBodyService {
+	s.UpgradableServiceVersions = v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBodyService) SetUpgradeMetadata(v string) *GetServiceInstanceResponseBodyService {
+	s.UpgradeMetadata = &v
+	return s
+}
+
 func (s *GetServiceInstanceResponseBodyService) SetVersion(v string) *GetServiceInstanceResponseBodyService {
 	s.Version = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBodyService) SetVersionName(v string) *GetServiceInstanceResponseBodyService {
+	s.VersionName = &v
 	return s
 }
 
@@ -720,9 +909,33 @@ func (s *GetServiceInstanceResponseBodyServiceServiceInfos) SetShortDescription(
 	return s
 }
 
+type GetServiceInstanceResponseBodyTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetServiceInstanceResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInstanceResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInstanceResponseBodyTags) SetKey(v string) *GetServiceInstanceResponseBodyTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBodyTags) SetValue(v string) *GetServiceInstanceResponseBodyTags {
+	s.Value = &v
+	return s
+}
+
 type GetServiceInstanceResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetServiceInstanceResponse) String() string {
@@ -735,6 +948,11 @@ func (s GetServiceInstanceResponse) GoString() string {
 
 func (s *GetServiceInstanceResponse) SetHeaders(v map[string]*string) *GetServiceInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetServiceInstanceResponse) SetStatusCode(v int32) *GetServiceInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -815,9 +1033,12 @@ func (s *ListServiceInstanceLogsResponseBody) SetServiceInstancesLogs(v []*ListS
 
 type ListServiceInstanceLogsResponseBodyServiceInstancesLogs struct {
 	Content           *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Phase             *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	LogType           *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
 	Source            *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Timestamp         *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
@@ -834,8 +1055,18 @@ func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetContent(v s
 	return s
 }
 
-func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetPhase(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
-	s.Phase = &v
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetLogType(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.LogType = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetResourceId(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetResourceType(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.ResourceType = &v
 	return s
 }
 
@@ -849,14 +1080,20 @@ func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetSource(v st
 	return s
 }
 
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetStatus(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.Status = &v
+	return s
+}
+
 func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetTimestamp(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
 	s.Timestamp = &v
 	return s
 }
 
 type ListServiceInstanceLogsResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListServiceInstanceLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceInstanceLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListServiceInstanceLogsResponse) String() string {
@@ -872,15 +1109,25 @@ func (s *ListServiceInstanceLogsResponse) SetHeaders(v map[string]*string) *List
 	return s
 }
 
+func (s *ListServiceInstanceLogsResponse) SetStatusCode(v int32) *ListServiceInstanceLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListServiceInstanceLogsResponse) SetBody(v *ListServiceInstanceLogsResponseBody) *ListServiceInstanceLogsResponse {
 	s.Body = v
 	return s
 }
 
 type ListServiceInstanceResourcesRequest struct {
-	MaxResults        *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken         *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	ExpireTimeEnd     *string                                   `json:"ExpireTimeEnd,omitempty" xml:"ExpireTimeEnd,omitempty"`
+	ExpireTimeStart   *string                                   `json:"ExpireTimeStart,omitempty" xml:"ExpireTimeStart,omitempty"`
+	MaxResults        *string                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken         *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PayType           *string                                   `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ResourceARN       []*string                                 `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
+	ServiceInstanceId *string                                   `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	Tag               []*ListServiceInstanceResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListServiceInstanceResourcesRequest) String() string {
@@ -889,6 +1136,16 @@ func (s ListServiceInstanceResourcesRequest) String() string {
 
 func (s ListServiceInstanceResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListServiceInstanceResourcesRequest) SetExpireTimeEnd(v string) *ListServiceInstanceResourcesRequest {
+	s.ExpireTimeEnd = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesRequest) SetExpireTimeStart(v string) *ListServiceInstanceResourcesRequest {
+	s.ExpireTimeStart = &v
+	return s
 }
 
 func (s *ListServiceInstanceResourcesRequest) SetMaxResults(v string) *ListServiceInstanceResourcesRequest {
@@ -901,8 +1158,46 @@ func (s *ListServiceInstanceResourcesRequest) SetNextToken(v string) *ListServic
 	return s
 }
 
+func (s *ListServiceInstanceResourcesRequest) SetPayType(v string) *ListServiceInstanceResourcesRequest {
+	s.PayType = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesRequest) SetResourceARN(v []*string) *ListServiceInstanceResourcesRequest {
+	s.ResourceARN = v
+	return s
+}
+
 func (s *ListServiceInstanceResourcesRequest) SetServiceInstanceId(v string) *ListServiceInstanceResourcesRequest {
 	s.ServiceInstanceId = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesRequest) SetTag(v []*ListServiceInstanceResourcesRequestTag) *ListServiceInstanceResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListServiceInstanceResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListServiceInstanceResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceResourcesRequestTag) SetKey(v string) *ListServiceInstanceResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesRequestTag) SetValue(v string) *ListServiceInstanceResourcesRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -942,7 +1237,15 @@ func (s *ListServiceInstanceResourcesResponseBody) SetResources(v []*ListService
 }
 
 type ListServiceInstanceResourcesResponseBodyResources struct {
-	ResourceARN *string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty"`
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime        *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	PayType           *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType       *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RenewStatus       *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
+	RenewalPeriod     *int32  `json:"RenewalPeriod,omitempty" xml:"RenewalPeriod,omitempty"`
+	RenewalPeriodUnit *string `json:"RenewalPeriodUnit,omitempty" xml:"RenewalPeriodUnit,omitempty"`
+	ResourceARN       *string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty"`
 }
 
 func (s ListServiceInstanceResourcesResponseBodyResources) String() string {
@@ -953,14 +1256,55 @@ func (s ListServiceInstanceResourcesResponseBodyResources) GoString() string {
 	return s.String()
 }
 
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetCreateTime(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetExpireTime(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetPayType(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.PayType = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetProductCode(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetProductType(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.ProductType = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetRenewStatus(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.RenewStatus = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetRenewalPeriod(v int32) *ListServiceInstanceResourcesResponseBodyResources {
+	s.RenewalPeriod = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesResponseBodyResources) SetRenewalPeriodUnit(v string) *ListServiceInstanceResourcesResponseBodyResources {
+	s.RenewalPeriodUnit = &v
+	return s
+}
+
 func (s *ListServiceInstanceResourcesResponseBodyResources) SetResourceARN(v string) *ListServiceInstanceResourcesResponseBodyResources {
 	s.ResourceARN = &v
 	return s
 }
 
 type ListServiceInstanceResourcesResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListServiceInstanceResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceInstanceResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListServiceInstanceResourcesResponse) String() string {
@@ -976,17 +1320,22 @@ func (s *ListServiceInstanceResourcesResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *ListServiceInstanceResourcesResponse) SetStatusCode(v int32) *ListServiceInstanceResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListServiceInstanceResourcesResponse) SetBody(v *ListServiceInstanceResourcesResponseBody) *ListServiceInstanceResourcesResponse {
 	s.Body = v
 	return s
 }
 
 type ListServiceInstancesRequest struct {
-	Filter     []*ListServiceInstancesRequestFilter     `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	MaxResults *string                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestTag []*ListServiceInstancesRequestRequestTag `json:"RequestTag,omitempty" xml:"RequestTag,omitempty" type:"Repeated"`
+	Filter     []*ListServiceInstancesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	MaxResults *string                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId   *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tag        []*ListServiceInstancesRequestTag    `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListServiceInstancesRequest) String() string {
@@ -1017,8 +1366,8 @@ func (s *ListServiceInstancesRequest) SetRegionId(v string) *ListServiceInstance
 	return s
 }
 
-func (s *ListServiceInstancesRequest) SetRequestTag(v []*ListServiceInstancesRequestRequestTag) *ListServiceInstancesRequest {
-	s.RequestTag = v
+func (s *ListServiceInstancesRequest) SetTag(v []*ListServiceInstancesRequestTag) *ListServiceInstancesRequest {
+	s.Tag = v
 	return s
 }
 
@@ -1045,25 +1394,25 @@ func (s *ListServiceInstancesRequestFilter) SetValue(v []*string) *ListServiceIn
 	return s
 }
 
-type ListServiceInstancesRequestRequestTag struct {
+type ListServiceInstancesRequestTag struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
-func (s ListServiceInstancesRequestRequestTag) String() string {
+func (s ListServiceInstancesRequestTag) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListServiceInstancesRequestRequestTag) GoString() string {
+func (s ListServiceInstancesRequestTag) GoString() string {
 	return s.String()
 }
 
-func (s *ListServiceInstancesRequestRequestTag) SetKey(v string) *ListServiceInstancesRequestRequestTag {
+func (s *ListServiceInstancesRequestTag) SetKey(v string) *ListServiceInstancesRequestTag {
 	s.Key = &v
 	return s
 }
 
-func (s *ListServiceInstancesRequestRequestTag) SetValue(v string) *ListServiceInstancesRequestRequestTag {
+func (s *ListServiceInstancesRequestTag) SetValue(v string) *ListServiceInstancesRequestTag {
 	s.Value = &v
 	return s
 }
@@ -1112,17 +1461,22 @@ func (s *ListServiceInstancesResponseBody) SetTotalCount(v int64) *ListServiceIn
 type ListServiceInstancesResponseBodyServiceInstances struct {
 	CreateTime                *string                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	EnableInstanceOps         *bool                                                    `json:"EnableInstanceOps,omitempty" xml:"EnableInstanceOps,omitempty"`
+	EndTime                   *string                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OperatedServiceInstanceId *string                                                  `json:"OperatedServiceInstanceId,omitempty" xml:"OperatedServiceInstanceId,omitempty"`
 	OperationEndTime          *string                                                  `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
 	OperationStartTime        *string                                                  `json:"OperationStartTime,omitempty" xml:"OperationStartTime,omitempty"`
 	Outputs                   *string                                                  `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
 	Parameters                *string                                                  `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	PayType                   *string                                                  `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Progress                  *int64                                                   `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	Resources                 *string                                                  `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	Service                   *ListServiceInstancesResponseBodyServiceInstancesService `json:"Service,omitempty" xml:"Service,omitempty" type:"Struct"`
 	ServiceInstanceId         *string                                                  `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	ServiceType               *string                                                  `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Source                    *string                                                  `json:"Source,omitempty" xml:"Source,omitempty"`
 	Status                    *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusDetail              *string                                                  `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
+	Tags                      []*ListServiceInstancesResponseBodyServiceInstancesTags  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TemplateName              *string                                                  `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	UpdateTime                *string                                                  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
@@ -1142,6 +1496,11 @@ func (s *ListServiceInstancesResponseBodyServiceInstances) SetCreateTime(v strin
 
 func (s *ListServiceInstancesResponseBodyServiceInstances) SetEnableInstanceOps(v bool) *ListServiceInstancesResponseBodyServiceInstances {
 	s.EnableInstanceOps = &v
+	return s
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstances) SetEndTime(v string) *ListServiceInstancesResponseBodyServiceInstances {
+	s.EndTime = &v
 	return s
 }
 
@@ -1170,6 +1529,11 @@ func (s *ListServiceInstancesResponseBodyServiceInstances) SetParameters(v strin
 	return s
 }
 
+func (s *ListServiceInstancesResponseBodyServiceInstances) SetPayType(v string) *ListServiceInstancesResponseBodyServiceInstances {
+	s.PayType = &v
+	return s
+}
+
 func (s *ListServiceInstancesResponseBodyServiceInstances) SetProgress(v int64) *ListServiceInstancesResponseBodyServiceInstances {
 	s.Progress = &v
 	return s
@@ -1190,6 +1554,16 @@ func (s *ListServiceInstancesResponseBodyServiceInstances) SetServiceInstanceId(
 	return s
 }
 
+func (s *ListServiceInstancesResponseBodyServiceInstances) SetServiceType(v string) *ListServiceInstancesResponseBodyServiceInstances {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstances) SetSource(v string) *ListServiceInstancesResponseBodyServiceInstances {
+	s.Source = &v
+	return s
+}
+
 func (s *ListServiceInstancesResponseBodyServiceInstances) SetStatus(v string) *ListServiceInstancesResponseBodyServiceInstances {
 	s.Status = &v
 	return s
@@ -1197,6 +1571,11 @@ func (s *ListServiceInstancesResponseBodyServiceInstances) SetStatus(v string) *
 
 func (s *ListServiceInstancesResponseBodyServiceInstances) SetStatusDetail(v string) *ListServiceInstancesResponseBodyServiceInstances {
 	s.StatusDetail = &v
+	return s
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstances) SetTags(v []*ListServiceInstancesResponseBodyServiceInstancesTags) *ListServiceInstancesResponseBodyServiceInstances {
+	s.Tags = v
 	return s
 }
 
@@ -1220,6 +1599,7 @@ type ListServiceInstancesResponseBodyServiceInstancesService struct {
 	SupplierName *string                                                                `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
 	SupplierUrl  *string                                                                `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
 	Version      *string                                                                `json:"Version,omitempty" xml:"Version,omitempty"`
+	VersionName  *string                                                                `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s ListServiceInstancesResponseBodyServiceInstancesService) String() string {
@@ -1275,6 +1655,11 @@ func (s *ListServiceInstancesResponseBodyServiceInstancesService) SetVersion(v s
 	return s
 }
 
+func (s *ListServiceInstancesResponseBodyServiceInstancesService) SetVersionName(v string) *ListServiceInstancesResponseBodyServiceInstancesService {
+	s.VersionName = &v
+	return s
+}
+
 type ListServiceInstancesResponseBodyServiceInstancesServiceServiceInfos struct {
 	Image            *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	Locale           *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
@@ -1310,9 +1695,33 @@ func (s *ListServiceInstancesResponseBodyServiceInstancesServiceServiceInfos) Se
 	return s
 }
 
+type ListServiceInstancesResponseBodyServiceInstancesTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListServiceInstancesResponseBodyServiceInstancesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstancesResponseBodyServiceInstancesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstancesTags) SetKey(v string) *ListServiceInstancesResponseBodyServiceInstancesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstancesTags) SetValue(v string) *ListServiceInstancesResponseBodyServiceInstancesTags {
+	s.Value = &v
+	return s
+}
+
 type ListServiceInstancesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListServiceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListServiceInstancesResponse) String() string {
@@ -1325,6 +1734,11 @@ func (s ListServiceInstancesResponse) GoString() string {
 
 func (s *ListServiceInstancesResponse) SetHeaders(v map[string]*string) *ListServiceInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListServiceInstancesResponse) SetStatusCode(v int32) *ListServiceInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1385,11 +1799,39 @@ func (client *Client) ContinueDeployServiceInstanceWithOptions(request *Continue
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ContinueDeployServiceInstance"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ContinueDeployServiceInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ContinueDeployServiceInstance"), tea.String("2021-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1419,11 +1861,75 @@ func (client *Client) CreateServiceInstanceWithOptions(tmpReq *CreateServiceInst
 		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactGroup)) {
+		query["ContactGroup"] = request.ContactGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableInstanceOps)) {
+		query["EnableInstanceOps"] = request.EnableInstanceOps
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.OperationMetadata))) {
+		query["OperationMetadata"] = request.OperationMetadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+		query["Parameters"] = request.ParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecificationName)) {
+		query["SpecificationName"] = request.SpecificationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrialType)) {
+		query["TrialType"] = request.TrialType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceInstance"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateServiceInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateServiceInstance"), tea.String("2021-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1447,11 +1953,35 @@ func (client *Client) DeleteServiceInstancesWithOptions(request *DeleteServiceIn
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceInstances"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteServiceInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteServiceInstances"), tea.String("2021-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1475,11 +2005,31 @@ func (client *Client) GetServiceInstanceWithOptions(request *GetServiceInstanceR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceInstance"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetServiceInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetServiceInstance"), tea.String("2021-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1503,11 +2053,39 @@ func (client *Client) ListServiceInstanceLogsWithOptions(request *ListServiceIns
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceInstanceLogs"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListServiceInstanceLogsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListServiceInstanceLogs"), tea.String("2021-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1531,11 +2109,55 @@ func (client *Client) ListServiceInstanceResourcesWithOptions(request *ListServi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExpireTimeEnd)) {
+		query["ExpireTimeEnd"] = request.ExpireTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpireTimeStart)) {
+		query["ExpireTimeStart"] = request.ExpireTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceARN)) {
+		query["ResourceARN"] = request.ResourceARN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceInstanceResources"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListServiceInstanceResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListServiceInstanceResources"), tea.String("2021-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1559,11 +2181,43 @@ func (client *Client) ListServiceInstancesWithOptions(request *ListServiceInstan
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceInstances"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListServiceInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListServiceInstances"), tea.String("2021-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
