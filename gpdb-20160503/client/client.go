@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -373,33 +373,34 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 }
 
 type CreateDBInstanceRequest struct {
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CreateSampleData      *bool   `json:"CreateSampleData,omitempty" xml:"CreateSampleData,omitempty"`
-	DBInstanceCategory    *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
-	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceGroupCount  *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
-	DBInstanceMode        *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
-	Engine                *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	InstanceNetworkType   *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	InstanceSpec          *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	MasterNodeNum         *string `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PayType               *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period                *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	PrivateIpAddress      *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityIPList        *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	SegNodeNum            *string `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
-	SegStorageType        *string `json:"SegStorageType,omitempty" xml:"SegStorageType,omitempty"`
-	StorageSize           *int64  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	StorageType           *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	UsedTime              *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	VPCId                 *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId             *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId                *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ClientToken           *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CreateSampleData      *bool                         `json:"CreateSampleData,omitempty" xml:"CreateSampleData,omitempty"`
+	DBInstanceCategory    *string                       `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
+	DBInstanceClass       *string                       `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceDescription *string                       `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	DBInstanceGroupCount  *string                       `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
+	DBInstanceMode        *string                       `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
+	Engine                *string                       `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion         *string                       `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	InstanceNetworkType   *string                       `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	InstanceSpec          *string                       `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	MasterNodeNum         *string                       `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
+	OwnerId               *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PayType               *string                       `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Period                *string                       `json:"Period,omitempty" xml:"Period,omitempty"`
+	PrivateIpAddress      *string                       `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	RegionId              *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityIPList        *string                       `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	SegNodeNum            *string                       `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	SegStorageType        *string                       `json:"SegStorageType,omitempty" xml:"SegStorageType,omitempty"`
+	StorageSize           *int64                        `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	StorageType           *string                       `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tag                   []*CreateDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UsedTime              *string                       `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	VPCId                 *string                       `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId             *string                       `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId                *string                       `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateDBInstanceRequest) String() string {
@@ -525,6 +526,11 @@ func (s *CreateDBInstanceRequest) SetStorageType(v string) *CreateDBInstanceRequ
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetTag(v []*CreateDBInstanceRequestTag) *CreateDBInstanceRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetUsedTime(v string) *CreateDBInstanceRequest {
 	s.UsedTime = &v
 	return s
@@ -542,6 +548,29 @@ func (s *CreateDBInstanceRequest) SetVSwitchId(v string) *CreateDBInstanceReques
 
 func (s *CreateDBInstanceRequest) SetZoneId(v string) *CreateDBInstanceRequest {
 	s.ZoneId = &v
+	return s
+}
+
+type CreateDBInstanceRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDBInstanceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBInstanceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBInstanceRequestTag) SetKey(v string) *CreateDBInstanceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequestTag) SetValue(v string) *CreateDBInstanceRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -5557,11 +5586,12 @@ func (s *DescribeDataBackupsResponse) SetBody(v *DescribeDataBackupsResponseBody
 }
 
 type DescribeDataShareInstancesRequest struct {
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SearchValue     *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
 }
 
 func (s DescribeDataShareInstancesRequest) String() string {
@@ -5589,6 +5619,11 @@ func (s *DescribeDataShareInstancesRequest) SetPageSize(v int32) *DescribeDataSh
 
 func (s *DescribeDataShareInstancesRequest) SetRegionId(v string) *DescribeDataShareInstancesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDataShareInstancesRequest) SetResourceGroupId(v string) *DescribeDataShareInstancesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -5732,10 +5767,11 @@ func (s *DescribeDataShareInstancesResponse) SetBody(v *DescribeDataShareInstanc
 }
 
 type DescribeDataSharePerformanceRequest struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Key             *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDataSharePerformanceRequest) String() string {
@@ -5758,6 +5794,11 @@ func (s *DescribeDataSharePerformanceRequest) SetKey(v string) *DescribeDataShar
 
 func (s *DescribeDataSharePerformanceRequest) SetRegionId(v string) *DescribeDataSharePerformanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDataSharePerformanceRequest) SetResourceGroupId(v string) *DescribeDataSharePerformanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9461,6 +9502,272 @@ func (s *DescribeSQLLogsOnSliceResponse) SetBody(v *DescribeSQLLogsOnSliceRespon
 	return s
 }
 
+type DescribeSQLLogsV2Request struct {
+	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database        *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecuteCost     *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
+	ExecuteState    *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
+	MaxExecuteCost  *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
+	MinExecuteCost  *string `json:"MinExecuteCost,omitempty" xml:"MinExecuteCost,omitempty"`
+	OperationClass  *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
+	OperationType   *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	PageNumber      *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryKeywords   *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SourceIP        *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	User            *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeSQLLogsV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLLogsV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLLogsV2Request) SetDBInstanceId(v string) *DescribeSQLLogsV2Request {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetDatabase(v string) *DescribeSQLLogsV2Request {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetEndTime(v string) *DescribeSQLLogsV2Request {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetExecuteCost(v string) *DescribeSQLLogsV2Request {
+	s.ExecuteCost = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetExecuteState(v string) *DescribeSQLLogsV2Request {
+	s.ExecuteState = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetMaxExecuteCost(v string) *DescribeSQLLogsV2Request {
+	s.MaxExecuteCost = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetMinExecuteCost(v string) *DescribeSQLLogsV2Request {
+	s.MinExecuteCost = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetOperationClass(v string) *DescribeSQLLogsV2Request {
+	s.OperationClass = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetOperationType(v string) *DescribeSQLLogsV2Request {
+	s.OperationType = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetPageNumber(v string) *DescribeSQLLogsV2Request {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetPageSize(v string) *DescribeSQLLogsV2Request {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetQueryKeywords(v string) *DescribeSQLLogsV2Request {
+	s.QueryKeywords = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetRegionId(v string) *DescribeSQLLogsV2Request {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetResourceGroupId(v string) *DescribeSQLLogsV2Request {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetSourceIP(v string) *DescribeSQLLogsV2Request {
+	s.SourceIP = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetStartTime(v string) *DescribeSQLLogsV2Request {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Request) SetUser(v string) *DescribeSQLLogsV2Request {
+	s.User = &v
+	return s
+}
+
+type DescribeSQLLogsV2ResponseBody struct {
+	Items           []*DescribeSQLLogsV2ResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageNumber      *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount *int32                                `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	RequestId       *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeSQLLogsV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLLogsV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLLogsV2ResponseBody) SetItems(v []*DescribeSQLLogsV2ResponseBodyItems) *DescribeSQLLogsV2ResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBody) SetPageNumber(v int32) *DescribeSQLLogsV2ResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBody) SetPageRecordCount(v int32) *DescribeSQLLogsV2ResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBody) SetRequestId(v string) *DescribeSQLLogsV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeSQLLogsV2ResponseBodyItems struct {
+	AccountName          *string  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DBName               *string  `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	DBRole               *string  `json:"DBRole,omitempty" xml:"DBRole,omitempty"`
+	ExecuteCost          *float32 `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
+	ExecuteState         *string  `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
+	OperationClass       *string  `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
+	OperationExecuteTime *string  `json:"OperationExecuteTime,omitempty" xml:"OperationExecuteTime,omitempty"`
+	OperationType        *string  `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	ReturnRowCounts      *int64   `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
+	SQLText              *string  `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	ScanRowCounts        *int64   `json:"ScanRowCounts,omitempty" xml:"ScanRowCounts,omitempty"`
+	SourceIP             *string  `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
+	SourcePort           *int32   `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+}
+
+func (s DescribeSQLLogsV2ResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLLogsV2ResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetAccountName(v string) *DescribeSQLLogsV2ResponseBodyItems {
+	s.AccountName = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetDBName(v string) *DescribeSQLLogsV2ResponseBodyItems {
+	s.DBName = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetDBRole(v string) *DescribeSQLLogsV2ResponseBodyItems {
+	s.DBRole = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetExecuteCost(v float32) *DescribeSQLLogsV2ResponseBodyItems {
+	s.ExecuteCost = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetExecuteState(v string) *DescribeSQLLogsV2ResponseBodyItems {
+	s.ExecuteState = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetOperationClass(v string) *DescribeSQLLogsV2ResponseBodyItems {
+	s.OperationClass = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetOperationExecuteTime(v string) *DescribeSQLLogsV2ResponseBodyItems {
+	s.OperationExecuteTime = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetOperationType(v string) *DescribeSQLLogsV2ResponseBodyItems {
+	s.OperationType = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetReturnRowCounts(v int64) *DescribeSQLLogsV2ResponseBodyItems {
+	s.ReturnRowCounts = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetSQLText(v string) *DescribeSQLLogsV2ResponseBodyItems {
+	s.SQLText = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetScanRowCounts(v int64) *DescribeSQLLogsV2ResponseBodyItems {
+	s.ScanRowCounts = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetSourceIP(v string) *DescribeSQLLogsV2ResponseBodyItems {
+	s.SourceIP = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetSourcePort(v int32) *DescribeSQLLogsV2ResponseBodyItems {
+	s.SourcePort = &v
+	return s
+}
+
+type DescribeSQLLogsV2Response struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSQLLogsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSQLLogsV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLLogsV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLLogsV2Response) SetHeaders(v map[string]*string) *DescribeSQLLogsV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Response) SetStatusCode(v int32) *DescribeSQLLogsV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2Response) SetBody(v *DescribeSQLLogsV2ResponseBody) *DescribeSQLLogsV2Response {
+	s.Body = v
+	return s
+}
+
 type DescribeSampleDataRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -10191,6 +10498,7 @@ type DescribeTagsRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -10216,6 +10524,11 @@ func (s *DescribeTagsRequest) SetOwnerId(v int64) *DescribeTagsRequest {
 
 func (s *DescribeTagsRequest) SetRegionId(v string) *DescribeTagsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTagsRequest) SetResourceGroupId(v string) *DescribeTagsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -13557,6 +13870,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["StorageType"] = request.StorageType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
 		query["UsedTime"] = request.UsedTime
 	}
@@ -15283,6 +15600,10 @@ func (client *Client) DescribeDataShareInstancesWithOptions(request *DescribeDat
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SearchValue)) {
 		query["SearchValue"] = request.SearchValue
 	}
@@ -15337,6 +15658,10 @@ func (client *Client) DescribeDataSharePerformanceWithOptions(request *DescribeD
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -16589,6 +16914,114 @@ func (client *Client) DescribeSQLLogsOnSlice(request *DescribeSQLLogsOnSliceRequ
 	return _result, _err
 }
 
+func (client *Client) DescribeSQLLogsV2WithOptions(request *DescribeSQLLogsV2Request, runtime *util.RuntimeOptions) (_result *DescribeSQLLogsV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteCost)) {
+		query["ExecuteCost"] = request.ExecuteCost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteState)) {
+		query["ExecuteState"] = request.ExecuteState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxExecuteCost)) {
+		query["MaxExecuteCost"] = request.MaxExecuteCost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinExecuteCost)) {
+		query["MinExecuteCost"] = request.MinExecuteCost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationClass)) {
+		query["OperationClass"] = request.OperationClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryKeywords)) {
+		query["QueryKeywords"] = request.QueryKeywords
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIP)) {
+		query["SourceIP"] = request.SourceIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSQLLogsV2"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSQLLogsV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSQLLogsV2(request *DescribeSQLLogsV2Request) (_result *DescribeSQLLogsV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSQLLogsV2Response{}
+	_body, _err := client.DescribeSQLLogsV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeSampleDataWithOptions(request *DescribeSampleDataRequest, runtime *util.RuntimeOptions) (_result *DescribeSampleDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16877,6 +17310,10 @@ func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
