@@ -5,21 +5,22 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type DoIotChgBindOrUnBindRequest struct {
+	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	Imei                 *string `json:"Imei,omitempty" xml:"Imei,omitempty"`
+	MidChannelId         *string `json:"MidChannelId,omitempty" xml:"MidChannelId,omitempty"`
+	NewImei              *string `json:"NewImei,omitempty" xml:"NewImei,omitempty"`
+	OpionType            *string `json:"OpionType,omitempty" xml:"OpionType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
-	Imei                 *string `json:"Imei,omitempty" xml:"Imei,omitempty"`
-	NewImei              *string `json:"NewImei,omitempty" xml:"NewImei,omitempty"`
-	OpionType            *string `json:"OpionType,omitempty" xml:"OpionType,omitempty"`
-	MidChannelId         *string `json:"MidChannelId,omitempty" xml:"MidChannelId,omitempty"`
 }
 
 func (s DoIotChgBindOrUnBindRequest) String() string {
@@ -28,6 +29,31 @@ func (s DoIotChgBindOrUnBindRequest) String() string {
 
 func (s DoIotChgBindOrUnBindRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DoIotChgBindOrUnBindRequest) SetIccid(v string) *DoIotChgBindOrUnBindRequest {
+	s.Iccid = &v
+	return s
+}
+
+func (s *DoIotChgBindOrUnBindRequest) SetImei(v string) *DoIotChgBindOrUnBindRequest {
+	s.Imei = &v
+	return s
+}
+
+func (s *DoIotChgBindOrUnBindRequest) SetMidChannelId(v string) *DoIotChgBindOrUnBindRequest {
+	s.MidChannelId = &v
+	return s
+}
+
+func (s *DoIotChgBindOrUnBindRequest) SetNewImei(v string) *DoIotChgBindOrUnBindRequest {
+	s.NewImei = &v
+	return s
+}
+
+func (s *DoIotChgBindOrUnBindRequest) SetOpionType(v string) *DoIotChgBindOrUnBindRequest {
+	s.OpionType = &v
+	return s
 }
 
 func (s *DoIotChgBindOrUnBindRequest) SetOwnerId(v int64) *DoIotChgBindOrUnBindRequest {
@@ -45,36 +71,11 @@ func (s *DoIotChgBindOrUnBindRequest) SetResourceOwnerId(v int64) *DoIotChgBindO
 	return s
 }
 
-func (s *DoIotChgBindOrUnBindRequest) SetIccid(v string) *DoIotChgBindOrUnBindRequest {
-	s.Iccid = &v
-	return s
-}
-
-func (s *DoIotChgBindOrUnBindRequest) SetImei(v string) *DoIotChgBindOrUnBindRequest {
-	s.Imei = &v
-	return s
-}
-
-func (s *DoIotChgBindOrUnBindRequest) SetNewImei(v string) *DoIotChgBindOrUnBindRequest {
-	s.NewImei = &v
-	return s
-}
-
-func (s *DoIotChgBindOrUnBindRequest) SetOpionType(v string) *DoIotChgBindOrUnBindRequest {
-	s.OpionType = &v
-	return s
-}
-
-func (s *DoIotChgBindOrUnBindRequest) SetMidChannelId(v string) *DoIotChgBindOrUnBindRequest {
-	s.MidChannelId = &v
-	return s
-}
-
 type DoIotChgBindOrUnBindResponseBody struct {
+	Code       *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	IotModBind *DoIotChgBindOrUnBindResponseBodyIotModBind `json:"IotModBind,omitempty" xml:"IotModBind,omitempty" type:"Struct"`
 	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code       *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DoIotChgBindOrUnBindResponseBody) String() string {
@@ -83,6 +84,11 @@ func (s DoIotChgBindOrUnBindResponseBody) String() string {
 
 func (s DoIotChgBindOrUnBindResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DoIotChgBindOrUnBindResponseBody) SetCode(v string) *DoIotChgBindOrUnBindResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DoIotChgBindOrUnBindResponseBody) SetIotModBind(v *DoIotChgBindOrUnBindResponseBodyIotModBind) *DoIotChgBindOrUnBindResponseBody {
@@ -97,11 +103,6 @@ func (s *DoIotChgBindOrUnBindResponseBody) SetMessage(v string) *DoIotChgBindOrU
 
 func (s *DoIotChgBindOrUnBindResponseBody) SetRequestId(v string) *DoIotChgBindOrUnBindResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DoIotChgBindOrUnBindResponseBody) SetCode(v string) *DoIotChgBindOrUnBindResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -123,8 +124,9 @@ func (s *DoIotChgBindOrUnBindResponseBodyIotModBind) SetIsModSuccess(v bool) *Do
 }
 
 type DoIotChgBindOrUnBindResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DoIotChgBindOrUnBindResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DoIotChgBindOrUnBindResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DoIotChgBindOrUnBindResponse) String() string {
@@ -140,16 +142,21 @@ func (s *DoIotChgBindOrUnBindResponse) SetHeaders(v map[string]*string) *DoIotCh
 	return s
 }
 
+func (s *DoIotChgBindOrUnBindResponse) SetStatusCode(v int32) *DoIotChgBindOrUnBindResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DoIotChgBindOrUnBindResponse) SetBody(v *DoIotChgBindOrUnBindResponseBody) *DoIotChgBindOrUnBindResponse {
 	s.Body = v
 	return s
 }
 
 type DoIotIsImeiExistRequest struct {
+	Imei                 *string `json:"Imei,omitempty" xml:"Imei,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Imei                 *string `json:"Imei,omitempty" xml:"Imei,omitempty"`
 }
 
 func (s DoIotIsImeiExistRequest) String() string {
@@ -158,6 +165,11 @@ func (s DoIotIsImeiExistRequest) String() string {
 
 func (s DoIotIsImeiExistRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DoIotIsImeiExistRequest) SetImei(v string) *DoIotIsImeiExistRequest {
+	s.Imei = &v
+	return s
 }
 
 func (s *DoIotIsImeiExistRequest) SetOwnerId(v int64) *DoIotIsImeiExistRequest {
@@ -175,16 +187,11 @@ func (s *DoIotIsImeiExistRequest) SetResourceOwnerId(v int64) *DoIotIsImeiExistR
 	return s
 }
 
-func (s *DoIotIsImeiExistRequest) SetImei(v string) *DoIotIsImeiExistRequest {
-	s.Imei = &v
-	return s
-}
-
 type DoIotIsImeiExistResponseBody struct {
+	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	IotImeiExist *DoIotIsImeiExistResponseBodyIotImeiExist `json:"IotImeiExist,omitempty" xml:"IotImeiExist,omitempty" type:"Struct"`
 	Message      *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DoIotIsImeiExistResponseBody) String() string {
@@ -193,6 +200,11 @@ func (s DoIotIsImeiExistResponseBody) String() string {
 
 func (s DoIotIsImeiExistResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DoIotIsImeiExistResponseBody) SetCode(v string) *DoIotIsImeiExistResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DoIotIsImeiExistResponseBody) SetIotImeiExist(v *DoIotIsImeiExistResponseBodyIotImeiExist) *DoIotIsImeiExistResponseBody {
@@ -207,11 +219,6 @@ func (s *DoIotIsImeiExistResponseBody) SetMessage(v string) *DoIotIsImeiExistRes
 
 func (s *DoIotIsImeiExistResponseBody) SetRequestId(v string) *DoIotIsImeiExistResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DoIotIsImeiExistResponseBody) SetCode(v string) *DoIotIsImeiExistResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -233,8 +240,9 @@ func (s *DoIotIsImeiExistResponseBodyIotImeiExist) SetIsImeiExist(v bool) *DoIot
 }
 
 type DoIotIsImeiExistResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DoIotIsImeiExistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DoIotIsImeiExistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DoIotIsImeiExistResponse) String() string {
@@ -250,18 +258,23 @@ func (s *DoIotIsImeiExistResponse) SetHeaders(v map[string]*string) *DoIotIsImei
 	return s
 }
 
+func (s *DoIotIsImeiExistResponse) SetStatusCode(v int32) *DoIotIsImeiExistResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DoIotIsImeiExistResponse) SetBody(v *DoIotIsImeiExistResponseBody) *DoIotIsImeiExistResponse {
 	s.Body = v
 	return s
 }
 
 type DoIotPostImeiRequest struct {
+	Comments             *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	DeviceType           *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	Imei                 *string `json:"Imei,omitempty" xml:"Imei,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Imei                 *string `json:"Imei,omitempty" xml:"Imei,omitempty"`
-	Comments             *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	DeviceType           *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
 }
 
 func (s DoIotPostImeiRequest) String() string {
@@ -270,6 +283,21 @@ func (s DoIotPostImeiRequest) String() string {
 
 func (s DoIotPostImeiRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DoIotPostImeiRequest) SetComments(v string) *DoIotPostImeiRequest {
+	s.Comments = &v
+	return s
+}
+
+func (s *DoIotPostImeiRequest) SetDeviceType(v string) *DoIotPostImeiRequest {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *DoIotPostImeiRequest) SetImei(v string) *DoIotPostImeiRequest {
+	s.Imei = &v
+	return s
 }
 
 func (s *DoIotPostImeiRequest) SetOwnerId(v int64) *DoIotPostImeiRequest {
@@ -287,26 +315,11 @@ func (s *DoIotPostImeiRequest) SetResourceOwnerId(v int64) *DoIotPostImeiRequest
 	return s
 }
 
-func (s *DoIotPostImeiRequest) SetImei(v string) *DoIotPostImeiRequest {
-	s.Imei = &v
-	return s
-}
-
-func (s *DoIotPostImeiRequest) SetComments(v string) *DoIotPostImeiRequest {
-	s.Comments = &v
-	return s
-}
-
-func (s *DoIotPostImeiRequest) SetDeviceType(v string) *DoIotPostImeiRequest {
-	s.DeviceType = &v
-	return s
-}
-
 type DoIotPostImeiResponseBody struct {
+	Code        *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	IotPostImei *DoIotPostImeiResponseBodyIotPostImei `json:"IotPostImei,omitempty" xml:"IotPostImei,omitempty" type:"Struct"`
 	Message     *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code        *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DoIotPostImeiResponseBody) String() string {
@@ -315,6 +328,11 @@ func (s DoIotPostImeiResponseBody) String() string {
 
 func (s DoIotPostImeiResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DoIotPostImeiResponseBody) SetCode(v string) *DoIotPostImeiResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DoIotPostImeiResponseBody) SetIotPostImei(v *DoIotPostImeiResponseBodyIotPostImei) *DoIotPostImeiResponseBody {
@@ -329,11 +347,6 @@ func (s *DoIotPostImeiResponseBody) SetMessage(v string) *DoIotPostImeiResponseB
 
 func (s *DoIotPostImeiResponseBody) SetRequestId(v string) *DoIotPostImeiResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DoIotPostImeiResponseBody) SetCode(v string) *DoIotPostImeiResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -355,8 +368,9 @@ func (s *DoIotPostImeiResponseBodyIotPostImei) SetIsPostSuccess(v bool) *DoIotPo
 }
 
 type DoIotPostImeiResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DoIotPostImeiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DoIotPostImeiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DoIotPostImeiResponse) String() string {
@@ -372,170 +386,23 @@ func (s *DoIotPostImeiResponse) SetHeaders(v map[string]*string) *DoIotPostImeiR
 	return s
 }
 
+func (s *DoIotPostImeiResponse) SetStatusCode(v int32) *DoIotPostImeiResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DoIotPostImeiResponse) SetBody(v *DoIotPostImeiResponseBody) *DoIotPostImeiResponse {
 	s.Body = v
 	return s
 }
 
-type DoIotRechargeRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
-	OfferIds             *string `json:"OfferIds,omitempty" xml:"OfferIds,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	Amount               *int64  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	EffCode              *string `json:"EffCode,omitempty" xml:"EffCode,omitempty"`
-	OrderNum             *int32  `json:"OrderNum,omitempty" xml:"OrderNum,omitempty"`
-}
-
-func (s DoIotRechargeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoIotRechargeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DoIotRechargeRequest) SetOwnerId(v int64) *DoIotRechargeRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DoIotRechargeRequest) SetResourceOwnerAccount(v string) *DoIotRechargeRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DoIotRechargeRequest) SetResourceOwnerId(v int64) *DoIotRechargeRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DoIotRechargeRequest) SetIccid(v string) *DoIotRechargeRequest {
-	s.Iccid = &v
-	return s
-}
-
-func (s *DoIotRechargeRequest) SetOfferIds(v string) *DoIotRechargeRequest {
-	s.OfferIds = &v
-	return s
-}
-
-func (s *DoIotRechargeRequest) SetOutId(v string) *DoIotRechargeRequest {
-	s.OutId = &v
-	return s
-}
-
-func (s *DoIotRechargeRequest) SetAmount(v int64) *DoIotRechargeRequest {
-	s.Amount = &v
-	return s
-}
-
-func (s *DoIotRechargeRequest) SetEffCode(v string) *DoIotRechargeRequest {
-	s.EffCode = &v
-	return s
-}
-
-func (s *DoIotRechargeRequest) SetOrderNum(v int32) *DoIotRechargeRequest {
-	s.OrderNum = &v
-	return s
-}
-
-type DoIotRechargeResponseBody struct {
-	Message     *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	IotRecharge *DoIotRechargeResponseBodyIotRecharge `json:"IotRecharge,omitempty" xml:"IotRecharge,omitempty" type:"Struct"`
-	Code        *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s DoIotRechargeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoIotRechargeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DoIotRechargeResponseBody) SetMessage(v string) *DoIotRechargeResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DoIotRechargeResponseBody) SetRequestId(v string) *DoIotRechargeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DoIotRechargeResponseBody) SetIotRecharge(v *DoIotRechargeResponseBodyIotRecharge) *DoIotRechargeResponseBody {
-	s.IotRecharge = v
-	return s
-}
-
-func (s *DoIotRechargeResponseBody) SetCode(v string) *DoIotRechargeResponseBody {
-	s.Code = &v
-	return s
-}
-
-type DoIotRechargeResponseBodyIotRecharge struct {
-	OrderNo     *string `json:"OrderNo,omitempty" xml:"OrderNo,omitempty"`
-	DoneCode    *string `json:"DoneCode,omitempty" xml:"DoneCode,omitempty"`
-	OrderResult *string `json:"OrderResult,omitempty" xml:"OrderResult,omitempty"`
-}
-
-func (s DoIotRechargeResponseBodyIotRecharge) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoIotRechargeResponseBodyIotRecharge) GoString() string {
-	return s.String()
-}
-
-func (s *DoIotRechargeResponseBodyIotRecharge) SetOrderNo(v string) *DoIotRechargeResponseBodyIotRecharge {
-	s.OrderNo = &v
-	return s
-}
-
-func (s *DoIotRechargeResponseBodyIotRecharge) SetDoneCode(v string) *DoIotRechargeResponseBodyIotRecharge {
-	s.DoneCode = &v
-	return s
-}
-
-func (s *DoIotRechargeResponseBodyIotRecharge) SetOrderResult(v string) *DoIotRechargeResponseBodyIotRecharge {
-	s.OrderResult = &v
-	return s
-}
-
-type DoIotRechargeResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DoIotRechargeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DoIotRechargeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoIotRechargeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DoIotRechargeResponse) SetHeaders(v map[string]*string) *DoIotRechargeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DoIotRechargeResponse) SetBody(v *DoIotRechargeResponseBody) *DoIotRechargeResponse {
-	s.Body = v
-	return s
-}
-
 type DoIotSetAbsoluteRemindConfigRequest struct {
+	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	ConfigInfo           *string `json:"ConfigInfo,omitempty" xml:"ConfigInfo,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	ConfigInfo           *string `json:"ConfigInfo,omitempty" xml:"ConfigInfo,omitempty"`
 }
 
 func (s DoIotSetAbsoluteRemindConfigRequest) String() string {
@@ -544,6 +411,21 @@ func (s DoIotSetAbsoluteRemindConfigRequest) String() string {
 
 func (s DoIotSetAbsoluteRemindConfigRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DoIotSetAbsoluteRemindConfigRequest) SetBizId(v string) *DoIotSetAbsoluteRemindConfigRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *DoIotSetAbsoluteRemindConfigRequest) SetBizType(v string) *DoIotSetAbsoluteRemindConfigRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *DoIotSetAbsoluteRemindConfigRequest) SetConfigInfo(v string) *DoIotSetAbsoluteRemindConfigRequest {
+	s.ConfigInfo = &v
+	return s
 }
 
 func (s *DoIotSetAbsoluteRemindConfigRequest) SetOwnerId(v int64) *DoIotSetAbsoluteRemindConfigRequest {
@@ -561,25 +443,10 @@ func (s *DoIotSetAbsoluteRemindConfigRequest) SetResourceOwnerId(v int64) *DoIot
 	return s
 }
 
-func (s *DoIotSetAbsoluteRemindConfigRequest) SetBizType(v string) *DoIotSetAbsoluteRemindConfigRequest {
-	s.BizType = &v
-	return s
-}
-
-func (s *DoIotSetAbsoluteRemindConfigRequest) SetBizId(v string) *DoIotSetAbsoluteRemindConfigRequest {
-	s.BizId = &v
-	return s
-}
-
-func (s *DoIotSetAbsoluteRemindConfigRequest) SetConfigInfo(v string) *DoIotSetAbsoluteRemindConfigRequest {
-	s.ConfigInfo = &v
-	return s
-}
-
 type DoIotSetAbsoluteRemindConfigResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DoIotSetAbsoluteRemindConfigResponseBody) String() string {
@@ -588,6 +455,11 @@ func (s DoIotSetAbsoluteRemindConfigResponseBody) String() string {
 
 func (s DoIotSetAbsoluteRemindConfigResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DoIotSetAbsoluteRemindConfigResponseBody) SetCode(v string) *DoIotSetAbsoluteRemindConfigResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DoIotSetAbsoluteRemindConfigResponseBody) SetMessage(v string) *DoIotSetAbsoluteRemindConfigResponseBody {
@@ -600,14 +472,10 @@ func (s *DoIotSetAbsoluteRemindConfigResponseBody) SetRequestId(v string) *DoIot
 	return s
 }
 
-func (s *DoIotSetAbsoluteRemindConfigResponseBody) SetCode(v string) *DoIotSetAbsoluteRemindConfigResponseBody {
-	s.Code = &v
-	return s
-}
-
 type DoIotSetAbsoluteRemindConfigResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DoIotSetAbsoluteRemindConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DoIotSetAbsoluteRemindConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DoIotSetAbsoluteRemindConfigResponse) String() string {
@@ -623,19 +491,24 @@ func (s *DoIotSetAbsoluteRemindConfigResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *DoIotSetAbsoluteRemindConfigResponse) SetStatusCode(v int32) *DoIotSetAbsoluteRemindConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DoIotSetAbsoluteRemindConfigResponse) SetBody(v *DoIotSetAbsoluteRemindConfigResponseBody) *DoIotSetAbsoluteRemindConfigResponse {
 	s.Body = v
 	return s
 }
 
 type DoIotSetRemindConfigRequest struct {
+	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	ConfigInfo           *string `json:"ConfigInfo,omitempty" xml:"ConfigInfo,omitempty"`
+	OperationType        *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	OperationType        *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	ConfigInfo           *string `json:"ConfigInfo,omitempty" xml:"ConfigInfo,omitempty"`
 }
 
 func (s DoIotSetRemindConfigRequest) String() string {
@@ -644,6 +517,26 @@ func (s DoIotSetRemindConfigRequest) String() string {
 
 func (s DoIotSetRemindConfigRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DoIotSetRemindConfigRequest) SetBizId(v string) *DoIotSetRemindConfigRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *DoIotSetRemindConfigRequest) SetBizType(v string) *DoIotSetRemindConfigRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *DoIotSetRemindConfigRequest) SetConfigInfo(v string) *DoIotSetRemindConfigRequest {
+	s.ConfigInfo = &v
+	return s
+}
+
+func (s *DoIotSetRemindConfigRequest) SetOperationType(v string) *DoIotSetRemindConfigRequest {
+	s.OperationType = &v
+	return s
 }
 
 func (s *DoIotSetRemindConfigRequest) SetOwnerId(v int64) *DoIotSetRemindConfigRequest {
@@ -661,30 +554,10 @@ func (s *DoIotSetRemindConfigRequest) SetResourceOwnerId(v int64) *DoIotSetRemin
 	return s
 }
 
-func (s *DoIotSetRemindConfigRequest) SetBizType(v string) *DoIotSetRemindConfigRequest {
-	s.BizType = &v
-	return s
-}
-
-func (s *DoIotSetRemindConfigRequest) SetBizId(v string) *DoIotSetRemindConfigRequest {
-	s.BizId = &v
-	return s
-}
-
-func (s *DoIotSetRemindConfigRequest) SetOperationType(v string) *DoIotSetRemindConfigRequest {
-	s.OperationType = &v
-	return s
-}
-
-func (s *DoIotSetRemindConfigRequest) SetConfigInfo(v string) *DoIotSetRemindConfigRequest {
-	s.ConfigInfo = &v
-	return s
-}
-
 type DoIotSetRemindConfigResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DoIotSetRemindConfigResponseBody) String() string {
@@ -693,6 +566,11 @@ func (s DoIotSetRemindConfigResponseBody) String() string {
 
 func (s DoIotSetRemindConfigResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DoIotSetRemindConfigResponseBody) SetCode(v string) *DoIotSetRemindConfigResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DoIotSetRemindConfigResponseBody) SetMessage(v string) *DoIotSetRemindConfigResponseBody {
@@ -705,14 +583,10 @@ func (s *DoIotSetRemindConfigResponseBody) SetRequestId(v string) *DoIotSetRemin
 	return s
 }
 
-func (s *DoIotSetRemindConfigResponseBody) SetCode(v string) *DoIotSetRemindConfigResponseBody {
-	s.Code = &v
-	return s
-}
-
 type DoIotSetRemindConfigResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DoIotSetRemindConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DoIotSetRemindConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DoIotSetRemindConfigResponse) String() string {
@@ -728,16 +602,21 @@ func (s *DoIotSetRemindConfigResponse) SetHeaders(v map[string]*string) *DoIotSe
 	return s
 }
 
+func (s *DoIotSetRemindConfigResponse) SetStatusCode(v int32) *DoIotSetRemindConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DoIotSetRemindConfigResponse) SetBody(v *DoIotSetRemindConfigResponseBody) *DoIotSetRemindConfigResponse {
 	s.Body = v
 	return s
 }
 
 type DoIotUnbindResumeRequest struct {
+	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 }
 
 func (s DoIotUnbindResumeRequest) String() string {
@@ -746,6 +625,11 @@ func (s DoIotUnbindResumeRequest) String() string {
 
 func (s DoIotUnbindResumeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DoIotUnbindResumeRequest) SetIccid(v string) *DoIotUnbindResumeRequest {
+	s.Iccid = &v
+	return s
 }
 
 func (s *DoIotUnbindResumeRequest) SetOwnerId(v int64) *DoIotUnbindResumeRequest {
@@ -763,16 +647,11 @@ func (s *DoIotUnbindResumeRequest) SetResourceOwnerId(v int64) *DoIotUnbindResum
 	return s
 }
 
-func (s *DoIotUnbindResumeRequest) SetIccid(v string) *DoIotUnbindResumeRequest {
-	s.Iccid = &v
-	return s
-}
-
 type DoIotUnbindResumeResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DoIotUnbindResumeResponseBody) String() string {
@@ -781,6 +660,16 @@ func (s DoIotUnbindResumeResponseBody) String() string {
 
 func (s DoIotUnbindResumeResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DoIotUnbindResumeResponseBody) SetCode(v string) *DoIotUnbindResumeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DoIotUnbindResumeResponseBody) SetData(v bool) *DoIotUnbindResumeResponseBody {
+	s.Data = &v
+	return s
 }
 
 func (s *DoIotUnbindResumeResponseBody) SetMessage(v string) *DoIotUnbindResumeResponseBody {
@@ -793,19 +682,10 @@ func (s *DoIotUnbindResumeResponseBody) SetRequestId(v string) *DoIotUnbindResum
 	return s
 }
 
-func (s *DoIotUnbindResumeResponseBody) SetData(v bool) *DoIotUnbindResumeResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DoIotUnbindResumeResponseBody) SetCode(v string) *DoIotUnbindResumeResponseBody {
-	s.Code = &v
-	return s
-}
-
 type DoIotUnbindResumeResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DoIotUnbindResumeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DoIotUnbindResumeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DoIotUnbindResumeResponse) String() string {
@@ -821,17 +701,22 @@ func (s *DoIotUnbindResumeResponse) SetHeaders(v map[string]*string) *DoIotUnbin
 	return s
 }
 
+func (s *DoIotUnbindResumeResponse) SetStatusCode(v int32) *DoIotUnbindResumeResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DoIotUnbindResumeResponse) SetBody(v *DoIotUnbindResumeResponseBody) *DoIotUnbindResumeResponse {
 	s.Body = v
 	return s
 }
 
 type DoIotUserStopResumeRequest struct {
+	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	OptionType           *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
-	OptionType           *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
 }
 
 func (s DoIotUserStopResumeRequest) String() string {
@@ -840,6 +725,16 @@ func (s DoIotUserStopResumeRequest) String() string {
 
 func (s DoIotUserStopResumeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DoIotUserStopResumeRequest) SetIccid(v string) *DoIotUserStopResumeRequest {
+	s.Iccid = &v
+	return s
+}
+
+func (s *DoIotUserStopResumeRequest) SetOptionType(v string) *DoIotUserStopResumeRequest {
+	s.OptionType = &v
+	return s
 }
 
 func (s *DoIotUserStopResumeRequest) SetOwnerId(v int64) *DoIotUserStopResumeRequest {
@@ -857,20 +752,10 @@ func (s *DoIotUserStopResumeRequest) SetResourceOwnerId(v int64) *DoIotUserStopR
 	return s
 }
 
-func (s *DoIotUserStopResumeRequest) SetIccid(v string) *DoIotUserStopResumeRequest {
-	s.Iccid = &v
-	return s
-}
-
-func (s *DoIotUserStopResumeRequest) SetOptionType(v string) *DoIotUserStopResumeRequest {
-	s.OptionType = &v
-	return s
-}
-
 type DoIotUserStopResumeResponseBody struct {
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *DoIotUserStopResumeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -882,6 +767,11 @@ func (s DoIotUserStopResumeResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DoIotUserStopResumeResponseBody) SetCode(v string) *DoIotUserStopResumeResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DoIotUserStopResumeResponseBody) SetMessage(v string) *DoIotUserStopResumeResponseBody {
 	s.Message = &v
 	return s
@@ -889,11 +779,6 @@ func (s *DoIotUserStopResumeResponseBody) SetMessage(v string) *DoIotUserStopRes
 
 func (s *DoIotUserStopResumeResponseBody) SetRequestId(v string) *DoIotUserStopResumeResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DoIotUserStopResumeResponseBody) SetCode(v string) *DoIotUserStopResumeResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -920,8 +805,9 @@ func (s *DoIotUserStopResumeResponseBodyResult) SetControlResult(v bool) *DoIotU
 }
 
 type DoIotUserStopResumeResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DoIotUserStopResumeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DoIotUserStopResumeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DoIotUserStopResumeResponse) String() string {
@@ -937,6 +823,11 @@ func (s *DoIotUserStopResumeResponse) SetHeaders(v map[string]*string) *DoIotUse
 	return s
 }
 
+func (s *DoIotUserStopResumeResponse) SetStatusCode(v int32) *DoIotUserStopResumeResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DoIotUserStopResumeResponse) SetBody(v *DoIotUserStopResumeResponseBody) *DoIotUserStopResumeResponse {
 	s.Body = v
 	return s
@@ -944,11 +835,11 @@ func (s *DoIotUserStopResumeResponse) SetBody(v *DoIotUserStopResumeResponseBody
 
 type DoSendIotSmsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PhoneNumbers         *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SignName             *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 	TemplateCode         *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	PhoneNumbers         *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
 	TemplateParam        *string `json:"TemplateParam,omitempty" xml:"TemplateParam,omitempty"`
 }
 
@@ -962,6 +853,11 @@ func (s DoSendIotSmsRequest) GoString() string {
 
 func (s *DoSendIotSmsRequest) SetOwnerId(v int64) *DoSendIotSmsRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DoSendIotSmsRequest) SetPhoneNumbers(v string) *DoSendIotSmsRequest {
+	s.PhoneNumbers = &v
 	return s
 }
 
@@ -985,21 +881,16 @@ func (s *DoSendIotSmsRequest) SetTemplateCode(v string) *DoSendIotSmsRequest {
 	return s
 }
 
-func (s *DoSendIotSmsRequest) SetPhoneNumbers(v string) *DoSendIotSmsRequest {
-	s.PhoneNumbers = &v
-	return s
-}
-
 func (s *DoSendIotSmsRequest) SetTemplateParam(v string) *DoSendIotSmsRequest {
 	s.TemplateParam = &v
 	return s
 }
 
 type DoSendIotSmsResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DoSendIotSmsResponseBody) String() string {
@@ -1010,13 +901,13 @@ func (s DoSendIotSmsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DoSendIotSmsResponseBody) SetMessage(v string) *DoSendIotSmsResponseBody {
-	s.Message = &v
+func (s *DoSendIotSmsResponseBody) SetCode(v string) *DoSendIotSmsResponseBody {
+	s.Code = &v
 	return s
 }
 
-func (s *DoSendIotSmsResponseBody) SetRequestId(v string) *DoSendIotSmsResponseBody {
-	s.RequestId = &v
+func (s *DoSendIotSmsResponseBody) SetMessage(v string) *DoSendIotSmsResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1025,14 +916,15 @@ func (s *DoSendIotSmsResponseBody) SetModule(v string) *DoSendIotSmsResponseBody
 	return s
 }
 
-func (s *DoSendIotSmsResponseBody) SetCode(v string) *DoSendIotSmsResponseBody {
-	s.Code = &v
+func (s *DoSendIotSmsResponseBody) SetRequestId(v string) *DoSendIotSmsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 type DoSendIotSmsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DoSendIotSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DoSendIotSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DoSendIotSmsResponse) String() string {
@@ -1048,16 +940,21 @@ func (s *DoSendIotSmsResponse) SetHeaders(v map[string]*string) *DoSendIotSmsRes
 	return s
 }
 
+func (s *DoSendIotSmsResponse) SetStatusCode(v int32) *DoSendIotSmsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DoSendIotSmsResponse) SetBody(v *DoSendIotSmsResponseBody) *DoSendIotSmsResponse {
 	s.Body = v
 	return s
 }
 
 type QueryCardFlowInfoRequest struct {
+	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 }
 
 func (s QueryCardFlowInfoRequest) String() string {
@@ -1066,6 +963,11 @@ func (s QueryCardFlowInfoRequest) String() string {
 
 func (s QueryCardFlowInfoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryCardFlowInfoRequest) SetIccid(v string) *QueryCardFlowInfoRequest {
+	s.Iccid = &v
+	return s
 }
 
 func (s *QueryCardFlowInfoRequest) SetOwnerId(v int64) *QueryCardFlowInfoRequest {
@@ -1083,16 +985,11 @@ func (s *QueryCardFlowInfoRequest) SetResourceOwnerId(v int64) *QueryCardFlowInf
 	return s
 }
 
-func (s *QueryCardFlowInfoRequest) SetIccid(v string) *QueryCardFlowInfoRequest {
-	s.Iccid = &v
-	return s
-}
-
 type QueryCardFlowInfoResponseBody struct {
 	CardFlowInfos *QueryCardFlowInfoResponseBodyCardFlowInfos `json:"CardFlowInfos,omitempty" xml:"CardFlowInfos,omitempty" type:"Struct"`
+	Code          *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message       *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code          *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s QueryCardFlowInfoResponseBody) String() string {
@@ -1108,6 +1005,11 @@ func (s *QueryCardFlowInfoResponseBody) SetCardFlowInfos(v *QueryCardFlowInfoRes
 	return s
 }
 
+func (s *QueryCardFlowInfoResponseBody) SetCode(v string) *QueryCardFlowInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *QueryCardFlowInfoResponseBody) SetMessage(v string) *QueryCardFlowInfoResponseBody {
 	s.Message = &v
 	return s
@@ -1115,11 +1017,6 @@ func (s *QueryCardFlowInfoResponseBody) SetMessage(v string) *QueryCardFlowInfoR
 
 func (s *QueryCardFlowInfoResponseBody) SetRequestId(v string) *QueryCardFlowInfoResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *QueryCardFlowInfoResponseBody) SetCode(v string) *QueryCardFlowInfoResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1141,16 +1038,16 @@ func (s *QueryCardFlowInfoResponseBodyCardFlowInfos) SetCardFlowInfo(v []*QueryC
 }
 
 type QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo struct {
-	ValidDate    *string `json:"ValidDate,omitempty" xml:"ValidDate,omitempty"`
-	VoiceUsed    *int64  `json:"VoiceUsed,omitempty" xml:"VoiceUsed,omitempty"`
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	FlowUsed     *int64  `json:"FlowUsed,omitempty" xml:"FlowUsed,omitempty"`
-	VoiceTotal   *int64  `json:"VoiceTotal,omitempty" xml:"VoiceTotal,omitempty"`
 	ExpireDate   *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	SmsUsed      *int64  `json:"SmsUsed,omitempty" xml:"SmsUsed,omitempty"`
-	RestOfFlow   *int64  `json:"RestOfFlow,omitempty" xml:"RestOfFlow,omitempty"`
 	FlowResource *int64  `json:"FlowResource,omitempty" xml:"FlowResource,omitempty"`
+	FlowUsed     *int64  `json:"FlowUsed,omitempty" xml:"FlowUsed,omitempty"`
 	ResName      *string `json:"ResName,omitempty" xml:"ResName,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RestOfFlow   *int64  `json:"RestOfFlow,omitempty" xml:"RestOfFlow,omitempty"`
+	SmsUsed      *int64  `json:"SmsUsed,omitempty" xml:"SmsUsed,omitempty"`
+	ValidDate    *string `json:"ValidDate,omitempty" xml:"ValidDate,omitempty"`
+	VoiceTotal   *int64  `json:"VoiceTotal,omitempty" xml:"VoiceTotal,omitempty"`
+	VoiceUsed    *int64  `json:"VoiceUsed,omitempty" xml:"VoiceUsed,omitempty"`
 }
 
 func (s QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) String() string {
@@ -1161,43 +1058,8 @@ func (s QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) GoString() strin
 	return s.String()
 }
 
-func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetValidDate(v string) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
-	s.ValidDate = &v
-	return s
-}
-
-func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetVoiceUsed(v int64) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
-	s.VoiceUsed = &v
-	return s
-}
-
-func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetResourceType(v string) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetFlowUsed(v int64) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
-	s.FlowUsed = &v
-	return s
-}
-
-func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetVoiceTotal(v int64) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
-	s.VoiceTotal = &v
-	return s
-}
-
 func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetExpireDate(v string) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
 	s.ExpireDate = &v
-	return s
-}
-
-func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetSmsUsed(v int64) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
-	s.SmsUsed = &v
-	return s
-}
-
-func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetRestOfFlow(v int64) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
-	s.RestOfFlow = &v
 	return s
 }
 
@@ -1206,14 +1068,50 @@ func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetFlowResource
 	return s
 }
 
+func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetFlowUsed(v int64) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
+	s.FlowUsed = &v
+	return s
+}
+
 func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetResName(v string) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
 	s.ResName = &v
 	return s
 }
 
+func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetResourceType(v string) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetRestOfFlow(v int64) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
+	s.RestOfFlow = &v
+	return s
+}
+
+func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetSmsUsed(v int64) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
+	s.SmsUsed = &v
+	return s
+}
+
+func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetValidDate(v string) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
+	s.ValidDate = &v
+	return s
+}
+
+func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetVoiceTotal(v int64) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
+	s.VoiceTotal = &v
+	return s
+}
+
+func (s *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo) SetVoiceUsed(v int64) *QueryCardFlowInfoResponseBodyCardFlowInfosCardFlowInfo {
+	s.VoiceUsed = &v
+	return s
+}
+
 type QueryCardFlowInfoResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryCardFlowInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryCardFlowInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryCardFlowInfoResponse) String() string {
@@ -1229,15 +1127,23 @@ func (s *QueryCardFlowInfoResponse) SetHeaders(v map[string]*string) *QueryCardF
 	return s
 }
 
+func (s *QueryCardFlowInfoResponse) SetStatusCode(v int32) *QueryCardFlowInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *QueryCardFlowInfoResponse) SetBody(v *QueryCardFlowInfoResponseBody) *QueryCardFlowInfoResponse {
 	s.Body = v
 	return s
 }
 
 type QueryCardHistoryFlowInfoRequest struct {
-	Iccid     *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s QueryCardHistoryFlowInfoRequest) String() string {
@@ -1248,8 +1154,28 @@ func (s QueryCardHistoryFlowInfoRequest) GoString() string {
 	return s.String()
 }
 
+func (s *QueryCardHistoryFlowInfoRequest) SetEndTime(v string) *QueryCardHistoryFlowInfoRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *QueryCardHistoryFlowInfoRequest) SetIccid(v string) *QueryCardHistoryFlowInfoRequest {
 	s.Iccid = &v
+	return s
+}
+
+func (s *QueryCardHistoryFlowInfoRequest) SetOwnerId(v int64) *QueryCardHistoryFlowInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryCardHistoryFlowInfoRequest) SetResourceOwnerAccount(v string) *QueryCardHistoryFlowInfoRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryCardHistoryFlowInfoRequest) SetResourceOwnerId(v int64) *QueryCardHistoryFlowInfoRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -1258,16 +1184,11 @@ func (s *QueryCardHistoryFlowInfoRequest) SetStartTime(v string) *QueryCardHisto
 	return s
 }
 
-func (s *QueryCardHistoryFlowInfoRequest) SetEndTime(v string) *QueryCardHistoryFlowInfoRequest {
-	s.EndTime = &v
-	return s
-}
-
 type QueryCardHistoryFlowInfoResponseBody struct {
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*QueryCardHistoryFlowInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      []*QueryCardHistoryFlowInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1277,6 +1198,16 @@ func (s QueryCardHistoryFlowInfoResponseBody) String() string {
 
 func (s QueryCardHistoryFlowInfoResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryCardHistoryFlowInfoResponseBody) SetCode(v string) *QueryCardHistoryFlowInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryCardHistoryFlowInfoResponseBody) SetData(v []*QueryCardHistoryFlowInfoResponseBodyData) *QueryCardHistoryFlowInfoResponseBody {
+	s.Data = v
+	return s
 }
 
 func (s *QueryCardHistoryFlowInfoResponseBody) SetMessage(v string) *QueryCardHistoryFlowInfoResponseBody {
@@ -1289,25 +1220,15 @@ func (s *QueryCardHistoryFlowInfoResponseBody) SetRequestId(v string) *QueryCard
 	return s
 }
 
-func (s *QueryCardHistoryFlowInfoResponseBody) SetData(v []*QueryCardHistoryFlowInfoResponseBodyData) *QueryCardHistoryFlowInfoResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryCardHistoryFlowInfoResponseBody) SetCode(v string) *QueryCardHistoryFlowInfoResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *QueryCardHistoryFlowInfoResponseBody) SetSuccess(v bool) *QueryCardHistoryFlowInfoResponseBody {
 	s.Success = &v
 	return s
 }
 
 type QueryCardHistoryFlowInfoResponseBodyData struct {
+	CurValue     *int64                                                  `json:"CurValue,omitempty" xml:"CurValue,omitempty"`
 	DayUsageList []*QueryCardHistoryFlowInfoResponseBodyDataDayUsageList `json:"DayUsageList,omitempty" xml:"DayUsageList,omitempty" type:"Repeated"`
 	Month        *int64                                                  `json:"Month,omitempty" xml:"Month,omitempty"`
-	CurValue     *int64                                                  `json:"CurValue,omitempty" xml:"CurValue,omitempty"`
 }
 
 func (s QueryCardHistoryFlowInfoResponseBodyData) String() string {
@@ -1318,6 +1239,11 @@ func (s QueryCardHistoryFlowInfoResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *QueryCardHistoryFlowInfoResponseBodyData) SetCurValue(v int64) *QueryCardHistoryFlowInfoResponseBodyData {
+	s.CurValue = &v
+	return s
+}
+
 func (s *QueryCardHistoryFlowInfoResponseBodyData) SetDayUsageList(v []*QueryCardHistoryFlowInfoResponseBodyDataDayUsageList) *QueryCardHistoryFlowInfoResponseBodyData {
 	s.DayUsageList = v
 	return s
@@ -1325,11 +1251,6 @@ func (s *QueryCardHistoryFlowInfoResponseBodyData) SetDayUsageList(v []*QueryCar
 
 func (s *QueryCardHistoryFlowInfoResponseBodyData) SetMonth(v int64) *QueryCardHistoryFlowInfoResponseBodyData {
 	s.Month = &v
-	return s
-}
-
-func (s *QueryCardHistoryFlowInfoResponseBodyData) SetCurValue(v int64) *QueryCardHistoryFlowInfoResponseBodyData {
-	s.CurValue = &v
 	return s
 }
 
@@ -1357,8 +1278,9 @@ func (s *QueryCardHistoryFlowInfoResponseBodyDataDayUsageList) SetValue(v int64)
 }
 
 type QueryCardHistoryFlowInfoResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryCardHistoryFlowInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryCardHistoryFlowInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryCardHistoryFlowInfoResponse) String() string {
@@ -1374,16 +1296,21 @@ func (s *QueryCardHistoryFlowInfoResponse) SetHeaders(v map[string]*string) *Que
 	return s
 }
 
+func (s *QueryCardHistoryFlowInfoResponse) SetStatusCode(v int32) *QueryCardHistoryFlowInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *QueryCardHistoryFlowInfoResponse) SetBody(v *QueryCardHistoryFlowInfoResponseBody) *QueryCardHistoryFlowInfoResponse {
 	s.Body = v
 	return s
 }
 
 type QueryCardInfoRequest struct {
+	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 }
 
 func (s QueryCardInfoRequest) String() string {
@@ -1392,6 +1319,11 @@ func (s QueryCardInfoRequest) String() string {
 
 func (s QueryCardInfoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryCardInfoRequest) SetIccid(v string) *QueryCardInfoRequest {
+	s.Iccid = &v
+	return s
 }
 
 func (s *QueryCardInfoRequest) SetOwnerId(v int64) *QueryCardInfoRequest {
@@ -1409,16 +1341,11 @@ func (s *QueryCardInfoRequest) SetResourceOwnerId(v int64) *QueryCardInfoRequest
 	return s
 }
 
-func (s *QueryCardInfoRequest) SetIccid(v string) *QueryCardInfoRequest {
-	s.Iccid = &v
-	return s
-}
-
 type QueryCardInfoResponseBody struct {
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CardInfo  *QueryCardInfoResponseBodyCardInfo `json:"CardInfo,omitempty" xml:"CardInfo,omitempty" type:"Struct"`
 	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryCardInfoResponseBody) String() string {
@@ -1427,16 +1354,6 @@ func (s QueryCardInfoResponseBody) String() string {
 
 func (s QueryCardInfoResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *QueryCardInfoResponseBody) SetMessage(v string) *QueryCardInfoResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryCardInfoResponseBody) SetRequestId(v string) *QueryCardInfoResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *QueryCardInfoResponseBody) SetCardInfo(v *QueryCardInfoResponseBodyCardInfo) *QueryCardInfoResponseBody {
@@ -1449,15 +1366,25 @@ func (s *QueryCardInfoResponseBody) SetCode(v string) *QueryCardInfoResponseBody
 	return s
 }
 
+func (s *QueryCardInfoResponseBody) SetMessage(v string) *QueryCardInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryCardInfoResponseBody) SetRequestId(v string) *QueryCardInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type QueryCardInfoResponseBodyCardInfo struct {
+	FirstActiveTime *string `json:"FirstActiveTime,omitempty" xml:"FirstActiveTime,omitempty"`
+	GprsStatus      *string `json:"GprsStatus,omitempty" xml:"GprsStatus,omitempty"`
+	Iccid           *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 	Imsi            *string `json:"Imsi,omitempty" xml:"Imsi,omitempty"`
 	Msisdn          *string `json:"Msisdn,omitempty" xml:"Msisdn,omitempty"`
-	GprsStatus      *string `json:"GprsStatus,omitempty" xml:"GprsStatus,omitempty"`
-	VoiceStatus     *string `json:"VoiceStatus,omitempty" xml:"VoiceStatus,omitempty"`
-	SmsStatus       *string `json:"SmsStatus,omitempty" xml:"SmsStatus,omitempty"`
-	Iccid           *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
-	FirstActiveTime *string `json:"FirstActiveTime,omitempty" xml:"FirstActiveTime,omitempty"`
 	OpenTime        *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
+	SmsStatus       *string `json:"SmsStatus,omitempty" xml:"SmsStatus,omitempty"`
+	VoiceStatus     *string `json:"VoiceStatus,omitempty" xml:"VoiceStatus,omitempty"`
 }
 
 func (s QueryCardInfoResponseBodyCardInfo) String() string {
@@ -1466,6 +1393,21 @@ func (s QueryCardInfoResponseBodyCardInfo) String() string {
 
 func (s QueryCardInfoResponseBodyCardInfo) GoString() string {
 	return s.String()
+}
+
+func (s *QueryCardInfoResponseBodyCardInfo) SetFirstActiveTime(v string) *QueryCardInfoResponseBodyCardInfo {
+	s.FirstActiveTime = &v
+	return s
+}
+
+func (s *QueryCardInfoResponseBodyCardInfo) SetGprsStatus(v string) *QueryCardInfoResponseBodyCardInfo {
+	s.GprsStatus = &v
+	return s
+}
+
+func (s *QueryCardInfoResponseBodyCardInfo) SetIccid(v string) *QueryCardInfoResponseBodyCardInfo {
+	s.Iccid = &v
+	return s
 }
 
 func (s *QueryCardInfoResponseBodyCardInfo) SetImsi(v string) *QueryCardInfoResponseBodyCardInfo {
@@ -1478,13 +1420,8 @@ func (s *QueryCardInfoResponseBodyCardInfo) SetMsisdn(v string) *QueryCardInfoRe
 	return s
 }
 
-func (s *QueryCardInfoResponseBodyCardInfo) SetGprsStatus(v string) *QueryCardInfoResponseBodyCardInfo {
-	s.GprsStatus = &v
-	return s
-}
-
-func (s *QueryCardInfoResponseBodyCardInfo) SetVoiceStatus(v string) *QueryCardInfoResponseBodyCardInfo {
-	s.VoiceStatus = &v
+func (s *QueryCardInfoResponseBodyCardInfo) SetOpenTime(v string) *QueryCardInfoResponseBodyCardInfo {
+	s.OpenTime = &v
 	return s
 }
 
@@ -1493,24 +1430,15 @@ func (s *QueryCardInfoResponseBodyCardInfo) SetSmsStatus(v string) *QueryCardInf
 	return s
 }
 
-func (s *QueryCardInfoResponseBodyCardInfo) SetIccid(v string) *QueryCardInfoResponseBodyCardInfo {
-	s.Iccid = &v
-	return s
-}
-
-func (s *QueryCardInfoResponseBodyCardInfo) SetFirstActiveTime(v string) *QueryCardInfoResponseBodyCardInfo {
-	s.FirstActiveTime = &v
-	return s
-}
-
-func (s *QueryCardInfoResponseBodyCardInfo) SetOpenTime(v string) *QueryCardInfoResponseBodyCardInfo {
-	s.OpenTime = &v
+func (s *QueryCardInfoResponseBodyCardInfo) SetVoiceStatus(v string) *QueryCardInfoResponseBodyCardInfo {
+	s.VoiceStatus = &v
 	return s
 }
 
 type QueryCardInfoResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryCardInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryCardInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryCardInfoResponse) String() string {
@@ -1526,168 +1454,21 @@ func (s *QueryCardInfoResponse) SetHeaders(v map[string]*string) *QueryCardInfoR
 	return s
 }
 
+func (s *QueryCardInfoResponse) SetStatusCode(v int32) *QueryCardInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *QueryCardInfoResponse) SetBody(v *QueryCardInfoResponseBody) *QueryCardInfoResponse {
 	s.Body = v
 	return s
 }
 
-type QueryCardsInfoRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
-}
-
-func (s QueryCardsInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCardsInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCardsInfoRequest) SetOwnerId(v int64) *QueryCardsInfoRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *QueryCardsInfoRequest) SetResourceOwnerAccount(v string) *QueryCardsInfoRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *QueryCardsInfoRequest) SetResourceOwnerId(v int64) *QueryCardsInfoRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *QueryCardsInfoRequest) SetIccid(v string) *QueryCardsInfoRequest {
-	s.Iccid = &v
-	return s
-}
-
-type QueryCardsInfoResponseBody struct {
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CardsInfo []*QueryCardsInfoResponseBodyCardsInfo `json:"CardsInfo,omitempty" xml:"CardsInfo,omitempty" type:"Repeated"`
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-}
-
-func (s QueryCardsInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCardsInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCardsInfoResponseBody) SetMessage(v string) *QueryCardsInfoResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryCardsInfoResponseBody) SetRequestId(v string) *QueryCardsInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryCardsInfoResponseBody) SetCardsInfo(v []*QueryCardsInfoResponseBodyCardsInfo) *QueryCardsInfoResponseBody {
-	s.CardsInfo = v
-	return s
-}
-
-func (s *QueryCardsInfoResponseBody) SetCode(v string) *QueryCardsInfoResponseBody {
-	s.Code = &v
-	return s
-}
-
-type QueryCardsInfoResponseBodyCardsInfo struct {
-	Imsi            *string `json:"Imsi,omitempty" xml:"Imsi,omitempty"`
-	Msisdn          *string `json:"Msisdn,omitempty" xml:"Msisdn,omitempty"`
-	GprsStatus      *string `json:"GprsStatus,omitempty" xml:"GprsStatus,omitempty"`
-	VoiceStatus     *string `json:"VoiceStatus,omitempty" xml:"VoiceStatus,omitempty"`
-	SmsStatus       *string `json:"SmsStatus,omitempty" xml:"SmsStatus,omitempty"`
-	Iccid           *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
-	FirstActiveTime *string `json:"FirstActiveTime,omitempty" xml:"FirstActiveTime,omitempty"`
-	OpenTime        *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
-}
-
-func (s QueryCardsInfoResponseBodyCardsInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCardsInfoResponseBodyCardsInfo) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCardsInfoResponseBodyCardsInfo) SetImsi(v string) *QueryCardsInfoResponseBodyCardsInfo {
-	s.Imsi = &v
-	return s
-}
-
-func (s *QueryCardsInfoResponseBodyCardsInfo) SetMsisdn(v string) *QueryCardsInfoResponseBodyCardsInfo {
-	s.Msisdn = &v
-	return s
-}
-
-func (s *QueryCardsInfoResponseBodyCardsInfo) SetGprsStatus(v string) *QueryCardsInfoResponseBodyCardsInfo {
-	s.GprsStatus = &v
-	return s
-}
-
-func (s *QueryCardsInfoResponseBodyCardsInfo) SetVoiceStatus(v string) *QueryCardsInfoResponseBodyCardsInfo {
-	s.VoiceStatus = &v
-	return s
-}
-
-func (s *QueryCardsInfoResponseBodyCardsInfo) SetSmsStatus(v string) *QueryCardsInfoResponseBodyCardsInfo {
-	s.SmsStatus = &v
-	return s
-}
-
-func (s *QueryCardsInfoResponseBodyCardsInfo) SetIccid(v string) *QueryCardsInfoResponseBodyCardsInfo {
-	s.Iccid = &v
-	return s
-}
-
-func (s *QueryCardsInfoResponseBodyCardsInfo) SetFirstActiveTime(v string) *QueryCardsInfoResponseBodyCardsInfo {
-	s.FirstActiveTime = &v
-	return s
-}
-
-func (s *QueryCardsInfoResponseBodyCardsInfo) SetOpenTime(v string) *QueryCardsInfoResponseBodyCardsInfo {
-	s.OpenTime = &v
-	return s
-}
-
-type QueryCardsInfoResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryCardsInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryCardsInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCardsInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCardsInfoResponse) SetHeaders(v map[string]*string) *QueryCardsInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryCardsInfoResponse) SetBody(v *QueryCardsInfoResponseBody) *QueryCardsInfoResponse {
-	s.Body = v
-	return s
-}
-
 type QueryCardStatusRequest struct {
+	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 }
 
 func (s QueryCardStatusRequest) String() string {
@@ -1696,6 +1477,11 @@ func (s QueryCardStatusRequest) String() string {
 
 func (s QueryCardStatusRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryCardStatusRequest) SetIccid(v string) *QueryCardStatusRequest {
+	s.Iccid = &v
+	return s
 }
 
 func (s *QueryCardStatusRequest) SetOwnerId(v int64) *QueryCardStatusRequest {
@@ -1713,16 +1499,11 @@ func (s *QueryCardStatusRequest) SetResourceOwnerId(v int64) *QueryCardStatusReq
 	return s
 }
 
-func (s *QueryCardStatusRequest) SetIccid(v string) *QueryCardStatusRequest {
-	s.Iccid = &v
-	return s
-}
-
 type QueryCardStatusResponseBody struct {
-	Message    *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CardStatus *QueryCardStatusResponseBodyCardStatus `json:"CardStatus,omitempty" xml:"CardStatus,omitempty" type:"Struct"`
 	Code       *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryCardStatusResponseBody) String() string {
@@ -1731,16 +1512,6 @@ func (s QueryCardStatusResponseBody) String() string {
 
 func (s QueryCardStatusResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *QueryCardStatusResponseBody) SetMessage(v string) *QueryCardStatusResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryCardStatusResponseBody) SetRequestId(v string) *QueryCardStatusResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *QueryCardStatusResponseBody) SetCardStatus(v *QueryCardStatusResponseBodyCardStatus) *QueryCardStatusResponseBody {
@@ -1753,10 +1524,20 @@ func (s *QueryCardStatusResponseBody) SetCode(v string) *QueryCardStatusResponse
 	return s
 }
 
+func (s *QueryCardStatusResponseBody) SetMessage(v string) *QueryCardStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryCardStatusResponseBody) SetRequestId(v string) *QueryCardStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type QueryCardStatusResponseBodyCardStatus struct {
+	Iccid      *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 	Msisdn     *string `json:"Msisdn,omitempty" xml:"Msisdn,omitempty"`
 	UserStatus *string `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
-	Iccid      *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 }
 
 func (s QueryCardStatusResponseBodyCardStatus) String() string {
@@ -1765,6 +1546,11 @@ func (s QueryCardStatusResponseBodyCardStatus) String() string {
 
 func (s QueryCardStatusResponseBodyCardStatus) GoString() string {
 	return s.String()
+}
+
+func (s *QueryCardStatusResponseBodyCardStatus) SetIccid(v string) *QueryCardStatusResponseBodyCardStatus {
+	s.Iccid = &v
+	return s
 }
 
 func (s *QueryCardStatusResponseBodyCardStatus) SetMsisdn(v string) *QueryCardStatusResponseBodyCardStatus {
@@ -1777,14 +1563,10 @@ func (s *QueryCardStatusResponseBodyCardStatus) SetUserStatus(v string) *QueryCa
 	return s
 }
 
-func (s *QueryCardStatusResponseBodyCardStatus) SetIccid(v string) *QueryCardStatusResponseBodyCardStatus {
-	s.Iccid = &v
-	return s
-}
-
 type QueryCardStatusResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryCardStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryCardStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryCardStatusResponse) String() string {
@@ -1800,16 +1582,179 @@ func (s *QueryCardStatusResponse) SetHeaders(v map[string]*string) *QueryCardSta
 	return s
 }
 
+func (s *QueryCardStatusResponse) SetStatusCode(v int32) *QueryCardStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *QueryCardStatusResponse) SetBody(v *QueryCardStatusResponseBody) *QueryCardStatusResponse {
 	s.Body = v
 	return s
 }
 
-type QueryIotCardOfferDtlRequest struct {
+type QueryCardsInfoRequest struct {
+	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s QueryCardsInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCardsInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCardsInfoRequest) SetIccid(v string) *QueryCardsInfoRequest {
+	s.Iccid = &v
+	return s
+}
+
+func (s *QueryCardsInfoRequest) SetOwnerId(v int64) *QueryCardsInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryCardsInfoRequest) SetResourceOwnerAccount(v string) *QueryCardsInfoRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryCardsInfoRequest) SetResourceOwnerId(v int64) *QueryCardsInfoRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type QueryCardsInfoResponseBody struct {
+	CardsInfo []*QueryCardsInfoResponseBodyCardsInfo `json:"CardsInfo,omitempty" xml:"CardsInfo,omitempty" type:"Repeated"`
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryCardsInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCardsInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCardsInfoResponseBody) SetCardsInfo(v []*QueryCardsInfoResponseBodyCardsInfo) *QueryCardsInfoResponseBody {
+	s.CardsInfo = v
+	return s
+}
+
+func (s *QueryCardsInfoResponseBody) SetCode(v string) *QueryCardsInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryCardsInfoResponseBody) SetMessage(v string) *QueryCardsInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryCardsInfoResponseBody) SetRequestId(v string) *QueryCardsInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryCardsInfoResponseBodyCardsInfo struct {
+	FirstActiveTime *string `json:"FirstActiveTime,omitempty" xml:"FirstActiveTime,omitempty"`
+	GprsStatus      *string `json:"GprsStatus,omitempty" xml:"GprsStatus,omitempty"`
+	Iccid           *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	Imsi            *string `json:"Imsi,omitempty" xml:"Imsi,omitempty"`
+	Msisdn          *string `json:"Msisdn,omitempty" xml:"Msisdn,omitempty"`
+	OpenTime        *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
+	SmsStatus       *string `json:"SmsStatus,omitempty" xml:"SmsStatus,omitempty"`
+	VoiceStatus     *string `json:"VoiceStatus,omitempty" xml:"VoiceStatus,omitempty"`
+}
+
+func (s QueryCardsInfoResponseBodyCardsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCardsInfoResponseBodyCardsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCardsInfoResponseBodyCardsInfo) SetFirstActiveTime(v string) *QueryCardsInfoResponseBodyCardsInfo {
+	s.FirstActiveTime = &v
+	return s
+}
+
+func (s *QueryCardsInfoResponseBodyCardsInfo) SetGprsStatus(v string) *QueryCardsInfoResponseBodyCardsInfo {
+	s.GprsStatus = &v
+	return s
+}
+
+func (s *QueryCardsInfoResponseBodyCardsInfo) SetIccid(v string) *QueryCardsInfoResponseBodyCardsInfo {
+	s.Iccid = &v
+	return s
+}
+
+func (s *QueryCardsInfoResponseBodyCardsInfo) SetImsi(v string) *QueryCardsInfoResponseBodyCardsInfo {
+	s.Imsi = &v
+	return s
+}
+
+func (s *QueryCardsInfoResponseBodyCardsInfo) SetMsisdn(v string) *QueryCardsInfoResponseBodyCardsInfo {
+	s.Msisdn = &v
+	return s
+}
+
+func (s *QueryCardsInfoResponseBodyCardsInfo) SetOpenTime(v string) *QueryCardsInfoResponseBodyCardsInfo {
+	s.OpenTime = &v
+	return s
+}
+
+func (s *QueryCardsInfoResponseBodyCardsInfo) SetSmsStatus(v string) *QueryCardsInfoResponseBodyCardsInfo {
+	s.SmsStatus = &v
+	return s
+}
+
+func (s *QueryCardsInfoResponseBodyCardsInfo) SetVoiceStatus(v string) *QueryCardsInfoResponseBodyCardsInfo {
+	s.VoiceStatus = &v
+	return s
+}
+
+type QueryCardsInfoResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryCardsInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryCardsInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCardsInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCardsInfoResponse) SetHeaders(v map[string]*string) *QueryCardsInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCardsInfoResponse) SetStatusCode(v int32) *QueryCardsInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCardsInfoResponse) SetBody(v *QueryCardsInfoResponseBody) *QueryCardsInfoResponse {
+	s.Body = v
+	return s
+}
+
+type QueryIotCardOfferDtlRequest struct {
 	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s QueryIotCardOfferDtlRequest) String() string {
@@ -1818,6 +1763,11 @@ func (s QueryIotCardOfferDtlRequest) String() string {
 
 func (s QueryIotCardOfferDtlRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryIotCardOfferDtlRequest) SetIccid(v string) *QueryIotCardOfferDtlRequest {
+	s.Iccid = &v
+	return s
 }
 
 func (s *QueryIotCardOfferDtlRequest) SetOwnerId(v int64) *QueryIotCardOfferDtlRequest {
@@ -1835,16 +1785,11 @@ func (s *QueryIotCardOfferDtlRequest) SetResourceOwnerId(v int64) *QueryIotCardO
 	return s
 }
 
-func (s *QueryIotCardOfferDtlRequest) SetIccid(v string) *QueryIotCardOfferDtlRequest {
-	s.Iccid = &v
-	return s
-}
-
 type QueryIotCardOfferDtlResponseBody struct {
-	Message         *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId       *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CardOfferDetail *QueryIotCardOfferDtlResponseBodyCardOfferDetail `json:"CardOfferDetail,omitempty" xml:"CardOfferDetail,omitempty" type:"Struct"`
 	Code            *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message         *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryIotCardOfferDtlResponseBody) String() string {
@@ -1855,16 +1800,6 @@ func (s QueryIotCardOfferDtlResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryIotCardOfferDtlResponseBody) SetMessage(v string) *QueryIotCardOfferDtlResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryIotCardOfferDtlResponseBody) SetRequestId(v string) *QueryIotCardOfferDtlResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *QueryIotCardOfferDtlResponseBody) SetCardOfferDetail(v *QueryIotCardOfferDtlResponseBodyCardOfferDetail) *QueryIotCardOfferDtlResponseBody {
 	s.CardOfferDetail = v
 	return s
@@ -1872,6 +1807,16 @@ func (s *QueryIotCardOfferDtlResponseBody) SetCardOfferDetail(v *QueryIotCardOff
 
 func (s *QueryIotCardOfferDtlResponseBody) SetCode(v string) *QueryIotCardOfferDtlResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *QueryIotCardOfferDtlResponseBody) SetMessage(v string) *QueryIotCardOfferDtlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryIotCardOfferDtlResponseBody) SetRequestId(v string) *QueryIotCardOfferDtlResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1894,9 +1839,9 @@ func (s *QueryIotCardOfferDtlResponseBodyCardOfferDetail) SetDetail(v []*QueryIo
 
 type QueryIotCardOfferDtlResponseBodyCardOfferDetailDetail struct {
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	ExpireTime    *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	OfferId       *string `json:"OfferId,omitempty" xml:"OfferId,omitempty"`
 	OfferName     *string `json:"OfferName,omitempty" xml:"OfferName,omitempty"`
-	ExpireTime    *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	OrderTime     *string `json:"OrderTime,omitempty" xml:"OrderTime,omitempty"`
 }
 
@@ -1913,6 +1858,11 @@ func (s *QueryIotCardOfferDtlResponseBodyCardOfferDetailDetail) SetEffectiveTime
 	return s
 }
 
+func (s *QueryIotCardOfferDtlResponseBodyCardOfferDetailDetail) SetExpireTime(v string) *QueryIotCardOfferDtlResponseBodyCardOfferDetailDetail {
+	s.ExpireTime = &v
+	return s
+}
+
 func (s *QueryIotCardOfferDtlResponseBodyCardOfferDetailDetail) SetOfferId(v string) *QueryIotCardOfferDtlResponseBodyCardOfferDetailDetail {
 	s.OfferId = &v
 	return s
@@ -1923,19 +1873,15 @@ func (s *QueryIotCardOfferDtlResponseBodyCardOfferDetailDetail) SetOfferName(v s
 	return s
 }
 
-func (s *QueryIotCardOfferDtlResponseBodyCardOfferDetailDetail) SetExpireTime(v string) *QueryIotCardOfferDtlResponseBodyCardOfferDetailDetail {
-	s.ExpireTime = &v
-	return s
-}
-
 func (s *QueryIotCardOfferDtlResponseBodyCardOfferDetailDetail) SetOrderTime(v string) *QueryIotCardOfferDtlResponseBodyCardOfferDetailDetail {
 	s.OrderTime = &v
 	return s
 }
 
 type QueryIotCardOfferDtlResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryIotCardOfferDtlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryIotCardOfferDtlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryIotCardOfferDtlResponse) String() string {
@@ -1951,16 +1897,21 @@ func (s *QueryIotCardOfferDtlResponse) SetHeaders(v map[string]*string) *QueryIo
 	return s
 }
 
+func (s *QueryIotCardOfferDtlResponse) SetStatusCode(v int32) *QueryIotCardOfferDtlResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *QueryIotCardOfferDtlResponse) SetBody(v *QueryIotCardOfferDtlResponseBody) *QueryIotCardOfferDtlResponse {
 	s.Body = v
 	return s
 }
 
 type QueryPersonalInfoRequest struct {
+	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Iccid                *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
 }
 
 func (s QueryPersonalInfoRequest) String() string {
@@ -1969,6 +1920,11 @@ func (s QueryPersonalInfoRequest) String() string {
 
 func (s QueryPersonalInfoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryPersonalInfoRequest) SetIccid(v string) *QueryPersonalInfoRequest {
+	s.Iccid = &v
+	return s
 }
 
 func (s *QueryPersonalInfoRequest) SetOwnerId(v int64) *QueryPersonalInfoRequest {
@@ -1986,16 +1942,11 @@ func (s *QueryPersonalInfoRequest) SetResourceOwnerId(v int64) *QueryPersonalInf
 	return s
 }
 
-func (s *QueryPersonalInfoRequest) SetIccid(v string) *QueryPersonalInfoRequest {
-	s.Iccid = &v
-	return s
-}
-
 type QueryPersonalInfoResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryPersonalInfoResponseBody) String() string {
@@ -2006,13 +1957,13 @@ func (s QueryPersonalInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryPersonalInfoResponseBody) SetMessage(v string) *QueryPersonalInfoResponseBody {
-	s.Message = &v
+func (s *QueryPersonalInfoResponseBody) SetCode(v string) *QueryPersonalInfoResponseBody {
+	s.Code = &v
 	return s
 }
 
-func (s *QueryPersonalInfoResponseBody) SetRequestId(v string) *QueryPersonalInfoResponseBody {
-	s.RequestId = &v
+func (s *QueryPersonalInfoResponseBody) SetMessage(v string) *QueryPersonalInfoResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -2021,14 +1972,15 @@ func (s *QueryPersonalInfoResponseBody) SetModule(v string) *QueryPersonalInfoRe
 	return s
 }
 
-func (s *QueryPersonalInfoResponseBody) SetCode(v string) *QueryPersonalInfoResponseBody {
-	s.Code = &v
+func (s *QueryPersonalInfoResponseBody) SetRequestId(v string) *QueryPersonalInfoResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 type QueryPersonalInfoResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryPersonalInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryPersonalInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryPersonalInfoResponse) String() string {
@@ -2041,6 +1993,11 @@ func (s QueryPersonalInfoResponse) GoString() string {
 
 func (s *QueryPersonalInfoResponse) SetHeaders(v map[string]*string) *QueryPersonalInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QueryPersonalInfoResponse) SetStatusCode(v int32) *QueryPersonalInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2101,11 +2058,55 @@ func (client *Client) DoIotChgBindOrUnBindWithOptions(request *DoIotChgBindOrUnB
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Imei)) {
+		query["Imei"] = request.Imei
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MidChannelId)) {
+		query["MidChannelId"] = request.MidChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewImei)) {
+		query["NewImei"] = request.NewImei
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpionType)) {
+		query["OpionType"] = request.OpionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DoIotChgBindOrUnBind"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DoIotChgBindOrUnBindResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DoIotChgBindOrUnBind"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2129,11 +2130,39 @@ func (client *Client) DoIotIsImeiExistWithOptions(request *DoIotIsImeiExistReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Imei)) {
+		query["Imei"] = request.Imei
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DoIotIsImeiExist"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DoIotIsImeiExistResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DoIotIsImeiExist"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2157,11 +2186,47 @@ func (client *Client) DoIotPostImeiWithOptions(request *DoIotPostImeiRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comments)) {
+		query["Comments"] = request.Comments
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceType)) {
+		query["DeviceType"] = request.DeviceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Imei)) {
+		query["Imei"] = request.Imei
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DoIotPostImei"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DoIotPostImeiResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DoIotPostImei"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2180,44 +2245,52 @@ func (client *Client) DoIotPostImei(request *DoIotPostImeiRequest) (_result *DoI
 	return _result, _err
 }
 
-func (client *Client) DoIotRechargeWithOptions(request *DoIotRechargeRequest, runtime *util.RuntimeOptions) (_result *DoIotRechargeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DoIotRechargeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DoIotRecharge"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DoIotRecharge(request *DoIotRechargeRequest) (_result *DoIotRechargeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DoIotRechargeResponse{}
-	_body, _err := client.DoIotRechargeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DoIotSetAbsoluteRemindConfigWithOptions(request *DoIotSetAbsoluteRemindConfigRequest, runtime *util.RuntimeOptions) (_result *DoIotSetAbsoluteRemindConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigInfo)) {
+		query["ConfigInfo"] = request.ConfigInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DoIotSetAbsoluteRemindConfig"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DoIotSetAbsoluteRemindConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DoIotSetAbsoluteRemindConfig"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2241,11 +2314,51 @@ func (client *Client) DoIotSetRemindConfigWithOptions(request *DoIotSetRemindCon
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigInfo)) {
+		query["ConfigInfo"] = request.ConfigInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DoIotSetRemindConfig"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DoIotSetRemindConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DoIotSetRemindConfig"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2269,11 +2382,39 @@ func (client *Client) DoIotUnbindResumeWithOptions(request *DoIotUnbindResumeReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DoIotUnbindResume"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DoIotUnbindResumeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DoIotUnbindResume"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2297,11 +2438,43 @@ func (client *Client) DoIotUserStopResumeWithOptions(request *DoIotUserStopResum
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OptionType)) {
+		query["OptionType"] = request.OptionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DoIotUserStopResume"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DoIotUserStopResumeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DoIotUserStopResume"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2325,11 +2498,51 @@ func (client *Client) DoSendIotSmsWithOptions(request *DoSendIotSmsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumbers)) {
+		query["PhoneNumbers"] = request.PhoneNumbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateParam)) {
+		query["TemplateParam"] = request.TemplateParam
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DoSendIotSms"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DoSendIotSmsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DoSendIotSms"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2353,11 +2566,39 @@ func (client *Client) QueryCardFlowInfoWithOptions(request *QueryCardFlowInfoReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCardFlowInfo"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCardFlowInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCardFlowInfo"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2381,11 +2622,47 @@ func (client *Client) QueryCardHistoryFlowInfoWithOptions(request *QueryCardHist
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCardHistoryFlowInfo"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCardHistoryFlowInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCardHistoryFlowInfo"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2409,11 +2686,39 @@ func (client *Client) QueryCardInfoWithOptions(request *QueryCardInfoRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCardInfo"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCardInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCardInfo"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2432,44 +2737,44 @@ func (client *Client) QueryCardInfo(request *QueryCardInfoRequest) (_result *Que
 	return _result, _err
 }
 
-func (client *Client) QueryCardsInfoWithOptions(request *QueryCardsInfoRequest, runtime *util.RuntimeOptions) (_result *QueryCardsInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &QueryCardsInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCardsInfo"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryCardsInfo(request *QueryCardsInfoRequest) (_result *QueryCardsInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryCardsInfoResponse{}
-	_body, _err := client.QueryCardsInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) QueryCardStatusWithOptions(request *QueryCardStatusRequest, runtime *util.RuntimeOptions) (_result *QueryCardStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCardStatus"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCardStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCardStatus"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2488,16 +2793,100 @@ func (client *Client) QueryCardStatus(request *QueryCardStatusRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) QueryCardsInfoWithOptions(request *QueryCardsInfoRequest, runtime *util.RuntimeOptions) (_result *QueryCardsInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCardsInfo"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCardsInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryCardsInfo(request *QueryCardsInfoRequest) (_result *QueryCardsInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCardsInfoResponse{}
+	_body, _err := client.QueryCardsInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryIotCardOfferDtlWithOptions(request *QueryIotCardOfferDtlRequest, runtime *util.RuntimeOptions) (_result *QueryIotCardOfferDtlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryIotCardOfferDtl"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryIotCardOfferDtlResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryIotCardOfferDtl"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2521,11 +2910,39 @@ func (client *Client) QueryPersonalInfoWithOptions(request *QueryPersonalInfoReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPersonalInfo"),
+		Version:     tea.String("2017-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryPersonalInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryPersonalInfo"), tea.String("2017-11-11"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
