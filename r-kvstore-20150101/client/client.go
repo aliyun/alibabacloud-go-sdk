@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -19,11 +19,9 @@ type AddShardingNodeRequest struct {
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ReadOnlyCount        *int32  `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	ShardClass           *string `json:"ShardClass,omitempty" xml:"ShardClass,omitempty"`
 	ShardCount           *int32  `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
 	SourceBiz            *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
 }
@@ -66,11 +64,6 @@ func (s *AddShardingNodeRequest) SetOwnerId(v int64) *AddShardingNodeRequest {
 	return s
 }
 
-func (s *AddShardingNodeRequest) SetReadOnlyCount(v int32) *AddShardingNodeRequest {
-	s.ReadOnlyCount = &v
-	return s
-}
-
 func (s *AddShardingNodeRequest) SetResourceOwnerAccount(v string) *AddShardingNodeRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -83,11 +76,6 @@ func (s *AddShardingNodeRequest) SetResourceOwnerId(v int64) *AddShardingNodeReq
 
 func (s *AddShardingNodeRequest) SetSecurityToken(v string) *AddShardingNodeRequest {
 	s.SecurityToken = &v
-	return s
-}
-
-func (s *AddShardingNodeRequest) SetShardClass(v string) *AddShardingNodeRequest {
-	s.ShardClass = &v
 	return s
 }
 
@@ -924,6 +912,7 @@ type CreateInstanceRequest struct {
 	Period               *string                     `json:"Period,omitempty" xml:"Period,omitempty"`
 	Port                 *string                     `json:"Port,omitempty" xml:"Port,omitempty"`
 	PrivateIpAddress     *string                     `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	ReadOnlyCount        *int32                      `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
 	RegionId             *string                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string                     `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1060,6 +1049,11 @@ func (s *CreateInstanceRequest) SetPort(v string) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetPrivateIpAddress(v string) *CreateInstanceRequest {
 	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetReadOnlyCount(v int32) *CreateInstanceRequest {
+	s.ReadOnlyCount = &v
 	return s
 }
 
@@ -1518,6 +1512,7 @@ type CreateTairInstanceRequest struct {
 	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	PrivateIpAddress     *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	ReadOnlyCount        *int32  `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1634,6 +1629,11 @@ func (s *CreateTairInstanceRequest) SetPeriod(v int32) *CreateTairInstanceReques
 
 func (s *CreateTairInstanceRequest) SetPrivateIpAddress(v string) *CreateTairInstanceRequest {
 	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetReadOnlyCount(v int32) *CreateTairInstanceRequest {
+	s.ReadOnlyCount = &v
 	return s
 }
 
@@ -2040,7 +2040,6 @@ type DeleteShardingNodeRequest struct {
 	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ReadOnlyCount        *int32  `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -2072,11 +2071,6 @@ func (s *DeleteShardingNodeRequest) SetOwnerAccount(v string) *DeleteShardingNod
 
 func (s *DeleteShardingNodeRequest) SetOwnerId(v int64) *DeleteShardingNodeRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteShardingNodeRequest) SetReadOnlyCount(v int32) *DeleteShardingNodeRequest {
-	s.ReadOnlyCount = &v
 	return s
 }
 
@@ -2349,340 +2343,226 @@ func (s *DescribeAccountsResponse) SetBody(v *DescribeAccountsResponseBody) *Des
 	return s
 }
 
-type DescribeActiveOperationTasksRequest struct {
-	AllowCancel          *int32  `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	AllowChange          *int32  `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	ChangeLevel          *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	DbType               *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	InsName              *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+type DescribeActiveOperationTaskRequest struct {
+	IsHistory            *int32  `json:"IsHistory,omitempty" xml:"IsHistory,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductId            *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	TaskType             *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
-func (s DescribeActiveOperationTasksRequest) String() string {
+func (s DescribeActiveOperationTaskRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeActiveOperationTasksRequest) GoString() string {
+func (s DescribeActiveOperationTaskRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeActiveOperationTasksRequest) SetAllowCancel(v int32) *DescribeActiveOperationTasksRequest {
-	s.AllowCancel = &v
+func (s *DescribeActiveOperationTaskRequest) SetIsHistory(v int32) *DescribeActiveOperationTaskRequest {
+	s.IsHistory = &v
 	return s
 }
 
-func (s *DescribeActiveOperationTasksRequest) SetAllowChange(v int32) *DescribeActiveOperationTasksRequest {
-	s.AllowChange = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksRequest) SetChangeLevel(v string) *DescribeActiveOperationTasksRequest {
-	s.ChangeLevel = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksRequest) SetDbType(v string) *DescribeActiveOperationTasksRequest {
-	s.DbType = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksRequest) SetInsName(v string) *DescribeActiveOperationTasksRequest {
-	s.InsName = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksRequest) SetOwnerAccount(v string) *DescribeActiveOperationTasksRequest {
+func (s *DescribeActiveOperationTaskRequest) SetOwnerAccount(v string) *DescribeActiveOperationTaskRequest {
 	s.OwnerAccount = &v
 	return s
 }
 
-func (s *DescribeActiveOperationTasksRequest) SetOwnerId(v int64) *DescribeActiveOperationTasksRequest {
+func (s *DescribeActiveOperationTaskRequest) SetOwnerId(v int64) *DescribeActiveOperationTaskRequest {
 	s.OwnerId = &v
 	return s
 }
 
-func (s *DescribeActiveOperationTasksRequest) SetPageNumber(v int32) *DescribeActiveOperationTasksRequest {
+func (s *DescribeActiveOperationTaskRequest) SetPageNumber(v int32) *DescribeActiveOperationTaskRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *DescribeActiveOperationTasksRequest) SetPageSize(v int32) *DescribeActiveOperationTasksRequest {
+func (s *DescribeActiveOperationTaskRequest) SetPageSize(v int32) *DescribeActiveOperationTaskRequest {
 	s.PageSize = &v
 	return s
 }
 
-func (s *DescribeActiveOperationTasksRequest) SetProductId(v string) *DescribeActiveOperationTasksRequest {
-	s.ProductId = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksRequest) SetResourceOwnerAccount(v string) *DescribeActiveOperationTasksRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksRequest) SetResourceOwnerId(v int64) *DescribeActiveOperationTasksRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksRequest) SetSecurityToken(v string) *DescribeActiveOperationTasksRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksRequest) SetStatus(v int32) *DescribeActiveOperationTasksRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksRequest) SetTaskType(v string) *DescribeActiveOperationTasksRequest {
-	s.TaskType = &v
-	return s
-}
-
-type DescribeActiveOperationTasksResponseBody struct {
-	Items            []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber       *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecordCount *int32                                           `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-}
-
-func (s DescribeActiveOperationTasksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeActiveOperationTasksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeActiveOperationTasksResponseBody) SetItems(v []*DescribeActiveOperationTasksResponseBodyItems) *DescribeActiveOperationTasksResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBody) SetPageNumber(v int32) *DescribeActiveOperationTasksResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBody) SetPageSize(v int32) *DescribeActiveOperationTasksResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBody) SetRequestId(v string) *DescribeActiveOperationTasksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBody) SetTotalRecordCount(v int32) *DescribeActiveOperationTasksResponseBody {
-	s.TotalRecordCount = &v
-	return s
-}
-
-type DescribeActiveOperationTasksResponseBodyItems struct {
-	AllowCancel     *string   `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	AllowChange     *string   `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	ChangeLevel     *string   `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	ChangeLevelEn   *string   `json:"ChangeLevelEn,omitempty" xml:"ChangeLevelEn,omitempty"`
-	ChangeLevelZh   *string   `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
-	CreatedTime     *string   `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CurrentAVZ      *string   `json:"CurrentAVZ,omitempty" xml:"CurrentAVZ,omitempty"`
-	DbType          *string   `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	DbVersion       *string   `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	Deadline        *string   `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
-	Id              *int32    `json:"Id,omitempty" xml:"Id,omitempty"`
-	ImpactEn        *string   `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
-	ImpactZh        *string   `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
-	InsComment      *string   `json:"InsComment,omitempty" xml:"InsComment,omitempty"`
-	InsName         *string   `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	ModifiedTime    *string   `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	PrepareInterval *string   `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
-	Region          *string   `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResultInfo      *string   `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
-	StartTime       *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status          *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubInsNames     []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
-	SwitchTime      *string   `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	TaskType        *string   `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TaskTypeEn      *string   `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
-	TaskTypeZh      *string   `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
-}
-
-func (s DescribeActiveOperationTasksResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeActiveOperationTasksResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetAllowCancel(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.AllowCancel = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetAllowChange(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.AllowChange = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetChangeLevel(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.ChangeLevel = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetChangeLevelEn(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.ChangeLevelEn = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetChangeLevelZh(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.ChangeLevelZh = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetCreatedTime(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetCurrentAVZ(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.CurrentAVZ = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetDbType(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.DbType = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetDbVersion(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.DbVersion = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetDeadline(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.Deadline = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetId(v int32) *DescribeActiveOperationTasksResponseBodyItems {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetImpactEn(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.ImpactEn = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetImpactZh(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.ImpactZh = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetInsComment(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.InsComment = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetInsName(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.InsName = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetModifiedTime(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.ModifiedTime = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetPrepareInterval(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.PrepareInterval = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetRegion(v string) *DescribeActiveOperationTasksResponseBodyItems {
+func (s *DescribeActiveOperationTaskRequest) SetRegion(v string) *DescribeActiveOperationTaskRequest {
 	s.Region = &v
 	return s
 }
 
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetResultInfo(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.ResultInfo = &v
+func (s *DescribeActiveOperationTaskRequest) SetResourceOwnerAccount(v string) *DescribeActiveOperationTaskRequest {
+	s.ResourceOwnerAccount = &v
 	return s
 }
 
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetStartTime(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.StartTime = &v
+func (s *DescribeActiveOperationTaskRequest) SetResourceOwnerId(v int64) *DescribeActiveOperationTaskRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetStatus(v int32) *DescribeActiveOperationTasksResponseBodyItems {
-	s.Status = &v
+func (s *DescribeActiveOperationTaskRequest) SetSecurityToken(v string) *DescribeActiveOperationTaskRequest {
+	s.SecurityToken = &v
 	return s
 }
 
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetSubInsNames(v []*string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.SubInsNames = v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetSwitchTime(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.SwitchTime = &v
-	return s
-}
-
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetTaskType(v string) *DescribeActiveOperationTasksResponseBodyItems {
+func (s *DescribeActiveOperationTaskRequest) SetTaskType(v string) *DescribeActiveOperationTaskRequest {
 	s.TaskType = &v
 	return s
 }
 
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetTaskTypeEn(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.TaskTypeEn = &v
-	return s
+type DescribeActiveOperationTaskResponseBody struct {
+	Items            []*DescribeActiveOperationTaskResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageNumber       *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId        *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalRecordCount *int32                                          `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
-func (s *DescribeActiveOperationTasksResponseBodyItems) SetTaskTypeZh(v string) *DescribeActiveOperationTasksResponseBodyItems {
-	s.TaskTypeZh = &v
-	return s
-}
-
-type DescribeActiveOperationTasksResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeActiveOperationTasksResponse) String() string {
+func (s DescribeActiveOperationTaskResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeActiveOperationTasksResponse) GoString() string {
+func (s DescribeActiveOperationTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeActiveOperationTasksResponse) SetHeaders(v map[string]*string) *DescribeActiveOperationTasksResponse {
+func (s *DescribeActiveOperationTaskResponseBody) SetItems(v []*DescribeActiveOperationTaskResponseBodyItems) *DescribeActiveOperationTaskResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBody) SetPageNumber(v int32) *DescribeActiveOperationTaskResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBody) SetPageSize(v int32) *DescribeActiveOperationTaskResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBody) SetRequestId(v string) *DescribeActiveOperationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBody) SetTotalRecordCount(v int32) *DescribeActiveOperationTaskResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type DescribeActiveOperationTaskResponseBodyItems struct {
+	CreatedTime     *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DbType          *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	Deadline        *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
+	Id              *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InsName         *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	ModifiedTime    *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	SwitchTime      *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	TaskType        *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeActiveOperationTaskResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveOperationTaskResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveOperationTaskResponseBodyItems) SetCreatedTime(v string) *DescribeActiveOperationTaskResponseBodyItems {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBodyItems) SetDbType(v string) *DescribeActiveOperationTaskResponseBodyItems {
+	s.DbType = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBodyItems) SetDeadline(v string) *DescribeActiveOperationTaskResponseBodyItems {
+	s.Deadline = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBodyItems) SetId(v int32) *DescribeActiveOperationTaskResponseBodyItems {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBodyItems) SetInsName(v string) *DescribeActiveOperationTaskResponseBodyItems {
+	s.InsName = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBodyItems) SetModifiedTime(v string) *DescribeActiveOperationTaskResponseBodyItems {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBodyItems) SetPrepareInterval(v string) *DescribeActiveOperationTaskResponseBodyItems {
+	s.PrepareInterval = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBodyItems) SetRegion(v string) *DescribeActiveOperationTaskResponseBodyItems {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBodyItems) SetStartTime(v string) *DescribeActiveOperationTaskResponseBodyItems {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBodyItems) SetStatus(v int32) *DescribeActiveOperationTaskResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBodyItems) SetSwitchTime(v string) *DescribeActiveOperationTaskResponseBodyItems {
+	s.SwitchTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTaskResponseBodyItems) SetTaskType(v string) *DescribeActiveOperationTaskResponseBodyItems {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeActiveOperationTaskResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeActiveOperationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeActiveOperationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveOperationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveOperationTaskResponse) SetHeaders(v map[string]*string) *DescribeActiveOperationTaskResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DescribeActiveOperationTasksResponse) SetStatusCode(v int32) *DescribeActiveOperationTasksResponse {
+func (s *DescribeActiveOperationTaskResponse) SetStatusCode(v int32) *DescribeActiveOperationTaskResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *DescribeActiveOperationTasksResponse) SetBody(v *DescribeActiveOperationTasksResponseBody) *DescribeActiveOperationTasksResponse {
+func (s *DescribeActiveOperationTaskResponse) SetBody(v *DescribeActiveOperationTaskResponseBody) *DescribeActiveOperationTaskResponse {
 	s.Body = v
 	return s
 }
@@ -4536,8 +4416,6 @@ type DescribeClusterMemberInfoRequest struct {
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -4563,16 +4441,6 @@ func (s *DescribeClusterMemberInfoRequest) SetOwnerAccount(v string) *DescribeCl
 
 func (s *DescribeClusterMemberInfoRequest) SetOwnerId(v int64) *DescribeClusterMemberInfoRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeClusterMemberInfoRequest) SetPageNumber(v int32) *DescribeClusterMemberInfoRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeClusterMemberInfoRequest) SetPageSize(v int32) *DescribeClusterMemberInfoRequest {
-	s.PageSize = &v
 	return s
 }
 
@@ -5655,6 +5523,7 @@ type DescribeEngineVersionResponseBody struct {
 	ProxyMinorVersion         *string `json:"ProxyMinorVersion,omitempty" xml:"ProxyMinorVersion,omitempty"`
 	ProxyVersionRelease       *string `json:"ProxyVersionRelease,omitempty" xml:"ProxyVersionRelease,omitempty"`
 	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	IsRedisCompatibleVersion  *bool   `json:"isRedisCompatibleVersion,omitempty" xml:"isRedisCompatibleVersion,omitempty"`
 }
 
 func (s DescribeEngineVersionResponseBody) String() string {
@@ -5712,6 +5581,11 @@ func (s *DescribeEngineVersionResponseBody) SetProxyVersionRelease(v string) *De
 
 func (s *DescribeEngineVersionResponseBody) SetRequestId(v string) *DescribeEngineVersionResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEngineVersionResponseBody) SetIsRedisCompatibleVersion(v bool) *DescribeEngineVersionResponseBody {
+	s.IsRedisCompatibleVersion = &v
 	return s
 }
 
@@ -8390,6 +8264,181 @@ func (s *DescribeMonitorItemsResponse) SetStatusCode(v int32) *DescribeMonitorIt
 }
 
 func (s *DescribeMonitorItemsResponse) SetBody(v *DescribeMonitorItemsResponseBody) *DescribeMonitorItemsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeParameterModificationHistoryRequest struct {
+	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeParameterModificationHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterModificationHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterModificationHistoryRequest) SetEndTime(v string) *DescribeParameterModificationHistoryRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryRequest) SetInstanceId(v string) *DescribeParameterModificationHistoryRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryRequest) SetNodeId(v string) *DescribeParameterModificationHistoryRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryRequest) SetOwnerAccount(v string) *DescribeParameterModificationHistoryRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryRequest) SetOwnerId(v int64) *DescribeParameterModificationHistoryRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryRequest) SetParameterName(v string) *DescribeParameterModificationHistoryRequest {
+	s.ParameterName = &v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryRequest) SetResourceOwnerAccount(v string) *DescribeParameterModificationHistoryRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryRequest) SetResourceOwnerId(v int64) *DescribeParameterModificationHistoryRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryRequest) SetSecurityToken(v string) *DescribeParameterModificationHistoryRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryRequest) SetStartTime(v string) *DescribeParameterModificationHistoryRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeParameterModificationHistoryResponseBody struct {
+	HistoricalParameters *DescribeParameterModificationHistoryResponseBodyHistoricalParameters `json:"HistoricalParameters,omitempty" xml:"HistoricalParameters,omitempty" type:"Struct"`
+	RequestId            *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeParameterModificationHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterModificationHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterModificationHistoryResponseBody) SetHistoricalParameters(v *DescribeParameterModificationHistoryResponseBodyHistoricalParameters) *DescribeParameterModificationHistoryResponseBody {
+	s.HistoricalParameters = v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryResponseBody) SetRequestId(v string) *DescribeParameterModificationHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeParameterModificationHistoryResponseBodyHistoricalParameters struct {
+	HistoricalParameter []*DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistoricalParameter `json:"HistoricalParameter,omitempty" xml:"HistoricalParameter,omitempty" type:"Repeated"`
+}
+
+func (s DescribeParameterModificationHistoryResponseBodyHistoricalParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterModificationHistoryResponseBodyHistoricalParameters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterModificationHistoryResponseBodyHistoricalParameters) SetHistoricalParameter(v []*DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistoricalParameter) *DescribeParameterModificationHistoryResponseBodyHistoricalParameters {
+	s.HistoricalParameter = v
+	return s
+}
+
+type DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistoricalParameter struct {
+	ModifyTime        *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	NewParameterValue *string `json:"NewParameterValue,omitempty" xml:"NewParameterValue,omitempty"`
+	OldParameterValue *string `json:"OldParameterValue,omitempty" xml:"OldParameterValue,omitempty"`
+	ParameterName     *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+}
+
+func (s DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistoricalParameter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistoricalParameter) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistoricalParameter) SetModifyTime(v string) *DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistoricalParameter {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistoricalParameter) SetNewParameterValue(v string) *DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistoricalParameter {
+	s.NewParameterValue = &v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistoricalParameter) SetOldParameterValue(v string) *DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistoricalParameter {
+	s.OldParameterValue = &v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistoricalParameter) SetParameterName(v string) *DescribeParameterModificationHistoryResponseBodyHistoricalParametersHistoricalParameter {
+	s.ParameterName = &v
+	return s
+}
+
+type DescribeParameterModificationHistoryResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeParameterModificationHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeParameterModificationHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterModificationHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterModificationHistoryResponse) SetHeaders(v map[string]*string) *DescribeParameterModificationHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryResponse) SetStatusCode(v int32) *DescribeParameterModificationHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeParameterModificationHistoryResponse) SetBody(v *DescribeParameterModificationHistoryResponseBody) *DescribeParameterModificationHistoryResponse {
 	s.Body = v
 	return s
 }
@@ -12008,9 +12057,8 @@ func (s *ModifyAccountPasswordResponse) SetBody(v *ModifyAccountPasswordResponse
 	return s
 }
 
-type ModifyActiveOperationTasksRequest struct {
+type ModifyActiveOperationTaskRequest struct {
 	Ids                  *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	ImmediateStart       *int32  `json:"ImmediateStart,omitempty" xml:"ImmediateStart,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -12019,102 +12067,97 @@ type ModifyActiveOperationTasksRequest struct {
 	SwitchTime           *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 }
 
-func (s ModifyActiveOperationTasksRequest) String() string {
+func (s ModifyActiveOperationTaskRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ModifyActiveOperationTasksRequest) GoString() string {
+func (s ModifyActiveOperationTaskRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyActiveOperationTasksRequest) SetIds(v string) *ModifyActiveOperationTasksRequest {
+func (s *ModifyActiveOperationTaskRequest) SetIds(v string) *ModifyActiveOperationTaskRequest {
 	s.Ids = &v
 	return s
 }
 
-func (s *ModifyActiveOperationTasksRequest) SetImmediateStart(v int32) *ModifyActiveOperationTasksRequest {
-	s.ImmediateStart = &v
-	return s
-}
-
-func (s *ModifyActiveOperationTasksRequest) SetOwnerAccount(v string) *ModifyActiveOperationTasksRequest {
+func (s *ModifyActiveOperationTaskRequest) SetOwnerAccount(v string) *ModifyActiveOperationTaskRequest {
 	s.OwnerAccount = &v
 	return s
 }
 
-func (s *ModifyActiveOperationTasksRequest) SetOwnerId(v int64) *ModifyActiveOperationTasksRequest {
+func (s *ModifyActiveOperationTaskRequest) SetOwnerId(v int64) *ModifyActiveOperationTaskRequest {
 	s.OwnerId = &v
 	return s
 }
 
-func (s *ModifyActiveOperationTasksRequest) SetResourceOwnerAccount(v string) *ModifyActiveOperationTasksRequest {
+func (s *ModifyActiveOperationTaskRequest) SetResourceOwnerAccount(v string) *ModifyActiveOperationTaskRequest {
 	s.ResourceOwnerAccount = &v
 	return s
 }
 
-func (s *ModifyActiveOperationTasksRequest) SetResourceOwnerId(v int64) *ModifyActiveOperationTasksRequest {
+func (s *ModifyActiveOperationTaskRequest) SetResourceOwnerId(v int64) *ModifyActiveOperationTaskRequest {
 	s.ResourceOwnerId = &v
 	return s
 }
 
-func (s *ModifyActiveOperationTasksRequest) SetSecurityToken(v string) *ModifyActiveOperationTasksRequest {
+func (s *ModifyActiveOperationTaskRequest) SetSecurityToken(v string) *ModifyActiveOperationTaskRequest {
 	s.SecurityToken = &v
 	return s
 }
 
-func (s *ModifyActiveOperationTasksRequest) SetSwitchTime(v string) *ModifyActiveOperationTasksRequest {
+func (s *ModifyActiveOperationTaskRequest) SetSwitchTime(v string) *ModifyActiveOperationTaskRequest {
 	s.SwitchTime = &v
 	return s
 }
 
-type ModifyActiveOperationTasksResponseBody struct {
+type ModifyActiveOperationTaskResponseBody struct {
 	Ids       *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s ModifyActiveOperationTasksResponseBody) String() string {
+func (s ModifyActiveOperationTaskResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ModifyActiveOperationTasksResponseBody) GoString() string {
+func (s ModifyActiveOperationTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyActiveOperationTasksResponseBody) SetIds(v string) *ModifyActiveOperationTasksResponseBody {
+func (s *ModifyActiveOperationTaskResponseBody) SetIds(v string) *ModifyActiveOperationTaskResponseBody {
 	s.Ids = &v
 	return s
 }
 
-func (s *ModifyActiveOperationTasksResponseBody) SetRequestId(v string) *ModifyActiveOperationTasksResponseBody {
+func (s *ModifyActiveOperationTaskResponseBody) SetRequestId(v string) *ModifyActiveOperationTaskResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type ModifyActiveOperationTasksResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type ModifyActiveOperationTaskResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyActiveOperationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s ModifyActiveOperationTasksResponse) String() string {
+func (s ModifyActiveOperationTaskResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ModifyActiveOperationTasksResponse) GoString() string {
+func (s ModifyActiveOperationTaskResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyActiveOperationTasksResponse) SetHeaders(v map[string]*string) *ModifyActiveOperationTasksResponse {
+func (s *ModifyActiveOperationTaskResponse) SetHeaders(v map[string]*string) *ModifyActiveOperationTaskResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ModifyActiveOperationTasksResponse) SetStatusCode(v int32) *ModifyActiveOperationTasksResponse {
+func (s *ModifyActiveOperationTaskResponse) SetStatusCode(v int32) *ModifyActiveOperationTaskResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *ModifyActiveOperationTasksResponse) SetBody(v *ModifyActiveOperationTasksResponseBody) *ModifyActiveOperationTasksResponse {
+func (s *ModifyActiveOperationTaskResponse) SetBody(v *ModifyActiveOperationTaskResponseBody) *ModifyActiveOperationTaskResponse {
 	s.Body = v
 	return s
 }
@@ -13386,6 +13429,7 @@ type ModifyInstanceSpecRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	ShardCount           *int32  `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
 	SourceBiz            *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
 }
 
@@ -13479,6 +13523,11 @@ func (s *ModifyInstanceSpecRequest) SetResourceOwnerId(v int64) *ModifyInstanceS
 
 func (s *ModifyInstanceSpecRequest) SetSecurityToken(v string) *ModifyInstanceSpecRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyInstanceSpecRequest) SetShardCount(v int32) *ModifyInstanceSpecRequest {
+	s.ShardCount = &v
 	return s
 }
 
@@ -13856,147 +13905,6 @@ func (s *ModifyIntranetAttributeResponse) SetStatusCode(v int32) *ModifyIntranet
 }
 
 func (s *ModifyIntranetAttributeResponse) SetBody(v *ModifyIntranetAttributeResponseBody) *ModifyIntranetAttributeResponse {
-	s.Body = v
-	return s
-}
-
-type ModifyNodeSpecRequest struct {
-	AutoPay              *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	BusinessInfo         *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	CouponNo             *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	InstanceClass        *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	OrderType            *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	SwitchTimeMode       *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
-}
-
-func (s ModifyNodeSpecRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyNodeSpecRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyNodeSpecRequest) SetAutoPay(v bool) *ModifyNodeSpecRequest {
-	s.AutoPay = &v
-	return s
-}
-
-func (s *ModifyNodeSpecRequest) SetBusinessInfo(v string) *ModifyNodeSpecRequest {
-	s.BusinessInfo = &v
-	return s
-}
-
-func (s *ModifyNodeSpecRequest) SetCouponNo(v string) *ModifyNodeSpecRequest {
-	s.CouponNo = &v
-	return s
-}
-
-func (s *ModifyNodeSpecRequest) SetInstanceClass(v string) *ModifyNodeSpecRequest {
-	s.InstanceClass = &v
-	return s
-}
-
-func (s *ModifyNodeSpecRequest) SetInstanceId(v string) *ModifyNodeSpecRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ModifyNodeSpecRequest) SetNodeId(v string) *ModifyNodeSpecRequest {
-	s.NodeId = &v
-	return s
-}
-
-func (s *ModifyNodeSpecRequest) SetOrderType(v string) *ModifyNodeSpecRequest {
-	s.OrderType = &v
-	return s
-}
-
-func (s *ModifyNodeSpecRequest) SetOwnerAccount(v string) *ModifyNodeSpecRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *ModifyNodeSpecRequest) SetOwnerId(v int64) *ModifyNodeSpecRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ModifyNodeSpecRequest) SetResourceOwnerAccount(v string) *ModifyNodeSpecRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ModifyNodeSpecRequest) SetResourceOwnerId(v int64) *ModifyNodeSpecRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ModifyNodeSpecRequest) SetSecurityToken(v string) *ModifyNodeSpecRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *ModifyNodeSpecRequest) SetSwitchTimeMode(v string) *ModifyNodeSpecRequest {
-	s.SwitchTimeMode = &v
-	return s
-}
-
-type ModifyNodeSpecResponseBody struct {
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ModifyNodeSpecResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyNodeSpecResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyNodeSpecResponseBody) SetOrderId(v int64) *ModifyNodeSpecResponseBody {
-	s.OrderId = &v
-	return s
-}
-
-func (s *ModifyNodeSpecResponseBody) SetRequestId(v string) *ModifyNodeSpecResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ModifyNodeSpecResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyNodeSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyNodeSpecResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyNodeSpecResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyNodeSpecResponse) SetHeaders(v map[string]*string) *ModifyNodeSpecResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyNodeSpecResponse) SetStatusCode(v int32) *ModifyNodeSpecResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ModifyNodeSpecResponse) SetBody(v *ModifyNodeSpecResponseBody) *ModifyNodeSpecResponse {
 	s.Body = v
 	return s
 }
@@ -15796,9 +15704,7 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 
 type TransformInstanceChargeTypeRequest struct {
 	AutoPay              *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	BusinessInfo         *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	ChargeType           *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CouponNo             *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -15821,18 +15727,8 @@ func (s *TransformInstanceChargeTypeRequest) SetAutoPay(v bool) *TransformInstan
 	return s
 }
 
-func (s *TransformInstanceChargeTypeRequest) SetBusinessInfo(v string) *TransformInstanceChargeTypeRequest {
-	s.BusinessInfo = &v
-	return s
-}
-
 func (s *TransformInstanceChargeTypeRequest) SetChargeType(v string) *TransformInstanceChargeTypeRequest {
 	s.ChargeType = &v
-	return s
-}
-
-func (s *TransformInstanceChargeTypeRequest) SetCouponNo(v string) *TransformInstanceChargeTypeRequest {
-	s.CouponNo = &v
 	return s
 }
 
@@ -16281,10 +16177,6 @@ func (client *Client) AddShardingNodeWithOptions(request *AddShardingNodeRequest
 		query["OwnerId"] = request.OwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ReadOnlyCount)) {
-		query["ReadOnlyCount"] = request.ReadOnlyCount
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -16295,10 +16187,6 @@ func (client *Client) AddShardingNodeWithOptions(request *AddShardingNodeRequest
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
 		query["SecurityToken"] = request.SecurityToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ShardClass)) {
-		query["ShardClass"] = request.ShardClass
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ShardCount)) {
@@ -16929,6 +16817,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		query["PrivateIpAddress"] = request.PrivateIpAddress
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReadOnlyCount)) {
+		query["ReadOnlyCount"] = request.ReadOnlyCount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -17197,6 +17089,10 @@ func (client *Client) CreateTairInstanceWithOptions(request *CreateTairInstanceR
 		query["PrivateIpAddress"] = request.PrivateIpAddress
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReadOnlyCount)) {
+		query["ReadOnlyCount"] = request.ReadOnlyCount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -17445,10 +17341,6 @@ func (client *Client) DeleteShardingNodeWithOptions(request *DeleteShardingNodeR
 		query["OwnerId"] = request.OwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ReadOnlyCount)) {
-		query["ReadOnlyCount"] = request.ReadOnlyCount
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -17567,30 +17459,14 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeActiveOperationTasksResponse, _err error) {
+func (client *Client) DescribeActiveOperationTaskWithOptions(request *DescribeActiveOperationTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeActiveOperationTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AllowCancel)) {
-		query["AllowCancel"] = request.AllowCancel
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AllowChange)) {
-		query["AllowChange"] = request.AllowChange
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ChangeLevel)) {
-		query["ChangeLevel"] = request.ChangeLevel
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DbType)) {
-		query["DbType"] = request.DbType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InsName)) {
-		query["InsName"] = request.InsName
+	if !tea.BoolValue(util.IsUnset(request.IsHistory)) {
+		query["IsHistory"] = request.IsHistory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -17609,8 +17485,8 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
-		query["ProductId"] = request.ProductId
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -17625,10 +17501,6 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 		query["SecurityToken"] = request.SecurityToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
 		query["TaskType"] = request.TaskType
 	}
@@ -17637,7 +17509,7 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DescribeActiveOperationTasks"),
+		Action:      tea.String("DescribeActiveOperationTask"),
 		Version:     tea.String("2015-01-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -17647,7 +17519,7 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeActiveOperationTasksResponse{}
+	_result = &DescribeActiveOperationTaskResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -17656,10 +17528,10 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 	return _result, _err
 }
 
-func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperationTasksRequest) (_result *DescribeActiveOperationTasksResponse, _err error) {
+func (client *Client) DescribeActiveOperationTask(request *DescribeActiveOperationTaskRequest) (_result *DescribeActiveOperationTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DescribeActiveOperationTasksResponse{}
-	_body, _err := client.DescribeActiveOperationTasksWithOptions(request, runtime)
+	_result = &DescribeActiveOperationTaskResponse{}
+	_body, _err := client.DescribeActiveOperationTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18339,14 +18211,6 @@ func (client *Client) DescribeClusterMemberInfoWithOptions(request *DescribeClus
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -19704,6 +19568,86 @@ func (client *Client) DescribeMonitorItems(request *DescribeMonitorItemsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMonitorItemsResponse{}
 	_body, _err := client.DescribeMonitorItemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeParameterModificationHistoryWithOptions(request *DescribeParameterModificationHistoryRequest, runtime *util.RuntimeOptions) (_result *DescribeParameterModificationHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterName)) {
+		query["ParameterName"] = request.ParameterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeParameterModificationHistory"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeParameterModificationHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeParameterModificationHistory(request *DescribeParameterModificationHistoryRequest) (_result *DescribeParameterModificationHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeParameterModificationHistoryResponse{}
+	_body, _err := client.DescribeParameterModificationHistoryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21283,7 +21227,7 @@ func (client *Client) ModifyAccountPassword(request *ModifyAccountPasswordReques
 	return _result, _err
 }
 
-func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *ModifyActiveOperationTasksResponse, _err error) {
+func (client *Client) ModifyActiveOperationTaskWithOptions(request *ModifyActiveOperationTaskRequest, runtime *util.RuntimeOptions) (_result *ModifyActiveOperationTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -21291,10 +21235,6 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Ids)) {
 		query["Ids"] = request.Ids
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ImmediateStart)) {
-		query["ImmediateStart"] = request.ImmediateStart
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -21325,7 +21265,7 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("ModifyActiveOperationTasks"),
+		Action:      tea.String("ModifyActiveOperationTask"),
 		Version:     tea.String("2015-01-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -21335,7 +21275,7 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyActiveOperationTasksResponse{}
+	_result = &ModifyActiveOperationTaskResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21344,10 +21284,10 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 	return _result, _err
 }
 
-func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationTasksRequest) (_result *ModifyActiveOperationTasksResponse, _err error) {
+func (client *Client) ModifyActiveOperationTask(request *ModifyActiveOperationTaskRequest) (_result *ModifyActiveOperationTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &ModifyActiveOperationTasksResponse{}
-	_body, _err := client.ModifyActiveOperationTasksWithOptions(request, runtime)
+	_result = &ModifyActiveOperationTaskResponse{}
+	_body, _err := client.ModifyActiveOperationTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22229,6 +22169,10 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 		query["SecurityToken"] = request.SecurityToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ShardCount)) {
+		query["ShardCount"] = request.ShardCount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceBiz)) {
 		query["SourceBiz"] = request.SourceBiz
 	}
@@ -22480,98 +22424,6 @@ func (client *Client) ModifyIntranetAttribute(request *ModifyIntranetAttributeRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyIntranetAttributeResponse{}
 	_body, _err := client.ModifyIntranetAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ModifyNodeSpecWithOptions(request *ModifyNodeSpecRequest, runtime *util.RuntimeOptions) (_result *ModifyNodeSpecResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
-		query["AutoPay"] = request.AutoPay
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BusinessInfo)) {
-		query["BusinessInfo"] = request.BusinessInfo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CouponNo)) {
-		query["CouponNo"] = request.CouponNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceClass)) {
-		query["InstanceClass"] = request.InstanceClass
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
-		query["NodeId"] = request.NodeId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
-		query["OrderType"] = request.OrderType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SwitchTimeMode)) {
-		query["SwitchTimeMode"] = request.SwitchTimeMode
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyNodeSpec"),
-		Version:     tea.String("2015-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ModifyNodeSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyNodeSpec(request *ModifyNodeSpecRequest) (_result *ModifyNodeSpecResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyNodeSpecResponse{}
-	_body, _err := client.ModifyNodeSpecWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23777,16 +23629,8 @@ func (client *Client) TransformInstanceChargeTypeWithOptions(request *TransformI
 		query["AutoPay"] = request.AutoPay
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.BusinessInfo)) {
-		query["BusinessInfo"] = request.BusinessInfo
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
 		query["ChargeType"] = request.ChargeType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CouponNo)) {
-		query["CouponNo"] = request.CouponNo
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
