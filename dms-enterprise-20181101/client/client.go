@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -385,6 +385,151 @@ func (s *AddLogicTableRouteConfigResponse) SetBody(v *AddLogicTableRouteConfigRe
 	return s
 }
 
+type AddTaskFlowEdgesRequest struct {
+	DagId *int64                          `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Edges []*AddTaskFlowEdgesRequestEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Repeated"`
+	Tid   *int64                          `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s AddTaskFlowEdgesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTaskFlowEdgesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddTaskFlowEdgesRequest) SetDagId(v int64) *AddTaskFlowEdgesRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *AddTaskFlowEdgesRequest) SetEdges(v []*AddTaskFlowEdgesRequestEdges) *AddTaskFlowEdgesRequest {
+	s.Edges = v
+	return s
+}
+
+func (s *AddTaskFlowEdgesRequest) SetTid(v int64) *AddTaskFlowEdgesRequest {
+	s.Tid = &v
+	return s
+}
+
+type AddTaskFlowEdgesRequestEdges struct {
+	NodeEnd  *int64 `json:"NodeEnd,omitempty" xml:"NodeEnd,omitempty"`
+	NodeFrom *int64 `json:"NodeFrom,omitempty" xml:"NodeFrom,omitempty"`
+}
+
+func (s AddTaskFlowEdgesRequestEdges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTaskFlowEdgesRequestEdges) GoString() string {
+	return s.String()
+}
+
+func (s *AddTaskFlowEdgesRequestEdges) SetNodeEnd(v int64) *AddTaskFlowEdgesRequestEdges {
+	s.NodeEnd = &v
+	return s
+}
+
+func (s *AddTaskFlowEdgesRequestEdges) SetNodeFrom(v int64) *AddTaskFlowEdgesRequestEdges {
+	s.NodeFrom = &v
+	return s
+}
+
+type AddTaskFlowEdgesShrinkRequest struct {
+	DagId       *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	EdgesShrink *string `json:"Edges,omitempty" xml:"Edges,omitempty"`
+	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s AddTaskFlowEdgesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTaskFlowEdgesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddTaskFlowEdgesShrinkRequest) SetDagId(v int64) *AddTaskFlowEdgesShrinkRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *AddTaskFlowEdgesShrinkRequest) SetEdgesShrink(v string) *AddTaskFlowEdgesShrinkRequest {
+	s.EdgesShrink = &v
+	return s
+}
+
+func (s *AddTaskFlowEdgesShrinkRequest) SetTid(v int64) *AddTaskFlowEdgesShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type AddTaskFlowEdgesResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddTaskFlowEdgesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTaskFlowEdgesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddTaskFlowEdgesResponseBody) SetErrorCode(v string) *AddTaskFlowEdgesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddTaskFlowEdgesResponseBody) SetErrorMessage(v string) *AddTaskFlowEdgesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddTaskFlowEdgesResponseBody) SetRequestId(v string) *AddTaskFlowEdgesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddTaskFlowEdgesResponseBody) SetSuccess(v bool) *AddTaskFlowEdgesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddTaskFlowEdgesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddTaskFlowEdgesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddTaskFlowEdgesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTaskFlowEdgesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddTaskFlowEdgesResponse) SetHeaders(v map[string]*string) *AddTaskFlowEdgesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddTaskFlowEdgesResponse) SetStatusCode(v int32) *AddTaskFlowEdgesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddTaskFlowEdgesResponse) SetBody(v *AddTaskFlowEdgesResponseBody) *AddTaskFlowEdgesResponse {
+	s.Body = v
+	return s
+}
+
 type ApproveOrderRequest struct {
 	ApprovalType       *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
 	Comment            *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
@@ -480,6 +625,218 @@ func (s *ApproveOrderResponse) SetStatusCode(v int32) *ApproveOrderResponse {
 }
 
 func (s *ApproveOrderResponse) SetBody(v *ApproveOrderResponseBody) *ApproveOrderResponse {
+	s.Body = v
+	return s
+}
+
+type BackFillRequest struct {
+	Asc               *bool    `json:"Asc,omitempty" xml:"Asc,omitempty"`
+	BackFillDate      *string  `json:"BackFillDate,omitempty" xml:"BackFillDate,omitempty"`
+	BackFillDateBegin *string  `json:"BackFillDateBegin,omitempty" xml:"BackFillDateBegin,omitempty"`
+	BackFillDateEnd   *string  `json:"BackFillDateEnd,omitempty" xml:"BackFillDateEnd,omitempty"`
+	DagId             *int64   `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	HistoryDagId      *int64   `json:"HistoryDagId,omitempty" xml:"HistoryDagId,omitempty"`
+	Interval          *int32   `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IsTriggerSubTree  *bool    `json:"IsTriggerSubTree,omitempty" xml:"IsTriggerSubTree,omitempty"`
+	StartNodeIds      []*int64 `json:"StartNodeIds,omitempty" xml:"StartNodeIds,omitempty" type:"Repeated"`
+	Tid               *int64   `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s BackFillRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BackFillRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BackFillRequest) SetAsc(v bool) *BackFillRequest {
+	s.Asc = &v
+	return s
+}
+
+func (s *BackFillRequest) SetBackFillDate(v string) *BackFillRequest {
+	s.BackFillDate = &v
+	return s
+}
+
+func (s *BackFillRequest) SetBackFillDateBegin(v string) *BackFillRequest {
+	s.BackFillDateBegin = &v
+	return s
+}
+
+func (s *BackFillRequest) SetBackFillDateEnd(v string) *BackFillRequest {
+	s.BackFillDateEnd = &v
+	return s
+}
+
+func (s *BackFillRequest) SetDagId(v int64) *BackFillRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *BackFillRequest) SetHistoryDagId(v int64) *BackFillRequest {
+	s.HistoryDagId = &v
+	return s
+}
+
+func (s *BackFillRequest) SetInterval(v int32) *BackFillRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *BackFillRequest) SetIsTriggerSubTree(v bool) *BackFillRequest {
+	s.IsTriggerSubTree = &v
+	return s
+}
+
+func (s *BackFillRequest) SetStartNodeIds(v []*int64) *BackFillRequest {
+	s.StartNodeIds = v
+	return s
+}
+
+func (s *BackFillRequest) SetTid(v int64) *BackFillRequest {
+	s.Tid = &v
+	return s
+}
+
+type BackFillShrinkRequest struct {
+	Asc                *bool   `json:"Asc,omitempty" xml:"Asc,omitempty"`
+	BackFillDate       *string `json:"BackFillDate,omitempty" xml:"BackFillDate,omitempty"`
+	BackFillDateBegin  *string `json:"BackFillDateBegin,omitempty" xml:"BackFillDateBegin,omitempty"`
+	BackFillDateEnd    *string `json:"BackFillDateEnd,omitempty" xml:"BackFillDateEnd,omitempty"`
+	DagId              *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	HistoryDagId       *int64  `json:"HistoryDagId,omitempty" xml:"HistoryDagId,omitempty"`
+	Interval           *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IsTriggerSubTree   *bool   `json:"IsTriggerSubTree,omitempty" xml:"IsTriggerSubTree,omitempty"`
+	StartNodeIdsShrink *string `json:"StartNodeIds,omitempty" xml:"StartNodeIds,omitempty"`
+	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s BackFillShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BackFillShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BackFillShrinkRequest) SetAsc(v bool) *BackFillShrinkRequest {
+	s.Asc = &v
+	return s
+}
+
+func (s *BackFillShrinkRequest) SetBackFillDate(v string) *BackFillShrinkRequest {
+	s.BackFillDate = &v
+	return s
+}
+
+func (s *BackFillShrinkRequest) SetBackFillDateBegin(v string) *BackFillShrinkRequest {
+	s.BackFillDateBegin = &v
+	return s
+}
+
+func (s *BackFillShrinkRequest) SetBackFillDateEnd(v string) *BackFillShrinkRequest {
+	s.BackFillDateEnd = &v
+	return s
+}
+
+func (s *BackFillShrinkRequest) SetDagId(v int64) *BackFillShrinkRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *BackFillShrinkRequest) SetHistoryDagId(v int64) *BackFillShrinkRequest {
+	s.HistoryDagId = &v
+	return s
+}
+
+func (s *BackFillShrinkRequest) SetInterval(v int32) *BackFillShrinkRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *BackFillShrinkRequest) SetIsTriggerSubTree(v bool) *BackFillShrinkRequest {
+	s.IsTriggerSubTree = &v
+	return s
+}
+
+func (s *BackFillShrinkRequest) SetStartNodeIdsShrink(v string) *BackFillShrinkRequest {
+	s.StartNodeIdsShrink = &v
+	return s
+}
+
+func (s *BackFillShrinkRequest) SetTid(v int64) *BackFillShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type BackFillResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	NodeId       *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BackFillResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BackFillResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BackFillResponseBody) SetErrorCode(v string) *BackFillResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *BackFillResponseBody) SetErrorMessage(v string) *BackFillResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BackFillResponseBody) SetNodeId(v int64) *BackFillResponseBody {
+	s.NodeId = &v
+	return s
+}
+
+func (s *BackFillResponseBody) SetRequestId(v string) *BackFillResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BackFillResponseBody) SetSuccess(v bool) *BackFillResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BackFillResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BackFillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BackFillResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BackFillResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BackFillResponse) SetHeaders(v map[string]*string) *BackFillResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BackFillResponse) SetStatusCode(v int32) *BackFillResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BackFillResponse) SetBody(v *BackFillResponseBody) *BackFillResponse {
 	s.Body = v
 	return s
 }
@@ -2740,6 +3097,105 @@ func (s *CreateSQLReviewOrderResponse) SetBody(v *CreateSQLReviewOrderResponseBo
 	return s
 }
 
+type CreateScenarioRequest struct {
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ScenarioName *string `json:"ScenarioName,omitempty" xml:"ScenarioName,omitempty"`
+	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateScenarioRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScenarioRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScenarioRequest) SetDescription(v string) *CreateScenarioRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateScenarioRequest) SetScenarioName(v string) *CreateScenarioRequest {
+	s.ScenarioName = &v
+	return s
+}
+
+func (s *CreateScenarioRequest) SetTid(v int64) *CreateScenarioRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateScenarioResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScenarioId   *int64  `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateScenarioResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScenarioResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScenarioResponseBody) SetErrorCode(v string) *CreateScenarioResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateScenarioResponseBody) SetErrorMessage(v string) *CreateScenarioResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateScenarioResponseBody) SetRequestId(v string) *CreateScenarioResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateScenarioResponseBody) SetScenarioId(v int64) *CreateScenarioResponseBody {
+	s.ScenarioId = &v
+	return s
+}
+
+func (s *CreateScenarioResponseBody) SetSuccess(v bool) *CreateScenarioResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateScenarioResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateScenarioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateScenarioResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScenarioResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScenarioResponse) SetHeaders(v map[string]*string) *CreateScenarioResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateScenarioResponse) SetStatusCode(v int32) *CreateScenarioResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateScenarioResponse) SetBody(v *CreateScenarioResponseBody) *CreateScenarioResponse {
+	s.Body = v
+	return s
+}
+
 type CreateStandardGroupRequest struct {
 	DbType      *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -3162,6 +3618,240 @@ func (s *CreateStructSyncOrderResponse) SetStatusCode(v int32) *CreateStructSync
 }
 
 func (s *CreateStructSyncOrderResponse) SetBody(v *CreateStructSyncOrderResponseBody) *CreateStructSyncOrderResponse {
+	s.Body = v
+	return s
+}
+
+type CreateTaskRequest struct {
+	DagId         *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	GraphParam    *string `json:"GraphParam,omitempty" xml:"GraphParam,omitempty"`
+	NodeContent   *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
+	NodeName      *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeOutput    *string `json:"NodeOutput,omitempty" xml:"NodeOutput,omitempty"`
+	NodeType      *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Tid           *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	TimeVariables *string `json:"TimeVariables,omitempty" xml:"TimeVariables,omitempty"`
+}
+
+func (s CreateTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequest) SetDagId(v int64) *CreateTaskRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *CreateTaskRequest) SetGraphParam(v string) *CreateTaskRequest {
+	s.GraphParam = &v
+	return s
+}
+
+func (s *CreateTaskRequest) SetNodeContent(v string) *CreateTaskRequest {
+	s.NodeContent = &v
+	return s
+}
+
+func (s *CreateTaskRequest) SetNodeName(v string) *CreateTaskRequest {
+	s.NodeName = &v
+	return s
+}
+
+func (s *CreateTaskRequest) SetNodeOutput(v string) *CreateTaskRequest {
+	s.NodeOutput = &v
+	return s
+}
+
+func (s *CreateTaskRequest) SetNodeType(v string) *CreateTaskRequest {
+	s.NodeType = &v
+	return s
+}
+
+func (s *CreateTaskRequest) SetTid(v int64) *CreateTaskRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *CreateTaskRequest) SetTimeVariables(v string) *CreateTaskRequest {
+	s.TimeVariables = &v
+	return s
+}
+
+type CreateTaskResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	NodeId       *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskResponseBody) SetErrorCode(v string) *CreateTaskResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateTaskResponseBody) SetErrorMessage(v string) *CreateTaskResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateTaskResponseBody) SetNodeId(v int64) *CreateTaskResponseBody {
+	s.NodeId = &v
+	return s
+}
+
+func (s *CreateTaskResponseBody) SetRequestId(v string) *CreateTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTaskResponseBody) SetSuccess(v bool) *CreateTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateTaskResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskResponse) SetHeaders(v map[string]*string) *CreateTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTaskResponse) SetStatusCode(v int32) *CreateTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTaskResponse) SetBody(v *CreateTaskResponseBody) *CreateTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateTaskFlowRequest struct {
+	DagName     *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ScenarioId  *int64  `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateTaskFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskFlowRequest) SetDagName(v string) *CreateTaskFlowRequest {
+	s.DagName = &v
+	return s
+}
+
+func (s *CreateTaskFlowRequest) SetDescription(v string) *CreateTaskFlowRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateTaskFlowRequest) SetScenarioId(v int64) *CreateTaskFlowRequest {
+	s.ScenarioId = &v
+	return s
+}
+
+func (s *CreateTaskFlowRequest) SetTid(v int64) *CreateTaskFlowRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateTaskFlowResponseBody struct {
+	DagId        *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateTaskFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskFlowResponseBody) SetDagId(v int64) *CreateTaskFlowResponseBody {
+	s.DagId = &v
+	return s
+}
+
+func (s *CreateTaskFlowResponseBody) SetErrorCode(v string) *CreateTaskFlowResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateTaskFlowResponseBody) SetErrorMessage(v string) *CreateTaskFlowResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateTaskFlowResponseBody) SetRequestId(v string) *CreateTaskFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTaskFlowResponseBody) SetSuccess(v bool) *CreateTaskFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateTaskFlowResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTaskFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTaskFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskFlowResponse) SetHeaders(v map[string]*string) *CreateTaskFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTaskFlowResponse) SetStatusCode(v int32) *CreateTaskFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTaskFlowResponse) SetBody(v *CreateTaskFlowResponseBody) *CreateTaskFlowResponse {
 	s.Body = v
 	return s
 }
@@ -4114,6 +4804,180 @@ func (s *DeleteProxyAccessResponse) SetBody(v *DeleteProxyAccessResponseBody) *D
 	return s
 }
 
+type DeleteScenarioRequest struct {
+	ScenarioId *int64 `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DeleteScenarioRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteScenarioRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteScenarioRequest) SetScenarioId(v int64) *DeleteScenarioRequest {
+	s.ScenarioId = &v
+	return s
+}
+
+func (s *DeleteScenarioRequest) SetTid(v int64) *DeleteScenarioRequest {
+	s.Tid = &v
+	return s
+}
+
+type DeleteScenarioResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteScenarioResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteScenarioResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteScenarioResponseBody) SetErrorCode(v string) *DeleteScenarioResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteScenarioResponseBody) SetErrorMessage(v string) *DeleteScenarioResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteScenarioResponseBody) SetRequestId(v string) *DeleteScenarioResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteScenarioResponseBody) SetSuccess(v bool) *DeleteScenarioResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteScenarioResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteScenarioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteScenarioResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteScenarioResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteScenarioResponse) SetHeaders(v map[string]*string) *DeleteScenarioResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteScenarioResponse) SetStatusCode(v int32) *DeleteScenarioResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteScenarioResponse) SetBody(v *DeleteScenarioResponseBody) *DeleteScenarioResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTaskRequest struct {
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Tid    *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DeleteTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTaskRequest) SetNodeId(v string) *DeleteTaskRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DeleteTaskRequest) SetTid(v int64) *DeleteTaskRequest {
+	s.Tid = &v
+	return s
+}
+
+type DeleteTaskResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTaskResponseBody) SetErrorCode(v string) *DeleteTaskResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteTaskResponseBody) SetErrorMessage(v string) *DeleteTaskResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteTaskResponseBody) SetRequestId(v string) *DeleteTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteTaskResponseBody) SetSuccess(v bool) *DeleteTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteTaskResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTaskResponse) SetHeaders(v map[string]*string) *DeleteTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTaskResponse) SetStatusCode(v int32) *DeleteTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTaskResponse) SetBody(v *DeleteTaskResponseBody) *DeleteTaskResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteTaskFlowRequest struct {
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -4197,6 +5061,111 @@ func (s *DeleteTaskFlowResponse) SetStatusCode(v int32) *DeleteTaskFlowResponse 
 }
 
 func (s *DeleteTaskFlowResponse) SetBody(v *DeleteTaskFlowResponseBody) *DeleteTaskFlowResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTaskFlowEdgesByConditionRequest struct {
+	DagId    *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Id       *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	NodeEnd  *int64 `json:"NodeEnd,omitempty" xml:"NodeEnd,omitempty"`
+	NodeFrom *int64 `json:"NodeFrom,omitempty" xml:"NodeFrom,omitempty"`
+	Tid      *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DeleteTaskFlowEdgesByConditionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTaskFlowEdgesByConditionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTaskFlowEdgesByConditionRequest) SetDagId(v int64) *DeleteTaskFlowEdgesByConditionRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *DeleteTaskFlowEdgesByConditionRequest) SetId(v int64) *DeleteTaskFlowEdgesByConditionRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteTaskFlowEdgesByConditionRequest) SetNodeEnd(v int64) *DeleteTaskFlowEdgesByConditionRequest {
+	s.NodeEnd = &v
+	return s
+}
+
+func (s *DeleteTaskFlowEdgesByConditionRequest) SetNodeFrom(v int64) *DeleteTaskFlowEdgesByConditionRequest {
+	s.NodeFrom = &v
+	return s
+}
+
+func (s *DeleteTaskFlowEdgesByConditionRequest) SetTid(v int64) *DeleteTaskFlowEdgesByConditionRequest {
+	s.Tid = &v
+	return s
+}
+
+type DeleteTaskFlowEdgesByConditionResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteTaskFlowEdgesByConditionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTaskFlowEdgesByConditionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTaskFlowEdgesByConditionResponseBody) SetErrorCode(v string) *DeleteTaskFlowEdgesByConditionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteTaskFlowEdgesByConditionResponseBody) SetErrorMessage(v string) *DeleteTaskFlowEdgesByConditionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteTaskFlowEdgesByConditionResponseBody) SetRequestId(v string) *DeleteTaskFlowEdgesByConditionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteTaskFlowEdgesByConditionResponseBody) SetSuccess(v bool) *DeleteTaskFlowEdgesByConditionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteTaskFlowEdgesByConditionResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTaskFlowEdgesByConditionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTaskFlowEdgesByConditionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTaskFlowEdgesByConditionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTaskFlowEdgesByConditionResponse) SetHeaders(v map[string]*string) *DeleteTaskFlowEdgesByConditionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTaskFlowEdgesByConditionResponse) SetStatusCode(v int32) *DeleteTaskFlowEdgesByConditionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTaskFlowEdgesByConditionResponse) SetBody(v *DeleteTaskFlowEdgesByConditionResponseBody) *DeleteTaskFlowEdgesByConditionResponse {
 	s.Body = v
 	return s
 }
@@ -7413,6 +8382,99 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 	return s
 }
 
+type GetIntervalLimitOfSLARequest struct {
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetIntervalLimitOfSLARequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIntervalLimitOfSLARequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIntervalLimitOfSLARequest) SetDagId(v int64) *GetIntervalLimitOfSLARequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *GetIntervalLimitOfSLARequest) SetTid(v int64) *GetIntervalLimitOfSLARequest {
+	s.Tid = &v
+	return s
+}
+
+type GetIntervalLimitOfSLAResponseBody struct {
+	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	IntervalLimit *int32  `json:"IntervalLimit,omitempty" xml:"IntervalLimit,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetIntervalLimitOfSLAResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIntervalLimitOfSLAResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIntervalLimitOfSLAResponseBody) SetErrorCode(v string) *GetIntervalLimitOfSLAResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetIntervalLimitOfSLAResponseBody) SetErrorMessage(v string) *GetIntervalLimitOfSLAResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetIntervalLimitOfSLAResponseBody) SetIntervalLimit(v int32) *GetIntervalLimitOfSLAResponseBody {
+	s.IntervalLimit = &v
+	return s
+}
+
+func (s *GetIntervalLimitOfSLAResponseBody) SetRequestId(v string) *GetIntervalLimitOfSLAResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetIntervalLimitOfSLAResponseBody) SetSuccess(v bool) *GetIntervalLimitOfSLAResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetIntervalLimitOfSLAResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetIntervalLimitOfSLAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetIntervalLimitOfSLAResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIntervalLimitOfSLAResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIntervalLimitOfSLAResponse) SetHeaders(v map[string]*string) *GetIntervalLimitOfSLAResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIntervalLimitOfSLAResponse) SetStatusCode(v int32) *GetIntervalLimitOfSLAResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIntervalLimitOfSLAResponse) SetBody(v *GetIntervalLimitOfSLAResponseBody) *GetIntervalLimitOfSLAResponse {
+	s.Body = v
+	return s
+}
+
 type GetLhSpaceByNameRequest struct {
 	SpaceName *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
 	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -9506,6 +10568,99 @@ func (s *GetProxyResponse) SetBody(v *GetProxyResponseBody) *GetProxyResponse {
 	return s
 }
 
+type GetRuleNumLimitOfSLARequest struct {
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetRuleNumLimitOfSLARequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleNumLimitOfSLARequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleNumLimitOfSLARequest) SetDagId(v int64) *GetRuleNumLimitOfSLARequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *GetRuleNumLimitOfSLARequest) SetTid(v int64) *GetRuleNumLimitOfSLARequest {
+	s.Tid = &v
+	return s
+}
+
+type GetRuleNumLimitOfSLAResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleNumLimit *int32  `json:"RuleNumLimit,omitempty" xml:"RuleNumLimit,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetRuleNumLimitOfSLAResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleNumLimitOfSLAResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleNumLimitOfSLAResponseBody) SetErrorCode(v string) *GetRuleNumLimitOfSLAResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetRuleNumLimitOfSLAResponseBody) SetErrorMessage(v string) *GetRuleNumLimitOfSLAResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetRuleNumLimitOfSLAResponseBody) SetRequestId(v string) *GetRuleNumLimitOfSLAResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRuleNumLimitOfSLAResponseBody) SetRuleNumLimit(v int32) *GetRuleNumLimitOfSLAResponseBody {
+	s.RuleNumLimit = &v
+	return s
+}
+
+func (s *GetRuleNumLimitOfSLAResponseBody) SetSuccess(v bool) *GetRuleNumLimitOfSLAResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetRuleNumLimitOfSLAResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRuleNumLimitOfSLAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRuleNumLimitOfSLAResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleNumLimitOfSLAResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleNumLimitOfSLAResponse) SetHeaders(v map[string]*string) *GetRuleNumLimitOfSLAResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRuleNumLimitOfSLAResponse) SetStatusCode(v int32) *GetRuleNumLimitOfSLAResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRuleNumLimitOfSLAResponse) SetBody(v *GetRuleNumLimitOfSLAResponseBody) *GetRuleNumLimitOfSLAResponse {
+	s.Body = v
+	return s
+}
+
 type GetSQLReviewCheckResultStatusRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -11158,6 +12313,542 @@ func (s *GetTableTopologyResponse) SetStatusCode(v int32) *GetTableTopologyRespo
 }
 
 func (s *GetTableTopologyResponse) SetBody(v *GetTableTopologyResponseBody) *GetTableTopologyResponse {
+	s.Body = v
+	return s
+}
+
+type GetTaskRequest struct {
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Tid    *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskRequest) SetNodeId(v int64) *GetTaskRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetTaskRequest) SetTid(v int64) *GetTaskRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetTaskResponseBody struct {
+	ErrorCode    *string                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	Task         *GetTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+}
+
+func (s GetTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBody) SetErrorCode(v string) *GetTaskResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetErrorMessage(v string) *GetTaskResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetRequestId(v string) *GetTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetSuccess(v bool) *GetTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetTask(v *GetTaskResponseBodyTask) *GetTaskResponseBody {
+	s.Task = v
+	return s
+}
+
+type GetTaskResponseBodyTask struct {
+	DagId         *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	GraphParam    *string `json:"GraphParam,omitempty" xml:"GraphParam,omitempty"`
+	NodeConfig    *string `json:"NodeConfig,omitempty" xml:"NodeConfig,omitempty"`
+	NodeContent   *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
+	NodeName      *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeOutput    *string `json:"NodeOutput,omitempty" xml:"NodeOutput,omitempty"`
+	NodeType      *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	TimeVariables *string `json:"TimeVariables,omitempty" xml:"TimeVariables,omitempty"`
+}
+
+func (s GetTaskResponseBodyTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTask) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTask) SetDagId(v int64) *GetTaskResponseBodyTask {
+	s.DagId = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetGraphParam(v string) *GetTaskResponseBodyTask {
+	s.GraphParam = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetNodeConfig(v string) *GetTaskResponseBodyTask {
+	s.NodeConfig = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetNodeContent(v string) *GetTaskResponseBodyTask {
+	s.NodeContent = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetNodeName(v string) *GetTaskResponseBodyTask {
+	s.NodeName = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetNodeOutput(v string) *GetTaskResponseBodyTask {
+	s.NodeOutput = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetNodeType(v string) *GetTaskResponseBodyTask {
+	s.NodeType = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetTimeVariables(v string) *GetTaskResponseBodyTask {
+	s.TimeVariables = &v
+	return s
+}
+
+type GetTaskResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponse) SetHeaders(v map[string]*string) *GetTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskResponse) SetStatusCode(v int32) *GetTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetTaskFlowGraphRequest struct {
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetTaskFlowGraphRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskFlowGraphRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskFlowGraphRequest) SetDagId(v int64) *GetTaskFlowGraphRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphRequest) SetTid(v int64) *GetTaskFlowGraphRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetTaskFlowGraphResponseBody struct {
+	ErrorCode     *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage  *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskFlowGraph *GetTaskFlowGraphResponseBodyTaskFlowGraph `json:"TaskFlowGraph,omitempty" xml:"TaskFlowGraph,omitempty" type:"Struct"`
+}
+
+func (s GetTaskFlowGraphResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskFlowGraphResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskFlowGraphResponseBody) SetErrorCode(v string) *GetTaskFlowGraphResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBody) SetErrorMessage(v string) *GetTaskFlowGraphResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBody) SetRequestId(v string) *GetTaskFlowGraphResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBody) SetSuccess(v bool) *GetTaskFlowGraphResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBody) SetTaskFlowGraph(v *GetTaskFlowGraphResponseBodyTaskFlowGraph) *GetTaskFlowGraphResponseBody {
+	s.TaskFlowGraph = v
+	return s
+}
+
+type GetTaskFlowGraphResponseBodyTaskFlowGraph struct {
+	CanEdit *bool                                           `json:"CanEdit,omitempty" xml:"CanEdit,omitempty"`
+	DagName *string                                         `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	Edges   *GetTaskFlowGraphResponseBodyTaskFlowGraphEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Struct"`
+	Nodes   *GetTaskFlowGraphResponseBodyTaskFlowGraphNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Struct"`
+	Status  *int64                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetTaskFlowGraphResponseBodyTaskFlowGraph) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskFlowGraphResponseBodyTaskFlowGraph) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraph) SetCanEdit(v bool) *GetTaskFlowGraphResponseBodyTaskFlowGraph {
+	s.CanEdit = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraph) SetDagName(v string) *GetTaskFlowGraphResponseBodyTaskFlowGraph {
+	s.DagName = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraph) SetEdges(v *GetTaskFlowGraphResponseBodyTaskFlowGraphEdges) *GetTaskFlowGraphResponseBodyTaskFlowGraph {
+	s.Edges = v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraph) SetNodes(v *GetTaskFlowGraphResponseBodyTaskFlowGraphNodes) *GetTaskFlowGraphResponseBodyTaskFlowGraph {
+	s.Nodes = v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraph) SetStatus(v int64) *GetTaskFlowGraphResponseBodyTaskFlowGraph {
+	s.Status = &v
+	return s
+}
+
+type GetTaskFlowGraphResponseBodyTaskFlowGraphEdges struct {
+	Edge []*GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge `json:"Edge,omitempty" xml:"Edge,omitempty" type:"Repeated"`
+}
+
+func (s GetTaskFlowGraphResponseBodyTaskFlowGraphEdges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskFlowGraphResponseBodyTaskFlowGraphEdges) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphEdges) SetEdge(v []*GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge) *GetTaskFlowGraphResponseBodyTaskFlowGraphEdges {
+	s.Edge = v
+	return s
+}
+
+type GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge struct {
+	DagId    *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Id       *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	NodeEnd  *int64 `json:"NodeEnd,omitempty" xml:"NodeEnd,omitempty"`
+	NodeFrom *int64 `json:"NodeFrom,omitempty" xml:"NodeFrom,omitempty"`
+}
+
+func (s GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge) SetDagId(v int64) *GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge {
+	s.DagId = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge) SetId(v int64) *GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge {
+	s.Id = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge) SetNodeEnd(v int64) *GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge {
+	s.NodeEnd = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge) SetNodeFrom(v int64) *GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge {
+	s.NodeFrom = &v
+	return s
+}
+
+type GetTaskFlowGraphResponseBodyTaskFlowGraphNodes struct {
+	Node []*GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode `json:"Node,omitempty" xml:"Node,omitempty" type:"Repeated"`
+}
+
+func (s GetTaskFlowGraphResponseBodyTaskFlowGraphNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskFlowGraphResponseBodyTaskFlowGraphNodes) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphNodes) SetNode(v []*GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode) *GetTaskFlowGraphResponseBodyTaskFlowGraphNodes {
+	s.Node = v
+	return s
+}
+
+type GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode struct {
+	DagId         *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	GraphParam    *string `json:"GraphParam,omitempty" xml:"GraphParam,omitempty"`
+	NodeConfig    *string `json:"NodeConfig,omitempty" xml:"NodeConfig,omitempty"`
+	NodeContent   *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
+	NodeId        *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName      *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeType      *int64  `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	TimeVariables *string `json:"TimeVariables,omitempty" xml:"TimeVariables,omitempty"`
+}
+
+func (s GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode) SetDagId(v int64) *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode {
+	s.DagId = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode) SetGraphParam(v string) *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode {
+	s.GraphParam = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode) SetNodeConfig(v string) *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode {
+	s.NodeConfig = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode) SetNodeContent(v string) *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode {
+	s.NodeContent = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode) SetNodeId(v int64) *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode) SetNodeName(v string) *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode {
+	s.NodeName = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode) SetNodeType(v int64) *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode {
+	s.NodeType = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode) SetTimeVariables(v string) *GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode {
+	s.TimeVariables = &v
+	return s
+}
+
+type GetTaskFlowGraphResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTaskFlowGraphResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTaskFlowGraphResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskFlowGraphResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskFlowGraphResponse) SetHeaders(v map[string]*string) *GetTaskFlowGraphResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponse) SetStatusCode(v int32) *GetTaskFlowGraphResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTaskFlowGraphResponse) SetBody(v *GetTaskFlowGraphResponseBody) *GetTaskFlowGraphResponse {
+	s.Body = v
+	return s
+}
+
+type GetTaskFlowNotificationRequest struct {
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetTaskFlowNotificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskFlowNotificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskFlowNotificationRequest) SetDagId(v int64) *GetTaskFlowNotificationRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *GetTaskFlowNotificationRequest) SetTid(v int64) *GetTaskFlowNotificationRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetTaskFlowNotificationResponseBody struct {
+	ErrorCode    *string                                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Notification *GetTaskFlowNotificationResponseBodyNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
+	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetTaskFlowNotificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskFlowNotificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskFlowNotificationResponseBody) SetErrorCode(v string) *GetTaskFlowNotificationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTaskFlowNotificationResponseBody) SetErrorMessage(v string) *GetTaskFlowNotificationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTaskFlowNotificationResponseBody) SetNotification(v *GetTaskFlowNotificationResponseBodyNotification) *GetTaskFlowNotificationResponseBody {
+	s.Notification = v
+	return s
+}
+
+func (s *GetTaskFlowNotificationResponseBody) SetRequestId(v string) *GetTaskFlowNotificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTaskFlowNotificationResponseBody) SetSuccess(v bool) *GetTaskFlowNotificationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTaskFlowNotificationResponseBodyNotification struct {
+	DagNotificationFail    *bool `json:"DagNotificationFail,omitempty" xml:"DagNotificationFail,omitempty"`
+	DagNotificationSla     *bool `json:"DagNotificationSla,omitempty" xml:"DagNotificationSla,omitempty"`
+	DagNotificationSuccess *bool `json:"DagNotificationSuccess,omitempty" xml:"DagNotificationSuccess,omitempty"`
+}
+
+func (s GetTaskFlowNotificationResponseBodyNotification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskFlowNotificationResponseBodyNotification) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskFlowNotificationResponseBodyNotification) SetDagNotificationFail(v bool) *GetTaskFlowNotificationResponseBodyNotification {
+	s.DagNotificationFail = &v
+	return s
+}
+
+func (s *GetTaskFlowNotificationResponseBodyNotification) SetDagNotificationSla(v bool) *GetTaskFlowNotificationResponseBodyNotification {
+	s.DagNotificationSla = &v
+	return s
+}
+
+func (s *GetTaskFlowNotificationResponseBodyNotification) SetDagNotificationSuccess(v bool) *GetTaskFlowNotificationResponseBodyNotification {
+	s.DagNotificationSuccess = &v
+	return s
+}
+
+type GetTaskFlowNotificationResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTaskFlowNotificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTaskFlowNotificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskFlowNotificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskFlowNotificationResponse) SetHeaders(v map[string]*string) *GetTaskFlowNotificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskFlowNotificationResponse) SetStatusCode(v int32) *GetTaskFlowNotificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTaskFlowNotificationResponse) SetBody(v *GetTaskFlowNotificationResponseBody) *GetTaskFlowNotificationResponse {
 	s.Body = v
 	return s
 }
@@ -14050,6 +15741,157 @@ func (s *ListDatabasesResponse) SetStatusCode(v int32) *ListDatabasesResponse {
 }
 
 func (s *ListDatabasesResponse) SetBody(v *ListDatabasesResponseBody) *ListDatabasesResponse {
+	s.Body = v
+	return s
+}
+
+type ListDefaultSLARulesRequest struct {
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListDefaultSLARulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDefaultSLARulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDefaultSLARulesRequest) SetDagId(v int64) *ListDefaultSLARulesRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListDefaultSLARulesRequest) SetTid(v int64) *ListDefaultSLARulesRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListDefaultSLARulesResponseBody struct {
+	ErrorCode    *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SLARuleList  *ListDefaultSLARulesResponseBodySLARuleList `json:"SLARuleList,omitempty" xml:"SLARuleList,omitempty" type:"Struct"`
+	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListDefaultSLARulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDefaultSLARulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDefaultSLARulesResponseBody) SetErrorCode(v string) *ListDefaultSLARulesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDefaultSLARulesResponseBody) SetErrorMessage(v string) *ListDefaultSLARulesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDefaultSLARulesResponseBody) SetRequestId(v string) *ListDefaultSLARulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDefaultSLARulesResponseBody) SetSLARuleList(v *ListDefaultSLARulesResponseBodySLARuleList) *ListDefaultSLARulesResponseBody {
+	s.SLARuleList = v
+	return s
+}
+
+func (s *ListDefaultSLARulesResponseBody) SetSuccess(v bool) *ListDefaultSLARulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDefaultSLARulesResponseBodySLARuleList struct {
+	SLARule []*ListDefaultSLARulesResponseBodySLARuleListSLARule `json:"SLARule,omitempty" xml:"SLARule,omitempty" type:"Repeated"`
+}
+
+func (s ListDefaultSLARulesResponseBodySLARuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDefaultSLARulesResponseBodySLARuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDefaultSLARulesResponseBodySLARuleList) SetSLARule(v []*ListDefaultSLARulesResponseBodySLARuleListSLARule) *ListDefaultSLARulesResponseBodySLARuleList {
+	s.SLARule = v
+	return s
+}
+
+type ListDefaultSLARulesResponseBodySLARuleListSLARule struct {
+	DagId           *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Id              *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	IntervalMinutes *int32 `json:"IntervalMinutes,omitempty" xml:"IntervalMinutes,omitempty"`
+	NodeId          *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	RuleType        *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+}
+
+func (s ListDefaultSLARulesResponseBodySLARuleListSLARule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDefaultSLARulesResponseBodySLARuleListSLARule) GoString() string {
+	return s.String()
+}
+
+func (s *ListDefaultSLARulesResponseBodySLARuleListSLARule) SetDagId(v int64) *ListDefaultSLARulesResponseBodySLARuleListSLARule {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListDefaultSLARulesResponseBodySLARuleListSLARule) SetId(v int64) *ListDefaultSLARulesResponseBodySLARuleListSLARule {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDefaultSLARulesResponseBodySLARuleListSLARule) SetIntervalMinutes(v int32) *ListDefaultSLARulesResponseBodySLARuleListSLARule {
+	s.IntervalMinutes = &v
+	return s
+}
+
+func (s *ListDefaultSLARulesResponseBodySLARuleListSLARule) SetNodeId(v int64) *ListDefaultSLARulesResponseBodySLARuleListSLARule {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListDefaultSLARulesResponseBodySLARuleListSLARule) SetRuleType(v int32) *ListDefaultSLARulesResponseBodySLARuleListSLARule {
+	s.RuleType = &v
+	return s
+}
+
+type ListDefaultSLARulesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDefaultSLARulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDefaultSLARulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDefaultSLARulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDefaultSLARulesResponse) SetHeaders(v map[string]*string) *ListDefaultSLARulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDefaultSLARulesResponse) SetStatusCode(v int32) *ListDefaultSLARulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDefaultSLARulesResponse) SetBody(v *ListDefaultSLARulesResponseBody) *ListDefaultSLARulesResponse {
 	s.Body = v
 	return s
 }
@@ -17044,6 +18886,157 @@ func (s *ListProxySQLExecAuditLogResponse) SetBody(v *ListProxySQLExecAuditLogRe
 	return s
 }
 
+type ListSLARulesRequest struct {
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListSLARulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSLARulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSLARulesRequest) SetDagId(v int64) *ListSLARulesRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListSLARulesRequest) SetTid(v int64) *ListSLARulesRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListSLARulesResponseBody struct {
+	ErrorCode    *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SLARuleList  *ListSLARulesResponseBodySLARuleList `json:"SLARuleList,omitempty" xml:"SLARuleList,omitempty" type:"Struct"`
+	Success      *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListSLARulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSLARulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSLARulesResponseBody) SetErrorCode(v string) *ListSLARulesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSLARulesResponseBody) SetErrorMessage(v string) *ListSLARulesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListSLARulesResponseBody) SetRequestId(v string) *ListSLARulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSLARulesResponseBody) SetSLARuleList(v *ListSLARulesResponseBodySLARuleList) *ListSLARulesResponseBody {
+	s.SLARuleList = v
+	return s
+}
+
+func (s *ListSLARulesResponseBody) SetSuccess(v bool) *ListSLARulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListSLARulesResponseBodySLARuleList struct {
+	SLARule []*ListSLARulesResponseBodySLARuleListSLARule `json:"SLARule,omitempty" xml:"SLARule,omitempty" type:"Repeated"`
+}
+
+func (s ListSLARulesResponseBodySLARuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSLARulesResponseBodySLARuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSLARulesResponseBodySLARuleList) SetSLARule(v []*ListSLARulesResponseBodySLARuleListSLARule) *ListSLARulesResponseBodySLARuleList {
+	s.SLARule = v
+	return s
+}
+
+type ListSLARulesResponseBodySLARuleListSLARule struct {
+	DagId           *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Id              *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	IntervalMinutes *int32 `json:"IntervalMinutes,omitempty" xml:"IntervalMinutes,omitempty"`
+	NodeId          *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	RuleType        *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+}
+
+func (s ListSLARulesResponseBodySLARuleListSLARule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSLARulesResponseBodySLARuleListSLARule) GoString() string {
+	return s.String()
+}
+
+func (s *ListSLARulesResponseBodySLARuleListSLARule) SetDagId(v int64) *ListSLARulesResponseBodySLARuleListSLARule {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListSLARulesResponseBodySLARuleListSLARule) SetId(v int64) *ListSLARulesResponseBodySLARuleListSLARule {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSLARulesResponseBodySLARuleListSLARule) SetIntervalMinutes(v int32) *ListSLARulesResponseBodySLARuleListSLARule {
+	s.IntervalMinutes = &v
+	return s
+}
+
+func (s *ListSLARulesResponseBodySLARuleListSLARule) SetNodeId(v int64) *ListSLARulesResponseBodySLARuleListSLARule {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListSLARulesResponseBodySLARuleListSLARule) SetRuleType(v int32) *ListSLARulesResponseBodySLARuleListSLARule {
+	s.RuleType = &v
+	return s
+}
+
+type ListSLARulesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSLARulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSLARulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSLARulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSLARulesResponse) SetHeaders(v map[string]*string) *ListSLARulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSLARulesResponse) SetStatusCode(v int32) *ListSLARulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSLARulesResponse) SetBody(v *ListSLARulesResponseBody) *ListSLARulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListSQLExecAuditLogRequest struct {
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ExecState  *string `json:"ExecState,omitempty" xml:"ExecState,omitempty"`
@@ -17560,6 +19553,128 @@ func (s *ListSQLReviewOriginSQLResponse) SetBody(v *ListSQLReviewOriginSQLRespon
 	return s
 }
 
+type ListScenariosRequest struct {
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListScenariosRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScenariosRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListScenariosRequest) SetTid(v int64) *ListScenariosRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListScenariosResponseBody struct {
+	ErrorCode    *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScenarioList []*ListScenariosResponseBodyScenarioList `json:"ScenarioList,omitempty" xml:"ScenarioList,omitempty" type:"Repeated"`
+	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListScenariosResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScenariosResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListScenariosResponseBody) SetErrorCode(v string) *ListScenariosResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListScenariosResponseBody) SetErrorMessage(v string) *ListScenariosResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListScenariosResponseBody) SetRequestId(v string) *ListScenariosResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListScenariosResponseBody) SetScenarioList(v []*ListScenariosResponseBodyScenarioList) *ListScenariosResponseBody {
+	s.ScenarioList = v
+	return s
+}
+
+func (s *ListScenariosResponseBody) SetSuccess(v bool) *ListScenariosResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListScenariosResponseBodyScenarioList struct {
+	CreatorId    *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ScenarioName *string `json:"ScenarioName,omitempty" xml:"ScenarioName,omitempty"`
+}
+
+func (s ListScenariosResponseBodyScenarioList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScenariosResponseBodyScenarioList) GoString() string {
+	return s.String()
+}
+
+func (s *ListScenariosResponseBodyScenarioList) SetCreatorId(v string) *ListScenariosResponseBodyScenarioList {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListScenariosResponseBodyScenarioList) SetDescription(v string) *ListScenariosResponseBodyScenarioList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListScenariosResponseBodyScenarioList) SetId(v int64) *ListScenariosResponseBodyScenarioList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListScenariosResponseBodyScenarioList) SetScenarioName(v string) *ListScenariosResponseBodyScenarioList {
+	s.ScenarioName = &v
+	return s
+}
+
+type ListScenariosResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListScenariosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListScenariosResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScenariosResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListScenariosResponse) SetHeaders(v map[string]*string) *ListScenariosResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListScenariosResponse) SetStatusCode(v int32) *ListScenariosResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListScenariosResponse) SetBody(v *ListScenariosResponseBody) *ListScenariosResponse {
+	s.Body = v
+	return s
+}
+
 type ListSensitiveColumnsRequest struct {
 	ColumnName    *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
 	DbId          *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
@@ -17966,6 +20081,253 @@ func (s *ListSensitiveColumnsDetailResponse) SetStatusCode(v int32) *ListSensiti
 }
 
 func (s *ListSensitiveColumnsDetailResponse) SetBody(v *ListSensitiveColumnsDetailResponseBody) *ListSensitiveColumnsDetailResponse {
+	s.Body = v
+	return s
+}
+
+type ListSensitiveDataAuditLogRequest struct {
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	OpUserName *string `json:"OpUserName,omitempty" xml:"OpUserName,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListSensitiveDataAuditLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitiveDataAuditLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitiveDataAuditLogRequest) SetColumnName(v string) *ListSensitiveDataAuditLogRequest {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogRequest) SetDbName(v string) *ListSensitiveDataAuditLogRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogRequest) SetEndTime(v string) *ListSensitiveDataAuditLogRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogRequest) SetModuleName(v string) *ListSensitiveDataAuditLogRequest {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogRequest) SetOpUserName(v string) *ListSensitiveDataAuditLogRequest {
+	s.OpUserName = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogRequest) SetPageNumber(v int32) *ListSensitiveDataAuditLogRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogRequest) SetPageSize(v int32) *ListSensitiveDataAuditLogRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogRequest) SetStartTime(v string) *ListSensitiveDataAuditLogRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogRequest) SetTableName(v string) *ListSensitiveDataAuditLogRequest {
+	s.TableName = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogRequest) SetTid(v int64) *ListSensitiveDataAuditLogRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListSensitiveDataAuditLogResponseBody struct {
+	ErrorCode                 *string                                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage              *string                                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId                 *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SensitiveDataAuditLogList []*ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList `json:"SensitiveDataAuditLogList,omitempty" xml:"SensitiveDataAuditLogList,omitempty" type:"Repeated"`
+	Success                   *bool                                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount                *int64                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSensitiveDataAuditLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitiveDataAuditLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitiveDataAuditLogResponseBody) SetErrorCode(v string) *ListSensitiveDataAuditLogResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBody) SetErrorMessage(v string) *ListSensitiveDataAuditLogResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBody) SetRequestId(v string) *ListSensitiveDataAuditLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBody) SetSensitiveDataAuditLogList(v []*ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList) *ListSensitiveDataAuditLogResponseBody {
+	s.SensitiveDataAuditLogList = v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBody) SetSuccess(v bool) *ListSensitiveDataAuditLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBody) SetTotalCount(v int64) *ListSensitiveDataAuditLogResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList struct {
+	DbDisplayName    *string                                                                           `json:"DbDisplayName,omitempty" xml:"DbDisplayName,omitempty"`
+	InstanceId       *int64                                                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ModuleName       *string                                                                           `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	OpTime           *string                                                                           `json:"OpTime,omitempty" xml:"OpTime,omitempty"`
+	SensitiveDataLog []*ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog `json:"SensitiveDataLog,omitempty" xml:"SensitiveDataLog,omitempty" type:"Repeated"`
+	TargetName       *string                                                                           `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	UserId           *int64                                                                            `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName         *string                                                                           `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList) SetDbDisplayName(v string) *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList {
+	s.DbDisplayName = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList) SetInstanceId(v int64) *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList) SetModuleName(v string) *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList) SetOpTime(v string) *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList {
+	s.OpTime = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList) SetSensitiveDataLog(v []*ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog) *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList {
+	s.SensitiveDataLog = v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList) SetTargetName(v string) *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList {
+	s.TargetName = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList) SetUserId(v int64) *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList) SetUserName(v string) *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList {
+	s.UserName = &v
+	return s
+}
+
+type ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog struct {
+	ColumnName           *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	ColumnPermissionType *string `json:"ColumnPermissionType,omitempty" xml:"ColumnPermissionType,omitempty"`
+	DesensitizationRule  *string `json:"DesensitizationRule,omitempty" xml:"DesensitizationRule,omitempty"`
+	SecurityLevel        *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	TableName            *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog) SetColumnName(v string) *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog) SetColumnPermissionType(v string) *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog {
+	s.ColumnPermissionType = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog) SetDesensitizationRule(v string) *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog {
+	s.DesensitizationRule = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog) SetSecurityLevel(v string) *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog {
+	s.SecurityLevel = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog) SetTableName(v string) *ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDataLog {
+	s.TableName = &v
+	return s
+}
+
+type ListSensitiveDataAuditLogResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSensitiveDataAuditLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSensitiveDataAuditLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSensitiveDataAuditLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSensitiveDataAuditLogResponse) SetHeaders(v map[string]*string) *ListSensitiveDataAuditLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponse) SetStatusCode(v int32) *ListSensitiveDataAuditLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSensitiveDataAuditLogResponse) SetBody(v *ListSensitiveDataAuditLogResponseBody) *ListSensitiveDataAuditLogResponse {
 	s.Body = v
 	return s
 }
@@ -18524,6 +20886,435 @@ func (s *ListTaskFlowResponse) SetBody(v *ListTaskFlowResponseBody) *ListTaskFlo
 	return s
 }
 
+type ListTaskFlowConstantsRequest struct {
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListTaskFlowConstantsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowConstantsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowConstantsRequest) SetDagId(v int64) *ListTaskFlowConstantsRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListTaskFlowConstantsRequest) SetTid(v int64) *ListTaskFlowConstantsRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListTaskFlowConstantsResponseBody struct {
+	DagConstants *ListTaskFlowConstantsResponseBodyDagConstants `json:"DagConstants,omitempty" xml:"DagConstants,omitempty" type:"Struct"`
+	ErrorCode    *string                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListTaskFlowConstantsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowConstantsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowConstantsResponseBody) SetDagConstants(v *ListTaskFlowConstantsResponseBodyDagConstants) *ListTaskFlowConstantsResponseBody {
+	s.DagConstants = v
+	return s
+}
+
+func (s *ListTaskFlowConstantsResponseBody) SetErrorCode(v string) *ListTaskFlowConstantsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListTaskFlowConstantsResponseBody) SetErrorMessage(v string) *ListTaskFlowConstantsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListTaskFlowConstantsResponseBody) SetRequestId(v string) *ListTaskFlowConstantsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTaskFlowConstantsResponseBody) SetSuccess(v bool) *ListTaskFlowConstantsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTaskFlowConstantsResponseBodyDagConstants struct {
+	DagConstant []*ListTaskFlowConstantsResponseBodyDagConstantsDagConstant `json:"DagConstant,omitempty" xml:"DagConstant,omitempty" type:"Repeated"`
+}
+
+func (s ListTaskFlowConstantsResponseBodyDagConstants) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowConstantsResponseBodyDagConstants) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowConstantsResponseBodyDagConstants) SetDagConstant(v []*ListTaskFlowConstantsResponseBodyDagConstantsDagConstant) *ListTaskFlowConstantsResponseBodyDagConstants {
+	s.DagConstant = v
+	return s
+}
+
+type ListTaskFlowConstantsResponseBodyDagConstantsDagConstant struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTaskFlowConstantsResponseBodyDagConstantsDagConstant) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowConstantsResponseBodyDagConstantsDagConstant) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowConstantsResponseBodyDagConstantsDagConstant) SetKey(v string) *ListTaskFlowConstantsResponseBodyDagConstantsDagConstant {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTaskFlowConstantsResponseBodyDagConstantsDagConstant) SetValue(v string) *ListTaskFlowConstantsResponseBodyDagConstantsDagConstant {
+	s.Value = &v
+	return s
+}
+
+type ListTaskFlowConstantsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTaskFlowConstantsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTaskFlowConstantsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowConstantsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowConstantsResponse) SetHeaders(v map[string]*string) *ListTaskFlowConstantsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTaskFlowConstantsResponse) SetStatusCode(v int32) *ListTaskFlowConstantsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTaskFlowConstantsResponse) SetBody(v *ListTaskFlowConstantsResponseBody) *ListTaskFlowConstantsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTaskFlowCooperatorsRequest struct {
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListTaskFlowCooperatorsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowCooperatorsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowCooperatorsRequest) SetDagId(v int64) *ListTaskFlowCooperatorsRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListTaskFlowCooperatorsRequest) SetTid(v int64) *ListTaskFlowCooperatorsRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListTaskFlowCooperatorsResponseBody struct {
+	CooperatorList *ListTaskFlowCooperatorsResponseBodyCooperatorList `json:"CooperatorList,omitempty" xml:"CooperatorList,omitempty" type:"Struct"`
+	ErrorCode      *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListTaskFlowCooperatorsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowCooperatorsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowCooperatorsResponseBody) SetCooperatorList(v *ListTaskFlowCooperatorsResponseBodyCooperatorList) *ListTaskFlowCooperatorsResponseBody {
+	s.CooperatorList = v
+	return s
+}
+
+func (s *ListTaskFlowCooperatorsResponseBody) SetErrorCode(v string) *ListTaskFlowCooperatorsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListTaskFlowCooperatorsResponseBody) SetErrorMessage(v string) *ListTaskFlowCooperatorsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListTaskFlowCooperatorsResponseBody) SetRequestId(v string) *ListTaskFlowCooperatorsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTaskFlowCooperatorsResponseBody) SetSuccess(v bool) *ListTaskFlowCooperatorsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTaskFlowCooperatorsResponseBodyCooperatorList struct {
+	Cooperator []*ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator `json:"Cooperator,omitempty" xml:"Cooperator,omitempty" type:"Repeated"`
+}
+
+func (s ListTaskFlowCooperatorsResponseBodyCooperatorList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowCooperatorsResponseBodyCooperatorList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowCooperatorsResponseBodyCooperatorList) SetCooperator(v []*ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator) *ListTaskFlowCooperatorsResponseBodyCooperatorList {
+	s.Cooperator = v
+	return s
+}
+
+type ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator struct {
+	Email     *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	NickName  *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+}
+
+func (s ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator) SetEmail(v string) *ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator {
+	s.Email = &v
+	return s
+}
+
+func (s *ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator) SetLoginName(v string) *ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator {
+	s.LoginName = &v
+	return s
+}
+
+func (s *ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator) SetNickName(v string) *ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator {
+	s.NickName = &v
+	return s
+}
+
+type ListTaskFlowCooperatorsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTaskFlowCooperatorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTaskFlowCooperatorsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowCooperatorsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowCooperatorsResponse) SetHeaders(v map[string]*string) *ListTaskFlowCooperatorsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTaskFlowCooperatorsResponse) SetStatusCode(v int32) *ListTaskFlowCooperatorsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTaskFlowCooperatorsResponse) SetBody(v *ListTaskFlowCooperatorsResponseBody) *ListTaskFlowCooperatorsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTaskFlowEdgesByConditionRequest struct {
+	DagId    *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Id       *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	NodeEnd  *int64 `json:"NodeEnd,omitempty" xml:"NodeEnd,omitempty"`
+	NodeFrom *int64 `json:"NodeFrom,omitempty" xml:"NodeFrom,omitempty"`
+	Tid      *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListTaskFlowEdgesByConditionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowEdgesByConditionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowEdgesByConditionRequest) SetDagId(v int64) *ListTaskFlowEdgesByConditionRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListTaskFlowEdgesByConditionRequest) SetId(v int64) *ListTaskFlowEdgesByConditionRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTaskFlowEdgesByConditionRequest) SetNodeEnd(v int64) *ListTaskFlowEdgesByConditionRequest {
+	s.NodeEnd = &v
+	return s
+}
+
+func (s *ListTaskFlowEdgesByConditionRequest) SetNodeFrom(v int64) *ListTaskFlowEdgesByConditionRequest {
+	s.NodeFrom = &v
+	return s
+}
+
+func (s *ListTaskFlowEdgesByConditionRequest) SetTid(v int64) *ListTaskFlowEdgesByConditionRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListTaskFlowEdgesByConditionResponseBody struct {
+	Edges        *ListTaskFlowEdgesByConditionResponseBodyEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Struct"`
+	ErrorCode    *string                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListTaskFlowEdgesByConditionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowEdgesByConditionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowEdgesByConditionResponseBody) SetEdges(v *ListTaskFlowEdgesByConditionResponseBodyEdges) *ListTaskFlowEdgesByConditionResponseBody {
+	s.Edges = v
+	return s
+}
+
+func (s *ListTaskFlowEdgesByConditionResponseBody) SetErrorCode(v string) *ListTaskFlowEdgesByConditionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListTaskFlowEdgesByConditionResponseBody) SetErrorMessage(v string) *ListTaskFlowEdgesByConditionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListTaskFlowEdgesByConditionResponseBody) SetRequestId(v string) *ListTaskFlowEdgesByConditionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTaskFlowEdgesByConditionResponseBody) SetSuccess(v bool) *ListTaskFlowEdgesByConditionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTaskFlowEdgesByConditionResponseBodyEdges struct {
+	Edge []*ListTaskFlowEdgesByConditionResponseBodyEdgesEdge `json:"Edge,omitempty" xml:"Edge,omitempty" type:"Repeated"`
+}
+
+func (s ListTaskFlowEdgesByConditionResponseBodyEdges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowEdgesByConditionResponseBodyEdges) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowEdgesByConditionResponseBodyEdges) SetEdge(v []*ListTaskFlowEdgesByConditionResponseBodyEdgesEdge) *ListTaskFlowEdgesByConditionResponseBodyEdges {
+	s.Edge = v
+	return s
+}
+
+type ListTaskFlowEdgesByConditionResponseBodyEdgesEdge struct {
+	Id       *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	NodeEnd  *int64 `json:"NodeEnd,omitempty" xml:"NodeEnd,omitempty"`
+	NodeFrom *int64 `json:"NodeFrom,omitempty" xml:"NodeFrom,omitempty"`
+}
+
+func (s ListTaskFlowEdgesByConditionResponseBodyEdgesEdge) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowEdgesByConditionResponseBodyEdgesEdge) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowEdgesByConditionResponseBodyEdgesEdge) SetId(v int64) *ListTaskFlowEdgesByConditionResponseBodyEdgesEdge {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTaskFlowEdgesByConditionResponseBodyEdgesEdge) SetNodeEnd(v int64) *ListTaskFlowEdgesByConditionResponseBodyEdgesEdge {
+	s.NodeEnd = &v
+	return s
+}
+
+func (s *ListTaskFlowEdgesByConditionResponseBodyEdgesEdge) SetNodeFrom(v int64) *ListTaskFlowEdgesByConditionResponseBodyEdgesEdge {
+	s.NodeFrom = &v
+	return s
+}
+
+type ListTaskFlowEdgesByConditionResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTaskFlowEdgesByConditionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTaskFlowEdgesByConditionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowEdgesByConditionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowEdgesByConditionResponse) SetHeaders(v map[string]*string) *ListTaskFlowEdgesByConditionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTaskFlowEdgesByConditionResponse) SetStatusCode(v int32) *ListTaskFlowEdgesByConditionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTaskFlowEdgesByConditionResponse) SetBody(v *ListTaskFlowEdgesByConditionResponseBody) *ListTaskFlowEdgesByConditionResponse {
+	s.Body = v
+	return s
+}
+
 type ListTaskFlowInstanceRequest struct {
 	DagId          *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	PageIndex      *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
@@ -18645,6 +21436,7 @@ type ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance struct {
 	BusinessTime *string `json:"BusinessTime,omitempty" xml:"BusinessTime,omitempty"`
 	DagId        *string `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	DagName      *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	DagVersion   *string `json:"DagVersion,omitempty" xml:"DagVersion,omitempty"`
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	HistoryDagId *int64  `json:"HistoryDagId,omitempty" xml:"HistoryDagId,omitempty"`
 	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -18674,6 +21466,11 @@ func (s *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) SetDagId(v 
 
 func (s *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) SetDagName(v string) *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance {
 	s.DagName = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) SetDagVersion(v string) *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance {
+	s.DagVersion = &v
 	return s
 }
 
@@ -18737,6 +21534,507 @@ func (s *ListTaskFlowInstanceResponse) SetStatusCode(v int32) *ListTaskFlowInsta
 }
 
 func (s *ListTaskFlowInstanceResponse) SetBody(v *ListTaskFlowInstanceResponseBody) *ListTaskFlowInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ListTaskFlowTimeVariablesRequest struct {
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListTaskFlowTimeVariablesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowTimeVariablesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowTimeVariablesRequest) SetDagId(v int64) *ListTaskFlowTimeVariablesRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListTaskFlowTimeVariablesRequest) SetTid(v int64) *ListTaskFlowTimeVariablesRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListTaskFlowTimeVariablesResponseBody struct {
+	ErrorCode     *string                                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage  *string                                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId     *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	TimeVariables *ListTaskFlowTimeVariablesResponseBodyTimeVariables `json:"TimeVariables,omitempty" xml:"TimeVariables,omitempty" type:"Struct"`
+}
+
+func (s ListTaskFlowTimeVariablesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowTimeVariablesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowTimeVariablesResponseBody) SetErrorCode(v string) *ListTaskFlowTimeVariablesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListTaskFlowTimeVariablesResponseBody) SetErrorMessage(v string) *ListTaskFlowTimeVariablesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListTaskFlowTimeVariablesResponseBody) SetRequestId(v string) *ListTaskFlowTimeVariablesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTaskFlowTimeVariablesResponseBody) SetSuccess(v bool) *ListTaskFlowTimeVariablesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListTaskFlowTimeVariablesResponseBody) SetTimeVariables(v *ListTaskFlowTimeVariablesResponseBodyTimeVariables) *ListTaskFlowTimeVariablesResponseBody {
+	s.TimeVariables = v
+	return s
+}
+
+type ListTaskFlowTimeVariablesResponseBodyTimeVariables struct {
+	TimeVariable []*ListTaskFlowTimeVariablesResponseBodyTimeVariablesTimeVariable `json:"TimeVariable,omitempty" xml:"TimeVariable,omitempty" type:"Repeated"`
+}
+
+func (s ListTaskFlowTimeVariablesResponseBodyTimeVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowTimeVariablesResponseBodyTimeVariables) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowTimeVariablesResponseBodyTimeVariables) SetTimeVariable(v []*ListTaskFlowTimeVariablesResponseBodyTimeVariablesTimeVariable) *ListTaskFlowTimeVariablesResponseBodyTimeVariables {
+	s.TimeVariable = v
+	return s
+}
+
+type ListTaskFlowTimeVariablesResponseBodyTimeVariablesTimeVariable struct {
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+}
+
+func (s ListTaskFlowTimeVariablesResponseBodyTimeVariablesTimeVariable) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowTimeVariablesResponseBodyTimeVariablesTimeVariable) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowTimeVariablesResponseBodyTimeVariablesTimeVariable) SetName(v string) *ListTaskFlowTimeVariablesResponseBodyTimeVariablesTimeVariable {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTaskFlowTimeVariablesResponseBodyTimeVariablesTimeVariable) SetPattern(v string) *ListTaskFlowTimeVariablesResponseBodyTimeVariablesTimeVariable {
+	s.Pattern = &v
+	return s
+}
+
+type ListTaskFlowTimeVariablesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTaskFlowTimeVariablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTaskFlowTimeVariablesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowTimeVariablesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowTimeVariablesResponse) SetHeaders(v map[string]*string) *ListTaskFlowTimeVariablesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTaskFlowTimeVariablesResponse) SetStatusCode(v int32) *ListTaskFlowTimeVariablesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTaskFlowTimeVariablesResponse) SetBody(v *ListTaskFlowTimeVariablesResponseBody) *ListTaskFlowTimeVariablesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTaskFlowsByPageRequest struct {
+	PageIndex *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListTaskFlowsByPageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowsByPageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowsByPageRequest) SetPageIndex(v int32) *ListTaskFlowsByPageRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageRequest) SetPageSize(v int32) *ListTaskFlowsByPageRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageRequest) SetSearchKey(v string) *ListTaskFlowsByPageRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageRequest) SetTid(v int64) *ListTaskFlowsByPageRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListTaskFlowsByPageResponseBody struct {
+	ErrorCode    *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskFlowList *ListTaskFlowsByPageResponseBodyTaskFlowList `json:"TaskFlowList,omitempty" xml:"TaskFlowList,omitempty" type:"Struct"`
+	TotalCount   *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTaskFlowsByPageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowsByPageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowsByPageResponseBody) SetErrorCode(v string) *ListTaskFlowsByPageResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBody) SetErrorMessage(v string) *ListTaskFlowsByPageResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBody) SetRequestId(v string) *ListTaskFlowsByPageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBody) SetSuccess(v bool) *ListTaskFlowsByPageResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBody) SetTaskFlowList(v *ListTaskFlowsByPageResponseBodyTaskFlowList) *ListTaskFlowsByPageResponseBody {
+	s.TaskFlowList = v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBody) SetTotalCount(v int32) *ListTaskFlowsByPageResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTaskFlowsByPageResponseBodyTaskFlowList struct {
+	TaskFlow []*ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow `json:"TaskFlow,omitempty" xml:"TaskFlow,omitempty" type:"Repeated"`
+}
+
+func (s ListTaskFlowsByPageResponseBodyTaskFlowList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowsByPageResponseBodyTaskFlowList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowList) SetTaskFlow(v []*ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) *ListTaskFlowsByPageResponseBodyTaskFlowList {
+	s.TaskFlow = v
+	return s
+}
+
+type ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow struct {
+	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorNickName      *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
+	DagName              *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	DagOwnerNickName     *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
+	DeployId             *int64  `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LatestInstanceStatus *int32  `json:"LatestInstanceStatus,omitempty" xml:"LatestInstanceStatus,omitempty"`
+	LatestInstanceTime   *string `json:"LatestInstanceTime,omitempty" xml:"LatestInstanceTime,omitempty"`
+	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetCreatorId(v string) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetCreatorNickName(v string) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
+	s.CreatorNickName = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetDagName(v string) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
+	s.DagName = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetDagOwnerNickName(v string) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
+	s.DagOwnerNickName = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetDeployId(v int64) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
+	s.DeployId = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetDescription(v string) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
+	s.Description = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetId(v int64) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetLatestInstanceStatus(v int32) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
+	s.LatestInstanceStatus = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetLatestInstanceTime(v string) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
+	s.LatestInstanceTime = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) SetStatus(v int32) *ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow {
+	s.Status = &v
+	return s
+}
+
+type ListTaskFlowsByPageResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTaskFlowsByPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTaskFlowsByPageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowsByPageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowsByPageResponse) SetHeaders(v map[string]*string) *ListTaskFlowsByPageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponse) SetStatusCode(v int32) *ListTaskFlowsByPageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTaskFlowsByPageResponse) SetBody(v *ListTaskFlowsByPageResponseBody) *ListTaskFlowsByPageResponse {
+	s.Body = v
+	return s
+}
+
+type ListTasksInTaskFlowRequest struct {
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListTasksInTaskFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksInTaskFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksInTaskFlowRequest) SetDagId(v int64) *ListTasksInTaskFlowRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListTasksInTaskFlowRequest) SetTid(v int64) *ListTasksInTaskFlowRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListTasksInTaskFlowResponseBody struct {
+	ErrorCode    *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tasks        *ListTasksInTaskFlowResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
+}
+
+func (s ListTasksInTaskFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksInTaskFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksInTaskFlowResponseBody) SetErrorCode(v string) *ListTasksInTaskFlowResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListTasksInTaskFlowResponseBody) SetErrorMessage(v string) *ListTasksInTaskFlowResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListTasksInTaskFlowResponseBody) SetRequestId(v string) *ListTasksInTaskFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTasksInTaskFlowResponseBody) SetSuccess(v bool) *ListTasksInTaskFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListTasksInTaskFlowResponseBody) SetTasks(v *ListTasksInTaskFlowResponseBodyTasks) *ListTasksInTaskFlowResponseBody {
+	s.Tasks = v
+	return s
+}
+
+type ListTasksInTaskFlowResponseBodyTasks struct {
+	Task []*ListTasksInTaskFlowResponseBodyTasksTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Repeated"`
+}
+
+func (s ListTasksInTaskFlowResponseBodyTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksInTaskFlowResponseBodyTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksInTaskFlowResponseBodyTasks) SetTask(v []*ListTasksInTaskFlowResponseBodyTasksTask) *ListTasksInTaskFlowResponseBodyTasks {
+	s.Task = v
+	return s
+}
+
+type ListTasksInTaskFlowResponseBodyTasksTask struct {
+	GraphParam    *string `json:"GraphParam,omitempty" xml:"GraphParam,omitempty"`
+	NodeConfig    *string `json:"NodeConfig,omitempty" xml:"NodeConfig,omitempty"`
+	NodeContent   *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
+	NodeId        *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName      *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeOutput    *string `json:"NodeOutput,omitempty" xml:"NodeOutput,omitempty"`
+	NodeType      *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	TimeVariables *string `json:"TimeVariables,omitempty" xml:"TimeVariables,omitempty"`
+}
+
+func (s ListTasksInTaskFlowResponseBodyTasksTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksInTaskFlowResponseBodyTasksTask) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksInTaskFlowResponseBodyTasksTask) SetGraphParam(v string) *ListTasksInTaskFlowResponseBodyTasksTask {
+	s.GraphParam = &v
+	return s
+}
+
+func (s *ListTasksInTaskFlowResponseBodyTasksTask) SetNodeConfig(v string) *ListTasksInTaskFlowResponseBodyTasksTask {
+	s.NodeConfig = &v
+	return s
+}
+
+func (s *ListTasksInTaskFlowResponseBodyTasksTask) SetNodeContent(v string) *ListTasksInTaskFlowResponseBodyTasksTask {
+	s.NodeContent = &v
+	return s
+}
+
+func (s *ListTasksInTaskFlowResponseBodyTasksTask) SetNodeId(v string) *ListTasksInTaskFlowResponseBodyTasksTask {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListTasksInTaskFlowResponseBodyTasksTask) SetNodeName(v string) *ListTasksInTaskFlowResponseBodyTasksTask {
+	s.NodeName = &v
+	return s
+}
+
+func (s *ListTasksInTaskFlowResponseBodyTasksTask) SetNodeOutput(v string) *ListTasksInTaskFlowResponseBodyTasksTask {
+	s.NodeOutput = &v
+	return s
+}
+
+func (s *ListTasksInTaskFlowResponseBodyTasksTask) SetNodeType(v string) *ListTasksInTaskFlowResponseBodyTasksTask {
+	s.NodeType = &v
+	return s
+}
+
+func (s *ListTasksInTaskFlowResponseBodyTasksTask) SetTimeVariables(v string) *ListTasksInTaskFlowResponseBodyTasksTask {
+	s.TimeVariables = &v
+	return s
+}
+
+type ListTasksInTaskFlowResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTasksInTaskFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTasksInTaskFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTasksInTaskFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTasksInTaskFlowResponse) SetHeaders(v map[string]*string) *ListTasksInTaskFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTasksInTaskFlowResponse) SetStatusCode(v int32) *ListTasksInTaskFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTasksInTaskFlowResponse) SetBody(v *ListTasksInTaskFlowResponseBody) *ListTasksInTaskFlowResponse {
 	s.Body = v
 	return s
 }
@@ -19933,6 +23231,99 @@ func (s *ListWorkFlowTemplatesResponse) SetBody(v *ListWorkFlowTemplatesResponse
 	return s
 }
 
+type MakeTaskFlowInstanceSuccessRequest struct {
+	DagId         *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagInstanceId *int64 `json:"DagInstanceId,omitempty" xml:"DagInstanceId,omitempty"`
+	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s MakeTaskFlowInstanceSuccessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MakeTaskFlowInstanceSuccessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MakeTaskFlowInstanceSuccessRequest) SetDagId(v int64) *MakeTaskFlowInstanceSuccessRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *MakeTaskFlowInstanceSuccessRequest) SetDagInstanceId(v int64) *MakeTaskFlowInstanceSuccessRequest {
+	s.DagInstanceId = &v
+	return s
+}
+
+func (s *MakeTaskFlowInstanceSuccessRequest) SetTid(v int64) *MakeTaskFlowInstanceSuccessRequest {
+	s.Tid = &v
+	return s
+}
+
+type MakeTaskFlowInstanceSuccessResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s MakeTaskFlowInstanceSuccessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MakeTaskFlowInstanceSuccessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MakeTaskFlowInstanceSuccessResponseBody) SetErrorCode(v string) *MakeTaskFlowInstanceSuccessResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *MakeTaskFlowInstanceSuccessResponseBody) SetErrorMessage(v string) *MakeTaskFlowInstanceSuccessResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *MakeTaskFlowInstanceSuccessResponseBody) SetRequestId(v string) *MakeTaskFlowInstanceSuccessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MakeTaskFlowInstanceSuccessResponseBody) SetSuccess(v bool) *MakeTaskFlowInstanceSuccessResponseBody {
+	s.Success = &v
+	return s
+}
+
+type MakeTaskFlowInstanceSuccessResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MakeTaskFlowInstanceSuccessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MakeTaskFlowInstanceSuccessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MakeTaskFlowInstanceSuccessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MakeTaskFlowInstanceSuccessResponse) SetHeaders(v map[string]*string) *MakeTaskFlowInstanceSuccessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MakeTaskFlowInstanceSuccessResponse) SetStatusCode(v int32) *MakeTaskFlowInstanceSuccessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MakeTaskFlowInstanceSuccessResponse) SetBody(v *MakeTaskFlowInstanceSuccessResponseBody) *MakeTaskFlowInstanceSuccessResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDataCorrectExecSQLRequest struct {
 	ExecSQL *string `json:"ExecSQL,omitempty" xml:"ExecSQL,omitempty"`
 	OrderId *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -20155,6 +23546,99 @@ func (s *ModifyDesensitizationStrategyResponse) SetBody(v *ModifyDesensitization
 	return s
 }
 
+type MoveTaskFlowToScenarioRequest struct {
+	DagId      *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	ScenarioId *int64 `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s MoveTaskFlowToScenarioRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveTaskFlowToScenarioRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MoveTaskFlowToScenarioRequest) SetDagId(v int64) *MoveTaskFlowToScenarioRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *MoveTaskFlowToScenarioRequest) SetScenarioId(v int64) *MoveTaskFlowToScenarioRequest {
+	s.ScenarioId = &v
+	return s
+}
+
+func (s *MoveTaskFlowToScenarioRequest) SetTid(v int64) *MoveTaskFlowToScenarioRequest {
+	s.Tid = &v
+	return s
+}
+
+type MoveTaskFlowToScenarioResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s MoveTaskFlowToScenarioResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveTaskFlowToScenarioResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MoveTaskFlowToScenarioResponseBody) SetErrorCode(v string) *MoveTaskFlowToScenarioResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *MoveTaskFlowToScenarioResponseBody) SetErrorMessage(v string) *MoveTaskFlowToScenarioResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *MoveTaskFlowToScenarioResponseBody) SetRequestId(v string) *MoveTaskFlowToScenarioResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MoveTaskFlowToScenarioResponseBody) SetSuccess(v bool) *MoveTaskFlowToScenarioResponseBody {
+	s.Success = &v
+	return s
+}
+
+type MoveTaskFlowToScenarioResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MoveTaskFlowToScenarioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MoveTaskFlowToScenarioResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveTaskFlowToScenarioResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MoveTaskFlowToScenarioResponse) SetHeaders(v map[string]*string) *MoveTaskFlowToScenarioResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MoveTaskFlowToScenarioResponse) SetStatusCode(v int32) *MoveTaskFlowToScenarioResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MoveTaskFlowToScenarioResponse) SetBody(v *MoveTaskFlowToScenarioResponseBody) *MoveTaskFlowToScenarioResponse {
+	s.Body = v
+	return s
+}
+
 type OfflineTaskFlowRequest struct {
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -20341,6 +23825,105 @@ func (s *PauseDataCorrectSQLJobResponse) SetBody(v *PauseDataCorrectSQLJobRespon
 	return s
 }
 
+type PublishAndDeployTaskFlowRequest struct {
+	DagId           *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid             *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	VersionComments *string `json:"VersionComments,omitempty" xml:"VersionComments,omitempty"`
+}
+
+func (s PublishAndDeployTaskFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishAndDeployTaskFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PublishAndDeployTaskFlowRequest) SetDagId(v int64) *PublishAndDeployTaskFlowRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *PublishAndDeployTaskFlowRequest) SetTid(v int64) *PublishAndDeployTaskFlowRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *PublishAndDeployTaskFlowRequest) SetVersionComments(v string) *PublishAndDeployTaskFlowRequest {
+	s.VersionComments = &v
+	return s
+}
+
+type PublishAndDeployTaskFlowResponseBody struct {
+	DeployId     *int64  `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PublishAndDeployTaskFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishAndDeployTaskFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PublishAndDeployTaskFlowResponseBody) SetDeployId(v int64) *PublishAndDeployTaskFlowResponseBody {
+	s.DeployId = &v
+	return s
+}
+
+func (s *PublishAndDeployTaskFlowResponseBody) SetErrorCode(v string) *PublishAndDeployTaskFlowResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *PublishAndDeployTaskFlowResponseBody) SetErrorMessage(v string) *PublishAndDeployTaskFlowResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *PublishAndDeployTaskFlowResponseBody) SetRequestId(v string) *PublishAndDeployTaskFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PublishAndDeployTaskFlowResponseBody) SetSuccess(v bool) *PublishAndDeployTaskFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PublishAndDeployTaskFlowResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PublishAndDeployTaskFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PublishAndDeployTaskFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishAndDeployTaskFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PublishAndDeployTaskFlowResponse) SetHeaders(v map[string]*string) *PublishAndDeployTaskFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PublishAndDeployTaskFlowResponse) SetStatusCode(v int32) *PublishAndDeployTaskFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PublishAndDeployTaskFlowResponse) SetBody(v *PublishAndDeployTaskFlowResponseBody) *PublishAndDeployTaskFlowResponse {
+	s.Body = v
+	return s
+}
+
 type ReDeployLhDagVersionRequest struct {
 	DagId      *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	DagVersion *int64 `json:"DagVersion,omitempty" xml:"DagVersion,omitempty"`
@@ -20436,6 +24019,105 @@ func (s *ReDeployLhDagVersionResponse) SetStatusCode(v int32) *ReDeployLhDagVers
 }
 
 func (s *ReDeployLhDagVersionResponse) SetBody(v *ReDeployLhDagVersionResponseBody) *ReDeployLhDagVersionResponse {
+	s.Body = v
+	return s
+}
+
+type ReRunTaskFlowInstanceRequest struct {
+	DagId         *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagInstanceId *int64  `json:"DagInstanceId,omitempty" xml:"DagInstanceId,omitempty"`
+	DagVersion    *string `json:"DagVersion,omitempty" xml:"DagVersion,omitempty"`
+	Tid           *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ReRunTaskFlowInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReRunTaskFlowInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReRunTaskFlowInstanceRequest) SetDagId(v int64) *ReRunTaskFlowInstanceRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *ReRunTaskFlowInstanceRequest) SetDagInstanceId(v int64) *ReRunTaskFlowInstanceRequest {
+	s.DagInstanceId = &v
+	return s
+}
+
+func (s *ReRunTaskFlowInstanceRequest) SetDagVersion(v string) *ReRunTaskFlowInstanceRequest {
+	s.DagVersion = &v
+	return s
+}
+
+func (s *ReRunTaskFlowInstanceRequest) SetTid(v int64) *ReRunTaskFlowInstanceRequest {
+	s.Tid = &v
+	return s
+}
+
+type ReRunTaskFlowInstanceResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReRunTaskFlowInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReRunTaskFlowInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReRunTaskFlowInstanceResponseBody) SetErrorCode(v string) *ReRunTaskFlowInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ReRunTaskFlowInstanceResponseBody) SetErrorMessage(v string) *ReRunTaskFlowInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ReRunTaskFlowInstanceResponseBody) SetRequestId(v string) *ReRunTaskFlowInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReRunTaskFlowInstanceResponseBody) SetSuccess(v bool) *ReRunTaskFlowInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReRunTaskFlowInstanceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReRunTaskFlowInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReRunTaskFlowInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReRunTaskFlowInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReRunTaskFlowInstanceResponse) SetHeaders(v map[string]*string) *ReRunTaskFlowInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReRunTaskFlowInstanceResponse) SetStatusCode(v int32) *ReRunTaskFlowInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReRunTaskFlowInstanceResponse) SetBody(v *ReRunTaskFlowInstanceResponseBody) *ReRunTaskFlowInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -20847,6 +24529,105 @@ func (s *RestartDataCorrectSQLJobResponse) SetStatusCode(v int32) *RestartDataCo
 }
 
 func (s *RestartDataCorrectSQLJobResponse) SetBody(v *RestartDataCorrectSQLJobResponseBody) *RestartDataCorrectSQLJobResponse {
+	s.Body = v
+	return s
+}
+
+type ResumeTaskFlowInstanceRequest struct {
+	DagId         *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagInstanceId *int64  `json:"DagInstanceId,omitempty" xml:"DagInstanceId,omitempty"`
+	DagVersion    *string `json:"DagVersion,omitempty" xml:"DagVersion,omitempty"`
+	Tid           *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ResumeTaskFlowInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeTaskFlowInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeTaskFlowInstanceRequest) SetDagId(v int64) *ResumeTaskFlowInstanceRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *ResumeTaskFlowInstanceRequest) SetDagInstanceId(v int64) *ResumeTaskFlowInstanceRequest {
+	s.DagInstanceId = &v
+	return s
+}
+
+func (s *ResumeTaskFlowInstanceRequest) SetDagVersion(v string) *ResumeTaskFlowInstanceRequest {
+	s.DagVersion = &v
+	return s
+}
+
+func (s *ResumeTaskFlowInstanceRequest) SetTid(v int64) *ResumeTaskFlowInstanceRequest {
+	s.Tid = &v
+	return s
+}
+
+type ResumeTaskFlowInstanceResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ResumeTaskFlowInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeTaskFlowInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeTaskFlowInstanceResponseBody) SetErrorCode(v string) *ResumeTaskFlowInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ResumeTaskFlowInstanceResponseBody) SetErrorMessage(v string) *ResumeTaskFlowInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ResumeTaskFlowInstanceResponseBody) SetRequestId(v string) *ResumeTaskFlowInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ResumeTaskFlowInstanceResponseBody) SetSuccess(v bool) *ResumeTaskFlowInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ResumeTaskFlowInstanceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResumeTaskFlowInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResumeTaskFlowInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeTaskFlowInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeTaskFlowInstanceResponse) SetHeaders(v map[string]*string) *ResumeTaskFlowInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResumeTaskFlowInstanceResponse) SetStatusCode(v int32) *ResumeTaskFlowInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResumeTaskFlowInstanceResponse) SetBody(v *ResumeTaskFlowInstanceResponseBody) *ResumeTaskFlowInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -21752,6 +25533,99 @@ func (s *SetOwnersResponse) SetBody(v *SetOwnersResponseBody) *SetOwnersResponse
 	return s
 }
 
+type StopTaskFlowInstanceRequest struct {
+	DagId         *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagInstanceId *int64 `json:"DagInstanceId,omitempty" xml:"DagInstanceId,omitempty"`
+	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s StopTaskFlowInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTaskFlowInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopTaskFlowInstanceRequest) SetDagId(v int64) *StopTaskFlowInstanceRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *StopTaskFlowInstanceRequest) SetDagInstanceId(v int64) *StopTaskFlowInstanceRequest {
+	s.DagInstanceId = &v
+	return s
+}
+
+func (s *StopTaskFlowInstanceRequest) SetTid(v int64) *StopTaskFlowInstanceRequest {
+	s.Tid = &v
+	return s
+}
+
+type StopTaskFlowInstanceResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s StopTaskFlowInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTaskFlowInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopTaskFlowInstanceResponseBody) SetErrorCode(v string) *StopTaskFlowInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *StopTaskFlowInstanceResponseBody) SetErrorMessage(v string) *StopTaskFlowInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *StopTaskFlowInstanceResponseBody) SetRequestId(v string) *StopTaskFlowInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopTaskFlowInstanceResponseBody) SetSuccess(v bool) *StopTaskFlowInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StopTaskFlowInstanceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopTaskFlowInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopTaskFlowInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTaskFlowInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopTaskFlowInstanceResponse) SetHeaders(v map[string]*string) *StopTaskFlowInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopTaskFlowInstanceResponse) SetStatusCode(v int32) *StopTaskFlowInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopTaskFlowInstanceResponse) SetBody(v *StopTaskFlowInstanceResponseBody) *StopTaskFlowInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitOrderApprovalRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -21928,6 +25802,99 @@ func (s *SubmitStructSyncOrderApprovalResponse) SetStatusCode(v int32) *SubmitSt
 }
 
 func (s *SubmitStructSyncOrderApprovalResponse) SetBody(v *SubmitStructSyncOrderApprovalResponseBody) *SubmitStructSyncOrderApprovalResponse {
+	s.Body = v
+	return s
+}
+
+type SuspendTaskFlowInstanceRequest struct {
+	DagId         *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagInstanceId *int64 `json:"DagInstanceId,omitempty" xml:"DagInstanceId,omitempty"`
+	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s SuspendTaskFlowInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendTaskFlowInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendTaskFlowInstanceRequest) SetDagId(v int64) *SuspendTaskFlowInstanceRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *SuspendTaskFlowInstanceRequest) SetDagInstanceId(v int64) *SuspendTaskFlowInstanceRequest {
+	s.DagInstanceId = &v
+	return s
+}
+
+func (s *SuspendTaskFlowInstanceRequest) SetTid(v int64) *SuspendTaskFlowInstanceRequest {
+	s.Tid = &v
+	return s
+}
+
+type SuspendTaskFlowInstanceResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SuspendTaskFlowInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendTaskFlowInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendTaskFlowInstanceResponseBody) SetErrorCode(v string) *SuspendTaskFlowInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SuspendTaskFlowInstanceResponseBody) SetErrorMessage(v string) *SuspendTaskFlowInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SuspendTaskFlowInstanceResponseBody) SetRequestId(v string) *SuspendTaskFlowInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SuspendTaskFlowInstanceResponseBody) SetSuccess(v bool) *SuspendTaskFlowInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SuspendTaskFlowInstanceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SuspendTaskFlowInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SuspendTaskFlowInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendTaskFlowInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendTaskFlowInstanceResponse) SetHeaders(v map[string]*string) *SuspendTaskFlowInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SuspendTaskFlowInstanceResponse) SetStatusCode(v int32) *SuspendTaskFlowInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SuspendTaskFlowInstanceResponse) SetBody(v *SuspendTaskFlowInstanceResponseBody) *SuspendTaskFlowInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -22325,6 +26292,1821 @@ func (s *UpdateInstanceResponse) SetBody(v *UpdateInstanceResponseBody) *UpdateI
 	return s
 }
 
+type UpdateSLARulesRequest struct {
+	DagId       *int64                              `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	SlaRuleList []*UpdateSLARulesRequestSlaRuleList `json:"SlaRuleList,omitempty" xml:"SlaRuleList,omitempty" type:"Repeated"`
+	Tid         *int64                              `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateSLARulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSLARulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSLARulesRequest) SetDagId(v int64) *UpdateSLARulesRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateSLARulesRequest) SetSlaRuleList(v []*UpdateSLARulesRequestSlaRuleList) *UpdateSLARulesRequest {
+	s.SlaRuleList = v
+	return s
+}
+
+func (s *UpdateSLARulesRequest) SetTid(v int64) *UpdateSLARulesRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateSLARulesRequestSlaRuleList struct {
+	DagId           *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	IntervalMinutes *int32 `json:"IntervalMinutes,omitempty" xml:"IntervalMinutes,omitempty"`
+	NodeId          *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Type            *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateSLARulesRequestSlaRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSLARulesRequestSlaRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSLARulesRequestSlaRuleList) SetDagId(v int64) *UpdateSLARulesRequestSlaRuleList {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateSLARulesRequestSlaRuleList) SetIntervalMinutes(v int32) *UpdateSLARulesRequestSlaRuleList {
+	s.IntervalMinutes = &v
+	return s
+}
+
+func (s *UpdateSLARulesRequestSlaRuleList) SetNodeId(v int64) *UpdateSLARulesRequestSlaRuleList {
+	s.NodeId = &v
+	return s
+}
+
+func (s *UpdateSLARulesRequestSlaRuleList) SetType(v int32) *UpdateSLARulesRequestSlaRuleList {
+	s.Type = &v
+	return s
+}
+
+type UpdateSLARulesShrinkRequest struct {
+	DagId             *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	SlaRuleListShrink *string `json:"SlaRuleList,omitempty" xml:"SlaRuleList,omitempty"`
+	Tid               *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateSLARulesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSLARulesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSLARulesShrinkRequest) SetDagId(v int64) *UpdateSLARulesShrinkRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateSLARulesShrinkRequest) SetSlaRuleListShrink(v string) *UpdateSLARulesShrinkRequest {
+	s.SlaRuleListShrink = &v
+	return s
+}
+
+func (s *UpdateSLARulesShrinkRequest) SetTid(v int64) *UpdateSLARulesShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateSLARulesResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSLARulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSLARulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSLARulesResponseBody) SetErrorCode(v string) *UpdateSLARulesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateSLARulesResponseBody) SetErrorMessage(v string) *UpdateSLARulesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateSLARulesResponseBody) SetRequestId(v string) *UpdateSLARulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSLARulesResponseBody) SetSuccess(v bool) *UpdateSLARulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSLARulesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSLARulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSLARulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSLARulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSLARulesResponse) SetHeaders(v map[string]*string) *UpdateSLARulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSLARulesResponse) SetStatusCode(v int32) *UpdateSLARulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSLARulesResponse) SetBody(v *UpdateSLARulesResponseBody) *UpdateSLARulesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateScenarioRequest struct {
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ScenarioId   *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	ScenarioName *string `json:"ScenarioName,omitempty" xml:"ScenarioName,omitempty"`
+	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateScenarioRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScenarioRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScenarioRequest) SetDescription(v string) *UpdateScenarioRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateScenarioRequest) SetScenarioId(v string) *UpdateScenarioRequest {
+	s.ScenarioId = &v
+	return s
+}
+
+func (s *UpdateScenarioRequest) SetScenarioName(v string) *UpdateScenarioRequest {
+	s.ScenarioName = &v
+	return s
+}
+
+func (s *UpdateScenarioRequest) SetTid(v int64) *UpdateScenarioRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateScenarioResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateScenarioResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScenarioResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScenarioResponseBody) SetErrorCode(v string) *UpdateScenarioResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateScenarioResponseBody) SetErrorMessage(v string) *UpdateScenarioResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateScenarioResponseBody) SetRequestId(v string) *UpdateScenarioResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateScenarioResponseBody) SetSuccess(v bool) *UpdateScenarioResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateScenarioResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateScenarioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateScenarioResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScenarioResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScenarioResponse) SetHeaders(v map[string]*string) *UpdateScenarioResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateScenarioResponse) SetStatusCode(v int32) *UpdateScenarioResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateScenarioResponse) SetBody(v *UpdateScenarioResponseBody) *UpdateScenarioResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskConfigRequest struct {
+	NodeConfig *string `json:"NodeConfig,omitempty" xml:"NodeConfig,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskConfigRequest) SetNodeConfig(v string) *UpdateTaskConfigRequest {
+	s.NodeConfig = &v
+	return s
+}
+
+func (s *UpdateTaskConfigRequest) SetNodeId(v string) *UpdateTaskConfigRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *UpdateTaskConfigRequest) SetTid(v int64) *UpdateTaskConfigRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskConfigResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskConfigResponseBody) SetErrorCode(v string) *UpdateTaskConfigResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskConfigResponseBody) SetErrorMessage(v string) *UpdateTaskConfigResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskConfigResponseBody) SetRequestId(v string) *UpdateTaskConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskConfigResponseBody) SetSuccess(v bool) *UpdateTaskConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskConfigResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTaskConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskConfigResponse) SetHeaders(v map[string]*string) *UpdateTaskConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskConfigResponse) SetStatusCode(v int32) *UpdateTaskConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskConfigResponse) SetBody(v *UpdateTaskConfigResponseBody) *UpdateTaskConfigResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskContentRequest struct {
+	NodeContent *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
+	NodeId      *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskContentRequest) SetNodeContent(v string) *UpdateTaskContentRequest {
+	s.NodeContent = &v
+	return s
+}
+
+func (s *UpdateTaskContentRequest) SetNodeId(v string) *UpdateTaskContentRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *UpdateTaskContentRequest) SetTid(v int64) *UpdateTaskContentRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskContentResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskContentResponseBody) SetErrorCode(v string) *UpdateTaskContentResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskContentResponseBody) SetErrorMessage(v string) *UpdateTaskContentResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskContentResponseBody) SetRequestId(v string) *UpdateTaskContentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskContentResponseBody) SetSuccess(v bool) *UpdateTaskContentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskContentResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTaskContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskContentResponse) SetHeaders(v map[string]*string) *UpdateTaskContentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskContentResponse) SetStatusCode(v int32) *UpdateTaskContentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskContentResponse) SetBody(v *UpdateTaskContentResponseBody) *UpdateTaskContentResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskFlowConstantsRequest struct {
+	DagConstants []*UpdateTaskFlowConstantsRequestDagConstants `json:"DagConstants,omitempty" xml:"DagConstants,omitempty" type:"Repeated"`
+	DagId        *int64                                        `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid          *int64                                        `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskFlowConstantsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowConstantsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowConstantsRequest) SetDagConstants(v []*UpdateTaskFlowConstantsRequestDagConstants) *UpdateTaskFlowConstantsRequest {
+	s.DagConstants = v
+	return s
+}
+
+func (s *UpdateTaskFlowConstantsRequest) SetDagId(v int64) *UpdateTaskFlowConstantsRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowConstantsRequest) SetTid(v int64) *UpdateTaskFlowConstantsRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskFlowConstantsRequestDagConstants struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateTaskFlowConstantsRequestDagConstants) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowConstantsRequestDagConstants) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowConstantsRequestDagConstants) SetKey(v string) *UpdateTaskFlowConstantsRequestDagConstants {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateTaskFlowConstantsRequestDagConstants) SetValue(v string) *UpdateTaskFlowConstantsRequestDagConstants {
+	s.Value = &v
+	return s
+}
+
+type UpdateTaskFlowConstantsShrinkRequest struct {
+	DagConstantsShrink *string `json:"DagConstants,omitempty" xml:"DagConstants,omitempty"`
+	DagId              *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskFlowConstantsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowConstantsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowConstantsShrinkRequest) SetDagConstantsShrink(v string) *UpdateTaskFlowConstantsShrinkRequest {
+	s.DagConstantsShrink = &v
+	return s
+}
+
+func (s *UpdateTaskFlowConstantsShrinkRequest) SetDagId(v int64) *UpdateTaskFlowConstantsShrinkRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowConstantsShrinkRequest) SetTid(v int64) *UpdateTaskFlowConstantsShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskFlowConstantsResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskFlowConstantsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowConstantsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowConstantsResponseBody) SetErrorCode(v string) *UpdateTaskFlowConstantsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowConstantsResponseBody) SetErrorMessage(v string) *UpdateTaskFlowConstantsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskFlowConstantsResponseBody) SetRequestId(v string) *UpdateTaskFlowConstantsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowConstantsResponseBody) SetSuccess(v bool) *UpdateTaskFlowConstantsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskFlowConstantsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTaskFlowConstantsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskFlowConstantsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowConstantsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowConstantsResponse) SetHeaders(v map[string]*string) *UpdateTaskFlowConstantsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskFlowConstantsResponse) SetStatusCode(v int32) *UpdateTaskFlowConstantsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowConstantsResponse) SetBody(v *UpdateTaskFlowConstantsResponseBody) *UpdateTaskFlowConstantsResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskFlowCooperatorsRequest struct {
+	CooperatorIds []*string `json:"CooperatorIds,omitempty" xml:"CooperatorIds,omitempty" type:"Repeated"`
+	DagId         *int64    `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid           *int64    `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskFlowCooperatorsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowCooperatorsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowCooperatorsRequest) SetCooperatorIds(v []*string) *UpdateTaskFlowCooperatorsRequest {
+	s.CooperatorIds = v
+	return s
+}
+
+func (s *UpdateTaskFlowCooperatorsRequest) SetDagId(v int64) *UpdateTaskFlowCooperatorsRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowCooperatorsRequest) SetTid(v int64) *UpdateTaskFlowCooperatorsRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskFlowCooperatorsShrinkRequest struct {
+	CooperatorIdsShrink *string `json:"CooperatorIds,omitempty" xml:"CooperatorIds,omitempty"`
+	DagId               *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid                 *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskFlowCooperatorsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowCooperatorsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowCooperatorsShrinkRequest) SetCooperatorIdsShrink(v string) *UpdateTaskFlowCooperatorsShrinkRequest {
+	s.CooperatorIdsShrink = &v
+	return s
+}
+
+func (s *UpdateTaskFlowCooperatorsShrinkRequest) SetDagId(v int64) *UpdateTaskFlowCooperatorsShrinkRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowCooperatorsShrinkRequest) SetTid(v int64) *UpdateTaskFlowCooperatorsShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskFlowCooperatorsResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskFlowCooperatorsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowCooperatorsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowCooperatorsResponseBody) SetErrorCode(v string) *UpdateTaskFlowCooperatorsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowCooperatorsResponseBody) SetErrorMessage(v string) *UpdateTaskFlowCooperatorsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskFlowCooperatorsResponseBody) SetRequestId(v string) *UpdateTaskFlowCooperatorsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowCooperatorsResponseBody) SetSuccess(v bool) *UpdateTaskFlowCooperatorsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskFlowCooperatorsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTaskFlowCooperatorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskFlowCooperatorsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowCooperatorsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowCooperatorsResponse) SetHeaders(v map[string]*string) *UpdateTaskFlowCooperatorsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskFlowCooperatorsResponse) SetStatusCode(v int32) *UpdateTaskFlowCooperatorsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowCooperatorsResponse) SetBody(v *UpdateTaskFlowCooperatorsResponseBody) *UpdateTaskFlowCooperatorsResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskFlowEdgesRequest struct {
+	DagId *int64                             `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Edges []*UpdateTaskFlowEdgesRequestEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Repeated"`
+	Tid   *int64                             `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskFlowEdgesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowEdgesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowEdgesRequest) SetDagId(v int64) *UpdateTaskFlowEdgesRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowEdgesRequest) SetEdges(v []*UpdateTaskFlowEdgesRequestEdges) *UpdateTaskFlowEdgesRequest {
+	s.Edges = v
+	return s
+}
+
+func (s *UpdateTaskFlowEdgesRequest) SetTid(v int64) *UpdateTaskFlowEdgesRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskFlowEdgesRequestEdges struct {
+	Id       *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	NodeEnd  *int64 `json:"NodeEnd,omitempty" xml:"NodeEnd,omitempty"`
+	NodeFrom *int64 `json:"NodeFrom,omitempty" xml:"NodeFrom,omitempty"`
+}
+
+func (s UpdateTaskFlowEdgesRequestEdges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowEdgesRequestEdges) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowEdgesRequestEdges) SetId(v int64) *UpdateTaskFlowEdgesRequestEdges {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateTaskFlowEdgesRequestEdges) SetNodeEnd(v int64) *UpdateTaskFlowEdgesRequestEdges {
+	s.NodeEnd = &v
+	return s
+}
+
+func (s *UpdateTaskFlowEdgesRequestEdges) SetNodeFrom(v int64) *UpdateTaskFlowEdgesRequestEdges {
+	s.NodeFrom = &v
+	return s
+}
+
+type UpdateTaskFlowEdgesShrinkRequest struct {
+	DagId       *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	EdgesShrink *string `json:"Edges,omitempty" xml:"Edges,omitempty"`
+	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskFlowEdgesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowEdgesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowEdgesShrinkRequest) SetDagId(v int64) *UpdateTaskFlowEdgesShrinkRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowEdgesShrinkRequest) SetEdgesShrink(v string) *UpdateTaskFlowEdgesShrinkRequest {
+	s.EdgesShrink = &v
+	return s
+}
+
+func (s *UpdateTaskFlowEdgesShrinkRequest) SetTid(v int64) *UpdateTaskFlowEdgesShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskFlowEdgesResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskFlowEdgesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowEdgesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowEdgesResponseBody) SetErrorCode(v string) *UpdateTaskFlowEdgesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowEdgesResponseBody) SetErrorMessage(v string) *UpdateTaskFlowEdgesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskFlowEdgesResponseBody) SetRequestId(v string) *UpdateTaskFlowEdgesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowEdgesResponseBody) SetSuccess(v bool) *UpdateTaskFlowEdgesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskFlowEdgesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTaskFlowEdgesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskFlowEdgesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowEdgesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowEdgesResponse) SetHeaders(v map[string]*string) *UpdateTaskFlowEdgesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskFlowEdgesResponse) SetStatusCode(v int32) *UpdateTaskFlowEdgesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowEdgesResponse) SetBody(v *UpdateTaskFlowEdgesResponseBody) *UpdateTaskFlowEdgesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskFlowNameAndDescRequest struct {
+	DagId       *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagName     *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskFlowNameAndDescRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowNameAndDescRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowNameAndDescRequest) SetDagId(v int64) *UpdateTaskFlowNameAndDescRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNameAndDescRequest) SetDagName(v string) *UpdateTaskFlowNameAndDescRequest {
+	s.DagName = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNameAndDescRequest) SetDescription(v string) *UpdateTaskFlowNameAndDescRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNameAndDescRequest) SetTid(v int64) *UpdateTaskFlowNameAndDescRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskFlowNameAndDescResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskFlowNameAndDescResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowNameAndDescResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowNameAndDescResponseBody) SetErrorCode(v string) *UpdateTaskFlowNameAndDescResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNameAndDescResponseBody) SetErrorMessage(v string) *UpdateTaskFlowNameAndDescResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNameAndDescResponseBody) SetRequestId(v string) *UpdateTaskFlowNameAndDescResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNameAndDescResponseBody) SetSuccess(v bool) *UpdateTaskFlowNameAndDescResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskFlowNameAndDescResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTaskFlowNameAndDescResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskFlowNameAndDescResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowNameAndDescResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowNameAndDescResponse) SetHeaders(v map[string]*string) *UpdateTaskFlowNameAndDescResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskFlowNameAndDescResponse) SetStatusCode(v int32) *UpdateTaskFlowNameAndDescResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNameAndDescResponse) SetBody(v *UpdateTaskFlowNameAndDescResponseBody) *UpdateTaskFlowNameAndDescResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskFlowNotificationRequest struct {
+	DagId                  *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagNotificationFail    *bool  `json:"DagNotificationFail,omitempty" xml:"DagNotificationFail,omitempty"`
+	DagNotificationSla     *bool  `json:"DagNotificationSla,omitempty" xml:"DagNotificationSla,omitempty"`
+	DagNotificationSuccess *bool  `json:"DagNotificationSuccess,omitempty" xml:"DagNotificationSuccess,omitempty"`
+	Tid                    *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskFlowNotificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowNotificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowNotificationRequest) SetDagId(v int64) *UpdateTaskFlowNotificationRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNotificationRequest) SetDagNotificationFail(v bool) *UpdateTaskFlowNotificationRequest {
+	s.DagNotificationFail = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNotificationRequest) SetDagNotificationSla(v bool) *UpdateTaskFlowNotificationRequest {
+	s.DagNotificationSla = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNotificationRequest) SetDagNotificationSuccess(v bool) *UpdateTaskFlowNotificationRequest {
+	s.DagNotificationSuccess = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNotificationRequest) SetTid(v int64) *UpdateTaskFlowNotificationRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskFlowNotificationResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskFlowNotificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowNotificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowNotificationResponseBody) SetErrorCode(v string) *UpdateTaskFlowNotificationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNotificationResponseBody) SetErrorMessage(v string) *UpdateTaskFlowNotificationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNotificationResponseBody) SetRequestId(v string) *UpdateTaskFlowNotificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNotificationResponseBody) SetSuccess(v bool) *UpdateTaskFlowNotificationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskFlowNotificationResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTaskFlowNotificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskFlowNotificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowNotificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowNotificationResponse) SetHeaders(v map[string]*string) *UpdateTaskFlowNotificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskFlowNotificationResponse) SetStatusCode(v int32) *UpdateTaskFlowNotificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowNotificationResponse) SetBody(v *UpdateTaskFlowNotificationResponseBody) *UpdateTaskFlowNotificationResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskFlowOwnerRequest struct {
+	DagId      *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	NewOwnerId *string `json:"NewOwnerId,omitempty" xml:"NewOwnerId,omitempty"`
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskFlowOwnerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowOwnerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowOwnerRequest) SetDagId(v int64) *UpdateTaskFlowOwnerRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowOwnerRequest) SetNewOwnerId(v string) *UpdateTaskFlowOwnerRequest {
+	s.NewOwnerId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowOwnerRequest) SetTid(v int64) *UpdateTaskFlowOwnerRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskFlowOwnerResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskFlowOwnerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowOwnerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowOwnerResponseBody) SetErrorCode(v string) *UpdateTaskFlowOwnerResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowOwnerResponseBody) SetErrorMessage(v string) *UpdateTaskFlowOwnerResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskFlowOwnerResponseBody) SetRequestId(v string) *UpdateTaskFlowOwnerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowOwnerResponseBody) SetSuccess(v bool) *UpdateTaskFlowOwnerResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskFlowOwnerResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTaskFlowOwnerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskFlowOwnerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowOwnerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowOwnerResponse) SetHeaders(v map[string]*string) *UpdateTaskFlowOwnerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskFlowOwnerResponse) SetStatusCode(v int32) *UpdateTaskFlowOwnerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowOwnerResponse) SetBody(v *UpdateTaskFlowOwnerResponseBody) *UpdateTaskFlowOwnerResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskFlowRelationsRequest struct {
+	DagId *int64                                 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Edges []*UpdateTaskFlowRelationsRequestEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Repeated"`
+	Tid   *int64                                 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskFlowRelationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowRelationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowRelationsRequest) SetDagId(v int64) *UpdateTaskFlowRelationsRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowRelationsRequest) SetEdges(v []*UpdateTaskFlowRelationsRequestEdges) *UpdateTaskFlowRelationsRequest {
+	s.Edges = v
+	return s
+}
+
+func (s *UpdateTaskFlowRelationsRequest) SetTid(v int64) *UpdateTaskFlowRelationsRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskFlowRelationsRequestEdges struct {
+	Id       *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	NodeEnd  *int64 `json:"NodeEnd,omitempty" xml:"NodeEnd,omitempty"`
+	NodeFrom *int64 `json:"NodeFrom,omitempty" xml:"NodeFrom,omitempty"`
+}
+
+func (s UpdateTaskFlowRelationsRequestEdges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowRelationsRequestEdges) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowRelationsRequestEdges) SetId(v int64) *UpdateTaskFlowRelationsRequestEdges {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateTaskFlowRelationsRequestEdges) SetNodeEnd(v int64) *UpdateTaskFlowRelationsRequestEdges {
+	s.NodeEnd = &v
+	return s
+}
+
+func (s *UpdateTaskFlowRelationsRequestEdges) SetNodeFrom(v int64) *UpdateTaskFlowRelationsRequestEdges {
+	s.NodeFrom = &v
+	return s
+}
+
+type UpdateTaskFlowRelationsShrinkRequest struct {
+	DagId       *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	EdgesShrink *string `json:"Edges,omitempty" xml:"Edges,omitempty"`
+	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskFlowRelationsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowRelationsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowRelationsShrinkRequest) SetDagId(v int64) *UpdateTaskFlowRelationsShrinkRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowRelationsShrinkRequest) SetEdgesShrink(v string) *UpdateTaskFlowRelationsShrinkRequest {
+	s.EdgesShrink = &v
+	return s
+}
+
+func (s *UpdateTaskFlowRelationsShrinkRequest) SetTid(v int64) *UpdateTaskFlowRelationsShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskFlowRelationsResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskFlowRelationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowRelationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowRelationsResponseBody) SetErrorCode(v string) *UpdateTaskFlowRelationsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowRelationsResponseBody) SetErrorMessage(v string) *UpdateTaskFlowRelationsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskFlowRelationsResponseBody) SetRequestId(v string) *UpdateTaskFlowRelationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowRelationsResponseBody) SetSuccess(v bool) *UpdateTaskFlowRelationsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskFlowRelationsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTaskFlowRelationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskFlowRelationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowRelationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowRelationsResponse) SetHeaders(v map[string]*string) *UpdateTaskFlowRelationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskFlowRelationsResponse) SetStatusCode(v int32) *UpdateTaskFlowRelationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowRelationsResponse) SetBody(v *UpdateTaskFlowRelationsResponseBody) *UpdateTaskFlowRelationsResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskFlowScheduleRequest struct {
+	CronBeginDate  *string `json:"CronBeginDate,omitempty" xml:"CronBeginDate,omitempty"`
+	CronEndDate    *string `json:"CronEndDate,omitempty" xml:"CronEndDate,omitempty"`
+	CronStr        *string `json:"CronStr,omitempty" xml:"CronStr,omitempty"`
+	CronType       *string `json:"CronType,omitempty" xml:"CronType,omitempty"`
+	DagId          *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	ScheduleParam  *string `json:"ScheduleParam,omitempty" xml:"ScheduleParam,omitempty"`
+	ScheduleSwitch *bool   `json:"ScheduleSwitch,omitempty" xml:"ScheduleSwitch,omitempty"`
+	Tid            *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	TimeZoneId     *string `json:"TimeZoneId,omitempty" xml:"TimeZoneId,omitempty"`
+	TriggerType    *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s UpdateTaskFlowScheduleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowScheduleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowScheduleRequest) SetCronBeginDate(v string) *UpdateTaskFlowScheduleRequest {
+	s.CronBeginDate = &v
+	return s
+}
+
+func (s *UpdateTaskFlowScheduleRequest) SetCronEndDate(v string) *UpdateTaskFlowScheduleRequest {
+	s.CronEndDate = &v
+	return s
+}
+
+func (s *UpdateTaskFlowScheduleRequest) SetCronStr(v string) *UpdateTaskFlowScheduleRequest {
+	s.CronStr = &v
+	return s
+}
+
+func (s *UpdateTaskFlowScheduleRequest) SetCronType(v string) *UpdateTaskFlowScheduleRequest {
+	s.CronType = &v
+	return s
+}
+
+func (s *UpdateTaskFlowScheduleRequest) SetDagId(v int64) *UpdateTaskFlowScheduleRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowScheduleRequest) SetScheduleParam(v string) *UpdateTaskFlowScheduleRequest {
+	s.ScheduleParam = &v
+	return s
+}
+
+func (s *UpdateTaskFlowScheduleRequest) SetScheduleSwitch(v bool) *UpdateTaskFlowScheduleRequest {
+	s.ScheduleSwitch = &v
+	return s
+}
+
+func (s *UpdateTaskFlowScheduleRequest) SetTid(v int64) *UpdateTaskFlowScheduleRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *UpdateTaskFlowScheduleRequest) SetTimeZoneId(v string) *UpdateTaskFlowScheduleRequest {
+	s.TimeZoneId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowScheduleRequest) SetTriggerType(v string) *UpdateTaskFlowScheduleRequest {
+	s.TriggerType = &v
+	return s
+}
+
+type UpdateTaskFlowScheduleResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskFlowScheduleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowScheduleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowScheduleResponseBody) SetErrorCode(v string) *UpdateTaskFlowScheduleResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowScheduleResponseBody) SetErrorMessage(v string) *UpdateTaskFlowScheduleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskFlowScheduleResponseBody) SetRequestId(v string) *UpdateTaskFlowScheduleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowScheduleResponseBody) SetSuccess(v bool) *UpdateTaskFlowScheduleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskFlowScheduleResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTaskFlowScheduleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskFlowScheduleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowScheduleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowScheduleResponse) SetHeaders(v map[string]*string) *UpdateTaskFlowScheduleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskFlowScheduleResponse) SetStatusCode(v int32) *UpdateTaskFlowScheduleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowScheduleResponse) SetBody(v *UpdateTaskFlowScheduleResponseBody) *UpdateTaskFlowScheduleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskFlowTimeVariablesRequest struct {
+	DagId         *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid           *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	TimeVariables *string `json:"TimeVariables,omitempty" xml:"TimeVariables,omitempty"`
+}
+
+func (s UpdateTaskFlowTimeVariablesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowTimeVariablesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowTimeVariablesRequest) SetDagId(v int64) *UpdateTaskFlowTimeVariablesRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowTimeVariablesRequest) SetTid(v int64) *UpdateTaskFlowTimeVariablesRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *UpdateTaskFlowTimeVariablesRequest) SetTimeVariables(v string) *UpdateTaskFlowTimeVariablesRequest {
+	s.TimeVariables = &v
+	return s
+}
+
+type UpdateTaskFlowTimeVariablesResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskFlowTimeVariablesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowTimeVariablesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowTimeVariablesResponseBody) SetErrorCode(v string) *UpdateTaskFlowTimeVariablesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowTimeVariablesResponseBody) SetErrorMessage(v string) *UpdateTaskFlowTimeVariablesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskFlowTimeVariablesResponseBody) SetRequestId(v string) *UpdateTaskFlowTimeVariablesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskFlowTimeVariablesResponseBody) SetSuccess(v bool) *UpdateTaskFlowTimeVariablesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskFlowTimeVariablesResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTaskFlowTimeVariablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskFlowTimeVariablesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskFlowTimeVariablesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskFlowTimeVariablesResponse) SetHeaders(v map[string]*string) *UpdateTaskFlowTimeVariablesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskFlowTimeVariablesResponse) SetStatusCode(v int32) *UpdateTaskFlowTimeVariablesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskFlowTimeVariablesResponse) SetBody(v *UpdateTaskFlowTimeVariablesResponseBody) *UpdateTaskFlowTimeVariablesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskNameRequest struct {
+	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	Tid      *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskNameRequest) SetNodeId(v string) *UpdateTaskNameRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *UpdateTaskNameRequest) SetNodeName(v string) *UpdateTaskNameRequest {
+	s.NodeName = &v
+	return s
+}
+
+func (s *UpdateTaskNameRequest) SetTid(v int64) *UpdateTaskNameRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskNameResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskNameResponseBody) SetErrorCode(v string) *UpdateTaskNameResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskNameResponseBody) SetErrorMessage(v string) *UpdateTaskNameResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskNameResponseBody) SetRequestId(v string) *UpdateTaskNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskNameResponseBody) SetSuccess(v bool) *UpdateTaskNameResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskNameResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTaskNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskNameResponse) SetHeaders(v map[string]*string) *UpdateTaskNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskNameResponse) SetStatusCode(v int32) *UpdateTaskNameResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskNameResponse) SetBody(v *UpdateTaskNameResponseBody) *UpdateTaskNameResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskOutputRequest struct {
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeOutput *string `json:"NodeOutput,omitempty" xml:"NodeOutput,omitempty"`
+	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateTaskOutputRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskOutputRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskOutputRequest) SetNodeId(v string) *UpdateTaskOutputRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *UpdateTaskOutputRequest) SetNodeOutput(v string) *UpdateTaskOutputRequest {
+	s.NodeOutput = &v
+	return s
+}
+
+func (s *UpdateTaskOutputRequest) SetTid(v int64) *UpdateTaskOutputRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateTaskOutputResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskOutputResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskOutputResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskOutputResponseBody) SetErrorCode(v string) *UpdateTaskOutputResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskOutputResponseBody) SetErrorMessage(v string) *UpdateTaskOutputResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskOutputResponseBody) SetRequestId(v string) *UpdateTaskOutputResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskOutputResponseBody) SetSuccess(v bool) *UpdateTaskOutputResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskOutputResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTaskOutputResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskOutputResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskOutputResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskOutputResponse) SetHeaders(v map[string]*string) *UpdateTaskOutputResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskOutputResponse) SetStatusCode(v int32) *UpdateTaskOutputResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskOutputResponse) SetBody(v *UpdateTaskOutputResponseBody) *UpdateTaskOutputResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTaskTimeVariablesRequest struct {
+	NodeId        *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Tid           *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	TimeVariables *string `json:"TimeVariables,omitempty" xml:"TimeVariables,omitempty"`
+}
+
+func (s UpdateTaskTimeVariablesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskTimeVariablesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskTimeVariablesRequest) SetNodeId(v string) *UpdateTaskTimeVariablesRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *UpdateTaskTimeVariablesRequest) SetTid(v int64) *UpdateTaskTimeVariablesRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *UpdateTaskTimeVariablesRequest) SetTimeVariables(v string) *UpdateTaskTimeVariablesRequest {
+	s.TimeVariables = &v
+	return s
+}
+
+type UpdateTaskTimeVariablesResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTaskTimeVariablesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskTimeVariablesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskTimeVariablesResponseBody) SetErrorCode(v string) *UpdateTaskTimeVariablesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTaskTimeVariablesResponseBody) SetErrorMessage(v string) *UpdateTaskTimeVariablesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTaskTimeVariablesResponseBody) SetRequestId(v string) *UpdateTaskTimeVariablesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTaskTimeVariablesResponseBody) SetSuccess(v bool) *UpdateTaskTimeVariablesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTaskTimeVariablesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTaskTimeVariablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTaskTimeVariablesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTaskTimeVariablesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTaskTimeVariablesResponse) SetHeaders(v map[string]*string) *UpdateTaskTimeVariablesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTaskTimeVariablesResponse) SetStatusCode(v int32) *UpdateTaskTimeVariablesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTaskTimeVariablesResponse) SetBody(v *UpdateTaskTimeVariablesResponseBody) *UpdateTaskTimeVariablesResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateUserRequest struct {
 	MaxExecuteCount *int64  `json:"MaxExecuteCount,omitempty" xml:"MaxExecuteCount,omitempty"`
 	MaxResultCount  *int64  `json:"MaxResultCount,omitempty" xml:"MaxResultCount,omitempty"`
@@ -22676,6 +28458,64 @@ func (client *Client) AddLogicTableRouteConfig(request *AddLogicTableRouteConfig
 	return _result, _err
 }
 
+func (client *Client) AddTaskFlowEdgesWithOptions(tmpReq *AddTaskFlowEdgesRequest, runtime *util.RuntimeOptions) (_result *AddTaskFlowEdgesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddTaskFlowEdgesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Edges)) {
+		request.EdgesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Edges, tea.String("Edges"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EdgesShrink)) {
+		query["Edges"] = request.EdgesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddTaskFlowEdges"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddTaskFlowEdgesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddTaskFlowEdges(request *AddTaskFlowEdgesRequest) (_result *AddTaskFlowEdgesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddTaskFlowEdgesResponse{}
+	_body, _err := client.AddTaskFlowEdgesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ApproveOrderWithOptions(request *ApproveOrderRequest, runtime *util.RuntimeOptions) (_result *ApproveOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22725,6 +28565,92 @@ func (client *Client) ApproveOrder(request *ApproveOrderRequest) (_result *Appro
 	runtime := &util.RuntimeOptions{}
 	_result = &ApproveOrderResponse{}
 	_body, _err := client.ApproveOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BackFillWithOptions(tmpReq *BackFillRequest, runtime *util.RuntimeOptions) (_result *BackFillResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BackFillShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.StartNodeIds)) {
+		request.StartNodeIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StartNodeIds, tea.String("StartNodeIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Asc)) {
+		query["Asc"] = request.Asc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackFillDate)) {
+		query["BackFillDate"] = request.BackFillDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackFillDateBegin)) {
+		query["BackFillDateBegin"] = request.BackFillDateBegin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackFillDateEnd)) {
+		query["BackFillDateEnd"] = request.BackFillDateEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HistoryDagId)) {
+		query["HistoryDagId"] = request.HistoryDagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsTriggerSubTree)) {
+		query["IsTriggerSubTree"] = request.IsTriggerSubTree
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartNodeIdsShrink)) {
+		query["StartNodeIds"] = request.StartNodeIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BackFill"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BackFillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BackFill(request *BackFillRequest) (_result *BackFillResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BackFillResponse{}
+	_body, _err := client.BackFillWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23632,6 +29558,58 @@ func (client *Client) CreateSQLReviewOrder(request *CreateSQLReviewOrderRequest)
 	return _result, _err
 }
 
+func (client *Client) CreateScenarioWithOptions(request *CreateScenarioRequest, runtime *util.RuntimeOptions) (_result *CreateScenarioResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScenarioName)) {
+		query["ScenarioName"] = request.ScenarioName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateScenario"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateScenarioResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateScenario(request *CreateScenarioRequest) (_result *CreateScenarioResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateScenarioResponse{}
+	_body, _err := client.CreateScenarioWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateStandardGroupWithOptions(request *CreateStandardGroupRequest, runtime *util.RuntimeOptions) (_result *CreateStandardGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23751,6 +29729,134 @@ func (client *Client) CreateStructSyncOrder(request *CreateStructSyncOrderReques
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateStructSyncOrderResponse{}
 	_body, _err := client.CreateStructSyncOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, runtime *util.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GraphParam)) {
+		query["GraphParam"] = request.GraphParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeContent)) {
+		query["NodeContent"] = request.NodeContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
+		query["NodeName"] = request.NodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeOutput)) {
+		query["NodeOutput"] = request.NodeOutput
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeType)) {
+		query["NodeType"] = request.NodeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeVariables)) {
+		query["TimeVariables"] = request.TimeVariables
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTask"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTaskResponse{}
+	_body, _err := client.CreateTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTaskFlowWithOptions(request *CreateTaskFlowRequest, runtime *util.RuntimeOptions) (_result *CreateTaskFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagName)) {
+		query["DagName"] = request.DagName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScenarioId)) {
+		query["ScenarioId"] = request.ScenarioId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTaskFlow"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTaskFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTaskFlow(request *CreateTaskFlowRequest) (_result *CreateTaskFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTaskFlowResponse{}
+	_body, _err := client.CreateTaskFlowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24238,6 +30344,102 @@ func (client *Client) DeleteProxyAccess(request *DeleteProxyAccessRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DeleteScenarioWithOptions(request *DeleteScenarioRequest, runtime *util.RuntimeOptions) (_result *DeleteScenarioResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ScenarioId)) {
+		query["ScenarioId"] = request.ScenarioId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteScenario"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteScenarioResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteScenario(request *DeleteScenarioRequest) (_result *DeleteScenarioResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteScenarioResponse{}
+	_body, _err := client.DeleteScenarioWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTaskWithOptions(request *DeleteTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTask"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTask(request *DeleteTaskRequest) (_result *DeleteTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTaskResponse{}
+	_body, _err := client.DeleteTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteTaskFlowWithOptions(request *DeleteTaskFlowRequest, runtime *util.RuntimeOptions) (_result *DeleteTaskFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24279,6 +30481,66 @@ func (client *Client) DeleteTaskFlow(request *DeleteTaskFlowRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTaskFlowResponse{}
 	_body, _err := client.DeleteTaskFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTaskFlowEdgesByConditionWithOptions(request *DeleteTaskFlowEdgesByConditionRequest, runtime *util.RuntimeOptions) (_result *DeleteTaskFlowEdgesByConditionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeEnd)) {
+		query["NodeEnd"] = request.NodeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeFrom)) {
+		query["NodeFrom"] = request.NodeFrom
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTaskFlowEdgesByCondition"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTaskFlowEdgesByConditionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTaskFlowEdgesByCondition(request *DeleteTaskFlowEdgesByConditionRequest) (_result *DeleteTaskFlowEdgesByConditionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTaskFlowEdgesByConditionResponse{}
+	_body, _err := client.DeleteTaskFlowEdgesByConditionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25328,6 +31590,54 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 	return _result, _err
 }
 
+func (client *Client) GetIntervalLimitOfSLAWithOptions(request *GetIntervalLimitOfSLARequest, runtime *util.RuntimeOptions) (_result *GetIntervalLimitOfSLAResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIntervalLimitOfSLA"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetIntervalLimitOfSLAResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetIntervalLimitOfSLA(request *GetIntervalLimitOfSLARequest) (_result *GetIntervalLimitOfSLAResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetIntervalLimitOfSLAResponse{}
+	_body, _err := client.GetIntervalLimitOfSLAWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetLhSpaceByNameWithOptions(request *GetLhSpaceByNameRequest, runtime *util.RuntimeOptions) (_result *GetLhSpaceByNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25828,6 +32138,54 @@ func (client *Client) GetProxy(request *GetProxyRequest) (_result *GetProxyRespo
 	return _result, _err
 }
 
+func (client *Client) GetRuleNumLimitOfSLAWithOptions(request *GetRuleNumLimitOfSLARequest, runtime *util.RuntimeOptions) (_result *GetRuleNumLimitOfSLAResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRuleNumLimitOfSLA"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRuleNumLimitOfSLAResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRuleNumLimitOfSLA(request *GetRuleNumLimitOfSLARequest) (_result *GetRuleNumLimitOfSLAResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRuleNumLimitOfSLAResponse{}
+	_body, _err := client.GetRuleNumLimitOfSLAWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetSQLReviewCheckResultStatusWithOptions(request *GetSQLReviewCheckResultStatusRequest, runtime *util.RuntimeOptions) (_result *GetSQLReviewCheckResultStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26225,6 +32583,150 @@ func (client *Client) GetTableTopology(request *GetTableTopologyRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTableTopologyResponse{}
 	_body, _err := client.GetTableTopologyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.RuntimeOptions) (_result *GetTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTask"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTaskResponse{}
+	_body, _err := client.GetTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTaskFlowGraphWithOptions(request *GetTaskFlowGraphRequest, runtime *util.RuntimeOptions) (_result *GetTaskFlowGraphResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTaskFlowGraph"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskFlowGraphResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTaskFlowGraph(request *GetTaskFlowGraphRequest) (_result *GetTaskFlowGraphResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTaskFlowGraphResponse{}
+	_body, _err := client.GetTaskFlowGraphWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTaskFlowNotificationWithOptions(request *GetTaskFlowNotificationRequest, runtime *util.RuntimeOptions) (_result *GetTaskFlowNotificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTaskFlowNotification"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskFlowNotificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTaskFlowNotification(request *GetTaskFlowNotificationRequest) (_result *GetTaskFlowNotificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTaskFlowNotificationResponse{}
+	_body, _err := client.GetTaskFlowNotificationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27064,6 +33566,54 @@ func (client *Client) ListDatabases(request *ListDatabasesRequest) (_result *Lis
 	return _result, _err
 }
 
+func (client *Client) ListDefaultSLARulesWithOptions(request *ListDefaultSLARulesRequest, runtime *util.RuntimeOptions) (_result *ListDefaultSLARulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDefaultSLARules"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDefaultSLARulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDefaultSLARules(request *ListDefaultSLARulesRequest) (_result *ListDefaultSLARulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDefaultSLARulesResponse{}
+	_body, _err := client.ListDefaultSLARulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListDesensitizationRuleWithOptions(request *ListDesensitizationRuleRequest, runtime *util.RuntimeOptions) (_result *ListDesensitizationRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27852,6 +34402,54 @@ func (client *Client) ListProxySQLExecAuditLog(request *ListProxySQLExecAuditLog
 	return _result, _err
 }
 
+func (client *Client) ListSLARulesWithOptions(request *ListSLARulesRequest, runtime *util.RuntimeOptions) (_result *ListSLARulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSLARules"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSLARulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSLARules(request *ListSLARulesRequest) (_result *ListSLARulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSLARulesResponse{}
+	_body, _err := client.ListSLARulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListSQLExecAuditLogWithOptions(request *ListSQLExecAuditLogRequest, runtime *util.RuntimeOptions) (_result *ListSQLExecAuditLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27979,6 +34577,50 @@ func (client *Client) ListSQLReviewOriginSQL(request *ListSQLReviewOriginSQLRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSQLReviewOriginSQLResponse{}
 	_body, _err := client.ListSQLReviewOriginSQLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListScenariosWithOptions(request *ListScenariosRequest, runtime *util.RuntimeOptions) (_result *ListScenariosResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListScenarios"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListScenariosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListScenarios(request *ListScenariosRequest) (_result *ListScenariosResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListScenariosResponse{}
+	_body, _err := client.ListScenariosWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28119,6 +34761,86 @@ func (client *Client) ListSensitiveColumnsDetail(request *ListSensitiveColumnsDe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSensitiveColumnsDetailResponse{}
 	_body, _err := client.ListSensitiveColumnsDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSensitiveDataAuditLogWithOptions(request *ListSensitiveDataAuditLogRequest, runtime *util.RuntimeOptions) (_result *ListSensitiveDataAuditLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ColumnName)) {
+		query["ColumnName"] = request.ColumnName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
+		query["ModuleName"] = request.ModuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpUserName)) {
+		query["OpUserName"] = request.OpUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSensitiveDataAuditLog"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSensitiveDataAuditLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSensitiveDataAuditLog(request *ListSensitiveDataAuditLogRequest) (_result *ListSensitiveDataAuditLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSensitiveDataAuditLogResponse{}
+	_body, _err := client.ListSensitiveDataAuditLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28278,6 +35000,162 @@ func (client *Client) ListTaskFlow(request *ListTaskFlowRequest) (_result *ListT
 	return _result, _err
 }
 
+func (client *Client) ListTaskFlowConstantsWithOptions(request *ListTaskFlowConstantsRequest, runtime *util.RuntimeOptions) (_result *ListTaskFlowConstantsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTaskFlowConstants"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTaskFlowConstantsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTaskFlowConstants(request *ListTaskFlowConstantsRequest) (_result *ListTaskFlowConstantsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTaskFlowConstantsResponse{}
+	_body, _err := client.ListTaskFlowConstantsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTaskFlowCooperatorsWithOptions(request *ListTaskFlowCooperatorsRequest, runtime *util.RuntimeOptions) (_result *ListTaskFlowCooperatorsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTaskFlowCooperators"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTaskFlowCooperatorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTaskFlowCooperators(request *ListTaskFlowCooperatorsRequest) (_result *ListTaskFlowCooperatorsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTaskFlowCooperatorsResponse{}
+	_body, _err := client.ListTaskFlowCooperatorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTaskFlowEdgesByConditionWithOptions(request *ListTaskFlowEdgesByConditionRequest, runtime *util.RuntimeOptions) (_result *ListTaskFlowEdgesByConditionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeEnd)) {
+		query["NodeEnd"] = request.NodeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeFrom)) {
+		query["NodeFrom"] = request.NodeFrom
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTaskFlowEdgesByCondition"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTaskFlowEdgesByConditionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTaskFlowEdgesByCondition(request *ListTaskFlowEdgesByConditionRequest) (_result *ListTaskFlowEdgesByConditionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTaskFlowEdgesByConditionResponse{}
+	_body, _err := client.ListTaskFlowEdgesByConditionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTaskFlowInstanceWithOptions(request *ListTaskFlowInstanceRequest, runtime *util.RuntimeOptions) (_result *ListTaskFlowInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28339,6 +35217,158 @@ func (client *Client) ListTaskFlowInstance(request *ListTaskFlowInstanceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTaskFlowInstanceResponse{}
 	_body, _err := client.ListTaskFlowInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTaskFlowTimeVariablesWithOptions(request *ListTaskFlowTimeVariablesRequest, runtime *util.RuntimeOptions) (_result *ListTaskFlowTimeVariablesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTaskFlowTimeVariables"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTaskFlowTimeVariablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTaskFlowTimeVariables(request *ListTaskFlowTimeVariablesRequest) (_result *ListTaskFlowTimeVariablesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTaskFlowTimeVariablesResponse{}
+	_body, _err := client.ListTaskFlowTimeVariablesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTaskFlowsByPageWithOptions(request *ListTaskFlowsByPageRequest, runtime *util.RuntimeOptions) (_result *ListTaskFlowsByPageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTaskFlowsByPage"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTaskFlowsByPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTaskFlowsByPage(request *ListTaskFlowsByPageRequest) (_result *ListTaskFlowsByPageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTaskFlowsByPageResponse{}
+	_body, _err := client.ListTaskFlowsByPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTasksInTaskFlowWithOptions(request *ListTasksInTaskFlowRequest, runtime *util.RuntimeOptions) (_result *ListTasksInTaskFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTasksInTaskFlow"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTasksInTaskFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTasksInTaskFlow(request *ListTasksInTaskFlowRequest) (_result *ListTasksInTaskFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTasksInTaskFlowResponse{}
+	_body, _err := client.ListTasksInTaskFlowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28630,6 +35660,58 @@ func (client *Client) ListWorkFlowTemplates(request *ListWorkFlowTemplatesReques
 	return _result, _err
 }
 
+func (client *Client) MakeTaskFlowInstanceSuccessWithOptions(request *MakeTaskFlowInstanceSuccessRequest, runtime *util.RuntimeOptions) (_result *MakeTaskFlowInstanceSuccessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagInstanceId)) {
+		query["DagInstanceId"] = request.DagInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MakeTaskFlowInstanceSuccess"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MakeTaskFlowInstanceSuccessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MakeTaskFlowInstanceSuccess(request *MakeTaskFlowInstanceSuccessRequest) (_result *MakeTaskFlowInstanceSuccessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MakeTaskFlowInstanceSuccessResponse{}
+	_body, _err := client.MakeTaskFlowInstanceSuccessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyDataCorrectExecSQLWithOptions(request *ModifyDataCorrectExecSQLRequest, runtime *util.RuntimeOptions) (_result *ModifyDataCorrectExecSQLResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28754,6 +35836,58 @@ func (client *Client) ModifyDesensitizationStrategy(request *ModifyDesensitizati
 	return _result, _err
 }
 
+func (client *Client) MoveTaskFlowToScenarioWithOptions(request *MoveTaskFlowToScenarioRequest, runtime *util.RuntimeOptions) (_result *MoveTaskFlowToScenarioResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScenarioId)) {
+		query["ScenarioId"] = request.ScenarioId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveTaskFlowToScenario"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MoveTaskFlowToScenarioResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MoveTaskFlowToScenario(request *MoveTaskFlowToScenarioRequest) (_result *MoveTaskFlowToScenarioResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MoveTaskFlowToScenarioResponse{}
+	_body, _err := client.MoveTaskFlowToScenarioWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) OfflineTaskFlowWithOptions(request *OfflineTaskFlowRequest, runtime *util.RuntimeOptions) (_result *OfflineTaskFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28858,6 +35992,58 @@ func (client *Client) PauseDataCorrectSQLJob(request *PauseDataCorrectSQLJobRequ
 	return _result, _err
 }
 
+func (client *Client) PublishAndDeployTaskFlowWithOptions(request *PublishAndDeployTaskFlowRequest, runtime *util.RuntimeOptions) (_result *PublishAndDeployTaskFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionComments)) {
+		query["VersionComments"] = request.VersionComments
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishAndDeployTaskFlow"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PublishAndDeployTaskFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PublishAndDeployTaskFlow(request *PublishAndDeployTaskFlowRequest) (_result *PublishAndDeployTaskFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PublishAndDeployTaskFlowResponse{}
+	_body, _err := client.PublishAndDeployTaskFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ReDeployLhDagVersionWithOptions(request *ReDeployLhDagVersionRequest, runtime *util.RuntimeOptions) (_result *ReDeployLhDagVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28903,6 +36089,62 @@ func (client *Client) ReDeployLhDagVersion(request *ReDeployLhDagVersionRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ReDeployLhDagVersionResponse{}
 	_body, _err := client.ReDeployLhDagVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReRunTaskFlowInstanceWithOptions(request *ReRunTaskFlowInstanceRequest, runtime *util.RuntimeOptions) (_result *ReRunTaskFlowInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagInstanceId)) {
+		query["DagInstanceId"] = request.DagInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagVersion)) {
+		query["DagVersion"] = request.DagVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReRunTaskFlowInstance"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReRunTaskFlowInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReRunTaskFlowInstance(request *ReRunTaskFlowInstanceRequest) (_result *ReRunTaskFlowInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReRunTaskFlowInstanceResponse{}
+	_body, _err := client.ReRunTaskFlowInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29147,6 +36389,62 @@ func (client *Client) RestartDataCorrectSQLJob(request *RestartDataCorrectSQLJob
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartDataCorrectSQLJobResponse{}
 	_body, _err := client.RestartDataCorrectSQLJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResumeTaskFlowInstanceWithOptions(request *ResumeTaskFlowInstanceRequest, runtime *util.RuntimeOptions) (_result *ResumeTaskFlowInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagInstanceId)) {
+		query["DagInstanceId"] = request.DagInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagVersion)) {
+		query["DagVersion"] = request.DagVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeTaskFlowInstance"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResumeTaskFlowInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResumeTaskFlowInstance(request *ResumeTaskFlowInstanceRequest) (_result *ResumeTaskFlowInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResumeTaskFlowInstanceResponse{}
+	_body, _err := client.ResumeTaskFlowInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29486,6 +36784,58 @@ func (client *Client) SetOwners(request *SetOwnersRequest) (_result *SetOwnersRe
 	return _result, _err
 }
 
+func (client *Client) StopTaskFlowInstanceWithOptions(request *StopTaskFlowInstanceRequest, runtime *util.RuntimeOptions) (_result *StopTaskFlowInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagInstanceId)) {
+		query["DagInstanceId"] = request.DagInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopTaskFlowInstance"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopTaskFlowInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopTaskFlowInstance(request *StopTaskFlowInstanceRequest) (_result *StopTaskFlowInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopTaskFlowInstanceResponse{}
+	_body, _err := client.StopTaskFlowInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SubmitOrderApprovalWithOptions(request *SubmitOrderApprovalRequest, runtime *util.RuntimeOptions) (_result *SubmitOrderApprovalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29575,6 +36925,58 @@ func (client *Client) SubmitStructSyncOrderApproval(request *SubmitStructSyncOrd
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitStructSyncOrderApprovalResponse{}
 	_body, _err := client.SubmitStructSyncOrderApprovalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SuspendTaskFlowInstanceWithOptions(request *SuspendTaskFlowInstanceRequest, runtime *util.RuntimeOptions) (_result *SuspendTaskFlowInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagInstanceId)) {
+		query["DagInstanceId"] = request.DagInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SuspendTaskFlowInstance"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SuspendTaskFlowInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SuspendTaskFlowInstance(request *SuspendTaskFlowInstanceRequest) (_result *SuspendTaskFlowInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SuspendTaskFlowInstanceResponse{}
+	_body, _err := client.SuspendTaskFlowInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29807,6 +37209,912 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceResponse{}
 	_body, _err := client.UpdateInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSLARulesWithOptions(tmpReq *UpdateSLARulesRequest, runtime *util.RuntimeOptions) (_result *UpdateSLARulesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateSLARulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SlaRuleList)) {
+		request.SlaRuleListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SlaRuleList, tea.String("SlaRuleList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlaRuleListShrink)) {
+		query["SlaRuleList"] = request.SlaRuleListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSLARules"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSLARulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSLARules(request *UpdateSLARulesRequest) (_result *UpdateSLARulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSLARulesResponse{}
+	_body, _err := client.UpdateSLARulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateScenarioWithOptions(request *UpdateScenarioRequest, runtime *util.RuntimeOptions) (_result *UpdateScenarioResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScenarioId)) {
+		query["ScenarioId"] = request.ScenarioId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScenarioName)) {
+		query["ScenarioName"] = request.ScenarioName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateScenario"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateScenarioResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateScenario(request *UpdateScenarioRequest) (_result *UpdateScenarioResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateScenarioResponse{}
+	_body, _err := client.UpdateScenarioWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskConfigWithOptions(request *UpdateTaskConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeConfig)) {
+		query["NodeConfig"] = request.NodeConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskConfig"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskConfig(request *UpdateTaskConfigRequest) (_result *UpdateTaskConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskConfigResponse{}
+	_body, _err := client.UpdateTaskConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskContentWithOptions(request *UpdateTaskContentRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskContentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeContent)) {
+		query["NodeContent"] = request.NodeContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskContent"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskContent(request *UpdateTaskContentRequest) (_result *UpdateTaskContentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskContentResponse{}
+	_body, _err := client.UpdateTaskContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowConstantsWithOptions(tmpReq *UpdateTaskFlowConstantsRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskFlowConstantsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateTaskFlowConstantsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DagConstants)) {
+		request.DagConstantsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DagConstants, tea.String("DagConstants"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagConstantsShrink)) {
+		query["DagConstants"] = request.DagConstantsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskFlowConstants"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskFlowConstantsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowConstants(request *UpdateTaskFlowConstantsRequest) (_result *UpdateTaskFlowConstantsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskFlowConstantsResponse{}
+	_body, _err := client.UpdateTaskFlowConstantsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowCooperatorsWithOptions(tmpReq *UpdateTaskFlowCooperatorsRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskFlowCooperatorsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateTaskFlowCooperatorsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CooperatorIds)) {
+		request.CooperatorIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CooperatorIds, tea.String("CooperatorIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CooperatorIdsShrink)) {
+		query["CooperatorIds"] = request.CooperatorIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskFlowCooperators"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskFlowCooperatorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowCooperators(request *UpdateTaskFlowCooperatorsRequest) (_result *UpdateTaskFlowCooperatorsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskFlowCooperatorsResponse{}
+	_body, _err := client.UpdateTaskFlowCooperatorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowEdgesWithOptions(tmpReq *UpdateTaskFlowEdgesRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskFlowEdgesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateTaskFlowEdgesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Edges)) {
+		request.EdgesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Edges, tea.String("Edges"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EdgesShrink)) {
+		query["Edges"] = request.EdgesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskFlowEdges"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskFlowEdgesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowEdges(request *UpdateTaskFlowEdgesRequest) (_result *UpdateTaskFlowEdgesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskFlowEdgesResponse{}
+	_body, _err := client.UpdateTaskFlowEdgesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowNameAndDescWithOptions(request *UpdateTaskFlowNameAndDescRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskFlowNameAndDescResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagName)) {
+		query["DagName"] = request.DagName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskFlowNameAndDesc"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskFlowNameAndDescResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowNameAndDesc(request *UpdateTaskFlowNameAndDescRequest) (_result *UpdateTaskFlowNameAndDescResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskFlowNameAndDescResponse{}
+	_body, _err := client.UpdateTaskFlowNameAndDescWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowNotificationWithOptions(request *UpdateTaskFlowNotificationRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskFlowNotificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagNotificationFail)) {
+		query["DagNotificationFail"] = request.DagNotificationFail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagNotificationSla)) {
+		query["DagNotificationSla"] = request.DagNotificationSla
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagNotificationSuccess)) {
+		query["DagNotificationSuccess"] = request.DagNotificationSuccess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskFlowNotification"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskFlowNotificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowNotification(request *UpdateTaskFlowNotificationRequest) (_result *UpdateTaskFlowNotificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskFlowNotificationResponse{}
+	_body, _err := client.UpdateTaskFlowNotificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowOwnerWithOptions(request *UpdateTaskFlowOwnerRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskFlowOwnerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewOwnerId)) {
+		query["NewOwnerId"] = request.NewOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskFlowOwner"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskFlowOwnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowOwner(request *UpdateTaskFlowOwnerRequest) (_result *UpdateTaskFlowOwnerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskFlowOwnerResponse{}
+	_body, _err := client.UpdateTaskFlowOwnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowRelationsWithOptions(tmpReq *UpdateTaskFlowRelationsRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskFlowRelationsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateTaskFlowRelationsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Edges)) {
+		request.EdgesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Edges, tea.String("Edges"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EdgesShrink)) {
+		query["Edges"] = request.EdgesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskFlowRelations"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskFlowRelationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowRelations(request *UpdateTaskFlowRelationsRequest) (_result *UpdateTaskFlowRelationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskFlowRelationsResponse{}
+	_body, _err := client.UpdateTaskFlowRelationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowScheduleWithOptions(request *UpdateTaskFlowScheduleRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskFlowScheduleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CronBeginDate)) {
+		query["CronBeginDate"] = request.CronBeginDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CronEndDate)) {
+		query["CronEndDate"] = request.CronEndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CronStr)) {
+		query["CronStr"] = request.CronStr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CronType)) {
+		query["CronType"] = request.CronType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleParam)) {
+		query["ScheduleParam"] = request.ScheduleParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleSwitch)) {
+		query["ScheduleSwitch"] = request.ScheduleSwitch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeZoneId)) {
+		query["TimeZoneId"] = request.TimeZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerType)) {
+		query["TriggerType"] = request.TriggerType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskFlowSchedule"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskFlowScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowSchedule(request *UpdateTaskFlowScheduleRequest) (_result *UpdateTaskFlowScheduleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskFlowScheduleResponse{}
+	_body, _err := client.UpdateTaskFlowScheduleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowTimeVariablesWithOptions(request *UpdateTaskFlowTimeVariablesRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskFlowTimeVariablesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeVariables)) {
+		query["TimeVariables"] = request.TimeVariables
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskFlowTimeVariables"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskFlowTimeVariablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskFlowTimeVariables(request *UpdateTaskFlowTimeVariablesRequest) (_result *UpdateTaskFlowTimeVariablesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskFlowTimeVariablesResponse{}
+	_body, _err := client.UpdateTaskFlowTimeVariablesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskNameWithOptions(request *UpdateTaskNameRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
+		query["NodeName"] = request.NodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskName"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskName(request *UpdateTaskNameRequest) (_result *UpdateTaskNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskNameResponse{}
+	_body, _err := client.UpdateTaskNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskOutputWithOptions(request *UpdateTaskOutputRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskOutputResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeOutput)) {
+		query["NodeOutput"] = request.NodeOutput
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskOutput"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskOutputResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskOutput(request *UpdateTaskOutputRequest) (_result *UpdateTaskOutputResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskOutputResponse{}
+	_body, _err := client.UpdateTaskOutputWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskTimeVariablesWithOptions(request *UpdateTaskTimeVariablesRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskTimeVariablesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeVariables)) {
+		query["TimeVariables"] = request.TimeVariables
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTaskTimeVariables"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTaskTimeVariablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTaskTimeVariables(request *UpdateTaskTimeVariablesRequest) (_result *UpdateTaskTimeVariablesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTaskTimeVariablesResponse{}
+	_body, _err := client.UpdateTaskTimeVariablesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
