@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -30,12 +30,11 @@ func (s *GetAgeDistributionRequest) SetCateIds(v string) *GetAgeDistributionRequ
 }
 
 type GetAgeDistributionResponseBody struct {
-	Code    *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*GetAgeDistributionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessResponse *string `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+	Code            *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data            []*GetAgeDistributionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message         *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *string                               `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
 }
 
 func (s GetAgeDistributionResponseBody) String() string {
@@ -130,12 +129,11 @@ func (s *GetAgeDistributionResponse) SetBody(v *GetAgeDistributionResponseBody) 
 }
 
 type GetAllTrendCategoryResponseBody struct {
-	Code    *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*GetAllTrendCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessResponse *bool   `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+	Code            *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data            []*GetAllTrendCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message         *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *bool                                  `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
 }
 
 func (s GetAllTrendCategoryResponseBody) String() string {
@@ -387,12 +385,11 @@ func (s *GetCrowdReginRequest) SetCateIds(v string) *GetCrowdReginRequest {
 }
 
 type GetCrowdReginResponseBody struct {
-	Code    *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetCrowdReginResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessResponse *bool   `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+	Code            *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data            *GetCrowdReginResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message         *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *bool                          `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
 }
 
 func (s GetCrowdReginResponseBody) String() string {
@@ -800,12 +797,11 @@ func (s *GetSexRatioRequest) SetCateIds(v string) *GetSexRatioRequest {
 }
 
 type GetSexRatioResponseBody struct {
-	Code    *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetSexRatioResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessResponse *string `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+	Code            *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data            *GetSexRatioResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message         *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *string                      `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
 }
 
 func (s GetSexRatioResponseBody) String() string {
@@ -957,12 +953,11 @@ func (s *GetStoreSalesVolumeTopRequest) SetCateIds(v string) *GetStoreSalesVolum
 }
 
 type GetStoreSalesVolumeTopResponseBody struct {
-	Code    *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*GetStoreSalesVolumeTopResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessResponse *bool   `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+	Code            *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data            []*GetStoreSalesVolumeTopResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message         *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *bool                                     `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
 }
 
 func (s GetStoreSalesVolumeTopResponseBody) String() string {
@@ -1062,12 +1057,11 @@ func (s *GetStoreSearchTopRequest) SetCateIds(v string) *GetStoreSearchTopReques
 }
 
 type GetStoreSearchTopResponseBody struct {
-	Code    *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*GetStoreSearchTopResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessResponse *bool   `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+	Code            *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data            []*GetStoreSearchTopResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message         *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *bool                                `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
 }
 
 func (s GetStoreSearchTopResponseBody) String() string {
@@ -1150,7 +1144,6 @@ func (s *GetStoreSearchTopResponse) SetBody(v *GetStoreSearchTopResponseBody) *G
 }
 
 type GetStyleTopRequest struct {
-	// A short description of struct
 	CateIds     *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
 	SortOrder   *int64  `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	TimeDisplay *int64  `json:"TimeDisplay,omitempty" xml:"TimeDisplay,omitempty"`
@@ -1180,7 +1173,6 @@ func (s *GetStyleTopRequest) SetTimeDisplay(v int64) *GetStyleTopRequest {
 }
 
 type GetStyleTopResponseBody struct {
-	// Id of the request
 	Code            *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data            []*GetStyleTopResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	Message         *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -1333,12 +1325,11 @@ func (s *GetTrendImageDetailRequest) SetAiImgId(v string) *GetTrendImageDetailRe
 }
 
 type GetTrendImageDetailResponseBody struct {
-	Code    *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetTrendImageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessResponse *bool   `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+	Code            *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data            *GetTrendImageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message         *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *bool                                `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
 }
 
 func (s GetTrendImageDetailResponseBody) String() string {
@@ -1515,12 +1506,11 @@ func (s *GetTrendImageListRequest) SetQuery(v string) *GetTrendImageListRequest 
 }
 
 type GetTrendImageListResponseBody struct {
-	Code    *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*GetTrendImageListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessResponse *bool   `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+	Code            *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data            []*GetTrendImageListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message         *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *bool                                `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
 }
 
 func (s GetTrendImageListResponseBody) String() string {
@@ -1650,12 +1640,11 @@ func (s *GetTrendIndexRequest) SetMonthNum(v int32) *GetTrendIndexRequest {
 }
 
 type GetTrendIndexResponseBody struct {
-	Code    *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*GetTrendIndexResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessResponse *bool   `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+	Code            *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data            []*GetTrendIndexResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message         *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *bool                            `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
 }
 
 func (s GetTrendIndexResponseBody) String() string {
@@ -1791,12 +1780,11 @@ func (s *GetTrendSearchRecordRequest) SetKey(v string) *GetTrendSearchRecordRequ
 }
 
 type GetTrendSearchRecordResponseBody struct {
-	Code    *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*GetTrendSearchRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessResponse *bool   `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+	Code            *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data            []*GetTrendSearchRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message         *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *bool                                   `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
 }
 
 func (s GetTrendSearchRecordResponseBody) String() string {
@@ -1902,12 +1890,11 @@ func (s *GetTrendStatisticRequest) SetCateIds(v string) *GetTrendStatisticReques
 }
 
 type GetTrendStatisticResponseBody struct {
-	Code    *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetTrendStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessResponse *bool   `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+	Code            *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data            *GetTrendStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message         *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *bool                              `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
 }
 
 func (s GetTrendStatisticResponseBody) String() string {
