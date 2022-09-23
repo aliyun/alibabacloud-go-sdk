@@ -5,26 +5,20 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AssociateRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 视角编码，用于调用同一知识标题下不同视角的答案。在拼装请求参数时，需要以Perspective={视角编码}的格式传递参数。如：&Perspective=["FZJBY3raWr"]。使用SDK时以SDK中定义的参数为准。目前仅支持一个视角答案的调用。       （公有云）
-	Perspective []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
-	// 推荐问题数量，1-10，当出推荐的时候才生效，返回不大于RecommendN
-	RecommendNum *int64 `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
-	// 会话ID，用于标识一个访问者的会话和保持上下文信息。对于一个新的访问者，首次调用Chat接口时无需传递此字段，机器人会开启一个会话，并在Chat接口的响应中返回该会话的SessionId。对于该访问者的后续轮次的会话，调用Chat接口时传递当前会话的SessionId，机器人即可基于SessionId继续该轮次会话。
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// 用户表述
-	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	AgentKey     *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Perspective  []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
+	RecommendNum *int64    `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
+	SessionId    *string   `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Utterance    *string   `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 
 func (s AssociateRequest) String() string {
@@ -66,18 +60,12 @@ func (s *AssociateRequest) SetUtterance(v string) *AssociateRequest {
 }
 
 type AssociateShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 视角编码，用于调用同一知识标题下不同视角的答案。在拼装请求参数时，需要以Perspective={视角编码}的格式传递参数。如：&Perspective=["FZJBY3raWr"]。使用SDK时以SDK中定义的参数为准。目前仅支持一个视角答案的调用。       （公有云）
+	AgentKey          *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PerspectiveShrink *string `json:"Perspective,omitempty" xml:"Perspective,omitempty"`
-	// 推荐问题数量，1-10，当出推荐的时候才生效，返回不大于RecommendN
-	RecommendNum *int64 `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
-	// 会话ID，用于标识一个访问者的会话和保持上下文信息。对于一个新的访问者，首次调用Chat接口时无需传递此字段，机器人会开启一个会话，并在Chat接口的响应中返回该会话的SessionId。对于该访问者的后续轮次的会话，调用Chat接口时传递当前会话的SessionId，机器人即可基于SessionId继续该轮次会话。
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// 用户表述
-	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	RecommendNum      *int64  `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
+	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Utterance         *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 
 func (s AssociateShrinkRequest) String() string {
@@ -119,14 +107,10 @@ func (s *AssociateShrinkRequest) SetUtterance(v string) *AssociateShrinkRequest 
 }
 
 type AssociateResponseBody struct {
-	// 联想的列表
 	Associate []*AssociateResponseBodyAssociate `json:"Associate,omitempty" xml:"Associate,omitempty" type:"Repeated"`
-	// 本条会话应答消息的ID
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次会话的ID
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	MessageId *string                           `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SessionId *string                           `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s AssociateResponseBody) String() string {
@@ -158,9 +142,7 @@ func (s *AssociateResponseBody) SetSessionId(v string) *AssociateResponseBody {
 }
 
 type AssociateResponseBodyAssociate struct {
-	// 附带信息
-	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	// 关联问题的标题
+	Meta  *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -212,9 +194,7 @@ func (s *AssociateResponse) SetBody(v *AssociateResponseBody) *AssociateResponse
 }
 
 type BeginSessionRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -237,9 +217,7 @@ func (s *BeginSessionRequest) SetInstanceId(v string) *BeginSessionRequest {
 }
 
 type BeginSessionResponseBody struct {
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 欢迎语
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	WelcomeMessage *string `json:"WelcomeMessage,omitempty" xml:"WelcomeMessage,omitempty"`
 }
 
@@ -291,11 +269,8 @@ func (s *BeginSessionResponse) SetBody(v *BeginSessionResponseBody) *BeginSessio
 }
 
 type CancelInstancePublishTaskRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 任务ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -323,22 +298,14 @@ func (s *CancelInstancePublishTaskRequest) SetInstanceId(v string) *CancelInstan
 }
 
 type CancelInstancePublishTaskResponseBody struct {
-	// 业务类型列表
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	// 任务创建的 UTC 时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// job失败信息
-	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// 任务Id
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 任务修改的 UTC 时间
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务Id
-	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateTime  *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error       *string   `json:"Error,omitempty" xml:"Error,omitempty"`
+	Id          *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifyTime  *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Response    *string   `json:"Response,omitempty" xml:"Response,omitempty"`
+	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CancelInstancePublishTaskResponseBody) String() string {
@@ -419,10 +386,8 @@ func (s *CancelInstancePublishTaskResponse) SetBody(v *CancelInstancePublishTask
 }
 
 type CancelPublishTaskRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 任务ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s CancelPublishTaskRequest) String() string {
@@ -444,22 +409,14 @@ func (s *CancelPublishTaskRequest) SetId(v int64) *CancelPublishTaskRequest {
 }
 
 type CancelPublishTaskResponseBody struct {
-	// 业务类型列表
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	// 任务创建的 UTC 时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// job失败信息
-	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// 任务Id
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 任务修改的 UTC 时间
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务Id
-	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateTime  *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error       *string   `json:"Error,omitempty" xml:"Error,omitempty"`
+	Id          *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifyTime  *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Response    *string   `json:"Response,omitempty" xml:"Response,omitempty"`
+	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CancelPublishTaskResponseBody) String() string {
@@ -540,25 +497,16 @@ func (s *CancelPublishTaskResponse) SetBody(v *CancelPublishTaskResponseBody) *C
 }
 
 type ChatRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人实例ID。登录云小蜜控制台，机器人详情->会话接口，查看机器人实例信息，可获得该实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 对话流中意图名称。 若指定此名称，机器人会直接进入此意图做问答
-	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// 知识库中知识标题的ID。若指定此ID，那么机器人会直接返回指定知识标题的答案
-	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// 视角编码，用于调用同一知识标题下不同视角的答案。如：Perspective=["FZJBY3raWr"]。使用SDK时以SDK中定义的参数为准
+	AgentKey    *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IntentName  *string   `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	KnowledgeId *string   `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	Perspective []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
-	// 访问者ID。用于识别当前会话中的用户
-	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
-	// 当前会话中访问的昵称
-	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
-	// 会话ID，用于标识一个访问者的会话和保持上下文信息。对于一个新的访问者，首次调用Chat接口时无需传递此字段，机器人会开启一个会话，并在Chat接口的响应中返回该会话的SessionId。对于该访问者的后续轮次的会话，调用Chat接口时传递当前会话的SessionId，机器人即可基于SessionId继续该轮次会话。长度限制是64个字符
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// 机器人访问者的输入
-	Utterance   *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
-	VendorParam *string `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
+	SenderId    *string   `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	SenderNick  *string   `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
+	SessionId   *string   `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Utterance   *string   `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	VendorParam *string   `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
 }
 
 func (s ChatRequest) String() string {
@@ -620,25 +568,16 @@ func (s *ChatRequest) SetVendorParam(v string) *ChatRequest {
 }
 
 type ChatShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人实例ID。登录云小蜜控制台，机器人详情->会话接口，查看机器人实例信息，可获得该实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 对话流中意图名称。 若指定此名称，机器人会直接进入此意图做问答
-	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// 知识库中知识标题的ID。若指定此ID，那么机器人会直接返回指定知识标题的答案
-	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// 视角编码，用于调用同一知识标题下不同视角的答案。如：Perspective=["FZJBY3raWr"]。使用SDK时以SDK中定义的参数为准
+	AgentKey          *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IntentName        *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	KnowledgeId       *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	PerspectiveShrink *string `json:"Perspective,omitempty" xml:"Perspective,omitempty"`
-	// 访问者ID。用于识别当前会话中的用户
-	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
-	// 当前会话中访问的昵称
-	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
-	// 会话ID，用于标识一个访问者的会话和保持上下文信息。对于一个新的访问者，首次调用Chat接口时无需传递此字段，机器人会开启一个会话，并在Chat接口的响应中返回该会话的SessionId。对于该访问者的后续轮次的会话，调用Chat接口时传递当前会话的SessionId，机器人即可基于SessionId继续该轮次会话。长度限制是64个字符
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// 机器人访问者的输入
-	Utterance   *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
-	VendorParam *string `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
+	SenderId          *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	SenderNick        *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
+	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Utterance         *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	VendorParam       *string `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
 }
 
 func (s ChatShrinkRequest) String() string {
@@ -700,16 +639,11 @@ func (s *ChatShrinkRequest) SetVendorParam(v string) *ChatShrinkRequest {
 }
 
 type ChatResponseBody struct {
-	// 本条会话应答消息的ID
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// 消息的列表
-	Messages []*ChatResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	// query的分词结果，可能为空
-	QuerySegList []*string `json:"QuerySegList,omitempty" xml:"QuerySegList,omitempty" type:"Repeated"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次会话的ID
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	MessageId    *string                     `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	Messages     []*ChatResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	QuerySegList []*string                   `json:"QuerySegList,omitempty" xml:"QuerySegList,omitempty" type:"Repeated"`
+	RequestId    *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SessionId    *string                     `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s ChatResponseBody) String() string {
@@ -746,20 +680,13 @@ func (s *ChatResponseBody) SetSessionId(v string) *ChatResponseBody {
 }
 
 type ChatResponseBodyMessages struct {
-	// 当AnswerType为Recommend时，此字段表示推荐的答案来源
-	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// 本条消息的类型
-	AnswerType *string `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
-	// 当AnswerType为Knowledge时，此字段包含机器人返回的Knowledge对象
-	Knowledge *ChatResponseBodyMessagesKnowledge `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
-	// 当AnswerType为Recommend时，此字段包含机器人返回的Recommend的列表
-	Recommends []*ChatResponseBodyMessagesRecommends `json:"Recommends,omitempty" xml:"Recommends,omitempty" type:"Repeated"`
-	// 当AnswerType为Text时，此字段包含机器人返回的Text对象
-	Text *ChatResponseBodyMessagesText `json:"Text,omitempty" xml:"Text,omitempty" type:"Struct"`
-	// 当AnswerType为Recommend时，此字段表示推荐或者反问的标题话术
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 当AnswerType为Recommend时，并且问答的机器人为语音机器人，此字段表示列表型答案在语音场景渲染之后的答案内容
-	VoiceTitle *string `json:"VoiceTitle,omitempty" xml:"VoiceTitle,omitempty"`
+	AnswerSource *string                               `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	AnswerType   *string                               `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
+	Knowledge    *ChatResponseBodyMessagesKnowledge    `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
+	Recommends   []*ChatResponseBodyMessagesRecommends `json:"Recommends,omitempty" xml:"Recommends,omitempty" type:"Repeated"`
+	Text         *ChatResponseBodyMessagesText         `json:"Text,omitempty" xml:"Text,omitempty" type:"Struct"`
+	Title        *string                               `json:"Title,omitempty" xml:"Title,omitempty"`
+	VoiceTitle   *string                               `json:"VoiceTitle,omitempty" xml:"VoiceTitle,omitempty"`
 }
 
 func (s ChatResponseBodyMessages) String() string {
@@ -806,27 +733,16 @@ func (s *ChatResponseBodyMessages) SetVoiceTitle(v string) *ChatResponseBodyMess
 }
 
 type ChatResponseBodyMessagesKnowledge struct {
-	// 区分答案类型。
-	// KnowledgeBase:知识库条；
-	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// 知识类目
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 命中问题的内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 纯文本/富文本答案的标示
-	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// 命中语句
-	HitStatement *string `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
-	// 命中问题在知识库中的ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 关联知识列表
+	AnswerSource      *string                                               `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	Category          *string                                               `json:"Category,omitempty" xml:"Category,omitempty"`
+	Content           *string                                               `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentType       *string                                               `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	HitStatement      *string                                               `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
+	Id                *string                                               `json:"Id,omitempty" xml:"Id,omitempty"`
 	RelatedKnowledges []*ChatResponseBodyMessagesKnowledgeRelatedKnowledges `json:"RelatedKnowledges,omitempty" xml:"RelatedKnowledges,omitempty" type:"Repeated"`
-	// 分数
-	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// 命中问题的简介
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// 命中问题的标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Score             *float64                                              `json:"Score,omitempty" xml:"Score,omitempty"`
+	Summary           *string                                               `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Title             *string                                               `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ChatResponseBodyMessagesKnowledge) String() string {
@@ -888,10 +804,8 @@ func (s *ChatResponseBodyMessagesKnowledge) SetTitle(v string) *ChatResponseBody
 }
 
 type ChatResponseBodyMessagesKnowledgeRelatedKnowledges struct {
-	// 知识关联知识的ID
 	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// 知识的关联知识的标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ChatResponseBodyMessagesKnowledgeRelatedKnowledges) String() string {
@@ -913,17 +827,10 @@ func (s *ChatResponseBodyMessagesKnowledgeRelatedKnowledges) SetTitle(v string) 
 }
 
 type ChatResponseBodyMessagesRecommends struct {
-	// 澄清来源的标识
-	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// 澄清的知识id
-	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// 推荐内容的分数，当AnswerSource为KNOWLEDGE时，此字段有值
-	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// 澄清内容，可能是
-	// 图谱问答的实体、
-	// 知识问答的知识标题、
-	// 表格问答的列值
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	AnswerSource *string  `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	KnowledgeId  *string  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	Score        *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Title        *string  `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ChatResponseBodyMessagesRecommends) String() string {
@@ -955,37 +862,23 @@ func (s *ChatResponseBodyMessagesRecommends) SetTitle(v string) *ChatResponseBod
 }
 
 type ChatResponseBodyMessagesText struct {
-	// 区分答案类型
-	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// 当AnswerSource为MACHINE_READ时，此字段返回命中文章标题
-	ArticleTitle *string `json:"ArticleTitle,omitempty" xml:"ArticleTitle,omitempty"`
-	// 指令参数，如转人工指令的转人工技能组
-	Commands map[string]interface{} `json:"Commands,omitempty" xml:"Commands,omitempty"`
-	// 文本消息的内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 纯文本/富文本答案的标示
-	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// 当AnswerSource为BotFramework时，此字段返回对话单元名称
-	DialogName *string `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
-	// 此字段返回透传参数
-	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// 当AnswerSource为BotFramework时，此字段返回透传参数
-	ExternalFlags map[string]interface{} `json:"ExternalFlags,omitempty" xml:"ExternalFlags,omitempty"`
-	// 命中语句
-	HitStatement *string `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
-	// 当AnswerSource为BotFramework时，此字段返回意图名称
-	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	MetaData   *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// 当AnswerSource为BotFramework时，此字段返回节点Id
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 当AnswerSource为BotFramework时，此字段返回节点名称
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// 分数
-	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// 当AnswerSource为BotFramework时，此字段返回专有名词列表
-	Slots []*ChatResponseBodyMessagesTextSlots `json:"Slots,omitempty" xml:"Slots,omitempty" type:"Repeated"`
-	// 自定义闲聊主题title
-	UserDefinedChatTitle *string `json:"UserDefinedChatTitle,omitempty" xml:"UserDefinedChatTitle,omitempty"`
+	AnswerSource         *string                              `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	ArticleTitle         *string                              `json:"ArticleTitle,omitempty" xml:"ArticleTitle,omitempty"`
+	Commands             map[string]interface{}               `json:"Commands,omitempty" xml:"Commands,omitempty"`
+	Content              *string                              `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentType          *string                              `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	DialogName           *string                              `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
+	Ext                  map[string]interface{}               `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	ExternalFlags        map[string]interface{}               `json:"ExternalFlags,omitempty" xml:"ExternalFlags,omitempty"`
+	HitStatement         *string                              `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
+	IntentName           *string                              `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	MetaData             *string                              `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	NodeId               *string                              `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName             *string                              `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	ResponseType         *string                              `json:"ResponseType,omitempty" xml:"ResponseType,omitempty"`
+	Score                *float64                             `json:"Score,omitempty" xml:"Score,omitempty"`
+	Slots                []*ChatResponseBodyMessagesTextSlots `json:"Slots,omitempty" xml:"Slots,omitempty" type:"Repeated"`
+	UserDefinedChatTitle *string                              `json:"UserDefinedChatTitle,omitempty" xml:"UserDefinedChatTitle,omitempty"`
 }
 
 func (s ChatResponseBodyMessagesText) String() string {
@@ -1058,6 +951,11 @@ func (s *ChatResponseBodyMessagesText) SetNodeId(v string) *ChatResponseBodyMess
 
 func (s *ChatResponseBodyMessagesText) SetNodeName(v string) *ChatResponseBodyMessagesText {
 	s.NodeName = &v
+	return s
+}
+
+func (s *ChatResponseBodyMessagesText) SetResponseType(v string) *ChatResponseBodyMessagesText {
+	s.ResponseType = &v
 	return s
 }
 
@@ -1141,11 +1039,8 @@ func (s *ChatResponse) SetBody(v *ChatResponseBody) *ChatResponse {
 }
 
 type ContinueInstancePublishTaskRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 任务ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1173,26 +1068,16 @@ func (s *ContinueInstancePublishTaskRequest) SetInstanceId(v string) *ContinueIn
 }
 
 type ContinueInstancePublishTaskResponseBody struct {
-	// 业务类型列表
-	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	// 任务创建的 UTC 时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// job失败信息
-	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// 各子发布模块的错误信息，key是子发布模块，value是错误信息
-	Errors map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
-	// 任务Id
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 任务修改的 UTC 时间
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务Id
-	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 各子发布模块的警告信息，key是子发布模块，value是警告信息
-	Warnings map[string]interface{} `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
+	BizTypeList []*string              `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	CreateTime  *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error       *string                `json:"Error,omitempty" xml:"Error,omitempty"`
+	Errors      map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
+	Id          *int64                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifyTime  *string                `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	RequestId   *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Response    *string                `json:"Response,omitempty" xml:"Response,omitempty"`
+	Status      *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Warnings    map[string]interface{} `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
 }
 
 func (s ContinueInstancePublishTaskResponseBody) String() string {
@@ -1283,12 +1168,9 @@ func (s *ContinueInstancePublishTaskResponse) SetBody(v *ContinueInstancePublish
 }
 
 type CreateCategoryRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 类目名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 父类目ID，默认-1，对应根目录
-	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	AgentKey         *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
 }
 
 func (s CreateCategoryRequest) String() string {
@@ -1315,7 +1197,6 @@ func (s *CreateCategoryRequest) SetParentCategoryId(v int64) *CreateCategoryRequ
 }
 
 type CreateCategoryResponseBody struct {
-	// 类目信息
 	Category  *CreateCategoryResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -1339,7 +1220,6 @@ func (s *CreateCategoryResponseBody) SetRequestId(v string) *CreateCategoryRespo
 }
 
 type CreateCategoryResponseBodyCategory struct {
-	// 类目ID
 	CategoryId       *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
@@ -1404,7 +1284,6 @@ func (s *CreateCategoryResponse) SetBody(v *CreateCategoryResponseBody) *CreateC
 }
 
 type CreateConnQuestionRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey       *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	ConnQuestionId *int64  `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
 	KnowledgeId    *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
@@ -1434,7 +1313,6 @@ func (s *CreateConnQuestionRequest) SetKnowledgeId(v int64) *CreateConnQuestionR
 }
 
 type CreateConnQuestionResponseBody struct {
-	// 关联关系ID
 	OutlineId *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -1487,13 +1365,9 @@ func (s *CreateConnQuestionResponse) SetBody(v *CreateConnQuestionResponseBody) 
 }
 
 type CreateDSEntityRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 实体名称，仅支持中文、大小写字母、数字、下划线
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// 实体类型：详见:,EntityTypeEnum[synonyms(同义词),regex(正则)]
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 机器人ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1578,12 +1452,9 @@ func (s *CreateDSEntityResponse) SetBody(v *CreateDSEntityResponseBody) *CreateD
 }
 
 type CreateDSEntityValueRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 实体ID，修改实体成员时可为空
-	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// 机器人ID
+	AgentKey   *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Content    *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	EntityId   *int64    `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Synonyms   []*string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty" type:"Repeated"`
 }
@@ -1622,12 +1493,9 @@ func (s *CreateDSEntityValueRequest) SetSynonyms(v []*string) *CreateDSEntityVal
 }
 
 type CreateDSEntityValueShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 实体ID，修改实体成员时可为空
-	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// 机器人ID
+	AgentKey       *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	EntityId       *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SynonymsShrink *string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty"`
 }
@@ -1718,20 +1586,13 @@ func (s *CreateDSEntityValueResponse) SetBody(v *CreateDSEntityValueResponseBody
 }
 
 type CreateFaqRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 知识的类目ID
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// 失效时间
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 默认答案内容
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryId      *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	EndDate         *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	SolutionContent *string `json:"SolutionContent,omitempty" xml:"SolutionContent,omitempty"`
-	// 默认答案类型
-	SolutionType *int32 `json:"SolutionType,omitempty" xml:"SolutionType,omitempty"`
-	// 生效时间
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// 知识标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	SolutionType    *int32  `json:"SolutionType,omitempty" xml:"SolutionType,omitempty"`
+	StartDate       *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateFaqRequest) String() string {
@@ -1778,7 +1639,6 @@ func (s *CreateFaqRequest) SetTitle(v string) *CreateFaqRequest {
 }
 
 type CreateFaqResponseBody struct {
-	// 知识ID
 	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -1831,16 +1691,11 @@ func (s *CreateFaqResponse) SetBody(v *CreateFaqResponseBody) *CreateFaqResponse
 }
 
 type CreateInstanceRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人备注，不超过50字
+	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	// 机器人服务的语言，如zh-cn、en-us，参考 http://www.lingoes.net/zh/translator/langcode.htm   入参全小写，当前只支持 zh-cn、en-us
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
-	// 机器人名称，不超过50字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 机器人类型
-	RobotType *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RobotType    *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -1877,10 +1732,8 @@ func (s *CreateInstanceRequest) SetRobotType(v string) *CreateInstanceRequest {
 }
 
 type CreateInstanceResponseBody struct {
-	// 机器人唯一标识
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -1931,9 +1784,7 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type CreateInstancePublishTaskRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人唯一标识
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1956,22 +1807,14 @@ func (s *CreateInstancePublishTaskRequest) SetInstanceId(v string) *CreateInstan
 }
 
 type CreateInstancePublishTaskResponseBody struct {
-	// 业务类型列表
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	// 任务创建的 UTC 时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// job失败信息
-	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// 任务Id
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 任务修改的 UTC 时间
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务Id
-	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateTime  *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error       *string   `json:"Error,omitempty" xml:"Error,omitempty"`
+	Id          *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifyTime  *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Response    *string   `json:"Response,omitempty" xml:"Response,omitempty"`
+	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateInstancePublishTaskResponseBody) String() string {
@@ -2052,11 +1895,8 @@ func (s *CreateInstancePublishTaskResponse) SetBody(v *CreateInstancePublishTask
 }
 
 type CreateIntentRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 意图定义结构体
+	AgentKey         *string                              `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	InstanceId       *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentDefinition *CreateIntentRequestIntentDefinition `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty" type:"Struct"`
 }
 
@@ -2084,12 +1924,9 @@ func (s *CreateIntentRequest) SetIntentDefinition(v *CreateIntentRequestIntentDe
 }
 
 type CreateIntentRequestIntentDefinition struct {
-	// 意图别名
-	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// 意图名称
-	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// 槽位信息
-	SlotInfos []*CreateIntentRequestIntentDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
+	AliasName  *string                                         `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	IntentName *string                                         `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	SlotInfos  []*CreateIntentRequestIntentDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
 func (s CreateIntentRequestIntentDefinition) String() string {
@@ -2116,17 +1953,12 @@ func (s *CreateIntentRequestIntentDefinition) SetSlotInfos(v []*CreateIntentRequ
 }
 
 type CreateIntentRequestIntentDefinitionSlotInfos struct {
-	// 是否数组
-	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
-	// 是否脱敏
-	Encrypt *bool `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
-	// 是否交互式
-	Interactive *bool `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
-	// 槽位名
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	// 关联的实体名
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Array       *bool   `json:"Array,omitempty" xml:"Array,omitempty"`
+	Encrypt     *bool   `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	Interactive *bool   `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SlotId      *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateIntentRequestIntentDefinitionSlotInfos) String() string {
@@ -2168,11 +2000,8 @@ func (s *CreateIntentRequestIntentDefinitionSlotInfos) SetValue(v string) *Creat
 }
 
 type CreateIntentShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 意图定义结构体
+	AgentKey               *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentDefinitionShrink *string `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty"`
 }
 
@@ -2252,9 +2081,7 @@ func (s *CreateIntentResponse) SetBody(v *CreateIntentResponseBody) *CreateInten
 }
 
 type CreateLgfRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey      *string                        `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId    *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LgfDefinition *CreateLgfRequestLgfDefinition `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty" type:"Struct"`
 }
@@ -2283,9 +2110,7 @@ func (s *CreateLgfRequest) SetLgfDefinition(v *CreateLgfRequestLgfDefinition) *C
 }
 
 type CreateLgfRequestLgfDefinition struct {
-	// 意图ID
-	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// LGF配置
+	IntentId *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 	RuleText *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
 }
 
@@ -2308,9 +2133,7 @@ func (s *CreateLgfRequestLgfDefinition) SetRuleText(v string) *CreateLgfRequestL
 }
 
 type CreateLgfShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey            *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LgfDefinitionShrink *string `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty"`
 }
@@ -2391,12 +2214,9 @@ func (s *CreateLgfResponse) SetBody(v *CreateLgfResponseBody) *CreateLgfResponse
 }
 
 type CreatePerspectiveRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 视角描述
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 视角名称，长度不超过50字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreatePerspectiveRequest) String() string {
@@ -2423,10 +2243,8 @@ func (s *CreatePerspectiveRequest) SetName(v string) *CreatePerspectiveRequest {
 }
 
 type CreatePerspectiveResponseBody struct {
-	// 视角主键（code_id）
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePerspectiveResponseBody) String() string {
@@ -2477,11 +2295,8 @@ func (s *CreatePerspectiveResponse) SetBody(v *CreatePerspectiveResponseBody) *C
 }
 
 type CreatePublishTaskRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 发布单元类型，机器人发布请使用 CreateInstancePublishTask API
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// 附加发布信息，当前支持：如果BizType是faq，此字段填写类目Id，表示只发布这些类目下面的知识
+	AgentKey   *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	BizType    *string   `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	DataIdList []*string `json:"DataIdList,omitempty" xml:"DataIdList,omitempty" type:"Repeated"`
 }
 
@@ -2509,11 +2324,8 @@ func (s *CreatePublishTaskRequest) SetDataIdList(v []*string) *CreatePublishTask
 }
 
 type CreatePublishTaskShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 发布单元类型，机器人发布请使用 CreateInstancePublishTask API
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// 附加发布信息，当前支持：如果BizType是faq，此字段填写类目Id，表示只发布这些类目下面的知识
+	AgentKey         *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	BizType          *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	DataIdListShrink *string `json:"DataIdList,omitempty" xml:"DataIdList,omitempty"`
 }
 
@@ -2541,22 +2353,14 @@ func (s *CreatePublishTaskShrinkRequest) SetDataIdListShrink(v string) *CreatePu
 }
 
 type CreatePublishTaskResponseBody struct {
-	// 业务类型列表
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	// 任务创建的 UTC 时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// job失败信息
-	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// 任务Id
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 任务修改的 UTC 时间
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务Id
-	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateTime  *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error       *string   `json:"Error,omitempty" xml:"Error,omitempty"`
+	Id          *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifyTime  *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Response    *string   `json:"Response,omitempty" xml:"Response,omitempty"`
+	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreatePublishTaskResponseBody) String() string {
@@ -2637,12 +2441,9 @@ func (s *CreatePublishTaskResponse) SetBody(v *CreatePublishTaskResponseBody) *C
 }
 
 type CreateSimQuestionRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 知识ID
-	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// 相似问标题，字数上限-120
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateSimQuestionRequest) String() string {
@@ -2669,9 +2470,8 @@ func (s *CreateSimQuestionRequest) SetTitle(v string) *CreateSimQuestionRequest 
 }
 
 type CreateSimQuestionResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 相似问ID
-	SimQuestionId *int64 `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SimQuestionId *int64  `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
 }
 
 func (s CreateSimQuestionResponseBody) String() string {
@@ -2722,15 +2522,10 @@ func (s *CreateSimQuestionResponse) SetBody(v *CreateSimQuestionResponseBody) *C
 }
 
 type CreateSolutionRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 答案内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 答案类型
-	ContentType *int32 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// 知识ID
-	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// 视角code列表
+	AgentKey         *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Content          *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentType      *int32    `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	KnowledgeId      *int64    `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	PerspectiveCodes []*string `json:"PerspectiveCodes,omitempty" xml:"PerspectiveCodes,omitempty" type:"Repeated"`
 }
 
@@ -2768,9 +2563,8 @@ func (s *CreateSolutionRequest) SetPerspectiveCodes(v []*string) *CreateSolution
 }
 
 type CreateSolutionResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 答案ID
-	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SolutionId *int64  `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
 }
 
 func (s CreateSolutionResponseBody) String() string {
@@ -2821,9 +2615,7 @@ func (s *CreateSolutionResponse) SetBody(v *CreateSolutionResponseBody) *CreateS
 }
 
 type CreateUserSayRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey          *string                                `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId        *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	UserSayDefinition *CreateUserSayRequestUserSayDefinition `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty" type:"Struct"`
 }
@@ -2852,11 +2644,8 @@ func (s *CreateUserSayRequest) SetUserSayDefinition(v *CreateUserSayRequestUserS
 }
 
 type CreateUserSayRequestUserSayDefinition struct {
-	// 用户话术
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 意图ID
-	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// 划槽信息
+	Content   *string                                           `json:"Content,omitempty" xml:"Content,omitempty"`
+	IntentId  *int64                                            `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 	SlotInfos []*CreateUserSayRequestUserSayDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
@@ -2884,12 +2673,9 @@ func (s *CreateUserSayRequestUserSayDefinition) SetSlotInfos(v []*CreateUserSayR
 }
 
 type CreateUserSayRequestUserSayDefinitionSlotInfos struct {
-	// 槽位在意图话术中的结束下标（不含）
-	EndIndex *int32 `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
-	// 划槽ID
-	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	// 槽位在意图话术中的起始下标
-	StartIndex *int32 `json:"StartIndex,omitempty" xml:"StartIndex,omitempty"`
+	EndIndex   *int32  `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
+	SlotId     *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	StartIndex *int32  `json:"StartIndex,omitempty" xml:"StartIndex,omitempty"`
 }
 
 func (s CreateUserSayRequestUserSayDefinitionSlotInfos) String() string {
@@ -2916,9 +2702,7 @@ func (s *CreateUserSayRequestUserSayDefinitionSlotInfos) SetStartIndex(v int32) 
 }
 
 type CreateUserSayShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey                *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	UserSayDefinitionShrink *string `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty"`
 }
@@ -2999,10 +2783,8 @@ func (s *CreateUserSayResponse) SetBody(v *CreateUserSayResponseBody) *CreateUse
 }
 
 type DeleteCategoryRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 类目ID
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
 
 func (s DeleteCategoryRequest) String() string {
@@ -3070,7 +2852,6 @@ func (s *DeleteCategoryResponse) SetBody(v *DeleteCategoryResponseBody) *DeleteC
 }
 
 type DeleteConnQuestionRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey  *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	OutlineId *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
 }
@@ -3140,11 +2921,8 @@ func (s *DeleteConnQuestionResponse) SetBody(v *DeleteConnQuestionResponseBody) 
 }
 
 type DeleteDSEntityRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 实体ID
-	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	EntityId   *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3224,14 +3002,10 @@ func (s *DeleteDSEntityResponse) SetBody(v *DeleteDSEntityResponseBody) *DeleteD
 }
 
 type DeleteDSEntityValueRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 实体ID
-	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// 实体成员ID
-	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
-	// 机器人ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	EntityId      *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityValueId *int64  `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteDSEntityValueRequest) String() string {
@@ -3315,10 +3089,8 @@ func (s *DeleteDSEntityValueResponse) SetBody(v *DeleteDSEntityValueResponseBody
 }
 
 type DeleteFaqRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 知识ID，创建知识该值为空
-	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s DeleteFaqRequest) String() string {
@@ -3386,9 +3158,7 @@ func (s *DeleteFaqResponse) SetBody(v *DeleteFaqResponseBody) *DeleteFaqResponse
 }
 
 type DeleteInstanceRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3411,24 +3181,15 @@ func (s *DeleteInstanceRequest) SetInstanceId(v string) *DeleteInstanceRequest {
 }
 
 type DeleteInstanceResponseBody struct {
-	// 业务类型列表
-	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	// 任务创建的 UTC 时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 任务创建人Id
-	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// 任务创建人
-	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// 错误信息
-	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// 任务id
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务id
-	Response *int64 `json:"Response,omitempty" xml:"Response,omitempty"`
-	// 任务状态，可以在GetInstancePublishTaskState API 了解更多的状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	BizTypeList    []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	CreateTime     *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUserId   *int64    `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	CreateUserName *string   `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	Error          *string   `json:"Error,omitempty" xml:"Error,omitempty"`
+	Id             *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Response       *int64    `json:"Response,omitempty" xml:"Response,omitempty"`
+	Status         *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DeleteInstanceResponseBody) String() string {
@@ -3514,12 +3275,9 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteIntentRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 意图ID
-	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 }
 
 func (s DeleteIntentRequest) String() string {
@@ -3598,9 +3356,7 @@ func (s *DeleteIntentResponse) SetBody(v *DeleteIntentResponseBody) *DeleteInten
 }
 
 type DeleteLgfRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 	LgfId      *int64  `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
@@ -3687,9 +3443,7 @@ func (s *DeleteLgfResponse) SetBody(v *DeleteLgfResponseBody) *DeleteLgfResponse
 }
 
 type DeletePerspectiveRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 视角主键（code_id）
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
 }
 
@@ -3712,10 +3466,8 @@ func (s *DeletePerspectiveRequest) SetPerspectiveId(v string) *DeletePerspective
 }
 
 type DeletePerspectiveResponseBody struct {
-	// 请求Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 删除视角的结果
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DeletePerspectiveResponseBody) String() string {
@@ -3766,10 +3518,8 @@ func (s *DeletePerspectiveResponse) SetBody(v *DeletePerspectiveResponseBody) *D
 }
 
 type DeleteSimQuestionRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 相似问ID
-	SimQuestionId *int64 `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	SimQuestionId *int64  `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
 }
 
 func (s DeleteSimQuestionRequest) String() string {
@@ -3837,10 +3587,8 @@ func (s *DeleteSimQuestionResponse) SetBody(v *DeleteSimQuestionResponseBody) *D
 }
 
 type DeleteSolutionRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 答案ID
-	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	SolutionId *int64  `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
 }
 
 func (s DeleteSolutionRequest) String() string {
@@ -3908,7 +3656,6 @@ func (s *DeleteSolutionResponse) SetBody(v *DeleteSolutionResponseBody) *DeleteS
 }
 
 type DeleteUserSayRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
@@ -3996,10 +3743,8 @@ func (s *DeleteUserSayResponse) SetBody(v *DeleteUserSayResponseBody) *DeleteUse
 }
 
 type DescribeCategoryRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 类目ID
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
 
 func (s DescribeCategoryRequest) String() string {
@@ -4021,7 +3766,6 @@ func (s *DescribeCategoryRequest) SetCategoryId(v int64) *DescribeCategoryReques
 }
 
 type DescribeCategoryResponseBody struct {
-	// 类目信息
 	Category  *DescribeCategoryResponseBodyCategory `json:"Category,omitempty" xml:"Category,omitempty" type:"Struct"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -4045,7 +3789,6 @@ func (s *DescribeCategoryResponseBody) SetRequestId(v string) *DescribeCategoryR
 }
 
 type DescribeCategoryResponseBodyCategory struct {
-	// 类目ID
 	CategoryId       *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
@@ -4110,11 +3853,8 @@ func (s *DescribeCategoryResponse) SetBody(v *DescribeCategoryResponseBody) *Des
 }
 
 type DescribeDSEntityRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 实体ID
-	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	EntityId   *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4145,18 +3885,14 @@ type DescribeDSEntityResponseBody struct {
 	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CreateUserId   *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// 实体ID
-	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// 实体名称，仅支持中文、大小写字母、数字、下划线
-	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// 实体类型：详见:,EntityTypeEnum[synonyms(同义词),regex(正则)]
+	EntityId       *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityName     *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 	EntityType     *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	ModifyTime     *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	ModifyUserId   *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
 	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 系统实体code，如@sys.date
-	SysEntityCode *string `json:"SysEntityCode,omitempty" xml:"SysEntityCode,omitempty"`
+	SysEntityCode  *string `json:"SysEntityCode,omitempty" xml:"SysEntityCode,omitempty"`
 }
 
 func (s DescribeDSEntityResponseBody) String() string {
@@ -4252,10 +3988,8 @@ func (s *DescribeDSEntityResponse) SetBody(v *DescribeDSEntityResponseBody) *Des
 }
 
 type DescribeFaqRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 知识ID
-	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s DescribeFaqRequest) String() string {
@@ -4277,35 +4011,21 @@ func (s *DescribeFaqRequest) SetKnowledgeId(v int64) *DescribeFaqRequest {
 }
 
 type DescribeFaqResponseBody struct {
-	// 类目ID
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// 创建时间（UTC时间）
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 创建人
-	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// 知识生效状态,根据StartDate, EndDate计算出来: 20-生效中, 21-已失效, 22-待生效
-	EffectStatus *int32 `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
-	// 失效时间（UTC时间）
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 知识ID
-	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// 修改时间（UTC时间）
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 修改人
-	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	// 关联问列表
-	Outlines  []*DescribeFaqResponseBodyOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 相似问列表
-	SimQuestions []*DescribeFaqResponseBodySimQuestions `json:"SimQuestions,omitempty" xml:"SimQuestions,omitempty" type:"Repeated"`
-	// 答案列表
-	Solutions []*DescribeFaqResponseBodySolutions `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
-	// 生效时间（UTC时间）
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// 知识状态: -1-已删除未发布, 1-未发布, 2-已发布, 3-已更新未发布
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	CategoryId     *int64                                 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CreateTime     *string                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUserName *string                                `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	EffectStatus   *int32                                 `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
+	EndDate        *string                                `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	KnowledgeId    *int64                                 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	ModifyTime     *string                                `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ModifyUserName *string                                `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	Outlines       []*DescribeFaqResponseBodyOutlines     `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	RequestId      *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SimQuestions   []*DescribeFaqResponseBodySimQuestions `json:"SimQuestions,omitempty" xml:"SimQuestions,omitempty" type:"Repeated"`
+	Solutions      []*DescribeFaqResponseBodySolutions    `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
+	StartDate      *string                                `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Status         *int32                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title          *string                                `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribeFaqResponseBody) String() string {
@@ -4392,16 +4112,11 @@ func (s *DescribeFaqResponseBody) SetTitle(v string) *DescribeFaqResponseBody {
 }
 
 type DescribeFaqResponseBodyOutlines struct {
-	// 关联知识ID
-	ConnQuestionId *int64 `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
-	// 创建时间(UTC 时间)
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 修改时间(UTC 时间)
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 关联关系ID
-	OutlineId *int64 `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
-	// 关联知识标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	ConnQuestionId *int64  `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModifyTime     *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	OutlineId      *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribeFaqResponseBodyOutlines) String() string {
@@ -4438,14 +4153,10 @@ func (s *DescribeFaqResponseBodyOutlines) SetTitle(v string) *DescribeFaqRespons
 }
 
 type DescribeFaqResponseBodySimQuestions struct {
-	// 创建时间(UTC 时间)
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 修改时间(UTC 时间)
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 相似问ID
-	SimQuestionId *int64 `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
-	// 相似问标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModifyTime    *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	SimQuestionId *int64  `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
+	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribeFaqResponseBodySimQuestions) String() string {
@@ -4477,20 +4188,13 @@ func (s *DescribeFaqResponseBodySimQuestions) SetTitle(v string) *DescribeFaqRes
 }
 
 type DescribeFaqResponseBodySolutions struct {
-	// 答案内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 答案类型(0纯文本，1富文本）
-	ContentType *int32 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// 创建时间(UTC 时间)
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 修改时间(UTC 时间)
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 视角code列表
+	Content          *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentType      *int32    `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	CreateTime       *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModifyTime       *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	PerspectiveCodes []*string `json:"PerspectiveCodes,omitempty" xml:"PerspectiveCodes,omitempty" type:"Repeated"`
-	// 答案纯文本内容
-	PlainText *string `json:"PlainText,omitempty" xml:"PlainText,omitempty"`
-	// 答案ID
-	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	PlainText        *string   `json:"PlainText,omitempty" xml:"PlainText,omitempty"`
+	SolutionId       *int64    `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
 }
 
 func (s DescribeFaqResponseBodySolutions) String() string {
@@ -4566,9 +4270,7 @@ func (s *DescribeFaqResponse) SetBody(v *DescribeFaqResponseBody) *DescribeFaqRe
 }
 
 type DescribeInstanceRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4591,28 +4293,17 @@ func (s *DescribeInstanceRequest) SetInstanceId(v string) *DescribeInstanceReque
 }
 
 type DescribeInstanceResponseBody struct {
-	// 机器人头像的URL
-	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	// 类目列表
-	Categories []*DescribeInstanceResponseBodyCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// 机器人创建的 UTC 时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 机器人状态： EDITING(编辑中)、 PUBLISHED(已发布)
-	EditStatus *string `json:"EditStatus,omitempty" xml:"EditStatus,omitempty"`
-	// 机器人唯一标识
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 机器人备注
-	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	// 机器人服务的语言，如zh-cn、en-us
-	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
-	// 机器人名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 机器人类型
-	RobotType *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
-	// 机器人的时区，参考《公共-时区码》
-	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	Avatar       *string                                   `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	Categories   []*DescribeInstanceResponseBodyCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	CreateTime   *string                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EditStatus   *string                                   `json:"EditStatus,omitempty" xml:"EditStatus,omitempty"`
+	InstanceId   *string                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Introduction *string                                   `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	LanguageCode *string                                   `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
+	Name         *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RobotType    *string                                   `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
+	TimeZone     *string                                   `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s DescribeInstanceResponseBody) String() string {
@@ -4679,12 +4370,9 @@ func (s *DescribeInstanceResponseBody) SetTimeZone(v string) *DescribeInstanceRe
 }
 
 type DescribeInstanceResponseBodyCategories struct {
-	// 类目id
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// 类目名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 父类目id，-1表示根目录
-	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	CategoryId       *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
 }
 
 func (s DescribeInstanceResponseBodyCategories) String() string {
@@ -4740,12 +4428,9 @@ func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *Des
 }
 
 type DescribeIntentRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 意图ID
-	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 }
 
 func (s DescribeIntentRequest) String() string {
@@ -4925,9 +4610,7 @@ func (s *DescribeIntentResponse) SetBody(v *DescribeIntentResponseBody) *Describ
 }
 
 type DescribePerspectiveRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 视角Id
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
 }
 
@@ -4950,22 +4633,14 @@ func (s *DescribePerspectiveRequest) SetPerspectiveId(v string) *DescribePerspec
 }
 
 type DescribePerspectiveResponseBody struct {
-	// 创建时间 UTC时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 修改时间 UTC时间
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 视角名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 视角编码（用于问答api）
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModifyTime      *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PerspectiveCode *string `json:"PerspectiveCode,omitempty" xml:"PerspectiveCode,omitempty"`
-	// 视角主键（code_id）
-	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否自定义
-	SelfDefine *bool `json:"SelfDefine,omitempty" xml:"SelfDefine,omitempty"`
-	// 数据状态：3：选中；1：未选中
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	PerspectiveId   *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SelfDefine      *bool   `json:"SelfDefine,omitempty" xml:"SelfDefine,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribePerspectiveResponseBody) String() string {
@@ -5046,18 +4721,12 @@ func (s *DescribePerspectiveResponse) SetBody(v *DescribePerspectiveResponseBody
 }
 
 type FeedbackRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// good-点赞、bad-点踩
-	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	// 点赞、点踩的内容
+	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Feedback        *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
 	FeedbackContent *string `json:"FeedbackContent,omitempty" xml:"FeedbackContent,omitempty"`
-	// 机器人ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 会话窗单次会话标识
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// 会话Session标识，标识：IM唯一标识会话
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MessageId       *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	SessionId       *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s FeedbackRequest) String() string {
@@ -5099,11 +4768,8 @@ func (s *FeedbackRequest) SetSessionId(v string) *FeedbackRequest {
 }
 
 type FeedbackResponseBody struct {
-	// good-点赞、bad-点踩
-	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	// 会话窗单次会话标识
+	Feedback  *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// 请求id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5213,10 +4879,9 @@ func (s *GenerateUserAccessTokenRequest) SetTelephone(v string) *GenerateUserAcc
 }
 
 type GenerateUserAccessTokenResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -5284,10 +4949,8 @@ func (s *GenerateUserAccessTokenResponse) SetBody(v *GenerateUserAccessTokenResp
 }
 
 type GetAsyncResultRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 从Chat接口返回参数中获取TASK_ID
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetAsyncResultRequest) String() string {
@@ -5367,11 +5030,8 @@ func (s *GetAsyncResultResponse) SetBody(v *GetAsyncResultResponseBody) *GetAsyn
 }
 
 type GetInstancePublishTaskStateRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 任务ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5399,26 +5059,16 @@ func (s *GetInstancePublishTaskStateRequest) SetInstanceId(v string) *GetInstanc
 }
 
 type GetInstancePublishTaskStateResponseBody struct {
-	// 业务类型列表
-	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	// 任务创建的 UTC 时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// job失败信息
-	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// 各子发布模块的错误信息，key是子发布模块，value是错误信息
-	Errors map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
-	// 任务Id
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 任务修改的 UTC 时间
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务Id
-	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 各子发布模块的警告信息，key是子发布模块，value是警告信息
-	Warnings map[string]interface{} `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
+	BizTypeList []*string              `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	CreateTime  *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error       *string                `json:"Error,omitempty" xml:"Error,omitempty"`
+	Errors      map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
+	Id          *int64                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifyTime  *string                `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	RequestId   *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Response    *string                `json:"Response,omitempty" xml:"Response,omitempty"`
+	Status      *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Warnings    map[string]interface{} `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
 }
 
 func (s GetInstancePublishTaskStateResponseBody) String() string {
@@ -5509,10 +5159,8 @@ func (s *GetInstancePublishTaskStateResponse) SetBody(v *GetInstancePublishTaskS
 }
 
 type GetPublishTaskStateRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 任务ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s GetPublishTaskStateRequest) String() string {
@@ -5534,26 +5182,16 @@ func (s *GetPublishTaskStateRequest) SetId(v int64) *GetPublishTaskStateRequest 
 }
 
 type GetPublishTaskStateResponseBody struct {
-	// 业务类型列表
-	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
-	// 任务创建的 UTC 时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// job失败信息
-	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// 各子发布模块的错误信息，key是子发布模块，value是错误信息
-	Errors map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
-	// 任务Id
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 任务修改的 UTC 时间
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务Id
-	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 各子发布模块的警告信息，key是子发布模块，value是警告信息
-	Warnings map[string]interface{} `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
+	BizTypeList []*string              `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
+	CreateTime  *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Error       *string                `json:"Error,omitempty" xml:"Error,omitempty"`
+	Errors      map[string]interface{} `json:"Errors,omitempty" xml:"Errors,omitempty"`
+	Id          *int64                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifyTime  *string                `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	RequestId   *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Response    *string                `json:"Response,omitempty" xml:"Response,omitempty"`
+	Status      *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Warnings    map[string]interface{} `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
 }
 
 func (s GetPublishTaskStateResponseBody) String() string {
@@ -5644,12 +5282,9 @@ func (s *GetPublishTaskStateResponse) SetBody(v *GetPublishTaskStateResponseBody
 }
 
 type LinkInstanceCategoryRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 知识类目Id
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CategoryIds *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
-	// 机器人唯一标识
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s LinkInstanceCategoryRequest) String() string {
@@ -5676,7 +5311,6 @@ func (s *LinkInstanceCategoryRequest) SetInstanceId(v string) *LinkInstanceCateg
 }
 
 type LinkInstanceCategoryResponseBody struct {
-	// 请求Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5749,9 +5383,8 @@ type ListAgentResponseBody struct {
 	Data       []*ListAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	PageNumber *int32                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAgentResponseBody) String() string {
@@ -5846,10 +5479,8 @@ func (s *ListAgentResponse) SetBody(v *ListAgentResponseBody) *ListAgentResponse
 }
 
 type ListCategoryRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 父类目ID
-	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	AgentKey         *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
 }
 
 func (s ListCategoryRequest) String() string {
@@ -5871,7 +5502,6 @@ func (s *ListCategoryRequest) SetParentCategoryId(v int64) *ListCategoryRequest 
 }
 
 type ListCategoryResponseBody struct {
-	// list结果
 	Categories []*ListCategoryResponseBodyCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
 	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -5895,7 +5525,6 @@ func (s *ListCategoryResponseBody) SetRequestId(v string) *ListCategoryResponseB
 }
 
 type ListCategoryResponseBodyCategories struct {
-	// 类目ID
 	CategoryId       *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
@@ -5960,7 +5589,6 @@ func (s *ListCategoryResponse) SetBody(v *ListCategoryResponseBody) *ListCategor
 }
 
 type ListConnQuestionRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
@@ -6007,16 +5635,11 @@ func (s *ListConnQuestionResponseBody) SetRequestId(v string) *ListConnQuestionR
 }
 
 type ListConnQuestionResponseBodyOutlines struct {
-	// 关联知识ID
-	ConnQuestionId *int64 `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
-	// 创建时间(UTC 时间)
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 修改时间(UTC 时间)
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 关联关系ID
-	OutlineId *int64 `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
-	// 关联知识题目
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	ConnQuestionId *int64  `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModifyTime     *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	OutlineId      *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListConnQuestionResponseBodyOutlines) String() string {
@@ -6082,13 +5705,9 @@ func (s *ListConnQuestionResponse) SetBody(v *ListConnQuestionResponseBody) *Lis
 }
 
 type ListDSEntityRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 为空：全量自定义实体（默认）
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 机器人ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 筛选项，contains匹配，范围：实体名称（未来扩展：实体成员、同义词）
 	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -6183,8 +5802,7 @@ type ListDSEntityResponseBodyEntities struct {
 	ModifyTime     *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	ModifyUserId   *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	// 系统实体code，如@sys.date
-	SysEntityCode *string `json:"SysEntityCode,omitempty" xml:"SysEntityCode,omitempty"`
+	SysEntityCode  *string `json:"SysEntityCode,omitempty" xml:"SysEntityCode,omitempty"`
 }
 
 func (s ListDSEntityResponseBodyEntities) String() string {
@@ -6275,20 +5893,13 @@ func (s *ListDSEntityResponse) SetBody(v *ListDSEntityResponseBody) *ListDSEntit
 }
 
 type ListDSEntityValueRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 实体ID
-	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// 实体成员ID
-	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
-	// 机器人ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实体成员名称搜索关键词
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// 页码
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	EntityId      *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityValueId *int64  `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Keyword       *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListDSEntityValueRequest) String() string {
@@ -6452,16 +6063,11 @@ func (s *ListDSEntityValueResponse) SetBody(v *ListDSEntityValueResponseBody) *L
 }
 
 type ListInstanceRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 按机器人名称模糊搜索
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 分页-第几页，默认1
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页-页面大小，默认10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 按机器人类型筛选
-	RobotType *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RobotType  *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
 }
 
 func (s ListInstanceRequest) String() string {
@@ -6498,16 +6104,11 @@ func (s *ListInstanceRequest) SetRobotType(v string) *ListInstanceRequest {
 }
 
 type ListInstanceResponseBody struct {
-	// 机器人列表信息
-	Instances []*ListInstanceResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// 分页-第几页
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页-页面大小
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总条数
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Instances  []*ListInstanceResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	PageNumber *int64                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListInstanceResponseBody) String() string {
@@ -6544,20 +6145,13 @@ func (s *ListInstanceResponseBody) SetTotalCount(v int64) *ListInstanceResponseB
 }
 
 type ListInstanceResponseBodyInstances struct {
-	// 机器人头像的URL
-	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	// 机器人创建的 UTC 时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 机器人唯一标识
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 机器人备注
+	Avatar       *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	// 机器人服务的语言
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
-	// 机器人名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 机器人类型
-	RobotType *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RobotType    *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
 }
 
 func (s ListInstanceResponseBodyInstances) String() string {
@@ -6633,11 +6227,8 @@ func (s *ListInstanceResponse) SetBody(v *ListInstanceResponseBody) *ListInstanc
 }
 
 type ListIntentRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 意图名称
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -6789,18 +6380,12 @@ func (s *ListIntentResponseBodyIntents) SetSlotInfos(v []*ListIntentResponseBody
 }
 
 type ListIntentResponseBodyIntentsSlotInfos struct {
-	// 是否数组
-	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
-	// 是否敏感
-	Encrypt *bool `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
-	// 是否交互式收集
-	Interactive *bool `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
-	// 槽位名
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 槽位ID
-	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	// 槽位值（实体名）
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Array       *bool   `json:"Array,omitempty" xml:"Array,omitempty"`
+	Encrypt     *bool   `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	Interactive *bool   `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SlotId      *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListIntentResponseBodyIntentsSlotInfos) String() string {
@@ -6871,13 +6456,9 @@ func (s *ListIntentResponse) SetBody(v *ListIntentResponseBody) *ListIntentRespo
 }
 
 type ListLgfRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 意图ID
-	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// 筛选语义配置内容
+	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 	LgfText    *string `json:"LgfText,omitempty" xml:"LgfText,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -6963,16 +6544,11 @@ func (s *ListLgfResponseBody) SetTotalCount(v int32) *ListLgfResponseBody {
 }
 
 type ListLgfResponseBodyLgfs struct {
-	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 意图ID
-	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// LGF ID
-	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
-	// 修改时间
+	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	LgfId      *int64  `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// LGF规则
-	RuleText *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
+	RuleText   *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
 }
 
 func (s ListLgfResponseBodyLgfs) String() string {
@@ -7038,10 +6614,8 @@ func (s *ListLgfResponse) SetBody(v *ListLgfResponseBody) *ListLgfResponse {
 }
 
 type ListSimQuestionRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 知识ID
-	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s ListSimQuestionRequest) String() string {
@@ -7063,8 +6637,7 @@ func (s *ListSimQuestionRequest) SetKnowledgeId(v int64) *ListSimQuestionRequest
 }
 
 type ListSimQuestionResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 相似问列表
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SimQuestions []*ListSimQuestionResponseBodySimQuestions `json:"SimQuestions,omitempty" xml:"SimQuestions,omitempty" type:"Repeated"`
 }
 
@@ -7087,14 +6660,10 @@ func (s *ListSimQuestionResponseBody) SetSimQuestions(v []*ListSimQuestionRespon
 }
 
 type ListSimQuestionResponseBodySimQuestions struct {
-	// 创建时间(UTC 时间)
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 修改时间(UTC 时间)
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 相似问ID
-	SimQuestionId *int64 `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
-	// 相似问标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModifyTime    *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	SimQuestionId *int64  `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
+	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListSimQuestionResponseBodySimQuestions) String() string {
@@ -7155,10 +6724,8 @@ func (s *ListSimQuestionResponse) SetBody(v *ListSimQuestionResponseBody) *ListS
 }
 
 type ListSolutionRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 知识ID
-	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s ListSolutionRequest) String() string {
@@ -7180,8 +6747,7 @@ func (s *ListSolutionRequest) SetKnowledgeId(v int64) *ListSolutionRequest {
 }
 
 type ListSolutionResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 答案列表
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Solutions []*ListSolutionResponseBodySolutions `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
 }
 
@@ -7204,20 +6770,13 @@ func (s *ListSolutionResponseBody) SetSolutions(v []*ListSolutionResponseBodySol
 }
 
 type ListSolutionResponseBodySolutions struct {
-	// 答案内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 答案类型(0纯文本，1富文本）
-	ContentType *int32 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// 创建时间(UTC 时间)
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 修改时间(UTC 时间)
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 视角code列表
+	Content          *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentType      *int32    `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	CreateTime       *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModifyTime       *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	PerspectiveCodes []*string `json:"PerspectiveCodes,omitempty" xml:"PerspectiveCodes,omitempty" type:"Repeated"`
-	// 答案纯文本内容
-	PlainText *string `json:"PlainText,omitempty" xml:"PlainText,omitempty"`
-	// 答案ID
-	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	PlainText        *string   `json:"PlainText,omitempty" xml:"PlainText,omitempty"`
+	SolutionId       *int64    `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
 }
 
 func (s ListSolutionResponseBodySolutions) String() string {
@@ -7293,16 +6852,12 @@ func (s *ListSolutionResponse) SetBody(v *ListSolutionResponseBody) *ListSolutio
 }
 
 type ListUserSayRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 筛选用户话术
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 意图ID
-	IntentId   *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListUserSayRequest) String() string {
@@ -7432,12 +6987,9 @@ func (s *ListUserSayResponseBodyUserSays) SetUserSayId(v int64) *ListUserSayResp
 }
 
 type ListUserSayResponseBodyUserSaysSlotInfos struct {
-	// 槽位在意图话术中的下标
-	EndIndex *int32 `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
-	// 意图槽位ID
-	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	// 槽位在意图话术中的下标
-	StartIndex *int32 `json:"StartIndex,omitempty" xml:"StartIndex,omitempty"`
+	EndIndex   *int32  `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
+	SlotId     *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	StartIndex *int32  `json:"StartIndex,omitempty" xml:"StartIndex,omitempty"`
 }
 
 func (s ListUserSayResponseBodyUserSaysSlotInfos) String() string {
@@ -7493,12 +7045,9 @@ func (s *ListUserSayResponse) SetBody(v *ListUserSayResponseBody) *ListUserSayRe
 }
 
 type NluRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 用户表述
-	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	Utterance  *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 
 func (s NluRequest) String() string {
@@ -7525,12 +7074,9 @@ func (s *NluRequest) SetUtterance(v string) *NluRequest {
 }
 
 type NluResponseBody struct {
-	// 本条语言理解应答消息的ID
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// 消息的列表
-	Messages []*NluResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	MessageId *string                    `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	Messages  []*NluResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s NluResponseBody) String() string {
@@ -7557,10 +7103,8 @@ func (s *NluResponseBody) SetRequestId(v string) *NluResponseBody {
 }
 
 type NluResponseBodyMessages struct {
-	// 对话中控的nlu信息
 	DialogHubNluInfo *NluResponseBodyMessagesDialogHubNluInfo `json:"DialogHubNluInfo,omitempty" xml:"DialogHubNluInfo,omitempty" type:"Struct"`
-	// 对话工厂的nlu信息
-	DsNluInfo *NluResponseBodyMessagesDsNluInfo `json:"DsNluInfo,omitempty" xml:"DsNluInfo,omitempty" type:"Struct"`
+	DsNluInfo        *NluResponseBodyMessagesDsNluInfo        `json:"DsNluInfo,omitempty" xml:"DsNluInfo,omitempty" type:"Struct"`
 }
 
 func (s NluResponseBodyMessages) String() string {
@@ -7582,9 +7126,7 @@ func (s *NluResponseBodyMessages) SetDsNluInfo(v *NluResponseBodyMessagesDsNluIn
 }
 
 type NluResponseBodyMessagesDialogHubNluInfo struct {
-	// 全局名词列表
-	GlobalDictList []*NluResponseBodyMessagesDialogHubNluInfoGlobalDictList `json:"GlobalDictList,omitempty" xml:"GlobalDictList,omitempty" type:"Repeated"`
-	// 全局敏感词列表
+	GlobalDictList          []*NluResponseBodyMessagesDialogHubNluInfoGlobalDictList          `json:"GlobalDictList,omitempty" xml:"GlobalDictList,omitempty" type:"Repeated"`
 	GlobalSensitiveWordList []*NluResponseBodyMessagesDialogHubNluInfoGlobalSensitiveWordList `json:"GlobalSensitiveWordList,omitempty" xml:"GlobalSensitiveWordList,omitempty" type:"Repeated"`
 }
 
@@ -7607,10 +7149,8 @@ func (s *NluResponseBodyMessagesDialogHubNluInfo) SetGlobalSensitiveWordList(v [
 }
 
 type NluResponseBodyMessagesDialogHubNluInfoGlobalDictList struct {
-	// 名词
 	StandardWord *string `json:"StandardWord,omitempty" xml:"StandardWord,omitempty"`
-	// 同义词
-	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
+	Word         *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 
 func (s NluResponseBodyMessagesDialogHubNluInfoGlobalDictList) String() string {
@@ -7632,10 +7172,8 @@ func (s *NluResponseBodyMessagesDialogHubNluInfoGlobalDictList) SetWord(v string
 }
 
 type NluResponseBodyMessagesDialogHubNluInfoGlobalSensitiveWordList struct {
-	// 名词
 	StandardWord *string `json:"StandardWord,omitempty" xml:"StandardWord,omitempty"`
-	// 同义词
-	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
+	Word         *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 
 func (s NluResponseBodyMessagesDialogHubNluInfoGlobalSensitiveWordList) String() string {
@@ -7657,9 +7195,7 @@ func (s *NluResponseBodyMessagesDialogHubNluInfoGlobalSensitiveWordList) SetWord
 }
 
 type NluResponseBodyMessagesDsNluInfo struct {
-	// 实体列表
 	EntityList []*NluResponseBodyMessagesDsNluInfoEntityList `json:"EntityList,omitempty" xml:"EntityList,omitempty" type:"Repeated"`
-	// 意图列表
 	IntentList []*NluResponseBodyMessagesDsNluInfoIntentList `json:"IntentList,omitempty" xml:"IntentList,omitempty" type:"Repeated"`
 }
 
@@ -7682,14 +7218,10 @@ func (s *NluResponseBodyMessagesDsNluInfo) SetIntentList(v []*NluResponseBodyMes
 }
 
 type NluResponseBodyMessagesDsNluInfoEntityList struct {
-	// 实体名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 实体原词（实体成员）
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// 实体类型，当前只有text类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 实体同义词
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s NluResponseBodyMessagesDsNluInfoEntityList) String() string {
@@ -7721,18 +7253,12 @@ func (s *NluResponseBodyMessagesDsNluInfoEntityList) SetValue(v string) *NluResp
 }
 
 type NluResponseBodyMessagesDsNluInfoIntentList struct {
-	// 意图id
-	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// 匹配详情（匹配过程）
-	MatchDetail *string `json:"MatchDetail,omitempty" xml:"MatchDetail,omitempty"`
-	// 匹配类型，其枚举值含义如下：  Similarity：query与意图通过意图话术相似度匹配 Lgf：query与意图通过LGF匹配 Classify：query与意图通过模型训练匹配 FewShotLearning：query与意图通过系统内置fewshot模型匹配 BuildIn： query与系统内置意图匹配
-	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	// 意图名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 分数
-	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// 命中意图的槽位列表
-	SlotList []*NluResponseBodyMessagesDsNluInfoIntentListSlotList `json:"SlotList,omitempty" xml:"SlotList,omitempty" type:"Repeated"`
+	IntentId    *int64                                                `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	MatchDetail *string                                               `json:"MatchDetail,omitempty" xml:"MatchDetail,omitempty"`
+	MatchType   *string                                               `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	Name        *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Score       *float64                                              `json:"Score,omitempty" xml:"Score,omitempty"`
+	SlotList    []*NluResponseBodyMessagesDsNluInfoIntentListSlotList `json:"SlotList,omitempty" xml:"SlotList,omitempty" type:"Repeated"`
 }
 
 func (s NluResponseBodyMessagesDsNluInfoIntentList) String() string {
@@ -7774,14 +7300,10 @@ func (s *NluResponseBodyMessagesDsNluInfoIntentList) SetSlotList(v []*NluRespons
 }
 
 type NluResponseBodyMessagesDsNluInfoIntentListSlotList struct {
-	// 实体名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 实体原词（实体成员）
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// 实体类型，当前只有text类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 实体同义词
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s NluResponseBodyMessagesDsNluInfoIntentListSlotList) String() string {
@@ -7842,7 +7364,6 @@ func (s *NluResponse) SetBody(v *NluResponseBody) *NluResponse {
 }
 
 type QueryPerspectivesRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 }
 
@@ -7860,10 +7381,8 @@ func (s *QueryPerspectivesRequest) SetAgentKey(v string) *QueryPerspectivesReque
 }
 
 type QueryPerspectivesResponseBody struct {
-	// 视角列表
 	Perspectives []*QueryPerspectivesResponseBodyPerspectives `json:"Perspectives,omitempty" xml:"Perspectives,omitempty" type:"Repeated"`
-	// 请求Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryPerspectivesResponseBody) String() string {
@@ -7885,20 +7404,13 @@ func (s *QueryPerspectivesResponseBody) SetRequestId(v string) *QueryPerspective
 }
 
 type QueryPerspectivesResponseBodyPerspectives struct {
-	// 创建时间 UTC时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 修改时间 UTC时间
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 视角名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 视角编码（用于问答api）
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModifyTime      *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PerspectiveCode *string `json:"PerspectiveCode,omitempty" xml:"PerspectiveCode,omitempty"`
-	// 视角主键（code_id）
-	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
-	// 是否自定义
-	SelfDefine *bool `json:"SelfDefine,omitempty" xml:"SelfDefine,omitempty"`
-	// 数据状态：3：选中；1：未选中
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	PerspectiveId   *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
+	SelfDefine      *bool   `json:"SelfDefine,omitempty" xml:"SelfDefine,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryPerspectivesResponseBodyPerspectives) String() string {
@@ -7974,40 +7486,23 @@ func (s *QueryPerspectivesResponse) SetBody(v *QueryPerspectivesResponseBody) *Q
 }
 
 type SearchFaqRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 类目唯一标识
-	CategoryIds []*int64 `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
-	// 创建开始时间
-	CreateTimeBegin *string `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
-	// 创建结束时间
-	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// 创建人
-	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// 失效开始时间
-	EndTimeBegin *string `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
-	// 失效结束时间
-	EndTimeEnd *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
-	// 关键字
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// 修改开始时间
-	ModifyTimeBegin *string `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
-	// 修改结束时间
-	ModifyTimeEnd *string `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
-	// 修改人
-	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	// 页码 默认1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页数量，默认10，最大50
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 搜索范围： 1-搜索标题相似问, 2-搜索答案, 3-搜索全部
-	SearchScope *int32 `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
-	// 生效开始时间
-	StartTimeBegin *string `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
-	// 生效结束时间
-	StartTimeEnd *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
-	// 知识状态: -1-已删除未发布, 1-未发布, 2-已发布, 3-已更新未发布
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	AgentKey        *string  `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryIds     []*int64 `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	CreateTimeBegin *string  `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
+	CreateTimeEnd   *string  `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	CreateUserName  *string  `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	EndTimeBegin    *string  `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
+	EndTimeEnd      *string  `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
+	Keyword         *string  `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	ModifyTimeBegin *string  `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
+	ModifyTimeEnd   *string  `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
+	ModifyUserName  *string  `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	PageNumber      *int32   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchScope     *int32   `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
+	StartTimeBegin  *string  `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
+	StartTimeEnd    *string  `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
+	Status          *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SearchFaqRequest) String() string {
@@ -8104,40 +7599,23 @@ func (s *SearchFaqRequest) SetStatus(v int32) *SearchFaqRequest {
 }
 
 type SearchFaqShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 类目唯一标识
+	AgentKey          *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	CategoryIdsShrink *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
-	// 创建开始时间
-	CreateTimeBegin *string `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
-	// 创建结束时间
-	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// 创建人
-	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// 失效开始时间
-	EndTimeBegin *string `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
-	// 失效结束时间
-	EndTimeEnd *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
-	// 关键字
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// 修改开始时间
-	ModifyTimeBegin *string `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
-	// 修改结束时间
-	ModifyTimeEnd *string `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
-	// 修改人
-	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	// 页码 默认1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页数量，默认10，最大50
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 搜索范围： 1-搜索标题相似问, 2-搜索答案, 3-搜索全部
-	SearchScope *int32 `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
-	// 生效开始时间
-	StartTimeBegin *string `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
-	// 生效结束时间
-	StartTimeEnd *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
-	// 知识状态: -1-已删除未发布, 1-未发布, 2-已发布, 3-已更新未发布
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateTimeBegin   *string `json:"CreateTimeBegin,omitempty" xml:"CreateTimeBegin,omitempty"`
+	CreateTimeEnd     *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	CreateUserName    *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	EndTimeBegin      *string `json:"EndTimeBegin,omitempty" xml:"EndTimeBegin,omitempty"`
+	EndTimeEnd        *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
+	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	ModifyTimeBegin   *string `json:"ModifyTimeBegin,omitempty" xml:"ModifyTimeBegin,omitempty"`
+	ModifyTimeEnd     *string `json:"ModifyTimeEnd,omitempty" xml:"ModifyTimeEnd,omitempty"`
+	ModifyUserName    *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchScope       *int32  `json:"SearchScope,omitempty" xml:"SearchScope,omitempty"`
+	StartTimeBegin    *string `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
+	StartTimeEnd      *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
+	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SearchFaqShrinkRequest) String() string {
@@ -8234,14 +7712,11 @@ func (s *SearchFaqShrinkRequest) SetStatus(v int32) *SearchFaqShrinkRequest {
 }
 
 type SearchFaqResponseBody struct {
-	FaqHits []*SearchFaqResponseBodyFaqHits `json:"FaqHits,omitempty" xml:"FaqHits,omitempty" type:"Repeated"`
-	// 页码 默认1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页数量，默认10，最大500
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总条数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	FaqHits    []*SearchFaqResponseBodyFaqHits `json:"FaqHits,omitempty" xml:"FaqHits,omitempty" type:"Repeated"`
+	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s SearchFaqResponseBody) String() string {
@@ -8278,32 +7753,19 @@ func (s *SearchFaqResponseBody) SetTotalCount(v int32) *SearchFaqResponseBody {
 }
 
 type SearchFaqResponseBodyFaqHits struct {
-	// 类目ID
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// 创建时间（UTC时间）
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 创建人ID
-	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// 创建人
-	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// 知识生效状态,根据StartDate, EndDate计算出来: 20-生效中, 21-已失效, 22-待生效
-	EffectStatus *int32 `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
-	// 命中的相似问
+	CategoryId       *int64    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CreateTime       *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUserId     *int64    `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	CreateUserName   *string   `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	EffectStatus     *int32    `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
 	HitSimilarTitles []*string `json:"HitSimilarTitles,omitempty" xml:"HitSimilarTitles,omitempty" type:"Repeated"`
-	// 命中的答案
-	HitSolutions []*string `json:"HitSolutions,omitempty" xml:"HitSolutions,omitempty" type:"Repeated"`
-	// 知识ID
-	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// 修改时间（UTC时间）
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// 修改人ID
-	ModifyUserId *int64 `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
-	// 修改人
-	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	// 知识状态: -1-已删除未发布, 1-未发布, 2-已发布, 3-已更新未发布
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	HitSolutions     []*string `json:"HitSolutions,omitempty" xml:"HitSolutions,omitempty" type:"Repeated"`
+	KnowledgeId      *int64    `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	ModifyTime       *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ModifyUserId     *int64    `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	ModifyUserName   *string   `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	Status           *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title            *string   `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s SearchFaqResponseBodyFaqHits) String() string {
@@ -8409,12 +7871,9 @@ func (s *SearchFaqResponse) SetBody(v *SearchFaqResponseBody) *SearchFaqResponse
 }
 
 type UpdateCategoryRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 类目ID
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// 类目名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateCategoryRequest) String() string {
@@ -8487,7 +7946,6 @@ func (s *UpdateCategoryResponse) SetBody(v *UpdateCategoryResponseBody) *UpdateC
 }
 
 type UpdateConnQuestionRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey       *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	ConnQuestionId *int64  `json:"ConnQuestionId,omitempty" xml:"ConnQuestionId,omitempty"`
 	OutlineId      *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
@@ -8563,15 +8021,10 @@ func (s *UpdateConnQuestionResponse) SetBody(v *UpdateConnQuestionResponseBody) 
 }
 
 type UpdateDSEntityRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 实体ID
-	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// 实体名称，仅支持中文、大小写字母、数字、下划线
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	EntityId   *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// 实体类型：详见:,EntityTypeEnum[synonyms(同义词),regex(正则)]
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 机器人ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -8661,18 +8114,12 @@ func (s *UpdateDSEntityResponse) SetBody(v *UpdateDSEntityResponseBody) *UpdateD
 }
 
 type UpdateDSEntityValueRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 实体类型为synonyms时，表示实体归一化值；当实体类型为regex时，表示正则表达式文本
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 实体ID，修改实体成员时可为空
-	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// 实体成员ID，创建实体成员时为空
-	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
-	// 机器人ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实体同义词
-	Synonyms []*string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty" type:"Repeated"`
+	AgentKey      *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Content       *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	EntityId      *int64    `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityValueId *int64    `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	InstanceId    *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Synonyms      []*string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty" type:"Repeated"`
 }
 
 func (s UpdateDSEntityValueRequest) String() string {
@@ -8714,17 +8161,11 @@ func (s *UpdateDSEntityValueRequest) SetSynonyms(v []*string) *UpdateDSEntityVal
 }
 
 type UpdateDSEntityValueShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 实体类型为synonyms时，表示实体归一化值；当实体类型为regex时，表示正则表达式文本
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 实体ID，修改实体成员时可为空
-	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// 实体成员ID，创建实体成员时为空
-	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
-	// 机器人ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实体同义词
+	AgentKey       *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	EntityId       *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityValueId  *int64  `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SynonymsShrink *string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty"`
 }
 
@@ -8819,18 +8260,12 @@ func (s *UpdateDSEntityValueResponse) SetBody(v *UpdateDSEntityValueResponseBody
 }
 
 type UpdateFaqRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 知识的类目ID
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// 失效时间
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 知识ID
-	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// 生效时间
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// 知识标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	CategoryId  *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateFaqRequest) String() string {
@@ -8918,14 +8353,10 @@ func (s *UpdateFaqResponse) SetBody(v *UpdateFaqResponseBody) *UpdateFaqResponse
 }
 
 type UpdateInstanceRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 要修改的机器人备注
+	AgentKey     *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	// 要修改的机器人名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateInstanceRequest) String() string {
@@ -8957,7 +8388,6 @@ func (s *UpdateInstanceRequest) SetName(v string) *UpdateInstanceRequest {
 }
 
 type UpdateInstanceResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9004,14 +8434,10 @@ func (s *UpdateInstanceResponse) SetBody(v *UpdateInstanceResponseBody) *UpdateI
 }
 
 type UpdateIntentRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 意图定义结构体
+	AgentKey         *string                              `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	InstanceId       *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentDefinition *UpdateIntentRequestIntentDefinition `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty" type:"Struct"`
-	// 意图ID
-	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentId         *int64                               `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 }
 
 func (s UpdateIntentRequest) String() string {
@@ -9043,12 +8469,9 @@ func (s *UpdateIntentRequest) SetIntentId(v int64) *UpdateIntentRequest {
 }
 
 type UpdateIntentRequestIntentDefinition struct {
-	// 意图别名
-	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// 意图名称
-	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// 槽位信息
-	SlotInfos []*UpdateIntentRequestIntentDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
+	AliasName  *string                                         `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	IntentName *string                                         `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	SlotInfos  []*UpdateIntentRequestIntentDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
 func (s UpdateIntentRequestIntentDefinition) String() string {
@@ -9075,17 +8498,12 @@ func (s *UpdateIntentRequestIntentDefinition) SetSlotInfos(v []*UpdateIntentRequ
 }
 
 type UpdateIntentRequestIntentDefinitionSlotInfos struct {
-	// 是否数组
-	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
-	// 是否脱敏
-	Encrypt *bool `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
-	// 是否交互式
-	Interactive *bool `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
-	// 槽位名
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	// 关联的实体名
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Array       *bool   `json:"Array,omitempty" xml:"Array,omitempty"`
+	Encrypt     *bool   `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	Interactive *bool   `json:"Interactive,omitempty" xml:"Interactive,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SlotId      *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s UpdateIntentRequestIntentDefinitionSlotInfos) String() string {
@@ -9127,14 +8545,10 @@ func (s *UpdateIntentRequestIntentDefinitionSlotInfos) SetValue(v string) *Updat
 }
 
 type UpdateIntentShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 意图定义结构体
+	AgentKey               *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentDefinitionShrink *string `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty"`
-	// 意图ID
-	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentId               *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 }
 
 func (s UpdateIntentShrinkRequest) String() string {
@@ -9218,13 +8632,10 @@ func (s *UpdateIntentResponse) SetBody(v *UpdateIntentResponseBody) *UpdateInten
 }
 
 type UpdateLgfRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey      *string                        `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId    *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LgfDefinition *UpdateLgfRequestLgfDefinition `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty" type:"Struct"`
-	// LGF ID
-	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	LgfId         *int64                         `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
 }
 
 func (s UpdateLgfRequest) String() string {
@@ -9256,9 +8667,7 @@ func (s *UpdateLgfRequest) SetLgfId(v int64) *UpdateLgfRequest {
 }
 
 type UpdateLgfRequestLgfDefinition struct {
-	// 意图ID
-	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// LGF配置
+	IntentId *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 	RuleText *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
 }
 
@@ -9281,13 +8690,10 @@ func (s *UpdateLgfRequestLgfDefinition) SetRuleText(v string) *UpdateLgfRequestL
 }
 
 type UpdateLgfShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey            *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LgfDefinitionShrink *string `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty"`
-	// LGF ID
-	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	LgfId               *int64  `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
 }
 
 func (s UpdateLgfShrinkRequest) String() string {
@@ -9371,11 +8777,8 @@ func (s *UpdateLgfResponse) SetBody(v *UpdateLgfResponseBody) *UpdateLgfResponse
 }
 
 type UpdatePerspectiveRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 视角名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 视角主键（code_id）
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PerspectiveId *string `json:"PerspectiveId,omitempty" xml:"PerspectiveId,omitempty"`
 }
 
@@ -9403,7 +8806,6 @@ func (s *UpdatePerspectiveRequest) SetPerspectiveId(v string) *UpdatePerspective
 }
 
 type UpdatePerspectiveResponseBody struct {
-	// 请求Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9450,12 +8852,9 @@ func (s *UpdatePerspectiveResponse) SetBody(v *UpdatePerspectiveResponseBody) *U
 }
 
 type UpdateSimQuestionRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 相似问ID
-	SimQuestionId *int64 `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
-	// 相似问标题，字数上限-120
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	SimQuestionId *int64  `json:"SimQuestionId,omitempty" xml:"SimQuestionId,omitempty"`
+	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateSimQuestionRequest) String() string {
@@ -9528,16 +8927,11 @@ func (s *UpdateSimQuestionResponse) SetBody(v *UpdateSimQuestionResponseBody) *U
 }
 
 type UpdateSolutionRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 答案内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 答案类型
-	ContentType *int32 `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// 视角code列表
+	AgentKey         *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Content          *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentType      *int32    `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
 	PerspectiveCodes []*string `json:"PerspectiveCodes,omitempty" xml:"PerspectiveCodes,omitempty" type:"Repeated"`
-	// 答案ID
-	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	SolutionId       *int64    `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
 }
 
 func (s UpdateSolutionRequest) String() string {
@@ -9620,13 +9014,10 @@ func (s *UpdateSolutionResponse) SetBody(v *UpdateSolutionResponseBody) *UpdateS
 }
 
 type UpdateUserSayRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey          *string                                `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId        *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	UserSayDefinition *UpdateUserSayRequestUserSayDefinition `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty" type:"Struct"`
-	// 用户话术ID
-	UserSayId *int64 `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+	UserSayId         *int64                                 `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
 }
 
 func (s UpdateUserSayRequest) String() string {
@@ -9658,11 +9049,8 @@ func (s *UpdateUserSayRequest) SetUserSayId(v int64) *UpdateUserSayRequest {
 }
 
 type UpdateUserSayRequestUserSayDefinition struct {
-	// 用户话术
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 意图ID
-	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
-	// 划槽信息
+	Content   *string                                           `json:"Content,omitempty" xml:"Content,omitempty"`
+	IntentId  *int64                                            `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
 	SlotInfos []*UpdateUserSayRequestUserSayDefinitionSlotInfos `json:"SlotInfos,omitempty" xml:"SlotInfos,omitempty" type:"Repeated"`
 }
 
@@ -9690,12 +9078,9 @@ func (s *UpdateUserSayRequestUserSayDefinition) SetSlotInfos(v []*UpdateUserSayR
 }
 
 type UpdateUserSayRequestUserSayDefinitionSlotInfos struct {
-	// 槽位在意图话术中的结束下标（不含）
-	EndIndex *int32 `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
-	// 划槽ID
-	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
-	// 槽位在意图话术中的起始下标
-	StartIndex *int32 `json:"StartIndex,omitempty" xml:"StartIndex,omitempty"`
+	EndIndex   *int32  `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
+	SlotId     *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	StartIndex *int32  `json:"StartIndex,omitempty" xml:"StartIndex,omitempty"`
 }
 
 func (s UpdateUserSayRequestUserSayDefinitionSlotInfos) String() string {
@@ -9722,13 +9107,10 @@ func (s *UpdateUserSayRequestUserSayDefinitionSlotInfos) SetStartIndex(v int32) 
 }
 
 type UpdateUserSayShrinkRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
+	AgentKey                *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	UserSayDefinitionShrink *string `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty"`
-	// 用户话术ID
-	UserSayId *int64 `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+	UserSayId               *int64  `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
 }
 
 func (s UpdateUserSayShrinkRequest) String() string {
