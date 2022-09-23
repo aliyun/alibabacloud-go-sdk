@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -1272,7 +1272,6 @@ func (s *DescribeIpDdosThresholdRequest) SetInternetIp(v string) *DescribeIpDdos
 }
 
 type DescribeIpDdosThresholdResponseBody struct {
-	// Id of the request
 	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Threshold *DescribeIpDdosThresholdResponseBodyThreshold `json:"Threshold,omitempty" xml:"Threshold,omitempty" type:"Struct"`
 }
@@ -1407,10 +1406,8 @@ func (s *DescribeIpLocationServiceRequest) SetInternetIp(v string) *DescribeIpLo
 }
 
 type DescribeIpLocationServiceResponseBody struct {
-	// instance model
-	Instance *DescribeIpLocationServiceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Instance  *DescribeIpLocationServiceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeIpLocationServiceResponseBody) String() string {
@@ -1785,6 +1782,105 @@ func (s *ModifyDefenseThresholdResponse) SetBody(v *ModifyDefenseThresholdRespon
 	return s
 }
 
+type ModifyIpDefenseThresholdRequest struct {
+	Bps          *int32  `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetIp   *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IsAuto       *bool   `json:"IsAuto,omitempty" xml:"IsAuto,omitempty"`
+	Pps          *int32  `json:"Pps,omitempty" xml:"Pps,omitempty"`
+}
+
+func (s ModifyIpDefenseThresholdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyIpDefenseThresholdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyIpDefenseThresholdRequest) SetBps(v int32) *ModifyIpDefenseThresholdRequest {
+	s.Bps = &v
+	return s
+}
+
+func (s *ModifyIpDefenseThresholdRequest) SetDdosRegionId(v string) *ModifyIpDefenseThresholdRequest {
+	s.DdosRegionId = &v
+	return s
+}
+
+func (s *ModifyIpDefenseThresholdRequest) SetInstanceId(v string) *ModifyIpDefenseThresholdRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyIpDefenseThresholdRequest) SetInstanceType(v string) *ModifyIpDefenseThresholdRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ModifyIpDefenseThresholdRequest) SetInternetIp(v string) *ModifyIpDefenseThresholdRequest {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *ModifyIpDefenseThresholdRequest) SetIsAuto(v bool) *ModifyIpDefenseThresholdRequest {
+	s.IsAuto = &v
+	return s
+}
+
+func (s *ModifyIpDefenseThresholdRequest) SetPps(v int32) *ModifyIpDefenseThresholdRequest {
+	s.Pps = &v
+	return s
+}
+
+type ModifyIpDefenseThresholdResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyIpDefenseThresholdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyIpDefenseThresholdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyIpDefenseThresholdResponseBody) SetRequestId(v string) *ModifyIpDefenseThresholdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyIpDefenseThresholdResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyIpDefenseThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyIpDefenseThresholdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyIpDefenseThresholdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyIpDefenseThresholdResponse) SetHeaders(v map[string]*string) *ModifyIpDefenseThresholdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyIpDefenseThresholdResponse) SetStatusCode(v int32) *ModifyIpDefenseThresholdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyIpDefenseThresholdResponse) SetBody(v *ModifyIpDefenseThresholdResponseBody) *ModifyIpDefenseThresholdResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1800,7 +1896,68 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("")
+	client.EndpointRule = tea.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-qingdao":                  tea.String("antiddos.aliyuncs.com"),
+		"cn-beijing":                  tea.String("antiddos.aliyuncs.com"),
+		"cn-zhangjiakou":              tea.String("antiddos-openapi.cn-zhangjiakou.aliyuncs.com"),
+		"cn-huhehaote":                tea.String("antiddos-openapi.cn-huhehaote.aliyuncs.com"),
+		"cn-wulanchabu":               tea.String("antiddos-openapi.cn-wulanchabu.aliyuncs.com"),
+		"cn-hangzhou":                 tea.String("antiddos.aliyuncs.com"),
+		"cn-shanghai":                 tea.String("antiddos.aliyuncs.com"),
+		"cn-shenzhen":                 tea.String("antiddos.aliyuncs.com"),
+		"cn-heyuan":                   tea.String("antiddos-openapi.cn-heyuan.aliyuncs.com"),
+		"cn-guangzhou":                tea.String("antiddos-openapi.cn-guangzhou.aliyuncs.com"),
+		"cn-chengdu":                  tea.String("antiddos-openapi.cn-chengdu.aliyuncs.com"),
+		"cn-hongkong":                 tea.String("antiddos.aliyuncs.com"),
+		"ap-northeast-1":              tea.String("antiddos-openapi.ap-northeast-1.aliyuncs.com"),
+		"ap-southeast-1":              tea.String("antiddos.aliyuncs.com"),
+		"ap-southeast-2":              tea.String("antiddos-openapi.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-3":              tea.String("antiddos-openapi.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-5":              tea.String("antiddos-openapi.ap-southeast-5.aliyuncs.com"),
+		"us-east-1":                   tea.String("antiddos.aliyuncs.com"),
+		"us-west-1":                   tea.String("antiddos.aliyuncs.com"),
+		"eu-west-1":                   tea.String("antiddos-openapi.eu-west-1.aliyuncs.com"),
+		"eu-central-1":                tea.String("antiddos-openapi.eu-central-1.aliyuncs.com"),
+		"ap-south-1":                  tea.String("antiddos-openapi.ap-south-1.aliyuncs.com"),
+		"me-east-1":                   tea.String("antiddos-openapi.me-east-1.aliyuncs.com"),
+		"cn-shanghai-finance-1":       tea.String("antiddos.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       tea.String("antiddos.aliyuncs.com"),
+		"cn-north-2-gov-1":            tea.String("antiddos.aliyuncs.com"),
+		"ap-northeast-2-pop":          tea.String("antiddos.aliyuncs.com"),
+		"cn-beijing-finance-1":        tea.String("antiddos.aliyuncs.com"),
+		"cn-beijing-finance-pop":      tea.String("antiddos.aliyuncs.com"),
+		"cn-beijing-gov-1":            tea.String("antiddos.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         tea.String("antiddos.aliyuncs.com"),
+		"cn-edge-1":                   tea.String("antiddos.aliyuncs.com"),
+		"cn-fujian":                   tea.String("antiddos.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         tea.String("antiddos.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          tea.String("antiddos.aliyuncs.com"),
+		"cn-hangzhou-finance":         tea.String("antiddos.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": tea.String("antiddos.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": tea.String("antiddos.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": tea.String("antiddos.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": tea.String("antiddos.aliyuncs.com"),
+		"cn-hangzhou-test-306":        tea.String("antiddos.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     tea.String("antiddos.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       tea.String("antiddos.aliyuncs.com"),
+		"cn-qingdao-nebula":           tea.String("antiddos.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        tea.String("antiddos.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         tea.String("antiddos.aliyuncs.com"),
+		"cn-shanghai-inner":           tea.String("antiddos.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": tea.String("antiddos.aliyuncs.com"),
+		"cn-shenzhen-inner":           tea.String("antiddos.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         tea.String("antiddos.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        tea.String("antiddos.aliyuncs.com"),
+		"cn-wuhan":                    tea.String("antiddos.aliyuncs.com"),
+		"cn-yushanfang":               tea.String("antiddos.aliyuncs.com"),
+		"cn-zhangbei":                 tea.String("antiddos.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        tea.String("antiddos.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     tea.String("antiddos-openapi.cn-zhangjiakou.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       tea.String("antiddos.aliyuncs.com"),
+		"eu-west-1-oxs":               tea.String("antiddos.aliyuncs.com"),
+		"rus-west-1-pop":              tea.String("antiddos.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -2550,6 +2707,74 @@ func (client *Client) ModifyDefenseThreshold(request *ModifyDefenseThresholdRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDefenseThresholdResponse{}
 	_body, _err := client.ModifyDefenseThresholdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyIpDefenseThresholdWithOptions(request *ModifyIpDefenseThresholdRequest, runtime *util.RuntimeOptions) (_result *ModifyIpDefenseThresholdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bps)) {
+		query["Bps"] = request.Bps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DdosRegionId)) {
+		query["DdosRegionId"] = request.DdosRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetIp)) {
+		query["InternetIp"] = request.InternetIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAuto)) {
+		query["IsAuto"] = request.IsAuto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pps)) {
+		query["Pps"] = request.Pps
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyIpDefenseThreshold"),
+		Version:     tea.String("2017-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyIpDefenseThresholdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyIpDefenseThreshold(request *ModifyIpDefenseThresholdRequest) (_result *ModifyIpDefenseThresholdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyIpDefenseThresholdResponse{}
+	_body, _err := client.ModifyIpDefenseThresholdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
