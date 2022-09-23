@@ -5,24 +5,24 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type CreateTrailRequest struct {
+	EventRW             *string `json:"EventRW,omitempty" xml:"EventRW,omitempty"`
+	IsOrganizationTrail *bool   `json:"IsOrganizationTrail,omitempty" xml:"IsOrganizationTrail,omitempty"`
+	MnsTopicArn         *string `json:"MnsTopicArn,omitempty" xml:"MnsTopicArn,omitempty"`
 	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OssBucketName       *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
 	OssKeyPrefix        *string `json:"OssKeyPrefix,omitempty" xml:"OssKeyPrefix,omitempty"`
 	RoleName            *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	SlsProjectArn       *string `json:"SlsProjectArn,omitempty" xml:"SlsProjectArn,omitempty"`
 	SlsWriteRoleArn     *string `json:"SlsWriteRoleArn,omitempty" xml:"SlsWriteRoleArn,omitempty"`
-	EventRW             *string `json:"EventRW,omitempty" xml:"EventRW,omitempty"`
 	TrailRegion         *string `json:"TrailRegion,omitempty" xml:"TrailRegion,omitempty"`
-	MnsTopicArn         *string `json:"MnsTopicArn,omitempty" xml:"MnsTopicArn,omitempty"`
-	IsOrganizationTrail *bool   `json:"IsOrganizationTrail,omitempty" xml:"IsOrganizationTrail,omitempty"`
 }
 
 func (s CreateTrailRequest) String() string {
@@ -31,6 +31,21 @@ func (s CreateTrailRequest) String() string {
 
 func (s CreateTrailRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTrailRequest) SetEventRW(v string) *CreateTrailRequest {
+	s.EventRW = &v
+	return s
+}
+
+func (s *CreateTrailRequest) SetIsOrganizationTrail(v bool) *CreateTrailRequest {
+	s.IsOrganizationTrail = &v
+	return s
+}
+
+func (s *CreateTrailRequest) SetMnsTopicArn(v string) *CreateTrailRequest {
+	s.MnsTopicArn = &v
+	return s
 }
 
 func (s *CreateTrailRequest) SetName(v string) *CreateTrailRequest {
@@ -63,38 +78,23 @@ func (s *CreateTrailRequest) SetSlsWriteRoleArn(v string) *CreateTrailRequest {
 	return s
 }
 
-func (s *CreateTrailRequest) SetEventRW(v string) *CreateTrailRequest {
-	s.EventRW = &v
-	return s
-}
-
 func (s *CreateTrailRequest) SetTrailRegion(v string) *CreateTrailRequest {
 	s.TrailRegion = &v
 	return s
 }
 
-func (s *CreateTrailRequest) SetMnsTopicArn(v string) *CreateTrailRequest {
-	s.MnsTopicArn = &v
-	return s
-}
-
-func (s *CreateTrailRequest) SetIsOrganizationTrail(v bool) *CreateTrailRequest {
-	s.IsOrganizationTrail = &v
-	return s
-}
-
 type CreateTrailResponseBody struct {
-	MnsTopicArn     *string `json:"MnsTopicArn,omitempty" xml:"MnsTopicArn,omitempty"`
-	SlsProjectArn   *string `json:"SlsProjectArn,omitempty" xml:"SlsProjectArn,omitempty"`
-	RoleName        *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	EventRW         *string `json:"EventRW,omitempty" xml:"EventRW,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	HomeRegion      *string `json:"HomeRegion,omitempty" xml:"HomeRegion,omitempty"`
-	OssKeyPrefix    *string `json:"OssKeyPrefix,omitempty" xml:"OssKeyPrefix,omitempty"`
+	MnsTopicArn     *string `json:"MnsTopicArn,omitempty" xml:"MnsTopicArn,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OssBucketName   *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	OssKeyPrefix    *string `json:"OssKeyPrefix,omitempty" xml:"OssKeyPrefix,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RoleName        *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	SlsProjectArn   *string `json:"SlsProjectArn,omitempty" xml:"SlsProjectArn,omitempty"`
 	SlsWriteRoleArn *string `json:"SlsWriteRoleArn,omitempty" xml:"SlsWriteRoleArn,omitempty"`
 	TrailRegion     *string `json:"TrailRegion,omitempty" xml:"TrailRegion,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateTrailResponseBody) String() string {
@@ -105,28 +105,8 @@ func (s CreateTrailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateTrailResponseBody) SetMnsTopicArn(v string) *CreateTrailResponseBody {
-	s.MnsTopicArn = &v
-	return s
-}
-
-func (s *CreateTrailResponseBody) SetSlsProjectArn(v string) *CreateTrailResponseBody {
-	s.SlsProjectArn = &v
-	return s
-}
-
-func (s *CreateTrailResponseBody) SetRoleName(v string) *CreateTrailResponseBody {
-	s.RoleName = &v
-	return s
-}
-
 func (s *CreateTrailResponseBody) SetEventRW(v string) *CreateTrailResponseBody {
 	s.EventRW = &v
-	return s
-}
-
-func (s *CreateTrailResponseBody) SetRequestId(v string) *CreateTrailResponseBody {
-	s.RequestId = &v
 	return s
 }
 
@@ -135,13 +115,38 @@ func (s *CreateTrailResponseBody) SetHomeRegion(v string) *CreateTrailResponseBo
 	return s
 }
 
-func (s *CreateTrailResponseBody) SetOssKeyPrefix(v string) *CreateTrailResponseBody {
-	s.OssKeyPrefix = &v
+func (s *CreateTrailResponseBody) SetMnsTopicArn(v string) *CreateTrailResponseBody {
+	s.MnsTopicArn = &v
+	return s
+}
+
+func (s *CreateTrailResponseBody) SetName(v string) *CreateTrailResponseBody {
+	s.Name = &v
 	return s
 }
 
 func (s *CreateTrailResponseBody) SetOssBucketName(v string) *CreateTrailResponseBody {
 	s.OssBucketName = &v
+	return s
+}
+
+func (s *CreateTrailResponseBody) SetOssKeyPrefix(v string) *CreateTrailResponseBody {
+	s.OssKeyPrefix = &v
+	return s
+}
+
+func (s *CreateTrailResponseBody) SetRequestId(v string) *CreateTrailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTrailResponseBody) SetRoleName(v string) *CreateTrailResponseBody {
+	s.RoleName = &v
+	return s
+}
+
+func (s *CreateTrailResponseBody) SetSlsProjectArn(v string) *CreateTrailResponseBody {
+	s.SlsProjectArn = &v
 	return s
 }
 
@@ -155,14 +160,10 @@ func (s *CreateTrailResponseBody) SetTrailRegion(v string) *CreateTrailResponseB
 	return s
 }
 
-func (s *CreateTrailResponseBody) SetName(v string) *CreateTrailResponseBody {
-	s.Name = &v
-	return s
-}
-
 type CreateTrailResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateTrailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTrailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateTrailResponse) String() string {
@@ -175,6 +176,11 @@ func (s CreateTrailResponse) GoString() string {
 
 func (s *CreateTrailResponse) SetHeaders(v map[string]*string) *CreateTrailResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateTrailResponse) SetStatusCode(v int32) *CreateTrailResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -218,8 +224,9 @@ func (s *DeleteTrailResponseBody) SetRequestId(v string) *DeleteTrailResponseBod
 }
 
 type DeleteTrailResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteTrailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTrailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteTrailResponse) String() string {
@@ -235,14 +242,19 @@ func (s *DeleteTrailResponse) SetHeaders(v map[string]*string) *DeleteTrailRespo
 	return s
 }
 
+func (s *DeleteTrailResponse) SetStatusCode(v int32) *DeleteTrailResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteTrailResponse) SetBody(v *DeleteTrailResponseBody) *DeleteTrailResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeRegionsResponseBody struct {
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Regions   *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -253,13 +265,13 @@ func (s DescribeRegionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
-	s.RequestId = &v
+func (s *DescribeRegionsResponseBody) SetRegions(v *DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
+	s.Regions = v
 	return s
 }
 
-func (s *DescribeRegionsResponseBody) SetRegions(v *DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
-	s.Regions = v
+func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -298,8 +310,9 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *Descri
 }
 
 type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -315,15 +328,20 @@ func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegi
 	return s
 }
 
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeTrailsRequest struct {
+	IncludeOrganizationTrail *bool   `json:"IncludeOrganizationTrail,omitempty" xml:"IncludeOrganizationTrail,omitempty"`
 	IncludeShadowTrails      *bool   `json:"IncludeShadowTrails,omitempty" xml:"IncludeShadowTrails,omitempty"`
 	NameList                 *string `json:"NameList,omitempty" xml:"NameList,omitempty"`
-	IncludeOrganizationTrail *bool   `json:"IncludeOrganizationTrail,omitempty" xml:"IncludeOrganizationTrail,omitempty"`
 }
 
 func (s DescribeTrailsRequest) String() string {
@@ -334,6 +352,11 @@ func (s DescribeTrailsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeTrailsRequest) SetIncludeOrganizationTrail(v bool) *DescribeTrailsRequest {
+	s.IncludeOrganizationTrail = &v
+	return s
+}
+
 func (s *DescribeTrailsRequest) SetIncludeShadowTrails(v bool) *DescribeTrailsRequest {
 	s.IncludeShadowTrails = &v
 	return s
@@ -341,11 +364,6 @@ func (s *DescribeTrailsRequest) SetIncludeShadowTrails(v bool) *DescribeTrailsRe
 
 func (s *DescribeTrailsRequest) SetNameList(v string) *DescribeTrailsRequest {
 	s.NameList = &v
-	return s
-}
-
-func (s *DescribeTrailsRequest) SetIncludeOrganizationTrail(v bool) *DescribeTrailsRequest {
-	s.IncludeOrganizationTrail = &v
 	return s
 }
 
@@ -373,22 +391,22 @@ func (s *DescribeTrailsResponseBody) SetTrailList(v []*DescribeTrailsResponseBod
 }
 
 type DescribeTrailsResponseBodyTrailList struct {
-	TrailRegion         *string `json:"TrailRegion,omitempty" xml:"TrailRegion,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	HomeRegion          *string `json:"HomeRegion,omitempty" xml:"HomeRegion,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	OssKeyPrefix        *string `json:"OssKeyPrefix,omitempty" xml:"OssKeyPrefix,omitempty"`
 	EventRW             *string `json:"EventRW,omitempty" xml:"EventRW,omitempty"`
-	StartLoggingTime    *string `json:"StartLoggingTime,omitempty" xml:"StartLoggingTime,omitempty"`
-	MnsTopicArn         *string `json:"MnsTopicArn,omitempty" xml:"MnsTopicArn,omitempty"`
-	RoleName            *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	SlsProjectArn       *string `json:"SlsProjectArn,omitempty" xml:"SlsProjectArn,omitempty"`
+	HomeRegion          *string `json:"HomeRegion,omitempty" xml:"HomeRegion,omitempty"`
 	IsOrganizationTrail *bool   `json:"IsOrganizationTrail,omitempty" xml:"IsOrganizationTrail,omitempty"`
-	SlsWriteRoleArn     *string `json:"SlsWriteRoleArn,omitempty" xml:"SlsWriteRoleArn,omitempty"`
-	StopLoggingTime     *string `json:"StopLoggingTime,omitempty" xml:"StopLoggingTime,omitempty"`
+	MnsTopicArn         *string `json:"MnsTopicArn,omitempty" xml:"MnsTopicArn,omitempty"`
 	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OssBucketName       *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	OssKeyPrefix        *string `json:"OssKeyPrefix,omitempty" xml:"OssKeyPrefix,omitempty"`
+	RoleName            *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	SlsProjectArn       *string `json:"SlsProjectArn,omitempty" xml:"SlsProjectArn,omitempty"`
+	SlsWriteRoleArn     *string `json:"SlsWriteRoleArn,omitempty" xml:"SlsWriteRoleArn,omitempty"`
+	StartLoggingTime    *string `json:"StartLoggingTime,omitempty" xml:"StartLoggingTime,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StopLoggingTime     *string `json:"StopLoggingTime,omitempty" xml:"StopLoggingTime,omitempty"`
+	TrailRegion         *string `json:"TrailRegion,omitempty" xml:"TrailRegion,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeTrailsResponseBodyTrailList) String() string {
@@ -399,33 +417,8 @@ func (s DescribeTrailsResponseBodyTrailList) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTrailsResponseBodyTrailList) SetTrailRegion(v string) *DescribeTrailsResponseBodyTrailList {
-	s.TrailRegion = &v
-	return s
-}
-
-func (s *DescribeTrailsResponseBodyTrailList) SetStatus(v string) *DescribeTrailsResponseBodyTrailList {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeTrailsResponseBodyTrailList) SetUpdateTime(v string) *DescribeTrailsResponseBodyTrailList {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *DescribeTrailsResponseBodyTrailList) SetHomeRegion(v string) *DescribeTrailsResponseBodyTrailList {
-	s.HomeRegion = &v
-	return s
-}
-
 func (s *DescribeTrailsResponseBodyTrailList) SetCreateTime(v string) *DescribeTrailsResponseBodyTrailList {
 	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeTrailsResponseBodyTrailList) SetOssKeyPrefix(v string) *DescribeTrailsResponseBodyTrailList {
-	s.OssKeyPrefix = &v
 	return s
 }
 
@@ -434,23 +427,8 @@ func (s *DescribeTrailsResponseBodyTrailList) SetEventRW(v string) *DescribeTrai
 	return s
 }
 
-func (s *DescribeTrailsResponseBodyTrailList) SetStartLoggingTime(v string) *DescribeTrailsResponseBodyTrailList {
-	s.StartLoggingTime = &v
-	return s
-}
-
-func (s *DescribeTrailsResponseBodyTrailList) SetMnsTopicArn(v string) *DescribeTrailsResponseBodyTrailList {
-	s.MnsTopicArn = &v
-	return s
-}
-
-func (s *DescribeTrailsResponseBodyTrailList) SetRoleName(v string) *DescribeTrailsResponseBodyTrailList {
-	s.RoleName = &v
-	return s
-}
-
-func (s *DescribeTrailsResponseBodyTrailList) SetSlsProjectArn(v string) *DescribeTrailsResponseBodyTrailList {
-	s.SlsProjectArn = &v
+func (s *DescribeTrailsResponseBodyTrailList) SetHomeRegion(v string) *DescribeTrailsResponseBodyTrailList {
+	s.HomeRegion = &v
 	return s
 }
 
@@ -459,13 +437,8 @@ func (s *DescribeTrailsResponseBodyTrailList) SetIsOrganizationTrail(v bool) *De
 	return s
 }
 
-func (s *DescribeTrailsResponseBodyTrailList) SetSlsWriteRoleArn(v string) *DescribeTrailsResponseBodyTrailList {
-	s.SlsWriteRoleArn = &v
-	return s
-}
-
-func (s *DescribeTrailsResponseBodyTrailList) SetStopLoggingTime(v string) *DescribeTrailsResponseBodyTrailList {
-	s.StopLoggingTime = &v
+func (s *DescribeTrailsResponseBodyTrailList) SetMnsTopicArn(v string) *DescribeTrailsResponseBodyTrailList {
+	s.MnsTopicArn = &v
 	return s
 }
 
@@ -479,9 +452,55 @@ func (s *DescribeTrailsResponseBodyTrailList) SetOssBucketName(v string) *Descri
 	return s
 }
 
+func (s *DescribeTrailsResponseBodyTrailList) SetOssKeyPrefix(v string) *DescribeTrailsResponseBodyTrailList {
+	s.OssKeyPrefix = &v
+	return s
+}
+
+func (s *DescribeTrailsResponseBodyTrailList) SetRoleName(v string) *DescribeTrailsResponseBodyTrailList {
+	s.RoleName = &v
+	return s
+}
+
+func (s *DescribeTrailsResponseBodyTrailList) SetSlsProjectArn(v string) *DescribeTrailsResponseBodyTrailList {
+	s.SlsProjectArn = &v
+	return s
+}
+
+func (s *DescribeTrailsResponseBodyTrailList) SetSlsWriteRoleArn(v string) *DescribeTrailsResponseBodyTrailList {
+	s.SlsWriteRoleArn = &v
+	return s
+}
+
+func (s *DescribeTrailsResponseBodyTrailList) SetStartLoggingTime(v string) *DescribeTrailsResponseBodyTrailList {
+	s.StartLoggingTime = &v
+	return s
+}
+
+func (s *DescribeTrailsResponseBodyTrailList) SetStatus(v string) *DescribeTrailsResponseBodyTrailList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeTrailsResponseBodyTrailList) SetStopLoggingTime(v string) *DescribeTrailsResponseBodyTrailList {
+	s.StopLoggingTime = &v
+	return s
+}
+
+func (s *DescribeTrailsResponseBodyTrailList) SetTrailRegion(v string) *DescribeTrailsResponseBodyTrailList {
+	s.TrailRegion = &v
+	return s
+}
+
+func (s *DescribeTrailsResponseBodyTrailList) SetUpdateTime(v string) *DescribeTrailsResponseBodyTrailList {
+	s.UpdateTime = &v
+	return s
+}
+
 type DescribeTrailsResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeTrailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTrailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeTrailsResponse) String() string {
@@ -497,14 +516,19 @@ func (s *DescribeTrailsResponse) SetHeaders(v map[string]*string) *DescribeTrail
 	return s
 }
 
+func (s *DescribeTrailsResponse) SetStatusCode(v int32) *DescribeTrailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeTrailsResponse) SetBody(v *DescribeTrailsResponseBody) *DescribeTrailsResponse {
 	s.Body = v
 	return s
 }
 
 type GetTrailStatusRequest struct {
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	IsOrganizationTrail *bool   `json:"IsOrganizationTrail,omitempty" xml:"IsOrganizationTrail,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetTrailStatusRequest) String() string {
@@ -515,23 +539,23 @@ func (s GetTrailStatusRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetTrailStatusRequest) SetName(v string) *GetTrailStatusRequest {
-	s.Name = &v
-	return s
-}
-
 func (s *GetTrailStatusRequest) SetIsOrganizationTrail(v bool) *GetTrailStatusRequest {
 	s.IsOrganizationTrail = &v
 	return s
 }
 
+func (s *GetTrailStatusRequest) SetName(v string) *GetTrailStatusRequest {
+	s.Name = &v
+	return s
+}
+
 type GetTrailStatusResponseBody struct {
+	IsLogging           *bool   `json:"IsLogging,omitempty" xml:"IsLogging,omitempty"`
+	LatestDeliveryError *string `json:"LatestDeliveryError,omitempty" xml:"LatestDeliveryError,omitempty"`
+	LatestDeliveryTime  *string `json:"LatestDeliveryTime,omitempty" xml:"LatestDeliveryTime,omitempty"`
 	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StartLoggingTime    *string `json:"StartLoggingTime,omitempty" xml:"StartLoggingTime,omitempty"`
-	LatestDeliveryError *string `json:"LatestDeliveryError,omitempty" xml:"LatestDeliveryError,omitempty"`
 	StopLoggingTime     *string `json:"StopLoggingTime,omitempty" xml:"StopLoggingTime,omitempty"`
-	IsLogging           *bool   `json:"IsLogging,omitempty" xml:"IsLogging,omitempty"`
-	LatestDeliveryTime  *string `json:"LatestDeliveryTime,omitempty" xml:"LatestDeliveryTime,omitempty"`
 }
 
 func (s GetTrailStatusResponseBody) String() string {
@@ -540,6 +564,21 @@ func (s GetTrailStatusResponseBody) String() string {
 
 func (s GetTrailStatusResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetTrailStatusResponseBody) SetIsLogging(v bool) *GetTrailStatusResponseBody {
+	s.IsLogging = &v
+	return s
+}
+
+func (s *GetTrailStatusResponseBody) SetLatestDeliveryError(v string) *GetTrailStatusResponseBody {
+	s.LatestDeliveryError = &v
+	return s
+}
+
+func (s *GetTrailStatusResponseBody) SetLatestDeliveryTime(v string) *GetTrailStatusResponseBody {
+	s.LatestDeliveryTime = &v
+	return s
 }
 
 func (s *GetTrailStatusResponseBody) SetRequestId(v string) *GetTrailStatusResponseBody {
@@ -552,29 +591,15 @@ func (s *GetTrailStatusResponseBody) SetStartLoggingTime(v string) *GetTrailStat
 	return s
 }
 
-func (s *GetTrailStatusResponseBody) SetLatestDeliveryError(v string) *GetTrailStatusResponseBody {
-	s.LatestDeliveryError = &v
-	return s
-}
-
 func (s *GetTrailStatusResponseBody) SetStopLoggingTime(v string) *GetTrailStatusResponseBody {
 	s.StopLoggingTime = &v
 	return s
 }
 
-func (s *GetTrailStatusResponseBody) SetIsLogging(v bool) *GetTrailStatusResponseBody {
-	s.IsLogging = &v
-	return s
-}
-
-func (s *GetTrailStatusResponseBody) SetLatestDeliveryTime(v string) *GetTrailStatusResponseBody {
-	s.LatestDeliveryTime = &v
-	return s
-}
-
 type GetTrailStatusResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTrailStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTrailStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTrailStatusResponse) String() string {
@@ -590,26 +615,31 @@ func (s *GetTrailStatusResponse) SetHeaders(v map[string]*string) *GetTrailStatu
 	return s
 }
 
+func (s *GetTrailStatusResponse) SetStatusCode(v int32) *GetTrailStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetTrailStatusResponse) SetBody(v *GetTrailStatusResponseBody) *GetTrailStatusResponse {
 	s.Body = v
 	return s
 }
 
 type LookupEventsRequest struct {
-	Event            *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	Request          *string `json:"Request,omitempty" xml:"Request,omitempty"`
-	EventType        *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	EventName        *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	User             *string `json:"User,omitempty" xml:"User,omitempty"`
-	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceName     *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	EventRW          *string `json:"EventRW,omitempty" xml:"EventRW,omitempty"`
-	EventAccessKeyId *string `json:"EventAccessKeyId,omitempty" xml:"EventAccessKeyId,omitempty"`
-	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	MaxResults       *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Event            *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	EventAccessKeyId *string `json:"EventAccessKeyId,omitempty" xml:"EventAccessKeyId,omitempty"`
+	EventName        *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	EventRW          *string `json:"EventRW,omitempty" xml:"EventRW,omitempty"`
+	EventType        *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	MaxResults       *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Request          *string `json:"Request,omitempty" xml:"Request,omitempty"`
+	ResourceName     *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	User             *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s LookupEventsRequest) String() string {
@@ -620,48 +650,13 @@ func (s LookupEventsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *LookupEventsRequest) SetEndTime(v string) *LookupEventsRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *LookupEventsRequest) SetEvent(v string) *LookupEventsRequest {
 	s.Event = &v
-	return s
-}
-
-func (s *LookupEventsRequest) SetRequest(v string) *LookupEventsRequest {
-	s.Request = &v
-	return s
-}
-
-func (s *LookupEventsRequest) SetEventType(v string) *LookupEventsRequest {
-	s.EventType = &v
-	return s
-}
-
-func (s *LookupEventsRequest) SetServiceName(v string) *LookupEventsRequest {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *LookupEventsRequest) SetEventName(v string) *LookupEventsRequest {
-	s.EventName = &v
-	return s
-}
-
-func (s *LookupEventsRequest) SetUser(v string) *LookupEventsRequest {
-	s.User = &v
-	return s
-}
-
-func (s *LookupEventsRequest) SetResourceType(v string) *LookupEventsRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *LookupEventsRequest) SetResourceName(v string) *LookupEventsRequest {
-	s.ResourceName = &v
-	return s
-}
-
-func (s *LookupEventsRequest) SetEventRW(v string) *LookupEventsRequest {
-	s.EventRW = &v
 	return s
 }
 
@@ -670,8 +665,18 @@ func (s *LookupEventsRequest) SetEventAccessKeyId(v string) *LookupEventsRequest
 	return s
 }
 
-func (s *LookupEventsRequest) SetNextToken(v string) *LookupEventsRequest {
-	s.NextToken = &v
+func (s *LookupEventsRequest) SetEventName(v string) *LookupEventsRequest {
+	s.EventName = &v
+	return s
+}
+
+func (s *LookupEventsRequest) SetEventRW(v string) *LookupEventsRequest {
+	s.EventRW = &v
+	return s
+}
+
+func (s *LookupEventsRequest) SetEventType(v string) *LookupEventsRequest {
+	s.EventType = &v
 	return s
 }
 
@@ -680,21 +685,46 @@ func (s *LookupEventsRequest) SetMaxResults(v string) *LookupEventsRequest {
 	return s
 }
 
+func (s *LookupEventsRequest) SetNextToken(v string) *LookupEventsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *LookupEventsRequest) SetRequest(v string) *LookupEventsRequest {
+	s.Request = &v
+	return s
+}
+
+func (s *LookupEventsRequest) SetResourceName(v string) *LookupEventsRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *LookupEventsRequest) SetResourceType(v string) *LookupEventsRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *LookupEventsRequest) SetServiceName(v string) *LookupEventsRequest {
+	s.ServiceName = &v
+	return s
+}
+
 func (s *LookupEventsRequest) SetStartTime(v string) *LookupEventsRequest {
 	s.StartTime = &v
 	return s
 }
 
-func (s *LookupEventsRequest) SetEndTime(v string) *LookupEventsRequest {
-	s.EndTime = &v
+func (s *LookupEventsRequest) SetUser(v string) *LookupEventsRequest {
+	s.User = &v
 	return s
 }
 
 type LookupEventsResponseBody struct {
 	EndTime   *string                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Events    []map[string]interface{} `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 	NextToken *string                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Events    []map[string]interface{} `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 	StartTime *string                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -711,6 +741,11 @@ func (s *LookupEventsResponseBody) SetEndTime(v string) *LookupEventsResponseBod
 	return s
 }
 
+func (s *LookupEventsResponseBody) SetEvents(v []map[string]interface{}) *LookupEventsResponseBody {
+	s.Events = v
+	return s
+}
+
 func (s *LookupEventsResponseBody) SetNextToken(v string) *LookupEventsResponseBody {
 	s.NextToken = &v
 	return s
@@ -721,19 +756,15 @@ func (s *LookupEventsResponseBody) SetRequestId(v string) *LookupEventsResponseB
 	return s
 }
 
-func (s *LookupEventsResponseBody) SetEvents(v []map[string]interface{}) *LookupEventsResponseBody {
-	s.Events = v
-	return s
-}
-
 func (s *LookupEventsResponseBody) SetStartTime(v string) *LookupEventsResponseBody {
 	s.StartTime = &v
 	return s
 }
 
 type LookupEventsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *LookupEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *LookupEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s LookupEventsResponse) String() string {
@@ -746,6 +777,11 @@ func (s LookupEventsResponse) GoString() string {
 
 func (s *LookupEventsResponse) SetHeaders(v map[string]*string) *LookupEventsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *LookupEventsResponse) SetStatusCode(v int32) *LookupEventsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -789,8 +825,9 @@ func (s *StartLoggingResponseBody) SetRequestId(v string) *StartLoggingResponseB
 }
 
 type StartLoggingResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartLoggingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartLoggingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartLoggingResponse) String() string {
@@ -803,6 +840,11 @@ func (s StartLoggingResponse) GoString() string {
 
 func (s *StartLoggingResponse) SetHeaders(v map[string]*string) *StartLoggingResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StartLoggingResponse) SetStatusCode(v int32) *StartLoggingResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -846,8 +888,9 @@ func (s *StopLoggingResponseBody) SetRequestId(v string) *StopLoggingResponseBod
 }
 
 type StopLoggingResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopLoggingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopLoggingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StopLoggingResponse) String() string {
@@ -863,21 +906,26 @@ func (s *StopLoggingResponse) SetHeaders(v map[string]*string) *StopLoggingRespo
 	return s
 }
 
+func (s *StopLoggingResponse) SetStatusCode(v int32) *StopLoggingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *StopLoggingResponse) SetBody(v *StopLoggingResponseBody) *StopLoggingResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateTrailRequest struct {
+	EventRW         *string `json:"EventRW,omitempty" xml:"EventRW,omitempty"`
+	MnsTopicArn     *string `json:"MnsTopicArn,omitempty" xml:"MnsTopicArn,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OssBucketName   *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
 	OssKeyPrefix    *string `json:"OssKeyPrefix,omitempty" xml:"OssKeyPrefix,omitempty"`
 	RoleName        *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	SlsProjectArn   *string `json:"SlsProjectArn,omitempty" xml:"SlsProjectArn,omitempty"`
 	SlsWriteRoleArn *string `json:"SlsWriteRoleArn,omitempty" xml:"SlsWriteRoleArn,omitempty"`
-	EventRW         *string `json:"EventRW,omitempty" xml:"EventRW,omitempty"`
 	TrailRegion     *string `json:"TrailRegion,omitempty" xml:"TrailRegion,omitempty"`
-	MnsTopicArn     *string `json:"MnsTopicArn,omitempty" xml:"MnsTopicArn,omitempty"`
 }
 
 func (s UpdateTrailRequest) String() string {
@@ -886,6 +934,16 @@ func (s UpdateTrailRequest) String() string {
 
 func (s UpdateTrailRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateTrailRequest) SetEventRW(v string) *UpdateTrailRequest {
+	s.EventRW = &v
+	return s
+}
+
+func (s *UpdateTrailRequest) SetMnsTopicArn(v string) *UpdateTrailRequest {
+	s.MnsTopicArn = &v
+	return s
 }
 
 func (s *UpdateTrailRequest) SetName(v string) *UpdateTrailRequest {
@@ -918,33 +976,23 @@ func (s *UpdateTrailRequest) SetSlsWriteRoleArn(v string) *UpdateTrailRequest {
 	return s
 }
 
-func (s *UpdateTrailRequest) SetEventRW(v string) *UpdateTrailRequest {
-	s.EventRW = &v
-	return s
-}
-
 func (s *UpdateTrailRequest) SetTrailRegion(v string) *UpdateTrailRequest {
 	s.TrailRegion = &v
 	return s
 }
 
-func (s *UpdateTrailRequest) SetMnsTopicArn(v string) *UpdateTrailRequest {
-	s.MnsTopicArn = &v
-	return s
-}
-
 type UpdateTrailResponseBody struct {
-	MnsTopicArn     *string `json:"MnsTopicArn,omitempty" xml:"MnsTopicArn,omitempty"`
-	SlsProjectArn   *string `json:"SlsProjectArn,omitempty" xml:"SlsProjectArn,omitempty"`
-	RoleName        *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	EventRW         *string `json:"EventRW,omitempty" xml:"EventRW,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	HomeRegion      *string `json:"HomeRegion,omitempty" xml:"HomeRegion,omitempty"`
-	OssKeyPrefix    *string `json:"OssKeyPrefix,omitempty" xml:"OssKeyPrefix,omitempty"`
+	MnsTopicArn     *string `json:"MnsTopicArn,omitempty" xml:"MnsTopicArn,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OssBucketName   *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	OssKeyPrefix    *string `json:"OssKeyPrefix,omitempty" xml:"OssKeyPrefix,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RoleName        *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	SlsProjectArn   *string `json:"SlsProjectArn,omitempty" xml:"SlsProjectArn,omitempty"`
 	SlsWriteRoleArn *string `json:"SlsWriteRoleArn,omitempty" xml:"SlsWriteRoleArn,omitempty"`
 	TrailRegion     *string `json:"TrailRegion,omitempty" xml:"TrailRegion,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateTrailResponseBody) String() string {
@@ -955,28 +1003,8 @@ func (s UpdateTrailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateTrailResponseBody) SetMnsTopicArn(v string) *UpdateTrailResponseBody {
-	s.MnsTopicArn = &v
-	return s
-}
-
-func (s *UpdateTrailResponseBody) SetSlsProjectArn(v string) *UpdateTrailResponseBody {
-	s.SlsProjectArn = &v
-	return s
-}
-
-func (s *UpdateTrailResponseBody) SetRoleName(v string) *UpdateTrailResponseBody {
-	s.RoleName = &v
-	return s
-}
-
 func (s *UpdateTrailResponseBody) SetEventRW(v string) *UpdateTrailResponseBody {
 	s.EventRW = &v
-	return s
-}
-
-func (s *UpdateTrailResponseBody) SetRequestId(v string) *UpdateTrailResponseBody {
-	s.RequestId = &v
 	return s
 }
 
@@ -985,13 +1013,38 @@ func (s *UpdateTrailResponseBody) SetHomeRegion(v string) *UpdateTrailResponseBo
 	return s
 }
 
-func (s *UpdateTrailResponseBody) SetOssKeyPrefix(v string) *UpdateTrailResponseBody {
-	s.OssKeyPrefix = &v
+func (s *UpdateTrailResponseBody) SetMnsTopicArn(v string) *UpdateTrailResponseBody {
+	s.MnsTopicArn = &v
+	return s
+}
+
+func (s *UpdateTrailResponseBody) SetName(v string) *UpdateTrailResponseBody {
+	s.Name = &v
 	return s
 }
 
 func (s *UpdateTrailResponseBody) SetOssBucketName(v string) *UpdateTrailResponseBody {
 	s.OssBucketName = &v
+	return s
+}
+
+func (s *UpdateTrailResponseBody) SetOssKeyPrefix(v string) *UpdateTrailResponseBody {
+	s.OssKeyPrefix = &v
+	return s
+}
+
+func (s *UpdateTrailResponseBody) SetRequestId(v string) *UpdateTrailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTrailResponseBody) SetRoleName(v string) *UpdateTrailResponseBody {
+	s.RoleName = &v
+	return s
+}
+
+func (s *UpdateTrailResponseBody) SetSlsProjectArn(v string) *UpdateTrailResponseBody {
+	s.SlsProjectArn = &v
 	return s
 }
 
@@ -1005,14 +1058,10 @@ func (s *UpdateTrailResponseBody) SetTrailRegion(v string) *UpdateTrailResponseB
 	return s
 }
 
-func (s *UpdateTrailResponseBody) SetName(v string) *UpdateTrailResponseBody {
-	s.Name = &v
-	return s
-}
-
 type UpdateTrailResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateTrailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTrailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateTrailResponse) String() string {
@@ -1025,6 +1074,11 @@ func (s UpdateTrailResponse) GoString() string {
 
 func (s *UpdateTrailResponse) SetHeaders(v map[string]*string) *UpdateTrailResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateTrailResponse) SetStatusCode(v int32) *UpdateTrailResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1119,11 +1173,63 @@ func (client *Client) CreateTrailWithOptions(request *CreateTrailRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventRW)) {
+		query["EventRW"] = request.EventRW
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsOrganizationTrail)) {
+		query["IsOrganizationTrail"] = request.IsOrganizationTrail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MnsTopicArn)) {
+		query["MnsTopicArn"] = request.MnsTopicArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketName)) {
+		query["OssBucketName"] = request.OssBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssKeyPrefix)) {
+		query["OssKeyPrefix"] = request.OssKeyPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsProjectArn)) {
+		query["SlsProjectArn"] = request.SlsProjectArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsWriteRoleArn)) {
+		query["SlsWriteRoleArn"] = request.SlsWriteRoleArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrailRegion)) {
+		query["TrailRegion"] = request.TrailRegion
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTrail"),
+		Version:     tea.String("2017-12-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateTrailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateTrail"), tea.String("2017-12-04"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1147,11 +1253,27 @@ func (client *Client) DeleteTrailWithOptions(request *DeleteTrailRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTrail"),
+		Version:     tea.String("2017-12-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTrailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteTrail"), tea.String("2017-12-04"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1172,8 +1294,19 @@ func (client *Client) DeleteTrail(request *DeleteTrailRequest) (_result *DeleteT
 
 func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2017-12-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRegions"), tea.String("2017-12-04"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1197,11 +1330,35 @@ func (client *Client) DescribeTrailsWithOptions(request *DescribeTrailsRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IncludeOrganizationTrail)) {
+		query["IncludeOrganizationTrail"] = request.IncludeOrganizationTrail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeShadowTrails)) {
+		query["IncludeShadowTrails"] = request.IncludeShadowTrails
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameList)) {
+		query["NameList"] = request.NameList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTrails"),
+		Version:     tea.String("2017-12-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeTrailsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeTrails"), tea.String("2017-12-04"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1225,11 +1382,31 @@ func (client *Client) GetTrailStatusWithOptions(request *GetTrailStatusRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsOrganizationTrail)) {
+		query["IsOrganizationTrail"] = request.IsOrganizationTrail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTrailStatus"),
+		Version:     tea.String("2017-12-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTrailStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTrailStatus"), tea.String("2017-12-04"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1253,11 +1430,79 @@ func (client *Client) LookupEventsWithOptions(request *LookupEventsRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Event)) {
+		query["Event"] = request.Event
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventAccessKeyId)) {
+		query["EventAccessKeyId"] = request.EventAccessKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventName)) {
+		query["EventName"] = request.EventName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventRW)) {
+		query["EventRW"] = request.EventRW
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventType)) {
+		query["EventType"] = request.EventType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Request)) {
+		query["Request"] = request.Request
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		query["ResourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LookupEvents"),
+		Version:     tea.String("2017-12-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &LookupEventsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("LookupEvents"), tea.String("2017-12-04"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1283,10 +1528,21 @@ func (client *Client) StartLoggingWithOptions(request *StartLoggingRequest, runt
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartLogging"),
+		Version:     tea.String("2017-12-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StartLoggingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StartLogging"), tea.String("2017-12-04"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1312,10 +1568,21 @@ func (client *Client) StopLoggingWithOptions(request *StopLoggingRequest, runtim
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopLogging"),
+		Version:     tea.String("2017-12-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &StopLoggingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("StopLogging"), tea.String("2017-12-04"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1339,11 +1606,59 @@ func (client *Client) UpdateTrailWithOptions(request *UpdateTrailRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventRW)) {
+		query["EventRW"] = request.EventRW
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MnsTopicArn)) {
+		query["MnsTopicArn"] = request.MnsTopicArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketName)) {
+		query["OssBucketName"] = request.OssBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssKeyPrefix)) {
+		query["OssKeyPrefix"] = request.OssKeyPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsProjectArn)) {
+		query["SlsProjectArn"] = request.SlsProjectArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsWriteRoleArn)) {
+		query["SlsWriteRoleArn"] = request.SlsWriteRoleArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrailRegion)) {
+		query["TrailRegion"] = request.TrailRegion
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTrail"),
+		Version:     tea.String("2017-12-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTrailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateTrail"), tea.String("2017-12-04"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
