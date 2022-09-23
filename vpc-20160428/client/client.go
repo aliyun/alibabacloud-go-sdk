@@ -5,7 +5,7 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
@@ -38074,6 +38074,7 @@ type ListFullNatEntriesResponseBodyFullNatEntries struct {
 	FullNatEntryId          *string `json:"FullNatEntryId,omitempty" xml:"FullNatEntryId,omitempty"`
 	FullNatEntryName        *string `json:"FullNatEntryName,omitempty" xml:"FullNatEntryName,omitempty"`
 	FullNatEntryStatus      *string `json:"FullNatEntryStatus,omitempty" xml:"FullNatEntryStatus,omitempty"`
+	FullNatTableId          *string `json:"FullNatTableId,omitempty" xml:"FullNatTableId,omitempty"`
 	IpProtocol              *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	NatIp                   *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
 	NatIpPort               *string `json:"NatIpPort,omitempty" xml:"NatIpPort,omitempty"`
@@ -38121,6 +38122,11 @@ func (s *ListFullNatEntriesResponseBodyFullNatEntries) SetFullNatEntryName(v str
 
 func (s *ListFullNatEntriesResponseBodyFullNatEntries) SetFullNatEntryStatus(v string) *ListFullNatEntriesResponseBodyFullNatEntries {
 	s.FullNatEntryStatus = &v
+	return s
+}
+
+func (s *ListFullNatEntriesResponseBodyFullNatEntries) SetFullNatTableId(v string) *ListFullNatEntriesResponseBodyFullNatEntries {
+	s.FullNatTableId = &v
 	return s
 }
 
