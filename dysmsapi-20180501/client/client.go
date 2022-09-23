@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -107,8 +107,9 @@ func (s *BatchSendMessageToGlobeResponseBody) SetSuccessCount(v string) *BatchSe
 }
 
 type BatchSendMessageToGlobeResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchSendMessageToGlobeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchSendMessageToGlobeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BatchSendMessageToGlobeResponse) String() string {
@@ -121,6 +122,11 @@ func (s BatchSendMessageToGlobeResponse) GoString() string {
 
 func (s *BatchSendMessageToGlobeResponse) SetHeaders(v map[string]*string) *BatchSendMessageToGlobeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *BatchSendMessageToGlobeResponse) SetStatusCode(v int32) *BatchSendMessageToGlobeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -182,8 +188,9 @@ func (s *ConversionDataResponseBody) SetResponseDescription(v string) *Conversio
 }
 
 type ConversionDataResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ConversionDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ConversionDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ConversionDataResponse) String() string {
@@ -196,6 +203,11 @@ func (s ConversionDataResponse) GoString() string {
 
 func (s *ConversionDataResponse) SetHeaders(v map[string]*string) *ConversionDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ConversionDataResponse) SetStatusCode(v int32) *ConversionDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -334,8 +346,9 @@ func (s *QueryMessageResponseBodyNumberDetail) SetRegion(v string) *QueryMessage
 }
 
 type QueryMessageResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryMessageResponse) String() string {
@@ -348,6 +361,11 @@ func (s QueryMessageResponse) GoString() string {
 
 func (s *QueryMessageResponse) SetHeaders(v map[string]*string) *QueryMessageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QueryMessageResponse) SetStatusCode(v int32) *QueryMessageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -480,8 +498,9 @@ func (s *SendMessageToGlobeResponseBodyNumberDetail) SetRegion(v string) *SendMe
 }
 
 type SendMessageToGlobeResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SendMessageToGlobeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendMessageToGlobeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SendMessageToGlobeResponse) String() string {
@@ -494,6 +513,11 @@ func (s SendMessageToGlobeResponse) GoString() string {
 
 func (s *SendMessageToGlobeResponse) SetHeaders(v map[string]*string) *SendMessageToGlobeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SendMessageToGlobeResponse) SetStatusCode(v int32) *SendMessageToGlobeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -626,8 +650,9 @@ func (s *SendMessageWithTemplateResponseBodyNumberDetail) SetRegion(v string) *S
 }
 
 type SendMessageWithTemplateResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SendMessageWithTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendMessageWithTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SendMessageWithTemplateResponse) String() string {
@@ -640,6 +665,11 @@ func (s SendMessageWithTemplateResponse) GoString() string {
 
 func (s *SendMessageWithTemplateResponse) SetHeaders(v map[string]*string) *SendMessageWithTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SendMessageWithTemplateResponse) SetStatusCode(v int32) *SendMessageWithTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -707,8 +737,9 @@ func (s *SmsConversionResponseBody) SetResponseDescription(v string) *SmsConvers
 }
 
 type SmsConversionResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SmsConversionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SmsConversionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SmsConversionResponse) String() string {
@@ -721,6 +752,11 @@ func (s SmsConversionResponse) GoString() string {
 
 func (s *SmsConversionResponse) SetHeaders(v map[string]*string) *SmsConversionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SmsConversionResponse) SetStatusCode(v int32) *SmsConversionResponse {
+	s.StatusCode = &v
 	return s
 }
 
