@@ -5,12 +5,140 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
+
+type SecretCreateRecordValue struct {
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s SecretCreateRecordValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SecretCreateRecordValue) GoString() string {
+	return s.String()
+}
+
+func (s *SecretCreateRecordValue) SetState(v string) *SecretCreateRecordValue {
+	s.State = &v
+	return s
+}
+
+func (s *SecretCreateRecordValue) SetClusterId(v string) *SecretCreateRecordValue {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *SecretCreateRecordValue) SetMessage(v string) *SecretCreateRecordValue {
+	s.Message = &v
+	return s
+}
+
+type SecretDeleteRecordValue struct {
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s SecretDeleteRecordValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SecretDeleteRecordValue) GoString() string {
+	return s.String()
+}
+
+func (s *SecretDeleteRecordValue) SetState(v string) *SecretDeleteRecordValue {
+	s.State = &v
+	return s
+}
+
+func (s *SecretDeleteRecordValue) SetClusterId(v string) *SecretDeleteRecordValue {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *SecretDeleteRecordValue) SetMessage(v string) *SecretDeleteRecordValue {
+	s.Message = &v
+	return s
+}
+
+type CCMVersionsValue struct {
+	QueryState              *string `json:"QueryState,omitempty" xml:"QueryState,omitempty"`
+	Version                 *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	SLBGracefulDrainSupport *bool   `json:"SLBGracefulDrainSupport,omitempty" xml:"SLBGracefulDrainSupport,omitempty"`
+	ClusterId               *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Message                 *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s CCMVersionsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CCMVersionsValue) GoString() string {
+	return s.String()
+}
+
+func (s *CCMVersionsValue) SetQueryState(v string) *CCMVersionsValue {
+	s.QueryState = &v
+	return s
+}
+
+func (s *CCMVersionsValue) SetVersion(v string) *CCMVersionsValue {
+	s.Version = &v
+	return s
+}
+
+func (s *CCMVersionsValue) SetSLBGracefulDrainSupport(v bool) *CCMVersionsValue {
+	s.SLBGracefulDrainSupport = &v
+	return s
+}
+
+func (s *CCMVersionsValue) SetClusterId(v string) *CCMVersionsValue {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CCMVersionsValue) SetMessage(v string) *CCMVersionsValue {
+	s.Message = &v
+	return s
+}
+
+type UpgradeDetailGatewayStatusRecordValue struct {
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s UpgradeDetailGatewayStatusRecordValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeDetailGatewayStatusRecordValue) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeDetailGatewayStatusRecordValue) SetStatus(v string) *UpgradeDetailGatewayStatusRecordValue {
+	s.Status = &v
+	return s
+}
+
+func (s *UpgradeDetailGatewayStatusRecordValue) SetMessage(v string) *UpgradeDetailGatewayStatusRecordValue {
+	s.Message = &v
+	return s
+}
+
+func (s *UpgradeDetailGatewayStatusRecordValue) SetVersion(v string) *UpgradeDetailGatewayStatusRecordValue {
+	s.Version = &v
+	return s
+}
 
 type AddClusterIntoServiceMeshRequest struct {
 	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -11894,134 +12022,6 @@ func (s *UpgradeMeshVersionResponse) SetStatusCode(v int32) *UpgradeMeshVersionR
 
 func (s *UpgradeMeshVersionResponse) SetBody(v *UpgradeMeshVersionResponseBody) *UpgradeMeshVersionResponse {
 	s.Body = v
-	return s
-}
-
-type SecretCreateRecordValue struct {
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-}
-
-func (s SecretCreateRecordValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SecretCreateRecordValue) GoString() string {
-	return s.String()
-}
-
-func (s *SecretCreateRecordValue) SetState(v string) *SecretCreateRecordValue {
-	s.State = &v
-	return s
-}
-
-func (s *SecretCreateRecordValue) SetClusterId(v string) *SecretCreateRecordValue {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *SecretCreateRecordValue) SetMessage(v string) *SecretCreateRecordValue {
-	s.Message = &v
-	return s
-}
-
-type SecretDeleteRecordValue struct {
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-}
-
-func (s SecretDeleteRecordValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SecretDeleteRecordValue) GoString() string {
-	return s.String()
-}
-
-func (s *SecretDeleteRecordValue) SetState(v string) *SecretDeleteRecordValue {
-	s.State = &v
-	return s
-}
-
-func (s *SecretDeleteRecordValue) SetClusterId(v string) *SecretDeleteRecordValue {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *SecretDeleteRecordValue) SetMessage(v string) *SecretDeleteRecordValue {
-	s.Message = &v
-	return s
-}
-
-type CCMVersionsValue struct {
-	QueryState              *string `json:"QueryState,omitempty" xml:"QueryState,omitempty"`
-	Version                 *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	SLBGracefulDrainSupport *bool   `json:"SLBGracefulDrainSupport,omitempty" xml:"SLBGracefulDrainSupport,omitempty"`
-	ClusterId               *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Message                 *string `json:"Message,omitempty" xml:"Message,omitempty"`
-}
-
-func (s CCMVersionsValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CCMVersionsValue) GoString() string {
-	return s.String()
-}
-
-func (s *CCMVersionsValue) SetQueryState(v string) *CCMVersionsValue {
-	s.QueryState = &v
-	return s
-}
-
-func (s *CCMVersionsValue) SetVersion(v string) *CCMVersionsValue {
-	s.Version = &v
-	return s
-}
-
-func (s *CCMVersionsValue) SetSLBGracefulDrainSupport(v bool) *CCMVersionsValue {
-	s.SLBGracefulDrainSupport = &v
-	return s
-}
-
-func (s *CCMVersionsValue) SetClusterId(v string) *CCMVersionsValue {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *CCMVersionsValue) SetMessage(v string) *CCMVersionsValue {
-	s.Message = &v
-	return s
-}
-
-type UpgradeDetailGatewayStatusRecordValue struct {
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s UpgradeDetailGatewayStatusRecordValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpgradeDetailGatewayStatusRecordValue) GoString() string {
-	return s.String()
-}
-
-func (s *UpgradeDetailGatewayStatusRecordValue) SetStatus(v string) *UpgradeDetailGatewayStatusRecordValue {
-	s.Status = &v
-	return s
-}
-
-func (s *UpgradeDetailGatewayStatusRecordValue) SetMessage(v string) *UpgradeDetailGatewayStatusRecordValue {
-	s.Message = &v
-	return s
-}
-
-func (s *UpgradeDetailGatewayStatusRecordValue) SetVersion(v string) *UpgradeDetailGatewayStatusRecordValue {
-	s.Version = &v
 	return s
 }
 
