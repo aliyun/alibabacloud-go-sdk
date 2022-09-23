@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2020-03-09 for Eipanycast.
+
 2022-08-09 Version: v1.0.2
 - Publish.
 
