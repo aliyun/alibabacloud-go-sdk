@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -2671,6 +2671,7 @@ type CreateOrUpdateIMRobotRequest struct {
 	CardTemplate   *string `json:"CardTemplate,omitempty" xml:"CardTemplate,omitempty"`
 	DailyNoc       *bool   `json:"DailyNoc,omitempty" xml:"DailyNoc,omitempty"`
 	DailyNocTime   *string `json:"DailyNocTime,omitempty" xml:"DailyNocTime,omitempty"`
+	DingSignKey    *string `json:"DingSignKey,omitempty" xml:"DingSignKey,omitempty"`
 	EnableOutgoing *bool   `json:"EnableOutgoing,omitempty" xml:"EnableOutgoing,omitempty"`
 	RobotAddress   *string `json:"RobotAddress,omitempty" xml:"RobotAddress,omitempty"`
 	RobotId        *int64  `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
@@ -2699,6 +2700,11 @@ func (s *CreateOrUpdateIMRobotRequest) SetDailyNoc(v bool) *CreateOrUpdateIMRobo
 
 func (s *CreateOrUpdateIMRobotRequest) SetDailyNocTime(v string) *CreateOrUpdateIMRobotRequest {
 	s.DailyNocTime = &v
+	return s
+}
+
+func (s *CreateOrUpdateIMRobotRequest) SetDingSignKey(v string) *CreateOrUpdateIMRobotRequest {
+	s.DingSignKey = &v
 	return s
 }
 
@@ -7659,6 +7665,7 @@ func (s *DescribeIMRobotsResponseBodyPageBean) SetTotal(v int64) *DescribeIMRobo
 type DescribeIMRobotsResponseBodyPageBeanAlertIMRobots struct {
 	DailyNoc     *bool    `json:"DailyNoc,omitempty" xml:"DailyNoc,omitempty"`
 	DailyNocTime *string  `json:"DailyNocTime,omitempty" xml:"DailyNocTime,omitempty"`
+	DingSignKey  *string  `json:"DingSignKey,omitempty" xml:"DingSignKey,omitempty"`
 	RobotAddr    *string  `json:"RobotAddr,omitempty" xml:"RobotAddr,omitempty"`
 	RobotId      *float32 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
 	RobotName    *string  `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
@@ -7680,6 +7687,11 @@ func (s *DescribeIMRobotsResponseBodyPageBeanAlertIMRobots) SetDailyNoc(v bool) 
 
 func (s *DescribeIMRobotsResponseBodyPageBeanAlertIMRobots) SetDailyNocTime(v string) *DescribeIMRobotsResponseBodyPageBeanAlertIMRobots {
 	s.DailyNocTime = &v
+	return s
+}
+
+func (s *DescribeIMRobotsResponseBodyPageBeanAlertIMRobots) SetDingSignKey(v string) *DescribeIMRobotsResponseBodyPageBeanAlertIMRobots {
+	s.DingSignKey = &v
 	return s
 }
 
@@ -10641,19 +10653,21 @@ func (s *GetSyntheticTaskDetailResponseBody) SetTaskDetail(v *GetSyntheticTaskDe
 }
 
 type GetSyntheticTaskDetailResponseBodyTaskDetail struct {
-	Download       *GetSyntheticTaskDetailResponseBodyTaskDetailDownload       `json:"Download,omitempty" xml:"Download,omitempty" type:"Struct"`
-	ExtendInterval *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval `json:"ExtendInterval,omitempty" xml:"ExtendInterval,omitempty" type:"Struct"`
-	IntervalTime   *int64                                                      `json:"IntervalTime,omitempty" xml:"IntervalTime,omitempty"`
-	IntervalType   *int64                                                      `json:"IntervalType,omitempty" xml:"IntervalType,omitempty"`
-	IpType         *int64                                                      `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	MinotorList    []*GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList  `json:"MinotorList,omitempty" xml:"MinotorList,omitempty" type:"Repeated"`
-	Nav            *GetSyntheticTaskDetailResponseBodyTaskDetailNav            `json:"Nav,omitempty" xml:"Nav,omitempty" type:"Struct"`
-	Net            *GetSyntheticTaskDetailResponseBodyTaskDetailNet            `json:"Net,omitempty" xml:"Net,omitempty" type:"Struct"`
-	Protocol       *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol       `json:"Protocol,omitempty" xml:"Protocol,omitempty" type:"Struct"`
-	TaskId         *int64                                                      `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName       *string                                                     `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskType       *int64                                                      `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	Url            *string                                                     `json:"Url,omitempty" xml:"Url,omitempty"`
+	CommonParam       *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam    `json:"CommonParam,omitempty" xml:"CommonParam,omitempty" type:"Struct"`
+	Download          *GetSyntheticTaskDetailResponseBodyTaskDetailDownload       `json:"Download,omitempty" xml:"Download,omitempty" type:"Struct"`
+	ExtendInterval    *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval `json:"ExtendInterval,omitempty" xml:"ExtendInterval,omitempty" type:"Struct"`
+	IntervalTime      *int64                                                      `json:"IntervalTime,omitempty" xml:"IntervalTime,omitempty"`
+	IntervalType      *int64                                                      `json:"IntervalType,omitempty" xml:"IntervalType,omitempty"`
+	IpType            *int64                                                      `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	MonitorList       []*GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList  `json:"MonitorList,omitempty" xml:"MonitorList,omitempty" type:"Repeated"`
+	MonitorListString *string                                                     `json:"MonitorListString,omitempty" xml:"MonitorListString,omitempty"`
+	Nav               *GetSyntheticTaskDetailResponseBodyTaskDetailNav            `json:"Nav,omitempty" xml:"Nav,omitempty" type:"Struct"`
+	Net               *GetSyntheticTaskDetailResponseBodyTaskDetailNet            `json:"Net,omitempty" xml:"Net,omitempty" type:"Struct"`
+	Protocol          *GetSyntheticTaskDetailResponseBodyTaskDetailProtocol       `json:"Protocol,omitempty" xml:"Protocol,omitempty" type:"Struct"`
+	TaskId            *int64                                                      `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName          *string                                                     `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType          *int64                                                      `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Url               *string                                                     `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetSyntheticTaskDetailResponseBodyTaskDetail) String() string {
@@ -10662,6 +10676,11 @@ func (s GetSyntheticTaskDetailResponseBodyTaskDetail) String() string {
 
 func (s GetSyntheticTaskDetailResponseBodyTaskDetail) GoString() string {
 	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetCommonParam(v *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.CommonParam = v
+	return s
 }
 
 func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetDownload(v *GetSyntheticTaskDetailResponseBodyTaskDetailDownload) *GetSyntheticTaskDetailResponseBodyTaskDetail {
@@ -10689,8 +10708,13 @@ func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetIpType(v int64) *GetSy
 	return s
 }
 
-func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetMinotorList(v []*GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList) *GetSyntheticTaskDetailResponseBodyTaskDetail {
-	s.MinotorList = v
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetMonitorList(v []*GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.MonitorList = v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetMonitorListString(v string) *GetSyntheticTaskDetailResponseBodyTaskDetail {
+	s.MonitorListString = &v
 	return s
 }
 
@@ -10726,6 +10750,94 @@ func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetTaskType(v int64) *Get
 
 func (s *GetSyntheticTaskDetailResponseBodyTaskDetail) SetUrl(v string) *GetSyntheticTaskDetailResponseBodyTaskDetail {
 	s.Url = &v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam struct {
+	AlarmFlag          *int64                                                              `json:"AlarmFlag,omitempty" xml:"AlarmFlag,omitempty"`
+	AlertList          []*GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList `json:"AlertList,omitempty" xml:"AlertList,omitempty" type:"Repeated"`
+	AlertNotifierId    *string                                                             `json:"AlertNotifierId,omitempty" xml:"AlertNotifierId,omitempty"`
+	AlertPolicyId      *string                                                             `json:"AlertPolicyId,omitempty" xml:"AlertPolicyId,omitempty"`
+	MonitorSamples     *string                                                             `json:"MonitorSamples,omitempty" xml:"MonitorSamples,omitempty"`
+	StartExecutionTime *string                                                             `json:"StartExecutionTime,omitempty" xml:"StartExecutionTime,omitempty"`
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam) SetAlarmFlag(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam {
+	s.AlarmFlag = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam) SetAlertList(v []*GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList) *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam {
+	s.AlertList = v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam) SetAlertNotifierId(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam {
+	s.AlertNotifierId = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam) SetAlertPolicyId(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam {
+	s.AlertPolicyId = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam) SetMonitorSamples(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam {
+	s.MonitorSamples = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam) SetStartExecutionTime(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam {
+	s.StartExecutionTime = &v
+	return s
+}
+
+type GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList struct {
+	GeneralAlert *string `json:"GeneralAlert,omitempty" xml:"GeneralAlert,omitempty"`
+	IsCritical   *string `json:"IsCritical,omitempty" xml:"IsCritical,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SeriousAlert *string `json:"SeriousAlert,omitempty" xml:"SeriousAlert,omitempty"`
+	Symbols      *string `json:"Symbols,omitempty" xml:"Symbols,omitempty"`
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList) SetGeneralAlert(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList {
+	s.GeneralAlert = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList) SetIsCritical(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList {
+	s.IsCritical = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList) SetName(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList) SetSeriousAlert(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList {
+	s.SeriousAlert = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList) SetSymbols(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList {
+	s.Symbols = &v
 	return s
 }
 
@@ -10865,37 +10977,37 @@ func (s *GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval) SetStartTim
 	return s
 }
 
-type GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList struct {
+type GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList struct {
 	CityCode     *int64 `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
 	MonitorType  *int64 `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
 	NetServiceId *int64 `json:"NetServiceId,omitempty" xml:"NetServiceId,omitempty"`
 	SendCount    *int64 `json:"SendCount,omitempty" xml:"SendCount,omitempty"`
 }
 
-func (s GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList) String() string {
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList) GoString() string {
+func (s GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList) GoString() string {
 	return s.String()
 }
 
-func (s *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList) SetCityCode(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList {
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList) SetCityCode(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList {
 	s.CityCode = &v
 	return s
 }
 
-func (s *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList) SetMonitorType(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList {
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList) SetMonitorType(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList {
 	s.MonitorType = &v
 	return s
 }
 
-func (s *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList) SetNetServiceId(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList {
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList) SetNetServiceId(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList {
 	s.NetServiceId = &v
 	return s
 }
 
-func (s *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList) SetSendCount(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList {
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList) SetSendCount(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList {
 	s.SendCount = &v
 	return s
 }
@@ -11085,6 +11197,7 @@ type GetSyntheticTaskDetailResponseBodyTaskDetailNet struct {
 	NetDnsQueryMethod    *string `json:"NetDnsQueryMethod,omitempty" xml:"NetDnsQueryMethod,omitempty"`
 	NetDnsServer         *int64  `json:"NetDnsServer,omitempty" xml:"NetDnsServer,omitempty"`
 	NetDnsSwitch         *int64  `json:"NetDnsSwitch,omitempty" xml:"NetDnsSwitch,omitempty"`
+	NetDnsTimeout        *string `json:"NetDnsTimeout,omitempty" xml:"NetDnsTimeout,omitempty"`
 	NetIcmpActive        *int64  `json:"NetIcmpActive,omitempty" xml:"NetIcmpActive,omitempty"`
 	NetIcmpDataCut       *int64  `json:"NetIcmpDataCut,omitempty" xml:"NetIcmpDataCut,omitempty"`
 	NetIcmpInterval      *int64  `json:"NetIcmpInterval,omitempty" xml:"NetIcmpInterval,omitempty"`
@@ -11128,6 +11241,11 @@ func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetDnsServer(v int6
 
 func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetDnsSwitch(v int64) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
 	s.NetDnsSwitch = &v
+	return s
+}
+
+func (s *GetSyntheticTaskDetailResponseBodyTaskDetailNet) SetNetDnsTimeout(v string) *GetSyntheticTaskDetailResponseBodyTaskDetailNet {
+	s.NetDnsTimeout = &v
 	return s
 }
 
@@ -12912,6 +13030,7 @@ type ListAlertEventsResponseBodyPageBeanEvents struct {
 	Description     *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
 	EndTime         *string                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	GeneratorURL    *string                                            `json:"GeneratorURL,omitempty" xml:"GeneratorURL,omitempty"`
+	HandlerName     *string                                            `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
 	IntegrationName *string                                            `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
 	IntegrationType *string                                            `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	Labels          *string                                            `json:"Labels,omitempty" xml:"Labels,omitempty"`
@@ -12956,6 +13075,11 @@ func (s *ListAlertEventsResponseBodyPageBeanEvents) SetEndTime(v string) *ListAl
 
 func (s *ListAlertEventsResponseBodyPageBeanEvents) SetGeneratorURL(v string) *ListAlertEventsResponseBodyPageBeanEvents {
 	s.GeneratorURL = &v
+	return s
+}
+
+func (s *ListAlertEventsResponseBodyPageBeanEvents) SetHandlerName(v string) *ListAlertEventsResponseBodyPageBeanEvents {
+	s.HandlerName = &v
 	return s
 }
 
@@ -16181,6 +16305,7 @@ func (s *ListRetcodeAppsResponseBody) SetRetcodeApps(v []*ListRetcodeAppsRespons
 type ListRetcodeAppsResponseBodyRetcodeApps struct {
 	AppId          *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	NickName       *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	Pid            *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	RetcodeAppType *string `json:"RetcodeAppType,omitempty" xml:"RetcodeAppType,omitempty"`
 }
@@ -16200,6 +16325,11 @@ func (s *ListRetcodeAppsResponseBodyRetcodeApps) SetAppId(v int64) *ListRetcodeA
 
 func (s *ListRetcodeAppsResponseBodyRetcodeApps) SetAppName(v string) *ListRetcodeAppsResponseBodyRetcodeApps {
 	s.AppName = &v
+	return s
+}
+
+func (s *ListRetcodeAppsResponseBodyRetcodeApps) SetNickName(v string) *ListRetcodeAppsResponseBodyRetcodeApps {
+	s.NickName = &v
 	return s
 }
 
@@ -23479,6 +23609,10 @@ func (client *Client) CreateOrUpdateIMRobotWithOptions(request *CreateOrUpdateIM
 
 	if !tea.BoolValue(util.IsUnset(request.DailyNocTime)) {
 		body["DailyNocTime"] = request.DailyNocTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DingSignKey)) {
+		body["DingSignKey"] = request.DingSignKey
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnableOutgoing)) {
