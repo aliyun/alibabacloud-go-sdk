@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -9325,7 +9325,6 @@ func (s *DescribeImagePermissionResponse) SetBody(v *DescribeImagePermissionResp
 
 type DescribeImagesRequest struct {
 	DesktopInstanceType *string   `json:"DesktopInstanceType,omitempty" xml:"DesktopInstanceType,omitempty"`
-	FotaChannel         *string   `json:"FotaChannel,omitempty" xml:"FotaChannel,omitempty"`
 	GpuCategory         *bool     `json:"GpuCategory,omitempty" xml:"GpuCategory,omitempty"`
 	GpuDriverVersion    *string   `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
 	ImageId             []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
@@ -9349,11 +9348,6 @@ func (s DescribeImagesRequest) GoString() string {
 
 func (s *DescribeImagesRequest) SetDesktopInstanceType(v string) *DescribeImagesRequest {
 	s.DesktopInstanceType = &v
-	return s
-}
-
-func (s *DescribeImagesRequest) SetFotaChannel(v string) *DescribeImagesRequest {
-	s.FotaChannel = &v
 	return s
 }
 
@@ -25457,10 +25451,6 @@ func (client *Client) DescribeImagesWithOptions(request *DescribeImagesRequest, 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DesktopInstanceType)) {
 		query["DesktopInstanceType"] = request.DesktopInstanceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FotaChannel)) {
-		query["FotaChannel"] = request.FotaChannel
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GpuCategory)) {
