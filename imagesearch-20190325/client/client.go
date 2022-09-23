@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -148,8 +148,9 @@ func (s *AddImageResponseBodyPicInfo) SetRegion(v string) *AddImageResponseBodyP
 }
 
 type AddImageResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddImageResponse) String() string {
@@ -162,6 +163,11 @@ func (s AddImageResponse) GoString() string {
 
 func (s *AddImageResponse) SetHeaders(v map[string]*string) *AddImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddImageResponse) SetStatusCode(v int32) *AddImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -235,8 +241,9 @@ func (s *DeleteImageResponseBody) SetSuccess(v bool) *DeleteImageResponseBody {
 }
 
 type DeleteImageResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteImageResponse) String() string {
@@ -249,6 +256,11 @@ func (s DeleteImageResponse) GoString() string {
 
 func (s *DeleteImageResponse) SetHeaders(v map[string]*string) *DeleteImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteImageResponse) SetStatusCode(v int32) *DeleteImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -522,8 +534,9 @@ func (s *SearchImageResponseBodyPicInfoAllCategories) SetName(v string) *SearchI
 }
 
 type SearchImageResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SearchImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SearchImageResponse) String() string {
@@ -536,6 +549,11 @@ func (s SearchImageResponse) GoString() string {
 
 func (s *SearchImageResponse) SetHeaders(v map[string]*string) *SearchImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SearchImageResponse) SetStatusCode(v int32) *SearchImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -653,8 +671,19 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, headers map[
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("AddImage"),
+		Version:     tea.String("2019-03-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/image/add"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &AddImageResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("AddImage"), tea.String("2019-03-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/v2/image/add"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -696,8 +725,19 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, header
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteImage"),
+		Version:     tea.String("2019-03-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/image/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteImageResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("DeleteImage"), tea.String("2019-03-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/v2/image/delete"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -771,8 +811,19 @@ func (client *Client) SearchImageWithOptions(request *SearchImageRequest, header
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchImage"),
+		Version:     tea.String("2019-03-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/image/search"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &SearchImageResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("SearchImage"), tea.String("2019-03-25"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/v2/image/search"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
