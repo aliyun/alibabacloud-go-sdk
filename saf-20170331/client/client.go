@@ -5,9 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -35,10 +36,10 @@ func (s *ExecuteRequestRequest) SetServiceParameters(v string) *ExecuteRequestRe
 }
 
 type ExecuteRequestResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s ExecuteRequestResponseBody) String() string {
@@ -47,6 +48,16 @@ func (s ExecuteRequestResponseBody) String() string {
 
 func (s ExecuteRequestResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ExecuteRequestResponseBody) SetCode(v int32) *ExecuteRequestResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExecuteRequestResponseBody) SetData(v string) *ExecuteRequestResponseBody {
+	s.Data = &v
+	return s
 }
 
 func (s *ExecuteRequestResponseBody) SetMessage(v string) *ExecuteRequestResponseBody {
@@ -59,19 +70,10 @@ func (s *ExecuteRequestResponseBody) SetRequestId(v string) *ExecuteRequestRespo
 	return s
 }
 
-func (s *ExecuteRequestResponseBody) SetData(v string) *ExecuteRequestResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *ExecuteRequestResponseBody) SetCode(v int32) *ExecuteRequestResponseBody {
-	s.Code = &v
-	return s
-}
-
 type ExecuteRequestResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExecuteRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExecuteRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ExecuteRequestResponse) String() string {
@@ -84,6 +86,11 @@ func (s ExecuteRequestResponse) GoString() string {
 
 func (s *ExecuteRequestResponse) SetHeaders(v map[string]*string) *ExecuteRequestResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ExecuteRequestResponse) SetStatusCode(v int32) *ExecuteRequestResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -147,11 +154,31 @@ func (client *Client) ExecuteRequestWithOptions(request *ExecuteRequestRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		query["Service"] = request.Service
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		query["ServiceParameters"] = request.ServiceParameters
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteRequest"),
+		Version:     tea.String("2017-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ExecuteRequestResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExecuteRequest"), tea.String("2017-03-31"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
