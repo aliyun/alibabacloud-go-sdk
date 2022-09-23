@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2020-06-01 for SWAS-OPEN.
+
 2021-11-23 Version: v1.0.2
 - Improve the error code.
 
