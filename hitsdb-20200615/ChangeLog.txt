@@ -1,3 +1,6 @@
+2022-09-23 Version: v4.0.0
+- Generated golang 2020-06-15 for hitsdb.
+
 2022-08-15 Version: v3.0.5
 - Update Lindorm OpenAPI.
 
