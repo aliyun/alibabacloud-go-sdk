@@ -1,3 +1,6 @@
+2022-09-23 Version: v3.0.0
+- Generated golang 2018-08-08 for Eci.
+
 2021-08-18 Version: v2.0.2
 - Exec sync response.
 
