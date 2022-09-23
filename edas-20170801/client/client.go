@@ -5,73 +5,43 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AppConfig struct {
-	// 启动命令
-	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// 启动参数
-	CommandArgs []*string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty" type:"Repeated"`
-	// 配置项挂载配置
-	ConfigMountDescs []*AppConfigConfigMountDescs `json:"ConfigMountDescs,omitempty" xml:"ConfigMountDescs,omitempty" type:"Repeated"`
-	// 是否尽量多节点部署
-	DeployAcrossNodes *bool `json:"DeployAcrossNodes,omitempty" xml:"DeployAcrossNodes,omitempty"`
-	// 是否尽量多可用区部署
-	DeployAcrossZones *bool `json:"DeployAcrossZones,omitempty" xml:"DeployAcrossZones,omitempty"`
-	// EmptyDir挂载配置
-	EmptyDirs []*AppConfigEmptyDirs `json:"EmptyDirs,omitempty" xml:"EmptyDirs,omitempty" type:"Repeated"`
-	// 是否开启限流降级
-	EnableAhas *bool `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	// 环境变量引用
-	EnvFroms []*AppConfigEnvFroms `json:"EnvFroms,omitempty" xml:"EnvFroms,omitempty" type:"Repeated"`
-	// 环境变量
-	Envs []*AppConfigEnvs `json:"Envs,omitempty" xml:"Envs,omitempty" type:"Repeated"`
-	// 镜像配置
-	ImageConfig *AppConfigImageConfig `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty" type:"Struct"`
-	// 是否多语言应用
-	IsMultilingualApp *bool `json:"IsMultilingualApp,omitempty" xml:"IsMultilingualApp,omitempty"`
-	// Java启动参数配置
-	JavaStartUpConfig *string `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty"`
-	// CPU限制
-	LimitCpu *string `json:"LimitCpu,omitempty" xml:"LimitCpu,omitempty"`
-	// 内存限制
-	LimitMem *string `json:"LimitMem,omitempty" xml:"LimitMem,omitempty"`
-	// liveness探针配置
-	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	// 本地磁盘挂载配置
-	LocalVolumes []*AppConfigLocalVolumes `json:"LocalVolumes,omitempty" xml:"LocalVolumes,omitempty" type:"Repeated"`
-	// NAS实例ID
-	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	// NAS挂载配置
-	NasMountDescs []*AppConfigNasMountDescs `json:"NasMountDescs,omitempty" xml:"NasMountDescs,omitempty" type:"Repeated"`
-	// NAS存储类型
-	NasStorageType *string `json:"NasStorageType,omitempty" xml:"NasStorageType,omitempty"`
-	// 部署包配置
-	PackageConfig *AppConfigPackageConfig `json:"PackageConfig,omitempty" xml:"PackageConfig,omitempty" type:"Struct"`
-	// postStart挂钩配置
-	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// preStop挂钩配置
-	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	// 持久化存储挂载配置
-	PvcMountDescs []*AppConfigPvcMountDescs `json:"PvcMountDescs,omitempty" xml:"PvcMountDescs,omitempty" type:"Repeated"`
-	// readiness探针配置
-	Readiness *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
-	// 应用实例数
-	Replicas *int64 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	// CPU需求
-	RequestCpu *string `json:"RequestCpu,omitempty" xml:"RequestCpu,omitempty"`
-	// 内存需求
-	RequestMem *string `json:"RequestMem,omitempty" xml:"RequestMem,omitempty"`
-	// 运行时类型
-	RuntimeClassName *string `json:"RuntimeClassName,omitempty" xml:"RuntimeClassName,omitempty"`
-	// 日志采集配置
-	SlsConfigs []*AppConfigSlsConfigs `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty" type:"Repeated"`
-	// Tomcat配置
+	Command            *string                      `json:"Command,omitempty" xml:"Command,omitempty"`
+	CommandArgs        []*string                    `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty" type:"Repeated"`
+	ConfigMountDescs   []*AppConfigConfigMountDescs `json:"ConfigMountDescs,omitempty" xml:"ConfigMountDescs,omitempty" type:"Repeated"`
+	DeployAcrossNodes  *bool                        `json:"DeployAcrossNodes,omitempty" xml:"DeployAcrossNodes,omitempty"`
+	DeployAcrossZones  *bool                        `json:"DeployAcrossZones,omitempty" xml:"DeployAcrossZones,omitempty"`
+	EmptyDirs          []*AppConfigEmptyDirs        `json:"EmptyDirs,omitempty" xml:"EmptyDirs,omitempty" type:"Repeated"`
+	EnableAhas         *bool                        `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	EnvFroms           []*AppConfigEnvFroms         `json:"EnvFroms,omitempty" xml:"EnvFroms,omitempty" type:"Repeated"`
+	Envs               []*AppConfigEnvs             `json:"Envs,omitempty" xml:"Envs,omitempty" type:"Repeated"`
+	ImageConfig        *AppConfigImageConfig        `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty" type:"Struct"`
+	IsMultilingualApp  *bool                        `json:"IsMultilingualApp,omitempty" xml:"IsMultilingualApp,omitempty"`
+	JavaStartUpConfig  *string                      `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty"`
+	LimitCpu           *string                      `json:"LimitCpu,omitempty" xml:"LimitCpu,omitempty"`
+	LimitMem           *string                      `json:"LimitMem,omitempty" xml:"LimitMem,omitempty"`
+	Liveness           *string                      `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	LocalVolumes       []*AppConfigLocalVolumes     `json:"LocalVolumes,omitempty" xml:"LocalVolumes,omitempty" type:"Repeated"`
+	NasId              *string                      `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	NasMountDescs      []*AppConfigNasMountDescs    `json:"NasMountDescs,omitempty" xml:"NasMountDescs,omitempty" type:"Repeated"`
+	NasStorageType     *string                      `json:"NasStorageType,omitempty" xml:"NasStorageType,omitempty"`
+	PackageConfig      *AppConfigPackageConfig      `json:"PackageConfig,omitempty" xml:"PackageConfig,omitempty" type:"Struct"`
+	PostStart          *string                      `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop            *string                      `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	PvcMountDescs      []*AppConfigPvcMountDescs    `json:"PvcMountDescs,omitempty" xml:"PvcMountDescs,omitempty" type:"Repeated"`
+	Readiness          *string                      `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	Replicas           *int64                       `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	RequestCpu         *string                      `json:"RequestCpu,omitempty" xml:"RequestCpu,omitempty"`
+	RequestMem         *string                      `json:"RequestMem,omitempty" xml:"RequestMem,omitempty"`
+	RuntimeClassName   *string                      `json:"RuntimeClassName,omitempty" xml:"RuntimeClassName,omitempty"`
+	SlsConfigs         []*AppConfigSlsConfigs       `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty" type:"Repeated"`
 	WebContainerConfig *AppConfigWebContainerConfig `json:"WebContainerConfig,omitempty" xml:"WebContainerConfig,omitempty" type:"Struct"`
 }
 
@@ -234,14 +204,10 @@ func (s *AppConfig) SetWebContainerConfig(v *AppConfigWebContainerConfig) *AppCo
 }
 
 type AppConfigConfigMountDescs struct {
-	// 挂载条目
 	MountItems []*AppConfigConfigMountDescsMountItems `json:"MountItems,omitempty" xml:"MountItems,omitempty" type:"Repeated"`
-	// 挂载路径
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// 名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	MountPath  *string                                `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Name       *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type       *string                                `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AppConfigConfigMountDescs) String() string {
@@ -273,9 +239,7 @@ func (s *AppConfigConfigMountDescs) SetType(v string) *AppConfigConfigMountDescs
 }
 
 type AppConfigConfigMountDescsMountItems struct {
-	// 配置项
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 路径
+	Key  *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
@@ -298,13 +262,9 @@ func (s *AppConfigConfigMountDescsMountItems) SetPath(v string) *AppConfigConfig
 }
 
 type AppConfigEmptyDirs struct {
-	// 挂载路径
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// 容器名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 是否只读
-	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// 子路径表达式
+	MountPath   *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ReadOnly    *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
 	SubPathExpr *string `json:"SubPathExpr,omitempty" xml:"SubPathExpr,omitempty"`
 }
 
@@ -337,10 +297,8 @@ func (s *AppConfigEmptyDirs) SetSubPathExpr(v string) *AppConfigEmptyDirs {
 }
 
 type AppConfigEnvFroms struct {
-	// 配置项引用
 	ConfigMapRef *string `json:"ConfigMapRef,omitempty" xml:"ConfigMapRef,omitempty"`
-	// 保密字典引用
-	SecretRef *string `json:"SecretRef,omitempty" xml:"SecretRef,omitempty"`
+	SecretRef    *string `json:"SecretRef,omitempty" xml:"SecretRef,omitempty"`
 }
 
 func (s AppConfigEnvFroms) String() string {
@@ -362,11 +320,8 @@ func (s *AppConfigEnvFroms) SetSecretRef(v string) *AppConfigEnvFroms {
 }
 
 type AppConfigEnvs struct {
-	// 变量名
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 变量值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 变量引用
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	ValueFrom *string `json:"ValueFrom,omitempty" xml:"ValueFrom,omitempty"`
 }
 
@@ -394,14 +349,10 @@ func (s *AppConfigEnvs) SetValueFrom(v string) *AppConfigEnvs {
 }
 
 type AppConfigImageConfig struct {
-	// 镜像仓库实例ID
 	ContainerRegistryId *string `json:"ContainerRegistryId,omitempty" xml:"ContainerRegistryId,omitempty"`
-	// 镜像服务实例ID
-	CrInstanceId *string `json:"CrInstanceId,omitempty" xml:"CrInstanceId,omitempty"`
-	// 镜像仓库Region
-	CrRegionId *string `json:"CrRegionId,omitempty" xml:"CrRegionId,omitempty"`
-	// 镜像地址
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	CrInstanceId        *string `json:"CrInstanceId,omitempty" xml:"CrInstanceId,omitempty"`
+	CrRegionId          *string `json:"CrRegionId,omitempty" xml:"CrRegionId,omitempty"`
+	ImageUrl            *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 }
 
 func (s AppConfigImageConfig) String() string {
@@ -433,16 +384,11 @@ func (s *AppConfigImageConfig) SetImageUrl(v string) *AppConfigImageConfig {
 }
 
 type AppConfigLocalVolumes struct {
-	// 容器挂载路径
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// 名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 节点路径
-	NodePath *string `json:"NodePath,omitempty" xml:"NodePath,omitempty"`
-	// 权限类型
-	OpsAuth *int64 `json:"OpsAuth,omitempty" xml:"OpsAuth,omitempty"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodePath  *string `json:"NodePath,omitempty" xml:"NodePath,omitempty"`
+	OpsAuth   *int64  `json:"OpsAuth,omitempty" xml:"OpsAuth,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AppConfigLocalVolumes) String() string {
@@ -479,10 +425,8 @@ func (s *AppConfigLocalVolumes) SetType(v string) *AppConfigLocalVolumes {
 }
 
 type AppConfigNasMountDescs struct {
-	// NAS挂载路径
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// NAS文件路径
-	NasPath *string `json:"NasPath,omitempty" xml:"NasPath,omitempty"`
+	NasPath   *string `json:"NasPath,omitempty" xml:"NasPath,omitempty"`
 }
 
 func (s AppConfigNasMountDescs) String() string {
@@ -504,24 +448,15 @@ func (s *AppConfigNasMountDescs) SetNasPath(v string) *AppConfigNasMountDescs {
 }
 
 type AppConfigPackageConfig struct {
-	// Pandora版本
 	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	// JDK版本
-	Jdk *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	// 部署包类型
-	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// 部署包地址
-	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	// 部署包版本
-	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	// 时区
-	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// URI字符编码
-	UriEncoding *string `json:"UriEncoding,omitempty" xml:"UriEncoding,omitempty"`
-	// useBodyEncodingForURI是否启用
-	UseBodyEncoding *bool `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
-	// Tomcat版本
-	WebContainer *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+	Jdk                  *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	PackageType          *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	PackageUrl           *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	PackageVersion       *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	Timezone             *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	UriEncoding          *string `json:"UriEncoding,omitempty" xml:"UriEncoding,omitempty"`
+	UseBodyEncoding      *bool   `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
+	WebContainer         *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
 }
 
 func (s AppConfigPackageConfig) String() string {
@@ -578,10 +513,8 @@ func (s *AppConfigPackageConfig) SetWebContainer(v string) *AppConfigPackageConf
 }
 
 type AppConfigPvcMountDescs struct {
-	// 持久化存储挂载路径列表
 	MountPaths []*AppConfigPvcMountDescsMountPaths `json:"MountPaths,omitempty" xml:"MountPaths,omitempty" type:"Repeated"`
-	// 持久化存储名称
-	PvcName *string `json:"PvcName,omitempty" xml:"PvcName,omitempty"`
+	PvcName    *string                             `json:"PvcName,omitempty" xml:"PvcName,omitempty"`
 }
 
 func (s AppConfigPvcMountDescs) String() string {
@@ -603,11 +536,8 @@ func (s *AppConfigPvcMountDescs) SetPvcName(v string) *AppConfigPvcMountDescs {
 }
 
 type AppConfigPvcMountDescsMountPaths struct {
-	// 挂载路径
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// 是否只读
-	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// 子路径表达式
+	MountPath   *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	ReadOnly    *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
 	SubPathExpr *string `json:"SubPathExpr,omitempty" xml:"SubPathExpr,omitempty"`
 }
 
@@ -635,14 +565,10 @@ func (s *AppConfigPvcMountDescsMountPaths) SetSubPathExpr(v string) *AppConfigPv
 }
 
 type AppConfigSlsConfigs struct {
-	// 日志目录
-	LogDir *string `json:"LogDir,omitempty" xml:"LogDir,omitempty"`
-	// 日志存储
+	LogDir   *string `json:"LogDir,omitempty" xml:"LogDir,omitempty"`
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	// 日志项目
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AppConfigSlsConfigs) String() string {
@@ -674,26 +600,16 @@ func (s *AppConfigSlsConfigs) SetType(v string) *AppConfigSlsConfigs {
 }
 
 type AppConfigWebContainerConfig struct {
-	// connector类型
-	ConnectorType *string `json:"ConnectorType,omitempty" xml:"ConnectorType,omitempty"`
-	// Context选择类型
-	ContextInputType *string `json:"ContextInputType,omitempty" xml:"ContextInputType,omitempty"`
-	// Context路径
-	ContextPath *string `json:"ContextPath,omitempty" xml:"ContextPath,omitempty"`
-	// 应用端口
-	HttpPort *int64 `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
-	// 最大线程数
-	MaxThreads *int64 `json:"MaxThreads,omitempty" xml:"MaxThreads,omitempty"`
-	// 自定义配置
-	ServerXml *string `json:"ServerXml,omitempty" xml:"ServerXml,omitempty"`
-	// URI字符编码
-	UriEncoding *string `json:"UriEncoding,omitempty" xml:"UriEncoding,omitempty"`
-	// 是否使用高级配置
-	UseAdvancedServerXml *bool `json:"UseAdvancedServerXml,omitempty" xml:"UseAdvancedServerXml,omitempty"`
-	// useBodyEncodingForURI是否启用
-	UseBodyEncoding *bool `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
-	// 是否使用默认配置
-	UseDefaultConfig *bool `json:"UseDefaultConfig,omitempty" xml:"UseDefaultConfig,omitempty"`
+	ConnectorType        *string `json:"ConnectorType,omitempty" xml:"ConnectorType,omitempty"`
+	ContextInputType     *string `json:"ContextInputType,omitempty" xml:"ContextInputType,omitempty"`
+	ContextPath          *string `json:"ContextPath,omitempty" xml:"ContextPath,omitempty"`
+	HttpPort             *int64  `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
+	MaxThreads           *int64  `json:"MaxThreads,omitempty" xml:"MaxThreads,omitempty"`
+	ServerXml            *string `json:"ServerXml,omitempty" xml:"ServerXml,omitempty"`
+	UriEncoding          *string `json:"UriEncoding,omitempty" xml:"UriEncoding,omitempty"`
+	UseAdvancedServerXml *bool   `json:"UseAdvancedServerXml,omitempty" xml:"UseAdvancedServerXml,omitempty"`
+	UseBodyEncoding      *bool   `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
+	UseDefaultConfig     *bool   `json:"UseDefaultConfig,omitempty" xml:"UseDefaultConfig,omitempty"`
 }
 
 func (s AppConfigWebContainerConfig) String() string {
@@ -1051,248 +967,6 @@ func (s *AddLogPathResponse) SetStatusCode(v int32) *AddLogPathResponse {
 }
 
 func (s *AddLogPathResponse) SetBody(v *AddLogPathResponseBody) *AddLogPathResponse {
-	s.Body = v
-	return s
-}
-
-type AddMockRuleRequest struct {
-	ConsumerAppsJson  *string `json:"ConsumerAppsJson,omitempty" xml:"ConsumerAppsJson,omitempty"`
-	DubboMockItemJson *string `json:"DubboMockItemJson,omitempty" xml:"DubboMockItemJson,omitempty"`
-	Enable            *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	ExtraJson         *string `json:"ExtraJson,omitempty" xml:"ExtraJson,omitempty"`
-	MockType          *int64  `json:"MockType,omitempty" xml:"MockType,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ProviderAppId     *string `json:"ProviderAppId,omitempty" xml:"ProviderAppId,omitempty"`
-	ProviderAppName   *string `json:"ProviderAppName,omitempty" xml:"ProviderAppName,omitempty"`
-	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ScMockItemJson    *string `json:"ScMockItemJson,omitempty" xml:"ScMockItemJson,omitempty"`
-	Source            *string `json:"Source,omitempty" xml:"Source,omitempty"`
-}
-
-func (s AddMockRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddMockRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddMockRuleRequest) SetConsumerAppsJson(v string) *AddMockRuleRequest {
-	s.ConsumerAppsJson = &v
-	return s
-}
-
-func (s *AddMockRuleRequest) SetDubboMockItemJson(v string) *AddMockRuleRequest {
-	s.DubboMockItemJson = &v
-	return s
-}
-
-func (s *AddMockRuleRequest) SetEnable(v bool) *AddMockRuleRequest {
-	s.Enable = &v
-	return s
-}
-
-func (s *AddMockRuleRequest) SetExtraJson(v string) *AddMockRuleRequest {
-	s.ExtraJson = &v
-	return s
-}
-
-func (s *AddMockRuleRequest) SetMockType(v int64) *AddMockRuleRequest {
-	s.MockType = &v
-	return s
-}
-
-func (s *AddMockRuleRequest) SetName(v string) *AddMockRuleRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *AddMockRuleRequest) SetNamespace(v string) *AddMockRuleRequest {
-	s.Namespace = &v
-	return s
-}
-
-func (s *AddMockRuleRequest) SetProviderAppId(v string) *AddMockRuleRequest {
-	s.ProviderAppId = &v
-	return s
-}
-
-func (s *AddMockRuleRequest) SetProviderAppName(v string) *AddMockRuleRequest {
-	s.ProviderAppName = &v
-	return s
-}
-
-func (s *AddMockRuleRequest) SetRegion(v string) *AddMockRuleRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *AddMockRuleRequest) SetScMockItemJson(v string) *AddMockRuleRequest {
-	s.ScMockItemJson = &v
-	return s
-}
-
-func (s *AddMockRuleRequest) SetSource(v string) *AddMockRuleRequest {
-	s.Source = &v
-	return s
-}
-
-type AddMockRuleResponseBody struct {
-	Code      *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *AddMockRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s AddMockRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddMockRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddMockRuleResponseBody) SetCode(v int32) *AddMockRuleResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBody) SetData(v *AddMockRuleResponseBodyData) *AddMockRuleResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *AddMockRuleResponseBody) SetMessage(v string) *AddMockRuleResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBody) SetRequestId(v string) *AddMockRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBody) SetSuccess(v bool) *AddMockRuleResponseBody {
-	s.Success = &v
-	return s
-}
-
-type AddMockRuleResponseBodyData struct {
-	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	ConsumerAppId   *string `json:"ConsumerAppId,omitempty" xml:"ConsumerAppId,omitempty"`
-	ConsumerAppName *string `json:"ConsumerAppName,omitempty" xml:"ConsumerAppName,omitempty"`
-	Enable          *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	ExtraJson       *string `json:"ExtraJson,omitempty" xml:"ExtraJson,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	ProviderAppId   *string `json:"ProviderAppId,omitempty" xml:"ProviderAppId,omitempty"`
-	ProviderAppName *string `json:"ProviderAppName,omitempty" xml:"ProviderAppName,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ScMockItemJson  *string `json:"ScMockItemJson,omitempty" xml:"ScMockItemJson,omitempty"`
-	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
-}
-
-func (s AddMockRuleResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddMockRuleResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *AddMockRuleResponseBodyData) SetAccountId(v string) *AddMockRuleResponseBodyData {
-	s.AccountId = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBodyData) SetConsumerAppId(v string) *AddMockRuleResponseBodyData {
-	s.ConsumerAppId = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBodyData) SetConsumerAppName(v string) *AddMockRuleResponseBodyData {
-	s.ConsumerAppName = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBodyData) SetEnable(v bool) *AddMockRuleResponseBodyData {
-	s.Enable = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBodyData) SetExtraJson(v string) *AddMockRuleResponseBodyData {
-	s.ExtraJson = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBodyData) SetId(v int64) *AddMockRuleResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBodyData) SetName(v string) *AddMockRuleResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBodyData) SetNamespaceId(v string) *AddMockRuleResponseBodyData {
-	s.NamespaceId = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBodyData) SetProviderAppId(v string) *AddMockRuleResponseBodyData {
-	s.ProviderAppId = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBodyData) SetProviderAppName(v string) *AddMockRuleResponseBodyData {
-	s.ProviderAppName = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBodyData) SetRegion(v string) *AddMockRuleResponseBodyData {
-	s.Region = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBodyData) SetScMockItemJson(v string) *AddMockRuleResponseBodyData {
-	s.ScMockItemJson = &v
-	return s
-}
-
-func (s *AddMockRuleResponseBodyData) SetSource(v string) *AddMockRuleResponseBodyData {
-	s.Source = &v
-	return s
-}
-
-type AddMockRuleResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddMockRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddMockRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddMockRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddMockRuleResponse) SetHeaders(v map[string]*string) *AddMockRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddMockRuleResponse) SetStatusCode(v int32) *AddMockRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AddMockRuleResponse) SetBody(v *AddMockRuleResponseBody) *AddMockRuleResponse {
 	s.Body = v
 	return s
 }
@@ -2558,14 +2232,10 @@ func (s *CreateApplicationScalingRuleResponse) SetBody(v *CreateApplicationScali
 }
 
 type CreateConfigTemplateRequest struct {
-	// 模板内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 模板描述
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 模板数据格式
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// 配置模板名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Format      *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateConfigTemplateRequest) String() string {
@@ -2597,14 +2267,10 @@ func (s *CreateConfigTemplateRequest) SetName(v string) *CreateConfigTemplateReq
 }
 
 type CreateConfigTemplateResponseBody struct {
-	// 响应码
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 响应数据
-	Data *CreateConfigTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 响应码文本描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateConfigTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateConfigTemplateResponseBody) String() string {
@@ -2636,7 +2302,6 @@ func (s *CreateConfigTemplateResponseBody) SetRequestId(v string) *CreateConfigT
 }
 
 type CreateConfigTemplateResponseBodyData struct {
-	// 模板ID
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -3061,10 +2726,11 @@ func (s *CreateK8sSecretResponse) SetBody(v *CreateK8sSecretResponseBody) *Creat
 }
 
 type CreateK8sServiceRequest struct {
-	AppId        *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Name         *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ServicePorts map[string]interface{} `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty"`
-	Type         *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	AppId                 *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ExternalTrafficPolicy *string                `json:"ExternalTrafficPolicy,omitempty" xml:"ExternalTrafficPolicy,omitempty"`
+	Name                  *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ServicePorts          map[string]interface{} `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty"`
+	Type                  *string                `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateK8sServiceRequest) String() string {
@@ -3077,6 +2743,11 @@ func (s CreateK8sServiceRequest) GoString() string {
 
 func (s *CreateK8sServiceRequest) SetAppId(v string) *CreateK8sServiceRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *CreateK8sServiceRequest) SetExternalTrafficPolicy(v string) *CreateK8sServiceRequest {
+	s.ExternalTrafficPolicy = &v
 	return s
 }
 
@@ -3484,7 +3155,6 @@ func (s *DeleteClusterMemberResponse) SetBody(v *DeleteClusterMemberResponseBody
 }
 
 type DeleteConfigTemplateRequest struct {
-	// 配置模板ID
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -3502,11 +3172,8 @@ func (s *DeleteConfigTemplateRequest) SetId(v int64) *DeleteConfigTemplateReques
 }
 
 type DeleteConfigTemplateResponseBody struct {
-	// 响应码
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 响应码文本描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3732,6 +3399,7 @@ func (s *DeleteEcuResponse) SetBody(v *DeleteEcuResponseBody) *DeleteEcuResponse
 
 type DeleteK8sApplicationRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Force *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 }
 
 func (s DeleteK8sApplicationRequest) String() string {
@@ -3744,6 +3412,11 @@ func (s DeleteK8sApplicationRequest) GoString() string {
 
 func (s *DeleteK8sApplicationRequest) SetAppId(v string) *DeleteK8sApplicationRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *DeleteK8sApplicationRequest) SetForce(v bool) *DeleteK8sApplicationRequest {
+	s.Force = &v
 	return s
 }
 
@@ -4384,6 +4057,87 @@ func (s *DeleteServiceGroupResponse) SetBody(v *DeleteServiceGroupResponseBody) 
 	return s
 }
 
+type DeleteSwimmingLaneRequest struct {
+	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+}
+
+func (s DeleteSwimmingLaneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimmingLaneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimmingLaneRequest) SetLaneId(v int64) *DeleteSwimmingLaneRequest {
+	s.LaneId = &v
+	return s
+}
+
+type DeleteSwimmingLaneResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteSwimmingLaneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimmingLaneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimmingLaneResponseBody) SetCode(v int32) *DeleteSwimmingLaneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneResponseBody) SetData(v int32) *DeleteSwimmingLaneResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneResponseBody) SetMessage(v string) *DeleteSwimmingLaneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneResponseBody) SetRequestId(v string) *DeleteSwimmingLaneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteSwimmingLaneResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSwimmingLaneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSwimmingLaneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimmingLaneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimmingLaneResponse) SetHeaders(v map[string]*string) *DeleteSwimmingLaneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSwimmingLaneResponse) SetStatusCode(v int32) *DeleteSwimmingLaneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneResponse) SetBody(v *DeleteSwimmingLaneResponseBody) *DeleteSwimmingLaneResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteUserDefineRegionRequest struct {
 	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	RegionTag *string `json:"RegionTag,omitempty" xml:"RegionTag,omitempty"`
@@ -4684,46 +4438,39 @@ func (s *DeployApplicationResponse) SetBody(v *DeployApplicationResponseBody) *D
 }
 
 type DeployK8sApplicationRequest struct {
-	Annotations          *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
-	AppId                *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Args                 *string `json:"Args,omitempty" xml:"Args,omitempty"`
-	BatchTimeout         *int32  `json:"BatchTimeout,omitempty" xml:"BatchTimeout,omitempty"`
-	BatchWaitTime        *int32  `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
-	BuildPackId          *string `json:"BuildPackId,omitempty" xml:"BuildPackId,omitempty"`
-	ChangeOrderDesc      *string `json:"ChangeOrderDesc,omitempty" xml:"ChangeOrderDesc,omitempty"`
-	Command              *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	ConfigMountDescs     *string `json:"ConfigMountDescs,omitempty" xml:"ConfigMountDescs,omitempty"`
-	CpuLimit             *int32  `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	CpuRequest           *int32  `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
-	CustomAffinity       *string `json:"CustomAffinity,omitempty" xml:"CustomAffinity,omitempty"`
-	CustomTolerations    *string `json:"CustomTolerations,omitempty" xml:"CustomTolerations,omitempty"`
-	DeployAcrossNodes    *string `json:"DeployAcrossNodes,omitempty" xml:"DeployAcrossNodes,omitempty"`
-	DeployAcrossZones    *string `json:"DeployAcrossZones,omitempty" xml:"DeployAcrossZones,omitempty"`
-	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EmptyDirs            *string `json:"EmptyDirs,omitempty" xml:"EmptyDirs,omitempty"`
-	EnableAhas           *bool   `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	// 是否开启推空保护
-	EnableEmptyPushReject *bool `json:"EnableEmptyPushReject,omitempty" xml:"EnableEmptyPushReject,omitempty"`
-	// 是否启用无损上线规则
-	EnableLosslessRule *bool   `json:"EnableLosslessRule,omitempty" xml:"EnableLosslessRule,omitempty"`
-	EnvFroms           *string `json:"EnvFroms,omitempty" xml:"EnvFroms,omitempty"`
-	Envs               *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	Image              *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImageTag           *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	JDK                *string `json:"JDK,omitempty" xml:"JDK,omitempty"`
-	JavaStartUpConfig  *string `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty"`
-	Labels             *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Liveness           *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	LocalVolume        *string `json:"LocalVolume,omitempty" xml:"LocalVolume,omitempty"`
-	// 是否启用无损滚动发布模式配置通过就绪检查前完成服务注册
-	LosslessRuleAligned *bool `json:"LosslessRuleAligned,omitempty" xml:"LosslessRuleAligned,omitempty"`
-	// 无损上线延迟注册时长
-	LosslessRuleDelayTime *int32 `json:"LosslessRuleDelayTime,omitempty" xml:"LosslessRuleDelayTime,omitempty"`
-	// 无损上线服务预热曲线
-	LosslessRuleFuncType *int32 `json:"LosslessRuleFuncType,omitempty" xml:"LosslessRuleFuncType,omitempty"`
-	// 是否启用无损滚动发布模式配置通过就绪检查前完成服务预热
-	LosslessRuleRelated *bool `json:"LosslessRuleRelated,omitempty" xml:"LosslessRuleRelated,omitempty"`
-	// 无损上线服务预热时长
+	Annotations            *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	AppId                  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Args                   *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	BatchTimeout           *int32  `json:"BatchTimeout,omitempty" xml:"BatchTimeout,omitempty"`
+	BatchWaitTime          *int32  `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
+	BuildPackId            *string `json:"BuildPackId,omitempty" xml:"BuildPackId,omitempty"`
+	ChangeOrderDesc        *string `json:"ChangeOrderDesc,omitempty" xml:"ChangeOrderDesc,omitempty"`
+	Command                *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	ConfigMountDescs       *string `json:"ConfigMountDescs,omitempty" xml:"ConfigMountDescs,omitempty"`
+	CpuLimit               *int32  `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	CpuRequest             *int32  `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
+	CustomAffinity         *string `json:"CustomAffinity,omitempty" xml:"CustomAffinity,omitempty"`
+	CustomTolerations      *string `json:"CustomTolerations,omitempty" xml:"CustomTolerations,omitempty"`
+	DeployAcrossNodes      *string `json:"DeployAcrossNodes,omitempty" xml:"DeployAcrossNodes,omitempty"`
+	DeployAcrossZones      *string `json:"DeployAcrossZones,omitempty" xml:"DeployAcrossZones,omitempty"`
+	EdasContainerVersion   *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EmptyDirs              *string `json:"EmptyDirs,omitempty" xml:"EmptyDirs,omitempty"`
+	EnableAhas             *bool   `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	EnableEmptyPushReject  *bool   `json:"EnableEmptyPushReject,omitempty" xml:"EnableEmptyPushReject,omitempty"`
+	EnableLosslessRule     *bool   `json:"EnableLosslessRule,omitempty" xml:"EnableLosslessRule,omitempty"`
+	EnvFroms               *string `json:"EnvFroms,omitempty" xml:"EnvFroms,omitempty"`
+	Envs                   *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	Image                  *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImageTag               *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	JDK                    *string `json:"JDK,omitempty" xml:"JDK,omitempty"`
+	JavaStartUpConfig      *string `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty"`
+	Labels                 *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Liveness               *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	LocalVolume            *string `json:"LocalVolume,omitempty" xml:"LocalVolume,omitempty"`
+	LosslessRuleAligned    *bool   `json:"LosslessRuleAligned,omitempty" xml:"LosslessRuleAligned,omitempty"`
+	LosslessRuleDelayTime  *int32  `json:"LosslessRuleDelayTime,omitempty" xml:"LosslessRuleDelayTime,omitempty"`
+	LosslessRuleFuncType   *int32  `json:"LosslessRuleFuncType,omitempty" xml:"LosslessRuleFuncType,omitempty"`
+	LosslessRuleRelated    *bool   `json:"LosslessRuleRelated,omitempty" xml:"LosslessRuleRelated,omitempty"`
 	LosslessRuleWarmupTime *int32  `json:"LosslessRuleWarmupTime,omitempty" xml:"LosslessRuleWarmupTime,omitempty"`
 	McpuLimit              *int32  `json:"McpuLimit,omitempty" xml:"McpuLimit,omitempty"`
 	McpuRequest            *int32  `json:"McpuRequest,omitempty" xml:"McpuRequest,omitempty"`
@@ -5836,182 +5583,6 @@ func (s *DisableApplicationScalingRuleResponse) SetBody(v *DisableApplicationSca
 	return s
 }
 
-type DisableMockRuleRequest struct {
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s DisableMockRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DisableMockRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DisableMockRuleRequest) SetId(v int64) *DisableMockRuleRequest {
-	s.Id = &v
-	return s
-}
-
-type DisableMockRuleResponseBody struct {
-	Code      *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DisableMockRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DisableMockRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DisableMockRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DisableMockRuleResponseBody) SetCode(v int32) *DisableMockRuleResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBody) SetData(v *DisableMockRuleResponseBodyData) *DisableMockRuleResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DisableMockRuleResponseBody) SetMessage(v string) *DisableMockRuleResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBody) SetRequestId(v string) *DisableMockRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBody) SetSuccess(v bool) *DisableMockRuleResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DisableMockRuleResponseBodyData struct {
-	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	ConsumerAppId   *string `json:"ConsumerAppId,omitempty" xml:"ConsumerAppId,omitempty"`
-	ConsumerAppName *string `json:"ConsumerAppName,omitempty" xml:"ConsumerAppName,omitempty"`
-	Enable          *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	ExtraJson       *string `json:"ExtraJson,omitempty" xml:"ExtraJson,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	ProviderAppId   *string `json:"ProviderAppId,omitempty" xml:"ProviderAppId,omitempty"`
-	ProviderAppName *string `json:"ProviderAppName,omitempty" xml:"ProviderAppName,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ScMockItemJson  *string `json:"ScMockItemJson,omitempty" xml:"ScMockItemJson,omitempty"`
-	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
-}
-
-func (s DisableMockRuleResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DisableMockRuleResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DisableMockRuleResponseBodyData) SetAccountId(v string) *DisableMockRuleResponseBodyData {
-	s.AccountId = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBodyData) SetConsumerAppId(v string) *DisableMockRuleResponseBodyData {
-	s.ConsumerAppId = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBodyData) SetConsumerAppName(v string) *DisableMockRuleResponseBodyData {
-	s.ConsumerAppName = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBodyData) SetEnable(v bool) *DisableMockRuleResponseBodyData {
-	s.Enable = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBodyData) SetExtraJson(v string) *DisableMockRuleResponseBodyData {
-	s.ExtraJson = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBodyData) SetId(v int64) *DisableMockRuleResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBodyData) SetName(v string) *DisableMockRuleResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBodyData) SetNamespaceId(v string) *DisableMockRuleResponseBodyData {
-	s.NamespaceId = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBodyData) SetProviderAppId(v string) *DisableMockRuleResponseBodyData {
-	s.ProviderAppId = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBodyData) SetProviderAppName(v string) *DisableMockRuleResponseBodyData {
-	s.ProviderAppName = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBodyData) SetRegion(v string) *DisableMockRuleResponseBodyData {
-	s.Region = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBodyData) SetScMockItemJson(v string) *DisableMockRuleResponseBodyData {
-	s.ScMockItemJson = &v
-	return s
-}
-
-func (s *DisableMockRuleResponseBodyData) SetSource(v string) *DisableMockRuleResponseBodyData {
-	s.Source = &v
-	return s
-}
-
-type DisableMockRuleResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableMockRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DisableMockRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DisableMockRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DisableMockRuleResponse) SetHeaders(v map[string]*string) *DisableMockRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DisableMockRuleResponse) SetStatusCode(v int32) *DisableMockRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DisableMockRuleResponse) SetBody(v *DisableMockRuleResponseBody) *DisableMockRuleResponse {
-	s.Body = v
-	return s
-}
-
 type EnableApplicationScalingRuleRequest struct {
 	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
@@ -6286,547 +5857,6 @@ func (s *EnableApplicationScalingRuleResponse) SetBody(v *EnableApplicationScali
 	return s
 }
 
-type EnableMockRuleRequest struct {
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s EnableMockRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableMockRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *EnableMockRuleRequest) SetId(v int64) *EnableMockRuleRequest {
-	s.Id = &v
-	return s
-}
-
-type EnableMockRuleResponseBody struct {
-	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *EnableMockRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s EnableMockRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableMockRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *EnableMockRuleResponseBody) SetCode(v int32) *EnableMockRuleResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBody) SetData(v *EnableMockRuleResponseBodyData) *EnableMockRuleResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *EnableMockRuleResponseBody) SetMessage(v string) *EnableMockRuleResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBody) SetRequestId(v string) *EnableMockRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBody) SetSuccess(v bool) *EnableMockRuleResponseBody {
-	s.Success = &v
-	return s
-}
-
-type EnableMockRuleResponseBodyData struct {
-	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	ConsumerAppId   *string `json:"ConsumerAppId,omitempty" xml:"ConsumerAppId,omitempty"`
-	ConsumerAppName *string `json:"ConsumerAppName,omitempty" xml:"ConsumerAppName,omitempty"`
-	Enable          *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	ExtraJson       *string `json:"ExtraJson,omitempty" xml:"ExtraJson,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	ProviderAppId   *string `json:"ProviderAppId,omitempty" xml:"ProviderAppId,omitempty"`
-	ProviderAppName *string `json:"ProviderAppName,omitempty" xml:"ProviderAppName,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ScMockItemJson  *string `json:"ScMockItemJson,omitempty" xml:"ScMockItemJson,omitempty"`
-	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
-}
-
-func (s EnableMockRuleResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableMockRuleResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *EnableMockRuleResponseBodyData) SetAccountId(v string) *EnableMockRuleResponseBodyData {
-	s.AccountId = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBodyData) SetConsumerAppId(v string) *EnableMockRuleResponseBodyData {
-	s.ConsumerAppId = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBodyData) SetConsumerAppName(v string) *EnableMockRuleResponseBodyData {
-	s.ConsumerAppName = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBodyData) SetEnable(v bool) *EnableMockRuleResponseBodyData {
-	s.Enable = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBodyData) SetExtraJson(v string) *EnableMockRuleResponseBodyData {
-	s.ExtraJson = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBodyData) SetId(v int64) *EnableMockRuleResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBodyData) SetName(v string) *EnableMockRuleResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBodyData) SetNamespaceId(v string) *EnableMockRuleResponseBodyData {
-	s.NamespaceId = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBodyData) SetProviderAppId(v string) *EnableMockRuleResponseBodyData {
-	s.ProviderAppId = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBodyData) SetProviderAppName(v string) *EnableMockRuleResponseBodyData {
-	s.ProviderAppName = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBodyData) SetRegion(v string) *EnableMockRuleResponseBodyData {
-	s.Region = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBodyData) SetScMockItemJson(v string) *EnableMockRuleResponseBodyData {
-	s.ScMockItemJson = &v
-	return s
-}
-
-func (s *EnableMockRuleResponseBodyData) SetSource(v string) *EnableMockRuleResponseBodyData {
-	s.Source = &v
-	return s
-}
-
-type EnableMockRuleResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableMockRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s EnableMockRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableMockRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *EnableMockRuleResponse) SetHeaders(v map[string]*string) *EnableMockRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *EnableMockRuleResponse) SetStatusCode(v int32) *EnableMockRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *EnableMockRuleResponse) SetBody(v *EnableMockRuleResponseBody) *EnableMockRuleResponse {
-	s.Body = v
-	return s
-}
-
-type GetAccountMockRuleRequest struct {
-	ConsumerAppName *string `json:"ConsumerAppName,omitempty" xml:"ConsumerAppName,omitempty"`
-	MockType        *int64  `json:"MockType,omitempty" xml:"MockType,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PageNumber      *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProviderAppName *string `json:"ProviderAppName,omitempty" xml:"ProviderAppName,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-}
-
-func (s GetAccountMockRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAccountMockRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetAccountMockRuleRequest) SetConsumerAppName(v string) *GetAccountMockRuleRequest {
-	s.ConsumerAppName = &v
-	return s
-}
-
-func (s *GetAccountMockRuleRequest) SetMockType(v int64) *GetAccountMockRuleRequest {
-	s.MockType = &v
-	return s
-}
-
-func (s *GetAccountMockRuleRequest) SetName(v string) *GetAccountMockRuleRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *GetAccountMockRuleRequest) SetNamespace(v string) *GetAccountMockRuleRequest {
-	s.Namespace = &v
-	return s
-}
-
-func (s *GetAccountMockRuleRequest) SetPageNumber(v string) *GetAccountMockRuleRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *GetAccountMockRuleRequest) SetPageSize(v string) *GetAccountMockRuleRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetAccountMockRuleRequest) SetProviderAppName(v string) *GetAccountMockRuleRequest {
-	s.ProviderAppName = &v
-	return s
-}
-
-func (s *GetAccountMockRuleRequest) SetRegion(v string) *GetAccountMockRuleRequest {
-	s.Region = &v
-	return s
-}
-
-type GetAccountMockRuleResponseBody struct {
-	Code    *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetAccountMockRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetAccountMockRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAccountMockRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetAccountMockRuleResponseBody) SetCode(v string) *GetAccountMockRuleResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBody) SetData(v *GetAccountMockRuleResponseBodyData) *GetAccountMockRuleResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBody) SetMessage(v string) *GetAccountMockRuleResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBody) SetSuccess(v bool) *GetAccountMockRuleResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetAccountMockRuleResponseBodyData struct {
-	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result     []*GetAccountMockRuleResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	TotalSize  *int32                                      `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-}
-
-func (s GetAccountMockRuleResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAccountMockRuleResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetAccountMockRuleResponseBodyData) SetPageNumber(v int32) *GetAccountMockRuleResponseBodyData {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyData) SetPageSize(v int32) *GetAccountMockRuleResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyData) SetResult(v []*GetAccountMockRuleResponseBodyDataResult) *GetAccountMockRuleResponseBodyData {
-	s.Result = v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyData) SetTotalSize(v int32) *GetAccountMockRuleResponseBodyData {
-	s.TotalSize = &v
-	return s
-}
-
-type GetAccountMockRuleResponseBodyDataResult struct {
-	ConsumerAppId   *string                                                   `json:"ConsumerAppId,omitempty" xml:"ConsumerAppId,omitempty"`
-	ConsumerAppName *string                                                   `json:"ConsumerAppName,omitempty" xml:"ConsumerAppName,omitempty"`
-	DubboMockItems  []*GetAccountMockRuleResponseBodyDataResultDubboMockItems `json:"DubboMockItems,omitempty" xml:"DubboMockItems,omitempty" type:"Repeated"`
-	Enable          *bool                                                     `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	GmtCreate       *string                                                   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified     *string                                                   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id              *int32                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name            *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProviderAppId   *string                                                   `json:"ProviderAppId,omitempty" xml:"ProviderAppId,omitempty"`
-	ProviderAppName *string                                                   `json:"ProviderAppName,omitempty" xml:"ProviderAppName,omitempty"`
-	Region          *string                                                   `json:"Region,omitempty" xml:"Region,omitempty"`
-	ScMockItems     []*GetAccountMockRuleResponseBodyDataResultScMockItems    `json:"ScMockItems,omitempty" xml:"ScMockItems,omitempty" type:"Repeated"`
-	Status          *int32                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetAccountMockRuleResponseBodyDataResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAccountMockRuleResponseBodyDataResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResult) SetConsumerAppId(v string) *GetAccountMockRuleResponseBodyDataResult {
-	s.ConsumerAppId = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResult) SetConsumerAppName(v string) *GetAccountMockRuleResponseBodyDataResult {
-	s.ConsumerAppName = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResult) SetDubboMockItems(v []*GetAccountMockRuleResponseBodyDataResultDubboMockItems) *GetAccountMockRuleResponseBodyDataResult {
-	s.DubboMockItems = v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResult) SetEnable(v bool) *GetAccountMockRuleResponseBodyDataResult {
-	s.Enable = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResult) SetGmtCreate(v string) *GetAccountMockRuleResponseBodyDataResult {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResult) SetGmtModified(v string) *GetAccountMockRuleResponseBodyDataResult {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResult) SetId(v int32) *GetAccountMockRuleResponseBodyDataResult {
-	s.Id = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResult) SetName(v string) *GetAccountMockRuleResponseBodyDataResult {
-	s.Name = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResult) SetProviderAppId(v string) *GetAccountMockRuleResponseBodyDataResult {
-	s.ProviderAppId = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResult) SetProviderAppName(v string) *GetAccountMockRuleResponseBodyDataResult {
-	s.ProviderAppName = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResult) SetRegion(v string) *GetAccountMockRuleResponseBodyDataResult {
-	s.Region = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResult) SetScMockItems(v []*GetAccountMockRuleResponseBodyDataResultScMockItems) *GetAccountMockRuleResponseBodyDataResult {
-	s.ScMockItems = v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResult) SetStatus(v int32) *GetAccountMockRuleResponseBodyDataResult {
-	s.Status = &v
-	return s
-}
-
-type GetAccountMockRuleResponseBodyDataResultDubboMockItems struct {
-	ExceptionClassName *string   `json:"ExceptionClassName,omitempty" xml:"ExceptionClassName,omitempty"`
-	ExecuteCondition   *string   `json:"ExecuteCondition,omitempty" xml:"ExecuteCondition,omitempty"`
-	Group              *string   `json:"Group,omitempty" xml:"Group,omitempty"`
-	MethodName         *string   `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
-	Oper               *string   `json:"Oper,omitempty" xml:"Oper,omitempty"`
-	ParamTypes         []*string `json:"ParamTypes,omitempty" xml:"ParamTypes,omitempty" type:"Repeated"`
-	ServiceName        *string   `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Value              *string   `json:"Value,omitempty" xml:"Value,omitempty"`
-	Version            *string   `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s GetAccountMockRuleResponseBodyDataResultDubboMockItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAccountMockRuleResponseBodyDataResultDubboMockItems) GoString() string {
-	return s.String()
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultDubboMockItems) SetExceptionClassName(v string) *GetAccountMockRuleResponseBodyDataResultDubboMockItems {
-	s.ExceptionClassName = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultDubboMockItems) SetExecuteCondition(v string) *GetAccountMockRuleResponseBodyDataResultDubboMockItems {
-	s.ExecuteCondition = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultDubboMockItems) SetGroup(v string) *GetAccountMockRuleResponseBodyDataResultDubboMockItems {
-	s.Group = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultDubboMockItems) SetMethodName(v string) *GetAccountMockRuleResponseBodyDataResultDubboMockItems {
-	s.MethodName = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultDubboMockItems) SetOper(v string) *GetAccountMockRuleResponseBodyDataResultDubboMockItems {
-	s.Oper = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultDubboMockItems) SetParamTypes(v []*string) *GetAccountMockRuleResponseBodyDataResultDubboMockItems {
-	s.ParamTypes = v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultDubboMockItems) SetServiceName(v string) *GetAccountMockRuleResponseBodyDataResultDubboMockItems {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultDubboMockItems) SetValue(v string) *GetAccountMockRuleResponseBodyDataResultDubboMockItems {
-	s.Value = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultDubboMockItems) SetVersion(v string) *GetAccountMockRuleResponseBodyDataResultDubboMockItems {
-	s.Version = &v
-	return s
-}
-
-type GetAccountMockRuleResponseBodyDataResultScMockItems struct {
-	ExceptionClassName *string `json:"ExceptionClassName,omitempty" xml:"ExceptionClassName,omitempty"`
-	ExecuteCondition   *string `json:"ExecuteCondition,omitempty" xml:"ExecuteCondition,omitempty"`
-	Method             *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	Oper               *string `json:"Oper,omitempty" xml:"Oper,omitempty"`
-	Path               *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	ServiceName        *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Value              *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s GetAccountMockRuleResponseBodyDataResultScMockItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAccountMockRuleResponseBodyDataResultScMockItems) GoString() string {
-	return s.String()
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultScMockItems) SetExceptionClassName(v string) *GetAccountMockRuleResponseBodyDataResultScMockItems {
-	s.ExceptionClassName = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultScMockItems) SetExecuteCondition(v string) *GetAccountMockRuleResponseBodyDataResultScMockItems {
-	s.ExecuteCondition = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultScMockItems) SetMethod(v string) *GetAccountMockRuleResponseBodyDataResultScMockItems {
-	s.Method = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultScMockItems) SetOper(v string) *GetAccountMockRuleResponseBodyDataResultScMockItems {
-	s.Oper = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultScMockItems) SetPath(v string) *GetAccountMockRuleResponseBodyDataResultScMockItems {
-	s.Path = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultScMockItems) SetServiceName(v string) *GetAccountMockRuleResponseBodyDataResultScMockItems {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponseBodyDataResultScMockItems) SetValue(v string) *GetAccountMockRuleResponseBodyDataResultScMockItems {
-	s.Value = &v
-	return s
-}
-
-type GetAccountMockRuleResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAccountMockRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetAccountMockRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAccountMockRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetAccountMockRuleResponse) SetHeaders(v map[string]*string) *GetAccountMockRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetAccountMockRuleResponse) SetStatusCode(v int32) *GetAccountMockRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetAccountMockRuleResponse) SetBody(v *GetAccountMockRuleResponseBody) *GetAccountMockRuleResponse {
-	s.Body = v
-	return s
-}
-
 type GetAppDeploymentRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
@@ -6971,6 +6001,8 @@ type GetApplicationResponseBodyApplication struct {
 	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Dockerize            *bool   `json:"Dockerize,omitempty" xml:"Dockerize,omitempty"`
 	Email                *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	EnablePortCheck      *bool   `json:"EnablePortCheck,omitempty" xml:"EnablePortCheck,omitempty"`
+	EnableUrlCheck       *bool   `json:"EnableUrlCheck,omitempty" xml:"EnableUrlCheck,omitempty"`
 	ExtSlbId             *string `json:"ExtSlbId,omitempty" xml:"ExtSlbId,omitempty"`
 	ExtSlbIp             *string `json:"ExtSlbIp,omitempty" xml:"ExtSlbIp,omitempty"`
 	ExtSlbName           *string `json:"ExtSlbName,omitempty" xml:"ExtSlbName,omitempty"`
@@ -7046,6 +6078,16 @@ func (s *GetApplicationResponseBodyApplication) SetDockerize(v bool) *GetApplica
 
 func (s *GetApplicationResponseBodyApplication) SetEmail(v string) *GetApplicationResponseBodyApplication {
 	s.Email = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetEnablePortCheck(v bool) *GetApplicationResponseBodyApplication {
+	s.EnablePortCheck = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetEnableUrlCheck(v bool) *GetApplicationResponseBodyApplication {
+	s.EnableUrlCheck = &v
 	return s
 }
 
@@ -7895,6 +6937,7 @@ type GetClusterResponseBodyCluster struct {
 	NodeNum             *int32  `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
 	OversoldFactor      *int32  `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SubClusterType      *string `json:"SubClusterType,omitempty" xml:"SubClusterType,omitempty"`
 	UpdateTime          *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -7984,6 +7027,11 @@ func (s *GetClusterResponseBodyCluster) SetOversoldFactor(v int32) *GetClusterRe
 
 func (s *GetClusterResponseBodyCluster) SetRegionId(v string) *GetClusterResponseBodyCluster {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetClusterResponseBodyCluster) SetSubClusterType(v string) *GetClusterResponseBodyCluster {
+	s.SubClusterType = &v
 	return s
 }
 
@@ -8380,6 +7428,163 @@ func (s *GetJvmConfigurationResponse) SetBody(v *GetJvmConfigurationResponseBody
 	return s
 }
 
+type GetK8sAppPrecheckResultRequest struct {
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s GetK8sAppPrecheckResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetK8sAppPrecheckResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetK8sAppPrecheckResultRequest) SetAppName(v string) *GetK8sAppPrecheckResultRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetK8sAppPrecheckResultRequest) SetClusterId(v string) *GetK8sAppPrecheckResultRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetK8sAppPrecheckResultRequest) SetNamespace(v string) *GetK8sAppPrecheckResultRequest {
+	s.Namespace = &v
+	return s
+}
+
+type GetK8sAppPrecheckResultResponseBody struct {
+	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetK8sAppPrecheckResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetK8sAppPrecheckResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetK8sAppPrecheckResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetK8sAppPrecheckResultResponseBody) SetCode(v int32) *GetK8sAppPrecheckResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetK8sAppPrecheckResultResponseBody) SetData(v *GetK8sAppPrecheckResultResponseBodyData) *GetK8sAppPrecheckResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetK8sAppPrecheckResultResponseBody) SetMessage(v string) *GetK8sAppPrecheckResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetK8sAppPrecheckResultResponseBody) SetRequestId(v string) *GetK8sAppPrecheckResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetK8sAppPrecheckResultResponseBodyData struct {
+	JobResults []*GetK8sAppPrecheckResultResponseBodyDataJobResults `json:"JobResults,omitempty" xml:"JobResults,omitempty" type:"Repeated"`
+	Reason     *string                                              `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Status     *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetK8sAppPrecheckResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetK8sAppPrecheckResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetK8sAppPrecheckResultResponseBodyData) SetJobResults(v []*GetK8sAppPrecheckResultResponseBodyDataJobResults) *GetK8sAppPrecheckResultResponseBodyData {
+	s.JobResults = v
+	return s
+}
+
+func (s *GetK8sAppPrecheckResultResponseBodyData) SetReason(v string) *GetK8sAppPrecheckResultResponseBodyData {
+	s.Reason = &v
+	return s
+}
+
+func (s *GetK8sAppPrecheckResultResponseBodyData) SetStatus(v string) *GetK8sAppPrecheckResultResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetK8sAppPrecheckResultResponseBodyDataJobResults struct {
+	Interrupted *bool   `json:"Interrupted,omitempty" xml:"Interrupted,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Pass        *bool   `json:"Pass,omitempty" xml:"Pass,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+}
+
+func (s GetK8sAppPrecheckResultResponseBodyDataJobResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetK8sAppPrecheckResultResponseBodyDataJobResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetK8sAppPrecheckResultResponseBodyDataJobResults) SetInterrupted(v bool) *GetK8sAppPrecheckResultResponseBodyDataJobResults {
+	s.Interrupted = &v
+	return s
+}
+
+func (s *GetK8sAppPrecheckResultResponseBodyDataJobResults) SetName(v string) *GetK8sAppPrecheckResultResponseBodyDataJobResults {
+	s.Name = &v
+	return s
+}
+
+func (s *GetK8sAppPrecheckResultResponseBodyDataJobResults) SetPass(v bool) *GetK8sAppPrecheckResultResponseBodyDataJobResults {
+	s.Pass = &v
+	return s
+}
+
+func (s *GetK8sAppPrecheckResultResponseBodyDataJobResults) SetReason(v string) *GetK8sAppPrecheckResultResponseBodyDataJobResults {
+	s.Reason = &v
+	return s
+}
+
+type GetK8sAppPrecheckResultResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetK8sAppPrecheckResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetK8sAppPrecheckResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetK8sAppPrecheckResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetK8sAppPrecheckResultResponse) SetHeaders(v map[string]*string) *GetK8sAppPrecheckResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetK8sAppPrecheckResultResponse) SetStatusCode(v int32) *GetK8sAppPrecheckResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetK8sAppPrecheckResultResponse) SetBody(v *GetK8sAppPrecheckResultResponseBody) *GetK8sAppPrecheckResultResponse {
+	s.Body = v
+	return s
+}
+
 type GetK8sApplicationRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	From  *string `json:"From,omitempty" xml:"From,omitempty"`
@@ -8506,6 +7711,7 @@ type GetK8sApplicationResponseBodyApplcationApp struct {
 	RegionId               *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestCpuM            *int32                                             `json:"RequestCpuM,omitempty" xml:"RequestCpuM,omitempty"`
 	RequestMem             *int32                                             `json:"RequestMem,omitempty" xml:"RequestMem,omitempty"`
+	SlbInfo                *string                                            `json:"SlbInfo,omitempty" xml:"SlbInfo,omitempty"`
 	TomcatVersion          *string                                            `json:"TomcatVersion,omitempty" xml:"TomcatVersion,omitempty"`
 }
 
@@ -8614,6 +7820,11 @@ func (s *GetK8sApplicationResponseBodyApplcationApp) SetRequestCpuM(v int32) *Ge
 
 func (s *GetK8sApplicationResponseBodyApplcationApp) SetRequestMem(v int32) *GetK8sApplicationResponseBodyApplcationApp {
 	s.RequestMem = &v
+	return s
+}
+
+func (s *GetK8sApplicationResponseBodyApplcationApp) SetSlbInfo(v string) *GetK8sApplicationResponseBodyApplcationApp {
+	s.SlbInfo = &v
 	return s
 }
 
@@ -8990,10 +8201,11 @@ func (s *GetK8sApplicationResponse) SetBody(v *GetK8sApplicationResponseBody) *G
 }
 
 type GetK8sClusterRequest struct {
-	ClusterType *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionTag   *string `json:"RegionTag,omitempty" xml:"RegionTag,omitempty"`
+	ClusterType    *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionTag      *string `json:"RegionTag,omitempty" xml:"RegionTag,omitempty"`
+	SubClusterType *string `json:"SubClusterType,omitempty" xml:"SubClusterType,omitempty"`
 }
 
 func (s GetK8sClusterRequest) String() string {
@@ -9021,6 +8233,11 @@ func (s *GetK8sClusterRequest) SetPageSize(v int32) *GetK8sClusterRequest {
 
 func (s *GetK8sClusterRequest) SetRegionTag(v string) *GetK8sClusterRequest {
 	s.RegionTag = &v
+	return s
+}
+
+func (s *GetK8sClusterRequest) SetSubClusterType(v string) *GetK8sClusterRequest {
+	s.SubClusterType = &v
 	return s
 }
 
@@ -9125,6 +8342,7 @@ type GetK8sClusterResponseBodyClusterPageClusterListCluster struct {
 	NetworkMode         *int32  `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
 	NodeNum             *int32  `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SubClusterType      *string `json:"SubClusterType,omitempty" xml:"SubClusterType,omitempty"`
 	SubNetCidr          *string `json:"SubNetCidr,omitempty" xml:"SubNetCidr,omitempty"`
 	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VswitchId           *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
@@ -9200,6 +8418,11 @@ func (s *GetK8sClusterResponseBodyClusterPageClusterListCluster) SetNodeNum(v in
 
 func (s *GetK8sClusterResponseBodyClusterPageClusterListCluster) SetRegionId(v string) *GetK8sClusterResponseBodyClusterPageClusterListCluster {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetK8sClusterResponseBodyClusterPageClusterListCluster) SetSubClusterType(v string) *GetK8sClusterResponseBodyClusterPageClusterListCluster {
+	s.SubClusterType = &v
 	return s
 }
 
@@ -9398,382 +8621,6 @@ func (s *GetK8sServicesResponse) SetBody(v *GetK8sServicesResponseBody) *GetK8sS
 	return s
 }
 
-type GetMockRuleByConsumerAppIdRequest struct {
-	ConsumerAppId *string `json:"ConsumerAppId,omitempty" xml:"ConsumerAppId,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-}
-
-func (s GetMockRuleByConsumerAppIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMockRuleByConsumerAppIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetMockRuleByConsumerAppIdRequest) SetConsumerAppId(v string) *GetMockRuleByConsumerAppIdRequest {
-	s.ConsumerAppId = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdRequest) SetRegion(v string) *GetMockRuleByConsumerAppIdRequest {
-	s.Region = &v
-	return s
-}
-
-type GetMockRuleByConsumerAppIdResponseBody struct {
-	Code      *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*GetMockRuleByConsumerAppIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	HttpCode  *string                                       `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetMockRuleByConsumerAppIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMockRuleByConsumerAppIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBody) SetCode(v string) *GetMockRuleByConsumerAppIdResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBody) SetData(v []*GetMockRuleByConsumerAppIdResponseBodyData) *GetMockRuleByConsumerAppIdResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBody) SetHttpCode(v string) *GetMockRuleByConsumerAppIdResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBody) SetMessage(v string) *GetMockRuleByConsumerAppIdResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBody) SetRequestId(v string) *GetMockRuleByConsumerAppIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBody) SetSuccess(v bool) *GetMockRuleByConsumerAppIdResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetMockRuleByConsumerAppIdResponseBodyData struct {
-	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	ConsumerAppId   *string `json:"ConsumerAppId,omitempty" xml:"ConsumerAppId,omitempty"`
-	ConsumerAppName *string `json:"ConsumerAppName,omitempty" xml:"ConsumerAppName,omitempty"`
-	Enable          *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	ExtraJson       *string `json:"ExtraJson,omitempty" xml:"ExtraJson,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	ProviderAppId   *string `json:"ProviderAppId,omitempty" xml:"ProviderAppId,omitempty"`
-	ProviderAppName *string `json:"ProviderAppName,omitempty" xml:"ProviderAppName,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ScMockItemJson  *string `json:"ScMockItemJson,omitempty" xml:"ScMockItemJson,omitempty"`
-	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
-}
-
-func (s GetMockRuleByConsumerAppIdResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMockRuleByConsumerAppIdResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBodyData) SetAccountId(v string) *GetMockRuleByConsumerAppIdResponseBodyData {
-	s.AccountId = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBodyData) SetConsumerAppId(v string) *GetMockRuleByConsumerAppIdResponseBodyData {
-	s.ConsumerAppId = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBodyData) SetConsumerAppName(v string) *GetMockRuleByConsumerAppIdResponseBodyData {
-	s.ConsumerAppName = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBodyData) SetEnable(v bool) *GetMockRuleByConsumerAppIdResponseBodyData {
-	s.Enable = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBodyData) SetExtraJson(v string) *GetMockRuleByConsumerAppIdResponseBodyData {
-	s.ExtraJson = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBodyData) SetId(v int64) *GetMockRuleByConsumerAppIdResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBodyData) SetName(v string) *GetMockRuleByConsumerAppIdResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBodyData) SetNamespaceId(v string) *GetMockRuleByConsumerAppIdResponseBodyData {
-	s.NamespaceId = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBodyData) SetProviderAppId(v string) *GetMockRuleByConsumerAppIdResponseBodyData {
-	s.ProviderAppId = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBodyData) SetProviderAppName(v string) *GetMockRuleByConsumerAppIdResponseBodyData {
-	s.ProviderAppName = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBodyData) SetRegion(v string) *GetMockRuleByConsumerAppIdResponseBodyData {
-	s.Region = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBodyData) SetScMockItemJson(v string) *GetMockRuleByConsumerAppIdResponseBodyData {
-	s.ScMockItemJson = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponseBodyData) SetSource(v string) *GetMockRuleByConsumerAppIdResponseBodyData {
-	s.Source = &v
-	return s
-}
-
-type GetMockRuleByConsumerAppIdResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMockRuleByConsumerAppIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetMockRuleByConsumerAppIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMockRuleByConsumerAppIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetMockRuleByConsumerAppIdResponse) SetHeaders(v map[string]*string) *GetMockRuleByConsumerAppIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponse) SetStatusCode(v int32) *GetMockRuleByConsumerAppIdResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetMockRuleByConsumerAppIdResponse) SetBody(v *GetMockRuleByConsumerAppIdResponseBody) *GetMockRuleByConsumerAppIdResponse {
-	s.Body = v
-	return s
-}
-
-type GetMockRuleByProviderAppIdRequest struct {
-	ProviderAppId *string `json:"ProviderAppId,omitempty" xml:"ProviderAppId,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-}
-
-func (s GetMockRuleByProviderAppIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMockRuleByProviderAppIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetMockRuleByProviderAppIdRequest) SetProviderAppId(v string) *GetMockRuleByProviderAppIdRequest {
-	s.ProviderAppId = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdRequest) SetRegion(v string) *GetMockRuleByProviderAppIdRequest {
-	s.Region = &v
-	return s
-}
-
-type GetMockRuleByProviderAppIdResponseBody struct {
-	Code      *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*GetMockRuleByProviderAppIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	HttpCode  *string                                       `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetMockRuleByProviderAppIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMockRuleByProviderAppIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBody) SetCode(v string) *GetMockRuleByProviderAppIdResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBody) SetData(v []*GetMockRuleByProviderAppIdResponseBodyData) *GetMockRuleByProviderAppIdResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBody) SetHttpCode(v string) *GetMockRuleByProviderAppIdResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBody) SetMessage(v string) *GetMockRuleByProviderAppIdResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBody) SetRequestId(v string) *GetMockRuleByProviderAppIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBody) SetSuccess(v bool) *GetMockRuleByProviderAppIdResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetMockRuleByProviderAppIdResponseBodyData struct {
-	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	ConsumerAppId   *string `json:"ConsumerAppId,omitempty" xml:"ConsumerAppId,omitempty"`
-	ConsumerAppName *string `json:"ConsumerAppName,omitempty" xml:"ConsumerAppName,omitempty"`
-	Enable          *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	ExtraJson       *string `json:"ExtraJson,omitempty" xml:"ExtraJson,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	ProviderAppId   *string `json:"ProviderAppId,omitempty" xml:"ProviderAppId,omitempty"`
-	ProviderAppName *string `json:"ProviderAppName,omitempty" xml:"ProviderAppName,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ScMockItemJson  *string `json:"ScMockItemJson,omitempty" xml:"ScMockItemJson,omitempty"`
-	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
-}
-
-func (s GetMockRuleByProviderAppIdResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMockRuleByProviderAppIdResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBodyData) SetAccountId(v string) *GetMockRuleByProviderAppIdResponseBodyData {
-	s.AccountId = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBodyData) SetConsumerAppId(v string) *GetMockRuleByProviderAppIdResponseBodyData {
-	s.ConsumerAppId = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBodyData) SetConsumerAppName(v string) *GetMockRuleByProviderAppIdResponseBodyData {
-	s.ConsumerAppName = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBodyData) SetEnable(v bool) *GetMockRuleByProviderAppIdResponseBodyData {
-	s.Enable = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBodyData) SetExtraJson(v string) *GetMockRuleByProviderAppIdResponseBodyData {
-	s.ExtraJson = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBodyData) SetId(v int64) *GetMockRuleByProviderAppIdResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBodyData) SetName(v string) *GetMockRuleByProviderAppIdResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBodyData) SetNamespaceId(v string) *GetMockRuleByProviderAppIdResponseBodyData {
-	s.NamespaceId = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBodyData) SetProviderAppId(v string) *GetMockRuleByProviderAppIdResponseBodyData {
-	s.ProviderAppId = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBodyData) SetProviderAppName(v string) *GetMockRuleByProviderAppIdResponseBodyData {
-	s.ProviderAppName = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBodyData) SetRegion(v string) *GetMockRuleByProviderAppIdResponseBodyData {
-	s.Region = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBodyData) SetScMockItemJson(v string) *GetMockRuleByProviderAppIdResponseBodyData {
-	s.ScMockItemJson = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponseBodyData) SetSource(v string) *GetMockRuleByProviderAppIdResponseBodyData {
-	s.Source = &v
-	return s
-}
-
-type GetMockRuleByProviderAppIdResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMockRuleByProviderAppIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetMockRuleByProviderAppIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMockRuleByProviderAppIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetMockRuleByProviderAppIdResponse) SetHeaders(v map[string]*string) *GetMockRuleByProviderAppIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponse) SetStatusCode(v int32) *GetMockRuleByProviderAppIdResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetMockRuleByProviderAppIdResponse) SetBody(v *GetMockRuleByProviderAppIdResponseBody) *GetMockRuleByProviderAppIdResponse {
-	s.Body = v
-	return s
-}
-
 type GetPackageStorageCredentialResponseBody struct {
 	Code       *int32                                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Credential *GetPackageStorageCredentialResponseBodyCredential `json:"Credential,omitempty" xml:"Credential,omitempty" type:"Struct"`
@@ -9810,13 +8657,16 @@ func (s *GetPackageStorageCredentialResponseBody) SetRequestId(v string) *GetPac
 }
 
 type GetPackageStorageCredentialResponseBodyCredential struct {
-	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	Bucket          *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Expiration      *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	KeyPrefix       *string `json:"KeyPrefix,omitempty" xml:"KeyPrefix,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	AccessKeyId         *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AccessKeySecret     *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	Bucket              *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	Expiration          *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	KeyPrefix           *string `json:"KeyPrefix,omitempty" xml:"KeyPrefix,omitempty"`
+	OssInternalEndpoint *string `json:"OssInternalEndpoint,omitempty" xml:"OssInternalEndpoint,omitempty"`
+	OssPublicEndpoint   *string `json:"OssPublicEndpoint,omitempty" xml:"OssPublicEndpoint,omitempty"`
+	OssVpcEndpoint      *string `json:"OssVpcEndpoint,omitempty" xml:"OssVpcEndpoint,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityToken       *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s GetPackageStorageCredentialResponseBodyCredential) String() string {
@@ -9849,6 +8699,21 @@ func (s *GetPackageStorageCredentialResponseBodyCredential) SetExpiration(v stri
 
 func (s *GetPackageStorageCredentialResponseBodyCredential) SetKeyPrefix(v string) *GetPackageStorageCredentialResponseBodyCredential {
 	s.KeyPrefix = &v
+	return s
+}
+
+func (s *GetPackageStorageCredentialResponseBodyCredential) SetOssInternalEndpoint(v string) *GetPackageStorageCredentialResponseBodyCredential {
+	s.OssInternalEndpoint = &v
+	return s
+}
+
+func (s *GetPackageStorageCredentialResponseBodyCredential) SetOssPublicEndpoint(v string) *GetPackageStorageCredentialResponseBodyCredential {
+	s.OssPublicEndpoint = &v
+	return s
+}
+
+func (s *GetPackageStorageCredentialResponseBodyCredential) SetOssVpcEndpoint(v string) *GetPackageStorageCredentialResponseBodyCredential {
+	s.OssVpcEndpoint = &v
 	return s
 }
 
@@ -10238,17 +9103,21 @@ func (s *GetSecureTokenResponseBody) SetSecureToken(v *GetSecureTokenResponseBod
 }
 
 type GetSecureTokenResponseBodySecureToken struct {
-	AccessKey         *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	AddressServerHost *string `json:"AddressServerHost,omitempty" xml:"AddressServerHost,omitempty"`
-	BelongRegion      *string `json:"BelongRegion,omitempty" xml:"BelongRegion,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EdasId            *string `json:"EdasId,omitempty" xml:"EdasId,omitempty"`
-	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionName        *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	SecretKey         *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	TenantId          *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AccessKey          *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	AddressServerHost  *string `json:"AddressServerHost,omitempty" xml:"AddressServerHost,omitempty"`
+	BelongRegion       *string `json:"BelongRegion,omitempty" xml:"BelongRegion,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EdasId             *string `json:"EdasId,omitempty" xml:"EdasId,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	MseInstanceId      *string `json:"MseInstanceId,omitempty" xml:"MseInstanceId,omitempty"`
+	MseInternetAddress *string `json:"MseInternetAddress,omitempty" xml:"MseInternetAddress,omitempty"`
+	MseIntranetAddress *string `json:"MseIntranetAddress,omitempty" xml:"MseIntranetAddress,omitempty"`
+	MseRegistryType    *string `json:"MseRegistryType,omitempty" xml:"MseRegistryType,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionName         *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	SecretKey          *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	TenantId           *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UserId             *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetSecureTokenResponseBodySecureToken) String() string {
@@ -10286,6 +9155,26 @@ func (s *GetSecureTokenResponseBodySecureToken) SetEdasId(v string) *GetSecureTo
 
 func (s *GetSecureTokenResponseBodySecureToken) SetId(v int64) *GetSecureTokenResponseBodySecureToken {
 	s.Id = &v
+	return s
+}
+
+func (s *GetSecureTokenResponseBodySecureToken) SetMseInstanceId(v string) *GetSecureTokenResponseBodySecureToken {
+	s.MseInstanceId = &v
+	return s
+}
+
+func (s *GetSecureTokenResponseBodySecureToken) SetMseInternetAddress(v string) *GetSecureTokenResponseBodySecureToken {
+	s.MseInternetAddress = &v
+	return s
+}
+
+func (s *GetSecureTokenResponseBodySecureToken) SetMseIntranetAddress(v string) *GetSecureTokenResponseBodySecureToken {
+	s.MseIntranetAddress = &v
+	return s
+}
+
+func (s *GetSecureTokenResponseBodySecureToken) SetMseRegistryType(v string) *GetSecureTokenResponseBodySecureToken {
+	s.MseRegistryType = &v
 	return s
 }
 
@@ -12618,7 +11507,9 @@ func (s *InsertDeployGroupResponse) SetBody(v *InsertDeployGroupResponseBody) *I
 
 type InsertK8sApplicationRequest struct {
 	Annotations            *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	AppConfig              *string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
 	AppName                *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppTemplateName        *string `json:"AppTemplateName,omitempty" xml:"AppTemplateName,omitempty"`
 	ApplicationDescription *string `json:"ApplicationDescription,omitempty" xml:"ApplicationDescription,omitempty"`
 	BuildPackId            *string `json:"BuildPackId,omitempty" xml:"BuildPackId,omitempty"`
 	ClusterId              *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -12634,40 +11525,33 @@ type InsertK8sApplicationRequest struct {
 	EmptyDirs              *string `json:"EmptyDirs,omitempty" xml:"EmptyDirs,omitempty"`
 	EnableAhas             *bool   `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
 	EnableAsm              *bool   `json:"EnableAsm,omitempty" xml:"EnableAsm,omitempty"`
-	// 是否开启推空保护
-	EnableEmptyPushReject *bool `json:"EnableEmptyPushReject,omitempty" xml:"EnableEmptyPushReject,omitempty"`
-	// 是否启用无损上线规则
-	EnableLosslessRule  *bool   `json:"EnableLosslessRule,omitempty" xml:"EnableLosslessRule,omitempty"`
-	EnvFroms            *string `json:"EnvFroms,omitempty" xml:"EnvFroms,omitempty"`
-	Envs                *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	ImageUrl            *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InternetSlbId       *string `json:"InternetSlbId,omitempty" xml:"InternetSlbId,omitempty"`
-	InternetSlbPort     *int32  `json:"InternetSlbPort,omitempty" xml:"InternetSlbPort,omitempty"`
-	InternetSlbProtocol *string `json:"InternetSlbProtocol,omitempty" xml:"InternetSlbProtocol,omitempty"`
-	InternetTargetPort  *int32  `json:"InternetTargetPort,omitempty" xml:"InternetTargetPort,omitempty"`
-	IntranetSlbId       *string `json:"IntranetSlbId,omitempty" xml:"IntranetSlbId,omitempty"`
-	IntranetSlbPort     *int32  `json:"IntranetSlbPort,omitempty" xml:"IntranetSlbPort,omitempty"`
-	IntranetSlbProtocol *string `json:"IntranetSlbProtocol,omitempty" xml:"IntranetSlbProtocol,omitempty"`
-	IntranetTargetPort  *int32  `json:"IntranetTargetPort,omitempty" xml:"IntranetTargetPort,omitempty"`
-	IsMultilingualApp   *bool   `json:"IsMultilingualApp,omitempty" xml:"IsMultilingualApp,omitempty"`
-	JDK                 *string `json:"JDK,omitempty" xml:"JDK,omitempty"`
-	JavaStartUpConfig   *string `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty"`
-	Labels              *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	LimitCpu            *int32  `json:"LimitCpu,omitempty" xml:"LimitCpu,omitempty"`
-	LimitMem            *int32  `json:"LimitMem,omitempty" xml:"LimitMem,omitempty"`
-	LimitmCpu           *int32  `json:"LimitmCpu,omitempty" xml:"LimitmCpu,omitempty"`
-	Liveness            *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	LocalVolume         *string `json:"LocalVolume,omitempty" xml:"LocalVolume,omitempty"`
-	LogicalRegionId     *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
-	// 是否启用无损滚动发布模式配置通过就绪检查前完成服务注册
-	LosslessRuleAligned *bool `json:"LosslessRuleAligned,omitempty" xml:"LosslessRuleAligned,omitempty"`
-	// 无损上线延迟注册时长
-	LosslessRuleDelayTime *int32 `json:"LosslessRuleDelayTime,omitempty" xml:"LosslessRuleDelayTime,omitempty"`
-	// 无损上线服务预热曲线
-	LosslessRuleFuncType *int32 `json:"LosslessRuleFuncType,omitempty" xml:"LosslessRuleFuncType,omitempty"`
-	// 是否启用无损滚动发布模式配置通过就绪检查前完成服务预热
-	LosslessRuleRelated *bool `json:"LosslessRuleRelated,omitempty" xml:"LosslessRuleRelated,omitempty"`
-	// 无损上线服务预热时长
+	EnableEmptyPushReject  *bool   `json:"EnableEmptyPushReject,omitempty" xml:"EnableEmptyPushReject,omitempty"`
+	EnableLosslessRule     *bool   `json:"EnableLosslessRule,omitempty" xml:"EnableLosslessRule,omitempty"`
+	EnvFroms               *string `json:"EnvFroms,omitempty" xml:"EnvFroms,omitempty"`
+	Envs                   *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImageUrl               *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InternetSlbId          *string `json:"InternetSlbId,omitempty" xml:"InternetSlbId,omitempty"`
+	InternetSlbPort        *int32  `json:"InternetSlbPort,omitempty" xml:"InternetSlbPort,omitempty"`
+	InternetSlbProtocol    *string `json:"InternetSlbProtocol,omitempty" xml:"InternetSlbProtocol,omitempty"`
+	InternetTargetPort     *int32  `json:"InternetTargetPort,omitempty" xml:"InternetTargetPort,omitempty"`
+	IntranetSlbId          *string `json:"IntranetSlbId,omitempty" xml:"IntranetSlbId,omitempty"`
+	IntranetSlbPort        *int32  `json:"IntranetSlbPort,omitempty" xml:"IntranetSlbPort,omitempty"`
+	IntranetSlbProtocol    *string `json:"IntranetSlbProtocol,omitempty" xml:"IntranetSlbProtocol,omitempty"`
+	IntranetTargetPort     *int32  `json:"IntranetTargetPort,omitempty" xml:"IntranetTargetPort,omitempty"`
+	IsMultilingualApp      *bool   `json:"IsMultilingualApp,omitempty" xml:"IsMultilingualApp,omitempty"`
+	JDK                    *string `json:"JDK,omitempty" xml:"JDK,omitempty"`
+	JavaStartUpConfig      *string `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty"`
+	Labels                 *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	LimitCpu               *int32  `json:"LimitCpu,omitempty" xml:"LimitCpu,omitempty"`
+	LimitMem               *int32  `json:"LimitMem,omitempty" xml:"LimitMem,omitempty"`
+	LimitmCpu              *int32  `json:"LimitmCpu,omitempty" xml:"LimitmCpu,omitempty"`
+	Liveness               *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	LocalVolume            *string `json:"LocalVolume,omitempty" xml:"LocalVolume,omitempty"`
+	LogicalRegionId        *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
+	LosslessRuleAligned    *bool   `json:"LosslessRuleAligned,omitempty" xml:"LosslessRuleAligned,omitempty"`
+	LosslessRuleDelayTime  *int32  `json:"LosslessRuleDelayTime,omitempty" xml:"LosslessRuleDelayTime,omitempty"`
+	LosslessRuleFuncType   *int32  `json:"LosslessRuleFuncType,omitempty" xml:"LosslessRuleFuncType,omitempty"`
+	LosslessRuleRelated    *bool   `json:"LosslessRuleRelated,omitempty" xml:"LosslessRuleRelated,omitempty"`
 	LosslessRuleWarmupTime *int32  `json:"LosslessRuleWarmupTime,omitempty" xml:"LosslessRuleWarmupTime,omitempty"`
 	MountDescs             *string `json:"MountDescs,omitempty" xml:"MountDescs,omitempty"`
 	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
@@ -12686,6 +11570,7 @@ type InsertK8sApplicationRequest struct {
 	RequestsmCpu           *int32  `json:"RequestsmCpu,omitempty" xml:"RequestsmCpu,omitempty"`
 	ResourceGroupId        *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	RuntimeClassName       *string `json:"RuntimeClassName,omitempty" xml:"RuntimeClassName,omitempty"`
+	ServiceConfigs         *string `json:"ServiceConfigs,omitempty" xml:"ServiceConfigs,omitempty"`
 	SlsConfigs             *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
 	StorageType            *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	Timeout                *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
@@ -12708,8 +11593,18 @@ func (s *InsertK8sApplicationRequest) SetAnnotations(v string) *InsertK8sApplica
 	return s
 }
 
+func (s *InsertK8sApplicationRequest) SetAppConfig(v string) *InsertK8sApplicationRequest {
+	s.AppConfig = &v
+	return s
+}
+
 func (s *InsertK8sApplicationRequest) SetAppName(v string) *InsertK8sApplicationRequest {
 	s.AppName = &v
+	return s
+}
+
+func (s *InsertK8sApplicationRequest) SetAppTemplateName(v string) *InsertK8sApplicationRequest {
+	s.AppTemplateName = &v
 	return s
 }
 
@@ -13013,6 +11908,11 @@ func (s *InsertK8sApplicationRequest) SetRuntimeClassName(v string) *InsertK8sAp
 	return s
 }
 
+func (s *InsertK8sApplicationRequest) SetServiceConfigs(v string) *InsertK8sApplicationRequest {
+	s.ServiceConfigs = &v
+	return s
+}
+
 func (s *InsertK8sApplicationRequest) SetSlsConfigs(v string) *InsertK8sApplicationRequest {
 	s.SlsConfigs = &v
 	return s
@@ -13178,11 +12078,13 @@ func (s *InsertK8sApplicationResponse) SetBody(v *InsertK8sApplicationResponseBo
 }
 
 type InsertOrUpdateRegionRequest struct {
-	DebugEnable *bool   `json:"DebugEnable,omitempty" xml:"DebugEnable,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	RegionName  *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	RegionTag   *string `json:"RegionTag,omitempty" xml:"RegionTag,omitempty"`
+	DebugEnable   *bool   `json:"DebugEnable,omitempty" xml:"DebugEnable,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	MseInstanceId *string `json:"MseInstanceId,omitempty" xml:"MseInstanceId,omitempty"`
+	RegionName    *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	RegionTag     *string `json:"RegionTag,omitempty" xml:"RegionTag,omitempty"`
+	RegistryType  *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
 }
 
 func (s InsertOrUpdateRegionRequest) String() string {
@@ -13208,6 +12110,11 @@ func (s *InsertOrUpdateRegionRequest) SetId(v int64) *InsertOrUpdateRegionReques
 	return s
 }
 
+func (s *InsertOrUpdateRegionRequest) SetMseInstanceId(v string) *InsertOrUpdateRegionRequest {
+	s.MseInstanceId = &v
+	return s
+}
+
 func (s *InsertOrUpdateRegionRequest) SetRegionName(v string) *InsertOrUpdateRegionRequest {
 	s.RegionName = &v
 	return s
@@ -13215,6 +12122,11 @@ func (s *InsertOrUpdateRegionRequest) SetRegionName(v string) *InsertOrUpdateReg
 
 func (s *InsertOrUpdateRegionRequest) SetRegionTag(v string) *InsertOrUpdateRegionRequest {
 	s.RegionTag = &v
+	return s
+}
+
+func (s *InsertOrUpdateRegionRequest) SetRegistryType(v string) *InsertOrUpdateRegionRequest {
+	s.RegistryType = &v
 	return s
 }
 
@@ -13493,6 +12405,420 @@ func (s *InsertServiceGroupResponse) SetStatusCode(v int32) *InsertServiceGroupR
 }
 
 func (s *InsertServiceGroupResponse) SetBody(v *InsertServiceGroupResponseBody) *InsertServiceGroupResponse {
+	s.Body = v
+	return s
+}
+
+type InsertSwimmingLaneRequest struct {
+	AppInfos        *string `json:"AppInfos,omitempty" xml:"AppInfos,omitempty"`
+	EnableRules     *bool   `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
+	EntryRules      *string `json:"EntryRules,omitempty" xml:"EntryRules,omitempty"`
+	GroupId         *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Tag             *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s InsertSwimmingLaneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertSwimmingLaneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertSwimmingLaneRequest) SetAppInfos(v string) *InsertSwimmingLaneRequest {
+	s.AppInfos = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneRequest) SetEnableRules(v bool) *InsertSwimmingLaneRequest {
+	s.EnableRules = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneRequest) SetEntryRules(v string) *InsertSwimmingLaneRequest {
+	s.EntryRules = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneRequest) SetGroupId(v int64) *InsertSwimmingLaneRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneRequest) SetLogicalRegionId(v string) *InsertSwimmingLaneRequest {
+	s.LogicalRegionId = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneRequest) SetName(v string) *InsertSwimmingLaneRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneRequest) SetTag(v string) *InsertSwimmingLaneRequest {
+	s.Tag = &v
+	return s
+}
+
+type InsertSwimmingLaneResponseBody struct {
+	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *InsertSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s InsertSwimmingLaneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertSwimmingLaneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsertSwimmingLaneResponseBody) SetCode(v int32) *InsertSwimmingLaneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponseBody) SetData(v *InsertSwimmingLaneResponseBodyData) *InsertSwimmingLaneResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponseBody) SetMessage(v string) *InsertSwimmingLaneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponseBody) SetRequestId(v string) *InsertSwimmingLaneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type InsertSwimmingLaneResponseBodyData struct {
+	AppInfos                        *string                                                              `json:"AppInfos,omitempty" xml:"AppInfos,omitempty"`
+	EntryRule                       *string                                                              `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
+	GroupId                         *int64                                                               `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Id                              *int64                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name                            *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	NamespaceId                     *string                                                              `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	SwimmingLaneAppRelationShipList []*InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList `json:"SwimmingLaneAppRelationShipList,omitempty" xml:"SwimmingLaneAppRelationShipList,omitempty" type:"Repeated"`
+	Tag                             *string                                                              `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s InsertSwimmingLaneResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertSwimmingLaneResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *InsertSwimmingLaneResponseBodyData) SetAppInfos(v string) *InsertSwimmingLaneResponseBodyData {
+	s.AppInfos = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponseBodyData) SetEntryRule(v string) *InsertSwimmingLaneResponseBodyData {
+	s.EntryRule = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponseBodyData) SetGroupId(v int64) *InsertSwimmingLaneResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponseBodyData) SetId(v int64) *InsertSwimmingLaneResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponseBodyData) SetName(v string) *InsertSwimmingLaneResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponseBodyData) SetNamespaceId(v string) *InsertSwimmingLaneResponseBodyData {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponseBodyData) SetSwimmingLaneAppRelationShipList(v []*InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) *InsertSwimmingLaneResponseBodyData {
+	s.SwimmingLaneAppRelationShipList = v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponseBodyData) SetTag(v string) *InsertSwimmingLaneResponseBodyData {
+	s.Tag = &v
+	return s
+}
+
+type InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	LaneId  *int64  `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	Rules   *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+}
+
+func (s InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) GoString() string {
+	return s.String()
+}
+
+func (s *InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetAppId(v string) *InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList {
+	s.AppId = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetAppName(v string) *InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList {
+	s.AppName = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetLaneId(v int64) *InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList {
+	s.LaneId = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetRules(v string) *InsertSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList {
+	s.Rules = &v
+	return s
+}
+
+type InsertSwimmingLaneResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsertSwimmingLaneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsertSwimmingLaneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertSwimmingLaneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsertSwimmingLaneResponse) SetHeaders(v map[string]*string) *InsertSwimmingLaneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponse) SetStatusCode(v int32) *InsertSwimmingLaneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneResponse) SetBody(v *InsertSwimmingLaneResponseBody) *InsertSwimmingLaneResponse {
+	s.Body = v
+	return s
+}
+
+type InsertSwimmingLaneGroupRequest struct {
+	AppIds          *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	EntryApp        *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
+	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s InsertSwimmingLaneGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertSwimmingLaneGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertSwimmingLaneGroupRequest) SetAppIds(v string) *InsertSwimmingLaneGroupRequest {
+	s.AppIds = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneGroupRequest) SetEntryApp(v string) *InsertSwimmingLaneGroupRequest {
+	s.EntryApp = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneGroupRequest) SetLogicalRegionId(v string) *InsertSwimmingLaneGroupRequest {
+	s.LogicalRegionId = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneGroupRequest) SetName(v string) *InsertSwimmingLaneGroupRequest {
+	s.Name = &v
+	return s
+}
+
+type InsertSwimmingLaneGroupResponseBody struct {
+	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *InsertSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s InsertSwimmingLaneGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertSwimmingLaneGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsertSwimmingLaneGroupResponseBody) SetCode(v int32) *InsertSwimmingLaneGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneGroupResponseBody) SetData(v *InsertSwimmingLaneGroupResponseBodyData) *InsertSwimmingLaneGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *InsertSwimmingLaneGroupResponseBody) SetMessage(v string) *InsertSwimmingLaneGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneGroupResponseBody) SetRequestId(v string) *InsertSwimmingLaneGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type InsertSwimmingLaneGroupResponseBodyData struct {
+	ApplicationList  *InsertSwimmingLaneGroupResponseBodyDataApplicationList  `json:"ApplicationList,omitempty" xml:"ApplicationList,omitempty" type:"Struct"`
+	EntryApplication *InsertSwimmingLaneGroupResponseBodyDataEntryApplication `json:"EntryApplication,omitempty" xml:"EntryApplication,omitempty" type:"Struct"`
+	Id               *int64                                                   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name             *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	NamespaceId      *string                                                  `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s InsertSwimmingLaneGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertSwimmingLaneGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *InsertSwimmingLaneGroupResponseBodyData) SetApplicationList(v *InsertSwimmingLaneGroupResponseBodyDataApplicationList) *InsertSwimmingLaneGroupResponseBodyData {
+	s.ApplicationList = v
+	return s
+}
+
+func (s *InsertSwimmingLaneGroupResponseBodyData) SetEntryApplication(v *InsertSwimmingLaneGroupResponseBodyDataEntryApplication) *InsertSwimmingLaneGroupResponseBodyData {
+	s.EntryApplication = v
+	return s
+}
+
+func (s *InsertSwimmingLaneGroupResponseBodyData) SetId(v int64) *InsertSwimmingLaneGroupResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneGroupResponseBodyData) SetName(v string) *InsertSwimmingLaneGroupResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneGroupResponseBodyData) SetNamespaceId(v string) *InsertSwimmingLaneGroupResponseBodyData {
+	s.NamespaceId = &v
+	return s
+}
+
+type InsertSwimmingLaneGroupResponseBodyDataApplicationList struct {
+	Application []*InsertSwimmingLaneGroupResponseBodyDataApplicationListApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Repeated"`
+}
+
+func (s InsertSwimmingLaneGroupResponseBodyDataApplicationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertSwimmingLaneGroupResponseBodyDataApplicationList) GoString() string {
+	return s.String()
+}
+
+func (s *InsertSwimmingLaneGroupResponseBodyDataApplicationList) SetApplication(v []*InsertSwimmingLaneGroupResponseBodyDataApplicationListApplication) *InsertSwimmingLaneGroupResponseBodyDataApplicationList {
+	s.Application = v
+	return s
+}
+
+type InsertSwimmingLaneGroupResponseBodyDataApplicationListApplication struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+}
+
+func (s InsertSwimmingLaneGroupResponseBodyDataApplicationListApplication) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertSwimmingLaneGroupResponseBodyDataApplicationListApplication) GoString() string {
+	return s.String()
+}
+
+func (s *InsertSwimmingLaneGroupResponseBodyDataApplicationListApplication) SetAppId(v string) *InsertSwimmingLaneGroupResponseBodyDataApplicationListApplication {
+	s.AppId = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneGroupResponseBodyDataApplicationListApplication) SetAppName(v string) *InsertSwimmingLaneGroupResponseBodyDataApplicationListApplication {
+	s.AppName = &v
+	return s
+}
+
+type InsertSwimmingLaneGroupResponseBodyDataEntryApplication struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+}
+
+func (s InsertSwimmingLaneGroupResponseBodyDataEntryApplication) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertSwimmingLaneGroupResponseBodyDataEntryApplication) GoString() string {
+	return s.String()
+}
+
+func (s *InsertSwimmingLaneGroupResponseBodyDataEntryApplication) SetAppId(v string) *InsertSwimmingLaneGroupResponseBodyDataEntryApplication {
+	s.AppId = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneGroupResponseBodyDataEntryApplication) SetAppName(v string) *InsertSwimmingLaneGroupResponseBodyDataEntryApplication {
+	s.AppName = &v
+	return s
+}
+
+type InsertSwimmingLaneGroupResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsertSwimmingLaneGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsertSwimmingLaneGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertSwimmingLaneGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsertSwimmingLaneGroupResponse) SetHeaders(v map[string]*string) *InsertSwimmingLaneGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsertSwimmingLaneGroupResponse) SetStatusCode(v int32) *InsertSwimmingLaneGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsertSwimmingLaneGroupResponse) SetBody(v *InsertSwimmingLaneGroupResponseBody) *InsertSwimmingLaneGroupResponse {
 	s.Body = v
 	return s
 }
@@ -13851,10 +13177,19 @@ type ListApplicationResponseBodyApplicationListApplication struct {
 	BuildPackageId       *int64  `json:"BuildPackageId,omitempty" xml:"BuildPackageId,omitempty"`
 	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ClusterType          *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	CreateTime           *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExtSlbIp             *string `json:"ExtSlbIp,omitempty" xml:"ExtSlbIp,omitempty"`
+	ExtSlbListenerPort   *int32  `json:"ExtSlbListenerPort,omitempty" xml:"ExtSlbListenerPort,omitempty"`
+	Instances            *int32  `json:"Instances,omitempty" xml:"Instances,omitempty"`
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port                 *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	RunningInstanceCount *int32  `json:"RunningInstanceCount,omitempty" xml:"RunningInstanceCount,omitempty"`
+	SlbIp                *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
+	SlbListenerPort      *int32  `json:"SlbListenerPort,omitempty" xml:"SlbListenerPort,omitempty"`
+	SlbPort              *int32  `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
+	State                *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListApplicationResponseBodyApplicationListApplication) String() string {
@@ -13890,8 +13225,33 @@ func (s *ListApplicationResponseBodyApplicationListApplication) SetClusterType(v
 	return s
 }
 
+func (s *ListApplicationResponseBodyApplicationListApplication) SetCreateTime(v int64) *ListApplicationResponseBodyApplicationListApplication {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyApplicationListApplication) SetExtSlbIp(v string) *ListApplicationResponseBodyApplicationListApplication {
+	s.ExtSlbIp = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyApplicationListApplication) SetExtSlbListenerPort(v int32) *ListApplicationResponseBodyApplicationListApplication {
+	s.ExtSlbListenerPort = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyApplicationListApplication) SetInstances(v int32) *ListApplicationResponseBodyApplicationListApplication {
+	s.Instances = &v
+	return s
+}
+
 func (s *ListApplicationResponseBodyApplicationListApplication) SetName(v string) *ListApplicationResponseBodyApplicationListApplication {
 	s.Name = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyApplicationListApplication) SetPort(v int32) *ListApplicationResponseBodyApplicationListApplication {
+	s.Port = &v
 	return s
 }
 
@@ -13907,6 +13267,26 @@ func (s *ListApplicationResponseBodyApplicationListApplication) SetResourceGroup
 
 func (s *ListApplicationResponseBodyApplicationListApplication) SetRunningInstanceCount(v int32) *ListApplicationResponseBodyApplicationListApplication {
 	s.RunningInstanceCount = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyApplicationListApplication) SetSlbIp(v string) *ListApplicationResponseBodyApplicationListApplication {
+	s.SlbIp = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyApplicationListApplication) SetSlbListenerPort(v int32) *ListApplicationResponseBodyApplicationListApplication {
+	s.SlbListenerPort = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyApplicationListApplication) SetSlbPort(v int32) *ListApplicationResponseBodyApplicationListApplication {
+	s.SlbPort = &v
+	return s
+}
+
+func (s *ListApplicationResponseBodyApplicationListApplication) SetState(v string) *ListApplicationResponseBodyApplicationListApplication {
+	s.State = &v
 	return s
 }
 
@@ -15092,14 +14472,10 @@ func (s *ListComponentsResponse) SetBody(v *ListComponentsResponseBody) *ListCom
 }
 
 type ListConfigTemplatesRequest struct {
-	// 页码
-	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 配置模板ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 配置模板名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 页大小
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListConfigTemplatesRequest) String() string {
@@ -15131,14 +14507,10 @@ func (s *ListConfigTemplatesRequest) SetPageSize(v int64) *ListConfigTemplatesRe
 }
 
 type ListConfigTemplatesResponseBody struct {
-	// 响应码
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 查询结果
-	Data *ListConfigTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 响应码文本描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ListConfigTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListConfigTemplatesResponseBody) String() string {
@@ -15170,14 +14542,10 @@ func (s *ListConfigTemplatesResponseBody) SetRequestId(v string) *ListConfigTemp
 }
 
 type ListConfigTemplatesResponseBodyData struct {
-	// 当前分页
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 配置模板列表
-	Result []*ListConfigTemplatesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// 配置模板总数
-	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	CurrentPage *int32                                       `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result      []*ListConfigTemplatesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	TotalSize   *int64                                       `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s ListConfigTemplatesResponseBodyData) String() string {
@@ -15209,20 +14577,13 @@ func (s *ListConfigTemplatesResponseBodyData) SetTotalSize(v int64) *ListConfigT
 }
 
 type ListConfigTemplatesResponseBodyDataResult struct {
-	// 模板内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 模板描述
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 模板数据格式
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// 创建时间
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 更新时间
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 配置模板ID
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 配置模板名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Format      *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListConfigTemplatesResponseBodyDataResult) String() string {
@@ -15751,38 +15112,40 @@ func (s *ListDeployGroupResponseBodyDeployGroupList) SetDeployGroup(v []*ListDep
 }
 
 type ListDeployGroupResponseBodyDeployGroupListDeployGroup struct {
-	AppId                 *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersionId          *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
-	BaseComponentMetaName *string `json:"BaseComponentMetaName,omitempty" xml:"BaseComponentMetaName,omitempty"`
-	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName           *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CpuLimit              *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	CpuRequest            *string `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
-	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CsClusterId           *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
-	DeploymentName        *string `json:"DeploymentName,omitempty" xml:"DeploymentName,omitempty"`
-	Env                   *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	GroupId               *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName             *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupType             *int32  `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	Labels                *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	LastUpdateTime        *int64  `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	MemoryLimit           *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	MemoryRequest         *string `json:"MemoryRequest,omitempty" xml:"MemoryRequest,omitempty"`
-	NameSpace             *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
-	PackagePublicUrl      *string `json:"PackagePublicUrl,omitempty" xml:"PackagePublicUrl,omitempty"`
-	PackageUrl            *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	PackageVersion        *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	PackageVersionId      *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
-	PostStart             *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	PreStop               *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	Reversion             *string `json:"Reversion,omitempty" xml:"Reversion,omitempty"`
-	Selector              *string `json:"Selector,omitempty" xml:"Selector,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Strategy              *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
-	UpdateTime            *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VExtServerGroupId     *string `json:"VExtServerGroupId,omitempty" xml:"VExtServerGroupId,omitempty"`
-	VServerGroupId        *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	AppId                   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersionId            *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	BaseComponentMetaName   *string `json:"BaseComponentMetaName,omitempty" xml:"BaseComponentMetaName,omitempty"`
+	ClusterId               *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName             *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CpuLimit                *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	CpuRequest              *string `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
+	CreateTime              *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CsClusterId             *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
+	DeploymentName          *string `json:"DeploymentName,omitempty" xml:"DeploymentName,omitempty"`
+	Env                     *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	EphemeralStorageLimit   *string `json:"EphemeralStorageLimit,omitempty" xml:"EphemeralStorageLimit,omitempty"`
+	EphemeralStorageRequest *string `json:"EphemeralStorageRequest,omitempty" xml:"EphemeralStorageRequest,omitempty"`
+	GroupId                 *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName               *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType               *int32  `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	Labels                  *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	LastUpdateTime          *int64  `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	MemoryLimit             *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	MemoryRequest           *string `json:"MemoryRequest,omitempty" xml:"MemoryRequest,omitempty"`
+	NameSpace               *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
+	PackagePublicUrl        *string `json:"PackagePublicUrl,omitempty" xml:"PackagePublicUrl,omitempty"`
+	PackageUrl              *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	PackageVersion          *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	PackageVersionId        *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
+	PostStart               *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop                 *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	Reversion               *string `json:"Reversion,omitempty" xml:"Reversion,omitempty"`
+	Selector                *string `json:"Selector,omitempty" xml:"Selector,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Strategy                *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	UpdateTime              *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VExtServerGroupId       *string `json:"VExtServerGroupId,omitempty" xml:"VExtServerGroupId,omitempty"`
+	VServerGroupId          *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
 func (s ListDeployGroupResponseBodyDeployGroupListDeployGroup) String() string {
@@ -15845,6 +15208,16 @@ func (s *ListDeployGroupResponseBodyDeployGroupListDeployGroup) SetDeploymentNam
 
 func (s *ListDeployGroupResponseBodyDeployGroupListDeployGroup) SetEnv(v string) *ListDeployGroupResponseBodyDeployGroupListDeployGroup {
 	s.Env = &v
+	return s
+}
+
+func (s *ListDeployGroupResponseBodyDeployGroupListDeployGroup) SetEphemeralStorageLimit(v string) *ListDeployGroupResponseBodyDeployGroupListDeployGroup {
+	s.EphemeralStorageLimit = &v
+	return s
+}
+
+func (s *ListDeployGroupResponseBodyDeployGroupListDeployGroup) SetEphemeralStorageRequest(v string) *ListDeployGroupResponseBodyDeployGroupListDeployGroup {
+	s.EphemeralStorageRequest = &v
 	return s
 }
 
@@ -16900,15 +16273,19 @@ func (s *ListK8sIngressRulesResponseBodyData) SetRegionId(v string) *ListK8sIngr
 }
 
 type ListK8sIngressRulesResponseBodyDataIngressConfs struct {
-	AlbId        *string                                                 `json:"AlbId,omitempty" xml:"AlbId,omitempty"`
-	CreationTime *string                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DashboardUrl *string                                                 `json:"DashboardUrl,omitempty" xml:"DashboardUrl,omitempty"`
-	Endpoint     *string                                                 `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	IngressType  *string                                                 `json:"IngressType,omitempty" xml:"IngressType,omitempty"`
-	Name         *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace    *string                                                 `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Rules        []*ListK8sIngressRulesResponseBodyDataIngressConfsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	SslRedirect  *bool                                                   `json:"SslRedirect,omitempty" xml:"SslRedirect,omitempty"`
+	AlbId             *string                                                 `json:"AlbId,omitempty" xml:"AlbId,omitempty"`
+	CreationTime      *string                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DashboardUrl      *string                                                 `json:"DashboardUrl,omitempty" xml:"DashboardUrl,omitempty"`
+	Endpoint          *string                                                 `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	IngressType       *string                                                 `json:"IngressType,omitempty" xml:"IngressType,omitempty"`
+	MseGatewayId      *string                                                 `json:"MseGatewayId,omitempty" xml:"MseGatewayId,omitempty"`
+	MseGatewayName    *string                                                 `json:"MseGatewayName,omitempty" xml:"MseGatewayName,omitempty"`
+	Name              *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace         *string                                                 `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OfficalBasicUrl   *string                                                 `json:"OfficalBasicUrl,omitempty" xml:"OfficalBasicUrl,omitempty"`
+	OfficalRequestUrl *string                                                 `json:"OfficalRequestUrl,omitempty" xml:"OfficalRequestUrl,omitempty"`
+	Rules             []*ListK8sIngressRulesResponseBodyDataIngressConfsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	SslRedirect       *bool                                                   `json:"SslRedirect,omitempty" xml:"SslRedirect,omitempty"`
 }
 
 func (s ListK8sIngressRulesResponseBodyDataIngressConfs) String() string {
@@ -16944,6 +16321,16 @@ func (s *ListK8sIngressRulesResponseBodyDataIngressConfs) SetIngressType(v strin
 	return s
 }
 
+func (s *ListK8sIngressRulesResponseBodyDataIngressConfs) SetMseGatewayId(v string) *ListK8sIngressRulesResponseBodyDataIngressConfs {
+	s.MseGatewayId = &v
+	return s
+}
+
+func (s *ListK8sIngressRulesResponseBodyDataIngressConfs) SetMseGatewayName(v string) *ListK8sIngressRulesResponseBodyDataIngressConfs {
+	s.MseGatewayName = &v
+	return s
+}
+
 func (s *ListK8sIngressRulesResponseBodyDataIngressConfs) SetName(v string) *ListK8sIngressRulesResponseBodyDataIngressConfs {
 	s.Name = &v
 	return s
@@ -16951,6 +16338,16 @@ func (s *ListK8sIngressRulesResponseBodyDataIngressConfs) SetName(v string) *Lis
 
 func (s *ListK8sIngressRulesResponseBodyDataIngressConfs) SetNamespace(v string) *ListK8sIngressRulesResponseBodyDataIngressConfs {
 	s.Namespace = &v
+	return s
+}
+
+func (s *ListK8sIngressRulesResponseBodyDataIngressConfs) SetOfficalBasicUrl(v string) *ListK8sIngressRulesResponseBodyDataIngressConfs {
+	s.OfficalBasicUrl = &v
+	return s
+}
+
+func (s *ListK8sIngressRulesResponseBodyDataIngressConfs) SetOfficalRequestUrl(v string) *ListK8sIngressRulesResponseBodyDataIngressConfs {
+	s.OfficalRequestUrl = &v
 	return s
 }
 
@@ -17000,11 +16397,12 @@ func (s *ListK8sIngressRulesResponseBodyDataIngressConfsRules) SetSecretName(v s
 }
 
 type ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths struct {
-	AppId   *string                                                           `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName *string                                                           `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Backend *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPathsBackend `json:"Backend,omitempty" xml:"Backend,omitempty" type:"Struct"`
-	Path    *string                                                           `json:"Path,omitempty" xml:"Path,omitempty"`
-	Status  *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	AppId       *string                                                           `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName     *string                                                           `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Backend     *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPathsBackend `json:"Backend,omitempty" xml:"Backend,omitempty" type:"Struct"`
+	CollectRate *int32                                                            `json:"CollectRate,omitempty" xml:"CollectRate,omitempty"`
+	Path        *string                                                           `json:"Path,omitempty" xml:"Path,omitempty"`
+	Status      *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths) String() string {
@@ -17027,6 +16425,11 @@ func (s *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths) SetAppName(v
 
 func (s *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths) SetBackend(v *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPathsBackend) *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths {
 	s.Backend = v
+	return s
+}
+
+func (s *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths) SetCollectRate(v int32) *ListK8sIngressRulesResponseBodyDataIngressConfsRulesPaths {
+	s.CollectRate = &v
 	return s
 }
 
@@ -17093,7 +16496,6 @@ func (s *ListK8sIngressRulesResponse) SetBody(v *ListK8sIngressRulesResponseBody
 }
 
 type ListK8sNamespacesRequest struct {
-	// A short description of struct
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -17111,11 +16513,10 @@ func (s *ListK8sNamespacesRequest) SetClusterId(v string) *ListK8sNamespacesRequ
 }
 
 type ListK8sNamespacesResponseBody struct {
-	Code    *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*ListK8sNamespacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*ListK8sNamespacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListK8sNamespacesResponseBody) String() string {
@@ -18910,209 +18311,6 @@ func (s *ListRoleResponse) SetBody(v *ListRoleResponseBody) *ListRoleResponse {
 	return s
 }
 
-type ListRootStacksRequest struct {
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s ListRootStacksRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRootStacksRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListRootStacksRequest) SetCurrentPage(v int32) *ListRootStacksRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *ListRootStacksRequest) SetPageSize(v int32) *ListRootStacksRequest {
-	s.PageSize = &v
-	return s
-}
-
-type ListRootStacksResponseBody struct {
-	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListRootStacksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListRootStacksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRootStacksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListRootStacksResponseBody) SetCode(v int32) *ListRootStacksResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListRootStacksResponseBody) SetData(v *ListRootStacksResponseBodyData) *ListRootStacksResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListRootStacksResponseBody) SetMessage(v string) *ListRootStacksResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListRootStacksResponseBody) SetRequestId(v string) *ListRootStacksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListRootStacksResponseBodyData struct {
-	CurrentPage *int32                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result      []*ListRootStacksResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	TotalSize   *int32                                  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-}
-
-func (s ListRootStacksResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRootStacksResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListRootStacksResponseBodyData) SetCurrentPage(v int32) *ListRootStacksResponseBodyData {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *ListRootStacksResponseBodyData) SetPageSize(v int32) *ListRootStacksResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListRootStacksResponseBodyData) SetResult(v []*ListRootStacksResponseBodyDataResult) *ListRootStacksResponseBodyData {
-	s.Result = v
-	return s
-}
-
-func (s *ListRootStacksResponseBodyData) SetTotalSize(v int32) *ListRootStacksResponseBodyData {
-	s.TotalSize = &v
-	return s
-}
-
-type ListRootStacksResponseBodyDataResult struct {
-	Children []*ListRootStacksResponseBodyDataResultChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	Root     *ListRootStacksResponseBodyDataResultRoot       `json:"Root,omitempty" xml:"Root,omitempty" type:"Struct"`
-}
-
-func (s ListRootStacksResponseBodyDataResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRootStacksResponseBodyDataResult) GoString() string {
-	return s.String()
-}
-
-func (s *ListRootStacksResponseBodyDataResult) SetChildren(v []*ListRootStacksResponseBodyDataResultChildren) *ListRootStacksResponseBodyDataResult {
-	s.Children = v
-	return s
-}
-
-func (s *ListRootStacksResponseBodyDataResult) SetRoot(v *ListRootStacksResponseBodyDataResultRoot) *ListRootStacksResponseBodyDataResult {
-	s.Root = v
-	return s
-}
-
-type ListRootStacksResponseBodyDataResultChildren struct {
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Icon    *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Id      *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s ListRootStacksResponseBodyDataResultChildren) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRootStacksResponseBodyDataResultChildren) GoString() string {
-	return s.String()
-}
-
-func (s *ListRootStacksResponseBodyDataResultChildren) SetComment(v string) *ListRootStacksResponseBodyDataResultChildren {
-	s.Comment = &v
-	return s
-}
-
-func (s *ListRootStacksResponseBodyDataResultChildren) SetIcon(v string) *ListRootStacksResponseBodyDataResultChildren {
-	s.Icon = &v
-	return s
-}
-
-func (s *ListRootStacksResponseBodyDataResultChildren) SetId(v int64) *ListRootStacksResponseBodyDataResultChildren {
-	s.Id = &v
-	return s
-}
-
-func (s *ListRootStacksResponseBodyDataResultChildren) SetName(v string) *ListRootStacksResponseBodyDataResultChildren {
-	s.Name = &v
-	return s
-}
-
-type ListRootStacksResponseBodyDataResultRoot struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s ListRootStacksResponseBodyDataResultRoot) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRootStacksResponseBodyDataResultRoot) GoString() string {
-	return s.String()
-}
-
-func (s *ListRootStacksResponseBodyDataResultRoot) SetId(v int64) *ListRootStacksResponseBodyDataResultRoot {
-	s.Id = &v
-	return s
-}
-
-func (s *ListRootStacksResponseBodyDataResultRoot) SetName(v string) *ListRootStacksResponseBodyDataResultRoot {
-	s.Name = &v
-	return s
-}
-
-type ListRootStacksResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRootStacksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListRootStacksResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRootStacksResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListRootStacksResponse) SetHeaders(v map[string]*string) *ListRootStacksResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListRootStacksResponse) SetStatusCode(v int32) *ListRootStacksResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListRootStacksResponse) SetBody(v *ListRootStacksResponseBody) *ListRootStacksResponse {
-	s.Body = v
-	return s
-}
-
 type ListScaleOutEcuRequest struct {
 	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -19458,6 +18656,35 @@ func (s *ListServiceGroupsResponse) SetBody(v *ListServiceGroupsResponseBody) *L
 	return s
 }
 
+type ListSlbRequest struct {
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	SlbType     *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
+	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListSlbRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSlbRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSlbRequest) SetAddressType(v string) *ListSlbRequest {
+	s.AddressType = &v
+	return s
+}
+
+func (s *ListSlbRequest) SetSlbType(v string) *ListSlbRequest {
+	s.SlbType = &v
+	return s
+}
+
+func (s *ListSlbRequest) SetVpcId(v string) *ListSlbRequest {
+	s.VpcId = &v
+	return s
+}
+
 type ListSlbResponseBody struct {
 	Code      *int32                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -19517,9 +18744,11 @@ type ListSlbResponseBodySlbListSlbEntity struct {
 	GroupId     *int32  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Reusable    *bool   `json:"Reusable,omitempty" xml:"Reusable,omitempty"`
 	SlbId       *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
 	SlbName     *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
 	SlbStatus   *string `json:"SlbStatus,omitempty" xml:"SlbStatus,omitempty"`
+	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VswitchId   *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
@@ -19563,6 +18792,11 @@ func (s *ListSlbResponseBodySlbListSlbEntity) SetRegionId(v string) *ListSlbResp
 	return s
 }
 
+func (s *ListSlbResponseBodySlbListSlbEntity) SetReusable(v bool) *ListSlbResponseBodySlbListSlbEntity {
+	s.Reusable = &v
+	return s
+}
+
 func (s *ListSlbResponseBodySlbListSlbEntity) SetSlbId(v string) *ListSlbResponseBodySlbListSlbEntity {
 	s.SlbId = &v
 	return s
@@ -19575,6 +18809,11 @@ func (s *ListSlbResponseBodySlbListSlbEntity) SetSlbName(v string) *ListSlbRespo
 
 func (s *ListSlbResponseBodySlbListSlbEntity) SetSlbStatus(v string) *ListSlbResponseBodySlbListSlbEntity {
 	s.SlbStatus = &v
+	return s
+}
+
+func (s *ListSlbResponseBodySlbListSlbEntity) SetTags(v string) *ListSlbResponseBodySlbListSlbEntity {
+	s.Tags = &v
 	return s
 }
 
@@ -19758,6 +18997,367 @@ func (s *ListSubAccountResponse) SetStatusCode(v int32) *ListSubAccountResponse 
 }
 
 func (s *ListSubAccountResponse) SetBody(v *ListSubAccountResponseBody) *ListSubAccountResponse {
+	s.Body = v
+	return s
+}
+
+type ListSwimmingLaneRequest struct {
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s ListSwimmingLaneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneRequest) SetGroupId(v int64) *ListSwimmingLaneRequest {
+	s.GroupId = &v
+	return s
+}
+
+type ListSwimmingLaneResponseBody struct {
+	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*ListSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListSwimmingLaneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneResponseBody) SetCode(v int32) *ListSwimmingLaneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBody) SetData(v []*ListSwimmingLaneResponseBodyData) *ListSwimmingLaneResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBody) SetMessage(v string) *ListSwimmingLaneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBody) SetRequestId(v string) *ListSwimmingLaneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListSwimmingLaneResponseBodyData struct {
+	EnableRules                     *bool                                                              `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
+	EntryRule                       *string                                                            `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
+	GroupId                         *int64                                                             `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Id                              *int64                                                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name                            *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	NamespaceId                     *string                                                            `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	ScenarioSign                    *string                                                            `json:"ScenarioSign,omitempty" xml:"ScenarioSign,omitempty"`
+	SwimmingLaneAppRelationShipList []*ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList `json:"SwimmingLaneAppRelationShipList,omitempty" xml:"SwimmingLaneAppRelationShipList,omitempty" type:"Repeated"`
+	Tag                             *string                                                            `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListSwimmingLaneResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneResponseBodyData) SetEnableRules(v bool) *ListSwimmingLaneResponseBodyData {
+	s.EnableRules = &v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBodyData) SetEntryRule(v string) *ListSwimmingLaneResponseBodyData {
+	s.EntryRule = &v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBodyData) SetGroupId(v int64) *ListSwimmingLaneResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBodyData) SetId(v int64) *ListSwimmingLaneResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBodyData) SetName(v string) *ListSwimmingLaneResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBodyData) SetNamespaceId(v string) *ListSwimmingLaneResponseBodyData {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBodyData) SetScenarioSign(v string) *ListSwimmingLaneResponseBodyData {
+	s.ScenarioSign = &v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBodyData) SetSwimmingLaneAppRelationShipList(v []*ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) *ListSwimmingLaneResponseBodyData {
+	s.SwimmingLaneAppRelationShipList = v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBodyData) SetTag(v string) *ListSwimmingLaneResponseBodyData {
+	s.Tag = &v
+	return s
+}
+
+type ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	LaneId  *int64  `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	Rules   *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+}
+
+func (s ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetAppId(v string) *ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetAppName(v string) *ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetLaneId(v int64) *ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList {
+	s.LaneId = &v
+	return s
+}
+
+func (s *ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetRules(v string) *ListSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList {
+	s.Rules = &v
+	return s
+}
+
+type ListSwimmingLaneResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSwimmingLaneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSwimmingLaneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneResponse) SetHeaders(v map[string]*string) *ListSwimmingLaneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSwimmingLaneResponse) SetStatusCode(v int32) *ListSwimmingLaneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSwimmingLaneResponse) SetBody(v *ListSwimmingLaneResponseBody) *ListSwimmingLaneResponse {
+	s.Body = v
+	return s
+}
+
+type ListSwimmingLaneGroupRequest struct {
+	GroupId         *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
+}
+
+func (s ListSwimmingLaneGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGroupRequest) SetGroupId(v int64) *ListSwimmingLaneGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupRequest) SetLogicalRegionId(v string) *ListSwimmingLaneGroupRequest {
+	s.LogicalRegionId = &v
+	return s
+}
+
+type ListSwimmingLaneGroupResponseBody struct {
+	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*ListSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListSwimmingLaneGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGroupResponseBody) SetCode(v int32) *ListSwimmingLaneGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupResponseBody) SetData(v []*ListSwimmingLaneGroupResponseBodyData) *ListSwimmingLaneGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupResponseBody) SetMessage(v string) *ListSwimmingLaneGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupResponseBody) SetRequestId(v string) *ListSwimmingLaneGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListSwimmingLaneGroupResponseBodyData struct {
+	ApplicationList  []*ListSwimmingLaneGroupResponseBodyDataApplicationList `json:"ApplicationList,omitempty" xml:"ApplicationList,omitempty" type:"Repeated"`
+	EntryApplication *ListSwimmingLaneGroupResponseBodyDataEntryApplication  `json:"EntryApplication,omitempty" xml:"EntryApplication,omitempty" type:"Struct"`
+	Id               *int64                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name             *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	NamespaceId      *string                                                 `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s ListSwimmingLaneGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGroupResponseBodyData) SetApplicationList(v []*ListSwimmingLaneGroupResponseBodyDataApplicationList) *ListSwimmingLaneGroupResponseBodyData {
+	s.ApplicationList = v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupResponseBodyData) SetEntryApplication(v *ListSwimmingLaneGroupResponseBodyDataEntryApplication) *ListSwimmingLaneGroupResponseBodyData {
+	s.EntryApplication = v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupResponseBodyData) SetId(v int64) *ListSwimmingLaneGroupResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupResponseBodyData) SetName(v string) *ListSwimmingLaneGroupResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupResponseBodyData) SetNamespaceId(v string) *ListSwimmingLaneGroupResponseBodyData {
+	s.NamespaceId = &v
+	return s
+}
+
+type ListSwimmingLaneGroupResponseBodyDataApplicationList struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+}
+
+func (s ListSwimmingLaneGroupResponseBodyDataApplicationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGroupResponseBodyDataApplicationList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGroupResponseBodyDataApplicationList) SetAppId(v string) *ListSwimmingLaneGroupResponseBodyDataApplicationList {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupResponseBodyDataApplicationList) SetAppName(v string) *ListSwimmingLaneGroupResponseBodyDataApplicationList {
+	s.AppName = &v
+	return s
+}
+
+type ListSwimmingLaneGroupResponseBodyDataEntryApplication struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Source  *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s ListSwimmingLaneGroupResponseBodyDataEntryApplication) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGroupResponseBodyDataEntryApplication) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGroupResponseBodyDataEntryApplication) SetAppId(v string) *ListSwimmingLaneGroupResponseBodyDataEntryApplication {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupResponseBodyDataEntryApplication) SetAppName(v string) *ListSwimmingLaneGroupResponseBodyDataEntryApplication {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupResponseBodyDataEntryApplication) SetSource(v string) *ListSwimmingLaneGroupResponseBodyDataEntryApplication {
+	s.Source = &v
+	return s
+}
+
+type ListSwimmingLaneGroupResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSwimmingLaneGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSwimmingLaneGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGroupResponse) SetHeaders(v map[string]*string) *ListSwimmingLaneGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupResponse) SetStatusCode(v int32) *ListSwimmingLaneGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupResponse) SetBody(v *ListSwimmingLaneGroupResponseBody) *ListSwimmingLaneGroupResponse {
 	s.Body = v
 	return s
 }
@@ -21921,188 +21521,6 @@ func (s *QuerySlsLogStoreListResponse) SetBody(v *QuerySlsLogStoreListResponseBo
 	return s
 }
 
-type RemoveMockRuleRequest struct {
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s RemoveMockRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveMockRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveMockRuleRequest) SetId(v int64) *RemoveMockRuleRequest {
-	s.Id = &v
-	return s
-}
-
-type RemoveMockRuleResponseBody struct {
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *RemoveMockRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpCode  *string                         `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s RemoveMockRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveMockRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveMockRuleResponseBody) SetCode(v string) *RemoveMockRuleResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBody) SetData(v *RemoveMockRuleResponseBodyData) *RemoveMockRuleResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBody) SetHttpCode(v string) *RemoveMockRuleResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBody) SetMessage(v string) *RemoveMockRuleResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBody) SetRequestId(v string) *RemoveMockRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBody) SetSuccess(v bool) *RemoveMockRuleResponseBody {
-	s.Success = &v
-	return s
-}
-
-type RemoveMockRuleResponseBodyData struct {
-	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	ConsumerAppId   *string `json:"ConsumerAppId,omitempty" xml:"ConsumerAppId,omitempty"`
-	ConsumerAppName *string `json:"ConsumerAppName,omitempty" xml:"ConsumerAppName,omitempty"`
-	Enable          *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	ExtraJson       *string `json:"ExtraJson,omitempty" xml:"ExtraJson,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	ProviderAppId   *string `json:"ProviderAppId,omitempty" xml:"ProviderAppId,omitempty"`
-	ProviderAppName *string `json:"ProviderAppName,omitempty" xml:"ProviderAppName,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ScMockItemJson  *string `json:"ScMockItemJson,omitempty" xml:"ScMockItemJson,omitempty"`
-	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
-}
-
-func (s RemoveMockRuleResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveMockRuleResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveMockRuleResponseBodyData) SetAccountId(v string) *RemoveMockRuleResponseBodyData {
-	s.AccountId = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBodyData) SetConsumerAppId(v string) *RemoveMockRuleResponseBodyData {
-	s.ConsumerAppId = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBodyData) SetConsumerAppName(v string) *RemoveMockRuleResponseBodyData {
-	s.ConsumerAppName = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBodyData) SetEnable(v bool) *RemoveMockRuleResponseBodyData {
-	s.Enable = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBodyData) SetExtraJson(v string) *RemoveMockRuleResponseBodyData {
-	s.ExtraJson = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBodyData) SetId(v int64) *RemoveMockRuleResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBodyData) SetName(v string) *RemoveMockRuleResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBodyData) SetNamespaceId(v string) *RemoveMockRuleResponseBodyData {
-	s.NamespaceId = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBodyData) SetProviderAppId(v string) *RemoveMockRuleResponseBodyData {
-	s.ProviderAppId = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBodyData) SetProviderAppName(v string) *RemoveMockRuleResponseBodyData {
-	s.ProviderAppName = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBodyData) SetRegion(v string) *RemoveMockRuleResponseBodyData {
-	s.Region = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBodyData) SetScMockItemJson(v string) *RemoveMockRuleResponseBodyData {
-	s.ScMockItemJson = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponseBodyData) SetSource(v string) *RemoveMockRuleResponseBodyData {
-	s.Source = &v
-	return s
-}
-
-type RemoveMockRuleResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveMockRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RemoveMockRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveMockRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveMockRuleResponse) SetHeaders(v map[string]*string) *RemoveMockRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RemoveMockRuleResponse) SetStatusCode(v int32) *RemoveMockRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *RemoveMockRuleResponse) SetBody(v *RemoveMockRuleResponseBody) *RemoveMockRuleResponse {
-	s.Body = v
-	return s
-}
-
 type ResetApplicationRequest struct {
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	EccInfo *string `json:"EccInfo,omitempty" xml:"EccInfo,omitempty"`
@@ -23181,6 +22599,230 @@ func (s *StartApplicationResponse) SetStatusCode(v int32) *StartApplicationRespo
 }
 
 func (s *StartApplicationResponse) SetBody(v *StartApplicationResponseBody) *StartApplicationResponse {
+	s.Body = v
+	return s
+}
+
+type StartK8sAppPrecheckRequest struct {
+	Annotations              *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	AppId                    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName                  *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ClusterId                *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ConfigMountDescs         *string `json:"ConfigMountDescs,omitempty" xml:"ConfigMountDescs,omitempty"`
+	EmptyDirs                *string `json:"EmptyDirs,omitempty" xml:"EmptyDirs,omitempty"`
+	EnvFroms                 *string `json:"EnvFroms,omitempty" xml:"EnvFroms,omitempty"`
+	Envs                     *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImageUrl                 *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	JavaStartUpConfig        *string `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty"`
+	Labels                   *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	LimitEphemeralStorage    *int32  `json:"LimitEphemeralStorage,omitempty" xml:"LimitEphemeralStorage,omitempty"`
+	LimitMem                 *int32  `json:"LimitMem,omitempty" xml:"LimitMem,omitempty"`
+	LimitmCpu                *int32  `json:"LimitmCpu,omitempty" xml:"LimitmCpu,omitempty"`
+	LocalVolume              *string `json:"LocalVolume,omitempty" xml:"LocalVolume,omitempty"`
+	Namespace                *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	PackageUrl               *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	PvcMountDescs            *string `json:"PvcMountDescs,omitempty" xml:"PvcMountDescs,omitempty"`
+	Replicas                 *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	RequestsEphemeralStorage *int32  `json:"RequestsEphemeralStorage,omitempty" xml:"RequestsEphemeralStorage,omitempty"`
+	RequestsMem              *int32  `json:"RequestsMem,omitempty" xml:"RequestsMem,omitempty"`
+	RequestsmCpu             *int32  `json:"RequestsmCpu,omitempty" xml:"RequestsmCpu,omitempty"`
+}
+
+func (s StartK8sAppPrecheckRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartK8sAppPrecheckRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartK8sAppPrecheckRequest) SetAnnotations(v string) *StartK8sAppPrecheckRequest {
+	s.Annotations = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetAppId(v string) *StartK8sAppPrecheckRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetAppName(v string) *StartK8sAppPrecheckRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetClusterId(v string) *StartK8sAppPrecheckRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetConfigMountDescs(v string) *StartK8sAppPrecheckRequest {
+	s.ConfigMountDescs = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetEmptyDirs(v string) *StartK8sAppPrecheckRequest {
+	s.EmptyDirs = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetEnvFroms(v string) *StartK8sAppPrecheckRequest {
+	s.EnvFroms = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetEnvs(v string) *StartK8sAppPrecheckRequest {
+	s.Envs = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetImageUrl(v string) *StartK8sAppPrecheckRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetJavaStartUpConfig(v string) *StartK8sAppPrecheckRequest {
+	s.JavaStartUpConfig = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetLabels(v string) *StartK8sAppPrecheckRequest {
+	s.Labels = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetLimitEphemeralStorage(v int32) *StartK8sAppPrecheckRequest {
+	s.LimitEphemeralStorage = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetLimitMem(v int32) *StartK8sAppPrecheckRequest {
+	s.LimitMem = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetLimitmCpu(v int32) *StartK8sAppPrecheckRequest {
+	s.LimitmCpu = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetLocalVolume(v string) *StartK8sAppPrecheckRequest {
+	s.LocalVolume = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetNamespace(v string) *StartK8sAppPrecheckRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetPackageUrl(v string) *StartK8sAppPrecheckRequest {
+	s.PackageUrl = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetPvcMountDescs(v string) *StartK8sAppPrecheckRequest {
+	s.PvcMountDescs = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetReplicas(v int32) *StartK8sAppPrecheckRequest {
+	s.Replicas = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetRequestsEphemeralStorage(v int32) *StartK8sAppPrecheckRequest {
+	s.RequestsEphemeralStorage = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetRequestsMem(v int32) *StartK8sAppPrecheckRequest {
+	s.RequestsMem = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckRequest) SetRequestsmCpu(v int32) *StartK8sAppPrecheckRequest {
+	s.RequestsmCpu = &v
+	return s
+}
+
+type StartK8sAppPrecheckResponseBody struct {
+	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *StartK8sAppPrecheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartK8sAppPrecheckResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartK8sAppPrecheckResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartK8sAppPrecheckResponseBody) SetCode(v int32) *StartK8sAppPrecheckResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckResponseBody) SetData(v *StartK8sAppPrecheckResponseBodyData) *StartK8sAppPrecheckResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *StartK8sAppPrecheckResponseBody) SetMessage(v string) *StartK8sAppPrecheckResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckResponseBody) SetRequestId(v string) *StartK8sAppPrecheckResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartK8sAppPrecheckResponseBodyData struct {
+	Jobs []*string `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+}
+
+func (s StartK8sAppPrecheckResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartK8sAppPrecheckResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *StartK8sAppPrecheckResponseBodyData) SetJobs(v []*string) *StartK8sAppPrecheckResponseBodyData {
+	s.Jobs = v
+	return s
+}
+
+type StartK8sAppPrecheckResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartK8sAppPrecheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartK8sAppPrecheckResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartK8sAppPrecheckResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartK8sAppPrecheckResponse) SetHeaders(v map[string]*string) *StartK8sAppPrecheckResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartK8sAppPrecheckResponse) SetStatusCode(v int32) *StartK8sAppPrecheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartK8sAppPrecheckResponse) SetBody(v *StartK8sAppPrecheckResponseBody) *StartK8sAppPrecheckResponse {
 	s.Body = v
 	return s
 }
@@ -24767,16 +24409,11 @@ func (s *UpdateApplicationScalingRuleResponse) SetBody(v *UpdateApplicationScali
 }
 
 type UpdateConfigTemplateRequest struct {
-	// 模板内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 模板描述
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 模板数据格式
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// 配置模板ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 配置模板名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Format      *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateConfigTemplateRequest) String() string {
@@ -24813,11 +24450,8 @@ func (s *UpdateConfigTemplateRequest) SetName(v string) *UpdateConfigTemplateReq
 }
 
 type UpdateConfigTemplateResponseBody struct {
-	// 响应码
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 响应码文本描述
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25579,15 +25213,17 @@ func (s *UpdateK8sApplicationBaseInfoResponse) SetBody(v *UpdateK8sApplicationBa
 }
 
 type UpdateK8sApplicationConfigRequest struct {
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CpuLimit      *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	CpuRequest    *string `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
-	McpuLimit     *string `json:"McpuLimit,omitempty" xml:"McpuLimit,omitempty"`
-	McpuRequest   *string `json:"McpuRequest,omitempty" xml:"McpuRequest,omitempty"`
-	MemoryLimit   *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	MemoryRequest *string `json:"MemoryRequest,omitempty" xml:"MemoryRequest,omitempty"`
-	Timeout       *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	AppId                   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ClusterId               *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CpuLimit                *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	CpuRequest              *string `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
+	EphemeralStorageLimit   *string `json:"EphemeralStorageLimit,omitempty" xml:"EphemeralStorageLimit,omitempty"`
+	EphemeralStorageRequest *string `json:"EphemeralStorageRequest,omitempty" xml:"EphemeralStorageRequest,omitempty"`
+	McpuLimit               *string `json:"McpuLimit,omitempty" xml:"McpuLimit,omitempty"`
+	McpuRequest             *string `json:"McpuRequest,omitempty" xml:"McpuRequest,omitempty"`
+	MemoryLimit             *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	MemoryRequest           *string `json:"MemoryRequest,omitempty" xml:"MemoryRequest,omitempty"`
+	Timeout                 *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s UpdateK8sApplicationConfigRequest) String() string {
@@ -25615,6 +25251,16 @@ func (s *UpdateK8sApplicationConfigRequest) SetCpuLimit(v string) *UpdateK8sAppl
 
 func (s *UpdateK8sApplicationConfigRequest) SetCpuRequest(v string) *UpdateK8sApplicationConfigRequest {
 	s.CpuRequest = &v
+	return s
+}
+
+func (s *UpdateK8sApplicationConfigRequest) SetEphemeralStorageLimit(v string) *UpdateK8sApplicationConfigRequest {
+	s.EphemeralStorageLimit = &v
+	return s
+}
+
+func (s *UpdateK8sApplicationConfigRequest) SetEphemeralStorageRequest(v string) *UpdateK8sApplicationConfigRequest {
+	s.EphemeralStorageRequest = &v
 	return s
 }
 
@@ -26092,10 +25738,11 @@ func (s *UpdateK8sSecretResponse) SetBody(v *UpdateK8sSecretResponseBody) *Updat
 }
 
 type UpdateK8sServiceRequest struct {
-	AppId        *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Name         *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ServicePorts map[string]interface{} `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty"`
-	Type         *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	AppId                 *string                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ExternalTrafficPolicy *string                `json:"ExternalTrafficPolicy,omitempty" xml:"ExternalTrafficPolicy,omitempty"`
+	Name                  *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ServicePorts          map[string]interface{} `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty"`
+	Type                  *string                `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateK8sServiceRequest) String() string {
@@ -26108,6 +25755,11 @@ func (s UpdateK8sServiceRequest) GoString() string {
 
 func (s *UpdateK8sServiceRequest) SetAppId(v string) *UpdateK8sServiceRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *UpdateK8sServiceRequest) SetExternalTrafficPolicy(v string) *UpdateK8sServiceRequest {
+	s.ExternalTrafficPolicy = &v
 	return s
 }
 
@@ -26331,224 +25983,6 @@ func (s *UpdateK8sSlbResponse) SetBody(v *UpdateK8sSlbResponseBody) *UpdateK8sSl
 	return s
 }
 
-type UpdateMockRuleRequest struct {
-	DubboMockItemJson *string `json:"DubboMockItemJson,omitempty" xml:"DubboMockItemJson,omitempty"`
-	ExtraJson         *string `json:"ExtraJson,omitempty" xml:"ExtraJson,omitempty"`
-	Id                *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ScMockItemJson    *string `json:"ScMockItemJson,omitempty" xml:"ScMockItemJson,omitempty"`
-}
-
-func (s UpdateMockRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMockRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMockRuleRequest) SetDubboMockItemJson(v string) *UpdateMockRuleRequest {
-	s.DubboMockItemJson = &v
-	return s
-}
-
-func (s *UpdateMockRuleRequest) SetExtraJson(v string) *UpdateMockRuleRequest {
-	s.ExtraJson = &v
-	return s
-}
-
-func (s *UpdateMockRuleRequest) SetId(v string) *UpdateMockRuleRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *UpdateMockRuleRequest) SetName(v string) *UpdateMockRuleRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *UpdateMockRuleRequest) SetRegion(v string) *UpdateMockRuleRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *UpdateMockRuleRequest) SetScMockItemJson(v string) *UpdateMockRuleRequest {
-	s.ScMockItemJson = &v
-	return s
-}
-
-type UpdateMockRuleResponseBody struct {
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *UpdateMockRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpCode  *string                         `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateMockRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMockRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMockRuleResponseBody) SetCode(v string) *UpdateMockRuleResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBody) SetData(v *UpdateMockRuleResponseBodyData) *UpdateMockRuleResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBody) SetHttpCode(v string) *UpdateMockRuleResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBody) SetMessage(v string) *UpdateMockRuleResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBody) SetRequestId(v string) *UpdateMockRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBody) SetSuccess(v bool) *UpdateMockRuleResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateMockRuleResponseBodyData struct {
-	AccountId         *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	ConsumerAppId     *string `json:"ConsumerAppId,omitempty" xml:"ConsumerAppId,omitempty"`
-	ConsumerAppName   *string `json:"ConsumerAppName,omitempty" xml:"ConsumerAppName,omitempty"`
-	DubboMockItemJson *string `json:"DubboMockItemJson,omitempty" xml:"DubboMockItemJson,omitempty"`
-	Enable            *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	ExtraJson         *string `json:"ExtraJson,omitempty" xml:"ExtraJson,omitempty"`
-	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId       *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	ProviderAppId     *string `json:"ProviderAppId,omitempty" xml:"ProviderAppId,omitempty"`
-	ProviderAppName   *string `json:"ProviderAppName,omitempty" xml:"ProviderAppName,omitempty"`
-	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ScMockItemJson    *string `json:"ScMockItemJson,omitempty" xml:"ScMockItemJson,omitempty"`
-	Source            *string `json:"Source,omitempty" xml:"Source,omitempty"`
-}
-
-func (s UpdateMockRuleResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMockRuleResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMockRuleResponseBodyData) SetAccountId(v string) *UpdateMockRuleResponseBodyData {
-	s.AccountId = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBodyData) SetConsumerAppId(v string) *UpdateMockRuleResponseBodyData {
-	s.ConsumerAppId = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBodyData) SetConsumerAppName(v string) *UpdateMockRuleResponseBodyData {
-	s.ConsumerAppName = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBodyData) SetDubboMockItemJson(v string) *UpdateMockRuleResponseBodyData {
-	s.DubboMockItemJson = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBodyData) SetEnable(v bool) *UpdateMockRuleResponseBodyData {
-	s.Enable = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBodyData) SetExtraJson(v string) *UpdateMockRuleResponseBodyData {
-	s.ExtraJson = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBodyData) SetId(v int64) *UpdateMockRuleResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBodyData) SetName(v string) *UpdateMockRuleResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBodyData) SetNamespaceId(v string) *UpdateMockRuleResponseBodyData {
-	s.NamespaceId = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBodyData) SetProviderAppId(v string) *UpdateMockRuleResponseBodyData {
-	s.ProviderAppId = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBodyData) SetProviderAppName(v string) *UpdateMockRuleResponseBodyData {
-	s.ProviderAppName = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBodyData) SetRegion(v string) *UpdateMockRuleResponseBodyData {
-	s.Region = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBodyData) SetScMockItemJson(v string) *UpdateMockRuleResponseBodyData {
-	s.ScMockItemJson = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponseBodyData) SetSource(v string) *UpdateMockRuleResponseBodyData {
-	s.Source = &v
-	return s
-}
-
-type UpdateMockRuleResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateMockRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateMockRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMockRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMockRuleResponse) SetHeaders(v map[string]*string) *UpdateMockRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateMockRuleResponse) SetStatusCode(v int32) *UpdateMockRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateMockRuleResponse) SetBody(v *UpdateMockRuleResponseBody) *UpdateMockRuleResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateRoleRequest struct {
 	ActionData *string `json:"ActionData,omitempty" xml:"ActionData,omitempty"`
 	RoleId     *int32  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
@@ -26707,6 +26141,385 @@ func (s *UpdateSlsLogStoreResponse) SetStatusCode(v int32) *UpdateSlsLogStoreRes
 }
 
 func (s *UpdateSlsLogStoreResponse) SetBody(v *UpdateSlsLogStoreResponseBody) *UpdateSlsLogStoreResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSwimmingLaneRequest struct {
+	AppInfos    *string `json:"AppInfos,omitempty" xml:"AppInfos,omitempty"`
+	EnableRules *bool   `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
+	EntryRules  *string `json:"EntryRules,omitempty" xml:"EntryRules,omitempty"`
+	LaneId      *int64  `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateSwimmingLaneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimmingLaneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimmingLaneRequest) SetAppInfos(v string) *UpdateSwimmingLaneRequest {
+	s.AppInfos = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneRequest) SetEnableRules(v bool) *UpdateSwimmingLaneRequest {
+	s.EnableRules = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneRequest) SetEntryRules(v string) *UpdateSwimmingLaneRequest {
+	s.EntryRules = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneRequest) SetLaneId(v int64) *UpdateSwimmingLaneRequest {
+	s.LaneId = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneRequest) SetName(v string) *UpdateSwimmingLaneRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateSwimmingLaneResponseBody struct {
+	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *UpdateSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateSwimmingLaneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimmingLaneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimmingLaneResponseBody) SetCode(v int32) *UpdateSwimmingLaneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneResponseBody) SetData(v *UpdateSwimmingLaneResponseBodyData) *UpdateSwimmingLaneResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateSwimmingLaneResponseBody) SetMessage(v string) *UpdateSwimmingLaneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneResponseBody) SetRequestId(v string) *UpdateSwimmingLaneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateSwimmingLaneResponseBodyData struct {
+	EntryRule                       *string                                                              `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
+	GroupId                         *int64                                                               `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Id                              *int64                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name                            *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	NamespaceId                     *string                                                              `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	SwimmingLaneAppRelationShipList []*UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList `json:"SwimmingLaneAppRelationShipList,omitempty" xml:"SwimmingLaneAppRelationShipList,omitempty" type:"Repeated"`
+	Tag                             *string                                                              `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s UpdateSwimmingLaneResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimmingLaneResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimmingLaneResponseBodyData) SetEntryRule(v string) *UpdateSwimmingLaneResponseBodyData {
+	s.EntryRule = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneResponseBodyData) SetGroupId(v int64) *UpdateSwimmingLaneResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneResponseBodyData) SetId(v int64) *UpdateSwimmingLaneResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneResponseBodyData) SetName(v string) *UpdateSwimmingLaneResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneResponseBodyData) SetNamespaceId(v string) *UpdateSwimmingLaneResponseBodyData {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneResponseBodyData) SetSwimmingLaneAppRelationShipList(v []*UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) *UpdateSwimmingLaneResponseBodyData {
+	s.SwimmingLaneAppRelationShipList = v
+	return s
+}
+
+func (s *UpdateSwimmingLaneResponseBodyData) SetTag(v string) *UpdateSwimmingLaneResponseBodyData {
+	s.Tag = &v
+	return s
+}
+
+type UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	LaneId  *int64  `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	Rules   *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+}
+
+func (s UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetAppId(v string) *UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetAppName(v string) *UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList {
+	s.AppName = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetLaneId(v int64) *UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList {
+	s.LaneId = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList) SetRules(v string) *UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList {
+	s.Rules = &v
+	return s
+}
+
+type UpdateSwimmingLaneResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSwimmingLaneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSwimmingLaneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimmingLaneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimmingLaneResponse) SetHeaders(v map[string]*string) *UpdateSwimmingLaneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSwimmingLaneResponse) SetStatusCode(v int32) *UpdateSwimmingLaneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneResponse) SetBody(v *UpdateSwimmingLaneResponseBody) *UpdateSwimmingLaneResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSwimmingLaneGroupRequest struct {
+	AppIds   *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	EntryApp *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
+	GroupId  *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateSwimmingLaneGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimmingLaneGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimmingLaneGroupRequest) SetAppIds(v string) *UpdateSwimmingLaneGroupRequest {
+	s.AppIds = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneGroupRequest) SetEntryApp(v string) *UpdateSwimmingLaneGroupRequest {
+	s.EntryApp = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneGroupRequest) SetGroupId(v int64) *UpdateSwimmingLaneGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneGroupRequest) SetName(v string) *UpdateSwimmingLaneGroupRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateSwimmingLaneGroupResponseBody struct {
+	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *UpdateSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateSwimmingLaneGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimmingLaneGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimmingLaneGroupResponseBody) SetCode(v int32) *UpdateSwimmingLaneGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneGroupResponseBody) SetData(v *UpdateSwimmingLaneGroupResponseBodyData) *UpdateSwimmingLaneGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateSwimmingLaneGroupResponseBody) SetMessage(v string) *UpdateSwimmingLaneGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneGroupResponseBody) SetRequestId(v string) *UpdateSwimmingLaneGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateSwimmingLaneGroupResponseBodyData struct {
+	ApplicationList  []*UpdateSwimmingLaneGroupResponseBodyDataApplicationList `json:"ApplicationList,omitempty" xml:"ApplicationList,omitempty" type:"Repeated"`
+	EntryApplication *UpdateSwimmingLaneGroupResponseBodyDataEntryApplication  `json:"EntryApplication,omitempty" xml:"EntryApplication,omitempty" type:"Struct"`
+	Id               *int64                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name             *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NamespaceId      *string                                                   `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s UpdateSwimmingLaneGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimmingLaneGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimmingLaneGroupResponseBodyData) SetApplicationList(v []*UpdateSwimmingLaneGroupResponseBodyDataApplicationList) *UpdateSwimmingLaneGroupResponseBodyData {
+	s.ApplicationList = v
+	return s
+}
+
+func (s *UpdateSwimmingLaneGroupResponseBodyData) SetEntryApplication(v *UpdateSwimmingLaneGroupResponseBodyDataEntryApplication) *UpdateSwimmingLaneGroupResponseBodyData {
+	s.EntryApplication = v
+	return s
+}
+
+func (s *UpdateSwimmingLaneGroupResponseBodyData) SetId(v int64) *UpdateSwimmingLaneGroupResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneGroupResponseBodyData) SetName(v string) *UpdateSwimmingLaneGroupResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneGroupResponseBodyData) SetNamespaceId(v string) *UpdateSwimmingLaneGroupResponseBodyData {
+	s.NamespaceId = &v
+	return s
+}
+
+type UpdateSwimmingLaneGroupResponseBodyDataApplicationList struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+}
+
+func (s UpdateSwimmingLaneGroupResponseBodyDataApplicationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimmingLaneGroupResponseBodyDataApplicationList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimmingLaneGroupResponseBodyDataApplicationList) SetAppId(v string) *UpdateSwimmingLaneGroupResponseBodyDataApplicationList {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneGroupResponseBodyDataApplicationList) SetAppName(v string) *UpdateSwimmingLaneGroupResponseBodyDataApplicationList {
+	s.AppName = &v
+	return s
+}
+
+type UpdateSwimmingLaneGroupResponseBodyDataEntryApplication struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+}
+
+func (s UpdateSwimmingLaneGroupResponseBodyDataEntryApplication) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimmingLaneGroupResponseBodyDataEntryApplication) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimmingLaneGroupResponseBodyDataEntryApplication) SetAppId(v string) *UpdateSwimmingLaneGroupResponseBodyDataEntryApplication {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneGroupResponseBodyDataEntryApplication) SetAppName(v string) *UpdateSwimmingLaneGroupResponseBodyDataEntryApplication {
+	s.AppName = &v
+	return s
+}
+
+type UpdateSwimmingLaneGroupResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSwimmingLaneGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSwimmingLaneGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimmingLaneGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimmingLaneGroupResponse) SetHeaders(v map[string]*string) *UpdateSwimmingLaneGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSwimmingLaneGroupResponse) SetStatusCode(v int32) *UpdateSwimmingLaneGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneGroupResponse) SetBody(v *UpdateSwimmingLaneGroupResponseBody) *UpdateSwimmingLaneGroupResponse {
 	s.Body = v
 	return s
 }
@@ -26936,96 +26749,6 @@ func (client *Client) AddLogPathWithOptions(request *AddLogPathRequest, headers 
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddLogPathResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddMockRule(request *AddMockRuleRequest) (_result *AddMockRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddMockRuleResponse{}
-	_body, _err := client.AddMockRuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AddMockRuleWithOptions(request *AddMockRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddMockRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConsumerAppsJson)) {
-		query["ConsumerAppsJson"] = request.ConsumerAppsJson
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DubboMockItemJson)) {
-		query["DubboMockItemJson"] = request.DubboMockItemJson
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Enable)) {
-		query["Enable"] = request.Enable
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExtraJson)) {
-		query["ExtraJson"] = request.ExtraJson
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MockType)) {
-		query["MockType"] = request.MockType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
-		query["Namespace"] = request.Namespace
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProviderAppId)) {
-		query["ProviderAppId"] = request.ProviderAppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProviderAppName)) {
-		query["ProviderAppName"] = request.ProviderAppName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ScMockItemJson)) {
-		query["ScMockItemJson"] = request.ScMockItemJson
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Source)) {
-		query["Source"] = request.Source
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddMockRule"),
-		Version:     tea.String("2017-08-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/pop/sp/api/mock/addMockRule"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AddMockRuleResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27962,6 +27685,10 @@ func (client *Client) CreateK8sServiceWithOptions(request *CreateK8sServiceReque
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExternalTrafficPolicy)) {
+		query["ExternalTrafficPolicy"] = request.ExternalTrafficPolicy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -28358,6 +28085,10 @@ func (client *Client) DeleteK8sApplicationWithOptions(request *DeleteK8sApplicat
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -28728,6 +28459,52 @@ func (client *Client) DeleteServiceGroupWithOptions(request *DeleteServiceGroupR
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteServiceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSwimmingLane(request *DeleteSwimmingLaneRequest) (_result *DeleteSwimmingLaneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteSwimmingLaneResponse{}
+	_body, _err := client.DeleteSwimmingLaneWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSwimmingLaneWithOptions(request *DeleteSwimmingLaneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSwimmingLaneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LaneId)) {
+		query["LaneId"] = request.LaneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSwimmingLane"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v5/trafficmgnt/swimming_lanes"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSwimmingLaneResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -29308,52 +29085,6 @@ func (client *Client) DisableApplicationScalingRuleWithOptions(request *DisableA
 	return _result, _err
 }
 
-func (client *Client) DisableMockRule(request *DisableMockRuleRequest) (_result *DisableMockRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DisableMockRuleResponse{}
-	_body, _err := client.DisableMockRuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DisableMockRuleWithOptions(request *DisableMockRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DisableMockRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		query["Id"] = request.Id
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DisableMockRule"),
-		Version:     tea.String("2017-08-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/pop/sp/api/mock/disableMockRule"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DisableMockRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) EnableApplicationScalingRule(request *EnableApplicationScalingRuleRequest) (_result *EnableApplicationScalingRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29396,126 +29127,6 @@ func (client *Client) EnableApplicationScalingRuleWithOptions(request *EnableApp
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableApplicationScalingRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) EnableMockRule(request *EnableMockRuleRequest) (_result *EnableMockRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &EnableMockRuleResponse{}
-	_body, _err := client.EnableMockRuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) EnableMockRuleWithOptions(request *EnableMockRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EnableMockRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		query["Id"] = request.Id
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("EnableMockRule"),
-		Version:     tea.String("2017-08-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/pop/sp/api/mock/enableMockRule"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &EnableMockRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetAccountMockRule(request *GetAccountMockRuleRequest) (_result *GetAccountMockRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetAccountMockRuleResponse{}
-	_body, _err := client.GetAccountMockRuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetAccountMockRuleWithOptions(request *GetAccountMockRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAccountMockRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConsumerAppName)) {
-		query["ConsumerAppName"] = request.ConsumerAppName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MockType)) {
-		query["MockType"] = request.MockType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
-		query["Namespace"] = request.Namespace
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProviderAppName)) {
-		query["ProviderAppName"] = request.ProviderAppName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetAccountMockRule"),
-		Version:     tea.String("2017-08-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/pop/sp/api/mock/getAccountMockRule"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetAccountMockRuleResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -29854,6 +29465,60 @@ func (client *Client) GetJvmConfigurationWithOptions(request *GetJvmConfiguratio
 	return _result, _err
 }
 
+func (client *Client) GetK8sAppPrecheckResult(request *GetK8sAppPrecheckResultRequest) (_result *GetK8sAppPrecheckResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetK8sAppPrecheckResultResponse{}
+	_body, _err := client.GetK8sAppPrecheckResultWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetK8sAppPrecheckResultWithOptions(request *GetK8sAppPrecheckResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetK8sAppPrecheckResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetK8sAppPrecheckResult"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v5/k8s/app_precheck"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetK8sAppPrecheckResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetK8sApplication(request *GetK8sApplicationRequest) (_result *GetK8sApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -29938,6 +29603,10 @@ func (client *Client) GetK8sClusterWithOptions(request *GetK8sClusterRequest, he
 		query["RegionTag"] = request.RegionTag
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SubClusterType)) {
+		query["SubClusterType"] = request.SubClusterType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -30000,106 +29669,6 @@ func (client *Client) GetK8sServicesWithOptions(request *GetK8sServicesRequest, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetK8sServicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetMockRuleByConsumerAppId(request *GetMockRuleByConsumerAppIdRequest) (_result *GetMockRuleByConsumerAppIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetMockRuleByConsumerAppIdResponse{}
-	_body, _err := client.GetMockRuleByConsumerAppIdWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetMockRuleByConsumerAppIdWithOptions(request *GetMockRuleByConsumerAppIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMockRuleByConsumerAppIdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConsumerAppId)) {
-		query["ConsumerAppId"] = request.ConsumerAppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetMockRuleByConsumerAppId"),
-		Version:     tea.String("2017-08-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/pop/sp/api/mock/getMockRuleByConsumerAppId"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetMockRuleByConsumerAppIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetMockRuleByProviderAppId(request *GetMockRuleByProviderAppIdRequest) (_result *GetMockRuleByProviderAppIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetMockRuleByProviderAppIdResponse{}
-	_body, _err := client.GetMockRuleByProviderAppIdWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetMockRuleByProviderAppIdWithOptions(request *GetMockRuleByProviderAppIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMockRuleByProviderAppIdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ProviderAppId)) {
-		query["ProviderAppId"] = request.ProviderAppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetMockRuleByProviderAppId"),
-		Version:     tea.String("2017-08-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/pop/sp/api/mock/getMockRuleByProviderAppId"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetMockRuleByProviderAppIdResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -31156,8 +30725,16 @@ func (client *Client) InsertK8sApplicationWithOptions(request *InsertK8sApplicat
 		query["Annotations"] = request.Annotations
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AppConfig)) {
+		query["AppConfig"] = request.AppConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AppName)) {
 		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppTemplateName)) {
+		query["AppTemplateName"] = request.AppTemplateName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ApplicationDescription)) {
@@ -31400,6 +30977,10 @@ func (client *Client) InsertK8sApplicationWithOptions(request *InsertK8sApplicat
 		query["RuntimeClassName"] = request.RuntimeClassName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ServiceConfigs)) {
+		query["ServiceConfigs"] = request.ServiceConfigs
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SlsConfigs)) {
 		query["SlsConfigs"] = request.SlsConfigs
 	}
@@ -31482,12 +31063,20 @@ func (client *Client) InsertOrUpdateRegionWithOptions(request *InsertOrUpdateReg
 		query["Id"] = request.Id
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MseInstanceId)) {
+		query["MseInstanceId"] = request.MseInstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionName)) {
 		query["RegionName"] = request.RegionName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionTag)) {
 		query["RegionTag"] = request.RegionTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegistryType)) {
+		query["RegistryType"] = request.RegistryType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -31602,6 +31191,134 @@ func (client *Client) InsertServiceGroupWithOptions(request *InsertServiceGroupR
 		BodyType:    tea.String("json"),
 	}
 	_result = &InsertServiceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsertSwimmingLane(request *InsertSwimmingLaneRequest) (_result *InsertSwimmingLaneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &InsertSwimmingLaneResponse{}
+	_body, _err := client.InsertSwimmingLaneWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsertSwimmingLaneWithOptions(request *InsertSwimmingLaneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InsertSwimmingLaneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppInfos)) {
+		query["AppInfos"] = request.AppInfos
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableRules)) {
+		query["EnableRules"] = request.EnableRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntryRules)) {
+		query["EntryRules"] = request.EntryRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalRegionId)) {
+		query["LogicalRegionId"] = request.LogicalRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsertSwimmingLane"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v5/trafficmgnt/swimming_lanes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsertSwimmingLaneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsertSwimmingLaneGroup(request *InsertSwimmingLaneGroupRequest) (_result *InsertSwimmingLaneGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &InsertSwimmingLaneGroupResponse{}
+	_body, _err := client.InsertSwimmingLaneGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsertSwimmingLaneGroupWithOptions(request *InsertSwimmingLaneGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InsertSwimmingLaneGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppIds)) {
+		query["AppIds"] = request.AppIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntryApp)) {
+		query["EntryApp"] = request.EntryApp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalRegionId)) {
+		query["LogicalRegionId"] = request.LogicalRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsertSwimmingLaneGroup"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v5/trafficmgnt/swimming_lane_groups"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsertSwimmingLaneGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -32828,56 +32545,6 @@ func (client *Client) ListRoleWithOptions(headers map[string]*string, runtime *u
 	return _result, _err
 }
 
-func (client *Client) ListRootStacks(request *ListRootStacksRequest) (_result *ListRootStacksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListRootStacksResponse{}
-	_body, _err := client.ListRootStacksWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListRootStacksWithOptions(request *ListRootStacksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRootStacksResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
-		query["CurrentPage"] = request.CurrentPage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListRootStacks"),
-		Version:     tea.String("2017-08-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/pop/v5/s2i/list_root_stack"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListRootStacksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) ListScaleOutEcu(request *ListScaleOutEcuRequest) (_result *ListScaleOutEcuResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -32984,11 +32651,11 @@ func (client *Client) ListServiceGroupsWithOptions(headers map[string]*string, r
 	return _result, _err
 }
 
-func (client *Client) ListSlb() (_result *ListSlbResponse, _err error) {
+func (client *Client) ListSlb(request *ListSlbRequest) (_result *ListSlbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListSlbResponse{}
-	_body, _err := client.ListSlbWithOptions(headers, runtime)
+	_body, _err := client.ListSlbWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32996,9 +32663,27 @@ func (client *Client) ListSlb() (_result *ListSlbResponse, _err error) {
 	return _result, _err
 }
 
-func (client *Client) ListSlbWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSlbResponse, _err error) {
+func (client *Client) ListSlbWithOptions(request *ListSlbRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSlbResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
+		query["AddressType"] = request.AddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlbType)) {
+		query["SlbType"] = request.SlbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListSlb"),
@@ -33048,6 +32733,102 @@ func (client *Client) ListSubAccountWithOptions(headers map[string]*string, runt
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSubAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSwimmingLane(request *ListSwimmingLaneRequest) (_result *ListSwimmingLaneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSwimmingLaneResponse{}
+	_body, _err := client.ListSwimmingLaneWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSwimmingLaneWithOptions(request *ListSwimmingLaneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSwimmingLaneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSwimmingLane"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v5/trafficmgnt/swimming_lanes"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSwimmingLaneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSwimmingLaneGroup(request *ListSwimmingLaneGroupRequest) (_result *ListSwimmingLaneGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSwimmingLaneGroupResponse{}
+	_body, _err := client.ListSwimmingLaneGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListSwimmingLaneGroupWithOptions(request *ListSwimmingLaneGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSwimmingLaneGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalRegionId)) {
+		query["LogicalRegionId"] = request.LogicalRegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSwimmingLaneGroup"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v5/trafficmgnt/swimming_lane_groups"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSwimmingLaneGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -33686,52 +33467,6 @@ func (client *Client) QuerySlsLogStoreListWithOptions(request *QuerySlsLogStoreL
 	return _result, _err
 }
 
-func (client *Client) RemoveMockRule(request *RemoveMockRuleRequest) (_result *RemoveMockRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RemoveMockRuleResponse{}
-	_body, _err := client.RemoveMockRuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RemoveMockRuleWithOptions(request *RemoveMockRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveMockRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		query["Id"] = request.Id
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RemoveMockRule"),
-		Version:     tea.String("2017-08-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/pop/sp/api/mock/removeMockRule"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RemoveMockRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) ResetApplication(request *ResetApplicationRequest) (_result *ResetApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -34338,6 +34073,136 @@ func (client *Client) StartApplicationWithOptions(request *StartApplicationReque
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartK8sAppPrecheck(request *StartK8sAppPrecheckRequest) (_result *StartK8sAppPrecheckResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartK8sAppPrecheckResponse{}
+	_body, _err := client.StartK8sAppPrecheckWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartK8sAppPrecheckWithOptions(request *StartK8sAppPrecheckRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartK8sAppPrecheckResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Annotations)) {
+		query["Annotations"] = request.Annotations
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigMountDescs)) {
+		query["ConfigMountDescs"] = request.ConfigMountDescs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EmptyDirs)) {
+		query["EmptyDirs"] = request.EmptyDirs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvFroms)) {
+		query["EnvFroms"] = request.EnvFroms
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Envs)) {
+		query["Envs"] = request.Envs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JavaStartUpConfig)) {
+		query["JavaStartUpConfig"] = request.JavaStartUpConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitEphemeralStorage)) {
+		query["LimitEphemeralStorage"] = request.LimitEphemeralStorage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitMem)) {
+		query["LimitMem"] = request.LimitMem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitmCpu)) {
+		query["LimitmCpu"] = request.LimitmCpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalVolume)) {
+		query["LocalVolume"] = request.LocalVolume
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageUrl)) {
+		query["PackageUrl"] = request.PackageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PvcMountDescs)) {
+		query["PvcMountDescs"] = request.PvcMountDescs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
+		query["Replicas"] = request.Replicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestsEphemeralStorage)) {
+		query["RequestsEphemeralStorage"] = request.RequestsEphemeralStorage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestsMem)) {
+		query["RequestsMem"] = request.RequestsMem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestsmCpu)) {
+		query["RequestsmCpu"] = request.RequestsmCpu
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartK8sAppPrecheck"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v5/k8s/app_precheck"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartK8sAppPrecheckResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -35520,6 +35385,14 @@ func (client *Client) UpdateK8sApplicationConfigWithOptions(request *UpdateK8sAp
 		query["CpuRequest"] = request.CpuRequest
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EphemeralStorageLimit)) {
+		query["EphemeralStorageLimit"] = request.EphemeralStorageLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EphemeralStorageRequest)) {
+		query["EphemeralStorageRequest"] = request.EphemeralStorageRequest
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.McpuLimit)) {
 		query["McpuLimit"] = request.McpuLimit
 	}
@@ -35830,6 +35703,10 @@ func (client *Client) UpdateK8sServiceWithOptions(request *UpdateK8sServiceReque
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExternalTrafficPolicy)) {
+		query["ExternalTrafficPolicy"] = request.ExternalTrafficPolicy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -35952,72 +35829,6 @@ func (client *Client) UpdateK8sSlbWithOptions(request *UpdateK8sSlbRequest, head
 	return _result, _err
 }
 
-func (client *Client) UpdateMockRule(request *UpdateMockRuleRequest) (_result *UpdateMockRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateMockRuleResponse{}
-	_body, _err := client.UpdateMockRuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateMockRuleWithOptions(request *UpdateMockRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMockRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DubboMockItemJson)) {
-		query["DubboMockItemJson"] = request.DubboMockItemJson
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExtraJson)) {
-		query["ExtraJson"] = request.ExtraJson
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		query["Id"] = request.Id
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ScMockItemJson)) {
-		query["ScMockItemJson"] = request.ScMockItemJson
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateMockRule"),
-		Version:     tea.String("2017-08-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/pop/sp/api/mock/updateMockRule"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateMockRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) UpdateRole(request *UpdateRoleRequest) (_result *UpdateRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -36110,6 +35921,126 @@ func (client *Client) UpdateSlsLogStoreWithOptions(request *UpdateSlsLogStoreReq
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSlsLogStoreResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSwimmingLane(request *UpdateSwimmingLaneRequest) (_result *UpdateSwimmingLaneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSwimmingLaneResponse{}
+	_body, _err := client.UpdateSwimmingLaneWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSwimmingLaneWithOptions(request *UpdateSwimmingLaneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSwimmingLaneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppInfos)) {
+		query["AppInfos"] = request.AppInfos
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableRules)) {
+		query["EnableRules"] = request.EnableRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntryRules)) {
+		query["EntryRules"] = request.EntryRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LaneId)) {
+		query["LaneId"] = request.LaneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSwimmingLane"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v5/trafficmgnt/swimming_lanes"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSwimmingLaneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSwimmingLaneGroup(request *UpdateSwimmingLaneGroupRequest) (_result *UpdateSwimmingLaneGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSwimmingLaneGroupResponse{}
+	_body, _err := client.UpdateSwimmingLaneGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSwimmingLaneGroupWithOptions(request *UpdateSwimmingLaneGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSwimmingLaneGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppIds)) {
+		query["AppIds"] = request.AppIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntryApp)) {
+		query["EntryApp"] = request.EntryApp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSwimmingLaneGroup"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v5/trafficmgnt/swimming_lane_groups"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSwimmingLaneGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
