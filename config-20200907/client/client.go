@@ -5,26 +5,20 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type ResourceDirectoryFolderNode struct {
-	// accountId
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// children
-	Children []*ResourceDirectoryFolderNode `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	// displayName
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// folderId
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// folderName
-	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
-	// parentFolderId
-	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
+	AccountId      *string                        `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Children       []*ResourceDirectoryFolderNode `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	DisplayName    *string                        `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	FolderId       *string                        `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	FolderName     *string                        `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
+	ParentFolderId *string                        `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 }
 
 func (s ResourceDirectoryFolderNode) String() string {
@@ -671,6 +665,7 @@ type CreateAggregateConfigDeliveryChannelRequest struct {
 	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
 	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
 	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
 	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
 	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
@@ -721,6 +716,11 @@ func (s *CreateAggregateConfigDeliveryChannelRequest) SetDeliveryChannelTargetAr
 
 func (s *CreateAggregateConfigDeliveryChannelRequest) SetDeliveryChannelType(v string) *CreateAggregateConfigDeliveryChannelRequest {
 	s.DeliveryChannelType = &v
+	return s
+}
+
+func (s *CreateAggregateConfigDeliveryChannelRequest) SetDeliverySnapshotTime(v string) *CreateAggregateConfigDeliveryChannelRequest {
+	s.DeliverySnapshotTime = &v
 	return s
 }
 
@@ -1603,6 +1603,7 @@ type CreateConfigDeliveryChannelRequest struct {
 	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
 	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
 	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
 	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
 	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
@@ -1648,6 +1649,11 @@ func (s *CreateConfigDeliveryChannelRequest) SetDeliveryChannelTargetArn(v strin
 
 func (s *CreateConfigDeliveryChannelRequest) SetDeliveryChannelType(v string) *CreateConfigDeliveryChannelRequest {
 	s.DeliveryChannelType = &v
+	return s
+}
+
+func (s *CreateConfigDeliveryChannelRequest) SetDeliverySnapshotTime(v string) *CreateConfigDeliveryChannelRequest {
+	s.DeliverySnapshotTime = &v
 	return s
 }
 
@@ -4129,6 +4135,7 @@ type GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel struct {
 	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
 	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
 	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
 	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
 	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
@@ -4190,6 +4197,11 @@ func (s *GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel) SetDelive
 
 func (s *GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel) SetDeliveryChannelType(v string) *GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel {
 	s.DeliveryChannelType = &v
+	return s
+}
+
+func (s *GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel) SetDeliverySnapshotTime(v string) *GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel {
+	s.DeliverySnapshotTime = &v
 	return s
 }
 
@@ -6260,10 +6272,8 @@ func (s *GetAggregateResourceConfigurationTimelineResponse) SetBody(v *GetAggreg
 }
 
 type GetAggregateResourceCountsGroupByRegionRequest struct {
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// 资源夹Id
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// 资源owner
+	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	FolderId        *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
@@ -6372,12 +6382,10 @@ func (s *GetAggregateResourceCountsGroupByRegionResponse) SetBody(v *GetAggregat
 }
 
 type GetAggregateResourceCountsGroupByResourceTypeRequest struct {
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// 资源文件夹Id
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 资源Owner
-	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	FolderId        *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s GetAggregateResourceCountsGroupByResourceTypeRequest) String() string {
@@ -7022,6 +7030,7 @@ type GetConfigDeliveryChannelResponseBodyDeliveryChannel struct {
 	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
 	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
 	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
 	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
 	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
@@ -7078,6 +7087,11 @@ func (s *GetConfigDeliveryChannelResponseBodyDeliveryChannel) SetDeliveryChannel
 
 func (s *GetConfigDeliveryChannelResponseBodyDeliveryChannel) SetDeliveryChannelType(v string) *GetConfigDeliveryChannelResponseBodyDeliveryChannel {
 	s.DeliveryChannelType = &v
+	return s
+}
+
+func (s *GetConfigDeliveryChannelResponseBodyDeliveryChannel) SetDeliverySnapshotTime(v string) *GetConfigDeliveryChannelResponseBodyDeliveryChannel {
+	s.DeliverySnapshotTime = &v
 	return s
 }
 
@@ -9938,6 +9952,7 @@ type ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels struct {
 	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
 	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
 	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
 	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
 	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
@@ -9999,6 +10014,11 @@ func (s *ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels) SetDel
 
 func (s *ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChannelType(v string) *ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels {
 	s.DeliveryChannelType = &v
+	return s
+}
+
+func (s *ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels) SetDeliverySnapshotTime(v string) *ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels {
+	s.DeliverySnapshotTime = &v
 	return s
 }
 
@@ -10794,6 +10814,7 @@ type ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisco
 	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
 	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Version              *int64  `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) String() string {
@@ -10851,6 +10872,11 @@ func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesD
 
 func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetTags(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
 	s.Tags = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetVersion(v int64) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.Version = &v
 	return s
 }
 
@@ -11565,6 +11591,8 @@ type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultComplia
 	CompliancePackTemplateName *string                                                                                                   `json:"CompliancePackTemplateName,omitempty" xml:"CompliancePackTemplateName,omitempty"`
 	ConfigRules                []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
 	Description                *string                                                                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Labels                     *string                                                                                                   `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	LastUpdate                 *int32                                                                                                    `json:"LastUpdate,omitempty" xml:"LastUpdate,omitempty"`
 	RiskLevel                  *int32                                                                                                    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
@@ -11596,6 +11624,16 @@ func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCom
 	return s
 }
 
+func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplates) SetLabels(v string) *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplates {
+	s.Labels = &v
+	return s
+}
+
+func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplates) SetLastUpdate(v int32) *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplates {
+	s.LastUpdate = &v
+	return s
+}
+
 func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplates) SetRiskLevel(v int32) *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplates {
 	s.RiskLevel = &v
 	return s
@@ -11603,6 +11641,8 @@ func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCom
 
 type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules struct {
 	ConfigRuleParameters  []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
+	ControlDescription    *string                                                                                                                       `json:"ControlDescription,omitempty" xml:"ControlDescription,omitempty"`
+	ControlId             *string                                                                                                                       `json:"ControlId,omitempty" xml:"ControlId,omitempty"`
 	Description           *string                                                                                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
 	ManagedRuleIdentifier *string                                                                                                                       `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
 	ManagedRuleName       *string                                                                                                                       `json:"ManagedRuleName,omitempty" xml:"ManagedRuleName,omitempty"`
@@ -11619,6 +11659,16 @@ func (s ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultComp
 
 func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules) SetConfigRuleParameters(v []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRulesConfigRuleParameters) *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules {
 	s.ConfigRuleParameters = v
+	return s
+}
+
+func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules) SetControlDescription(v string) *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules {
+	s.ControlDescription = &v
+	return s
+}
+
+func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules) SetControlId(v string) *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules {
+	s.ControlId = &v
 	return s
 }
 
@@ -11925,6 +11975,7 @@ type ListConfigDeliveryChannelsResponseBodyDeliveryChannels struct {
 	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
 	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
 	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
 	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
 	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
@@ -11981,6 +12032,11 @@ func (s *ListConfigDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChan
 
 func (s *ListConfigDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChannelType(v string) *ListConfigDeliveryChannelsResponseBodyDeliveryChannels {
 	s.DeliveryChannelType = &v
+	return s
+}
+
+func (s *ListConfigDeliveryChannelsResponseBodyDeliveryChannels) SetDeliverySnapshotTime(v string) *ListConfigDeliveryChannelsResponseBodyDeliveryChannels {
+	s.DeliverySnapshotTime = &v
 	return s
 }
 
@@ -12423,6 +12479,7 @@ type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredReso
 	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
 	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Version              *int64  `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) String() string {
@@ -12475,6 +12532,11 @@ func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscovered
 
 func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetTags(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
 	s.Tags = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetVersion(v int64) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.Version = &v
 	return s
 }
 
@@ -12543,8 +12605,8 @@ func (s *ListManagedRulesRequest) SetRiskLevel(v int32) *ListManagedRulesRequest
 }
 
 type ListManagedRulesResponseBody struct {
-	ManagedRules []*ListManagedRulesResponseBodyManagedRules `json:"ManagedRules,omitempty" xml:"ManagedRules,omitempty" type:"Repeated"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ManagedRules *ListManagedRulesResponseBodyManagedRules `json:"ManagedRules,omitempty" xml:"ManagedRules,omitempty" type:"Struct"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListManagedRulesResponseBody) String() string {
@@ -12555,7 +12617,7 @@ func (s ListManagedRulesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListManagedRulesResponseBody) SetManagedRules(v []*ListManagedRulesResponseBodyManagedRules) *ListManagedRulesResponseBody {
+func (s *ListManagedRulesResponseBody) SetManagedRules(v *ListManagedRulesResponseBodyManagedRules) *ListManagedRulesResponseBody {
 	s.ManagedRules = v
 	return s
 }
@@ -13202,16 +13264,11 @@ func (s *ListResourceEvaluationResultsResponse) SetBody(v *ListResourceEvaluatio
 }
 
 type ListTagResourcesRequest struct {
-	// 下一个查询开始Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 地域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源ID,最多 50个子项
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签列表，最多包含20个子项
-	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -13248,9 +13305,7 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	// 标签键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13273,16 +13328,11 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesShrinkRequest struct {
-	// 下一个查询开始Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 地域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源ID,最多 50个子项
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签列表，最多包含20个子项
-	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagShrink    *string   `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListTagResourcesShrinkRequest) String() string {
@@ -13319,7 +13369,6 @@ func (s *ListTagResourcesShrinkRequest) SetTagShrink(v string) *ListTagResources
 }
 
 type ListTagResourcesResponseBody struct {
-	// 下一个查询开始Token，NextToken为空说明没有下一个
 	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
@@ -13927,14 +13976,10 @@ func (s *StartRemediationResponse) SetBody(v *StartRemediationResponseBody) *Sta
 }
 
 type TagResourcesRequest struct {
-	// 地域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源ID,最多 50个子项
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签列表，最多包含20个子项
-	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -13966,9 +14011,7 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	// 标签键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13991,14 +14034,10 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesShrinkRequest struct {
-	// 地域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源ID,最多 50个子项
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签列表，最多包含20个子项
-	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagShrink    *string   `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s TagResourcesShrinkRequest) String() string {
@@ -14076,12 +14115,9 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// 地域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源ID,最多 50个子项
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// 资源类型
+	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
@@ -14402,6 +14438,7 @@ type UpdateAggregateConfigDeliveryChannelRequest struct {
 	DeliveryChannelId                   *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
 	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
 	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
 	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
 	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
@@ -14453,6 +14490,11 @@ func (s *UpdateAggregateConfigDeliveryChannelRequest) SetDeliveryChannelName(v s
 
 func (s *UpdateAggregateConfigDeliveryChannelRequest) SetDeliveryChannelTargetArn(v string) *UpdateAggregateConfigDeliveryChannelRequest {
 	s.DeliveryChannelTargetArn = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigDeliveryChannelRequest) SetDeliverySnapshotTime(v string) *UpdateAggregateConfigDeliveryChannelRequest {
+	s.DeliverySnapshotTime = &v
 	return s
 }
 
@@ -15322,6 +15364,7 @@ type UpdateConfigDeliveryChannelRequest struct {
 	DeliveryChannelId                   *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
 	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
 	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
 	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
 	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
@@ -15368,6 +15411,11 @@ func (s *UpdateConfigDeliveryChannelRequest) SetDeliveryChannelName(v string) *U
 
 func (s *UpdateConfigDeliveryChannelRequest) SetDeliveryChannelTargetArn(v string) *UpdateConfigDeliveryChannelRequest {
 	s.DeliveryChannelTargetArn = &v
+	return s
+}
+
+func (s *UpdateConfigDeliveryChannelRequest) SetDeliverySnapshotTime(v string) *UpdateConfigDeliveryChannelRequest {
+	s.DeliverySnapshotTime = &v
 	return s
 }
 
@@ -16008,6 +16056,10 @@ func (client *Client) CreateAggregateConfigDeliveryChannelWithOptions(request *C
 		query["DeliveryChannelType"] = request.DeliveryChannelType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeliverySnapshotTime)) {
+		query["DeliverySnapshotTime"] = request.DeliverySnapshotTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -16424,6 +16476,10 @@ func (client *Client) CreateConfigDeliveryChannelWithOptions(request *CreateConf
 
 	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelType)) {
 		query["DeliveryChannelType"] = request.DeliveryChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliverySnapshotTime)) {
+		query["DeliverySnapshotTime"] = request.DeliverySnapshotTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
@@ -20403,6 +20459,10 @@ func (client *Client) UpdateAggregateConfigDeliveryChannelWithOptions(request *U
 		query["DeliveryChannelTargetArn"] = request.DeliveryChannelTargetArn
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeliverySnapshotTime)) {
+		query["DeliverySnapshotTime"] = request.DeliverySnapshotTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -20815,6 +20875,10 @@ func (client *Client) UpdateConfigDeliveryChannelWithOptions(request *UpdateConf
 
 	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelTargetArn)) {
 		query["DeliveryChannelTargetArn"] = request.DeliveryChannelTargetArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliverySnapshotTime)) {
+		query["DeliverySnapshotTime"] = request.DeliverySnapshotTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
