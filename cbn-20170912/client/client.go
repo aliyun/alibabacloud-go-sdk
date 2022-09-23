@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -1640,6 +1640,135 @@ func (s *CreateCenInterRegionTrafficQosPolicyResponse) SetStatusCode(v int32) *C
 }
 
 func (s *CreateCenInterRegionTrafficQosPolicyResponse) SetBody(v *CreateCenInterRegionTrafficQosPolicyResponseBody) *CreateCenInterRegionTrafficQosPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCenInterRegionTrafficQosQueueRequest struct {
+	ClientToken            *string  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                 *bool    `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Dscps                  []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
+	OwnerAccount           *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	QosQueueDescription    *string  `json:"QosQueueDescription,omitempty" xml:"QosQueueDescription,omitempty"`
+	QosQueueName           *string  `json:"QosQueueName,omitempty" xml:"QosQueueName,omitempty"`
+	RemainBandwidthPercent *string  `json:"RemainBandwidthPercent,omitempty" xml:"RemainBandwidthPercent,omitempty"`
+	ResourceOwnerAccount   *string  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TrafficQosPolicyId     *string  `json:"TrafficQosPolicyId,omitempty" xml:"TrafficQosPolicyId,omitempty"`
+}
+
+func (s CreateCenInterRegionTrafficQosQueueRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCenInterRegionTrafficQosQueueRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueRequest) SetClientToken(v string) *CreateCenInterRegionTrafficQosQueueRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueRequest) SetDryRun(v bool) *CreateCenInterRegionTrafficQosQueueRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueRequest) SetDscps(v []*int32) *CreateCenInterRegionTrafficQosQueueRequest {
+	s.Dscps = v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueRequest) SetOwnerAccount(v string) *CreateCenInterRegionTrafficQosQueueRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueRequest) SetOwnerId(v int64) *CreateCenInterRegionTrafficQosQueueRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueRequest) SetQosQueueDescription(v string) *CreateCenInterRegionTrafficQosQueueRequest {
+	s.QosQueueDescription = &v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueRequest) SetQosQueueName(v string) *CreateCenInterRegionTrafficQosQueueRequest {
+	s.QosQueueName = &v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueRequest) SetRemainBandwidthPercent(v string) *CreateCenInterRegionTrafficQosQueueRequest {
+	s.RemainBandwidthPercent = &v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueRequest) SetResourceOwnerAccount(v string) *CreateCenInterRegionTrafficQosQueueRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueRequest) SetResourceOwnerId(v int64) *CreateCenInterRegionTrafficQosQueueRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueRequest) SetTrafficQosPolicyId(v string) *CreateCenInterRegionTrafficQosQueueRequest {
+	s.TrafficQosPolicyId = &v
+	return s
+}
+
+type CreateCenInterRegionTrafficQosQueueResponseBody struct {
+	QosQueueId *string `json:"QosQueueId,omitempty" xml:"QosQueueId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCenInterRegionTrafficQosQueueResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCenInterRegionTrafficQosQueueResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueResponseBody) SetQosQueueId(v string) *CreateCenInterRegionTrafficQosQueueResponseBody {
+	s.QosQueueId = &v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueResponseBody) SetRequestId(v string) *CreateCenInterRegionTrafficQosQueueResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCenInterRegionTrafficQosQueueResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCenInterRegionTrafficQosQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCenInterRegionTrafficQosQueueResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCenInterRegionTrafficQosQueueResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueResponse) SetHeaders(v map[string]*string) *CreateCenInterRegionTrafficQosQueueResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueResponse) SetStatusCode(v int32) *CreateCenInterRegionTrafficQosQueueResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosQueueResponse) SetBody(v *CreateCenInterRegionTrafficQosQueueResponseBody) *CreateCenInterRegionTrafficQosQueueResponse {
 	s.Body = v
 	return s
 }
@@ -9791,6 +9920,8 @@ func (s *DescribeGeographicRegionMembershipResponse) SetBody(v *DescribeGeograph
 
 type DescribeGrantRulesToCenRequest struct {
 	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	MaxResults           *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ProductType          *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
@@ -9809,6 +9940,16 @@ func (s DescribeGrantRulesToCenRequest) GoString() string {
 
 func (s *DescribeGrantRulesToCenRequest) SetCenId(v string) *DescribeGrantRulesToCenRequest {
 	s.CenId = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToCenRequest) SetMaxResults(v int64) *DescribeGrantRulesToCenRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToCenRequest) SetNextToken(v string) *DescribeGrantRulesToCenRequest {
+	s.NextToken = &v
 	return s
 }
 
@@ -9844,7 +9985,10 @@ func (s *DescribeGrantRulesToCenRequest) SetResourceOwnerId(v int64) *DescribeGr
 
 type DescribeGrantRulesToCenResponseBody struct {
 	GrantRules *DescribeGrantRulesToCenResponseBodyGrantRules `json:"GrantRules,omitempty" xml:"GrantRules,omitempty" type:"Struct"`
+	MaxResults *int64                                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeGrantRulesToCenResponseBody) String() string {
@@ -9860,8 +10004,23 @@ func (s *DescribeGrantRulesToCenResponseBody) SetGrantRules(v *DescribeGrantRule
 	return s
 }
 
+func (s *DescribeGrantRulesToCenResponseBody) SetMaxResults(v int64) *DescribeGrantRulesToCenResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToCenResponseBody) SetNextToken(v string) *DescribeGrantRulesToCenResponseBody {
+	s.NextToken = &v
+	return s
+}
+
 func (s *DescribeGrantRulesToCenResponseBody) SetRequestId(v string) *DescribeGrantRulesToCenResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToCenResponseBody) SetTotalCount(v int64) *DescribeGrantRulesToCenResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -9884,6 +10043,7 @@ func (s *DescribeGrantRulesToCenResponseBodyGrantRules) SetGrantRule(v []*Descri
 
 type DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule struct {
 	CenId                 *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenOwnerId            *int64  `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
 	ChildInstanceId       *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
 	ChildInstanceOwnerId  *int64  `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
@@ -9901,6 +10061,11 @@ func (s DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) GoString() strin
 
 func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) SetCenId(v string) *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule {
 	s.CenId = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) SetCenOwnerId(v int64) *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule {
+	s.CenOwnerId = &v
 	return s
 }
 
@@ -9954,6 +10119,170 @@ func (s *DescribeGrantRulesToCenResponse) SetStatusCode(v int32) *DescribeGrantR
 }
 
 func (s *DescribeGrantRulesToCenResponse) SetBody(v *DescribeGrantRulesToCenResponseBody) *DescribeGrantRulesToCenResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeGrantRulesToResourceRequest struct {
+	MaxResults           *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProductType          *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeGrantRulesToResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGrantRulesToResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGrantRulesToResourceRequest) SetMaxResults(v int32) *DescribeGrantRulesToResourceRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceRequest) SetNextToken(v string) *DescribeGrantRulesToResourceRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceRequest) SetOwnerAccount(v string) *DescribeGrantRulesToResourceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceRequest) SetOwnerId(v int64) *DescribeGrantRulesToResourceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceRequest) SetProductType(v string) *DescribeGrantRulesToResourceRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceRequest) SetRegionId(v string) *DescribeGrantRulesToResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceRequest) SetResourceId(v string) *DescribeGrantRulesToResourceRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceRequest) SetResourceOwnerAccount(v string) *DescribeGrantRulesToResourceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceRequest) SetResourceOwnerId(v int64) *DescribeGrantRulesToResourceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeGrantRulesToResourceResponseBody struct {
+	GrantRules []*DescribeGrantRulesToResourceResponseBodyGrantRules `json:"GrantRules,omitempty" xml:"GrantRules,omitempty" type:"Repeated"`
+	MaxResults *int32                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeGrantRulesToResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGrantRulesToResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGrantRulesToResourceResponseBody) SetGrantRules(v []*DescribeGrantRulesToResourceResponseBodyGrantRules) *DescribeGrantRulesToResourceResponseBody {
+	s.GrantRules = v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceResponseBody) SetMaxResults(v int32) *DescribeGrantRulesToResourceResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceResponseBody) SetNextToken(v string) *DescribeGrantRulesToResourceResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceResponseBody) SetRequestId(v string) *DescribeGrantRulesToResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceResponseBody) SetTotalCount(v int32) *DescribeGrantRulesToResourceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeGrantRulesToResourceResponseBodyGrantRules struct {
+	CenId      *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenOwnerId *int64  `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	OrderType  *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+}
+
+func (s DescribeGrantRulesToResourceResponseBodyGrantRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGrantRulesToResourceResponseBodyGrantRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGrantRulesToResourceResponseBodyGrantRules) SetCenId(v string) *DescribeGrantRulesToResourceResponseBodyGrantRules {
+	s.CenId = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceResponseBodyGrantRules) SetCenOwnerId(v int64) *DescribeGrantRulesToResourceResponseBodyGrantRules {
+	s.CenOwnerId = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceResponseBodyGrantRules) SetOrderType(v string) *DescribeGrantRulesToResourceResponseBodyGrantRules {
+	s.OrderType = &v
+	return s
+}
+
+type DescribeGrantRulesToResourceResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGrantRulesToResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeGrantRulesToResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGrantRulesToResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGrantRulesToResourceResponse) SetHeaders(v map[string]*string) *DescribeGrantRulesToResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceResponse) SetStatusCode(v int32) *DescribeGrantRulesToResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceResponse) SetBody(v *DescribeGrantRulesToResourceResponseBody) *DescribeGrantRulesToResourceResponse {
 	s.Body = v
 	return s
 }
@@ -12909,7 +13238,6 @@ func (s *ListTransitRouterAvailableResourceResponse) SetBody(v *ListTransitRoute
 
 type ListTransitRouterMulticastDomainAssociationsRequest struct {
 	ClientToken                    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun                         *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	MaxResults                     *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken                      *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount                   *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -12933,11 +13261,6 @@ func (s ListTransitRouterMulticastDomainAssociationsRequest) GoString() string {
 
 func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetClientToken(v string) *ListTransitRouterMulticastDomainAssociationsRequest {
 	s.ClientToken = &v
-	return s
-}
-
-func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetDryRun(v bool) *ListTransitRouterMulticastDomainAssociationsRequest {
-	s.DryRun = &v
 	return s
 }
 
@@ -13257,7 +13580,6 @@ func (s *ListTransitRouterMulticastDomainVSwitchesResponse) SetBody(v *ListTrans
 type ListTransitRouterMulticastDomainsRequest struct {
 	CenId                          *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	ClientToken                    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun                         *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	MaxResults                     *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken                      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount                   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -13284,11 +13606,6 @@ func (s *ListTransitRouterMulticastDomainsRequest) SetCenId(v string) *ListTrans
 
 func (s *ListTransitRouterMulticastDomainsRequest) SetClientToken(v string) *ListTransitRouterMulticastDomainsRequest {
 	s.ClientToken = &v
-	return s
-}
-
-func (s *ListTransitRouterMulticastDomainsRequest) SetDryRun(v bool) *ListTransitRouterMulticastDomainsRequest {
-	s.DryRun = &v
 	return s
 }
 
@@ -14069,6 +14386,7 @@ type ListTransitRouterPrefixListAssociationResponseBodyPrefixLists struct {
 	OwnerUid             *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
 	PrefixListId         *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
 	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TransitRouterId      *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	TransitRouterTableId *string `json:"TransitRouterTableId,omitempty" xml:"TransitRouterTableId,omitempty"`
 }
 
@@ -14107,6 +14425,11 @@ func (s *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists) SetPrefi
 
 func (s *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists) SetStatus(v string) *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists {
 	s.Status = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists) SetTransitRouterId(v string) *ListTransitRouterPrefixListAssociationResponseBodyPrefixLists {
+	s.TransitRouterId = &v
 	return s
 }
 
@@ -17133,6 +17456,111 @@ func (s *RegisterTransitRouterMulticastGroupSourcesResponse) SetStatusCode(v int
 }
 
 func (s *RegisterTransitRouterMulticastGroupSourcesResponse) SetBody(v *RegisterTransitRouterMulticastGroupSourcesResponseBody) *RegisterTransitRouterMulticastGroupSourcesResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest struct {
+	ClientToken            *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                 *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount           *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TrafficMarkRuleIds     []*string `json:"TrafficMarkRuleIds,omitempty" xml:"TrafficMarkRuleIds,omitempty" type:"Repeated"`
+	TrafficMarkingPolicyId *string   `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
+}
+
+func (s RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest) SetClientToken(v string) *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest) SetDryRun(v bool) *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest) SetOwnerAccount(v string) *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest) SetOwnerId(v int64) *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest) SetResourceOwnerAccount(v string) *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest) SetResourceOwnerId(v int64) *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest) SetTrafficMarkRuleIds(v []*string) *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest {
+	s.TrafficMarkRuleIds = v
+	return s
+}
+
+func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest) SetTrafficMarkingPolicyId(v string) *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest {
+	s.TrafficMarkingPolicyId = &v
+	return s
+}
+
+type RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponseBody) SetRequestId(v string) *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse struct {
+	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse) SetHeaders(v map[string]*string) *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse) SetStatusCode(v int32) *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse) SetBody(v *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponseBody) *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -20757,6 +21185,90 @@ func (client *Client) CreateCenInterRegionTrafficQosPolicy(request *CreateCenInt
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCenInterRegionTrafficQosPolicyResponse{}
 	_body, _err := client.CreateCenInterRegionTrafficQosPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateCenInterRegionTrafficQosQueueWithOptions(request *CreateCenInterRegionTrafficQosQueueRequest, runtime *util.RuntimeOptions) (_result *CreateCenInterRegionTrafficQosQueueResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dscps)) {
+		query["Dscps"] = request.Dscps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QosQueueDescription)) {
+		query["QosQueueDescription"] = request.QosQueueDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QosQueueName)) {
+		query["QosQueueName"] = request.QosQueueName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemainBandwidthPercent)) {
+		query["RemainBandwidthPercent"] = request.RemainBandwidthPercent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficQosPolicyId)) {
+		query["TrafficQosPolicyId"] = request.TrafficQosPolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCenInterRegionTrafficQosQueue"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCenInterRegionTrafficQosQueueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCenInterRegionTrafficQosQueue(request *CreateCenInterRegionTrafficQosQueueRequest) (_result *CreateCenInterRegionTrafficQosQueueResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCenInterRegionTrafficQosQueueResponse{}
+	_body, _err := client.CreateCenInterRegionTrafficQosQueueWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24730,6 +25242,14 @@ func (client *Client) DescribeGrantRulesToCenWithOptions(request *DescribeGrantR
 		query["CenId"] = request.CenId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -24781,6 +25301,82 @@ func (client *Client) DescribeGrantRulesToCen(request *DescribeGrantRulesToCenRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGrantRulesToCenResponse{}
 	_body, _err := client.DescribeGrantRulesToCenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeGrantRulesToResourceWithOptions(request *DescribeGrantRulesToResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeGrantRulesToResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGrantRulesToResource"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeGrantRulesToResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeGrantRulesToResource(request *DescribeGrantRulesToResourceRequest) (_result *DescribeGrantRulesToResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeGrantRulesToResourceResponse{}
+	_body, _err := client.DescribeGrantRulesToResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26254,10 +26850,6 @@ func (client *Client) ListTransitRouterMulticastDomainAssociationsWithOptions(re
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
-		query["DryRun"] = request.DryRun
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -26424,10 +27016,6 @@ func (client *Client) ListTransitRouterMulticastDomainsWithOptions(request *List
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
-		query["DryRun"] = request.DryRun
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
@@ -28281,6 +28869,78 @@ func (client *Client) RegisterTransitRouterMulticastGroupSources(request *Regist
 	runtime := &util.RuntimeOptions{}
 	_result = &RegisterTransitRouterMulticastGroupSourcesResponse{}
 	_body, _err := client.RegisterTransitRouterMulticastGroupSourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveTrafficMatchRuleFromTrafficMarkingPolicyWithOptions(request *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest, runtime *util.RuntimeOptions) (_result *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkRuleIds)) {
+		query["TrafficMarkRuleIds"] = request.TrafficMarkRuleIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficMarkingPolicyId)) {
+		query["TrafficMarkingPolicyId"] = request.TrafficMarkingPolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveTrafficMatchRuleFromTrafficMarkingPolicy"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveTrafficMatchRuleFromTrafficMarkingPolicy(request *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest) (_result *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse{}
+	_body, _err := client.RemoveTrafficMatchRuleFromTrafficMarkingPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
