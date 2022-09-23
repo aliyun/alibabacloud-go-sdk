@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -870,12 +870,11 @@ func (s *CreateNamespaceRequest) SetUid(v string) *CreateNamespaceRequest {
 }
 
 type CreateNamespaceResponseBody struct {
-	Code    *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *CreateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateNamespaceResponseBody) String() string {
@@ -1267,23 +1266,15 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DesignateWorkersRequest struct {
-	// 指定机器的类型
-	DesignateType *int32 `json:"DesignateType,omitempty" xml:"DesignateType,omitempty"`
-	// 应用分组ID
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 任务ID
-	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 指定label列表json格式
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 命名空间UID
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// 命名空间来源
+	DesignateType   *int32  `json:"DesignateType,omitempty" xml:"DesignateType,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	JobId           *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Labels          *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 是否故障转移
-	Transferable *bool `json:"Transferable,omitempty" xml:"Transferable,omitempty"`
-	// 指定机器列表json格式
-	Workers *string `json:"Workers,omitempty" xml:"Workers,omitempty"`
+	Transferable    *bool   `json:"Transferable,omitempty" xml:"Transferable,omitempty"`
+	Workers         *string `json:"Workers,omitempty" xml:"Workers,omitempty"`
 }
 
 func (s DesignateWorkersRequest) String() string {
@@ -1340,14 +1331,10 @@ func (s *DesignateWorkersRequest) SetWorkers(v string) *DesignateWorkersRequest 
 }
 
 type DesignateWorkersResponseBody struct {
-	// 错误码
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 错误信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DesignateWorkersResponseBody) String() string {
@@ -1828,19 +1815,16 @@ func (s *EnableWorkflowResponse) SetBody(v *EnableWorkflowResponseBody) *EnableW
 }
 
 type ExecuteJobRequest struct {
-	CheckJobStatus *bool `json:"CheckJobStatus,omitempty" xml:"CheckJobStatus,omitempty"`
-	// 指定机器类型：1.workerAddr; 2. label
+	CheckJobStatus     *bool   `json:"CheckJobStatus,omitempty" xml:"CheckJobStatus,omitempty"`
 	DesignateType      *int32  `json:"DesignateType,omitempty" xml:"DesignateType,omitempty"`
 	GroupId            *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	InstanceParameters *string `json:"InstanceParameters,omitempty" xml:"InstanceParameters,omitempty"`
 	JobId              *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 指定机器的标签
-	Label           *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 指定机器的workerAddr
-	Worker *string `json:"Worker,omitempty" xml:"Worker,omitempty"`
+	Label              *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespaceSource    *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Worker             *string `json:"Worker,omitempty" xml:"Worker,omitempty"`
 }
 
 func (s ExecuteJobRequest) String() string {
@@ -2973,15 +2957,11 @@ func (s *GetJobInstanceListResponse) SetBody(v *GetJobInstanceListResponseBody) 
 }
 
 type GetWorkFlowRequest struct {
-	// 应用分组ID
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 命名空间uid
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// 命名空间来源
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 工作流ID
-	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	WorkflowId      *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
 func (s GetWorkFlowRequest) String() string {
@@ -3018,16 +2998,11 @@ func (s *GetWorkFlowRequest) SetWorkflowId(v int64) *GetWorkFlowRequest {
 }
 
 type GetWorkFlowResponseBody struct {
-	// 错误码
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 工作流的数据
-	Data *GetWorkFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 会否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetWorkFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetWorkFlowResponseBody) String() string {
@@ -3064,9 +3039,7 @@ func (s *GetWorkFlowResponseBody) SetSuccess(v bool) *GetWorkFlowResponseBody {
 }
 
 type GetWorkFlowResponseBodyData struct {
-	// 工作流基本信息
-	WorkFlowInfo *GetWorkFlowResponseBodyDataWorkFlowInfo `json:"WorkFlowInfo,omitempty" xml:"WorkFlowInfo,omitempty" type:"Struct"`
-	// 工作流节点信息
+	WorkFlowInfo     *GetWorkFlowResponseBodyDataWorkFlowInfo     `json:"WorkFlowInfo,omitempty" xml:"WorkFlowInfo,omitempty" type:"Struct"`
 	WorkFlowNodeInfo *GetWorkFlowResponseBodyDataWorkFlowNodeInfo `json:"WorkFlowNodeInfo,omitempty" xml:"WorkFlowNodeInfo,omitempty" type:"Struct"`
 }
 
@@ -3089,18 +3062,12 @@ func (s *GetWorkFlowResponseBodyData) SetWorkFlowNodeInfo(v *GetWorkFlowResponse
 }
 
 type GetWorkFlowResponseBodyDataWorkFlowInfo struct {
-	// 工作流描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 工作流名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 工作流状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 工作流时间表达式
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
-	// 工作流时间类型
-	TimeType *string `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
-	// 工作流ID
-	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	TimeType       *string `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	WorkflowId     *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
 func (s GetWorkFlowResponseBodyDataWorkFlowInfo) String() string {
@@ -3142,9 +3109,7 @@ func (s *GetWorkFlowResponseBodyDataWorkFlowInfo) SetWorkflowId(v int64) *GetWor
 }
 
 type GetWorkFlowResponseBodyDataWorkFlowNodeInfo struct {
-	// 工作流边列表
 	Edges []*GetWorkFlowResponseBodyDataWorkFlowNodeInfoEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Repeated"`
-	// 工作流节点列表
 	Nodes []*GetWorkFlowResponseBodyDataWorkFlowNodeInfoNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -3167,9 +3132,7 @@ func (s *GetWorkFlowResponseBodyDataWorkFlowNodeInfo) SetNodes(v []*GetWorkFlowR
 }
 
 type GetWorkFlowResponseBodyDataWorkFlowNodeInfoEdges struct {
-	// 起始任务ID
 	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 目的任务ID
 	Target *int64 `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
@@ -3192,12 +3155,9 @@ func (s *GetWorkFlowResponseBodyDataWorkFlowNodeInfoEdges) SetTarget(v int64) *G
 }
 
 type GetWorkFlowResponseBodyDataWorkFlowNodeInfoNodes struct {
-	// 任务ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 任务名称
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// 任务状态
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Id     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Label  *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetWorkFlowResponseBodyDataWorkFlowNodeInfoNodes) String() string {
@@ -3288,12 +3248,11 @@ func (s *GetWorkerListRequest) SetRegionId(v string) *GetWorkerListRequest {
 }
 
 type GetWorkerListResponseBody struct {
-	Code    *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetWorkerListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetWorkerListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetWorkerListResponseBody) String() string {
