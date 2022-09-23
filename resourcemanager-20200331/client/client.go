@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -657,6 +657,69 @@ func (s *CancelPromoteResourceAccountResponse) SetStatusCode(v int32) *CancelPro
 }
 
 func (s *CancelPromoteResourceAccountResponse) SetBody(v *CancelPromoteResourceAccountResponseBody) *CancelPromoteResourceAccountResponse {
+	s.Body = v
+	return s
+}
+
+type CheckAccountDeleteRequest struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s CheckAccountDeleteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAccountDeleteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAccountDeleteRequest) SetAccountId(v string) *CheckAccountDeleteRequest {
+	s.AccountId = &v
+	return s
+}
+
+type CheckAccountDeleteResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckAccountDeleteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAccountDeleteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAccountDeleteResponseBody) SetRequestId(v string) *CheckAccountDeleteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckAccountDeleteResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckAccountDeleteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckAccountDeleteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAccountDeleteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAccountDeleteResponse) SetHeaders(v map[string]*string) *CheckAccountDeleteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckAccountDeleteResponse) SetStatusCode(v int32) *CheckAccountDeleteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckAccountDeleteResponse) SetBody(v *CheckAccountDeleteResponseBody) *CheckAccountDeleteResponse {
 	s.Body = v
 	return s
 }
@@ -2094,6 +2157,104 @@ func (s *DeclineHandshakeResponse) SetBody(v *DeclineHandshakeResponseBody) *Dec
 	return s
 }
 
+type DeleteAccountRequest struct {
+	AbandonableCheckId []*string `json:"AbandonableCheckId,omitempty" xml:"AbandonableCheckId,omitempty" type:"Repeated"`
+	AccountId          *string   `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s DeleteAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountRequest) SetAbandonableCheckId(v []*string) *DeleteAccountRequest {
+	s.AbandonableCheckId = v
+	return s
+}
+
+func (s *DeleteAccountRequest) SetAccountId(v string) *DeleteAccountRequest {
+	s.AccountId = &v
+	return s
+}
+
+type DeleteAccountShrinkRequest struct {
+	AbandonableCheckIdShrink *string `json:"AbandonableCheckId,omitempty" xml:"AbandonableCheckId,omitempty"`
+	AccountId                *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s DeleteAccountShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountShrinkRequest) SetAbandonableCheckIdShrink(v string) *DeleteAccountShrinkRequest {
+	s.AbandonableCheckIdShrink = &v
+	return s
+}
+
+func (s *DeleteAccountShrinkRequest) SetAccountId(v string) *DeleteAccountShrinkRequest {
+	s.AccountId = &v
+	return s
+}
+
+type DeleteAccountResponseBody struct {
+	DeletionType *string `json:"DeletionType,omitempty" xml:"DeletionType,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountResponseBody) SetDeletionType(v string) *DeleteAccountResponseBody {
+	s.DeletionType = &v
+	return s
+}
+
+func (s *DeleteAccountResponseBody) SetRequestId(v string) *DeleteAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAccountResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountResponse) SetHeaders(v map[string]*string) *DeleteAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAccountResponse) SetStatusCode(v int32) *DeleteAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAccountResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteControlPolicyRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
@@ -3338,6 +3499,307 @@ func (s *GetAccountResponse) SetStatusCode(v int32) *GetAccountResponse {
 }
 
 func (s *GetAccountResponse) SetBody(v *GetAccountResponseBody) *GetAccountResponse {
+	s.Body = v
+	return s
+}
+
+type GetAccountDeletionCheckResultRequest struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s GetAccountDeletionCheckResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountDeletionCheckResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountDeletionCheckResultRequest) SetAccountId(v string) *GetAccountDeletionCheckResultRequest {
+	s.AccountId = &v
+	return s
+}
+
+type GetAccountDeletionCheckResultResponseBody struct {
+	AccountDeletionCheckResultInfo *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo `json:"AccountDeletionCheckResultInfo,omitempty" xml:"AccountDeletionCheckResultInfo,omitempty" type:"Struct"`
+	RequestId                      *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAccountDeletionCheckResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountDeletionCheckResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountDeletionCheckResultResponseBody) SetAccountDeletionCheckResultInfo(v *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo) *GetAccountDeletionCheckResultResponseBody {
+	s.AccountDeletionCheckResultInfo = v
+	return s
+}
+
+func (s *GetAccountDeletionCheckResultResponseBody) SetRequestId(v string) *GetAccountDeletionCheckResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo struct {
+	AbandonableChecks []*GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks `json:"AbandonableChecks,omitempty" xml:"AbandonableChecks,omitempty" type:"Repeated"`
+	AllowDelete       *string                                                                                     `json:"AllowDelete,omitempty" xml:"AllowDelete,omitempty"`
+	NotAllowReason    []*GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason    `json:"NotAllowReason,omitempty" xml:"NotAllowReason,omitempty" type:"Repeated"`
+	Status            *string                                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo) SetAbandonableChecks(v []*GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks) *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo {
+	s.AbandonableChecks = v
+	return s
+}
+
+func (s *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo) SetAllowDelete(v string) *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo {
+	s.AllowDelete = &v
+	return s
+}
+
+func (s *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo) SetNotAllowReason(v []*GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason) *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo {
+	s.NotAllowReason = v
+	return s
+}
+
+func (s *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo) SetStatus(v string) *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo {
+	s.Status = &v
+	return s
+}
+
+type GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks struct {
+	CheckId     *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckName   *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks) SetCheckId(v string) *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks {
+	s.CheckId = &v
+	return s
+}
+
+func (s *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks) SetCheckName(v string) *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks {
+	s.CheckName = &v
+	return s
+}
+
+func (s *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks) SetDescription(v string) *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks {
+	s.Description = &v
+	return s
+}
+
+type GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason struct {
+	CheckId     *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckName   *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason) SetCheckId(v string) *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason {
+	s.CheckId = &v
+	return s
+}
+
+func (s *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason) SetCheckName(v string) *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason {
+	s.CheckName = &v
+	return s
+}
+
+func (s *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason) SetDescription(v string) *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason {
+	s.Description = &v
+	return s
+}
+
+type GetAccountDeletionCheckResultResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAccountDeletionCheckResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAccountDeletionCheckResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountDeletionCheckResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountDeletionCheckResultResponse) SetHeaders(v map[string]*string) *GetAccountDeletionCheckResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAccountDeletionCheckResultResponse) SetStatusCode(v int32) *GetAccountDeletionCheckResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAccountDeletionCheckResultResponse) SetBody(v *GetAccountDeletionCheckResultResponseBody) *GetAccountDeletionCheckResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetAccountDeletionStatusRequest struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s GetAccountDeletionStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountDeletionStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountDeletionStatusRequest) SetAccountId(v string) *GetAccountDeletionStatusRequest {
+	s.AccountId = &v
+	return s
+}
+
+type GetAccountDeletionStatusResponseBody struct {
+	RdAccountDeletionStatus *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus `json:"RdAccountDeletionStatus,omitempty" xml:"RdAccountDeletionStatus,omitempty" type:"Struct"`
+	RequestId               *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAccountDeletionStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountDeletionStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountDeletionStatusResponseBody) SetRdAccountDeletionStatus(v *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) *GetAccountDeletionStatusResponseBody {
+	s.RdAccountDeletionStatus = v
+	return s
+}
+
+func (s *GetAccountDeletionStatusResponseBody) SetRequestId(v string) *GetAccountDeletionStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus struct {
+	AccountId      *string                                                                      `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CreateTime     *string                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletionTime   *string                                                                      `json:"DeletionTime,omitempty" xml:"DeletionTime,omitempty"`
+	DeletionType   *string                                                                      `json:"DeletionType,omitempty" xml:"DeletionType,omitempty"`
+	FailReasonList []*GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList `json:"FailReasonList,omitempty" xml:"FailReasonList,omitempty" type:"Repeated"`
+	Status         *string                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) SetAccountId(v string) *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) SetCreateTime(v string) *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) SetDeletionTime(v string) *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus {
+	s.DeletionTime = &v
+	return s
+}
+
+func (s *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) SetDeletionType(v string) *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus {
+	s.DeletionType = &v
+	return s
+}
+
+func (s *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) SetFailReasonList(v []*GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList) *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus {
+	s.FailReasonList = v
+	return s
+}
+
+func (s *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) SetStatus(v string) *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus {
+	s.Status = &v
+	return s
+}
+
+type GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList) SetDescription(v string) *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList {
+	s.Description = &v
+	return s
+}
+
+func (s *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList) SetName(v string) *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList {
+	s.Name = &v
+	return s
+}
+
+type GetAccountDeletionStatusResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAccountDeletionStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAccountDeletionStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountDeletionStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountDeletionStatusResponse) SetHeaders(v map[string]*string) *GetAccountDeletionStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAccountDeletionStatusResponse) SetStatusCode(v int32) *GetAccountDeletionStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAccountDeletionStatusResponse) SetBody(v *GetAccountDeletionStatusResponseBody) *GetAccountDeletionStatusResponse {
 	s.Body = v
 	return s
 }
@@ -6302,6 +6764,7 @@ func (s *ListDelegatedServicesForAccountResponseBodyDelegatedServices) SetDelega
 type ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService struct {
 	DelegationEnabledTime *string `json:"DelegationEnabledTime,omitempty" xml:"DelegationEnabledTime,omitempty"`
 	ServicePrincipal      *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService) String() string {
@@ -6319,6 +6782,11 @@ func (s *ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedSe
 
 func (s *ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService) SetServicePrincipal(v string) *ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService {
 	s.ServicePrincipal = &v
+	return s
+}
+
+func (s *ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService) SetStatus(v string) *ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService {
+	s.Status = &v
 	return s
 }
 
@@ -11074,6 +11542,50 @@ func (client *Client) CancelPromoteResourceAccount(request *CancelPromoteResourc
 	return _result, _err
 }
 
+func (client *Client) CheckAccountDeleteWithOptions(request *CheckAccountDeleteRequest, runtime *util.RuntimeOptions) (_result *CheckAccountDeleteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckAccountDelete"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckAccountDeleteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckAccountDelete(request *CheckAccountDeleteRequest) (_result *CheckAccountDeleteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckAccountDeleteResponse{}
+	_body, _err := client.CheckAccountDeleteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateCloudAccountWithOptions(request *CreateCloudAccountRequest, runtime *util.RuntimeOptions) (_result *CreateCloudAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11591,6 +12103,60 @@ func (client *Client) DeclineHandshake(request *DeclineHandshakeRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeclineHandshakeResponse{}
 	_body, _err := client.DeclineHandshakeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAccountWithOptions(tmpReq *DeleteAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteAccountShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AbandonableCheckId)) {
+		request.AbandonableCheckIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AbandonableCheckId, tea.String("AbandonableCheckId"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AbandonableCheckIdShrink)) {
+		query["AbandonableCheckId"] = request.AbandonableCheckIdShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAccount"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *DeleteAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAccountResponse{}
+	_body, _err := client.DeleteAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12262,6 +12828,94 @@ func (client *Client) GetAccount(request *GetAccountRequest) (_result *GetAccoun
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAccountResponse{}
 	_body, _err := client.GetAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAccountDeletionCheckResultWithOptions(request *GetAccountDeletionCheckResultRequest, runtime *util.RuntimeOptions) (_result *GetAccountDeletionCheckResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccountDeletionCheckResult"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAccountDeletionCheckResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAccountDeletionCheckResult(request *GetAccountDeletionCheckResultRequest) (_result *GetAccountDeletionCheckResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAccountDeletionCheckResultResponse{}
+	_body, _err := client.GetAccountDeletionCheckResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAccountDeletionStatusWithOptions(request *GetAccountDeletionStatusRequest, runtime *util.RuntimeOptions) (_result *GetAccountDeletionStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccountDeletionStatus"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAccountDeletionStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAccountDeletionStatus(request *GetAccountDeletionStatusRequest) (_result *GetAccountDeletionStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAccountDeletionStatusResponse{}
+	_body, _err := client.GetAccountDeletionStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

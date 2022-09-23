@@ -1,3 +1,6 @@
+2022-09-23 Version: v3.0.0
+- Generated golang 2020-03-31 for ResourceManager.
+
 2022-08-03 Version: v2.1.1
 - Supported more query conditions when searching resource group.
 
