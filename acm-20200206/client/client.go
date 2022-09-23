@@ -5,16 +5,16 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type BatchExportConfigurationsRequest struct {
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
 func (s BatchExportConfigurationsRequest) String() string {
@@ -25,21 +25,21 @@ func (s BatchExportConfigurationsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *BatchExportConfigurationsRequest) SetNamespaceId(v string) *BatchExportConfigurationsRequest {
-	s.NamespaceId = &v
-	return s
-}
-
 func (s *BatchExportConfigurationsRequest) SetData(v string) *BatchExportConfigurationsRequest {
 	s.Data = &v
 	return s
 }
 
+func (s *BatchExportConfigurationsRequest) SetNamespaceId(v string) *BatchExportConfigurationsRequest {
+	s.NamespaceId = &v
+	return s
+}
+
 type BatchExportConfigurationsResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	FileUrl   *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s BatchExportConfigurationsResponseBody) String() string {
@@ -48,6 +48,11 @@ func (s BatchExportConfigurationsResponseBody) String() string {
 
 func (s BatchExportConfigurationsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *BatchExportConfigurationsResponseBody) SetCode(v string) *BatchExportConfigurationsResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *BatchExportConfigurationsResponseBody) SetFileUrl(v string) *BatchExportConfigurationsResponseBody {
@@ -65,14 +70,10 @@ func (s *BatchExportConfigurationsResponseBody) SetRequestId(v string) *BatchExp
 	return s
 }
 
-func (s *BatchExportConfigurationsResponseBody) SetCode(v string) *BatchExportConfigurationsResponseBody {
-	s.Code = &v
-	return s
-}
-
 type BatchExportConfigurationsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchExportConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchExportConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BatchExportConfigurationsResponse) String() string {
@@ -88,15 +89,20 @@ func (s *BatchExportConfigurationsResponse) SetHeaders(v map[string]*string) *Ba
 	return s
 }
 
+func (s *BatchExportConfigurationsResponse) SetStatusCode(v int32) *BatchExportConfigurationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *BatchExportConfigurationsResponse) SetBody(v *BatchExportConfigurationsResponseBody) *BatchExportConfigurationsResponse {
 	s.Body = v
 	return s
 }
 
 type BatchImportConfigurationsRequest struct {
+	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	Policy      *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 }
 
 func (s BatchImportConfigurationsRequest) String() string {
@@ -105,6 +111,11 @@ func (s BatchImportConfigurationsRequest) String() string {
 
 func (s BatchImportConfigurationsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *BatchImportConfigurationsRequest) SetFileUrl(v string) *BatchImportConfigurationsRequest {
+	s.FileUrl = &v
+	return s
 }
 
 func (s *BatchImportConfigurationsRequest) SetNamespaceId(v string) *BatchImportConfigurationsRequest {
@@ -117,15 +128,10 @@ func (s *BatchImportConfigurationsRequest) SetPolicy(v string) *BatchImportConfi
 	return s
 }
 
-func (s *BatchImportConfigurationsRequest) SetFileUrl(v string) *BatchImportConfigurationsRequest {
-	s.FileUrl = &v
-	return s
-}
-
 type BatchImportConfigurationsResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s BatchImportConfigurationsResponseBody) String() string {
@@ -134,6 +140,11 @@ func (s BatchImportConfigurationsResponseBody) String() string {
 
 func (s BatchImportConfigurationsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *BatchImportConfigurationsResponseBody) SetCode(v string) *BatchImportConfigurationsResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *BatchImportConfigurationsResponseBody) SetMessage(v string) *BatchImportConfigurationsResponseBody {
@@ -146,14 +157,10 @@ func (s *BatchImportConfigurationsResponseBody) SetRequestId(v string) *BatchImp
 	return s
 }
 
-func (s *BatchImportConfigurationsResponseBody) SetCode(v string) *BatchImportConfigurationsResponseBody {
-	s.Code = &v
-	return s
-}
-
 type BatchImportConfigurationsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchImportConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchImportConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BatchImportConfigurationsResponse) String() string {
@@ -169,16 +176,21 @@ func (s *BatchImportConfigurationsResponse) SetHeaders(v map[string]*string) *Ba
 	return s
 }
 
+func (s *BatchImportConfigurationsResponse) SetStatusCode(v int32) *BatchImportConfigurationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *BatchImportConfigurationsResponse) SetBody(v *BatchImportConfigurationsResponseBody) *BatchImportConfigurationsResponse {
 	s.Body = v
 	return s
 }
 
 type CheckConfigurationCloneRequest struct {
-	Policy        *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Data          *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	NamespaceFrom *string `json:"NamespaceFrom,omitempty" xml:"NamespaceFrom,omitempty"`
 	NamespaceTo   *string `json:"NamespaceTo,omitempty" xml:"NamespaceTo,omitempty"`
-	Data          *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Policy        *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 }
 
 func (s CheckConfigurationCloneRequest) String() string {
@@ -189,8 +201,8 @@ func (s CheckConfigurationCloneRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CheckConfigurationCloneRequest) SetPolicy(v string) *CheckConfigurationCloneRequest {
-	s.Policy = &v
+func (s *CheckConfigurationCloneRequest) SetData(v string) *CheckConfigurationCloneRequest {
+	s.Data = &v
 	return s
 }
 
@@ -204,15 +216,15 @@ func (s *CheckConfigurationCloneRequest) SetNamespaceTo(v string) *CheckConfigur
 	return s
 }
 
-func (s *CheckConfigurationCloneRequest) SetData(v string) *CheckConfigurationCloneRequest {
-	s.Data = &v
+func (s *CheckConfigurationCloneRequest) SetPolicy(v string) *CheckConfigurationCloneRequest {
+	s.Policy = &v
 	return s
 }
 
 type CheckConfigurationCloneResponseBody struct {
+	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *CheckConfigurationCloneResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -224,6 +236,11 @@ func (s CheckConfigurationCloneResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CheckConfigurationCloneResponseBody) SetCode(v string) *CheckConfigurationCloneResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CheckConfigurationCloneResponseBody) SetMessage(v string) *CheckConfigurationCloneResponseBody {
 	s.Message = &v
 	return s
@@ -231,11 +248,6 @@ func (s *CheckConfigurationCloneResponseBody) SetMessage(v string) *CheckConfigu
 
 func (s *CheckConfigurationCloneResponseBody) SetRequestId(v string) *CheckConfigurationCloneResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CheckConfigurationCloneResponseBody) SetCode(v string) *CheckConfigurationCloneResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -297,8 +309,9 @@ func (s *CheckConfigurationCloneResponseBodyResultSuccessItems) SetGroup(v strin
 }
 
 type CheckConfigurationCloneResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckConfigurationCloneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckConfigurationCloneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckConfigurationCloneResponse) String() string {
@@ -314,14 +327,19 @@ func (s *CheckConfigurationCloneResponse) SetHeaders(v map[string]*string) *Chec
 	return s
 }
 
+func (s *CheckConfigurationCloneResponse) SetStatusCode(v int32) *CheckConfigurationCloneResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CheckConfigurationCloneResponse) SetBody(v *CheckConfigurationCloneResponseBody) *CheckConfigurationCloneResponse {
 	s.Body = v
 	return s
 }
 
 type CheckConfigurationExportRequest struct {
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
 func (s CheckConfigurationExportRequest) String() string {
@@ -332,20 +350,20 @@ func (s CheckConfigurationExportRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CheckConfigurationExportRequest) SetNamespaceId(v string) *CheckConfigurationExportRequest {
-	s.NamespaceId = &v
-	return s
-}
-
 func (s *CheckConfigurationExportRequest) SetData(v string) *CheckConfigurationExportRequest {
 	s.Data = &v
 	return s
 }
 
+func (s *CheckConfigurationExportRequest) SetNamespaceId(v string) *CheckConfigurationExportRequest {
+	s.NamespaceId = &v
+	return s
+}
+
 type CheckConfigurationExportResponseBody struct {
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *CheckConfigurationExportResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -357,6 +375,11 @@ func (s CheckConfigurationExportResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CheckConfigurationExportResponseBody) SetCode(v string) *CheckConfigurationExportResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CheckConfigurationExportResponseBody) SetMessage(v string) *CheckConfigurationExportResponseBody {
 	s.Message = &v
 	return s
@@ -364,11 +387,6 @@ func (s *CheckConfigurationExportResponseBody) SetMessage(v string) *CheckConfig
 
 func (s *CheckConfigurationExportResponseBody) SetRequestId(v string) *CheckConfigurationExportResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CheckConfigurationExportResponseBody) SetCode(v string) *CheckConfigurationExportResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -395,8 +413,9 @@ func (s *CheckConfigurationExportResponseBodyResult) SetTotalCount(v int32) *Che
 }
 
 type CheckConfigurationExportResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckConfigurationExportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckConfigurationExportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckConfigurationExportResponse) String() string {
@@ -412,16 +431,21 @@ func (s *CheckConfigurationExportResponse) SetHeaders(v map[string]*string) *Che
 	return s
 }
 
+func (s *CheckConfigurationExportResponse) SetStatusCode(v int32) *CheckConfigurationExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CheckConfigurationExportResponse) SetBody(v *CheckConfigurationExportResponseBody) *CheckConfigurationExportResponse {
 	s.Body = v
 	return s
 }
 
 type CloneConfigurationRequest struct {
-	Policy        *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Data          *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	NamespaceFrom *string `json:"NamespaceFrom,omitempty" xml:"NamespaceFrom,omitempty"`
 	NamespaceTo   *string `json:"NamespaceTo,omitempty" xml:"NamespaceTo,omitempty"`
-	Data          *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Policy        *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 }
 
 func (s CloneConfigurationRequest) String() string {
@@ -432,8 +456,8 @@ func (s CloneConfigurationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CloneConfigurationRequest) SetPolicy(v string) *CloneConfigurationRequest {
-	s.Policy = &v
+func (s *CloneConfigurationRequest) SetData(v string) *CloneConfigurationRequest {
+	s.Data = &v
 	return s
 }
 
@@ -447,15 +471,15 @@ func (s *CloneConfigurationRequest) SetNamespaceTo(v string) *CloneConfiguration
 	return s
 }
 
-func (s *CloneConfigurationRequest) SetData(v string) *CloneConfigurationRequest {
-	s.Data = &v
+func (s *CloneConfigurationRequest) SetPolicy(v string) *CloneConfigurationRequest {
+	s.Policy = &v
 	return s
 }
 
 type CloneConfigurationResponseBody struct {
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *CloneConfigurationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -467,6 +491,11 @@ func (s CloneConfigurationResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CloneConfigurationResponseBody) SetCode(v string) *CloneConfigurationResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CloneConfigurationResponseBody) SetMessage(v string) *CloneConfigurationResponseBody {
 	s.Message = &v
 	return s
@@ -474,11 +503,6 @@ func (s *CloneConfigurationResponseBody) SetMessage(v string) *CloneConfiguratio
 
 func (s *CloneConfigurationResponseBody) SetRequestId(v string) *CloneConfigurationResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CloneConfigurationResponseBody) SetCode(v string) *CloneConfigurationResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -540,8 +564,9 @@ func (s *CloneConfigurationResponseBodyResultSuccessItems) SetGroup(v string) *C
 }
 
 type CloneConfigurationResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CloneConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CloneConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CloneConfigurationResponse) String() string {
@@ -557,20 +582,25 @@ func (s *CloneConfigurationResponse) SetHeaders(v map[string]*string) *CloneConf
 	return s
 }
 
+func (s *CloneConfigurationResponse) SetStatusCode(v int32) *CloneConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CloneConfigurationResponse) SetBody(v *CloneConfigurationResponseBody) *CloneConfigurationResponse {
 	s.Body = v
 	return s
 }
 
 type CreateConfigurationRequest struct {
-	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	Desc        *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Desc        *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateConfigurationRequest) String() string {
@@ -581,28 +611,8 @@ func (s CreateConfigurationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateConfigurationRequest) SetDataId(v string) *CreateConfigurationRequest {
-	s.DataId = &v
-	return s
-}
-
 func (s *CreateConfigurationRequest) SetAppName(v string) *CreateConfigurationRequest {
 	s.AppName = &v
-	return s
-}
-
-func (s *CreateConfigurationRequest) SetGroup(v string) *CreateConfigurationRequest {
-	s.Group = &v
-	return s
-}
-
-func (s *CreateConfigurationRequest) SetDesc(v string) *CreateConfigurationRequest {
-	s.Desc = &v
-	return s
-}
-
-func (s *CreateConfigurationRequest) SetTags(v string) *CreateConfigurationRequest {
-	s.Tags = &v
 	return s
 }
 
@@ -611,8 +621,18 @@ func (s *CreateConfigurationRequest) SetContent(v string) *CreateConfigurationRe
 	return s
 }
 
-func (s *CreateConfigurationRequest) SetType(v string) *CreateConfigurationRequest {
-	s.Type = &v
+func (s *CreateConfigurationRequest) SetDataId(v string) *CreateConfigurationRequest {
+	s.DataId = &v
+	return s
+}
+
+func (s *CreateConfigurationRequest) SetDesc(v string) *CreateConfigurationRequest {
+	s.Desc = &v
+	return s
+}
+
+func (s *CreateConfigurationRequest) SetGroup(v string) *CreateConfigurationRequest {
+	s.Group = &v
 	return s
 }
 
@@ -621,10 +641,20 @@ func (s *CreateConfigurationRequest) SetNamespaceId(v string) *CreateConfigurati
 	return s
 }
 
+func (s *CreateConfigurationRequest) SetTags(v string) *CreateConfigurationRequest {
+	s.Tags = &v
+	return s
+}
+
+func (s *CreateConfigurationRequest) SetType(v string) *CreateConfigurationRequest {
+	s.Type = &v
+	return s
+}
+
 type CreateConfigurationResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s CreateConfigurationResponseBody) String() string {
@@ -633,6 +663,11 @@ func (s CreateConfigurationResponseBody) String() string {
 
 func (s CreateConfigurationResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateConfigurationResponseBody) SetCode(v string) *CreateConfigurationResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *CreateConfigurationResponseBody) SetMessage(v string) *CreateConfigurationResponseBody {
@@ -645,14 +680,10 @@ func (s *CreateConfigurationResponseBody) SetRequestId(v string) *CreateConfigur
 	return s
 }
 
-func (s *CreateConfigurationResponseBody) SetCode(v string) *CreateConfigurationResponseBody {
-	s.Code = &v
-	return s
-}
-
 type CreateConfigurationResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateConfigurationResponse) String() string {
@@ -665,6 +696,11 @@ func (s CreateConfigurationResponse) GoString() string {
 
 func (s *CreateConfigurationResponse) SetHeaders(v map[string]*string) *CreateConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateConfigurationResponse) SetStatusCode(v int32) *CreateConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -691,10 +727,10 @@ func (s *CreateNamespaceRequest) SetName(v string) *CreateNamespaceRequest {
 }
 
 type CreateNamespaceResponseBody struct {
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateNamespaceResponseBody) String() string {
@@ -705,13 +741,13 @@ func (s CreateNamespaceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateNamespaceResponseBody) SetMessage(v string) *CreateNamespaceResponseBody {
-	s.Message = &v
+func (s *CreateNamespaceResponseBody) SetCode(v string) *CreateNamespaceResponseBody {
+	s.Code = &v
 	return s
 }
 
-func (s *CreateNamespaceResponseBody) SetRequestId(v string) *CreateNamespaceResponseBody {
-	s.RequestId = &v
+func (s *CreateNamespaceResponseBody) SetMessage(v string) *CreateNamespaceResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -720,14 +756,15 @@ func (s *CreateNamespaceResponseBody) SetNamespaceId(v string) *CreateNamespaceR
 	return s
 }
 
-func (s *CreateNamespaceResponseBody) SetCode(v string) *CreateNamespaceResponseBody {
-	s.Code = &v
+func (s *CreateNamespaceResponseBody) SetRequestId(v string) *CreateNamespaceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 type CreateNamespaceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateNamespaceResponse) String() string {
@@ -740,6 +777,11 @@ func (s CreateNamespaceResponse) GoString() string {
 
 func (s *CreateNamespaceResponse) SetHeaders(v map[string]*string) *CreateNamespaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateNamespaceResponse) SetStatusCode(v int32) *CreateNamespaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -778,9 +820,9 @@ func (s *DeleteConfigurationRequest) SetNamespaceId(v string) *DeleteConfigurati
 }
 
 type DeleteConfigurationResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteConfigurationResponseBody) String() string {
@@ -789,6 +831,11 @@ func (s DeleteConfigurationResponseBody) String() string {
 
 func (s DeleteConfigurationResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteConfigurationResponseBody) SetCode(v string) *DeleteConfigurationResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DeleteConfigurationResponseBody) SetMessage(v string) *DeleteConfigurationResponseBody {
@@ -801,14 +848,10 @@ func (s *DeleteConfigurationResponseBody) SetRequestId(v string) *DeleteConfigur
 	return s
 }
 
-func (s *DeleteConfigurationResponseBody) SetCode(v string) *DeleteConfigurationResponseBody {
-	s.Code = &v
-	return s
-}
-
 type DeleteConfigurationResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteConfigurationResponse) String() string {
@@ -821,6 +864,11 @@ func (s DeleteConfigurationResponse) GoString() string {
 
 func (s *DeleteConfigurationResponse) SetHeaders(v map[string]*string) *DeleteConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteConfigurationResponse) SetStatusCode(v int32) *DeleteConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -847,9 +895,9 @@ func (s *DeleteNamespaceRequest) SetNamespaceId(v string) *DeleteNamespaceReques
 }
 
 type DeleteNamespaceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeleteNamespaceResponseBody) String() string {
@@ -858,6 +906,11 @@ func (s DeleteNamespaceResponseBody) String() string {
 
 func (s DeleteNamespaceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteNamespaceResponseBody) SetCode(v string) *DeleteNamespaceResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DeleteNamespaceResponseBody) SetMessage(v string) *DeleteNamespaceResponseBody {
@@ -870,14 +923,10 @@ func (s *DeleteNamespaceResponseBody) SetRequestId(v string) *DeleteNamespaceRes
 	return s
 }
 
-func (s *DeleteNamespaceResponseBody) SetCode(v string) *DeleteNamespaceResponseBody {
-	s.Code = &v
-	return s
-}
-
 type DeleteNamespaceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteNamespaceResponse) String() string {
@@ -893,21 +942,26 @@ func (s *DeleteNamespaceResponse) SetHeaders(v map[string]*string) *DeleteNamesp
 	return s
 }
 
+func (s *DeleteNamespaceResponse) SetStatusCode(v int32) *DeleteNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *DeleteNamespaceResponse {
 	s.Body = v
 	return s
 }
 
 type DeployConfigurationRequest struct {
-	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	Desc        *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	BetaIps     *string `json:"BetaIps,omitempty" xml:"BetaIps,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Desc        *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DeployConfigurationRequest) String() string {
@@ -918,43 +972,8 @@ func (s DeployConfigurationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeployConfigurationRequest) SetDataId(v string) *DeployConfigurationRequest {
-	s.DataId = &v
-	return s
-}
-
 func (s *DeployConfigurationRequest) SetAppName(v string) *DeployConfigurationRequest {
 	s.AppName = &v
-	return s
-}
-
-func (s *DeployConfigurationRequest) SetGroup(v string) *DeployConfigurationRequest {
-	s.Group = &v
-	return s
-}
-
-func (s *DeployConfigurationRequest) SetDesc(v string) *DeployConfigurationRequest {
-	s.Desc = &v
-	return s
-}
-
-func (s *DeployConfigurationRequest) SetTags(v string) *DeployConfigurationRequest {
-	s.Tags = &v
-	return s
-}
-
-func (s *DeployConfigurationRequest) SetContent(v string) *DeployConfigurationRequest {
-	s.Content = &v
-	return s
-}
-
-func (s *DeployConfigurationRequest) SetType(v string) *DeployConfigurationRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *DeployConfigurationRequest) SetNamespaceId(v string) *DeployConfigurationRequest {
-	s.NamespaceId = &v
 	return s
 }
 
@@ -963,10 +982,45 @@ func (s *DeployConfigurationRequest) SetBetaIps(v string) *DeployConfigurationRe
 	return s
 }
 
+func (s *DeployConfigurationRequest) SetContent(v string) *DeployConfigurationRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *DeployConfigurationRequest) SetDataId(v string) *DeployConfigurationRequest {
+	s.DataId = &v
+	return s
+}
+
+func (s *DeployConfigurationRequest) SetDesc(v string) *DeployConfigurationRequest {
+	s.Desc = &v
+	return s
+}
+
+func (s *DeployConfigurationRequest) SetGroup(v string) *DeployConfigurationRequest {
+	s.Group = &v
+	return s
+}
+
+func (s *DeployConfigurationRequest) SetNamespaceId(v string) *DeployConfigurationRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *DeployConfigurationRequest) SetTags(v string) *DeployConfigurationRequest {
+	s.Tags = &v
+	return s
+}
+
+func (s *DeployConfigurationRequest) SetType(v string) *DeployConfigurationRequest {
+	s.Type = &v
+	return s
+}
+
 type DeployConfigurationResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DeployConfigurationResponseBody) String() string {
@@ -975,6 +1029,11 @@ func (s DeployConfigurationResponseBody) String() string {
 
 func (s DeployConfigurationResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeployConfigurationResponseBody) SetCode(v string) *DeployConfigurationResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DeployConfigurationResponseBody) SetMessage(v string) *DeployConfigurationResponseBody {
@@ -987,14 +1046,10 @@ func (s *DeployConfigurationResponseBody) SetRequestId(v string) *DeployConfigur
 	return s
 }
 
-func (s *DeployConfigurationResponseBody) SetCode(v string) *DeployConfigurationResponseBody {
-	s.Code = &v
-	return s
-}
-
 type DeployConfigurationResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeployConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeployConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeployConfigurationResponse) String() string {
@@ -1007,6 +1062,11 @@ func (s DeployConfigurationResponse) GoString() string {
 
 func (s *DeployConfigurationResponse) SetHeaders(v map[string]*string) *DeployConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeployConfigurationResponse) SetStatusCode(v int32) *DeployConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1045,10 +1105,10 @@ func (s *DescribeConfigurationRequest) SetNamespaceId(v string) *DescribeConfigu
 }
 
 type DescribeConfigurationResponseBody struct {
+	Code          *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Configuration *DescribeConfigurationResponseBodyConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Struct"`
 	Message       *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Configuration *DescribeConfigurationResponseBodyConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Struct"`
-	Code          *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DescribeConfigurationResponseBody) String() string {
@@ -1057,6 +1117,16 @@ func (s DescribeConfigurationResponseBody) String() string {
 
 func (s DescribeConfigurationResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeConfigurationResponseBody) SetCode(v string) *DescribeConfigurationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeConfigurationResponseBody) SetConfiguration(v *DescribeConfigurationResponseBodyConfiguration) *DescribeConfigurationResponseBody {
+	s.Configuration = v
+	return s
 }
 
 func (s *DescribeConfigurationResponseBody) SetMessage(v string) *DescribeConfigurationResponseBody {
@@ -1069,25 +1139,15 @@ func (s *DescribeConfigurationResponseBody) SetRequestId(v string) *DescribeConf
 	return s
 }
 
-func (s *DescribeConfigurationResponseBody) SetConfiguration(v *DescribeConfigurationResponseBodyConfiguration) *DescribeConfigurationResponseBody {
-	s.Configuration = v
-	return s
-}
-
-func (s *DescribeConfigurationResponseBody) SetCode(v string) *DescribeConfigurationResponseBody {
-	s.Code = &v
-	return s
-}
-
 type DescribeConfigurationResponseBodyConfiguration struct {
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Tags    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Md5     *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	DataId  *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Group   *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	DataId  *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	Desc    *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Group   *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	Md5     *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Tags    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeConfigurationResponseBodyConfiguration) String() string {
@@ -1098,28 +1158,8 @@ func (s DescribeConfigurationResponseBodyConfiguration) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeConfigurationResponseBodyConfiguration) SetType(v string) *DescribeConfigurationResponseBodyConfiguration {
-	s.Type = &v
-	return s
-}
-
 func (s *DescribeConfigurationResponseBodyConfiguration) SetAppName(v string) *DescribeConfigurationResponseBodyConfiguration {
 	s.AppName = &v
-	return s
-}
-
-func (s *DescribeConfigurationResponseBodyConfiguration) SetTags(v string) *DescribeConfigurationResponseBodyConfiguration {
-	s.Tags = &v
-	return s
-}
-
-func (s *DescribeConfigurationResponseBodyConfiguration) SetMd5(v string) *DescribeConfigurationResponseBodyConfiguration {
-	s.Md5 = &v
-	return s
-}
-
-func (s *DescribeConfigurationResponseBodyConfiguration) SetDataId(v string) *DescribeConfigurationResponseBodyConfiguration {
-	s.DataId = &v
 	return s
 }
 
@@ -1128,8 +1168,8 @@ func (s *DescribeConfigurationResponseBodyConfiguration) SetContent(v string) *D
 	return s
 }
 
-func (s *DescribeConfigurationResponseBodyConfiguration) SetGroup(v string) *DescribeConfigurationResponseBodyConfiguration {
-	s.Group = &v
+func (s *DescribeConfigurationResponseBodyConfiguration) SetDataId(v string) *DescribeConfigurationResponseBodyConfiguration {
+	s.DataId = &v
 	return s
 }
 
@@ -1138,9 +1178,30 @@ func (s *DescribeConfigurationResponseBodyConfiguration) SetDesc(v string) *Desc
 	return s
 }
 
+func (s *DescribeConfigurationResponseBodyConfiguration) SetGroup(v string) *DescribeConfigurationResponseBodyConfiguration {
+	s.Group = &v
+	return s
+}
+
+func (s *DescribeConfigurationResponseBodyConfiguration) SetMd5(v string) *DescribeConfigurationResponseBodyConfiguration {
+	s.Md5 = &v
+	return s
+}
+
+func (s *DescribeConfigurationResponseBodyConfiguration) SetTags(v string) *DescribeConfigurationResponseBodyConfiguration {
+	s.Tags = &v
+	return s
+}
+
+func (s *DescribeConfigurationResponseBodyConfiguration) SetType(v string) *DescribeConfigurationResponseBodyConfiguration {
+	s.Type = &v
+	return s
+}
+
 type DescribeConfigurationResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeConfigurationResponse) String() string {
@@ -1153,6 +1214,11 @@ func (s DescribeConfigurationResponse) GoString() string {
 
 func (s *DescribeConfigurationResponse) SetHeaders(v map[string]*string) *DescribeConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeConfigurationResponse) SetStatusCode(v int32) *DescribeConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1179,10 +1245,10 @@ func (s *DescribeImportFileUrlRequest) SetContentType(v string) *DescribeImportF
 }
 
 type DescribeImportFileUrlResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	FileUrl   *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DescribeImportFileUrlResponseBody) String() string {
@@ -1191,6 +1257,11 @@ func (s DescribeImportFileUrlResponseBody) String() string {
 
 func (s DescribeImportFileUrlResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeImportFileUrlResponseBody) SetCode(v string) *DescribeImportFileUrlResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DescribeImportFileUrlResponseBody) SetFileUrl(v string) *DescribeImportFileUrlResponseBody {
@@ -1208,14 +1279,10 @@ func (s *DescribeImportFileUrlResponseBody) SetRequestId(v string) *DescribeImpo
 	return s
 }
 
-func (s *DescribeImportFileUrlResponseBody) SetCode(v string) *DescribeImportFileUrlResponseBody {
-	s.Code = &v
-	return s
-}
-
 type DescribeImportFileUrlResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeImportFileUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeImportFileUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeImportFileUrlResponse) String() string {
@@ -1228,6 +1295,11 @@ func (s DescribeImportFileUrlResponse) GoString() string {
 
 func (s *DescribeImportFileUrlResponse) SetHeaders(v map[string]*string) *DescribeImportFileUrlResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeImportFileUrlResponse) SetStatusCode(v int32) *DescribeImportFileUrlResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1254,10 +1326,10 @@ func (s *DescribeNamespaceRequest) SetNamespaceId(v string) *DescribeNamespaceRe
 }
 
 type DescribeNamespaceResponseBody struct {
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	Namespace *DescribeNamespaceResponseBodyNamespace `json:"Namespace,omitempty" xml:"Namespace,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeNamespaceResponseBody) String() string {
@@ -1268,18 +1340,13 @@ func (s DescribeNamespaceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeNamespaceResponseBody) SetMessage(v string) *DescribeNamespaceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeNamespaceResponseBody) SetRequestId(v string) *DescribeNamespaceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeNamespaceResponseBody) SetCode(v string) *DescribeNamespaceResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *DescribeNamespaceResponseBody) SetMessage(v string) *DescribeNamespaceResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1288,12 +1355,17 @@ func (s *DescribeNamespaceResponseBody) SetNamespace(v *DescribeNamespaceRespons
 	return s
 }
 
+func (s *DescribeNamespaceResponseBody) SetRequestId(v string) *DescribeNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DescribeNamespaceResponseBodyNamespace struct {
-	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	Endpoint  *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 }
 
 func (s DescribeNamespaceResponseBodyNamespace) String() string {
@@ -1302,11 +1374,6 @@ func (s DescribeNamespaceResponseBodyNamespace) String() string {
 
 func (s DescribeNamespaceResponseBodyNamespace) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeNamespaceResponseBodyNamespace) SetSecretKey(v string) *DescribeNamespaceResponseBodyNamespace {
-	s.SecretKey = &v
-	return s
 }
 
 func (s *DescribeNamespaceResponseBodyNamespace) SetAccessKey(v string) *DescribeNamespaceResponseBodyNamespace {
@@ -1329,9 +1396,15 @@ func (s *DescribeNamespaceResponseBodyNamespace) SetRegionId(v string) *Describe
 	return s
 }
 
+func (s *DescribeNamespaceResponseBodyNamespace) SetSecretKey(v string) *DescribeNamespaceResponseBodyNamespace {
+	s.SecretKey = &v
+	return s
+}
+
 type DescribeNamespaceResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeNamespaceResponse) String() string {
@@ -1347,16 +1420,21 @@ func (s *DescribeNamespaceResponse) SetHeaders(v map[string]*string) *DescribeNa
 	return s
 }
 
+func (s *DescribeNamespaceResponse) SetStatusCode(v int32) *DescribeNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeNamespaceResponse) SetBody(v *DescribeNamespaceResponseBody) *DescribeNamespaceResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeNamespacesResponseBody struct {
-	Namespaces []*DescribeNamespacesResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code       *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Namespaces []*DescribeNamespacesResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeNamespacesResponseBody) String() string {
@@ -1367,8 +1445,8 @@ func (s DescribeNamespacesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeNamespacesResponseBody) SetNamespaces(v []*DescribeNamespacesResponseBodyNamespaces) *DescribeNamespacesResponseBody {
-	s.Namespaces = v
+func (s *DescribeNamespacesResponseBody) SetCode(v string) *DescribeNamespacesResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -1377,22 +1455,22 @@ func (s *DescribeNamespacesResponseBody) SetMessage(v string) *DescribeNamespace
 	return s
 }
 
+func (s *DescribeNamespacesResponseBody) SetNamespaces(v []*DescribeNamespacesResponseBodyNamespaces) *DescribeNamespacesResponseBody {
+	s.Namespaces = v
+	return s
+}
+
 func (s *DescribeNamespacesResponseBody) SetRequestId(v string) *DescribeNamespacesResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeNamespacesResponseBody) SetCode(v string) *DescribeNamespacesResponseBody {
-	s.Code = &v
-	return s
-}
-
 type DescribeNamespacesResponseBodyNamespaces struct {
-	Type          *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Quota         *int32  `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	NamespaceId   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	ConfigCount   *int32  `json:"ConfigCount,omitempty" xml:"ConfigCount,omitempty"`
+	NamespaceId   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	Quota         *int32  `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	Type          *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeNamespacesResponseBodyNamespaces) String() string {
@@ -1403,13 +1481,8 @@ func (s DescribeNamespacesResponseBodyNamespaces) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeNamespacesResponseBodyNamespaces) SetType(v int32) *DescribeNamespacesResponseBodyNamespaces {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeNamespacesResponseBodyNamespaces) SetQuota(v int32) *DescribeNamespacesResponseBodyNamespaces {
-	s.Quota = &v
+func (s *DescribeNamespacesResponseBodyNamespaces) SetConfigCount(v int32) *DescribeNamespacesResponseBodyNamespaces {
+	s.ConfigCount = &v
 	return s
 }
 
@@ -1418,19 +1491,25 @@ func (s *DescribeNamespacesResponseBodyNamespaces) SetNamespaceId(v string) *Des
 	return s
 }
 
-func (s *DescribeNamespacesResponseBodyNamespaces) SetConfigCount(v int32) *DescribeNamespacesResponseBodyNamespaces {
-	s.ConfigCount = &v
-	return s
-}
-
 func (s *DescribeNamespacesResponseBodyNamespaces) SetNamespaceName(v string) *DescribeNamespacesResponseBodyNamespaces {
 	s.NamespaceName = &v
 	return s
 }
 
+func (s *DescribeNamespacesResponseBodyNamespaces) SetQuota(v int32) *DescribeNamespacesResponseBodyNamespaces {
+	s.Quota = &v
+	return s
+}
+
+func (s *DescribeNamespacesResponseBodyNamespaces) SetType(v int32) *DescribeNamespacesResponseBodyNamespaces {
+	s.Type = &v
+	return s
+}
+
 type DescribeNamespacesResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeNamespacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeNamespacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeNamespacesResponse) String() string {
@@ -1446,16 +1525,21 @@ func (s *DescribeNamespacesResponse) SetHeaders(v map[string]*string) *DescribeN
 	return s
 }
 
+func (s *DescribeNamespacesResponse) SetStatusCode(v int32) *DescribeNamespacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeNamespacesResponse) SetBody(v *DescribeNamespacesResponseBody) *DescribeNamespacesResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeNamespacesWithCreateResponseBody struct {
-	Namespaces []*DescribeNamespacesWithCreateResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	Message    *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code       *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Namespaces []*DescribeNamespacesWithCreateResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeNamespacesWithCreateResponseBody) String() string {
@@ -1466,8 +1550,8 @@ func (s DescribeNamespacesWithCreateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeNamespacesWithCreateResponseBody) SetNamespaces(v []*DescribeNamespacesWithCreateResponseBodyNamespaces) *DescribeNamespacesWithCreateResponseBody {
-	s.Namespaces = v
+func (s *DescribeNamespacesWithCreateResponseBody) SetCode(v string) *DescribeNamespacesWithCreateResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -1476,22 +1560,22 @@ func (s *DescribeNamespacesWithCreateResponseBody) SetMessage(v string) *Describ
 	return s
 }
 
+func (s *DescribeNamespacesWithCreateResponseBody) SetNamespaces(v []*DescribeNamespacesWithCreateResponseBodyNamespaces) *DescribeNamespacesWithCreateResponseBody {
+	s.Namespaces = v
+	return s
+}
+
 func (s *DescribeNamespacesWithCreateResponseBody) SetRequestId(v string) *DescribeNamespacesWithCreateResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeNamespacesWithCreateResponseBody) SetCode(v string) *DescribeNamespacesWithCreateResponseBody {
-	s.Code = &v
-	return s
-}
-
 type DescribeNamespacesWithCreateResponseBodyNamespaces struct {
-	Type          *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Quota         *int32  `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	NamespaceId   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	ConfigCount   *int32  `json:"ConfigCount,omitempty" xml:"ConfigCount,omitempty"`
+	NamespaceId   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	Quota         *int32  `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	Type          *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeNamespacesWithCreateResponseBodyNamespaces) String() string {
@@ -1502,13 +1586,8 @@ func (s DescribeNamespacesWithCreateResponseBodyNamespaces) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeNamespacesWithCreateResponseBodyNamespaces) SetType(v int32) *DescribeNamespacesWithCreateResponseBodyNamespaces {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeNamespacesWithCreateResponseBodyNamespaces) SetQuota(v int32) *DescribeNamespacesWithCreateResponseBodyNamespaces {
-	s.Quota = &v
+func (s *DescribeNamespacesWithCreateResponseBodyNamespaces) SetConfigCount(v int32) *DescribeNamespacesWithCreateResponseBodyNamespaces {
+	s.ConfigCount = &v
 	return s
 }
 
@@ -1517,19 +1596,25 @@ func (s *DescribeNamespacesWithCreateResponseBodyNamespaces) SetNamespaceId(v st
 	return s
 }
 
-func (s *DescribeNamespacesWithCreateResponseBodyNamespaces) SetConfigCount(v int32) *DescribeNamespacesWithCreateResponseBodyNamespaces {
-	s.ConfigCount = &v
-	return s
-}
-
 func (s *DescribeNamespacesWithCreateResponseBodyNamespaces) SetNamespaceName(v string) *DescribeNamespacesWithCreateResponseBodyNamespaces {
 	s.NamespaceName = &v
 	return s
 }
 
+func (s *DescribeNamespacesWithCreateResponseBodyNamespaces) SetQuota(v int32) *DescribeNamespacesWithCreateResponseBodyNamespaces {
+	s.Quota = &v
+	return s
+}
+
+func (s *DescribeNamespacesWithCreateResponseBodyNamespaces) SetType(v int32) *DescribeNamespacesWithCreateResponseBodyNamespaces {
+	s.Type = &v
+	return s
+}
+
 type DescribeNamespacesWithCreateResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeNamespacesWithCreateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeNamespacesWithCreateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeNamespacesWithCreateResponse) String() string {
@@ -1545,6 +1630,11 @@ func (s *DescribeNamespacesWithCreateResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *DescribeNamespacesWithCreateResponse) SetStatusCode(v int32) *DescribeNamespacesWithCreateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeNamespacesWithCreateResponse) SetBody(v *DescribeNamespacesWithCreateResponseBody) *DescribeNamespacesWithCreateResponse {
 	s.Body = v
 	return s
@@ -1552,10 +1642,10 @@ func (s *DescribeNamespacesWithCreateResponse) SetBody(v *DescribeNamespacesWith
 
 type DescribeTraceByConfigurationRequest struct {
 	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	EndTs       *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
 	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	StartTs     *string `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-	EndTs       *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
 }
 
 func (s DescribeTraceByConfigurationRequest) String() string {
@@ -1568,6 +1658,11 @@ func (s DescribeTraceByConfigurationRequest) GoString() string {
 
 func (s *DescribeTraceByConfigurationRequest) SetDataId(v string) *DescribeTraceByConfigurationRequest {
 	s.DataId = &v
+	return s
+}
+
+func (s *DescribeTraceByConfigurationRequest) SetEndTs(v string) *DescribeTraceByConfigurationRequest {
+	s.EndTs = &v
 	return s
 }
 
@@ -1586,16 +1681,11 @@ func (s *DescribeTraceByConfigurationRequest) SetStartTs(v string) *DescribeTrac
 	return s
 }
 
-func (s *DescribeTraceByConfigurationRequest) SetEndTs(v string) *DescribeTraceByConfigurationRequest {
-	s.EndTs = &v
-	return s
-}
-
 type DescribeTraceByConfigurationResponseBody struct {
+	Code      *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Traces    []*DescribeTraceByConfigurationResponseBodyTraces `json:"Traces,omitempty" xml:"Traces,omitempty" type:"Repeated"`
-	Code      *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s DescribeTraceByConfigurationResponseBody) String() string {
@@ -1604,6 +1694,11 @@ func (s DescribeTraceByConfigurationResponseBody) String() string {
 
 func (s DescribeTraceByConfigurationResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeTraceByConfigurationResponseBody) SetCode(v string) *DescribeTraceByConfigurationResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DescribeTraceByConfigurationResponseBody) SetMessage(v string) *DescribeTraceByConfigurationResponseBody {
@@ -1621,14 +1716,9 @@ func (s *DescribeTraceByConfigurationResponseBody) SetTraces(v []*DescribeTraceB
 	return s
 }
 
-func (s *DescribeTraceByConfigurationResponseBody) SetCode(v string) *DescribeTraceByConfigurationResponseBody {
-	s.Code = &v
-	return s
-}
-
 type DescribeTraceByConfigurationResponseBodyTraces struct {
-	Timestamp   *int64                                                       `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	EventGroups []*DescribeTraceByConfigurationResponseBodyTracesEventGroups `json:"EventGroups,omitempty" xml:"EventGroups,omitempty" type:"Repeated"`
+	Timestamp   *int64                                                       `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s DescribeTraceByConfigurationResponseBodyTraces) String() string {
@@ -1639,19 +1729,19 @@ func (s DescribeTraceByConfigurationResponseBodyTraces) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeTraceByConfigurationResponseBodyTraces) SetTimestamp(v int64) *DescribeTraceByConfigurationResponseBodyTraces {
-	s.Timestamp = &v
-	return s
-}
-
 func (s *DescribeTraceByConfigurationResponseBodyTraces) SetEventGroups(v []*DescribeTraceByConfigurationResponseBodyTracesEventGroups) *DescribeTraceByConfigurationResponseBodyTraces {
 	s.EventGroups = v
 	return s
 }
 
+func (s *DescribeTraceByConfigurationResponseBodyTraces) SetTimestamp(v int64) *DescribeTraceByConfigurationResponseBodyTraces {
+	s.Timestamp = &v
+	return s
+}
+
 type DescribeTraceByConfigurationResponseBodyTracesEventGroups struct {
-	EventType    *string                                                                  `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	EventDetails []*DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails `json:"EventDetails,omitempty" xml:"EventDetails,omitempty" type:"Repeated"`
+	EventType    *string                                                                  `json:"EventType,omitempty" xml:"EventType,omitempty"`
 }
 
 func (s DescribeTraceByConfigurationResponseBodyTracesEventGroups) String() string {
@@ -1662,28 +1752,28 @@ func (s DescribeTraceByConfigurationResponseBodyTracesEventGroups) GoString() st
 	return s.String()
 }
 
-func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroups) SetEventType(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroups {
-	s.EventType = &v
-	return s
-}
-
 func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroups) SetEventDetails(v []*DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) *DescribeTraceByConfigurationResponseBodyTracesEventGroups {
 	s.EventDetails = v
 	return s
 }
 
+func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroups) SetEventType(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroups {
+	s.EventType = &v
+	return s
+}
+
 type DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails struct {
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	DataId     *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	Delay      *string `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	Ts         *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
-	ResponseIp *string `json:"ResponseIp,omitempty" xml:"ResponseIp,omitempty"`
 	Event      *string `json:"Event,omitempty" xml:"Event,omitempty"`
 	Ext        *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	DataId     *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	RequestIp  *string `json:"RequestIp,omitempty" xml:"RequestIp,omitempty"`
-	LogDate    *string `json:"LogDate,omitempty" xml:"LogDate,omitempty"`
-	HandleIp   *string `json:"HandleIp,omitempty" xml:"HandleIp,omitempty"`
 	Group      *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	HandleIp   *string `json:"HandleIp,omitempty" xml:"HandleIp,omitempty"`
+	LogDate    *string `json:"LogDate,omitempty" xml:"LogDate,omitempty"`
+	RequestIp  *string `json:"RequestIp,omitempty" xml:"RequestIp,omitempty"`
+	ResponseIp *string `json:"ResponseIp,omitempty" xml:"ResponseIp,omitempty"`
+	Ts         *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) String() string {
@@ -1694,23 +1784,13 @@ func (s DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) G
 	return s.String()
 }
 
-func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetType(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
-	s.Type = &v
+func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetDataId(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
+	s.DataId = &v
 	return s
 }
 
 func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetDelay(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
 	s.Delay = &v
-	return s
-}
-
-func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetTs(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
-	s.Ts = &v
-	return s
-}
-
-func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetResponseIp(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
-	s.ResponseIp = &v
 	return s
 }
 
@@ -1724,18 +1804,8 @@ func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) 
 	return s
 }
 
-func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetDataId(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
-	s.DataId = &v
-	return s
-}
-
-func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetRequestIp(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
-	s.RequestIp = &v
-	return s
-}
-
-func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetLogDate(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
-	s.LogDate = &v
+func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetGroup(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
+	s.Group = &v
 	return s
 }
 
@@ -1744,14 +1814,35 @@ func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) 
 	return s
 }
 
-func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetGroup(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
-	s.Group = &v
+func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetLogDate(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
+	s.LogDate = &v
+	return s
+}
+
+func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetRequestIp(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
+	s.RequestIp = &v
+	return s
+}
+
+func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetResponseIp(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
+	s.ResponseIp = &v
+	return s
+}
+
+func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetTs(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
+	s.Ts = &v
+	return s
+}
+
+func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) SetType(v string) *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails {
+	s.Type = &v
 	return s
 }
 
 type DescribeTraceByConfigurationResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeTraceByConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTraceByConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeTraceByConfigurationResponse) String() string {
@@ -1764,6 +1855,11 @@ func (s DescribeTraceByConfigurationResponse) GoString() string {
 
 func (s *DescribeTraceByConfigurationResponse) SetHeaders(v map[string]*string) *DescribeTraceByConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeTraceByConfigurationResponse) SetStatusCode(v int32) *DescribeTraceByConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1796,9 +1892,9 @@ func (s *UpdateNamespaceRequest) SetNamespaceName(v string) *UpdateNamespaceRequ
 }
 
 type UpdateNamespaceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
 func (s UpdateNamespaceResponseBody) String() string {
@@ -1807,6 +1903,11 @@ func (s UpdateNamespaceResponseBody) String() string {
 
 func (s UpdateNamespaceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateNamespaceResponseBody) SetCode(v string) *UpdateNamespaceResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *UpdateNamespaceResponseBody) SetMessage(v string) *UpdateNamespaceResponseBody {
@@ -1819,14 +1920,10 @@ func (s *UpdateNamespaceResponseBody) SetRequestId(v string) *UpdateNamespaceRes
 	return s
 }
 
-func (s *UpdateNamespaceResponseBody) SetCode(v string) *UpdateNamespaceResponseBody {
-	s.Code = &v
-	return s
-}
-
 type UpdateNamespaceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateNamespaceResponse) String() string {
@@ -1839,6 +1936,11 @@ func (s UpdateNamespaceResponse) GoString() string {
 
 func (s *UpdateNamespaceResponse) SetHeaders(v map[string]*string) *UpdateNamespaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateNamespaceResponse) SetStatusCode(v int32) *UpdateNamespaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1912,20 +2014,31 @@ func (client *Client) BatchExportConfigurationsWithOptions(request *BatchExportC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
-		query["NamespaceId"] = request.NamespaceId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Data)) {
 		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchExportConfigurations"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/batch/export"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &BatchExportConfigurationsResponse{}
-	_body, _err := client.DoROARequest(tea.String("BatchExportConfigurations"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/diamond-ops/pop/batch/export"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1951,6 +2064,10 @@ func (client *Client) BatchImportConfigurationsWithOptions(request *BatchImportC
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		body["FileUrl"] = request.FileUrl
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		body["NamespaceId"] = request.NamespaceId
 	}
@@ -1959,16 +2076,23 @@ func (client *Client) BatchImportConfigurationsWithOptions(request *BatchImportC
 		body["Policy"] = request.Policy
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
-		body["FileUrl"] = request.FileUrl
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchImportConfigurations"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/batch/import"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &BatchImportConfigurationsResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("BatchImportConfigurations"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/diamond-ops/pop/batch/import"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1994,8 +2118,8 @@ func (client *Client) CheckConfigurationCloneWithOptions(request *CheckConfigura
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Policy)) {
-		body["Policy"] = request.Policy
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		body["Data"] = request.Data
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceFrom)) {
@@ -2006,16 +2130,27 @@ func (client *Client) CheckConfigurationCloneWithOptions(request *CheckConfigura
 		body["NamespaceTo"] = request.NamespaceTo
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Data)) {
-		body["Data"] = request.Data
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		body["Policy"] = request.Policy
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckConfigurationClone"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/batch/checkForClone"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CheckConfigurationCloneResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("CheckConfigurationClone"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/diamond-ops/pop/batch/checkForClone"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2041,20 +2176,31 @@ func (client *Client) CheckConfigurationExportWithOptions(request *CheckConfigur
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
-		body["NamespaceId"] = request.NamespaceId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Data)) {
 		body["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		body["NamespaceId"] = request.NamespaceId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckConfigurationExport"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/batch/checkForExport"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CheckConfigurationExportResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("CheckConfigurationExport"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/diamond-ops/pop/batch/checkForExport"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2080,8 +2226,8 @@ func (client *Client) CloneConfigurationWithOptions(request *CloneConfigurationR
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Policy)) {
-		body["Policy"] = request.Policy
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		body["Data"] = request.Data
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceFrom)) {
@@ -2092,16 +2238,27 @@ func (client *Client) CloneConfigurationWithOptions(request *CloneConfigurationR
 		body["NamespaceTo"] = request.NamespaceTo
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Data)) {
-		body["Data"] = request.Data
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		body["Policy"] = request.Policy
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CloneConfiguration"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/batch/clone"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CloneConfigurationResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("CloneConfiguration"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/diamond-ops/pop/batch/clone"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2127,44 +2284,55 @@ func (client *Client) CreateConfigurationWithOptions(request *CreateConfiguratio
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DataId)) {
-		body["DataId"] = request.DataId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.AppName)) {
 		body["AppName"] = request.AppName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Group)) {
-		body["Group"] = request.Group
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Desc)) {
-		body["Desc"] = request.Desc
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tags)) {
-		body["Tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Content)) {
 		body["Content"] = request.Content
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		body["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.DataId)) {
+		body["DataId"] = request.DataId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Desc)) {
+		body["Desc"] = request.Desc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Group)) {
+		body["Group"] = request.Group
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		body["NamespaceId"] = request.NamespaceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateConfiguration"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/configuration"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateConfigurationResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("CreateConfiguration"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/diamond-ops/pop/configuration"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2198,8 +2366,19 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNamespace"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/namespace"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateNamespaceResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("CreateNamespace"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/diamond-ops/pop/namespace"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2241,8 +2420,19 @@ func (client *Client) DeleteConfigurationWithOptions(request *DeleteConfiguratio
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteConfiguration"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/configuration"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteConfigurationResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteConfiguration"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/diamond-ops/pop/configuration"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2276,8 +2466,19 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNamespace"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/namespace"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteNamespaceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteNamespace"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/diamond-ops/pop/namespace"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2303,48 +2504,59 @@ func (client *Client) DeployConfigurationWithOptions(request *DeployConfiguratio
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DataId)) {
-		body["DataId"] = request.DataId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.AppName)) {
 		body["AppName"] = request.AppName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Group)) {
-		body["Group"] = request.Group
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Desc)) {
-		body["Desc"] = request.Desc
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tags)) {
-		body["Tags"] = request.Tags
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Content)) {
-		body["Content"] = request.Content
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		body["Type"] = request.Type
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
-		body["NamespaceId"] = request.NamespaceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BetaIps)) {
 		body["BetaIps"] = request.BetaIps
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataId)) {
+		body["DataId"] = request.DataId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Desc)) {
+		body["Desc"] = request.Desc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Group)) {
+		body["Group"] = request.Group
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		body["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeployConfiguration"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/configuration"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeployConfigurationResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("DeployConfiguration"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/diamond-ops/pop/configuration"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2386,8 +2598,19 @@ func (client *Client) DescribeConfigurationWithOptions(request *DescribeConfigur
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeConfiguration"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/configuration"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeConfigurationResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeConfiguration"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/diamond-ops/pop/configuration"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2421,8 +2644,19 @@ func (client *Client) DescribeImportFileUrlWithOptions(request *DescribeImportFi
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImportFileUrl"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/batch/importFileUrl"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeImportFileUrlResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeImportFileUrl"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/diamond-ops/pop/batch/importFileUrl"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2456,8 +2690,19 @@ func (client *Client) DescribeNamespaceWithOptions(request *DescribeNamespaceReq
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNamespace"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/namespace"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeNamespaceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeNamespace"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/diamond-ops/pop/namespace"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2481,8 +2726,19 @@ func (client *Client) DescribeNamespacesWithOptions(headers map[string]*string, 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNamespaces"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/namespace/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeNamespacesResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeNamespaces"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/diamond-ops/pop/namespace/list"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2506,8 +2762,19 @@ func (client *Client) DescribeNamespacesWithCreateWithOptions(headers map[string
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNamespacesWithCreate"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/namespace/listWithCreate"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeNamespacesWithCreateResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeNamespacesWithCreate"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/diamond-ops/pop/namespace/listWithCreate"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2537,6 +2804,10 @@ func (client *Client) DescribeTraceByConfigurationWithOptions(request *DescribeT
 		query["DataId"] = request.DataId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
+		query["EndTs"] = request.EndTs
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Group)) {
 		query["Group"] = request.Group
 	}
@@ -2549,16 +2820,23 @@ func (client *Client) DescribeTraceByConfigurationWithOptions(request *DescribeT
 		query["StartTs"] = request.StartTs
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTraceByConfiguration"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/trace/getByConfiguration"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeTraceByConfigurationResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeTraceByConfiguration"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/diamond-ops/pop/trace/getByConfiguration"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2596,8 +2874,19 @@ func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateNamespace"),
+		Version:     tea.String("2020-02-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/diamond-ops/pop/namespace"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateNamespaceResponse{}
-	_body, _err := client.DoROARequestWithForm(tea.String("UpdateNamespace"), tea.String("2020-02-06"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/diamond-ops/pop/namespace"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
