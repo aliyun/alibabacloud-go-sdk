@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -77,8 +77,9 @@ func (s *CheckExperimentRunnableResponseBody) SetSuccess(v bool) *CheckExperimen
 }
 
 type CheckExperimentRunnableResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckExperimentRunnableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckExperimentRunnableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckExperimentRunnableResponse) String() string {
@@ -91,6 +92,11 @@ func (s CheckExperimentRunnableResponse) GoString() string {
 
 func (s *CheckExperimentRunnableResponse) SetHeaders(v map[string]*string) *CheckExperimentRunnableResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CheckExperimentRunnableResponse) SetStatusCode(v int32) *CheckExperimentRunnableResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -319,8 +325,9 @@ func (s *CreateDegradeRuleResponseBodyData) SetThreshold(v float32) *CreateDegra
 }
 
 type CreateDegradeRuleResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDegradeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDegradeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateDegradeRuleResponse) String() string {
@@ -333,6 +340,11 @@ func (s CreateDegradeRuleResponse) GoString() string {
 
 func (s *CreateDegradeRuleResponse) SetHeaders(v map[string]*string) *CreateDegradeRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateDegradeRuleResponse) SetStatusCode(v int32) *CreateDegradeRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -436,8 +448,9 @@ func (s *CreateExperimentResponseBody) SetSuccess(v bool) *CreateExperimentRespo
 }
 
 type CreateExperimentResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateExperimentResponse) String() string {
@@ -450,6 +463,11 @@ func (s CreateExperimentResponse) GoString() string {
 
 func (s *CreateExperimentResponse) SetHeaders(v map[string]*string) *CreateExperimentResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateExperimentResponse) SetStatusCode(v int32) *CreateExperimentResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -702,8 +720,9 @@ func (s *CreateFlowRuleResponseBodyData) SetWarmUpPeriodSec(v int32) *CreateFlow
 }
 
 type CreateFlowRuleResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateFlowRuleResponse) String() string {
@@ -716,6 +735,11 @@ func (s CreateFlowRuleResponse) GoString() string {
 
 func (s *CreateFlowRuleResponse) SetHeaders(v map[string]*string) *CreateFlowRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateFlowRuleResponse) SetStatusCode(v int32) *CreateFlowRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -913,8 +937,9 @@ func (s *CreateHotParamItemsResponseBodyDataParamFlowItemList) SetThreshold(v fl
 }
 
 type CreateHotParamItemsResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateHotParamItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHotParamItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateHotParamItemsResponse) String() string {
@@ -927,6 +952,11 @@ func (s CreateHotParamItemsResponse) GoString() string {
 
 func (s *CreateHotParamItemsResponse) SetHeaders(v map[string]*string) *CreateHotParamItemsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateHotParamItemsResponse) SetStatusCode(v int32) *CreateHotParamItemsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1178,8 +1208,9 @@ func (s *CreateHotParamRuleResponseBodyDataParamFlowItemList) SetThreshold(v flo
 }
 
 type CreateHotParamRuleResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateHotParamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHotParamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateHotParamRuleResponse) String() string {
@@ -1192,6 +1223,11 @@ func (s CreateHotParamRuleResponse) GoString() string {
 
 func (s *CreateHotParamRuleResponse) SetHeaders(v map[string]*string) *CreateHotParamRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateHotParamRuleResponse) SetStatusCode(v int32) *CreateHotParamRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1372,8 +1408,9 @@ func (s *CreateIsolationRuleResponseBodyData) SetThreshold(v float32) *CreateIso
 }
 
 type CreateIsolationRuleResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateIsolationRuleResponse) String() string {
@@ -1386,6 +1423,11 @@ func (s CreateIsolationRuleResponse) GoString() string {
 
 func (s *CreateIsolationRuleResponse) SetHeaders(v map[string]*string) *CreateIsolationRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateIsolationRuleResponse) SetStatusCode(v int32) *CreateIsolationRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1518,8 +1560,9 @@ func (s *CreateSystemRuleResponseBodyData) SetThreshold(v float32) *CreateSystem
 }
 
 type CreateSystemRuleResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSystemRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSystemRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateSystemRuleResponse) String() string {
@@ -1532,6 +1575,11 @@ func (s CreateSystemRuleResponse) GoString() string {
 
 func (s *CreateSystemRuleResponse) SetHeaders(v map[string]*string) *CreateSystemRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateSystemRuleResponse) SetStatusCode(v int32) *CreateSystemRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1622,8 +1670,9 @@ func (s *DeleteDegradeRuleResponseBodyData) SetRuleId(v int64) *DeleteDegradeRul
 }
 
 type DeleteDegradeRuleResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDegradeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDegradeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDegradeRuleResponse) String() string {
@@ -1636,6 +1685,11 @@ func (s DeleteDegradeRuleResponse) GoString() string {
 
 func (s *DeleteDegradeRuleResponse) SetHeaders(v map[string]*string) *DeleteDegradeRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteDegradeRuleResponse) SetStatusCode(v int32) *DeleteDegradeRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1726,8 +1780,9 @@ func (s *DeleteFlowRuleResponseBodyData) SetRuleId(v int64) *DeleteFlowRuleRespo
 }
 
 type DeleteFlowRuleResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteFlowRuleResponse) String() string {
@@ -1740,6 +1795,11 @@ func (s DeleteFlowRuleResponse) GoString() string {
 
 func (s *DeleteFlowRuleResponse) SetHeaders(v map[string]*string) *DeleteFlowRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteFlowRuleResponse) SetStatusCode(v int32) *DeleteFlowRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1830,8 +1890,9 @@ func (s *DeleteHotParamRuleResponseBodyData) SetRuleId(v int64) *DeleteHotParamR
 }
 
 type DeleteHotParamRuleResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteHotParamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteHotParamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteHotParamRuleResponse) String() string {
@@ -1844,6 +1905,11 @@ func (s DeleteHotParamRuleResponse) GoString() string {
 
 func (s *DeleteHotParamRuleResponse) SetHeaders(v map[string]*string) *DeleteHotParamRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteHotParamRuleResponse) SetStatusCode(v int32) *DeleteHotParamRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1934,8 +2000,9 @@ func (s *DeleteIsolationRuleResponseBodyData) SetRuleId(v int64) *DeleteIsolatio
 }
 
 type DeleteIsolationRuleResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteIsolationRuleResponse) String() string {
@@ -1948,6 +2015,11 @@ func (s DeleteIsolationRuleResponse) GoString() string {
 
 func (s *DeleteIsolationRuleResponse) SetHeaders(v map[string]*string) *DeleteIsolationRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteIsolationRuleResponse) SetStatusCode(v int32) *DeleteIsolationRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2038,8 +2110,9 @@ func (s *DeleteSystemRuleResponseBodyData) SetRuleId(v int64) *DeleteSystemRuleR
 }
 
 type DeleteSystemRuleResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSystemRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSystemRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSystemRuleResponse) String() string {
@@ -2052,6 +2125,11 @@ func (s DeleteSystemRuleResponse) GoString() string {
 
 func (s *DeleteSystemRuleResponse) SetHeaders(v map[string]*string) *DeleteSystemRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteSystemRuleResponse) SetStatusCode(v int32) *DeleteSystemRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2148,8 +2226,9 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegi
 }
 
 type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -2162,6 +2241,11 @@ func (s DescribeRegionsResponse) GoString() string {
 
 func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2324,8 +2408,9 @@ func (s *DisableDegradeRuleResponseBodyData) SetThreshold(v float32) *DisableDeg
 }
 
 type DisableDegradeRuleResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableDegradeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableDegradeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableDegradeRuleResponse) String() string {
@@ -2338,6 +2423,11 @@ func (s DisableDegradeRuleResponse) GoString() string {
 
 func (s *DisableDegradeRuleResponse) SetHeaders(v map[string]*string) *DisableDegradeRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableDegradeRuleResponse) SetStatusCode(v int32) *DisableDegradeRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2530,8 +2620,9 @@ func (s *DisableFlowRuleResponseBodyData) SetWarmUpPeriodSec(v int32) *DisableFl
 }
 
 type DisableFlowRuleResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableFlowRuleResponse) String() string {
@@ -2544,6 +2635,11 @@ func (s DisableFlowRuleResponse) GoString() string {
 
 func (s *DisableFlowRuleResponse) SetHeaders(v map[string]*string) *DisableFlowRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableFlowRuleResponse) SetStatusCode(v int32) *DisableFlowRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2735,8 +2831,9 @@ func (s *DisableHotParamRuleResponseBodyDataParamFlowItemList) SetThreshold(v fl
 }
 
 type DisableHotParamRuleResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableHotParamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableHotParamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableHotParamRuleResponse) String() string {
@@ -2749,6 +2846,11 @@ func (s DisableHotParamRuleResponse) GoString() string {
 
 func (s *DisableHotParamRuleResponse) SetHeaders(v map[string]*string) *DisableHotParamRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableHotParamRuleResponse) SetStatusCode(v int32) *DisableHotParamRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2887,8 +2989,9 @@ func (s *DisableIsolationRuleResponseBodyData) SetThreshold(v float32) *DisableI
 }
 
 type DisableIsolationRuleResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableIsolationRuleResponse) String() string {
@@ -2901,6 +3004,11 @@ func (s DisableIsolationRuleResponse) GoString() string {
 
 func (s *DisableIsolationRuleResponse) SetHeaders(v map[string]*string) *DisableIsolationRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableIsolationRuleResponse) SetStatusCode(v int32) *DisableIsolationRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3009,8 +3117,9 @@ func (s *DisableSystemRuleResponseBodyData) SetThreshold(v float32) *DisableSyst
 }
 
 type DisableSystemRuleResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableSystemRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableSystemRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableSystemRuleResponse) String() string {
@@ -3023,6 +3132,11 @@ func (s DisableSystemRuleResponse) GoString() string {
 
 func (s *DisableSystemRuleResponse) SetHeaders(v map[string]*string) *DisableSystemRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableSystemRuleResponse) SetStatusCode(v int32) *DisableSystemRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3185,8 +3299,9 @@ func (s *EnableDegradeRuleResponseBodyData) SetThreshold(v float32) *EnableDegra
 }
 
 type EnableDegradeRuleResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableDegradeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableDegradeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableDegradeRuleResponse) String() string {
@@ -3199,6 +3314,11 @@ func (s EnableDegradeRuleResponse) GoString() string {
 
 func (s *EnableDegradeRuleResponse) SetHeaders(v map[string]*string) *EnableDegradeRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableDegradeRuleResponse) SetStatusCode(v int32) *EnableDegradeRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3391,8 +3511,9 @@ func (s *EnableFlowRuleResponseBodyData) SetWarmUpPeriodSec(v int32) *EnableFlow
 }
 
 type EnableFlowRuleResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableFlowRuleResponse) String() string {
@@ -3405,6 +3526,11 @@ func (s EnableFlowRuleResponse) GoString() string {
 
 func (s *EnableFlowRuleResponse) SetHeaders(v map[string]*string) *EnableFlowRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableFlowRuleResponse) SetStatusCode(v int32) *EnableFlowRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3596,8 +3722,9 @@ func (s *EnableHotParamRuleResponseBodyDataParamFlowItemList) SetThreshold(v flo
 }
 
 type EnableHotParamRuleResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableHotParamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableHotParamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableHotParamRuleResponse) String() string {
@@ -3610,6 +3737,11 @@ func (s EnableHotParamRuleResponse) GoString() string {
 
 func (s *EnableHotParamRuleResponse) SetHeaders(v map[string]*string) *EnableHotParamRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableHotParamRuleResponse) SetStatusCode(v int32) *EnableHotParamRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3748,8 +3880,9 @@ func (s *EnableIsolationRuleResponseBodyData) SetThreshold(v float32) *EnableIso
 }
 
 type EnableIsolationRuleResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableIsolationRuleResponse) String() string {
@@ -3762,6 +3895,11 @@ func (s EnableIsolationRuleResponse) GoString() string {
 
 func (s *EnableIsolationRuleResponse) SetHeaders(v map[string]*string) *EnableIsolationRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableIsolationRuleResponse) SetStatusCode(v int32) *EnableIsolationRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3870,8 +4008,9 @@ func (s *EnableSystemRuleResponseBodyData) SetThreshold(v float32) *EnableSystem
 }
 
 type EnableSystemRuleResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableSystemRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableSystemRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableSystemRuleResponse) String() string {
@@ -3884,6 +4023,11 @@ func (s EnableSystemRuleResponse) GoString() string {
 
 func (s *EnableSystemRuleResponse) SetHeaders(v map[string]*string) *EnableSystemRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableSystemRuleResponse) SetStatusCode(v int32) *EnableSystemRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3969,8 +4113,9 @@ func (s *ExecuteExperimentResponseBody) SetTaskId(v string) *ExecuteExperimentRe
 }
 
 type ExecuteExperimentResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExecuteExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExecuteExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ExecuteExperimentResponse) String() string {
@@ -3983,6 +4128,11 @@ func (s ExecuteExperimentResponse) GoString() string {
 
 func (s *ExecuteExperimentResponse) SetHeaders(v map[string]*string) *ExecuteExperimentResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ExecuteExperimentResponse) SetStatusCode(v int32) *ExecuteExperimentResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4056,8 +4206,9 @@ func (s *FinishExperimentTaskResponseBody) SetSuccess(v bool) *FinishExperimentT
 }
 
 type FinishExperimentTaskResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FinishExperimentTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FinishExperimentTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FinishExperimentTaskResponse) String() string {
@@ -4070,6 +4221,11 @@ func (s FinishExperimentTaskResponse) GoString() string {
 
 func (s *FinishExperimentTaskResponse) SetHeaders(v map[string]*string) *FinishExperimentTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FinishExperimentTaskResponse) SetStatusCode(v int32) *FinishExperimentTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4262,8 +4418,9 @@ func (s *GetActivityTaskResponseBodyHosts) SetTaskId(v string) *GetActivityTaskR
 }
 
 type GetActivityTaskResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetActivityTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetActivityTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetActivityTaskResponse) String() string {
@@ -4276,6 +4433,11 @@ func (s GetActivityTaskResponse) GoString() string {
 
 func (s *GetActivityTaskResponse) SetHeaders(v map[string]*string) *GetActivityTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetActivityTaskResponse) SetStatusCode(v int32) *GetActivityTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4373,8 +4535,9 @@ func (s *GetExperimentMetaResponseBody) SetTags(v []*string) *GetExperimentMetaR
 }
 
 type GetExperimentMetaResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetExperimentMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetExperimentMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetExperimentMetaResponse) String() string {
@@ -4387,6 +4550,11 @@ func (s GetExperimentMetaResponse) GoString() string {
 
 func (s *GetExperimentMetaResponse) SetHeaders(v map[string]*string) *GetExperimentMetaResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetExperimentMetaResponse) SetStatusCode(v int32) *GetExperimentMetaResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4573,8 +4741,9 @@ func (s *GetExperimentTaskResponseBodyActivities) SetTaskId(v string) *GetExperi
 }
 
 type GetExperimentTaskResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetExperimentTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetExperimentTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetExperimentTaskResponse) String() string {
@@ -4587,6 +4756,11 @@ func (s GetExperimentTaskResponse) GoString() string {
 
 func (s *GetExperimentTaskResponse) SetHeaders(v map[string]*string) *GetExperimentTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetExperimentTaskResponse) SetStatusCode(v int32) *GetExperimentTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4660,8 +4834,9 @@ func (s *GetLicenseKeyResponseBody) SetSuccess(v bool) *GetLicenseKeyResponseBod
 }
 
 type GetLicenseKeyResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetLicenseKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLicenseKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetLicenseKeyResponse) String() string {
@@ -4674,6 +4849,11 @@ func (s GetLicenseKeyResponse) GoString() string {
 
 func (s *GetLicenseKeyResponse) SetHeaders(v map[string]*string) *GetLicenseKeyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetLicenseKeyResponse) SetStatusCode(v int32) *GetLicenseKeyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5105,8 +5285,9 @@ func (s *GetMetricsOfAppResponseBodyDataInnerMetrics) SetTimestamp(v int64) *Get
 }
 
 type GetMetricsOfAppResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetMetricsOfAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMetricsOfAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetMetricsOfAppResponse) String() string {
@@ -5119,6 +5300,11 @@ func (s GetMetricsOfAppResponse) GoString() string {
 
 func (s *GetMetricsOfAppResponse) SetHeaders(v map[string]*string) *GetMetricsOfAppResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetMetricsOfAppResponse) SetStatusCode(v int32) *GetMetricsOfAppResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5562,8 +5748,9 @@ func (s *GetMetricsOfResourceResponseBodyDataInnerMetrics) SetTimestamp(v int64)
 }
 
 type GetMetricsOfResourceResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetMetricsOfResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMetricsOfResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetMetricsOfResourceResponse) String() string {
@@ -5576,6 +5763,11 @@ func (s GetMetricsOfResourceResponse) GoString() string {
 
 func (s *GetMetricsOfResourceResponse) SetHeaders(v map[string]*string) *GetMetricsOfResourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetMetricsOfResourceResponse) SetStatusCode(v int32) *GetMetricsOfResourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5732,8 +5924,9 @@ func (s *GetSentinelAppSumMetricResponseBodyMetricData) SetUserId(v string) *Get
 }
 
 type GetSentinelAppSumMetricResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSentinelAppSumMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSentinelAppSumMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSentinelAppSumMetricResponse) String() string {
@@ -5746,6 +5939,11 @@ func (s GetSentinelAppSumMetricResponse) GoString() string {
 
 func (s *GetSentinelAppSumMetricResponse) SetHeaders(v map[string]*string) *GetSentinelAppSumMetricResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetSentinelAppSumMetricResponse) SetStatusCode(v int32) *GetSentinelAppSumMetricResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5831,8 +6029,9 @@ func (s *GetUserApplicationGroupsResponseBody) SetSuccess(v bool) *GetUserApplic
 }
 
 type GetUserApplicationGroupsResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserApplicationGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserApplicationGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetUserApplicationGroupsResponse) String() string {
@@ -5845,6 +6044,11 @@ func (s GetUserApplicationGroupsResponse) GoString() string {
 
 func (s *GetUserApplicationGroupsResponse) SetHeaders(v map[string]*string) *GetUserApplicationGroupsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetUserApplicationGroupsResponse) SetStatusCode(v int32) *GetUserApplicationGroupsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5959,8 +6163,9 @@ func (s *GetUserApplicationsResponseBodyAppNameAndIdPairs) SetScopeType(v int32)
 }
 
 type GetUserApplicationsResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetUserApplicationsResponse) String() string {
@@ -5973,6 +6178,11 @@ func (s GetUserApplicationsResponse) GoString() string {
 
 func (s *GetUserApplicationsResponse) SetHeaders(v map[string]*string) *GetUserApplicationsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetUserApplicationsResponse) SetStatusCode(v int32) *GetUserApplicationsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6087,8 +6297,9 @@ func (s *GetUserWorkspaceResponseBodyWorkspaceList) SetWorkspaceId(v string) *Ge
 }
 
 type GetUserWorkspaceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetUserWorkspaceResponse) String() string {
@@ -6101,6 +6312,11 @@ func (s GetUserWorkspaceResponse) GoString() string {
 
 func (s *GetUserWorkspaceResponse) SetHeaders(v map[string]*string) *GetUserWorkspaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetUserWorkspaceResponse) SetStatusCode(v int32) *GetUserWorkspaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6233,8 +6449,9 @@ func (s *ListActiveAppsResponseBodyData) SetNamespace(v string) *ListActiveAppsR
 }
 
 type ListActiveAppsResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListActiveAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListActiveAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListActiveAppsResponse) String() string {
@@ -6247,6 +6464,11 @@ func (s ListActiveAppsResponse) GoString() string {
 
 func (s *ListActiveAppsResponse) SetHeaders(v map[string]*string) *ListActiveAppsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListActiveAppsResponse) SetStatusCode(v int32) *ListActiveAppsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6468,8 +6690,9 @@ func (s *ListDegradeRulesOfAppResponseBodyDataDatas) SetThreshold(v float32) *Li
 }
 
 type ListDegradeRulesOfAppResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDegradeRulesOfAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDegradeRulesOfAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDegradeRulesOfAppResponse) String() string {
@@ -6482,6 +6705,11 @@ func (s ListDegradeRulesOfAppResponse) GoString() string {
 
 func (s *ListDegradeRulesOfAppResponse) SetHeaders(v map[string]*string) *ListDegradeRulesOfAppResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListDegradeRulesOfAppResponse) SetStatusCode(v int32) *ListDegradeRulesOfAppResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6709,8 +6937,9 @@ func (s *ListDegradeRulesOfResourceResponseBodyDataDatas) SetThreshold(v float32
 }
 
 type ListDegradeRulesOfResourceResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDegradeRulesOfResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDegradeRulesOfResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDegradeRulesOfResourceResponse) String() string {
@@ -6723,6 +6952,11 @@ func (s ListDegradeRulesOfResourceResponse) GoString() string {
 
 func (s *ListDegradeRulesOfResourceResponse) SetHeaders(v map[string]*string) *ListDegradeRulesOfResourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListDegradeRulesOfResourceResponse) SetStatusCode(v int32) *ListDegradeRulesOfResourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6873,8 +7107,9 @@ func (s *ListExperimentMetasResponseBodyContent) SetTags(v []*string) *ListExper
 }
 
 type ListExperimentMetasResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListExperimentMetasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListExperimentMetasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListExperimentMetasResponse) String() string {
@@ -6887,6 +7122,11 @@ func (s ListExperimentMetasResponse) GoString() string {
 
 func (s *ListExperimentMetasResponse) SetHeaders(v map[string]*string) *ListExperimentMetasResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListExperimentMetasResponse) SetStatusCode(v int32) *ListExperimentMetasResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7138,8 +7378,9 @@ func (s *ListFlowRulesOfAppResponseBodyDataDatas) SetWarmUpPeriodSec(v int32) *L
 }
 
 type ListFlowRulesOfAppResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListFlowRulesOfAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListFlowRulesOfAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListFlowRulesOfAppResponse) String() string {
@@ -7152,6 +7393,11 @@ func (s ListFlowRulesOfAppResponse) GoString() string {
 
 func (s *ListFlowRulesOfAppResponse) SetHeaders(v map[string]*string) *ListFlowRulesOfAppResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListFlowRulesOfAppResponse) SetStatusCode(v int32) *ListFlowRulesOfAppResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7409,8 +7655,9 @@ func (s *ListFlowRulesOfResourceResponseBodyDataDatas) SetWarmUpPeriodSec(v int3
 }
 
 type ListFlowRulesOfResourceResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListFlowRulesOfResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListFlowRulesOfResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListFlowRulesOfResourceResponse) String() string {
@@ -7423,6 +7670,11 @@ func (s ListFlowRulesOfResourceResponse) GoString() string {
 
 func (s *ListFlowRulesOfResourceResponse) SetHeaders(v map[string]*string) *ListFlowRulesOfResourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListFlowRulesOfResourceResponse) SetStatusCode(v int32) *ListFlowRulesOfResourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7673,8 +7925,9 @@ func (s *ListHotParamRulesOfAppResponseBodyDataDatasParamFlowItemList) SetThresh
 }
 
 type ListHotParamRulesOfAppResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListHotParamRulesOfAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListHotParamRulesOfAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListHotParamRulesOfAppResponse) String() string {
@@ -7687,6 +7940,11 @@ func (s ListHotParamRulesOfAppResponse) GoString() string {
 
 func (s *ListHotParamRulesOfAppResponse) SetHeaders(v map[string]*string) *ListHotParamRulesOfAppResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListHotParamRulesOfAppResponse) SetStatusCode(v int32) *ListHotParamRulesOfAppResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7943,8 +8201,9 @@ func (s *ListHotParamRulesOfResourceResponseBodyDataDatasParamFlowItemList) SetT
 }
 
 type ListHotParamRulesOfResourceResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListHotParamRulesOfResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListHotParamRulesOfResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListHotParamRulesOfResourceResponse) String() string {
@@ -7957,6 +8216,11 @@ func (s ListHotParamRulesOfResourceResponse) GoString() string {
 
 func (s *ListHotParamRulesOfResourceResponse) SetHeaders(v map[string]*string) *ListHotParamRulesOfResourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListHotParamRulesOfResourceResponse) SetStatusCode(v int32) *ListHotParamRulesOfResourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8154,8 +8418,9 @@ func (s *ListIsolationRulesOfAppResponseBodyDataDatas) SetThreshold(v float32) *
 }
 
 type ListIsolationRulesOfAppResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIsolationRulesOfAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIsolationRulesOfAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIsolationRulesOfAppResponse) String() string {
@@ -8168,6 +8433,11 @@ func (s ListIsolationRulesOfAppResponse) GoString() string {
 
 func (s *ListIsolationRulesOfAppResponse) SetHeaders(v map[string]*string) *ListIsolationRulesOfAppResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListIsolationRulesOfAppResponse) SetStatusCode(v int32) *ListIsolationRulesOfAppResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8371,8 +8641,9 @@ func (s *ListIsolationRulesOfResourceResponseBodyDataDatas) SetThreshold(v float
 }
 
 type ListIsolationRulesOfResourceResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIsolationRulesOfResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIsolationRulesOfResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIsolationRulesOfResourceResponse) String() string {
@@ -8385,6 +8656,11 @@ func (s ListIsolationRulesOfResourceResponse) GoString() string {
 
 func (s *ListIsolationRulesOfResourceResponse) SetHeaders(v map[string]*string) *ListIsolationRulesOfResourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListIsolationRulesOfResourceResponse) SetStatusCode(v int32) *ListIsolationRulesOfResourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8564,8 +8840,9 @@ func (s *ListSystemRulesResponseBodyDataDatas) SetThreshold(v float32) *ListSyst
 }
 
 type ListSystemRulesResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSystemRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSystemRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSystemRulesResponse) String() string {
@@ -8578,6 +8855,11 @@ func (s ListSystemRulesResponse) GoString() string {
 
 func (s *ListSystemRulesResponse) SetHeaders(v map[string]*string) *ListSystemRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListSystemRulesResponse) SetStatusCode(v int32) *ListSystemRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8788,8 +9070,9 @@ func (s *ModifyDegradeRuleResponseBodyData) SetThreshold(v float32) *ModifyDegra
 }
 
 type ModifyDegradeRuleResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDegradeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDegradeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyDegradeRuleResponse) String() string {
@@ -8802,6 +9085,11 @@ func (s ModifyDegradeRuleResponse) GoString() string {
 
 func (s *ModifyDegradeRuleResponse) SetHeaders(v map[string]*string) *ModifyDegradeRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyDegradeRuleResponse) SetStatusCode(v int32) *ModifyDegradeRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9042,8 +9330,9 @@ func (s *ModifyFlowRuleResponseBodyData) SetWarmUpPeriodSec(v int32) *ModifyFlow
 }
 
 type ModifyFlowRuleResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyFlowRuleResponse) String() string {
@@ -9056,6 +9345,11 @@ func (s ModifyFlowRuleResponse) GoString() string {
 
 func (s *ModifyFlowRuleResponse) SetHeaders(v map[string]*string) *ModifyFlowRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyFlowRuleResponse) SetStatusCode(v int32) *ModifyFlowRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9295,8 +9589,9 @@ func (s *ModifyHotParamRuleResponseBodyDataParamFlowItemList) SetThreshold(v flo
 }
 
 type ModifyHotParamRuleResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyHotParamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyHotParamRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyHotParamRuleResponse) String() string {
@@ -9309,6 +9604,11 @@ func (s ModifyHotParamRuleResponse) GoString() string {
 
 func (s *ModifyHotParamRuleResponse) SetHeaders(v map[string]*string) *ModifyHotParamRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyHotParamRuleResponse) SetStatusCode(v int32) *ModifyHotParamRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9471,8 +9771,9 @@ func (s *ModifyIsolationRuleResponseBodyData) SetThreshold(v float32) *ModifyIso
 }
 
 type ModifyIsolationRuleResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyIsolationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyIsolationRuleResponse) String() string {
@@ -9485,6 +9786,11 @@ func (s ModifyIsolationRuleResponse) GoString() string {
 
 func (s *ModifyIsolationRuleResponse) SetHeaders(v map[string]*string) *ModifyIsolationRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyIsolationRuleResponse) SetStatusCode(v int32) *ModifyIsolationRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9599,8 +9905,9 @@ func (s *ModifySystemRuleResponseBodyData) SetThreshold(v float32) *ModifySystem
 }
 
 type ModifySystemRuleResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifySystemRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifySystemRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifySystemRuleResponse) String() string {
@@ -9613,6 +9920,11 @@ func (s ModifySystemRuleResponse) GoString() string {
 
 func (s *ModifySystemRuleResponse) SetHeaders(v map[string]*string) *ModifySystemRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifySystemRuleResponse) SetStatusCode(v int32) *ModifySystemRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9662,8 +9974,9 @@ func (s *OpenAhasServiceResponseBody) SetRequestId(v string) *OpenAhasServiceRes
 }
 
 type OpenAhasServiceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *OpenAhasServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenAhasServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s OpenAhasServiceResponse) String() string {
@@ -9676,6 +9989,11 @@ func (s OpenAhasServiceResponse) GoString() string {
 
 func (s *OpenAhasServiceResponse) SetHeaders(v map[string]*string) *OpenAhasServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *OpenAhasServiceResponse) SetStatusCode(v int32) *OpenAhasServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9955,8 +10273,9 @@ func (s *PageableQueryExperimentTaskByClusterIdResponseBodyExperimentTasksExtInf
 }
 
 type PageableQueryExperimentTaskByClusterIdResponse struct {
-	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PageableQueryExperimentTaskByClusterIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PageableQueryExperimentTaskByClusterIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PageableQueryExperimentTaskByClusterIdResponse) String() string {
@@ -9969,6 +10288,11 @@ func (s PageableQueryExperimentTaskByClusterIdResponse) GoString() string {
 
 func (s *PageableQueryExperimentTaskByClusterIdResponse) SetHeaders(v map[string]*string) *PageableQueryExperimentTaskByClusterIdResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PageableQueryExperimentTaskByClusterIdResponse) SetStatusCode(v int32) *PageableQueryExperimentTaskByClusterIdResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10242,8 +10566,9 @@ func (s *PageableQueryExperimentTaskByExperimentIdResponseBodyExperimentTasksExt
 }
 
 type PageableQueryExperimentTaskByExperimentIdResponse struct {
-	Headers map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PageableQueryExperimentTaskByExperimentIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PageableQueryExperimentTaskByExperimentIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PageableQueryExperimentTaskByExperimentIdResponse) String() string {
@@ -10256,6 +10581,11 @@ func (s PageableQueryExperimentTaskByExperimentIdResponse) GoString() string {
 
 func (s *PageableQueryExperimentTaskByExperimentIdResponse) SetHeaders(v map[string]*string) *PageableQueryExperimentTaskByExperimentIdResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PageableQueryExperimentTaskByExperimentIdResponse) SetStatusCode(v int32) *PageableQueryExperimentTaskByExperimentIdResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10472,8 +10802,9 @@ func (s *PageableQueryUserExperimentResponseBodyExperimentList) SetTags(v []*str
 }
 
 type PageableQueryUserExperimentResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PageableQueryUserExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PageableQueryUserExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PageableQueryUserExperimentResponse) String() string {
@@ -10486,6 +10817,11 @@ func (s PageableQueryUserExperimentResponse) GoString() string {
 
 func (s *PageableQueryUserExperimentResponse) SetHeaders(v map[string]*string) *PageableQueryUserExperimentResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PageableQueryUserExperimentResponse) SetStatusCode(v int32) *PageableQueryUserExperimentResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10559,8 +10895,9 @@ func (s *PushExperimentTaskResponseBody) SetSuccess(v bool) *PushExperimentTaskR
 }
 
 type PushExperimentTaskResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PushExperimentTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PushExperimentTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PushExperimentTaskResponse) String() string {
@@ -10573,6 +10910,11 @@ func (s PushExperimentTaskResponse) GoString() string {
 
 func (s *PushExperimentTaskResponse) SetHeaders(v map[string]*string) *PushExperimentTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PushExperimentTaskResponse) SetStatusCode(v int32) *PushExperimentTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10676,8 +11018,9 @@ func (s *UpdateExperimentResponseBody) SetSuccess(v bool) *UpdateExperimentRespo
 }
 
 type UpdateExperimentResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateExperimentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateExperimentResponse) String() string {
@@ -10690,6 +11033,11 @@ func (s UpdateExperimentResponse) GoString() string {
 
 func (s *UpdateExperimentResponse) SetHeaders(v map[string]*string) *UpdateExperimentResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateExperimentResponse) SetStatusCode(v int32) *UpdateExperimentResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10787,8 +11135,9 @@ func (s *UpdateExperimentBasicInfoResponseBody) SetSuccess(v bool) *UpdateExperi
 }
 
 type UpdateExperimentBasicInfoResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateExperimentBasicInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateExperimentBasicInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateExperimentBasicInfoResponse) String() string {
@@ -10801,6 +11150,11 @@ func (s UpdateExperimentBasicInfoResponse) GoString() string {
 
 func (s *UpdateExperimentBasicInfoResponse) SetHeaders(v map[string]*string) *UpdateExperimentBasicInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateExperimentBasicInfoResponse) SetStatusCode(v int32) *UpdateExperimentBasicInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10824,6 +11178,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-beijing":     tea.String("ahas.cn-beijing.aliyuncs.com"),
@@ -10872,9 +11227,18 @@ func (client *Client) CheckExperimentRunnableWithOptions(request *CheckExperimen
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["ExperimentId"] = request.ExperimentId
-	query["NameSpace"] = request.NameSpace
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExperimentId)) {
+		query["ExperimentId"] = request.ExperimentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSpace)) {
+		query["NameSpace"] = request.NameSpace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10915,19 +11279,58 @@ func (client *Client) CreateDegradeRuleWithOptions(request *CreateDegradeRuleReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["Enable"] = request.Enable
-	query["HalfOpenBaseAmountPerStep"] = request.HalfOpenBaseAmountPerStep
-	query["HalfOpenRecoveryStepNum"] = request.HalfOpenRecoveryStepNum
-	query["MinRequestAmount"] = request.MinRequestAmount
-	query["Namespace"] = request.Namespace
-	query["RecoveryTimeoutMs"] = request.RecoveryTimeoutMs
-	query["Resource"] = request.Resource
-	query["SlowRtMs"] = request.SlowRtMs
-	query["StatDurationMs"] = request.StatDurationMs
-	query["Strategy"] = request.Strategy
-	query["Threshold"] = request.Threshold
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HalfOpenBaseAmountPerStep)) {
+		query["HalfOpenBaseAmountPerStep"] = request.HalfOpenBaseAmountPerStep
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HalfOpenRecoveryStepNum)) {
+		query["HalfOpenRecoveryStepNum"] = request.HalfOpenRecoveryStepNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinRequestAmount)) {
+		query["MinRequestAmount"] = request.MinRequestAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecoveryTimeoutMs)) {
+		query["RecoveryTimeoutMs"] = request.RecoveryTimeoutMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlowRtMs)) {
+		query["SlowRtMs"] = request.SlowRtMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatDurationMs)) {
+		query["StatDurationMs"] = request.StatDurationMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Strategy)) {
+		query["Strategy"] = request.Strategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10968,12 +11371,30 @@ func (client *Client) CreateExperimentWithOptions(request *CreateExperimentReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["Definition"] = request.Definition
-	query["Description"] = request.Description
-	query["Name"] = request.Name
-	query["NameSpace"] = request.NameSpace
-	query["Tags"] = request.Tags
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Definition)) {
+		query["Definition"] = request.Definition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSpace)) {
+		query["NameSpace"] = request.NameSpace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11014,18 +11435,54 @@ func (client *Client) CreateFlowRuleWithOptions(request *CreateFlowRuleRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["ControlBehavior"] = request.ControlBehavior
-	query["Enable"] = request.Enable
-	query["LimitOrigin"] = request.LimitOrigin
-	query["MaxQueueingTimeMs"] = request.MaxQueueingTimeMs
-	query["Namespace"] = request.Namespace
-	query["RefResource"] = request.RefResource
-	query["RelationStrategy"] = request.RelationStrategy
-	query["Resource"] = request.Resource
-	query["Threshold"] = request.Threshold
-	query["WarmUpPeriodSec"] = request.WarmUpPeriodSec
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlBehavior)) {
+		query["ControlBehavior"] = request.ControlBehavior
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitOrigin)) {
+		query["LimitOrigin"] = request.LimitOrigin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxQueueingTimeMs)) {
+		query["MaxQueueingTimeMs"] = request.MaxQueueingTimeMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefResource)) {
+		query["RefResource"] = request.RefResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationStrategy)) {
+		query["RelationStrategy"] = request.RelationStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WarmUpPeriodSec)) {
+		query["WarmUpPeriodSec"] = request.WarmUpPeriodSec
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11066,9 +11523,18 @@ func (client *Client) CreateHotParamItemsWithOptions(request *CreateHotParamItem
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["Items"] = request.Items
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Items)) {
+		query["Items"] = request.Items
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11109,18 +11575,54 @@ func (client *Client) CreateHotParamRuleWithOptions(request *CreateHotParamRuleR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["BurstCount"] = request.BurstCount
-	query["ControlBehavior"] = request.ControlBehavior
-	query["Enable"] = request.Enable
-	query["MaxQueueingTimeMs"] = request.MaxQueueingTimeMs
-	query["MetricType"] = request.MetricType
-	query["Namespace"] = request.Namespace
-	query["ParamIdx"] = request.ParamIdx
-	query["Resource"] = request.Resource
-	query["StatDurationSec"] = request.StatDurationSec
-	query["Threshold"] = request.Threshold
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BurstCount)) {
+		query["BurstCount"] = request.BurstCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlBehavior)) {
+		query["ControlBehavior"] = request.ControlBehavior
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxQueueingTimeMs)) {
+		query["MaxQueueingTimeMs"] = request.MaxQueueingTimeMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
+		query["MetricType"] = request.MetricType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamIdx)) {
+		query["ParamIdx"] = request.ParamIdx
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatDurationSec)) {
+		query["StatDurationSec"] = request.StatDurationSec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11161,15 +11663,42 @@ func (client *Client) CreateIsolationRuleWithOptions(request *CreateIsolationRul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["Enable"] = request.Enable
-	query["LimitOrigin"] = request.LimitOrigin
-	query["Namespace"] = request.Namespace
-	query["RefResource"] = request.RefResource
-	query["RelationStrategy"] = request.RelationStrategy
-	query["Resource"] = request.Resource
-	query["Threshold"] = request.Threshold
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitOrigin)) {
+		query["LimitOrigin"] = request.LimitOrigin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefResource)) {
+		query["RefResource"] = request.RefResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationStrategy)) {
+		query["RelationStrategy"] = request.RelationStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11210,12 +11739,30 @@ func (client *Client) CreateSystemRuleWithOptions(request *CreateSystemRuleReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["Enable"] = request.Enable
-	query["MetricType"] = request.MetricType
-	query["Namespace"] = request.Namespace
-	query["Threshold"] = request.Threshold
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
+		query["MetricType"] = request.MetricType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11256,8 +11803,14 @@ func (client *Client) DeleteDegradeRuleWithOptions(request *DeleteDegradeRuleReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11298,8 +11851,14 @@ func (client *Client) DeleteFlowRuleWithOptions(request *DeleteFlowRuleRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11340,8 +11899,14 @@ func (client *Client) DeleteHotParamRuleWithOptions(request *DeleteHotParamRuleR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11382,8 +11947,14 @@ func (client *Client) DeleteIsolationRuleWithOptions(request *DeleteIsolationRul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11424,8 +11995,14 @@ func (client *Client) DeleteSystemRuleWithOptions(request *DeleteSystemRuleReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11466,7 +12043,10 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AcceptLanguage"] = request.AcceptLanguage
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11507,8 +12087,14 @@ func (client *Client) DisableDegradeRuleWithOptions(request *DisableDegradeRuleR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11549,8 +12135,14 @@ func (client *Client) DisableFlowRuleWithOptions(request *DisableFlowRuleRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11591,8 +12183,14 @@ func (client *Client) DisableHotParamRuleWithOptions(request *DisableHotParamRul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11633,8 +12231,14 @@ func (client *Client) DisableIsolationRuleWithOptions(request *DisableIsolationR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11675,8 +12279,14 @@ func (client *Client) DisableSystemRuleWithOptions(request *DisableSystemRuleReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11717,8 +12327,14 @@ func (client *Client) EnableDegradeRuleWithOptions(request *EnableDegradeRuleReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11759,8 +12375,14 @@ func (client *Client) EnableFlowRuleWithOptions(request *EnableFlowRuleRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11801,8 +12423,14 @@ func (client *Client) EnableHotParamRuleWithOptions(request *EnableHotParamRuleR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11843,8 +12471,14 @@ func (client *Client) EnableIsolationRuleWithOptions(request *EnableIsolationRul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11885,8 +12519,14 @@ func (client *Client) EnableSystemRuleWithOptions(request *EnableSystemRuleReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11927,10 +12567,22 @@ func (client *Client) ExecuteExperimentWithOptions(request *ExecuteExperimentReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["Definition"] = request.Definition
-	query["ExperimentId"] = request.ExperimentId
-	query["NameSpace"] = request.NameSpace
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Definition)) {
+		query["Definition"] = request.Definition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExperimentId)) {
+		query["ExperimentId"] = request.ExperimentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSpace)) {
+		query["NameSpace"] = request.NameSpace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11971,9 +12623,18 @@ func (client *Client) FinishExperimentTaskWithOptions(request *FinishExperimentT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["ExperimentTaskId"] = request.ExperimentTaskId
-	query["NameSpace"] = request.NameSpace
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExperimentTaskId)) {
+		query["ExperimentTaskId"] = request.ExperimentTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSpace)) {
+		query["NameSpace"] = request.NameSpace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12014,10 +12675,22 @@ func (client *Client) GetActivityTaskWithOptions(request *GetActivityTaskRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ActivityTaskId"] = request.ActivityTaskId
-	query["AhasRegionId"] = request.AhasRegionId
-	query["ExperimentTaskId"] = request.ExperimentTaskId
-	query["NameSpace"] = request.NameSpace
+	if !tea.BoolValue(util.IsUnset(request.ActivityTaskId)) {
+		query["ActivityTaskId"] = request.ActivityTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExperimentTaskId)) {
+		query["ExperimentTaskId"] = request.ExperimentTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSpace)) {
+		query["NameSpace"] = request.NameSpace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12058,8 +12731,14 @@ func (client *Client) GetExperimentMetaWithOptions(request *GetExperimentMetaReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ExperimentId"] = request.ExperimentId
-	query["NameSpace"] = request.NameSpace
+	if !tea.BoolValue(util.IsUnset(request.ExperimentId)) {
+		query["ExperimentId"] = request.ExperimentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSpace)) {
+		query["NameSpace"] = request.NameSpace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12100,9 +12779,18 @@ func (client *Client) GetExperimentTaskWithOptions(request *GetExperimentTaskReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["ExperimentTaskId"] = request.ExperimentTaskId
-	query["NameSpace"] = request.NameSpace
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExperimentTaskId)) {
+		query["ExperimentTaskId"] = request.ExperimentTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSpace)) {
+		query["NameSpace"] = request.NameSpace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12143,8 +12831,14 @@ func (client *Client) GetLicenseKeyWithOptions(request *GetLicenseKeyRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["Namespace"] = request.Namespace
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12185,11 +12879,26 @@ func (client *Client) GetMetricsOfAppWithOptions(request *GetMetricsOfAppRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["EndTime"] = request.EndTime
-	query["Namespace"] = request.Namespace
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12230,12 +12939,30 @@ func (client *Client) GetMetricsOfResourceWithOptions(request *GetMetricsOfResou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["EndTime"] = request.EndTime
-	query["Namespace"] = request.Namespace
-	query["Resource"] = request.Resource
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12276,12 +13003,30 @@ func (client *Client) GetSentinelAppSumMetricWithOptions(request *GetSentinelApp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AcceptLanguage"] = request.AcceptLanguage
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["EndTime"] = request.EndTime
-	query["Namespace"] = request.Namespace
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12322,9 +13067,18 @@ func (client *Client) GetUserApplicationGroupsWithOptions(request *GetUserApplic
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["ApplicationId"] = request.ApplicationId
-	query["NameSpace"] = request.NameSpace
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSpace)) {
+		query["NameSpace"] = request.NameSpace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12365,8 +13119,14 @@ func (client *Client) GetUserApplicationsWithOptions(request *GetUserApplication
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["Namespace"] = request.Namespace
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12407,8 +13167,14 @@ func (client *Client) GetUserWorkspaceWithOptions(request *GetUserWorkspaceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["Namespace"] = request.Namespace
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12449,9 +13215,18 @@ func (client *Client) ListActiveAppsWithOptions(request *ListActiveAppsRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppType"] = request.AppType
-	query["Namespace"] = request.Namespace
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		query["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12492,11 +13267,26 @@ func (client *Client) ListDegradeRulesOfAppWithOptions(request *ListDegradeRules
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["Namespace"] = request.Namespace
-	query["PageIndex"] = request.PageIndex
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12537,12 +13327,30 @@ func (client *Client) ListDegradeRulesOfResourceWithOptions(request *ListDegrade
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["Namespace"] = request.Namespace
-	query["PageIndex"] = request.PageIndex
-	query["PageSize"] = request.PageSize
-	query["Resource"] = request.Resource
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12583,10 +13391,22 @@ func (client *Client) ListExperimentMetasWithOptions(request *ListExperimentMeta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["NameSpace"] = request.NameSpace
-	query["Page"] = request.Page
-	query["Size"] = request.Size
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSpace)) {
+		query["NameSpace"] = request.NameSpace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["Size"] = request.Size
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12627,11 +13447,26 @@ func (client *Client) ListFlowRulesOfAppWithOptions(request *ListFlowRulesOfAppR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["Namespace"] = request.Namespace
-	query["PageIndex"] = request.PageIndex
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12672,12 +13507,30 @@ func (client *Client) ListFlowRulesOfResourceWithOptions(request *ListFlowRulesO
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["Namespace"] = request.Namespace
-	query["PageIndex"] = request.PageIndex
-	query["PageSize"] = request.PageSize
-	query["Resource"] = request.Resource
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12718,11 +13571,26 @@ func (client *Client) ListHotParamRulesOfAppWithOptions(request *ListHotParamRul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["Namespace"] = request.Namespace
-	query["PageIndex"] = request.PageIndex
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12763,12 +13631,30 @@ func (client *Client) ListHotParamRulesOfResourceWithOptions(request *ListHotPar
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["Namespace"] = request.Namespace
-	query["PageIndex"] = request.PageIndex
-	query["PageSize"] = request.PageSize
-	query["Resource"] = request.Resource
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12809,11 +13695,26 @@ func (client *Client) ListIsolationRulesOfAppWithOptions(request *ListIsolationR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["Namespace"] = request.Namespace
-	query["PageIndex"] = request.PageIndex
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12854,12 +13755,30 @@ func (client *Client) ListIsolationRulesOfResourceWithOptions(request *ListIsola
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["Namespace"] = request.Namespace
-	query["PageIndex"] = request.PageIndex
-	query["PageSize"] = request.PageSize
-	query["Resource"] = request.Resource
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12900,11 +13819,26 @@ func (client *Client) ListSystemRulesWithOptions(request *ListSystemRulesRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["AppName"] = request.AppName
-	query["Namespace"] = request.Namespace
-	query["PageIndex"] = request.PageIndex
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12945,16 +13879,46 @@ func (client *Client) ModifyDegradeRuleWithOptions(request *ModifyDegradeRuleReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["HalfOpenBaseAmountPerStep"] = request.HalfOpenBaseAmountPerStep
-	query["HalfOpenRecoveryStepNum"] = request.HalfOpenRecoveryStepNum
-	query["MinRequestAmount"] = request.MinRequestAmount
-	query["RecoveryTimeoutMs"] = request.RecoveryTimeoutMs
-	query["RuleId"] = request.RuleId
-	query["SlowRtMs"] = request.SlowRtMs
-	query["StatDurationMs"] = request.StatDurationMs
-	query["Strategy"] = request.Strategy
-	query["Threshold"] = request.Threshold
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HalfOpenBaseAmountPerStep)) {
+		query["HalfOpenBaseAmountPerStep"] = request.HalfOpenBaseAmountPerStep
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HalfOpenRecoveryStepNum)) {
+		query["HalfOpenRecoveryStepNum"] = request.HalfOpenRecoveryStepNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinRequestAmount)) {
+		query["MinRequestAmount"] = request.MinRequestAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecoveryTimeoutMs)) {
+		query["RecoveryTimeoutMs"] = request.RecoveryTimeoutMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlowRtMs)) {
+		query["SlowRtMs"] = request.SlowRtMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatDurationMs)) {
+		query["StatDurationMs"] = request.StatDurationMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Strategy)) {
+		query["Strategy"] = request.Strategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12995,16 +13959,46 @@ func (client *Client) ModifyFlowRuleWithOptions(request *ModifyFlowRuleRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["ControlBehavior"] = request.ControlBehavior
-	query["LimitOrigin"] = request.LimitOrigin
-	query["MaxQueueingTimeMs"] = request.MaxQueueingTimeMs
-	query["Namespace"] = request.Namespace
-	query["RefResource"] = request.RefResource
-	query["RelationStrategy"] = request.RelationStrategy
-	query["RuleId"] = request.RuleId
-	query["Threshold"] = request.Threshold
-	query["WarmUpPeriodSec"] = request.WarmUpPeriodSec
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlBehavior)) {
+		query["ControlBehavior"] = request.ControlBehavior
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitOrigin)) {
+		query["LimitOrigin"] = request.LimitOrigin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxQueueingTimeMs)) {
+		query["MaxQueueingTimeMs"] = request.MaxQueueingTimeMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefResource)) {
+		query["RefResource"] = request.RefResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationStrategy)) {
+		query["RelationStrategy"] = request.RelationStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WarmUpPeriodSec)) {
+		query["WarmUpPeriodSec"] = request.WarmUpPeriodSec
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13045,16 +14039,46 @@ func (client *Client) ModifyHotParamRuleWithOptions(request *ModifyHotParamRuleR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["BurstCount"] = request.BurstCount
-	query["ControlBehavior"] = request.ControlBehavior
-	query["Enable"] = request.Enable
-	query["MaxQueueingTimeMs"] = request.MaxQueueingTimeMs
-	query["MetricType"] = request.MetricType
-	query["ParamIdx"] = request.ParamIdx
-	query["RuleId"] = request.RuleId
-	query["StatDurationSec"] = request.StatDurationSec
-	query["Threshold"] = request.Threshold
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BurstCount)) {
+		query["BurstCount"] = request.BurstCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlBehavior)) {
+		query["ControlBehavior"] = request.ControlBehavior
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxQueueingTimeMs)) {
+		query["MaxQueueingTimeMs"] = request.MaxQueueingTimeMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
+		query["MetricType"] = request.MetricType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamIdx)) {
+		query["ParamIdx"] = request.ParamIdx
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatDurationSec)) {
+		query["StatDurationSec"] = request.StatDurationSec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13095,12 +14119,30 @@ func (client *Client) ModifyIsolationRuleWithOptions(request *ModifyIsolationRul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["LimitOrigin"] = request.LimitOrigin
-	query["RefResource"] = request.RefResource
-	query["RelationStrategy"] = request.RelationStrategy
-	query["RuleId"] = request.RuleId
-	query["Threshold"] = request.Threshold
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitOrigin)) {
+		query["LimitOrigin"] = request.LimitOrigin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefResource)) {
+		query["RefResource"] = request.RefResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationStrategy)) {
+		query["RelationStrategy"] = request.RelationStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13141,9 +14183,18 @@ func (client *Client) ModifySystemRuleWithOptions(request *ModifySystemRuleReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["RuleId"] = request.RuleId
-	query["Threshold"] = request.Threshold
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13184,7 +14235,10 @@ func (client *Client) OpenAhasServiceWithOptions(request *OpenAhasServiceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13225,13 +14279,34 @@ func (client *Client) PageableQueryExperimentTaskByClusterIdWithOptions(request 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["ClusterId"] = request.ClusterId
-	query["IncludeInvalidHost"] = request.IncludeInvalidHost
-	query["Namespace"] = request.Namespace
-	query["Page"] = request.Page
-	query["RegionId"] = request.RegionId
-	query["Size"] = request.Size
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeInvalidHost)) {
+		query["IncludeInvalidHost"] = request.IncludeInvalidHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["Size"] = request.Size
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13272,12 +14347,30 @@ func (client *Client) PageableQueryExperimentTaskByExperimentIdWithOptions(reque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["ExperimentId"] = request.ExperimentId
-	query["Namespace"] = request.Namespace
-	query["Page"] = request.Page
-	query["RegionId"] = request.RegionId
-	query["Size"] = request.Size
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExperimentId)) {
+		query["ExperimentId"] = request.ExperimentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["Size"] = request.Size
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13318,16 +14411,46 @@ func (client *Client) PageableQueryUserExperimentWithOptions(request *PageableQu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["Namespace"] = request.Namespace
-	query["Page"] = request.Page
-	query["RegionId"] = request.RegionId
-	query["Results"] = request.Results
-	query["SearchKey"] = request.SearchKey
-	query["Size"] = request.Size
-	query["State"] = request.State
-	query["Tags"] = request.Tags
-	query["WorkspaceId"] = request.WorkspaceId
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Results)) {
+		query["Results"] = request.Results
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["Size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13368,9 +14491,18 @@ func (client *Client) PushExperimentTaskWithOptions(request *PushExperimentTaskR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["ExperimentTaskId"] = request.ExperimentTaskId
-	query["NameSpace"] = request.NameSpace
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExperimentTaskId)) {
+		query["ExperimentTaskId"] = request.ExperimentTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSpace)) {
+		query["NameSpace"] = request.NameSpace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13411,13 +14543,34 @@ func (client *Client) UpdateExperimentWithOptions(request *UpdateExperimentReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["Definition"] = request.Definition
-	query["Description"] = request.Description
-	query["ExperimentId"] = request.ExperimentId
-	query["Name"] = request.Name
-	query["NameSpace"] = request.NameSpace
-	query["Tags"] = request.Tags
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Definition)) {
+		query["Definition"] = request.Definition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExperimentId)) {
+		query["ExperimentId"] = request.ExperimentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSpace)) {
+		query["NameSpace"] = request.NameSpace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13458,12 +14611,30 @@ func (client *Client) UpdateExperimentBasicInfoWithOptions(request *UpdateExperi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AhasRegionId"] = request.AhasRegionId
-	query["Description"] = request.Description
-	query["ExperimentId"] = request.ExperimentId
-	query["Name"] = request.Name
-	query["NameSpace"] = request.NameSpace
-	query["Tags"] = request.Tags
+	if !tea.BoolValue(util.IsUnset(request.AhasRegionId)) {
+		query["AhasRegionId"] = request.AhasRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExperimentId)) {
+		query["ExperimentId"] = request.ExperimentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSpace)) {
+		query["NameSpace"] = request.NameSpace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2019-09-01 for ahas-openapi.
+
 2021-12-21 Version: v1.0.4
 - Add query application groups.
 
