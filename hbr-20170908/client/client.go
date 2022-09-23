@@ -5,15 +5,14 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type OtsDetail struct {
-	// OTS table name list
 	TableNames []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
 }
 
@@ -31,20 +30,13 @@ func (s *OtsDetail) SetTableNames(v []*string) *OtsDetail {
 }
 
 type OtsTableRestoreDetail struct {
-	// Concurrent processing channel count for each restore task
-	BatchChannelCount *int32 `json:"BatchChannelCount,omitempty" xml:"BatchChannelCount,omitempty"`
-	// Specify a suffix to restored index name
-	IndexNameSuffix *string `json:"IndexNameSuffix,omitempty" xml:"IndexNameSuffix,omitempty"`
-	// Overwrite existing table or not
-	OverwriteExisting *bool `json:"OverwriteExisting,omitempty" xml:"OverwriteExisting,omitempty"`
-	// Re-generate auto incrmental primary key or not
-	ReGenerateAutoIncrementPK *bool `json:"ReGenerateAutoIncrementPK,omitempty" xml:"ReGenerateAutoIncrementPK,omitempty"`
-	// Restore index or not
-	RestoreIndex *bool `json:"RestoreIndex,omitempty" xml:"RestoreIndex,omitempty"`
-	// Restore search index or not
-	RestoreSearchIndex *bool `json:"RestoreSearchIndex,omitempty" xml:"RestoreSearchIndex,omitempty"`
-	// Specify a suffix to restored search index name
-	SearchIndexNameSuffix *string `json:"SearchIndexNameSuffix,omitempty" xml:"SearchIndexNameSuffix,omitempty"`
+	BatchChannelCount         *int32  `json:"BatchChannelCount,omitempty" xml:"BatchChannelCount,omitempty"`
+	IndexNameSuffix           *string `json:"IndexNameSuffix,omitempty" xml:"IndexNameSuffix,omitempty"`
+	OverwriteExisting         *bool   `json:"OverwriteExisting,omitempty" xml:"OverwriteExisting,omitempty"`
+	ReGenerateAutoIncrementPK *bool   `json:"ReGenerateAutoIncrementPK,omitempty" xml:"ReGenerateAutoIncrementPK,omitempty"`
+	RestoreIndex              *bool   `json:"RestoreIndex,omitempty" xml:"RestoreIndex,omitempty"`
+	RestoreSearchIndex        *bool   `json:"RestoreSearchIndex,omitempty" xml:"RestoreSearchIndex,omitempty"`
+	SearchIndexNameSuffix     *string `json:"SearchIndexNameSuffix,omitempty" xml:"SearchIndexNameSuffix,omitempty"`
 }
 
 func (s OtsTableRestoreDetail) String() string {
@@ -90,23 +82,50 @@ func (s *OtsTableRestoreDetail) SetSearchIndexNameSuffix(v string) *OtsTableRest
 	return s
 }
 
+type Report struct {
+	FailedFiles  *string `json:"FailedFiles,omitempty" xml:"FailedFiles,omitempty"`
+	SkippedFiles *string `json:"SkippedFiles,omitempty" xml:"SkippedFiles,omitempty"`
+	SuccessFiles *string `json:"SuccessFiles,omitempty" xml:"SuccessFiles,omitempty"`
+	TotalFiles   *string `json:"TotalFiles,omitempty" xml:"TotalFiles,omitempty"`
+}
+
+func (s Report) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Report) GoString() string {
+	return s.String()
+}
+
+func (s *Report) SetFailedFiles(v string) *Report {
+	s.FailedFiles = &v
+	return s
+}
+
+func (s *Report) SetSkippedFiles(v string) *Report {
+	s.SkippedFiles = &v
+	return s
+}
+
+func (s *Report) SetSuccessFiles(v string) *Report {
+	s.SuccessFiles = &v
+	return s
+}
+
+func (s *Report) SetTotalFiles(v string) *Report {
+	s.TotalFiles = &v
+	return s
+}
+
 type Rule struct {
-	// backup type
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// copy target region id
-	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	// retention for remote replication
-	DestinationRetention *int64 `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
-	// disable the rule or not
-	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// copy to other region
-	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
-	// retention of backup
-	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// rule name
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// schedule setting
-	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	BackupType           *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	DestinationRegionId  *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
+	DestinationRetention *int64  `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
+	Disabled             *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	DoCopy               *bool   `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
+	Retention            *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	RuleName             *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Schedule             *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 }
 
 func (s Rule) String() string {
@@ -542,19 +561,23 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CreateBackupJobRequest struct {
-	BackupType         *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ContainerClusterId *string `json:"ContainerClusterId,omitempty" xml:"ContainerClusterId,omitempty"`
-	ContainerResources *string `json:"ContainerResources,omitempty" xml:"ContainerResources,omitempty"`
-	Exclude            *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	Include            *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	InitiatedByAck     *bool   `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
-	JobName            *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	Options            *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	Retention          *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	SourceType         *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SpeedLimit         *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	VaultId            *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	BackupType           *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ContainerClusterId   *string `json:"ContainerClusterId,omitempty" xml:"ContainerClusterId,omitempty"`
+	ContainerResources   *string `json:"ContainerResources,omitempty" xml:"ContainerResources,omitempty"`
+	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	Exclude              *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	Include              *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	InitiatedByAck       *bool   `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobName              *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	Options              *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	Retention            *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	SourceType           *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit           *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	VaultId              *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s CreateBackupJobRequest) String() string {
@@ -585,6 +608,21 @@ func (s *CreateBackupJobRequest) SetContainerResources(v string) *CreateBackupJo
 	return s
 }
 
+func (s *CreateBackupJobRequest) SetCrossAccountRoleName(v string) *CreateBackupJobRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetCrossAccountType(v string) *CreateBackupJobRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetCrossAccountUserId(v int64) *CreateBackupJobRequest {
+	s.CrossAccountUserId = &v
+	return s
+}
+
 func (s *CreateBackupJobRequest) SetExclude(v string) *CreateBackupJobRequest {
 	s.Exclude = &v
 	return s
@@ -597,6 +635,11 @@ func (s *CreateBackupJobRequest) SetInclude(v string) *CreateBackupJobRequest {
 
 func (s *CreateBackupJobRequest) SetInitiatedByAck(v bool) *CreateBackupJobRequest {
 	s.InitiatedByAck = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetInstanceId(v string) *CreateBackupJobRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -701,27 +744,30 @@ func (s *CreateBackupJobResponse) SetBody(v *CreateBackupJobResponseBody) *Creat
 }
 
 type CreateBackupPlanRequest struct {
-	BackupType   *string                        `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	Bucket       *string                        `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	CreateTime   *int64                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Detail       map[string]interface{}         `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	Exclude      *string                        `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	FileSystemId *string                        `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	Include      *string                        `json:"Include,omitempty" xml:"Include,omitempty"`
-	InstanceId   *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName *string                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Options      *string                        `json:"Options,omitempty" xml:"Options,omitempty"`
-	OtsDetail    *OtsDetail                     `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
-	Path         []*string                      `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
-	PlanName     *string                        `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	Prefix       *string                        `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	Retention    *int64                         `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	Rule         []*CreateBackupPlanRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
-	Schedule     *string                        `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	SourceType   *string                        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SpeedLimit   *string                        `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	UdmRegionId  *string                        `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
-	VaultId      *string                        `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	BackupType           *string                        `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	Bucket               *string                        `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	CreateTime           *int64                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossAccountRoleName *string                        `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string                        `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64                         `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	Detail               map[string]interface{}         `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Exclude              *string                        `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	FileSystemId         *string                        `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Include              *string                        `json:"Include,omitempty" xml:"Include,omitempty"`
+	InstanceId           *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName         *string                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Options              *string                        `json:"Options,omitempty" xml:"Options,omitempty"`
+	OtsDetail            *OtsDetail                     `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
+	Path                 []*string                      `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
+	PlanName             *string                        `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	Prefix               *string                        `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Retention            *int64                         `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Rule                 []*CreateBackupPlanRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
+	Schedule             *string                        `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	SourceType           *string                        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit           *string                        `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	UdmRegionId          *string                        `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
+	VaultId              *string                        `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s CreateBackupPlanRequest) String() string {
@@ -744,6 +790,21 @@ func (s *CreateBackupPlanRequest) SetBucket(v string) *CreateBackupPlanRequest {
 
 func (s *CreateBackupPlanRequest) SetCreateTime(v int64) *CreateBackupPlanRequest {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequest) SetCrossAccountRoleName(v string) *CreateBackupPlanRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequest) SetCrossAccountType(v string) *CreateBackupPlanRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequest) SetCrossAccountUserId(v int64) *CreateBackupPlanRequest {
+	s.CrossAccountUserId = &v
 	return s
 }
 
@@ -897,27 +958,30 @@ func (s *CreateBackupPlanRequestRule) SetSchedule(v string) *CreateBackupPlanReq
 }
 
 type CreateBackupPlanShrinkRequest struct {
-	BackupType      *string                              `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	Bucket          *string                              `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	CreateTime      *int64                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DetailShrink    *string                              `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	Exclude         *string                              `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	FileSystemId    *string                              `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	Include         *string                              `json:"Include,omitempty" xml:"Include,omitempty"`
-	InstanceId      *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName    *string                              `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Options         *string                              `json:"Options,omitempty" xml:"Options,omitempty"`
-	OtsDetailShrink *string                              `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
-	Path            []*string                            `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
-	PlanName        *string                              `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	Prefix          *string                              `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	Retention       *int64                               `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	Rule            []*CreateBackupPlanShrinkRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
-	Schedule        *string                              `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	SourceType      *string                              `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SpeedLimit      *string                              `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	UdmRegionId     *string                              `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
-	VaultId         *string                              `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	BackupType           *string                              `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	Bucket               *string                              `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	CreateTime           *int64                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossAccountRoleName *string                              `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string                              `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64                               `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	DetailShrink         *string                              `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Exclude              *string                              `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	FileSystemId         *string                              `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Include              *string                              `json:"Include,omitempty" xml:"Include,omitempty"`
+	InstanceId           *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName         *string                              `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Options              *string                              `json:"Options,omitempty" xml:"Options,omitempty"`
+	OtsDetailShrink      *string                              `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
+	Path                 []*string                            `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
+	PlanName             *string                              `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	Prefix               *string                              `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Retention            *int64                               `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Rule                 []*CreateBackupPlanShrinkRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
+	Schedule             *string                              `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	SourceType           *string                              `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit           *string                              `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	UdmRegionId          *string                              `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
+	VaultId              *string                              `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s CreateBackupPlanShrinkRequest) String() string {
@@ -940,6 +1004,21 @@ func (s *CreateBackupPlanShrinkRequest) SetBucket(v string) *CreateBackupPlanShr
 
 func (s *CreateBackupPlanShrinkRequest) SetCreateTime(v int64) *CreateBackupPlanShrinkRequest {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequest) SetCrossAccountRoleName(v string) *CreateBackupPlanShrinkRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequest) SetCrossAccountType(v string) *CreateBackupPlanShrinkRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequest) SetCrossAccountUserId(v int64) *CreateBackupPlanShrinkRequest {
+	s.CrossAccountUserId = &v
 	return s
 }
 
@@ -1908,6 +1987,9 @@ func (s *CreateReplicationVaultResponse) SetBody(v *CreateReplicationVaultRespon
 }
 
 type CreateRestoreJobRequest struct {
+	CrossAccountRoleName     *string                `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType         *string                `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId       *int64                 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
 	Exclude                  *string                `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
 	Include                  *string                `json:"Include,omitempty" xml:"Include,omitempty"`
 	InitiatedByAck           *bool                  `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
@@ -1937,6 +2019,21 @@ func (s CreateRestoreJobRequest) String() string {
 
 func (s CreateRestoreJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRestoreJobRequest) SetCrossAccountRoleName(v string) *CreateRestoreJobRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetCrossAccountType(v string) *CreateRestoreJobRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetCrossAccountUserId(v int64) *CreateRestoreJobRequest {
+	s.CrossAccountUserId = &v
+	return s
 }
 
 func (s *CreateRestoreJobRequest) SetExclude(v string) *CreateRestoreJobRequest {
@@ -2045,6 +2142,9 @@ func (s *CreateRestoreJobRequest) SetVaultId(v string) *CreateRestoreJobRequest 
 }
 
 type CreateRestoreJobShrinkRequest struct {
+	CrossAccountRoleName     *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType         *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId       *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
 	Exclude                  *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
 	Include                  *string `json:"Include,omitempty" xml:"Include,omitempty"`
 	InitiatedByAck           *bool   `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
@@ -2074,6 +2174,21 @@ func (s CreateRestoreJobShrinkRequest) String() string {
 
 func (s CreateRestoreJobShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetCrossAccountRoleName(v string) *CreateRestoreJobShrinkRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetCrossAccountType(v string) *CreateRestoreJobShrinkRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetCrossAccountUserId(v int64) *CreateRestoreJobShrinkRequest {
+	s.CrossAccountUserId = &v
+	return s
 }
 
 func (s *CreateRestoreJobShrinkRequest) SetExclude(v string) *CreateRestoreJobShrinkRequest {
@@ -2251,11 +2366,136 @@ func (s *CreateRestoreJobResponse) SetBody(v *CreateRestoreJobResponseBody) *Cre
 	return s
 }
 
+type CreateTempFileUploadUrlRequest struct {
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+}
+
+func (s CreateTempFileUploadUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTempFileUploadUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTempFileUploadUrlRequest) SetFileName(v string) *CreateTempFileUploadUrlRequest {
+	s.FileName = &v
+	return s
+}
+
+type CreateTempFileUploadUrlResponseBody struct {
+	BucketName     *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Endpoint       *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	ExpireTime     *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OssAccessKeyId *string `json:"OssAccessKeyId,omitempty" xml:"OssAccessKeyId,omitempty"`
+	Policy         *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Signature      *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TempFileKey    *string `json:"TempFileKey,omitempty" xml:"TempFileKey,omitempty"`
+}
+
+func (s CreateTempFileUploadUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTempFileUploadUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTempFileUploadUrlResponseBody) SetBucketName(v string) *CreateTempFileUploadUrlResponseBody {
+	s.BucketName = &v
+	return s
+}
+
+func (s *CreateTempFileUploadUrlResponseBody) SetCode(v string) *CreateTempFileUploadUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateTempFileUploadUrlResponseBody) SetEndpoint(v string) *CreateTempFileUploadUrlResponseBody {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateTempFileUploadUrlResponseBody) SetExpireTime(v int64) *CreateTempFileUploadUrlResponseBody {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *CreateTempFileUploadUrlResponseBody) SetMessage(v string) *CreateTempFileUploadUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateTempFileUploadUrlResponseBody) SetOssAccessKeyId(v string) *CreateTempFileUploadUrlResponseBody {
+	s.OssAccessKeyId = &v
+	return s
+}
+
+func (s *CreateTempFileUploadUrlResponseBody) SetPolicy(v string) *CreateTempFileUploadUrlResponseBody {
+	s.Policy = &v
+	return s
+}
+
+func (s *CreateTempFileUploadUrlResponseBody) SetRequestId(v string) *CreateTempFileUploadUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTempFileUploadUrlResponseBody) SetSignature(v string) *CreateTempFileUploadUrlResponseBody {
+	s.Signature = &v
+	return s
+}
+
+func (s *CreateTempFileUploadUrlResponseBody) SetSuccess(v bool) *CreateTempFileUploadUrlResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateTempFileUploadUrlResponseBody) SetTempFileKey(v string) *CreateTempFileUploadUrlResponseBody {
+	s.TempFileKey = &v
+	return s
+}
+
+type CreateTempFileUploadUrlResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTempFileUploadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTempFileUploadUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTempFileUploadUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTempFileUploadUrlResponse) SetHeaders(v map[string]*string) *CreateTempFileUploadUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTempFileUploadUrlResponse) SetStatusCode(v int32) *CreateTempFileUploadUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTempFileUploadUrlResponse) SetBody(v *CreateTempFileUploadUrlResponseBody) *CreateTempFileUploadUrlResponse {
+	s.Body = v
+	return s
+}
+
 type CreateVaultRequest struct {
 	BucketName           *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
 	CompressionAlgorithm *string `json:"CompressionAlgorithm,omitempty" xml:"CompressionAlgorithm,omitempty"`
 	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EncryptType          *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	Endpoint             *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	KmsKeyId             *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
 	RedundancyType       *string `json:"RedundancyType,omitempty" xml:"RedundancyType,omitempty"`
 	VaultAccessKeyId     *string `json:"VaultAccessKeyId,omitempty" xml:"VaultAccessKeyId,omitempty"`
 	VaultAccessKeySecret *string `json:"VaultAccessKeySecret,omitempty" xml:"VaultAccessKeySecret,omitempty"`
@@ -2288,8 +2528,18 @@ func (s *CreateVaultRequest) SetDescription(v string) *CreateVaultRequest {
 	return s
 }
 
+func (s *CreateVaultRequest) SetEncryptType(v string) *CreateVaultRequest {
+	s.EncryptType = &v
+	return s
+}
+
 func (s *CreateVaultRequest) SetEndpoint(v string) *CreateVaultRequest {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateVaultRequest) SetKmsKeyId(v string) *CreateVaultRequest {
+	s.KmsKeyId = &v
 	return s
 }
 
@@ -3085,12 +3335,15 @@ func (s *DeleteVaultResponse) SetBody(v *DeleteVaultResponseBody) *DeleteVaultRe
 }
 
 type DescribeBackupClientsRequest struct {
-	ClientIds   map[string]interface{}             `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	ClientType  *string                            `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	InstanceIds map[string]interface{}             `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	PageNumber  *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tag         []*DescribeBackupClientsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ClientIds            map[string]interface{}             `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	ClientType           *string                            `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	CrossAccountRoleName *string                            `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string                            `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64                             `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	InstanceIds          map[string]interface{}             `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	PageNumber           *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tag                  []*DescribeBackupClientsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeBackupClientsRequest) String() string {
@@ -3108,6 +3361,21 @@ func (s *DescribeBackupClientsRequest) SetClientIds(v map[string]interface{}) *D
 
 func (s *DescribeBackupClientsRequest) SetClientType(v string) *DescribeBackupClientsRequest {
 	s.ClientType = &v
+	return s
+}
+
+func (s *DescribeBackupClientsRequest) SetCrossAccountRoleName(v string) *DescribeBackupClientsRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *DescribeBackupClientsRequest) SetCrossAccountType(v string) *DescribeBackupClientsRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *DescribeBackupClientsRequest) SetCrossAccountUserId(v int64) *DescribeBackupClientsRequest {
+	s.CrossAccountUserId = &v
 	return s
 }
 
@@ -3155,12 +3423,15 @@ func (s *DescribeBackupClientsRequestTag) SetValue(v string) *DescribeBackupClie
 }
 
 type DescribeBackupClientsShrinkRequest struct {
-	ClientIdsShrink   *string                                  `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	ClientType        *string                                  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	InstanceIdsShrink *string                                  `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	PageNumber        *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tag               []*DescribeBackupClientsShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ClientIdsShrink      *string                                  `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	ClientType           *string                                  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	CrossAccountRoleName *string                                  `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string                                  `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64                                   `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	InstanceIdsShrink    *string                                  `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	PageNumber           *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tag                  []*DescribeBackupClientsShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeBackupClientsShrinkRequest) String() string {
@@ -3178,6 +3449,21 @@ func (s *DescribeBackupClientsShrinkRequest) SetClientIdsShrink(v string) *Descr
 
 func (s *DescribeBackupClientsShrinkRequest) SetClientType(v string) *DescribeBackupClientsShrinkRequest {
 	s.ClientType = &v
+	return s
+}
+
+func (s *DescribeBackupClientsShrinkRequest) SetCrossAccountRoleName(v string) *DescribeBackupClientsShrinkRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *DescribeBackupClientsShrinkRequest) SetCrossAccountType(v string) *DescribeBackupClientsShrinkRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *DescribeBackupClientsShrinkRequest) SetCrossAccountUserId(v int64) *DescribeBackupClientsShrinkRequest {
+	s.CrossAccountUserId = &v
 	return s
 }
 
@@ -3284,25 +3570,28 @@ func (s *DescribeBackupClientsResponseBody) SetTotalCount(v int64) *DescribeBack
 }
 
 type DescribeBackupClientsResponseBodyClients struct {
-	Appliance         *bool                                             `json:"Appliance,omitempty" xml:"Appliance,omitempty"`
-	ArchType          *string                                           `json:"ArchType,omitempty" xml:"ArchType,omitempty"`
-	BackupStatus      *string                                           `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	ClientId          *string                                           `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientType        *string                                           `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	ClientVersion     *string                                           `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	CreatedTime       *int64                                            `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Hostname          *string                                           `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	InstanceId        *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName      *string                                           `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	LastHeartBeatTime *int64                                            `json:"LastHeartBeatTime,omitempty" xml:"LastHeartBeatTime,omitempty"`
-	MaxClientVersion  *string                                           `json:"MaxClientVersion,omitempty" xml:"MaxClientVersion,omitempty"`
-	OsType            *string                                           `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	PrivateIpV4       *string                                           `json:"PrivateIpV4,omitempty" xml:"PrivateIpV4,omitempty"`
-	Settings          *DescribeBackupClientsResponseBodyClientsSettings `json:"Settings,omitempty" xml:"Settings,omitempty" type:"Struct"`
-	Status            *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags              []*DescribeBackupClientsResponseBodyClientsTags   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UpdatedTime       *int64                                            `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	ZoneId            *string                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	Appliance            *bool                                             `json:"Appliance,omitempty" xml:"Appliance,omitempty"`
+	ArchType             *string                                           `json:"ArchType,omitempty" xml:"ArchType,omitempty"`
+	BackupStatus         *string                                           `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	ClientId             *string                                           `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientType           *string                                           `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	ClientVersion        *string                                           `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	CreatedTime          *int64                                            `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CrossAccountRoleName *string                                           `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string                                           `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64                                            `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	Hostname             *string                                           `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	InstanceId           *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName         *string                                           `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	LastHeartBeatTime    *int64                                            `json:"LastHeartBeatTime,omitempty" xml:"LastHeartBeatTime,omitempty"`
+	MaxClientVersion     *string                                           `json:"MaxClientVersion,omitempty" xml:"MaxClientVersion,omitempty"`
+	OsType               *string                                           `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	PrivateIpV4          *string                                           `json:"PrivateIpV4,omitempty" xml:"PrivateIpV4,omitempty"`
+	Settings             *DescribeBackupClientsResponseBodyClientsSettings `json:"Settings,omitempty" xml:"Settings,omitempty" type:"Struct"`
+	Status               *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                 []*DescribeBackupClientsResponseBodyClientsTags   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UpdatedTime          *int64                                            `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	ZoneId               *string                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeBackupClientsResponseBodyClients) String() string {
@@ -3345,6 +3634,21 @@ func (s *DescribeBackupClientsResponseBodyClients) SetClientVersion(v string) *D
 
 func (s *DescribeBackupClientsResponseBodyClients) SetCreatedTime(v int64) *DescribeBackupClientsResponseBodyClients {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeBackupClientsResponseBodyClients) SetCrossAccountRoleName(v string) *DescribeBackupClientsResponseBodyClients {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *DescribeBackupClientsResponseBodyClients) SetCrossAccountType(v string) *DescribeBackupClientsResponseBodyClients {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *DescribeBackupClientsResponseBodyClients) SetCrossAccountUserId(v int64) *DescribeBackupClientsResponseBodyClients {
+	s.CrossAccountUserId = &v
 	return s
 }
 
@@ -3672,40 +3976,43 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobs) SetBackupJob(v []*DescribeBa
 }
 
 type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
-	ActualBytes  *int64                                                       `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
-	ActualItems  *int64                                                       `json:"ActualItems,omitempty" xml:"ActualItems,omitempty"`
-	BackupType   *string                                                      `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	Bucket       *string                                                      `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	BytesDone    *int64                                                       `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
-	BytesTotal   *int64                                                       `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
-	ClientId     *string                                                      `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	CompleteTime *int64                                                       `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	CreateTime   *int64                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreatedTime  *int64                                                       `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	ErrorMessage *string                                                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Exclude      *string                                                      `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	FileSystemId *string                                                      `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	Include      *string                                                      `json:"Include,omitempty" xml:"Include,omitempty"`
-	InstanceId   *string                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName *string                                                      `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	ItemsDone    *int64                                                       `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
-	ItemsTotal   *int64                                                       `json:"ItemsTotal,omitempty" xml:"ItemsTotal,omitempty"`
-	JobId        *string                                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName      *string                                                      `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	Options      *string                                                      `json:"Options,omitempty" xml:"Options,omitempty"`
-	OtsDetail    *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
-	Paths        *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobPaths     `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Struct"`
-	PlanId       *string                                                      `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	Prefix       *string                                                      `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	Progress     *int32                                                       `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	SourceType   *string                                                      `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Speed        *int64                                                       `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	SpeedLimit   *string                                                      `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	StartTime    *int64                                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status       *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	TableName    *string                                                      `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	UpdatedTime  *int64                                                       `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	VaultId      *string                                                      `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	ActualBytes          *int64                                                       `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
+	ActualItems          *int64                                                       `json:"ActualItems,omitempty" xml:"ActualItems,omitempty"`
+	BackupType           *string                                                      `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	Bucket               *string                                                      `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	BytesDone            *int64                                                       `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
+	BytesTotal           *int64                                                       `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
+	ClientId             *string                                                      `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	CompleteTime         *int64                                                       `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	CreateTime           *int64                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatedTime          *int64                                                       `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CrossAccountRoleName *string                                                      `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string                                                      `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64                                                       `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	ErrorMessage         *string                                                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Exclude              *string                                                      `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	FileSystemId         *string                                                      `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Include              *string                                                      `json:"Include,omitempty" xml:"Include,omitempty"`
+	InstanceId           *string                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName         *string                                                      `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	ItemsDone            *int64                                                       `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
+	ItemsTotal           *int64                                                       `json:"ItemsTotal,omitempty" xml:"ItemsTotal,omitempty"`
+	JobId                *string                                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName              *string                                                      `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	Options              *string                                                      `json:"Options,omitempty" xml:"Options,omitempty"`
+	OtsDetail            *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
+	Paths                *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobPaths     `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Struct"`
+	PlanId               *string                                                      `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	Prefix               *string                                                      `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Progress             *int32                                                       `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	SourceType           *string                                                      `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Speed                *int64                                                       `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	SpeedLimit           *string                                                      `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	StartTime            *int64                                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status               *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	TableName            *string                                                      `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	UpdatedTime          *int64                                                       `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	VaultId              *string                                                      `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) String() string {
@@ -3763,6 +4070,21 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetCreateTime(v int
 
 func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetCreatedTime(v int64) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetCrossAccountRoleName(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetCrossAccountType(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetCrossAccountUserId(v int64) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
+	s.CrossAccountUserId = &v
 	return s
 }
 
@@ -4101,37 +4423,40 @@ func (s *DescribeBackupPlansResponseBodyBackupPlans) SetBackupPlan(v []*Describe
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlan struct {
-	BackupSourceGroupId *string                                                        `json:"BackupSourceGroupId,omitempty" xml:"BackupSourceGroupId,omitempty"`
-	BackupType          *string                                                        `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	Bucket              *string                                                        `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	ClientId            *string                                                        `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClusterId           *string                                                        `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CreateTime          *int64                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreatedTime         *int64                                                         `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	DataSourceId        *string                                                        `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	Detail              *string                                                        `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	Disabled            *bool                                                          `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	Exclude             *string                                                        `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	FileSystemId        *string                                                        `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	Include             *string                                                        `json:"Include,omitempty" xml:"Include,omitempty"`
-	InstanceGroupId     *string                                                        `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	InstanceId          *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName        *string                                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Options             *string                                                        `json:"Options,omitempty" xml:"Options,omitempty"`
-	OtsDetail           *DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
-	Paths               *DescribeBackupPlansResponseBodyBackupPlansBackupPlanPaths     `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Struct"`
-	PlanId              *string                                                        `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	PlanName            *string                                                        `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	Prefix              *string                                                        `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	Resources           *DescribeBackupPlansResponseBodyBackupPlansBackupPlanResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	Retention           *int64                                                         `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	Rules               *DescribeBackupPlansResponseBodyBackupPlansBackupPlanRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	Schedule            *string                                                        `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	SourceType          *string                                                        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SpeedLimit          *string                                                        `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	TrialInfo           *DescribeBackupPlansResponseBodyBackupPlansBackupPlanTrialInfo `json:"TrialInfo,omitempty" xml:"TrialInfo,omitempty" type:"Struct"`
-	UpdatedTime         *int64                                                         `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	VaultId             *string                                                        `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	BackupSourceGroupId  *string                                                        `json:"BackupSourceGroupId,omitempty" xml:"BackupSourceGroupId,omitempty"`
+	BackupType           *string                                                        `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	Bucket               *string                                                        `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	ClientId             *string                                                        `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClusterId            *string                                                        `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreateTime           *int64                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatedTime          *int64                                                         `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CrossAccountRoleName *string                                                        `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string                                                        `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64                                                         `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	DataSourceId         *string                                                        `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	Detail               *string                                                        `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Disabled             *bool                                                          `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Exclude              *string                                                        `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	FileSystemId         *string                                                        `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Include              *string                                                        `json:"Include,omitempty" xml:"Include,omitempty"`
+	InstanceGroupId      *string                                                        `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	InstanceId           *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName         *string                                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Options              *string                                                        `json:"Options,omitempty" xml:"Options,omitempty"`
+	OtsDetail            *DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
+	Paths                *DescribeBackupPlansResponseBodyBackupPlansBackupPlanPaths     `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Struct"`
+	PlanId               *string                                                        `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanName             *string                                                        `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	Prefix               *string                                                        `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Resources            *DescribeBackupPlansResponseBodyBackupPlansBackupPlanResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	Retention            *int64                                                         `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Rules                *DescribeBackupPlansResponseBodyBackupPlansBackupPlanRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	Schedule             *string                                                        `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	SourceType           *string                                                        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit           *string                                                        `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	TrialInfo            *DescribeBackupPlansResponseBodyBackupPlansBackupPlanTrialInfo `json:"TrialInfo,omitempty" xml:"TrialInfo,omitempty" type:"Struct"`
+	UpdatedTime          *int64                                                         `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	VaultId              *string                                                        `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s DescribeBackupPlansResponseBodyBackupPlansBackupPlan) String() string {
@@ -4174,6 +4499,21 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetCreateTime(v i
 
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetCreatedTime(v int64) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetCrossAccountRoleName(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetCrossAccountType(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetCrossAccountUserId(v int64) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
+	s.CrossAccountUserId = &v
 	return s
 }
 
@@ -6527,12 +6867,15 @@ func (s *DescribeHanaRetentionSettingResponse) SetBody(v *DescribeHanaRetentionS
 }
 
 type DescribeOtsTableSnapshotsRequest struct {
-	EndTime      *int64                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Limit        *int32                                          `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	NextToken    *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OtsInstances []*DescribeOtsTableSnapshotsRequestOtsInstances `json:"OtsInstances,omitempty" xml:"OtsInstances,omitempty" type:"Repeated"`
-	SnapshotIds  []*string                                       `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty" type:"Repeated"`
-	StartTime    *int64                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	CrossAccountRoleName *string                                         `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string                                         `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64                                          `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	EndTime              *int64                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Limit                *int32                                          `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	NextToken            *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OtsInstances         []*DescribeOtsTableSnapshotsRequestOtsInstances `json:"OtsInstances,omitempty" xml:"OtsInstances,omitempty" type:"Repeated"`
+	SnapshotIds          []*string                                       `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty" type:"Repeated"`
+	StartTime            *int64                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeOtsTableSnapshotsRequest) String() string {
@@ -6541,6 +6884,21 @@ func (s DescribeOtsTableSnapshotsRequest) String() string {
 
 func (s DescribeOtsTableSnapshotsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeOtsTableSnapshotsRequest) SetCrossAccountRoleName(v string) *DescribeOtsTableSnapshotsRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *DescribeOtsTableSnapshotsRequest) SetCrossAccountType(v string) *DescribeOtsTableSnapshotsRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *DescribeOtsTableSnapshotsRequest) SetCrossAccountUserId(v int64) *DescribeOtsTableSnapshotsRequest {
+	s.CrossAccountUserId = &v
+	return s
 }
 
 func (s *DescribeOtsTableSnapshotsRequest) SetEndTime(v int64) *DescribeOtsTableSnapshotsRequest {
@@ -6806,6 +7164,35 @@ func (s *DescribeOtsTableSnapshotsResponse) SetStatusCode(v int32) *DescribeOtsT
 
 func (s *DescribeOtsTableSnapshotsResponse) SetBody(v *DescribeOtsTableSnapshotsResponseBody) *DescribeOtsTableSnapshotsResponse {
 	s.Body = v
+	return s
+}
+
+type DescribeRecoverableOtsInstancesRequest struct {
+	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+}
+
+func (s DescribeRecoverableOtsInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRecoverableOtsInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRecoverableOtsInstancesRequest) SetCrossAccountRoleName(v string) *DescribeRecoverableOtsInstancesRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *DescribeRecoverableOtsInstancesRequest) SetCrossAccountType(v string) *DescribeRecoverableOtsInstancesRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *DescribeRecoverableOtsInstancesRequest) SetCrossAccountUserId(v int64) *DescribeRecoverableOtsInstancesRequest {
+	s.CrossAccountUserId = &v
 	return s
 }
 
@@ -7176,46 +7563,50 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobs) SetRestoreJob(v []*Describ
 }
 
 type DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob struct {
-	ActualBytes        *int64                                                          `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
-	ActualItems        *int64                                                          `json:"ActualItems,omitempty" xml:"ActualItems,omitempty"`
-	BytesDone          *int64                                                          `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
-	BytesTotal         *int64                                                          `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
-	ClusterId          *string                                                         `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CompleteTime       *int64                                                          `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	CreatedTime        *int64                                                          `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	ErrorFile          *string                                                         `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
-	ErrorMessage       *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Exclude            *string                                                         `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	ExpireTime         *int64                                                          `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Include            *string                                                         `json:"Include,omitempty" xml:"Include,omitempty"`
-	ItemsDone          *int64                                                          `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
-	ItemsTotal         *int64                                                          `json:"ItemsTotal,omitempty" xml:"ItemsTotal,omitempty"`
-	Options            *string                                                         `json:"Options,omitempty" xml:"Options,omitempty"`
-	OtsDetail          *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
-	ParentId           *string                                                         `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	Progress           *int32                                                          `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RestoreId          *string                                                         `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
-	RestoreType        *string                                                         `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	SnapshotHash       *string                                                         `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
-	SnapshotId         *string                                                         `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SourceType         *string                                                         `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Speed              *int64                                                          `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	StartTime          *int64                                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status             *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetBucket       *string                                                         `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
-	TargetClientId     *string                                                         `json:"TargetClientId,omitempty" xml:"TargetClientId,omitempty"`
-	TargetCreateTime   *int64                                                          `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
-	TargetDataSourceId *string                                                         `json:"TargetDataSourceId,omitempty" xml:"TargetDataSourceId,omitempty"`
-	TargetFileSystemId *string                                                         `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
-	TargetInstanceId   *string                                                         `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	TargetInstanceName *string                                                         `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	TargetPath         *string                                                         `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetPrefix       *string                                                         `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
-	TargetTableName    *string                                                         `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
-	TargetTime         *int64                                                          `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
-	UdmDetail          *string                                                         `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
-	UpdatedTime        *int64                                                          `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	VaultId            *string                                                         `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	ActualBytes          *int64                                                          `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
+	ActualItems          *int64                                                          `json:"ActualItems,omitempty" xml:"ActualItems,omitempty"`
+	BytesDone            *int64                                                          `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
+	BytesTotal           *int64                                                          `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
+	ClusterId            *string                                                         `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CompleteTime         *int64                                                          `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	CreatedTime          *int64                                                          `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CrossAccountRoleName *string                                                         `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string                                                         `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64                                                          `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	ErrorFile            *string                                                         `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
+	ErrorMessage         *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Exclude              *string                                                         `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	ExpireTime           *int64                                                          `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Include              *string                                                         `json:"Include,omitempty" xml:"Include,omitempty"`
+	ItemsDone            *int64                                                          `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
+	ItemsTotal           *int64                                                          `json:"ItemsTotal,omitempty" xml:"ItemsTotal,omitempty"`
+	Options              *string                                                         `json:"Options,omitempty" xml:"Options,omitempty"`
+	OtsDetail            *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
+	ParentId             *string                                                         `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	Progress             *int32                                                          `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Report               *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobReport    `json:"Report,omitempty" xml:"Report,omitempty" type:"Struct"`
+	RestoreId            *string                                                         `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
+	RestoreType          *string                                                         `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+	SnapshotHash         *string                                                         `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
+	SnapshotId           *string                                                         `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SourceType           *string                                                         `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Speed                *int64                                                          `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	StartTime            *int64                                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status               *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetBucket         *string                                                         `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
+	TargetClientId       *string                                                         `json:"TargetClientId,omitempty" xml:"TargetClientId,omitempty"`
+	TargetCreateTime     *int64                                                          `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
+	TargetDataSourceId   *string                                                         `json:"TargetDataSourceId,omitempty" xml:"TargetDataSourceId,omitempty"`
+	TargetFileSystemId   *string                                                         `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
+	TargetInstanceId     *string                                                         `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	TargetInstanceName   *string                                                         `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
+	TargetPath           *string                                                         `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	TargetPrefix         *string                                                         `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
+	TargetTableName      *string                                                         `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
+	TargetTime           *int64                                                          `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
+	UdmDetail            *string                                                         `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
+	UpdatedTime          *int64                                                          `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	VaultId              *string                                                         `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) String() string {
@@ -7258,6 +7649,21 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetCompleteTime(
 
 func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetCreatedTime(v int64) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetCrossAccountRoleName(v string) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetCrossAccountType(v string) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetCrossAccountUserId(v int64) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
+	s.CrossAccountUserId = &v
 	return s
 }
 
@@ -7313,6 +7719,11 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetParentId(v st
 
 func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetProgress(v int32) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
 	s.Progress = &v
+	return s
+}
+
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetReport(v *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobReport) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
+	s.Report = v
 	return s
 }
 
@@ -7446,6 +7857,23 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail) SetBatc
 
 func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail) SetOverwriteExisting(v bool) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail {
 	s.OverwriteExisting = &v
+	return s
+}
+
+type DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobReport struct {
+	TotalFiles *string `json:"TotalFiles,omitempty" xml:"TotalFiles,omitempty"`
+}
+
+func (s DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobReport) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobReport) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobReport) SetTotalFiles(v string) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobReport {
+	s.TotalFiles = &v
 	return s
 }
 
@@ -7924,17 +8352,20 @@ func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetUpdatedTime(v int64) *Des
 type DescribeUdmSnapshotsResponseBodySnapshotsDetail struct {
 	ConsistentLevel                *string                `json:"ConsistentLevel,omitempty" xml:"ConsistentLevel,omitempty"`
 	ContainOsDisk                  *bool                  `json:"ContainOsDisk,omitempty" xml:"ContainOsDisk,omitempty"`
+	DiskCategory                   *string                `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
 	DiskDevName                    *string                `json:"DiskDevName,omitempty" xml:"DiskDevName,omitempty"`
 	DiskHbrSnapshotIdWithDeviceMap map[string]interface{} `json:"DiskHbrSnapshotIdWithDeviceMap,omitempty" xml:"DiskHbrSnapshotIdWithDeviceMap,omitempty"`
 	DiskIdList                     []*string              `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
 	DowngradeReason                *string                `json:"DowngradeReason,omitempty" xml:"DowngradeReason,omitempty"`
 	InstanceIdWithDiskIdListMap    map[string]interface{} `json:"InstanceIdWithDiskIdListMap,omitempty" xml:"InstanceIdWithDiskIdListMap,omitempty"`
 	InstanceName                   *string                `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType                   *string                `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	NativeSnapshotIdList           []*string              `json:"NativeSnapshotIdList,omitempty" xml:"NativeSnapshotIdList,omitempty" type:"Repeated"`
 	OsDiskId                       *string                `json:"OsDiskId,omitempty" xml:"OsDiskId,omitempty"`
 	OsName                         *string                `json:"OsName,omitempty" xml:"OsName,omitempty"`
 	OsNameEn                       *string                `json:"OsNameEn,omitempty" xml:"OsNameEn,omitempty"`
 	OsType                         *string                `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	PerformanceLevel               *string                `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	Platform                       *string                `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	SnapshotGroupId                *string                `json:"SnapshotGroupId,omitempty" xml:"SnapshotGroupId,omitempty"`
 	SystemDisk                     *bool                  `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
@@ -7956,6 +8387,11 @@ func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetConsistentLevel(v s
 
 func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetContainOsDisk(v bool) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
 	s.ContainOsDisk = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetDiskCategory(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.DiskCategory = &v
 	return s
 }
 
@@ -7989,6 +8425,11 @@ func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetInstanceName(v stri
 	return s
 }
 
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetInstanceType(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.InstanceType = &v
+	return s
+}
+
 func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetNativeSnapshotIdList(v []*string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
 	s.NativeSnapshotIdList = v
 	return s
@@ -8011,6 +8452,11 @@ func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetOsNameEn(v string) 
 
 func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetOsType(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
 	s.OsType = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetPerformanceLevel(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.PerformanceLevel = &v
 	return s
 }
 
@@ -8336,6 +8782,7 @@ type DescribeVaultsResponseBodyVaultsVault struct {
 	BucketName                *string                                                    `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
 	BytesDone                 *int64                                                     `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
 	ChargeType                *string                                                    `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargedStorageSize        *int64                                                     `json:"ChargedStorageSize,omitempty" xml:"ChargedStorageSize,omitempty"`
 	CompressionAlgorithm      *string                                                    `json:"CompressionAlgorithm,omitempty" xml:"CompressionAlgorithm,omitempty"`
 	CreatedTime               *int64                                                     `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	Dedup                     *bool                                                      `json:"Dedup,omitempty" xml:"Dedup,omitempty"`
@@ -8395,6 +8842,11 @@ func (s *DescribeVaultsResponseBodyVaultsVault) SetBytesDone(v int64) *DescribeV
 
 func (s *DescribeVaultsResponseBodyVaultsVault) SetChargeType(v string) *DescribeVaultsResponseBodyVaultsVault {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVault) SetChargedStorageSize(v int64) *DescribeVaultsResponseBodyVaultsVault {
+	s.ChargedStorageSize = &v
 	return s
 }
 
@@ -8792,8 +9244,11 @@ func (s *DescribeVaultsResponse) SetBody(v *DescribeVaultsResponseBody) *Describ
 }
 
 type DetachNasFileSystemRequest struct {
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	FileSystemId         *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 }
 
 func (s DetachNasFileSystemRequest) String() string {
@@ -8806,6 +9261,21 @@ func (s DetachNasFileSystemRequest) GoString() string {
 
 func (s *DetachNasFileSystemRequest) SetCreateTime(v string) *DetachNasFileSystemRequest {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DetachNasFileSystemRequest) SetCrossAccountRoleName(v string) *DetachNasFileSystemRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *DetachNasFileSystemRequest) SetCrossAccountType(v string) *DetachNasFileSystemRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *DetachNasFileSystemRequest) SetCrossAccountUserId(v int64) *DetachNasFileSystemRequest {
+	s.CrossAccountUserId = &v
 	return s
 }
 
@@ -9478,8 +9948,98 @@ func (s *GenerateRamPolicyResponse) SetBody(v *GenerateRamPolicyResponseBody) *G
 	return s
 }
 
+type GetTempFileDownloadLinkRequest struct {
+	TempFileKey *string `json:"TempFileKey,omitempty" xml:"TempFileKey,omitempty"`
+}
+
+func (s GetTempFileDownloadLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTempFileDownloadLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTempFileDownloadLinkRequest) SetTempFileKey(v string) *GetTempFileDownloadLinkRequest {
+	s.TempFileKey = &v
+	return s
+}
+
+type GetTempFileDownloadLinkResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Url       *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetTempFileDownloadLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTempFileDownloadLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTempFileDownloadLinkResponseBody) SetCode(v string) *GetTempFileDownloadLinkResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTempFileDownloadLinkResponseBody) SetMessage(v string) *GetTempFileDownloadLinkResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTempFileDownloadLinkResponseBody) SetRequestId(v string) *GetTempFileDownloadLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTempFileDownloadLinkResponseBody) SetSuccess(v bool) *GetTempFileDownloadLinkResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetTempFileDownloadLinkResponseBody) SetUrl(v string) *GetTempFileDownloadLinkResponseBody {
+	s.Url = &v
+	return s
+}
+
+type GetTempFileDownloadLinkResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTempFileDownloadLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTempFileDownloadLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTempFileDownloadLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTempFileDownloadLinkResponse) SetHeaders(v map[string]*string) *GetTempFileDownloadLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTempFileDownloadLinkResponse) SetStatusCode(v int32) *GetTempFileDownloadLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTempFileDownloadLinkResponse) SetBody(v *GetTempFileDownloadLinkResponseBody) *GetTempFileDownloadLinkResponse {
+	s.Body = v
+	return s
+}
+
 type InstallBackupClientsRequest struct {
-	InstanceIds map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	CrossAccountRoleName *string                `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string                `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64                 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	InstanceIds          map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
 func (s InstallBackupClientsRequest) String() string {
@@ -9490,13 +10050,31 @@ func (s InstallBackupClientsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *InstallBackupClientsRequest) SetCrossAccountRoleName(v string) *InstallBackupClientsRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *InstallBackupClientsRequest) SetCrossAccountType(v string) *InstallBackupClientsRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *InstallBackupClientsRequest) SetCrossAccountUserId(v int64) *InstallBackupClientsRequest {
+	s.CrossAccountUserId = &v
+	return s
+}
+
 func (s *InstallBackupClientsRequest) SetInstanceIds(v map[string]interface{}) *InstallBackupClientsRequest {
 	s.InstanceIds = v
 	return s
 }
 
 type InstallBackupClientsShrinkRequest struct {
-	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	InstanceIdsShrink    *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
 func (s InstallBackupClientsShrinkRequest) String() string {
@@ -9505,6 +10083,21 @@ func (s InstallBackupClientsShrinkRequest) String() string {
 
 func (s InstallBackupClientsShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InstallBackupClientsShrinkRequest) SetCrossAccountRoleName(v string) *InstallBackupClientsShrinkRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *InstallBackupClientsShrinkRequest) SetCrossAccountType(v string) *InstallBackupClientsShrinkRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *InstallBackupClientsShrinkRequest) SetCrossAccountUserId(v int64) *InstallBackupClientsShrinkRequest {
+	s.CrossAccountUserId = &v
+	return s
 }
 
 func (s *InstallBackupClientsShrinkRequest) SetInstanceIdsShrink(v string) *InstallBackupClientsShrinkRequest {
@@ -9613,6 +10206,58 @@ func (s *InstallBackupClientsResponse) SetStatusCode(v int32) *InstallBackupClie
 }
 
 func (s *InstallBackupClientsResponse) SetBody(v *InstallBackupClientsResponseBody) *InstallBackupClientsResponse {
+	s.Body = v
+	return s
+}
+
+type OpenHbrServiceResponseBody struct {
+	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s OpenHbrServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenHbrServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenHbrServiceResponseBody) SetOrderId(v string) *OpenHbrServiceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *OpenHbrServiceResponseBody) SetRequestId(v string) *OpenHbrServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type OpenHbrServiceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenHbrServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OpenHbrServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenHbrServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenHbrServiceResponse) SetHeaders(v map[string]*string) *OpenHbrServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenHbrServiceResponse) SetStatusCode(v int32) *OpenHbrServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OpenHbrServiceResponse) SetBody(v *OpenHbrServiceResponseBody) *OpenHbrServiceResponse {
 	s.Body = v
 	return s
 }
@@ -10217,8 +10862,11 @@ func (s *StopHanaDatabaseAsyncResponse) SetBody(v *StopHanaDatabaseAsyncResponse
 }
 
 type UninstallBackupClientsRequest struct {
-	ClientIds   map[string]interface{} `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	InstanceIds map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	ClientIds            map[string]interface{} `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	CrossAccountRoleName *string                `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string                `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64                 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	InstanceIds          map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
 func (s UninstallBackupClientsRequest) String() string {
@@ -10234,14 +10882,32 @@ func (s *UninstallBackupClientsRequest) SetClientIds(v map[string]interface{}) *
 	return s
 }
 
+func (s *UninstallBackupClientsRequest) SetCrossAccountRoleName(v string) *UninstallBackupClientsRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *UninstallBackupClientsRequest) SetCrossAccountType(v string) *UninstallBackupClientsRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *UninstallBackupClientsRequest) SetCrossAccountUserId(v int64) *UninstallBackupClientsRequest {
+	s.CrossAccountUserId = &v
+	return s
+}
+
 func (s *UninstallBackupClientsRequest) SetInstanceIds(v map[string]interface{}) *UninstallBackupClientsRequest {
 	s.InstanceIds = v
 	return s
 }
 
 type UninstallBackupClientsShrinkRequest struct {
-	ClientIdsShrink   *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	ClientIdsShrink      *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	InstanceIdsShrink    *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
 func (s UninstallBackupClientsShrinkRequest) String() string {
@@ -10254,6 +10920,21 @@ func (s UninstallBackupClientsShrinkRequest) GoString() string {
 
 func (s *UninstallBackupClientsShrinkRequest) SetClientIdsShrink(v string) *UninstallBackupClientsShrinkRequest {
 	s.ClientIdsShrink = &v
+	return s
+}
+
+func (s *UninstallBackupClientsShrinkRequest) SetCrossAccountRoleName(v string) *UninstallBackupClientsShrinkRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *UninstallBackupClientsShrinkRequest) SetCrossAccountType(v string) *UninstallBackupClientsShrinkRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *UninstallBackupClientsShrinkRequest) SetCrossAccountUserId(v int64) *UninstallBackupClientsShrinkRequest {
+	s.CrossAccountUserId = &v
 	return s
 }
 
@@ -11613,8 +12294,11 @@ func (s *UpdateVaultResponse) SetBody(v *UpdateVaultResponseBody) *UpdateVaultRe
 }
 
 type UpgradeBackupClientsRequest struct {
-	ClientIds   map[string]interface{} `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	InstanceIds map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	ClientIds            map[string]interface{} `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	CrossAccountRoleName *string                `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string                `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64                 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	InstanceIds          map[string]interface{} `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
 func (s UpgradeBackupClientsRequest) String() string {
@@ -11630,14 +12314,32 @@ func (s *UpgradeBackupClientsRequest) SetClientIds(v map[string]interface{}) *Up
 	return s
 }
 
+func (s *UpgradeBackupClientsRequest) SetCrossAccountRoleName(v string) *UpgradeBackupClientsRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *UpgradeBackupClientsRequest) SetCrossAccountType(v string) *UpgradeBackupClientsRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *UpgradeBackupClientsRequest) SetCrossAccountUserId(v int64) *UpgradeBackupClientsRequest {
+	s.CrossAccountUserId = &v
+	return s
+}
+
 func (s *UpgradeBackupClientsRequest) SetInstanceIds(v map[string]interface{}) *UpgradeBackupClientsRequest {
 	s.InstanceIds = v
 	return s
 }
 
 type UpgradeBackupClientsShrinkRequest struct {
-	ClientIdsShrink   *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	ClientIdsShrink      *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	InstanceIdsShrink    *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
 func (s UpgradeBackupClientsShrinkRequest) String() string {
@@ -11650,6 +12352,21 @@ func (s UpgradeBackupClientsShrinkRequest) GoString() string {
 
 func (s *UpgradeBackupClientsShrinkRequest) SetClientIdsShrink(v string) *UpgradeBackupClientsShrinkRequest {
 	s.ClientIdsShrink = &v
+	return s
+}
+
+func (s *UpgradeBackupClientsShrinkRequest) SetCrossAccountRoleName(v string) *UpgradeBackupClientsShrinkRequest {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *UpgradeBackupClientsShrinkRequest) SetCrossAccountType(v string) *UpgradeBackupClientsShrinkRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *UpgradeBackupClientsShrinkRequest) SetCrossAccountUserId(v int64) *UpgradeBackupClientsShrinkRequest {
+	s.CrossAccountUserId = &v
 	return s
 }
 
@@ -12174,6 +12891,18 @@ func (client *Client) CreateBackupJobWithOptions(request *CreateBackupJobRequest
 		query["ContainerResources"] = request.ContainerResources
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountRoleName)) {
+		query["CrossAccountRoleName"] = request.CrossAccountRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
+		query["CrossAccountUserId"] = request.CrossAccountUserId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Exclude)) {
 		query["Exclude"] = request.Exclude
 	}
@@ -12184,6 +12913,10 @@ func (client *Client) CreateBackupJobWithOptions(request *CreateBackupJobRequest
 
 	if !tea.BoolValue(util.IsUnset(request.InitiatedByAck)) {
 		query["InitiatedByAck"] = request.InitiatedByAck
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JobName)) {
@@ -12270,6 +13003,18 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 
 	if !tea.BoolValue(util.IsUnset(request.CreateTime)) {
 		query["CreateTime"] = request.CreateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountRoleName)) {
+		query["CrossAccountRoleName"] = request.CrossAccountRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
+		query["CrossAccountUserId"] = request.CrossAccountUserId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DetailShrink)) {
@@ -12788,6 +13533,18 @@ func (client *Client) CreateRestoreJobWithOptions(tmpReq *CreateRestoreJobReques
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountRoleName)) {
+		query["CrossAccountRoleName"] = request.CrossAccountRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
+		query["CrossAccountUserId"] = request.CrossAccountUserId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InitiatedByAck)) {
 		query["InitiatedByAck"] = request.InitiatedByAck
 	}
@@ -12908,6 +13665,50 @@ func (client *Client) CreateRestoreJob(request *CreateRestoreJobRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) CreateTempFileUploadUrlWithOptions(request *CreateTempFileUploadUrlRequest, runtime *util.RuntimeOptions) (_result *CreateTempFileUploadUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTempFileUploadUrl"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTempFileUploadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTempFileUploadUrl(request *CreateTempFileUploadUrlRequest) (_result *CreateTempFileUploadUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTempFileUploadUrlResponse{}
+	_body, _err := client.CreateTempFileUploadUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateVaultWithOptions(request *CreateVaultRequest, runtime *util.RuntimeOptions) (_result *CreateVaultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12926,8 +13727,16 @@ func (client *Client) CreateVaultWithOptions(request *CreateVaultRequest, runtim
 		query["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EncryptType)) {
+		query["EncryptType"] = request.EncryptType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Endpoint)) {
 		query["Endpoint"] = request.Endpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsKeyId)) {
+		query["KmsKeyId"] = request.KmsKeyId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RedundancyType)) {
@@ -13388,6 +14197,18 @@ func (client *Client) DescribeBackupClientsWithOptions(tmpReq *DescribeBackupCli
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientType)) {
 		query["ClientType"] = request.ClientType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountRoleName)) {
+		query["CrossAccountRoleName"] = request.CrossAccountRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
+		query["CrossAccountUserId"] = request.CrossAccountUserId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -14169,6 +14990,19 @@ func (client *Client) DescribeOtsTableSnapshotsWithOptions(request *DescribeOtsT
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountRoleName)) {
+		query["CrossAccountRoleName"] = request.CrossAccountRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
+		query["CrossAccountUserId"] = request.CrossAccountUserId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		body["EndTime"] = request.EndTime
@@ -14198,7 +15032,8 @@ func (client *Client) DescribeOtsTableSnapshotsWithOptions(request *DescribeOtsT
 	body = tea.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeOtsTableSnapshots"),
@@ -14231,8 +15066,27 @@ func (client *Client) DescribeOtsTableSnapshots(request *DescribeOtsTableSnapsho
 	return _result, _err
 }
 
-func (client *Client) DescribeRecoverableOtsInstancesWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRecoverableOtsInstancesResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) DescribeRecoverableOtsInstancesWithOptions(request *DescribeRecoverableOtsInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeRecoverableOtsInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountRoleName)) {
+		query["CrossAccountRoleName"] = request.CrossAccountRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
+		query["CrossAccountUserId"] = request.CrossAccountUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRecoverableOtsInstances"),
 		Version:     tea.String("2017-09-08"),
@@ -14253,10 +15107,10 @@ func (client *Client) DescribeRecoverableOtsInstancesWithOptions(runtime *util.R
 	return _result, _err
 }
 
-func (client *Client) DescribeRecoverableOtsInstances() (_result *DescribeRecoverableOtsInstancesResponse, _err error) {
+func (client *Client) DescribeRecoverableOtsInstances(request *DescribeRecoverableOtsInstancesRequest) (_result *DescribeRecoverableOtsInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRecoverableOtsInstancesResponse{}
-	_body, _err := client.DescribeRecoverableOtsInstancesWithOptions(runtime)
+	_body, _err := client.DescribeRecoverableOtsInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14628,6 +15482,18 @@ func (client *Client) DetachNasFileSystemWithOptions(request *DetachNasFileSyste
 		query["CreateTime"] = request.CreateTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountRoleName)) {
+		query["CrossAccountRoleName"] = request.CrossAccountRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
+		query["CrossAccountUserId"] = request.CrossAccountUserId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
 		query["FileSystemId"] = request.FileSystemId
 	}
@@ -14994,6 +15860,50 @@ func (client *Client) GenerateRamPolicy(request *GenerateRamPolicyRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GetTempFileDownloadLinkWithOptions(request *GetTempFileDownloadLinkRequest, runtime *util.RuntimeOptions) (_result *GetTempFileDownloadLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TempFileKey)) {
+		query["TempFileKey"] = request.TempFileKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTempFileDownloadLink"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTempFileDownloadLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTempFileDownloadLink(request *GetTempFileDownloadLinkRequest) (_result *GetTempFileDownloadLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTempFileDownloadLinkResponse{}
+	_body, _err := client.GetTempFileDownloadLinkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) InstallBackupClientsWithOptions(tmpReq *InstallBackupClientsRequest, runtime *util.RuntimeOptions) (_result *InstallBackupClientsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -15006,6 +15916,18 @@ func (client *Client) InstallBackupClientsWithOptions(tmpReq *InstallBackupClien
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountRoleName)) {
+		query["CrossAccountRoleName"] = request.CrossAccountRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
+		query["CrossAccountUserId"] = request.CrossAccountUserId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
 		query["InstanceIds"] = request.InstanceIdsShrink
 	}
@@ -15037,6 +15959,39 @@ func (client *Client) InstallBackupClients(request *InstallBackupClientsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &InstallBackupClientsResponse{}
 	_body, _err := client.InstallBackupClientsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) OpenHbrServiceWithOptions(runtime *util.RuntimeOptions) (_result *OpenHbrServiceResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("OpenHbrService"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OpenHbrServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OpenHbrService() (_result *OpenHbrServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OpenHbrServiceResponse{}
+	_body, _err := client.OpenHbrServiceWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15228,6 +16183,18 @@ func (client *Client) UninstallBackupClientsWithOptions(tmpReq *UninstallBackupC
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientIdsShrink)) {
 		query["ClientIds"] = request.ClientIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountRoleName)) {
+		query["CrossAccountRoleName"] = request.CrossAccountRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
+		query["CrossAccountUserId"] = request.CrossAccountUserId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
@@ -15894,6 +16861,18 @@ func (client *Client) UpgradeBackupClientsWithOptions(tmpReq *UpgradeBackupClien
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientIdsShrink)) {
 		query["ClientIds"] = request.ClientIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountRoleName)) {
+		query["CrossAccountRoleName"] = request.CrossAccountRoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
+		query["CrossAccountUserId"] = request.CrossAccountUserId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
