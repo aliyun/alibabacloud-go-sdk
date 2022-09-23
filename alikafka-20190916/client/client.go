@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -2131,8 +2131,9 @@ func (s *GetAllowedIpListResponseBodyAllowedList) SetVpcList(v []*GetAllowedIpLi
 }
 
 type GetAllowedIpListResponseBodyAllowedListInternetList struct {
-	AllowedIpList []*string `json:"AllowedIpList,omitempty" xml:"AllowedIpList,omitempty" type:"Repeated"`
-	PortRange     *string   `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	AllowedIpGroup map[string]*string `json:"AllowedIpGroup,omitempty" xml:"AllowedIpGroup,omitempty"`
+	AllowedIpList  []*string          `json:"AllowedIpList,omitempty" xml:"AllowedIpList,omitempty" type:"Repeated"`
+	PortRange      *string            `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 }
 
 func (s GetAllowedIpListResponseBodyAllowedListInternetList) String() string {
@@ -2141,6 +2142,11 @@ func (s GetAllowedIpListResponseBodyAllowedListInternetList) String() string {
 
 func (s GetAllowedIpListResponseBodyAllowedListInternetList) GoString() string {
 	return s.String()
+}
+
+func (s *GetAllowedIpListResponseBodyAllowedListInternetList) SetAllowedIpGroup(v map[string]*string) *GetAllowedIpListResponseBodyAllowedListInternetList {
+	s.AllowedIpGroup = v
+	return s
 }
 
 func (s *GetAllowedIpListResponseBodyAllowedListInternetList) SetAllowedIpList(v []*string) *GetAllowedIpListResponseBodyAllowedListInternetList {
@@ -2154,8 +2160,9 @@ func (s *GetAllowedIpListResponseBodyAllowedListInternetList) SetPortRange(v str
 }
 
 type GetAllowedIpListResponseBodyAllowedListVpcList struct {
-	AllowedIpList []*string `json:"AllowedIpList,omitempty" xml:"AllowedIpList,omitempty" type:"Repeated"`
-	PortRange     *string   `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	AllowedIpGroup map[string]*string `json:"AllowedIpGroup,omitempty" xml:"AllowedIpGroup,omitempty"`
+	AllowedIpList  []*string          `json:"AllowedIpList,omitempty" xml:"AllowedIpList,omitempty" type:"Repeated"`
+	PortRange      *string            `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 }
 
 func (s GetAllowedIpListResponseBodyAllowedListVpcList) String() string {
@@ -2164,6 +2171,11 @@ func (s GetAllowedIpListResponseBodyAllowedListVpcList) String() string {
 
 func (s GetAllowedIpListResponseBodyAllowedListVpcList) GoString() string {
 	return s.String()
+}
+
+func (s *GetAllowedIpListResponseBodyAllowedListVpcList) SetAllowedIpGroup(v map[string]*string) *GetAllowedIpListResponseBodyAllowedListVpcList {
+	s.AllowedIpGroup = v
+	return s
 }
 
 func (s *GetAllowedIpListResponseBodyAllowedListVpcList) SetAllowedIpList(v []*string) *GetAllowedIpListResponseBodyAllowedListVpcList {
@@ -2780,6 +2792,7 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	SpecType                 *string                                                                    `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 	SslDomainEndpoint        *string                                                                    `json:"SslDomainEndpoint,omitempty" xml:"SslDomainEndpoint,omitempty"`
 	SslEndPoint              *string                                                                    `json:"SslEndPoint,omitempty" xml:"SslEndPoint,omitempty"`
+	StandardZoneId           *string                                                                    `json:"StandardZoneId,omitempty" xml:"StandardZoneId,omitempty"`
 	Tags                     *GetInstanceListResponseBodyInstanceListInstanceVOTags                     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	TopicNumLimit            *int32                                                                     `json:"TopicNumLimit,omitempty" xml:"TopicNumLimit,omitempty"`
 	UpgradeServiceDetailInfo *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo `json:"UpgradeServiceDetailInfo,omitempty" xml:"UpgradeServiceDetailInfo,omitempty" type:"Struct"`
@@ -2914,6 +2927,11 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetSslEndPoint(v str
 	return s
 }
 
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetStandardZoneId(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.StandardZoneId = &v
+	return s
+}
+
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetTags(v *GetInstanceListResponseBodyInstanceListInstanceVOTags) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.Tags = v
 	return s
@@ -3041,6 +3059,176 @@ func (s *GetInstanceListResponse) SetStatusCode(v int32) *GetInstanceListRespons
 }
 
 func (s *GetInstanceListResponse) SetBody(v *GetInstanceListResponseBody) *GetInstanceListResponse {
+	s.Body = v
+	return s
+}
+
+type GetQuotaTipRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetQuotaTipRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQuotaTipRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetQuotaTipRequest) SetInstanceId(v string) *GetQuotaTipRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetQuotaTipRequest) SetRegionId(v string) *GetQuotaTipRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetQuotaTipResponseBody struct {
+	Code      *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	QuotaData *GetQuotaTipResponseBodyQuotaData `json:"QuotaData,omitempty" xml:"QuotaData,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetQuotaTipResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQuotaTipResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetQuotaTipResponseBody) SetCode(v int32) *GetQuotaTipResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetQuotaTipResponseBody) SetMessage(v string) *GetQuotaTipResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetQuotaTipResponseBody) SetQuotaData(v *GetQuotaTipResponseBodyQuotaData) *GetQuotaTipResponseBody {
+	s.QuotaData = v
+	return s
+}
+
+func (s *GetQuotaTipResponseBody) SetRequestId(v string) *GetQuotaTipResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetQuotaTipResponseBody) SetSuccess(v bool) *GetQuotaTipResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetQuotaTipResponseBodyQuotaData struct {
+	GroupLeft         *int32 `json:"GroupLeft,omitempty" xml:"GroupLeft,omitempty"`
+	GroupUsed         *int32 `json:"GroupUsed,omitempty" xml:"GroupUsed,omitempty"`
+	IsPartitionBuy    *int32 `json:"IsPartitionBuy,omitempty" xml:"IsPartitionBuy,omitempty"`
+	PartitionLeft     *int32 `json:"PartitionLeft,omitempty" xml:"PartitionLeft,omitempty"`
+	PartitionNumOfBuy *int32 `json:"PartitionNumOfBuy,omitempty" xml:"PartitionNumOfBuy,omitempty"`
+	PartitionQuata    *int32 `json:"PartitionQuata,omitempty" xml:"PartitionQuata,omitempty"`
+	PartitionUsed     *int32 `json:"PartitionUsed,omitempty" xml:"PartitionUsed,omitempty"`
+	TopicLeft         *int32 `json:"TopicLeft,omitempty" xml:"TopicLeft,omitempty"`
+	TopicNumOfBuy     *int32 `json:"TopicNumOfBuy,omitempty" xml:"TopicNumOfBuy,omitempty"`
+	TopicQuota        *int32 `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
+	TopicUsed         *int32 `json:"TopicUsed,omitempty" xml:"TopicUsed,omitempty"`
+}
+
+func (s GetQuotaTipResponseBodyQuotaData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQuotaTipResponseBodyQuotaData) GoString() string {
+	return s.String()
+}
+
+func (s *GetQuotaTipResponseBodyQuotaData) SetGroupLeft(v int32) *GetQuotaTipResponseBodyQuotaData {
+	s.GroupLeft = &v
+	return s
+}
+
+func (s *GetQuotaTipResponseBodyQuotaData) SetGroupUsed(v int32) *GetQuotaTipResponseBodyQuotaData {
+	s.GroupUsed = &v
+	return s
+}
+
+func (s *GetQuotaTipResponseBodyQuotaData) SetIsPartitionBuy(v int32) *GetQuotaTipResponseBodyQuotaData {
+	s.IsPartitionBuy = &v
+	return s
+}
+
+func (s *GetQuotaTipResponseBodyQuotaData) SetPartitionLeft(v int32) *GetQuotaTipResponseBodyQuotaData {
+	s.PartitionLeft = &v
+	return s
+}
+
+func (s *GetQuotaTipResponseBodyQuotaData) SetPartitionNumOfBuy(v int32) *GetQuotaTipResponseBodyQuotaData {
+	s.PartitionNumOfBuy = &v
+	return s
+}
+
+func (s *GetQuotaTipResponseBodyQuotaData) SetPartitionQuata(v int32) *GetQuotaTipResponseBodyQuotaData {
+	s.PartitionQuata = &v
+	return s
+}
+
+func (s *GetQuotaTipResponseBodyQuotaData) SetPartitionUsed(v int32) *GetQuotaTipResponseBodyQuotaData {
+	s.PartitionUsed = &v
+	return s
+}
+
+func (s *GetQuotaTipResponseBodyQuotaData) SetTopicLeft(v int32) *GetQuotaTipResponseBodyQuotaData {
+	s.TopicLeft = &v
+	return s
+}
+
+func (s *GetQuotaTipResponseBodyQuotaData) SetTopicNumOfBuy(v int32) *GetQuotaTipResponseBodyQuotaData {
+	s.TopicNumOfBuy = &v
+	return s
+}
+
+func (s *GetQuotaTipResponseBodyQuotaData) SetTopicQuota(v int32) *GetQuotaTipResponseBodyQuotaData {
+	s.TopicQuota = &v
+	return s
+}
+
+func (s *GetQuotaTipResponseBodyQuotaData) SetTopicUsed(v int32) *GetQuotaTipResponseBodyQuotaData {
+	s.TopicUsed = &v
+	return s
+}
+
+type GetQuotaTipResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetQuotaTipResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetQuotaTipResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQuotaTipResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetQuotaTipResponse) SetHeaders(v map[string]*string) *GetQuotaTipResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetQuotaTipResponse) SetStatusCode(v int32) *GetQuotaTipResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetQuotaTipResponse) SetBody(v *GetQuotaTipResponseBody) *GetQuotaTipResponse {
 	s.Body = v
 	return s
 }
@@ -4441,6 +4629,7 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 type UpdateAllowedIpRequest struct {
 	AllowedListIp   *string `json:"AllowedListIp,omitempty" xml:"AllowedListIp,omitempty"`
 	AllowedListType *string `json:"AllowedListType,omitempty" xml:"AllowedListType,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PortRange       *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -4462,6 +4651,11 @@ func (s *UpdateAllowedIpRequest) SetAllowedListIp(v string) *UpdateAllowedIpRequ
 
 func (s *UpdateAllowedIpRequest) SetAllowedListType(v string) *UpdateAllowedIpRequest {
 	s.AllowedListType = &v
+	return s
+}
+
+func (s *UpdateAllowedIpRequest) SetDescription(v string) *UpdateAllowedIpRequest {
+	s.Description = &v
 	return s
 }
 
@@ -6323,6 +6517,54 @@ func (client *Client) GetInstanceList(request *GetInstanceListRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetQuotaTipWithOptions(request *GetQuotaTipRequest, runtime *util.RuntimeOptions) (_result *GetQuotaTipResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetQuotaTip"),
+		Version:     tea.String("2019-09-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetQuotaTipResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetQuotaTip(request *GetQuotaTipRequest) (_result *GetQuotaTipResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetQuotaTipResponse{}
+	_body, _err := client.GetQuotaTipWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetTopicListWithOptions(request *GetTopicListRequest, runtime *util.RuntimeOptions) (_result *GetTopicListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6959,6 +7201,10 @@ func (client *Client) UpdateAllowedIpWithOptions(request *UpdateAllowedIpRequest
 
 	if !tea.BoolValue(util.IsUnset(request.AllowedListType)) {
 		query["AllowedListType"] = request.AllowedListType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
