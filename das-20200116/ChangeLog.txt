@@ -1,3 +1,6 @@
+2022-09-23 Version: v3.0.0
+- Generated golang 2020-01-16 for DAS.
+
 2022-09-19 Version: v2.0.29
 - ADD GetRedisSession.
 
