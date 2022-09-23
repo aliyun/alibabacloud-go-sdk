@@ -1,3 +1,6 @@
+2022-09-23 Version: v4.0.0
+- Generated golang 2019-09-10 for ROS.
+
 2022-09-08 Version: v3.2.11
 - OperationInfo is added to the return value of GetStack and ListStacks.
 
