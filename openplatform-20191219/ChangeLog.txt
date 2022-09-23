@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.1
+- Generated golang 2019-12-19 for OpenPlatform.
+
 2022-09-21 Version: v2.0.0
 - Generated golang 2019-12-19 for OpenPlatform.
 
