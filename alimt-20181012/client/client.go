@@ -5,15 +5,14 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
@@ -66,9 +65,9 @@ func (s *CreateDocTranslateTaskRequest) SetTargetLanguage(v string) *CreateDocTr
 }
 
 type CreateDocTranslateTaskAdvanceRequest struct {
-	FileUrlObject  io.Reader `json:"FileUrlObject,omitempty" xml:"FileUrlObject,omitempty" require:"true"`
 	CallbackUrl    *string   `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	ClientToken    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	FileUrlObject  io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	Scene          *string   `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	SourceLanguage *string   `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
 	TargetLanguage *string   `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
@@ -82,11 +81,6 @@ func (s CreateDocTranslateTaskAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDocTranslateTaskAdvanceRequest) SetFileUrlObject(v io.Reader) *CreateDocTranslateTaskAdvanceRequest {
-	s.FileUrlObject = v
-	return s
-}
-
 func (s *CreateDocTranslateTaskAdvanceRequest) SetCallbackUrl(v string) *CreateDocTranslateTaskAdvanceRequest {
 	s.CallbackUrl = &v
 	return s
@@ -94,6 +88,11 @@ func (s *CreateDocTranslateTaskAdvanceRequest) SetCallbackUrl(v string) *CreateD
 
 func (s *CreateDocTranslateTaskAdvanceRequest) SetClientToken(v string) *CreateDocTranslateTaskAdvanceRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDocTranslateTaskAdvanceRequest) SetFileUrlObject(v io.Reader) *CreateDocTranslateTaskAdvanceRequest {
+	s.FileUrlObject = v
 	return s
 }
 
@@ -142,8 +141,9 @@ func (s *CreateDocTranslateTaskResponseBody) SetTaskId(v string) *CreateDocTrans
 }
 
 type CreateDocTranslateTaskResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDocTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDocTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateDocTranslateTaskResponse) String() string {
@@ -156,6 +156,11 @@ func (s CreateDocTranslateTaskResponse) GoString() string {
 
 func (s *CreateDocTranslateTaskResponse) SetHeaders(v map[string]*string) *CreateDocTranslateTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateDocTranslateTaskResponse) SetStatusCode(v int32) *CreateDocTranslateTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -258,8 +263,9 @@ func (s *CreateImageTranslateTaskResponseBodyData) SetTaskId(v string) *CreateIm
 }
 
 type CreateImageTranslateTaskResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateImageTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateImageTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateImageTranslateTaskResponse) String() string {
@@ -272,6 +278,11 @@ func (s CreateImageTranslateTaskResponse) GoString() string {
 
 func (s *CreateImageTranslateTaskResponse) SetHeaders(v map[string]*string) *CreateImageTranslateTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateImageTranslateTaskResponse) SetStatusCode(v int32) *CreateImageTranslateTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -363,8 +374,9 @@ func (s *GetBatchTranslateResponseBody) SetTranslatedList(v []map[string]interfa
 }
 
 type GetBatchTranslateResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetBatchTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetBatchTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetBatchTranslateResponse) String() string {
@@ -377,6 +389,11 @@ func (s GetBatchTranslateResponse) GoString() string {
 
 func (s *GetBatchTranslateResponse) SetHeaders(v map[string]*string) *GetBatchTranslateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetBatchTranslateResponse) SetStatusCode(v int32) *GetBatchTranslateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -426,8 +443,9 @@ func (s *GetDetectLanguageResponseBody) SetRequestId(v string) *GetDetectLanguag
 }
 
 type GetDetectLanguageResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDetectLanguageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDetectLanguageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDetectLanguageResponse) String() string {
@@ -440,6 +458,11 @@ func (s GetDetectLanguageResponse) GoString() string {
 
 func (s *GetDetectLanguageResponse) SetHeaders(v map[string]*string) *GetDetectLanguageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetDetectLanguageResponse) SetStatusCode(v int32) *GetDetectLanguageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -519,8 +542,9 @@ func (s *GetDocTranslateTaskResponseBody) SetTranslateFileUrl(v string) *GetDocT
 }
 
 type GetDocTranslateTaskResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDocTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDocTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDocTranslateTaskResponse) String() string {
@@ -533,6 +557,11 @@ func (s GetDocTranslateTaskResponse) GoString() string {
 
 func (s *GetDocTranslateTaskResponse) SetHeaders(v map[string]*string) *GetDocTranslateTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetDocTranslateTaskResponse) SetStatusCode(v int32) *GetDocTranslateTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -617,8 +646,9 @@ func (s *GetImageDiagnoseResponseBodyData) SetLanguage(v string) *GetImageDiagno
 }
 
 type GetImageDiagnoseResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetImageDiagnoseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetImageDiagnoseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetImageDiagnoseResponse) String() string {
@@ -631,6 +661,11 @@ func (s GetImageDiagnoseResponse) GoString() string {
 
 func (s *GetImageDiagnoseResponse) SetHeaders(v map[string]*string) *GetImageDiagnoseResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetImageDiagnoseResponse) SetStatusCode(v int32) *GetImageDiagnoseResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -739,8 +774,9 @@ func (s *GetImageTranslateResponseBodyData) SetUrl(v string) *GetImageTranslateR
 }
 
 type GetImageTranslateResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetImageTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetImageTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetImageTranslateResponse) String() string {
@@ -753,6 +789,11 @@ func (s GetImageTranslateResponse) GoString() string {
 
 func (s *GetImageTranslateResponse) SetHeaders(v map[string]*string) *GetImageTranslateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetImageTranslateResponse) SetStatusCode(v int32) *GetImageTranslateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -831,8 +872,9 @@ func (s *GetImageTranslateTaskResponseBodyData) SetImageData(v string) *GetImage
 }
 
 type GetImageTranslateTaskResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetImageTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetImageTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetImageTranslateTaskResponse) String() string {
@@ -845,6 +887,11 @@ func (s GetImageTranslateTaskResponse) GoString() string {
 
 func (s *GetImageTranslateTaskResponse) SetHeaders(v map[string]*string) *GetImageTranslateTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetImageTranslateTaskResponse) SetStatusCode(v int32) *GetImageTranslateTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1001,8 +1048,9 @@ func (s *GetTitleDiagnoseResponseBodyData) SetWordSpelledCorrectError(v string) 
 }
 
 type GetTitleDiagnoseResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTitleDiagnoseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTitleDiagnoseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTitleDiagnoseResponse) String() string {
@@ -1015,6 +1063,11 @@ func (s GetTitleDiagnoseResponse) GoString() string {
 
 func (s *GetTitleDiagnoseResponse) SetHeaders(v map[string]*string) *GetTitleDiagnoseResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetTitleDiagnoseResponse) SetStatusCode(v int32) *GetTitleDiagnoseResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1129,8 +1182,9 @@ func (s *GetTitleGenerateResponseBodyData) SetTitles(v string) *GetTitleGenerate
 }
 
 type GetTitleGenerateResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTitleGenerateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTitleGenerateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTitleGenerateResponse) String() string {
@@ -1143,6 +1197,11 @@ func (s GetTitleGenerateResponse) GoString() string {
 
 func (s *GetTitleGenerateResponse) SetHeaders(v map[string]*string) *GetTitleGenerateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetTitleGenerateResponse) SetStatusCode(v int32) *GetTitleGenerateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1245,8 +1304,9 @@ func (s *GetTitleIntelligenceResponseBodyData) SetTitles(v string) *GetTitleInte
 }
 
 type GetTitleIntelligenceResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTitleIntelligenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTitleIntelligenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTitleIntelligenceResponse) String() string {
@@ -1259,6 +1319,11 @@ func (s GetTitleIntelligenceResponse) GoString() string {
 
 func (s *GetTitleIntelligenceResponse) SetHeaders(v map[string]*string) *GetTitleIntelligenceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetTitleIntelligenceResponse) SetStatusCode(v int32) *GetTitleIntelligenceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1338,8 +1403,9 @@ func (s *GetTranslateReportResponseBody) SetRequestId(v string) *GetTranslateRep
 }
 
 type GetTranslateReportResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTranslateReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTranslateReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTranslateReportResponse) String() string {
@@ -1355,65 +1421,12 @@ func (s *GetTranslateReportResponse) SetHeaders(v map[string]*string) *GetTransl
 	return s
 }
 
+func (s *GetTranslateReportResponse) SetStatusCode(v int32) *GetTranslateReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetTranslateReportResponse) SetBody(v *GetTranslateReportResponseBody) *GetTranslateReportResponse {
-	s.Body = v
-	return s
-}
-
-type GetUserResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetUserResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserResponseBody) SetCode(v int32) *GetUserResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetUserResponseBody) SetData(v string) *GetUserResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *GetUserResponseBody) SetMessage(v string) *GetUserResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetUserResponseBody) SetRequestId(v string) *GetUserResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetUserResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserResponse) SetHeaders(v map[string]*string) *GetUserResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 	s.Body = v
 	return s
 }
@@ -1465,8 +1478,9 @@ func (s *OpenAlimtServiceResponseBody) SetRequestId(v string) *OpenAlimtServiceR
 }
 
 type OpenAlimtServiceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *OpenAlimtServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenAlimtServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s OpenAlimtServiceResponse) String() string {
@@ -1482,12 +1496,18 @@ func (s *OpenAlimtServiceResponse) SetHeaders(v map[string]*string) *OpenAlimtSe
 	return s
 }
 
+func (s *OpenAlimtServiceResponse) SetStatusCode(v int32) *OpenAlimtServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *OpenAlimtServiceResponse) SetBody(v *OpenAlimtServiceResponseBody) *OpenAlimtServiceResponse {
 	s.Body = v
 	return s
 }
 
 type TranslateRequest struct {
+	Context        *string `json:"Context,omitempty" xml:"Context,omitempty"`
 	FormatType     *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
 	Scene          *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
@@ -1501,6 +1521,11 @@ func (s TranslateRequest) String() string {
 
 func (s TranslateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *TranslateRequest) SetContext(v string) *TranslateRequest {
+	s.Context = &v
+	return s
 }
 
 func (s *TranslateRequest) SetFormatType(v string) *TranslateRequest {
@@ -1587,8 +1612,9 @@ func (s *TranslateResponseBodyData) SetWordCount(v string) *TranslateResponseBod
 }
 
 type TranslateResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TranslateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TranslateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TranslateResponse) String() string {
@@ -1601,6 +1627,11 @@ func (s TranslateResponse) GoString() string {
 
 func (s *TranslateResponse) SetHeaders(v map[string]*string) *TranslateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TranslateResponse) SetStatusCode(v int32) *TranslateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1651,8 +1682,8 @@ func (s *TranslateCertificateRequest) SetTargetLanguage(v string) *TranslateCert
 }
 
 type TranslateCertificateAdvanceRequest struct {
-	ImageUrlObject  io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
 	CertificateType *string   `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	ImageUrlObject  io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	ResultType      *string   `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
 	SourceLanguage  *string   `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
 	TargetLanguage  *string   `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
@@ -1666,13 +1697,13 @@ func (s TranslateCertificateAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *TranslateCertificateAdvanceRequest) SetImageUrlObject(v io.Reader) *TranslateCertificateAdvanceRequest {
-	s.ImageUrlObject = v
+func (s *TranslateCertificateAdvanceRequest) SetCertificateType(v string) *TranslateCertificateAdvanceRequest {
+	s.CertificateType = &v
 	return s
 }
 
-func (s *TranslateCertificateAdvanceRequest) SetCertificateType(v string) *TranslateCertificateAdvanceRequest {
-	s.CertificateType = &v
+func (s *TranslateCertificateAdvanceRequest) SetImageUrlObject(v io.Reader) *TranslateCertificateAdvanceRequest {
+	s.ImageUrlObject = v
 	return s
 }
 
@@ -1767,8 +1798,9 @@ func (s *TranslateCertificateResponseBodyDataTranslatedValues) SetValueTranslati
 }
 
 type TranslateCertificateResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TranslateCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TranslateCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TranslateCertificateResponse) String() string {
@@ -1784,12 +1816,18 @@ func (s *TranslateCertificateResponse) SetHeaders(v map[string]*string) *Transla
 	return s
 }
 
+func (s *TranslateCertificateResponse) SetStatusCode(v int32) *TranslateCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *TranslateCertificateResponse) SetBody(v *TranslateCertificateResponseBody) *TranslateCertificateResponse {
 	s.Body = v
 	return s
 }
 
 type TranslateECommerceRequest struct {
+	Context        *string `json:"Context,omitempty" xml:"Context,omitempty"`
 	FormatType     *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
 	Scene          *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
@@ -1803,6 +1841,11 @@ func (s TranslateECommerceRequest) String() string {
 
 func (s TranslateECommerceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *TranslateECommerceRequest) SetContext(v string) *TranslateECommerceRequest {
+	s.Context = &v
+	return s
 }
 
 func (s *TranslateECommerceRequest) SetFormatType(v string) *TranslateECommerceRequest {
@@ -1889,8 +1932,9 @@ func (s *TranslateECommerceResponseBodyData) SetWordCount(v string) *TranslateEC
 }
 
 type TranslateECommerceResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TranslateECommerceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TranslateECommerceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TranslateECommerceResponse) String() string {
@@ -1906,12 +1950,18 @@ func (s *TranslateECommerceResponse) SetHeaders(v map[string]*string) *Translate
 	return s
 }
 
+func (s *TranslateECommerceResponse) SetStatusCode(v int32) *TranslateECommerceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *TranslateECommerceResponse) SetBody(v *TranslateECommerceResponseBody) *TranslateECommerceResponse {
 	s.Body = v
 	return s
 }
 
 type TranslateGeneralRequest struct {
+	Context        *string `json:"Context,omitempty" xml:"Context,omitempty"`
 	FormatType     *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
 	Scene          *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
@@ -1925,6 +1975,11 @@ func (s TranslateGeneralRequest) String() string {
 
 func (s TranslateGeneralRequest) GoString() string {
 	return s.String()
+}
+
+func (s *TranslateGeneralRequest) SetContext(v string) *TranslateGeneralRequest {
+	s.Context = &v
+	return s
 }
 
 func (s *TranslateGeneralRequest) SetFormatType(v string) *TranslateGeneralRequest {
@@ -2011,8 +2066,9 @@ func (s *TranslateGeneralResponseBodyData) SetWordCount(v string) *TranslateGene
 }
 
 type TranslateGeneralResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TranslateGeneralResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TranslateGeneralResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TranslateGeneralResponse) String() string {
@@ -2025,6 +2081,11 @@ func (s TranslateGeneralResponse) GoString() string {
 
 func (s *TranslateGeneralResponse) SetHeaders(v map[string]*string) *TranslateGeneralResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TranslateGeneralResponse) SetStatusCode(v int32) *TranslateGeneralResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2145,8 +2206,9 @@ func (s *TranslateImageResponseBodyData) SetTemplateJson(v string) *TranslateIma
 }
 
 type TranslateImageResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TranslateImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TranslateImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TranslateImageResponse) String() string {
@@ -2159,6 +2221,11 @@ func (s TranslateImageResponse) GoString() string {
 
 func (s *TranslateImageResponse) SetHeaders(v map[string]*string) *TranslateImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TranslateImageResponse) SetStatusCode(v int32) *TranslateImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2182,6 +2249,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-hangzhou":                 tea.String("mt.cn-hangzhou.aliyuncs.com"),
@@ -2275,11 +2343,47 @@ func (client *Client) CreateDocTranslateTaskWithOptions(request *CreateDocTransl
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallbackUrl)) {
+		body["CallbackUrl"] = request.CallbackUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		body["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		body["Scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLanguage)) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetLanguage)) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDocTranslateTask"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDocTranslateTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateDocTranslateTask"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2325,7 +2429,7 @@ func (client *Client) CreateDocTranslateTaskAdvance(request *CreateDocTranslateT
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -2364,35 +2468,35 @@ func (client *Client) CreateDocTranslateTaskAdvance(request *CreateDocTranslateT
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.FileUrlObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		createDocTranslateTaskReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		createDocTranslateTaskReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	createDocTranslateTaskResp, _err := client.CreateDocTranslateTaskWithOptions(createDocTranslateTaskReq, runtime)
@@ -2409,11 +2513,43 @@ func (client *Client) CreateImageTranslateTaskWithOptions(request *CreateImageTr
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extra)) {
+		body["Extra"] = request.Extra
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLanguage)) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetLanguage)) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UrlList)) {
+		body["UrlList"] = request.UrlList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateImageTranslateTask"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateImageTranslateTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateImageTranslateTask"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2437,11 +2573,47 @@ func (client *Client) GetBatchTranslateWithOptions(request *GetBatchTranslateReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiType)) {
+		body["ApiType"] = request.ApiType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormatType)) {
+		body["FormatType"] = request.FormatType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		body["Scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLanguage)) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceText)) {
+		body["SourceText"] = request.SourceText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetLanguage)) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBatchTranslate"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetBatchTranslateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetBatchTranslate"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2465,11 +2637,27 @@ func (client *Client) GetDetectLanguageWithOptions(request *GetDetectLanguageReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceText)) {
+		body["SourceText"] = request.SourceText
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDetectLanguage"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetDetectLanguageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDetectLanguage"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2495,10 +2683,21 @@ func (client *Client) GetDocTranslateTaskWithOptions(request *GetDocTranslateTas
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDocTranslateTask"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetDocTranslateTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDocTranslateTask"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2522,11 +2721,31 @@ func (client *Client) GetImageDiagnoseWithOptions(request *GetImageDiagnoseReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Extra)) {
+		body["Extra"] = request.Extra
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		body["Url"] = request.Url
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetImageDiagnose"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetImageDiagnoseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetImageDiagnose"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2550,11 +2769,39 @@ func (client *Client) GetImageTranslateWithOptions(request *GetImageTranslateReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Extra)) {
+		body["Extra"] = request.Extra
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLanguage)) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetLanguage)) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		body["Url"] = request.Url
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetImageTranslate"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetImageTranslateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetImageTranslate"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2578,11 +2825,27 @@ func (client *Client) GetImageTranslateTaskWithOptions(request *GetImageTranslat
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetImageTranslateTask"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetImageTranslateTaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetImageTranslateTask"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2606,11 +2869,43 @@ func (client *Client) GetTitleDiagnoseWithOptions(request *GetTitleDiagnoseReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		body["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extra)) {
+		body["Extra"] = request.Extra
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		body["Platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		body["Title"] = request.Title
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTitleDiagnose"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTitleDiagnoseResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTitleDiagnose"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2634,11 +2929,51 @@ func (client *Client) GetTitleGenerateWithOptions(request *GetTitleGenerateReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Attributes)) {
+		body["Attributes"] = request.Attributes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		body["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extra)) {
+		body["Extra"] = request.Extra
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotWords)) {
+		body["HotWords"] = request.HotWords
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		body["Platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		body["Title"] = request.Title
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTitleGenerate"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTitleGenerateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTitleGenerate"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2662,11 +2997,43 @@ func (client *Client) GetTitleIntelligenceWithOptions(request *GetTitleIntellige
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatLevelThreeId)) {
+		body["CatLevelThreeId"] = request.CatLevelThreeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CatLevelTwoId)) {
+		body["CatLevelTwoId"] = request.CatLevelTwoId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extra)) {
+		body["Extra"] = request.Extra
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keywords)) {
+		body["Keywords"] = request.Keywords
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		body["Platform"] = request.Platform
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTitleIntelligence"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTitleIntelligenceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTitleIntelligence"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2690,11 +3057,39 @@ func (client *Client) GetTranslateReportWithOptions(request *GetTranslateReportR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
+		query["BeginTime"] = request.BeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Group)) {
+		query["Group"] = request.Group
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTranslateReport"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetTranslateReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetTranslateReport"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2713,38 +3108,36 @@ func (client *Client) GetTranslateReport(request *GetTranslateReportRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) GetUserWithOptions(runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &GetUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetUser"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetUser() (_result *GetUserResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetUserResponse{}
-	_body, _err := client.GetUserWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) OpenAlimtServiceWithOptions(request *OpenAlimtServiceRequest, runtime *util.RuntimeOptions) (_result *OpenAlimtServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenAlimtService"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &OpenAlimtServiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("OpenAlimtService"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2768,11 +3161,49 @@ func (client *Client) TranslateWithOptions(request *TranslateRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Context)) {
+		query["Context"] = request.Context
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FormatType)) {
+		body["FormatType"] = request.FormatType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		body["Scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLanguage)) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceText)) {
+		body["SourceText"] = request.SourceText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetLanguage)) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Translate"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TranslateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("Translate"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2796,11 +3227,43 @@ func (client *Client) TranslateCertificateWithOptions(request *TranslateCertific
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertificateType)) {
+		body["CertificateType"] = request.CertificateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultType)) {
+		body["ResultType"] = request.ResultType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLanguage)) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetLanguage)) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TranslateCertificate"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TranslateCertificateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TranslateCertificate"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2846,7 +3309,7 @@ func (client *Client) TranslateCertificateAdvance(request *TranslateCertificateA
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -2885,35 +3348,35 @@ func (client *Client) TranslateCertificateAdvance(request *TranslateCertificateA
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageUrlObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		translateCertificateReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		translateCertificateReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	translateCertificateResp, _err := client.TranslateCertificateWithOptions(translateCertificateReq, runtime)
@@ -2930,11 +3393,49 @@ func (client *Client) TranslateECommerceWithOptions(request *TranslateECommerceR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Context)) {
+		query["Context"] = request.Context
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FormatType)) {
+		body["FormatType"] = request.FormatType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		body["Scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLanguage)) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceText)) {
+		body["SourceText"] = request.SourceText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetLanguage)) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TranslateECommerce"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TranslateECommerceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TranslateECommerce"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2958,11 +3459,49 @@ func (client *Client) TranslateGeneralWithOptions(request *TranslateGeneralReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Context)) {
+		query["Context"] = request.Context
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FormatType)) {
+		body["FormatType"] = request.FormatType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		body["Scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLanguage)) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceText)) {
+		body["SourceText"] = request.SourceText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetLanguage)) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TranslateGeneral"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TranslateGeneralResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TranslateGeneral"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2986,11 +3525,47 @@ func (client *Client) TranslateImageWithOptions(request *TranslateImageRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ext)) {
+		body["Ext"] = request.Ext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Field)) {
+		body["Field"] = request.Field
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageBase64)) {
+		body["ImageBase64"] = request.ImageBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLanguage)) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetLanguage)) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TranslateImage"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TranslateImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TranslateImage"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
