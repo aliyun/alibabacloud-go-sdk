@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -531,6 +531,7 @@ type CreateVpcEndpointRequest struct {
 	EndpointType              *string                         `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	ProtectedEnabled          *bool                           `json:"ProtectedEnabled,omitempty" xml:"ProtectedEnabled,omitempty"`
 	RegionId                  *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId           *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityGroupId           []*string                       `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Repeated"`
 	ServiceId                 *string                         `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceName               *string                         `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
@@ -579,6 +580,11 @@ func (s *CreateVpcEndpointRequest) SetProtectedEnabled(v bool) *CreateVpcEndpoin
 
 func (s *CreateVpcEndpointRequest) SetRegionId(v string) *CreateVpcEndpointRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateVpcEndpointRequest) SetResourceGroupId(v string) *CreateVpcEndpointRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -766,6 +772,7 @@ type CreateVpcEndpointServiceRequest struct {
 	Payer               *string                                    `json:"Payer,omitempty" xml:"Payer,omitempty"`
 	RegionId            *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Resource            []*CreateVpcEndpointServiceRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
+	ResourceGroupId     *string                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceDescription  *string                                    `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
 	ServiceResourceType *string                                    `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
 	ServiceSupportIPv6  *bool                                      `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
@@ -807,6 +814,11 @@ func (s *CreateVpcEndpointServiceRequest) SetRegionId(v string) *CreateVpcEndpoi
 
 func (s *CreateVpcEndpointServiceRequest) SetResource(v []*CreateVpcEndpointServiceRequestResource) *CreateVpcEndpointServiceRequest {
 	s.Resource = v
+	return s
+}
+
+func (s *CreateVpcEndpointServiceRequest) SetResourceGroupId(v string) *CreateVpcEndpointServiceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -857,6 +869,7 @@ type CreateVpcEndpointServiceResponseBody struct {
 	AutoAcceptEnabled     *bool   `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
 	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceBusinessStatus *string `json:"ServiceBusinessStatus,omitempty" xml:"ServiceBusinessStatus,omitempty"`
 	ServiceDescription    *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
 	ServiceDomain         *string `json:"ServiceDomain,omitempty" xml:"ServiceDomain,omitempty"`
@@ -887,6 +900,11 @@ func (s *CreateVpcEndpointServiceResponseBody) SetCreateTime(v string) *CreateVp
 
 func (s *CreateVpcEndpointServiceResponseBody) SetRequestId(v string) *CreateVpcEndpointServiceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVpcEndpointServiceResponseBody) SetResourceGroupId(v string) *CreateVpcEndpointServiceResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2111,6 +2129,7 @@ type GetVpcEndpointAttributeResponseBody struct {
 	Payer                     *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
 	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId           *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwner             *bool   `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
 	ServiceId                 *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceName               *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
@@ -2189,6 +2208,11 @@ func (s *GetVpcEndpointAttributeResponseBody) SetRegionId(v string) *GetVpcEndpo
 
 func (s *GetVpcEndpointAttributeResponseBody) SetRequestId(v string) *GetVpcEndpointAttributeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetVpcEndpointAttributeResponseBody) SetResourceGroupId(v string) *GetVpcEndpointAttributeResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2283,6 +2307,7 @@ type GetVpcEndpointServiceAttributeResponseBody struct {
 	Payer                 *string   `json:"Payer,omitempty" xml:"Payer,omitempty"`
 	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestId             *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId       *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceBusinessStatus *string   `json:"ServiceBusinessStatus,omitempty" xml:"ServiceBusinessStatus,omitempty"`
 	ServiceDescription    *string   `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
 	ServiceDomain         *string   `json:"ServiceDomain,omitempty" xml:"ServiceDomain,omitempty"`
@@ -2341,6 +2366,11 @@ func (s *GetVpcEndpointServiceAttributeResponseBody) SetRegionId(v string) *GetV
 
 func (s *GetVpcEndpointServiceAttributeResponseBody) SetRequestId(v string) *GetVpcEndpointServiceAttributeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetVpcEndpointServiceAttributeResponseBody) SetResourceGroupId(v string) *GetVpcEndpointServiceAttributeResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2438,6 +2468,7 @@ type ListVpcEndpointConnectionsRequest struct {
 	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReplacedResourceId *string `json:"ReplacedResourceId,omitempty" xml:"ReplacedResourceId,omitempty"`
+	ResourceGroupId    *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ServiceId          *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
@@ -2495,6 +2526,11 @@ func (s *ListVpcEndpointConnectionsRequest) SetReplacedResourceId(v string) *Lis
 	return s
 }
 
+func (s *ListVpcEndpointConnectionsRequest) SetResourceGroupId(v string) *ListVpcEndpointConnectionsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListVpcEndpointConnectionsRequest) SetResourceId(v string) *ListVpcEndpointConnectionsRequest {
 	s.ResourceId = &v
 	return s
@@ -2547,6 +2583,7 @@ type ListVpcEndpointConnectionsResponseBodyConnections struct {
 	EndpointOwnerId  *int64                                                    `json:"EndpointOwnerId,omitempty" xml:"EndpointOwnerId,omitempty"`
 	EndpointVpcId    *string                                                   `json:"EndpointVpcId,omitempty" xml:"EndpointVpcId,omitempty"`
 	ModifiedTime     *string                                                   `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	ResourceGroupId  *string                                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwner    *bool                                                     `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
 	ServiceId        *string                                                   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	Zones            []*ListVpcEndpointConnectionsResponseBodyConnectionsZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
@@ -2587,6 +2624,11 @@ func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetEndpointVpcId(v s
 
 func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetModifiedTime(v string) *ListVpcEndpointConnectionsResponseBodyConnections {
 	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetResourceGroupId(v string) *ListVpcEndpointConnectionsResponseBodyConnections {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3153,6 +3195,7 @@ type ListVpcEndpointServicesRequest struct {
 	MaxResults            *int32                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken             *string                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RegionId              *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceBusinessStatus *string                              `json:"ServiceBusinessStatus,omitempty" xml:"ServiceBusinessStatus,omitempty"`
 	ServiceId             *string                              `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceName           *string                              `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
@@ -3187,6 +3230,11 @@ func (s *ListVpcEndpointServicesRequest) SetNextToken(v string) *ListVpcEndpoint
 
 func (s *ListVpcEndpointServicesRequest) SetRegionId(v string) *ListVpcEndpointServicesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListVpcEndpointServicesRequest) SetResourceGroupId(v string) *ListVpcEndpointServicesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3291,6 +3339,7 @@ type ListVpcEndpointServicesResponseBodyServices struct {
 	MinBandwidth          *int32                                             `json:"MinBandwidth,omitempty" xml:"MinBandwidth,omitempty"`
 	Payer                 *string                                            `json:"Payer,omitempty" xml:"Payer,omitempty"`
 	RegionId              *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceBusinessStatus *string                                            `json:"ServiceBusinessStatus,omitempty" xml:"ServiceBusinessStatus,omitempty"`
 	ServiceDescription    *string                                            `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
 	ServiceDomain         *string                                            `json:"ServiceDomain,omitempty" xml:"ServiceDomain,omitempty"`
@@ -3344,6 +3393,11 @@ func (s *ListVpcEndpointServicesResponseBodyServices) SetPayer(v string) *ListVp
 
 func (s *ListVpcEndpointServicesResponseBodyServices) SetRegionId(v string) *ListVpcEndpointServicesResponseBodyServices {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListVpcEndpointServicesResponseBodyServices) SetResourceGroupId(v string) *ListVpcEndpointServicesResponseBodyServices {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3455,13 +3509,14 @@ func (s *ListVpcEndpointServicesResponse) SetBody(v *ListVpcEndpointServicesResp
 }
 
 type ListVpcEndpointServicesByEndUserRequest struct {
-	MaxResults  *int32                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId    *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceId   *string                                       `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceName *string                                       `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	ServiceType *string                                       `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	Tag         []*ListVpcEndpointServicesByEndUserRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	MaxResults      *int32                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId        *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceId       *string                                       `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName     *string                                       `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceType     *string                                       `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Tag             []*ListVpcEndpointServicesByEndUserRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListVpcEndpointServicesByEndUserRequest) String() string {
@@ -3484,6 +3539,11 @@ func (s *ListVpcEndpointServicesByEndUserRequest) SetNextToken(v string) *ListVp
 
 func (s *ListVpcEndpointServicesByEndUserRequest) SetRegionId(v string) *ListVpcEndpointServicesByEndUserRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListVpcEndpointServicesByEndUserRequest) SetResourceGroupId(v string) *ListVpcEndpointServicesByEndUserRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3567,6 +3627,7 @@ func (s *ListVpcEndpointServicesByEndUserResponseBody) SetServices(v []*ListVpcE
 
 type ListVpcEndpointServicesByEndUserResponseBodyServices struct {
 	Payer              *string                                                     `json:"Payer,omitempty" xml:"Payer,omitempty"`
+	ResourceGroupId    *string                                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceDomain      *string                                                     `json:"ServiceDomain,omitempty" xml:"ServiceDomain,omitempty"`
 	ServiceId          *string                                                     `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceName        *string                                                     `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
@@ -3586,6 +3647,11 @@ func (s ListVpcEndpointServicesByEndUserResponseBodyServices) GoString() string 
 
 func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) SetPayer(v string) *ListVpcEndpointServicesByEndUserResponseBodyServices {
 	s.Payer = &v
+	return s
+}
+
+func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) SetResourceGroupId(v string) *ListVpcEndpointServicesByEndUserResponseBodyServices {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -5547,6 +5613,10 @@ func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointReq
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
 		query["SecurityGroupId"] = request.SecurityGroupId
 	}
@@ -5637,6 +5707,10 @@ func (client *Client) CreateVpcEndpointServiceWithOptions(request *CreateVpcEndp
 
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceDescription)) {
@@ -6523,6 +6597,10 @@ func (client *Client) ListVpcEndpointConnectionsWithOptions(request *ListVpcEndp
 		query["ReplacedResourceId"] = request.ReplacedResourceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
 		query["ResourceId"] = request.ResourceId
 	}
@@ -6779,6 +6857,10 @@ func (client *Client) ListVpcEndpointServicesWithOptions(request *ListVpcEndpoin
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceBusinessStatus)) {
 		query["ServiceBusinessStatus"] = request.ServiceBusinessStatus
 	}
@@ -6861,6 +6943,10 @@ func (client *Client) ListVpcEndpointServicesByEndUserWithOptions(request *ListV
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
