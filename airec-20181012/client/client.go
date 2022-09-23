@@ -5,17 +5,17 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AttachDatasetResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *AttachDatasetResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -25,6 +25,11 @@ func (s AttachDatasetResponseBody) String() string {
 
 func (s AttachDatasetResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *AttachDatasetResponseBody) SetCode(v string) *AttachDatasetResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *AttachDatasetResponseBody) SetMessage(v string) *AttachDatasetResponseBody {
@@ -37,22 +42,17 @@ func (s *AttachDatasetResponseBody) SetRequestId(v string) *AttachDatasetRespons
 	return s
 }
 
-func (s *AttachDatasetResponseBody) SetCode(v string) *AttachDatasetResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *AttachDatasetResponseBody) SetResult(v *AttachDatasetResponseBodyResult) *AttachDatasetResponseBody {
 	s.Result = v
 	return s
 }
 
 type AttachDatasetResponseBodyResult struct {
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
 	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	VersionId   *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+	VersionId   *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s AttachDatasetResponseBodyResult) String() string {
@@ -63,23 +63,8 @@ func (s AttachDatasetResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *AttachDatasetResponseBodyResult) SetState(v string) *AttachDatasetResponseBodyResult {
-	s.State = &v
-	return s
-}
-
 func (s *AttachDatasetResponseBodyResult) SetGmtCreate(v int64) *AttachDatasetResponseBodyResult {
 	s.GmtCreate = &v
-	return s
-}
-
-func (s *AttachDatasetResponseBodyResult) SetVersionId(v string) *AttachDatasetResponseBodyResult {
-	s.VersionId = &v
-	return s
-}
-
-func (s *AttachDatasetResponseBodyResult) SetInstanceId(v string) *AttachDatasetResponseBodyResult {
-	s.InstanceId = &v
 	return s
 }
 
@@ -88,9 +73,25 @@ func (s *AttachDatasetResponseBodyResult) SetGmtModified(v int64) *AttachDataset
 	return s
 }
 
+func (s *AttachDatasetResponseBodyResult) SetInstanceId(v string) *AttachDatasetResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AttachDatasetResponseBodyResult) SetState(v string) *AttachDatasetResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+func (s *AttachDatasetResponseBodyResult) SetVersionId(v string) *AttachDatasetResponseBodyResult {
+	s.VersionId = &v
+	return s
+}
+
 type AttachDatasetResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AttachDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AttachDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AttachDatasetResponse) String() string {
@@ -106,15 +107,20 @@ func (s *AttachDatasetResponse) SetHeaders(v map[string]*string) *AttachDatasetR
 	return s
 }
 
+func (s *AttachDatasetResponse) SetStatusCode(v int32) *AttachDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AttachDatasetResponse) SetBody(v *AttachDatasetResponseBody) *AttachDatasetResponse {
 	s.Body = v
 	return s
 }
 
 type CreateDiversifyResponseBody struct {
+	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *CreateDiversifyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -124,6 +130,11 @@ func (s CreateDiversifyResponseBody) String() string {
 
 func (s CreateDiversifyResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDiversifyResponseBody) SetCode(v string) *CreateDiversifyResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *CreateDiversifyResponseBody) SetMessage(v string) *CreateDiversifyResponseBody {
@@ -136,11 +147,6 @@ func (s *CreateDiversifyResponseBody) SetRequestId(v string) *CreateDiversifyRes
 	return s
 }
 
-func (s *CreateDiversifyResponseBody) SetCode(v string) *CreateDiversifyResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *CreateDiversifyResponseBody) SetResult(v *CreateDiversifyResponseBodyResult) *CreateDiversifyResponseBody {
 	s.Result = v
 	return s
@@ -148,8 +154,8 @@ func (s *CreateDiversifyResponseBody) SetResult(v *CreateDiversifyResponseBodyRe
 
 type CreateDiversifyResponseBodyResult struct {
 	GmtCreate   *string                                     `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name        *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	GmtModified *string                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Name        *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	Parameter   *CreateDiversifyResponseBodyResultParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 }
 
@@ -166,13 +172,13 @@ func (s *CreateDiversifyResponseBodyResult) SetGmtCreate(v string) *CreateDivers
 	return s
 }
 
-func (s *CreateDiversifyResponseBodyResult) SetName(v string) *CreateDiversifyResponseBodyResult {
-	s.Name = &v
+func (s *CreateDiversifyResponseBodyResult) SetGmtModified(v string) *CreateDiversifyResponseBodyResult {
+	s.GmtModified = &v
 	return s
 }
 
-func (s *CreateDiversifyResponseBodyResult) SetGmtModified(v string) *CreateDiversifyResponseBodyResult {
-	s.GmtModified = &v
+func (s *CreateDiversifyResponseBodyResult) SetName(v string) *CreateDiversifyResponseBodyResult {
+	s.Name = &v
 	return s
 }
 
@@ -182,8 +188,8 @@ func (s *CreateDiversifyResponseBodyResult) SetParameter(v *CreateDiversifyRespo
 }
 
 type CreateDiversifyResponseBodyResultParameter struct {
-	Window        *int32 `json:"Window,omitempty" xml:"Window,omitempty"`
 	CategoryIndex *int32 `json:"CategoryIndex,omitempty" xml:"CategoryIndex,omitempty"`
+	Window        *int32 `json:"Window,omitempty" xml:"Window,omitempty"`
 }
 
 func (s CreateDiversifyResponseBodyResultParameter) String() string {
@@ -194,19 +200,20 @@ func (s CreateDiversifyResponseBodyResultParameter) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDiversifyResponseBodyResultParameter) SetWindow(v int32) *CreateDiversifyResponseBodyResultParameter {
-	s.Window = &v
-	return s
-}
-
 func (s *CreateDiversifyResponseBodyResultParameter) SetCategoryIndex(v int32) *CreateDiversifyResponseBodyResultParameter {
 	s.CategoryIndex = &v
 	return s
 }
 
+func (s *CreateDiversifyResponseBodyResultParameter) SetWindow(v int32) *CreateDiversifyResponseBodyResultParameter {
+	s.Window = &v
+	return s
+}
+
 type CreateDiversifyResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDiversifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDiversifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateDiversifyResponse) String() string {
@@ -222,15 +229,20 @@ func (s *CreateDiversifyResponse) SetHeaders(v map[string]*string) *CreateDivers
 	return s
 }
 
+func (s *CreateDiversifyResponse) SetStatusCode(v int32) *CreateDiversifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateDiversifyResponse) SetBody(v *CreateDiversifyResponseBody) *CreateDiversifyResponse {
 	s.Body = v
 	return s
 }
 
 type CreateInstanceResponseBody struct {
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *CreateInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -242,6 +254,11 @@ func (s CreateInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateInstanceResponseBody) SetCode(v string) *CreateInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CreateInstanceResponseBody) SetMessage(v string) *CreateInstanceResponseBody {
 	s.Message = &v
 	return s
@@ -249,11 +266,6 @@ func (s *CreateInstanceResponseBody) SetMessage(v string) *CreateInstanceRespons
 
 func (s *CreateInstanceResponseBody) SetRequestId(v string) *CreateInstanceResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateInstanceResponseBody) SetCode(v string) *CreateInstanceResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -280,8 +292,9 @@ func (s *CreateInstanceResponseBodyResult) SetInstanceId(v string) *CreateInstan
 }
 
 type CreateInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateInstanceResponse) String() string {
@@ -297,15 +310,20 @@ func (s *CreateInstanceResponse) SetHeaders(v map[string]*string) *CreateInstanc
 	return s
 }
 
+func (s *CreateInstanceResponse) SetStatusCode(v int32) *CreateInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type CreateMixResponseBody struct {
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *CreateMixResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -315,6 +333,11 @@ func (s CreateMixResponseBody) String() string {
 
 func (s CreateMixResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateMixResponseBody) SetCode(v string) *CreateMixResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *CreateMixResponseBody) SetMessage(v string) *CreateMixResponseBody {
@@ -327,11 +350,6 @@ func (s *CreateMixResponseBody) SetRequestId(v string) *CreateMixResponseBody {
 	return s
 }
 
-func (s *CreateMixResponseBody) SetCode(v string) *CreateMixResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *CreateMixResponseBody) SetResult(v *CreateMixResponseBodyResult) *CreateMixResponseBody {
 	s.Result = v
 	return s
@@ -339,8 +357,8 @@ func (s *CreateMixResponseBody) SetResult(v *CreateMixResponseBodyResult) *Creat
 
 type CreateMixResponseBodyResult struct {
 	GmtCreate   *string                               `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name        *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
 	GmtModified *string                               `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Name        *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
 	Parameter   *CreateMixResponseBodyResultParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 }
 
@@ -357,13 +375,13 @@ func (s *CreateMixResponseBodyResult) SetGmtCreate(v string) *CreateMixResponseB
 	return s
 }
 
-func (s *CreateMixResponseBodyResult) SetName(v string) *CreateMixResponseBodyResult {
-	s.Name = &v
+func (s *CreateMixResponseBodyResult) SetGmtModified(v string) *CreateMixResponseBodyResult {
+	s.GmtModified = &v
 	return s
 }
 
-func (s *CreateMixResponseBodyResult) SetGmtModified(v string) *CreateMixResponseBodyResult {
-	s.GmtModified = &v
+func (s *CreateMixResponseBodyResult) SetName(v string) *CreateMixResponseBodyResult {
+	s.Name = &v
 	return s
 }
 
@@ -390,8 +408,8 @@ func (s *CreateMixResponseBodyResultParameter) SetSettings(v []*CreateMixRespons
 }
 
 type CreateMixResponseBodyResultParameterSettings struct {
-	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
 	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateMixResponseBodyResultParameterSettings) String() string {
@@ -402,19 +420,20 @@ func (s CreateMixResponseBodyResultParameterSettings) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMixResponseBodyResultParameterSettings) SetValue(v int32) *CreateMixResponseBodyResultParameterSettings {
-	s.Value = &v
-	return s
-}
-
 func (s *CreateMixResponseBodyResultParameterSettings) SetName(v string) *CreateMixResponseBodyResultParameterSettings {
 	s.Name = &v
 	return s
 }
 
+func (s *CreateMixResponseBodyResultParameterSettings) SetValue(v int32) *CreateMixResponseBodyResultParameterSettings {
+	s.Value = &v
+	return s
+}
+
 type CreateMixResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateMixResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMixResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateMixResponse) String() string {
@@ -427,6 +446,11 @@ func (s CreateMixResponse) GoString() string {
 
 func (s *CreateMixResponse) SetHeaders(v map[string]*string) *CreateMixResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateMixResponse) SetStatusCode(v int32) *CreateMixResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -459,10 +483,10 @@ func (s *CreateRuleResponseBody) SetResult(v *CreateRuleResponseBodyResult) *Cre
 }
 
 type CreateRuleResponseBodyResult struct {
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	RuleId      *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateRuleResponseBodyResult) String() string {
@@ -471,11 +495,6 @@ func (s CreateRuleResponseBodyResult) String() string {
 
 func (s CreateRuleResponseBodyResult) GoString() string {
 	return s.String()
-}
-
-func (s *CreateRuleResponseBodyResult) SetStatus(v string) *CreateRuleResponseBodyResult {
-	s.Status = &v
-	return s
 }
 
 func (s *CreateRuleResponseBodyResult) SetGmtCreate(v string) *CreateRuleResponseBodyResult {
@@ -493,9 +512,15 @@ func (s *CreateRuleResponseBodyResult) SetRuleId(v string) *CreateRuleResponseBo
 	return s
 }
 
+func (s *CreateRuleResponseBodyResult) SetStatus(v string) *CreateRuleResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
 type CreateRuleResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateRuleResponse) String() string {
@@ -508,6 +533,11 @@ func (s CreateRuleResponse) GoString() string {
 
 func (s *CreateRuleResponse) SetHeaders(v map[string]*string) *CreateRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateRuleResponse) SetStatusCode(v int32) *CreateRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -557,10 +587,10 @@ func (s *CreateSceneResponseBody) SetResult(v *CreateSceneResponseBodyResult) *C
 }
 
 type CreateSceneResponseBodyResult struct {
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateSceneResponseBodyResult) String() string {
@@ -571,18 +601,8 @@ func (s CreateSceneResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *CreateSceneResponseBodyResult) SetStatus(v string) *CreateSceneResponseBodyResult {
-	s.Status = &v
-	return s
-}
-
 func (s *CreateSceneResponseBodyResult) SetGmtCreate(v string) *CreateSceneResponseBodyResult {
 	s.GmtCreate = &v
-	return s
-}
-
-func (s *CreateSceneResponseBodyResult) SetSceneId(v string) *CreateSceneResponseBodyResult {
-	s.SceneId = &v
 	return s
 }
 
@@ -591,9 +611,20 @@ func (s *CreateSceneResponseBodyResult) SetGmtModified(v string) *CreateSceneRes
 	return s
 }
 
+func (s *CreateSceneResponseBodyResult) SetSceneId(v string) *CreateSceneResponseBodyResult {
+	s.SceneId = &v
+	return s
+}
+
+func (s *CreateSceneResponseBodyResult) SetStatus(v string) *CreateSceneResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
 type CreateSceneResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateSceneResponse) String() string {
@@ -609,15 +640,20 @@ func (s *CreateSceneResponse) SetHeaders(v map[string]*string) *CreateSceneRespo
 	return s
 }
 
+func (s *CreateSceneResponse) SetStatusCode(v int32) *CreateSceneResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateSceneResponse) SetBody(v *CreateSceneResponseBody) *CreateSceneResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteDataSetResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *DeleteDataSetResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -627,6 +663,11 @@ func (s DeleteDataSetResponseBody) String() string {
 
 func (s DeleteDataSetResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteDataSetResponseBody) SetCode(v string) *DeleteDataSetResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DeleteDataSetResponseBody) SetMessage(v string) *DeleteDataSetResponseBody {
@@ -639,22 +680,17 @@ func (s *DeleteDataSetResponseBody) SetRequestId(v string) *DeleteDataSetRespons
 	return s
 }
 
-func (s *DeleteDataSetResponseBody) SetCode(v string) *DeleteDataSetResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DeleteDataSetResponseBody) SetResult(v *DeleteDataSetResponseBodyResult) *DeleteDataSetResponseBody {
 	s.Result = v
 	return s
 }
 
 type DeleteDataSetResponseBodyResult struct {
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
 	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	VersionId   *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+	VersionId   *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s DeleteDataSetResponseBodyResult) String() string {
@@ -665,23 +701,8 @@ func (s DeleteDataSetResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteDataSetResponseBodyResult) SetState(v string) *DeleteDataSetResponseBodyResult {
-	s.State = &v
-	return s
-}
-
 func (s *DeleteDataSetResponseBodyResult) SetGmtCreate(v int64) *DeleteDataSetResponseBodyResult {
 	s.GmtCreate = &v
-	return s
-}
-
-func (s *DeleteDataSetResponseBodyResult) SetVersionId(v string) *DeleteDataSetResponseBodyResult {
-	s.VersionId = &v
-	return s
-}
-
-func (s *DeleteDataSetResponseBodyResult) SetInstanceId(v string) *DeleteDataSetResponseBodyResult {
-	s.InstanceId = &v
 	return s
 }
 
@@ -690,9 +711,25 @@ func (s *DeleteDataSetResponseBodyResult) SetGmtModified(v int64) *DeleteDataSet
 	return s
 }
 
+func (s *DeleteDataSetResponseBodyResult) SetInstanceId(v string) *DeleteDataSetResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteDataSetResponseBodyResult) SetState(v string) *DeleteDataSetResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+func (s *DeleteDataSetResponseBodyResult) SetVersionId(v string) *DeleteDataSetResponseBodyResult {
+	s.VersionId = &v
+	return s
+}
+
 type DeleteDataSetResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDataSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDataSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDataSetResponse) String() string {
@@ -708,15 +745,20 @@ func (s *DeleteDataSetResponse) SetHeaders(v map[string]*string) *DeleteDataSetR
 	return s
 }
 
+func (s *DeleteDataSetResponse) SetStatusCode(v int32) *DeleteDataSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteDataSetResponse) SetBody(v *DeleteDataSetResponseBody) *DeleteDataSetResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteDiversifyResponseBody struct {
+	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *DeleteDiversifyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -726,6 +768,11 @@ func (s DeleteDiversifyResponseBody) String() string {
 
 func (s DeleteDiversifyResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteDiversifyResponseBody) SetCode(v string) *DeleteDiversifyResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DeleteDiversifyResponseBody) SetMessage(v string) *DeleteDiversifyResponseBody {
@@ -738,11 +785,6 @@ func (s *DeleteDiversifyResponseBody) SetRequestId(v string) *DeleteDiversifyRes
 	return s
 }
 
-func (s *DeleteDiversifyResponseBody) SetCode(v string) *DeleteDiversifyResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DeleteDiversifyResponseBody) SetResult(v *DeleteDiversifyResponseBodyResult) *DeleteDiversifyResponseBody {
 	s.Result = v
 	return s
@@ -750,8 +792,8 @@ func (s *DeleteDiversifyResponseBody) SetResult(v *DeleteDiversifyResponseBodyRe
 
 type DeleteDiversifyResponseBodyResult struct {
 	GmtCreate   *string                                     `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name        *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	GmtModified *string                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Name        *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	Parameter   *DeleteDiversifyResponseBodyResultParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 }
 
@@ -768,13 +810,13 @@ func (s *DeleteDiversifyResponseBodyResult) SetGmtCreate(v string) *DeleteDivers
 	return s
 }
 
-func (s *DeleteDiversifyResponseBodyResult) SetName(v string) *DeleteDiversifyResponseBodyResult {
-	s.Name = &v
+func (s *DeleteDiversifyResponseBodyResult) SetGmtModified(v string) *DeleteDiversifyResponseBodyResult {
+	s.GmtModified = &v
 	return s
 }
 
-func (s *DeleteDiversifyResponseBodyResult) SetGmtModified(v string) *DeleteDiversifyResponseBodyResult {
-	s.GmtModified = &v
+func (s *DeleteDiversifyResponseBodyResult) SetName(v string) *DeleteDiversifyResponseBodyResult {
+	s.Name = &v
 	return s
 }
 
@@ -784,8 +826,8 @@ func (s *DeleteDiversifyResponseBodyResult) SetParameter(v *DeleteDiversifyRespo
 }
 
 type DeleteDiversifyResponseBodyResultParameter struct {
-	Window        *int32 `json:"Window,omitempty" xml:"Window,omitempty"`
 	CategoryIndex *int32 `json:"CategoryIndex,omitempty" xml:"CategoryIndex,omitempty"`
+	Window        *int32 `json:"Window,omitempty" xml:"Window,omitempty"`
 }
 
 func (s DeleteDiversifyResponseBodyResultParameter) String() string {
@@ -796,19 +838,20 @@ func (s DeleteDiversifyResponseBodyResultParameter) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteDiversifyResponseBodyResultParameter) SetWindow(v int32) *DeleteDiversifyResponseBodyResultParameter {
-	s.Window = &v
-	return s
-}
-
 func (s *DeleteDiversifyResponseBodyResultParameter) SetCategoryIndex(v int32) *DeleteDiversifyResponseBodyResultParameter {
 	s.CategoryIndex = &v
 	return s
 }
 
+func (s *DeleteDiversifyResponseBodyResultParameter) SetWindow(v int32) *DeleteDiversifyResponseBodyResultParameter {
+	s.Window = &v
+	return s
+}
+
 type DeleteDiversifyResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDiversifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDiversifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDiversifyResponse) String() string {
@@ -824,15 +867,20 @@ func (s *DeleteDiversifyResponse) SetHeaders(v map[string]*string) *DeleteDivers
 	return s
 }
 
+func (s *DeleteDiversifyResponse) SetStatusCode(v int32) *DeleteDiversifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteDiversifyResponse) SetBody(v *DeleteDiversifyResponseBody) *DeleteDiversifyResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteMixResponseBody struct {
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *DeleteMixResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -842,6 +890,11 @@ func (s DeleteMixResponseBody) String() string {
 
 func (s DeleteMixResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteMixResponseBody) SetCode(v string) *DeleteMixResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DeleteMixResponseBody) SetMessage(v string) *DeleteMixResponseBody {
@@ -854,11 +907,6 @@ func (s *DeleteMixResponseBody) SetRequestId(v string) *DeleteMixResponseBody {
 	return s
 }
 
-func (s *DeleteMixResponseBody) SetCode(v string) *DeleteMixResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DeleteMixResponseBody) SetResult(v *DeleteMixResponseBodyResult) *DeleteMixResponseBody {
 	s.Result = v
 	return s
@@ -866,8 +914,8 @@ func (s *DeleteMixResponseBody) SetResult(v *DeleteMixResponseBodyResult) *Delet
 
 type DeleteMixResponseBodyResult struct {
 	GmtCreate   *string                               `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name        *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
 	GmtModified *string                               `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Name        *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
 	Parameter   *DeleteMixResponseBodyResultParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 }
 
@@ -884,13 +932,13 @@ func (s *DeleteMixResponseBodyResult) SetGmtCreate(v string) *DeleteMixResponseB
 	return s
 }
 
-func (s *DeleteMixResponseBodyResult) SetName(v string) *DeleteMixResponseBodyResult {
-	s.Name = &v
+func (s *DeleteMixResponseBodyResult) SetGmtModified(v string) *DeleteMixResponseBodyResult {
+	s.GmtModified = &v
 	return s
 }
 
-func (s *DeleteMixResponseBodyResult) SetGmtModified(v string) *DeleteMixResponseBodyResult {
-	s.GmtModified = &v
+func (s *DeleteMixResponseBodyResult) SetName(v string) *DeleteMixResponseBodyResult {
+	s.Name = &v
 	return s
 }
 
@@ -917,8 +965,8 @@ func (s *DeleteMixResponseBodyResultParameter) SetSettings(v []*DeleteMixRespons
 }
 
 type DeleteMixResponseBodyResultParameterSettings struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DeleteMixResponseBodyResultParameterSettings) String() string {
@@ -929,19 +977,20 @@ func (s DeleteMixResponseBodyResultParameterSettings) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteMixResponseBodyResultParameterSettings) SetValue(v string) *DeleteMixResponseBodyResultParameterSettings {
-	s.Value = &v
-	return s
-}
-
 func (s *DeleteMixResponseBodyResultParameterSettings) SetName(v string) *DeleteMixResponseBodyResultParameterSettings {
 	s.Name = &v
 	return s
 }
 
+func (s *DeleteMixResponseBodyResultParameterSettings) SetValue(v string) *DeleteMixResponseBodyResultParameterSettings {
+	s.Value = &v
+	return s
+}
+
 type DeleteMixResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMixResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMixResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteMixResponse) String() string {
@@ -954,6 +1003,11 @@ func (s DeleteMixResponse) GoString() string {
 
 func (s *DeleteMixResponse) SetHeaders(v map[string]*string) *DeleteMixResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteMixResponse) SetStatusCode(v int32) *DeleteMixResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1003,8 +1057,9 @@ func (s *DeleteSceneResponseBodyResult) SetSceneId(v string) *DeleteSceneRespons
 }
 
 type DeleteSceneResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSceneResponse) String() string {
@@ -1020,15 +1075,20 @@ func (s *DeleteSceneResponse) SetHeaders(v map[string]*string) *DeleteSceneRespo
 	return s
 }
 
+func (s *DeleteSceneResponse) SetStatusCode(v int32) *DeleteSceneResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteSceneResponse) SetBody(v *DeleteSceneResponseBody) *DeleteSceneResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeDataSetMessageResponseBody struct {
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    []*DescribeDataSetMessageResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -1038,6 +1098,11 @@ func (s DescribeDataSetMessageResponseBody) String() string {
 
 func (s DescribeDataSetMessageResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDataSetMessageResponseBody) SetCode(v string) *DescribeDataSetMessageResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DescribeDataSetMessageResponseBody) SetMessage(v string) *DescribeDataSetMessageResponseBody {
@@ -1050,11 +1115,6 @@ func (s *DescribeDataSetMessageResponseBody) SetRequestId(v string) *DescribeDat
 	return s
 }
 
-func (s *DescribeDataSetMessageResponseBody) SetCode(v string) *DescribeDataSetMessageResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DescribeDataSetMessageResponseBody) SetResult(v []*DescribeDataSetMessageResponseBodyResult) *DescribeDataSetMessageResponseBody {
 	s.Result = v
 	return s
@@ -1062,9 +1122,9 @@ func (s *DescribeDataSetMessageResponseBody) SetResult(v []*DescribeDataSetMessa
 
 type DescribeDataSetMessageResponseBodyResult struct {
 	ErrorLevel *string `json:"ErrorLevel,omitempty" xml:"ErrorLevel,omitempty"`
+	ErrorType  *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
 	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Timestamp  *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	ErrorType  *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
 }
 
 func (s DescribeDataSetMessageResponseBodyResult) String() string {
@@ -1080,6 +1140,11 @@ func (s *DescribeDataSetMessageResponseBodyResult) SetErrorLevel(v string) *Desc
 	return s
 }
 
+func (s *DescribeDataSetMessageResponseBodyResult) SetErrorType(v string) *DescribeDataSetMessageResponseBodyResult {
+	s.ErrorType = &v
+	return s
+}
+
 func (s *DescribeDataSetMessageResponseBodyResult) SetMessage(v string) *DescribeDataSetMessageResponseBodyResult {
 	s.Message = &v
 	return s
@@ -1090,14 +1155,10 @@ func (s *DescribeDataSetMessageResponseBodyResult) SetTimestamp(v string) *Descr
 	return s
 }
 
-func (s *DescribeDataSetMessageResponseBodyResult) SetErrorType(v string) *DescribeDataSetMessageResponseBodyResult {
-	s.ErrorType = &v
-	return s
-}
-
 type DescribeDataSetMessageResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDataSetMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDataSetMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDataSetMessageResponse) String() string {
@@ -1113,15 +1174,20 @@ func (s *DescribeDataSetMessageResponse) SetHeaders(v map[string]*string) *Descr
 	return s
 }
 
+func (s *DescribeDataSetMessageResponse) SetStatusCode(v int32) *DescribeDataSetMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeDataSetMessageResponse) SetBody(v *DescribeDataSetMessageResponseBody) *DescribeDataSetMessageResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeDataSetReportResponseBody struct {
+	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *DescribeDataSetReportResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -1131,6 +1197,11 @@ func (s DescribeDataSetReportResponseBody) String() string {
 
 func (s DescribeDataSetReportResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDataSetReportResponseBody) SetCode(v string) *DescribeDataSetReportResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DescribeDataSetReportResponseBody) SetMessage(v string) *DescribeDataSetReportResponseBody {
@@ -1143,19 +1214,14 @@ func (s *DescribeDataSetReportResponseBody) SetRequestId(v string) *DescribeData
 	return s
 }
 
-func (s *DescribeDataSetReportResponseBody) SetCode(v string) *DescribeDataSetReportResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DescribeDataSetReportResponseBody) SetResult(v *DescribeDataSetReportResponseBodyResult) *DescribeDataSetReportResponseBody {
 	s.Result = v
 	return s
 }
 
 type DescribeDataSetReportResponseBodyResult struct {
-	Overall *DescribeDataSetReportResponseBodyResultOverall  `json:"Overall,omitempty" xml:"Overall,omitempty" type:"Struct"`
 	Detail  []*DescribeDataSetReportResponseBodyResultDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	Overall *DescribeDataSetReportResponseBodyResultOverall  `json:"Overall,omitempty" xml:"Overall,omitempty" type:"Struct"`
 }
 
 func (s DescribeDataSetReportResponseBodyResult) String() string {
@@ -1166,110 +1232,27 @@ func (s DescribeDataSetReportResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDataSetReportResponseBodyResult) SetOverall(v *DescribeDataSetReportResponseBodyResultOverall) *DescribeDataSetReportResponseBodyResult {
-	s.Overall = v
-	return s
-}
-
 func (s *DescribeDataSetReportResponseBodyResult) SetDetail(v []*DescribeDataSetReportResponseBodyResultDetail) *DescribeDataSetReportResponseBodyResult {
 	s.Detail = v
 	return s
 }
 
-type DescribeDataSetReportResponseBodyResultOverall struct {
-	UserRepetitiveRate *float32 `json:"UserRepetitiveRate,omitempty" xml:"UserRepetitiveRate,omitempty"`
-	UserUserCount      *int32   `json:"UserUserCount,omitempty" xml:"UserUserCount,omitempty"`
-	BhvCount           *int32   `json:"BhvCount,omitempty" xml:"BhvCount,omitempty"`
-	BhvLegalRate       *float32 `json:"BhvLegalRate,omitempty" xml:"BhvLegalRate,omitempty"`
-	UserCompleteRate   *float32 `json:"UserCompleteRate,omitempty" xml:"UserCompleteRate,omitempty"`
-	UserLoginRate      *float32 `json:"UserLoginRate,omitempty" xml:"UserLoginRate,omitempty"`
-	ItemCompleteRate   *float32 `json:"ItemCompleteRate,omitempty" xml:"ItemCompleteRate,omitempty"`
-	ItemRepetitiveRate *float32 `json:"ItemRepetitiveRate,omitempty" xml:"ItemRepetitiveRate,omitempty"`
-	ItemItemCount      *int32   `json:"ItemItemCount,omitempty" xml:"ItemItemCount,omitempty"`
-	UserLegalRate      *float32 `json:"UserLegalRate,omitempty" xml:"UserLegalRate,omitempty"`
-	ItemLegalRate      *float32 `json:"ItemLegalRate,omitempty" xml:"ItemLegalRate,omitempty"`
-	ItemLoginRate      *float32 `json:"ItemLoginRate,omitempty" xml:"ItemLoginRate,omitempty"`
-}
-
-func (s DescribeDataSetReportResponseBodyResultOverall) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDataSetReportResponseBodyResultOverall) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDataSetReportResponseBodyResultOverall) SetUserRepetitiveRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
-	s.UserRepetitiveRate = &v
-	return s
-}
-
-func (s *DescribeDataSetReportResponseBodyResultOverall) SetUserUserCount(v int32) *DescribeDataSetReportResponseBodyResultOverall {
-	s.UserUserCount = &v
-	return s
-}
-
-func (s *DescribeDataSetReportResponseBodyResultOverall) SetBhvCount(v int32) *DescribeDataSetReportResponseBodyResultOverall {
-	s.BhvCount = &v
-	return s
-}
-
-func (s *DescribeDataSetReportResponseBodyResultOverall) SetBhvLegalRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
-	s.BhvLegalRate = &v
-	return s
-}
-
-func (s *DescribeDataSetReportResponseBodyResultOverall) SetUserCompleteRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
-	s.UserCompleteRate = &v
-	return s
-}
-
-func (s *DescribeDataSetReportResponseBodyResultOverall) SetUserLoginRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
-	s.UserLoginRate = &v
-	return s
-}
-
-func (s *DescribeDataSetReportResponseBodyResultOverall) SetItemCompleteRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
-	s.ItemCompleteRate = &v
-	return s
-}
-
-func (s *DescribeDataSetReportResponseBodyResultOverall) SetItemRepetitiveRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
-	s.ItemRepetitiveRate = &v
-	return s
-}
-
-func (s *DescribeDataSetReportResponseBodyResultOverall) SetItemItemCount(v int32) *DescribeDataSetReportResponseBodyResultOverall {
-	s.ItemItemCount = &v
-	return s
-}
-
-func (s *DescribeDataSetReportResponseBodyResultOverall) SetUserLegalRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
-	s.UserLegalRate = &v
-	return s
-}
-
-func (s *DescribeDataSetReportResponseBodyResultOverall) SetItemLegalRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
-	s.ItemLegalRate = &v
-	return s
-}
-
-func (s *DescribeDataSetReportResponseBodyResultOverall) SetItemLoginRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
-	s.ItemLoginRate = &v
+func (s *DescribeDataSetReportResponseBodyResult) SetOverall(v *DescribeDataSetReportResponseBodyResultOverall) *DescribeDataSetReportResponseBodyResult {
+	s.Overall = v
 	return s
 }
 
 type DescribeDataSetReportResponseBodyResultDetail struct {
-	UvCtr      *float32 `json:"UvCtr,omitempty" xml:"UvCtr,omitempty"`
-	BizDate    *int64   `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	PerUvClick *float32 `json:"PerUvClick,omitempty" xml:"PerUvClick,omitempty"`
-	Pv         *int64   `json:"Pv,omitempty" xml:"Pv,omitempty"`
 	ActiveItem *int64   `json:"ActiveItem,omitempty" xml:"ActiveItem,omitempty"`
+	BizDate    *int64   `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	Click      *int64   `json:"Click,omitempty" xml:"Click,omitempty"`
+	ClickUser  *int64   `json:"ClickUser,omitempty" xml:"ClickUser,omitempty"`
 	Ctr        *float32 `json:"Ctr,omitempty" xml:"Ctr,omitempty"`
 	PerUvBhv   *float32 `json:"PerUvBhv,omitempty" xml:"PerUvBhv,omitempty"`
-	Click      *int64   `json:"Click,omitempty" xml:"Click,omitempty"`
+	PerUvClick *float32 `json:"PerUvClick,omitempty" xml:"PerUvClick,omitempty"`
+	Pv         *int64   `json:"Pv,omitempty" xml:"Pv,omitempty"`
 	Uv         *int64   `json:"Uv,omitempty" xml:"Uv,omitempty"`
-	ClickUser  *int64   `json:"ClickUser,omitempty" xml:"ClickUser,omitempty"`
+	UvCtr      *float32 `json:"UvCtr,omitempty" xml:"UvCtr,omitempty"`
 }
 
 func (s DescribeDataSetReportResponseBodyResultDetail) String() string {
@@ -1280,8 +1263,8 @@ func (s DescribeDataSetReportResponseBodyResultDetail) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDataSetReportResponseBodyResultDetail) SetUvCtr(v float32) *DescribeDataSetReportResponseBodyResultDetail {
-	s.UvCtr = &v
+func (s *DescribeDataSetReportResponseBodyResultDetail) SetActiveItem(v int64) *DescribeDataSetReportResponseBodyResultDetail {
+	s.ActiveItem = &v
 	return s
 }
 
@@ -1290,18 +1273,13 @@ func (s *DescribeDataSetReportResponseBodyResultDetail) SetBizDate(v int64) *Des
 	return s
 }
 
-func (s *DescribeDataSetReportResponseBodyResultDetail) SetPerUvClick(v float32) *DescribeDataSetReportResponseBodyResultDetail {
-	s.PerUvClick = &v
+func (s *DescribeDataSetReportResponseBodyResultDetail) SetClick(v int64) *DescribeDataSetReportResponseBodyResultDetail {
+	s.Click = &v
 	return s
 }
 
-func (s *DescribeDataSetReportResponseBodyResultDetail) SetPv(v int64) *DescribeDataSetReportResponseBodyResultDetail {
-	s.Pv = &v
-	return s
-}
-
-func (s *DescribeDataSetReportResponseBodyResultDetail) SetActiveItem(v int64) *DescribeDataSetReportResponseBodyResultDetail {
-	s.ActiveItem = &v
+func (s *DescribeDataSetReportResponseBodyResultDetail) SetClickUser(v int64) *DescribeDataSetReportResponseBodyResultDetail {
+	s.ClickUser = &v
 	return s
 }
 
@@ -1315,8 +1293,13 @@ func (s *DescribeDataSetReportResponseBodyResultDetail) SetPerUvBhv(v float32) *
 	return s
 }
 
-func (s *DescribeDataSetReportResponseBodyResultDetail) SetClick(v int64) *DescribeDataSetReportResponseBodyResultDetail {
-	s.Click = &v
+func (s *DescribeDataSetReportResponseBodyResultDetail) SetPerUvClick(v float32) *DescribeDataSetReportResponseBodyResultDetail {
+	s.PerUvClick = &v
+	return s
+}
+
+func (s *DescribeDataSetReportResponseBodyResultDetail) SetPv(v int64) *DescribeDataSetReportResponseBodyResultDetail {
+	s.Pv = &v
 	return s
 }
 
@@ -1325,14 +1308,98 @@ func (s *DescribeDataSetReportResponseBodyResultDetail) SetUv(v int64) *Describe
 	return s
 }
 
-func (s *DescribeDataSetReportResponseBodyResultDetail) SetClickUser(v int64) *DescribeDataSetReportResponseBodyResultDetail {
-	s.ClickUser = &v
+func (s *DescribeDataSetReportResponseBodyResultDetail) SetUvCtr(v float32) *DescribeDataSetReportResponseBodyResultDetail {
+	s.UvCtr = &v
+	return s
+}
+
+type DescribeDataSetReportResponseBodyResultOverall struct {
+	BhvCount           *int32   `json:"BhvCount,omitempty" xml:"BhvCount,omitempty"`
+	BhvLegalRate       *float32 `json:"BhvLegalRate,omitempty" xml:"BhvLegalRate,omitempty"`
+	ItemCompleteRate   *float32 `json:"ItemCompleteRate,omitempty" xml:"ItemCompleteRate,omitempty"`
+	ItemItemCount      *int32   `json:"ItemItemCount,omitempty" xml:"ItemItemCount,omitempty"`
+	ItemLegalRate      *float32 `json:"ItemLegalRate,omitempty" xml:"ItemLegalRate,omitempty"`
+	ItemLoginRate      *float32 `json:"ItemLoginRate,omitempty" xml:"ItemLoginRate,omitempty"`
+	ItemRepetitiveRate *float32 `json:"ItemRepetitiveRate,omitempty" xml:"ItemRepetitiveRate,omitempty"`
+	UserCompleteRate   *float32 `json:"UserCompleteRate,omitempty" xml:"UserCompleteRate,omitempty"`
+	UserLegalRate      *float32 `json:"UserLegalRate,omitempty" xml:"UserLegalRate,omitempty"`
+	UserLoginRate      *float32 `json:"UserLoginRate,omitempty" xml:"UserLoginRate,omitempty"`
+	UserRepetitiveRate *float32 `json:"UserRepetitiveRate,omitempty" xml:"UserRepetitiveRate,omitempty"`
+	UserUserCount      *int32   `json:"UserUserCount,omitempty" xml:"UserUserCount,omitempty"`
+}
+
+func (s DescribeDataSetReportResponseBodyResultOverall) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSetReportResponseBodyResultOverall) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSetReportResponseBodyResultOverall) SetBhvCount(v int32) *DescribeDataSetReportResponseBodyResultOverall {
+	s.BhvCount = &v
+	return s
+}
+
+func (s *DescribeDataSetReportResponseBodyResultOverall) SetBhvLegalRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
+	s.BhvLegalRate = &v
+	return s
+}
+
+func (s *DescribeDataSetReportResponseBodyResultOverall) SetItemCompleteRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
+	s.ItemCompleteRate = &v
+	return s
+}
+
+func (s *DescribeDataSetReportResponseBodyResultOverall) SetItemItemCount(v int32) *DescribeDataSetReportResponseBodyResultOverall {
+	s.ItemItemCount = &v
+	return s
+}
+
+func (s *DescribeDataSetReportResponseBodyResultOverall) SetItemLegalRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
+	s.ItemLegalRate = &v
+	return s
+}
+
+func (s *DescribeDataSetReportResponseBodyResultOverall) SetItemLoginRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
+	s.ItemLoginRate = &v
+	return s
+}
+
+func (s *DescribeDataSetReportResponseBodyResultOverall) SetItemRepetitiveRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
+	s.ItemRepetitiveRate = &v
+	return s
+}
+
+func (s *DescribeDataSetReportResponseBodyResultOverall) SetUserCompleteRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
+	s.UserCompleteRate = &v
+	return s
+}
+
+func (s *DescribeDataSetReportResponseBodyResultOverall) SetUserLegalRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
+	s.UserLegalRate = &v
+	return s
+}
+
+func (s *DescribeDataSetReportResponseBodyResultOverall) SetUserLoginRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
+	s.UserLoginRate = &v
+	return s
+}
+
+func (s *DescribeDataSetReportResponseBodyResultOverall) SetUserRepetitiveRate(v float32) *DescribeDataSetReportResponseBodyResultOverall {
+	s.UserRepetitiveRate = &v
+	return s
+}
+
+func (s *DescribeDataSetReportResponseBodyResultOverall) SetUserUserCount(v int32) *DescribeDataSetReportResponseBodyResultOverall {
+	s.UserUserCount = &v
 	return s
 }
 
 type DescribeDataSetReportResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDataSetReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDataSetReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDataSetReportResponse) String() string {
@@ -1348,15 +1415,20 @@ func (s *DescribeDataSetReportResponse) SetHeaders(v map[string]*string) *Descri
 	return s
 }
 
+func (s *DescribeDataSetReportResponse) SetStatusCode(v int32) *DescribeDataSetReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeDataSetReportResponse) SetBody(v *DescribeDataSetReportResponseBody) *DescribeDataSetReportResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeDiversifyResponseBody struct {
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *DescribeDiversifyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -1366,6 +1438,11 @@ func (s DescribeDiversifyResponseBody) String() string {
 
 func (s DescribeDiversifyResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDiversifyResponseBody) SetCode(v string) *DescribeDiversifyResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DescribeDiversifyResponseBody) SetMessage(v string) *DescribeDiversifyResponseBody {
@@ -1378,11 +1455,6 @@ func (s *DescribeDiversifyResponseBody) SetRequestId(v string) *DescribeDiversif
 	return s
 }
 
-func (s *DescribeDiversifyResponseBody) SetCode(v string) *DescribeDiversifyResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DescribeDiversifyResponseBody) SetResult(v *DescribeDiversifyResponseBodyResult) *DescribeDiversifyResponseBody {
 	s.Result = v
 	return s
@@ -1390,8 +1462,8 @@ func (s *DescribeDiversifyResponseBody) SetResult(v *DescribeDiversifyResponseBo
 
 type DescribeDiversifyResponseBodyResult struct {
 	GmtCreate   *string                                       `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name        *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
 	GmtModified *string                                       `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Name        *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
 	Parameter   *DescribeDiversifyResponseBodyResultParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 }
 
@@ -1408,13 +1480,13 @@ func (s *DescribeDiversifyResponseBodyResult) SetGmtCreate(v string) *DescribeDi
 	return s
 }
 
-func (s *DescribeDiversifyResponseBodyResult) SetName(v string) *DescribeDiversifyResponseBodyResult {
-	s.Name = &v
+func (s *DescribeDiversifyResponseBodyResult) SetGmtModified(v string) *DescribeDiversifyResponseBodyResult {
+	s.GmtModified = &v
 	return s
 }
 
-func (s *DescribeDiversifyResponseBodyResult) SetGmtModified(v string) *DescribeDiversifyResponseBodyResult {
-	s.GmtModified = &v
+func (s *DescribeDiversifyResponseBodyResult) SetName(v string) *DescribeDiversifyResponseBodyResult {
+	s.Name = &v
 	return s
 }
 
@@ -1424,8 +1496,8 @@ func (s *DescribeDiversifyResponseBodyResult) SetParameter(v *DescribeDiversifyR
 }
 
 type DescribeDiversifyResponseBodyResultParameter struct {
-	Window        *int32 `json:"Window,omitempty" xml:"Window,omitempty"`
 	CategoryIndex *int32 `json:"CategoryIndex,omitempty" xml:"CategoryIndex,omitempty"`
+	Window        *int32 `json:"Window,omitempty" xml:"Window,omitempty"`
 }
 
 func (s DescribeDiversifyResponseBodyResultParameter) String() string {
@@ -1436,19 +1508,20 @@ func (s DescribeDiversifyResponseBodyResultParameter) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDiversifyResponseBodyResultParameter) SetWindow(v int32) *DescribeDiversifyResponseBodyResultParameter {
-	s.Window = &v
-	return s
-}
-
 func (s *DescribeDiversifyResponseBodyResultParameter) SetCategoryIndex(v int32) *DescribeDiversifyResponseBodyResultParameter {
 	s.CategoryIndex = &v
 	return s
 }
 
+func (s *DescribeDiversifyResponseBodyResultParameter) SetWindow(v int32) *DescribeDiversifyResponseBodyResultParameter {
+	s.Window = &v
+	return s
+}
+
 type DescribeDiversifyResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDiversifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDiversifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDiversifyResponse) String() string {
@@ -1464,15 +1537,20 @@ func (s *DescribeDiversifyResponse) SetHeaders(v map[string]*string) *DescribeDi
 	return s
 }
 
+func (s *DescribeDiversifyResponse) SetStatusCode(v int32) *DescribeDiversifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeDiversifyResponse) SetBody(v *DescribeDiversifyResponseBody) *DescribeDiversifyResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeExposureSettingsResponseBody struct {
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *DescribeExposureSettingsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -1484,6 +1562,11 @@ func (s DescribeExposureSettingsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeExposureSettingsResponseBody) SetCode(v string) *DescribeExposureSettingsResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DescribeExposureSettingsResponseBody) SetMessage(v string) *DescribeExposureSettingsResponseBody {
 	s.Message = &v
 	return s
@@ -1491,11 +1574,6 @@ func (s *DescribeExposureSettingsResponseBody) SetMessage(v string) *DescribeExp
 
 func (s *DescribeExposureSettingsResponseBody) SetRequestId(v string) *DescribeExposureSettingsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeExposureSettingsResponseBody) SetCode(v string) *DescribeExposureSettingsResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -1528,8 +1606,9 @@ func (s *DescribeExposureSettingsResponseBodyResult) SetScenarioBased(v bool) *D
 }
 
 type DescribeExposureSettingsResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeExposureSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeExposureSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeExposureSettingsResponse) String() string {
@@ -1545,15 +1624,20 @@ func (s *DescribeExposureSettingsResponse) SetHeaders(v map[string]*string) *Des
 	return s
 }
 
+func (s *DescribeExposureSettingsResponse) SetStatusCode(v int32) *DescribeExposureSettingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeExposureSettingsResponse) SetBody(v *DescribeExposureSettingsResponseBody) *DescribeExposureSettingsResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeInstanceResponseBody struct {
+	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *DescribeInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -1563,6 +1647,11 @@ func (s DescribeInstanceResponseBody) String() string {
 
 func (s DescribeInstanceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceResponseBody) SetCode(v string) *DescribeInstanceResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DescribeInstanceResponseBody) SetMessage(v string) *DescribeInstanceResponseBody {
@@ -1575,31 +1664,26 @@ func (s *DescribeInstanceResponseBody) SetRequestId(v string) *DescribeInstanceR
 	return s
 }
 
-func (s *DescribeInstanceResponseBody) SetCode(v string) *DescribeInstanceResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DescribeInstanceResponseBody) SetResult(v *DescribeInstanceResponseBodyResult) *DescribeInstanceResponseBody {
 	s.Result = v
 	return s
 }
 
 type DescribeInstanceResponseBodyResult struct {
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	CommodityCode  *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	GmtModified    *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	LockMode       *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	CommodityCode  *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	DataSetVersion *string `json:"DataSetVersion,omitempty" xml:"DataSetVersion,omitempty"`
-	Industry       *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
 	ExpiredTime    *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	GmtCreate      *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified    *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Industry       *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LockMode       *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Scene          *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeInstanceResponseBodyResult) String() string {
@@ -1610,13 +1694,8 @@ func (s DescribeInstanceResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstanceResponseBodyResult) SetStatus(v string) *DescribeInstanceResponseBodyResult {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBodyResult) SetType(v string) *DescribeInstanceResponseBodyResult {
-	s.Type = &v
+func (s *DescribeInstanceResponseBodyResult) SetChargeType(v string) *DescribeInstanceResponseBodyResult {
+	s.ChargeType = &v
 	return s
 }
 
@@ -1625,38 +1704,8 @@ func (s *DescribeInstanceResponseBodyResult) SetCommodityCode(v string) *Describ
 	return s
 }
 
-func (s *DescribeInstanceResponseBodyResult) SetChargeType(v string) *DescribeInstanceResponseBodyResult {
-	s.ChargeType = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBodyResult) SetInstanceId(v string) *DescribeInstanceResponseBodyResult {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBodyResult) SetGmtModified(v string) *DescribeInstanceResponseBodyResult {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBodyResult) SetLockMode(v string) *DescribeInstanceResponseBodyResult {
-	s.LockMode = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBodyResult) SetRegionId(v string) *DescribeInstanceResponseBodyResult {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DescribeInstanceResponseBodyResult) SetDataSetVersion(v string) *DescribeInstanceResponseBodyResult {
 	s.DataSetVersion = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBodyResult) SetIndustry(v string) *DescribeInstanceResponseBodyResult {
-	s.Industry = &v
 	return s
 }
 
@@ -1670,8 +1719,33 @@ func (s *DescribeInstanceResponseBodyResult) SetGmtCreate(v string) *DescribeIns
 	return s
 }
 
+func (s *DescribeInstanceResponseBodyResult) SetGmtModified(v string) *DescribeInstanceResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResult) SetIndustry(v string) *DescribeInstanceResponseBodyResult {
+	s.Industry = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResult) SetInstanceId(v string) *DescribeInstanceResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResult) SetLockMode(v string) *DescribeInstanceResponseBodyResult {
+	s.LockMode = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBodyResult) SetName(v string) *DescribeInstanceResponseBodyResult {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResult) SetRegionId(v string) *DescribeInstanceResponseBodyResult {
+	s.RegionId = &v
 	return s
 }
 
@@ -1680,9 +1754,20 @@ func (s *DescribeInstanceResponseBodyResult) SetScene(v string) *DescribeInstanc
 	return s
 }
 
+func (s *DescribeInstanceResponseBodyResult) SetStatus(v string) *DescribeInstanceResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResult) SetType(v string) *DescribeInstanceResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
 type DescribeInstanceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeInstanceResponse) String() string {
@@ -1698,15 +1783,20 @@ func (s *DescribeInstanceResponse) SetHeaders(v map[string]*string) *DescribeIns
 	return s
 }
 
+func (s *DescribeInstanceResponse) SetStatusCode(v int32) *DescribeInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *DescribeInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeMixResponseBody struct {
+	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *DescribeMixResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -1716,6 +1806,11 @@ func (s DescribeMixResponseBody) String() string {
 
 func (s DescribeMixResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeMixResponseBody) SetCode(v string) *DescribeMixResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DescribeMixResponseBody) SetMessage(v string) *DescribeMixResponseBody {
@@ -1728,11 +1823,6 @@ func (s *DescribeMixResponseBody) SetRequestId(v string) *DescribeMixResponseBod
 	return s
 }
 
-func (s *DescribeMixResponseBody) SetCode(v string) *DescribeMixResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DescribeMixResponseBody) SetResult(v *DescribeMixResponseBodyResult) *DescribeMixResponseBody {
 	s.Result = v
 	return s
@@ -1740,8 +1830,8 @@ func (s *DescribeMixResponseBody) SetResult(v *DescribeMixResponseBodyResult) *D
 
 type DescribeMixResponseBodyResult struct {
 	GmtCreate   *string                                 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name        *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
 	GmtModified *string                                 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Name        *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
 	Parameter   *DescribeMixResponseBodyResultParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 }
 
@@ -1758,13 +1848,13 @@ func (s *DescribeMixResponseBodyResult) SetGmtCreate(v string) *DescribeMixRespo
 	return s
 }
 
-func (s *DescribeMixResponseBodyResult) SetName(v string) *DescribeMixResponseBodyResult {
-	s.Name = &v
+func (s *DescribeMixResponseBodyResult) SetGmtModified(v string) *DescribeMixResponseBodyResult {
+	s.GmtModified = &v
 	return s
 }
 
-func (s *DescribeMixResponseBodyResult) SetGmtModified(v string) *DescribeMixResponseBodyResult {
-	s.GmtModified = &v
+func (s *DescribeMixResponseBodyResult) SetName(v string) *DescribeMixResponseBodyResult {
+	s.Name = &v
 	return s
 }
 
@@ -1791,8 +1881,8 @@ func (s *DescribeMixResponseBodyResultParameter) SetSettings(v []*DescribeMixRes
 }
 
 type DescribeMixResponseBodyResultParameterSettings struct {
-	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
 	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeMixResponseBodyResultParameterSettings) String() string {
@@ -1803,19 +1893,20 @@ func (s DescribeMixResponseBodyResultParameterSettings) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMixResponseBodyResultParameterSettings) SetValue(v int32) *DescribeMixResponseBodyResultParameterSettings {
-	s.Value = &v
-	return s
-}
-
 func (s *DescribeMixResponseBodyResultParameterSettings) SetName(v string) *DescribeMixResponseBodyResultParameterSettings {
 	s.Name = &v
 	return s
 }
 
+func (s *DescribeMixResponseBodyResultParameterSettings) SetValue(v int32) *DescribeMixResponseBodyResultParameterSettings {
+	s.Value = &v
+	return s
+}
+
 type DescribeMixResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMixResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMixResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMixResponse) String() string {
@@ -1831,15 +1922,20 @@ func (s *DescribeMixResponse) SetHeaders(v map[string]*string) *DescribeMixRespo
 	return s
 }
 
+func (s *DescribeMixResponse) SetStatusCode(v int32) *DescribeMixResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeMixResponse) SetBody(v *DescribeMixResponseBody) *DescribeMixResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeQuotaResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *DescribeQuotaResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -1849,6 +1945,11 @@ func (s DescribeQuotaResponseBody) String() string {
 
 func (s DescribeQuotaResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeQuotaResponseBody) SetCode(v string) *DescribeQuotaResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DescribeQuotaResponseBody) SetMessage(v string) *DescribeQuotaResponseBody {
@@ -1861,23 +1962,18 @@ func (s *DescribeQuotaResponseBody) SetRequestId(v string) *DescribeQuotaRespons
 	return s
 }
 
-func (s *DescribeQuotaResponseBody) SetCode(v string) *DescribeQuotaResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DescribeQuotaResponseBody) SetResult(v *DescribeQuotaResponseBodyResult) *DescribeQuotaResponseBody {
 	s.Result = v
 	return s
 }
 
 type DescribeQuotaResponseBodyResult struct {
-	Qps           *int32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	ItemCount     *int64 `json:"ItemCount,omitempty" xml:"ItemCount,omitempty"`
 	CurrentQps    *int32 `json:"CurrentQps,omitempty" xml:"CurrentQps,omitempty"`
+	ItemCount     *int64 `json:"ItemCount,omitempty" xml:"ItemCount,omitempty"`
+	ItemCountUsed *int64 `json:"ItemCountUsed,omitempty" xml:"ItemCountUsed,omitempty"`
+	Qps           *int32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
 	UserCount     *int64 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
 	UserCountUsed *int64 `json:"UserCountUsed,omitempty" xml:"UserCountUsed,omitempty"`
-	ItemCountUsed *int64 `json:"ItemCountUsed,omitempty" xml:"ItemCountUsed,omitempty"`
 }
 
 func (s DescribeQuotaResponseBodyResult) String() string {
@@ -1888,8 +1984,8 @@ func (s DescribeQuotaResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeQuotaResponseBodyResult) SetQps(v int32) *DescribeQuotaResponseBodyResult {
-	s.Qps = &v
+func (s *DescribeQuotaResponseBodyResult) SetCurrentQps(v int32) *DescribeQuotaResponseBodyResult {
+	s.CurrentQps = &v
 	return s
 }
 
@@ -1898,8 +1994,13 @@ func (s *DescribeQuotaResponseBodyResult) SetItemCount(v int64) *DescribeQuotaRe
 	return s
 }
 
-func (s *DescribeQuotaResponseBodyResult) SetCurrentQps(v int32) *DescribeQuotaResponseBodyResult {
-	s.CurrentQps = &v
+func (s *DescribeQuotaResponseBodyResult) SetItemCountUsed(v int64) *DescribeQuotaResponseBodyResult {
+	s.ItemCountUsed = &v
+	return s
+}
+
+func (s *DescribeQuotaResponseBodyResult) SetQps(v int32) *DescribeQuotaResponseBodyResult {
+	s.Qps = &v
 	return s
 }
 
@@ -1913,14 +2014,10 @@ func (s *DescribeQuotaResponseBodyResult) SetUserCountUsed(v int64) *DescribeQuo
 	return s
 }
 
-func (s *DescribeQuotaResponseBodyResult) SetItemCountUsed(v int64) *DescribeQuotaResponseBodyResult {
-	s.ItemCountUsed = &v
-	return s
-}
-
 type DescribeQuotaResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeQuotaResponse) String() string {
@@ -1933,6 +2030,11 @@ func (s DescribeQuotaResponse) GoString() string {
 
 func (s *DescribeQuotaResponse) SetHeaders(v map[string]*string) *DescribeQuotaResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeQuotaResponse) SetStatusCode(v int32) *DescribeQuotaResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1959,9 +2061,9 @@ func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    []*DescribeRegionsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -1971,6 +2073,11 @@ func (s DescribeRegionsResponseBody) String() string {
 
 func (s DescribeRegionsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRegionsResponseBody) SetCode(v string) *DescribeRegionsResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DescribeRegionsResponseBody) SetMessage(v string) *DescribeRegionsResponseBody {
@@ -1983,22 +2090,17 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 	return s
 }
 
-func (s *DescribeRegionsResponseBody) SetCode(v string) *DescribeRegionsResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DescribeRegionsResponseBody) SetResult(v []*DescribeRegionsResponseBodyResult) *DescribeRegionsResponseBody {
 	s.Result = v
 	return s
 }
 
 type DescribeRegionsResponseBodyResult struct {
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	ConsoleUrl *string `json:"ConsoleUrl,omitempty" xml:"ConsoleUrl,omitempty"`
-	LocalName  *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	LocalName  *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyResult) String() string {
@@ -2009,18 +2111,8 @@ func (s DescribeRegionsResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBodyResult) SetStatus(v string) *DescribeRegionsResponseBodyResult {
-	s.Status = &v
-	return s
-}
-
 func (s *DescribeRegionsResponseBodyResult) SetConsoleUrl(v string) *DescribeRegionsResponseBodyResult {
 	s.ConsoleUrl = &v
-	return s
-}
-
-func (s *DescribeRegionsResponseBodyResult) SetLocalName(v string) *DescribeRegionsResponseBodyResult {
-	s.LocalName = &v
 	return s
 }
 
@@ -2029,14 +2121,25 @@ func (s *DescribeRegionsResponseBodyResult) SetEndpoint(v string) *DescribeRegio
 	return s
 }
 
+func (s *DescribeRegionsResponseBodyResult) SetLocalName(v string) *DescribeRegionsResponseBodyResult {
+	s.LocalName = &v
+	return s
+}
+
 func (s *DescribeRegionsResponseBodyResult) SetRegionId(v string) *DescribeRegionsResponseBodyResult {
 	s.RegionId = &v
 	return s
 }
 
+func (s *DescribeRegionsResponseBodyResult) SetStatus(v string) *DescribeRegionsResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
 type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -2052,14 +2155,19 @@ func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegi
 	return s
 }
 
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeRuleRequest struct {
-	SceneId  *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	SceneId  *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s DescribeRuleRequest) String() string {
@@ -2070,13 +2178,13 @@ func (s DescribeRuleRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRuleRequest) SetSceneId(v string) *DescribeRuleRequest {
-	s.SceneId = &v
+func (s *DescribeRuleRequest) SetRuleType(v string) *DescribeRuleRequest {
+	s.RuleType = &v
 	return s
 }
 
-func (s *DescribeRuleRequest) SetRuleType(v string) *DescribeRuleRequest {
-	s.RuleType = &v
+func (s *DescribeRuleRequest) SetSceneId(v string) *DescribeRuleRequest {
+	s.SceneId = &v
 	return s
 }
 
@@ -2104,10 +2212,10 @@ func (s *DescribeRuleResponseBody) SetResult(v *DescribeRuleResponseBodyResult) 
 }
 
 type DescribeRuleResponseBodyResult struct {
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	RuleId      *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeRuleResponseBodyResult) String() string {
@@ -2116,11 +2224,6 @@ func (s DescribeRuleResponseBodyResult) String() string {
 
 func (s DescribeRuleResponseBodyResult) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeRuleResponseBodyResult) SetStatus(v string) *DescribeRuleResponseBodyResult {
-	s.Status = &v
-	return s
 }
 
 func (s *DescribeRuleResponseBodyResult) SetGmtCreate(v string) *DescribeRuleResponseBodyResult {
@@ -2138,9 +2241,15 @@ func (s *DescribeRuleResponseBodyResult) SetRuleId(v string) *DescribeRuleRespon
 	return s
 }
 
+func (s *DescribeRuleResponseBodyResult) SetStatus(v string) *DescribeRuleResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
 type DescribeRuleResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRuleResponse) String() string {
@@ -2153,6 +2262,11 @@ func (s DescribeRuleResponse) GoString() string {
 
 func (s *DescribeRuleResponse) SetHeaders(v map[string]*string) *DescribeRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRuleResponse) SetStatusCode(v int32) *DescribeRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2185,10 +2299,10 @@ func (s *DescribeSceneResponseBody) SetResult(v *DescribeSceneResponseBodyResult
 }
 
 type DescribeSceneResponseBodyResult struct {
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeSceneResponseBodyResult) String() string {
@@ -2199,18 +2313,8 @@ func (s DescribeSceneResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSceneResponseBodyResult) SetStatus(v string) *DescribeSceneResponseBodyResult {
-	s.Status = &v
-	return s
-}
-
 func (s *DescribeSceneResponseBodyResult) SetGmtCreate(v string) *DescribeSceneResponseBodyResult {
 	s.GmtCreate = &v
-	return s
-}
-
-func (s *DescribeSceneResponseBodyResult) SetSceneId(v string) *DescribeSceneResponseBodyResult {
-	s.SceneId = &v
 	return s
 }
 
@@ -2219,9 +2323,20 @@ func (s *DescribeSceneResponseBodyResult) SetGmtModified(v string) *DescribeScen
 	return s
 }
 
+func (s *DescribeSceneResponseBodyResult) SetSceneId(v string) *DescribeSceneResponseBodyResult {
+	s.SceneId = &v
+	return s
+}
+
+func (s *DescribeSceneResponseBodyResult) SetStatus(v string) *DescribeSceneResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
 type DescribeSceneResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSceneResponse) String() string {
@@ -2234,6 +2349,11 @@ func (s DescribeSceneResponse) GoString() string {
 
 func (s *DescribeSceneResponse) SetHeaders(v map[string]*string) *DescribeSceneResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeSceneResponse) SetStatusCode(v int32) *DescribeSceneResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2283,8 +2403,9 @@ func (s *DescribeSceneThroughputResponseBodyResult) SetPvCount(v int64) *Describ
 }
 
 type DescribeSceneThroughputResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSceneThroughputResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSceneThroughputResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSceneThroughputResponse) String() string {
@@ -2300,16 +2421,21 @@ func (s *DescribeSceneThroughputResponse) SetHeaders(v map[string]*string) *Desc
 	return s
 }
 
+func (s *DescribeSceneThroughputResponse) SetStatusCode(v int32) *DescribeSceneThroughputResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeSceneThroughputResponse) SetBody(v *DescribeSceneThroughputResponseBody) *DescribeSceneThroughputResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeSyncReportDetailRequest struct {
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	LevelType *string `json:"LevelType,omitempty" xml:"LevelType,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeSyncReportDetailRequest) String() string {
@@ -2320,18 +2446,8 @@ func (s DescribeSyncReportDetailRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSyncReportDetailRequest) SetStartTime(v int64) *DescribeSyncReportDetailRequest {
-	s.StartTime = &v
-	return s
-}
-
 func (s *DescribeSyncReportDetailRequest) SetEndTime(v int64) *DescribeSyncReportDetailRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeSyncReportDetailRequest) SetType(v string) *DescribeSyncReportDetailRequest {
-	s.Type = &v
 	return s
 }
 
@@ -2340,10 +2456,20 @@ func (s *DescribeSyncReportDetailRequest) SetLevelType(v string) *DescribeSyncRe
 	return s
 }
 
+func (s *DescribeSyncReportDetailRequest) SetStartTime(v int64) *DescribeSyncReportDetailRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSyncReportDetailRequest) SetType(v string) *DescribeSyncReportDetailRequest {
+	s.Type = &v
+	return s
+}
+
 type DescribeSyncReportDetailResponseBody struct {
+	Code      *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    []*DescribeSyncReportDetailResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -2353,6 +2479,11 @@ func (s DescribeSyncReportDetailResponseBody) String() string {
 
 func (s DescribeSyncReportDetailResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSyncReportDetailResponseBody) SetCode(v string) *DescribeSyncReportDetailResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DescribeSyncReportDetailResponseBody) SetMessage(v string) *DescribeSyncReportDetailResponseBody {
@@ -2365,23 +2496,18 @@ func (s *DescribeSyncReportDetailResponseBody) SetRequestId(v string) *DescribeS
 	return s
 }
 
-func (s *DescribeSyncReportDetailResponseBody) SetCode(v string) *DescribeSyncReportDetailResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DescribeSyncReportDetailResponseBody) SetResult(v []*DescribeSyncReportDetailResponseBodyResult) *DescribeSyncReportDetailResponseBody {
 	s.Result = v
 	return s
 }
 
 type DescribeSyncReportDetailResponseBodyResult struct {
-	Type           *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-	ErrorCount     *int32                                                   `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
-	SampleDisplay  *bool                                                    `json:"SampleDisplay,omitempty" xml:"SampleDisplay,omitempty"`
-	HistoryData    []*DescribeSyncReportDetailResponseBodyResultHistoryData `json:"HistoryData,omitempty" xml:"HistoryData,omitempty" type:"Repeated"`
 	DefaultDisplay *bool                                                    `json:"DefaultDisplay,omitempty" xml:"DefaultDisplay,omitempty"`
+	ErrorCount     *int32                                                   `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
 	ErrorPercent   *float32                                                 `json:"ErrorPercent,omitempty" xml:"ErrorPercent,omitempty"`
+	HistoryData    []*DescribeSyncReportDetailResponseBodyResultHistoryData `json:"HistoryData,omitempty" xml:"HistoryData,omitempty" type:"Repeated"`
+	SampleDisplay  *bool                                                    `json:"SampleDisplay,omitempty" xml:"SampleDisplay,omitempty"`
+	Type           *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeSyncReportDetailResponseBodyResult) String() string {
@@ -2392,8 +2518,8 @@ func (s DescribeSyncReportDetailResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSyncReportDetailResponseBodyResult) SetType(v string) *DescribeSyncReportDetailResponseBodyResult {
-	s.Type = &v
+func (s *DescribeSyncReportDetailResponseBodyResult) SetDefaultDisplay(v bool) *DescribeSyncReportDetailResponseBodyResult {
+	s.DefaultDisplay = &v
 	return s
 }
 
@@ -2402,8 +2528,8 @@ func (s *DescribeSyncReportDetailResponseBodyResult) SetErrorCount(v int32) *Des
 	return s
 }
 
-func (s *DescribeSyncReportDetailResponseBodyResult) SetSampleDisplay(v bool) *DescribeSyncReportDetailResponseBodyResult {
-	s.SampleDisplay = &v
+func (s *DescribeSyncReportDetailResponseBodyResult) SetErrorPercent(v float32) *DescribeSyncReportDetailResponseBodyResult {
+	s.ErrorPercent = &v
 	return s
 }
 
@@ -2412,20 +2538,20 @@ func (s *DescribeSyncReportDetailResponseBodyResult) SetHistoryData(v []*Describ
 	return s
 }
 
-func (s *DescribeSyncReportDetailResponseBodyResult) SetDefaultDisplay(v bool) *DescribeSyncReportDetailResponseBodyResult {
-	s.DefaultDisplay = &v
+func (s *DescribeSyncReportDetailResponseBodyResult) SetSampleDisplay(v bool) *DescribeSyncReportDetailResponseBodyResult {
+	s.SampleDisplay = &v
 	return s
 }
 
-func (s *DescribeSyncReportDetailResponseBodyResult) SetErrorPercent(v float32) *DescribeSyncReportDetailResponseBodyResult {
-	s.ErrorPercent = &v
+func (s *DescribeSyncReportDetailResponseBodyResult) SetType(v string) *DescribeSyncReportDetailResponseBodyResult {
+	s.Type = &v
 	return s
 }
 
 type DescribeSyncReportDetailResponseBodyResultHistoryData struct {
 	EndTime      *int64   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime    *int64   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	ErrorPercent *float32 `json:"ErrorPercent,omitempty" xml:"ErrorPercent,omitempty"`
+	StartTime    *int64   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeSyncReportDetailResponseBodyResultHistoryData) String() string {
@@ -2441,19 +2567,20 @@ func (s *DescribeSyncReportDetailResponseBodyResultHistoryData) SetEndTime(v int
 	return s
 }
 
-func (s *DescribeSyncReportDetailResponseBodyResultHistoryData) SetStartTime(v int64) *DescribeSyncReportDetailResponseBodyResultHistoryData {
-	s.StartTime = &v
-	return s
-}
-
 func (s *DescribeSyncReportDetailResponseBodyResultHistoryData) SetErrorPercent(v float32) *DescribeSyncReportDetailResponseBodyResultHistoryData {
 	s.ErrorPercent = &v
 	return s
 }
 
+func (s *DescribeSyncReportDetailResponseBodyResultHistoryData) SetStartTime(v int64) *DescribeSyncReportDetailResponseBodyResultHistoryData {
+	s.StartTime = &v
+	return s
+}
+
 type DescribeSyncReportDetailResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSyncReportDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSyncReportDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSyncReportDetailResponse) String() string {
@@ -2469,17 +2596,22 @@ func (s *DescribeSyncReportDetailResponse) SetHeaders(v map[string]*string) *Des
 	return s
 }
 
+func (s *DescribeSyncReportDetailResponse) SetStatusCode(v int32) *DescribeSyncReportDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeSyncReportDetailResponse) SetBody(v *DescribeSyncReportDetailResponseBody) *DescribeSyncReportDetailResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeSyncReportOutliersRequest struct {
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	LevelType *string `json:"LevelType,omitempty" xml:"LevelType,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeSyncReportOutliersRequest) String() string {
@@ -2490,8 +2622,8 @@ func (s DescribeSyncReportOutliersRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSyncReportOutliersRequest) SetStartTime(v int64) *DescribeSyncReportOutliersRequest {
-	s.StartTime = &v
+func (s *DescribeSyncReportOutliersRequest) SetEndTime(v int64) *DescribeSyncReportOutliersRequest {
+	s.EndTime = &v
 	return s
 }
 
@@ -2500,25 +2632,25 @@ func (s *DescribeSyncReportOutliersRequest) SetKey(v string) *DescribeSyncReport
 	return s
 }
 
-func (s *DescribeSyncReportOutliersRequest) SetType(v string) *DescribeSyncReportOutliersRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeSyncReportOutliersRequest) SetEndTime(v int64) *DescribeSyncReportOutliersRequest {
-	s.EndTime = &v
-	return s
-}
-
 func (s *DescribeSyncReportOutliersRequest) SetLevelType(v string) *DescribeSyncReportOutliersRequest {
 	s.LevelType = &v
 	return s
 }
 
+func (s *DescribeSyncReportOutliersRequest) SetStartTime(v int64) *DescribeSyncReportOutliersRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSyncReportOutliersRequest) SetType(v string) *DescribeSyncReportOutliersRequest {
+	s.Type = &v
+	return s
+}
+
 type DescribeSyncReportOutliersResponseBody struct {
+	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -2528,6 +2660,11 @@ func (s DescribeSyncReportOutliersResponseBody) String() string {
 
 func (s DescribeSyncReportOutliersResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSyncReportOutliersResponseBody) SetCode(v string) *DescribeSyncReportOutliersResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *DescribeSyncReportOutliersResponseBody) SetMessage(v string) *DescribeSyncReportOutliersResponseBody {
@@ -2540,19 +2677,15 @@ func (s *DescribeSyncReportOutliersResponseBody) SetRequestId(v string) *Describ
 	return s
 }
 
-func (s *DescribeSyncReportOutliersResponseBody) SetCode(v string) *DescribeSyncReportOutliersResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DescribeSyncReportOutliersResponseBody) SetResult(v map[string]interface{}) *DescribeSyncReportOutliersResponseBody {
 	s.Result = v
 	return s
 }
 
 type DescribeSyncReportOutliersResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSyncReportOutliersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSyncReportOutliersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSyncReportOutliersResponse) String() string {
@@ -2568,15 +2701,20 @@ func (s *DescribeSyncReportOutliersResponse) SetHeaders(v map[string]*string) *D
 	return s
 }
 
+func (s *DescribeSyncReportOutliersResponse) SetStatusCode(v int32) *DescribeSyncReportOutliersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeSyncReportOutliersResponse) SetBody(v *DescribeSyncReportOutliersResponseBody) *DescribeSyncReportOutliersResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeUserMetricsRequest struct {
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeUserMetricsRequest) String() string {
@@ -2585,11 +2723,6 @@ func (s DescribeUserMetricsRequest) String() string {
 
 func (s DescribeUserMetricsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeUserMetricsRequest) SetStartTime(v int64) *DescribeUserMetricsRequest {
-	s.StartTime = &v
-	return s
 }
 
 func (s *DescribeUserMetricsRequest) SetEndTime(v int64) *DescribeUserMetricsRequest {
@@ -2602,10 +2735,15 @@ func (s *DescribeUserMetricsRequest) SetMetricType(v string) *DescribeUserMetric
 	return s
 }
 
+func (s *DescribeUserMetricsRequest) SetStartTime(v int64) *DescribeUserMetricsRequest {
+	s.StartTime = &v
+	return s
+}
+
 type DescribeUserMetricsResponseBody struct {
+	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    []*DescribeUserMetricsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -2617,6 +2755,11 @@ func (s DescribeUserMetricsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeUserMetricsResponseBody) SetCode(v string) *DescribeUserMetricsResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DescribeUserMetricsResponseBody) SetMessage(v string) *DescribeUserMetricsResponseBody {
 	s.Message = &v
 	return s
@@ -2624,11 +2767,6 @@ func (s *DescribeUserMetricsResponseBody) SetMessage(v string) *DescribeUserMetr
 
 func (s *DescribeUserMetricsResponseBody) SetRequestId(v string) *DescribeUserMetricsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeUserMetricsResponseBody) SetCode(v string) *DescribeUserMetricsResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -2690,8 +2828,9 @@ func (s *DescribeUserMetricsResponseBodyResultDataPoints) SetVal(v float32) *Des
 }
 
 type DescribeUserMetricsResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUserMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUserMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeUserMetricsResponse) String() string {
@@ -2707,15 +2846,20 @@ func (s *DescribeUserMetricsResponse) SetHeaders(v map[string]*string) *Describe
 	return s
 }
 
+func (s *DescribeUserMetricsResponse) SetStatusCode(v int32) *DescribeUserMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeUserMetricsResponse) SetBody(v *DescribeUserMetricsResponseBody) *DescribeUserMetricsResponse {
 	s.Body = v
 	return s
 }
 
 type DowngradeInstanceResponseBody struct {
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *DowngradeInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -2727,6 +2871,11 @@ func (s DowngradeInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DowngradeInstanceResponseBody) SetCode(v string) *DowngradeInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DowngradeInstanceResponseBody) SetMessage(v string) *DowngradeInstanceResponseBody {
 	s.Message = &v
 	return s
@@ -2734,11 +2883,6 @@ func (s *DowngradeInstanceResponseBody) SetMessage(v string) *DowngradeInstanceR
 
 func (s *DowngradeInstanceResponseBody) SetRequestId(v string) *DowngradeInstanceResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DowngradeInstanceResponseBody) SetCode(v string) *DowngradeInstanceResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -2765,8 +2909,9 @@ func (s *DowngradeInstanceResponseBodyResult) SetInstanceId(v string) *Downgrade
 }
 
 type DowngradeInstanceResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DowngradeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DowngradeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DowngradeInstanceResponse) String() string {
@@ -2782,18 +2927,23 @@ func (s *DowngradeInstanceResponse) SetHeaders(v map[string]*string) *DowngradeI
 	return s
 }
 
+func (s *DowngradeInstanceResponse) SetStatusCode(v int32) *DowngradeInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DowngradeInstanceResponse) SetBody(v *DowngradeInstanceResponseBody) *DowngradeInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type ListDashboardRequest struct {
-	StartDate *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	EndDate   *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	SceneId   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	Page      *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	SceneId   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	Size      *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	StartDate *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s ListDashboardRequest) String() string {
@@ -2804,23 +2954,8 @@ func (s ListDashboardRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListDashboardRequest) SetStartDate(v int64) *ListDashboardRequest {
-	s.StartDate = &v
-	return s
-}
-
 func (s *ListDashboardRequest) SetEndDate(v int64) *ListDashboardRequest {
 	s.EndDate = &v
-	return s
-}
-
-func (s *ListDashboardRequest) SetTraceId(v string) *ListDashboardRequest {
-	s.TraceId = &v
-	return s
-}
-
-func (s *ListDashboardRequest) SetSceneId(v string) *ListDashboardRequest {
-	s.SceneId = &v
 	return s
 }
 
@@ -2829,15 +2964,30 @@ func (s *ListDashboardRequest) SetPage(v int32) *ListDashboardRequest {
 	return s
 }
 
+func (s *ListDashboardRequest) SetSceneId(v string) *ListDashboardRequest {
+	s.SceneId = &v
+	return s
+}
+
 func (s *ListDashboardRequest) SetSize(v int32) *ListDashboardRequest {
 	s.Size = &v
 	return s
 }
 
+func (s *ListDashboardRequest) SetStartDate(v int64) *ListDashboardRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *ListDashboardRequest) SetTraceId(v string) *ListDashboardRequest {
+	s.TraceId = &v
+	return s
+}
+
 type ListDashboardResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *ListDashboardResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -2849,6 +2999,11 @@ func (s ListDashboardResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListDashboardResponseBody) SetCode(v string) *ListDashboardResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *ListDashboardResponseBody) SetMessage(v string) *ListDashboardResponseBody {
 	s.Message = &v
 	return s
@@ -2856,11 +3011,6 @@ func (s *ListDashboardResponseBody) SetMessage(v string) *ListDashboardResponseB
 
 func (s *ListDashboardResponseBody) SetRequestId(v string) *ListDashboardResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListDashboardResponseBody) SetCode(v string) *ListDashboardResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -2893,18 +3043,18 @@ func (s *ListDashboardResponseBodyResult) SetNum(v int32) *ListDashboardResponse
 }
 
 type ListDashboardResponseBodyResultList struct {
-	UvCtr      *float32 `json:"UvCtr,omitempty" xml:"UvCtr,omitempty"`
-	BizDate    *int64   `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
 	ActiveItem *int64   `json:"ActiveItem,omitempty" xml:"ActiveItem,omitempty"`
-	PerUvBhv   *float32 `json:"PerUvBhv,omitempty" xml:"PerUvBhv,omitempty"`
-	Uv         *int64   `json:"Uv,omitempty" xml:"Uv,omitempty"`
-	PerUvClick *float32 `json:"PerUvClick,omitempty" xml:"PerUvClick,omitempty"`
-	Pv         *int64   `json:"Pv,omitempty" xml:"Pv,omitempty"`
-	Ctr        *float32 `json:"Ctr,omitempty" xml:"Ctr,omitempty"`
-	SceneId    *string  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	TraceId    *string  `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	BizDate    *int64   `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
 	Click      *int64   `json:"Click,omitempty" xml:"Click,omitempty"`
 	ClickUser  *int64   `json:"ClickUser,omitempty" xml:"ClickUser,omitempty"`
+	Ctr        *float32 `json:"Ctr,omitempty" xml:"Ctr,omitempty"`
+	PerUvBhv   *float32 `json:"PerUvBhv,omitempty" xml:"PerUvBhv,omitempty"`
+	PerUvClick *float32 `json:"PerUvClick,omitempty" xml:"PerUvClick,omitempty"`
+	Pv         *int64   `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	SceneId    *string  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	TraceId    *string  `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	Uv         *int64   `json:"Uv,omitempty" xml:"Uv,omitempty"`
+	UvCtr      *float32 `json:"UvCtr,omitempty" xml:"UvCtr,omitempty"`
 }
 
 func (s ListDashboardResponseBodyResultList) String() string {
@@ -2915,53 +3065,13 @@ func (s ListDashboardResponseBodyResultList) GoString() string {
 	return s.String()
 }
 
-func (s *ListDashboardResponseBodyResultList) SetUvCtr(v float32) *ListDashboardResponseBodyResultList {
-	s.UvCtr = &v
-	return s
-}
-
-func (s *ListDashboardResponseBodyResultList) SetBizDate(v int64) *ListDashboardResponseBodyResultList {
-	s.BizDate = &v
-	return s
-}
-
 func (s *ListDashboardResponseBodyResultList) SetActiveItem(v int64) *ListDashboardResponseBodyResultList {
 	s.ActiveItem = &v
 	return s
 }
 
-func (s *ListDashboardResponseBodyResultList) SetPerUvBhv(v float32) *ListDashboardResponseBodyResultList {
-	s.PerUvBhv = &v
-	return s
-}
-
-func (s *ListDashboardResponseBodyResultList) SetUv(v int64) *ListDashboardResponseBodyResultList {
-	s.Uv = &v
-	return s
-}
-
-func (s *ListDashboardResponseBodyResultList) SetPerUvClick(v float32) *ListDashboardResponseBodyResultList {
-	s.PerUvClick = &v
-	return s
-}
-
-func (s *ListDashboardResponseBodyResultList) SetPv(v int64) *ListDashboardResponseBodyResultList {
-	s.Pv = &v
-	return s
-}
-
-func (s *ListDashboardResponseBodyResultList) SetCtr(v float32) *ListDashboardResponseBodyResultList {
-	s.Ctr = &v
-	return s
-}
-
-func (s *ListDashboardResponseBodyResultList) SetSceneId(v string) *ListDashboardResponseBodyResultList {
-	s.SceneId = &v
-	return s
-}
-
-func (s *ListDashboardResponseBodyResultList) SetTraceId(v string) *ListDashboardResponseBodyResultList {
-	s.TraceId = &v
+func (s *ListDashboardResponseBodyResultList) SetBizDate(v int64) *ListDashboardResponseBodyResultList {
+	s.BizDate = &v
 	return s
 }
 
@@ -2975,9 +3085,50 @@ func (s *ListDashboardResponseBodyResultList) SetClickUser(v int64) *ListDashboa
 	return s
 }
 
+func (s *ListDashboardResponseBodyResultList) SetCtr(v float32) *ListDashboardResponseBodyResultList {
+	s.Ctr = &v
+	return s
+}
+
+func (s *ListDashboardResponseBodyResultList) SetPerUvBhv(v float32) *ListDashboardResponseBodyResultList {
+	s.PerUvBhv = &v
+	return s
+}
+
+func (s *ListDashboardResponseBodyResultList) SetPerUvClick(v float32) *ListDashboardResponseBodyResultList {
+	s.PerUvClick = &v
+	return s
+}
+
+func (s *ListDashboardResponseBodyResultList) SetPv(v int64) *ListDashboardResponseBodyResultList {
+	s.Pv = &v
+	return s
+}
+
+func (s *ListDashboardResponseBodyResultList) SetSceneId(v string) *ListDashboardResponseBodyResultList {
+	s.SceneId = &v
+	return s
+}
+
+func (s *ListDashboardResponseBodyResultList) SetTraceId(v string) *ListDashboardResponseBodyResultList {
+	s.TraceId = &v
+	return s
+}
+
+func (s *ListDashboardResponseBodyResultList) SetUv(v int64) *ListDashboardResponseBodyResultList {
+	s.Uv = &v
+	return s
+}
+
+func (s *ListDashboardResponseBodyResultList) SetUvCtr(v float32) *ListDashboardResponseBodyResultList {
+	s.UvCtr = &v
+	return s
+}
+
 type ListDashboardResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDashboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDashboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDashboardResponse) String() string {
@@ -2993,17 +3144,22 @@ func (s *ListDashboardResponse) SetHeaders(v map[string]*string) *ListDashboardR
 	return s
 }
 
+func (s *ListDashboardResponse) SetStatusCode(v int32) *ListDashboardResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDashboardResponse) SetBody(v *ListDashboardResponseBody) *ListDashboardResponse {
 	s.Body = v
 	return s
 }
 
 type ListDashboardDetailsRequest struct {
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	TraceIds   *string `json:"TraceIds,omitempty" xml:"TraceIds,omitempty"`
-	SceneIds   *string `json:"SceneIds,omitempty" xml:"SceneIds,omitempty"`
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	SceneIds   *string `json:"SceneIds,omitempty" xml:"SceneIds,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TraceIds   *string `json:"TraceIds,omitempty" xml:"TraceIds,omitempty"`
 }
 
 func (s ListDashboardDetailsRequest) String() string {
@@ -3014,18 +3170,13 @@ func (s ListDashboardDetailsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListDashboardDetailsRequest) SetStartTime(v int64) *ListDashboardDetailsRequest {
-	s.StartTime = &v
-	return s
-}
-
 func (s *ListDashboardDetailsRequest) SetEndTime(v int64) *ListDashboardDetailsRequest {
 	s.EndTime = &v
 	return s
 }
 
-func (s *ListDashboardDetailsRequest) SetTraceIds(v string) *ListDashboardDetailsRequest {
-	s.TraceIds = &v
+func (s *ListDashboardDetailsRequest) SetMetricType(v string) *ListDashboardDetailsRequest {
+	s.MetricType = &v
 	return s
 }
 
@@ -3034,8 +3185,13 @@ func (s *ListDashboardDetailsRequest) SetSceneIds(v string) *ListDashboardDetail
 	return s
 }
 
-func (s *ListDashboardDetailsRequest) SetMetricType(v string) *ListDashboardDetailsRequest {
-	s.MetricType = &v
+func (s *ListDashboardDetailsRequest) SetStartTime(v int64) *ListDashboardDetailsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListDashboardDetailsRequest) SetTraceIds(v string) *ListDashboardDetailsRequest {
+	s.TraceIds = &v
 	return s
 }
 
@@ -3092,8 +3248,8 @@ func (s *ListDashboardDetailsResponseBodyResult) SetTraceId(v string) *ListDashb
 }
 
 type ListDashboardDetailsResponseBodyResultMetricRes struct {
-	Total  map[string]interface{} `json:"Total,omitempty" xml:"Total,omitempty"`
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Total  map[string]interface{} `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListDashboardDetailsResponseBodyResultMetricRes) String() string {
@@ -3104,19 +3260,20 @@ func (s ListDashboardDetailsResponseBodyResultMetricRes) GoString() string {
 	return s.String()
 }
 
-func (s *ListDashboardDetailsResponseBodyResultMetricRes) SetTotal(v map[string]interface{}) *ListDashboardDetailsResponseBodyResultMetricRes {
-	s.Total = v
-	return s
-}
-
 func (s *ListDashboardDetailsResponseBodyResultMetricRes) SetDetail(v map[string]interface{}) *ListDashboardDetailsResponseBodyResultMetricRes {
 	s.Detail = v
 	return s
 }
 
+func (s *ListDashboardDetailsResponseBodyResultMetricRes) SetTotal(v map[string]interface{}) *ListDashboardDetailsResponseBodyResultMetricRes {
+	s.Total = v
+	return s
+}
+
 type ListDashboardDetailsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDashboardDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDashboardDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDashboardDetailsResponse) String() string {
@@ -3132,17 +3289,22 @@ func (s *ListDashboardDetailsResponse) SetHeaders(v map[string]*string) *ListDas
 	return s
 }
 
+func (s *ListDashboardDetailsResponse) SetStatusCode(v int32) *ListDashboardDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDashboardDetailsResponse) SetBody(v *ListDashboardDetailsResponseBody) *ListDashboardDetailsResponse {
 	s.Body = v
 	return s
 }
 
 type ListDashboardDetailsFlowsRequest struct {
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	TraceIds   *string `json:"TraceIds,omitempty" xml:"TraceIds,omitempty"`
-	SceneIds   *string `json:"SceneIds,omitempty" xml:"SceneIds,omitempty"`
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	SceneIds   *string `json:"SceneIds,omitempty" xml:"SceneIds,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TraceIds   *string `json:"TraceIds,omitempty" xml:"TraceIds,omitempty"`
 }
 
 func (s ListDashboardDetailsFlowsRequest) String() string {
@@ -3153,18 +3315,13 @@ func (s ListDashboardDetailsFlowsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListDashboardDetailsFlowsRequest) SetStartTime(v int64) *ListDashboardDetailsFlowsRequest {
-	s.StartTime = &v
-	return s
-}
-
 func (s *ListDashboardDetailsFlowsRequest) SetEndTime(v int64) *ListDashboardDetailsFlowsRequest {
 	s.EndTime = &v
 	return s
 }
 
-func (s *ListDashboardDetailsFlowsRequest) SetTraceIds(v string) *ListDashboardDetailsFlowsRequest {
-	s.TraceIds = &v
+func (s *ListDashboardDetailsFlowsRequest) SetMetricType(v string) *ListDashboardDetailsFlowsRequest {
+	s.MetricType = &v
 	return s
 }
 
@@ -3173,8 +3330,13 @@ func (s *ListDashboardDetailsFlowsRequest) SetSceneIds(v string) *ListDashboardD
 	return s
 }
 
-func (s *ListDashboardDetailsFlowsRequest) SetMetricType(v string) *ListDashboardDetailsFlowsRequest {
-	s.MetricType = &v
+func (s *ListDashboardDetailsFlowsRequest) SetStartTime(v int64) *ListDashboardDetailsFlowsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListDashboardDetailsFlowsRequest) SetTraceIds(v string) *ListDashboardDetailsFlowsRequest {
+	s.TraceIds = &v
 	return s
 }
 
@@ -3254,8 +3416,9 @@ func (s *ListDashboardDetailsFlowsResponseBodyResultMetricData) SetTraceId(v str
 }
 
 type ListDashboardDetailsFlowsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDashboardDetailsFlowsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDashboardDetailsFlowsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDashboardDetailsFlowsResponse) String() string {
@@ -3271,15 +3434,20 @@ func (s *ListDashboardDetailsFlowsResponse) SetHeaders(v map[string]*string) *Li
 	return s
 }
 
+func (s *ListDashboardDetailsFlowsResponse) SetStatusCode(v int32) *ListDashboardDetailsFlowsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDashboardDetailsFlowsResponse) SetBody(v *ListDashboardDetailsFlowsResponseBody) *ListDashboardDetailsFlowsResponse {
 	s.Body = v
 	return s
 }
 
 type ListDashboardMetricsRequest struct {
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListDashboardMetricsRequest) String() string {
@@ -3290,11 +3458,6 @@ func (s ListDashboardMetricsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListDashboardMetricsRequest) SetStartTime(v int64) *ListDashboardMetricsRequest {
-	s.StartTime = &v
-	return s
-}
-
 func (s *ListDashboardMetricsRequest) SetEndTime(v int64) *ListDashboardMetricsRequest {
 	s.EndTime = &v
 	return s
@@ -3302,6 +3465,11 @@ func (s *ListDashboardMetricsRequest) SetEndTime(v int64) *ListDashboardMetricsR
 
 func (s *ListDashboardMetricsRequest) SetMetricType(v string) *ListDashboardMetricsRequest {
 	s.MetricType = &v
+	return s
+}
+
+func (s *ListDashboardMetricsRequest) SetStartTime(v int64) *ListDashboardMetricsRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -3329,8 +3497,8 @@ func (s *ListDashboardMetricsResponseBody) SetResult(v []*ListDashboardMetricsRe
 }
 
 type ListDashboardMetricsResponseBodyResult struct {
-	Total  map[string]interface{}                          `json:"Total,omitempty" xml:"Total,omitempty"`
 	Detail []*ListDashboardMetricsResponseBodyResultDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	Total  map[string]interface{}                          `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListDashboardMetricsResponseBodyResult) String() string {
@@ -3341,13 +3509,13 @@ func (s ListDashboardMetricsResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *ListDashboardMetricsResponseBodyResult) SetTotal(v map[string]interface{}) *ListDashboardMetricsResponseBodyResult {
-	s.Total = v
+func (s *ListDashboardMetricsResponseBodyResult) SetDetail(v []*ListDashboardMetricsResponseBodyResultDetail) *ListDashboardMetricsResponseBodyResult {
+	s.Detail = v
 	return s
 }
 
-func (s *ListDashboardMetricsResponseBodyResult) SetDetail(v []*ListDashboardMetricsResponseBodyResultDetail) *ListDashboardMetricsResponseBodyResult {
-	s.Detail = v
+func (s *ListDashboardMetricsResponseBodyResult) SetTotal(v map[string]interface{}) *ListDashboardMetricsResponseBodyResult {
+	s.Total = v
 	return s
 }
 
@@ -3381,8 +3549,9 @@ func (s *ListDashboardMetricsResponseBodyResultDetail) SetVal(v string) *ListDas
 }
 
 type ListDashboardMetricsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDashboardMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDashboardMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDashboardMetricsResponse) String() string {
@@ -3398,15 +3567,20 @@ func (s *ListDashboardMetricsResponse) SetHeaders(v map[string]*string) *ListDas
 	return s
 }
 
+func (s *ListDashboardMetricsResponse) SetStatusCode(v int32) *ListDashboardMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDashboardMetricsResponse) SetBody(v *ListDashboardMetricsResponseBody) *ListDashboardMetricsResponse {
 	s.Body = v
 	return s
 }
 
 type ListDashboardMetricsFlowsRequest struct {
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListDashboardMetricsFlowsRequest) String() string {
@@ -3417,11 +3591,6 @@ func (s ListDashboardMetricsFlowsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListDashboardMetricsFlowsRequest) SetStartTime(v int64) *ListDashboardMetricsFlowsRequest {
-	s.StartTime = &v
-	return s
-}
-
 func (s *ListDashboardMetricsFlowsRequest) SetEndTime(v int64) *ListDashboardMetricsFlowsRequest {
 	s.EndTime = &v
 	return s
@@ -3429,6 +3598,11 @@ func (s *ListDashboardMetricsFlowsRequest) SetEndTime(v int64) *ListDashboardMet
 
 func (s *ListDashboardMetricsFlowsRequest) SetMetricType(v string) *ListDashboardMetricsFlowsRequest {
 	s.MetricType = &v
+	return s
+}
+
+func (s *ListDashboardMetricsFlowsRequest) SetStartTime(v int64) *ListDashboardMetricsFlowsRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -3479,8 +3653,9 @@ func (s *ListDashboardMetricsFlowsResponseBodyResult) SetMetricType(v string) *L
 }
 
 type ListDashboardMetricsFlowsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDashboardMetricsFlowsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDashboardMetricsFlowsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDashboardMetricsFlowsResponse) String() string {
@@ -3496,15 +3671,20 @@ func (s *ListDashboardMetricsFlowsResponse) SetHeaders(v map[string]*string) *Li
 	return s
 }
 
+func (s *ListDashboardMetricsFlowsResponse) SetStatusCode(v int32) *ListDashboardMetricsFlowsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDashboardMetricsFlowsResponse) SetBody(v *ListDashboardMetricsFlowsResponseBody) *ListDashboardMetricsFlowsResponse {
 	s.Body = v
 	return s
 }
 
 type ListDashboardParametersResponseBody struct {
+	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *ListDashboardParametersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -3516,6 +3696,11 @@ func (s ListDashboardParametersResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListDashboardParametersResponseBody) SetCode(v string) *ListDashboardParametersResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *ListDashboardParametersResponseBody) SetMessage(v string) *ListDashboardParametersResponseBody {
 	s.Message = &v
 	return s
@@ -3523,11 +3708,6 @@ func (s *ListDashboardParametersResponseBody) SetMessage(v string) *ListDashboar
 
 func (s *ListDashboardParametersResponseBody) SetRequestId(v string) *ListDashboardParametersResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListDashboardParametersResponseBody) SetCode(v string) *ListDashboardParametersResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -3560,8 +3740,9 @@ func (s *ListDashboardParametersResponseBodyResult) SetTraceId(v []*string) *Lis
 }
 
 type ListDashboardParametersResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDashboardParametersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDashboardParametersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDashboardParametersResponse) String() string {
@@ -3577,15 +3758,20 @@ func (s *ListDashboardParametersResponse) SetHeaders(v map[string]*string) *List
 	return s
 }
 
+func (s *ListDashboardParametersResponse) SetStatusCode(v int32) *ListDashboardParametersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDashboardParametersResponse) SetBody(v *ListDashboardParametersResponseBody) *ListDashboardParametersResponse {
 	s.Body = v
 	return s
 }
 
 type ListDashboardUidResponseBody struct {
+	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *ListDashboardUidResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -3597,6 +3783,11 @@ func (s ListDashboardUidResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListDashboardUidResponseBody) SetCode(v string) *ListDashboardUidResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *ListDashboardUidResponseBody) SetMessage(v string) *ListDashboardUidResponseBody {
 	s.Message = &v
 	return s
@@ -3604,11 +3795,6 @@ func (s *ListDashboardUidResponseBody) SetMessage(v string) *ListDashboardUidRes
 
 func (s *ListDashboardUidResponseBody) SetRequestId(v string) *ListDashboardUidResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListDashboardUidResponseBody) SetCode(v string) *ListDashboardUidResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -3641,8 +3827,9 @@ func (s *ListDashboardUidResponseBodyResult) SetUid(v []*string) *ListDashboardU
 }
 
 type ListDashboardUidResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDashboardUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDashboardUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDashboardUidResponse) String() string {
@@ -3658,15 +3845,20 @@ func (s *ListDashboardUidResponse) SetHeaders(v map[string]*string) *ListDashboa
 	return s
 }
 
+func (s *ListDashboardUidResponse) SetStatusCode(v int32) *ListDashboardUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDashboardUidResponse) SetBody(v *ListDashboardUidResponseBody) *ListDashboardUidResponse {
 	s.Body = v
 	return s
 }
 
 type ListDataSetResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    []*ListDataSetResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -3676,6 +3868,11 @@ func (s ListDataSetResponseBody) String() string {
 
 func (s ListDataSetResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListDataSetResponseBody) SetCode(v string) *ListDataSetResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ListDataSetResponseBody) SetMessage(v string) *ListDataSetResponseBody {
@@ -3688,22 +3885,17 @@ func (s *ListDataSetResponseBody) SetRequestId(v string) *ListDataSetResponseBod
 	return s
 }
 
-func (s *ListDataSetResponseBody) SetCode(v string) *ListDataSetResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ListDataSetResponseBody) SetResult(v []*ListDataSetResponseBodyResult) *ListDataSetResponseBody {
 	s.Result = v
 	return s
 }
 
 type ListDataSetResponseBodyResult struct {
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
 	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	VersionId   *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+	VersionId   *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s ListDataSetResponseBodyResult) String() string {
@@ -3714,23 +3906,8 @@ func (s ListDataSetResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *ListDataSetResponseBodyResult) SetState(v string) *ListDataSetResponseBodyResult {
-	s.State = &v
-	return s
-}
-
 func (s *ListDataSetResponseBodyResult) SetGmtCreate(v int64) *ListDataSetResponseBodyResult {
 	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListDataSetResponseBodyResult) SetVersionId(v string) *ListDataSetResponseBodyResult {
-	s.VersionId = &v
-	return s
-}
-
-func (s *ListDataSetResponseBodyResult) SetInstanceId(v string) *ListDataSetResponseBodyResult {
-	s.InstanceId = &v
 	return s
 }
 
@@ -3739,9 +3916,25 @@ func (s *ListDataSetResponseBodyResult) SetGmtModified(v int64) *ListDataSetResp
 	return s
 }
 
+func (s *ListDataSetResponseBodyResult) SetInstanceId(v string) *ListDataSetResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDataSetResponseBodyResult) SetState(v string) *ListDataSetResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+func (s *ListDataSetResponseBodyResult) SetVersionId(v string) *ListDataSetResponseBodyResult {
+	s.VersionId = &v
+	return s
+}
+
 type ListDataSetResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDataSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDataSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDataSetResponse) String() string {
@@ -3757,15 +3950,20 @@ func (s *ListDataSetResponse) SetHeaders(v map[string]*string) *ListDataSetRespo
 	return s
 }
 
+func (s *ListDataSetResponse) SetStatusCode(v int32) *ListDataSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDataSetResponse) SetBody(v *ListDataSetResponseBody) *ListDataSetResponse {
 	s.Body = v
 	return s
 }
 
 type ListDataSourceResponseBody struct {
+	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    []*ListDataSourceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -3775,6 +3973,11 @@ func (s ListDataSourceResponseBody) String() string {
 
 func (s ListDataSourceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListDataSourceResponseBody) SetCode(v string) *ListDataSourceResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ListDataSourceResponseBody) SetMessage(v string) *ListDataSourceResponseBody {
@@ -3787,21 +3990,16 @@ func (s *ListDataSourceResponseBody) SetRequestId(v string) *ListDataSourceRespo
 	return s
 }
 
-func (s *ListDataSourceResponseBody) SetCode(v string) *ListDataSourceResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ListDataSourceResponseBody) SetResult(v []*ListDataSourceResponseBodyResult) *ListDataSourceResponseBody {
 	s.Result = v
 	return s
 }
 
 type ListDataSourceResponseBodyResult struct {
-	TableName   *string                               `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	Meta        *ListDataSourceResponseBodyResultMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
 	GmtCreate   *string                               `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *string                               `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Meta        *ListDataSourceResponseBodyResultMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
+	TableName   *string                               `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s ListDataSourceResponseBodyResult) String() string {
@@ -3810,16 +4008,6 @@ func (s ListDataSourceResponseBodyResult) String() string {
 
 func (s ListDataSourceResponseBodyResult) GoString() string {
 	return s.String()
-}
-
-func (s *ListDataSourceResponseBodyResult) SetTableName(v string) *ListDataSourceResponseBodyResult {
-	s.TableName = &v
-	return s
-}
-
-func (s *ListDataSourceResponseBodyResult) SetMeta(v *ListDataSourceResponseBodyResultMeta) *ListDataSourceResponseBodyResult {
-	s.Meta = v
-	return s
 }
 
 func (s *ListDataSourceResponseBodyResult) SetGmtCreate(v string) *ListDataSourceResponseBodyResult {
@@ -3832,15 +4020,25 @@ func (s *ListDataSourceResponseBodyResult) SetGmtModified(v string) *ListDataSou
 	return s
 }
 
+func (s *ListDataSourceResponseBodyResult) SetMeta(v *ListDataSourceResponseBodyResultMeta) *ListDataSourceResponseBodyResult {
+	s.Meta = v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyResult) SetTableName(v string) *ListDataSourceResponseBodyResult {
+	s.TableName = &v
+	return s
+}
+
 type ListDataSourceResponseBodyResultMeta struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	BucketName  *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Partition   *string `json:"Partition,omitempty" xml:"Partition,omitempty"`
-	Timestamp   *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	BucketName  *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	Partition   *string `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Timestamp   *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListDataSourceResponseBodyResultMeta) String() string {
@@ -3851,18 +4049,8 @@ func (s ListDataSourceResponseBodyResultMeta) GoString() string {
 	return s.String()
 }
 
-func (s *ListDataSourceResponseBodyResultMeta) SetType(v string) *ListDataSourceResponseBodyResultMeta {
-	s.Type = &v
-	return s
-}
-
-func (s *ListDataSourceResponseBodyResultMeta) SetTableName(v string) *ListDataSourceResponseBodyResultMeta {
-	s.TableName = &v
-	return s
-}
-
-func (s *ListDataSourceResponseBodyResultMeta) SetProjectName(v string) *ListDataSourceResponseBodyResultMeta {
-	s.ProjectName = &v
+func (s *ListDataSourceResponseBodyResultMeta) SetAccessKeyId(v string) *ListDataSourceResponseBodyResultMeta {
+	s.AccessKeyId = &v
 	return s
 }
 
@@ -3871,13 +4059,23 @@ func (s *ListDataSourceResponseBodyResultMeta) SetBucketName(v string) *ListData
 	return s
 }
 
+func (s *ListDataSourceResponseBodyResultMeta) SetPartition(v string) *ListDataSourceResponseBodyResultMeta {
+	s.Partition = &v
+	return s
+}
+
 func (s *ListDataSourceResponseBodyResultMeta) SetPath(v string) *ListDataSourceResponseBodyResultMeta {
 	s.Path = &v
 	return s
 }
 
-func (s *ListDataSourceResponseBodyResultMeta) SetPartition(v string) *ListDataSourceResponseBodyResultMeta {
-	s.Partition = &v
+func (s *ListDataSourceResponseBodyResultMeta) SetProjectName(v string) *ListDataSourceResponseBodyResultMeta {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyResultMeta) SetTableName(v string) *ListDataSourceResponseBodyResultMeta {
+	s.TableName = &v
 	return s
 }
 
@@ -3886,14 +4084,15 @@ func (s *ListDataSourceResponseBodyResultMeta) SetTimestamp(v int64) *ListDataSo
 	return s
 }
 
-func (s *ListDataSourceResponseBodyResultMeta) SetAccessKeyId(v string) *ListDataSourceResponseBodyResultMeta {
-	s.AccessKeyId = &v
+func (s *ListDataSourceResponseBodyResultMeta) SetType(v string) *ListDataSourceResponseBodyResultMeta {
+	s.Type = &v
 	return s
 }
 
 type ListDataSourceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDataSourceResponse) String() string {
@@ -3909,15 +4108,20 @@ func (s *ListDataSourceResponse) SetHeaders(v map[string]*string) *ListDataSourc
 	return s
 }
 
+func (s *ListDataSourceResponse) SetStatusCode(v int32) *ListDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDataSourceResponse) SetBody(v *ListDataSourceResponseBody) *ListDataSourceResponse {
 	s.Body = v
 	return s
 }
 
 type ListDiversifyResponseBody struct {
+	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    []*ListDiversifyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -3927,6 +4131,11 @@ func (s ListDiversifyResponseBody) String() string {
 
 func (s ListDiversifyResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListDiversifyResponseBody) SetCode(v string) *ListDiversifyResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ListDiversifyResponseBody) SetMessage(v string) *ListDiversifyResponseBody {
@@ -3939,11 +4148,6 @@ func (s *ListDiversifyResponseBody) SetRequestId(v string) *ListDiversifyRespons
 	return s
 }
 
-func (s *ListDiversifyResponseBody) SetCode(v string) *ListDiversifyResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ListDiversifyResponseBody) SetResult(v []*ListDiversifyResponseBodyResult) *ListDiversifyResponseBody {
 	s.Result = v
 	return s
@@ -3951,8 +4155,8 @@ func (s *ListDiversifyResponseBody) SetResult(v []*ListDiversifyResponseBodyResu
 
 type ListDiversifyResponseBodyResult struct {
 	GmtCreate   *string                                   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name        *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
 	GmtModified *string                                   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Name        *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
 	Parameter   *ListDiversifyResponseBodyResultParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 }
 
@@ -3969,13 +4173,13 @@ func (s *ListDiversifyResponseBodyResult) SetGmtCreate(v string) *ListDiversifyR
 	return s
 }
 
-func (s *ListDiversifyResponseBodyResult) SetName(v string) *ListDiversifyResponseBodyResult {
-	s.Name = &v
+func (s *ListDiversifyResponseBodyResult) SetGmtModified(v string) *ListDiversifyResponseBodyResult {
+	s.GmtModified = &v
 	return s
 }
 
-func (s *ListDiversifyResponseBodyResult) SetGmtModified(v string) *ListDiversifyResponseBodyResult {
-	s.GmtModified = &v
+func (s *ListDiversifyResponseBodyResult) SetName(v string) *ListDiversifyResponseBodyResult {
+	s.Name = &v
 	return s
 }
 
@@ -3985,8 +4189,8 @@ func (s *ListDiversifyResponseBodyResult) SetParameter(v *ListDiversifyResponseB
 }
 
 type ListDiversifyResponseBodyResultParameter struct {
-	Window        *int32 `json:"Window,omitempty" xml:"Window,omitempty"`
 	CategoryIndex *int32 `json:"CategoryIndex,omitempty" xml:"CategoryIndex,omitempty"`
+	Window        *int32 `json:"Window,omitempty" xml:"Window,omitempty"`
 }
 
 func (s ListDiversifyResponseBodyResultParameter) String() string {
@@ -3997,19 +4201,20 @@ func (s ListDiversifyResponseBodyResultParameter) GoString() string {
 	return s.String()
 }
 
-func (s *ListDiversifyResponseBodyResultParameter) SetWindow(v int32) *ListDiversifyResponseBodyResultParameter {
-	s.Window = &v
-	return s
-}
-
 func (s *ListDiversifyResponseBodyResultParameter) SetCategoryIndex(v int32) *ListDiversifyResponseBodyResultParameter {
 	s.CategoryIndex = &v
 	return s
 }
 
+func (s *ListDiversifyResponseBodyResultParameter) SetWindow(v int32) *ListDiversifyResponseBodyResultParameter {
+	s.Window = &v
+	return s
+}
+
 type ListDiversifyResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDiversifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDiversifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDiversifyResponse) String() string {
@@ -4025,17 +4230,22 @@ func (s *ListDiversifyResponse) SetHeaders(v map[string]*string) *ListDiversifyR
 	return s
 }
 
+func (s *ListDiversifyResponse) SetStatusCode(v int32) *ListDiversifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListDiversifyResponse) SetBody(v *ListDiversifyResponseBody) *ListDiversifyResponse {
 	s.Body = v
 	return s
 }
 
 type ListInstanceRequest struct {
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Page        *int32  `json:"page,omitempty" xml:"page,omitempty"`
 	Size        *int32  `json:"size,omitempty" xml:"size,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 }
 
 func (s ListInstanceRequest) String() string {
@@ -4044,6 +4254,21 @@ func (s ListInstanceRequest) String() string {
 
 func (s ListInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstanceRequest) SetExpiredTime(v string) *ListInstanceRequest {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *ListInstanceRequest) SetName(v string) *ListInstanceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListInstanceRequest) SetStatus(v string) *ListInstanceRequest {
+	s.Status = &v
+	return s
 }
 
 func (s *ListInstanceRequest) SetPage(v int32) *ListInstanceRequest {
@@ -4056,25 +4281,10 @@ func (s *ListInstanceRequest) SetSize(v int32) *ListInstanceRequest {
 	return s
 }
 
-func (s *ListInstanceRequest) SetStatus(v string) *ListInstanceRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *ListInstanceRequest) SetName(v string) *ListInstanceRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ListInstanceRequest) SetExpiredTime(v string) *ListInstanceRequest {
-	s.ExpiredTime = &v
-	return s
-}
-
 type ListInstanceResponseBody struct {
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    []*ListInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -4084,6 +4294,11 @@ func (s ListInstanceResponseBody) String() string {
 
 func (s ListInstanceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstanceResponseBody) SetCode(v string) *ListInstanceResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ListInstanceResponseBody) SetMessage(v string) *ListInstanceResponseBody {
@@ -4096,31 +4311,26 @@ func (s *ListInstanceResponseBody) SetRequestId(v string) *ListInstanceResponseB
 	return s
 }
 
-func (s *ListInstanceResponseBody) SetCode(v string) *ListInstanceResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ListInstanceResponseBody) SetResult(v []*ListInstanceResponseBodyResult) *ListInstanceResponseBody {
 	s.Result = v
 	return s
 }
 
 type ListInstanceResponseBodyResult struct {
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	CommodityCode  *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	GmtModified    *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	LockMode       *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	CommodityCode  *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	DataSetVersion *string `json:"DataSetVersion,omitempty" xml:"DataSetVersion,omitempty"`
-	Industry       *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
 	ExpiredTime    *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	GmtCreate      *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified    *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Industry       *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LockMode       *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Scene          *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListInstanceResponseBodyResult) String() string {
@@ -4131,13 +4341,8 @@ func (s ListInstanceResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstanceResponseBodyResult) SetStatus(v string) *ListInstanceResponseBodyResult {
-	s.Status = &v
-	return s
-}
-
-func (s *ListInstanceResponseBodyResult) SetType(v string) *ListInstanceResponseBodyResult {
-	s.Type = &v
+func (s *ListInstanceResponseBodyResult) SetChargeType(v string) *ListInstanceResponseBodyResult {
+	s.ChargeType = &v
 	return s
 }
 
@@ -4146,38 +4351,8 @@ func (s *ListInstanceResponseBodyResult) SetCommodityCode(v string) *ListInstanc
 	return s
 }
 
-func (s *ListInstanceResponseBodyResult) SetChargeType(v string) *ListInstanceResponseBodyResult {
-	s.ChargeType = &v
-	return s
-}
-
-func (s *ListInstanceResponseBodyResult) SetInstanceId(v string) *ListInstanceResponseBodyResult {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListInstanceResponseBodyResult) SetGmtModified(v string) *ListInstanceResponseBodyResult {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *ListInstanceResponseBodyResult) SetLockMode(v string) *ListInstanceResponseBodyResult {
-	s.LockMode = &v
-	return s
-}
-
-func (s *ListInstanceResponseBodyResult) SetRegionId(v string) *ListInstanceResponseBodyResult {
-	s.RegionId = &v
-	return s
-}
-
 func (s *ListInstanceResponseBodyResult) SetDataSetVersion(v string) *ListInstanceResponseBodyResult {
 	s.DataSetVersion = &v
-	return s
-}
-
-func (s *ListInstanceResponseBodyResult) SetIndustry(v string) *ListInstanceResponseBodyResult {
-	s.Industry = &v
 	return s
 }
 
@@ -4191,8 +4366,33 @@ func (s *ListInstanceResponseBodyResult) SetGmtCreate(v string) *ListInstanceRes
 	return s
 }
 
+func (s *ListInstanceResponseBodyResult) SetGmtModified(v string) *ListInstanceResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyResult) SetIndustry(v string) *ListInstanceResponseBodyResult {
+	s.Industry = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyResult) SetInstanceId(v string) *ListInstanceResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyResult) SetLockMode(v string) *ListInstanceResponseBodyResult {
+	s.LockMode = &v
+	return s
+}
+
 func (s *ListInstanceResponseBodyResult) SetName(v string) *ListInstanceResponseBodyResult {
 	s.Name = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyResult) SetRegionId(v string) *ListInstanceResponseBodyResult {
+	s.RegionId = &v
 	return s
 }
 
@@ -4201,9 +4401,20 @@ func (s *ListInstanceResponseBodyResult) SetScene(v string) *ListInstanceRespons
 	return s
 }
 
+func (s *ListInstanceResponseBodyResult) SetStatus(v string) *ListInstanceResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyResult) SetType(v string) *ListInstanceResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
 type ListInstanceResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListInstanceResponse) String() string {
@@ -4219,15 +4430,20 @@ func (s *ListInstanceResponse) SetHeaders(v map[string]*string) *ListInstanceRes
 	return s
 }
 
+func (s *ListInstanceResponse) SetStatusCode(v int32) *ListInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListInstanceResponse) SetBody(v *ListInstanceResponseBody) *ListInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type ListInstanceTaskResponseBody struct {
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    []*ListInstanceTaskResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -4237,6 +4453,11 @@ func (s ListInstanceTaskResponseBody) String() string {
 
 func (s ListInstanceTaskResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstanceTaskResponseBody) SetCode(v string) *ListInstanceTaskResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ListInstanceTaskResponseBody) SetMessage(v string) *ListInstanceTaskResponseBody {
@@ -4249,19 +4470,14 @@ func (s *ListInstanceTaskResponseBody) SetRequestId(v string) *ListInstanceTaskR
 	return s
 }
 
-func (s *ListInstanceTaskResponseBody) SetCode(v string) *ListInstanceTaskResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ListInstanceTaskResponseBody) SetResult(v []*ListInstanceTaskResponseBodyResult) *ListInstanceTaskResponseBody {
 	s.Result = v
 	return s
 }
 
 type ListInstanceTaskResponseBodyResult struct {
-	SubProgressInfos []*ListInstanceTaskResponseBodyResultSubProgressInfos `json:"SubProgressInfos,omitempty" xml:"SubProgressInfos,omitempty" type:"Repeated"`
 	Name             *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	SubProgressInfos []*ListInstanceTaskResponseBodyResultSubProgressInfos `json:"SubProgressInfos,omitempty" xml:"SubProgressInfos,omitempty" type:"Repeated"`
 	TotalProgress    *int32                                                `json:"TotalProgress,omitempty" xml:"TotalProgress,omitempty"`
 }
 
@@ -4273,13 +4489,13 @@ func (s ListInstanceTaskResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstanceTaskResponseBodyResult) SetSubProgressInfos(v []*ListInstanceTaskResponseBodyResultSubProgressInfos) *ListInstanceTaskResponseBodyResult {
-	s.SubProgressInfos = v
+func (s *ListInstanceTaskResponseBodyResult) SetName(v string) *ListInstanceTaskResponseBodyResult {
+	s.Name = &v
 	return s
 }
 
-func (s *ListInstanceTaskResponseBodyResult) SetName(v string) *ListInstanceTaskResponseBodyResult {
-	s.Name = &v
+func (s *ListInstanceTaskResponseBodyResult) SetSubProgressInfos(v []*ListInstanceTaskResponseBodyResultSubProgressInfos) *ListInstanceTaskResponseBodyResult {
+	s.SubProgressInfos = v
 	return s
 }
 
@@ -4289,11 +4505,11 @@ func (s *ListInstanceTaskResponseBodyResult) SetTotalProgress(v int32) *ListInst
 }
 
 type ListInstanceTaskResponseBodyResultSubProgressInfos struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Progress    *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	FinishedNum *int32  `json:"FinishedNum,omitempty" xml:"FinishedNum,omitempty"`
-	TotalNum    *int32  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 	Detail      *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	FinishedNum *int32  `json:"FinishedNum,omitempty" xml:"FinishedNum,omitempty"`
+	Progress    *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	TotalNum    *int32  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListInstanceTaskResponseBodyResultSubProgressInfos) String() string {
@@ -4304,13 +4520,8 @@ func (s ListInstanceTaskResponseBodyResultSubProgressInfos) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstanceTaskResponseBodyResultSubProgressInfos) SetType(v string) *ListInstanceTaskResponseBodyResultSubProgressInfos {
-	s.Type = &v
-	return s
-}
-
-func (s *ListInstanceTaskResponseBodyResultSubProgressInfos) SetProgress(v int32) *ListInstanceTaskResponseBodyResultSubProgressInfos {
-	s.Progress = &v
+func (s *ListInstanceTaskResponseBodyResultSubProgressInfos) SetDetail(v string) *ListInstanceTaskResponseBodyResultSubProgressInfos {
+	s.Detail = &v
 	return s
 }
 
@@ -4319,19 +4530,25 @@ func (s *ListInstanceTaskResponseBodyResultSubProgressInfos) SetFinishedNum(v in
 	return s
 }
 
+func (s *ListInstanceTaskResponseBodyResultSubProgressInfos) SetProgress(v int32) *ListInstanceTaskResponseBodyResultSubProgressInfos {
+	s.Progress = &v
+	return s
+}
+
 func (s *ListInstanceTaskResponseBodyResultSubProgressInfos) SetTotalNum(v int32) *ListInstanceTaskResponseBodyResultSubProgressInfos {
 	s.TotalNum = &v
 	return s
 }
 
-func (s *ListInstanceTaskResponseBodyResultSubProgressInfos) SetDetail(v string) *ListInstanceTaskResponseBodyResultSubProgressInfos {
-	s.Detail = &v
+func (s *ListInstanceTaskResponseBodyResultSubProgressInfos) SetType(v string) *ListInstanceTaskResponseBodyResultSubProgressInfos {
+	s.Type = &v
 	return s
 }
 
 type ListInstanceTaskResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListInstanceTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstanceTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListInstanceTaskResponse) String() string {
@@ -4344,6 +4561,11 @@ func (s ListInstanceTaskResponse) GoString() string {
 
 func (s *ListInstanceTaskResponse) SetHeaders(v map[string]*string) *ListInstanceTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceTaskResponse) SetStatusCode(v int32) *ListInstanceTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4399,8 +4621,8 @@ func (s *ListItemsResponseBody) SetResult(v *ListItemsResponseBodyResult) *ListI
 }
 
 type ListItemsResponseBodyResult struct {
-	Total  *ListItemsResponseBodyResultTotal    `json:"Total,omitempty" xml:"Total,omitempty" type:"Struct"`
 	Detail []*ListItemsResponseBodyResultDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	Total  *ListItemsResponseBodyResultTotal    `json:"Total,omitempty" xml:"Total,omitempty" type:"Struct"`
 }
 
 func (s ListItemsResponseBodyResult) String() string {
@@ -4411,75 +4633,28 @@ func (s ListItemsResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *ListItemsResponseBodyResult) SetTotal(v *ListItemsResponseBodyResultTotal) *ListItemsResponseBodyResult {
-	s.Total = v
-	return s
-}
-
 func (s *ListItemsResponseBodyResult) SetDetail(v []*ListItemsResponseBodyResultDetail) *ListItemsResponseBodyResult {
 	s.Detail = v
 	return s
 }
 
-type ListItemsResponseBodyResultTotal struct {
-	WeightItem            *int64 `json:"WeightItem,omitempty" xml:"WeightItem,omitempty"`
-	InstanceRecommendItem *int64 `json:"InstanceRecommendItem,omitempty" xml:"InstanceRecommendItem,omitempty"`
-	QueryCount            *int64 `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
-	TotalCount            *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	SceneRecommendItem    *int64 `json:"SceneRecommendItem,omitempty" xml:"SceneRecommendItem,omitempty"`
-	SceneWeightItem       *int64 `json:"SceneWeightItem,omitempty" xml:"SceneWeightItem,omitempty"`
-}
-
-func (s ListItemsResponseBodyResultTotal) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListItemsResponseBodyResultTotal) GoString() string {
-	return s.String()
-}
-
-func (s *ListItemsResponseBodyResultTotal) SetWeightItem(v int64) *ListItemsResponseBodyResultTotal {
-	s.WeightItem = &v
-	return s
-}
-
-func (s *ListItemsResponseBodyResultTotal) SetInstanceRecommendItem(v int64) *ListItemsResponseBodyResultTotal {
-	s.InstanceRecommendItem = &v
-	return s
-}
-
-func (s *ListItemsResponseBodyResultTotal) SetQueryCount(v int64) *ListItemsResponseBodyResultTotal {
-	s.QueryCount = &v
-	return s
-}
-
-func (s *ListItemsResponseBodyResultTotal) SetTotalCount(v int64) *ListItemsResponseBodyResultTotal {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListItemsResponseBodyResultTotal) SetSceneRecommendItem(v int64) *ListItemsResponseBodyResultTotal {
-	s.SceneRecommendItem = &v
-	return s
-}
-
-func (s *ListItemsResponseBodyResultTotal) SetSceneWeightItem(v int64) *ListItemsResponseBodyResultTotal {
-	s.SceneWeightItem = &v
+func (s *ListItemsResponseBodyResult) SetTotal(v *ListItemsResponseBodyResultTotal) *ListItemsResponseBodyResult {
+	s.Total = v
 	return s
 }
 
 type ListItemsResponseBodyResultDetail struct {
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	PubTime      *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
-	ExpireTime   *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ItemType     *string `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
 	Author       *string `json:"Author,omitempty" xml:"Author,omitempty"`
-	CategoryPath *string `json:"CategoryPath,omitempty" xml:"CategoryPath,omitempty"`
-	ItemId       *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	ShopId       *string `json:"ShopId,omitempty" xml:"ShopId,omitempty"`
 	BrandId      *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
+	CategoryPath *string `json:"CategoryPath,omitempty" xml:"CategoryPath,omitempty"`
 	Channel      *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ExpireTime   *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ItemId       *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemType     *string `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
+	PubTime      *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	ShopId       *string `json:"ShopId,omitempty" xml:"ShopId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -4491,48 +4666,18 @@ func (s ListItemsResponseBodyResultDetail) GoString() string {
 	return s.String()
 }
 
-func (s *ListItemsResponseBodyResultDetail) SetStatus(v string) *ListItemsResponseBodyResultDetail {
-	s.Status = &v
-	return s
-}
-
-func (s *ListItemsResponseBodyResultDetail) SetPubTime(v string) *ListItemsResponseBodyResultDetail {
-	s.PubTime = &v
-	return s
-}
-
-func (s *ListItemsResponseBodyResultDetail) SetExpireTime(v string) *ListItemsResponseBodyResultDetail {
-	s.ExpireTime = &v
-	return s
-}
-
-func (s *ListItemsResponseBodyResultDetail) SetItemType(v string) *ListItemsResponseBodyResultDetail {
-	s.ItemType = &v
-	return s
-}
-
 func (s *ListItemsResponseBodyResultDetail) SetAuthor(v string) *ListItemsResponseBodyResultDetail {
 	s.Author = &v
 	return s
 }
 
-func (s *ListItemsResponseBodyResultDetail) SetCategoryPath(v string) *ListItemsResponseBodyResultDetail {
-	s.CategoryPath = &v
-	return s
-}
-
-func (s *ListItemsResponseBodyResultDetail) SetItemId(v string) *ListItemsResponseBodyResultDetail {
-	s.ItemId = &v
-	return s
-}
-
-func (s *ListItemsResponseBodyResultDetail) SetShopId(v string) *ListItemsResponseBodyResultDetail {
-	s.ShopId = &v
-	return s
-}
-
 func (s *ListItemsResponseBodyResultDetail) SetBrandId(v string) *ListItemsResponseBodyResultDetail {
 	s.BrandId = &v
+	return s
+}
+
+func (s *ListItemsResponseBodyResultDetail) SetCategoryPath(v string) *ListItemsResponseBodyResultDetail {
+	s.CategoryPath = &v
 	return s
 }
 
@@ -4546,14 +4691,92 @@ func (s *ListItemsResponseBodyResultDetail) SetDuration(v string) *ListItemsResp
 	return s
 }
 
+func (s *ListItemsResponseBodyResultDetail) SetExpireTime(v string) *ListItemsResponseBodyResultDetail {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListItemsResponseBodyResultDetail) SetItemId(v string) *ListItemsResponseBodyResultDetail {
+	s.ItemId = &v
+	return s
+}
+
+func (s *ListItemsResponseBodyResultDetail) SetItemType(v string) *ListItemsResponseBodyResultDetail {
+	s.ItemType = &v
+	return s
+}
+
+func (s *ListItemsResponseBodyResultDetail) SetPubTime(v string) *ListItemsResponseBodyResultDetail {
+	s.PubTime = &v
+	return s
+}
+
+func (s *ListItemsResponseBodyResultDetail) SetShopId(v string) *ListItemsResponseBodyResultDetail {
+	s.ShopId = &v
+	return s
+}
+
+func (s *ListItemsResponseBodyResultDetail) SetStatus(v string) *ListItemsResponseBodyResultDetail {
+	s.Status = &v
+	return s
+}
+
 func (s *ListItemsResponseBodyResultDetail) SetTitle(v string) *ListItemsResponseBodyResultDetail {
 	s.Title = &v
 	return s
 }
 
+type ListItemsResponseBodyResultTotal struct {
+	InstanceRecommendItem *int64 `json:"InstanceRecommendItem,omitempty" xml:"InstanceRecommendItem,omitempty"`
+	QueryCount            *int64 `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	SceneRecommendItem    *int64 `json:"SceneRecommendItem,omitempty" xml:"SceneRecommendItem,omitempty"`
+	SceneWeightItem       *int64 `json:"SceneWeightItem,omitempty" xml:"SceneWeightItem,omitempty"`
+	TotalCount            *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	WeightItem            *int64 `json:"WeightItem,omitempty" xml:"WeightItem,omitempty"`
+}
+
+func (s ListItemsResponseBodyResultTotal) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListItemsResponseBodyResultTotal) GoString() string {
+	return s.String()
+}
+
+func (s *ListItemsResponseBodyResultTotal) SetInstanceRecommendItem(v int64) *ListItemsResponseBodyResultTotal {
+	s.InstanceRecommendItem = &v
+	return s
+}
+
+func (s *ListItemsResponseBodyResultTotal) SetQueryCount(v int64) *ListItemsResponseBodyResultTotal {
+	s.QueryCount = &v
+	return s
+}
+
+func (s *ListItemsResponseBodyResultTotal) SetSceneRecommendItem(v int64) *ListItemsResponseBodyResultTotal {
+	s.SceneRecommendItem = &v
+	return s
+}
+
+func (s *ListItemsResponseBodyResultTotal) SetSceneWeightItem(v int64) *ListItemsResponseBodyResultTotal {
+	s.SceneWeightItem = &v
+	return s
+}
+
+func (s *ListItemsResponseBodyResultTotal) SetTotalCount(v int64) *ListItemsResponseBodyResultTotal {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListItemsResponseBodyResultTotal) SetWeightItem(v int64) *ListItemsResponseBodyResultTotal {
+	s.WeightItem = &v
+	return s
+}
+
 type ListItemsResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListItemsResponse) String() string {
@@ -4569,17 +4792,22 @@ func (s *ListItemsResponse) SetHeaders(v map[string]*string) *ListItemsResponse 
 	return s
 }
 
+func (s *ListItemsResponse) SetStatusCode(v int32) *ListItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListItemsResponse) SetBody(v *ListItemsResponseBody) *ListItemsResponse {
 	s.Body = v
 	return s
 }
 
 type ListLogsRequest struct {
-	QueryParams *string `json:"QueryParams,omitempty" xml:"QueryParams,omitempty"`
-	StartTime   *int32  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime     *int32  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Page        *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	QueryParams *string `json:"QueryParams,omitempty" xml:"QueryParams,omitempty"`
 	Size        *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	StartTime   *int32  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListLogsRequest) String() string {
@@ -4588,16 +4816,6 @@ func (s ListLogsRequest) String() string {
 
 func (s ListLogsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListLogsRequest) SetQueryParams(v string) *ListLogsRequest {
-	s.QueryParams = &v
-	return s
-}
-
-func (s *ListLogsRequest) SetStartTime(v int32) *ListLogsRequest {
-	s.StartTime = &v
-	return s
 }
 
 func (s *ListLogsRequest) SetEndTime(v int32) *ListLogsRequest {
@@ -4610,14 +4828,24 @@ func (s *ListLogsRequest) SetPage(v int32) *ListLogsRequest {
 	return s
 }
 
+func (s *ListLogsRequest) SetQueryParams(v string) *ListLogsRequest {
+	s.QueryParams = &v
+	return s
+}
+
 func (s *ListLogsRequest) SetSize(v int32) *ListLogsRequest {
 	s.Size = &v
 	return s
 }
 
+func (s *ListLogsRequest) SetStartTime(v int32) *ListLogsRequest {
+	s.StartTime = &v
+	return s
+}
+
 type ListLogsResponseBody struct {
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Headers   *ListLogsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []map[string]interface{}     `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -4629,13 +4857,13 @@ func (s ListLogsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListLogsResponseBody) SetRequestId(v string) *ListLogsResponseBody {
-	s.RequestId = &v
+func (s *ListLogsResponseBody) SetHeaders(v *ListLogsResponseBodyHeaders) *ListLogsResponseBody {
+	s.Headers = v
 	return s
 }
 
-func (s *ListLogsResponseBody) SetHeaders(v *ListLogsResponseBodyHeaders) *ListLogsResponseBody {
-	s.Headers = v
+func (s *ListLogsResponseBody) SetRequestId(v string) *ListLogsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4662,8 +4890,9 @@ func (s *ListLogsResponseBodyHeaders) SetXTotalCount(v int32) *ListLogsResponseB
 }
 
 type ListLogsResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListLogsResponse) String() string {
@@ -4679,15 +4908,20 @@ func (s *ListLogsResponse) SetHeaders(v map[string]*string) *ListLogsResponse {
 	return s
 }
 
+func (s *ListLogsResponse) SetStatusCode(v int32) *ListLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListLogsResponse) SetBody(v *ListLogsResponseBody) *ListLogsResponse {
 	s.Body = v
 	return s
 }
 
 type ListMixResponseBody struct {
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    []*ListMixResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -4697,6 +4931,11 @@ func (s ListMixResponseBody) String() string {
 
 func (s ListMixResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListMixResponseBody) SetCode(v string) *ListMixResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ListMixResponseBody) SetMessage(v string) *ListMixResponseBody {
@@ -4709,11 +4948,6 @@ func (s *ListMixResponseBody) SetRequestId(v string) *ListMixResponseBody {
 	return s
 }
 
-func (s *ListMixResponseBody) SetCode(v string) *ListMixResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ListMixResponseBody) SetResult(v []*ListMixResponseBodyResult) *ListMixResponseBody {
 	s.Result = v
 	return s
@@ -4721,8 +4955,8 @@ func (s *ListMixResponseBody) SetResult(v []*ListMixResponseBodyResult) *ListMix
 
 type ListMixResponseBodyResult struct {
 	GmtCreate   *string                             `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name        *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
 	GmtModified *string                             `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Name        *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
 	Parameter   *ListMixResponseBodyResultParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 }
 
@@ -4739,13 +4973,13 @@ func (s *ListMixResponseBodyResult) SetGmtCreate(v string) *ListMixResponseBodyR
 	return s
 }
 
-func (s *ListMixResponseBodyResult) SetName(v string) *ListMixResponseBodyResult {
-	s.Name = &v
+func (s *ListMixResponseBodyResult) SetGmtModified(v string) *ListMixResponseBodyResult {
+	s.GmtModified = &v
 	return s
 }
 
-func (s *ListMixResponseBodyResult) SetGmtModified(v string) *ListMixResponseBodyResult {
-	s.GmtModified = &v
+func (s *ListMixResponseBodyResult) SetName(v string) *ListMixResponseBodyResult {
+	s.Name = &v
 	return s
 }
 
@@ -4772,8 +5006,8 @@ func (s *ListMixResponseBodyResultParameter) SetSettings(v []*ListMixResponseBod
 }
 
 type ListMixResponseBodyResultParameterSettings struct {
-	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
 	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListMixResponseBodyResultParameterSettings) String() string {
@@ -4784,19 +5018,20 @@ func (s ListMixResponseBodyResultParameterSettings) GoString() string {
 	return s.String()
 }
 
-func (s *ListMixResponseBodyResultParameterSettings) SetValue(v int32) *ListMixResponseBodyResultParameterSettings {
-	s.Value = &v
-	return s
-}
-
 func (s *ListMixResponseBodyResultParameterSettings) SetName(v string) *ListMixResponseBodyResultParameterSettings {
 	s.Name = &v
 	return s
 }
 
+func (s *ListMixResponseBodyResultParameterSettings) SetValue(v int32) *ListMixResponseBodyResultParameterSettings {
+	s.Value = &v
+	return s
+}
+
 type ListMixResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListMixResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMixResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListMixResponse) String() string {
@@ -4809,6 +5044,11 @@ func (s ListMixResponse) GoString() string {
 
 func (s *ListMixResponse) SetHeaders(v map[string]*string) *ListMixResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListMixResponse) SetStatusCode(v int32) *ListMixResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4841,9 +5081,9 @@ func (s *ListRuleConditionsResponseBody) SetResult(v []*ListRuleConditionsRespon
 }
 
 type ListRuleConditionsResponseBodyResult struct {
-	SelectionOperation *string `json:"SelectionOperation,omitempty" xml:"SelectionOperation,omitempty"`
-	SelectValue        *string `json:"SelectValue,omitempty" xml:"SelectValue,omitempty"`
 	SelectType         *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+	SelectValue        *string `json:"SelectValue,omitempty" xml:"SelectValue,omitempty"`
+	SelectionOperation *string `json:"SelectionOperation,omitempty" xml:"SelectionOperation,omitempty"`
 }
 
 func (s ListRuleConditionsResponseBodyResult) String() string {
@@ -4854,8 +5094,8 @@ func (s ListRuleConditionsResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *ListRuleConditionsResponseBodyResult) SetSelectionOperation(v string) *ListRuleConditionsResponseBodyResult {
-	s.SelectionOperation = &v
+func (s *ListRuleConditionsResponseBodyResult) SetSelectType(v string) *ListRuleConditionsResponseBodyResult {
+	s.SelectType = &v
 	return s
 }
 
@@ -4864,14 +5104,15 @@ func (s *ListRuleConditionsResponseBodyResult) SetSelectValue(v string) *ListRul
 	return s
 }
 
-func (s *ListRuleConditionsResponseBodyResult) SetSelectType(v string) *ListRuleConditionsResponseBodyResult {
-	s.SelectType = &v
+func (s *ListRuleConditionsResponseBodyResult) SetSelectionOperation(v string) *ListRuleConditionsResponseBodyResult {
+	s.SelectionOperation = &v
 	return s
 }
 
 type ListRuleConditionsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRuleConditionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRuleConditionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRuleConditionsResponse) String() string {
@@ -4887,141 +5128,12 @@ func (s *ListRuleConditionsResponse) SetHeaders(v map[string]*string) *ListRuleC
 	return s
 }
 
+func (s *ListRuleConditionsResponse) SetStatusCode(v int32) *ListRuleConditionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListRuleConditionsResponse) SetBody(v *ListRuleConditionsResponseBody) *ListRuleConditionsResponse {
-	s.Body = v
-	return s
-}
-
-type ListRulesRequest struct {
-	SceneId   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	RuleType  *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Page      *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
-	Size      *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-}
-
-func (s ListRulesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRulesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListRulesRequest) SetSceneId(v string) *ListRulesRequest {
-	s.SceneId = &v
-	return s
-}
-
-func (s *ListRulesRequest) SetRuleType(v string) *ListRulesRequest {
-	s.RuleType = &v
-	return s
-}
-
-func (s *ListRulesRequest) SetStatus(v string) *ListRulesRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *ListRulesRequest) SetPage(v int32) *ListRulesRequest {
-	s.Page = &v
-	return s
-}
-
-func (s *ListRulesRequest) SetSize(v int32) *ListRulesRequest {
-	s.Size = &v
-	return s
-}
-
-func (s *ListRulesRequest) SetStartTime(v int64) *ListRulesRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *ListRulesRequest) SetEndTime(v int64) *ListRulesRequest {
-	s.EndTime = &v
-	return s
-}
-
-type ListRulesResponseBody struct {
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListRulesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-}
-
-func (s ListRulesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRulesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListRulesResponseBody) SetRequestId(v string) *ListRulesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListRulesResponseBody) SetResult(v []*ListRulesResponseBodyResult) *ListRulesResponseBody {
-	s.Result = v
-	return s
-}
-
-type ListRulesResponseBodyResult struct {
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	RuleId      *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-}
-
-func (s ListRulesResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRulesResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *ListRulesResponseBodyResult) SetStatus(v string) *ListRulesResponseBodyResult {
-	s.Status = &v
-	return s
-}
-
-func (s *ListRulesResponseBodyResult) SetGmtCreate(v string) *ListRulesResponseBodyResult {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListRulesResponseBodyResult) SetGmtModified(v string) *ListRulesResponseBodyResult {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *ListRulesResponseBodyResult) SetRuleId(v string) *ListRulesResponseBodyResult {
-	s.RuleId = &v
-	return s
-}
-
-type ListRulesResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListRulesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRulesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListRulesResponse) SetHeaders(v map[string]*string) *ListRulesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListRulesResponse) SetBody(v *ListRulesResponseBody) *ListRulesResponse {
 	s.Body = v
 	return s
 }
@@ -5067,8 +5179,8 @@ func (s *ListRuleTasksResponseBody) SetResult(v *ListRuleTasksResponseBodyResult
 }
 
 type ListRuleTasksResponseBodyResult struct {
-	FinishTime *int32 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	FinishRate *int32 `json:"FinishRate,omitempty" xml:"FinishRate,omitempty"`
+	FinishTime *int32 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 }
 
 func (s ListRuleTasksResponseBodyResult) String() string {
@@ -5079,19 +5191,20 @@ func (s ListRuleTasksResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *ListRuleTasksResponseBodyResult) SetFinishTime(v int32) *ListRuleTasksResponseBodyResult {
-	s.FinishTime = &v
-	return s
-}
-
 func (s *ListRuleTasksResponseBodyResult) SetFinishRate(v int32) *ListRuleTasksResponseBodyResult {
 	s.FinishRate = &v
 	return s
 }
 
+func (s *ListRuleTasksResponseBodyResult) SetFinishTime(v int32) *ListRuleTasksResponseBodyResult {
+	s.FinishTime = &v
+	return s
+}
+
 type ListRuleTasksResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRuleTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRuleTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRuleTasksResponse) String() string {
@@ -5107,18 +5220,163 @@ func (s *ListRuleTasksResponse) SetHeaders(v map[string]*string) *ListRuleTasksR
 	return s
 }
 
+func (s *ListRuleTasksResponse) SetStatusCode(v int32) *ListRuleTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListRuleTasksResponse) SetBody(v *ListRuleTasksResponseBody) *ListRuleTasksResponse {
+	s.Body = v
+	return s
+}
+
+type ListRulesRequest struct {
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RuleType  *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	SceneId   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Page      *int32  `json:"page,omitempty" xml:"page,omitempty"`
+	Size      *int32  `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesRequest) SetEndTime(v int64) *ListRulesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListRulesRequest) SetRuleType(v string) *ListRulesRequest {
+	s.RuleType = &v
+	return s
+}
+
+func (s *ListRulesRequest) SetSceneId(v string) *ListRulesRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *ListRulesRequest) SetStartTime(v int64) *ListRulesRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListRulesRequest) SetStatus(v string) *ListRulesRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListRulesRequest) SetPage(v int32) *ListRulesRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListRulesRequest) SetSize(v int32) *ListRulesRequest {
+	s.Size = &v
+	return s
+}
+
+type ListRulesResponseBody struct {
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListRulesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ListRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponseBody) SetRequestId(v string) *ListRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRulesResponseBody) SetResult(v []*ListRulesResponseBodyResult) *ListRulesResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListRulesResponseBodyResult struct {
+	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	RuleId      *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListRulesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponseBodyResult) SetGmtCreate(v string) *ListRulesResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListRulesResponseBodyResult) SetGmtModified(v string) *ListRulesResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListRulesResponseBodyResult) SetRuleId(v string) *ListRulesResponseBodyResult {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ListRulesResponseBodyResult) SetStatus(v string) *ListRulesResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+type ListRulesResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponse) SetHeaders(v map[string]*string) *ListRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRulesResponse) SetStatusCode(v int32) *ListRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRulesResponse) SetBody(v *ListRulesResponseBody) *ListRulesResponse {
 	s.Body = v
 	return s
 }
 
 type ListSceneItemsRequest struct {
 	OperationRuleId *string `json:"OperationRuleId,omitempty" xml:"OperationRuleId,omitempty"`
-	SelectionRuleId *string `json:"SelectionRuleId,omitempty" xml:"SelectionRuleId,omitempty"`
 	Page            *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
-	Size            *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
 	PreviewType     *string `json:"PreviewType,omitempty" xml:"PreviewType,omitempty"`
 	QueryCount      *int32  `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	SelectionRuleId *string `json:"SelectionRuleId,omitempty" xml:"SelectionRuleId,omitempty"`
+	Size            *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s ListSceneItemsRequest) String() string {
@@ -5134,18 +5392,8 @@ func (s *ListSceneItemsRequest) SetOperationRuleId(v string) *ListSceneItemsRequ
 	return s
 }
 
-func (s *ListSceneItemsRequest) SetSelectionRuleId(v string) *ListSceneItemsRequest {
-	s.SelectionRuleId = &v
-	return s
-}
-
 func (s *ListSceneItemsRequest) SetPage(v int32) *ListSceneItemsRequest {
 	s.Page = &v
-	return s
-}
-
-func (s *ListSceneItemsRequest) SetSize(v int32) *ListSceneItemsRequest {
-	s.Size = &v
 	return s
 }
 
@@ -5156,6 +5404,16 @@ func (s *ListSceneItemsRequest) SetPreviewType(v string) *ListSceneItemsRequest 
 
 func (s *ListSceneItemsRequest) SetQueryCount(v int32) *ListSceneItemsRequest {
 	s.QueryCount = &v
+	return s
+}
+
+func (s *ListSceneItemsRequest) SetSelectionRuleId(v string) *ListSceneItemsRequest {
+	s.SelectionRuleId = &v
+	return s
+}
+
+func (s *ListSceneItemsRequest) SetSize(v int32) *ListSceneItemsRequest {
+	s.Size = &v
 	return s
 }
 
@@ -5183,8 +5441,8 @@ func (s *ListSceneItemsResponseBody) SetResult(v *ListSceneItemsResponseBodyResu
 }
 
 type ListSceneItemsResponseBodyResult struct {
-	Total  *ListSceneItemsResponseBodyResultTotal    `json:"Total,omitempty" xml:"Total,omitempty" type:"Struct"`
 	Detail []*ListSceneItemsResponseBodyResultDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	Total  *ListSceneItemsResponseBodyResultTotal    `json:"Total,omitempty" xml:"Total,omitempty" type:"Struct"`
 }
 
 func (s ListSceneItemsResponseBodyResult) String() string {
@@ -5195,69 +5453,28 @@ func (s ListSceneItemsResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *ListSceneItemsResponseBodyResult) SetTotal(v *ListSceneItemsResponseBodyResultTotal) *ListSceneItemsResponseBodyResult {
-	s.Total = v
-	return s
-}
-
 func (s *ListSceneItemsResponseBodyResult) SetDetail(v []*ListSceneItemsResponseBodyResultDetail) *ListSceneItemsResponseBodyResult {
 	s.Detail = v
 	return s
 }
 
-type ListSceneItemsResponseBodyResultTotal struct {
-	WeightItem            *int64 `json:"WeightItem,omitempty" xml:"WeightItem,omitempty"`
-	InstanceRecommendItem *int64 `json:"InstanceRecommendItem,omitempty" xml:"InstanceRecommendItem,omitempty"`
-	TotalCount            *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	SceneRecommendItem    *int64 `json:"SceneRecommendItem,omitempty" xml:"SceneRecommendItem,omitempty"`
-	SceneWeightItem       *int64 `json:"SceneWeightItem,omitempty" xml:"SceneWeightItem,omitempty"`
-}
-
-func (s ListSceneItemsResponseBodyResultTotal) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSceneItemsResponseBodyResultTotal) GoString() string {
-	return s.String()
-}
-
-func (s *ListSceneItemsResponseBodyResultTotal) SetWeightItem(v int64) *ListSceneItemsResponseBodyResultTotal {
-	s.WeightItem = &v
-	return s
-}
-
-func (s *ListSceneItemsResponseBodyResultTotal) SetInstanceRecommendItem(v int64) *ListSceneItemsResponseBodyResultTotal {
-	s.InstanceRecommendItem = &v
-	return s
-}
-
-func (s *ListSceneItemsResponseBodyResultTotal) SetTotalCount(v int64) *ListSceneItemsResponseBodyResultTotal {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListSceneItemsResponseBodyResultTotal) SetSceneRecommendItem(v int64) *ListSceneItemsResponseBodyResultTotal {
-	s.SceneRecommendItem = &v
-	return s
-}
-
-func (s *ListSceneItemsResponseBodyResultTotal) SetSceneWeightItem(v int64) *ListSceneItemsResponseBodyResultTotal {
-	s.SceneWeightItem = &v
+func (s *ListSceneItemsResponseBodyResult) SetTotal(v *ListSceneItemsResponseBodyResultTotal) *ListSceneItemsResponseBodyResult {
+	s.Total = v
 	return s
 }
 
 type ListSceneItemsResponseBodyResultDetail struct {
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	PubTime      *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
-	ExpireTime   *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ItemType     *string `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
 	Author       *string `json:"Author,omitempty" xml:"Author,omitempty"`
-	CategoryPath *string `json:"CategoryPath,omitempty" xml:"CategoryPath,omitempty"`
-	ItemId       *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	ShopId       *string `json:"ShopId,omitempty" xml:"ShopId,omitempty"`
 	BrandId      *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
+	CategoryPath *string `json:"CategoryPath,omitempty" xml:"CategoryPath,omitempty"`
 	Channel      *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ExpireTime   *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ItemId       *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemType     *string `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
+	PubTime      *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	ShopId       *string `json:"ShopId,omitempty" xml:"ShopId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -5269,48 +5486,18 @@ func (s ListSceneItemsResponseBodyResultDetail) GoString() string {
 	return s.String()
 }
 
-func (s *ListSceneItemsResponseBodyResultDetail) SetStatus(v string) *ListSceneItemsResponseBodyResultDetail {
-	s.Status = &v
-	return s
-}
-
-func (s *ListSceneItemsResponseBodyResultDetail) SetPubTime(v string) *ListSceneItemsResponseBodyResultDetail {
-	s.PubTime = &v
-	return s
-}
-
-func (s *ListSceneItemsResponseBodyResultDetail) SetExpireTime(v string) *ListSceneItemsResponseBodyResultDetail {
-	s.ExpireTime = &v
-	return s
-}
-
-func (s *ListSceneItemsResponseBodyResultDetail) SetItemType(v string) *ListSceneItemsResponseBodyResultDetail {
-	s.ItemType = &v
-	return s
-}
-
 func (s *ListSceneItemsResponseBodyResultDetail) SetAuthor(v string) *ListSceneItemsResponseBodyResultDetail {
 	s.Author = &v
 	return s
 }
 
-func (s *ListSceneItemsResponseBodyResultDetail) SetCategoryPath(v string) *ListSceneItemsResponseBodyResultDetail {
-	s.CategoryPath = &v
-	return s
-}
-
-func (s *ListSceneItemsResponseBodyResultDetail) SetItemId(v string) *ListSceneItemsResponseBodyResultDetail {
-	s.ItemId = &v
-	return s
-}
-
-func (s *ListSceneItemsResponseBodyResultDetail) SetShopId(v string) *ListSceneItemsResponseBodyResultDetail {
-	s.ShopId = &v
-	return s
-}
-
 func (s *ListSceneItemsResponseBodyResultDetail) SetBrandId(v string) *ListSceneItemsResponseBodyResultDetail {
 	s.BrandId = &v
+	return s
+}
+
+func (s *ListSceneItemsResponseBodyResultDetail) SetCategoryPath(v string) *ListSceneItemsResponseBodyResultDetail {
+	s.CategoryPath = &v
 	return s
 }
 
@@ -5324,14 +5511,86 @@ func (s *ListSceneItemsResponseBodyResultDetail) SetDuration(v string) *ListScen
 	return s
 }
 
+func (s *ListSceneItemsResponseBodyResultDetail) SetExpireTime(v string) *ListSceneItemsResponseBodyResultDetail {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListSceneItemsResponseBodyResultDetail) SetItemId(v string) *ListSceneItemsResponseBodyResultDetail {
+	s.ItemId = &v
+	return s
+}
+
+func (s *ListSceneItemsResponseBodyResultDetail) SetItemType(v string) *ListSceneItemsResponseBodyResultDetail {
+	s.ItemType = &v
+	return s
+}
+
+func (s *ListSceneItemsResponseBodyResultDetail) SetPubTime(v string) *ListSceneItemsResponseBodyResultDetail {
+	s.PubTime = &v
+	return s
+}
+
+func (s *ListSceneItemsResponseBodyResultDetail) SetShopId(v string) *ListSceneItemsResponseBodyResultDetail {
+	s.ShopId = &v
+	return s
+}
+
+func (s *ListSceneItemsResponseBodyResultDetail) SetStatus(v string) *ListSceneItemsResponseBodyResultDetail {
+	s.Status = &v
+	return s
+}
+
 func (s *ListSceneItemsResponseBodyResultDetail) SetTitle(v string) *ListSceneItemsResponseBodyResultDetail {
 	s.Title = &v
 	return s
 }
 
+type ListSceneItemsResponseBodyResultTotal struct {
+	InstanceRecommendItem *int64 `json:"InstanceRecommendItem,omitempty" xml:"InstanceRecommendItem,omitempty"`
+	SceneRecommendItem    *int64 `json:"SceneRecommendItem,omitempty" xml:"SceneRecommendItem,omitempty"`
+	SceneWeightItem       *int64 `json:"SceneWeightItem,omitempty" xml:"SceneWeightItem,omitempty"`
+	TotalCount            *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	WeightItem            *int64 `json:"WeightItem,omitempty" xml:"WeightItem,omitempty"`
+}
+
+func (s ListSceneItemsResponseBodyResultTotal) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSceneItemsResponseBodyResultTotal) GoString() string {
+	return s.String()
+}
+
+func (s *ListSceneItemsResponseBodyResultTotal) SetInstanceRecommendItem(v int64) *ListSceneItemsResponseBodyResultTotal {
+	s.InstanceRecommendItem = &v
+	return s
+}
+
+func (s *ListSceneItemsResponseBodyResultTotal) SetSceneRecommendItem(v int64) *ListSceneItemsResponseBodyResultTotal {
+	s.SceneRecommendItem = &v
+	return s
+}
+
+func (s *ListSceneItemsResponseBodyResultTotal) SetSceneWeightItem(v int64) *ListSceneItemsResponseBodyResultTotal {
+	s.SceneWeightItem = &v
+	return s
+}
+
+func (s *ListSceneItemsResponseBodyResultTotal) SetTotalCount(v int64) *ListSceneItemsResponseBodyResultTotal {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListSceneItemsResponseBodyResultTotal) SetWeightItem(v int64) *ListSceneItemsResponseBodyResultTotal {
+	s.WeightItem = &v
+	return s
+}
+
 type ListSceneItemsResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSceneItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSceneItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSceneItemsResponse) String() string {
@@ -5344,6 +5603,11 @@ func (s ListSceneItemsResponse) GoString() string {
 
 func (s *ListSceneItemsResponse) SetHeaders(v map[string]*string) *ListSceneItemsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListSceneItemsResponse) SetStatusCode(v int32) *ListSceneItemsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5393,10 +5657,10 @@ func (s *ListScenesResponseBody) SetResult(v []*ListScenesResponseBodyResult) *L
 }
 
 type ListScenesResponseBodyResult struct {
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListScenesResponseBodyResult) String() string {
@@ -5407,18 +5671,8 @@ func (s ListScenesResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *ListScenesResponseBodyResult) SetStatus(v string) *ListScenesResponseBodyResult {
-	s.Status = &v
-	return s
-}
-
 func (s *ListScenesResponseBodyResult) SetGmtCreate(v string) *ListScenesResponseBodyResult {
 	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListScenesResponseBodyResult) SetSceneId(v string) *ListScenesResponseBodyResult {
-	s.SceneId = &v
 	return s
 }
 
@@ -5427,9 +5681,20 @@ func (s *ListScenesResponseBodyResult) SetGmtModified(v string) *ListScenesRespo
 	return s
 }
 
+func (s *ListScenesResponseBodyResult) SetSceneId(v string) *ListScenesResponseBodyResult {
+	s.SceneId = &v
+	return s
+}
+
+func (s *ListScenesResponseBodyResult) SetStatus(v string) *ListScenesResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
 type ListScenesResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListScenesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListScenesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListScenesResponse) String() string {
@@ -5445,15 +5710,20 @@ func (s *ListScenesResponse) SetHeaders(v map[string]*string) *ListScenesRespons
 	return s
 }
 
+func (s *ListScenesResponse) SetStatusCode(v int32) *ListScenesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListScenesResponse) SetBody(v *ListScenesResponseBody) *ListScenesResponse {
 	s.Body = v
 	return s
 }
 
 type ListUmengAppkeysResponseBody struct {
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    []*ListUmengAppkeysResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -5463,6 +5733,11 @@ func (s ListUmengAppkeysResponseBody) String() string {
 
 func (s ListUmengAppkeysResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListUmengAppkeysResponseBody) SetCode(v string) *ListUmengAppkeysResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ListUmengAppkeysResponseBody) SetMessage(v string) *ListUmengAppkeysResponseBody {
@@ -5475,20 +5750,15 @@ func (s *ListUmengAppkeysResponseBody) SetRequestId(v string) *ListUmengAppkeysR
 	return s
 }
 
-func (s *ListUmengAppkeysResponseBody) SetCode(v string) *ListUmengAppkeysResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ListUmengAppkeysResponseBody) SetResult(v []*ListUmengAppkeysResponseBodyResult) *ListUmengAppkeysResponseBody {
 	s.Result = v
 	return s
 }
 
 type ListUmengAppkeysResponseBodyResult struct {
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Appkey   *string `json:"Appkey,omitempty" xml:"Appkey,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 }
 
 func (s ListUmengAppkeysResponseBodyResult) String() string {
@@ -5499,8 +5769,8 @@ func (s ListUmengAppkeysResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *ListUmengAppkeysResponseBodyResult) SetPlatform(v string) *ListUmengAppkeysResponseBodyResult {
-	s.Platform = &v
+func (s *ListUmengAppkeysResponseBodyResult) SetAppkey(v string) *ListUmengAppkeysResponseBodyResult {
+	s.Appkey = &v
 	return s
 }
 
@@ -5509,14 +5779,15 @@ func (s *ListUmengAppkeysResponseBodyResult) SetName(v string) *ListUmengAppkeys
 	return s
 }
 
-func (s *ListUmengAppkeysResponseBodyResult) SetAppkey(v string) *ListUmengAppkeysResponseBodyResult {
-	s.Appkey = &v
+func (s *ListUmengAppkeysResponseBodyResult) SetPlatform(v string) *ListUmengAppkeysResponseBodyResult {
+	s.Platform = &v
 	return s
 }
 
 type ListUmengAppkeysResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUmengAppkeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUmengAppkeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListUmengAppkeysResponse) String() string {
@@ -5532,15 +5803,20 @@ func (s *ListUmengAppkeysResponse) SetHeaders(v map[string]*string) *ListUmengAp
 	return s
 }
 
+func (s *ListUmengAppkeysResponse) SetStatusCode(v int32) *ListUmengAppkeysResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListUmengAppkeysResponse) SetBody(v *ListUmengAppkeysResponseBody) *ListUmengAppkeysResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyDataSourceResponseBody struct {
+	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *ModifyDataSourceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -5550,6 +5826,11 @@ func (s ModifyDataSourceResponseBody) String() string {
 
 func (s ModifyDataSourceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDataSourceResponseBody) SetCode(v string) *ModifyDataSourceResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ModifyDataSourceResponseBody) SetMessage(v string) *ModifyDataSourceResponseBody {
@@ -5562,21 +5843,16 @@ func (s *ModifyDataSourceResponseBody) SetRequestId(v string) *ModifyDataSourceR
 	return s
 }
 
-func (s *ModifyDataSourceResponseBody) SetCode(v string) *ModifyDataSourceResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ModifyDataSourceResponseBody) SetResult(v *ModifyDataSourceResponseBodyResult) *ModifyDataSourceResponseBody {
 	s.Result = v
 	return s
 }
 
 type ModifyDataSourceResponseBodyResult struct {
-	TableName   *string                                 `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	Meta        *ModifyDataSourceResponseBodyResultMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
 	GmtCreate   *string                                 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *string                                 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Meta        *ModifyDataSourceResponseBodyResultMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
+	TableName   *string                                 `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s ModifyDataSourceResponseBodyResult) String() string {
@@ -5585,16 +5861,6 @@ func (s ModifyDataSourceResponseBodyResult) String() string {
 
 func (s ModifyDataSourceResponseBodyResult) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyDataSourceResponseBodyResult) SetTableName(v string) *ModifyDataSourceResponseBodyResult {
-	s.TableName = &v
-	return s
-}
-
-func (s *ModifyDataSourceResponseBodyResult) SetMeta(v *ModifyDataSourceResponseBodyResultMeta) *ModifyDataSourceResponseBodyResult {
-	s.Meta = v
-	return s
 }
 
 func (s *ModifyDataSourceResponseBodyResult) SetGmtCreate(v string) *ModifyDataSourceResponseBodyResult {
@@ -5607,15 +5873,25 @@ func (s *ModifyDataSourceResponseBodyResult) SetGmtModified(v string) *ModifyDat
 	return s
 }
 
+func (s *ModifyDataSourceResponseBodyResult) SetMeta(v *ModifyDataSourceResponseBodyResultMeta) *ModifyDataSourceResponseBodyResult {
+	s.Meta = v
+	return s
+}
+
+func (s *ModifyDataSourceResponseBodyResult) SetTableName(v string) *ModifyDataSourceResponseBodyResult {
+	s.TableName = &v
+	return s
+}
+
 type ModifyDataSourceResponseBodyResultMeta struct {
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	BucketName  *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Partition   *string `json:"Partition,omitempty" xml:"Partition,omitempty"`
-	Timestamp   *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	BucketName  *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	Partition   *string `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Timestamp   *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ModifyDataSourceResponseBodyResultMeta) String() string {
@@ -5626,18 +5902,8 @@ func (s ModifyDataSourceResponseBodyResultMeta) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDataSourceResponseBodyResultMeta) SetType(v string) *ModifyDataSourceResponseBodyResultMeta {
-	s.Type = &v
-	return s
-}
-
-func (s *ModifyDataSourceResponseBodyResultMeta) SetTableName(v string) *ModifyDataSourceResponseBodyResultMeta {
-	s.TableName = &v
-	return s
-}
-
-func (s *ModifyDataSourceResponseBodyResultMeta) SetProjectName(v string) *ModifyDataSourceResponseBodyResultMeta {
-	s.ProjectName = &v
+func (s *ModifyDataSourceResponseBodyResultMeta) SetAccessKeyId(v string) *ModifyDataSourceResponseBodyResultMeta {
+	s.AccessKeyId = &v
 	return s
 }
 
@@ -5646,13 +5912,23 @@ func (s *ModifyDataSourceResponseBodyResultMeta) SetBucketName(v string) *Modify
 	return s
 }
 
+func (s *ModifyDataSourceResponseBodyResultMeta) SetPartition(v string) *ModifyDataSourceResponseBodyResultMeta {
+	s.Partition = &v
+	return s
+}
+
 func (s *ModifyDataSourceResponseBodyResultMeta) SetPath(v string) *ModifyDataSourceResponseBodyResultMeta {
 	s.Path = &v
 	return s
 }
 
-func (s *ModifyDataSourceResponseBodyResultMeta) SetPartition(v string) *ModifyDataSourceResponseBodyResultMeta {
-	s.Partition = &v
+func (s *ModifyDataSourceResponseBodyResultMeta) SetProjectName(v string) *ModifyDataSourceResponseBodyResultMeta {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ModifyDataSourceResponseBodyResultMeta) SetTableName(v string) *ModifyDataSourceResponseBodyResultMeta {
+	s.TableName = &v
 	return s
 }
 
@@ -5661,14 +5937,15 @@ func (s *ModifyDataSourceResponseBodyResultMeta) SetTimestamp(v int64) *ModifyDa
 	return s
 }
 
-func (s *ModifyDataSourceResponseBodyResultMeta) SetAccessKeyId(v string) *ModifyDataSourceResponseBodyResultMeta {
-	s.AccessKeyId = &v
+func (s *ModifyDataSourceResponseBodyResultMeta) SetType(v string) *ModifyDataSourceResponseBodyResultMeta {
+	s.Type = &v
 	return s
 }
 
 type ModifyDataSourceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyDataSourceResponse) String() string {
@@ -5684,15 +5961,20 @@ func (s *ModifyDataSourceResponse) SetHeaders(v map[string]*string) *ModifyDataS
 	return s
 }
 
+func (s *ModifyDataSourceResponse) SetStatusCode(v int32) *ModifyDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyDataSourceResponse) SetBody(v *ModifyDataSourceResponseBody) *ModifyDataSourceResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyDiversifyResponseBody struct {
+	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *ModifyDiversifyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -5702,6 +5984,11 @@ func (s ModifyDiversifyResponseBody) String() string {
 
 func (s ModifyDiversifyResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDiversifyResponseBody) SetCode(v string) *ModifyDiversifyResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ModifyDiversifyResponseBody) SetMessage(v string) *ModifyDiversifyResponseBody {
@@ -5714,11 +6001,6 @@ func (s *ModifyDiversifyResponseBody) SetRequestId(v string) *ModifyDiversifyRes
 	return s
 }
 
-func (s *ModifyDiversifyResponseBody) SetCode(v string) *ModifyDiversifyResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ModifyDiversifyResponseBody) SetResult(v *ModifyDiversifyResponseBodyResult) *ModifyDiversifyResponseBody {
 	s.Result = v
 	return s
@@ -5726,8 +6008,8 @@ func (s *ModifyDiversifyResponseBody) SetResult(v *ModifyDiversifyResponseBodyRe
 
 type ModifyDiversifyResponseBodyResult struct {
 	GmtCreate   *string                                     `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name        *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	GmtModified *string                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Name        *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	Parameter   *ModifyDiversifyResponseBodyResultParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 }
 
@@ -5744,13 +6026,13 @@ func (s *ModifyDiversifyResponseBodyResult) SetGmtCreate(v string) *ModifyDivers
 	return s
 }
 
-func (s *ModifyDiversifyResponseBodyResult) SetName(v string) *ModifyDiversifyResponseBodyResult {
-	s.Name = &v
+func (s *ModifyDiversifyResponseBodyResult) SetGmtModified(v string) *ModifyDiversifyResponseBodyResult {
+	s.GmtModified = &v
 	return s
 }
 
-func (s *ModifyDiversifyResponseBodyResult) SetGmtModified(v string) *ModifyDiversifyResponseBodyResult {
-	s.GmtModified = &v
+func (s *ModifyDiversifyResponseBodyResult) SetName(v string) *ModifyDiversifyResponseBodyResult {
+	s.Name = &v
 	return s
 }
 
@@ -5760,8 +6042,8 @@ func (s *ModifyDiversifyResponseBodyResult) SetParameter(v *ModifyDiversifyRespo
 }
 
 type ModifyDiversifyResponseBodyResultParameter struct {
-	Window        *int32 `json:"Window,omitempty" xml:"Window,omitempty"`
 	CategoryIndex *int32 `json:"CategoryIndex,omitempty" xml:"CategoryIndex,omitempty"`
+	Window        *int32 `json:"Window,omitempty" xml:"Window,omitempty"`
 }
 
 func (s ModifyDiversifyResponseBodyResultParameter) String() string {
@@ -5772,19 +6054,20 @@ func (s ModifyDiversifyResponseBodyResultParameter) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDiversifyResponseBodyResultParameter) SetWindow(v int32) *ModifyDiversifyResponseBodyResultParameter {
-	s.Window = &v
-	return s
-}
-
 func (s *ModifyDiversifyResponseBodyResultParameter) SetCategoryIndex(v int32) *ModifyDiversifyResponseBodyResultParameter {
 	s.CategoryIndex = &v
 	return s
 }
 
+func (s *ModifyDiversifyResponseBodyResultParameter) SetWindow(v int32) *ModifyDiversifyResponseBodyResultParameter {
+	s.Window = &v
+	return s
+}
+
 type ModifyDiversifyResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDiversifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDiversifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyDiversifyResponse) String() string {
@@ -5800,15 +6083,20 @@ func (s *ModifyDiversifyResponse) SetHeaders(v map[string]*string) *ModifyDivers
 	return s
 }
 
+func (s *ModifyDiversifyResponse) SetStatusCode(v int32) *ModifyDiversifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyDiversifyResponse) SetBody(v *ModifyDiversifyResponseBody) *ModifyDiversifyResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyExposureSettingsResponseBody struct {
+	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *ModifyExposureSettingsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -5820,6 +6108,11 @@ func (s ModifyExposureSettingsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyExposureSettingsResponseBody) SetCode(v string) *ModifyExposureSettingsResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *ModifyExposureSettingsResponseBody) SetMessage(v string) *ModifyExposureSettingsResponseBody {
 	s.Message = &v
 	return s
@@ -5827,11 +6120,6 @@ func (s *ModifyExposureSettingsResponseBody) SetMessage(v string) *ModifyExposur
 
 func (s *ModifyExposureSettingsResponseBody) SetRequestId(v string) *ModifyExposureSettingsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ModifyExposureSettingsResponseBody) SetCode(v string) *ModifyExposureSettingsResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -5864,8 +6152,9 @@ func (s *ModifyExposureSettingsResponseBodyResult) SetScenarioBased(v bool) *Mod
 }
 
 type ModifyExposureSettingsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyExposureSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyExposureSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyExposureSettingsResponse) String() string {
@@ -5881,15 +6170,20 @@ func (s *ModifyExposureSettingsResponse) SetHeaders(v map[string]*string) *Modif
 	return s
 }
 
+func (s *ModifyExposureSettingsResponse) SetStatusCode(v int32) *ModifyExposureSettingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyExposureSettingsResponse) SetBody(v *ModifyExposureSettingsResponseBody) *ModifyExposureSettingsResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyInstanceResponseBody struct {
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *ModifyInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -5899,6 +6193,11 @@ func (s ModifyInstanceResponseBody) String() string {
 
 func (s ModifyInstanceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyInstanceResponseBody) SetCode(v string) *ModifyInstanceResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ModifyInstanceResponseBody) SetMessage(v string) *ModifyInstanceResponseBody {
@@ -5911,31 +6210,26 @@ func (s *ModifyInstanceResponseBody) SetRequestId(v string) *ModifyInstanceRespo
 	return s
 }
 
-func (s *ModifyInstanceResponseBody) SetCode(v string) *ModifyInstanceResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ModifyInstanceResponseBody) SetResult(v *ModifyInstanceResponseBodyResult) *ModifyInstanceResponseBody {
 	s.Result = v
 	return s
 }
 
 type ModifyInstanceResponseBodyResult struct {
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	CommodityCode  *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	GmtModified    *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	LockMode       *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	CommodityCode  *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	DataSetVersion *string `json:"DataSetVersion,omitempty" xml:"DataSetVersion,omitempty"`
-	Industry       *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
 	ExpiredTime    *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	GmtCreate      *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified    *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Industry       *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LockMode       *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Scene          *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ModifyInstanceResponseBodyResult) String() string {
@@ -5946,13 +6240,8 @@ func (s ModifyInstanceResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyInstanceResponseBodyResult) SetStatus(v string) *ModifyInstanceResponseBodyResult {
-	s.Status = &v
-	return s
-}
-
-func (s *ModifyInstanceResponseBodyResult) SetType(v string) *ModifyInstanceResponseBodyResult {
-	s.Type = &v
+func (s *ModifyInstanceResponseBodyResult) SetChargeType(v string) *ModifyInstanceResponseBodyResult {
+	s.ChargeType = &v
 	return s
 }
 
@@ -5961,38 +6250,8 @@ func (s *ModifyInstanceResponseBodyResult) SetCommodityCode(v string) *ModifyIns
 	return s
 }
 
-func (s *ModifyInstanceResponseBodyResult) SetChargeType(v string) *ModifyInstanceResponseBodyResult {
-	s.ChargeType = &v
-	return s
-}
-
-func (s *ModifyInstanceResponseBodyResult) SetInstanceId(v string) *ModifyInstanceResponseBodyResult {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ModifyInstanceResponseBodyResult) SetGmtModified(v string) *ModifyInstanceResponseBodyResult {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *ModifyInstanceResponseBodyResult) SetLockMode(v string) *ModifyInstanceResponseBodyResult {
-	s.LockMode = &v
-	return s
-}
-
-func (s *ModifyInstanceResponseBodyResult) SetRegionId(v string) *ModifyInstanceResponseBodyResult {
-	s.RegionId = &v
-	return s
-}
-
 func (s *ModifyInstanceResponseBodyResult) SetDataSetVersion(v string) *ModifyInstanceResponseBodyResult {
 	s.DataSetVersion = &v
-	return s
-}
-
-func (s *ModifyInstanceResponseBodyResult) SetIndustry(v string) *ModifyInstanceResponseBodyResult {
-	s.Industry = &v
 	return s
 }
 
@@ -6006,8 +6265,33 @@ func (s *ModifyInstanceResponseBodyResult) SetGmtCreate(v string) *ModifyInstanc
 	return s
 }
 
+func (s *ModifyInstanceResponseBodyResult) SetGmtModified(v string) *ModifyInstanceResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ModifyInstanceResponseBodyResult) SetIndustry(v string) *ModifyInstanceResponseBodyResult {
+	s.Industry = &v
+	return s
+}
+
+func (s *ModifyInstanceResponseBodyResult) SetInstanceId(v string) *ModifyInstanceResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceResponseBodyResult) SetLockMode(v string) *ModifyInstanceResponseBodyResult {
+	s.LockMode = &v
+	return s
+}
+
 func (s *ModifyInstanceResponseBodyResult) SetName(v string) *ModifyInstanceResponseBodyResult {
 	s.Name = &v
+	return s
+}
+
+func (s *ModifyInstanceResponseBodyResult) SetRegionId(v string) *ModifyInstanceResponseBodyResult {
+	s.RegionId = &v
 	return s
 }
 
@@ -6016,9 +6300,20 @@ func (s *ModifyInstanceResponseBodyResult) SetScene(v string) *ModifyInstanceRes
 	return s
 }
 
+func (s *ModifyInstanceResponseBodyResult) SetStatus(v string) *ModifyInstanceResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ModifyInstanceResponseBodyResult) SetType(v string) *ModifyInstanceResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
 type ModifyInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyInstanceResponse) String() string {
@@ -6031,6 +6326,11 @@ func (s ModifyInstanceResponse) GoString() string {
 
 func (s *ModifyInstanceResponse) SetHeaders(v map[string]*string) *ModifyInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceResponse) SetStatusCode(v int32) *ModifyInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6063,8 +6363,9 @@ func (s *ModifyItemsResponseBody) SetResult(v bool) *ModifyItemsResponseBody {
 }
 
 type ModifyItemsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyItemsResponse) String() string {
@@ -6080,15 +6381,20 @@ func (s *ModifyItemsResponse) SetHeaders(v map[string]*string) *ModifyItemsRespo
 	return s
 }
 
+func (s *ModifyItemsResponse) SetStatusCode(v int32) *ModifyItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyItemsResponse) SetBody(v *ModifyItemsResponseBody) *ModifyItemsResponse {
 	s.Body = v
 	return s
 }
 
 type ModifyMixResponseBody struct {
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *ModifyMixResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -6098,6 +6404,11 @@ func (s ModifyMixResponseBody) String() string {
 
 func (s ModifyMixResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyMixResponseBody) SetCode(v string) *ModifyMixResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ModifyMixResponseBody) SetMessage(v string) *ModifyMixResponseBody {
@@ -6110,11 +6421,6 @@ func (s *ModifyMixResponseBody) SetRequestId(v string) *ModifyMixResponseBody {
 	return s
 }
 
-func (s *ModifyMixResponseBody) SetCode(v string) *ModifyMixResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ModifyMixResponseBody) SetResult(v *ModifyMixResponseBodyResult) *ModifyMixResponseBody {
 	s.Result = v
 	return s
@@ -6122,8 +6428,8 @@ func (s *ModifyMixResponseBody) SetResult(v *ModifyMixResponseBodyResult) *Modif
 
 type ModifyMixResponseBodyResult struct {
 	GmtCreate   *string                               `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name        *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
 	GmtModified *string                               `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Name        *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
 	Parameter   *ModifyMixResponseBodyResultParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Struct"`
 }
 
@@ -6140,13 +6446,13 @@ func (s *ModifyMixResponseBodyResult) SetGmtCreate(v string) *ModifyMixResponseB
 	return s
 }
 
-func (s *ModifyMixResponseBodyResult) SetName(v string) *ModifyMixResponseBodyResult {
-	s.Name = &v
+func (s *ModifyMixResponseBodyResult) SetGmtModified(v string) *ModifyMixResponseBodyResult {
+	s.GmtModified = &v
 	return s
 }
 
-func (s *ModifyMixResponseBodyResult) SetGmtModified(v string) *ModifyMixResponseBodyResult {
-	s.GmtModified = &v
+func (s *ModifyMixResponseBodyResult) SetName(v string) *ModifyMixResponseBodyResult {
+	s.Name = &v
 	return s
 }
 
@@ -6173,8 +6479,8 @@ func (s *ModifyMixResponseBodyResultParameter) SetSettings(v []*ModifyMixRespons
 }
 
 type ModifyMixResponseBodyResultParameterSettings struct {
-	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
 	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ModifyMixResponseBodyResultParameterSettings) String() string {
@@ -6185,19 +6491,20 @@ func (s ModifyMixResponseBodyResultParameterSettings) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyMixResponseBodyResultParameterSettings) SetValue(v int32) *ModifyMixResponseBodyResultParameterSettings {
-	s.Value = &v
-	return s
-}
-
 func (s *ModifyMixResponseBodyResultParameterSettings) SetName(v string) *ModifyMixResponseBodyResultParameterSettings {
 	s.Name = &v
 	return s
 }
 
+func (s *ModifyMixResponseBodyResultParameterSettings) SetValue(v int32) *ModifyMixResponseBodyResultParameterSettings {
+	s.Value = &v
+	return s
+}
+
 type ModifyMixResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyMixResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyMixResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyMixResponse) String() string {
@@ -6210,6 +6517,11 @@ func (s ModifyMixResponse) GoString() string {
 
 func (s *ModifyMixResponse) SetHeaders(v map[string]*string) *ModifyMixResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyMixResponse) SetStatusCode(v int32) *ModifyMixResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6242,11 +6554,11 @@ func (s *ModifyRuleResponseBody) SetResult(v *ModifyRuleResponseBodyResult) *Mod
 }
 
 type ModifyRuleResponseBodyResult struct {
-	Status      *string                `json:"Status,omitempty" xml:"Status,omitempty"`
 	GmtCreate   *string                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	RuleMeta    map[string]interface{} `json:"RuleMeta,omitempty" xml:"RuleMeta,omitempty"`
 	GmtModified *string                `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	RuleId      *string                `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleMeta    map[string]interface{} `json:"RuleMeta,omitempty" xml:"RuleMeta,omitempty"`
+	Status      *string                `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ModifyRuleResponseBodyResult) String() string {
@@ -6257,18 +6569,8 @@ func (s ModifyRuleResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyRuleResponseBodyResult) SetStatus(v string) *ModifyRuleResponseBodyResult {
-	s.Status = &v
-	return s
-}
-
 func (s *ModifyRuleResponseBodyResult) SetGmtCreate(v string) *ModifyRuleResponseBodyResult {
 	s.GmtCreate = &v
-	return s
-}
-
-func (s *ModifyRuleResponseBodyResult) SetRuleMeta(v map[string]interface{}) *ModifyRuleResponseBodyResult {
-	s.RuleMeta = v
 	return s
 }
 
@@ -6282,9 +6584,20 @@ func (s *ModifyRuleResponseBodyResult) SetRuleId(v string) *ModifyRuleResponseBo
 	return s
 }
 
+func (s *ModifyRuleResponseBodyResult) SetRuleMeta(v map[string]interface{}) *ModifyRuleResponseBodyResult {
+	s.RuleMeta = v
+	return s
+}
+
+func (s *ModifyRuleResponseBodyResult) SetStatus(v string) *ModifyRuleResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
 type ModifyRuleResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyRuleResponse) String() string {
@@ -6297,6 +6610,11 @@ func (s ModifyRuleResponse) GoString() string {
 
 func (s *ModifyRuleResponse) SetHeaders(v map[string]*string) *ModifyRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyRuleResponse) SetStatusCode(v int32) *ModifyRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6329,10 +6647,10 @@ func (s *ModifySceneResponseBody) SetResult(v *ModifySceneResponseBodyResult) *M
 }
 
 type ModifySceneResponseBodyResult struct {
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ModifySceneResponseBodyResult) String() string {
@@ -6343,18 +6661,8 @@ func (s ModifySceneResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *ModifySceneResponseBodyResult) SetStatus(v string) *ModifySceneResponseBodyResult {
-	s.Status = &v
-	return s
-}
-
 func (s *ModifySceneResponseBodyResult) SetGmtCreate(v string) *ModifySceneResponseBodyResult {
 	s.GmtCreate = &v
-	return s
-}
-
-func (s *ModifySceneResponseBodyResult) SetSceneId(v string) *ModifySceneResponseBodyResult {
-	s.SceneId = &v
 	return s
 }
 
@@ -6363,9 +6671,20 @@ func (s *ModifySceneResponseBodyResult) SetGmtModified(v string) *ModifySceneRes
 	return s
 }
 
+func (s *ModifySceneResponseBodyResult) SetSceneId(v string) *ModifySceneResponseBodyResult {
+	s.SceneId = &v
+	return s
+}
+
+func (s *ModifySceneResponseBodyResult) SetStatus(v string) *ModifySceneResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
 type ModifySceneResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifySceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifySceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifySceneResponse) String() string {
@@ -6378,6 +6697,11 @@ func (s ModifySceneResponse) GoString() string {
 
 func (s *ModifySceneResponse) SetHeaders(v map[string]*string) *ModifySceneResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifySceneResponse) SetStatusCode(v int32) *ModifySceneResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6450,8 +6774,9 @@ func (s *PublishRuleResponseBodyResult) SetRuleId(v string) *PublishRuleResponse
 }
 
 type PublishRuleResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PublishRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PublishRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PublishRuleResponse) String() string {
@@ -6467,15 +6792,20 @@ func (s *PublishRuleResponse) SetHeaders(v map[string]*string) *PublishRuleRespo
 	return s
 }
 
+func (s *PublishRuleResponse) SetStatusCode(v int32) *PublishRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *PublishRuleResponse) SetBody(v *PublishRuleResponseBody) *PublishRuleResponse {
 	s.Body = v
 	return s
 }
 
 type PushDocumentResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -6485,6 +6815,11 @@ func (s PushDocumentResponseBody) String() string {
 
 func (s PushDocumentResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *PushDocumentResponseBody) SetCode(v string) *PushDocumentResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *PushDocumentResponseBody) SetMessage(v string) *PushDocumentResponseBody {
@@ -6497,19 +6832,15 @@ func (s *PushDocumentResponseBody) SetRequestId(v string) *PushDocumentResponseB
 	return s
 }
 
-func (s *PushDocumentResponseBody) SetCode(v string) *PushDocumentResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *PushDocumentResponseBody) SetResult(v bool) *PushDocumentResponseBody {
 	s.Result = &v
 	return s
 }
 
 type PushDocumentResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PushDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PushDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PushDocumentResponse) String() string {
@@ -6525,15 +6856,20 @@ func (s *PushDocumentResponse) SetHeaders(v map[string]*string) *PushDocumentRes
 	return s
 }
 
+func (s *PushDocumentResponse) SetStatusCode(v int32) *PushDocumentResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *PushDocumentResponse) SetBody(v *PushDocumentResponseBody) *PushDocumentResponse {
 	s.Body = v
 	return s
 }
 
 type PushInterventionResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -6543,6 +6879,11 @@ func (s PushInterventionResponseBody) String() string {
 
 func (s PushInterventionResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *PushInterventionResponseBody) SetCode(v string) *PushInterventionResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *PushInterventionResponseBody) SetMessage(v string) *PushInterventionResponseBody {
@@ -6555,19 +6896,15 @@ func (s *PushInterventionResponseBody) SetRequestId(v string) *PushInterventionR
 	return s
 }
 
-func (s *PushInterventionResponseBody) SetCode(v string) *PushInterventionResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *PushInterventionResponseBody) SetResult(v bool) *PushInterventionResponseBody {
 	s.Result = &v
 	return s
 }
 
 type PushInterventionResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PushInterventionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PushInterventionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PushInterventionResponse) String() string {
@@ -6583,25 +6920,30 @@ func (s *PushInterventionResponse) SetHeaders(v map[string]*string) *PushInterve
 	return s
 }
 
+func (s *PushInterventionResponse) SetStatusCode(v int32) *PushInterventionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *PushInterventionResponse) SetBody(v *PushInterventionResponseBody) *PushInterventionResponse {
 	s.Body = v
 	return s
 }
 
 type QueryDataMessageRequest struct {
-	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	BhvType       *string `json:"BhvType,omitempty" xml:"BhvType,omitempty"`
 	CmdType       *string `json:"CmdType,omitempty" xml:"CmdType,omitempty"`
+	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ItemId        *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	ItemType      *string `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
+	MessageSource *string `json:"MessageSource,omitempty" xml:"MessageSource,omitempty"`
+	Page          *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	SceneId       *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Size          *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TraceId       *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserType      *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
-	Page          *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
-	Size          *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	TraceId       *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	SceneId       *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	BhvType       *string `json:"BhvType,omitempty" xml:"BhvType,omitempty"`
-	MessageSource *string `json:"MessageSource,omitempty" xml:"MessageSource,omitempty"`
 }
 
 func (s QueryDataMessageRequest) String() string {
@@ -6612,18 +6954,18 @@ func (s QueryDataMessageRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryDataMessageRequest) SetStartTime(v int64) *QueryDataMessageRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *QueryDataMessageRequest) SetEndTime(v int64) *QueryDataMessageRequest {
-	s.EndTime = &v
+func (s *QueryDataMessageRequest) SetBhvType(v string) *QueryDataMessageRequest {
+	s.BhvType = &v
 	return s
 }
 
 func (s *QueryDataMessageRequest) SetCmdType(v string) *QueryDataMessageRequest {
 	s.CmdType = &v
+	return s
+}
+
+func (s *QueryDataMessageRequest) SetEndTime(v int64) *QueryDataMessageRequest {
+	s.EndTime = &v
 	return s
 }
 
@@ -6637,6 +6979,36 @@ func (s *QueryDataMessageRequest) SetItemType(v string) *QueryDataMessageRequest
 	return s
 }
 
+func (s *QueryDataMessageRequest) SetMessageSource(v string) *QueryDataMessageRequest {
+	s.MessageSource = &v
+	return s
+}
+
+func (s *QueryDataMessageRequest) SetPage(v int32) *QueryDataMessageRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *QueryDataMessageRequest) SetSceneId(v string) *QueryDataMessageRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *QueryDataMessageRequest) SetSize(v int32) *QueryDataMessageRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *QueryDataMessageRequest) SetStartTime(v int64) *QueryDataMessageRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryDataMessageRequest) SetTraceId(v string) *QueryDataMessageRequest {
+	s.TraceId = &v
+	return s
+}
+
 func (s *QueryDataMessageRequest) SetUserId(v string) *QueryDataMessageRequest {
 	s.UserId = &v
 	return s
@@ -6647,40 +7019,10 @@ func (s *QueryDataMessageRequest) SetUserType(v string) *QueryDataMessageRequest
 	return s
 }
 
-func (s *QueryDataMessageRequest) SetPage(v int32) *QueryDataMessageRequest {
-	s.Page = &v
-	return s
-}
-
-func (s *QueryDataMessageRequest) SetSize(v int32) *QueryDataMessageRequest {
-	s.Size = &v
-	return s
-}
-
-func (s *QueryDataMessageRequest) SetTraceId(v string) *QueryDataMessageRequest {
-	s.TraceId = &v
-	return s
-}
-
-func (s *QueryDataMessageRequest) SetSceneId(v string) *QueryDataMessageRequest {
-	s.SceneId = &v
-	return s
-}
-
-func (s *QueryDataMessageRequest) SetBhvType(v string) *QueryDataMessageRequest {
-	s.BhvType = &v
-	return s
-}
-
-func (s *QueryDataMessageRequest) SetMessageSource(v string) *QueryDataMessageRequest {
-	s.MessageSource = &v
-	return s
-}
-
 type QueryDataMessageResponseBody struct {
+	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -6690,6 +7032,11 @@ func (s QueryDataMessageResponseBody) String() string {
 
 func (s QueryDataMessageResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryDataMessageResponseBody) SetCode(v string) *QueryDataMessageResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryDataMessageResponseBody) SetMessage(v string) *QueryDataMessageResponseBody {
@@ -6702,19 +7049,15 @@ func (s *QueryDataMessageResponseBody) SetRequestId(v string) *QueryDataMessageR
 	return s
 }
 
-func (s *QueryDataMessageResponseBody) SetCode(v string) *QueryDataMessageResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *QueryDataMessageResponseBody) SetResult(v map[string]interface{}) *QueryDataMessageResponseBody {
 	s.Result = v
 	return s
 }
 
 type QueryDataMessageResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryDataMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryDataMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryDataMessageResponse) String() string {
@@ -6730,23 +7073,28 @@ func (s *QueryDataMessageResponse) SetHeaders(v map[string]*string) *QueryDataMe
 	return s
 }
 
+func (s *QueryDataMessageResponse) SetStatusCode(v int32) *QueryDataMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *QueryDataMessageResponse) SetBody(v *QueryDataMessageResponseBody) *QueryDataMessageResponse {
 	s.Body = v
 	return s
 }
 
 type QueryDataMessageStatisticsRequest struct {
-	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	BhvType       *string `json:"BhvType,omitempty" xml:"BhvType,omitempty"`
 	CmdType       *string `json:"CmdType,omitempty" xml:"CmdType,omitempty"`
+	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ItemId        *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	ItemType      *string `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
+	MessageSource *string `json:"MessageSource,omitempty" xml:"MessageSource,omitempty"`
+	SceneId       *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TraceId       *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserType      *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
-	TraceId       *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	SceneId       *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	BhvType       *string `json:"BhvType,omitempty" xml:"BhvType,omitempty"`
-	MessageSource *string `json:"MessageSource,omitempty" xml:"MessageSource,omitempty"`
 }
 
 func (s QueryDataMessageStatisticsRequest) String() string {
@@ -6757,18 +7105,18 @@ func (s QueryDataMessageStatisticsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryDataMessageStatisticsRequest) SetStartTime(v int64) *QueryDataMessageStatisticsRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *QueryDataMessageStatisticsRequest) SetEndTime(v int64) *QueryDataMessageStatisticsRequest {
-	s.EndTime = &v
+func (s *QueryDataMessageStatisticsRequest) SetBhvType(v string) *QueryDataMessageStatisticsRequest {
+	s.BhvType = &v
 	return s
 }
 
 func (s *QueryDataMessageStatisticsRequest) SetCmdType(v string) *QueryDataMessageStatisticsRequest {
 	s.CmdType = &v
+	return s
+}
+
+func (s *QueryDataMessageStatisticsRequest) SetEndTime(v int64) *QueryDataMessageStatisticsRequest {
+	s.EndTime = &v
 	return s
 }
 
@@ -6782,6 +7130,26 @@ func (s *QueryDataMessageStatisticsRequest) SetItemType(v string) *QueryDataMess
 	return s
 }
 
+func (s *QueryDataMessageStatisticsRequest) SetMessageSource(v string) *QueryDataMessageStatisticsRequest {
+	s.MessageSource = &v
+	return s
+}
+
+func (s *QueryDataMessageStatisticsRequest) SetSceneId(v string) *QueryDataMessageStatisticsRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *QueryDataMessageStatisticsRequest) SetStartTime(v int64) *QueryDataMessageStatisticsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryDataMessageStatisticsRequest) SetTraceId(v string) *QueryDataMessageStatisticsRequest {
+	s.TraceId = &v
+	return s
+}
+
 func (s *QueryDataMessageStatisticsRequest) SetUserId(v string) *QueryDataMessageStatisticsRequest {
 	s.UserId = &v
 	return s
@@ -6792,30 +7160,10 @@ func (s *QueryDataMessageStatisticsRequest) SetUserType(v string) *QueryDataMess
 	return s
 }
 
-func (s *QueryDataMessageStatisticsRequest) SetTraceId(v string) *QueryDataMessageStatisticsRequest {
-	s.TraceId = &v
-	return s
-}
-
-func (s *QueryDataMessageStatisticsRequest) SetSceneId(v string) *QueryDataMessageStatisticsRequest {
-	s.SceneId = &v
-	return s
-}
-
-func (s *QueryDataMessageStatisticsRequest) SetBhvType(v string) *QueryDataMessageStatisticsRequest {
-	s.BhvType = &v
-	return s
-}
-
-func (s *QueryDataMessageStatisticsRequest) SetMessageSource(v string) *QueryDataMessageStatisticsRequest {
-	s.MessageSource = &v
-	return s
-}
-
 type QueryDataMessageStatisticsResponseBody struct {
+	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -6825,6 +7173,11 @@ func (s QueryDataMessageStatisticsResponseBody) String() string {
 
 func (s QueryDataMessageStatisticsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryDataMessageStatisticsResponseBody) SetCode(v string) *QueryDataMessageStatisticsResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryDataMessageStatisticsResponseBody) SetMessage(v string) *QueryDataMessageStatisticsResponseBody {
@@ -6837,19 +7190,15 @@ func (s *QueryDataMessageStatisticsResponseBody) SetRequestId(v string) *QueryDa
 	return s
 }
 
-func (s *QueryDataMessageStatisticsResponseBody) SetCode(v string) *QueryDataMessageStatisticsResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *QueryDataMessageStatisticsResponseBody) SetResult(v map[string]interface{}) *QueryDataMessageStatisticsResponseBody {
 	s.Result = v
 	return s
 }
 
 type QueryDataMessageStatisticsResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryDataMessageStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryDataMessageStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryDataMessageStatisticsResponse) String() string {
@@ -6865,14 +7214,19 @@ func (s *QueryDataMessageStatisticsResponse) SetHeaders(v map[string]*string) *Q
 	return s
 }
 
+func (s *QueryDataMessageStatisticsResponse) SetStatusCode(v int32) *QueryDataMessageStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *QueryDataMessageStatisticsResponse) SetBody(v *QueryDataMessageStatisticsResponseBody) *QueryDataMessageStatisticsResponse {
 	s.Body = v
 	return s
 }
 
 type QueryExceptionHistoryRequest struct {
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -6884,13 +7238,13 @@ func (s QueryExceptionHistoryRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryExceptionHistoryRequest) SetStartTime(v int64) *QueryExceptionHistoryRequest {
-	s.StartTime = &v
+func (s *QueryExceptionHistoryRequest) SetEndTime(v int64) *QueryExceptionHistoryRequest {
+	s.EndTime = &v
 	return s
 }
 
-func (s *QueryExceptionHistoryRequest) SetEndTime(v int64) *QueryExceptionHistoryRequest {
-	s.EndTime = &v
+func (s *QueryExceptionHistoryRequest) SetStartTime(v int64) *QueryExceptionHistoryRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -6900,9 +7254,9 @@ func (s *QueryExceptionHistoryRequest) SetType(v string) *QueryExceptionHistoryR
 }
 
 type QueryExceptionHistoryResponseBody struct {
+	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -6912,6 +7266,11 @@ func (s QueryExceptionHistoryResponseBody) String() string {
 
 func (s QueryExceptionHistoryResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryExceptionHistoryResponseBody) SetCode(v string) *QueryExceptionHistoryResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryExceptionHistoryResponseBody) SetMessage(v string) *QueryExceptionHistoryResponseBody {
@@ -6924,19 +7283,15 @@ func (s *QueryExceptionHistoryResponseBody) SetRequestId(v string) *QueryExcepti
 	return s
 }
 
-func (s *QueryExceptionHistoryResponseBody) SetCode(v string) *QueryExceptionHistoryResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *QueryExceptionHistoryResponseBody) SetResult(v map[string]interface{}) *QueryExceptionHistoryResponseBody {
 	s.Result = v
 	return s
 }
 
 type QueryExceptionHistoryResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryExceptionHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryExceptionHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryExceptionHistoryResponse) String() string {
@@ -6949,6 +7304,11 @@ func (s QueryExceptionHistoryResponse) GoString() string {
 
 func (s *QueryExceptionHistoryResponse) SetHeaders(v map[string]*string) *QueryExceptionHistoryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QueryExceptionHistoryResponse) SetStatusCode(v int32) *QueryExceptionHistoryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6993,9 +7353,9 @@ func (s *QueryRawDataRequest) SetUserType(v string) *QueryRawDataRequest {
 }
 
 type QueryRawDataResponseBody struct {
+	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -7005,6 +7365,11 @@ func (s QueryRawDataResponseBody) String() string {
 
 func (s QueryRawDataResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QueryRawDataResponseBody) SetCode(v string) *QueryRawDataResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QueryRawDataResponseBody) SetMessage(v string) *QueryRawDataResponseBody {
@@ -7017,19 +7382,15 @@ func (s *QueryRawDataResponseBody) SetRequestId(v string) *QueryRawDataResponseB
 	return s
 }
 
-func (s *QueryRawDataResponseBody) SetCode(v string) *QueryRawDataResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *QueryRawDataResponseBody) SetResult(v map[string]interface{}) *QueryRawDataResponseBody {
 	s.Result = v
 	return s
 }
 
 type QueryRawDataResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryRawDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryRawDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryRawDataResponse) String() string {
@@ -7045,15 +7406,20 @@ func (s *QueryRawDataResponse) SetHeaders(v map[string]*string) *QueryRawDataRes
 	return s
 }
 
+func (s *QueryRawDataResponse) SetStatusCode(v int32) *QueryRawDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *QueryRawDataResponse) SetBody(v *QueryRawDataResponseBody) *QueryRawDataResponse {
 	s.Body = v
 	return s
 }
 
 type QuerySingleAggregationReportResponseBody struct {
+	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -7063,6 +7429,11 @@ func (s QuerySingleAggregationReportResponseBody) String() string {
 
 func (s QuerySingleAggregationReportResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QuerySingleAggregationReportResponseBody) SetCode(v string) *QuerySingleAggregationReportResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QuerySingleAggregationReportResponseBody) SetMessage(v string) *QuerySingleAggregationReportResponseBody {
@@ -7075,19 +7446,15 @@ func (s *QuerySingleAggregationReportResponseBody) SetRequestId(v string) *Query
 	return s
 }
 
-func (s *QuerySingleAggregationReportResponseBody) SetCode(v string) *QuerySingleAggregationReportResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *QuerySingleAggregationReportResponseBody) SetResult(v map[string]interface{}) *QuerySingleAggregationReportResponseBody {
 	s.Result = v
 	return s
 }
 
 type QuerySingleAggregationReportResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QuerySingleAggregationReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySingleAggregationReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QuerySingleAggregationReportResponse) String() string {
@@ -7100,6 +7467,11 @@ func (s QuerySingleAggregationReportResponse) GoString() string {
 
 func (s *QuerySingleAggregationReportResponse) SetHeaders(v map[string]*string) *QuerySingleAggregationReportResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QuerySingleAggregationReportResponse) SetStatusCode(v int32) *QuerySingleAggregationReportResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7126,9 +7498,9 @@ func (s *QuerySingleReportRequest) SetReportType(v string) *QuerySingleReportReq
 }
 
 type QuerySingleReportResponseBody struct {
+	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -7138,6 +7510,11 @@ func (s QuerySingleReportResponseBody) String() string {
 
 func (s QuerySingleReportResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QuerySingleReportResponseBody) SetCode(v string) *QuerySingleReportResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QuerySingleReportResponseBody) SetMessage(v string) *QuerySingleReportResponseBody {
@@ -7150,19 +7527,15 @@ func (s *QuerySingleReportResponseBody) SetRequestId(v string) *QuerySingleRepor
 	return s
 }
 
-func (s *QuerySingleReportResponseBody) SetCode(v string) *QuerySingleReportResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *QuerySingleReportResponseBody) SetResult(v map[string]interface{}) *QuerySingleReportResponseBody {
 	s.Result = v
 	return s
 }
 
 type QuerySingleReportResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QuerySingleReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySingleReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QuerySingleReportResponse) String() string {
@@ -7178,14 +7551,19 @@ func (s *QuerySingleReportResponse) SetHeaders(v map[string]*string) *QuerySingl
 	return s
 }
 
+func (s *QuerySingleReportResponse) SetStatusCode(v int32) *QuerySingleReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *QuerySingleReportResponse) SetBody(v *QuerySingleReportResponseBody) *QuerySingleReportResponse {
 	s.Body = v
 	return s
 }
 
 type QuerySyncReportAggregationRequest struct {
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime   *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s QuerySyncReportAggregationRequest) String() string {
@@ -7196,20 +7574,20 @@ func (s QuerySyncReportAggregationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySyncReportAggregationRequest) SetStartTime(v int64) *QuerySyncReportAggregationRequest {
-	s.StartTime = &v
-	return s
-}
-
 func (s *QuerySyncReportAggregationRequest) SetEndTime(v int64) *QuerySyncReportAggregationRequest {
 	s.EndTime = &v
 	return s
 }
 
+func (s *QuerySyncReportAggregationRequest) SetStartTime(v int64) *QuerySyncReportAggregationRequest {
+	s.StartTime = &v
+	return s
+}
+
 type QuerySyncReportAggregationResponseBody struct {
+	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -7219,6 +7597,11 @@ func (s QuerySyncReportAggregationResponseBody) String() string {
 
 func (s QuerySyncReportAggregationResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QuerySyncReportAggregationResponseBody) SetCode(v string) *QuerySyncReportAggregationResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QuerySyncReportAggregationResponseBody) SetMessage(v string) *QuerySyncReportAggregationResponseBody {
@@ -7231,19 +7614,15 @@ func (s *QuerySyncReportAggregationResponseBody) SetRequestId(v string) *QuerySy
 	return s
 }
 
-func (s *QuerySyncReportAggregationResponseBody) SetCode(v string) *QuerySyncReportAggregationResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *QuerySyncReportAggregationResponseBody) SetResult(v map[string]interface{}) *QuerySyncReportAggregationResponseBody {
 	s.Result = v
 	return s
 }
 
 type QuerySyncReportAggregationResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QuerySyncReportAggregationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySyncReportAggregationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QuerySyncReportAggregationResponse) String() string {
@@ -7256,6 +7635,11 @@ func (s QuerySyncReportAggregationResponse) GoString() string {
 
 func (s *QuerySyncReportAggregationResponse) SetHeaders(v map[string]*string) *QuerySyncReportAggregationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QuerySyncReportAggregationResponse) SetStatusCode(v int32) *QuerySyncReportAggregationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7288,12 +7672,12 @@ func (s *RecommendHeaders) SetRegionId(v string) *RecommendHeaders {
 }
 
 type RecommendRequest struct {
+	Imei        *string `json:"Imei,omitempty" xml:"Imei,omitempty"`
+	Ip          *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Items       *string `json:"Items,omitempty" xml:"Items,omitempty"`
+	ReturnCount *int32  `json:"ReturnCount,omitempty" xml:"ReturnCount,omitempty"`
 	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Ip          *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Imei        *string `json:"Imei,omitempty" xml:"Imei,omitempty"`
-	ReturnCount *int32  `json:"ReturnCount,omitempty" xml:"ReturnCount,omitempty"`
-	Items       *string `json:"Items,omitempty" xml:"Items,omitempty"`
 }
 
 func (s RecommendRequest) String() string {
@@ -7302,6 +7686,26 @@ func (s RecommendRequest) String() string {
 
 func (s RecommendRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RecommendRequest) SetImei(v string) *RecommendRequest {
+	s.Imei = &v
+	return s
+}
+
+func (s *RecommendRequest) SetIp(v string) *RecommendRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *RecommendRequest) SetItems(v string) *RecommendRequest {
+	s.Items = &v
+	return s
+}
+
+func (s *RecommendRequest) SetReturnCount(v int32) *RecommendRequest {
+	s.ReturnCount = &v
+	return s
 }
 
 func (s *RecommendRequest) SetSceneId(v string) *RecommendRequest {
@@ -7314,30 +7718,10 @@ func (s *RecommendRequest) SetUserId(v string) *RecommendRequest {
 	return s
 }
 
-func (s *RecommendRequest) SetIp(v string) *RecommendRequest {
-	s.Ip = &v
-	return s
-}
-
-func (s *RecommendRequest) SetImei(v string) *RecommendRequest {
-	s.Imei = &v
-	return s
-}
-
-func (s *RecommendRequest) SetReturnCount(v int32) *RecommendRequest {
-	s.ReturnCount = &v
-	return s
-}
-
-func (s *RecommendRequest) SetItems(v string) *RecommendRequest {
-	s.Items = &v
-	return s
-}
-
 type RecommendResponseBody struct {
+	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    []*RecommendResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -7347,6 +7731,11 @@ func (s RecommendResponseBody) String() string {
 
 func (s RecommendResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *RecommendResponseBody) SetCode(v string) *RecommendResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *RecommendResponseBody) SetMessage(v string) *RecommendResponseBody {
@@ -7359,24 +7748,19 @@ func (s *RecommendResponseBody) SetRequestId(v string) *RecommendResponseBody {
 	return s
 }
 
-func (s *RecommendResponseBody) SetCode(v string) *RecommendResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *RecommendResponseBody) SetResult(v []*RecommendResponseBodyResult) *RecommendResponseBody {
 	s.Result = v
 	return s
 }
 
 type RecommendResponseBodyResult struct {
+	ItemId    *string  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemType  *string  `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
+	MatchInfo *string  `json:"MatchInfo,omitempty" xml:"MatchInfo,omitempty"`
+	Position  *int32   `json:"Position,omitempty" xml:"Position,omitempty"`
+	TraceId   *string  `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 	TraceInfo *string  `json:"TraceInfo,omitempty" xml:"TraceInfo,omitempty"`
 	Weight    *float32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	MatchInfo *string  `json:"MatchInfo,omitempty" xml:"MatchInfo,omitempty"`
-	ItemType  *string  `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
-	Position  *int32   `json:"Position,omitempty" xml:"Position,omitempty"`
-	ItemId    *string  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	TraceId   *string  `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s RecommendResponseBodyResult) String() string {
@@ -7385,6 +7769,31 @@ func (s RecommendResponseBodyResult) String() string {
 
 func (s RecommendResponseBodyResult) GoString() string {
 	return s.String()
+}
+
+func (s *RecommendResponseBodyResult) SetItemId(v string) *RecommendResponseBodyResult {
+	s.ItemId = &v
+	return s
+}
+
+func (s *RecommendResponseBodyResult) SetItemType(v string) *RecommendResponseBodyResult {
+	s.ItemType = &v
+	return s
+}
+
+func (s *RecommendResponseBodyResult) SetMatchInfo(v string) *RecommendResponseBodyResult {
+	s.MatchInfo = &v
+	return s
+}
+
+func (s *RecommendResponseBodyResult) SetPosition(v int32) *RecommendResponseBodyResult {
+	s.Position = &v
+	return s
+}
+
+func (s *RecommendResponseBodyResult) SetTraceId(v string) *RecommendResponseBodyResult {
+	s.TraceId = &v
+	return s
 }
 
 func (s *RecommendResponseBodyResult) SetTraceInfo(v string) *RecommendResponseBodyResult {
@@ -7397,34 +7806,10 @@ func (s *RecommendResponseBodyResult) SetWeight(v float32) *RecommendResponseBod
 	return s
 }
 
-func (s *RecommendResponseBodyResult) SetMatchInfo(v string) *RecommendResponseBodyResult {
-	s.MatchInfo = &v
-	return s
-}
-
-func (s *RecommendResponseBodyResult) SetItemType(v string) *RecommendResponseBodyResult {
-	s.ItemType = &v
-	return s
-}
-
-func (s *RecommendResponseBodyResult) SetPosition(v int32) *RecommendResponseBodyResult {
-	s.Position = &v
-	return s
-}
-
-func (s *RecommendResponseBodyResult) SetItemId(v string) *RecommendResponseBodyResult {
-	s.ItemId = &v
-	return s
-}
-
-func (s *RecommendResponseBodyResult) SetTraceId(v string) *RecommendResponseBodyResult {
-	s.TraceId = &v
-	return s
-}
-
 type RecommendResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecommendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecommendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecommendResponse) String() string {
@@ -7440,15 +7825,20 @@ func (s *RecommendResponse) SetHeaders(v map[string]*string) *RecommendResponse 
 	return s
 }
 
+func (s *RecommendResponse) SetStatusCode(v int32) *RecommendResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RecommendResponse) SetBody(v *RecommendResponseBody) *RecommendResponse {
 	s.Body = v
 	return s
 }
 
 type RunInstanceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -7458,6 +7848,11 @@ func (s RunInstanceResponseBody) String() string {
 
 func (s RunInstanceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *RunInstanceResponseBody) SetCode(v string) *RunInstanceResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *RunInstanceResponseBody) SetMessage(v string) *RunInstanceResponseBody {
@@ -7470,19 +7865,15 @@ func (s *RunInstanceResponseBody) SetRequestId(v string) *RunInstanceResponseBod
 	return s
 }
 
-func (s *RunInstanceResponseBody) SetCode(v string) *RunInstanceResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *RunInstanceResponseBody) SetResult(v bool) *RunInstanceResponseBody {
 	s.Result = &v
 	return s
 }
 
 type RunInstanceResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RunInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RunInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RunInstanceResponse) String() string {
@@ -7498,15 +7889,20 @@ func (s *RunInstanceResponse) SetHeaders(v map[string]*string) *RunInstanceRespo
 	return s
 }
 
+func (s *RunInstanceResponse) SetStatusCode(v int32) *RunInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RunInstanceResponse) SetBody(v *RunInstanceResponseBody) *RunInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type StopDataSetResponseBody struct {
+	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *StopDataSetResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -7516,6 +7912,11 @@ func (s StopDataSetResponseBody) String() string {
 
 func (s StopDataSetResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *StopDataSetResponseBody) SetCode(v string) *StopDataSetResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *StopDataSetResponseBody) SetMessage(v string) *StopDataSetResponseBody {
@@ -7528,22 +7929,17 @@ func (s *StopDataSetResponseBody) SetRequestId(v string) *StopDataSetResponseBod
 	return s
 }
 
-func (s *StopDataSetResponseBody) SetCode(v string) *StopDataSetResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *StopDataSetResponseBody) SetResult(v *StopDataSetResponseBodyResult) *StopDataSetResponseBody {
 	s.Result = v
 	return s
 }
 
 type StopDataSetResponseBodyResult struct {
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
 	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	VersionId   *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+	VersionId   *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s StopDataSetResponseBodyResult) String() string {
@@ -7554,23 +7950,8 @@ func (s StopDataSetResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *StopDataSetResponseBodyResult) SetState(v string) *StopDataSetResponseBodyResult {
-	s.State = &v
-	return s
-}
-
 func (s *StopDataSetResponseBodyResult) SetGmtCreate(v int64) *StopDataSetResponseBodyResult {
 	s.GmtCreate = &v
-	return s
-}
-
-func (s *StopDataSetResponseBodyResult) SetVersionId(v string) *StopDataSetResponseBodyResult {
-	s.VersionId = &v
-	return s
-}
-
-func (s *StopDataSetResponseBodyResult) SetInstanceId(v string) *StopDataSetResponseBodyResult {
-	s.InstanceId = &v
 	return s
 }
 
@@ -7579,9 +7960,25 @@ func (s *StopDataSetResponseBodyResult) SetGmtModified(v int64) *StopDataSetResp
 	return s
 }
 
+func (s *StopDataSetResponseBodyResult) SetInstanceId(v string) *StopDataSetResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StopDataSetResponseBodyResult) SetState(v string) *StopDataSetResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+func (s *StopDataSetResponseBodyResult) SetVersionId(v string) *StopDataSetResponseBodyResult {
+	s.VersionId = &v
+	return s
+}
+
 type StopDataSetResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopDataSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopDataSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StopDataSetResponse) String() string {
@@ -7597,15 +7994,20 @@ func (s *StopDataSetResponse) SetHeaders(v map[string]*string) *StopDataSetRespo
 	return s
 }
 
+func (s *StopDataSetResponse) SetStatusCode(v int32) *StopDataSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *StopDataSetResponse) SetBody(v *StopDataSetResponseBody) *StopDataSetResponse {
 	s.Body = v
 	return s
 }
 
 type UpgradeInstanceResponseBody struct {
+	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *UpgradeInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -7617,6 +8019,11 @@ func (s UpgradeInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpgradeInstanceResponseBody) SetCode(v string) *UpgradeInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *UpgradeInstanceResponseBody) SetMessage(v string) *UpgradeInstanceResponseBody {
 	s.Message = &v
 	return s
@@ -7624,11 +8031,6 @@ func (s *UpgradeInstanceResponseBody) SetMessage(v string) *UpgradeInstanceRespo
 
 func (s *UpgradeInstanceResponseBody) SetRequestId(v string) *UpgradeInstanceResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *UpgradeInstanceResponseBody) SetCode(v string) *UpgradeInstanceResponseBody {
-	s.Code = &v
 	return s
 }
 
@@ -7655,8 +8057,9 @@ func (s *UpgradeInstanceResponseBodyResult) SetInstanceId(v string) *UpgradeInst
 }
 
 type UpgradeInstanceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpgradeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpgradeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpgradeInstanceResponse) String() string {
@@ -7672,15 +8075,20 @@ func (s *UpgradeInstanceResponse) SetHeaders(v map[string]*string) *UpgradeInsta
 	return s
 }
 
+func (s *UpgradeInstanceResponse) SetStatusCode(v int32) *UpgradeInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpgradeInstanceResponse) SetBody(v *UpgradeInstanceResponseBody) *UpgradeInstanceResponse {
 	s.Body = v
 	return s
 }
 
 type ValidateInstanceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -7690,6 +8098,11 @@ func (s ValidateInstanceResponseBody) String() string {
 
 func (s ValidateInstanceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ValidateInstanceResponseBody) SetCode(v string) *ValidateInstanceResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *ValidateInstanceResponseBody) SetMessage(v string) *ValidateInstanceResponseBody {
@@ -7702,19 +8115,15 @@ func (s *ValidateInstanceResponseBody) SetRequestId(v string) *ValidateInstanceR
 	return s
 }
 
-func (s *ValidateInstanceResponseBody) SetCode(v string) *ValidateInstanceResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ValidateInstanceResponseBody) SetResult(v bool) *ValidateInstanceResponseBody {
 	s.Result = &v
 	return s
 }
 
 type ValidateInstanceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ValidateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ValidateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ValidateInstanceResponse) String() string {
@@ -7727,6 +8136,11 @@ func (s ValidateInstanceResponse) GoString() string {
 
 func (s *ValidateInstanceResponse) SetHeaders(v map[string]*string) *ValidateInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ValidateInstanceResponse) SetStatusCode(v int32) *ValidateInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7798,8 +8212,19 @@ func (client *Client) AttachDatasetWithOptions(InstanceId *string, VersionId *st
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachDataset"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dataSets/" + tea.StringValue(openapiutil.GetEncodeParam(VersionId)) + "/actions/current"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &AttachDatasetResponse{}
-	_body, _err := client.DoROARequest(tea.String("AttachDataset"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dataSets/{VersionId}/actions/current"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7823,8 +8248,19 @@ func (client *Client) CreateDiversifyWithOptions(InstanceId *string, headers map
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDiversify"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/diversifies"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateDiversifyResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateDiversify"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/diversifies"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7848,8 +8284,19 @@ func (client *Client) CreateInstanceWithOptions(headers map[string]*string, runt
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstance"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateInstance"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7873,8 +8320,19 @@ func (client *Client) CreateMixWithOptions(InstanceId *string, headers map[strin
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMix"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/mixes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateMixResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateMix"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/mixes"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7898,8 +8356,19 @@ func (client *Client) CreateRuleWithOptions(InstanceId *string, headers map[stri
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRule"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/rules"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateRule"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/rules"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7933,8 +8402,19 @@ func (client *Client) CreateSceneWithOptions(InstanceId *string, request *Create
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateScene"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/scenes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateSceneResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateScene"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/scenes"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7958,8 +8438,19 @@ func (client *Client) DeleteDataSetWithOptions(InstanceId *string, VersionId *st
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataSet"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dataSets/" + tea.StringValue(openapiutil.GetEncodeParam(VersionId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteDataSetResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteDataSet"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dataSets/{VersionId}"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7983,8 +8474,19 @@ func (client *Client) DeleteDiversifyWithOptions(InstanceId *string, Name *strin
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDiversify"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/diversifies/" + tea.StringValue(openapiutil.GetEncodeParam(Name))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteDiversifyResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteDiversify"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/diversifies/{Name}"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8008,8 +8510,19 @@ func (client *Client) DeleteMixWithOptions(InstanceId *string, Name *string, hea
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMix"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/mixes/" + tea.StringValue(openapiutil.GetEncodeParam(Name))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteMixResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteMix"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/mixes/{Name}"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8033,8 +8546,19 @@ func (client *Client) DeleteSceneWithOptions(InstanceId *string, SceneId *string
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteScene"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(SceneId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteSceneResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteScene"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/scenes/{SceneId}"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8058,8 +8582,19 @@ func (client *Client) DescribeDataSetMessageWithOptions(InstanceId *string, Vers
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataSetMessage"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dataSets/" + tea.StringValue(openapiutil.GetEncodeParam(VersionId)) + "/messages"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeDataSetMessageResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeDataSetMessage"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dataSets/{VersionId}/messages"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8083,8 +8618,19 @@ func (client *Client) DescribeDataSetReportWithOptions(InstanceId *string, Versi
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataSetReport"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dataSets/" + tea.StringValue(openapiutil.GetEncodeParam(VersionId)) + "/report"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeDataSetReportResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeDataSetReport"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dataSets/{VersionId}/report"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8108,8 +8654,19 @@ func (client *Client) DescribeDiversifyWithOptions(InstanceId *string, Name *str
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiversify"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/diversifies/" + tea.StringValue(openapiutil.GetEncodeParam(Name))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeDiversifyResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeDiversify"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/diversifies/{Name}"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8133,8 +8690,19 @@ func (client *Client) DescribeExposureSettingsWithOptions(InstanceId *string, he
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeExposureSettings"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/exposure-settings"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeExposureSettingsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeExposureSettings"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/exposure-settings"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8158,8 +8726,19 @@ func (client *Client) DescribeInstanceWithOptions(InstanceId *string, headers ma
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstance"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeInstance"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8183,8 +8762,19 @@ func (client *Client) DescribeMixWithOptions(InstanceId *string, Name *string, h
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMix"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/mixes/" + tea.StringValue(openapiutil.GetEncodeParam(Name))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeMixResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeMix"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/mixes/{Name}"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8208,8 +8798,19 @@ func (client *Client) DescribeQuotaWithOptions(InstanceId *string, headers map[s
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeQuota"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/quota"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeQuotaResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeQuota"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/quota"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8243,8 +8844,19 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/configurations/regions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeRegions"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/configurations/regions"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8270,20 +8882,31 @@ func (client *Client) DescribeRuleWithOptions(InstanceId *string, RuleId *string
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
-		query["SceneId"] = request.SceneId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
 		query["RuleType"] = request.RuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRule"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/rules/" + tea.StringValue(openapiutil.GetEncodeParam(RuleId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeRule"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/rules/{RuleId}"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8307,8 +8930,19 @@ func (client *Client) DescribeSceneWithOptions(InstanceId *string, SceneId *stri
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeScene"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(SceneId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeSceneResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeScene"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/scenes/{SceneId}"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8332,8 +8966,19 @@ func (client *Client) DescribeSceneThroughputWithOptions(InstanceId *string, Sce
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSceneThroughput"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(SceneId)) + "/throughput"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeSceneThroughputResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeSceneThroughput"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/scenes/{SceneId}/throughput"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8359,28 +9004,39 @@ func (client *Client) DescribeSyncReportDetailWithOptions(InstanceId *string, re
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LevelType)) {
 		query["LevelType"] = request.LevelType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSyncReportDetail"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/sync-reports/detail"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeSyncReportDetailResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeSyncReportDetail"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/sync-reports/detail"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8406,32 +9062,43 @@ func (client *Client) DescribeSyncReportOutliersWithOptions(InstanceId *string, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Key)) {
 		query["Key"] = request.Key
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.LevelType)) {
 		query["LevelType"] = request.LevelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSyncReportOutliers"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/sync-reports/outliers"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeSyncReportOutliersResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeSyncReportOutliers"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/sync-reports/outliers"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8457,10 +9124,6 @@ func (client *Client) DescribeUserMetricsWithOptions(InstanceId *string, request
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
 	}
@@ -8469,12 +9132,27 @@ func (client *Client) DescribeUserMetricsWithOptions(InstanceId *string, request
 		query["MetricType"] = request.MetricType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserMetrics"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/metrics"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeUserMetricsResponse{}
-	_body, _err := client.DoROARequest(tea.String("DescribeUserMetrics"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/metrics"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8498,8 +9176,19 @@ func (client *Client) DowngradeInstanceWithOptions(InstanceId *string, headers m
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DowngradeInstance"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/downgrade"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DowngradeInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DowngradeInstance"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/downgrade"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8525,36 +9214,47 @@ func (client *Client) ListDashboardWithOptions(InstanceId *string, request *List
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
-		query["StartDate"] = request.StartDate
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
 		query["EndDate"] = request.EndDate
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TraceId)) {
-		query["TraceId"] = request.TraceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
-		query["SceneId"] = request.SceneId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["Page"] = request.Page
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
 		query["Size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceId)) {
+		query["TraceId"] = request.TraceId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDashboard"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dashboard/statistics"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDashboardResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDashboard"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dashboard/statistics"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8580,32 +9280,43 @@ func (client *Client) ListDashboardDetailsWithOptions(InstanceId *string, reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TraceIds)) {
-		query["TraceIds"] = request.TraceIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SceneIds)) {
-		query["SceneIds"] = request.SceneIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
 		query["MetricType"] = request.MetricType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SceneIds)) {
+		query["SceneIds"] = request.SceneIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceIds)) {
+		query["TraceIds"] = request.TraceIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDashboardDetails"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dashboard/details"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDashboardDetailsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDashboardDetails"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dashboard/details"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8631,32 +9342,43 @@ func (client *Client) ListDashboardDetailsFlowsWithOptions(InstanceId *string, r
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TraceIds)) {
-		query["TraceIds"] = request.TraceIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SceneIds)) {
-		query["SceneIds"] = request.SceneIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
 		query["MetricType"] = request.MetricType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SceneIds)) {
+		query["SceneIds"] = request.SceneIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceIds)) {
+		query["TraceIds"] = request.TraceIds
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDashboardDetailsFlows"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dashboard/details/flows"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDashboardDetailsFlowsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDashboardDetailsFlows"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dashboard/details/flows"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8682,10 +9404,6 @@ func (client *Client) ListDashboardMetricsWithOptions(InstanceId *string, reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
 	}
@@ -8694,12 +9412,27 @@ func (client *Client) ListDashboardMetricsWithOptions(InstanceId *string, reques
 		query["MetricType"] = request.MetricType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDashboardMetrics"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dashboard/metrics"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDashboardMetricsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDashboardMetrics"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dashboard/metrics"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8725,10 +9458,6 @@ func (client *Client) ListDashboardMetricsFlowsWithOptions(InstanceId *string, r
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
 	}
@@ -8737,12 +9466,27 @@ func (client *Client) ListDashboardMetricsFlowsWithOptions(InstanceId *string, r
 		query["MetricType"] = request.MetricType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDashboardMetricsFlows"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dashboard/metrics/flows"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDashboardMetricsFlowsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDashboardMetricsFlows"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dashboard/metrics/flows"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8766,8 +9510,19 @@ func (client *Client) ListDashboardParametersWithOptions(InstanceId *string, hea
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDashboardParameters"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dashboard/parameters"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDashboardParametersResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDashboardParameters"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dashboard/parameters"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8791,8 +9546,19 @@ func (client *Client) ListDashboardUidWithOptions(InstanceId *string, headers ma
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDashboardUid"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dashboard/uid"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDashboardUidResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDashboardUid"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dashboard/uid"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8816,8 +9582,19 @@ func (client *Client) ListDataSetWithOptions(InstanceId *string, headers map[str
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataSet"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dataSets"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDataSetResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDataSet"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dataSets"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8841,8 +9618,19 @@ func (client *Client) ListDataSourceWithOptions(InstanceId *string, headers map[
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataSource"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dataSources"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDataSourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDataSource"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dataSources"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8866,8 +9654,19 @@ func (client *Client) ListDiversifyWithOptions(InstanceId *string, headers map[s
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDiversify"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/diversifies"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListDiversifyResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDiversify"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/diversifies"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8893,6 +9692,18 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, head
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExpiredTime)) {
+		query["ExpiredTime"] = request.ExpiredTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["page"] = request.Page
 	}
@@ -8901,24 +9712,23 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, head
 		query["size"] = request.Size
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExpiredTime)) {
-		query["ExpiredTime"] = request.ExpiredTime
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstance"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListInstance"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8942,8 +9752,19 @@ func (client *Client) ListInstanceTaskWithOptions(InstanceId *string, headers ma
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceTask"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/tasks"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListInstanceTaskResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListInstanceTask"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/tasks"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8981,8 +9802,19 @@ func (client *Client) ListItemsWithOptions(InstanceId *string, request *ListItem
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListItems"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/items/actions/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListItemsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListItems"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/items/actions/list"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9008,14 +9840,6 @@ func (client *Client) ListLogsWithOptions(InstanceId *string, request *ListLogsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.QueryParams)) {
-		query["QueryParams"] = request.QueryParams
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
 	}
@@ -9024,16 +9848,35 @@ func (client *Client) ListLogsWithOptions(InstanceId *string, request *ListLogsR
 		query["Page"] = request.Page
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.QueryParams)) {
+		query["QueryParams"] = request.QueryParams
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
 		query["Size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLogs"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/logs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListLogsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListLogs"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/logs"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9057,8 +9900,19 @@ func (client *Client) ListMixWithOptions(InstanceId *string, headers map[string]
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMix"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/mixes"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListMixResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListMix"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/mixes"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9082,67 +9936,19 @@ func (client *Client) ListRuleConditionsWithOptions(InstanceId *string, headers 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRuleConditions"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/rule-conditions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListRuleConditionsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListRuleConditions"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/rule-conditions"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListRules(InstanceId *string, request *ListRulesRequest) (_result *ListRulesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListRulesResponse{}
-	_body, _err := client.ListRulesWithOptions(InstanceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListRulesWithOptions(InstanceId *string, request *ListRulesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRulesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
-		query["SceneId"] = request.SceneId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
-		query["RuleType"] = request.RuleType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Page)) {
-		query["Page"] = request.Page
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Size)) {
-		query["Size"] = request.Size
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &ListRulesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListRules"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/rules"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9176,8 +9982,89 @@ func (client *Client) ListRuleTasksWithOptions(InstanceId *string, request *List
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRuleTasks"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/rule-tasks"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListRuleTasksResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListRuleTasks"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/rule-tasks"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRules(InstanceId *string, request *ListRulesRequest) (_result *ListRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRulesResponse{}
+	_body, _err := client.ListRulesWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRulesWithOptions(InstanceId *string, request *ListRulesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
+		query["RuleType"] = request.RuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRules"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/rules"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9207,16 +10094,8 @@ func (client *Client) ListSceneItemsWithOptions(InstanceId *string, SceneId *str
 		query["OperationRuleId"] = request.OperationRuleId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SelectionRuleId)) {
-		query["SelectionRuleId"] = request.SelectionRuleId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
 		query["Page"] = request.Page
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Size)) {
-		query["Size"] = request.Size
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PreviewType)) {
@@ -9227,12 +10106,31 @@ func (client *Client) ListSceneItemsWithOptions(InstanceId *string, SceneId *str
 		query["QueryCount"] = request.QueryCount
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SelectionRuleId)) {
+		query["SelectionRuleId"] = request.SelectionRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["Size"] = request.Size
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSceneItems"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(SceneId)) + "/items"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListSceneItemsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListSceneItems"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/scenes/{SceneId}/items"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9266,8 +10164,19 @@ func (client *Client) ListScenesWithOptions(InstanceId *string, request *ListSce
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListScenes"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/scenes"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListScenesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListScenes"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/scenes"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9291,8 +10200,19 @@ func (client *Client) ListUmengAppkeysWithOptions(headers map[string]*string, ru
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUmengAppkeys"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/umeng/appkeys"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListUmengAppkeysResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListUmengAppkeys"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/umeng/appkeys"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9316,8 +10236,19 @@ func (client *Client) ModifyDataSourceWithOptions(InstanceId *string, TableName 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDataSource"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dataSources/" + tea.StringValue(openapiutil.GetEncodeParam(TableName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifyDataSourceResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyDataSource"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dataSources/{TableName}"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9341,8 +10272,19 @@ func (client *Client) ModifyDiversifyWithOptions(InstanceId *string, Name *strin
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDiversify"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/diversifies/" + tea.StringValue(openapiutil.GetEncodeParam(Name))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifyDiversifyResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyDiversify"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/diversifies/{Name}"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9366,8 +10308,19 @@ func (client *Client) ModifyExposureSettingsWithOptions(InstanceId *string, head
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyExposureSettings"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/exposure-settings"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifyExposureSettingsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyExposureSettings"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/exposure-settings"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9391,8 +10344,19 @@ func (client *Client) ModifyInstanceWithOptions(InstanceId *string, headers map[
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstance"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifyInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyInstance"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9416,8 +10380,19 @@ func (client *Client) ModifyItemsWithOptions(InstanceId *string, headers map[str
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyItems"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/items"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifyItemsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyItems"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/items"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9441,8 +10416,19 @@ func (client *Client) ModifyMixWithOptions(InstanceId *string, Name *string, hea
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyMix"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/mixes/" + tea.StringValue(openapiutil.GetEncodeParam(Name))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifyMixResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyMix"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/mixes/{Name}"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9466,8 +10452,19 @@ func (client *Client) ModifyRuleWithOptions(InstanceId *string, RuleId *string, 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyRule"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/rules/" + tea.StringValue(openapiutil.GetEncodeParam(RuleId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifyRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyRule"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/rules/{RuleId}"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9491,8 +10488,19 @@ func (client *Client) ModifySceneWithOptions(InstanceId *string, SceneId *string
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyScene"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/scenes/" + tea.StringValue(openapiutil.GetEncodeParam(SceneId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ModifySceneResponse{}
-	_body, _err := client.DoROARequest(tea.String("ModifyScene"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/scenes/{SceneId}"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9530,8 +10538,19 @@ func (client *Client) PublishRuleWithOptions(InstanceId *string, RuleId *string,
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishRule"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/rules/" + tea.StringValue(openapiutil.GetEncodeParam(RuleId)) + "/actions/publish"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &PublishRuleResponse{}
-	_body, _err := client.DoROARequest(tea.String("PublishRule"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/rules/{RuleId}/actions/publish"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9555,8 +10574,19 @@ func (client *Client) PushDocumentWithOptions(InstanceId *string, TableName *str
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("PushDocument"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/tables/" + tea.StringValue(openapiutil.GetEncodeParam(TableName)) + "/actions/bulk"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &PushDocumentResponse{}
-	_body, _err := client.DoROARequest(tea.String("PushDocument"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/tables/{TableName}/actions/bulk"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9580,8 +10610,19 @@ func (client *Client) PushInterventionWithOptions(InstanceId *string, headers ma
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("PushIntervention"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/intervene"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &PushInterventionResponse{}
-	_body, _err := client.DoROARequest(tea.String("PushIntervention"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/intervene"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9607,16 +10648,16 @@ func (client *Client) QueryDataMessageWithOptions(InstanceId *string, Table *str
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
+	if !tea.BoolValue(util.IsUnset(request.BhvType)) {
+		query["BhvType"] = request.BhvType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CmdType)) {
 		query["CmdType"] = request.CmdType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ItemId)) {
@@ -9627,6 +10668,30 @@ func (client *Client) QueryDataMessageWithOptions(InstanceId *string, Table *str
 		query["ItemType"] = request.ItemType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MessageSource)) {
+		query["MessageSource"] = request.MessageSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["Size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceId)) {
+		query["TraceId"] = request.TraceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
 		query["UserId"] = request.UserId
 	}
@@ -9635,36 +10700,23 @@ func (client *Client) QueryDataMessageWithOptions(InstanceId *string, Table *str
 		query["UserType"] = request.UserType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Page)) {
-		query["Page"] = request.Page
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Size)) {
-		query["Size"] = request.Size
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TraceId)) {
-		query["TraceId"] = request.TraceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
-		query["SceneId"] = request.SceneId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BhvType)) {
-		query["BhvType"] = request.BhvType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MessageSource)) {
-		query["MessageSource"] = request.MessageSource
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDataMessage"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/tables/" + tea.StringValue(openapiutil.GetEncodeParam(Table)) + "/data-message"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &QueryDataMessageResponse{}
-	_body, _err := client.DoROARequest(tea.String("QueryDataMessage"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/tables/{Table}/data-message"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9690,16 +10742,16 @@ func (client *Client) QueryDataMessageStatisticsWithOptions(InstanceId *string, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
+	if !tea.BoolValue(util.IsUnset(request.BhvType)) {
+		query["BhvType"] = request.BhvType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CmdType)) {
 		query["CmdType"] = request.CmdType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ItemId)) {
@@ -9710,6 +10762,22 @@ func (client *Client) QueryDataMessageStatisticsWithOptions(InstanceId *string, 
 		query["ItemType"] = request.ItemType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MessageSource)) {
+		query["MessageSource"] = request.MessageSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceId)) {
+		query["TraceId"] = request.TraceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
 		query["UserId"] = request.UserId
 	}
@@ -9718,28 +10786,23 @@ func (client *Client) QueryDataMessageStatisticsWithOptions(InstanceId *string, 
 		query["UserType"] = request.UserType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TraceId)) {
-		query["TraceId"] = request.TraceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
-		query["SceneId"] = request.SceneId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BhvType)) {
-		query["BhvType"] = request.BhvType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MessageSource)) {
-		query["MessageSource"] = request.MessageSource
-	}
-
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDataMessageStatistics"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/tables/" + tea.StringValue(openapiutil.GetEncodeParam(Table)) + "/data-message-statistics"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &QueryDataMessageStatisticsResponse{}
-	_body, _err := client.DoROARequest(tea.String("QueryDataMessageStatistics"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/tables/{Table}/data-message-statistics"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9765,12 +10828,12 @@ func (client *Client) QueryExceptionHistoryWithOptions(InstanceId *string, reque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -9781,8 +10844,19 @@ func (client *Client) QueryExceptionHistoryWithOptions(InstanceId *string, reque
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryExceptionHistory"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/sync-reports/exception-history"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &QueryExceptionHistoryResponse{}
-	_body, _err := client.DoROARequest(tea.String("QueryExceptionHistory"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/sync-reports/exception-history"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9828,8 +10902,19 @@ func (client *Client) QueryRawDataWithOptions(InstanceId *string, Table *string,
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRawData"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/tables/" + tea.StringValue(openapiutil.GetEncodeParam(Table)) + "/raw-data"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &QueryRawDataResponse{}
-	_body, _err := client.DoROARequest(tea.String("QueryRawData"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/tables/{Table}/raw-data"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9853,8 +10938,19 @@ func (client *Client) QuerySingleAggregationReportWithOptions(InstanceId *string
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySingleAggregationReport"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/sync-reports/single-aggregation-report"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &QuerySingleAggregationReportResponse{}
-	_body, _err := client.DoROARequest(tea.String("QuerySingleAggregationReport"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/sync-reports/single-aggregation-report"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9888,8 +10984,19 @@ func (client *Client) QuerySingleReportWithOptions(InstanceId *string, request *
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySingleReport"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/sync-reports/single-report"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &QuerySingleReportResponse{}
-	_body, _err := client.DoROARequest(tea.String("QuerySingleReport"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/sync-reports/single-report"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9915,20 +11022,31 @@ func (client *Client) QuerySyncReportAggregationWithOptions(InstanceId *string, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySyncReportAggregation"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/sync-reports/aggregation"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &QuerySyncReportAggregationResponse{}
-	_body, _err := client.DoROARequest(tea.String("QuerySyncReportAggregation"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/sync-reports/aggregation"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9954,6 +11072,22 @@ func (client *Client) RecommendWithOptions(InstanceId *string, request *Recommen
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Imei)) {
+		query["Imei"] = request.Imei
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		query["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Items)) {
+		query["Items"] = request.Items
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnCount)) {
+		query["ReturnCount"] = request.ReturnCount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
 		query["SceneId"] = request.SceneId
 	}
@@ -9962,37 +11096,32 @@ func (client *Client) RecommendWithOptions(InstanceId *string, request *Recommen
 		query["UserId"] = request.UserId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Ip)) {
-		query["Ip"] = request.Ip
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Imei)) {
-		query["Imei"] = request.Imei
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ReturnCount)) {
-		query["ReturnCount"] = request.ReturnCount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Items)) {
-		query["Items"] = request.Items
-	}
-
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.RegionId)) {
-		realHeaders["RegionId"] = headers.RegionId
+		realHeaders["RegionId"] = util.ToJSONString(headers.RegionId)
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("Recommend"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/recommend"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RecommendResponse{}
-	_body, _err := client.DoROARequest(tea.String("Recommend"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/recommend"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10016,8 +11145,19 @@ func (client *Client) RunInstanceWithOptions(InstanceId *string, headers map[str
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("RunInstance"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/import"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &RunInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("RunInstance"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/import"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10041,8 +11181,19 @@ func (client *Client) StopDataSetWithOptions(InstanceId *string, VersionId *stri
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StopDataSet"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/dataSets/" + tea.StringValue(openapiutil.GetEncodeParam(VersionId)) + "/actions/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StopDataSetResponse{}
-	_body, _err := client.DoROARequest(tea.String("StopDataSet"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/dataSets/{VersionId}/actions/stop"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10066,8 +11217,19 @@ func (client *Client) UpgradeInstanceWithOptions(InstanceId *string, headers map
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeInstance"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/upgrade"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpgradeInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpgradeInstance"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/upgrade"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10091,8 +11253,19 @@ func (client *Client) ValidateInstanceWithOptions(InstanceId *string, headers ma
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidateInstance"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/actions/validate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ValidateInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("ValidateInstance"), tea.String("2018-10-12"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/openapi/instances/"+tea.StringValue(InstanceId)+"/actions/validate"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
