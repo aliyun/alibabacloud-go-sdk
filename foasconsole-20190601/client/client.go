@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -30,16 +30,12 @@ func (s *ConvertInstanceRequest) SetConvertPostpayInstanceRequest(v *ConvertInst
 }
 
 type ConvertInstanceRequestConvertPostpayInstanceRequest struct {
-	// 订购周期数量
-	Duration   *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 是否自动续费
-	IsAutoRenew *bool `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
-	// 项目空间资源规格。
+	Duration               *int32                                                                       `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InstanceId             *string                                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsAutoRenew            *bool                                                                        `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
 	NamespaceResourceSpecs []*ConvertInstanceRequestConvertPostpayInstanceRequestNamespaceResourceSpecs `json:"NamespaceResourceSpecs,omitempty" xml:"NamespaceResourceSpecs,omitempty" type:"Repeated"`
-	// 订购周期
-	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	PricingCycle           *string                                                                      `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	Region                 *string                                                                      `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s ConvertInstanceRequestConvertPostpayInstanceRequest) String() string {
@@ -81,9 +77,7 @@ func (s *ConvertInstanceRequestConvertPostpayInstanceRequest) SetRegion(v string
 }
 
 type ConvertInstanceRequestConvertPostpayInstanceRequestNamespaceResourceSpecs struct {
-	// namespace名称，
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// 资源规格。
+	Namespace    *string                                                                                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	ResourceSpec *ConvertInstanceRequestConvertPostpayInstanceRequestNamespaceResourceSpecsResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
 
@@ -106,9 +100,7 @@ func (s *ConvertInstanceRequestConvertPostpayInstanceRequestNamespaceResourceSpe
 }
 
 type ConvertInstanceRequestConvertPostpayInstanceRequestNamespaceResourceSpecsResourceSpec struct {
-	// cpu数量。
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// 内存大小。
+	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -131,12 +123,9 @@ func (s *ConvertInstanceRequestConvertPostpayInstanceRequestNamespaceResourceSpe
 }
 
 type ConvertInstanceResponseBody struct {
-	// 订单id
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// 请求id
+	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ConvertInstanceResponseBody) String() string {
@@ -163,8 +152,9 @@ func (s *ConvertInstanceResponseBody) SetSuccess(v bool) *ConvertInstanceRespons
 }
 
 type ConvertInstanceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ConvertInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ConvertInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ConvertInstanceResponse) String() string {
@@ -180,7 +170,110 @@ func (s *ConvertInstanceResponse) SetHeaders(v map[string]*string) *ConvertInsta
 	return s
 }
 
+func (s *ConvertInstanceResponse) SetStatusCode(v int32) *ConvertInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ConvertInstanceResponse) SetBody(v *ConvertInstanceResponseBody) *ConvertInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ConvertPrepayInstanceRequest struct {
+	ConvertPrepayInstanceRequest *ConvertPrepayInstanceRequestConvertPrepayInstanceRequest `json:"ConvertPrepayInstanceRequest,omitempty" xml:"ConvertPrepayInstanceRequest,omitempty" type:"Struct"`
+}
+
+func (s ConvertPrepayInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertPrepayInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertPrepayInstanceRequest) SetConvertPrepayInstanceRequest(v *ConvertPrepayInstanceRequestConvertPrepayInstanceRequest) *ConvertPrepayInstanceRequest {
+	s.ConvertPrepayInstanceRequest = v
+	return s
+}
+
+type ConvertPrepayInstanceRequestConvertPrepayInstanceRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s ConvertPrepayInstanceRequestConvertPrepayInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertPrepayInstanceRequestConvertPrepayInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertPrepayInstanceRequestConvertPrepayInstanceRequest) SetInstanceId(v string) *ConvertPrepayInstanceRequestConvertPrepayInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ConvertPrepayInstanceRequestConvertPrepayInstanceRequest) SetRegion(v string) *ConvertPrepayInstanceRequestConvertPrepayInstanceRequest {
+	s.Region = &v
+	return s
+}
+
+type ConvertPrepayInstanceResponseBody struct {
+	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ConvertPrepayInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertPrepayInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertPrepayInstanceResponseBody) SetOrderId(v int64) *ConvertPrepayInstanceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ConvertPrepayInstanceResponseBody) SetRequestId(v string) *ConvertPrepayInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ConvertPrepayInstanceResponseBody) SetSuccess(v bool) *ConvertPrepayInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ConvertPrepayInstanceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ConvertPrepayInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ConvertPrepayInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertPrepayInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertPrepayInstanceResponse) SetHeaders(v map[string]*string) *ConvertPrepayInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConvertPrepayInstanceResponse) SetStatusCode(v int32) *ConvertPrepayInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConvertPrepayInstanceResponse) SetBody(v *ConvertPrepayInstanceResponseBody) *ConvertPrepayInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -203,17 +296,19 @@ func (s *CreateInstanceRequest) SetCreateInstanceRequest(v *CreateInstanceReques
 }
 
 type CreateInstanceRequestCreateInstanceRequest struct {
-	AutoRenew    *bool                                                   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ChargeType   *string                                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Duration     *int32                                                  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceName *string                                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PricingCycle *string                                                 `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Region       *string                                                 `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceSpec *CreateInstanceRequestCreateInstanceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
-	Storage      *CreateInstanceRequestCreateInstanceRequestStorage      `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
-	VSwitchIds   []*string                                               `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	VpcId        *string                                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId       *string                                                 `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AutoRenew        *bool                                                   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ChargeType       *string                                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Duration         *int32                                                  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InstanceName     *string                                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	PricingCycle     *string                                                 `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	PromotionCode    *string                                                 `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	Region           *string                                                 `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceSpec     *CreateInstanceRequestCreateInstanceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	Storage          *CreateInstanceRequestCreateInstanceRequestStorage      `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+	UsePromotionCode *bool                                                   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	VSwitchIds       []*string                                               `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VpcId            *string                                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId           *string                                                 `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateInstanceRequestCreateInstanceRequest) String() string {
@@ -249,6 +344,11 @@ func (s *CreateInstanceRequestCreateInstanceRequest) SetPricingCycle(v string) *
 	return s
 }
 
+func (s *CreateInstanceRequestCreateInstanceRequest) SetPromotionCode(v string) *CreateInstanceRequestCreateInstanceRequest {
+	s.PromotionCode = &v
+	return s
+}
+
 func (s *CreateInstanceRequestCreateInstanceRequest) SetRegion(v string) *CreateInstanceRequestCreateInstanceRequest {
 	s.Region = &v
 	return s
@@ -261,6 +361,11 @@ func (s *CreateInstanceRequestCreateInstanceRequest) SetResourceSpec(v *CreateIn
 
 func (s *CreateInstanceRequestCreateInstanceRequest) SetStorage(v *CreateInstanceRequestCreateInstanceRequestStorage) *CreateInstanceRequestCreateInstanceRequest {
 	s.Storage = v
+	return s
+}
+
+func (s *CreateInstanceRequestCreateInstanceRequest) SetUsePromotionCode(v bool) *CreateInstanceRequestCreateInstanceRequest {
+	s.UsePromotionCode = &v
 	return s
 }
 
@@ -337,12 +442,9 @@ func (s *CreateInstanceRequestCreateInstanceRequestStorageOss) SetBucket(v strin
 }
 
 type CreateInstanceResponseBody struct {
-	// 订单信息
 	OrderInfo *CreateInstanceResponseBodyOrderInfo `json:"OrderInfo,omitempty" xml:"OrderInfo,omitempty" type:"Struct"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -369,10 +471,8 @@ func (s *CreateInstanceResponseBody) SetSuccess(v bool) *CreateInstanceResponseB
 }
 
 type CreateInstanceResponseBodyOrderInfo struct {
-	// 实例id
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 订单id
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s CreateInstanceResponseBodyOrderInfo) String() string {
@@ -394,8 +494,9 @@ func (s *CreateInstanceResponseBodyOrderInfo) SetOrderId(v int64) *CreateInstanc
 }
 
 type CreateInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateInstanceResponse) String() string {
@@ -408,6 +509,11 @@ func (s CreateInstanceResponse) GoString() string {
 
 func (s *CreateInstanceResponse) SetHeaders(v map[string]*string) *CreateInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceResponse) SetStatusCode(v int32) *CreateInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -492,10 +598,8 @@ func (s *CreateNamespaceRequestCreateNamespaceRequestResourceSpec) SetMemoryGB(v
 }
 
 type CreateNamespaceResponseBody struct {
-	// 请求id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateNamespaceResponseBody) String() string {
@@ -517,8 +621,9 @@ func (s *CreateNamespaceResponseBody) SetSuccess(v bool) *CreateNamespaceRespons
 }
 
 type CreateNamespaceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateNamespaceResponse) String() string {
@@ -531,6 +636,11 @@ func (s CreateNamespaceResponse) GoString() string {
 
 func (s *CreateNamespaceResponse) SetHeaders(v map[string]*string) *CreateNamespaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateNamespaceResponse) SetStatusCode(v int32) *CreateNamespaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -580,10 +690,8 @@ func (s *DeleteInstanceRequestDeleteInstanceRequest) SetRegion(v string) *Delete
 }
 
 type DeleteInstanceResponseBody struct {
-	// 请求id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteInstanceResponseBody) String() string {
@@ -605,8 +713,9 @@ func (s *DeleteInstanceResponseBody) SetSuccess(v bool) *DeleteInstanceResponseB
 }
 
 type DeleteInstanceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteInstanceResponse) String() string {
@@ -619,6 +728,11 @@ func (s DeleteInstanceResponse) GoString() string {
 
 func (s *DeleteInstanceResponse) SetHeaders(v map[string]*string) *DeleteInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceResponse) SetStatusCode(v int32) *DeleteInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -674,10 +788,8 @@ func (s *DeleteNamespaceRequestDeleteNamespaceRequest) SetRegion(v string) *Dele
 }
 
 type DeleteNamespaceResponseBody struct {
-	// 请求id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteNamespaceResponseBody) String() string {
@@ -699,8 +811,9 @@ func (s *DeleteNamespaceResponseBody) SetSuccess(v bool) *DeleteNamespaceRespons
 }
 
 type DeleteNamespaceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteNamespaceResponse) String() string {
@@ -713,6 +826,11 @@ func (s DeleteNamespaceResponse) GoString() string {
 
 func (s *DeleteNamespaceResponse) SetHeaders(v map[string]*string) *DeleteNamespaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteNamespaceResponse) SetStatusCode(v int32) *DeleteNamespaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -739,12 +857,12 @@ func (s *DescribeInstancesRequest) SetDescribeInstancesRequest(v *DescribeInstan
 }
 
 type DescribeInstancesRequestDescribeInstancesRequest struct {
-	// 付款类型
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageIndex  *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ChargeType *string                                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	InstanceId *string                                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageIndex  *int32                                                  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize   *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Region     *string                                                 `json:"Region,omitempty" xml:"Region,omitempty"`
+	Tags       []*DescribeInstancesRequestDescribeInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstancesRequestDescribeInstancesRequest) String() string {
@@ -777,6 +895,34 @@ func (s *DescribeInstancesRequestDescribeInstancesRequest) SetPageSize(v int32) 
 
 func (s *DescribeInstancesRequestDescribeInstancesRequest) SetRegion(v string) *DescribeInstancesRequestDescribeInstancesRequest {
 	s.Region = &v
+	return s
+}
+
+func (s *DescribeInstancesRequestDescribeInstancesRequest) SetTags(v []*DescribeInstancesRequestDescribeInstancesRequestTags) *DescribeInstancesRequestDescribeInstancesRequest {
+	s.Tags = v
+	return s
+}
+
+type DescribeInstancesRequestDescribeInstancesRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeInstancesRequestDescribeInstancesRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesRequestDescribeInstancesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesRequestDescribeInstancesRequestTags) SetKey(v string) *DescribeInstancesRequestDescribeInstancesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeInstancesRequestDescribeInstancesRequestTags) SetValue(v string) *DescribeInstancesRequestDescribeInstancesRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -834,20 +980,22 @@ func (s *DescribeInstancesResponseBody) SetTotalPage(v int32) *DescribeInstances
 }
 
 type DescribeInstancesResponseBodyInstances struct {
-	ChargeType         *string                                             `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ClusterStatus      *string                                             `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	InstanceId         *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName       *string                                             `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	OrderState         *string                                             `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
-	Region             *string                                             `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceCreateTime *int64                                              `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
-	ResourceId         *string                                             `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceSpec       *DescribeInstancesResponseBodyInstancesResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
-	Storage            *DescribeInstancesResponseBodyInstancesStorage      `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
-	Uid                *string                                             `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	VSwitchIds         []*string                                           `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	VpcId              *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId             *string                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ChargeType          *string                                             `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClusterStatus       *string                                             `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
+	InstanceId          *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName        *string                                             `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	OrderState          *string                                             `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	Region              *string                                             `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceCreateTime  *int64                                              `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
+	ResourceExpiredTime *int64                                              `json:"ResourceExpiredTime,omitempty" xml:"ResourceExpiredTime,omitempty"`
+	ResourceId          *string                                             `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceSpec        *DescribeInstancesResponseBodyInstancesResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	Storage             *DescribeInstancesResponseBodyInstancesStorage      `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+	Tags                []*DescribeInstancesResponseBodyInstancesTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Uid                 *string                                             `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	VSwitchIds          []*string                                           `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VpcId               *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId              *string                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstances) String() string {
@@ -893,6 +1041,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetResourceCreateTime(v int64) 
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstances) SetResourceExpiredTime(v int64) *DescribeInstancesResponseBodyInstances {
+	s.ResourceExpiredTime = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstances) SetResourceId(v string) *DescribeInstancesResponseBodyInstances {
 	s.ResourceId = &v
 	return s
@@ -905,6 +1058,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetResourceSpec(v *DescribeInst
 
 func (s *DescribeInstancesResponseBodyInstances) SetStorage(v *DescribeInstancesResponseBodyInstancesStorage) *DescribeInstancesResponseBodyInstances {
 	s.Storage = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetTags(v []*DescribeInstancesResponseBodyInstancesTags) *DescribeInstancesResponseBodyInstances {
+	s.Tags = v
 	return s
 }
 
@@ -985,9 +1143,33 @@ func (s *DescribeInstancesResponseBodyInstancesStorageOss) SetBucket(v string) *
 	return s
 }
 
+type DescribeInstancesResponseBodyInstancesTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesTags) SetKey(v string) *DescribeInstancesResponseBodyInstancesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesTags) SetValue(v string) *DescribeInstancesResponseBodyInstancesTags {
+	s.Value = &v
+	return s
+}
+
 type DescribeInstancesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeInstancesResponse) String() string {
@@ -1000,6 +1182,11 @@ func (s DescribeInstancesResponse) GoString() string {
 
 func (s *DescribeInstancesResponse) SetHeaders(v map[string]*string) *DescribeInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstancesResponse) SetStatusCode(v int32) *DescribeInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1026,16 +1213,12 @@ func (s *DescribeNamespacesRequest) SetDescribeNamespacesRequest(v *DescribeName
 }
 
 type DescribeNamespacesRequestDescribeNamespacesRequest struct {
-	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 命名空间名称
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// 当前页数
-	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// 每页大小
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// regionId
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	InstanceId *string                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Namespace  *string                                                   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	PageIndex  *int32                                                    `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize   *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Region     *string                                                   `json:"Region,omitempty" xml:"Region,omitempty"`
+	Tags       []*DescribeNamespacesRequestDescribeNamespacesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNamespacesRequestDescribeNamespacesRequest) String() string {
@@ -1071,16 +1254,42 @@ func (s *DescribeNamespacesRequestDescribeNamespacesRequest) SetRegion(v string)
 	return s
 }
 
+func (s *DescribeNamespacesRequestDescribeNamespacesRequest) SetTags(v []*DescribeNamespacesRequestDescribeNamespacesRequestTags) *DescribeNamespacesRequestDescribeNamespacesRequest {
+	s.Tags = v
+	return s
+}
+
+type DescribeNamespacesRequestDescribeNamespacesRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeNamespacesRequestDescribeNamespacesRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNamespacesRequestDescribeNamespacesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNamespacesRequestDescribeNamespacesRequestTags) SetKey(v string) *DescribeNamespacesRequestDescribeNamespacesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeNamespacesRequestDescribeNamespacesRequestTags) SetValue(v string) *DescribeNamespacesRequestDescribeNamespacesRequestTags {
+	s.Value = &v
+	return s
+}
+
 type DescribeNamespacesResponseBody struct {
 	Namespaces []*DescribeNamespacesResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 	PageIndex  *int32                                      `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success    *bool  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage  *int32                                      `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s DescribeNamespacesResponseBody) String() string {
@@ -1133,6 +1342,7 @@ type DescribeNamespacesResponseBodyNamespaces struct {
 	ResourceSpec *DescribeNamespacesResponseBodyNamespacesResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 	ResourceUsed *DescribeNamespacesResponseBodyNamespacesResourceUsed `json:"ResourceUsed,omitempty" xml:"ResourceUsed,omitempty" type:"Struct"`
 	Status       *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags         []*DescribeNamespacesResponseBodyNamespacesTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNamespacesResponseBodyNamespaces) String() string {
@@ -1173,6 +1383,11 @@ func (s *DescribeNamespacesResponseBodyNamespaces) SetStatus(v string) *Describe
 	return s
 }
 
+func (s *DescribeNamespacesResponseBodyNamespaces) SetTags(v []*DescribeNamespacesResponseBodyNamespacesTags) *DescribeNamespacesResponseBodyNamespaces {
+	s.Tags = v
+	return s
+}
+
 type DescribeNamespacesResponseBodyNamespacesResourceSpec struct {
 	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
@@ -1198,6 +1413,7 @@ func (s *DescribeNamespacesResponseBodyNamespacesResourceSpec) SetMemoryGB(v int
 
 type DescribeNamespacesResponseBodyNamespacesResourceUsed struct {
 	Cpu      *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cu       *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
 	MemoryGB *float32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -1214,14 +1430,43 @@ func (s *DescribeNamespacesResponseBodyNamespacesResourceUsed) SetCpu(v float32)
 	return s
 }
 
+func (s *DescribeNamespacesResponseBodyNamespacesResourceUsed) SetCu(v float32) *DescribeNamespacesResponseBodyNamespacesResourceUsed {
+	s.Cu = &v
+	return s
+}
+
 func (s *DescribeNamespacesResponseBodyNamespacesResourceUsed) SetMemoryGB(v float32) *DescribeNamespacesResponseBodyNamespacesResourceUsed {
 	s.MemoryGB = &v
 	return s
 }
 
+type DescribeNamespacesResponseBodyNamespacesTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeNamespacesResponseBodyNamespacesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNamespacesResponseBodyNamespacesTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNamespacesResponseBodyNamespacesTags) SetKey(v string) *DescribeNamespacesResponseBodyNamespacesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeNamespacesResponseBodyNamespacesTags) SetValue(v string) *DescribeNamespacesResponseBodyNamespacesTags {
+	s.Value = &v
+	return s
+}
+
 type DescribeNamespacesResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeNamespacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeNamespacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeNamespacesResponse) String() string {
@@ -1237,7 +1482,337 @@ func (s *DescribeNamespacesResponse) SetHeaders(v map[string]*string) *DescribeN
 	return s
 }
 
+func (s *DescribeNamespacesResponse) SetStatusCode(v int32) *DescribeNamespacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeNamespacesResponse) SetBody(v *DescribeNamespacesResponseBody) *DescribeNamespacesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSupportedRegionsResponseBody struct {
+	Regions   []*DescribeSupportedRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeSupportedRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSupportedRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSupportedRegionsResponseBody) SetRegions(v []*DescribeSupportedRegionsResponseBodyRegions) *DescribeSupportedRegionsResponseBody {
+	s.Regions = v
+	return s
+}
+
+func (s *DescribeSupportedRegionsResponseBody) SetRequestId(v string) *DescribeSupportedRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSupportedRegionsResponseBody) SetSuccess(v bool) *DescribeSupportedRegionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeSupportedRegionsResponseBodyRegions struct {
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+}
+
+func (s DescribeSupportedRegionsResponseBodyRegions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSupportedRegionsResponseBodyRegions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSupportedRegionsResponseBodyRegions) SetRegion(v string) *DescribeSupportedRegionsResponseBodyRegions {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeSupportedRegionsResponseBodyRegions) SetRegionName(v string) *DescribeSupportedRegionsResponseBodyRegions {
+	s.RegionName = &v
+	return s
+}
+
+type DescribeSupportedRegionsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSupportedRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSupportedRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSupportedRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSupportedRegionsResponse) SetHeaders(v map[string]*string) *DescribeSupportedRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSupportedRegionsResponse) SetStatusCode(v int32) *DescribeSupportedRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSupportedRegionsResponse) SetBody(v *DescribeSupportedRegionsResponseBody) *DescribeSupportedRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSupportedZonesRequest struct {
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s DescribeSupportedZonesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSupportedZonesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSupportedZonesRequest) SetRegion(v string) *DescribeSupportedZonesRequest {
+	s.Region = &v
+	return s
+}
+
+type DescribeSupportedZonesResponseBody struct {
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	ZoneIds   []*string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSupportedZonesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSupportedZonesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSupportedZonesResponseBody) SetRequestId(v string) *DescribeSupportedZonesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSupportedZonesResponseBody) SetSuccess(v bool) *DescribeSupportedZonesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeSupportedZonesResponseBody) SetZoneIds(v []*string) *DescribeSupportedZonesResponseBody {
+	s.ZoneIds = v
+	return s
+}
+
+type DescribeSupportedZonesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSupportedZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSupportedZonesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSupportedZonesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSupportedZonesResponse) SetHeaders(v map[string]*string) *DescribeSupportedZonesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSupportedZonesResponse) SetStatusCode(v int32) *DescribeSupportedZonesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSupportedZonesResponse) SetBody(v *DescribeSupportedZonesResponseBody) *DescribeSupportedZonesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTagResourcesRequest struct {
+	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	TagReponseId *string                                     `json:"TagReponseId,omitempty" xml:"TagReponseId,omitempty"`
+	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetSuccess(v bool) *ListTagResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagReponseId(v string) *ListTagResourcesResponseBody {
+	s.TagReponseId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -1312,12 +1887,9 @@ func (s *ModifyPrepayInstanceSpecRequestModifyPrepayInstanceSpecRequestResourceS
 }
 
 type ModifyPrepayInstanceSpecResponseBody struct {
-	// 订单id
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// 请求id
+	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyPrepayInstanceSpecResponseBody) String() string {
@@ -1344,8 +1916,9 @@ func (s *ModifyPrepayInstanceSpecResponseBody) SetSuccess(v bool) *ModifyPrepayI
 }
 
 type ModifyPrepayInstanceSpecResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyPrepayInstanceSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyPrepayInstanceSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyPrepayInstanceSpecResponse) String() string {
@@ -1358,6 +1931,11 @@ func (s ModifyPrepayInstanceSpecResponse) GoString() string {
 
 func (s *ModifyPrepayInstanceSpecResponse) SetHeaders(v map[string]*string) *ModifyPrepayInstanceSpecResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyPrepayInstanceSpecResponse) SetStatusCode(v int32) *ModifyPrepayInstanceSpecResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1442,10 +2020,8 @@ func (s *ModifyPrepayNamespaceSpecRequestModifyPrepayNamespaceSpecRequestResourc
 }
 
 type ModifyPrepayNamespaceSpecResponseBody struct {
-	// 请求id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyPrepayNamespaceSpecResponseBody) String() string {
@@ -1467,8 +2043,9 @@ func (s *ModifyPrepayNamespaceSpecResponseBody) SetSuccess(v bool) *ModifyPrepay
 }
 
 type ModifyPrepayNamespaceSpecResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyPrepayNamespaceSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyPrepayNamespaceSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyPrepayNamespaceSpecResponse) String() string {
@@ -1481,6 +2058,11 @@ func (s ModifyPrepayNamespaceSpecResponse) GoString() string {
 
 func (s *ModifyPrepayNamespaceSpecResponse) SetHeaders(v map[string]*string) *ModifyPrepayNamespaceSpecResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyPrepayNamespaceSpecResponse) SetStatusCode(v int32) *ModifyPrepayNamespaceSpecResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1507,16 +2089,12 @@ func (s *QueryConvertInstancePriceRequest) SetConvertPostpayInstanceRequest(v *Q
 }
 
 type QueryConvertInstancePriceRequestConvertPostpayInstanceRequest struct {
-	// 订购周期数量
-	Duration   *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 是否自动续费
-	IsAutoRenew *bool `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
-	// 项目空间资源规格。
+	Duration               *int32                                                                                 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InstanceId             *string                                                                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsAutoRenew            *bool                                                                                  `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
 	NamespaceResourceSpecs []*QueryConvertInstancePriceRequestConvertPostpayInstanceRequestNamespaceResourceSpecs `json:"NamespaceResourceSpecs,omitempty" xml:"NamespaceResourceSpecs,omitempty" type:"Repeated"`
-	// 订购周期
-	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	PricingCycle           *string                                                                                `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	Region                 *string                                                                                `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s QueryConvertInstancePriceRequestConvertPostpayInstanceRequest) String() string {
@@ -1558,9 +2136,7 @@ func (s *QueryConvertInstancePriceRequestConvertPostpayInstanceRequest) SetRegio
 }
 
 type QueryConvertInstancePriceRequestConvertPostpayInstanceRequestNamespaceResourceSpecs struct {
-	// namespace名称，
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// 资源规格。
+	Namespace    *string                                                                                          `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	ResourceSpec *QueryConvertInstancePriceRequestConvertPostpayInstanceRequestNamespaceResourceSpecsResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
 
@@ -1583,9 +2159,7 @@ func (s *QueryConvertInstancePriceRequestConvertPostpayInstanceRequestNamespaceR
 }
 
 type QueryConvertInstancePriceRequestConvertPostpayInstanceRequestNamespaceResourceSpecsResourceSpec struct {
-	// cpu数量。
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// 内存大小。
+	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -1608,12 +2182,9 @@ func (s *QueryConvertInstancePriceRequestConvertPostpayInstanceRequestNamespaceR
 }
 
 type QueryConvertInstancePriceResponseBody struct {
-	// 价格信息，包括价格和优惠规则。
 	PriceInfo *QueryConvertInstancePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
-	// 请求id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryConvertInstancePriceResponseBody) String() string {
@@ -1640,22 +2211,14 @@ func (s *QueryConvertInstancePriceResponseBody) SetSuccess(v bool) *QueryConvert
 }
 
 type QueryConvertInstancePriceResponseBodyPriceInfo struct {
-	// 错误码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 货币单位。
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// 折扣
-	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	// 错误信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 可选择的优惠券
-	OptionalPromotions *QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Struct"`
-	// 原价
-	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// 活动规则。
-	Rules []*QueryConvertInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// 最终价，为原价减去折扣。
-	TradeAmount *float32 `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+	Code               *string                                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Currency           *string                                                             `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DiscountAmount     *float32                                                            `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	Message            *string                                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	OptionalPromotions []*QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
+	OriginalAmount     *float32                                                            `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	Rules              []*QueryConvertInstancePriceResponseBodyPriceInfoRules              `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	TradeAmount        *float32                                                            `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
 
 func (s QueryConvertInstancePriceResponseBodyPriceInfo) String() string {
@@ -1686,7 +2249,7 @@ func (s *QueryConvertInstancePriceResponseBodyPriceInfo) SetMessage(v string) *Q
 	return s
 }
 
-func (s *QueryConvertInstancePriceResponseBodyPriceInfo) SetOptionalPromotions(v *QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions) *QueryConvertInstancePriceResponseBodyPriceInfo {
+func (s *QueryConvertInstancePriceResponseBodyPriceInfo) SetOptionalPromotions(v []*QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions) *QueryConvertInstancePriceResponseBodyPriceInfo {
 	s.OptionalPromotions = v
 	return s
 }
@@ -1707,11 +2270,8 @@ func (s *QueryConvertInstancePriceResponseBodyPriceInfo) SetTradeAmount(v float3
 }
 
 type QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
-	// 优惠券描述
-	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
-	// 优惠券名称
-	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
-	// 优惠券编号
+	PromotionDesc     *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	PromotionName     *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 	Selected          *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
 }
@@ -1745,10 +2305,8 @@ func (s *QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions) SetSe
 }
 
 type QueryConvertInstancePriceResponseBodyPriceInfoRules struct {
-	// 活动规则描述。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 活动ID。
-	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s QueryConvertInstancePriceResponseBodyPriceInfoRules) String() string {
@@ -1770,8 +2328,9 @@ func (s *QueryConvertInstancePriceResponseBodyPriceInfoRules) SetRuleId(v int64)
 }
 
 type QueryConvertInstancePriceResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryConvertInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryConvertInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryConvertInstancePriceResponse) String() string {
@@ -1787,7 +2346,1036 @@ func (s *QueryConvertInstancePriceResponse) SetHeaders(v map[string]*string) *Qu
 	return s
 }
 
+func (s *QueryConvertInstancePriceResponse) SetStatusCode(v int32) *QueryConvertInstancePriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *QueryConvertInstancePriceResponse) SetBody(v *QueryConvertInstancePriceResponseBody) *QueryConvertInstancePriceResponse {
+	s.Body = v
+	return s
+}
+
+type QueryConvertPrepayInstancePriceRequest struct {
+	ConvertPrepayInstanceRequest *QueryConvertPrepayInstancePriceRequestConvertPrepayInstanceRequest `json:"ConvertPrepayInstanceRequest,omitempty" xml:"ConvertPrepayInstanceRequest,omitempty" type:"Struct"`
+}
+
+func (s QueryConvertPrepayInstancePriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertPrepayInstancePriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertPrepayInstancePriceRequest) SetConvertPrepayInstanceRequest(v *QueryConvertPrepayInstancePriceRequestConvertPrepayInstanceRequest) *QueryConvertPrepayInstancePriceRequest {
+	s.ConvertPrepayInstanceRequest = v
+	return s
+}
+
+type QueryConvertPrepayInstancePriceRequestConvertPrepayInstanceRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s QueryConvertPrepayInstancePriceRequestConvertPrepayInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertPrepayInstancePriceRequestConvertPrepayInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertPrepayInstancePriceRequestConvertPrepayInstanceRequest) SetInstanceId(v string) *QueryConvertPrepayInstancePriceRequestConvertPrepayInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceRequestConvertPrepayInstanceRequest) SetRegion(v string) *QueryConvertPrepayInstancePriceRequestConvertPrepayInstanceRequest {
+	s.Region = &v
+	return s
+}
+
+type QueryConvertPrepayInstancePriceResponseBody struct {
+	PriceInfo *QueryConvertPrepayInstancePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBody) SetPriceInfo(v *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) *QueryConvertPrepayInstancePriceResponseBody {
+	s.PriceInfo = v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBody) SetRequestId(v string) *QueryConvertPrepayInstancePriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBody) SetSuccess(v bool) *QueryConvertPrepayInstancePriceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryConvertPrepayInstancePriceResponseBodyPriceInfo struct {
+	Code               *string                                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Currency           *string                                                                   `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DiscountAmount     *float32                                                                  `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	Message            *string                                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	OptionalPromotions []*QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
+	OriginalAmount     *float32                                                                  `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	Rules              []*QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules              `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	TradeAmount        *float32                                                                  `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBodyPriceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBodyPriceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetCode(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetCurrency(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.Currency = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetDiscountAmount(v float32) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetMessage(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetOptionalPromotions(v []*QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.OptionalPromotions = v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetOriginalAmount(v float32) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.OriginalAmount = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetRules(v []*QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.Rules = v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetTradeAmount(v float32) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.TradeAmount = &v
+	return s
+}
+
+type QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
+	PromotionDesc     *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	PromotionName     *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	Selected          *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionDesc(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionDesc = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionName(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionOptionNo(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionOptionNo = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions) SetSelected(v bool) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.Selected = &v
+	return s
+}
+
+type QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules) SetDescription(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules {
+	s.Description = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules) SetRuleId(v int64) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules {
+	s.RuleId = &v
+	return s
+}
+
+type QueryConvertPrepayInstancePriceResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryConvertPrepayInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryConvertPrepayInstancePriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertPrepayInstancePriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertPrepayInstancePriceResponse) SetHeaders(v map[string]*string) *QueryConvertPrepayInstancePriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponse) SetStatusCode(v int32) *QueryConvertPrepayInstancePriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponse) SetBody(v *QueryConvertPrepayInstancePriceResponseBody) *QueryConvertPrepayInstancePriceResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCreateInstancePriceRequest struct {
+	CreateInstanceRequest *QueryCreateInstancePriceRequestCreateInstanceRequest `json:"CreateInstanceRequest,omitempty" xml:"CreateInstanceRequest,omitempty" type:"Struct"`
+}
+
+func (s QueryCreateInstancePriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCreateInstancePriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCreateInstancePriceRequest) SetCreateInstanceRequest(v *QueryCreateInstancePriceRequestCreateInstanceRequest) *QueryCreateInstancePriceRequest {
+	s.CreateInstanceRequest = v
+	return s
+}
+
+type QueryCreateInstancePriceRequestCreateInstanceRequest struct {
+	AutoRenew        *bool                                                             `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ChargeType       *string                                                           `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Duration         *int32                                                            `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InstanceName     *string                                                           `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	PricingCycle     *string                                                           `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	PromotionCode    *string                                                           `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	Region           *string                                                           `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceSpec     *QueryCreateInstancePriceRequestCreateInstanceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	Storage          *QueryCreateInstancePriceRequestCreateInstanceRequestStorage      `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+	UsePromotionCode *bool                                                             `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	VSwitchIds       []*string                                                         `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VpcId            *string                                                           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId           *string                                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s QueryCreateInstancePriceRequestCreateInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCreateInstancePriceRequestCreateInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetAutoRenew(v bool) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetChargeType(v string) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetDuration(v int32) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetInstanceName(v string) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetPricingCycle(v string) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetPromotionCode(v string) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.PromotionCode = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetRegion(v string) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetResourceSpec(v *QueryCreateInstancePriceRequestCreateInstanceRequestResourceSpec) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.ResourceSpec = v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetStorage(v *QueryCreateInstancePriceRequestCreateInstanceRequestStorage) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.Storage = v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetUsePromotionCode(v bool) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.UsePromotionCode = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetVSwitchIds(v []*string) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetVpcId(v string) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetZoneId(v string) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type QueryCreateInstancePriceRequestCreateInstanceRequestResourceSpec struct {
+	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s QueryCreateInstancePriceRequestCreateInstanceRequestResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCreateInstancePriceRequestCreateInstanceRequestResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequestResourceSpec) SetCpu(v int32) *QueryCreateInstancePriceRequestCreateInstanceRequestResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequestResourceSpec) SetMemoryGB(v int32) *QueryCreateInstancePriceRequestCreateInstanceRequestResourceSpec {
+	s.MemoryGB = &v
+	return s
+}
+
+type QueryCreateInstancePriceRequestCreateInstanceRequestStorage struct {
+	Oss *QueryCreateInstancePriceRequestCreateInstanceRequestStorageOss `json:"Oss,omitempty" xml:"Oss,omitempty" type:"Struct"`
+}
+
+func (s QueryCreateInstancePriceRequestCreateInstanceRequestStorage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCreateInstancePriceRequestCreateInstanceRequestStorage) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequestStorage) SetOss(v *QueryCreateInstancePriceRequestCreateInstanceRequestStorageOss) *QueryCreateInstancePriceRequestCreateInstanceRequestStorage {
+	s.Oss = v
+	return s
+}
+
+type QueryCreateInstancePriceRequestCreateInstanceRequestStorageOss struct {
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+}
+
+func (s QueryCreateInstancePriceRequestCreateInstanceRequestStorageOss) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCreateInstancePriceRequestCreateInstanceRequestStorageOss) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequestStorageOss) SetBucket(v string) *QueryCreateInstancePriceRequestCreateInstanceRequestStorageOss {
+	s.Bucket = &v
+	return s
+}
+
+type QueryCreateInstancePriceResponseBody struct {
+	PriceInfo *QueryCreateInstancePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryCreateInstancePriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCreateInstancePriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCreateInstancePriceResponseBody) SetPriceInfo(v *QueryCreateInstancePriceResponseBodyPriceInfo) *QueryCreateInstancePriceResponseBody {
+	s.PriceInfo = v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBody) SetRequestId(v string) *QueryCreateInstancePriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBody) SetSuccess(v bool) *QueryCreateInstancePriceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryCreateInstancePriceResponseBodyPriceInfo struct {
+	Code               *string                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Currency           *string                                                            `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DiscountAmount     *float32                                                           `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	Message            *string                                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	OptionalPromotions []*QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
+	OriginalAmount     *float32                                                           `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	Rules              []*QueryCreateInstancePriceResponseBodyPriceInfoRules              `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	TradeAmount        *float32                                                           `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+}
+
+func (s QueryCreateInstancePriceResponseBodyPriceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCreateInstancePriceResponseBodyPriceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetCode(v string) *QueryCreateInstancePriceResponseBodyPriceInfo {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetCurrency(v string) *QueryCreateInstancePriceResponseBodyPriceInfo {
+	s.Currency = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetDiscountAmount(v float32) *QueryCreateInstancePriceResponseBodyPriceInfo {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetMessage(v string) *QueryCreateInstancePriceResponseBodyPriceInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetOptionalPromotions(v []*QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions) *QueryCreateInstancePriceResponseBodyPriceInfo {
+	s.OptionalPromotions = v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetOriginalAmount(v float32) *QueryCreateInstancePriceResponseBodyPriceInfo {
+	s.OriginalAmount = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetRules(v []*QueryCreateInstancePriceResponseBodyPriceInfoRules) *QueryCreateInstancePriceResponseBodyPriceInfo {
+	s.Rules = v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetTradeAmount(v float32) *QueryCreateInstancePriceResponseBodyPriceInfo {
+	s.TradeAmount = &v
+	return s
+}
+
+type QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
+	PromotionDesc     *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	PromotionName     *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	Selected          *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionDesc(v string) *QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionDesc = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionName(v string) *QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionOptionNo(v string) *QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionOptionNo = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions) SetSelected(v bool) *QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.Selected = &v
+	return s
+}
+
+type QueryCreateInstancePriceResponseBodyPriceInfoRules struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s QueryCreateInstancePriceResponseBodyPriceInfoRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCreateInstancePriceResponseBodyPriceInfoRules) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoRules) SetDescription(v string) *QueryCreateInstancePriceResponseBodyPriceInfoRules {
+	s.Description = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoRules) SetRuleId(v int64) *QueryCreateInstancePriceResponseBodyPriceInfoRules {
+	s.RuleId = &v
+	return s
+}
+
+type QueryCreateInstancePriceResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryCreateInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryCreateInstancePriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCreateInstancePriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCreateInstancePriceResponse) SetHeaders(v map[string]*string) *QueryCreateInstancePriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponse) SetStatusCode(v int32) *QueryCreateInstancePriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponse) SetBody(v *QueryCreateInstancePriceResponseBody) *QueryCreateInstancePriceResponse {
+	s.Body = v
+	return s
+}
+
+type QueryModifyInstancePriceRequest struct {
+	ModifyPrepayInstanceSpecRequest *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest `json:"ModifyPrepayInstanceSpecRequest,omitempty" xml:"ModifyPrepayInstanceSpecRequest,omitempty" type:"Struct"`
+}
+
+func (s QueryModifyInstancePriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryModifyInstancePriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryModifyInstancePriceRequest) SetModifyPrepayInstanceSpecRequest(v *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) *QueryModifyInstancePriceRequest {
+	s.ModifyPrepayInstanceSpecRequest = v
+	return s
+}
+
+type QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest struct {
+	InstanceId   *string                                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Region       *string                                                                     `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceSpec *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+}
+
+func (s QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) SetInstanceId(v string) *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) SetRegion(v string) *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest) SetResourceSpec(v *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestResourceSpec) *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequest {
+	s.ResourceSpec = v
+	return s
+}
+
+type QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestResourceSpec struct {
+	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestResourceSpec) SetCpu(v int32) *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestResourceSpec) SetMemoryGB(v int32) *QueryModifyInstancePriceRequestModifyPrepayInstanceSpecRequestResourceSpec {
+	s.MemoryGB = &v
+	return s
+}
+
+type QueryModifyInstancePriceResponseBody struct {
+	PriceInfo *QueryModifyInstancePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryModifyInstancePriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryModifyInstancePriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryModifyInstancePriceResponseBody) SetPriceInfo(v *QueryModifyInstancePriceResponseBodyPriceInfo) *QueryModifyInstancePriceResponseBody {
+	s.PriceInfo = v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBody) SetRequestId(v string) *QueryModifyInstancePriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBody) SetSuccess(v bool) *QueryModifyInstancePriceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryModifyInstancePriceResponseBodyPriceInfo struct {
+	Code               *string                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Currency           *string                                                            `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DiscountAmount     *float32                                                           `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	Message            *string                                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	OptionalPromotions []*QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
+	OriginalAmount     *float32                                                           `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	Rules              []*QueryModifyInstancePriceResponseBodyPriceInfoRules              `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	TradeAmount        *float32                                                           `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+}
+
+func (s QueryModifyInstancePriceResponseBodyPriceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryModifyInstancePriceResponseBodyPriceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetCode(v string) *QueryModifyInstancePriceResponseBodyPriceInfo {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetCurrency(v string) *QueryModifyInstancePriceResponseBodyPriceInfo {
+	s.Currency = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetDiscountAmount(v float32) *QueryModifyInstancePriceResponseBodyPriceInfo {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetMessage(v string) *QueryModifyInstancePriceResponseBodyPriceInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetOptionalPromotions(v []*QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions) *QueryModifyInstancePriceResponseBodyPriceInfo {
+	s.OptionalPromotions = v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetOriginalAmount(v float32) *QueryModifyInstancePriceResponseBodyPriceInfo {
+	s.OriginalAmount = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetRules(v []*QueryModifyInstancePriceResponseBodyPriceInfoRules) *QueryModifyInstancePriceResponseBodyPriceInfo {
+	s.Rules = v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfo) SetTradeAmount(v float32) *QueryModifyInstancePriceResponseBodyPriceInfo {
+	s.TradeAmount = &v
+	return s
+}
+
+type QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
+	PromotionDesc     *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	PromotionName     *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	Selected          *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions) GoString() string {
+	return s.String()
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionDesc(v string) *QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionDesc = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionName(v string) *QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionOptionNo(v string) *QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionOptionNo = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions) SetSelected(v bool) *QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.Selected = &v
+	return s
+}
+
+type QueryModifyInstancePriceResponseBodyPriceInfoRules struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s QueryModifyInstancePriceResponseBodyPriceInfoRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryModifyInstancePriceResponseBodyPriceInfoRules) GoString() string {
+	return s.String()
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfoRules) SetDescription(v string) *QueryModifyInstancePriceResponseBodyPriceInfoRules {
+	s.Description = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponseBodyPriceInfoRules) SetRuleId(v int64) *QueryModifyInstancePriceResponseBodyPriceInfoRules {
+	s.RuleId = &v
+	return s
+}
+
+type QueryModifyInstancePriceResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryModifyInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryModifyInstancePriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryModifyInstancePriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryModifyInstancePriceResponse) SetHeaders(v map[string]*string) *QueryModifyInstancePriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponse) SetStatusCode(v int32) *QueryModifyInstancePriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryModifyInstancePriceResponse) SetBody(v *QueryModifyInstancePriceResponseBody) *QueryModifyInstancePriceResponse {
+	s.Body = v
+	return s
+}
+
+type QueryRenewInstancePriceRequest struct {
+	RenewInstanceRequest *QueryRenewInstancePriceRequestRenewInstanceRequest `json:"RenewInstanceRequest,omitempty" xml:"RenewInstanceRequest,omitempty" type:"Struct"`
+}
+
+func (s QueryRenewInstancePriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRenewInstancePriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRenewInstancePriceRequest) SetRenewInstanceRequest(v *QueryRenewInstancePriceRequestRenewInstanceRequest) *QueryRenewInstancePriceRequest {
+	s.RenewInstanceRequest = v
+	return s
+}
+
+type QueryRenewInstancePriceRequestRenewInstanceRequest struct {
+	Duration     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s QueryRenewInstancePriceRequestRenewInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRenewInstancePriceRequestRenewInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRenewInstancePriceRequestRenewInstanceRequest) SetDuration(v int32) *QueryRenewInstancePriceRequestRenewInstanceRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceRequestRenewInstanceRequest) SetInstanceId(v string) *QueryRenewInstancePriceRequestRenewInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceRequestRenewInstanceRequest) SetPricingCycle(v string) *QueryRenewInstancePriceRequestRenewInstanceRequest {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceRequestRenewInstanceRequest) SetRegion(v string) *QueryRenewInstancePriceRequestRenewInstanceRequest {
+	s.Region = &v
+	return s
+}
+
+type QueryRenewInstancePriceResponseBody struct {
+	PriceInfo *QueryRenewInstancePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryRenewInstancePriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRenewInstancePriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRenewInstancePriceResponseBody) SetPriceInfo(v *QueryRenewInstancePriceResponseBodyPriceInfo) *QueryRenewInstancePriceResponseBody {
+	s.PriceInfo = v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBody) SetRequestId(v string) *QueryRenewInstancePriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBody) SetSuccess(v bool) *QueryRenewInstancePriceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryRenewInstancePriceResponseBodyPriceInfo struct {
+	Code               *string                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Currency           *string                                                           `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DiscountAmount     *float32                                                          `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	Message            *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	OptionalPromotions []*QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
+	OriginalAmount     *float32                                                          `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	Rules              []*QueryRenewInstancePriceResponseBodyPriceInfoRules              `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	TradeAmount        *float32                                                          `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+}
+
+func (s QueryRenewInstancePriceResponseBodyPriceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRenewInstancePriceResponseBodyPriceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetCode(v string) *QueryRenewInstancePriceResponseBodyPriceInfo {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetCurrency(v string) *QueryRenewInstancePriceResponseBodyPriceInfo {
+	s.Currency = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetDiscountAmount(v float32) *QueryRenewInstancePriceResponseBodyPriceInfo {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetMessage(v string) *QueryRenewInstancePriceResponseBodyPriceInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetOptionalPromotions(v []*QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions) *QueryRenewInstancePriceResponseBodyPriceInfo {
+	s.OptionalPromotions = v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetOriginalAmount(v float32) *QueryRenewInstancePriceResponseBodyPriceInfo {
+	s.OriginalAmount = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetRules(v []*QueryRenewInstancePriceResponseBodyPriceInfoRules) *QueryRenewInstancePriceResponseBodyPriceInfo {
+	s.Rules = v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfo) SetTradeAmount(v float32) *QueryRenewInstancePriceResponseBodyPriceInfo {
+	s.TradeAmount = &v
+	return s
+}
+
+type QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
+	PromotionDesc     *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	PromotionName     *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	Selected          *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionDesc(v string) *QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionDesc = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionName(v string) *QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionOptionNo(v string) *QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionOptionNo = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions) SetSelected(v bool) *QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.Selected = &v
+	return s
+}
+
+type QueryRenewInstancePriceResponseBodyPriceInfoRules struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s QueryRenewInstancePriceResponseBodyPriceInfoRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRenewInstancePriceResponseBodyPriceInfoRules) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfoRules) SetDescription(v string) *QueryRenewInstancePriceResponseBodyPriceInfoRules {
+	s.Description = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponseBodyPriceInfoRules) SetRuleId(v int64) *QueryRenewInstancePriceResponseBodyPriceInfoRules {
+	s.RuleId = &v
+	return s
+}
+
+type QueryRenewInstancePriceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryRenewInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryRenewInstancePriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRenewInstancePriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRenewInstancePriceResponse) SetHeaders(v map[string]*string) *QueryRenewInstancePriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponse) SetStatusCode(v int32) *QueryRenewInstancePriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryRenewInstancePriceResponse) SetBody(v *QueryRenewInstancePriceResponseBody) *QueryRenewInstancePriceResponse {
 	s.Body = v
 	return s
 }
@@ -1810,14 +3398,10 @@ func (s *RenewInstanceRequest) SetRenewInstanceRequest(v *RenewInstanceRequestRe
 }
 
 type RenewInstanceRequestRenewInstanceRequest struct {
-	// 订购周期数量
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 订购周期
+	Duration     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// 地域id
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s RenewInstanceRequestRenewInstanceRequest) String() string {
@@ -1849,12 +3433,9 @@ func (s *RenewInstanceRequestRenewInstanceRequest) SetRegion(v string) *RenewIns
 }
 
 type RenewInstanceResponseBody struct {
-	// orderId
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// 请求id
+	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否成功
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RenewInstanceResponseBody) String() string {
@@ -1881,8 +3462,9 @@ func (s *RenewInstanceResponseBody) SetSuccess(v bool) *RenewInstanceResponseBod
 }
 
 type RenewInstanceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RenewInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RenewInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RenewInstanceResponse) String() string {
@@ -1898,7 +3480,251 @@ func (s *RenewInstanceResponse) SetHeaders(v map[string]*string) *RenewInstanceR
 	return s
 }
 
+func (s *RenewInstanceResponse) SetStatusCode(v int32) *RenewInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type TagResourcesRequest struct {
+	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TagResponseId *string `json:"TagResponseId,omitempty" xml:"TagResponseId,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetCode(v string) *TagResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetMessage(v string) *TagResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetSuccess(v bool) *TagResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetTagResponseId(v string) *TagResourcesResponseBody {
+	s.TagResponseId = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UntagResourcesRequest struct {
+	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
+	s.TagKey = v
+	return s
+}
+
+type UntagResourcesResponseBody struct {
+	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TagResponseId *string `json:"TagResponseId,omitempty" xml:"TagResponseId,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetCode(v string) *UntagResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetMessage(v string) *UntagResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetSuccess(v bool) *UntagResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetTagResponseId(v string) *UntagResourcesResponseBody {
+	s.TagResponseId = &v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -1955,11 +3781,30 @@ func (client *Client) ConvertInstanceWithOptions(request *ConvertInstanceRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ConvertPostpayInstanceRequest))) {
+		bodyFlat["ConvertPostpayInstanceRequest"] = request.ConvertPostpayInstanceRequest
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConvertInstance"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ConvertInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ConvertInstance"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1978,16 +3823,82 @@ func (client *Client) ConvertInstance(request *ConvertInstanceRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) ConvertPrepayInstanceWithOptions(request *ConvertPrepayInstanceRequest, runtime *util.RuntimeOptions) (_result *ConvertPrepayInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ConvertPrepayInstanceRequest))) {
+		bodyFlat["ConvertPrepayInstanceRequest"] = request.ConvertPrepayInstanceRequest
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConvertPrepayInstance"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ConvertPrepayInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ConvertPrepayInstance(request *ConvertPrepayInstanceRequest) (_result *ConvertPrepayInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConvertPrepayInstanceResponse{}
+	_body, _err := client.ConvertPrepayInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CreateInstanceRequest))) {
+		bodyFlat["CreateInstanceRequest"] = request.CreateInstanceRequest
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstance"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateInstance"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2011,11 +3922,30 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CreateNamespaceRequest))) {
+		bodyFlat["CreateNamespaceRequest"] = request.CreateNamespaceRequest
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNamespace"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateNamespaceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateNamespace"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2039,11 +3969,30 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.DeleteInstanceRequest))) {
+		bodyFlat["DeleteInstanceRequest"] = request.DeleteInstanceRequest
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstance"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteInstance"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2067,11 +4016,30 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.DeleteNamespaceRequest))) {
+		bodyFlat["DeleteNamespaceRequest"] = request.DeleteNamespaceRequest
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNamespace"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteNamespaceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteNamespace"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2097,10 +4065,21 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstances"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstances"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2126,10 +4105,21 @@ func (client *Client) DescribeNamespacesWithOptions(request *DescribeNamespacesR
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNamespaces"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeNamespacesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeNamespaces"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2148,16 +4138,168 @@ func (client *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DescribeSupportedRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeSupportedRegionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSupportedRegions"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSupportedRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSupportedRegions() (_result *DescribeSupportedRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSupportedRegionsResponse{}
+	_body, _err := client.DescribeSupportedRegionsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSupportedZonesWithOptions(request *DescribeSupportedZonesRequest, runtime *util.RuntimeOptions) (_result *DescribeSupportedZonesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSupportedZones"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSupportedZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSupportedZones(request *DescribeSupportedZonesRequest) (_result *DescribeSupportedZonesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSupportedZonesResponse{}
+	_body, _err := client.DescribeSupportedZonesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyPrepayInstanceSpecWithOptions(request *ModifyPrepayInstanceSpecRequest, runtime *util.RuntimeOptions) (_result *ModifyPrepayInstanceSpecResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ModifyPrepayInstanceSpecRequest))) {
+		bodyFlat["ModifyPrepayInstanceSpecRequest"] = request.ModifyPrepayInstanceSpecRequest
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPrepayInstanceSpec"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyPrepayInstanceSpecResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyPrepayInstanceSpec"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2181,11 +4323,30 @@ func (client *Client) ModifyPrepayNamespaceSpecWithOptions(request *ModifyPrepay
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ModifyPrepayNamespaceSpecRequest))) {
+		bodyFlat["ModifyPrepayNamespaceSpecRequest"] = request.ModifyPrepayNamespaceSpecRequest
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPrepayNamespaceSpec"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyPrepayNamespaceSpecResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyPrepayNamespaceSpec"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2209,11 +4370,30 @@ func (client *Client) QueryConvertInstancePriceWithOptions(request *QueryConvert
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ConvertPostpayInstanceRequest))) {
+		bodyFlat["ConvertPostpayInstanceRequest"] = request.ConvertPostpayInstanceRequest
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryConvertInstancePrice"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryConvertInstancePriceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryConvertInstancePrice"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2232,16 +4412,223 @@ func (client *Client) QueryConvertInstancePrice(request *QueryConvertInstancePri
 	return _result, _err
 }
 
+func (client *Client) QueryConvertPrepayInstancePriceWithOptions(request *QueryConvertPrepayInstancePriceRequest, runtime *util.RuntimeOptions) (_result *QueryConvertPrepayInstancePriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ConvertPrepayInstanceRequest))) {
+		bodyFlat["ConvertPrepayInstanceRequest"] = request.ConvertPrepayInstanceRequest
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryConvertPrepayInstancePrice"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryConvertPrepayInstancePriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryConvertPrepayInstancePrice(request *QueryConvertPrepayInstancePriceRequest) (_result *QueryConvertPrepayInstancePriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryConvertPrepayInstancePriceResponse{}
+	_body, _err := client.QueryConvertPrepayInstancePriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryCreateInstancePriceWithOptions(request *QueryCreateInstancePriceRequest, runtime *util.RuntimeOptions) (_result *QueryCreateInstancePriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CreateInstanceRequest))) {
+		bodyFlat["CreateInstanceRequest"] = request.CreateInstanceRequest
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCreateInstancePrice"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCreateInstancePriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryCreateInstancePrice(request *QueryCreateInstancePriceRequest) (_result *QueryCreateInstancePriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCreateInstancePriceResponse{}
+	_body, _err := client.QueryCreateInstancePriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryModifyInstancePriceWithOptions(request *QueryModifyInstancePriceRequest, runtime *util.RuntimeOptions) (_result *QueryModifyInstancePriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ModifyPrepayInstanceSpecRequest))) {
+		bodyFlat["ModifyPrepayInstanceSpecRequest"] = request.ModifyPrepayInstanceSpecRequest
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryModifyInstancePrice"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryModifyInstancePriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryModifyInstancePrice(request *QueryModifyInstancePriceRequest) (_result *QueryModifyInstancePriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryModifyInstancePriceResponse{}
+	_body, _err := client.QueryModifyInstancePriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryRenewInstancePriceWithOptions(request *QueryRenewInstancePriceRequest, runtime *util.RuntimeOptions) (_result *QueryRenewInstancePriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.RenewInstanceRequest))) {
+		bodyFlat["RenewInstanceRequest"] = request.RenewInstanceRequest
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRenewInstancePrice"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryRenewInstancePriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryRenewInstancePrice(request *QueryRenewInstancePriceRequest) (_result *QueryRenewInstancePriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryRenewInstancePriceResponse{}
+	_body, _err := client.QueryRenewInstancePriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, runtime *util.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.RenewInstanceRequest))) {
+		bodyFlat["RenewInstanceRequest"] = request.RenewInstanceRequest
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewInstance"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RenewInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RenewInstance"), tea.String("2019-06-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2253,6 +4640,122 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewInstanceResponse{}
 	_body, _err := client.RenewInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
