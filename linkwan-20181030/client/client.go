@@ -5,16 +5,15 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type GetKpmEncryptedNodeTuplesByOrderIdRequest struct {
-	ApiProduct  *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
-	OrderId     *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s GetKpmEncryptedNodeTuplesByOrderIdRequest) String() string {
@@ -25,30 +24,20 @@ func (s GetKpmEncryptedNodeTuplesByOrderIdRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetKpmEncryptedNodeTuplesByOrderIdRequest) SetApiProduct(v string) *GetKpmEncryptedNodeTuplesByOrderIdRequest {
-	s.ApiProduct = &v
-	return s
-}
-
-func (s *GetKpmEncryptedNodeTuplesByOrderIdRequest) SetApiRevision(v string) *GetKpmEncryptedNodeTuplesByOrderIdRequest {
-	s.ApiRevision = &v
-	return s
-}
-
 func (s *GetKpmEncryptedNodeTuplesByOrderIdRequest) SetOrderId(v int64) *GetKpmEncryptedNodeTuplesByOrderIdRequest {
 	s.OrderId = &v
 	return s
 }
 
 type GetKpmEncryptedNodeTuplesByOrderIdResponseBody struct {
-	RequestId           *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message             *string                                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code                *string                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	DynamicCode         *string                                                            `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	DynamicMessage      *string                                                            `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	EncryptedNodeTuples *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuples `json:"EncryptedNodeTuples,omitempty" xml:"EncryptedNodeTuples,omitempty" type:"Struct"`
-	Code                *string                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Success             *bool                                                              `json:"Success,omitempty" xml:"Success,omitempty"`
 	EncryptedSessionZmk *string                                                            `json:"EncryptedSessionZmk,omitempty" xml:"EncryptedSessionZmk,omitempty"`
+	Message             *string                                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId           *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success             *bool                                                              `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetKpmEncryptedNodeTuplesByOrderIdResponseBody) String() string {
@@ -59,13 +48,8 @@ func (s GetKpmEncryptedNodeTuplesByOrderIdResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBody) SetRequestId(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBody) SetMessage(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBody {
-	s.Message = &v
+func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBody) SetCode(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -84,18 +68,23 @@ func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBody) SetEncryptedNodeTuples(
 	return s
 }
 
-func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBody) SetCode(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBody {
-	s.Code = &v
+func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBody) SetEncryptedSessionZmk(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBody {
+	s.EncryptedSessionZmk = &v
+	return s
+}
+
+func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBody) SetMessage(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBody) SetRequestId(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBody) SetSuccess(v bool) *GetKpmEncryptedNodeTuplesByOrderIdResponseBody {
 	s.Success = &v
-	return s
-}
-
-func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBody) SetEncryptedSessionZmk(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBody {
-	s.EncryptedSessionZmk = &v
 	return s
 }
 
@@ -119,13 +108,13 @@ func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuples) SetE
 type GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple struct {
 	AppKeyKcv          *string `json:"AppKeyKcv,omitempty" xml:"AppKeyKcv,omitempty"`
 	DevEui             *string `json:"DevEui,omitempty" xml:"DevEui,omitempty"`
-	EncryptedNwkKey    *string `json:"EncryptedNwkKey,omitempty" xml:"EncryptedNwkKey,omitempty"`
-	NwkKeyKcv          *string `json:"NwkKeyKcv,omitempty" xml:"NwkKeyKcv,omitempty"`
+	EncryptedAppKey    *string `json:"EncryptedAppKey,omitempty" xml:"EncryptedAppKey,omitempty"`
 	EncryptedGenAppKey *string `json:"EncryptedGenAppKey,omitempty" xml:"EncryptedGenAppKey,omitempty"`
-	PinCode            *string `json:"PinCode,omitempty" xml:"PinCode,omitempty"`
+	EncryptedNwkKey    *string `json:"EncryptedNwkKey,omitempty" xml:"EncryptedNwkKey,omitempty"`
 	GenAppKeyKcv       *string `json:"GenAppKeyKcv,omitempty" xml:"GenAppKeyKcv,omitempty"`
 	LoraVersion        *string `json:"LoraVersion,omitempty" xml:"LoraVersion,omitempty"`
-	EncryptedAppKey    *string `json:"EncryptedAppKey,omitempty" xml:"EncryptedAppKey,omitempty"`
+	NwkKeyKcv          *string `json:"NwkKeyKcv,omitempty" xml:"NwkKeyKcv,omitempty"`
+	PinCode            *string `json:"PinCode,omitempty" xml:"PinCode,omitempty"`
 }
 
 func (s GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple) String() string {
@@ -146,13 +135,8 @@ func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryp
 	return s
 }
 
-func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple) SetEncryptedNwkKey(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple {
-	s.EncryptedNwkKey = &v
-	return s
-}
-
-func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple) SetNwkKeyKcv(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple {
-	s.NwkKeyKcv = &v
+func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple) SetEncryptedAppKey(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple {
+	s.EncryptedAppKey = &v
 	return s
 }
 
@@ -161,8 +145,8 @@ func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryp
 	return s
 }
 
-func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple) SetPinCode(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple {
-	s.PinCode = &v
+func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple) SetEncryptedNwkKey(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple {
+	s.EncryptedNwkKey = &v
 	return s
 }
 
@@ -176,14 +160,20 @@ func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryp
 	return s
 }
 
-func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple) SetEncryptedAppKey(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple {
-	s.EncryptedAppKey = &v
+func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple) SetNwkKeyKcv(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple {
+	s.NwkKeyKcv = &v
+	return s
+}
+
+func (s *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple) SetPinCode(v string) *GetKpmEncryptedNodeTuplesByOrderIdResponseBodyEncryptedNodeTuplesEncryptedNodeTuple {
+	s.PinCode = &v
 	return s
 }
 
 type GetKpmEncryptedNodeTuplesByOrderIdResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetKpmEncryptedNodeTuplesByOrderIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetKpmEncryptedNodeTuplesByOrderIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetKpmEncryptedNodeTuplesByOrderIdResponse) String() string {
@@ -199,14 +189,17 @@ func (s *GetKpmEncryptedNodeTuplesByOrderIdResponse) SetHeaders(v map[string]*st
 	return s
 }
 
+func (s *GetKpmEncryptedNodeTuplesByOrderIdResponse) SetStatusCode(v int32) *GetKpmEncryptedNodeTuplesByOrderIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetKpmEncryptedNodeTuplesByOrderIdResponse) SetBody(v *GetKpmEncryptedNodeTuplesByOrderIdResponseBody) *GetKpmEncryptedNodeTuplesByOrderIdResponse {
 	s.Body = v
 	return s
 }
 
 type SubmitKpmEncryptedNodeTupleOrderRequest struct {
-	ApiProduct    *string `json:"ApiProduct,omitempty" xml:"ApiProduct,omitempty"`
-	ApiRevision   *string `json:"ApiRevision,omitempty" xml:"ApiRevision,omitempty"`
 	LoraVersion   *string `json:"LoraVersion,omitempty" xml:"LoraVersion,omitempty"`
 	RequiredCount *int64  `json:"RequiredCount,omitempty" xml:"RequiredCount,omitempty"`
 }
@@ -217,16 +210,6 @@ func (s SubmitKpmEncryptedNodeTupleOrderRequest) String() string {
 
 func (s SubmitKpmEncryptedNodeTupleOrderRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SubmitKpmEncryptedNodeTupleOrderRequest) SetApiProduct(v string) *SubmitKpmEncryptedNodeTupleOrderRequest {
-	s.ApiProduct = &v
-	return s
-}
-
-func (s *SubmitKpmEncryptedNodeTupleOrderRequest) SetApiRevision(v string) *SubmitKpmEncryptedNodeTupleOrderRequest {
-	s.ApiRevision = &v
-	return s
 }
 
 func (s *SubmitKpmEncryptedNodeTupleOrderRequest) SetLoraVersion(v string) *SubmitKpmEncryptedNodeTupleOrderRequest {
@@ -240,12 +223,12 @@ func (s *SubmitKpmEncryptedNodeTupleOrderRequest) SetRequiredCount(v int64) *Sub
 }
 
 type SubmitKpmEncryptedNodeTupleOrderResponseBody struct {
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	OrderId        *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -257,13 +240,8 @@ func (s SubmitKpmEncryptedNodeTupleOrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitKpmEncryptedNodeTupleOrderResponseBody) SetRequestId(v string) *SubmitKpmEncryptedNodeTupleOrderResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SubmitKpmEncryptedNodeTupleOrderResponseBody) SetMessage(v string) *SubmitKpmEncryptedNodeTupleOrderResponseBody {
-	s.Message = &v
+func (s *SubmitKpmEncryptedNodeTupleOrderResponseBody) SetCode(v string) *SubmitKpmEncryptedNodeTupleOrderResponseBody {
+	s.Code = &v
 	return s
 }
 
@@ -277,13 +255,18 @@ func (s *SubmitKpmEncryptedNodeTupleOrderResponseBody) SetDynamicMessage(v strin
 	return s
 }
 
+func (s *SubmitKpmEncryptedNodeTupleOrderResponseBody) SetMessage(v string) *SubmitKpmEncryptedNodeTupleOrderResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *SubmitKpmEncryptedNodeTupleOrderResponseBody) SetOrderId(v int64) *SubmitKpmEncryptedNodeTupleOrderResponseBody {
 	s.OrderId = &v
 	return s
 }
 
-func (s *SubmitKpmEncryptedNodeTupleOrderResponseBody) SetCode(v string) *SubmitKpmEncryptedNodeTupleOrderResponseBody {
-	s.Code = &v
+func (s *SubmitKpmEncryptedNodeTupleOrderResponseBody) SetRequestId(v string) *SubmitKpmEncryptedNodeTupleOrderResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -293,8 +276,9 @@ func (s *SubmitKpmEncryptedNodeTupleOrderResponseBody) SetSuccess(v bool) *Submi
 }
 
 type SubmitKpmEncryptedNodeTupleOrderResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitKpmEncryptedNodeTupleOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitKpmEncryptedNodeTupleOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SubmitKpmEncryptedNodeTupleOrderResponse) String() string {
@@ -307,6 +291,11 @@ func (s SubmitKpmEncryptedNodeTupleOrderResponse) GoString() string {
 
 func (s *SubmitKpmEncryptedNodeTupleOrderResponse) SetHeaders(v map[string]*string) *SubmitKpmEncryptedNodeTupleOrderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SubmitKpmEncryptedNodeTupleOrderResponse) SetStatusCode(v int32) *SubmitKpmEncryptedNodeTupleOrderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -367,11 +356,27 @@ func (client *Client) GetKpmEncryptedNodeTuplesByOrderIdWithOptions(request *Get
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		body["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetKpmEncryptedNodeTuplesByOrderId"),
+		Version:     tea.String("2018-10-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetKpmEncryptedNodeTuplesByOrderIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetKpmEncryptedNodeTuplesByOrderId"), tea.String("2018-10-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -395,11 +400,31 @@ func (client *Client) SubmitKpmEncryptedNodeTupleOrderWithOptions(request *Submi
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LoraVersion)) {
+		body["LoraVersion"] = request.LoraVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequiredCount)) {
+		body["RequiredCount"] = request.RequiredCount
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitKpmEncryptedNodeTupleOrder"),
+		Version:     tea.String("2018-10-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubmitKpmEncryptedNodeTupleOrderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubmitKpmEncryptedNodeTupleOrder"), tea.String("2018-10-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
