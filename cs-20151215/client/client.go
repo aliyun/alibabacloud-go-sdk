@@ -612,6 +612,7 @@ type CreateClusterRequest struct {
 	ImageId                          *string                                `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	ImageType                        *string                                `json:"image_type,omitempty" xml:"image_type,omitempty"`
 	Instances                        []*string                              `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	IpStack                          *string                                `json:"ip_stack,omitempty" xml:"ip_stack,omitempty"`
 	IsEnterpriseSecurityGroup        *bool                                  `json:"is_enterprise_security_group,omitempty" xml:"is_enterprise_security_group,omitempty"`
 	KeepInstanceName                 *bool                                  `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
 	KeyPair                          *string                                `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
@@ -798,6 +799,11 @@ func (s *CreateClusterRequest) SetImageType(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetInstances(v []*string) *CreateClusterRequest {
 	s.Instances = v
+	return s
+}
+
+func (s *CreateClusterRequest) SetIpStack(v string) *CreateClusterRequest {
+	s.IpStack = &v
 	return s
 }
 
@@ -12947,6 +12953,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Instances)) {
 		body["instances"] = request.Instances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpStack)) {
+		body["ip_stack"] = request.IpStack
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IsEnterpriseSecurityGroup)) {
