@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -772,9 +772,11 @@ type CreateApplicationRequest struct {
 	KafkaConfigs                  *string `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
 	Liveness                      *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
 	Memory                        *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	MicroRegistration             *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
 	MountDesc                     *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
 	MountHost                     *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
 	NamespaceId                   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NasConfigs                    *string `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
 	NasId                         *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
 	OssAkId                       *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
 	OssAkSecret                   *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
@@ -788,6 +790,7 @@ type CreateApplicationRequest struct {
 	PostStart                     *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
 	PreStop                       *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
 	ProgrammingLanguage           *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	PvtzDiscoverySvc              *string `json:"PvtzDiscoverySvc,omitempty" xml:"PvtzDiscoverySvc,omitempty"`
 	Readiness                     *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
 	Replicas                      *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	SecurityGroupId               *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
@@ -914,6 +917,11 @@ func (s *CreateApplicationRequest) SetMemory(v int32) *CreateApplicationRequest 
 	return s
 }
 
+func (s *CreateApplicationRequest) SetMicroRegistration(v string) *CreateApplicationRequest {
+	s.MicroRegistration = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetMountDesc(v string) *CreateApplicationRequest {
 	s.MountDesc = &v
 	return s
@@ -926,6 +934,11 @@ func (s *CreateApplicationRequest) SetMountHost(v string) *CreateApplicationRequ
 
 func (s *CreateApplicationRequest) SetNamespaceId(v string) *CreateApplicationRequest {
 	s.NamespaceId = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetNasConfigs(v string) *CreateApplicationRequest {
+	s.NasConfigs = &v
 	return s
 }
 
@@ -991,6 +1004,11 @@ func (s *CreateApplicationRequest) SetPreStop(v string) *CreateApplicationReques
 
 func (s *CreateApplicationRequest) SetProgrammingLanguage(v string) *CreateApplicationRequest {
 	s.ProgrammingLanguage = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetPvtzDiscoverySvc(v string) *CreateApplicationRequest {
+	s.PvtzDiscoverySvc = &v
 	return s
 }
 
@@ -2684,10 +2702,12 @@ type DeployApplicationRequest struct {
 	Jdk                              *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
 	KafkaConfigs                     *string `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
 	Liveness                         *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	MicroRegistration                *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
 	MinReadyInstanceRatio            *int32  `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
 	MinReadyInstances                *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 	MountDesc                        *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
 	MountHost                        *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	NasConfigs                       *string `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
 	NasId                            *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
 	OssAkId                          *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
 	OssAkSecret                      *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
@@ -2699,6 +2719,7 @@ type DeployApplicationRequest struct {
 	PhpConfigLocation                *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
 	PostStart                        *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
 	PreStop                          *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	PvtzDiscoverySvc                 *string `json:"PvtzDiscoverySvc,omitempty" xml:"PvtzDiscoverySvc,omitempty"`
 	Readiness                        *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
 	SlsConfigs                       *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
 	TerminationGracePeriodSeconds    *int32  `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
@@ -2822,6 +2843,11 @@ func (s *DeployApplicationRequest) SetLiveness(v string) *DeployApplicationReque
 	return s
 }
 
+func (s *DeployApplicationRequest) SetMicroRegistration(v string) *DeployApplicationRequest {
+	s.MicroRegistration = &v
+	return s
+}
+
 func (s *DeployApplicationRequest) SetMinReadyInstanceRatio(v int32) *DeployApplicationRequest {
 	s.MinReadyInstanceRatio = &v
 	return s
@@ -2839,6 +2865,11 @@ func (s *DeployApplicationRequest) SetMountDesc(v string) *DeployApplicationRequ
 
 func (s *DeployApplicationRequest) SetMountHost(v string) *DeployApplicationRequest {
 	s.MountHost = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetNasConfigs(v string) *DeployApplicationRequest {
+	s.NasConfigs = &v
 	return s
 }
 
@@ -2894,6 +2925,11 @@ func (s *DeployApplicationRequest) SetPostStart(v string) *DeployApplicationRequ
 
 func (s *DeployApplicationRequest) SetPreStop(v string) *DeployApplicationRequest {
 	s.PreStop = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetPvtzDiscoverySvc(v string) *DeployApplicationRequest {
+	s.PvtzDiscoverySvc = &v
 	return s
 }
 
@@ -3436,13 +3472,14 @@ type DescribeApplicationConfigResponseBodyData struct {
 	KafkaConfigs                  *string                                                        `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
 	Liveness                      *string                                                        `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
 	Memory                        *int32                                                         `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	MicroRegistration             *string                                                        `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
 	MinReadyInstanceRatio         *int32                                                         `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
 	MinReadyInstances             *int32                                                         `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 	MountDesc                     []*DescribeApplicationConfigResponseBodyDataMountDesc          `json:"MountDesc,omitempty" xml:"MountDesc,omitempty" type:"Repeated"`
 	MountHost                     *string                                                        `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
 	MseApplicationId              *string                                                        `json:"MseApplicationId,omitempty" xml:"MseApplicationId,omitempty"`
-	MseFeatureConfig              *string                                                        `json:"MseFeatureConfig,omitempty" xml:"MseFeatureConfig,omitempty"`
 	NamespaceId                   *string                                                        `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NasConfigs                    *string                                                        `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
 	NasId                         *string                                                        `json:"NasId,omitempty" xml:"NasId,omitempty"`
 	OssAkId                       *string                                                        `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
 	OssAkSecret                   *string                                                        `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
@@ -3456,6 +3493,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	PostStart                     *string                                                        `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
 	PreStop                       *string                                                        `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
 	ProgrammingLanguage           *string                                                        `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	PvtzDiscovery                 *string                                                        `json:"PvtzDiscovery,omitempty" xml:"PvtzDiscovery,omitempty"`
 	Readiness                     *string                                                        `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
 	RegionId                      *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Replicas                      *int32                                                         `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
@@ -3595,6 +3633,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetMemory(v int32) *Describe
 	return s
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) SetMicroRegistration(v string) *DescribeApplicationConfigResponseBodyData {
+	s.MicroRegistration = &v
+	return s
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) SetMinReadyInstanceRatio(v int32) *DescribeApplicationConfigResponseBodyData {
 	s.MinReadyInstanceRatio = &v
 	return s
@@ -3620,13 +3663,13 @@ func (s *DescribeApplicationConfigResponseBodyData) SetMseApplicationId(v string
 	return s
 }
 
-func (s *DescribeApplicationConfigResponseBodyData) SetMseFeatureConfig(v string) *DescribeApplicationConfigResponseBodyData {
-	s.MseFeatureConfig = &v
+func (s *DescribeApplicationConfigResponseBodyData) SetNamespaceId(v string) *DescribeApplicationConfigResponseBodyData {
+	s.NamespaceId = &v
 	return s
 }
 
-func (s *DescribeApplicationConfigResponseBodyData) SetNamespaceId(v string) *DescribeApplicationConfigResponseBodyData {
-	s.NamespaceId = &v
+func (s *DescribeApplicationConfigResponseBodyData) SetNasConfigs(v string) *DescribeApplicationConfigResponseBodyData {
+	s.NasConfigs = &v
 	return s
 }
 
@@ -3692,6 +3735,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetPreStop(v string) *Descri
 
 func (s *DescribeApplicationConfigResponseBodyData) SetProgrammingLanguage(v string) *DescribeApplicationConfigResponseBodyData {
 	s.ProgrammingLanguage = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetPvtzDiscovery(v string) *DescribeApplicationConfigResponseBodyData {
+	s.PvtzDiscovery = &v
 	return s
 }
 
@@ -5513,12 +5561,14 @@ func (s *DescribeApplicationSlbsResponseBody) SetTraceId(v string) *DescribeAppl
 }
 
 type DescribeApplicationSlbsResponseBodyData struct {
-	Internet      []*DescribeApplicationSlbsResponseBodyDataInternet `json:"Internet,omitempty" xml:"Internet,omitempty" type:"Repeated"`
-	InternetIp    *string                                            `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	InternetSlbId *string                                            `json:"InternetSlbId,omitempty" xml:"InternetSlbId,omitempty"`
-	Intranet      []*DescribeApplicationSlbsResponseBodyDataIntranet `json:"Intranet,omitempty" xml:"Intranet,omitempty" type:"Repeated"`
-	IntranetIp    *string                                            `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	IntranetSlbId *string                                            `json:"IntranetSlbId,omitempty" xml:"IntranetSlbId,omitempty"`
+	Internet           []*DescribeApplicationSlbsResponseBodyDataInternet `json:"Internet,omitempty" xml:"Internet,omitempty" type:"Repeated"`
+	InternetIp         *string                                            `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	InternetSlbExpired *bool                                              `json:"InternetSlbExpired,omitempty" xml:"InternetSlbExpired,omitempty"`
+	InternetSlbId      *string                                            `json:"InternetSlbId,omitempty" xml:"InternetSlbId,omitempty"`
+	Intranet           []*DescribeApplicationSlbsResponseBodyDataIntranet `json:"Intranet,omitempty" xml:"Intranet,omitempty" type:"Repeated"`
+	IntranetIp         *string                                            `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	IntranetSlbExpired *bool                                              `json:"IntranetSlbExpired,omitempty" xml:"IntranetSlbExpired,omitempty"`
+	IntranetSlbId      *string                                            `json:"IntranetSlbId,omitempty" xml:"IntranetSlbId,omitempty"`
 }
 
 func (s DescribeApplicationSlbsResponseBodyData) String() string {
@@ -5539,6 +5589,11 @@ func (s *DescribeApplicationSlbsResponseBodyData) SetInternetIp(v string) *Descr
 	return s
 }
 
+func (s *DescribeApplicationSlbsResponseBodyData) SetInternetSlbExpired(v bool) *DescribeApplicationSlbsResponseBodyData {
+	s.InternetSlbExpired = &v
+	return s
+}
+
 func (s *DescribeApplicationSlbsResponseBodyData) SetInternetSlbId(v string) *DescribeApplicationSlbsResponseBodyData {
 	s.InternetSlbId = &v
 	return s
@@ -5551,6 +5606,11 @@ func (s *DescribeApplicationSlbsResponseBodyData) SetIntranet(v []*DescribeAppli
 
 func (s *DescribeApplicationSlbsResponseBodyData) SetIntranetIp(v string) *DescribeApplicationSlbsResponseBodyData {
 	s.IntranetIp = &v
+	return s
+}
+
+func (s *DescribeApplicationSlbsResponseBodyData) SetIntranetSlbExpired(v bool) *DescribeApplicationSlbsResponseBodyData {
+	s.IntranetSlbExpired = &v
 	return s
 }
 
@@ -15311,6 +15371,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		query["Memory"] = request.Memory
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MicroRegistration)) {
+		query["MicroRegistration"] = request.MicroRegistration
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MountDesc)) {
 		query["MountDesc"] = request.MountDesc
 	}
@@ -15321,6 +15385,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NasConfigs)) {
+		query["NasConfigs"] = request.NasConfigs
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NasId)) {
@@ -15357,6 +15425,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.ProgrammingLanguage)) {
 		query["ProgrammingLanguage"] = request.ProgrammingLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PvtzDiscoverySvc)) {
+		query["PvtzDiscoverySvc"] = request.PvtzDiscoverySvc
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Readiness)) {
@@ -16157,6 +16229,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 		query["Liveness"] = request.Liveness
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MicroRegistration)) {
+		query["MicroRegistration"] = request.MicroRegistration
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MinReadyInstanceRatio)) {
 		query["MinReadyInstanceRatio"] = request.MinReadyInstanceRatio
 	}
@@ -16171,6 +16247,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.MountHost)) {
 		query["MountHost"] = request.MountHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NasConfigs)) {
+		query["NasConfigs"] = request.NasConfigs
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NasId)) {
@@ -16199,6 +16279,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.PreStop)) {
 		query["PreStop"] = request.PreStop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PvtzDiscoverySvc)) {
+		query["PvtzDiscoverySvc"] = request.PvtzDiscoverySvc
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Readiness)) {
