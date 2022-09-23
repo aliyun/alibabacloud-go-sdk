@@ -1,3 +1,6 @@
+2022-09-23 Version: v1.0.0
+- Generated golang 2020-04-14 for codeup.
+
 2021-09-03 Version: v0.1.6
 - Support query organization repository settings.
 - Support trigger mirror sync openapi.
