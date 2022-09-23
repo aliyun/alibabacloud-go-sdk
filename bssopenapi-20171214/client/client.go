@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -1787,26 +1787,16 @@ func (s *CreateResourcePackageResponse) SetBody(v *CreateResourcePackageResponse
 }
 
 type CreateSavingsPlansInstanceRequest struct {
-	// commodityCode
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// duration
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// effectiveDate
+	Duration      *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
-	// payMode
-	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
-	// poolValue
-	PoolValue *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
-	// pricingCycle
-	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// region
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// specType
-	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	// specification
+	PayMode       *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
+	PoolValue     *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
+	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SpecType      *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	// type
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateSavingsPlansInstanceRequest) String() string {
@@ -1868,16 +1858,11 @@ func (s *CreateSavingsPlansInstanceRequest) SetType(v string) *CreateSavingsPlan
 }
 
 type CreateSavingsPlansInstanceResponseBody struct {
-	// code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// data
-	Data *CreateSavingsPlansInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// message
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// success
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateSavingsPlansInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSavingsPlansInstanceResponseBody) String() string {
@@ -1914,7 +1899,6 @@ func (s *CreateSavingsPlansInstanceResponseBody) SetSuccess(v bool) *CreateSavin
 }
 
 type CreateSavingsPlansInstanceResponseBodyData struct {
-	// orderId
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -5725,10 +5709,8 @@ func (s *EnableBillGenerationResponse) SetBody(v *EnableBillGenerationResponseBo
 }
 
 type GetAccountRelationRequest struct {
-	// relationId
-	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
-	// requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RelationId *int64  `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccountRelationRequest) String() string {
@@ -5750,16 +5732,11 @@ func (s *GetAccountRelationRequest) SetRequestId(v string) *GetAccountRelationRe
 }
 
 type GetAccountRelationResponseBody struct {
-	// code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// data
-	Data *GetAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// message
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// success
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAccountRelationResponseBody) String() string {
@@ -5796,17 +5773,14 @@ func (s *GetAccountRelationResponseBody) SetSuccess(v bool) *GetAccountRelationR
 }
 
 type GetAccountRelationResponseBodyData struct {
-	ChildUserId *int64 `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
-	EndTime     *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// id
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// parentUserId
+	ChildUserId  *int64  `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GmtModified  *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	ParentUserId *int64  `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// type
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetAccountRelationResponseBodyData) String() string {
@@ -7266,13 +7240,9 @@ func (s *GetSubscriptionPriceResponse) SetBody(v *GetSubscriptionPriceResponseBo
 }
 
 type InquiryPriceRefundInstanceRequest struct {
-	// clientToken
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// productCode
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// productType
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
@@ -7305,16 +7275,11 @@ func (s *InquiryPriceRefundInstanceRequest) SetProductType(v string) *InquiryPri
 }
 
 type InquiryPriceRefundInstanceResponseBody struct {
-	// code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// data
-	Data *InquiryPriceRefundInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// message
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// success
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *InquiryPriceRefundInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InquiryPriceRefundInstanceResponseBody) String() string {
@@ -7351,13 +7316,9 @@ func (s *InquiryPriceRefundInstanceResponseBody) SetSuccess(v bool) *InquiryPric
 }
 
 type InquiryPriceRefundInstanceResponseBodyData struct {
-	// currency
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// hostId
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// refundAmount
+	Currency     *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	HostId       *string  `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	InstanceId   *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RefundAmount *float64 `json:"RefundAmount,omitempty" xml:"RefundAmount,omitempty"`
 }
 
@@ -15636,6 +15597,7 @@ func (s *QueryResourcePackageInstancesResponseBodyDataInstances) SetInstance(v [
 
 type QueryResourcePackageInstancesResponseBodyDataInstancesInstance struct {
 	ApplicableProducts  *QueryResourcePackageInstancesResponseBodyDataInstancesInstanceApplicableProducts `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty" type:"Struct"`
+	CommodityCode       *string                                                                           `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	DeductType          *string                                                                           `json:"DeductType,omitempty" xml:"DeductType,omitempty"`
 	EffectiveTime       *string                                                                           `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	ExpiryTime          *string                                                                           `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
@@ -15660,6 +15622,11 @@ func (s QueryResourcePackageInstancesResponseBodyDataInstancesInstance) GoString
 
 func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetApplicableProducts(v *QueryResourcePackageInstancesResponseBodyDataInstancesInstanceApplicableProducts) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
 	s.ApplicableProducts = v
+	return s
+}
+
+func (s *QueryResourcePackageInstancesResponseBodyDataInstancesInstance) SetCommodityCode(v string) *QueryResourcePackageInstancesResponseBodyDataInstancesInstance {
+	s.CommodityCode = &v
 	return s
 }
 
@@ -17914,16 +17881,11 @@ func (s *QueryUserOmsDataResponse) SetBody(v *QueryUserOmsDataResponseBody) *Que
 }
 
 type RefundInstanceRequest struct {
-	// clientToken
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// immediatelyRelease
+	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ImmediatelyRelease *string `json:"ImmediatelyRelease,omitempty" xml:"ImmediatelyRelease,omitempty"`
-	// instanceId
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// productCode
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// productType
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ProductCode        *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s RefundInstanceRequest) String() string {
@@ -17960,16 +17922,11 @@ func (s *RefundInstanceRequest) SetProductType(v string) *RefundInstanceRequest 
 }
 
 type RefundInstanceResponseBody struct {
-	// code
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// data
-	Data *RefundInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// message
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// success
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *RefundInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RefundInstanceResponseBody) String() string {
@@ -18006,10 +17963,8 @@ func (s *RefundInstanceResponseBody) SetSuccess(v bool) *RefundInstanceResponseB
 }
 
 type RefundInstanceResponseBodyData struct {
-	// hostId
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// orderId
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	HostId  *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	OrderId *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s RefundInstanceResponseBodyData) String() string {
@@ -18060,19 +18015,12 @@ func (s *RefundInstanceResponse) SetBody(v *RefundInstanceResponseBody) *RefundI
 }
 
 type ReleaseInstanceRequest struct {
-	// instanceIds
-	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// ownerId
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// productCode
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// productType
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// region
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// renewStatus
-	RenewStatus *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
-	// subscriptionType
+	InstanceIds      *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RenewStatus      *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -18120,15 +18068,11 @@ func (s *ReleaseInstanceRequest) SetSubscriptionType(v string) *ReleaseInstanceR
 }
 
 type ReleaseInstanceResponseBody struct {
-	// code
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *ReleaseInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// message
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// success
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ReleaseInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ReleaseInstanceResponseBody) String() string {
@@ -18165,10 +18109,8 @@ func (s *ReleaseInstanceResponseBody) SetSuccess(v bool) *ReleaseInstanceRespons
 }
 
 type ReleaseInstanceResponseBodyData struct {
-	// hostId
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// releaseResult
-	ReleaseResult *bool `json:"ReleaseResult,omitempty" xml:"ReleaseResult,omitempty"`
+	HostId        *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	ReleaseResult *bool   `json:"ReleaseResult,omitempty" xml:"ReleaseResult,omitempty"`
 }
 
 func (s ReleaseInstanceResponseBodyData) String() string {
@@ -19440,9 +19382,8 @@ func (s *SetResellerUserStatusResponse) SetBody(v *SetResellerUserStatusResponse
 }
 
 type SubscribeBillToOSSRequest struct {
-	BeginBillingCycle *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
-	BucketOwnerId     *int64  `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
-	// OSS Bucket存储路径
+	BeginBillingCycle       *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
+	BucketOwnerId           *int64  `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
 	BucketPath              *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
 	MultAccountRelSubscribe *string `json:"MultAccountRelSubscribe,omitempty" xml:"MultAccountRelSubscribe,omitempty"`
 	SubscribeBucket         *string `json:"SubscribeBucket,omitempty" xml:"SubscribeBucket,omitempty"`
