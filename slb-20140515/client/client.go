@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -4162,6 +4162,211 @@ func (s *DescribeAccessControlListsResponse) SetStatusCode(v int32) *DescribeAcc
 }
 
 func (s *DescribeAccessControlListsResponse) SetBody(v *DescribeAccessControlListsResponseBody) *DescribeAccessControlListsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAccessLogsDownloadAttributeRequest struct {
+	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LogType              *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s DescribeAccessLogsDownloadAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessLogsDownloadAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessLogsDownloadAttributeRequest) SetLoadBalancerId(v string) *DescribeAccessLogsDownloadAttributeRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeRequest) SetLogType(v string) *DescribeAccessLogsDownloadAttributeRequest {
+	s.LogType = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeRequest) SetOwnerAccount(v string) *DescribeAccessLogsDownloadAttributeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeRequest) SetOwnerId(v int64) *DescribeAccessLogsDownloadAttributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeRequest) SetPageNumber(v int32) *DescribeAccessLogsDownloadAttributeRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeRequest) SetPageSize(v int32) *DescribeAccessLogsDownloadAttributeRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeRequest) SetRegionId(v string) *DescribeAccessLogsDownloadAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeRequest) SetResourceOwnerAccount(v string) *DescribeAccessLogsDownloadAttributeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeRequest) SetResourceOwnerId(v int64) *DescribeAccessLogsDownloadAttributeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeRequest) SetTags(v string) *DescribeAccessLogsDownloadAttributeRequest {
+	s.Tags = &v
+	return s
+}
+
+type DescribeAccessLogsDownloadAttributeResponseBody struct {
+	Count                  *int32                                                                 `json:"Count,omitempty" xml:"Count,omitempty"`
+	LogsDownloadAttributes *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributes `json:"LogsDownloadAttributes,omitempty" xml:"LogsDownloadAttributes,omitempty" type:"Struct"`
+	PageNumber             *int32                                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize               *int32                                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId              *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount             *int32                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeAccessLogsDownloadAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessLogsDownloadAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponseBody) SetCount(v int32) *DescribeAccessLogsDownloadAttributeResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponseBody) SetLogsDownloadAttributes(v *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributes) *DescribeAccessLogsDownloadAttributeResponseBody {
+	s.LogsDownloadAttributes = v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponseBody) SetPageNumber(v int32) *DescribeAccessLogsDownloadAttributeResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponseBody) SetPageSize(v int32) *DescribeAccessLogsDownloadAttributeResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponseBody) SetRequestId(v string) *DescribeAccessLogsDownloadAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponseBody) SetTotalCount(v int32) *DescribeAccessLogsDownloadAttributeResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributes struct {
+	LogsDownloadAttribute []*DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute `json:"LogsDownloadAttribute,omitempty" xml:"LogsDownloadAttribute,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributes) SetLogsDownloadAttribute(v []*DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute) *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributes {
+	s.LogsDownloadAttribute = v
+	return s
+}
+
+type DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute struct {
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LogProject     *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	LogStore       *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	LogType        *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute) SetLoadBalancerId(v string) *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute) SetLogProject(v string) *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute {
+	s.LogProject = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute) SetLogStore(v string) *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute {
+	s.LogStore = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute) SetLogType(v string) *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute {
+	s.LogType = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute) SetRegion(v string) *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute {
+	s.Region = &v
+	return s
+}
+
+type DescribeAccessLogsDownloadAttributeResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAccessLogsDownloadAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAccessLogsDownloadAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessLogsDownloadAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponse) SetHeaders(v map[string]*string) *DescribeAccessLogsDownloadAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponse) SetStatusCode(v int32) *DescribeAccessLogsDownloadAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAccessLogsDownloadAttributeResponse) SetBody(v *DescribeAccessLogsDownloadAttributeResponseBody) *DescribeAccessLogsDownloadAttributeResponse {
 	s.Body = v
 	return s
 }
@@ -17863,6 +18068,86 @@ func (client *Client) DescribeAccessControlLists(request *DescribeAccessControlL
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccessControlListsResponse{}
 	_body, _err := client.DescribeAccessControlListsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAccessLogsDownloadAttributeWithOptions(request *DescribeAccessLogsDownloadAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeAccessLogsDownloadAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogType)) {
+		query["LogType"] = request.LogType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAccessLogsDownloadAttribute"),
+		Version:     tea.String("2014-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAccessLogsDownloadAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAccessLogsDownloadAttribute(request *DescribeAccessLogsDownloadAttributeRequest) (_result *DescribeAccessLogsDownloadAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAccessLogsDownloadAttributeResponse{}
+	_body, _err := client.DescribeAccessLogsDownloadAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
