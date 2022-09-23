@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -60,12 +60,11 @@ func (s *BatchGetRequest) SetRecordKeyWhiteList(v string) *BatchGetRequest {
 }
 
 type BatchGetResponseBody struct {
-	Code    *int32                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *BatchGetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int32                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *BatchGetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                     `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchGetResponseBody) String() string {
@@ -103,7 +102,7 @@ func (s *BatchGetResponseBody) SetSuccess(v bool) *BatchGetResponseBody {
 
 type BatchGetResponseBodyData struct {
 	CompressionKeys   []*string                          `json:"CompressionKeys,omitempty" xml:"CompressionKeys,omitempty" type:"Repeated"`
-	CompressionValues [][]map[string]interface{}         `json:"CompressionValues,omitempty" xml:"CompressionValues,omitempty" type:"Repeated"`
+	CompressionValues [][]*string                        `json:"CompressionValues,omitempty" xml:"CompressionValues,omitempty" type:"Repeated"`
 	Cursor            *string                            `json:"Cursor,omitempty" xml:"Cursor,omitempty"`
 	Length            *int64                             `json:"Length,omitempty" xml:"Length,omitempty"`
 	Records           []*BatchGetResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
@@ -123,7 +122,7 @@ func (s *BatchGetResponseBodyData) SetCompressionKeys(v []*string) *BatchGetResp
 	return s
 }
 
-func (s *BatchGetResponseBodyData) SetCompressionValues(v [][]map[string]interface{}) *BatchGetResponseBodyData {
+func (s *BatchGetResponseBodyData) SetCompressionValues(v [][]*string) *BatchGetResponseBodyData {
 	s.CompressionValues = v
 	return s
 }
@@ -220,8 +219,9 @@ func (s *BatchGetResponseBodyDataRecords) SetTimestamp(v int64) *BatchGetRespons
 }
 
 type BatchGetResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchGetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchGetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BatchGetResponse) String() string {
@@ -234,6 +234,11 @@ func (s BatchGetResponse) GoString() string {
 
 func (s *BatchGetResponse) SetHeaders(v map[string]*string) *BatchGetResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *BatchGetResponse) SetStatusCode(v int32) *BatchGetResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -424,8 +429,9 @@ func (s *CursorResponseBodyData) SetCursor(v string) *CursorResponseBodyData {
 }
 
 type CursorResponse struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CursorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CursorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CursorResponse) String() string {
@@ -438,6 +444,11 @@ func (s CursorResponse) GoString() string {
 
 func (s *CursorResponse) SetHeaders(v map[string]*string) *CursorResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CursorResponse) SetStatusCode(v int32) *CursorResponse {
+	s.StatusCode = &v
 	return s
 }
 
