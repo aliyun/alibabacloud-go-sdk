@@ -1,3 +1,6 @@
+2022-09-23 Version: v2.0.0
+- Generated golang 2022-02-25 for Eiam-developerapi.
+
 2022-09-01 Version: v1.0.4
 - Ceshi.
 

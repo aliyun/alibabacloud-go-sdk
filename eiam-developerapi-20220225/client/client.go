@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -2298,8 +2298,6 @@ func (client *Client) CreateOrganizationalUnitWithOptions(instanceId *string, ap
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
@@ -2334,7 +2332,7 @@ func (client *Client) CreateOrganizationalUnitWithOptions(instanceId *string, ap
 		Action:      tea.String("CreateOrganizationalUnit"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/organizationalUnits"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/organizationalUnits"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -2367,8 +2365,6 @@ func (client *Client) CreateUserWithOptions(instanceId *string, applicationId *s
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
@@ -2431,7 +2427,7 @@ func (client *Client) CreateUserWithOptions(instanceId *string, applicationId *s
 		Action:      tea.String("CreateUser"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/users"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -2460,9 +2456,6 @@ func (client *Client) DeleteOrganizationalUnit(instanceId *string, applicationId
 }
 
 func (client *Client) DeleteOrganizationalUnitWithOptions(instanceId *string, applicationId *string, organizationalUnitId *string, headers *DeleteOrganizationalUnitHeaders, runtime *util.RuntimeOptions) (_result *DeleteOrganizationalUnitResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
-	organizationalUnitId = openapiutil.GetEncodeParam(organizationalUnitId)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -2479,7 +2472,7 @@ func (client *Client) DeleteOrganizationalUnitWithOptions(instanceId *string, ap
 		Action:      tea.String("DeleteOrganizationalUnit"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/organizationalUnits/" + tea.StringValue(organizationalUnitId)),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/organizationalUnits/" + tea.StringValue(openapiutil.GetEncodeParam(organizationalUnitId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -2508,9 +2501,6 @@ func (client *Client) DeleteUser(instanceId *string, applicationId *string, user
 }
 
 func (client *Client) DeleteUserWithOptions(instanceId *string, applicationId *string, userId *string, headers *DeleteUserHeaders, runtime *util.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
-	userId = openapiutil.GetEncodeParam(userId)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -2527,7 +2517,7 @@ func (client *Client) DeleteUserWithOptions(instanceId *string, applicationId *s
 		Action:      tea.String("DeleteUser"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/users/" + tea.StringValue(userId)),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users/" + tea.StringValue(openapiutil.GetEncodeParam(userId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -2560,8 +2550,6 @@ func (client *Client) GenerateDeviceCodeWithOptions(instanceId *string, applicat
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Scope)) {
 		query["scope"] = request.Scope
@@ -2575,7 +2563,7 @@ func (client *Client) GenerateDeviceCodeWithOptions(instanceId *string, applicat
 		Action:      tea.String("GenerateDeviceCode"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/oauth2/device/code"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/oauth2/device/code"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -2608,8 +2596,6 @@ func (client *Client) GenerateTokenWithOptions(instanceId *string, applicationId
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
 		query["client_id"] = request.ClientId
@@ -2667,7 +2653,7 @@ func (client *Client) GenerateTokenWithOptions(instanceId *string, applicationId
 		Action:      tea.String("GenerateToken"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/oauth2/token"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/oauth2/token"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -2696,8 +2682,6 @@ func (client *Client) GetApplicationProvisioningScope(instanceId *string, applic
 }
 
 func (client *Client) GetApplicationProvisioningScopeWithOptions(instanceId *string, applicationId *string, headers *GetApplicationProvisioningScopeHeaders, runtime *util.RuntimeOptions) (_result *GetApplicationProvisioningScopeResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -2714,7 +2698,7 @@ func (client *Client) GetApplicationProvisioningScopeWithOptions(instanceId *str
 		Action:      tea.String("GetApplicationProvisioningScope"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/provisioningScope"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/provisioningScope"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -2743,9 +2727,6 @@ func (client *Client) GetOrganizationalUnit(instanceId *string, applicationId *s
 }
 
 func (client *Client) GetOrganizationalUnitWithOptions(instanceId *string, applicationId *string, organizationalUnitId *string, headers *GetOrganizationalUnitHeaders, runtime *util.RuntimeOptions) (_result *GetOrganizationalUnitResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
-	organizationalUnitId = openapiutil.GetEncodeParam(organizationalUnitId)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -2762,7 +2743,7 @@ func (client *Client) GetOrganizationalUnitWithOptions(instanceId *string, appli
 		Action:      tea.String("GetOrganizationalUnit"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/organizationalUnits/" + tea.StringValue(organizationalUnitId)),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/organizationalUnits/" + tea.StringValue(openapiutil.GetEncodeParam(organizationalUnitId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -2795,8 +2776,6 @@ func (client *Client) GetOrganizationalUnitIdByExternalIdWithOptions(instanceId 
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.OrganizationalUnitExternalId)) {
 		body["organizationalUnitExternalId"] = request.OrganizationalUnitExternalId
@@ -2827,7 +2806,7 @@ func (client *Client) GetOrganizationalUnitIdByExternalIdWithOptions(instanceId 
 		Action:      tea.String("GetOrganizationalUnitIdByExternalId"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/organizationalUnits/_/actions/getOrganizationalUnitIdByExternalId"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/organizationalUnits/_/actions/getOrganizationalUnitIdByExternalId"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -2856,9 +2835,6 @@ func (client *Client) GetUser(instanceId *string, applicationId *string, userId 
 }
 
 func (client *Client) GetUserWithOptions(instanceId *string, applicationId *string, userId *string, headers *GetUserHeaders, runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
-	userId = openapiutil.GetEncodeParam(userId)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -2875,7 +2851,7 @@ func (client *Client) GetUserWithOptions(instanceId *string, applicationId *stri
 		Action:      tea.String("GetUser"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/users/" + tea.StringValue(userId)),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users/" + tea.StringValue(openapiutil.GetEncodeParam(userId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -2908,8 +2884,6 @@ func (client *Client) GetUserIdByEmailWithOptions(instanceId *string, applicatio
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Email)) {
 		body["email"] = request.Email
@@ -2932,7 +2906,7 @@ func (client *Client) GetUserIdByEmailWithOptions(instanceId *string, applicatio
 		Action:      tea.String("GetUserIdByEmail"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/users/_/actions/getUserIdByEmail"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users/_/actions/getUserIdByEmail"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -2965,8 +2939,6 @@ func (client *Client) GetUserIdByPhoneNumberWithOptions(instanceId *string, appl
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
 		body["phoneNumber"] = request.PhoneNumber
@@ -2989,7 +2961,7 @@ func (client *Client) GetUserIdByPhoneNumberWithOptions(instanceId *string, appl
 		Action:      tea.String("GetUserIdByPhoneNumber"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/users/_/actions/getUserIdByPhoneNumber"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users/_/actions/getUserIdByPhoneNumber"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -3022,8 +2994,6 @@ func (client *Client) GetUserIdByUserExternalIdWithOptions(instanceId *string, a
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.UserExternalId)) {
 		body["userExternalId"] = request.UserExternalId
@@ -3054,7 +3024,7 @@ func (client *Client) GetUserIdByUserExternalIdWithOptions(instanceId *string, a
 		Action:      tea.String("GetUserIdByUserExternalId"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/users/_/actions/getUserIdByExternalId"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users/_/actions/getUserIdByExternalId"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -3087,8 +3057,6 @@ func (client *Client) GetUserIdByUsernameWithOptions(instanceId *string, applica
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Username)) {
 		body["username"] = request.Username
@@ -3111,7 +3079,7 @@ func (client *Client) GetUserIdByUsernameWithOptions(instanceId *string, applica
 		Action:      tea.String("GetUserIdByUsername"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/users/_/actions/getUserIdByUsername"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users/_/actions/getUserIdByUsername"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -3140,8 +3108,6 @@ func (client *Client) GetUserInfo(instanceId *string, applicationId *string) (_r
 }
 
 func (client *Client) GetUserInfoWithOptions(instanceId *string, applicationId *string, headers *GetUserInfoHeaders, runtime *util.RuntimeOptions) (_result *GetUserInfoResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -3158,7 +3124,7 @@ func (client *Client) GetUserInfoWithOptions(instanceId *string, applicationId *
 		Action:      tea.String("GetUserInfo"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/oauth2/userinfo"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/oauth2/userinfo"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -3187,9 +3153,6 @@ func (client *Client) ListOrganizationalUnitParentIds(instanceId *string, applic
 }
 
 func (client *Client) ListOrganizationalUnitParentIdsWithOptions(instanceId *string, applicationId *string, organizationalUnitId *string, headers *ListOrganizationalUnitParentIdsHeaders, runtime *util.RuntimeOptions) (_result *ListOrganizationalUnitParentIdsResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
-	organizationalUnitId = openapiutil.GetEncodeParam(organizationalUnitId)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -3206,7 +3169,7 @@ func (client *Client) ListOrganizationalUnitParentIdsWithOptions(instanceId *str
 		Action:      tea.String("ListOrganizationalUnitParentIds"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/organizationalUnits/" + tea.StringValue(organizationalUnitId) + "/parentIds"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/organizationalUnits/" + tea.StringValue(openapiutil.GetEncodeParam(organizationalUnitId)) + "/parentIds"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -3239,8 +3202,6 @@ func (client *Client) ListOrganizationalUnitsWithOptions(instanceId *string, app
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["pageNumber"] = request.PageNumber
@@ -3271,7 +3232,7 @@ func (client *Client) ListOrganizationalUnitsWithOptions(instanceId *string, app
 		Action:      tea.String("ListOrganizationalUnits"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/organizationalUnits"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/organizationalUnits"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -3304,8 +3265,6 @@ func (client *Client) ListUsersWithOptions(instanceId *string, applicationId *st
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.OrganizationalUnitId)) {
 		query["organizationalUnitId"] = request.OrganizationalUnitId
@@ -3336,7 +3295,7 @@ func (client *Client) ListUsersWithOptions(instanceId *string, applicationId *st
 		Action:      tea.String("ListUsers"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/users"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -3369,9 +3328,6 @@ func (client *Client) PatchOrganizationalUnitWithOptions(instanceId *string, app
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
-	organizationalUnitId = openapiutil.GetEncodeParam(organizationalUnitId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
@@ -3398,7 +3354,7 @@ func (client *Client) PatchOrganizationalUnitWithOptions(instanceId *string, app
 		Action:      tea.String("PatchOrganizationalUnit"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/organizationalUnits/" + tea.StringValue(organizationalUnitId)),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/organizationalUnits/" + tea.StringValue(openapiutil.GetEncodeParam(organizationalUnitId))),
 		Method:      tea.String("PATCH"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -3431,9 +3387,6 @@ func (client *Client) PatchUserWithOptions(instanceId *string, applicationId *st
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
-	userId = openapiutil.GetEncodeParam(userId)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
 		body["displayName"] = request.DisplayName
@@ -3480,7 +3433,7 @@ func (client *Client) PatchUserWithOptions(instanceId *string, applicationId *st
 		Action:      tea.String("PatchUser"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/users/" + tea.StringValue(userId)),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users/" + tea.StringValue(openapiutil.GetEncodeParam(userId))),
 		Method:      tea.String("PATCH"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
@@ -3513,8 +3466,6 @@ func (client *Client) RevokeTokenWithOptions(instanceId *string, applicationId *
 	if _err != nil {
 		return _result, _err
 	}
-	instanceId = openapiutil.GetEncodeParam(instanceId)
-	applicationId = openapiutil.GetEncodeParam(applicationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
 		query["client_id"] = request.ClientId
@@ -3540,7 +3491,7 @@ func (client *Client) RevokeTokenWithOptions(instanceId *string, applicationId *
 		Action:      tea.String("RevokeToken"),
 		Version:     tea.String("2022-02-25"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/" + tea.StringValue(instanceId) + "/" + tea.StringValue(applicationId) + "/oauth2/revoke"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/oauth2/revoke"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
