@@ -5,7 +5,7 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
@@ -2835,7 +2835,7 @@ func (s *ListListenersResponseBody) SetTotalCount(v int32) *ListListenersRespons
 }
 
 type ListListenersResponseBodyListeners struct {
-	AlpnEnabled          *string   `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
+	AlpnEnabled          *bool     `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
 	AlpnPolicy           *string   `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
 	CaCertificateIds     []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
 	CaEnabled            *bool     `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
@@ -2850,9 +2850,9 @@ type ListListenersResponseBodyListeners struct {
 	ListenerStatus       *string   `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
 	LoadBalancerId       *string   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	Mss                  *int32    `json:"Mss,omitempty" xml:"Mss,omitempty"`
-	ProxyProtocolEnabled *string   `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
+	ProxyProtocolEnabled *bool     `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
 	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecSensorEnabled     *string   `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
+	SecSensorEnabled     *bool     `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
 	SecurityPolicyId     *string   `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	ServerGroupId        *string   `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	StartPort            *string   `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
@@ -2866,7 +2866,7 @@ func (s ListListenersResponseBodyListeners) GoString() string {
 	return s.String()
 }
 
-func (s *ListListenersResponseBodyListeners) SetAlpnEnabled(v string) *ListListenersResponseBodyListeners {
+func (s *ListListenersResponseBodyListeners) SetAlpnEnabled(v bool) *ListListenersResponseBodyListeners {
 	s.AlpnEnabled = &v
 	return s
 }
@@ -2941,7 +2941,7 @@ func (s *ListListenersResponseBodyListeners) SetMss(v int32) *ListListenersRespo
 	return s
 }
 
-func (s *ListListenersResponseBodyListeners) SetProxyProtocolEnabled(v string) *ListListenersResponseBodyListeners {
+func (s *ListListenersResponseBodyListeners) SetProxyProtocolEnabled(v bool) *ListListenersResponseBodyListeners {
 	s.ProxyProtocolEnabled = &v
 	return s
 }
@@ -2951,7 +2951,7 @@ func (s *ListListenersResponseBodyListeners) SetRegionId(v string) *ListListener
 	return s
 }
 
-func (s *ListListenersResponseBodyListeners) SetSecSensorEnabled(v string) *ListListenersResponseBodyListeners {
+func (s *ListListenersResponseBodyListeners) SetSecSensorEnabled(v bool) *ListListenersResponseBodyListeners {
 	s.SecSensorEnabled = &v
 	return s
 }
