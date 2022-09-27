@@ -330,6 +330,7 @@ func (s *BatchEnableJobsResponse) SetBody(v *BatchEnableJobsResponseBody) *Batch
 type CreateAppGroupRequest struct {
 	AppKey              *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType             *int32  `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GroupId             *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	MaxJobs             *int32  `json:"MaxJobs,omitempty" xml:"MaxJobs,omitempty"`
@@ -357,6 +358,11 @@ func (s *CreateAppGroupRequest) SetAppKey(v string) *CreateAppGroupRequest {
 
 func (s *CreateAppGroupRequest) SetAppName(v string) *CreateAppGroupRequest {
 	s.AppName = &v
+	return s
+}
+
+func (s *CreateAppGroupRequest) SetAppType(v int32) *CreateAppGroupRequest {
+	s.AppType = &v
 	return s
 }
 
@@ -537,6 +543,7 @@ type CreateJobRequest struct {
 	Timeout             *int64                         `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	TimeoutEnable       *bool                          `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
 	TimeoutKillEnable   *bool                          `json:"TimeoutKillEnable,omitempty" xml:"TimeoutKillEnable,omitempty"`
+	XAttrs              *string                        `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s CreateJobRequest) String() string {
@@ -709,6 +716,11 @@ func (s *CreateJobRequest) SetTimeoutEnable(v bool) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetTimeoutKillEnable(v bool) *CreateJobRequest {
 	s.TimeoutKillEnable = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetXAttrs(v string) *CreateJobRequest {
+	s.XAttrs = &v
 	return s
 }
 
@@ -5138,6 +5150,10 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.TimeoutKillEnable)) {
 		body["TimeoutKillEnable"] = request.TimeoutKillEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XAttrs)) {
+		body["XAttrs"] = request.XAttrs
 	}
 
 	req := &openapi.OpenApiRequest{

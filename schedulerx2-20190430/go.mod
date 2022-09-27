@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/schedulerx2-20190430/v2
+module github.com/alibabacloud-go/schedulerx2-20190430
 
 go 1.15
 
