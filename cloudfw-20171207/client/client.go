@@ -2856,22 +2856,25 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
 	AclCoverage         *string                                                                  `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
 	AclRecommendDetail  *string                                                                  `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
 	AclStatus           *string                                                                  `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	AddressGroupName    *string                                                                  `json:"AddressGroupName,omitempty" xml:"AddressGroupName,omitempty"`
-	AddressGroupUUID    *string                                                                  `json:"AddressGroupUUID,omitempty" xml:"AddressGroupUUID,omitempty"`
+	AddressGroupList    []*DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList    `json:"AddressGroupList,omitempty" xml:"AddressGroupList,omitempty" type:"Repeated"`
 	ApplicationPortList []*DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList `json:"ApplicationPortList,omitempty" xml:"ApplicationPortList,omitempty" type:"Repeated"`
+	CategoryClassId     *string                                                                  `json:"CategoryClassId,omitempty" xml:"CategoryClassId,omitempty"`
 	CategoryId          *string                                                                  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	CategoryName        *string                                                                  `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	DstIP               *string                                                                  `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
 	GroupName           *string                                                                  `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	HasAcl              *string                                                                  `json:"HasAcl,omitempty" xml:"HasAcl,omitempty"`
 	HasAclRecommend     *bool                                                                    `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
 	InBytes             *int64                                                                   `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	IsMarkNormal        *bool                                                                    `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
 	OutBytes            *int64                                                                   `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
 	RuleId              *string                                                                  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	RuleName            *string                                                                  `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SecurityReason      *string                                                                  `json:"SecurityReason,omitempty" xml:"SecurityReason,omitempty"`
 	SecuritySuggest     *string                                                                  `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
 	SessionCount        *int64                                                                   `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
 	TagList             []*DescribeOutgoingDestinationIPResponseBodyDstIPListTagList             `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	TotalBytes          *string                                                                  `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
 }
 
 func (s DescribeOutgoingDestinationIPResponseBodyDstIPList) String() string {
@@ -2897,18 +2900,18 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetAclStatus(v stri
 	return s
 }
 
-func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetAddressGroupName(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
-	s.AddressGroupName = &v
-	return s
-}
-
-func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetAddressGroupUUID(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
-	s.AddressGroupUUID = &v
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetAddressGroupList(v []*DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.AddressGroupList = v
 	return s
 }
 
 func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetApplicationPortList(v []*DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
 	s.ApplicationPortList = v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetCategoryClassId(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.CategoryClassId = &v
 	return s
 }
 
@@ -2929,6 +2932,11 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetDstIP(v string) 
 
 func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetGroupName(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
 	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetHasAcl(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.HasAcl = &v
 	return s
 }
 
@@ -2962,6 +2970,11 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetRuleName(v strin
 	return s
 }
 
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetSecurityReason(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.SecurityReason = &v
+	return s
+}
+
 func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetSecuritySuggest(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
 	s.SecuritySuggest = &v
 	return s
@@ -2974,6 +2987,34 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetSessionCount(v i
 
 func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetTagList(v []*DescribeOutgoingDestinationIPResponseBodyDstIPListTagList) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
 	s.TagList = v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetTotalBytes(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.TotalBytes = &v
+	return s
+}
+
+type DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList struct {
+	AddressGroupName *string `json:"AddressGroupName,omitempty" xml:"AddressGroupName,omitempty"`
+	AddressGroupUUID *string `json:"AddressGroupUUID,omitempty" xml:"AddressGroupUUID,omitempty"`
+}
+
+func (s DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList) SetAddressGroupName(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList {
+	s.AddressGroupName = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList) SetAddressGroupUUID(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList {
+	s.AddressGroupUUID = &v
 	return s
 }
 
@@ -3001,6 +3042,7 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) 
 }
 
 type DescribeOutgoingDestinationIPResponseBodyDstIPListTagList struct {
+	ClassId     *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
 	RiskLevel   *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	TagDescribe *string `json:"TagDescribe,omitempty" xml:"TagDescribe,omitempty"`
 	TagId       *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
@@ -3013,6 +3055,11 @@ func (s DescribeOutgoingDestinationIPResponseBodyDstIPListTagList) String() stri
 
 func (s DescribeOutgoingDestinationIPResponseBodyDstIPListTagList) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListTagList) SetClassId(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPListTagList {
+	s.ClassId = &v
+	return s
 }
 
 func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListTagList) SetRiskLevel(v int32) *DescribeOutgoingDestinationIPResponseBodyDstIPListTagList {
@@ -3065,7 +3112,6 @@ func (s *DescribeOutgoingDestinationIPResponse) SetBody(v *DescribeOutgoingDesti
 }
 
 type DescribeOutgoingDomainRequest struct {
-	CategoryId  *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -3083,11 +3129,6 @@ func (s DescribeOutgoingDomainRequest) String() string {
 
 func (s DescribeOutgoingDomainRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeOutgoingDomainRequest) SetCategoryId(v string) *DescribeOutgoingDomainRequest {
-	s.CategoryId = &v
-	return s
 }
 
 func (s *DescribeOutgoingDomainRequest) SetCurrentPage(v string) *DescribeOutgoingDomainRequest {
@@ -3170,19 +3211,25 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	AclStatus          *string                                                `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
 	AddressGroupName   *string                                                `json:"AddressGroupName,omitempty" xml:"AddressGroupName,omitempty"`
 	AddressGroupUUID   *string                                                `json:"AddressGroupUUID,omitempty" xml:"AddressGroupUUID,omitempty"`
+	Business           *string                                                `json:"Business,omitempty" xml:"Business,omitempty"`
+	CategoryClassId    *string                                                `json:"CategoryClassId,omitempty" xml:"CategoryClassId,omitempty"`
 	CategoryId         *string                                                `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	CategoryName       *string                                                `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	Domain             *string                                                `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	GroupName          *string                                                `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	HasAcl             *string                                                `json:"HasAcl,omitempty" xml:"HasAcl,omitempty"`
 	HasAclRecommend    *bool                                                  `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
 	InBytes            *int64                                                 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	IsMarkNormal       *bool                                                  `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
+	Organization       *string                                                `json:"Organization,omitempty" xml:"Organization,omitempty"`
 	OutBytes           *int64                                                 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
 	RuleId             *string                                                `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	RuleName           *string                                                `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SecurityReason     *string                                                `json:"SecurityReason,omitempty" xml:"SecurityReason,omitempty"`
 	SecuritySuggest    *string                                                `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
 	SessionCount       *int64                                                 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
 	TagList            []*DescribeOutgoingDomainResponseBodyDomainListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	TotalBytes         *string                                                `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
 }
 
 func (s DescribeOutgoingDomainResponseBodyDomainList) String() string {
@@ -3218,6 +3265,16 @@ func (s *DescribeOutgoingDomainResponseBodyDomainList) SetAddressGroupUUID(v str
 	return s
 }
 
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetBusiness(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.Business = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetCategoryClassId(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.CategoryClassId = &v
+	return s
+}
+
 func (s *DescribeOutgoingDomainResponseBodyDomainList) SetCategoryId(v string) *DescribeOutgoingDomainResponseBodyDomainList {
 	s.CategoryId = &v
 	return s
@@ -3238,6 +3295,11 @@ func (s *DescribeOutgoingDomainResponseBodyDomainList) SetGroupName(v string) *D
 	return s
 }
 
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetHasAcl(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.HasAcl = &v
+	return s
+}
+
 func (s *DescribeOutgoingDomainResponseBodyDomainList) SetHasAclRecommend(v bool) *DescribeOutgoingDomainResponseBodyDomainList {
 	s.HasAclRecommend = &v
 	return s
@@ -3250,6 +3312,11 @@ func (s *DescribeOutgoingDomainResponseBodyDomainList) SetInBytes(v int64) *Desc
 
 func (s *DescribeOutgoingDomainResponseBodyDomainList) SetIsMarkNormal(v bool) *DescribeOutgoingDomainResponseBodyDomainList {
 	s.IsMarkNormal = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetOrganization(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.Organization = &v
 	return s
 }
 
@@ -3268,6 +3335,11 @@ func (s *DescribeOutgoingDomainResponseBodyDomainList) SetRuleName(v string) *De
 	return s
 }
 
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetSecurityReason(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.SecurityReason = &v
+	return s
+}
+
 func (s *DescribeOutgoingDomainResponseBodyDomainList) SetSecuritySuggest(v string) *DescribeOutgoingDomainResponseBodyDomainList {
 	s.SecuritySuggest = &v
 	return s
@@ -3283,7 +3355,13 @@ func (s *DescribeOutgoingDomainResponseBodyDomainList) SetTagList(v []*DescribeO
 	return s
 }
 
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetTotalBytes(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.TotalBytes = &v
+	return s
+}
+
 type DescribeOutgoingDomainResponseBodyDomainListTagList struct {
+	ClassId     *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
 	RiskLevel   *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	TagDescribe *string `json:"TagDescribe,omitempty" xml:"TagDescribe,omitempty"`
 	TagId       *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
@@ -3296,6 +3374,11 @@ func (s DescribeOutgoingDomainResponseBodyDomainListTagList) String() string {
 
 func (s DescribeOutgoingDomainResponseBodyDomainListTagList) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainListTagList) SetClassId(v string) *DescribeOutgoingDomainResponseBodyDomainListTagList {
+	s.ClassId = &v
+	return s
 }
 
 func (s *DescribeOutgoingDomainResponseBodyDomainListTagList) SetRiskLevel(v int32) *DescribeOutgoingDomainResponseBodyDomainListTagList {
@@ -3528,9 +3611,11 @@ type DescribeRiskEventGroupRequest struct {
 	FirewallType         *string   `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
 	Lang                 *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	NoLocation           *string   `json:"NoLocation,omitempty" xml:"NoLocation,omitempty"`
+	Order                *string   `json:"Order,omitempty" xml:"Order,omitempty"`
 	PageSize             *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RuleResult           *string   `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
 	RuleSource           *string   `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
+	Sort                 *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	SrcIP                *string   `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
 	SrcNetworkInstanceId *string   `json:"SrcNetworkInstanceId,omitempty" xml:"SrcNetworkInstanceId,omitempty"`
 	StartTime            *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -3605,6 +3690,11 @@ func (s *DescribeRiskEventGroupRequest) SetNoLocation(v string) *DescribeRiskEve
 	return s
 }
 
+func (s *DescribeRiskEventGroupRequest) SetOrder(v string) *DescribeRiskEventGroupRequest {
+	s.Order = &v
+	return s
+}
+
 func (s *DescribeRiskEventGroupRequest) SetPageSize(v string) *DescribeRiskEventGroupRequest {
 	s.PageSize = &v
 	return s
@@ -3617,6 +3707,11 @@ func (s *DescribeRiskEventGroupRequest) SetRuleResult(v string) *DescribeRiskEve
 
 func (s *DescribeRiskEventGroupRequest) SetRuleSource(v string) *DescribeRiskEventGroupRequest {
 	s.RuleSource = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetSort(v string) *DescribeRiskEventGroupRequest {
+	s.Sort = &v
 	return s
 }
 
@@ -9155,10 +9250,6 @@ func (client *Client) DescribeOutgoingDomainWithOptions(request *DescribeOutgoin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
-		query["CategoryId"] = request.CategoryId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -9395,6 +9486,10 @@ func (client *Client) DescribeRiskEventGroupWithOptions(request *DescribeRiskEve
 		query["NoLocation"] = request.NoLocation
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
 	}
@@ -9405,6 +9500,10 @@ func (client *Client) DescribeRiskEventGroupWithOptions(request *DescribeRiskEve
 
 	if !tea.BoolValue(util.IsUnset(request.RuleSource)) {
 		query["RuleSource"] = request.RuleSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SrcIP)) {
