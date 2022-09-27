@@ -3459,25 +3459,26 @@ func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *C
 }
 
 type CreateClusterRequest struct {
-	AcceptLanguage          *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	ClusterSpecification    *string `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
-	ClusterType             *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	ClusterVersion          *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
-	ConnectionType          *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	DiskType                *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	InstanceCount           *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	InstanceName            *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MseSessionId            *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
-	MseVersion              *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
-	NetType                 *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	PrivateSlbSpecification *string `json:"PrivateSlbSpecification,omitempty" xml:"PrivateSlbSpecification,omitempty"`
-	PubNetworkFlow          *string `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
-	PubSlbSpecification     *string `json:"PubSlbSpecification,omitempty" xml:"PubSlbSpecification,omitempty"`
-	Region                  *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RequestPars             *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	ResourceGroupId         *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	VSwitchId               *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AcceptLanguage          *string                    `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ClusterSpecification    *string                    `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
+	ClusterType             *string                    `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ClusterVersion          *string                    `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
+	ConnectionType          *string                    `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	DiskType                *string                    `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	InstanceCount           *int32                     `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	InstanceName            *string                    `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MseSessionId            *string                    `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
+	MseVersion              *string                    `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
+	NetType                 *string                    `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	PrivateSlbSpecification *string                    `json:"PrivateSlbSpecification,omitempty" xml:"PrivateSlbSpecification,omitempty"`
+	PubNetworkFlow          *string                    `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
+	PubSlbSpecification     *string                    `json:"PubSlbSpecification,omitempty" xml:"PubSlbSpecification,omitempty"`
+	Region                  *string                    `json:"Region,omitempty" xml:"Region,omitempty"`
+	RequestPars             *string                    `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	ResourceGroupId         *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag                     []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VSwitchId               *string                    `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                   *string                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateClusterRequest) String() string {
@@ -3573,6 +3574,11 @@ func (s *CreateClusterRequest) SetResourceGroupId(v string) *CreateClusterReques
 	return s
 }
 
+func (s *CreateClusterRequest) SetTag(v []*CreateClusterRequestTag) *CreateClusterRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateClusterRequest) SetVSwitchId(v string) *CreateClusterRequest {
 	s.VSwitchId = &v
 	return s
@@ -3580,6 +3586,29 @@ func (s *CreateClusterRequest) SetVSwitchId(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetVpcId(v string) *CreateClusterRequest {
 	s.VpcId = &v
+	return s
+}
+
+type CreateClusterRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateClusterRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestTag) SetKey(v string) *CreateClusterRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateClusterRequestTag) SetValue(v string) *CreateClusterRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -31827,6 +31856,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {

@@ -1,3 +1,6 @@
+2022-09-27 Version: v4.0.1
+- Automatically generate sdk tasks.
+
 2022-09-23 Version: v4.0.0
 - Generated golang 2019-05-31 for mse.
 
