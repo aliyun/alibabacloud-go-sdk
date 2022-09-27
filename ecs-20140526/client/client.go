@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -4013,6 +4013,7 @@ type CreateAutoProvisioningGroupRequest struct {
 	DefaultTargetCapacityType        *string                                                   `json:"DefaultTargetCapacityType,omitempty" xml:"DefaultTargetCapacityType,omitempty"`
 	Description                      *string                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExcessCapacityTerminationPolicy  *string                                                   `json:"ExcessCapacityTerminationPolicy,omitempty" xml:"ExcessCapacityTerminationPolicy,omitempty"`
+	HibernationOptionsConfigured     *bool                                                     `json:"HibernationOptionsConfigured,omitempty" xml:"HibernationOptionsConfigured,omitempty"`
 	LaunchTemplateConfig             []*CreateAutoProvisioningGroupRequestLaunchTemplateConfig `json:"LaunchTemplateConfig,omitempty" xml:"LaunchTemplateConfig,omitempty" type:"Repeated"`
 	LaunchTemplateId                 *string                                                   `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
 	LaunchTemplateVersion            *string                                                   `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
@@ -4083,6 +4084,11 @@ func (s *CreateAutoProvisioningGroupRequest) SetDescription(v string) *CreateAut
 
 func (s *CreateAutoProvisioningGroupRequest) SetExcessCapacityTerminationPolicy(v string) *CreateAutoProvisioningGroupRequest {
 	s.ExcessCapacityTerminationPolicy = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequest) SetHibernationOptionsConfigured(v bool) *CreateAutoProvisioningGroupRequest {
+	s.HibernationOptionsConfigured = &v
 	return s
 }
 
@@ -5879,6 +5885,192 @@ func (s *CreateDeploymentSetResponse) SetBody(v *CreateDeploymentSetResponseBody
 	return s
 }
 
+type CreateDiagnosticMetricSetRequest struct {
+	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	MetricIds     []*string `json:"MetricIds,omitempty" xml:"MetricIds,omitempty" type:"Repeated"`
+	MetricSetName *string   `json:"MetricSetName,omitempty" xml:"MetricSetName,omitempty"`
+	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType  *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s CreateDiagnosticMetricSetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticMetricSetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticMetricSetRequest) SetDescription(v string) *CreateDiagnosticMetricSetRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDiagnosticMetricSetRequest) SetMetricIds(v []*string) *CreateDiagnosticMetricSetRequest {
+	s.MetricIds = v
+	return s
+}
+
+func (s *CreateDiagnosticMetricSetRequest) SetMetricSetName(v string) *CreateDiagnosticMetricSetRequest {
+	s.MetricSetName = &v
+	return s
+}
+
+func (s *CreateDiagnosticMetricSetRequest) SetRegionId(v string) *CreateDiagnosticMetricSetRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDiagnosticMetricSetRequest) SetResourceType(v string) *CreateDiagnosticMetricSetRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type CreateDiagnosticMetricSetResponseBody struct {
+	MetricSetId *string `json:"MetricSetId,omitempty" xml:"MetricSetId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDiagnosticMetricSetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticMetricSetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticMetricSetResponseBody) SetMetricSetId(v string) *CreateDiagnosticMetricSetResponseBody {
+	s.MetricSetId = &v
+	return s
+}
+
+func (s *CreateDiagnosticMetricSetResponseBody) SetRequestId(v string) *CreateDiagnosticMetricSetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDiagnosticMetricSetResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDiagnosticMetricSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDiagnosticMetricSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticMetricSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticMetricSetResponse) SetHeaders(v map[string]*string) *CreateDiagnosticMetricSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDiagnosticMetricSetResponse) SetStatusCode(v int32) *CreateDiagnosticMetricSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDiagnosticMetricSetResponse) SetBody(v *CreateDiagnosticMetricSetResponseBody) *CreateDiagnosticMetricSetResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDiagnosticReportRequest struct {
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MetricSetId *string `json:"MetricSetId,omitempty" xml:"MetricSetId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s CreateDiagnosticReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticReportRequest) SetEndTime(v string) *CreateDiagnosticReportRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateDiagnosticReportRequest) SetMetricSetId(v string) *CreateDiagnosticReportRequest {
+	s.MetricSetId = &v
+	return s
+}
+
+func (s *CreateDiagnosticReportRequest) SetRegionId(v string) *CreateDiagnosticReportRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDiagnosticReportRequest) SetResourceId(v string) *CreateDiagnosticReportRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *CreateDiagnosticReportRequest) SetStartTime(v string) *CreateDiagnosticReportRequest {
+	s.StartTime = &v
+	return s
+}
+
+type CreateDiagnosticReportResponseBody struct {
+	ReportId  *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDiagnosticReportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticReportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticReportResponseBody) SetReportId(v string) *CreateDiagnosticReportResponseBody {
+	s.ReportId = &v
+	return s
+}
+
+func (s *CreateDiagnosticReportResponseBody) SetRequestId(v string) *CreateDiagnosticReportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDiagnosticReportResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDiagnosticReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDiagnosticReportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDiagnosticReportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDiagnosticReportResponse) SetHeaders(v map[string]*string) *CreateDiagnosticReportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDiagnosticReportResponse) SetStatusCode(v int32) *CreateDiagnosticReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDiagnosticReportResponse) SetBody(v *CreateDiagnosticReportResponseBody) *CreateDiagnosticReportResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDiskRequest struct {
 	AdvancedFeatures          *string                 `json:"AdvancedFeatures,omitempty" xml:"AdvancedFeatures,omitempty"`
 	Arn                       []*CreateDiskRequestArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
@@ -6744,6 +6936,7 @@ func (s *CreateHpcClusterResponse) SetBody(v *CreateHpcClusterResponseBody) *Cre
 
 type CreateImageRequest struct {
 	Architecture         *string                                `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	BootMode             *string                                `json:"BootMode,omitempty" xml:"BootMode,omitempty"`
 	ClientToken          *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description          *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
 	DiskDeviceMapping    []*CreateImageRequestDiskDeviceMapping `json:"DiskDeviceMapping,omitempty" xml:"DiskDeviceMapping,omitempty" type:"Repeated"`
@@ -6772,6 +6965,11 @@ func (s CreateImageRequest) GoString() string {
 
 func (s *CreateImageRequest) SetArchitecture(v string) *CreateImageRequest {
 	s.Architecture = &v
+	return s
+}
+
+func (s *CreateImageRequest) SetBootMode(v string) *CreateImageRequest {
+	s.BootMode = &v
 	return s
 }
 
@@ -12904,6 +13102,144 @@ func (s *DeleteDeploymentSetResponse) SetBody(v *DeleteDeploymentSetResponseBody
 	return s
 }
 
+type DeleteDiagnosticMetricSetsRequest struct {
+	MetricSetIds []*string `json:"MetricSetIds,omitempty" xml:"MetricSetIds,omitempty" type:"Repeated"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteDiagnosticMetricSetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiagnosticMetricSetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiagnosticMetricSetsRequest) SetMetricSetIds(v []*string) *DeleteDiagnosticMetricSetsRequest {
+	s.MetricSetIds = v
+	return s
+}
+
+func (s *DeleteDiagnosticMetricSetsRequest) SetRegionId(v string) *DeleteDiagnosticMetricSetsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteDiagnosticMetricSetsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDiagnosticMetricSetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiagnosticMetricSetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiagnosticMetricSetsResponseBody) SetRequestId(v string) *DeleteDiagnosticMetricSetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDiagnosticMetricSetsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDiagnosticMetricSetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDiagnosticMetricSetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiagnosticMetricSetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiagnosticMetricSetsResponse) SetHeaders(v map[string]*string) *DeleteDiagnosticMetricSetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDiagnosticMetricSetsResponse) SetStatusCode(v int32) *DeleteDiagnosticMetricSetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDiagnosticMetricSetsResponse) SetBody(v *DeleteDiagnosticMetricSetsResponseBody) *DeleteDiagnosticMetricSetsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDiagnosticReportsRequest struct {
+	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReportIds []*string `json:"ReportIds,omitempty" xml:"ReportIds,omitempty" type:"Repeated"`
+}
+
+func (s DeleteDiagnosticReportsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiagnosticReportsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiagnosticReportsRequest) SetRegionId(v string) *DeleteDiagnosticReportsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteDiagnosticReportsRequest) SetReportIds(v []*string) *DeleteDiagnosticReportsRequest {
+	s.ReportIds = v
+	return s
+}
+
+type DeleteDiagnosticReportsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDiagnosticReportsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiagnosticReportsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiagnosticReportsResponseBody) SetRequestId(v string) *DeleteDiagnosticReportsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDiagnosticReportsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDiagnosticReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDiagnosticReportsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiagnosticReportsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiagnosticReportsResponse) SetHeaders(v map[string]*string) *DeleteDiagnosticReportsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDiagnosticReportsResponse) SetStatusCode(v int32) *DeleteDiagnosticReportsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDiagnosticReportsResponse) SetBody(v *DeleteDiagnosticReportsResponseBody) *DeleteDiagnosticReportsResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDiskRequest struct {
 	DiskId               *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -13388,13 +13724,12 @@ func (s *DeleteImageResponse) SetBody(v *DeleteImageResponseBody) *DeleteImageRe
 }
 
 type DeleteImageComponentRequest struct {
-	ImageComponentId     *string                                   `json:"ImageComponentId,omitempty" xml:"ImageComponentId,omitempty"`
-	OwnerAccount         *string                                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TemplateTag          []*DeleteImageComponentRequestTemplateTag `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty" type:"Repeated"`
+	ImageComponentId     *string `json:"ImageComponentId,omitempty" xml:"ImageComponentId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DeleteImageComponentRequest) String() string {
@@ -13432,34 +13767,6 @@ func (s *DeleteImageComponentRequest) SetResourceOwnerAccount(v string) *DeleteI
 
 func (s *DeleteImageComponentRequest) SetResourceOwnerId(v int64) *DeleteImageComponentRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DeleteImageComponentRequest) SetTemplateTag(v []*DeleteImageComponentRequestTemplateTag) *DeleteImageComponentRequest {
-	s.TemplateTag = v
-	return s
-}
-
-type DeleteImageComponentRequestTemplateTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DeleteImageComponentRequestTemplateTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteImageComponentRequestTemplateTag) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteImageComponentRequestTemplateTag) SetKey(v string) *DeleteImageComponentRequestTemplateTag {
-	s.Key = &v
-	return s
-}
-
-func (s *DeleteImageComponentRequestTemplateTag) SetValue(v string) *DeleteImageComponentRequestTemplateTag {
-	s.Value = &v
 	return s
 }
 
@@ -13510,13 +13817,12 @@ func (s *DeleteImageComponentResponse) SetBody(v *DeleteImageComponentResponseBo
 }
 
 type DeleteImagePipelineRequest struct {
-	ImagePipelineId      *string                                  `json:"ImagePipelineId,omitempty" xml:"ImagePipelineId,omitempty"`
-	OwnerAccount         *string                                  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                                  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TemplateTag          []*DeleteImagePipelineRequestTemplateTag `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty" type:"Repeated"`
+	ImagePipelineId      *string `json:"ImagePipelineId,omitempty" xml:"ImagePipelineId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DeleteImagePipelineRequest) String() string {
@@ -13554,34 +13860,6 @@ func (s *DeleteImagePipelineRequest) SetResourceOwnerAccount(v string) *DeleteIm
 
 func (s *DeleteImagePipelineRequest) SetResourceOwnerId(v int64) *DeleteImagePipelineRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DeleteImagePipelineRequest) SetTemplateTag(v []*DeleteImagePipelineRequestTemplateTag) *DeleteImagePipelineRequest {
-	s.TemplateTag = v
-	return s
-}
-
-type DeleteImagePipelineRequestTemplateTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DeleteImagePipelineRequestTemplateTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteImagePipelineRequestTemplateTag) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteImagePipelineRequestTemplateTag) SetKey(v string) *DeleteImagePipelineRequestTemplateTag {
-	s.Key = &v
-	return s
-}
-
-func (s *DeleteImagePipelineRequestTemplateTag) SetValue(v string) *DeleteImagePipelineRequestTemplateTag {
-	s.Value = &v
 	return s
 }
 
@@ -18873,7 +19151,9 @@ type DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReser
 	PrivatePoolOptionsMatchCriteria *string                                                                                                  `json:"PrivatePoolOptionsMatchCriteria,omitempty" xml:"PrivatePoolOptionsMatchCriteria,omitempty"`
 	PrivatePoolOptionsName          *string                                                                                                  `json:"PrivatePoolOptionsName,omitempty" xml:"PrivatePoolOptionsName,omitempty"`
 	RegionId                        *string                                                                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReservedInstanceId              *string                                                                                                  `json:"ReservedInstanceId,omitempty" xml:"ReservedInstanceId,omitempty"`
 	ResourceGroupId                 *string                                                                                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SavingPlanId                    *string                                                                                                  `json:"SavingPlanId,omitempty" xml:"SavingPlanId,omitempty"`
 	StartTime                       *string                                                                                                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StartTimeType                   *string                                                                                                  `json:"StartTimeType,omitempty" xml:"StartTimeType,omitempty"`
 	Status                          *string                                                                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -18939,8 +19219,18 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityR
 	return s
 }
 
+func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem) SetReservedInstanceId(v string) *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem {
+	s.ReservedInstanceId = &v
+	return s
+}
+
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem) SetResourceGroupId(v string) *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem) SetSavingPlanId(v string) *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItem {
+	s.SavingPlanId = &v
 	return s
 }
 
@@ -19604,20 +19894,21 @@ func (s *DescribeClustersResponse) SetBody(v *DescribeClustersResponseBody) *Des
 }
 
 type DescribeCommandsRequest struct {
-	CommandId            *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	ContentEncoding      *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Latest               *bool   `json:"Latest,omitempty" xml:"Latest,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Provider             *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	CommandId            *string                       `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
+	ContentEncoding      *string                       `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	Description          *string                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	Latest               *bool                         `json:"Latest,omitempty" xml:"Latest,omitempty"`
+	Name                 *string                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerAccount         *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int64                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int64                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Provider             *string                       `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	RegionId             *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                  []*DescribeCommandsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Type                 *string                       `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeCommandsRequest) String() string {
@@ -19693,8 +19984,36 @@ func (s *DescribeCommandsRequest) SetResourceOwnerId(v int64) *DescribeCommandsR
 	return s
 }
 
+func (s *DescribeCommandsRequest) SetTag(v []*DescribeCommandsRequestTag) *DescribeCommandsRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *DescribeCommandsRequest) SetType(v string) *DescribeCommandsRequest {
 	s.Type = &v
+	return s
+}
+
+type DescribeCommandsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeCommandsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommandsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommandsRequestTag) SetKey(v string) *DescribeCommandsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeCommandsRequestTag) SetValue(v string) *DescribeCommandsRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -19769,6 +20088,7 @@ type DescribeCommandsResponseBodyCommandsCommand struct {
 	ParameterDefinitions *DescribeCommandsResponseBodyCommandsCommandParameterDefinitions `json:"ParameterDefinitions,omitempty" xml:"ParameterDefinitions,omitempty" type:"Struct"`
 	ParameterNames       *DescribeCommandsResponseBodyCommandsCommandParameterNames       `json:"ParameterNames,omitempty" xml:"ParameterNames,omitempty" type:"Struct"`
 	Provider             *string                                                          `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Tags                 *DescribeCommandsResponseBodyCommandsCommandTags                 `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	Timeout              *int64                                                           `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	Type                 *string                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
 	Version              *int32                                                           `json:"Version,omitempty" xml:"Version,omitempty"`
@@ -19840,6 +20160,11 @@ func (s *DescribeCommandsResponseBodyCommandsCommand) SetParameterNames(v *Descr
 
 func (s *DescribeCommandsResponseBodyCommandsCommand) SetProvider(v string) *DescribeCommandsResponseBodyCommandsCommand {
 	s.Provider = &v
+	return s
+}
+
+func (s *DescribeCommandsResponseBodyCommandsCommand) SetTags(v *DescribeCommandsResponseBodyCommandsCommandTags) *DescribeCommandsResponseBodyCommandsCommand {
+	s.Tags = v
 	return s
 }
 
@@ -19952,6 +20277,46 @@ func (s DescribeCommandsResponseBodyCommandsCommandParameterNames) GoString() st
 
 func (s *DescribeCommandsResponseBodyCommandsCommandParameterNames) SetParameterName(v []*string) *DescribeCommandsResponseBodyCommandsCommandParameterNames {
 	s.ParameterName = v
+	return s
+}
+
+type DescribeCommandsResponseBodyCommandsCommandTags struct {
+	Tag []*DescribeCommandsResponseBodyCommandsCommandTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCommandsResponseBodyCommandsCommandTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommandsResponseBodyCommandsCommandTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommandsResponseBodyCommandsCommandTags) SetTag(v []*DescribeCommandsResponseBodyCommandsCommandTagsTag) *DescribeCommandsResponseBodyCommandsCommandTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeCommandsResponseBodyCommandsCommandTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeCommandsResponseBodyCommandsCommandTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommandsResponseBodyCommandsCommandTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommandsResponseBodyCommandsCommandTagsTag) SetTagKey(v string) *DescribeCommandsResponseBodyCommandsCommandTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeCommandsResponseBodyCommandsCommandTagsTag) SetTagValue(v string) *DescribeCommandsResponseBodyCommandsCommandTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -22634,6 +22999,533 @@ func (s *DescribeDeploymentSetsResponse) SetStatusCode(v int32) *DescribeDeploym
 }
 
 func (s *DescribeDeploymentSetsResponse) SetBody(v *DescribeDeploymentSetsResponseBody) *DescribeDeploymentSetsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDiagnosticMetricSetsRequest struct {
+	MaxResults   *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MetricSetIds []*string `json:"MetricSetIds,omitempty" xml:"MetricSetIds,omitempty" type:"Repeated"`
+	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Type         *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeDiagnosticMetricSetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticMetricSetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticMetricSetsRequest) SetMaxResults(v int32) *DescribeDiagnosticMetricSetsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricSetsRequest) SetMetricSetIds(v []*string) *DescribeDiagnosticMetricSetsRequest {
+	s.MetricSetIds = v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricSetsRequest) SetNextToken(v string) *DescribeDiagnosticMetricSetsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricSetsRequest) SetRegionId(v string) *DescribeDiagnosticMetricSetsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricSetsRequest) SetResourceType(v string) *DescribeDiagnosticMetricSetsRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricSetsRequest) SetType(v string) *DescribeDiagnosticMetricSetsRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeDiagnosticMetricSetsResponseBody struct {
+	MetricSets []*DescribeDiagnosticMetricSetsResponseBodyMetricSets `json:"MetricSets,omitempty" xml:"MetricSets,omitempty" type:"Repeated"`
+	NextToken  *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDiagnosticMetricSetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticMetricSetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticMetricSetsResponseBody) SetMetricSets(v []*DescribeDiagnosticMetricSetsResponseBodyMetricSets) *DescribeDiagnosticMetricSetsResponseBody {
+	s.MetricSets = v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricSetsResponseBody) SetNextToken(v string) *DescribeDiagnosticMetricSetsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricSetsResponseBody) SetRequestId(v string) *DescribeDiagnosticMetricSetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDiagnosticMetricSetsResponseBodyMetricSets struct {
+	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	MetricIds     []*string `json:"MetricIds,omitempty" xml:"MetricIds,omitempty" type:"Repeated"`
+	MetricSetId   *string   `json:"MetricSetId,omitempty" xml:"MetricSetId,omitempty"`
+	MetricSetName *string   `json:"MetricSetName,omitempty" xml:"MetricSetName,omitempty"`
+	ResourceType  *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Type          *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeDiagnosticMetricSetsResponseBodyMetricSets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticMetricSetsResponseBodyMetricSets) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticMetricSetsResponseBodyMetricSets) SetDescription(v string) *DescribeDiagnosticMetricSetsResponseBodyMetricSets {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricSetsResponseBodyMetricSets) SetMetricIds(v []*string) *DescribeDiagnosticMetricSetsResponseBodyMetricSets {
+	s.MetricIds = v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricSetsResponseBodyMetricSets) SetMetricSetId(v string) *DescribeDiagnosticMetricSetsResponseBodyMetricSets {
+	s.MetricSetId = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricSetsResponseBodyMetricSets) SetMetricSetName(v string) *DescribeDiagnosticMetricSetsResponseBodyMetricSets {
+	s.MetricSetName = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricSetsResponseBodyMetricSets) SetResourceType(v string) *DescribeDiagnosticMetricSetsResponseBodyMetricSets {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricSetsResponseBodyMetricSets) SetType(v string) *DescribeDiagnosticMetricSetsResponseBodyMetricSets {
+	s.Type = &v
+	return s
+}
+
+type DescribeDiagnosticMetricSetsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDiagnosticMetricSetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDiagnosticMetricSetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticMetricSetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticMetricSetsResponse) SetHeaders(v map[string]*string) *DescribeDiagnosticMetricSetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricSetsResponse) SetStatusCode(v int32) *DescribeDiagnosticMetricSetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricSetsResponse) SetBody(v *DescribeDiagnosticMetricSetsResponseBody) *DescribeDiagnosticMetricSetsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDiagnosticMetricsRequest struct {
+	MaxResults   *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MetricIds    []*string `json:"MetricIds,omitempty" xml:"MetricIds,omitempty" type:"Repeated"`
+	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s DescribeDiagnosticMetricsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticMetricsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticMetricsRequest) SetMaxResults(v int32) *DescribeDiagnosticMetricsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricsRequest) SetMetricIds(v []*string) *DescribeDiagnosticMetricsRequest {
+	s.MetricIds = v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricsRequest) SetNextToken(v string) *DescribeDiagnosticMetricsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricsRequest) SetRegionId(v string) *DescribeDiagnosticMetricsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricsRequest) SetResourceType(v string) *DescribeDiagnosticMetricsRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type DescribeDiagnosticMetricsResponseBody struct {
+	Metrics   []*DescribeDiagnosticMetricsResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	NextToken *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDiagnosticMetricsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticMetricsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticMetricsResponseBody) SetMetrics(v []*DescribeDiagnosticMetricsResponseBodyMetrics) *DescribeDiagnosticMetricsResponseBody {
+	s.Metrics = v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricsResponseBody) SetNextToken(v string) *DescribeDiagnosticMetricsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricsResponseBody) SetRequestId(v string) *DescribeDiagnosticMetricsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDiagnosticMetricsResponseBodyMetrics struct {
+	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GuestMetric              *bool   `json:"GuestMetric,omitempty" xml:"GuestMetric,omitempty"`
+	MetricCategory           *string `json:"MetricCategory,omitempty" xml:"MetricCategory,omitempty"`
+	MetricId                 *string `json:"MetricId,omitempty" xml:"MetricId,omitempty"`
+	MetricName               *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	ResourceType             *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SupportedOperatingSystem *string `json:"SupportedOperatingSystem,omitempty" xml:"SupportedOperatingSystem,omitempty"`
+}
+
+func (s DescribeDiagnosticMetricsResponseBodyMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticMetricsResponseBodyMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticMetricsResponseBodyMetrics) SetDescription(v string) *DescribeDiagnosticMetricsResponseBodyMetrics {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricsResponseBodyMetrics) SetGuestMetric(v bool) *DescribeDiagnosticMetricsResponseBodyMetrics {
+	s.GuestMetric = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricsResponseBodyMetrics) SetMetricCategory(v string) *DescribeDiagnosticMetricsResponseBodyMetrics {
+	s.MetricCategory = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricsResponseBodyMetrics) SetMetricId(v string) *DescribeDiagnosticMetricsResponseBodyMetrics {
+	s.MetricId = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricsResponseBodyMetrics) SetMetricName(v string) *DescribeDiagnosticMetricsResponseBodyMetrics {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricsResponseBodyMetrics) SetResourceType(v string) *DescribeDiagnosticMetricsResponseBodyMetrics {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricsResponseBodyMetrics) SetSupportedOperatingSystem(v string) *DescribeDiagnosticMetricsResponseBodyMetrics {
+	s.SupportedOperatingSystem = &v
+	return s
+}
+
+type DescribeDiagnosticMetricsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDiagnosticMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDiagnosticMetricsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticMetricsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticMetricsResponse) SetHeaders(v map[string]*string) *DescribeDiagnosticMetricsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricsResponse) SetStatusCode(v int32) *DescribeDiagnosticMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDiagnosticMetricsResponse) SetBody(v *DescribeDiagnosticMetricsResponseBody) *DescribeDiagnosticMetricsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDiagnosticReportsRequest struct {
+	MaxResults  *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReportIds   []*string `json:"ReportIds,omitempty" xml:"ReportIds,omitempty" type:"Repeated"`
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	Severity    *string   `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDiagnosticReportsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticReportsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticReportsRequest) SetMaxResults(v int32) *DescribeDiagnosticReportsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsRequest) SetNextToken(v string) *DescribeDiagnosticReportsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsRequest) SetRegionId(v string) *DescribeDiagnosticReportsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsRequest) SetReportIds(v []*string) *DescribeDiagnosticReportsRequest {
+	s.ReportIds = v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsRequest) SetResourceIds(v []*string) *DescribeDiagnosticReportsRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsRequest) SetSeverity(v string) *DescribeDiagnosticReportsRequest {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsRequest) SetStatus(v string) *DescribeDiagnosticReportsRequest {
+	s.Status = &v
+	return s
+}
+
+type DescribeDiagnosticReportsResponseBody struct {
+	NextToken *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Reports   []*DescribeDiagnosticReportsResponseBodyReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Repeated"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDiagnosticReportsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticReportsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticReportsResponseBody) SetNextToken(v string) *DescribeDiagnosticReportsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBody) SetReports(v []*DescribeDiagnosticReportsResponseBodyReports) *DescribeDiagnosticReportsResponseBody {
+	s.Reports = v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBody) SetRequestId(v string) *DescribeDiagnosticReportsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDiagnosticReportsResponseBodyReports struct {
+	CreationTime *string                                               `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	EndTime      *string                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FinishedTime *string                                               `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	Issues       []*DescribeDiagnosticReportsResponseBodyReportsIssues `json:"Issues,omitempty" xml:"Issues,omitempty" type:"Repeated"`
+	MetricSetId  *string                                               `json:"MetricSetId,omitempty" xml:"MetricSetId,omitempty"`
+	ReportId     *string                                               `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ResourceId   *string                                               `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string                                               `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Severity     *string                                               `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	StartTime    *string                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDiagnosticReportsResponseBodyReports) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticReportsResponseBodyReports) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReports) SetCreationTime(v string) *DescribeDiagnosticReportsResponseBodyReports {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReports) SetEndTime(v string) *DescribeDiagnosticReportsResponseBodyReports {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReports) SetFinishedTime(v string) *DescribeDiagnosticReportsResponseBodyReports {
+	s.FinishedTime = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReports) SetIssues(v []*DescribeDiagnosticReportsResponseBodyReportsIssues) *DescribeDiagnosticReportsResponseBodyReports {
+	s.Issues = v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReports) SetMetricSetId(v string) *DescribeDiagnosticReportsResponseBodyReports {
+	s.MetricSetId = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReports) SetReportId(v string) *DescribeDiagnosticReportsResponseBodyReports {
+	s.ReportId = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReports) SetResourceId(v string) *DescribeDiagnosticReportsResponseBodyReports {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReports) SetResourceType(v string) *DescribeDiagnosticReportsResponseBodyReports {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReports) SetSeverity(v string) *DescribeDiagnosticReportsResponseBodyReports {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReports) SetStartTime(v string) *DescribeDiagnosticReportsResponseBodyReports {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReports) SetStatus(v string) *DescribeDiagnosticReportsResponseBodyReports {
+	s.Status = &v
+	return s
+}
+
+type DescribeDiagnosticReportsResponseBodyReportsIssues struct {
+	IssueId        *string `json:"IssueId,omitempty" xml:"IssueId,omitempty"`
+	MetricCategory *string `json:"MetricCategory,omitempty" xml:"MetricCategory,omitempty"`
+	MetricId       *string `json:"MetricId,omitempty" xml:"MetricId,omitempty"`
+	Severity       *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+}
+
+func (s DescribeDiagnosticReportsResponseBodyReportsIssues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticReportsResponseBodyReportsIssues) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReportsIssues) SetIssueId(v string) *DescribeDiagnosticReportsResponseBodyReportsIssues {
+	s.IssueId = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReportsIssues) SetMetricCategory(v string) *DescribeDiagnosticReportsResponseBodyReportsIssues {
+	s.MetricCategory = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReportsIssues) SetMetricId(v string) *DescribeDiagnosticReportsResponseBodyReportsIssues {
+	s.MetricId = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponseBodyReportsIssues) SetSeverity(v string) *DescribeDiagnosticReportsResponseBodyReportsIssues {
+	s.Severity = &v
+	return s
+}
+
+type DescribeDiagnosticReportsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDiagnosticReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDiagnosticReportsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticReportsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticReportsResponse) SetHeaders(v map[string]*string) *DescribeDiagnosticReportsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponse) SetStatusCode(v int32) *DescribeDiagnosticReportsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDiagnosticReportsResponse) SetBody(v *DescribeDiagnosticReportsResponseBody) *DescribeDiagnosticReportsResponse {
 	s.Body = v
 	return s
 }
@@ -28083,6 +28975,7 @@ func (s *DescribeImagesResponseBodyImages) SetImage(v []*DescribeImagesResponseB
 
 type DescribeImagesResponseBodyImagesImage struct {
 	Architecture            *string                                                  `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	BootMode                *string                                                  `json:"BootMode,omitempty" xml:"BootMode,omitempty"`
 	CreationTime            *string                                                  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	Description             *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
 	DetectionOptions        *DescribeImagesResponseBodyImagesImageDetectionOptions   `json:"DetectionOptions,omitempty" xml:"DetectionOptions,omitempty" type:"Struct"`
@@ -28125,6 +29018,11 @@ func (s DescribeImagesResponseBodyImagesImage) GoString() string {
 
 func (s *DescribeImagesResponseBodyImagesImage) SetArchitecture(v string) *DescribeImagesResponseBodyImagesImage {
 	s.Architecture = &v
+	return s
+}
+
+func (s *DescribeImagesResponseBodyImagesImage) SetBootMode(v string) *DescribeImagesResponseBodyImagesImage {
+	s.BootMode = &v
 	return s
 }
 
@@ -31287,14 +32185,47 @@ func (s *DescribeInstanceTypeFamiliesResponse) SetBody(v *DescribeInstanceTypeFa
 }
 
 type DescribeInstanceTypesRequest struct {
-	InstanceTypeFamily   *string   `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	InstanceTypes        []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	MaxResults           *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	CpuArchitecture                    *string   `json:"CpuArchitecture,omitempty" xml:"CpuArchitecture,omitempty"`
+	GPUSpec                            *string   `json:"GPUSpec,omitempty" xml:"GPUSpec,omitempty"`
+	InstanceCategory                   *string   `json:"InstanceCategory,omitempty" xml:"InstanceCategory,omitempty"`
+	InstanceFamilyLevel                *string   `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	InstanceTypeFamily                 *string   `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
+	InstanceTypes                      []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	LocalStorageCategory               *string   `json:"LocalStorageCategory,omitempty" xml:"LocalStorageCategory,omitempty"`
+	MaxResults                         *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaximumCpuCoreCount                *int32    `json:"MaximumCpuCoreCount,omitempty" xml:"MaximumCpuCoreCount,omitempty"`
+	MaximumCpuSpeedFrequency           *float32  `json:"MaximumCpuSpeedFrequency,omitempty" xml:"MaximumCpuSpeedFrequency,omitempty"`
+	MaximumCpuTurboFrequency           *float32  `json:"MaximumCpuTurboFrequency,omitempty" xml:"MaximumCpuTurboFrequency,omitempty"`
+	MaximumGPUAmount                   *int32    `json:"MaximumGPUAmount,omitempty" xml:"MaximumGPUAmount,omitempty"`
+	MaximumMemorySize                  *float32  `json:"MaximumMemorySize,omitempty" xml:"MaximumMemorySize,omitempty"`
+	MinimumBaselineCredit              *int32    `json:"MinimumBaselineCredit,omitempty" xml:"MinimumBaselineCredit,omitempty"`
+	MinimumCpuCoreCount                *int32    `json:"MinimumCpuCoreCount,omitempty" xml:"MinimumCpuCoreCount,omitempty"`
+	MinimumCpuSpeedFrequency           *float32  `json:"MinimumCpuSpeedFrequency,omitempty" xml:"MinimumCpuSpeedFrequency,omitempty"`
+	MinimumCpuTurboFrequency           *float32  `json:"MinimumCpuTurboFrequency,omitempty" xml:"MinimumCpuTurboFrequency,omitempty"`
+	MinimumDiskQuantity                *int32    `json:"MinimumDiskQuantity,omitempty" xml:"MinimumDiskQuantity,omitempty"`
+	MinimumEniIpv6AddressQuantity      *int32    `json:"MinimumEniIpv6AddressQuantity,omitempty" xml:"MinimumEniIpv6AddressQuantity,omitempty"`
+	MinimumEniPrivateIpAddressQuantity *int32    `json:"MinimumEniPrivateIpAddressQuantity,omitempty" xml:"MinimumEniPrivateIpAddressQuantity,omitempty"`
+	MinimumEniQuantity                 *int32    `json:"MinimumEniQuantity,omitempty" xml:"MinimumEniQuantity,omitempty"`
+	MinimumEriQuantity                 *int32    `json:"MinimumEriQuantity,omitempty" xml:"MinimumEriQuantity,omitempty"`
+	MinimumGPUAmount                   *int32    `json:"MinimumGPUAmount,omitempty" xml:"MinimumGPUAmount,omitempty"`
+	MinimumInitialCredit               *int32    `json:"MinimumInitialCredit,omitempty" xml:"MinimumInitialCredit,omitempty"`
+	MinimumInstanceBandwidthRx         *int32    `json:"MinimumInstanceBandwidthRx,omitempty" xml:"MinimumInstanceBandwidthRx,omitempty"`
+	MinimumInstanceBandwidthTx         *int32    `json:"MinimumInstanceBandwidthTx,omitempty" xml:"MinimumInstanceBandwidthTx,omitempty"`
+	MinimumInstancePpsRx               *int64    `json:"MinimumInstancePpsRx,omitempty" xml:"MinimumInstancePpsRx,omitempty"`
+	MinimumInstancePpsTx               *int64    `json:"MinimumInstancePpsTx,omitempty" xml:"MinimumInstancePpsTx,omitempty"`
+	MinimumLocalStorageAmount          *int32    `json:"MinimumLocalStorageAmount,omitempty" xml:"MinimumLocalStorageAmount,omitempty"`
+	MinimumLocalStorageCapacity        *int64    `json:"MinimumLocalStorageCapacity,omitempty" xml:"MinimumLocalStorageCapacity,omitempty"`
+	MinimumMemorySize                  *float32  `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
+	MinimumPrimaryEniQueueNumber       *int32    `json:"MinimumPrimaryEniQueueNumber,omitempty" xml:"MinimumPrimaryEniQueueNumber,omitempty"`
+	MinimumQueuePairNumber             *int32    `json:"MinimumQueuePairNumber,omitempty" xml:"MinimumQueuePairNumber,omitempty"`
+	MinimumSecondaryEniQueueNumber     *int32    `json:"MinimumSecondaryEniQueueNumber,omitempty" xml:"MinimumSecondaryEniQueueNumber,omitempty"`
+	NextToken                          *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NvmeSupport                        *string   `json:"NvmeSupport,omitempty" xml:"NvmeSupport,omitempty"`
+	OwnerAccount                       *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                            *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PhysicalProcessorModel             *string   `json:"PhysicalProcessorModel,omitempty" xml:"PhysicalProcessorModel,omitempty"`
+	ResourceOwnerAccount               *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                    *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DescribeInstanceTypesRequest) String() string {
@@ -31303,6 +32234,26 @@ func (s DescribeInstanceTypesRequest) String() string {
 
 func (s DescribeInstanceTypesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceTypesRequest) SetCpuArchitecture(v string) *DescribeInstanceTypesRequest {
+	s.CpuArchitecture = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetGPUSpec(v string) *DescribeInstanceTypesRequest {
+	s.GPUSpec = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetInstanceCategory(v string) *DescribeInstanceTypesRequest {
+	s.InstanceCategory = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetInstanceFamilyLevel(v string) *DescribeInstanceTypesRequest {
+	s.InstanceFamilyLevel = &v
+	return s
 }
 
 func (s *DescribeInstanceTypesRequest) SetInstanceTypeFamily(v string) *DescribeInstanceTypesRequest {
@@ -31315,13 +32266,153 @@ func (s *DescribeInstanceTypesRequest) SetInstanceTypes(v []*string) *DescribeIn
 	return s
 }
 
+func (s *DescribeInstanceTypesRequest) SetLocalStorageCategory(v string) *DescribeInstanceTypesRequest {
+	s.LocalStorageCategory = &v
+	return s
+}
+
 func (s *DescribeInstanceTypesRequest) SetMaxResults(v int64) *DescribeInstanceTypesRequest {
 	s.MaxResults = &v
 	return s
 }
 
+func (s *DescribeInstanceTypesRequest) SetMaximumCpuCoreCount(v int32) *DescribeInstanceTypesRequest {
+	s.MaximumCpuCoreCount = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMaximumCpuSpeedFrequency(v float32) *DescribeInstanceTypesRequest {
+	s.MaximumCpuSpeedFrequency = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMaximumCpuTurboFrequency(v float32) *DescribeInstanceTypesRequest {
+	s.MaximumCpuTurboFrequency = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMaximumGPUAmount(v int32) *DescribeInstanceTypesRequest {
+	s.MaximumGPUAmount = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMaximumMemorySize(v float32) *DescribeInstanceTypesRequest {
+	s.MaximumMemorySize = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumBaselineCredit(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumBaselineCredit = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumCpuCoreCount(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumCpuCoreCount = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumCpuSpeedFrequency(v float32) *DescribeInstanceTypesRequest {
+	s.MinimumCpuSpeedFrequency = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumCpuTurboFrequency(v float32) *DescribeInstanceTypesRequest {
+	s.MinimumCpuTurboFrequency = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumDiskQuantity(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumDiskQuantity = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumEniIpv6AddressQuantity(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumEniIpv6AddressQuantity = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumEniPrivateIpAddressQuantity(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumEniPrivateIpAddressQuantity = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumEniQuantity(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumEniQuantity = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumEriQuantity(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumEriQuantity = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumGPUAmount(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumGPUAmount = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumInitialCredit(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumInitialCredit = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumInstanceBandwidthRx(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumInstanceBandwidthRx = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumInstanceBandwidthTx(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumInstanceBandwidthTx = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumInstancePpsRx(v int64) *DescribeInstanceTypesRequest {
+	s.MinimumInstancePpsRx = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumInstancePpsTx(v int64) *DescribeInstanceTypesRequest {
+	s.MinimumInstancePpsTx = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumLocalStorageAmount(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumLocalStorageAmount = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumLocalStorageCapacity(v int64) *DescribeInstanceTypesRequest {
+	s.MinimumLocalStorageCapacity = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumMemorySize(v float32) *DescribeInstanceTypesRequest {
+	s.MinimumMemorySize = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumPrimaryEniQueueNumber(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumPrimaryEniQueueNumber = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumQueuePairNumber(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumQueuePairNumber = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetMinimumSecondaryEniQueueNumber(v int32) *DescribeInstanceTypesRequest {
+	s.MinimumSecondaryEniQueueNumber = &v
+	return s
+}
+
 func (s *DescribeInstanceTypesRequest) SetNextToken(v string) *DescribeInstanceTypesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetNvmeSupport(v string) *DescribeInstanceTypesRequest {
+	s.NvmeSupport = &v
 	return s
 }
 
@@ -31332,6 +32423,11 @@ func (s *DescribeInstanceTypesRequest) SetOwnerAccount(v string) *DescribeInstan
 
 func (s *DescribeInstanceTypesRequest) SetOwnerId(v int64) *DescribeInstanceTypesRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesRequest) SetPhysicalProcessorModel(v string) *DescribeInstanceTypesRequest {
+	s.PhysicalProcessorModel = &v
 	return s
 }
 
@@ -31393,7 +32489,10 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypes) SetInstanceType(v []*De
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceType struct {
 	BaselineCredit              *int32   `json:"BaselineCredit,omitempty" xml:"BaselineCredit,omitempty"`
+	CpuArchitecture             *string  `json:"CpuArchitecture,omitempty" xml:"CpuArchitecture,omitempty"`
 	CpuCoreCount                *int32   `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
+	CpuSpeedFrequency           *float32 `json:"CpuSpeedFrequency,omitempty" xml:"CpuSpeedFrequency,omitempty"`
+	CpuTurboFrequency           *float32 `json:"CpuTurboFrequency,omitempty" xml:"CpuTurboFrequency,omitempty"`
 	DiskQuantity                *int32   `json:"DiskQuantity,omitempty" xml:"DiskQuantity,omitempty"`
 	EniIpv6AddressQuantity      *int32   `json:"EniIpv6AddressQuantity,omitempty" xml:"EniIpv6AddressQuantity,omitempty"`
 	EniPrivateIpAddressQuantity *int32   `json:"EniPrivateIpAddressQuantity,omitempty" xml:"EniPrivateIpAddressQuantity,omitempty"`
@@ -31406,6 +32505,7 @@ type DescribeInstanceTypesResponseBodyInstanceTypesInstanceType struct {
 	InitialCredit               *int32   `json:"InitialCredit,omitempty" xml:"InitialCredit,omitempty"`
 	InstanceBandwidthRx         *int32   `json:"InstanceBandwidthRx,omitempty" xml:"InstanceBandwidthRx,omitempty"`
 	InstanceBandwidthTx         *int32   `json:"InstanceBandwidthTx,omitempty" xml:"InstanceBandwidthTx,omitempty"`
+	InstanceCategory            *string  `json:"InstanceCategory,omitempty" xml:"InstanceCategory,omitempty"`
 	InstanceFamilyLevel         *string  `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
 	InstancePpsRx               *int64   `json:"InstancePpsRx,omitempty" xml:"InstancePpsRx,omitempty"`
 	InstancePpsTx               *int64   `json:"InstancePpsTx,omitempty" xml:"InstancePpsTx,omitempty"`
@@ -31416,7 +32516,9 @@ type DescribeInstanceTypesResponseBodyInstanceTypesInstanceType struct {
 	LocalStorageCategory        *string  `json:"LocalStorageCategory,omitempty" xml:"LocalStorageCategory,omitempty"`
 	MaximumQueueNumberPerEni    *int32   `json:"MaximumQueueNumberPerEni,omitempty" xml:"MaximumQueueNumberPerEni,omitempty"`
 	MemorySize                  *float32 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	NetworkEncryptionSupport    *bool    `json:"NetworkEncryptionSupport,omitempty" xml:"NetworkEncryptionSupport,omitempty"`
 	NvmeSupport                 *string  `json:"NvmeSupport,omitempty" xml:"NvmeSupport,omitempty"`
+	PhysicalProcessorModel      *string  `json:"PhysicalProcessorModel,omitempty" xml:"PhysicalProcessorModel,omitempty"`
 	PrimaryEniQueueNumber       *int32   `json:"PrimaryEniQueueNumber,omitempty" xml:"PrimaryEniQueueNumber,omitempty"`
 	QueuePairNumber             *int32   `json:"QueuePairNumber,omitempty" xml:"QueuePairNumber,omitempty"`
 	SecondaryEniQueueNumber     *int32   `json:"SecondaryEniQueueNumber,omitempty" xml:"SecondaryEniQueueNumber,omitempty"`
@@ -31436,8 +32538,23 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetBaseline
 	return s
 }
 
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetCpuArchitecture(v string) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
+	s.CpuArchitecture = &v
+	return s
+}
+
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetCpuCoreCount(v int32) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
 	s.CpuCoreCount = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetCpuSpeedFrequency(v float32) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
+	s.CpuSpeedFrequency = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetCpuTurboFrequency(v float32) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
+	s.CpuTurboFrequency = &v
 	return s
 }
 
@@ -31501,6 +32618,11 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetInstance
 	return s
 }
 
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetInstanceCategory(v string) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
+	s.InstanceCategory = &v
+	return s
+}
+
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetInstanceFamilyLevel(v string) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
 	s.InstanceFamilyLevel = &v
 	return s
@@ -31551,8 +32673,18 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetMemorySi
 	return s
 }
 
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetNetworkEncryptionSupport(v bool) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
+	s.NetworkEncryptionSupport = &v
+	return s
+}
+
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetNvmeSupport(v string) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
 	s.NvmeSupport = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetPhysicalProcessorModel(v string) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
+	s.PhysicalProcessorModel = &v
 	return s
 }
 
@@ -33665,19 +34797,20 @@ func (s *DescribeInstancesFullStatusResponse) SetBody(v *DescribeInstancesFullSt
 }
 
 type DescribeInvocationResultsRequest struct {
-	CommandId            *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	ContentEncoding      *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	IncludeHistory       *bool   `json:"IncludeHistory,omitempty" xml:"IncludeHistory,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InvokeId             *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	InvokeRecordStatus   *string `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	CommandId            *string                                `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
+	ContentEncoding      *string                                `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	IncludeHistory       *bool                                  `json:"IncludeHistory,omitempty" xml:"IncludeHistory,omitempty"`
+	InstanceId           *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InvokeId             *string                                `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	InvokeRecordStatus   *string                                `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
+	OwnerAccount         *string                                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int64                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int64                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                  []*DescribeInvocationResultsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInvocationResultsRequest) String() string {
@@ -33750,6 +34883,34 @@ func (s *DescribeInvocationResultsRequest) SetResourceOwnerAccount(v string) *De
 
 func (s *DescribeInvocationResultsRequest) SetResourceOwnerId(v int64) *DescribeInvocationResultsRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeInvocationResultsRequest) SetTag(v []*DescribeInvocationResultsRequestTag) *DescribeInvocationResultsRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeInvocationResultsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeInvocationResultsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvocationResultsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvocationResultsRequestTag) SetKey(v string) *DescribeInvocationResultsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeInvocationResultsRequestTag) SetValue(v string) *DescribeInvocationResultsRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -33829,21 +34990,24 @@ func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResults) SetIn
 }
 
 type DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult struct {
-	CommandId          *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	Dropped            *int32  `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
-	ErrorCode          *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorInfo          *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	ExitCode           *int64  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	FinishedTime       *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InvocationStatus   *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	InvokeId           *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	InvokeRecordStatus *string `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
-	Output             *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	Repeats            *int32  `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
-	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StopTime           *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	Username           *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	CommandId          *string                                                                               `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
+	ContainerId        *string                                                                               `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	ContainerName      *string                                                                               `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	Dropped            *int32                                                                                `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
+	ErrorCode          *string                                                                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorInfo          *string                                                                               `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	ExitCode           *int64                                                                                `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	FinishedTime       *string                                                                               `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	InstanceId         *string                                                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InvocationStatus   *string                                                                               `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	InvokeId           *string                                                                               `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	InvokeRecordStatus *string                                                                               `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
+	Output             *string                                                                               `json:"Output,omitempty" xml:"Output,omitempty"`
+	Repeats            *int32                                                                                `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
+	StartTime          *string                                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StopTime           *string                                                                               `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	Tags               *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Username           *string                                                                               `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) String() string {
@@ -33856,6 +35020,16 @@ func (s DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocati
 
 func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) SetCommandId(v string) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult {
 	s.CommandId = &v
+	return s
+}
+
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) SetContainerId(v string) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult {
+	s.ContainerId = &v
+	return s
+}
+
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) SetContainerName(v string) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult {
+	s.ContainerName = &v
 	return s
 }
 
@@ -33924,8 +35098,53 @@ func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocat
 	return s
 }
 
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) SetTags(v *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTags) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) SetUsername(v string) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult {
 	s.Username = &v
+	return s
+}
+
+type DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTags struct {
+	Tag []*DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTags) SetTag(v []*DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTagsTag) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTagsTag) SetTagKey(v string) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTagsTag) SetTagValue(v string) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResultTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -33959,23 +35178,24 @@ func (s *DescribeInvocationResultsResponse) SetBody(v *DescribeInvocationResults
 }
 
 type DescribeInvocationsRequest struct {
-	CommandId            *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	CommandName          *string `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
-	CommandType          *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
-	ContentEncoding      *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	IncludeOutput        *bool   `json:"IncludeOutput,omitempty" xml:"IncludeOutput,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InvokeId             *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	InvokeStatus         *string `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RepeatMode           *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Timed                *bool   `json:"Timed,omitempty" xml:"Timed,omitempty"`
+	CommandId            *string                          `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
+	CommandName          *string                          `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
+	CommandType          *string                          `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	ContentEncoding      *string                          `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	IncludeOutput        *bool                            `json:"IncludeOutput,omitempty" xml:"IncludeOutput,omitempty"`
+	InstanceId           *string                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InvokeId             *string                          `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	InvokeStatus         *string                          `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
+	OwnerAccount         *string                          `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int64                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int64                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepeatMode           *string                          `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	ResourceOwnerAccount *string                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                  []*DescribeInvocationsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Timed                *bool                            `json:"Timed,omitempty" xml:"Timed,omitempty"`
 }
 
 func (s DescribeInvocationsRequest) String() string {
@@ -34066,8 +35286,36 @@ func (s *DescribeInvocationsRequest) SetResourceOwnerId(v int64) *DescribeInvoca
 	return s
 }
 
+func (s *DescribeInvocationsRequest) SetTag(v []*DescribeInvocationsRequestTag) *DescribeInvocationsRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *DescribeInvocationsRequest) SetTimed(v bool) *DescribeInvocationsRequest {
 	s.Timed = &v
+	return s
+}
+
+type DescribeInvocationsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeInvocationsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvocationsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvocationsRequestTag) SetKey(v string) *DescribeInvocationsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeInvocationsRequestTag) SetValue(v string) *DescribeInvocationsRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -34135,6 +35383,8 @@ type DescribeInvocationsResponseBodyInvocationsInvocation struct {
 	CommandId          *string                                                              `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
 	CommandName        *string                                                              `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
 	CommandType        *string                                                              `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	ContainerId        *string                                                              `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	ContainerName      *string                                                              `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
 	CreationTime       *string                                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	Frequency          *string                                                              `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	InvocationStatus   *string                                                              `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
@@ -34143,6 +35393,7 @@ type DescribeInvocationsResponseBodyInvocationsInvocation struct {
 	InvokeStatus       *string                                                              `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
 	Parameters         *string                                                              `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	RepeatMode         *string                                                              `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	Tags               *DescribeInvocationsResponseBodyInvocationsInvocationTags            `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	Timed              *bool                                                                `json:"Timed,omitempty" xml:"Timed,omitempty"`
 	Timeout            *int64                                                               `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	Username           *string                                                              `json:"Username,omitempty" xml:"Username,omitempty"`
@@ -34179,6 +35430,16 @@ func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetCommandName(v 
 
 func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetCommandType(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
 	s.CommandType = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetContainerId(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.ContainerId = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetContainerName(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.ContainerName = &v
 	return s
 }
 
@@ -34219,6 +35480,11 @@ func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetParameters(v s
 
 func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetRepeatMode(v string) *DescribeInvocationsResponseBodyInvocationsInvocation {
 	s.RepeatMode = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocation) SetTags(v *DescribeInvocationsResponseBodyInvocationsInvocationTags) *DescribeInvocationsResponseBodyInvocationsInvocation {
+	s.Tags = v
 	return s
 }
 
@@ -34357,6 +35623,46 @@ func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvo
 
 func (s *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeInstance) SetUpdateTime(v string) *DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeInstance {
 	s.UpdateTime = &v
+	return s
+}
+
+type DescribeInvocationsResponseBodyInvocationsInvocationTags struct {
+	Tag []*DescribeInvocationsResponseBodyInvocationsInvocationTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInvocationsResponseBodyInvocationsInvocationTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvocationsResponseBodyInvocationsInvocationTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationTags) SetTag(v []*DescribeInvocationsResponseBodyInvocationsInvocationTagsTag) *DescribeInvocationsResponseBodyInvocationsInvocationTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeInvocationsResponseBodyInvocationsInvocationTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeInvocationsResponseBodyInvocationsInvocationTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvocationsResponseBodyInvocationsInvocationTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationTagsTag) SetTagKey(v string) *DescribeInvocationsResponseBodyInvocationsInvocationTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocationsInvocationTagsTag) SetTagValue(v string) *DescribeInvocationsResponseBodyInvocationsInvocationTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -39020,7 +40326,7 @@ func (s *DescribePriceRequest) SetZoneId(v string) *DescribePriceRequest {
 type DescribePriceRequestDataDisk struct {
 	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Size             *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size             *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribePriceRequestDataDisk) String() string {
@@ -39041,7 +40347,7 @@ func (s *DescribePriceRequestDataDisk) SetPerformanceLevel(v string) *DescribePr
 	return s
 }
 
-func (s *DescribePriceRequestDataDisk) SetSize(v int32) *DescribePriceRequestDataDisk {
+func (s *DescribePriceRequestDataDisk) SetSize(v int64) *DescribePriceRequestDataDisk {
 	s.Size = &v
 	return s
 }
@@ -40825,6 +42131,7 @@ type DescribeResourcesModificationRequest struct {
 	ResourceId           *string  `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ZoneId               *string  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeResourcesModificationRequest) String() string {
@@ -40892,6 +42199,11 @@ func (s *DescribeResourcesModificationRequest) SetResourceOwnerAccount(v string)
 
 func (s *DescribeResourcesModificationRequest) SetResourceOwnerId(v int64) *DescribeResourcesModificationRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeResourcesModificationRequest) SetZoneId(v string) *DescribeResourcesModificationRequest {
+	s.ZoneId = &v
 	return s
 }
 
@@ -44228,34 +45540,32 @@ func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshot(v []*DescribeSnapsh
 }
 
 type DescribeSnapshotsResponseBodySnapshotsSnapshot struct {
-	Category                   *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreationTime               *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description                *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Encrypted                  *bool   `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	InstantAccess              *bool   `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
-	InstantAccessRetentionDays *int32  `json:"InstantAccessRetentionDays,omitempty" xml:"InstantAccessRetentionDays,omitempty"`
-	KMSKeyId                   *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	LastModifiedTime           *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	ProductCode                *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	Progress                   *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RemainTime                 *int32  `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
-	ResourceGroupId            *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RetentionDays              *int32  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	SnapshotId                 *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SnapshotName               *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	SnapshotSN                 *string `json:"SnapshotSN,omitempty" xml:"SnapshotSN,omitempty"`
-	SnapshotType               *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	SourceDiskId               *string `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty"`
-	SourceDiskSize             *string `json:"SourceDiskSize,omitempty" xml:"SourceDiskSize,omitempty"`
-	SourceDiskType             *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
-	// 源快照地域
-	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
-	// 源快照
-	SourceSnapshotId  *string                                             `json:"SourceSnapshotId,omitempty" xml:"SourceSnapshotId,omitempty"`
-	SourceStorageType *string                                             `json:"SourceStorageType,omitempty" xml:"SourceStorageType,omitempty"`
-	Status            *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags              *DescribeSnapshotsResponseBodySnapshotsSnapshotTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	Usage             *string                                             `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	Category                   *string                                             `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreationTime               *string                                             `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description                *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	Encrypted                  *bool                                               `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	InstantAccess              *bool                                               `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
+	InstantAccessRetentionDays *int32                                              `json:"InstantAccessRetentionDays,omitempty" xml:"InstantAccessRetentionDays,omitempty"`
+	KMSKeyId                   *string                                             `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	LastModifiedTime           *string                                             `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	ProductCode                *string                                             `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Progress                   *string                                             `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	RemainTime                 *int32                                              `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	ResourceGroupId            *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RetentionDays              *int32                                              `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	SnapshotId                 *string                                             `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotName               *string                                             `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	SnapshotSN                 *string                                             `json:"SnapshotSN,omitempty" xml:"SnapshotSN,omitempty"`
+	SnapshotType               *string                                             `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
+	SourceDiskId               *string                                             `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty"`
+	SourceDiskSize             *string                                             `json:"SourceDiskSize,omitempty" xml:"SourceDiskSize,omitempty"`
+	SourceDiskType             *string                                             `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
+	SourceRegionId             *string                                             `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	SourceSnapshotId           *string                                             `json:"SourceSnapshotId,omitempty" xml:"SourceSnapshotId,omitempty"`
+	SourceStorageType          *string                                             `json:"SourceStorageType,omitempty" xml:"SourceStorageType,omitempty"`
+	Status                     *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                       *DescribeSnapshotsResponseBodySnapshotsSnapshotTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Usage                      *string                                             `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s DescribeSnapshotsResponseBodySnapshotsSnapshot) String() string {
@@ -50866,6 +52176,8 @@ func (s *InstallCloudAssistantResponse) SetBody(v *InstallCloudAssistantResponse
 
 type InvokeCommandRequest struct {
 	CommandId            *string                `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
+	ContainerId          *string                `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	ContainerName        *string                `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
 	Frequency            *string                `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	InstanceId           []*string              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	OwnerAccount         *string                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -50890,6 +52202,16 @@ func (s InvokeCommandRequest) GoString() string {
 
 func (s *InvokeCommandRequest) SetCommandId(v string) *InvokeCommandRequest {
 	s.CommandId = &v
+	return s
+}
+
+func (s *InvokeCommandRequest) SetContainerId(v string) *InvokeCommandRequest {
+	s.ContainerId = &v
+	return s
+}
+
+func (s *InvokeCommandRequest) SetContainerName(v string) *InvokeCommandRequest {
+	s.ContainerName = &v
 	return s
 }
 
@@ -50955,6 +52277,8 @@ func (s *InvokeCommandRequest) SetWindowsPasswordName(v string) *InvokeCommandRe
 
 type InvokeCommandShrinkRequest struct {
 	CommandId            *string   `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
+	ContainerId          *string   `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	ContainerName        *string   `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
 	Frequency            *string   `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	InstanceId           []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -50979,6 +52303,16 @@ func (s InvokeCommandShrinkRequest) GoString() string {
 
 func (s *InvokeCommandShrinkRequest) SetCommandId(v string) *InvokeCommandShrinkRequest {
 	s.CommandId = &v
+	return s
+}
+
+func (s *InvokeCommandShrinkRequest) SetContainerId(v string) *InvokeCommandShrinkRequest {
+	s.ContainerId = &v
+	return s
+}
+
+func (s *InvokeCommandShrinkRequest) SetContainerName(v string) *InvokeCommandShrinkRequest {
+	s.ContainerName = &v
 	return s
 }
 
@@ -51405,6 +52739,239 @@ func (s *LeaveSecurityGroupResponse) SetStatusCode(v int32) *LeaveSecurityGroupR
 }
 
 func (s *LeaveSecurityGroupResponse) SetBody(v *LeaveSecurityGroupResponseBody) *LeaveSecurityGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ListPluginStatusRequest struct {
+	InstanceId           []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int64    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListPluginStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginStatusRequest) SetInstanceId(v []*string) *ListPluginStatusRequest {
+	s.InstanceId = v
+	return s
+}
+
+func (s *ListPluginStatusRequest) SetName(v string) *ListPluginStatusRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListPluginStatusRequest) SetOwnerAccount(v string) *ListPluginStatusRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListPluginStatusRequest) SetOwnerId(v int64) *ListPluginStatusRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListPluginStatusRequest) SetPageNumber(v int64) *ListPluginStatusRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPluginStatusRequest) SetPageSize(v int64) *ListPluginStatusRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPluginStatusRequest) SetRegionId(v string) *ListPluginStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListPluginStatusRequest) SetResourceOwnerAccount(v string) *ListPluginStatusRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListPluginStatusRequest) SetResourceOwnerId(v int64) *ListPluginStatusRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListPluginStatusResponseBody struct {
+	InstancePluginStatusSet *ListPluginStatusResponseBodyInstancePluginStatusSet `json:"InstancePluginStatusSet,omitempty" xml:"InstancePluginStatusSet,omitempty" type:"Struct"`
+	PageNumber              *int64                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                *int64                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId               *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount              *int64                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListPluginStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginStatusResponseBody) SetInstancePluginStatusSet(v *ListPluginStatusResponseBodyInstancePluginStatusSet) *ListPluginStatusResponseBody {
+	s.InstancePluginStatusSet = v
+	return s
+}
+
+func (s *ListPluginStatusResponseBody) SetPageNumber(v int64) *ListPluginStatusResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPluginStatusResponseBody) SetPageSize(v int64) *ListPluginStatusResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPluginStatusResponseBody) SetRequestId(v string) *ListPluginStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPluginStatusResponseBody) SetTotalCount(v int64) *ListPluginStatusResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListPluginStatusResponseBodyInstancePluginStatusSet struct {
+	InstancePluginStatus []*ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatus `json:"InstancePluginStatus,omitempty" xml:"InstancePluginStatus,omitempty" type:"Repeated"`
+}
+
+func (s ListPluginStatusResponseBodyInstancePluginStatusSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginStatusResponseBodyInstancePluginStatusSet) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginStatusResponseBodyInstancePluginStatusSet) SetInstancePluginStatus(v []*ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatus) *ListPluginStatusResponseBodyInstancePluginStatusSet {
+	s.InstancePluginStatus = v
+	return s
+}
+
+type ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatus struct {
+	InstanceId      *string                                                                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PluginStatusSet *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSet `json:"PluginStatusSet,omitempty" xml:"PluginStatusSet,omitempty" type:"Struct"`
+}
+
+func (s ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatus) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatus) SetInstanceId(v string) *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatus {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatus) SetPluginStatusSet(v *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSet) *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatus {
+	s.PluginStatusSet = v
+	return s
+}
+
+type ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSet struct {
+	PluginStatus []*ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus `json:"PluginStatus,omitempty" xml:"PluginStatus,omitempty" type:"Repeated"`
+}
+
+func (s ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSet) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSet) SetPluginStatus(v []*ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus) *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSet {
+	s.PluginStatus = v
+	return s
+}
+
+type ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus struct {
+	FirstHeartbeatTime *string `json:"FirstHeartbeatTime,omitempty" xml:"FirstHeartbeatTime,omitempty"`
+	LastHeartbeatTime  *string `json:"LastHeartbeatTime,omitempty" xml:"LastHeartbeatTime,omitempty"`
+	PluginName         *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
+	PluginStatus       *string `json:"PluginStatus,omitempty" xml:"PluginStatus,omitempty"`
+	PluginVersion      *string `json:"PluginVersion,omitempty" xml:"PluginVersion,omitempty"`
+}
+
+func (s ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus) SetFirstHeartbeatTime(v string) *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus {
+	s.FirstHeartbeatTime = &v
+	return s
+}
+
+func (s *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus) SetLastHeartbeatTime(v string) *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus {
+	s.LastHeartbeatTime = &v
+	return s
+}
+
+func (s *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus) SetPluginName(v string) *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus {
+	s.PluginName = &v
+	return s
+}
+
+func (s *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus) SetPluginStatus(v string) *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus {
+	s.PluginStatus = &v
+	return s
+}
+
+func (s *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus) SetPluginVersion(v string) *ListPluginStatusResponseBodyInstancePluginStatusSetInstancePluginStatusPluginStatusSetPluginStatus {
+	s.PluginVersion = &v
+	return s
+}
+
+type ListPluginStatusResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPluginStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPluginStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginStatusResponse) SetHeaders(v map[string]*string) *ListPluginStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPluginStatusResponse) SetStatusCode(v int32) *ListPluginStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPluginStatusResponse) SetBody(v *ListPluginStatusResponseBody) *ListPluginStatusResponse {
 	s.Body = v
 	return s
 }
@@ -53398,6 +54965,99 @@ func (s *ModifyDeploymentSetAttributeResponse) SetBody(v *ModifyDeploymentSetAtt
 	return s
 }
 
+type ModifyDiagnosticMetricSetRequest struct {
+	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	MetricIds     []*string `json:"MetricIds,omitempty" xml:"MetricIds,omitempty" type:"Repeated"`
+	MetricSetId   *string   `json:"MetricSetId,omitempty" xml:"MetricSetId,omitempty"`
+	MetricSetName *string   `json:"MetricSetName,omitempty" xml:"MetricSetName,omitempty"`
+	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType  *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ModifyDiagnosticMetricSetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDiagnosticMetricSetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDiagnosticMetricSetRequest) SetDescription(v string) *ModifyDiagnosticMetricSetRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyDiagnosticMetricSetRequest) SetMetricIds(v []*string) *ModifyDiagnosticMetricSetRequest {
+	s.MetricIds = v
+	return s
+}
+
+func (s *ModifyDiagnosticMetricSetRequest) SetMetricSetId(v string) *ModifyDiagnosticMetricSetRequest {
+	s.MetricSetId = &v
+	return s
+}
+
+func (s *ModifyDiagnosticMetricSetRequest) SetMetricSetName(v string) *ModifyDiagnosticMetricSetRequest {
+	s.MetricSetName = &v
+	return s
+}
+
+func (s *ModifyDiagnosticMetricSetRequest) SetRegionId(v string) *ModifyDiagnosticMetricSetRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDiagnosticMetricSetRequest) SetResourceType(v string) *ModifyDiagnosticMetricSetRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ModifyDiagnosticMetricSetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDiagnosticMetricSetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDiagnosticMetricSetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDiagnosticMetricSetResponseBody) SetRequestId(v string) *ModifyDiagnosticMetricSetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDiagnosticMetricSetResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDiagnosticMetricSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDiagnosticMetricSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDiagnosticMetricSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDiagnosticMetricSetResponse) SetHeaders(v map[string]*string) *ModifyDiagnosticMetricSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDiagnosticMetricSetResponse) SetStatusCode(v int32) *ModifyDiagnosticMetricSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDiagnosticMetricSetResponse) SetBody(v *ModifyDiagnosticMetricSetResponseBody) *ModifyDiagnosticMetricSetResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDiskAttributeRequest struct {
 	BurstingEnabled      *bool     `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	DeleteAutoSnapshot   *bool     `json:"DeleteAutoSnapshot,omitempty" xml:"DeleteAutoSnapshot,omitempty"`
@@ -54603,9 +56263,8 @@ func (s *ModifyImageShareGroupPermissionResponse) SetBody(v *ModifyImageShareGro
 }
 
 type ModifyImageSharePermissionRequest struct {
-	AddAccount []*string `json:"AddAccount,omitempty" xml:"AddAccount,omitempty" type:"Repeated"`
-	ImageId    *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// 发布为社区镜像
+	AddAccount           []*string `json:"AddAccount,omitempty" xml:"AddAccount,omitempty" type:"Repeated"`
+	ImageId              *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	IsPublic             *bool     `json:"IsPublic,omitempty" xml:"IsPublic,omitempty"`
 	LaunchPermission     *string   `json:"LaunchPermission,omitempty" xml:"LaunchPermission,omitempty"`
 	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -61353,6 +63012,146 @@ func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInst
 	return s
 }
 
+type RenewReservedInstancesRequest struct {
+	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Period               *int32    `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit           *string   `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReservedInstanceId   []*string `json:"ReservedInstanceId,omitempty" xml:"ReservedInstanceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s RenewReservedInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewReservedInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenewReservedInstancesRequest) SetClientToken(v string) *RenewReservedInstancesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RenewReservedInstancesRequest) SetOwnerAccount(v string) *RenewReservedInstancesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *RenewReservedInstancesRequest) SetOwnerId(v int64) *RenewReservedInstancesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RenewReservedInstancesRequest) SetPeriod(v int32) *RenewReservedInstancesRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *RenewReservedInstancesRequest) SetPeriodUnit(v string) *RenewReservedInstancesRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *RenewReservedInstancesRequest) SetRegionId(v string) *RenewReservedInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RenewReservedInstancesRequest) SetReservedInstanceId(v []*string) *RenewReservedInstancesRequest {
+	s.ReservedInstanceId = v
+	return s
+}
+
+func (s *RenewReservedInstancesRequest) SetResourceOwnerAccount(v string) *RenewReservedInstancesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RenewReservedInstancesRequest) SetResourceOwnerId(v int64) *RenewReservedInstancesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type RenewReservedInstancesResponseBody struct {
+	OrderId                *string                                                   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId              *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ReservedInstanceIdSets *RenewReservedInstancesResponseBodyReservedInstanceIdSets `json:"ReservedInstanceIdSets,omitempty" xml:"ReservedInstanceIdSets,omitempty" type:"Struct"`
+}
+
+func (s RenewReservedInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewReservedInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenewReservedInstancesResponseBody) SetOrderId(v string) *RenewReservedInstancesResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *RenewReservedInstancesResponseBody) SetRequestId(v string) *RenewReservedInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RenewReservedInstancesResponseBody) SetReservedInstanceIdSets(v *RenewReservedInstancesResponseBodyReservedInstanceIdSets) *RenewReservedInstancesResponseBody {
+	s.ReservedInstanceIdSets = v
+	return s
+}
+
+type RenewReservedInstancesResponseBodyReservedInstanceIdSets struct {
+	ReservedInstanceId []*string `json:"ReservedInstanceId,omitempty" xml:"ReservedInstanceId,omitempty" type:"Repeated"`
+}
+
+func (s RenewReservedInstancesResponseBodyReservedInstanceIdSets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewReservedInstancesResponseBodyReservedInstanceIdSets) GoString() string {
+	return s.String()
+}
+
+func (s *RenewReservedInstancesResponseBodyReservedInstanceIdSets) SetReservedInstanceId(v []*string) *RenewReservedInstancesResponseBodyReservedInstanceIdSets {
+	s.ReservedInstanceId = v
+	return s
+}
+
+type RenewReservedInstancesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RenewReservedInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RenewReservedInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewReservedInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenewReservedInstancesResponse) SetHeaders(v map[string]*string) *RenewReservedInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenewReservedInstancesResponse) SetStatusCode(v int32) *RenewReservedInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RenewReservedInstancesResponse) SetBody(v *RenewReservedInstancesResponseBody) *RenewReservedInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type ReplaceSystemDiskRequest struct {
 	SystemDisk                  *ReplaceSystemDiskRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	Architecture                *string                             `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
@@ -62687,27 +64486,30 @@ func (s *RevokeSecurityGroupEgressResponse) SetBody(v *RevokeSecurityGroupEgress
 }
 
 type RunCommandRequest struct {
-	CommandContent       *string                `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	ContentEncoding      *string                `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	Description          *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableParameter      *bool                  `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
-	Frequency            *string                `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	InstanceId           []*string              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	KeepCommand          *bool                  `json:"KeepCommand,omitempty" xml:"KeepCommand,omitempty"`
-	Name                 *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerAccount         *string                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Parameters           map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	RegionId             *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RepeatMode           *string                `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
-	ResourceOwnerAccount *string                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Timed                *bool                  `json:"Timed,omitempty" xml:"Timed,omitempty"`
-	Timeout              *int64                 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Type                 *string                `json:"Type,omitempty" xml:"Type,omitempty"`
-	Username             *string                `json:"Username,omitempty" xml:"Username,omitempty"`
-	WindowsPasswordName  *string                `json:"WindowsPasswordName,omitempty" xml:"WindowsPasswordName,omitempty"`
-	WorkingDir           *string                `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	CommandContent       *string                 `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	ContainerId          *string                 `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	ContainerName        *string                 `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	ContentEncoding      *string                 `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	Description          *string                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableParameter      *bool                   `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
+	Frequency            *string                 `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	InstanceId           []*string               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	KeepCommand          *bool                   `json:"KeepCommand,omitempty" xml:"KeepCommand,omitempty"`
+	Name                 *string                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerAccount         *string                 `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Parameters           map[string]interface{}  `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	RegionId             *string                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepeatMode           *string                 `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	ResourceOwnerAccount *string                 `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                  []*RunCommandRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Timed                *bool                   `json:"Timed,omitempty" xml:"Timed,omitempty"`
+	Timeout              *int64                  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Type                 *string                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	Username             *string                 `json:"Username,omitempty" xml:"Username,omitempty"`
+	WindowsPasswordName  *string                 `json:"WindowsPasswordName,omitempty" xml:"WindowsPasswordName,omitempty"`
+	WorkingDir           *string                 `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s RunCommandRequest) String() string {
@@ -62720,6 +64522,16 @@ func (s RunCommandRequest) GoString() string {
 
 func (s *RunCommandRequest) SetCommandContent(v string) *RunCommandRequest {
 	s.CommandContent = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetContainerId(v string) *RunCommandRequest {
+	s.ContainerId = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetContainerName(v string) *RunCommandRequest {
+	s.ContainerName = &v
 	return s
 }
 
@@ -62793,6 +64605,11 @@ func (s *RunCommandRequest) SetResourceOwnerId(v int64) *RunCommandRequest {
 	return s
 }
 
+func (s *RunCommandRequest) SetTag(v []*RunCommandRequestTag) *RunCommandRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *RunCommandRequest) SetTimed(v bool) *RunCommandRequest {
 	s.Timed = &v
 	return s
@@ -62823,28 +64640,54 @@ func (s *RunCommandRequest) SetWorkingDir(v string) *RunCommandRequest {
 	return s
 }
 
+type RunCommandRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s RunCommandRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCommandRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *RunCommandRequestTag) SetKey(v string) *RunCommandRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *RunCommandRequestTag) SetValue(v string) *RunCommandRequestTag {
+	s.Value = &v
+	return s
+}
+
 type RunCommandShrinkRequest struct {
-	CommandContent       *string   `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	ContentEncoding      *string   `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableParameter      *bool     `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
-	Frequency            *string   `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	InstanceId           []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	KeepCommand          *bool     `json:"KeepCommand,omitempty" xml:"KeepCommand,omitempty"`
-	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ParametersShrink     *string   `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RepeatMode           *string   `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Timed                *bool     `json:"Timed,omitempty" xml:"Timed,omitempty"`
-	Timeout              *int64    `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Type                 *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	Username             *string   `json:"Username,omitempty" xml:"Username,omitempty"`
-	WindowsPasswordName  *string   `json:"WindowsPasswordName,omitempty" xml:"WindowsPasswordName,omitempty"`
-	WorkingDir           *string   `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	CommandContent       *string                       `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	ContainerId          *string                       `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	ContainerName        *string                       `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	ContentEncoding      *string                       `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	Description          *string                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableParameter      *bool                         `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
+	Frequency            *string                       `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	InstanceId           []*string                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	KeepCommand          *bool                         `json:"KeepCommand,omitempty" xml:"KeepCommand,omitempty"`
+	Name                 *string                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerAccount         *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ParametersShrink     *string                       `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	RegionId             *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepeatMode           *string                       `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                  []*RunCommandShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Timed                *bool                         `json:"Timed,omitempty" xml:"Timed,omitempty"`
+	Timeout              *int64                        `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Type                 *string                       `json:"Type,omitempty" xml:"Type,omitempty"`
+	Username             *string                       `json:"Username,omitempty" xml:"Username,omitempty"`
+	WindowsPasswordName  *string                       `json:"WindowsPasswordName,omitempty" xml:"WindowsPasswordName,omitempty"`
+	WorkingDir           *string                       `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s RunCommandShrinkRequest) String() string {
@@ -62857,6 +64700,16 @@ func (s RunCommandShrinkRequest) GoString() string {
 
 func (s *RunCommandShrinkRequest) SetCommandContent(v string) *RunCommandShrinkRequest {
 	s.CommandContent = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetContainerId(v string) *RunCommandShrinkRequest {
+	s.ContainerId = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequest) SetContainerName(v string) *RunCommandShrinkRequest {
+	s.ContainerName = &v
 	return s
 }
 
@@ -62930,6 +64783,11 @@ func (s *RunCommandShrinkRequest) SetResourceOwnerId(v int64) *RunCommandShrinkR
 	return s
 }
 
+func (s *RunCommandShrinkRequest) SetTag(v []*RunCommandShrinkRequestTag) *RunCommandShrinkRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *RunCommandShrinkRequest) SetTimed(v bool) *RunCommandShrinkRequest {
 	s.Timed = &v
 	return s
@@ -62957,6 +64815,29 @@ func (s *RunCommandShrinkRequest) SetWindowsPasswordName(v string) *RunCommandSh
 
 func (s *RunCommandShrinkRequest) SetWorkingDir(v string) *RunCommandShrinkRequest {
 	s.WorkingDir = &v
+	return s
+}
+
+type RunCommandShrinkRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s RunCommandShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCommandShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *RunCommandShrinkRequestTag) SetKey(v string) *RunCommandShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *RunCommandShrinkRequestTag) SetValue(v string) *RunCommandShrinkRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -68502,6 +70383,10 @@ func (client *Client) CreateAutoProvisioningGroupWithOptions(request *CreateAuto
 		query["ExcessCapacityTerminationPolicy"] = request.ExcessCapacityTerminationPolicy
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HibernationOptionsConfigured)) {
+		query["HibernationOptionsConfigured"] = request.HibernationOptionsConfigured
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LaunchTemplateConfig)) {
 		query["LaunchTemplateConfig"] = request.LaunchTemplateConfig
 	}
@@ -69308,6 +71193,126 @@ func (client *Client) CreateDeploymentSet(request *CreateDeploymentSetRequest) (
 	return _result, _err
 }
 
+func (client *Client) CreateDiagnosticMetricSetWithOptions(request *CreateDiagnosticMetricSetRequest, runtime *util.RuntimeOptions) (_result *CreateDiagnosticMetricSetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricIds)) {
+		query["MetricIds"] = request.MetricIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricSetName)) {
+		query["MetricSetName"] = request.MetricSetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDiagnosticMetricSet"),
+		Version:     tea.String("2014-05-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDiagnosticMetricSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDiagnosticMetricSet(request *CreateDiagnosticMetricSetRequest) (_result *CreateDiagnosticMetricSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDiagnosticMetricSetResponse{}
+	_body, _err := client.CreateDiagnosticMetricSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDiagnosticReportWithOptions(request *CreateDiagnosticReportRequest, runtime *util.RuntimeOptions) (_result *CreateDiagnosticReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricSetId)) {
+		query["MetricSetId"] = request.MetricSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDiagnosticReport"),
+		Version:     tea.String("2014-05-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDiagnosticReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDiagnosticReport(request *CreateDiagnosticReportRequest) (_result *CreateDiagnosticReportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDiagnosticReportResponse{}
+	_body, _err := client.CreateDiagnosticReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDiskWithOptions(request *CreateDiskRequest, runtime *util.RuntimeOptions) (_result *CreateDiskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69812,6 +71817,10 @@ func (client *Client) CreateImageWithOptions(request *CreateImageRequest, runtim
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Architecture)) {
 		query["Architecture"] = request.Architecture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BootMode)) {
+		query["BootMode"] = request.BootMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
@@ -72968,6 +74977,102 @@ func (client *Client) DeleteDeploymentSet(request *DeleteDeploymentSetRequest) (
 	return _result, _err
 }
 
+func (client *Client) DeleteDiagnosticMetricSetsWithOptions(request *DeleteDiagnosticMetricSetsRequest, runtime *util.RuntimeOptions) (_result *DeleteDiagnosticMetricSetsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MetricSetIds)) {
+		query["MetricSetIds"] = request.MetricSetIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDiagnosticMetricSets"),
+		Version:     tea.String("2014-05-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDiagnosticMetricSetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDiagnosticMetricSets(request *DeleteDiagnosticMetricSetsRequest) (_result *DeleteDiagnosticMetricSetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDiagnosticMetricSetsResponse{}
+	_body, _err := client.DeleteDiagnosticMetricSetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDiagnosticReportsWithOptions(request *DeleteDiagnosticReportsRequest, runtime *util.RuntimeOptions) (_result *DeleteDiagnosticReportsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportIds)) {
+		query["ReportIds"] = request.ReportIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDiagnosticReports"),
+		Version:     tea.String("2014-05-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDiagnosticReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDiagnosticReports(request *DeleteDiagnosticReportsRequest) (_result *DeleteDiagnosticReportsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDiagnosticReportsResponse{}
+	_body, _err := client.DeleteDiagnosticReportsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteDiskWithOptions(request *DeleteDiskRequest, runtime *util.RuntimeOptions) (_result *DeleteDiskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73338,10 +75443,6 @@ func (client *Client) DeleteImageComponentWithOptions(request *DeleteImageCompon
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TemplateTag)) {
-		query["TemplateTag"] = request.TemplateTag
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -73408,10 +75509,6 @@ func (client *Client) DeleteImagePipelineWithOptions(request *DeleteImagePipelin
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TemplateTag)) {
-		query["TemplateTag"] = request.TemplateTag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -76066,6 +78163,10 @@ func (client *Client) DescribeCommandsWithOptions(request *DescribeCommandsReque
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["Type"] = request.Type
 	}
@@ -76773,6 +78874,198 @@ func (client *Client) DescribeDeploymentSets(request *DescribeDeploymentSetsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDeploymentSetsResponse{}
 	_body, _err := client.DescribeDeploymentSetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDiagnosticMetricSetsWithOptions(request *DescribeDiagnosticMetricSetsRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosticMetricSetsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricSetIds)) {
+		query["MetricSetIds"] = request.MetricSetIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiagnosticMetricSets"),
+		Version:     tea.String("2014-05-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDiagnosticMetricSetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDiagnosticMetricSets(request *DescribeDiagnosticMetricSetsRequest) (_result *DescribeDiagnosticMetricSetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDiagnosticMetricSetsResponse{}
+	_body, _err := client.DescribeDiagnosticMetricSetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDiagnosticMetricsWithOptions(request *DescribeDiagnosticMetricsRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosticMetricsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricIds)) {
+		query["MetricIds"] = request.MetricIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiagnosticMetrics"),
+		Version:     tea.String("2014-05-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDiagnosticMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDiagnosticMetrics(request *DescribeDiagnosticMetricsRequest) (_result *DescribeDiagnosticMetricsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDiagnosticMetricsResponse{}
+	_body, _err := client.DescribeDiagnosticMetricsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDiagnosticReportsWithOptions(request *DescribeDiagnosticReportsRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosticReportsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportIds)) {
+		query["ReportIds"] = request.ReportIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		query["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Severity)) {
+		query["Severity"] = request.Severity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiagnosticReports"),
+		Version:     tea.String("2014-05-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDiagnosticReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDiagnosticReports(request *DescribeDiagnosticReportsRequest) (_result *DescribeDiagnosticReportsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDiagnosticReportsResponse{}
+	_body, _err := client.DescribeDiagnosticReportsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -79254,6 +81547,22 @@ func (client *Client) DescribeInstanceTypesWithOptions(request *DescribeInstance
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CpuArchitecture)) {
+		query["CpuArchitecture"] = request.CpuArchitecture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GPUSpec)) {
+		query["GPUSpec"] = request.GPUSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceCategory)) {
+		query["InstanceCategory"] = request.InstanceCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceFamilyLevel)) {
+		query["InstanceFamilyLevel"] = request.InstanceFamilyLevel
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceTypeFamily)) {
 		query["InstanceTypeFamily"] = request.InstanceTypeFamily
 	}
@@ -79262,12 +81571,124 @@ func (client *Client) DescribeInstanceTypesWithOptions(request *DescribeInstance
 		query["InstanceTypes"] = request.InstanceTypes
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LocalStorageCategory)) {
+		query["LocalStorageCategory"] = request.LocalStorageCategory
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MaximumCpuCoreCount)) {
+		query["MaximumCpuCoreCount"] = request.MaximumCpuCoreCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumCpuSpeedFrequency)) {
+		query["MaximumCpuSpeedFrequency"] = request.MaximumCpuSpeedFrequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumCpuTurboFrequency)) {
+		query["MaximumCpuTurboFrequency"] = request.MaximumCpuTurboFrequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumGPUAmount)) {
+		query["MaximumGPUAmount"] = request.MaximumGPUAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaximumMemorySize)) {
+		query["MaximumMemorySize"] = request.MaximumMemorySize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumBaselineCredit)) {
+		query["MinimumBaselineCredit"] = request.MinimumBaselineCredit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumCpuCoreCount)) {
+		query["MinimumCpuCoreCount"] = request.MinimumCpuCoreCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumCpuSpeedFrequency)) {
+		query["MinimumCpuSpeedFrequency"] = request.MinimumCpuSpeedFrequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumCpuTurboFrequency)) {
+		query["MinimumCpuTurboFrequency"] = request.MinimumCpuTurboFrequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumDiskQuantity)) {
+		query["MinimumDiskQuantity"] = request.MinimumDiskQuantity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumEniIpv6AddressQuantity)) {
+		query["MinimumEniIpv6AddressQuantity"] = request.MinimumEniIpv6AddressQuantity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumEniPrivateIpAddressQuantity)) {
+		query["MinimumEniPrivateIpAddressQuantity"] = request.MinimumEniPrivateIpAddressQuantity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumEniQuantity)) {
+		query["MinimumEniQuantity"] = request.MinimumEniQuantity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumEriQuantity)) {
+		query["MinimumEriQuantity"] = request.MinimumEriQuantity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumGPUAmount)) {
+		query["MinimumGPUAmount"] = request.MinimumGPUAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumInitialCredit)) {
+		query["MinimumInitialCredit"] = request.MinimumInitialCredit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumInstanceBandwidthRx)) {
+		query["MinimumInstanceBandwidthRx"] = request.MinimumInstanceBandwidthRx
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumInstanceBandwidthTx)) {
+		query["MinimumInstanceBandwidthTx"] = request.MinimumInstanceBandwidthTx
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumInstancePpsRx)) {
+		query["MinimumInstancePpsRx"] = request.MinimumInstancePpsRx
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumInstancePpsTx)) {
+		query["MinimumInstancePpsTx"] = request.MinimumInstancePpsTx
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumLocalStorageAmount)) {
+		query["MinimumLocalStorageAmount"] = request.MinimumLocalStorageAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumLocalStorageCapacity)) {
+		query["MinimumLocalStorageCapacity"] = request.MinimumLocalStorageCapacity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumMemorySize)) {
+		query["MinimumMemorySize"] = request.MinimumMemorySize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumPrimaryEniQueueNumber)) {
+		query["MinimumPrimaryEniQueueNumber"] = request.MinimumPrimaryEniQueueNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumQueuePairNumber)) {
+		query["MinimumQueuePairNumber"] = request.MinimumQueuePairNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumSecondaryEniQueueNumber)) {
+		query["MinimumSecondaryEniQueueNumber"] = request.MinimumSecondaryEniQueueNumber
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NvmeSupport)) {
+		query["NvmeSupport"] = request.NvmeSupport
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -79276,6 +81697,10 @@ func (client *Client) DescribeInstanceTypesWithOptions(request *DescribeInstance
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhysicalProcessorModel)) {
+		query["PhysicalProcessorModel"] = request.PhysicalProcessorModel
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -79822,6 +82247,10 @@ func (client *Client) DescribeInvocationResultsWithOptions(request *DescribeInvo
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -79928,6 +82357,10 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Timed)) {
@@ -81804,6 +84237,10 @@ func (client *Client) DescribeResourcesModificationWithOptions(request *Describe
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -85420,6 +87857,14 @@ func (client *Client) InvokeCommandWithOptions(tmpReq *InvokeCommandRequest, run
 		query["CommandId"] = request.CommandId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ContainerId)) {
+		query["ContainerId"] = request.ContainerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerName)) {
+		query["ContainerName"] = request.ContainerName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Frequency)) {
 		query["Frequency"] = request.Frequency
 	}
@@ -85715,6 +88160,86 @@ func (client *Client) LeaveSecurityGroup(request *LeaveSecurityGroupRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &LeaveSecurityGroupResponse{}
 	_body, _err := client.LeaveSecurityGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPluginStatusWithOptions(request *ListPluginStatusRequest, runtime *util.RuntimeOptions) (_result *ListPluginStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPluginStatus"),
+		Version:     tea.String("2014-05-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPluginStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPluginStatus(request *ListPluginStatusRequest) (_result *ListPluginStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPluginStatusResponse{}
+	_body, _err := client.ListPluginStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -86907,6 +89432,70 @@ func (client *Client) ModifyDeploymentSetAttribute(request *ModifyDeploymentSetA
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDeploymentSetAttributeResponse{}
 	_body, _err := client.ModifyDeploymentSetAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDiagnosticMetricSetWithOptions(request *ModifyDiagnosticMetricSetRequest, runtime *util.RuntimeOptions) (_result *ModifyDiagnosticMetricSetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricIds)) {
+		query["MetricIds"] = request.MetricIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricSetId)) {
+		query["MetricSetId"] = request.MetricSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricSetName)) {
+		query["MetricSetName"] = request.MetricSetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDiagnosticMetricSet"),
+		Version:     tea.String("2014-05-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDiagnosticMetricSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDiagnosticMetricSet(request *ModifyDiagnosticMetricSetRequest) (_result *ModifyDiagnosticMetricSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDiagnosticMetricSetResponse{}
+	_body, _err := client.ModifyDiagnosticMetricSetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -91950,6 +94539,82 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 	return _result, _err
 }
 
+func (client *Client) RenewReservedInstancesWithOptions(request *RenewReservedInstancesRequest, runtime *util.RuntimeOptions) (_result *RenewReservedInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReservedInstanceId)) {
+		query["ReservedInstanceId"] = request.ReservedInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewReservedInstances"),
+		Version:     tea.String("2014-05-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RenewReservedInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RenewReservedInstances(request *RenewReservedInstancesRequest) (_result *RenewReservedInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RenewReservedInstancesResponse{}
+	_body, _err := client.RenewReservedInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ReplaceSystemDiskWithOptions(request *ReplaceSystemDiskRequest, runtime *util.RuntimeOptions) (_result *ReplaceSystemDiskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -92666,6 +95331,14 @@ func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *
 		query["CommandContent"] = request.CommandContent
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ContainerId)) {
+		query["ContainerId"] = request.ContainerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerName)) {
+		query["ContainerName"] = request.ContainerName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ContentEncoding)) {
 		query["ContentEncoding"] = request.ContentEncoding
 	}
@@ -92724,6 +95397,10 @@ func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Timed)) {
