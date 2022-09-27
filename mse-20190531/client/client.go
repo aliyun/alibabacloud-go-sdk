@@ -25186,10 +25186,11 @@ func (s *UpdateClusterRequest) SetRequestPars(v string) *UpdateClusterRequest {
 }
 
 type UpdateClusterResponseBody struct {
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateClusterResponseBody) String() string {
@@ -25202,6 +25203,11 @@ func (s UpdateClusterResponseBody) GoString() string {
 
 func (s *UpdateClusterResponseBody) SetErrorCode(v string) *UpdateClusterResponseBody {
 	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateClusterResponseBody) SetHttpStatusCode(v string) *UpdateClusterResponseBody {
+	s.HttpStatusCode = &v
 	return s
 }
 
