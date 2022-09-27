@@ -1328,7 +1328,6 @@ type DescribeAddressBookRequest struct {
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Query       *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeAddressBookRequest) String() string {
@@ -1366,11 +1365,6 @@ func (s *DescribeAddressBookRequest) SetPageSize(v string) *DescribeAddressBookR
 
 func (s *DescribeAddressBookRequest) SetQuery(v string) *DescribeAddressBookRequest {
 	s.Query = &v
-	return s
-}
-
-func (s *DescribeAddressBookRequest) SetSourceIp(v string) *DescribeAddressBookRequest {
-	s.SourceIp = &v
 	return s
 }
 
@@ -1548,7 +1542,6 @@ type DescribeAssetListRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SearchItem   *string `json:"SearchItem,omitempty" xml:"SearchItem,omitempty"`
 	SgStatus     *string `json:"SgStatus,omitempty" xml:"SgStatus,omitempty"`
-	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	UserType     *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
@@ -1604,11 +1597,6 @@ func (s *DescribeAssetListRequest) SetSearchItem(v string) *DescribeAssetListReq
 
 func (s *DescribeAssetListRequest) SetSgStatus(v string) *DescribeAssetListRequest {
 	s.SgStatus = &v
-	return s
-}
-
-func (s *DescribeAssetListRequest) SetSourceIp(v string) *DescribeAssetListRequest {
-	s.SourceIp = &v
 	return s
 }
 
@@ -1823,7 +1811,6 @@ type DescribeControlPolicyRequest struct {
 	Proto       *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
 	Release     *string `json:"Release,omitempty" xml:"Release,omitempty"`
 	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeControlPolicyRequest) String() string {
@@ -1891,11 +1878,6 @@ func (s *DescribeControlPolicyRequest) SetRelease(v string) *DescribeControlPoli
 
 func (s *DescribeControlPolicyRequest) SetSource(v string) *DescribeControlPolicyRequest {
 	s.Source = &v
-	return s
-}
-
-func (s *DescribeControlPolicyRequest) SetSourceIp(v string) *DescribeControlPolicyRequest {
-	s.SourceIp = &v
 	return s
 }
 
@@ -8645,10 +8627,6 @@ func (client *Client) DescribeAddressBookWithOptions(request *DescribeAddressBoo
 		query["Query"] = request.Query
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
-		query["SourceIp"] = request.SourceIp
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8723,10 +8701,6 @@ func (client *Client) DescribeAssetListWithOptions(request *DescribeAssetListReq
 
 	if !tea.BoolValue(util.IsUnset(request.SgStatus)) {
 		query["SgStatus"] = request.SgStatus
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
-		query["SourceIp"] = request.SourceIp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
@@ -8831,10 +8805,6 @@ func (client *Client) DescribeControlPolicyWithOptions(request *DescribeControlP
 
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
-		query["SourceIp"] = request.SourceIp
 	}
 
 	req := &openapi.OpenApiRequest{
