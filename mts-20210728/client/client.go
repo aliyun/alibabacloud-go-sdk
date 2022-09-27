@@ -1039,6 +1039,7 @@ type SubmitImageCopyrightRequest struct {
 	Level   *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Output  *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Params  *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	Url     *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -1067,6 +1068,11 @@ func (s *SubmitImageCopyrightRequest) SetMessage(v string) *SubmitImageCopyright
 
 func (s *SubmitImageCopyrightRequest) SetOutput(v string) *SubmitImageCopyrightRequest {
 	s.Output = &v
+	return s
+}
+
+func (s *SubmitImageCopyrightRequest) SetParams(v string) *SubmitImageCopyrightRequest {
+	s.Params = &v
 	return s
 }
 
@@ -2091,6 +2097,10 @@ func (client *Client) SubmitImageCopyrightWithOptions(request *SubmitImageCopyri
 
 	if !tea.BoolValue(util.IsUnset(request.Output)) {
 		body["Output"] = request.Output
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
