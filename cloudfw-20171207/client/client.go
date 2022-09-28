@@ -2747,17 +2747,18 @@ func (s *DescribeInvadeEventListResponse) SetBody(v *DescribeInvadeEventListResp
 }
 
 type DescribeOutgoingDestinationIPRequest struct {
-	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DstIP       *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Port        *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	PrivateIP   *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
-	PublicIP    *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	CurrentPage     *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DstIP           *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Order           *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	PrivateIP       *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	PublicIP        *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	Sort            *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeOutgoingDestinationIPRequest) String() string {
@@ -2766,6 +2767,11 @@ func (s DescribeOutgoingDestinationIPRequest) String() string {
 
 func (s DescribeOutgoingDestinationIPRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetApplicationName(v string) *DescribeOutgoingDestinationIPRequest {
+	s.ApplicationName = &v
+	return s
 }
 
 func (s *DescribeOutgoingDestinationIPRequest) SetCurrentPage(v string) *DescribeOutgoingDestinationIPRequest {
@@ -9166,6 +9172,10 @@ func (client *Client) DescribeOutgoingDestinationIPWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationName)) {
+		query["ApplicationName"] = request.ApplicationName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
