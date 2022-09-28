@@ -20434,9 +20434,8 @@ func (s *DescribeStrategyTargetResponse) SetBody(v *DescribeStrategyTargetRespon
 }
 
 type DescribeSummaryInfoRequest struct {
-	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ResourceDirectoryAccountId *string `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	SourceIp                   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeSummaryInfoRequest) String() string {
@@ -20449,11 +20448,6 @@ func (s DescribeSummaryInfoRequest) GoString() string {
 
 func (s *DescribeSummaryInfoRequest) SetLang(v string) *DescribeSummaryInfoRequest {
 	s.Lang = &v
-	return s
-}
-
-func (s *DescribeSummaryInfoRequest) SetResourceDirectoryAccountId(v string) *DescribeSummaryInfoRequest {
-	s.ResourceDirectoryAccountId = &v
 	return s
 }
 
@@ -23363,6 +23357,7 @@ func (s *DescribeVulExportInfoResponse) SetBody(v *DescribeVulExportInfoResponse
 
 type DescribeVulFixStatisticsResponseBody struct {
 	FixStat   []*DescribeVulFixStatisticsResponseBodyFixStat `json:"FixStat,omitempty" xml:"FixStat,omitempty" type:"Repeated"`
+	FixTotal  *DescribeVulFixStatisticsResponseBodyFixTotal  `json:"FixTotal,omitempty" xml:"FixTotal,omitempty" type:"Struct"`
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23376,6 +23371,11 @@ func (s DescribeVulFixStatisticsResponseBody) GoString() string {
 
 func (s *DescribeVulFixStatisticsResponseBody) SetFixStat(v []*DescribeVulFixStatisticsResponseBodyFixStat) *DescribeVulFixStatisticsResponseBody {
 	s.FixStat = v
+	return s
+}
+
+func (s *DescribeVulFixStatisticsResponseBody) SetFixTotal(v *DescribeVulFixStatisticsResponseBodyFixTotal) *DescribeVulFixStatisticsResponseBody {
+	s.FixTotal = v
 	return s
 }
 
@@ -23422,6 +23422,41 @@ func (s *DescribeVulFixStatisticsResponseBodyFixStat) SetNeedFixNum(v int32) *De
 
 func (s *DescribeVulFixStatisticsResponseBodyFixStat) SetType(v string) *DescribeVulFixStatisticsResponseBodyFixStat {
 	s.Type = &v
+	return s
+}
+
+type DescribeVulFixStatisticsResponseBodyFixTotal struct {
+	FixedTodayNum *int32 `json:"FixedTodayNum,omitempty" xml:"FixedTodayNum,omitempty"`
+	FixedTotalNum *int32 `json:"FixedTotalNum,omitempty" xml:"FixedTotalNum,omitempty"`
+	FixingNum     *int32 `json:"FixingNum,omitempty" xml:"FixingNum,omitempty"`
+	NeedFixNum    *int32 `json:"NeedFixNum,omitempty" xml:"NeedFixNum,omitempty"`
+}
+
+func (s DescribeVulFixStatisticsResponseBodyFixTotal) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVulFixStatisticsResponseBodyFixTotal) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVulFixStatisticsResponseBodyFixTotal) SetFixedTodayNum(v int32) *DescribeVulFixStatisticsResponseBodyFixTotal {
+	s.FixedTodayNum = &v
+	return s
+}
+
+func (s *DescribeVulFixStatisticsResponseBodyFixTotal) SetFixedTotalNum(v int32) *DescribeVulFixStatisticsResponseBodyFixTotal {
+	s.FixedTotalNum = &v
+	return s
+}
+
+func (s *DescribeVulFixStatisticsResponseBodyFixTotal) SetFixingNum(v int32) *DescribeVulFixStatisticsResponseBodyFixTotal {
+	s.FixingNum = &v
+	return s
+}
+
+func (s *DescribeVulFixStatisticsResponseBodyFixTotal) SetNeedFixNum(v int32) *DescribeVulFixStatisticsResponseBodyFixTotal {
+	s.NeedFixNum = &v
 	return s
 }
 
@@ -40450,10 +40485,6 @@ func (client *Client) DescribeSummaryInfoWithOptions(request *DescribeSummaryInf
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceDirectoryAccountId)) {
-		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
