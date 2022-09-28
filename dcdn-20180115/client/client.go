@@ -410,7 +410,8 @@ func (s *BatchCreateDcdnWafRulesRequest) SetRuleConfigs(v string) *BatchCreateDc
 }
 
 type BatchCreateDcdnWafRulesResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleIds   *BatchCreateDcdnWafRulesResponseBodyRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
 }
 
 func (s BatchCreateDcdnWafRulesResponseBody) String() string {
@@ -423,6 +424,28 @@ func (s BatchCreateDcdnWafRulesResponseBody) GoString() string {
 
 func (s *BatchCreateDcdnWafRulesResponseBody) SetRequestId(v string) *BatchCreateDcdnWafRulesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *BatchCreateDcdnWafRulesResponseBody) SetRuleIds(v *BatchCreateDcdnWafRulesResponseBodyRuleIds) *BatchCreateDcdnWafRulesResponseBody {
+	s.RuleIds = v
+	return s
+}
+
+type BatchCreateDcdnWafRulesResponseBodyRuleIds struct {
+	RuleId []*string `json:"RuleId,omitempty" xml:"RuleId,omitempty" type:"Repeated"`
+}
+
+func (s BatchCreateDcdnWafRulesResponseBodyRuleIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateDcdnWafRulesResponseBodyRuleIds) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateDcdnWafRulesResponseBodyRuleIds) SetRuleId(v []*string) *BatchCreateDcdnWafRulesResponseBodyRuleIds {
+	s.RuleId = v
 	return s
 }
 
@@ -607,6 +630,75 @@ func (s *BatchDeleteDcdnWafRulesResponse) SetStatusCode(v int32) *BatchDeleteDcd
 }
 
 func (s *BatchDeleteDcdnWafRulesResponse) SetBody(v *BatchDeleteDcdnWafRulesResponseBody) *BatchDeleteDcdnWafRulesResponse {
+	s.Body = v
+	return s
+}
+
+type BatchModifyDcdnWafRulesRequest struct {
+	PolicyId    *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RuleConfigs *string `json:"RuleConfigs,omitempty" xml:"RuleConfigs,omitempty"`
+}
+
+func (s BatchModifyDcdnWafRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchModifyDcdnWafRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchModifyDcdnWafRulesRequest) SetPolicyId(v int64) *BatchModifyDcdnWafRulesRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *BatchModifyDcdnWafRulesRequest) SetRuleConfigs(v string) *BatchModifyDcdnWafRulesRequest {
+	s.RuleConfigs = &v
+	return s
+}
+
+type BatchModifyDcdnWafRulesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchModifyDcdnWafRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchModifyDcdnWafRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchModifyDcdnWafRulesResponseBody) SetRequestId(v string) *BatchModifyDcdnWafRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchModifyDcdnWafRulesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchModifyDcdnWafRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchModifyDcdnWafRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchModifyDcdnWafRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchModifyDcdnWafRulesResponse) SetHeaders(v map[string]*string) *BatchModifyDcdnWafRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchModifyDcdnWafRulesResponse) SetStatusCode(v int32) *BatchModifyDcdnWafRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchModifyDcdnWafRulesResponse) SetBody(v *BatchModifyDcdnWafRulesResponseBody) *BatchModifyDcdnWafRulesResponse {
 	s.Body = v
 	return s
 }
@@ -4102,159 +4194,6 @@ func (s *DescribeDcdnCertificateListResponse) SetStatusCode(v int32) *DescribeDc
 }
 
 func (s *DescribeDcdnCertificateListResponse) SetBody(v *DescribeDcdnCertificateListResponseBody) *DescribeDcdnCertificateListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeDcdnDdosServiceRequest struct {
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-}
-
-func (s DescribeDcdnDdosServiceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnDdosServiceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnDdosServiceRequest) SetOwnerId(v int64) *DescribeDcdnDdosServiceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceRequest) SetSecurityToken(v string) *DescribeDcdnDdosServiceRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-type DescribeDcdnDdosServiceResponseBody struct {
-	ChangingAffectTime *string `json:"ChangingAffectTime,omitempty" xml:"ChangingAffectTime,omitempty"`
-	ChangingChargeType *string `json:"ChangingChargeType,omitempty" xml:"ChangingChargeType,omitempty"`
-	ChangingDomianNum  *int32  `json:"ChangingDomianNum,omitempty" xml:"ChangingDomianNum,omitempty"`
-	ChangingEdition    *string `json:"ChangingEdition,omitempty" xml:"ChangingEdition,omitempty"`
-	ChangingProtectNum *int32  `json:"ChangingProtectNum,omitempty" xml:"ChangingProtectNum,omitempty"`
-	ChargeType         *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	DomianNum          *int32  `json:"DomianNum,omitempty" xml:"DomianNum,omitempty"`
-	Edition            *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	Enabled            *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	EndingTime         *string `json:"EndingTime,omitempty" xml:"EndingTime,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OpeningTime        *string `json:"OpeningTime,omitempty" xml:"OpeningTime,omitempty"`
-	ProtectNum         *int32  `json:"ProtectNum,omitempty" xml:"ProtectNum,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeDcdnDdosServiceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnDdosServiceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetChangingAffectTime(v string) *DescribeDcdnDdosServiceResponseBody {
-	s.ChangingAffectTime = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetChangingChargeType(v string) *DescribeDcdnDdosServiceResponseBody {
-	s.ChangingChargeType = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetChangingDomianNum(v int32) *DescribeDcdnDdosServiceResponseBody {
-	s.ChangingDomianNum = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetChangingEdition(v string) *DescribeDcdnDdosServiceResponseBody {
-	s.ChangingEdition = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetChangingProtectNum(v int32) *DescribeDcdnDdosServiceResponseBody {
-	s.ChangingProtectNum = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetChargeType(v string) *DescribeDcdnDdosServiceResponseBody {
-	s.ChargeType = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetDomianNum(v int32) *DescribeDcdnDdosServiceResponseBody {
-	s.DomianNum = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetEdition(v string) *DescribeDcdnDdosServiceResponseBody {
-	s.Edition = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetEnabled(v string) *DescribeDcdnDdosServiceResponseBody {
-	s.Enabled = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetEndingTime(v string) *DescribeDcdnDdosServiceResponseBody {
-	s.EndingTime = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetInstanceId(v string) *DescribeDcdnDdosServiceResponseBody {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetOpeningTime(v string) *DescribeDcdnDdosServiceResponseBody {
-	s.OpeningTime = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetProtectNum(v int32) *DescribeDcdnDdosServiceResponseBody {
-	s.ProtectNum = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetRequestId(v string) *DescribeDcdnDdosServiceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponseBody) SetStatus(v string) *DescribeDcdnDdosServiceResponseBody {
-	s.Status = &v
-	return s
-}
-
-type DescribeDcdnDdosServiceResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDcdnDdosServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDcdnDdosServiceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDcdnDdosServiceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDcdnDdosServiceResponse) SetHeaders(v map[string]*string) *DescribeDcdnDdosServiceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponse) SetStatusCode(v int32) *DescribeDcdnDdosServiceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDcdnDdosServiceResponse) SetBody(v *DescribeDcdnDdosServiceResponseBody) *DescribeDcdnDdosServiceResponse {
 	s.Body = v
 	return s
 }
@@ -18829,6 +18768,7 @@ type DescribeDcdnWafPolicyResponseBodyPolicy struct {
 	PolicyName   *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	PolicyStatus *string `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
 	PolicyType   *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	RuleConfigs  *string `json:"RuleConfigs,omitempty" xml:"RuleConfigs,omitempty"`
 	RuleCount    *int64  `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
 }
 
@@ -18872,6 +18812,11 @@ func (s *DescribeDcdnWafPolicyResponseBodyPolicy) SetPolicyStatus(v string) *Des
 
 func (s *DescribeDcdnWafPolicyResponseBodyPolicy) SetPolicyType(v string) *DescribeDcdnWafPolicyResponseBodyPolicy {
 	s.PolicyType = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyResponseBodyPolicy) SetRuleConfigs(v string) *DescribeDcdnWafPolicyResponseBodyPolicy {
+	s.RuleConfigs = &v
 	return s
 }
 
@@ -24667,6 +24612,54 @@ func (client *Client) BatchDeleteDcdnWafRules(request *BatchDeleteDcdnWafRulesRe
 	return _result, _err
 }
 
+func (client *Client) BatchModifyDcdnWafRulesWithOptions(request *BatchModifyDcdnWafRulesRequest, runtime *util.RuntimeOptions) (_result *BatchModifyDcdnWafRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleConfigs)) {
+		body["RuleConfigs"] = request.RuleConfigs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchModifyDcdnWafRules"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchModifyDcdnWafRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchModifyDcdnWafRules(request *BatchModifyDcdnWafRulesRequest) (_result *BatchModifyDcdnWafRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchModifyDcdnWafRulesResponse{}
+	_body, _err := client.BatchModifyDcdnWafRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) BatchSetDcdnDomainCertificateWithOptions(request *BatchSetDcdnDomainCertificateRequest, runtime *util.RuntimeOptions) (_result *BatchSetDcdnDomainCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26686,54 +26679,6 @@ func (client *Client) DescribeDcdnCertificateList(request *DescribeDcdnCertifica
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnCertificateListResponse{}
 	_body, _err := client.DescribeDcdnCertificateListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeDcdnDdosServiceWithOptions(request *DescribeDcdnDdosServiceRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnDdosServiceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDcdnDdosService"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDcdnDdosServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDcdnDdosService(request *DescribeDcdnDdosServiceRequest) (_result *DescribeDcdnDdosServiceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDcdnDdosServiceResponse{}
-	_body, _err := client.DescribeDcdnDdosServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
