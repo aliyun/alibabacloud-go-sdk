@@ -510,14 +510,17 @@ func (s *AddAuthResourceResponse) SetBody(v *AddAuthResourceResponseBody) *AddAu
 }
 
 type AddBlackWhiteListRequest struct {
-	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	IsWhite         *bool   `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AcceptLanguage     *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Content            *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	GatewayUniqueId    *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	IsWhite            *bool   `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	MseSessionId       *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Note               *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	ResourceIdJsonList *string `json:"ResourceIdJsonList,omitempty" xml:"ResourceIdJsonList,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AddBlackWhiteListRequest) String() string {
@@ -550,6 +553,21 @@ func (s *AddBlackWhiteListRequest) SetIsWhite(v bool) *AddBlackWhiteListRequest 
 
 func (s *AddBlackWhiteListRequest) SetMseSessionId(v string) *AddBlackWhiteListRequest {
 	s.MseSessionId = &v
+	return s
+}
+
+func (s *AddBlackWhiteListRequest) SetName(v string) *AddBlackWhiteListRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddBlackWhiteListRequest) SetNote(v string) *AddBlackWhiteListRequest {
+	s.Note = &v
+	return s
+}
+
+func (s *AddBlackWhiteListRequest) SetResourceIdJsonList(v string) *AddBlackWhiteListRequest {
+	s.ResourceIdJsonList = &v
 	return s
 }
 
@@ -645,22 +663,23 @@ func (s *AddBlackWhiteListResponse) SetBody(v *AddBlackWhiteListResponseBody) *A
 }
 
 type AddGatewayRequest struct {
-	AcceptLanguage             *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	EnableHardwareAcceleration *bool   `json:"EnableHardwareAcceleration,omitempty" xml:"EnableHardwareAcceleration,omitempty"`
-	EnableSls                  *bool   `json:"EnableSls,omitempty" xml:"EnableSls,omitempty"`
-	EnableXtrace               *bool   `json:"EnableXtrace,omitempty" xml:"EnableXtrace,omitempty"`
-	EnterpriseSecurityGroup    *bool   `json:"EnterpriseSecurityGroup,omitempty" xml:"EnterpriseSecurityGroup,omitempty"`
-	InternetSlbSpec            *string `json:"InternetSlbSpec,omitempty" xml:"InternetSlbSpec,omitempty"`
-	MseSessionId               *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
-	Name                       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Region                     *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Replica                    *int32  `json:"Replica,omitempty" xml:"Replica,omitempty"`
-	SlbSpec                    *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
-	Spec                       *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	VSwitchId                  *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VSwitchId2                 *string `json:"VSwitchId2,omitempty" xml:"VSwitchId2,omitempty"`
-	Vpc                        *string `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
-	XtraceRatio                *string `json:"XtraceRatio,omitempty" xml:"XtraceRatio,omitempty"`
+	AcceptLanguage             *string                 `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	EnableHardwareAcceleration *bool                   `json:"EnableHardwareAcceleration,omitempty" xml:"EnableHardwareAcceleration,omitempty"`
+	EnableSls                  *bool                   `json:"EnableSls,omitempty" xml:"EnableSls,omitempty"`
+	EnableXtrace               *bool                   `json:"EnableXtrace,omitempty" xml:"EnableXtrace,omitempty"`
+	EnterpriseSecurityGroup    *bool                   `json:"EnterpriseSecurityGroup,omitempty" xml:"EnterpriseSecurityGroup,omitempty"`
+	InternetSlbSpec            *string                 `json:"InternetSlbSpec,omitempty" xml:"InternetSlbSpec,omitempty"`
+	MseSessionId               *string                 `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
+	Name                       *string                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	Region                     *string                 `json:"Region,omitempty" xml:"Region,omitempty"`
+	Replica                    *int32                  `json:"Replica,omitempty" xml:"Replica,omitempty"`
+	SlbSpec                    *string                 `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
+	Spec                       *string                 `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Tag                        []*AddGatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VSwitchId                  *string                 `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId2                 *string                 `json:"VSwitchId2,omitempty" xml:"VSwitchId2,omitempty"`
+	Vpc                        *string                 `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
+	XtraceRatio                *string                 `json:"XtraceRatio,omitempty" xml:"XtraceRatio,omitempty"`
 }
 
 func (s AddGatewayRequest) String() string {
@@ -731,6 +750,11 @@ func (s *AddGatewayRequest) SetSpec(v string) *AddGatewayRequest {
 	return s
 }
 
+func (s *AddGatewayRequest) SetTag(v []*AddGatewayRequestTag) *AddGatewayRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *AddGatewayRequest) SetVSwitchId(v string) *AddGatewayRequest {
 	s.VSwitchId = &v
 	return s
@@ -748,6 +772,29 @@ func (s *AddGatewayRequest) SetVpc(v string) *AddGatewayRequest {
 
 func (s *AddGatewayRequest) SetXtraceRatio(v string) *AddGatewayRequest {
 	s.XtraceRatio = &v
+	return s
+}
+
+type AddGatewayRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s AddGatewayRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayRequestTag) SetKey(v string) *AddGatewayRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *AddGatewayRequestTag) SetValue(v string) *AddGatewayRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -8829,6 +8876,7 @@ type GetGatewayResponseBodyData struct {
 	Id               *int64                                      `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceId       *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LogConfigDetails *GetGatewayResponseBodyDataLogConfigDetails `json:"LogConfigDetails,omitempty" xml:"LogConfigDetails,omitempty" type:"Struct"`
+	MseTag           *string                                     `json:"MseTag,omitempty" xml:"MseTag,omitempty"`
 	Name             *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	PrimaryUser      *string                                     `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
 	Region           *string                                     `json:"Region,omitempty" xml:"Region,omitempty"`
@@ -8888,6 +8936,11 @@ func (s *GetGatewayResponseBodyData) SetInstanceId(v string) *GetGatewayResponse
 
 func (s *GetGatewayResponseBodyData) SetLogConfigDetails(v *GetGatewayResponseBodyDataLogConfigDetails) *GetGatewayResponseBodyData {
 	s.LogConfigDetails = v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetMseTag(v string) *GetGatewayResponseBodyData {
+	s.MseTag = &v
 	return s
 }
 
@@ -9754,6 +9807,7 @@ type GetGatewayRouteDetailResponseBodyDataFallbackServices struct {
 	Percent       *int32  `json:"Percent,omitempty" xml:"Percent,omitempty"`
 	ServiceId     *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServicePort   *int32  `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
 	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
@@ -9798,6 +9852,11 @@ func (s *GetGatewayRouteDetailResponseBodyDataFallbackServices) SetServiceId(v i
 
 func (s *GetGatewayRouteDetailResponseBodyDataFallbackServices) SetServiceName(v string) *GetGatewayRouteDetailResponseBodyDataFallbackServices {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataFallbackServices) SetServicePort(v int32) *GetGatewayRouteDetailResponseBodyDataFallbackServices {
+	s.ServicePort = &v
 	return s
 }
 
@@ -10110,6 +10169,7 @@ type GetGatewayRouteDetailResponseBodyDataRouteServices struct {
 	Percent       *int32  `json:"Percent,omitempty" xml:"Percent,omitempty"`
 	ServiceId     *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServicePort   *int32  `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
 	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
@@ -10154,6 +10214,11 @@ func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetServiceId(v int6
 
 func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetServiceName(v string) *GetGatewayRouteDetailResponseBodyDataRouteServices {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyDataRouteServices) SetServicePort(v int32) *GetGatewayRouteDetailResponseBodyDataRouteServices {
+	s.ServicePort = &v
 	return s
 }
 
@@ -10308,26 +10373,28 @@ func (s *GetGatewayServiceDetailResponseBody) SetSuccess(v bool) *GetGatewayServ
 }
 
 type GetGatewayServiceDetailResponseBodyData struct {
-	GatewayId             *int64                                                   `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	GatewayTrafficPolicy  *TrafficPolicy                                           `json:"GatewayTrafficPolicy,omitempty" xml:"GatewayTrafficPolicy,omitempty"`
-	GatewayUniqueId       *string                                                  `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	GmtCreate             *string                                                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified           *string                                                  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	GroupName             *string                                                  `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	HealthCheck           *string                                                  `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthStatus          *string                                                  `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	Id                    *int64                                                   `json:"Id,omitempty" xml:"Id,omitempty"`
-	Ips                   []*string                                                `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
-	LabelDetails          []*GetGatewayServiceDetailResponseBodyDataLabelDetails   `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
-	MetaInfo              *string                                                  `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
-	Name                  *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace             *string                                                  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ServiceNameInRegistry *string                                                  `json:"ServiceNameInRegistry,omitempty" xml:"ServiceNameInRegistry,omitempty"`
-	ServiceProtocol       *string                                                  `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
-	SourceId              *int64                                                   `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType            *string                                                  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	VersionDetails        []*GetGatewayServiceDetailResponseBodyDataVersionDetails `json:"VersionDetails,omitempty" xml:"VersionDetails,omitempty" type:"Repeated"`
-	Versions              []*GetGatewayServiceDetailResponseBodyDataVersions       `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+	GatewayId             *int64                                                          `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayTrafficPolicy  *TrafficPolicy                                                  `json:"GatewayTrafficPolicy,omitempty" xml:"GatewayTrafficPolicy,omitempty"`
+	GatewayUniqueId       *string                                                         `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	GmtCreate             *string                                                         `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified           *string                                                         `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GroupName             *string                                                         `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	HealthCheck           *string                                                         `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	HealthStatus          *string                                                         `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	Id                    *int64                                                          `json:"Id,omitempty" xml:"Id,omitempty"`
+	Ips                   []*string                                                       `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
+	LabelDetails          []*GetGatewayServiceDetailResponseBodyDataLabelDetails          `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
+	MetaInfo              *string                                                         `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
+	Name                  *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace             *string                                                         `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	PortTrafficPolicyList []*GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList `json:"PortTrafficPolicyList,omitempty" xml:"PortTrafficPolicyList,omitempty" type:"Repeated"`
+	Ports                 []*int32                                                        `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	ServiceNameInRegistry *string                                                         `json:"ServiceNameInRegistry,omitempty" xml:"ServiceNameInRegistry,omitempty"`
+	ServiceProtocol       *string                                                         `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
+	SourceId              *int64                                                          `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType            *string                                                         `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	VersionDetails        []*GetGatewayServiceDetailResponseBodyDataVersionDetails        `json:"VersionDetails,omitempty" xml:"VersionDetails,omitempty" type:"Repeated"`
+	Versions              []*GetGatewayServiceDetailResponseBodyDataVersions              `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
 func (s GetGatewayServiceDetailResponseBodyData) String() string {
@@ -10408,6 +10475,16 @@ func (s *GetGatewayServiceDetailResponseBodyData) SetNamespace(v string) *GetGat
 	return s
 }
 
+func (s *GetGatewayServiceDetailResponseBodyData) SetPortTrafficPolicyList(v []*GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList) *GetGatewayServiceDetailResponseBodyData {
+	s.PortTrafficPolicyList = v
+	return s
+}
+
+func (s *GetGatewayServiceDetailResponseBodyData) SetPorts(v []*int32) *GetGatewayServiceDetailResponseBodyData {
+	s.Ports = v
+	return s
+}
+
 func (s *GetGatewayServiceDetailResponseBodyData) SetServiceNameInRegistry(v string) *GetGatewayServiceDetailResponseBodyData {
 	s.ServiceNameInRegistry = &v
 	return s
@@ -10458,6 +10535,59 @@ func (s *GetGatewayServiceDetailResponseBodyDataLabelDetails) SetKey(v string) *
 
 func (s *GetGatewayServiceDetailResponseBodyDataLabelDetails) SetValues(v []*string) *GetGatewayServiceDetailResponseBodyDataLabelDetails {
 	s.Values = v
+	return s
+}
+
+type GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList struct {
+	GatewayUniqueId *string        `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	GmtCreate       *string        `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *string        `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id              *int64         `json:"Id,omitempty" xml:"Id,omitempty"`
+	ServiceId       *int64         `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServicePort     *int32         `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	TrafficPolicy   *TrafficPolicy `json:"TrafficPolicy,omitempty" xml:"TrafficPolicy,omitempty"`
+}
+
+func (s GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList) SetGatewayUniqueId(v string) *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList) SetGmtCreate(v string) *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList) SetGmtModified(v string) *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList) SetId(v int64) *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList {
+	s.Id = &v
+	return s
+}
+
+func (s *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList) SetServiceId(v int64) *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList) SetServicePort(v int32) *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList {
+	s.ServicePort = &v
+	return s
+}
+
+func (s *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList) SetTrafficPolicy(v *TrafficPolicy) *GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList {
+	s.TrafficPolicy = v
 	return s
 }
 
@@ -16065,6 +16195,7 @@ type ListGatewayRequestFilterParams struct {
 	GatewayType     *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MseTag          *string `json:"MseTag,omitempty" xml:"MseTag,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Vpc             *string `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
 }
@@ -16089,6 +16220,11 @@ func (s *ListGatewayRequestFilterParams) SetGatewayUniqueId(v string) *ListGatew
 
 func (s *ListGatewayRequestFilterParams) SetInstanceId(v string) *ListGatewayRequestFilterParams {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListGatewayRequestFilterParams) SetMseTag(v string) *ListGatewayRequestFilterParams {
+	s.MseTag = &v
 	return s
 }
 
@@ -16254,6 +16390,7 @@ type ListGatewayResponseBodyDataResult struct {
 	InstanceId      *string                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InternetSlb     []*ListGatewayResponseBodyDataResultInternetSlb `json:"InternetSlb,omitempty" xml:"InternetSlb,omitempty" type:"Repeated"`
 	LatestVersion   *string                                         `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	MseTag          *string                                         `json:"MseTag,omitempty" xml:"MseTag,omitempty"`
 	MustUpgrade     *bool                                           `json:"MustUpgrade,omitempty" xml:"MustUpgrade,omitempty"`
 	Name            *string                                         `json:"Name,omitempty" xml:"Name,omitempty"`
 	PrimaryUser     *string                                         `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
@@ -16355,6 +16492,11 @@ func (s *ListGatewayResponseBodyDataResult) SetInternetSlb(v []*ListGatewayRespo
 
 func (s *ListGatewayResponseBodyDataResult) SetLatestVersion(v string) *ListGatewayResponseBodyDataResult {
 	s.LatestVersion = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResult) SetMseTag(v string) *ListGatewayResponseBodyDataResult {
+	s.MseTag = &v
 	return s
 }
 
@@ -17295,6 +17437,7 @@ type ListGatewayRouteResponseBodyDataResultFallbackServices struct {
 	Percent       *int32  `json:"Percent,omitempty" xml:"Percent,omitempty"`
 	ServiceId     *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServicePort   *int32  `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
 	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
@@ -17339,6 +17482,11 @@ func (s *ListGatewayRouteResponseBodyDataResultFallbackServices) SetServiceId(v 
 
 func (s *ListGatewayRouteResponseBodyDataResultFallbackServices) SetServiceName(v string) *ListGatewayRouteResponseBodyDataResultFallbackServices {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultFallbackServices) SetServicePort(v int32) *ListGatewayRouteResponseBodyDataResultFallbackServices {
+	s.ServicePort = &v
 	return s
 }
 
@@ -17512,6 +17660,7 @@ type ListGatewayRouteResponseBodyDataResultRouteServices struct {
 	Percent             *int32                                                                  `json:"Percent,omitempty" xml:"Percent,omitempty"`
 	ServiceId           *int64                                                                  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceName         *string                                                                 `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServicePort         *int32                                                                  `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
 	SourceType          *string                                                                 `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	Version             *string                                                                 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
@@ -17561,6 +17710,11 @@ func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetServiceId(v int
 
 func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetServiceName(v string) *ListGatewayRouteResponseBodyDataResultRouteServices {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResultRouteServices) SetServicePort(v int32) *ListGatewayRouteResponseBodyDataResultRouteServices {
+	s.ServicePort = &v
 	return s
 }
 
@@ -17965,6 +18119,7 @@ type ListGatewayServiceResponseBodyDataResult struct {
 	MetaInfo              *string                                                       `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
 	Name                  *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
 	Namespace             *string                                                       `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Ports                 []*int32                                                      `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
 	ServiceNameInRegistry *string                                                       `json:"ServiceNameInRegistry,omitempty" xml:"ServiceNameInRegistry,omitempty"`
 	ServicePort           *int64                                                        `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
 	ServiceProtocol       *string                                                       `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
@@ -18054,6 +18209,11 @@ func (s *ListGatewayServiceResponseBodyDataResult) SetName(v string) *ListGatewa
 
 func (s *ListGatewayServiceResponseBodyDataResult) SetNamespace(v string) *ListGatewayServiceResponseBodyDataResult {
 	s.Namespace = &v
+	return s
+}
+
+func (s *ListGatewayServiceResponseBodyDataResult) SetPorts(v []*int32) *ListGatewayServiceResponseBodyDataResult {
+	s.Ports = v
 	return s
 }
 
@@ -25004,15 +25164,18 @@ func (s *UpdateAclResponse) SetBody(v *UpdateAclResponseBody) *UpdateAclResponse
 }
 
 type UpdateBlackWhiteListRequest struct {
-	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsWhite         *bool   `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AcceptLanguage     *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Content            *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	GatewayUniqueId    *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsWhite            *bool   `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	MseSessionId       *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Note               *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	ResourceIdJsonList *string `json:"ResourceIdJsonList,omitempty" xml:"ResourceIdJsonList,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateBlackWhiteListRequest) String() string {
@@ -25050,6 +25213,21 @@ func (s *UpdateBlackWhiteListRequest) SetIsWhite(v bool) *UpdateBlackWhiteListRe
 
 func (s *UpdateBlackWhiteListRequest) SetMseSessionId(v string) *UpdateBlackWhiteListRequest {
 	s.MseSessionId = &v
+	return s
+}
+
+func (s *UpdateBlackWhiteListRequest) SetName(v string) *UpdateBlackWhiteListRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateBlackWhiteListRequest) SetNote(v string) *UpdateBlackWhiteListRequest {
+	s.Note = &v
+	return s
+}
+
+func (s *UpdateBlackWhiteListRequest) SetResourceIdJsonList(v string) *UpdateBlackWhiteListRequest {
+	s.ResourceIdJsonList = &v
 	return s
 }
 
@@ -30720,6 +30898,18 @@ func (client *Client) AddBlackWhiteListWithOptions(request *AddBlackWhiteListReq
 		query["MseSessionId"] = request.MseSessionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Note)) {
+		query["Note"] = request.Note
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdJsonList)) {
+		query["ResourceIdJsonList"] = request.ResourceIdJsonList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		query["ResourceType"] = request.ResourceType
 	}
@@ -30818,6 +31008,10 @@ func (client *Client) AddGatewayWithOptions(request *AddGatewayRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Spec)) {
 		query["Spec"] = request.Spec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
@@ -38240,6 +38434,18 @@ func (client *Client) UpdateBlackWhiteListWithOptions(request *UpdateBlackWhiteL
 
 	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
 		query["MseSessionId"] = request.MseSessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Note)) {
+		query["Note"] = request.Note
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdJsonList)) {
+		query["ResourceIdJsonList"] = request.ResourceIdJsonList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
