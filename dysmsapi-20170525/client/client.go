@@ -439,10 +439,10 @@ func (s *CheckMobilesCardSupportRequest) SetTemplateCode(v string) *CheckMobiles
 }
 
 type CheckMobilesCardSupportResponseBody struct {
-	Code      *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CheckMobilesCardSupportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckMobilesCardSupportResponseBody) String() string {
@@ -458,7 +458,7 @@ func (s *CheckMobilesCardSupportResponseBody) SetCode(v string) *CheckMobilesCar
 	return s
 }
 
-func (s *CheckMobilesCardSupportResponseBody) SetData(v []map[string]interface{}) *CheckMobilesCardSupportResponseBody {
+func (s *CheckMobilesCardSupportResponseBody) SetData(v *CheckMobilesCardSupportResponseBodyData) *CheckMobilesCardSupportResponseBody {
 	s.Data = v
 	return s
 }
@@ -470,6 +470,46 @@ func (s *CheckMobilesCardSupportResponseBody) SetRequestId(v string) *CheckMobil
 
 func (s *CheckMobilesCardSupportResponseBody) SetSuccess(v bool) *CheckMobilesCardSupportResponseBody {
 	s.Success = &v
+	return s
+}
+
+type CheckMobilesCardSupportResponseBodyData struct {
+	QueryResult []*CheckMobilesCardSupportResponseBodyDataQueryResult `json:"queryResult,omitempty" xml:"queryResult,omitempty" type:"Repeated"`
+}
+
+func (s CheckMobilesCardSupportResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckMobilesCardSupportResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CheckMobilesCardSupportResponseBodyData) SetQueryResult(v []*CheckMobilesCardSupportResponseBodyDataQueryResult) *CheckMobilesCardSupportResponseBodyData {
+	s.QueryResult = v
+	return s
+}
+
+type CheckMobilesCardSupportResponseBodyDataQueryResult struct {
+	Mobile  *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
+	Support *bool   `json:"support,omitempty" xml:"support,omitempty"`
+}
+
+func (s CheckMobilesCardSupportResponseBodyDataQueryResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckMobilesCardSupportResponseBodyDataQueryResult) GoString() string {
+	return s.String()
+}
+
+func (s *CheckMobilesCardSupportResponseBodyDataQueryResult) SetMobile(v string) *CheckMobilesCardSupportResponseBodyDataQueryResult {
+	s.Mobile = &v
+	return s
+}
+
+func (s *CheckMobilesCardSupportResponseBodyDataQueryResult) SetSupport(v bool) *CheckMobilesCardSupportResponseBodyDataQueryResult {
+	s.Support = &v
 	return s
 }
 
