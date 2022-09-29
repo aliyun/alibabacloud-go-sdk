@@ -5,17 +5,15 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type CreateCampaignRequest struct {
-	// 运营活动名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 备注。
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
@@ -38,14 +36,10 @@ func (s *CreateCampaignRequest) SetRemark(v string) *CreateCampaignRequest {
 }
 
 type CreateCampaignResponseBody struct {
-	// 返回数据。
-	Data *CreateCampaignResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *CreateCampaignResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCampaignResponseBody) String() string {
@@ -77,15 +71,10 @@ func (s *CreateCampaignResponseBody) SetRequestId(v string) *CreateCampaignRespo
 }
 
 type CreateCampaignResponseBodyData struct {
-	// 创建时间 (UTC+8)。
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 运营活动Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 运营活动名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 更新时间 (UTC+8)。
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
@@ -152,35 +141,18 @@ func (s *CreateCampaignResponse) SetBody(v *CreateCampaignResponseBody) *CreateC
 }
 
 type CreateGroupRequest struct {
-	// 关联算法，人群来源为算法。
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// 手机号列名，人群来源为CSV文件，MaxCompute，并且包含手机号时需指定。
-	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	// 过滤条件，人群来源为MaxCompute时可指定。
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// 预测任务Id，人群来源为算法。
+	Algorithm      *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Column         *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	Filter         *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	InferenceJobId *string `json:"InferenceJobId,omitempty" xml:"InferenceJobId,omitempty"`
-	// 人群名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 是否包含手机号，包含手机号的人群可用于触达计划。
-	PhoneNumber *bool `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// MaxCompute(ODPS)项目名，人群来源为MaxCompute时需指定。
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// 人群备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 人群来源。
-	// - 0: 文本，每行一个手机号，最多100个。
-	// - 1: 文本文件，每行一个手机号，可通过控制台上传或指定自定义OSS地址，指定自定义OSS地址前需确保已在控制台完成一键授权。
-	// - 2: CSV文件，需指定手机号列名，可通过控制台上传或指定自定义OSS地址，指定自定义OSS地址前需确保已在控制台完成一键授权。
-	// - 3: MaxCompute(ODPS)表，需指定手机号列名。
-	// - 4: 算法。
-	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// MaxCompute(ODPS)表名，人群来源为MaxCompute时需指定。
-	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
-	// 文本，人群来源为文本时需指定。
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// 文件地址，人群来源为文本文件，CSV文件，MaxCompute时需指定。
-	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PhoneNumber    *bool   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	Project        *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Source         *int32  `json:"Source,omitempty" xml:"Source,omitempty"`
+	Table          *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	Text           *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Uri            *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s CreateGroupRequest) String() string {
@@ -252,14 +224,10 @@ func (s *CreateGroupRequest) SetUri(v string) *CreateGroupRequest {
 }
 
 type CreateGroupResponseBody struct {
-	// 返回数据。
-	Data *CreateGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *CreateGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateGroupResponseBody) String() string {
@@ -291,48 +259,23 @@ func (s *CreateGroupResponseBody) SetRequestId(v string) *CreateGroupResponseBod
 }
 
 type CreateGroupResponseBodyData struct {
-	// 关联算法，人群来源为算法。
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// 人群数量。
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// 手机号列名，人群来源为CSV文件，MaxCompute，并且包含手机号时需指定。
-	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	// 创建时间 (UTC+8)。
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 过滤条件，人群来源为MaxCompute时可指定。
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// 人群Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 预测任务Id，人群来源为算法。
+	Algorithm      *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Amount         *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Column         *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	CreatedTime    *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Filter         *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	InferenceJobId *string `json:"InferenceJobId,omitempty" xml:"InferenceJobId,omitempty"`
-	// 人群名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 是否包含手机号，包含手机号的人群可用于触达计划。
-	PhoneNumber *bool `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// MaxCompute(ODPS)项目名，人群来源为MaxCompute时需指定。
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// 人群备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 人群来源。
-	// - 0: 文本，每行一个手机号，最多100个。
-	// - 1: 文本文件，每行一个手机号，可通过控制台上传或指定自定义OSS地址，指定自定义OSS地址前需确保已在控制台完成一键授权。
-	// - 2: CSV文件，需指定手机号列名，可通过控制台上传或指定自定义OSS地址，指定自定义OSS地址前需确保已在控制台完成一键授权。
-	// - 3: MaxCompute(ODPS)表，需指定手机号列名。
-	// - 4: 算法。
-	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 人群状态。
-	// - 0: 检查中。
-	// - 1: 已通过。
-	// - 2: 未通过。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// MaxCompute(ODPS)表名，人群来源为MaxCompute时需指定。
-	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
-	// 文本，人群来源为文本时需指定。
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// 更新时间 (UTC+8)。
-	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// 文件地址，人群来源为文本文件，CSV文件，MaxCompute时需指定。
-	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PhoneNumber    *bool   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	Project        *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Source         *int32  `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Table          *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	Text           *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	UpdatedTime    *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	Uri            *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s CreateGroupResponseBodyData) String() string {
@@ -458,22 +401,14 @@ func (s *CreateGroupResponse) SetBody(v *CreateGroupResponseBody) *CreateGroupRe
 }
 
 type CreateInferenceJobRequest struct {
-	// 关联算法。
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// 关联运营活动Id。
-	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// 预测数据路径。
-	DataPath *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
-	// 预测任务名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 输出数据路径，需要为空目录。
-	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// 关联训练任务。
+	Algorithm     *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CampaignId    *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	DataPath      *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark        *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	TargetPath    *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	TrainingJobId *string `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
-	// 用户配置。
-	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+	UserConfig    *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
 }
 
 func (s CreateInferenceJobRequest) String() string {
@@ -525,14 +460,10 @@ func (s *CreateInferenceJobRequest) SetUserConfig(v string) *CreateInferenceJobR
 }
 
 type CreateInferenceJobResponseBody struct {
-	// 返回数据。
-	Data *CreateInferenceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *CreateInferenceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateInferenceJobResponseBody) String() string {
@@ -564,34 +495,20 @@ func (s *CreateInferenceJobResponseBody) SetRequestId(v string) *CreateInference
 }
 
 type CreateInferenceJobResponseBodyData struct {
-	// 关联算法。
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// 关联运营活动Id。
-	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// 创建时间 (UTC+8)。
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 预测数据路径。
-	DataPath *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
-	// 关联人群Id，如果任务失败则人群无效。
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 预测任务日志。
-	History *string `json:"History,omitempty" xml:"History,omitempty"`
-	// 预测任务Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 预测任务名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 预测任务状态。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 输出数据路径，需要为空目录。
-	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// 关联训练任务。
+	Algorithm     *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CampaignId    *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	CreatedTime   *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DataPath      *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	History       *string `json:"History,omitempty" xml:"History,omitempty"`
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark        *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetPath    *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	TrainingJobId *string `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
-	// 更新时间 (UTC+8)。
-	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// 用户配置。
-	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+	UpdatedTime   *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	UserConfig    *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
 }
 
 func (s CreateInferenceJobResponseBodyData) String() string {
@@ -702,36 +619,17 @@ func (s *CreateInferenceJobResponse) SetBody(v *CreateInferenceJobResponseBody) 
 }
 
 type CreateScheduleRequest struct {
-	// 终止时间（UTC+8）。
-	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 执行时间 (UTC+8)，为空立即执行。
-	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// 人群Id。
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 触达计划名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 重复周期，按重复周期与重复周期单位执行。
-	RepeatCycle *int32 `json:"RepeatCycle,omitempty" xml:"RepeatCycle,omitempty"`
-	// 重复周期单位，若指定执行时间，则重复周期生效。
-	// - 0: 从不（默认）。
-	// - 1: 小时。
-	// - 2: 天。
-	// - 3: 周。
-	// - 4: 月。
-	RepeatCycleUnit *int32 `json:"RepeatCycleUnit,omitempty" xml:"RepeatCycleUnit,omitempty"`
-	// 重复次数。
-	// - -1: 不设终止时间（默认）。
-	// - 0: 不重复。
-	// - N: 重复N次后终止。
-	RepeatTimes *int32 `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
-	// 签名。
-	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	// 签名Id，或指定签名。
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// 模板Code。
-	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// 模板Id，或指定模板Code。
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	EndTime         *int32  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecuteTime     *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RepeatCycle     *int32  `json:"RepeatCycle,omitempty" xml:"RepeatCycle,omitempty"`
+	RepeatCycleUnit *int32  `json:"RepeatCycleUnit,omitempty" xml:"RepeatCycleUnit,omitempty"`
+	RepeatTimes     *int32  `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
+	SignName        *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	SignatureId     *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	TemplateCode    *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s CreateScheduleRequest) String() string {
@@ -798,14 +696,10 @@ func (s *CreateScheduleRequest) SetTemplateId(v string) *CreateScheduleRequest {
 }
 
 type CreateScheduleResponseBody struct {
-	// 返回数据。
-	Data *CreateScheduleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *CreateScheduleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateScheduleResponseBody) String() string {
@@ -837,50 +731,21 @@ func (s *CreateScheduleResponseBody) SetRequestId(v string) *CreateScheduleRespo
 }
 
 type CreateScheduleResponseBodyData struct {
-	// 创建时间 (UTC+8)。
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 终止时间（UTC+8）。
-	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 执行时间 (UTC+8)，为空立即执行。
-	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// 人群Id。
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 触达计划Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 触达计划名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 重复周期，按重复周期与重复周期单位执行。
-	RepeatCycle *int32 `json:"RepeatCycle,omitempty" xml:"RepeatCycle,omitempty"`
-	// 重复周期单位，若指定执行时间，则重复周期生效。
-	// - 0: 从不（默认）。
-	// - 1: 小时。
-	// - 2: 天。
-	// - 3: 周。
-	// - 4: 月。
-	RepeatCycleUnit *int32 `json:"RepeatCycleUnit,omitempty" xml:"RepeatCycleUnit,omitempty"`
-	// 重复次数。
-	// - -1: 不设终止时间（默认）。
-	// - 0: 不重复。
-	// - N: 重复N次后终止。
-	RepeatTimes *int32 `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
-	// 签名。
-	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	// 签名Id，或指定签名。
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// 状态。
-	// - 0: 检查中。
-	// - 1: 检查成功。
-	// - 2: 检查失败。
-	// - 3: 发送中。
-	// - 4: 发送成功。
-	// - 5: 发送失败。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板Code。
-	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// 模板Id，或指定模板Code。
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 更新时间 (UTC+8)。
-	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	CreatedTime     *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	EndTime         *int32  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecuteTime     *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RepeatCycle     *int32  `json:"RepeatCycle,omitempty" xml:"RepeatCycle,omitempty"`
+	RepeatCycleUnit *int32  `json:"RepeatCycleUnit,omitempty" xml:"RepeatCycleUnit,omitempty"`
+	RepeatTimes     *int32  `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
+	SignName        *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	SignatureId     *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateCode    *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	UpdatedTime     *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
 func (s CreateScheduleResponseBodyData) String() string {
@@ -996,10 +861,8 @@ func (s *CreateScheduleResponse) SetBody(v *CreateScheduleResponseBody) *CreateS
 }
 
 type CreateSignatureRequest struct {
-	// 申请说明。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 签名名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateSignatureRequest) String() string {
@@ -1021,14 +884,10 @@ func (s *CreateSignatureRequest) SetName(v string) *CreateSignatureRequest {
 }
 
 type CreateSignatureResponseBody struct {
-	// 返回数据。
-	Data *CreateSignatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *CreateSignatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateSignatureResponseBody) String() string {
@@ -1060,18 +919,10 @@ func (s *CreateSignatureResponseBody) SetRequestId(v string) *CreateSignatureRes
 }
 
 type CreateSignatureResponseBodyData struct {
-	// 创建时间 (UTC+8)。
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 签名Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 签名名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 签名审核状态。
-	// - 0：审核中。
-	// - 1：审核通过。
-	// - 2：审核不通过。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间 (UTC+8)。
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
@@ -1138,21 +989,12 @@ func (s *CreateSignatureResponse) SetBody(v *CreateSignatureResponseBody) *Creat
 }
 
 type CreateTemplateRequest struct {
-	// 模板内容，请注意控制总字数在70个字以内，超出部分按长短信收费，按67个字为单位记一条短信，营销短信必须在结尾添加“回T退订”。
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 申请说明。
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 模板名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 签名名称，同时只能指定签名名称或签名Id其中之一。
-	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// 签名Id，可通过ListSignatures获取审核状态为已通过的签名列表，获取签名Id。
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Signature   *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// 模板类型。
-	// - 0 : 验证码。
-	// - 1 : 短信通知。
-	// - 2 : 推广短信。
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type        *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateTemplateRequest) String() string {
@@ -1194,14 +1036,10 @@ func (s *CreateTemplateRequest) SetType(v int32) *CreateTemplateRequest {
 }
 
 type CreateTemplateResponseBody struct {
-	// 返回数据。
-	Data *CreateTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *CreateTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateTemplateResponseBody) String() string {
@@ -1233,34 +1071,17 @@ func (s *CreateTemplateResponseBody) SetRequestId(v string) *CreateTemplateRespo
 }
 
 type CreateTemplateResponseBodyData struct {
-	// 模板内容。
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 创建时间 (UTC+8)。
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 申请说明。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 模板Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 签名名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 审核意见。
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// 签名Id。
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// 审核状态。
-	// - 0 : 审核中。
-	// - 1 : 审核通过。
-	// - 2 : 审核不通过。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板Code。
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	SignatureId  *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// 模板类型。
-	// - 0 : 验证码。
-	// - 1 : 短信通知。
-	// - 2 : 推广短信。
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 更新时间 (UTC+8)。
-	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	Type         *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdatedTime  *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
 func (s CreateTemplateResponseBodyData) String() string {
@@ -1356,17 +1177,11 @@ func (s *CreateTemplateResponse) SetBody(v *CreateTemplateResponseBody) *CreateT
 }
 
 type CreateTrainingJobRequest struct {
-	// 关联算法Id。
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// 关联运营活动Id。
+	Algorithm  *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// 训练数据路径。
-	DataPath *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
-	// 训练任务名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 用户配置。
+	DataPath   *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
 }
 
@@ -1409,14 +1224,10 @@ func (s *CreateTrainingJobRequest) SetUserConfig(v string) *CreateTrainingJobReq
 }
 
 type CreateTrainingJobResponseBody struct {
-	// 返回数据。
-	Data *CreateTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *CreateTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateTrainingJobResponseBody) String() string {
@@ -1448,28 +1259,17 @@ func (s *CreateTrainingJobResponseBody) SetRequestId(v string) *CreateTrainingJo
 }
 
 type CreateTrainingJobResponseBodyData struct {
-	// 关联算法Id。
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// 关联运营活动Id。
-	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// 创建时间 (UTC+8)。
+	Algorithm   *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CampaignId  *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 训练数据路径。
-	DataPath *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
-	// 训练任务日志。
-	History *string `json:"History,omitempty" xml:"History,omitempty"`
-	// 训练任务Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 训练任务名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 训练任务状态。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间 (UTC+8)。
+	DataPath    *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
+	History     *string `json:"History,omitempty" xml:"History,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// 用户配置。
-	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+	UserConfig  *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
 }
 
 func (s CreateTrainingJobResponseBodyData) String() string {
@@ -1565,14 +1365,10 @@ func (s *CreateTrainingJobResponse) SetBody(v *CreateTrainingJobResponseBody) *C
 }
 
 type DeleteCampaignResponseBody struct {
-	// 返回数据。
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode    *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteCampaignResponseBody) String() string {
@@ -1633,14 +1429,10 @@ func (s *DeleteCampaignResponse) SetBody(v *DeleteCampaignResponseBody) *DeleteC
 }
 
 type DeleteGroupResponseBody struct {
-	// 返回数据。
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode    *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteGroupResponseBody) String() string {
@@ -1701,14 +1493,10 @@ func (s *DeleteGroupResponse) SetBody(v *DeleteGroupResponseBody) *DeleteGroupRe
 }
 
 type DeleteInferenceJobResponseBody struct {
-	// 返回数据。
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode    *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteInferenceJobResponseBody) String() string {
@@ -1769,14 +1557,10 @@ func (s *DeleteInferenceJobResponse) SetBody(v *DeleteInferenceJobResponseBody) 
 }
 
 type DeleteScheduleResponseBody struct {
-	// 返回数据。
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode    *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteScheduleResponseBody) String() string {
@@ -1837,14 +1621,10 @@ func (s *DeleteScheduleResponse) SetBody(v *DeleteScheduleResponseBody) *DeleteS
 }
 
 type DeleteSignatureResponseBody struct {
-	// 返回数据。
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode    *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteSignatureResponseBody) String() string {
@@ -1905,14 +1685,10 @@ func (s *DeleteSignatureResponse) SetBody(v *DeleteSignatureResponseBody) *Delet
 }
 
 type DeleteTemplateResponseBody struct {
-	// 返回数据。
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode    *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteTemplateResponseBody) String() string {
@@ -1973,14 +1749,10 @@ func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteT
 }
 
 type DeleteTrainingJobResponseBody struct {
-	// 返回数据。
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode    *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteTrainingJobResponseBody) String() string {
@@ -2041,14 +1813,10 @@ func (s *DeleteTrainingJobResponse) SetBody(v *DeleteTrainingJobResponseBody) *D
 }
 
 type GetAlgorithmResponseBody struct {
-	// 返回数据。
-	Data *GetAlgorithmResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *GetAlgorithmResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAlgorithmResponseBody) String() string {
@@ -2080,15 +1848,10 @@ func (s *GetAlgorithmResponseBody) SetRequestId(v string) *GetAlgorithmResponseB
 }
 
 type GetAlgorithmResponseBodyData struct {
-	// 算法说明。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 算法Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 预测所需参数名与对应的参数说明。
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	InferUserConfigMap *string `json:"InferUserConfigMap,omitempty" xml:"InferUserConfigMap,omitempty"`
-	// 算法名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 训练所需参数名与对应的参数说明。
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	TrainUserConfigMap *string `json:"TrainUserConfigMap,omitempty" xml:"TrainUserConfigMap,omitempty"`
 }
 
@@ -2155,14 +1918,10 @@ func (s *GetAlgorithmResponse) SetBody(v *GetAlgorithmResponseBody) *GetAlgorith
 }
 
 type GetCampaignResponseBody struct {
-	// 返回数据。
-	Data *GetCampaignResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *GetCampaignResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetCampaignResponseBody) String() string {
@@ -2194,15 +1953,10 @@ func (s *GetCampaignResponseBody) SetRequestId(v string) *GetCampaignResponseBod
 }
 
 type GetCampaignResponseBodyData struct {
-	// 创建时间 (UTC+8)。
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 运营活动Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 运营活动名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 更新时间 (UTC+8)。
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
@@ -2269,14 +2023,10 @@ func (s *GetCampaignResponse) SetBody(v *GetCampaignResponseBody) *GetCampaignRe
 }
 
 type GetGroupResponseBody struct {
-	// 返回数据。
-	Data *GetGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *GetGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetGroupResponseBody) String() string {
@@ -2308,48 +2058,25 @@ func (s *GetGroupResponseBody) SetRequestId(v string) *GetGroupResponseBody {
 }
 
 type GetGroupResponseBodyData struct {
-	// 关联算法，人群来源为算法。
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// 人群数量。
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// 手机号列名，人群来源为CSV文件，MaxCompute，并且包含手机号时需指定。
-	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	// 创建时间 (UTC+8)。
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 过滤条件，人群来源为MaxCompute时可指定。
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// 人群Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 预测任务Id，人群来源为算法。
+	Algorithm      *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Amount         *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	CampaignId     *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	Column         *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	CreatedTime    *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Filter         *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	History        *string `json:"History,omitempty" xml:"History,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	InferenceJobId *string `json:"InferenceJobId,omitempty" xml:"InferenceJobId,omitempty"`
-	// 人群名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 是否包含手机号，包含手机号的人群可用于触达计划。
-	PhoneNumber *bool `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// MaxCompute(ODPS)项目名，人群来源为MaxCompute时需指定。
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// 人群备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 人群来源。
-	// - 0: 文本，每行一个手机号，最多100个。
-	// - 1: 文本文件，每行一个手机号，可通过控制台上传或指定自定义OSS地址，指定自定义OSS地址前需确保已在控制台完成一键授权。
-	// - 2: CSV文件，需指定手机号列名，可通过控制台上传或指定自定义OSS地址，指定自定义OSS地址前需确保已在控制台完成一键授权。
-	// - 3: MaxCompute(ODPS)表，需指定手机号列名。
-	// - 4: 算法。
-	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 人群状态。
-	// - 0: 检查中。
-	// - 1: 已通过。
-	// - 2: 未通过。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// MaxCompute(ODPS)表名，人群来源为MaxCompute时需指定。
-	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
-	// 文本，人群来源为文本时需指定。
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// 更新时间 (UTC+8)。
-	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// 文件地址，人群来源为文本文件，CSV文件，MaxCompute时需指定。
-	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PhoneNumber    *bool   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	Project        *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Source         *int32  `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Table          *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	Text           *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	UpdatedTime    *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	Uri            *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s GetGroupResponseBodyData) String() string {
@@ -2370,6 +2097,11 @@ func (s *GetGroupResponseBodyData) SetAmount(v int32) *GetGroupResponseBodyData 
 	return s
 }
 
+func (s *GetGroupResponseBodyData) SetCampaignId(v string) *GetGroupResponseBodyData {
+	s.CampaignId = &v
+	return s
+}
+
 func (s *GetGroupResponseBodyData) SetColumn(v string) *GetGroupResponseBodyData {
 	s.Column = &v
 	return s
@@ -2382,6 +2114,11 @@ func (s *GetGroupResponseBodyData) SetCreatedTime(v string) *GetGroupResponseBod
 
 func (s *GetGroupResponseBodyData) SetFilter(v string) *GetGroupResponseBodyData {
 	s.Filter = &v
+	return s
+}
+
+func (s *GetGroupResponseBodyData) SetHistory(v string) *GetGroupResponseBodyData {
+	s.History = &v
 	return s
 }
 
@@ -2475,14 +2212,10 @@ func (s *GetGroupResponse) SetBody(v *GetGroupResponseBody) *GetGroupResponse {
 }
 
 type GetInferenceJobResponseBody struct {
-	// 返回数据。
-	Data *GetInferenceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *GetInferenceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetInferenceJobResponseBody) String() string {
@@ -2514,34 +2247,20 @@ func (s *GetInferenceJobResponseBody) SetRequestId(v string) *GetInferenceJobRes
 }
 
 type GetInferenceJobResponseBodyData struct {
-	// 关联算法。
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// 关联运营活动Id。
-	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// 创建时间 (UTC+8)。
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 预测数据路径。
-	DataPath *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
-	// 关联人群Id，如果任务失败则人群无效。
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 预测任务日志。
-	History *string `json:"History,omitempty" xml:"History,omitempty"`
-	// 预测任务Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 预测任务名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 预测任务状态。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 输出数据路径，需要为空目录。
-	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// 关联训练任务。
+	Algorithm     *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CampaignId    *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	CreatedTime   *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DataPath      *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	History       *string `json:"History,omitempty" xml:"History,omitempty"`
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark        *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetPath    *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	TrainingJobId *string `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
-	// 更新时间 (UTC+8)。
-	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// 用户配置。
-	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+	UpdatedTime   *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	UserConfig    *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
 }
 
 func (s GetInferenceJobResponseBodyData) String() string {
@@ -2652,14 +2371,10 @@ func (s *GetInferenceJobResponse) SetBody(v *GetInferenceJobResponseBody) *GetIn
 }
 
 type GetMessageConfigResponseBody struct {
-	// 返回数据。
-	Data *GetMessageConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *GetMessageConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMessageConfigResponseBody) String() string {
@@ -2691,10 +2406,8 @@ func (s *GetMessageConfigResponseBody) SetRequestId(v string) *GetMessageConfigR
 }
 
 type GetMessageConfigResponseBodyData struct {
-	// 短信发送状态回执接收服务地址。
 	SmsReportUrl *string `json:"SmsReportUrl,omitempty" xml:"SmsReportUrl,omitempty"`
-	// 上行短信消息接收服务地址。
-	SmsUpUrl *string `json:"SmsUpUrl,omitempty" xml:"SmsUpUrl,omitempty"`
+	SmsUpUrl     *string `json:"SmsUpUrl,omitempty" xml:"SmsUpUrl,omitempty"`
 }
 
 func (s GetMessageConfigResponseBodyData) String() string {
@@ -2745,14 +2458,10 @@ func (s *GetMessageConfigResponse) SetBody(v *GetMessageConfigResponseBody) *Get
 }
 
 type GetScheduleResponseBody struct {
-	// 返回数据。
-	Data *GetScheduleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *GetScheduleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetScheduleResponseBody) String() string {
@@ -2784,52 +2493,22 @@ func (s *GetScheduleResponseBody) SetRequestId(v string) *GetScheduleResponseBod
 }
 
 type GetScheduleResponseBodyData struct {
-	// 创建时间 (UTC+8)。
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 终止时间（UTC+8）。
-	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 执行时间 (UTC+8)，为空立即执行。
-	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// 人群Id。
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 历史记录。
-	History *string `json:"History,omitempty" xml:"History,omitempty"`
-	// 触达计划Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 触达计划名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 重复周期，按重复周期与重复周期单位执行。
-	RepeatCycle *int32 `json:"RepeatCycle,omitempty" xml:"RepeatCycle,omitempty"`
-	// 重复周期单位，若指定执行时间，则重复周期生效。
-	// - 0: 从不（默认）。
-	// - 1: 小时。
-	// - 2: 天。
-	// - 3: 周。
-	// - 4: 月。
-	RepeatCycleUnit *int32 `json:"RepeatCycleUnit,omitempty" xml:"RepeatCycleUnit,omitempty"`
-	// 重复次数。
-	// - -1: 不设终止时间（默认）。
-	// - 0: 不重复。
-	// - N: 重复N次后终止。
-	RepeatTimes *int32 `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
-	// 签名。
-	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	// 签名Id，或指定签名。
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// 状态。
-	// - 0: 检查中。
-	// - 1: 检查成功。
-	// - 2: 检查失败。
-	// - 3: 发送中。
-	// - 4: 发送成功。
-	// - 5: 发送失败。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板Code。
-	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// 模板Id，或指定模板Code。
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 更新时间 (UTC+8)。
-	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	CreatedTime     *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	EndTime         *int32  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecuteTime     *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	History         *string `json:"History,omitempty" xml:"History,omitempty"`
+	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RepeatCycle     *int32  `json:"RepeatCycle,omitempty" xml:"RepeatCycle,omitempty"`
+	RepeatCycleUnit *int32  `json:"RepeatCycleUnit,omitempty" xml:"RepeatCycleUnit,omitempty"`
+	RepeatTimes     *int32  `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
+	SignName        *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	SignatureId     *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateCode    *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	UpdatedTime     *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
 func (s GetScheduleResponseBodyData) String() string {
@@ -2950,14 +2629,10 @@ func (s *GetScheduleResponse) SetBody(v *GetScheduleResponseBody) *GetScheduleRe
 }
 
 type GetSignatureResponseBody struct {
-	// 返回数据。
-	Data *GetSignatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *GetSignatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetSignatureResponseBody) String() string {
@@ -2989,22 +2664,12 @@ func (s *GetSignatureResponseBody) SetRequestId(v string) *GetSignatureResponseB
 }
 
 type GetSignatureResponseBodyData struct {
-	// 创建时间 (UTC+8)。
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 申请说明。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 签名Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 签名名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 审核建议。
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// 签名审核状态。
-	// - 0：审核中。
-	// - 1：审核通过。
-	// - 2：审核不通过。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间 (UTC+8)。
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
@@ -3081,14 +2746,10 @@ func (s *GetSignatureResponse) SetBody(v *GetSignatureResponseBody) *GetSignatur
 }
 
 type GetTemplateResponseBody struct {
-	// 返回数据。
-	Data *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTemplateResponseBody) String() string {
@@ -3120,34 +2781,17 @@ func (s *GetTemplateResponseBody) SetRequestId(v string) *GetTemplateResponseBod
 }
 
 type GetTemplateResponseBodyData struct {
-	// 模板内容。
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 创建时间 (UTC+8)。
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 申请说明。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 模板Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 签名名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 审核意见。
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// 签名Id。
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// 审核状态。
-	// - 0 : 审核中。
-	// - 1 : 审核通过。
-	// - 2 : 审核不通过。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板Code。
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	SignatureId  *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// 模板类型。
-	// - 0 : 验证码。
-	// - 1 : 短信通知。
-	// - 2 : 推广短信。
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 更新时间 (UTC+8)。
-	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	Type         *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdatedTime  *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
 func (s GetTemplateResponseBodyData) String() string {
@@ -3243,14 +2887,10 @@ func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateRe
 }
 
 type GetTrainingJobResponseBody struct {
-	// 返回数据。
-	Data *GetTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *GetTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTrainingJobResponseBody) String() string {
@@ -3282,28 +2922,17 @@ func (s *GetTrainingJobResponseBody) SetRequestId(v string) *GetTrainingJobRespo
 }
 
 type GetTrainingJobResponseBodyData struct {
-	// 关联算法Id。
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// 关联运营活动Id。
-	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// 创建时间 (UTC+8)。
+	Algorithm   *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CampaignId  *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 训练数据路径。
-	DataPath *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
-	// 训练任务日志。
-	History *string `json:"History,omitempty" xml:"History,omitempty"`
-	// 训练任务Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 训练任务名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 训练任务状态。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间 (UTC+8)。
+	DataPath    *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
+	History     *string `json:"History,omitempty" xml:"History,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// 用户配置。
-	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+	UserConfig  *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
 }
 
 func (s GetTrainingJobResponseBodyData) String() string {
@@ -3399,14 +3028,10 @@ func (s *GetTrainingJobResponse) SetBody(v *GetTrainingJobResponseBody) *GetTrai
 }
 
 type GetUserResponseBody struct {
-	// 返回数据。
-	Data *GetUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *GetUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetUserResponseBody) String() string {
@@ -3438,10 +3063,6 @@ func (s *GetUserResponseBody) SetRequestId(v string) *GetUserResponseBody {
 }
 
 type GetUserResponseBodyData struct {
-	// 账号状态。
-	// - 0 : 正常使用。
-	// - 1 : 因欠费等原因暂时停用。
-	// - 2 : 已释放产品。
 	AccountStatus *int32 `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 }
 
@@ -3488,14 +3109,10 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 }
 
 type ListAlgorithmsRequest struct {
-	// 算法Id过滤。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 算法名称过滤。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListAlgorithmsRequest) String() string {
@@ -3527,14 +3144,10 @@ func (s *ListAlgorithmsRequest) SetPageSize(v int32) *ListAlgorithmsRequest {
 }
 
 type ListAlgorithmsResponseBody struct {
-	// 返回数据。
-	Data *ListAlgorithmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *ListAlgorithmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAlgorithmsResponseBody) String() string {
@@ -3566,14 +3179,10 @@ func (s *ListAlgorithmsResponseBody) SetRequestId(v string) *ListAlgorithmsRespo
 }
 
 type ListAlgorithmsResponseBodyData struct {
-	// 算法列表。
 	Algorithms []*ListAlgorithmsResponseBodyDataAlgorithms `json:"Algorithms,omitempty" xml:"Algorithms,omitempty" type:"Repeated"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 总算法数量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAlgorithmsResponseBodyData) String() string {
@@ -3605,9 +3214,7 @@ func (s *ListAlgorithmsResponseBodyData) SetTotalCount(v int32) *ListAlgorithmsR
 }
 
 type ListAlgorithmsResponseBodyDataAlgorithms struct {
-	// 算法Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 算法名称。
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -3659,14 +3266,10 @@ func (s *ListAlgorithmsResponse) SetBody(v *ListAlgorithmsResponseBody) *ListAlg
 }
 
 type ListCampaignsRequest struct {
-	// 运营活动名称过滤。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 运营活动备注过滤。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s ListCampaignsRequest) String() string {
@@ -3698,14 +3301,10 @@ func (s *ListCampaignsRequest) SetRemark(v string) *ListCampaignsRequest {
 }
 
 type ListCampaignsResponseBody struct {
-	// 返回数据。
-	Data *ListCampaignsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *ListCampaignsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListCampaignsResponseBody) String() string {
@@ -3737,14 +3336,10 @@ func (s *ListCampaignsResponseBody) SetRequestId(v string) *ListCampaignsRespons
 }
 
 type ListCampaignsResponseBodyData struct {
-	// 运营活动列表。
-	Campaigns []*ListCampaignsResponseBodyDataCampaigns `json:"Campaigns,omitempty" xml:"Campaigns,omitempty" type:"Repeated"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 总运营活动数量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Campaigns  []*ListCampaignsResponseBodyDataCampaigns `json:"Campaigns,omitempty" xml:"Campaigns,omitempty" type:"Repeated"`
+	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCampaignsResponseBodyData) String() string {
@@ -3776,15 +3371,10 @@ func (s *ListCampaignsResponseBodyData) SetTotalCount(v int32) *ListCampaignsRes
 }
 
 type ListCampaignsResponseBodyDataCampaigns struct {
-	// 创建时间 (UTC+8)。
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 运营活动Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 运营活动名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 更新时间 (UTC+8)。
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
@@ -3851,20 +3441,13 @@ func (s *ListCampaignsResponse) SetBody(v *ListCampaignsResponseBody) *ListCampa
 }
 
 type ListGroupsRequest struct {
-	// 人群名称过滤。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 是否包含手机号过滤。
-	PhoneNumber *bool `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// 人群备注过滤。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 来源过滤。
-	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 审核状态过滤。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PhoneNumber *bool   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Source      *int32  `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListGroupsRequest) String() string {
@@ -3911,14 +3494,10 @@ func (s *ListGroupsRequest) SetStatus(v int32) *ListGroupsRequest {
 }
 
 type ListGroupsResponseBody struct {
-	// 返回数据。
-	Data *ListGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *ListGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListGroupsResponseBody) String() string {
@@ -3950,14 +3529,10 @@ func (s *ListGroupsResponseBody) SetRequestId(v string) *ListGroupsResponseBody 
 }
 
 type ListGroupsResponseBodyData struct {
-	// 人群列表。
-	Groups []*ListGroupsResponseBodyDataGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 总人群数量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Groups     []*ListGroupsResponseBodyDataGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	PageNumber *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListGroupsResponseBodyData) String() string {
@@ -3989,48 +3564,23 @@ func (s *ListGroupsResponseBodyData) SetTotalCount(v int32) *ListGroupsResponseB
 }
 
 type ListGroupsResponseBodyDataGroups struct {
-	// 关联算法，人群来源为算法。
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// 人群数量。
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// 手机号列名，人群来源为CSV文件，MaxCompute，并且包含手机号时需指定。
-	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	// 创建时间 (UTC+8)。
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 过滤条件，人群来源为MaxCompute时可指定。
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// 人群Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 预测任务Id，人群来源为算法。
+	Algorithm      *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Amount         *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Column         *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	CreatedTime    *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Filter         *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	InferenceJobId *string `json:"InferenceJobId,omitempty" xml:"InferenceJobId,omitempty"`
-	// 人群名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 是否包含手机号，包含手机号的人群可用于触达计划。
-	PhoneNumber *bool `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// MaxCompute(ODPS)项目名，人群来源为MaxCompute时需指定。
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// 人群备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 人群来源。
-	// - 0: 文本，每行一个手机号，最多100个。
-	// - 1: 文本文件，每行一个手机号，可通过控制台上传或指定自定义OSS地址，指定自定义OSS地址前需确保已在控制台完成一键授权。
-	// - 2: CSV文件，需指定手机号列名，可通过控制台上传或指定自定义OSS地址，指定自定义OSS地址前需确保已在控制台完成一键授权。
-	// - 3: MaxCompute(ODPS)表，需指定手机号列名。
-	// - 4: 算法。
-	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 人群状态。
-	// - 0: 检查中。
-	// - 1: 已通过。
-	// - 2: 未通过。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// MaxCompute(ODPS)表名，人群来源为MaxCompute时需指定。
-	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
-	// 文本，人群来源为文本时需指定。
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// 更新时间 (UTC+8)。
-	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// 文件地址，人群来源为文本文件，CSV文件，MaxCompute时需指定。
-	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PhoneNumber    *bool   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	Project        *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Source         *int32  `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Table          *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	Text           *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	UpdatedTime    *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	Uri            *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s ListGroupsResponseBodyDataGroups) String() string {
@@ -4156,23 +3706,14 @@ func (s *ListGroupsResponse) SetBody(v *ListGroupsResponseBody) *ListGroupsRespo
 }
 
 type ListInferenceJobsRequest struct {
-	// 归属运营活动过滤。
-	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// 预测任务名称过滤。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 预测任务备注过滤。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 预测任务状态过滤。
-	// - 0: 队列中。
-	// - 1: 已提交。
-	// - 2: 运行中。
-	// - 3: 成功。
-	// - 4: 失败。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	CampaignId      *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	CampaignName    *string `json:"CampaignName,omitempty" xml:"CampaignName,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TrainingJobName *string `json:"TrainingJobName,omitempty" xml:"TrainingJobName,omitempty"`
 }
 
 func (s ListInferenceJobsRequest) String() string {
@@ -4185,6 +3726,11 @@ func (s ListInferenceJobsRequest) GoString() string {
 
 func (s *ListInferenceJobsRequest) SetCampaignId(v string) *ListInferenceJobsRequest {
 	s.CampaignId = &v
+	return s
+}
+
+func (s *ListInferenceJobsRequest) SetCampaignName(v string) *ListInferenceJobsRequest {
+	s.CampaignName = &v
 	return s
 }
 
@@ -4213,15 +3759,16 @@ func (s *ListInferenceJobsRequest) SetStatus(v int32) *ListInferenceJobsRequest 
 	return s
 }
 
+func (s *ListInferenceJobsRequest) SetTrainingJobName(v string) *ListInferenceJobsRequest {
+	s.TrainingJobName = &v
+	return s
+}
+
 type ListInferenceJobsResponseBody struct {
-	// 返回数据。
-	Data *ListInferenceJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *ListInferenceJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListInferenceJobsResponseBody) String() string {
@@ -4253,14 +3800,10 @@ func (s *ListInferenceJobsResponseBody) SetRequestId(v string) *ListInferenceJob
 }
 
 type ListInferenceJobsResponseBodyData struct {
-	// 预测任务列表。
 	InferenceJobs []*ListInferenceJobsResponseBodyDataInferenceJobs `json:"InferenceJobs,omitempty" xml:"InferenceJobs,omitempty" type:"Repeated"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 总预测任务数量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber    *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount    *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListInferenceJobsResponseBodyData) String() string {
@@ -4292,34 +3835,21 @@ func (s *ListInferenceJobsResponseBodyData) SetTotalCount(v int32) *ListInferenc
 }
 
 type ListInferenceJobsResponseBodyDataInferenceJobs struct {
-	// 关联算法。
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// 关联运营活动Id。
-	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// 创建时间 (UTC+8)。
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 预测数据路径。
-	DataPath *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
-	// 关联人群Id，如果任务失败则人群无效。
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 预测任务日志。
-	History *string `json:"History,omitempty" xml:"History,omitempty"`
-	// 预测任务Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 预测任务名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 预测任务状态。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 输出数据路径，需要为空目录。
-	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// 关联训练任务。
+	Algorithm     *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CampaignId    *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	CreatedTime   *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DataPath      *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	History       *string `json:"History,omitempty" xml:"History,omitempty"`
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark        *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetGroupId *string `json:"TargetGroupId,omitempty" xml:"TargetGroupId,omitempty"`
+	TargetPath    *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	TrainingJobId *string `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
-	// 更新时间 (UTC+8)。
-	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// 用户配置。
-	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+	UpdatedTime   *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	UserConfig    *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
 }
 
 func (s ListInferenceJobsResponseBodyDataInferenceJobs) String() string {
@@ -4380,6 +3910,11 @@ func (s *ListInferenceJobsResponseBodyDataInferenceJobs) SetStatus(v int32) *Lis
 	return s
 }
 
+func (s *ListInferenceJobsResponseBodyDataInferenceJobs) SetTargetGroupId(v string) *ListInferenceJobsResponseBodyDataInferenceJobs {
+	s.TargetGroupId = &v
+	return s
+}
+
 func (s *ListInferenceJobsResponseBodyDataInferenceJobs) SetTargetPath(v string) *ListInferenceJobsResponseBodyDataInferenceJobs {
 	s.TargetPath = &v
 	return s
@@ -4430,31 +3965,17 @@ func (s *ListInferenceJobsResponse) SetBody(v *ListInferenceJobsResponseBody) *L
 }
 
 type ListMessageMetricsRequest struct {
-	// 结束日期，格式20220102。
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// 关联人群Id。
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 关联触达计划Id。
-	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	// 签名名称。
-	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// 签名Id，同时只能指定签名名称或签名Id其中之一。
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// 开始日期，格式20220102。
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// 模板号。
+	EndDate      *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ScheduleId   *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	Signature    *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	SignatureId  *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	StartDate    *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// 模板Id，同时只能指定模板Code或模板Id其中之一。
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板类型。
-	// - 0 : 验证码。
-	// - 1 : 短信通知。
-	// - 2 : 推广短信。
-	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s ListMessageMetricsRequest) String() string {
@@ -4521,14 +4042,10 @@ func (s *ListMessageMetricsRequest) SetTemplateType(v int32) *ListMessageMetrics
 }
 
 type ListMessageMetricsResponseBody struct {
-	// 返回数据。
-	Data *ListMessageMetricsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *ListMessageMetricsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListMessageMetricsResponseBody) String() string {
@@ -4560,14 +4077,10 @@ func (s *ListMessageMetricsResponseBody) SetRequestId(v string) *ListMessageMetr
 }
 
 type ListMessageMetricsResponseBodyData struct {
-	// 分页返回的统计数据条目列表。
-	Metrics []*ListMessageMetricsResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 总统计数据条目数量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Metrics    []*ListMessageMetricsResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	PageNumber *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListMessageMetricsResponseBodyData) String() string {
@@ -4599,18 +4112,12 @@ func (s *ListMessageMetricsResponseBodyData) SetTotalCount(v int32) *ListMessage
 }
 
 type ListMessageMetricsResponseBodyDataMetrics struct {
-	// 发送日期。
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// 发送失败。
-	Fail *int32 `json:"Fail,omitempty" xml:"Fail,omitempty"`
-	// 发送中。
-	Pending *int32 `json:"Pending,omitempty" xml:"Pending,omitempty"`
-	// 发送成功率。
-	Rate *float32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	// 发送成功。
-	Success *int32 `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总计短信数量。
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Date    *string  `json:"Date,omitempty" xml:"Date,omitempty"`
+	Fail    *int32   `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	Pending *int32   `json:"Pending,omitempty" xml:"Pending,omitempty"`
+	Rate    *float32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Success *int32   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total   *int32   `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListMessageMetricsResponseBodyDataMetrics) String() string {
@@ -4681,42 +4188,21 @@ func (s *ListMessageMetricsResponse) SetBody(v *ListMessageMetricsResponseBody) 
 }
 
 type ListMessagesRequest struct {
-	// 发送日期，格式为20220101。
-	Datetime *string `json:"Datetime,omitempty" xml:"Datetime,omitempty"`
-	// 短信错误码过滤。
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 关联人群Id过滤。
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 短信Id过滤，短信Id为SendMessage成功返回的Id。
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 手机号码过滤。
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// 短信批处理Id过滤，短信批处理Id为SendMessage成功返回的RequestId。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 关联触达计划Id过滤。
-	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	// 签名名称过滤。
-	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// 签名Id过滤，同时只能指定签名名称或签名Id其中之一。
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// 短信发送状态过滤。
-	// - 0 : 发送中。
-	// - 1 : 发送成功。
-	// - 2 : 发送失败。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板号过滤。
+	Datetime     *string `json:"Datetime,omitempty" xml:"Datetime,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	MessageId    *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PhoneNumber  *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScheduleId   *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	Signature    *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	SignatureId  *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// 模板Id过滤，同时只能指定模板Code或模板Id其中之一。
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 模板类型过滤。
-	// - 0 : 验证码。
-	// - 1 : 短信通知。
-	// - 2 : 推广短信。
-	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s ListMessagesRequest) String() string {
@@ -4803,14 +4289,10 @@ func (s *ListMessagesRequest) SetTemplateType(v int32) *ListMessagesRequest {
 }
 
 type ListMessagesResponseBody struct {
-	// 返回数据。
-	Data *ListMessagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *ListMessagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListMessagesResponseBody) String() string {
@@ -4842,14 +4324,10 @@ func (s *ListMessagesResponseBody) SetRequestId(v string) *ListMessagesResponseB
 }
 
 type ListMessagesResponseBodyData struct {
-	// 短信列表。
-	Messages []*ListMessagesResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 短信数量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Messages   []*ListMessagesResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListMessagesResponseBodyData) String() string {
@@ -4881,34 +4359,17 @@ func (s *ListMessagesResponseBodyData) SetTotalCount(v int32) *ListMessagesRespo
 }
 
 type ListMessagesResponseBodyDataMessages struct {
-	// 短信错误码。
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 关联人群Id，未关联则为空。
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 短信序列号。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 外部拓展字段。
-	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	// 手机号码。
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// 关联触达计划Id，未关联则为空。
-	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	// 签名名称。
-	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// 短信发送状态。
-	// - 0 : 发送中。
-	// - 1 : 发送成功。
-	// - 2 : 发送失败。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板号。
-	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// 模板参数。
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	OutId          *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	PhoneNumber    *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ScheduleId     *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	Signature      *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateCode   *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 	TemplateParams *string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
-	// 模板类型。
-	// - 0 : 验证码。
-	// - 1 : 短信通知。
-	// - 2 : 推广短信。
-	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	TemplateType   *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s ListMessagesResponseBodyDataMessages) String() string {
@@ -5004,14 +4465,10 @@ func (s *ListMessagesResponse) SetBody(v *ListMessagesResponseBody) *ListMessage
 }
 
 type ListSchedulesRequest struct {
-	// 触达计划名称过滤。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 发送状态过滤。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListSchedulesRequest) String() string {
@@ -5043,14 +4500,10 @@ func (s *ListSchedulesRequest) SetStatus(v int32) *ListSchedulesRequest {
 }
 
 type ListSchedulesResponseBody struct {
-	// 返回数据。
-	Data *ListSchedulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *ListSchedulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListSchedulesResponseBody) String() string {
@@ -5082,14 +4535,10 @@ func (s *ListSchedulesResponseBody) SetRequestId(v string) *ListSchedulesRespons
 }
 
 type ListSchedulesResponseBodyData struct {
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 触达计划列表。
-	Schedules []*ListSchedulesResponseBodyDataSchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Repeated"`
-	// 触达计划数量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Schedules  []*ListSchedulesResponseBodyDataSchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Repeated"`
+	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSchedulesResponseBodyData) String() string {
@@ -5121,50 +4570,21 @@ func (s *ListSchedulesResponseBodyData) SetTotalCount(v int32) *ListSchedulesRes
 }
 
 type ListSchedulesResponseBodyDataSchedules struct {
-	// 创建时间 (UTC+8)。
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 终止时间（UTC+8）。
-	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 执行时间 (UTC+8)，为空立即执行。
-	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// 人群Id。
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 触达计划Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 触达计划名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 重复周期，按重复周期与重复周期单位执行。
-	RepeatCycle *int32 `json:"RepeatCycle,omitempty" xml:"RepeatCycle,omitempty"`
-	// 重复周期单位，若指定执行时间，则重复周期生效。
-	// - 0: 从不（默认）。
-	// - 1: 小时。
-	// - 2: 天。
-	// - 3: 周。
-	// - 4: 月。
-	RepeatCycleUnit *int32 `json:"RepeatCycleUnit,omitempty" xml:"RepeatCycleUnit,omitempty"`
-	// 重复次数。
-	// - -1: 不设终止时间（默认）。
-	// - 0: 不重复。
-	// - N: 重复N次后终止。
-	RepeatTimes *int32 `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
-	// 签名。
-	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	// 签名Id，或指定签名。
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// 状态。
-	// - 0: 检查中。
-	// - 1: 检查成功。
-	// - 2: 检查失败。
-	// - 3: 发送中。
-	// - 4: 发送成功。
-	// - 5: 发送失败。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板Code。
-	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// 模板Id，或指定模板Code。
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 更新时间 (UTC+8)。
-	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	CreatedTime     *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	EndTime         *int32  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecuteTime     *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RepeatCycle     *int32  `json:"RepeatCycle,omitempty" xml:"RepeatCycle,omitempty"`
+	RepeatCycleUnit *int32  `json:"RepeatCycleUnit,omitempty" xml:"RepeatCycleUnit,omitempty"`
+	RepeatTimes     *int32  `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
+	SignName        *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	SignatureId     *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateCode    *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	UpdatedTime     *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
 func (s ListSchedulesResponseBodyDataSchedules) String() string {
@@ -5280,17 +4700,10 @@ func (s *ListSchedulesResponse) SetBody(v *ListSchedulesResponseBody) *ListSched
 }
 
 type ListSignaturesRequest struct {
-	// 签名名称过滤。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 签名审核状态过滤。
-	// - 0：审核中。
-	// - 1：审核通过。
-	// - 2：审核不通过。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListSignaturesRequest) String() string {
@@ -5322,14 +4735,10 @@ func (s *ListSignaturesRequest) SetStatus(v int32) *ListSignaturesRequest {
 }
 
 type ListSignaturesResponseBody struct {
-	// 返回数据。
-	Data *ListSignaturesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *ListSignaturesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListSignaturesResponseBody) String() string {
@@ -5361,14 +4770,10 @@ func (s *ListSignaturesResponseBody) SetRequestId(v string) *ListSignaturesRespo
 }
 
 type ListSignaturesResponseBodyData struct {
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 分页返回的签名列表。
+	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Signatures []*ListSignaturesResponseBodyDataSignatures `json:"Signatures,omitempty" xml:"Signatures,omitempty" type:"Repeated"`
-	// 账号下全部签名注册记录数量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSignaturesResponseBodyData) String() string {
@@ -5400,18 +4805,10 @@ func (s *ListSignaturesResponseBodyData) SetTotalCount(v int32) *ListSignaturesR
 }
 
 type ListSignaturesResponseBodyDataSignatures struct {
-	// 创建时间 (UTC+8)。
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 签名Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 签名名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 签名审核状态。
-	// - 0：审核中。
-	// - 1：审核通过。
-	// - 2：审核不通过。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间 (UTC+8)。
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
@@ -5478,24 +4875,12 @@ func (s *ListSignaturesResponse) SetBody(v *ListSignaturesResponseBody) *ListSig
 }
 
 type ListTemplatesRequest struct {
-	// 模板内容过滤。
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 模板名称过滤。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 审核状态过滤。
-	// - 0 : 审核中。
-	// - 1 : 审核通过。
-	// - 2 : 审核不通过。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板类型过滤。
-	// - 0 : 验证码。
-	// - 1 : 短信通知。
-	// - 2 : 推广短信。
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type       *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTemplatesRequest) String() string {
@@ -5537,14 +4922,10 @@ func (s *ListTemplatesRequest) SetType(v int32) *ListTemplatesRequest {
 }
 
 type ListTemplatesResponseBody struct {
-	// 返回数据。
-	Data *ListTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *ListTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListTemplatesResponseBody) String() string {
@@ -5576,14 +4957,10 @@ func (s *ListTemplatesResponseBody) SetRequestId(v string) *ListTemplatesRespons
 }
 
 type ListTemplatesResponseBodyData struct {
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 分页返回的模板列表。
-	Templates []*ListTemplatesResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
-	// 全部模板注册记录数量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Templates  []*ListTemplatesResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTemplatesResponseBodyData) String() string {
@@ -5615,34 +4992,17 @@ func (s *ListTemplatesResponseBodyData) SetTotalCount(v int32) *ListTemplatesRes
 }
 
 type ListTemplatesResponseBodyDataTemplates struct {
-	// 模板内容。
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 创建时间 (UTC+8)。
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 申请说明。
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 模板Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 签名名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 审核意见。
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// 签名Id。
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// 审核状态。
-	// - 0 : 审核中。
-	// - 1 : 审核通过。
-	// - 2 : 审核不通过。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 模板Code。
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	SignatureId  *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// 模板类型。
-	// - 0 : 验证码。
-	// - 1 : 短信通知。
-	// - 2 : 推广短信。
-	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 更新时间 (UTC+8)。
-	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	Type         *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdatedTime  *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
 func (s ListTemplatesResponseBodyDataTemplates) String() string {
@@ -5738,23 +5098,14 @@ func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTempl
 }
 
 type ListTrainingJobsRequest struct {
-	// 归属运营活动过滤。
-	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// 训练任务名称过滤。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 训练任务备注过滤。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 训练任务状态过滤。
-	// - 0: 队列中。
-	// - 1: 已提交。
-	// - 2: 运行中。
-	// - 3: 成功。
-	// - 4: 失败。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	CampaignId         *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	CampaignName       *string `json:"CampaignName,omitempty" xml:"CampaignName,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Remark             *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TrainingScheduleId *string `json:"TrainingScheduleId,omitempty" xml:"TrainingScheduleId,omitempty"`
 }
 
 func (s ListTrainingJobsRequest) String() string {
@@ -5767,6 +5118,11 @@ func (s ListTrainingJobsRequest) GoString() string {
 
 func (s *ListTrainingJobsRequest) SetCampaignId(v string) *ListTrainingJobsRequest {
 	s.CampaignId = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetCampaignName(v string) *ListTrainingJobsRequest {
+	s.CampaignName = &v
 	return s
 }
 
@@ -5795,15 +5151,16 @@ func (s *ListTrainingJobsRequest) SetStatus(v int32) *ListTrainingJobsRequest {
 	return s
 }
 
+func (s *ListTrainingJobsRequest) SetTrainingScheduleId(v string) *ListTrainingJobsRequest {
+	s.TrainingScheduleId = &v
+	return s
+}
+
 type ListTrainingJobsResponseBody struct {
-	// 返回数据。
-	Data *ListTrainingJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *ListTrainingJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListTrainingJobsResponseBody) String() string {
@@ -5835,13 +5192,9 @@ func (s *ListTrainingJobsResponseBody) SetRequestId(v string) *ListTrainingJobsR
 }
 
 type ListTrainingJobsResponseBodyData struct {
-	// 分页数，从1开始，默认为1。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 分页大小，默认为10。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 总训练任务数量。
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// 训练任务列表。
+	PageNumber   *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount   *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	TrainingJobs []*ListTrainingJobsResponseBodyDataTrainingJobs `json:"TrainingJobs,omitempty" xml:"TrainingJobs,omitempty" type:"Repeated"`
 }
 
@@ -5874,28 +5227,18 @@ func (s *ListTrainingJobsResponseBodyData) SetTrainingJobs(v []*ListTrainingJobs
 }
 
 type ListTrainingJobsResponseBodyDataTrainingJobs struct {
-	// 关联算法Id。
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// 关联运营活动Id。
-	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// 创建时间 (UTC+8)。
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 训练数据路径。
-	DataPath *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
-	// 训练任务日志。
-	History *string `json:"History,omitempty" xml:"History,omitempty"`
-	// 训练任务Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 训练任务名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 训练任务状态。
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 更新时间 (UTC+8)。
-	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// 用户配置。
-	UserConfig *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
+	Algorithm          *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CampaignId         *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	CreatedTime        *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DataPath           *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
+	History            *string `json:"History,omitempty" xml:"History,omitempty"`
+	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark             *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TrainingScheduleId *string `json:"TrainingScheduleId,omitempty" xml:"TrainingScheduleId,omitempty"`
+	UpdatedTime        *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	UserConfig         *string `json:"UserConfig,omitempty" xml:"UserConfig,omitempty"`
 }
 
 func (s ListTrainingJobsResponseBodyDataTrainingJobs) String() string {
@@ -5951,6 +5294,11 @@ func (s *ListTrainingJobsResponseBodyDataTrainingJobs) SetStatus(v int32) *ListT
 	return s
 }
 
+func (s *ListTrainingJobsResponseBodyDataTrainingJobs) SetTrainingScheduleId(v string) *ListTrainingJobsResponseBodyDataTrainingJobs {
+	s.TrainingScheduleId = &v
+	return s
+}
+
 func (s *ListTrainingJobsResponseBodyDataTrainingJobs) SetUpdatedTime(v string) *ListTrainingJobsResponseBodyDataTrainingJobs {
 	s.UpdatedTime = &v
 	return s
@@ -5991,26 +5339,16 @@ func (s *ListTrainingJobsResponse) SetBody(v *ListTrainingJobsResponseBody) *Lis
 }
 
 type SendMessageRequest struct {
-	// 人群Id，用于关联人群。
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 外部拓展字段，示例：["1234567890"]。
-	OutIds []*string `json:"OutIds,omitempty" xml:"OutIds,omitempty" type:"Repeated"`
-	// 手机号，每个手机号对应一个模板变量、上行拓展码和外部拓展字段，示例：["1234567890"]。
-	PhoneNumbers []*string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
-	// 触达计划Id，用于关联触达计划。
-	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	// 签名名称。
-	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	// 签名Id，同时只能指定签名名称或签名Id其中之一。
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// 短信上行拓展码，示例：["1234567890"]。
+	GroupId          *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OutIds           []*string `json:"OutIds,omitempty" xml:"OutIds,omitempty" type:"Repeated"`
+	PhoneNumbers     []*string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
+	ScheduleId       *string   `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	SignName         *string   `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	SignatureId      *string   `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
 	SmsUpExtendCodes []*string `json:"SmsUpExtendCodes,omitempty" xml:"SmsUpExtendCodes,omitempty" type:"Repeated"`
-	// 模板Code。
-	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// 模板Id，同时只能指定模板Code或模板Id其中之一。
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 短信模板变量对应的实际值，JSON格式。支持传入多个参数，示例：[{"name":"张三","number":"15038****76"}]。
-	TemplateParams []*string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty" type:"Repeated"`
+	TemplateCode     *string   `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateId       *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateParams   []*string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty" type:"Repeated"`
 }
 
 func (s SendMessageRequest) String() string {
@@ -6072,14 +5410,10 @@ func (s *SendMessageRequest) SetTemplateParams(v []*string) *SendMessageRequest 
 }
 
 type SendMessageResponseBody struct {
-	// 返回数据。
-	Data *SendMessageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *SendMessageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SendMessageResponseBody) String() string {
@@ -6111,10 +5445,8 @@ func (s *SendMessageResponseBody) SetRequestId(v string) *SendMessageResponseBod
 }
 
 type SendMessageResponseBodyData struct {
-	// 短信结果列表，列表中手机号的顺序与输入请求手机号顺序一一对应。
-	Messages []*SendMessageResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	// 短信批处理Id，可使用ListMessages查询短信状态。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Messages  []*SendMessageResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SendMessageResponseBodyData) String() string {
@@ -6136,9 +5468,7 @@ func (s *SendMessageResponseBodyData) SetRequestId(v string) *SendMessageRespons
 }
 
 type SendMessageResponseBodyDataMessages struct {
-	// 短信Id，可使用ListMessages查询短信状态。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 手机号码。
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 }
 
@@ -6190,7 +5520,6 @@ func (s *SendMessageResponse) SetBody(v *SendMessageResponseBody) *SendMessageRe
 }
 
 type SmsReportRequest struct {
-	// 请求参数的主体信息。
 	Body []*SmsReportRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
@@ -6208,33 +5537,18 @@ func (s *SmsReportRequest) SetBody(v []*SmsReportRequestBody) *SmsReportRequest 
 }
 
 type SmsReportRequestBody struct {
-	// 发送回执ID，即发送流水号。
-	BizId *string `json:"biz_id,omitempty" xml:"biz_id,omitempty"`
-	// 状态报告编码。
-	ErrCode *string `json:"err_code,omitempty" xml:"err_code,omitempty"`
-	// 状态报告说明。
-	ErrMsg *string `json:"err_msg,omitempty" xml:"err_msg,omitempty"`
-	// 短信Id。调用发送接口SendMessage发送短信时，返回值中的Id字段。可使用短信Id在接口ListMessages查询具体的发送状态。
-	MessageId *string `json:"message_id,omitempty" xml:"message_id,omitempty"`
-	// 外部拓展字段。
-	OutId *string `json:"out_id,omitempty" xml:"out_id,omitempty"`
-	// 手机号码。
-	PhoneNumber *string `json:"phone_number,omitempty" xml:"phone_number,omitempty"`
-	// 状态报告时间。
-	ReportTime *string `json:"report_time,omitempty" xml:"report_time,omitempty"`
-	// 短信批处理Id。调用发送接口SendMessage发送短信时，返回值中的RequestId字段。可使用短信批处理Id在接口ListMessages查询具体的发送状态。
-	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// 发送时间。
-	SendTime *string `json:"send_time,omitempty" xml:"send_time,omitempty"`
-	// 签名。
-	SignName *string `json:"sign_name,omitempty" xml:"sign_name,omitempty"`
-	// 短信长度。短信长度不超过70个字，按照一条短信计费；超过70个字，即为长短信，按照67字/条拆分成多条计费。
-	SmsSize *string `json:"sms_size,omitempty" xml:"sms_size,omitempty"`
-	// 是否接收成功。
-	// - true : 接收成功。
-	// - false : 接收失败。
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 模板号。
+	BizId        *string `json:"biz_id,omitempty" xml:"biz_id,omitempty"`
+	ErrCode      *string `json:"err_code,omitempty" xml:"err_code,omitempty"`
+	ErrMsg       *string `json:"err_msg,omitempty" xml:"err_msg,omitempty"`
+	MessageId    *string `json:"message_id,omitempty" xml:"message_id,omitempty"`
+	OutId        *string `json:"out_id,omitempty" xml:"out_id,omitempty"`
+	PhoneNumber  *string `json:"phone_number,omitempty" xml:"phone_number,omitempty"`
+	ReportTime   *string `json:"report_time,omitempty" xml:"report_time,omitempty"`
+	RequestId    *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	SendTime     *string `json:"send_time,omitempty" xml:"send_time,omitempty"`
+	SignName     *string `json:"sign_name,omitempty" xml:"sign_name,omitempty"`
+	SmsSize      *string `json:"sms_size,omitempty" xml:"sms_size,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TemplateCode *string `json:"template_code,omitempty" xml:"template_code,omitempty"`
 }
 
@@ -6312,10 +5626,8 @@ func (s *SmsReportRequestBody) SetTemplateCode(v string) *SmsReportRequestBody {
 }
 
 type SmsReportResponseBody struct {
-	// 应答编码。
-	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
-	// 描述信息。
-	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	Code *int32  `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
 }
 
 func (s SmsReportResponseBody) String() string {
@@ -6366,7 +5678,6 @@ func (s *SmsReportResponse) SetBody(v *SmsReportResponseBody) *SmsReportResponse
 }
 
 type SmsUpRequest struct {
-	// 请求参数的主体信息。
 	Body []*SmsUpRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
@@ -6384,18 +5695,12 @@ func (s *SmsUpRequest) SetBody(v []*SmsUpRequestBody) *SmsUpRequest {
 }
 
 type SmsUpRequestBody struct {
-	// 发送内容。
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 上行短信扩展号码，系统后台自动生成，不支持自定义传入。
-	DestCode *string `json:"dest_code,omitempty" xml:"dest_code,omitempty"`
-	// 手机号码。
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	DestCode    *string `json:"dest_code,omitempty" xml:"dest_code,omitempty"`
 	PhoneNumber *string `json:"phone_number,omitempty" xml:"phone_number,omitempty"`
-	// 发送时间。
-	SendTime *string `json:"send_time,omitempty" xml:"send_time,omitempty"`
-	// 序列号。
-	SequenceId *int32 `json:"sequence_id,omitempty" xml:"sequence_id,omitempty"`
-	// 签名信息。
-	SignName *string `json:"sign_name,omitempty" xml:"sign_name,omitempty"`
+	SendTime    *string `json:"send_time,omitempty" xml:"send_time,omitempty"`
+	SequenceId  *int32  `json:"sequence_id,omitempty" xml:"sequence_id,omitempty"`
+	SignName    *string `json:"sign_name,omitempty" xml:"sign_name,omitempty"`
 }
 
 func (s SmsUpRequestBody) String() string {
@@ -6437,10 +5742,8 @@ func (s *SmsUpRequestBody) SetSignName(v string) *SmsUpRequestBody {
 }
 
 type SmsUpResponseBody struct {
-	// 应答编码。
-	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
-	// 描述信息。
-	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	Code *int32  `json:"code,omitempty" xml:"code,omitempty"`
+	Msg  *string `json:"msg,omitempty" xml:"msg,omitempty"`
 }
 
 func (s SmsUpResponseBody) String() string {
@@ -6491,9 +5794,7 @@ func (s *SmsUpResponse) SetBody(v *SmsUpResponseBody) *SmsUpResponse {
 }
 
 type UpdateCampaignRequest struct {
-	// 运营活动名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 备注。
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
@@ -6516,14 +5817,10 @@ func (s *UpdateCampaignRequest) SetRemark(v string) *UpdateCampaignRequest {
 }
 
 type UpdateCampaignResponseBody struct {
-	// 返回数据。
-	Data *UpdateCampaignResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data         *UpdateCampaignResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *int32                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateCampaignResponseBody) String() string {
@@ -6555,15 +5852,10 @@ func (s *UpdateCampaignResponseBody) SetRequestId(v string) *UpdateCampaignRespo
 }
 
 type UpdateCampaignResponseBodyData struct {
-	// 创建时间 (UTC+8)。
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 运营活动Id。
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 运营活动名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 备注。
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// 更新时间 (UTC+8)。
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
@@ -6630,7 +5922,6 @@ func (s *UpdateCampaignResponse) SetBody(v *UpdateCampaignResponseBody) *UpdateC
 }
 
 type UpdateReportUrlRequest struct {
-	// 可公开访问的地址。
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -6648,14 +5939,10 @@ func (s *UpdateReportUrlRequest) SetUrl(v string) *UpdateReportUrlRequest {
 }
 
 type UpdateReportUrlResponseBody struct {
-	// 返回数据。
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode    *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateReportUrlResponseBody) String() string {
@@ -6716,7 +6003,6 @@ func (s *UpdateReportUrlResponse) SetBody(v *UpdateReportUrlResponseBody) *Updat
 }
 
 type UpdateUploadUrlRequest struct {
-	// 可公开访问的地址。
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -6734,14 +6020,10 @@ func (s *UpdateUploadUrlRequest) SetUrl(v string) *UpdateUploadUrlRequest {
 }
 
 type UpdateUploadUrlResponseBody struct {
-	// 返回数据。
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误码。
-	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 错误信息。
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode    *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 请求ID。
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateUploadUrlResponseBody) String() string {
@@ -7371,7 +6653,6 @@ func (client *Client) DeleteCampaign(Id *string) (_result *DeleteCampaignRespons
 }
 
 func (client *Client) DeleteCampaignWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteCampaignResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7379,7 +6660,7 @@ func (client *Client) DeleteCampaignWithOptions(Id *string, headers map[string]*
 		Action:      tea.String("DeleteCampaign"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/campaigns/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/campaigns/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7412,7 +6693,6 @@ func (client *Client) DeleteGroup(Id *string) (_result *DeleteGroupResponse, _er
 }
 
 func (client *Client) DeleteGroupWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7420,7 +6700,7 @@ func (client *Client) DeleteGroupWithOptions(Id *string, headers map[string]*str
 		Action:      tea.String("DeleteGroup"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/groups/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/groups/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7452,7 +6732,6 @@ func (client *Client) DeleteInferenceJob(Id *string) (_result *DeleteInferenceJo
 }
 
 func (client *Client) DeleteInferenceJobWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInferenceJobResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7460,7 +6739,7 @@ func (client *Client) DeleteInferenceJobWithOptions(Id *string, headers map[stri
 		Action:      tea.String("DeleteInferenceJob"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/inference/jobs/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/inference/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7493,7 +6772,6 @@ func (client *Client) DeleteSchedule(Id *string) (_result *DeleteScheduleRespons
 }
 
 func (client *Client) DeleteScheduleWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteScheduleResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7501,7 +6779,7 @@ func (client *Client) DeleteScheduleWithOptions(Id *string, headers map[string]*
 		Action:      tea.String("DeleteSchedule"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/schedules/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/schedules/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7534,7 +6812,6 @@ func (client *Client) DeleteSignature(Id *string) (_result *DeleteSignatureRespo
 }
 
 func (client *Client) DeleteSignatureWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSignatureResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7542,7 +6819,7 @@ func (client *Client) DeleteSignatureWithOptions(Id *string, headers map[string]
 		Action:      tea.String("DeleteSignature"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/signatures/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/signatures/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7575,7 +6852,6 @@ func (client *Client) DeleteTemplate(Id *string) (_result *DeleteTemplateRespons
 }
 
 func (client *Client) DeleteTemplateWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7583,7 +6859,7 @@ func (client *Client) DeleteTemplateWithOptions(Id *string, headers map[string]*
 		Action:      tea.String("DeleteTemplate"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/templates/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/templates/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7615,7 +6891,6 @@ func (client *Client) DeleteTrainingJob(Id *string) (_result *DeleteTrainingJobR
 }
 
 func (client *Client) DeleteTrainingJobWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTrainingJobResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7623,7 +6898,7 @@ func (client *Client) DeleteTrainingJobWithOptions(Id *string, headers map[strin
 		Action:      tea.String("DeleteTrainingJob"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/training/jobs/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/training/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7655,7 +6930,6 @@ func (client *Client) GetAlgorithm(Id *string) (_result *GetAlgorithmResponse, _
 }
 
 func (client *Client) GetAlgorithmWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAlgorithmResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7663,7 +6937,7 @@ func (client *Client) GetAlgorithmWithOptions(Id *string, headers map[string]*st
 		Action:      tea.String("GetAlgorithm"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/algorithms/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/algorithms/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7695,7 +6969,6 @@ func (client *Client) GetCampaign(Id *string) (_result *GetCampaignResponse, _er
 }
 
 func (client *Client) GetCampaignWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCampaignResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7703,7 +6976,7 @@ func (client *Client) GetCampaignWithOptions(Id *string, headers map[string]*str
 		Action:      tea.String("GetCampaign"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/campaigns/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/campaigns/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7735,7 +7008,6 @@ func (client *Client) GetGroup(Id *string) (_result *GetGroupResponse, _err erro
 }
 
 func (client *Client) GetGroupWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGroupResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7743,7 +7015,7 @@ func (client *Client) GetGroupWithOptions(Id *string, headers map[string]*string
 		Action:      tea.String("GetGroup"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/groups/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/groups/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7775,7 +7047,6 @@ func (client *Client) GetInferenceJob(Id *string) (_result *GetInferenceJobRespo
 }
 
 func (client *Client) GetInferenceJobWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInferenceJobResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7783,7 +7054,7 @@ func (client *Client) GetInferenceJobWithOptions(Id *string, headers map[string]
 		Action:      tea.String("GetInferenceJob"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/inference/jobs/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/inference/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7854,7 +7125,6 @@ func (client *Client) GetSchedule(Id *string) (_result *GetScheduleResponse, _er
 }
 
 func (client *Client) GetScheduleWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetScheduleResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7862,7 +7132,7 @@ func (client *Client) GetScheduleWithOptions(Id *string, headers map[string]*str
 		Action:      tea.String("GetSchedule"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/schedules/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/schedules/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7894,7 +7164,6 @@ func (client *Client) GetSignature(Id *string) (_result *GetSignatureResponse, _
 }
 
 func (client *Client) GetSignatureWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSignatureResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7902,7 +7171,7 @@ func (client *Client) GetSignatureWithOptions(Id *string, headers map[string]*st
 		Action:      tea.String("GetSignature"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/signatures/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/signatures/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7934,7 +7203,6 @@ func (client *Client) GetTemplate(Id *string) (_result *GetTemplateResponse, _er
 }
 
 func (client *Client) GetTemplateWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7942,7 +7210,7 @@ func (client *Client) GetTemplateWithOptions(Id *string, headers map[string]*str
 		Action:      tea.String("GetTemplate"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/templates/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/templates/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -7974,7 +7242,6 @@ func (client *Client) GetTrainingJob(Id *string) (_result *GetTrainingJobRespons
 }
 
 func (client *Client) GetTrainingJobWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTrainingJobResponse, _err error) {
-	Id = openapiutil.GetEncodeParam(Id)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -7982,7 +7249,7 @@ func (client *Client) GetTrainingJobWithOptions(Id *string, headers map[string]*
 		Action:      tea.String("GetTrainingJob"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/training/jobs/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/training/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -8232,9 +7499,6 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, headers 
 	return _result, _err
 }
 
-/**
- * 获取预测任务列表。
- */
 func (client *Client) ListInferenceJobs(request *ListInferenceJobsRequest) (_result *ListInferenceJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8257,6 +7521,10 @@ func (client *Client) ListInferenceJobsWithOptions(request *ListInferenceJobsReq
 		query["CampaignId"] = request.CampaignId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CampaignName)) {
+		query["CampaignName"] = request.CampaignName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -8275,6 +7543,10 @@ func (client *Client) ListInferenceJobsWithOptions(request *ListInferenceJobsReq
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrainingJobName)) {
+		query["TrainingJobName"] = request.TrainingJobName
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8688,9 +7960,6 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 	return _result, _err
 }
 
-/**
- * 获取训练任务列表。
- */
 func (client *Client) ListTrainingJobs(request *ListTrainingJobsRequest) (_result *ListTrainingJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8713,6 +7982,10 @@ func (client *Client) ListTrainingJobsWithOptions(request *ListTrainingJobsReque
 		query["CampaignId"] = request.CampaignId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CampaignName)) {
+		query["CampaignName"] = request.CampaignName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -8731,6 +8004,10 @@ func (client *Client) ListTrainingJobsWithOptions(request *ListTrainingJobsReque
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrainingScheduleId)) {
+		query["TrainingScheduleId"] = request.TrainingScheduleId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8757,9 +8034,6 @@ func (client *Client) ListTrainingJobsWithOptions(request *ListTrainingJobsReque
 	return _result, _err
 }
 
-/**
- * 发送短信。
- */
 func (client *Client) SendMessage(request *SendMessageRequest) (_result *SendMessageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8950,7 +8224,6 @@ func (client *Client) UpdateCampaignWithOptions(Id *string, request *UpdateCampa
 	if _err != nil {
 		return _result, _err
 	}
-	Id = openapiutil.GetEncodeParam(Id)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
@@ -8968,7 +8241,7 @@ func (client *Client) UpdateCampaignWithOptions(Id *string, request *UpdateCampa
 		Action:      tea.String("UpdateCampaign"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/campaigns/" + tea.StringValue(Id)),
+		Pathname:    tea.String("/api/v2/campaigns/" + tea.StringValue(openapiutil.GetEncodeParam(Id))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
