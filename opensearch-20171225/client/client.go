@@ -2821,31 +2821,32 @@ func (s *DescribeAppGroupResponseBody) SetResult(v *DescribeAppGroupResponseBody
 }
 
 type DescribeAppGroupResponseBodyResult struct {
-	ChargeType                        *string                                  `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	ChargingWay                       *int32                                   `json:"chargingWay,omitempty" xml:"chargingWay,omitempty"`
-	CommodityCode                     *string                                  `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	Created                           *int32                                   `json:"created,omitempty" xml:"created,omitempty"`
-	CurrentVersion                    *string                                  `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
-	Description                       *string                                  `json:"description,omitempty" xml:"description,omitempty"`
-	Domain                            *string                                  `json:"domain,omitempty" xml:"domain,omitempty"`
-	ExpireOn                          *string                                  `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
-	FirstRankAlgoDeploymentId         *int32                                   `json:"firstRankAlgoDeploymentId,omitempty" xml:"firstRankAlgoDeploymentId,omitempty"`
-	HasPendingQuotaReviewTask         *int32                                   `json:"hasPendingQuotaReviewTask,omitempty" xml:"hasPendingQuotaReviewTask,omitempty"`
-	Id                                *string                                  `json:"id,omitempty" xml:"id,omitempty"`
-	InstanceId                        *string                                  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	LockMode                          *string                                  `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
-	LockedByExpiration                *int32                                   `json:"lockedByExpiration,omitempty" xml:"lockedByExpiration,omitempty"`
-	Name                              *string                                  `json:"name,omitempty" xml:"name,omitempty"`
-	PendingSecondRankAlgoDeploymentId *int32                                   `json:"pendingSecondRankAlgoDeploymentId,omitempty" xml:"pendingSecondRankAlgoDeploymentId,omitempty"`
-	ProcessingOrderId                 *string                                  `json:"processingOrderId,omitempty" xml:"processingOrderId,omitempty"`
-	Produced                          *int32                                   `json:"produced,omitempty" xml:"produced,omitempty"`
-	ProjectId                         *string                                  `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	Quota                             *DescribeAppGroupResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	SecondRankAlgoDeploymentId        *int32                                   `json:"secondRankAlgoDeploymentId,omitempty" xml:"secondRankAlgoDeploymentId,omitempty"`
-	Status                            *string                                  `json:"status,omitempty" xml:"status,omitempty"`
-	SwitchedTime                      *int32                                   `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
-	Type                              *string                                  `json:"type,omitempty" xml:"type,omitempty"`
-	Updated                           *int32                                   `json:"updated,omitempty" xml:"updated,omitempty"`
+	ChargeType                        *string                                   `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	ChargingWay                       *int32                                    `json:"chargingWay,omitempty" xml:"chargingWay,omitempty"`
+	CommodityCode                     *string                                   `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	Created                           *int32                                    `json:"created,omitempty" xml:"created,omitempty"`
+	CurrentVersion                    *string                                   `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
+	Description                       *string                                   `json:"description,omitempty" xml:"description,omitempty"`
+	Domain                            *string                                   `json:"domain,omitempty" xml:"domain,omitempty"`
+	ExpireOn                          *string                                   `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
+	FirstRankAlgoDeploymentId         *int32                                    `json:"firstRankAlgoDeploymentId,omitempty" xml:"firstRankAlgoDeploymentId,omitempty"`
+	HasPendingQuotaReviewTask         *int32                                    `json:"hasPendingQuotaReviewTask,omitempty" xml:"hasPendingQuotaReviewTask,omitempty"`
+	Id                                *string                                   `json:"id,omitempty" xml:"id,omitempty"`
+	InstanceId                        *string                                   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	LockMode                          *string                                   `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
+	LockedByExpiration                *int32                                    `json:"lockedByExpiration,omitempty" xml:"lockedByExpiration,omitempty"`
+	Name                              *string                                   `json:"name,omitempty" xml:"name,omitempty"`
+	PendingSecondRankAlgoDeploymentId *int32                                    `json:"pendingSecondRankAlgoDeploymentId,omitempty" xml:"pendingSecondRankAlgoDeploymentId,omitempty"`
+	ProcessingOrderId                 *string                                   `json:"processingOrderId,omitempty" xml:"processingOrderId,omitempty"`
+	Produced                          *int32                                    `json:"produced,omitempty" xml:"produced,omitempty"`
+	ProjectId                         *string                                   `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	Quota                             *DescribeAppGroupResponseBodyResultQuota  `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	SecondRankAlgoDeploymentId        *int32                                    `json:"secondRankAlgoDeploymentId,omitempty" xml:"secondRankAlgoDeploymentId,omitempty"`
+	Status                            *string                                   `json:"status,omitempty" xml:"status,omitempty"`
+	SwitchedTime                      *int32                                    `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
+	Tags                              []*DescribeAppGroupResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Type                              *string                                   `json:"type,omitempty" xml:"type,omitempty"`
+	Updated                           *int32                                    `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
 func (s DescribeAppGroupResponseBodyResult) String() string {
@@ -2971,6 +2972,11 @@ func (s *DescribeAppGroupResponseBodyResult) SetSwitchedTime(v int32) *DescribeA
 	return s
 }
 
+func (s *DescribeAppGroupResponseBodyResult) SetTags(v []*DescribeAppGroupResponseBodyResultTags) *DescribeAppGroupResponseBodyResult {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeAppGroupResponseBodyResult) SetType(v string) *DescribeAppGroupResponseBodyResult {
 	s.Type = &v
 	return s
@@ -3007,6 +3013,29 @@ func (s *DescribeAppGroupResponseBodyResultQuota) SetDocSize(v int32) *DescribeA
 
 func (s *DescribeAppGroupResponseBodyResultQuota) SetSpec(v string) *DescribeAppGroupResponseBodyResultQuota {
 	s.Spec = &v
+	return s
+}
+
+type DescribeAppGroupResponseBodyResultTags struct {
+	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s DescribeAppGroupResponseBodyResultTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppGroupResponseBodyResultTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppGroupResponseBodyResultTags) SetTagKey(v string) *DescribeAppGroupResponseBodyResultTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeAppGroupResponseBodyResultTags) SetTagValue(v string) *DescribeAppGroupResponseBodyResultTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -6974,31 +7003,32 @@ func (s *ListAppGroupsResponseBody) SetTotalCount(v int32) *ListAppGroupsRespons
 }
 
 type ListAppGroupsResponseBodyResult struct {
-	ChargeType                        *string                               `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	ChargingWay                       *int32                                `json:"chargingWay,omitempty" xml:"chargingWay,omitempty"`
-	CommodityCode                     *string                               `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	Created                           *int32                                `json:"created,omitempty" xml:"created,omitempty"`
-	CurrentVersion                    *string                               `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
-	Description                       *string                               `json:"description,omitempty" xml:"description,omitempty"`
-	Domain                            *string                               `json:"domain,omitempty" xml:"domain,omitempty"`
-	ExpireOn                          *string                               `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
-	FirstRankAlgoDeploymentId         *int32                                `json:"firstRankAlgoDeploymentId,omitempty" xml:"firstRankAlgoDeploymentId,omitempty"`
-	HasPendingQuotaReviewTask         *int32                                `json:"hasPendingQuotaReviewTask,omitempty" xml:"hasPendingQuotaReviewTask,omitempty"`
-	Id                                *string                               `json:"id,omitempty" xml:"id,omitempty"`
-	InstanceId                        *string                               `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	LockMode                          *string                               `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
-	LockedByExpiration                *int32                                `json:"lockedByExpiration,omitempty" xml:"lockedByExpiration,omitempty"`
-	Name                              *string                               `json:"name,omitempty" xml:"name,omitempty"`
-	PendingSecondRankAlgoDeploymentId *int32                                `json:"pendingSecondRankAlgoDeploymentId,omitempty" xml:"pendingSecondRankAlgoDeploymentId,omitempty"`
-	ProcessingOrderId                 *string                               `json:"processingOrderId,omitempty" xml:"processingOrderId,omitempty"`
-	Produced                          *int32                                `json:"produced,omitempty" xml:"produced,omitempty"`
-	ProjectId                         *string                               `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	Quota                             *ListAppGroupsResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	SecondRankAlgoDeploymentId        *int32                                `json:"secondRankAlgoDeploymentId,omitempty" xml:"secondRankAlgoDeploymentId,omitempty"`
-	Status                            *string                               `json:"status,omitempty" xml:"status,omitempty"`
-	SwitchedTime                      *int32                                `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
-	Type                              *string                               `json:"type,omitempty" xml:"type,omitempty"`
-	Updated                           *int32                                `json:"updated,omitempty" xml:"updated,omitempty"`
+	ChargeType                        *string                                `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	ChargingWay                       *int32                                 `json:"chargingWay,omitempty" xml:"chargingWay,omitempty"`
+	CommodityCode                     *string                                `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	Created                           *int32                                 `json:"created,omitempty" xml:"created,omitempty"`
+	CurrentVersion                    *string                                `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
+	Description                       *string                                `json:"description,omitempty" xml:"description,omitempty"`
+	Domain                            *string                                `json:"domain,omitempty" xml:"domain,omitempty"`
+	ExpireOn                          *string                                `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
+	FirstRankAlgoDeploymentId         *int32                                 `json:"firstRankAlgoDeploymentId,omitempty" xml:"firstRankAlgoDeploymentId,omitempty"`
+	HasPendingQuotaReviewTask         *int32                                 `json:"hasPendingQuotaReviewTask,omitempty" xml:"hasPendingQuotaReviewTask,omitempty"`
+	Id                                *string                                `json:"id,omitempty" xml:"id,omitempty"`
+	InstanceId                        *string                                `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	LockMode                          *string                                `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
+	LockedByExpiration                *int32                                 `json:"lockedByExpiration,omitempty" xml:"lockedByExpiration,omitempty"`
+	Name                              *string                                `json:"name,omitempty" xml:"name,omitempty"`
+	PendingSecondRankAlgoDeploymentId *int32                                 `json:"pendingSecondRankAlgoDeploymentId,omitempty" xml:"pendingSecondRankAlgoDeploymentId,omitempty"`
+	ProcessingOrderId                 *string                                `json:"processingOrderId,omitempty" xml:"processingOrderId,omitempty"`
+	Produced                          *int32                                 `json:"produced,omitempty" xml:"produced,omitempty"`
+	ProjectId                         *string                                `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	Quota                             *ListAppGroupsResponseBodyResultQuota  `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	SecondRankAlgoDeploymentId        *int32                                 `json:"secondRankAlgoDeploymentId,omitempty" xml:"secondRankAlgoDeploymentId,omitempty"`
+	Status                            *string                                `json:"status,omitempty" xml:"status,omitempty"`
+	SwitchedTime                      *int32                                 `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
+	Tags                              []*ListAppGroupsResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Type                              *string                                `json:"type,omitempty" xml:"type,omitempty"`
+	Updated                           *int32                                 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
 func (s ListAppGroupsResponseBodyResult) String() string {
@@ -7124,6 +7154,11 @@ func (s *ListAppGroupsResponseBodyResult) SetSwitchedTime(v int32) *ListAppGroup
 	return s
 }
 
+func (s *ListAppGroupsResponseBodyResult) SetTags(v []*ListAppGroupsResponseBodyResultTags) *ListAppGroupsResponseBodyResult {
+	s.Tags = v
+	return s
+}
+
 func (s *ListAppGroupsResponseBodyResult) SetType(v string) *ListAppGroupsResponseBodyResult {
 	s.Type = &v
 	return s
@@ -7160,6 +7195,29 @@ func (s *ListAppGroupsResponseBodyResultQuota) SetDocSize(v int32) *ListAppGroup
 
 func (s *ListAppGroupsResponseBodyResultQuota) SetSpec(v string) *ListAppGroupsResponseBodyResultQuota {
 	s.Spec = &v
+	return s
+}
+
+type ListAppGroupsResponseBodyResultTags struct {
+	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s ListAppGroupsResponseBodyResultTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppGroupsResponseBodyResultTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppGroupsResponseBodyResultTags) SetTagKey(v string) *ListAppGroupsResponseBodyResultTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListAppGroupsResponseBodyResultTags) SetTagValue(v string) *ListAppGroupsResponseBodyResultTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -10353,6 +10411,192 @@ func (s *ListStatisticReportResponse) SetBody(v *ListStatisticReportResponseBody
 	return s
 }
 
+type ListTagResourcesRequest struct {
+	NextToken    *string                       `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	ResourceId   []*string                     `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	ResourceType *string                       `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesShrinkRequest struct {
+	NextToken        *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	ResourceIdShrink *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	ResourceType     *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	TagShrink        *string `json:"tag,omitempty" xml:"tag,omitempty"`
+}
+
+func (s ListTagResourcesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesShrinkRequest) SetNextToken(v string) *ListTagResourcesShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetResourceIdShrink(v string) *ListTagResourcesShrinkRequest {
+	s.ResourceIdShrink = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetResourceType(v string) *ListTagResourcesShrinkRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetTagShrink(v string) *ListTagResourcesShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	NextToken *string                               `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    []*ListTagResourcesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetResult(v []*ListTagResourcesResponseBodyResult) *ListTagResourcesResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListTagResourcesResponseBodyResult struct {
+	ResourceId   *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	TagKey       *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	TagValue     *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyResult) SetResourceId(v string) *ListTagResourcesResponseBodyResult {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyResult) SetResourceType(v string) *ListTagResourcesResponseBodyResult {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyResult) SetTagKey(v string) *ListTagResourcesResponseBodyResult {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyResult) SetTagValue(v string) *ListTagResourcesResponseBodyResult {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type ListUserAnalyzerEntriesRequest struct {
 	PageNumber *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
@@ -12885,6 +13129,104 @@ func (s *StartSlowQueryAnalyzerResponse) SetBody(v *StartSlowQueryAnalyzerRespon
 	return s
 }
 
+type TagResourcesRequest struct {
+	ResourceId   []*string                 `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	ResourceType *string                   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Tag          []*TagResourcesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type TrainModelResponseBody struct {
 	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
@@ -13037,6 +13379,122 @@ func (s *UnbindEsInstanceResponse) SetStatusCode(v int32) *UnbindEsInstanceRespo
 }
 
 func (s *UnbindEsInstanceResponse) SetBody(v *UnbindEsInstanceResponseBody) *UnbindEsInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type UntagResourcesRequest struct {
+	All          *bool     `json:"all,omitempty" xml:"all,omitempty"`
+	ResourceId   []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	ResourceType *string   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	TagKey       []*string `json:"tagKey,omitempty" xml:"tagKey,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
+	s.TagKey = v
+	return s
+}
+
+type UntagResourcesShrinkRequest struct {
+	All              *bool   `json:"all,omitempty" xml:"all,omitempty"`
+	ResourceIdShrink *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	ResourceType     *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	TagKeyShrink     *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+}
+
+func (s UntagResourcesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesShrinkRequest) SetAll(v bool) *UntagResourcesShrinkRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesShrinkRequest) SetResourceIdShrink(v string) *UntagResourcesShrinkRequest {
+	s.ResourceIdShrink = &v
+	return s
+}
+
+func (s *UntagResourcesShrinkRequest) SetResourceType(v string) *UntagResourcesShrinkRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesShrinkRequest) SetTagKeyShrink(v string) *UntagResourcesShrinkRequest {
+	s.TagKeyShrink = &v
+	return s
+}
+
+type UntagResourcesResponseBody struct {
+	TequestId *string `json:"tequestId,omitempty" xml:"tequestId,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetTequestId(v string) *UntagResourcesResponseBody {
+	s.TequestId = &v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -18247,6 +18705,74 @@ func (client *Client) ListStatisticReportWithOptions(appGroupIdentity *string, m
 	return _result, _err
 }
 
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListTagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceId)) {
+		request.ResourceIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceId, tea.String("resourceId"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdShrink)) {
+		query["resourceId"] = request.ResourceIdShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["tag"] = request.TagShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2017-12-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v4/openapi/resource-tags"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListUserAnalyzerEntries(name *string, request *ListUserAnalyzerEntriesRequest) (_result *ListUserAnalyzerEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19337,6 +19863,60 @@ func (client *Client) StartSlowQueryAnalyzerWithOptions(appGroupIdentity *string
 	return _result, _err
 }
 
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		body["resourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2017-12-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v4/openapi/resource-tags"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) TrainModel(appGroupIdentity *string, modelName *string) (_result *TrainModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -19437,6 +20017,74 @@ func (client *Client) UnbindEsInstanceWithOptions(appGroupIdentity *string, head
 		BodyType:    tea.String("json"),
 	}
 	_result = &UnbindEsInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UntagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceId)) {
+		request.ResourceIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceId, tea.String("resourceId"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagKey)) {
+		request.TagKeyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagKey, tea.String("tagKey"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["all"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdShrink)) {
+		query["resourceId"] = request.ResourceIdShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeyShrink)) {
+		query["tagKey"] = request.TagKeyShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2017-12-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v4/openapi/resource-tags"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
