@@ -1,3 +1,6 @@
+2022-09-29 Version: v3.0.2
+- Add outId for SendBatchSms.
+
 2022-09-28 Version: v3.0.1
 - Upgrade formdata for CheckMobilesCardTemplateSupport.
 

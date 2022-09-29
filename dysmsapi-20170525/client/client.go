@@ -3494,6 +3494,7 @@ func (s *SendBatchCardSmsResponse) SetBody(v *SendBatchCardSmsResponseBody) *Sen
 }
 
 type SendBatchSmsRequest struct {
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PhoneNumberJson      *string `json:"PhoneNumberJson,omitempty" xml:"PhoneNumberJson,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -3510,6 +3511,11 @@ func (s SendBatchSmsRequest) String() string {
 
 func (s SendBatchSmsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SendBatchSmsRequest) SetOutId(v string) *SendBatchSmsRequest {
+	s.OutId = &v
+	return s
 }
 
 func (s *SendBatchSmsRequest) SetOwnerId(v int64) *SendBatchSmsRequest {
@@ -5783,6 +5789,10 @@ func (client *Client) SendBatchSmsWithOptions(request *SendBatchSmsRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
 	}
