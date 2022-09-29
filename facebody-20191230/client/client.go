@@ -5,28 +5,23 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
 
 type AddBodyTraceRequest struct {
-	// 数据库ID
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// 自定义信息。支持字母、数字、标点符号和汉字。不超过4096个字符。
-	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	// Trace图片信息列表
-	Images []*AddBodyTraceRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	// 实体ID，可以包含数字、字母和下划线，相同db下不可以重复，长度1-64。
-	PersonId *int64 `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
+	DbId      *int64                       `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	ExtraData *string                      `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	Images    []*AddBodyTraceRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	PersonId  *int64                       `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
 }
 
 func (s AddBodyTraceRequest) String() string {
@@ -58,9 +53,8 @@ func (s *AddBodyTraceRequest) SetPersonId(v int64) *AddBodyTraceRequest {
 }
 
 type AddBodyTraceRequestImages struct {
-	ImageData []byte `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
-	// Trace图片URL
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageData []byte  `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s AddBodyTraceRequestImages) String() string {
@@ -82,14 +76,10 @@ func (s *AddBodyTraceRequestImages) SetImageURL(v string) *AddBodyTraceRequestIm
 }
 
 type AddBodyTraceShrinkRequest struct {
-	// 数据库ID
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// 自定义信息。支持字母、数字、标点符号和汉字。不超过4096个字符。
-	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	// Trace图片信息列表
+	DbId         *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	ExtraData    *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
 	ImagesShrink *string `json:"Images,omitempty" xml:"Images,omitempty"`
-	// 实体ID，可以包含数字、字母和下划线，相同db下不可以重复，长度1-64。
-	PersonId *int64 `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
+	PersonId     *int64  `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
 }
 
 func (s AddBodyTraceShrinkRequest) String() string {
@@ -121,9 +111,8 @@ func (s *AddBodyTraceShrinkRequest) SetPersonId(v int64) *AddBodyTraceShrinkRequ
 }
 
 type AddBodyTraceResponseBody struct {
-	Data *AddBodyTraceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *AddBodyTraceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddBodyTraceResponseBody) String() string {
@@ -145,7 +134,6 @@ func (s *AddBodyTraceResponseBody) SetRequestId(v string) *AddBodyTraceResponseB
 }
 
 type AddBodyTraceResponseBodyData struct {
-	// TraceID
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -245,10 +233,10 @@ func (s *AddFaceRequest) SetSimilarityScoreThresholdInEntity(v float32) *AddFace
 }
 
 type AddFaceAdvanceRequest struct {
-	ImageUrlObject                        io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
 	DbName                                *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	EntityId                              *string   `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	ExtraData                             *string   `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	ImageUrlObject                        io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	QualityScoreThreshold                 *float32  `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
 	SimilarityScoreThresholdBetweenEntity *float32  `json:"SimilarityScoreThresholdBetweenEntity,omitempty" xml:"SimilarityScoreThresholdBetweenEntity,omitempty"`
 	SimilarityScoreThresholdInEntity      *float32  `json:"SimilarityScoreThresholdInEntity,omitempty" xml:"SimilarityScoreThresholdInEntity,omitempty"`
@@ -260,11 +248,6 @@ func (s AddFaceAdvanceRequest) String() string {
 
 func (s AddFaceAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AddFaceAdvanceRequest) SetImageUrlObject(v io.Reader) *AddFaceAdvanceRequest {
-	s.ImageUrlObject = v
-	return s
 }
 
 func (s *AddFaceAdvanceRequest) SetDbName(v string) *AddFaceAdvanceRequest {
@@ -279,6 +262,11 @@ func (s *AddFaceAdvanceRequest) SetEntityId(v string) *AddFaceAdvanceRequest {
 
 func (s *AddFaceAdvanceRequest) SetExtraData(v string) *AddFaceAdvanceRequest {
 	s.ExtraData = &v
+	return s
+}
+
+func (s *AddFaceAdvanceRequest) SetImageUrlObject(v io.Reader) *AddFaceAdvanceRequest {
+	s.ImageUrlObject = v
 	return s
 }
 
@@ -449,8 +437,7 @@ func (s *AddFaceEntityResponse) SetBody(v *AddFaceEntityResponseBody) *AddFaceEn
 
 type AddFaceImageTemplateRequest struct {
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	// A short description of struct
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AddFaceImageTemplateRequest) String() string {
@@ -472,9 +459,8 @@ func (s *AddFaceImageTemplateRequest) SetUserId(v string) *AddFaceImageTemplateR
 }
 
 type AddFaceImageTemplateAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	// A short description of struct
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	UserId         *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AddFaceImageTemplateAdvanceRequest) String() string {
@@ -496,9 +482,8 @@ func (s *AddFaceImageTemplateAdvanceRequest) SetUserId(v string) *AddFaceImageTe
 }
 
 type AddFaceImageTemplateResponseBody struct {
-	Data *AddFaceImageTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *AddFaceImageTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddFaceImageTemplateResponseBody) String() string {
@@ -683,9 +668,8 @@ func (s *BatchAddFacesShrinkRequest) SetSimilarityScoreThresholdInEntity(v float
 }
 
 type BatchAddFacesResponseBody struct {
-	Data *BatchAddFacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *BatchAddFacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s BatchAddFacesResponseBody) String() string {
@@ -1068,12 +1052,12 @@ func (s *BeautifyBodyRequestPoseListPose) SetY(v int64) *BeautifyBodyRequestPose
 }
 
 type BeautifyBodyAdvanceRequest struct {
-	ImageURLObject      io.Reader                              `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
 	AgeRange            *BeautifyBodyAdvanceRequestAgeRange    `json:"AgeRange,omitempty" xml:"AgeRange,omitempty" type:"Struct"`
 	BodyBoxes           []*BeautifyBodyAdvanceRequestBodyBoxes `json:"BodyBoxes,omitempty" xml:"BodyBoxes,omitempty" type:"Repeated"`
 	Custom              *int64                                 `json:"Custom,omitempty" xml:"Custom,omitempty"`
 	FaceList            []*BeautifyBodyAdvanceRequestFaceList  `json:"FaceList,omitempty" xml:"FaceList,omitempty" type:"Repeated"`
 	FemaleLiquifyDegree *float32                               `json:"FemaleLiquifyDegree,omitempty" xml:"FemaleLiquifyDegree,omitempty"`
+	ImageURLObject      io.Reader                              `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	IsPregnant          *bool                                  `json:"IsPregnant,omitempty" xml:"IsPregnant,omitempty"`
 	LengthenDegree      *float32                               `json:"LengthenDegree,omitempty" xml:"LengthenDegree,omitempty"`
 	MaleLiquifyDegree   *float32                               `json:"MaleLiquifyDegree,omitempty" xml:"MaleLiquifyDegree,omitempty"`
@@ -1088,11 +1072,6 @@ func (s BeautifyBodyAdvanceRequest) String() string {
 
 func (s BeautifyBodyAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *BeautifyBodyAdvanceRequest) SetImageURLObject(v io.Reader) *BeautifyBodyAdvanceRequest {
-	s.ImageURLObject = v
-	return s
 }
 
 func (s *BeautifyBodyAdvanceRequest) SetAgeRange(v *BeautifyBodyAdvanceRequestAgeRange) *BeautifyBodyAdvanceRequest {
@@ -1117,6 +1096,11 @@ func (s *BeautifyBodyAdvanceRequest) SetFaceList(v []*BeautifyBodyAdvanceRequest
 
 func (s *BeautifyBodyAdvanceRequest) SetFemaleLiquifyDegree(v float32) *BeautifyBodyAdvanceRequest {
 	s.FemaleLiquifyDegree = &v
+	return s
+}
+
+func (s *BeautifyBodyAdvanceRequest) SetImageURLObject(v io.Reader) *BeautifyBodyAdvanceRequest {
+	s.ImageURLObject = v
 	return s
 }
 
@@ -1402,7 +1386,6 @@ func (s *BeautifyBodyShrinkRequest) SetPoseListShrink(v string) *BeautifyBodyShr
 }
 
 type BeautifyBodyResponseBody struct {
-	// Id of the request
 	Data      *BeautifyBodyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -1501,7 +1484,7 @@ func (s *BlurFaceRequest) SetImageURL(v string) *BlurFaceRequest {
 }
 
 type BlurFaceAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s BlurFaceAdvanceRequest) String() string {
@@ -1604,7 +1587,7 @@ func (s *BodyPostureRequest) SetImageURL(v string) *BodyPostureRequest {
 }
 
 type BodyPostureAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s BodyPostureAdvanceRequest) String() string {
@@ -1805,11 +1788,10 @@ func (s *BodyPostureResponse) SetBody(v *BodyPostureResponseBody) *BodyPostureRe
 }
 
 type CompareFaceRequest struct {
-	ImageDataA []byte  `json:"ImageDataA,omitempty" xml:"ImageDataA,omitempty"`
-	ImageDataB []byte  `json:"ImageDataB,omitempty" xml:"ImageDataB,omitempty"`
-	ImageURLA  *string `json:"ImageURLA,omitempty" xml:"ImageURLA,omitempty"`
-	ImageURLB  *string `json:"ImageURLB,omitempty" xml:"ImageURLB,omitempty"`
-	// 质量分阈值，取值范围 [0.0, 100.0],   0.0或空  表示不做质量分判断逻辑。
+	ImageDataA            []byte   `json:"ImageDataA,omitempty" xml:"ImageDataA,omitempty"`
+	ImageDataB            []byte   `json:"ImageDataB,omitempty" xml:"ImageDataB,omitempty"`
+	ImageURLA             *string  `json:"ImageURLA,omitempty" xml:"ImageURLA,omitempty"`
+	ImageURLB             *string  `json:"ImageURLB,omitempty" xml:"ImageURLB,omitempty"`
 	QualityScoreThreshold *float32 `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
 }
 
@@ -1846,6 +1828,47 @@ func (s *CompareFaceRequest) SetQualityScoreThreshold(v float32) *CompareFaceReq
 	return s
 }
 
+type CompareFaceAdvanceRequest struct {
+	ImageDataA            []byte    `json:"ImageDataA,omitempty" xml:"ImageDataA,omitempty"`
+	ImageDataB            []byte    `json:"ImageDataB,omitempty" xml:"ImageDataB,omitempty"`
+	ImageURLAObject       io.Reader `json:"ImageURLA,omitempty" xml:"ImageURLA,omitempty"`
+	ImageURLBObject       io.Reader `json:"ImageURLB,omitempty" xml:"ImageURLB,omitempty"`
+	QualityScoreThreshold *float32  `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
+}
+
+func (s CompareFaceAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompareFaceAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CompareFaceAdvanceRequest) SetImageDataA(v []byte) *CompareFaceAdvanceRequest {
+	s.ImageDataA = v
+	return s
+}
+
+func (s *CompareFaceAdvanceRequest) SetImageDataB(v []byte) *CompareFaceAdvanceRequest {
+	s.ImageDataB = v
+	return s
+}
+
+func (s *CompareFaceAdvanceRequest) SetImageURLAObject(v io.Reader) *CompareFaceAdvanceRequest {
+	s.ImageURLAObject = v
+	return s
+}
+
+func (s *CompareFaceAdvanceRequest) SetImageURLBObject(v io.Reader) *CompareFaceAdvanceRequest {
+	s.ImageURLBObject = v
+	return s
+}
+
+func (s *CompareFaceAdvanceRequest) SetQualityScoreThreshold(v float32) *CompareFaceAdvanceRequest {
+	s.QualityScoreThreshold = &v
+	return s
+}
+
 type CompareFaceResponseBody struct {
 	Data      *CompareFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1870,12 +1893,9 @@ func (s *CompareFaceResponseBody) SetRequestId(v string) *CompareFaceResponseBod
 }
 
 type CompareFaceResponseBodyData struct {
-	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// 信息提示信息，纯文字描述，目前支持质量分的提示信息
-	MessageTips *string `json:"MessageTips,omitempty" xml:"MessageTips,omitempty"`
-	// 输入图像A的质量分
-	QualityScoreA *float32 `json:"QualityScoreA,omitempty" xml:"QualityScoreA,omitempty"`
-	// 输入图像A的质量分
+	Confidence    *float32   `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	MessageTips   *string    `json:"MessageTips,omitempty" xml:"MessageTips,omitempty"`
+	QualityScoreA *float32   `json:"QualityScoreA,omitempty" xml:"QualityScoreA,omitempty"`
 	QualityScoreB *float32   `json:"QualityScoreB,omitempty" xml:"QualityScoreB,omitempty"`
 	RectAList     []*int32   `json:"RectAList,omitempty" xml:"RectAList,omitempty" type:"Repeated"`
 	RectBList     []*int32   `json:"RectBList,omitempty" xml:"RectBList,omitempty" type:"Repeated"`
@@ -1978,7 +1998,7 @@ func (s *CountCrowdRequest) SetIsShow(v bool) *CountCrowdRequest {
 }
 
 type CountCrowdAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	IsShow         *bool     `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
 }
 
@@ -2076,7 +2096,6 @@ func (s *CountCrowdResponse) SetBody(v *CountCrowdResponseBody) *CountCrowdRespo
 }
 
 type CreateBodyDbRequest struct {
-	// 数据库名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -2094,9 +2113,8 @@ func (s *CreateBodyDbRequest) SetName(v string) *CreateBodyDbRequest {
 }
 
 type CreateBodyDbResponseBody struct {
-	Data *CreateBodyDbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *CreateBodyDbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateBodyDbResponseBody) String() string {
@@ -2118,7 +2136,6 @@ func (s *CreateBodyDbResponseBody) SetRequestId(v string) *CreateBodyDbResponseB
 }
 
 type CreateBodyDbResponseBodyData struct {
-	// 数据库ID
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -2165,9 +2182,7 @@ func (s *CreateBodyDbResponse) SetBody(v *CreateBodyDbResponseBody) *CreateBodyD
 }
 
 type CreateBodyPersonRequest struct {
-	// 数据库ID
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// 实体ID，可以包含数字、字母和下划线，相同db下不可以重复，长度1-64。
+	DbId *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -2190,9 +2205,8 @@ func (s *CreateBodyPersonRequest) SetName(v string) *CreateBodyPersonRequest {
 }
 
 type CreateBodyPersonResponseBody struct {
-	Data *CreateBodyPersonResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *CreateBodyPersonResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateBodyPersonResponseBody) String() string {
@@ -2214,7 +2228,6 @@ func (s *CreateBodyPersonResponseBody) SetRequestId(v string) *CreateBodyPersonR
 }
 
 type CreateBodyPersonResponseBodyData struct {
-	// 数据库ID
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -2324,7 +2337,6 @@ func (s *CreateFaceDbResponse) SetBody(v *CreateFaceDbResponseBody) *CreateFaceD
 }
 
 type DeleteBodyDbRequest struct {
-	// 数据库ID
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -2342,7 +2354,6 @@ func (s *DeleteBodyDbRequest) SetId(v int64) *DeleteBodyDbRequest {
 }
 
 type DeleteBodyDbResponseBody struct {
-	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2389,9 +2400,7 @@ func (s *DeleteBodyDbResponse) SetBody(v *DeleteBodyDbResponseBody) *DeleteBodyD
 }
 
 type DeleteBodyPersonRequest struct {
-	// 数据库ID
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// 人员ID
+	DbId     *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	PersonId *int64 `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
 }
 
@@ -2414,7 +2423,6 @@ func (s *DeleteBodyPersonRequest) SetPersonId(v int64) *DeleteBodyPersonRequest 
 }
 
 type DeleteBodyPersonResponseBody struct {
-	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2663,8 +2671,7 @@ func (s *DeleteFaceEntityResponse) SetBody(v *DeleteFaceEntityResponseBody) *Del
 
 type DeleteFaceImageTemplateRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// A short description of struct
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeleteFaceImageTemplateRequest) String() string {
@@ -2686,7 +2693,6 @@ func (s *DeleteFaceImageTemplateRequest) SetUserId(v string) *DeleteFaceImageTem
 }
 
 type DeleteFaceImageTemplateResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2750,7 +2756,7 @@ func (s *DetectBodyCountRequest) SetImageURL(v string) *DetectBodyCountRequest {
 }
 
 type DetectBodyCountAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s DetectBodyCountAdvanceRequest) String() string {
@@ -2853,7 +2859,7 @@ func (s *DetectCelebrityRequest) SetImageURL(v string) *DetectCelebrityRequest {
 }
 
 type DetectCelebrityAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s DetectCelebrityAdvanceRequest) String() string {
@@ -2991,7 +2997,7 @@ func (s *DetectChefCapRequest) SetImageURL(v string) *DetectChefCapRequest {
 }
 
 type DetectChefCapAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s DetectChefCapAdvanceRequest) String() string {
@@ -3147,7 +3153,7 @@ func (s *DetectFaceRequest) SetQuality(v bool) *DetectFaceRequest {
 }
 
 type DetectFaceAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	Landmark       *bool     `json:"Landmark,omitempty" xml:"Landmark,omitempty"`
 	MaxFaceNumber  *int64    `json:"MaxFaceNumber,omitempty" xml:"MaxFaceNumber,omitempty"`
 	Pose           *bool     `json:"Pose,omitempty" xml:"Pose,omitempty"`
@@ -3393,9 +3399,9 @@ func (s *DetectIPCPedestrianRequest) SetWidth(v int32) *DetectIPCPedestrianReque
 }
 
 type DetectIPCPedestrianAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
 	Height         *int32    `json:"Height,omitempty" xml:"Height,omitempty"`
 	ImageData      *string   `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	Width          *int32    `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
@@ -3407,11 +3413,6 @@ func (s DetectIPCPedestrianAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetectIPCPedestrianAdvanceRequest) SetImageURLObject(v io.Reader) *DetectIPCPedestrianAdvanceRequest {
-	s.ImageURLObject = v
-	return s
-}
-
 func (s *DetectIPCPedestrianAdvanceRequest) SetHeight(v int32) *DetectIPCPedestrianAdvanceRequest {
 	s.Height = &v
 	return s
@@ -3419,6 +3420,11 @@ func (s *DetectIPCPedestrianAdvanceRequest) SetHeight(v int32) *DetectIPCPedestr
 
 func (s *DetectIPCPedestrianAdvanceRequest) SetImageData(v string) *DetectIPCPedestrianAdvanceRequest {
 	s.ImageData = &v
+	return s
+}
+
+func (s *DetectIPCPedestrianAdvanceRequest) SetImageURLObject(v io.Reader) *DetectIPCPedestrianAdvanceRequest {
+	s.ImageURLObject = v
 	return s
 }
 
@@ -3750,7 +3756,7 @@ func (s *DetectPedestrianRequest) SetImageURL(v string) *DetectPedestrianRequest
 }
 
 type DetectPedestrianAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s DetectPedestrianAdvanceRequest) String() string {
@@ -3999,8 +4005,8 @@ func (s *DetectPedestrianIntrusionRequestDetectRegionRect) SetTop(v int64) *Dete
 }
 
 type DetectPedestrianIntrusionAdvanceRequest struct {
-	ImageURLObject io.Reader                                              `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
 	DetectRegion   []*DetectPedestrianIntrusionAdvanceRequestDetectRegion `json:"DetectRegion,omitempty" xml:"DetectRegion,omitempty" type:"Repeated"`
+	ImageURLObject io.Reader                                              `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	RegionType     *string                                                `json:"RegionType,omitempty" xml:"RegionType,omitempty"`
 }
 
@@ -4012,13 +4018,13 @@ func (s DetectPedestrianIntrusionAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetectPedestrianIntrusionAdvanceRequest) SetImageURLObject(v io.Reader) *DetectPedestrianIntrusionAdvanceRequest {
-	s.ImageURLObject = v
+func (s *DetectPedestrianIntrusionAdvanceRequest) SetDetectRegion(v []*DetectPedestrianIntrusionAdvanceRequestDetectRegion) *DetectPedestrianIntrusionAdvanceRequest {
+	s.DetectRegion = v
 	return s
 }
 
-func (s *DetectPedestrianIntrusionAdvanceRequest) SetDetectRegion(v []*DetectPedestrianIntrusionAdvanceRequestDetectRegion) *DetectPedestrianIntrusionAdvanceRequest {
-	s.DetectRegion = v
+func (s *DetectPedestrianIntrusionAdvanceRequest) SetImageURLObject(v io.Reader) *DetectPedestrianIntrusionAdvanceRequest {
+	s.ImageURLObject = v
 	return s
 }
 
@@ -4324,7 +4330,7 @@ func (s *DetectVideoLivingFaceRequest) SetVideoUrl(v string) *DetectVideoLivingF
 }
 
 type DetectVideoLivingFaceAdvanceRequest struct {
-	VideoUrlObject io.Reader `json:"VideoUrlObject,omitempty" xml:"VideoUrlObject,omitempty" require:"true"`
+	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s DetectVideoLivingFaceAdvanceRequest) String() string {
@@ -4456,7 +4462,7 @@ func (s *EnhanceFaceRequest) SetImageURL(v string) *EnhanceFaceRequest {
 }
 
 type EnhanceFaceAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s EnhanceFaceAdvanceRequest) String() string {
@@ -4565,8 +4571,8 @@ func (s *ExtractFingerPrintRequest) SetImageURL(v string) *ExtractFingerPrintReq
 }
 
 type ExtractFingerPrintAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
 	ImageData      []byte    `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s ExtractFingerPrintAdvanceRequest) String() string {
@@ -4577,20 +4583,19 @@ func (s ExtractFingerPrintAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ExtractFingerPrintAdvanceRequest) SetImageURLObject(v io.Reader) *ExtractFingerPrintAdvanceRequest {
-	s.ImageURLObject = v
-	return s
-}
-
 func (s *ExtractFingerPrintAdvanceRequest) SetImageData(v []byte) *ExtractFingerPrintAdvanceRequest {
 	s.ImageData = v
 	return s
 }
 
+func (s *ExtractFingerPrintAdvanceRequest) SetImageURLObject(v io.Reader) *ExtractFingerPrintAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
 type ExtractFingerPrintResponseBody struct {
-	Data *ExtractFingerPrintResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ExtractFingerPrintResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ExtractFingerPrintResponseBody) String() string {
@@ -4687,7 +4692,7 @@ func (s *ExtractPedestrianFeatureAttrRequest) SetServiceVersion(v string) *Extra
 }
 
 type ExtractPedestrianFeatureAttrAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	Mode           *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	ServiceVersion *string   `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
 }
@@ -5276,7 +5281,7 @@ func (s *FaceBeautyRequest) SetWhite(v float32) *FaceBeautyRequest {
 }
 
 type FaceBeautyAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	Sharp          *float32  `json:"Sharp,omitempty" xml:"Sharp,omitempty"`
 	Smooth         *float32  `json:"Smooth,omitempty" xml:"Smooth,omitempty"`
 	White          *float32  `json:"White,omitempty" xml:"White,omitempty"`
@@ -5409,7 +5414,7 @@ func (s *FaceFilterRequest) SetStrength(v float32) *FaceFilterRequest {
 }
 
 type FaceFilterAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	ResourceType   *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Strength       *float32  `json:"Strength,omitempty" xml:"Strength,omitempty"`
 }
@@ -5542,7 +5547,7 @@ func (s *FaceMakeupRequest) SetStrength(v float32) *FaceMakeupRequest {
 }
 
 type FaceMakeupAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	MakeupType     *string   `json:"MakeupType,omitempty" xml:"MakeupType,omitempty"`
 	ResourceType   *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Strength       *float32  `json:"Strength,omitempty" xml:"Strength,omitempty"`
@@ -5675,7 +5680,7 @@ func (s *FaceTidyupRequest) SetStrength(v float32) *FaceTidyupRequest {
 }
 
 type FaceTidyupAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	ShapeType      *int32    `json:"ShapeType,omitempty" xml:"ShapeType,omitempty"`
 	Strength       *float32  `json:"Strength,omitempty" xml:"Strength,omitempty"`
 }
@@ -5894,8 +5899,8 @@ func (s *GenerateHumanAnimeStyleRequest) SetImageURL(v string) *GenerateHumanAni
 }
 
 type GenerateHumanAnimeStyleAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
 	AlgoType       *string   `json:"AlgoType,omitempty" xml:"AlgoType,omitempty"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s GenerateHumanAnimeStyleAdvanceRequest) String() string {
@@ -5906,13 +5911,13 @@ func (s GenerateHumanAnimeStyleAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GenerateHumanAnimeStyleAdvanceRequest) SetImageURLObject(v io.Reader) *GenerateHumanAnimeStyleAdvanceRequest {
-	s.ImageURLObject = v
+func (s *GenerateHumanAnimeStyleAdvanceRequest) SetAlgoType(v string) *GenerateHumanAnimeStyleAdvanceRequest {
+	s.AlgoType = &v
 	return s
 }
 
-func (s *GenerateHumanAnimeStyleAdvanceRequest) SetAlgoType(v string) *GenerateHumanAnimeStyleAdvanceRequest {
-	s.AlgoType = &v
+func (s *GenerateHumanAnimeStyleAdvanceRequest) SetImageURLObject(v io.Reader) *GenerateHumanAnimeStyleAdvanceRequest {
+	s.ImageURLObject = v
 	return s
 }
 
@@ -5986,7 +5991,6 @@ func (s *GenerateHumanAnimeStyleResponse) SetBody(v *GenerateHumanAnimeStyleResp
 }
 
 type GenerateHumanSketchStyleRequest struct {
-	// A short description of struct
 	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	ReturnType *string `json:"ReturnType,omitempty" xml:"ReturnType,omitempty"`
 }
@@ -6010,7 +6014,7 @@ func (s *GenerateHumanSketchStyleRequest) SetReturnType(v string) *GenerateHuman
 }
 
 type GenerateHumanSketchStyleAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	ReturnType     *string   `json:"ReturnType,omitempty" xml:"ReturnType,omitempty"`
 }
 
@@ -6033,9 +6037,8 @@ func (s *GenerateHumanSketchStyleAdvanceRequest) SetReturnType(v string) *Genera
 }
 
 type GenerateHumanSketchStyleResponseBody struct {
-	Data *GenerateHumanSketchStyleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *GenerateHumanSketchStyleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateHumanSketchStyleResponseBody) String() string {
@@ -6057,7 +6060,6 @@ func (s *GenerateHumanSketchStyleResponseBody) SetRequestId(v string) *GenerateH
 }
 
 type GenerateHumanSketchStyleResponseBodyData struct {
-	// 出参图片地址
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -6104,9 +6106,7 @@ func (s *GenerateHumanSketchStyleResponse) SetBody(v *GenerateHumanSketchStyleRe
 }
 
 type GetBodyPersonRequest struct {
-	// 数据库ID
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// 人员ID
+	DbId     *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	PersonId *int64 `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
 }
 
@@ -6129,9 +6129,8 @@ func (s *GetBodyPersonRequest) SetPersonId(v int64) *GetBodyPersonRequest {
 }
 
 type GetBodyPersonResponseBody struct {
-	Data *GetBodyPersonResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *GetBodyPersonResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetBodyPersonResponseBody) String() string {
@@ -6153,16 +6152,11 @@ func (s *GetBodyPersonResponseBody) SetRequestId(v string) *GetBodyPersonRespons
 }
 
 type GetBodyPersonResponseBodyData struct {
-	// 数据库ID
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// 人员ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 人员名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Trace数量
-	TraceCount *int64 `json:"TraceCount,omitempty" xml:"TraceCount,omitempty"`
-	// Trace列表
-	TraceList []*GetBodyPersonResponseBodyDataTraceList `json:"TraceList,omitempty" xml:"TraceList,omitempty" type:"Repeated"`
+	DbId       *int64                                    `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Id         *int64                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name       *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	TraceCount *int64                                    `json:"TraceCount,omitempty" xml:"TraceCount,omitempty"`
+	TraceList  []*GetBodyPersonResponseBodyDataTraceList `json:"TraceList,omitempty" xml:"TraceList,omitempty" type:"Repeated"`
 }
 
 func (s GetBodyPersonResponseBodyData) String() string {
@@ -6199,10 +6193,8 @@ func (s *GetBodyPersonResponseBodyData) SetTraceList(v []*GetBodyPersonResponseB
 }
 
 type GetBodyPersonResponseBodyDataTraceList struct {
-	// 自定义Trace信息
 	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	// TraceId
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s GetBodyPersonResponseBodyDataTraceList) String() string {
@@ -6501,7 +6493,7 @@ func (s *HandPostureRequest) SetImageURL(v string) *HandPostureRequest {
 }
 
 type HandPostureAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s HandPostureAdvanceRequest) String() string {
@@ -6788,7 +6780,7 @@ func (s *LiquifyFaceRequest) SetSlimDegree(v float32) *LiquifyFaceRequest {
 }
 
 type LiquifyFaceAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	SlimDegree     *float32  `json:"SlimDegree,omitempty" xml:"SlimDegree,omitempty"`
 }
 
@@ -6811,9 +6803,8 @@ func (s *LiquifyFaceAdvanceRequest) SetSlimDegree(v float32) *LiquifyFaceAdvance
 }
 
 type LiquifyFaceResponseBody struct {
-	Data *LiquifyFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *LiquifyFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s LiquifyFaceResponseBody) String() string {
@@ -6881,9 +6872,7 @@ func (s *LiquifyFaceResponse) SetBody(v *LiquifyFaceResponseBody) *LiquifyFaceRe
 }
 
 type ListBodyDbsRequest struct {
-	// 分页数量
-	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// 起始位置(不含)
+	Limit  *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
 }
 
@@ -6906,9 +6895,8 @@ func (s *ListBodyDbsRequest) SetOffset(v int64) *ListBodyDbsRequest {
 }
 
 type ListBodyDbsResponseBody struct {
-	Data *ListBodyDbsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListBodyDbsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListBodyDbsResponseBody) String() string {
@@ -6931,8 +6919,7 @@ func (s *ListBodyDbsResponseBody) SetRequestId(v string) *ListBodyDbsResponseBod
 
 type ListBodyDbsResponseBodyData struct {
 	DbList []*ListBodyDbsResponseBodyDataDbList `json:"DbList,omitempty" xml:"DbList,omitempty" type:"Repeated"`
-	// 数据库ID
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Total  *int64                               `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListBodyDbsResponseBodyData) String() string {
@@ -6954,9 +6941,7 @@ func (s *ListBodyDbsResponseBodyData) SetTotal(v int64) *ListBodyDbsResponseBody
 }
 
 type ListBodyDbsResponseBodyDataDbList struct {
-	// 数据库ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 数据库名称
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -7008,11 +6993,8 @@ func (s *ListBodyDbsResponse) SetBody(v *ListBodyDbsResponseBody) *ListBodyDbsRe
 }
 
 type ListBodyPersonRequest struct {
-	// 数据库ID
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// 分页数量
-	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// 起始位置(不含)
+	DbId   *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Limit  *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
 }
 
@@ -7040,9 +7022,8 @@ func (s *ListBodyPersonRequest) SetOffset(v int64) *ListBodyPersonRequest {
 }
 
 type ListBodyPersonResponseBody struct {
-	Data *ListBodyPersonResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *ListBodyPersonResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListBodyPersonResponseBody) String() string {
@@ -7065,8 +7046,7 @@ func (s *ListBodyPersonResponseBody) SetRequestId(v string) *ListBodyPersonRespo
 
 type ListBodyPersonResponseBodyData struct {
 	PersonList []*ListBodyPersonResponseBodyDataPersonList `json:"PersonList,omitempty" xml:"PersonList,omitempty" type:"Repeated"`
-	// 数据总量
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Total      *int64                                      `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListBodyPersonResponseBodyData) String() string {
@@ -7088,14 +7068,10 @@ func (s *ListBodyPersonResponseBodyData) SetTotal(v int64) *ListBodyPersonRespon
 }
 
 type ListBodyPersonResponseBodyDataPersonList struct {
-	// 数据库ID
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// 人员ID
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 人员名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Trace数量
-	TraceCount *int64 `json:"TraceCount,omitempty" xml:"TraceCount,omitempty"`
+	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TraceCount *int64  `json:"TraceCount,omitempty" xml:"TraceCount,omitempty"`
 }
 
 func (s ListBodyPersonResponseBodyDataPersonList) String() string {
@@ -7448,8 +7424,7 @@ func (s *ListFaceEntitiesResponse) SetBody(v *ListFaceEntitiesResponseBody) *Lis
 type MergeImageFaceRequest struct {
 	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// A short description of struct
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s MergeImageFaceRequest) String() string {
@@ -7476,10 +7451,9 @@ func (s *MergeImageFaceRequest) SetUserId(v string) *MergeImageFaceRequest {
 }
 
 type MergeImageFaceAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	TemplateId     *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// A short description of struct
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId         *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s MergeImageFaceAdvanceRequest) String() string {
@@ -7506,9 +7480,8 @@ func (s *MergeImageFaceAdvanceRequest) SetUserId(v string) *MergeImageFaceAdvanc
 }
 
 type MergeImageFaceResponseBody struct {
-	Data *MergeImageFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *MergeImageFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s MergeImageFaceResponseBody) String() string {
@@ -7577,8 +7550,7 @@ func (s *MergeImageFaceResponse) SetBody(v *MergeImageFaceResponseBody) *MergeIm
 
 type MonitorExaminationRequest struct {
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	// A short description of struct
-	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type     *int64  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s MonitorExaminationRequest) String() string {
@@ -7600,9 +7572,8 @@ func (s *MonitorExaminationRequest) SetType(v int64) *MonitorExaminationRequest 
 }
 
 type MonitorExaminationAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	// A short description of struct
-	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	Type           *int64    `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s MonitorExaminationAdvanceRequest) String() string {
@@ -7624,9 +7595,8 @@ func (s *MonitorExaminationAdvanceRequest) SetType(v int64) *MonitorExaminationA
 }
 
 type MonitorExaminationResponseBody struct {
-	Data *MonitorExaminationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *MonitorExaminationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s MonitorExaminationResponseBody) String() string {
@@ -7862,7 +7832,7 @@ func (s *PedestrianDetectAttributeRequest) SetImageURL(v string) *PedestrianDete
 }
 
 type PedestrianDetectAttributeAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s PedestrianDetectAttributeAdvanceRequest) String() string {
@@ -8373,8 +8343,7 @@ func (s *PedestrianDetectAttributeResponse) SetBody(v *PedestrianDetectAttribute
 
 type QueryFaceImageTemplateRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// A short description of struct
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryFaceImageTemplateRequest) String() string {
@@ -8396,9 +8365,8 @@ func (s *QueryFaceImageTemplateRequest) SetUserId(v string) *QueryFaceImageTempl
 }
 
 type QueryFaceImageTemplateResponseBody struct {
-	Data *QueryFaceImageTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *QueryFaceImageTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryFaceImageTemplateResponseBody) String() string {
@@ -8703,7 +8671,7 @@ func (s *RecognizeExpressionRequest) SetImageURL(v string) *RecognizeExpressionR
 }
 
 type RecognizeExpressionAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeExpressionAdvanceRequest) String() string {
@@ -8924,13 +8892,13 @@ func (s *RecognizeFaceRequest) SetQuality(v bool) *RecognizeFaceRequest {
 }
 
 type RecognizeFaceAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
 	Age            *bool     `json:"Age,omitempty" xml:"Age,omitempty"`
 	Beauty         *bool     `json:"Beauty,omitempty" xml:"Beauty,omitempty"`
 	Expression     *bool     `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	Gender         *bool     `json:"Gender,omitempty" xml:"Gender,omitempty"`
 	Glass          *bool     `json:"Glass,omitempty" xml:"Glass,omitempty"`
 	Hat            *bool     `json:"Hat,omitempty" xml:"Hat,omitempty"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	Mask           *bool     `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	MaxFaceNumber  *int64    `json:"MaxFaceNumber,omitempty" xml:"MaxFaceNumber,omitempty"`
 	Quality        *bool     `json:"Quality,omitempty" xml:"Quality,omitempty"`
@@ -8942,11 +8910,6 @@ func (s RecognizeFaceAdvanceRequest) String() string {
 
 func (s RecognizeFaceAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *RecognizeFaceAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeFaceAdvanceRequest {
-	s.ImageURLObject = v
-	return s
 }
 
 func (s *RecognizeFaceAdvanceRequest) SetAge(v bool) *RecognizeFaceAdvanceRequest {
@@ -8976,6 +8939,11 @@ func (s *RecognizeFaceAdvanceRequest) SetGlass(v bool) *RecognizeFaceAdvanceRequ
 
 func (s *RecognizeFaceAdvanceRequest) SetHat(v bool) *RecognizeFaceAdvanceRequest {
 	s.Hat = &v
+	return s
+}
+
+func (s *RecognizeFaceAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeFaceAdvanceRequest {
+	s.ImageURLObject = v
 	return s
 }
 
@@ -9219,7 +9187,6 @@ func (s *RecognizeFaceResponse) SetBody(v *RecognizeFaceResponseBody) *Recognize
 }
 
 type RecognizeHandGestureRequest struct {
-	// A short description of struct
 	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	GestureType *string `json:"GestureType,omitempty" xml:"GestureType,omitempty"`
 	ImageURL    *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
@@ -9249,10 +9216,9 @@ func (s *RecognizeHandGestureRequest) SetImageURL(v string) *RecognizeHandGestur
 }
 
 type RecognizeHandGestureAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	// A short description of struct
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	GestureType *string `json:"GestureType,omitempty" xml:"GestureType,omitempty"`
+	AppId          *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	GestureType    *string   `json:"GestureType,omitempty" xml:"GestureType,omitempty"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeHandGestureAdvanceRequest) String() string {
@@ -9261,11 +9227,6 @@ func (s RecognizeHandGestureAdvanceRequest) String() string {
 
 func (s RecognizeHandGestureAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *RecognizeHandGestureAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeHandGestureAdvanceRequest {
-	s.ImageURLObject = v
-	return s
 }
 
 func (s *RecognizeHandGestureAdvanceRequest) SetAppId(v string) *RecognizeHandGestureAdvanceRequest {
@@ -9278,10 +9239,14 @@ func (s *RecognizeHandGestureAdvanceRequest) SetGestureType(v string) *Recognize
 	return s
 }
 
+func (s *RecognizeHandGestureAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeHandGestureAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
 type RecognizeHandGestureResponseBody struct {
-	Data *RecognizeHandGestureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *RecognizeHandGestureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RecognizeHandGestureResponseBody) String() string {
@@ -9651,7 +9616,7 @@ func (s *RetouchBodyRequest) SetSlimDegree(v float32) *RetouchBodyRequest {
 }
 
 type RetouchBodyAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	LengthenDegree *float32  `json:"LengthenDegree,omitempty" xml:"LengthenDegree,omitempty"`
 	SlimDegree     *float32  `json:"SlimDegree,omitempty" xml:"SlimDegree,omitempty"`
 }
@@ -9778,7 +9743,7 @@ func (s *RetouchSkinRequest) SetWhiteningDegree(v float32) *RetouchSkinRequest {
 }
 
 type RetouchSkinAdvanceRequest struct {
-	ImageURLObject  io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject  io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	RetouchDegree   *float32  `json:"RetouchDegree,omitempty" xml:"RetouchDegree,omitempty"`
 	WhiteningDegree *float32  `json:"WhiteningDegree,omitempty" xml:"WhiteningDegree,omitempty"`
 }
@@ -9807,9 +9772,8 @@ func (s *RetouchSkinAdvanceRequest) SetWhiteningDegree(v float32) *RetouchSkinAd
 }
 
 type RetouchSkinResponseBody struct {
-	Data *RetouchSkinResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *RetouchSkinResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RetouchSkinResponseBody) String() string {
@@ -9877,14 +9841,10 @@ func (s *RetouchSkinResponse) SetBody(v *RetouchSkinResponseBody) *RetouchSkinRe
 }
 
 type SearchBodyTraceRequest struct {
-	// 数据库ID
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// Trace图片信息列表
-	Images []*SearchBodyTraceRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	// 结果Trace数量上限，默认10，取值范围[1, 100]
-	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// score阈值，只返回大于等于该score的数据，取值范围[-1.0, 1.0]，默认为空
-	MinScore *float32 `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
+	DbId     *int64                          `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Images   []*SearchBodyTraceRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Limit    *int64                          `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	MinScore *float32                        `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
 }
 
 func (s SearchBodyTraceRequest) String() string {
@@ -9916,10 +9876,8 @@ func (s *SearchBodyTraceRequest) SetMinScore(v float32) *SearchBodyTraceRequest 
 }
 
 type SearchBodyTraceRequestImages struct {
-	// 图片Base64数据
-	ImageData []byte `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
-	// Trace图片URL
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ImageData []byte  `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s SearchBodyTraceRequestImages) String() string {
@@ -9941,14 +9899,10 @@ func (s *SearchBodyTraceRequestImages) SetImageURL(v string) *SearchBodyTraceReq
 }
 
 type SearchBodyTraceShrinkRequest struct {
-	// 数据库ID
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// Trace图片信息列表
-	ImagesShrink *string `json:"Images,omitempty" xml:"Images,omitempty"`
-	// 结果Trace数量上限，默认10，取值范围[1, 100]
-	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// score阈值，只返回大于等于该score的数据，取值范围[-1.0, 1.0]，默认为空
-	MinScore *float32 `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
+	DbId         *int64   `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	ImagesShrink *string  `json:"Images,omitempty" xml:"Images,omitempty"`
+	Limit        *int64   `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	MinScore     *float32 `json:"MinScore,omitempty" xml:"MinScore,omitempty"`
 }
 
 func (s SearchBodyTraceShrinkRequest) String() string {
@@ -9980,9 +9934,8 @@ func (s *SearchBodyTraceShrinkRequest) SetMinScore(v float32) *SearchBodyTraceSh
 }
 
 type SearchBodyTraceResponseBody struct {
-	Data *SearchBodyTraceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *SearchBodyTraceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SearchBodyTraceResponseBody) String() string {
@@ -10004,7 +9957,6 @@ func (s *SearchBodyTraceResponseBody) SetRequestId(v string) *SearchBodyTraceRes
 }
 
 type SearchBodyTraceResponseBodyData struct {
-	// 匹配的Trace列表
 	MatchList []*SearchBodyTraceResponseBodyDataMatchList `json:"MatchList,omitempty" xml:"MatchList,omitempty" type:"Repeated"`
 }
 
@@ -10022,16 +9974,11 @@ func (s *SearchBodyTraceResponseBodyData) SetMatchList(v []*SearchBodyTraceRespo
 }
 
 type SearchBodyTraceResponseBodyDataMatchList struct {
-	// 数据库ID
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// 自定义数据信息
-	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	// 人员ID
-	PersonId *int64 `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
-	// 匹配度分值，越大越相似，取值范围[-1.0, 1.0]
-	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// TraceId
-	TraceId *int64 `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	DbId      *int64   `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	ExtraData *string  `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	PersonId  *int64   `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
+	Score     *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	TraceId   *int64   `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s SearchBodyTraceResponseBodyDataMatchList) String() string {
@@ -10144,9 +10091,9 @@ func (s *SearchFaceRequest) SetQualityScoreThreshold(v float32) *SearchFaceReque
 }
 
 type SearchFaceAdvanceRequest struct {
-	ImageUrlObject        io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
 	DbName                *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	DbNames               *string   `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
+	ImageUrlObject        io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	Limit                 *int32    `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	MaxFaceNum            *int64    `json:"MaxFaceNum,omitempty" xml:"MaxFaceNum,omitempty"`
 	QualityScoreThreshold *float32  `json:"QualityScoreThreshold,omitempty" xml:"QualityScoreThreshold,omitempty"`
@@ -10160,11 +10107,6 @@ func (s SearchFaceAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SearchFaceAdvanceRequest) SetImageUrlObject(v io.Reader) *SearchFaceAdvanceRequest {
-	s.ImageUrlObject = v
-	return s
-}
-
 func (s *SearchFaceAdvanceRequest) SetDbName(v string) *SearchFaceAdvanceRequest {
 	s.DbName = &v
 	return s
@@ -10172,6 +10114,11 @@ func (s *SearchFaceAdvanceRequest) SetDbName(v string) *SearchFaceAdvanceRequest
 
 func (s *SearchFaceAdvanceRequest) SetDbNames(v string) *SearchFaceAdvanceRequest {
 	s.DbNames = &v
+	return s
+}
+
+func (s *SearchFaceAdvanceRequest) SetImageUrlObject(v io.Reader) *SearchFaceAdvanceRequest {
+	s.ImageUrlObject = v
 	return s
 }
 
@@ -10411,6 +10358,47 @@ func (s *SwapFacialFeaturesRequest) SetTargetImageURL(v string) *SwapFacialFeatu
 	return s
 }
 
+type SwapFacialFeaturesAdvanceRequest struct {
+	EditPart             *string   `json:"EditPart,omitempty" xml:"EditPart,omitempty"`
+	SourceImageData      []byte    `json:"SourceImageData,omitempty" xml:"SourceImageData,omitempty"`
+	SourceImageURLObject io.Reader `json:"SourceImageURL,omitempty" xml:"SourceImageURL,omitempty"`
+	TargetImageData      []byte    `json:"TargetImageData,omitempty" xml:"TargetImageData,omitempty"`
+	TargetImageURLObject io.Reader `json:"TargetImageURL,omitempty" xml:"TargetImageURL,omitempty"`
+}
+
+func (s SwapFacialFeaturesAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwapFacialFeaturesAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SwapFacialFeaturesAdvanceRequest) SetEditPart(v string) *SwapFacialFeaturesAdvanceRequest {
+	s.EditPart = &v
+	return s
+}
+
+func (s *SwapFacialFeaturesAdvanceRequest) SetSourceImageData(v []byte) *SwapFacialFeaturesAdvanceRequest {
+	s.SourceImageData = v
+	return s
+}
+
+func (s *SwapFacialFeaturesAdvanceRequest) SetSourceImageURLObject(v io.Reader) *SwapFacialFeaturesAdvanceRequest {
+	s.SourceImageURLObject = v
+	return s
+}
+
+func (s *SwapFacialFeaturesAdvanceRequest) SetTargetImageData(v []byte) *SwapFacialFeaturesAdvanceRequest {
+	s.TargetImageData = v
+	return s
+}
+
+func (s *SwapFacialFeaturesAdvanceRequest) SetTargetImageURLObject(v io.Reader) *SwapFacialFeaturesAdvanceRequest {
+	s.TargetImageURLObject = v
+	return s
+}
+
 type SwapFacialFeaturesResponseBody struct {
 	Data      *SwapFacialFeaturesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -10587,6 +10575,41 @@ func (s *VerifyFaceMaskRequest) SetRefData(v []byte) *VerifyFaceMaskRequest {
 
 func (s *VerifyFaceMaskRequest) SetRefUrl(v string) *VerifyFaceMaskRequest {
 	s.RefUrl = &v
+	return s
+}
+
+type VerifyFaceMaskAdvanceRequest struct {
+	ImageData      []byte    `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	RefData        []byte    `json:"RefData,omitempty" xml:"RefData,omitempty"`
+	RefUrlObject   io.Reader `json:"RefUrl,omitempty" xml:"RefUrl,omitempty"`
+}
+
+func (s VerifyFaceMaskAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyFaceMaskAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyFaceMaskAdvanceRequest) SetImageData(v []byte) *VerifyFaceMaskAdvanceRequest {
+	s.ImageData = v
+	return s
+}
+
+func (s *VerifyFaceMaskAdvanceRequest) SetImageURLObject(v io.Reader) *VerifyFaceMaskAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+func (s *VerifyFaceMaskAdvanceRequest) SetRefData(v []byte) *VerifyFaceMaskAdvanceRequest {
+	s.RefData = v
+	return s
+}
+
+func (s *VerifyFaceMaskAdvanceRequest) SetRefUrlObject(v io.Reader) *VerifyFaceMaskAdvanceRequest {
+	s.RefUrlObject = v
 	return s
 }
 
@@ -10893,7 +10916,7 @@ func (client *Client) AddFaceAdvance(request *AddFaceAdvanceRequest, runtime *ut
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -10932,35 +10955,35 @@ func (client *Client) AddFaceAdvance(request *AddFaceAdvanceRequest, runtime *ut
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageUrlObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		addFaceReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		addFaceReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	addFaceResp, _err := client.AddFaceWithOptions(addFaceReq, runtime)
@@ -11099,7 +11122,7 @@ func (client *Client) AddFaceImageTemplateAdvance(request *AddFaceImageTemplateA
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -11138,35 +11161,35 @@ func (client *Client) AddFaceImageTemplateAdvance(request *AddFaceImageTemplateA
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		addFaceImageTemplateReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		addFaceImageTemplateReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	addFaceImageTemplateResp, _err := client.AddFaceImageTemplateWithOptions(addFaceImageTemplateReq, runtime)
@@ -11381,7 +11404,7 @@ func (client *Client) BeautifyBodyAdvance(request *BeautifyBodyAdvanceRequest, r
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -11420,35 +11443,35 @@ func (client *Client) BeautifyBodyAdvance(request *BeautifyBodyAdvanceRequest, r
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		beautifyBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		beautifyBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	beautifyBodyResp, _err := client.BeautifyBodyWithOptions(beautifyBodyReq, runtime)
@@ -11531,7 +11554,7 @@ func (client *Client) BlurFaceAdvance(request *BlurFaceAdvanceRequest, runtime *
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -11570,35 +11593,35 @@ func (client *Client) BlurFaceAdvance(request *BlurFaceAdvanceRequest, runtime *
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		blurFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		blurFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	blurFaceResp, _err := client.BlurFaceWithOptions(blurFaceReq, runtime)
@@ -11681,7 +11704,7 @@ func (client *Client) BodyPostureAdvance(request *BodyPostureAdvanceRequest, run
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -11720,35 +11743,35 @@ func (client *Client) BodyPostureAdvance(request *BodyPostureAdvanceRequest, run
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		bodyPostureReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		bodyPostureReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	bodyPostureResp, _err := client.BodyPostureWithOptions(bodyPostureReq, runtime)
@@ -11817,6 +11840,149 @@ func (client *Client) CompareFace(request *CompareFaceRequest) (_result *Compare
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CompareFaceAdvance(request *CompareFaceAdvanceRequest, runtime *util.RuntimeOptions) (_result *CompareFaceResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	compareFaceReq := &CompareFaceRequest{}
+	openapiutil.Convert(request, compareFaceReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageURLAObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLAObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		compareFaceReq.ImageURLA = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURLBObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLBObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		compareFaceReq.ImageURLB = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	compareFaceResp, _err := client.CompareFaceWithOptions(compareFaceReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = compareFaceResp
 	return _result, _err
 }
 
@@ -11895,7 +12061,7 @@ func (client *Client) CountCrowdAdvance(request *CountCrowdAdvanceRequest, runti
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -11934,35 +12100,35 @@ func (client *Client) CountCrowdAdvance(request *CountCrowdAdvanceRequest, runti
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		countCrowdReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		countCrowdReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	countCrowdResp, _err := client.CountCrowdWithOptions(countCrowdReq, runtime)
@@ -12461,7 +12627,7 @@ func (client *Client) DetectBodyCountAdvance(request *DetectBodyCountAdvanceRequ
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -12500,35 +12666,35 @@ func (client *Client) DetectBodyCountAdvance(request *DetectBodyCountAdvanceRequ
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectBodyCountReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectBodyCountReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectBodyCountResp, _err := client.DetectBodyCountWithOptions(detectBodyCountReq, runtime)
@@ -12611,7 +12777,7 @@ func (client *Client) DetectCelebrityAdvance(request *DetectCelebrityAdvanceRequ
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -12650,35 +12816,35 @@ func (client *Client) DetectCelebrityAdvance(request *DetectCelebrityAdvanceRequ
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectCelebrityReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectCelebrityReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectCelebrityResp, _err := client.DetectCelebrityWithOptions(detectCelebrityReq, runtime)
@@ -12761,7 +12927,7 @@ func (client *Client) DetectChefCapAdvance(request *DetectChefCapAdvanceRequest,
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -12800,35 +12966,35 @@ func (client *Client) DetectChefCapAdvance(request *DetectChefCapAdvanceRequest,
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectChefCapReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectChefCapReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectChefCapResp, _err := client.DetectChefCapWithOptions(detectChefCapReq, runtime)
@@ -12927,7 +13093,7 @@ func (client *Client) DetectFaceAdvance(request *DetectFaceAdvanceRequest, runti
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -12966,35 +13132,35 @@ func (client *Client) DetectFaceAdvance(request *DetectFaceAdvanceRequest, runti
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectFaceResp, _err := client.DetectFaceWithOptions(detectFaceReq, runtime)
@@ -13089,7 +13255,7 @@ func (client *Client) DetectIPCPedestrianAdvance(request *DetectIPCPedestrianAdv
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -13128,35 +13294,35 @@ func (client *Client) DetectIPCPedestrianAdvance(request *DetectIPCPedestrianAdv
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectIPCPedestrianReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectIPCPedestrianReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectIPCPedestrianResp, _err := client.DetectIPCPedestrianWithOptions(detectIPCPedestrianReq, runtime)
@@ -13283,7 +13449,7 @@ func (client *Client) DetectPedestrianAdvance(request *DetectPedestrianAdvanceRe
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -13322,35 +13488,35 @@ func (client *Client) DetectPedestrianAdvance(request *DetectPedestrianAdvanceRe
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectPedestrianReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectPedestrianReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectPedestrianResp, _err := client.DetectPedestrianWithOptions(detectPedestrianReq, runtime)
@@ -13447,7 +13613,7 @@ func (client *Client) DetectPedestrianIntrusionAdvance(request *DetectPedestrian
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -13486,35 +13652,35 @@ func (client *Client) DetectPedestrianIntrusionAdvance(request *DetectPedestrian
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectPedestrianIntrusionReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectPedestrianIntrusionReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectPedestrianIntrusionResp, _err := client.DetectPedestrianIntrusionWithOptions(detectPedestrianIntrusionReq, runtime)
@@ -13597,7 +13763,7 @@ func (client *Client) DetectVideoLivingFaceAdvance(request *DetectVideoLivingFac
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -13636,35 +13802,35 @@ func (client *Client) DetectVideoLivingFaceAdvance(request *DetectVideoLivingFac
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.VideoUrlObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectVideoLivingFaceReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectVideoLivingFaceReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectVideoLivingFaceResp, _err := client.DetectVideoLivingFaceWithOptions(detectVideoLivingFaceReq, runtime)
@@ -13747,7 +13913,7 @@ func (client *Client) EnhanceFaceAdvance(request *EnhanceFaceAdvanceRequest, run
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -13786,35 +13952,35 @@ func (client *Client) EnhanceFaceAdvance(request *EnhanceFaceAdvanceRequest, run
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		enhanceFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		enhanceFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	enhanceFaceResp, _err := client.EnhanceFaceWithOptions(enhanceFaceReq, runtime)
@@ -13901,7 +14067,7 @@ func (client *Client) ExtractFingerPrintAdvance(request *ExtractFingerPrintAdvan
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -13940,35 +14106,35 @@ func (client *Client) ExtractFingerPrintAdvance(request *ExtractFingerPrintAdvan
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		extractFingerPrintReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		extractFingerPrintReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	extractFingerPrintResp, _err := client.ExtractFingerPrintWithOptions(extractFingerPrintReq, runtime)
@@ -14059,7 +14225,7 @@ func (client *Client) ExtractPedestrianFeatureAttrAdvance(request *ExtractPedest
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -14098,35 +14264,35 @@ func (client *Client) ExtractPedestrianFeatureAttrAdvance(request *ExtractPedest
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		extractPedestrianFeatureAttrReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		extractPedestrianFeatureAttrReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	extractPedestrianFeatureAttrResp, _err := client.ExtractPedestrianFeatureAttrWithOptions(extractPedestrianFeatureAttrReq, runtime)
@@ -14273,7 +14439,7 @@ func (client *Client) FaceBeautyAdvance(request *FaceBeautyAdvanceRequest, runti
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -14312,35 +14478,35 @@ func (client *Client) FaceBeautyAdvance(request *FaceBeautyAdvanceRequest, runti
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		faceBeautyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		faceBeautyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	faceBeautyResp, _err := client.FaceBeautyWithOptions(faceBeautyReq, runtime)
@@ -14431,7 +14597,7 @@ func (client *Client) FaceFilterAdvance(request *FaceFilterAdvanceRequest, runti
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -14470,35 +14636,35 @@ func (client *Client) FaceFilterAdvance(request *FaceFilterAdvanceRequest, runti
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		faceFilterReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		faceFilterReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	faceFilterResp, _err := client.FaceFilterWithOptions(faceFilterReq, runtime)
@@ -14593,7 +14759,7 @@ func (client *Client) FaceMakeupAdvance(request *FaceMakeupAdvanceRequest, runti
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -14632,35 +14798,35 @@ func (client *Client) FaceMakeupAdvance(request *FaceMakeupAdvanceRequest, runti
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		faceMakeupReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		faceMakeupReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	faceMakeupResp, _err := client.FaceMakeupWithOptions(faceMakeupReq, runtime)
@@ -14751,7 +14917,7 @@ func (client *Client) FaceTidyupAdvance(request *FaceTidyupAdvanceRequest, runti
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -14790,35 +14956,35 @@ func (client *Client) FaceTidyupAdvance(request *FaceTidyupAdvanceRequest, runti
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		faceTidyupReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		faceTidyupReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	faceTidyupResp, _err := client.FaceTidyupWithOptions(faceTidyupReq, runtime)
@@ -14957,7 +15123,7 @@ func (client *Client) GenerateHumanAnimeStyleAdvance(request *GenerateHumanAnime
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -14996,35 +15162,35 @@ func (client *Client) GenerateHumanAnimeStyleAdvance(request *GenerateHumanAnime
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		generateHumanAnimeStyleReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		generateHumanAnimeStyleReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	generateHumanAnimeStyleResp, _err := client.GenerateHumanAnimeStyleWithOptions(generateHumanAnimeStyleReq, runtime)
@@ -15111,7 +15277,7 @@ func (client *Client) GenerateHumanSketchStyleAdvance(request *GenerateHumanSket
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -15150,35 +15316,35 @@ func (client *Client) GenerateHumanSketchStyleAdvance(request *GenerateHumanSket
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		generateHumanSketchStyleReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		generateHumanSketchStyleReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	generateHumanSketchStyleResp, _err := client.GenerateHumanSketchStyleWithOptions(generateHumanSketchStyleReq, runtime)
@@ -15397,7 +15563,7 @@ func (client *Client) HandPostureAdvance(request *HandPostureAdvanceRequest, run
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -15436,35 +15602,35 @@ func (client *Client) HandPostureAdvance(request *HandPostureAdvanceRequest, run
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		handPostureReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		handPostureReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	handPostureResp, _err := client.HandPostureWithOptions(handPostureReq, runtime)
@@ -15551,7 +15717,7 @@ func (client *Client) LiquifyFaceAdvance(request *LiquifyFaceAdvanceRequest, run
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -15590,35 +15756,35 @@ func (client *Client) LiquifyFaceAdvance(request *LiquifyFaceAdvanceRequest, run
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		liquifyFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		liquifyFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	liquifyFaceResp, _err := client.LiquifyFaceWithOptions(liquifyFaceReq, runtime)
@@ -15905,7 +16071,7 @@ func (client *Client) MergeImageFaceAdvance(request *MergeImageFaceAdvanceReques
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -15944,35 +16110,35 @@ func (client *Client) MergeImageFaceAdvance(request *MergeImageFaceAdvanceReques
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		mergeImageFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		mergeImageFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	mergeImageFaceResp, _err := client.MergeImageFaceWithOptions(mergeImageFaceReq, runtime)
@@ -16059,7 +16225,7 @@ func (client *Client) MonitorExaminationAdvance(request *MonitorExaminationAdvan
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -16098,35 +16264,35 @@ func (client *Client) MonitorExaminationAdvance(request *MonitorExaminationAdvan
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		monitorExaminationReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		monitorExaminationReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	monitorExaminationResp, _err := client.MonitorExaminationWithOptions(monitorExaminationReq, runtime)
@@ -16209,7 +16375,7 @@ func (client *Client) PedestrianDetectAttributeAdvance(request *PedestrianDetect
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -16248,35 +16414,35 @@ func (client *Client) PedestrianDetectAttributeAdvance(request *PedestrianDetect
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		pedestrianDetectAttributeReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		pedestrianDetectAttributeReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	pedestrianDetectAttributeResp, _err := client.PedestrianDetectAttributeWithOptions(pedestrianDetectAttributeReq, runtime)
@@ -16455,7 +16621,7 @@ func (client *Client) RecognizeExpressionAdvance(request *RecognizeExpressionAdv
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -16494,35 +16660,35 @@ func (client *Client) RecognizeExpressionAdvance(request *RecognizeExpressionAdv
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		recognizeExpressionReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		recognizeExpressionReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	recognizeExpressionResp, _err := client.RecognizeExpressionWithOptions(recognizeExpressionReq, runtime)
@@ -16641,7 +16807,7 @@ func (client *Client) RecognizeFaceAdvance(request *RecognizeFaceAdvanceRequest,
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -16680,35 +16846,35 @@ func (client *Client) RecognizeFaceAdvance(request *RecognizeFaceAdvanceRequest,
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		recognizeFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		recognizeFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	recognizeFaceResp, _err := client.RecognizeFaceWithOptions(recognizeFaceReq, runtime)
@@ -16799,7 +16965,7 @@ func (client *Client) RecognizeHandGestureAdvance(request *RecognizeHandGestureA
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -16838,35 +17004,35 @@ func (client *Client) RecognizeHandGestureAdvance(request *RecognizeHandGestureA
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		recognizeHandGestureReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		recognizeHandGestureReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	recognizeHandGestureResp, _err := client.RecognizeHandGestureWithOptions(recognizeHandGestureReq, runtime)
@@ -17001,7 +17167,7 @@ func (client *Client) RetouchBodyAdvance(request *RetouchBodyAdvanceRequest, run
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -17040,35 +17206,35 @@ func (client *Client) RetouchBodyAdvance(request *RetouchBodyAdvanceRequest, run
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		retouchBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		retouchBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	retouchBodyResp, _err := client.RetouchBodyWithOptions(retouchBodyReq, runtime)
@@ -17159,7 +17325,7 @@ func (client *Client) RetouchSkinAdvance(request *RetouchSkinAdvanceRequest, run
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -17198,35 +17364,35 @@ func (client *Client) RetouchSkinAdvance(request *RetouchSkinAdvanceRequest, run
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		retouchSkinReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		retouchSkinReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	retouchSkinResp, _err := client.RetouchSkinWithOptions(retouchSkinReq, runtime)
@@ -17391,7 +17557,7 @@ func (client *Client) SearchFaceAdvance(request *SearchFaceAdvanceRequest, runti
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -17430,35 +17596,35 @@ func (client *Client) SearchFaceAdvance(request *SearchFaceAdvanceRequest, runti
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageUrlObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		searchFaceReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		searchFaceReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	searchFaceResp, _err := client.SearchFaceWithOptions(searchFaceReq, runtime)
@@ -17527,6 +17693,149 @@ func (client *Client) SwapFacialFeatures(request *SwapFacialFeaturesRequest) (_r
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SwapFacialFeaturesAdvance(request *SwapFacialFeaturesAdvanceRequest, runtime *util.RuntimeOptions) (_result *SwapFacialFeaturesResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	swapFacialFeaturesReq := &SwapFacialFeaturesRequest{}
+	openapiutil.Convert(request, swapFacialFeaturesReq)
+	if !tea.BoolValue(util.IsUnset(request.SourceImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.SourceImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		swapFacialFeaturesReq.SourceImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.TargetImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		swapFacialFeaturesReq.TargetImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	swapFacialFeaturesResp, _err := client.SwapFacialFeaturesWithOptions(swapFacialFeaturesReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = swapFacialFeaturesResp
 	return _result, _err
 }
 
@@ -17635,5 +17944,148 @@ func (client *Client) VerifyFaceMask(request *VerifyFaceMaskRequest) (_result *V
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyFaceMaskAdvance(request *VerifyFaceMaskAdvanceRequest, runtime *util.RuntimeOptions) (_result *VerifyFaceMaskResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	verifyFaceMaskReq := &VerifyFaceMaskRequest{}
+	openapiutil.Convert(request, verifyFaceMaskReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		verifyFaceMaskReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.RefUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		verifyFaceMaskReq.RefUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	verifyFaceMaskResp, _err := client.VerifyFaceMaskWithOptions(verifyFaceMaskReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = verifyFaceMaskResp
 	return _result, _err
 }
