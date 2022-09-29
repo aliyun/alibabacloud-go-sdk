@@ -1,3 +1,7 @@
+2022-09-29 Version: v4.0.1
+- Add IllegalValueByRules and IllegalValueByParameterConstraints to GetTemplateParameterConstraints output.
+- Add Resources to ValidateTemplate output.
+
 2022-09-23 Version: v4.0.0
 - Generated golang 2019-09-10 for ROS.
 

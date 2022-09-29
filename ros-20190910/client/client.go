@@ -6372,12 +6372,14 @@ func (s *GetTemplateParameterConstraintsResponseBody) SetRequestId(v string) *Ge
 }
 
 type GetTemplateParameterConstraintsResponseBodyParameterConstraints struct {
-	AllowedValues             []*string `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
-	AssociationParameterNames []*string `json:"AssociationParameterNames,omitempty" xml:"AssociationParameterNames,omitempty" type:"Repeated"`
-	Behavior                  *string   `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
-	BehaviorReason            *string   `json:"BehaviorReason,omitempty" xml:"BehaviorReason,omitempty"`
-	ParameterKey              *string   `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
-	Type                      *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	AllowedValues                      []*string     `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
+	AssociationParameterNames          []*string     `json:"AssociationParameterNames,omitempty" xml:"AssociationParameterNames,omitempty" type:"Repeated"`
+	Behavior                           *string       `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
+	BehaviorReason                     *string       `json:"BehaviorReason,omitempty" xml:"BehaviorReason,omitempty"`
+	IllegalValueByParameterConstraints []interface{} `json:"IllegalValueByParameterConstraints,omitempty" xml:"IllegalValueByParameterConstraints,omitempty" type:"Repeated"`
+	IllegalValueByRules                []interface{} `json:"IllegalValueByRules,omitempty" xml:"IllegalValueByRules,omitempty" type:"Repeated"`
+	ParameterKey                       *string       `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	Type                               *string       `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTemplateParameterConstraintsResponseBodyParameterConstraints) String() string {
@@ -6405,6 +6407,16 @@ func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetBeh
 
 func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetBehaviorReason(v string) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
 	s.BehaviorReason = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetIllegalValueByParameterConstraints(v []interface{}) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
+	s.IllegalValueByParameterConstraints = v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraints) SetIllegalValueByRules(v []interface{}) *GetTemplateParameterConstraintsResponseBodyParameterConstraints {
+	s.IllegalValueByRules = v
 	return s
 }
 
@@ -12708,6 +12720,7 @@ type ValidateTemplateResponseBody struct {
 	Parameters    []map[string]interface{}                   `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceTypes *ValidateTemplateResponseBodyResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Struct"`
+	Resources     []*ValidateTemplateResponseBodyResources   `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
 func (s ValidateTemplateResponseBody) String() string {
@@ -12740,6 +12753,11 @@ func (s *ValidateTemplateResponseBody) SetRequestId(v string) *ValidateTemplateR
 
 func (s *ValidateTemplateResponseBody) SetResourceTypes(v *ValidateTemplateResponseBodyResourceTypes) *ValidateTemplateResponseBody {
 	s.ResourceTypes = v
+	return s
+}
+
+func (s *ValidateTemplateResponseBody) SetResources(v []*ValidateTemplateResponseBodyResources) *ValidateTemplateResponseBody {
+	s.Resources = v
 	return s
 }
 
@@ -12786,6 +12804,35 @@ func (s *ValidateTemplateResponseBodyResourceTypes) SetDataSources(v []*string) 
 
 func (s *ValidateTemplateResponseBodyResourceTypes) SetResources(v []*string) *ValidateTemplateResponseBodyResourceTypes {
 	s.Resources = v
+	return s
+}
+
+type ValidateTemplateResponseBodyResources struct {
+	LogicalResourceIdPattern *string `json:"LogicalResourceIdPattern,omitempty" xml:"LogicalResourceIdPattern,omitempty"`
+	ResourcePath             *string `json:"ResourcePath,omitempty" xml:"ResourcePath,omitempty"`
+	ResourceType             *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ValidateTemplateResponseBodyResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateTemplateResponseBodyResources) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateTemplateResponseBodyResources) SetLogicalResourceIdPattern(v string) *ValidateTemplateResponseBodyResources {
+	s.LogicalResourceIdPattern = &v
+	return s
+}
+
+func (s *ValidateTemplateResponseBodyResources) SetResourcePath(v string) *ValidateTemplateResponseBodyResources {
+	s.ResourcePath = &v
+	return s
+}
+
+func (s *ValidateTemplateResponseBodyResources) SetResourceType(v string) *ValidateTemplateResponseBodyResources {
+	s.ResourceType = &v
 	return s
 }
 
