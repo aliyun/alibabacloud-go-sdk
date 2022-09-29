@@ -5,15 +5,14 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
@@ -42,7 +41,7 @@ func (s *ChangeSkyRequest) SetReplaceImageURL(v string) *ChangeSkyRequest {
 }
 
 type ChangeSkyAdvanceRequest struct {
-	ImageURLObject  io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject  io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	ReplaceImageURL *string   `json:"ReplaceImageURL,omitempty" xml:"ReplaceImageURL,omitempty"`
 }
 
@@ -65,8 +64,8 @@ func (s *ChangeSkyAdvanceRequest) SetReplaceImageURL(v string) *ChangeSkyAdvance
 }
 
 type ChangeSkyResponseBody struct {
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ChangeSkyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ChangeSkyResponseBody) String() string {
@@ -77,13 +76,13 @@ func (s ChangeSkyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ChangeSkyResponseBody) SetRequestId(v string) *ChangeSkyResponseBody {
-	s.RequestId = &v
+func (s *ChangeSkyResponseBody) SetData(v *ChangeSkyResponseBodyData) *ChangeSkyResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ChangeSkyResponseBody) SetData(v *ChangeSkyResponseBodyData) *ChangeSkyResponseBody {
-	s.Data = v
+func (s *ChangeSkyResponseBody) SetRequestId(v string) *ChangeSkyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -105,8 +104,9 @@ func (s *ChangeSkyResponseBodyData) SetImageURL(v string) *ChangeSkyResponseBody
 }
 
 type ChangeSkyResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ChangeSkyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangeSkyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ChangeSkyResponse) String() string {
@@ -122,13 +122,17 @@ func (s *ChangeSkyResponse) SetHeaders(v map[string]*string) *ChangeSkyResponse 
 	return s
 }
 
+func (s *ChangeSkyResponse) SetStatusCode(v int32) *ChangeSkyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ChangeSkyResponse) SetBody(v *ChangeSkyResponseBody) *ChangeSkyResponse {
 	s.Body = v
 	return s
 }
 
 type GetAsyncJobResultRequest struct {
-	Async *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -140,19 +144,14 @@ func (s GetAsyncJobResultRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncJobResultRequest) SetAsync(v bool) *GetAsyncJobResultRequest {
-	s.Async = &v
-	return s
-}
-
 func (s *GetAsyncJobResultRequest) SetJobId(v string) *GetAsyncJobResultRequest {
 	s.JobId = &v
 	return s
 }
 
 type GetAsyncJobResultResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetAsyncJobResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAsyncJobResultResponseBody) String() string {
@@ -163,22 +162,22 @@ func (s GetAsyncJobResultResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncJobResultResponseBody) SetRequestId(v string) *GetAsyncJobResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetAsyncJobResultResponseBody) SetData(v *GetAsyncJobResultResponseBodyData) *GetAsyncJobResultResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *GetAsyncJobResultResponseBody) SetRequestId(v string) *GetAsyncJobResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetAsyncJobResultResponseBodyData struct {
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAsyncJobResultResponseBodyData) String() string {
@@ -189,8 +188,8 @@ func (s GetAsyncJobResultResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResultResponseBodyData {
-	s.Status = &v
+func (s *GetAsyncJobResultResponseBodyData) SetErrorCode(v string) *GetAsyncJobResultResponseBodyData {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -199,24 +198,25 @@ func (s *GetAsyncJobResultResponseBodyData) SetErrorMessage(v string) *GetAsyncJ
 	return s
 }
 
-func (s *GetAsyncJobResultResponseBodyData) SetResult(v string) *GetAsyncJobResultResponseBodyData {
-	s.Result = &v
-	return s
-}
-
-func (s *GetAsyncJobResultResponseBodyData) SetErrorCode(v string) *GetAsyncJobResultResponseBodyData {
-	s.ErrorCode = &v
-	return s
-}
-
 func (s *GetAsyncJobResultResponseBodyData) SetJobId(v string) *GetAsyncJobResultResponseBodyData {
 	s.JobId = &v
 	return s
 }
 
+func (s *GetAsyncJobResultResponseBodyData) SetResult(v string) *GetAsyncJobResultResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResultResponseBodyData {
+	s.Status = &v
+	return s
+}
+
 type GetAsyncJobResultResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAsyncJobResultResponse) String() string {
@@ -229,6 +229,11 @@ func (s GetAsyncJobResultResponse) GoString() string {
 
 func (s *GetAsyncJobResultResponse) SetHeaders(v map[string]*string) *GetAsyncJobResultResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetAsyncJobResultResponse) SetStatusCode(v int32) *GetAsyncJobResultResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -255,7 +260,7 @@ func (s *ParseFaceRequest) SetImageURL(v string) *ParseFaceRequest {
 }
 
 type ParseFaceAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s ParseFaceAdvanceRequest) String() string {
@@ -272,8 +277,8 @@ func (s *ParseFaceAdvanceRequest) SetImageURLObject(v io.Reader) *ParseFaceAdvan
 }
 
 type ParseFaceResponseBody struct {
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ParseFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ParseFaceResponseBody) String() string {
@@ -284,13 +289,13 @@ func (s ParseFaceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ParseFaceResponseBody) SetRequestId(v string) *ParseFaceResponseBody {
-	s.RequestId = &v
+func (s *ParseFaceResponseBody) SetData(v *ParseFaceResponseBodyData) *ParseFaceResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ParseFaceResponseBody) SetData(v *ParseFaceResponseBodyData) *ParseFaceResponseBody {
-	s.Data = v
+func (s *ParseFaceResponseBody) SetRequestId(v string) *ParseFaceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -341,8 +346,9 @@ func (s *ParseFaceResponseBodyDataElements) SetName(v string) *ParseFaceResponse
 }
 
 type ParseFaceResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ParseFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ParseFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ParseFaceResponse) String() string {
@@ -358,14 +364,19 @@ func (s *ParseFaceResponse) SetHeaders(v map[string]*string) *ParseFaceResponse 
 	return s
 }
 
+func (s *ParseFaceResponse) SetStatusCode(v int32) *ParseFaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ParseFaceResponse) SetBody(v *ParseFaceResponseBody) *ParseFaceResponse {
 	s.Body = v
 	return s
 }
 
 type RefineMaskRequest struct {
-	MaskImageURL *string `json:"MaskImageURL,omitempty" xml:"MaskImageURL,omitempty"`
 	ImageURL     *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	MaskImageURL *string `json:"MaskImageURL,omitempty" xml:"MaskImageURL,omitempty"`
 }
 
 func (s RefineMaskRequest) String() string {
@@ -376,19 +387,19 @@ func (s RefineMaskRequest) GoString() string {
 	return s.String()
 }
 
-func (s *RefineMaskRequest) SetMaskImageURL(v string) *RefineMaskRequest {
-	s.MaskImageURL = &v
-	return s
-}
-
 func (s *RefineMaskRequest) SetImageURL(v string) *RefineMaskRequest {
 	s.ImageURL = &v
 	return s
 }
 
+func (s *RefineMaskRequest) SetMaskImageURL(v string) *RefineMaskRequest {
+	s.MaskImageURL = &v
+	return s
+}
+
 type RefineMaskAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-	MaskImageURL   *string   `json:"MaskImageURL,omitempty" xml:"MaskImageURL,omitempty"`
+	ImageURLObject     io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	MaskImageURLObject io.Reader `json:"MaskImageURL,omitempty" xml:"MaskImageURL,omitempty"`
 }
 
 func (s RefineMaskAdvanceRequest) String() string {
@@ -404,14 +415,14 @@ func (s *RefineMaskAdvanceRequest) SetImageURLObject(v io.Reader) *RefineMaskAdv
 	return s
 }
 
-func (s *RefineMaskAdvanceRequest) SetMaskImageURL(v string) *RefineMaskAdvanceRequest {
-	s.MaskImageURL = &v
+func (s *RefineMaskAdvanceRequest) SetMaskImageURLObject(v io.Reader) *RefineMaskAdvanceRequest {
+	s.MaskImageURLObject = v
 	return s
 }
 
 type RefineMaskResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *RefineMaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RefineMaskResponseBody) String() string {
@@ -422,13 +433,13 @@ func (s RefineMaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RefineMaskResponseBody) SetRequestId(v string) *RefineMaskResponseBody {
-	s.RequestId = &v
+func (s *RefineMaskResponseBody) SetData(v *RefineMaskResponseBodyData) *RefineMaskResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *RefineMaskResponseBody) SetData(v *RefineMaskResponseBodyData) *RefineMaskResponseBody {
-	s.Data = v
+func (s *RefineMaskResponseBody) SetRequestId(v string) *RefineMaskResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -467,8 +478,9 @@ func (s *RefineMaskResponseBodyDataElements) SetImageURL(v string) *RefineMaskRe
 }
 
 type RefineMaskResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RefineMaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RefineMaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RefineMaskResponse) String() string {
@@ -481,6 +493,11 @@ func (s RefineMaskResponse) GoString() string {
 
 func (s *RefineMaskResponse) SetHeaders(v map[string]*string) *RefineMaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RefineMaskResponse) SetStatusCode(v int32) *RefineMaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -513,7 +530,7 @@ func (s *SegmentAnimalRequest) SetReturnForm(v string) *SegmentAnimalRequest {
 }
 
 type SegmentAnimalAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
@@ -536,8 +553,8 @@ func (s *SegmentAnimalAdvanceRequest) SetReturnForm(v string) *SegmentAnimalAdva
 }
 
 type SegmentAnimalResponseBody struct {
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentAnimalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentAnimalResponseBody) String() string {
@@ -548,13 +565,13 @@ func (s SegmentAnimalResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentAnimalResponseBody) SetRequestId(v string) *SegmentAnimalResponseBody {
-	s.RequestId = &v
+func (s *SegmentAnimalResponseBody) SetData(v *SegmentAnimalResponseBodyData) *SegmentAnimalResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentAnimalResponseBody) SetData(v *SegmentAnimalResponseBodyData) *SegmentAnimalResponseBody {
-	s.Data = v
+func (s *SegmentAnimalResponseBody) SetRequestId(v string) *SegmentAnimalResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -576,8 +593,9 @@ func (s *SegmentAnimalResponseBodyData) SetImageURL(v string) *SegmentAnimalResp
 }
 
 type SegmentAnimalResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentAnimalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentAnimalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentAnimalResponse) String() string {
@@ -593,14 +611,19 @@ func (s *SegmentAnimalResponse) SetHeaders(v map[string]*string) *SegmentAnimalR
 	return s
 }
 
+func (s *SegmentAnimalResponse) SetStatusCode(v int32) *SegmentAnimalResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SegmentAnimalResponse) SetBody(v *SegmentAnimalResponseBody) *SegmentAnimalResponse {
 	s.Body = v
 	return s
 }
 
 type SegmentBodyRequest struct {
-	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	Async      *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
+	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
@@ -612,13 +635,13 @@ func (s SegmentBodyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentBodyRequest) SetImageURL(v string) *SegmentBodyRequest {
-	s.ImageURL = &v
+func (s *SegmentBodyRequest) SetAsync(v bool) *SegmentBodyRequest {
+	s.Async = &v
 	return s
 }
 
-func (s *SegmentBodyRequest) SetAsync(v bool) *SegmentBodyRequest {
-	s.Async = &v
+func (s *SegmentBodyRequest) SetImageURL(v string) *SegmentBodyRequest {
+	s.ImageURL = &v
 	return s
 }
 
@@ -628,8 +651,8 @@ func (s *SegmentBodyRequest) SetReturnForm(v string) *SegmentBodyRequest {
 }
 
 type SegmentBodyAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
 	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
@@ -641,13 +664,13 @@ func (s SegmentBodyAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentBodyAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentBodyAdvanceRequest {
-	s.ImageURLObject = v
+func (s *SegmentBodyAdvanceRequest) SetAsync(v bool) *SegmentBodyAdvanceRequest {
+	s.Async = &v
 	return s
 }
 
-func (s *SegmentBodyAdvanceRequest) SetAsync(v bool) *SegmentBodyAdvanceRequest {
-	s.Async = &v
+func (s *SegmentBodyAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentBodyAdvanceRequest {
+	s.ImageURLObject = v
 	return s
 }
 
@@ -657,8 +680,8 @@ func (s *SegmentBodyAdvanceRequest) SetReturnForm(v string) *SegmentBodyAdvanceR
 }
 
 type SegmentBodyResponseBody struct {
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentBodyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentBodyResponseBody) String() string {
@@ -669,13 +692,13 @@ func (s SegmentBodyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentBodyResponseBody) SetRequestId(v string) *SegmentBodyResponseBody {
-	s.RequestId = &v
+func (s *SegmentBodyResponseBody) SetData(v *SegmentBodyResponseBodyData) *SegmentBodyResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentBodyResponseBody) SetData(v *SegmentBodyResponseBodyData) *SegmentBodyResponseBody {
-	s.Data = v
+func (s *SegmentBodyResponseBody) SetRequestId(v string) *SegmentBodyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -697,8 +720,9 @@ func (s *SegmentBodyResponseBodyData) SetImageURL(v string) *SegmentBodyResponse
 }
 
 type SegmentBodyResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentBodyResponse) String() string {
@@ -711,6 +735,11 @@ func (s SegmentBodyResponse) GoString() string {
 
 func (s *SegmentBodyResponse) SetHeaders(v map[string]*string) *SegmentBodyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SegmentBodyResponse) SetStatusCode(v int32) *SegmentBodyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -737,7 +766,7 @@ func (s *SegmentClothRequest) SetImageURL(v string) *SegmentClothRequest {
 }
 
 type SegmentClothAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s SegmentClothAdvanceRequest) String() string {
@@ -754,8 +783,8 @@ func (s *SegmentClothAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentClot
 }
 
 type SegmentClothResponseBody struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentClothResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentClothResponseBody) String() string {
@@ -766,13 +795,13 @@ func (s SegmentClothResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentClothResponseBody) SetRequestId(v string) *SegmentClothResponseBody {
-	s.RequestId = &v
+func (s *SegmentClothResponseBody) SetData(v *SegmentClothResponseBodyData) *SegmentClothResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentClothResponseBody) SetData(v *SegmentClothResponseBodyData) *SegmentClothResponseBody {
-	s.Data = v
+func (s *SegmentClothResponseBody) SetRequestId(v string) *SegmentClothResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -811,8 +840,9 @@ func (s *SegmentClothResponseBodyDataElements) SetImageURL(v string) *SegmentClo
 }
 
 type SegmentClothResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentClothResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentClothResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentClothResponse) String() string {
@@ -825,6 +855,11 @@ func (s SegmentClothResponse) GoString() string {
 
 func (s *SegmentClothResponse) SetHeaders(v map[string]*string) *SegmentClothResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SegmentClothResponse) SetStatusCode(v int32) *SegmentClothResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -857,7 +892,7 @@ func (s *SegmentCommodityRequest) SetReturnForm(v string) *SegmentCommodityReque
 }
 
 type SegmentCommodityAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
@@ -880,8 +915,8 @@ func (s *SegmentCommodityAdvanceRequest) SetReturnForm(v string) *SegmentCommodi
 }
 
 type SegmentCommodityResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentCommodityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentCommodityResponseBody) String() string {
@@ -892,13 +927,13 @@ func (s SegmentCommodityResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentCommodityResponseBody) SetRequestId(v string) *SegmentCommodityResponseBody {
-	s.RequestId = &v
+func (s *SegmentCommodityResponseBody) SetData(v *SegmentCommodityResponseBodyData) *SegmentCommodityResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentCommodityResponseBody) SetData(v *SegmentCommodityResponseBodyData) *SegmentCommodityResponseBody {
-	s.Data = v
+func (s *SegmentCommodityResponseBody) SetRequestId(v string) *SegmentCommodityResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -920,8 +955,9 @@ func (s *SegmentCommodityResponseBodyData) SetImageURL(v string) *SegmentCommodi
 }
 
 type SegmentCommodityResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentCommodityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentCommodityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentCommodityResponse) String() string {
@@ -934,6 +970,11 @@ func (s SegmentCommodityResponse) GoString() string {
 
 func (s *SegmentCommodityResponse) SetHeaders(v map[string]*string) *SegmentCommodityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SegmentCommodityResponse) SetStatusCode(v int32) *SegmentCommodityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -966,7 +1007,7 @@ func (s *SegmentCommonImageRequest) SetReturnForm(v string) *SegmentCommonImageR
 }
 
 type SegmentCommonImageAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
@@ -989,8 +1030,8 @@ func (s *SegmentCommonImageAdvanceRequest) SetReturnForm(v string) *SegmentCommo
 }
 
 type SegmentCommonImageResponseBody struct {
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentCommonImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentCommonImageResponseBody) String() string {
@@ -1001,13 +1042,13 @@ func (s SegmentCommonImageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentCommonImageResponseBody) SetRequestId(v string) *SegmentCommonImageResponseBody {
-	s.RequestId = &v
+func (s *SegmentCommonImageResponseBody) SetData(v *SegmentCommonImageResponseBodyData) *SegmentCommonImageResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentCommonImageResponseBody) SetData(v *SegmentCommonImageResponseBodyData) *SegmentCommonImageResponseBody {
-	s.Data = v
+func (s *SegmentCommonImageResponseBody) SetRequestId(v string) *SegmentCommonImageResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1029,8 +1070,9 @@ func (s *SegmentCommonImageResponseBodyData) SetImageURL(v string) *SegmentCommo
 }
 
 type SegmentCommonImageResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentCommonImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentCommonImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentCommonImageResponse) String() string {
@@ -1043,6 +1085,11 @@ func (s SegmentCommonImageResponse) GoString() string {
 
 func (s *SegmentCommonImageResponse) SetHeaders(v map[string]*string) *SegmentCommonImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SegmentCommonImageResponse) SetStatusCode(v int32) *SegmentCommonImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1069,7 +1116,7 @@ func (s *SegmentFaceRequest) SetImageURL(v string) *SegmentFaceRequest {
 }
 
 type SegmentFaceAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s SegmentFaceAdvanceRequest) String() string {
@@ -1086,8 +1133,8 @@ func (s *SegmentFaceAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentFaceA
 }
 
 type SegmentFaceResponseBody struct {
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentFaceResponseBody) String() string {
@@ -1098,13 +1145,13 @@ func (s SegmentFaceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentFaceResponseBody) SetRequestId(v string) *SegmentFaceResponseBody {
-	s.RequestId = &v
+func (s *SegmentFaceResponseBody) SetData(v *SegmentFaceResponseBodyData) *SegmentFaceResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentFaceResponseBody) SetData(v *SegmentFaceResponseBodyData) *SegmentFaceResponseBody {
-	s.Data = v
+func (s *SegmentFaceResponseBody) SetRequestId(v string) *SegmentFaceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1126,11 +1173,11 @@ func (s *SegmentFaceResponseBodyData) SetElements(v []*SegmentFaceResponseBodyDa
 }
 
 type SegmentFaceResponseBodyDataElements struct {
+	Height   *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	Width    *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height   *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
-	Y        *int32  `json:"Y,omitempty" xml:"Y,omitempty"`
 	X        *int32  `json:"X,omitempty" xml:"X,omitempty"`
+	Y        *int32  `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s SegmentFaceResponseBodyDataElements) String() string {
@@ -1139,6 +1186,11 @@ func (s SegmentFaceResponseBodyDataElements) String() string {
 
 func (s SegmentFaceResponseBodyDataElements) GoString() string {
 	return s.String()
+}
+
+func (s *SegmentFaceResponseBodyDataElements) SetHeight(v int32) *SegmentFaceResponseBodyDataElements {
+	s.Height = &v
+	return s
 }
 
 func (s *SegmentFaceResponseBodyDataElements) SetImageURL(v string) *SegmentFaceResponseBodyDataElements {
@@ -1151,8 +1203,8 @@ func (s *SegmentFaceResponseBodyDataElements) SetWidth(v int32) *SegmentFaceResp
 	return s
 }
 
-func (s *SegmentFaceResponseBodyDataElements) SetHeight(v int32) *SegmentFaceResponseBodyDataElements {
-	s.Height = &v
+func (s *SegmentFaceResponseBodyDataElements) SetX(v int32) *SegmentFaceResponseBodyDataElements {
+	s.X = &v
 	return s
 }
 
@@ -1161,14 +1213,10 @@ func (s *SegmentFaceResponseBodyDataElements) SetY(v int32) *SegmentFaceResponse
 	return s
 }
 
-func (s *SegmentFaceResponseBodyDataElements) SetX(v int32) *SegmentFaceResponseBodyDataElements {
-	s.X = &v
-	return s
-}
-
 type SegmentFaceResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentFaceResponse) String() string {
@@ -1181,6 +1229,11 @@ func (s SegmentFaceResponse) GoString() string {
 
 func (s *SegmentFaceResponse) SetHeaders(v map[string]*string) *SegmentFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SegmentFaceResponse) SetStatusCode(v int32) *SegmentFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1213,7 +1266,7 @@ func (s *SegmentFoodRequest) SetReturnForm(v string) *SegmentFoodRequest {
 }
 
 type SegmentFoodAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
@@ -1236,8 +1289,8 @@ func (s *SegmentFoodAdvanceRequest) SetReturnForm(v string) *SegmentFoodAdvanceR
 }
 
 type SegmentFoodResponseBody struct {
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentFoodResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentFoodResponseBody) String() string {
@@ -1248,13 +1301,13 @@ func (s SegmentFoodResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentFoodResponseBody) SetRequestId(v string) *SegmentFoodResponseBody {
-	s.RequestId = &v
+func (s *SegmentFoodResponseBody) SetData(v *SegmentFoodResponseBodyData) *SegmentFoodResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentFoodResponseBody) SetData(v *SegmentFoodResponseBodyData) *SegmentFoodResponseBody {
-	s.Data = v
+func (s *SegmentFoodResponseBody) SetRequestId(v string) *SegmentFoodResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1276,8 +1329,9 @@ func (s *SegmentFoodResponseBodyData) SetImageURL(v string) *SegmentFoodResponse
 }
 
 type SegmentFoodResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentFoodResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentFoodResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentFoodResponse) String() string {
@@ -1290,6 +1344,11 @@ func (s SegmentFoodResponse) GoString() string {
 
 func (s *SegmentFoodResponse) SetHeaders(v map[string]*string) *SegmentFoodResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SegmentFoodResponse) SetStatusCode(v int32) *SegmentFoodResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1316,7 +1375,7 @@ func (s *SegmentFurnitureRequest) SetImageURL(v string) *SegmentFurnitureRequest
 }
 
 type SegmentFurnitureAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s SegmentFurnitureAdvanceRequest) String() string {
@@ -1333,8 +1392,8 @@ func (s *SegmentFurnitureAdvanceRequest) SetImageURLObject(v io.Reader) *Segment
 }
 
 type SegmentFurnitureResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentFurnitureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentFurnitureResponseBody) String() string {
@@ -1345,13 +1404,13 @@ func (s SegmentFurnitureResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentFurnitureResponseBody) SetRequestId(v string) *SegmentFurnitureResponseBody {
-	s.RequestId = &v
+func (s *SegmentFurnitureResponseBody) SetData(v *SegmentFurnitureResponseBodyData) *SegmentFurnitureResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentFurnitureResponseBody) SetData(v *SegmentFurnitureResponseBodyData) *SegmentFurnitureResponseBody {
-	s.Data = v
+func (s *SegmentFurnitureResponseBody) SetRequestId(v string) *SegmentFurnitureResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1390,8 +1449,9 @@ func (s *SegmentFurnitureResponseBodyDataElements) SetImageURL(v string) *Segmen
 }
 
 type SegmentFurnitureResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentFurnitureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentFurnitureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentFurnitureResponse) String() string {
@@ -1407,145 +1467,12 @@ func (s *SegmentFurnitureResponse) SetHeaders(v map[string]*string) *SegmentFurn
 	return s
 }
 
+func (s *SegmentFurnitureResponse) SetStatusCode(v int32) *SegmentFurnitureResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SegmentFurnitureResponse) SetBody(v *SegmentFurnitureResponseBody) *SegmentFurnitureResponse {
-	s.Body = v
-	return s
-}
-
-type SegmentHairRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-}
-
-func (s SegmentHairRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SegmentHairRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SegmentHairRequest) SetImageURL(v string) *SegmentHairRequest {
-	s.ImageURL = &v
-	return s
-}
-
-type SegmentHairAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-}
-
-func (s SegmentHairAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SegmentHairAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SegmentHairAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentHairAdvanceRequest {
-	s.ImageURLObject = v
-	return s
-}
-
-type SegmentHairResponseBody struct {
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Data      *SegmentHairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-}
-
-func (s SegmentHairResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SegmentHairResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SegmentHairResponseBody) SetRequestId(v string) *SegmentHairResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SegmentHairResponseBody) SetData(v *SegmentHairResponseBodyData) *SegmentHairResponseBody {
-	s.Data = v
-	return s
-}
-
-type SegmentHairResponseBodyData struct {
-	Elements []*SegmentHairResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
-}
-
-func (s SegmentHairResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SegmentHairResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SegmentHairResponseBodyData) SetElements(v []*SegmentHairResponseBodyDataElements) *SegmentHairResponseBodyData {
-	s.Elements = v
-	return s
-}
-
-type SegmentHairResponseBodyDataElements struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	Width    *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height   *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
-	Y        *int32  `json:"Y,omitempty" xml:"Y,omitempty"`
-	X        *int32  `json:"X,omitempty" xml:"X,omitempty"`
-}
-
-func (s SegmentHairResponseBodyDataElements) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SegmentHairResponseBodyDataElements) GoString() string {
-	return s.String()
-}
-
-func (s *SegmentHairResponseBodyDataElements) SetImageURL(v string) *SegmentHairResponseBodyDataElements {
-	s.ImageURL = &v
-	return s
-}
-
-func (s *SegmentHairResponseBodyDataElements) SetWidth(v int32) *SegmentHairResponseBodyDataElements {
-	s.Width = &v
-	return s
-}
-
-func (s *SegmentHairResponseBodyDataElements) SetHeight(v int32) *SegmentHairResponseBodyDataElements {
-	s.Height = &v
-	return s
-}
-
-func (s *SegmentHairResponseBodyDataElements) SetY(v int32) *SegmentHairResponseBodyDataElements {
-	s.Y = &v
-	return s
-}
-
-func (s *SegmentHairResponseBodyDataElements) SetX(v int32) *SegmentHairResponseBodyDataElements {
-	s.X = &v
-	return s
-}
-
-type SegmentHairResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentHairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SegmentHairResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SegmentHairResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SegmentHairResponse) SetHeaders(v map[string]*string) *SegmentHairResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SegmentHairResponse) SetBody(v *SegmentHairResponseBody) *SegmentHairResponse {
 	s.Body = v
 	return s
 }
@@ -1568,7 +1495,7 @@ func (s *SegmentHDBodyRequest) SetImageURL(v string) *SegmentHDBodyRequest {
 }
 
 type SegmentHDBodyAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s SegmentHDBodyAdvanceRequest) String() string {
@@ -1585,8 +1512,8 @@ func (s *SegmentHDBodyAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentHDB
 }
 
 type SegmentHDBodyResponseBody struct {
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentHDBodyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentHDBodyResponseBody) String() string {
@@ -1597,13 +1524,13 @@ func (s SegmentHDBodyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentHDBodyResponseBody) SetRequestId(v string) *SegmentHDBodyResponseBody {
-	s.RequestId = &v
+func (s *SegmentHDBodyResponseBody) SetData(v *SegmentHDBodyResponseBodyData) *SegmentHDBodyResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentHDBodyResponseBody) SetData(v *SegmentHDBodyResponseBodyData) *SegmentHDBodyResponseBody {
-	s.Data = v
+func (s *SegmentHDBodyResponseBody) SetRequestId(v string) *SegmentHDBodyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1625,8 +1552,9 @@ func (s *SegmentHDBodyResponseBodyData) SetImageURL(v string) *SegmentHDBodyResp
 }
 
 type SegmentHDBodyResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentHDBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentHDBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentHDBodyResponse) String() string {
@@ -1642,6 +1570,11 @@ func (s *SegmentHDBodyResponse) SetHeaders(v map[string]*string) *SegmentHDBodyR
 	return s
 }
 
+func (s *SegmentHDBodyResponse) SetStatusCode(v int32) *SegmentHDBodyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SegmentHDBodyResponse) SetBody(v *SegmentHDBodyResponseBody) *SegmentHDBodyResponse {
 	s.Body = v
 	return s
@@ -1649,7 +1582,6 @@ func (s *SegmentHDBodyResponse) SetBody(v *SegmentHDBodyResponseBody) *SegmentHD
 
 type SegmentHDCommonImageRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	Async    *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 }
 
 func (s SegmentHDCommonImageRequest) String() string {
@@ -1665,14 +1597,8 @@ func (s *SegmentHDCommonImageRequest) SetImageUrl(v string) *SegmentHDCommonImag
 	return s
 }
 
-func (s *SegmentHDCommonImageRequest) SetAsync(v bool) *SegmentHDCommonImageRequest {
-	s.Async = &v
-	return s
-}
-
 type SegmentHDCommonImageAdvanceRequest struct {
-	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
-	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+	ImageUrlObject io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 }
 
 func (s SegmentHDCommonImageAdvanceRequest) String() string {
@@ -1688,14 +1614,9 @@ func (s *SegmentHDCommonImageAdvanceRequest) SetImageUrlObject(v io.Reader) *Seg
 	return s
 }
 
-func (s *SegmentHDCommonImageAdvanceRequest) SetAsync(v bool) *SegmentHDCommonImageAdvanceRequest {
-	s.Async = &v
-	return s
-}
-
 type SegmentHDCommonImageResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentHDCommonImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentHDCommonImageResponseBody) String() string {
@@ -1706,13 +1627,13 @@ func (s SegmentHDCommonImageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentHDCommonImageResponseBody) SetRequestId(v string) *SegmentHDCommonImageResponseBody {
-	s.RequestId = &v
+func (s *SegmentHDCommonImageResponseBody) SetData(v *SegmentHDCommonImageResponseBodyData) *SegmentHDCommonImageResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentHDCommonImageResponseBody) SetData(v *SegmentHDCommonImageResponseBodyData) *SegmentHDCommonImageResponseBody {
-	s.Data = v
+func (s *SegmentHDCommonImageResponseBody) SetRequestId(v string) *SegmentHDCommonImageResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1734,8 +1655,9 @@ func (s *SegmentHDCommonImageResponseBodyData) SetImageUrl(v string) *SegmentHDC
 }
 
 type SegmentHDCommonImageResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentHDCommonImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentHDCommonImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentHDCommonImageResponse) String() string {
@@ -1748,6 +1670,11 @@ func (s SegmentHDCommonImageResponse) GoString() string {
 
 func (s *SegmentHDCommonImageResponse) SetHeaders(v map[string]*string) *SegmentHDCommonImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SegmentHDCommonImageResponse) SetStatusCode(v int32) *SegmentHDCommonImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1774,7 +1701,7 @@ func (s *SegmentHDSkyRequest) SetImageURL(v string) *SegmentHDSkyRequest {
 }
 
 type SegmentHDSkyAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s SegmentHDSkyAdvanceRequest) String() string {
@@ -1791,8 +1718,8 @@ func (s *SegmentHDSkyAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentHDSk
 }
 
 type SegmentHDSkyResponseBody struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentHDSkyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentHDSkyResponseBody) String() string {
@@ -1803,13 +1730,13 @@ func (s SegmentHDSkyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentHDSkyResponseBody) SetRequestId(v string) *SegmentHDSkyResponseBody {
-	s.RequestId = &v
+func (s *SegmentHDSkyResponseBody) SetData(v *SegmentHDSkyResponseBodyData) *SegmentHDSkyResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentHDSkyResponseBody) SetData(v *SegmentHDSkyResponseBodyData) *SegmentHDSkyResponseBody {
-	s.Data = v
+func (s *SegmentHDSkyResponseBody) SetRequestId(v string) *SegmentHDSkyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1831,8 +1758,9 @@ func (s *SegmentHDSkyResponseBodyData) SetImageURL(v string) *SegmentHDSkyRespon
 }
 
 type SegmentHDSkyResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentHDSkyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentHDSkyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentHDSkyResponse) String() string {
@@ -1848,7 +1776,156 @@ func (s *SegmentHDSkyResponse) SetHeaders(v map[string]*string) *SegmentHDSkyRes
 	return s
 }
 
+func (s *SegmentHDSkyResponse) SetStatusCode(v int32) *SegmentHDSkyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SegmentHDSkyResponse) SetBody(v *SegmentHDSkyResponseBody) *SegmentHDSkyResponse {
+	s.Body = v
+	return s
+}
+
+type SegmentHairRequest struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s SegmentHairRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentHairRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentHairRequest) SetImageURL(v string) *SegmentHairRequest {
+	s.ImageURL = &v
+	return s
+}
+
+type SegmentHairAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s SegmentHairAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentHairAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentHairAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentHairAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+type SegmentHairResponseBody struct {
+	Data      *SegmentHairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SegmentHairResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentHairResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentHairResponseBody) SetData(v *SegmentHairResponseBodyData) *SegmentHairResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SegmentHairResponseBody) SetRequestId(v string) *SegmentHairResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SegmentHairResponseBodyData struct {
+	Elements []*SegmentHairResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+}
+
+func (s SegmentHairResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentHairResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentHairResponseBodyData) SetElements(v []*SegmentHairResponseBodyDataElements) *SegmentHairResponseBodyData {
+	s.Elements = v
+	return s
+}
+
+type SegmentHairResponseBodyDataElements struct {
+	Height   *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	Width    *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+	X        *int32  `json:"X,omitempty" xml:"X,omitempty"`
+	Y        *int32  `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s SegmentHairResponseBodyDataElements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentHairResponseBodyDataElements) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentHairResponseBodyDataElements) SetHeight(v int32) *SegmentHairResponseBodyDataElements {
+	s.Height = &v
+	return s
+}
+
+func (s *SegmentHairResponseBodyDataElements) SetImageURL(v string) *SegmentHairResponseBodyDataElements {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *SegmentHairResponseBodyDataElements) SetWidth(v int32) *SegmentHairResponseBodyDataElements {
+	s.Width = &v
+	return s
+}
+
+func (s *SegmentHairResponseBodyDataElements) SetX(v int32) *SegmentHairResponseBodyDataElements {
+	s.X = &v
+	return s
+}
+
+func (s *SegmentHairResponseBodyDataElements) SetY(v int32) *SegmentHairResponseBodyDataElements {
+	s.Y = &v
+	return s
+}
+
+type SegmentHairResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentHairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SegmentHairResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentHairResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentHairResponse) SetHeaders(v map[string]*string) *SegmentHairResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SegmentHairResponse) SetStatusCode(v int32) *SegmentHairResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SegmentHairResponse) SetBody(v *SegmentHairResponseBody) *SegmentHairResponse {
 	s.Body = v
 	return s
 }
@@ -1877,7 +1954,7 @@ func (s *SegmentHeadRequest) SetReturnForm(v string) *SegmentHeadRequest {
 }
 
 type SegmentHeadAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
@@ -1900,8 +1977,8 @@ func (s *SegmentHeadAdvanceRequest) SetReturnForm(v string) *SegmentHeadAdvanceR
 }
 
 type SegmentHeadResponseBody struct {
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentHeadResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentHeadResponseBody) String() string {
@@ -1912,13 +1989,13 @@ func (s SegmentHeadResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentHeadResponseBody) SetRequestId(v string) *SegmentHeadResponseBody {
-	s.RequestId = &v
+func (s *SegmentHeadResponseBody) SetData(v *SegmentHeadResponseBodyData) *SegmentHeadResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentHeadResponseBody) SetData(v *SegmentHeadResponseBodyData) *SegmentHeadResponseBody {
-	s.Data = v
+func (s *SegmentHeadResponseBody) SetRequestId(v string) *SegmentHeadResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1940,11 +2017,11 @@ func (s *SegmentHeadResponseBodyData) SetElements(v []*SegmentHeadResponseBodyDa
 }
 
 type SegmentHeadResponseBodyDataElements struct {
+	Height   *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	Width    *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height   *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
-	Y        *int32  `json:"Y,omitempty" xml:"Y,omitempty"`
 	X        *int32  `json:"X,omitempty" xml:"X,omitempty"`
+	Y        *int32  `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s SegmentHeadResponseBodyDataElements) String() string {
@@ -1953,6 +2030,11 @@ func (s SegmentHeadResponseBodyDataElements) String() string {
 
 func (s SegmentHeadResponseBodyDataElements) GoString() string {
 	return s.String()
+}
+
+func (s *SegmentHeadResponseBodyDataElements) SetHeight(v int32) *SegmentHeadResponseBodyDataElements {
+	s.Height = &v
+	return s
 }
 
 func (s *SegmentHeadResponseBodyDataElements) SetImageURL(v string) *SegmentHeadResponseBodyDataElements {
@@ -1965,8 +2047,8 @@ func (s *SegmentHeadResponseBodyDataElements) SetWidth(v int32) *SegmentHeadResp
 	return s
 }
 
-func (s *SegmentHeadResponseBodyDataElements) SetHeight(v int32) *SegmentHeadResponseBodyDataElements {
-	s.Height = &v
+func (s *SegmentHeadResponseBodyDataElements) SetX(v int32) *SegmentHeadResponseBodyDataElements {
+	s.X = &v
 	return s
 }
 
@@ -1975,14 +2057,10 @@ func (s *SegmentHeadResponseBodyDataElements) SetY(v int32) *SegmentHeadResponse
 	return s
 }
 
-func (s *SegmentHeadResponseBodyDataElements) SetX(v int32) *SegmentHeadResponseBodyDataElements {
-	s.X = &v
-	return s
-}
-
 type SegmentHeadResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentHeadResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentHeadResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentHeadResponse) String() string {
@@ -1995,6 +2073,11 @@ func (s SegmentHeadResponse) GoString() string {
 
 func (s *SegmentHeadResponse) SetHeaders(v map[string]*string) *SegmentHeadResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SegmentHeadResponse) SetStatusCode(v int32) *SegmentHeadResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2021,7 +2104,7 @@ func (s *SegmentLogoRequest) SetImageURL(v string) *SegmentLogoRequest {
 }
 
 type SegmentLogoAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s SegmentLogoAdvanceRequest) String() string {
@@ -2038,8 +2121,8 @@ func (s *SegmentLogoAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentLogoA
 }
 
 type SegmentLogoResponseBody struct {
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentLogoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentLogoResponseBody) String() string {
@@ -2050,13 +2133,13 @@ func (s SegmentLogoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentLogoResponseBody) SetRequestId(v string) *SegmentLogoResponseBody {
-	s.RequestId = &v
+func (s *SegmentLogoResponseBody) SetData(v *SegmentLogoResponseBodyData) *SegmentLogoResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentLogoResponseBody) SetData(v *SegmentLogoResponseBodyData) *SegmentLogoResponseBody {
-	s.Data = v
+func (s *SegmentLogoResponseBody) SetRequestId(v string) *SegmentLogoResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2078,8 +2161,9 @@ func (s *SegmentLogoResponseBodyData) SetImageURL(v string) *SegmentLogoResponse
 }
 
 type SegmentLogoResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentLogoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentLogoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentLogoResponse) String() string {
@@ -2092,6 +2176,11 @@ func (s SegmentLogoResponse) GoString() string {
 
 func (s *SegmentLogoResponse) SetHeaders(v map[string]*string) *SegmentLogoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SegmentLogoResponse) SetStatusCode(v int32) *SegmentLogoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2118,7 +2207,7 @@ func (s *SegmentSceneRequest) SetImageURL(v string) *SegmentSceneRequest {
 }
 
 type SegmentSceneAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s SegmentSceneAdvanceRequest) String() string {
@@ -2135,8 +2224,8 @@ func (s *SegmentSceneAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentScen
 }
 
 type SegmentSceneResponseBody struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentSceneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentSceneResponseBody) String() string {
@@ -2147,13 +2236,13 @@ func (s SegmentSceneResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentSceneResponseBody) SetRequestId(v string) *SegmentSceneResponseBody {
-	s.RequestId = &v
+func (s *SegmentSceneResponseBody) SetData(v *SegmentSceneResponseBodyData) *SegmentSceneResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentSceneResponseBody) SetData(v *SegmentSceneResponseBodyData) *SegmentSceneResponseBody {
-	s.Data = v
+func (s *SegmentSceneResponseBody) SetRequestId(v string) *SegmentSceneResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2175,8 +2264,9 @@ func (s *SegmentSceneResponseBodyData) SetImageURL(v string) *SegmentSceneRespon
 }
 
 type SegmentSceneResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentSceneResponse) String() string {
@@ -2189,6 +2279,11 @@ func (s SegmentSceneResponse) GoString() string {
 
 func (s *SegmentSceneResponse) SetHeaders(v map[string]*string) *SegmentSceneResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SegmentSceneResponse) SetStatusCode(v int32) *SegmentSceneResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2215,7 +2310,7 @@ func (s *SegmentSkinRequest) SetURL(v string) *SegmentSkinRequest {
 }
 
 type SegmentSkinAdvanceRequest struct {
-	URLObject io.Reader `json:"URLObject,omitempty" xml:"URLObject,omitempty" require:"true"`
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
 func (s SegmentSkinAdvanceRequest) String() string {
@@ -2232,8 +2327,8 @@ func (s *SegmentSkinAdvanceRequest) SetURLObject(v io.Reader) *SegmentSkinAdvanc
 }
 
 type SegmentSkinResponseBody struct {
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentSkinResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentSkinResponseBody) String() string {
@@ -2244,13 +2339,13 @@ func (s SegmentSkinResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentSkinResponseBody) SetRequestId(v string) *SegmentSkinResponseBody {
-	s.RequestId = &v
+func (s *SegmentSkinResponseBody) SetData(v *SegmentSkinResponseBodyData) *SegmentSkinResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentSkinResponseBody) SetData(v *SegmentSkinResponseBodyData) *SegmentSkinResponseBody {
-	s.Data = v
+func (s *SegmentSkinResponseBody) SetRequestId(v string) *SegmentSkinResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2272,8 +2367,9 @@ func (s *SegmentSkinResponseBodyData) SetURL(v string) *SegmentSkinResponseBodyD
 }
 
 type SegmentSkinResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentSkinResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentSkinResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentSkinResponse) String() string {
@@ -2286,6 +2382,11 @@ func (s SegmentSkinResponse) GoString() string {
 
 func (s *SegmentSkinResponse) SetHeaders(v map[string]*string) *SegmentSkinResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SegmentSkinResponse) SetStatusCode(v int32) *SegmentSkinResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2312,7 +2413,7 @@ func (s *SegmentSkyRequest) SetImageURL(v string) *SegmentSkyRequest {
 }
 
 type SegmentSkyAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s SegmentSkyAdvanceRequest) String() string {
@@ -2329,8 +2430,8 @@ func (s *SegmentSkyAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentSkyAdv
 }
 
 type SegmentSkyResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentSkyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentSkyResponseBody) String() string {
@@ -2341,13 +2442,13 @@ func (s SegmentSkyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentSkyResponseBody) SetRequestId(v string) *SegmentSkyResponseBody {
-	s.RequestId = &v
+func (s *SegmentSkyResponseBody) SetData(v *SegmentSkyResponseBodyData) *SegmentSkyResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentSkyResponseBody) SetData(v *SegmentSkyResponseBodyData) *SegmentSkyResponseBody {
-	s.Data = v
+func (s *SegmentSkyResponseBody) SetRequestId(v string) *SegmentSkyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2369,8 +2470,9 @@ func (s *SegmentSkyResponseBodyData) SetImageURL(v string) *SegmentSkyResponseBo
 }
 
 type SegmentSkyResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentSkyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentSkyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentSkyResponse) String() string {
@@ -2383,6 +2485,11 @@ func (s SegmentSkyResponse) GoString() string {
 
 func (s *SegmentSkyResponse) SetHeaders(v map[string]*string) *SegmentSkyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SegmentSkyResponse) SetStatusCode(v int32) *SegmentSkyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2409,7 +2516,7 @@ func (s *SegmentVehicleRequest) SetImageURL(v string) *SegmentVehicleRequest {
 }
 
 type SegmentVehicleAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s SegmentVehicleAdvanceRequest) String() string {
@@ -2426,8 +2533,8 @@ func (s *SegmentVehicleAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentVe
 }
 
 type SegmentVehicleResponseBody struct {
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentVehicleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentVehicleResponseBody) String() string {
@@ -2438,13 +2545,13 @@ func (s SegmentVehicleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentVehicleResponseBody) SetRequestId(v string) *SegmentVehicleResponseBody {
-	s.RequestId = &v
+func (s *SegmentVehicleResponseBody) SetData(v *SegmentVehicleResponseBodyData) *SegmentVehicleResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentVehicleResponseBody) SetData(v *SegmentVehicleResponseBodyData) *SegmentVehicleResponseBody {
-	s.Data = v
+func (s *SegmentVehicleResponseBody) SetRequestId(v string) *SegmentVehicleResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2489,8 +2596,9 @@ func (s *SegmentVehicleResponseBodyDataElements) SetOriginImageURL(v string) *Se
 }
 
 type SegmentVehicleResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentVehicleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentVehicleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentVehicleResponse) String() string {
@@ -2503,6 +2611,11 @@ func (s SegmentVehicleResponse) GoString() string {
 
 func (s *SegmentVehicleResponse) SetHeaders(v map[string]*string) *SegmentVehicleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SegmentVehicleResponse) SetStatusCode(v int32) *SegmentVehicleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2563,11 +2676,31 @@ func (client *Client) ChangeSkyWithOptions(request *ChangeSkyRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplaceImageURL)) {
+		query["ReplaceImageURL"] = request.ReplaceImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeSky"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ChangeSkyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ChangeSky"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2598,11 +2731,27 @@ func (client *Client) ChangeSkyAdvance(request *ChangeSkyAdvanceRequest, runtime
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -2630,40 +2779,43 @@ func (client *Client) ChangeSkyAdvance(request *ChangeSkyAdvanceRequest, runtime
 	openapiutil.Convert(runtime, ossRuntime)
 	changeSkyReq := &ChangeSkyRequest{}
 	openapiutil.Convert(request, changeSkyReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		changeSkyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	changeSkyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	changeSkyResp, _err := client.ChangeSkyWithOptions(changeSkyReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2678,11 +2830,27 @@ func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAsyncJobResult"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAsyncJobResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAsyncJobResult"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2706,11 +2874,27 @@ func (client *Client) ParseFaceWithOptions(request *ParseFaceRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ParseFace"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ParseFaceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ParseFace"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2741,11 +2925,27 @@ func (client *Client) ParseFaceAdvance(request *ParseFaceAdvanceRequest, runtime
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -2773,40 +2973,43 @@ func (client *Client) ParseFaceAdvance(request *ParseFaceAdvanceRequest, runtime
 	openapiutil.Convert(runtime, ossRuntime)
 	parseFaceReq := &ParseFaceRequest{}
 	openapiutil.Convert(request, parseFaceReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		parseFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	parseFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	parseFaceResp, _err := client.ParseFaceWithOptions(parseFaceReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2821,11 +3024,31 @@ func (client *Client) RefineMaskWithOptions(request *RefineMaskRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaskImageURL)) {
+		body["MaskImageURL"] = request.MaskImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefineMask"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RefineMaskResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RefineMask"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2856,11 +3079,27 @@ func (client *Client) RefineMaskAdvance(request *RefineMaskAdvanceRequest, runti
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -2888,40 +3127,80 @@ func (client *Client) RefineMaskAdvance(request *RefineMaskAdvanceRequest, runti
 	openapiutil.Convert(runtime, ossRuntime)
 	refineMaskReq := &RefineMaskRequest{}
 	openapiutil.Convert(request, refineMaskReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		refineMaskReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.MaskImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.MaskImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		refineMaskReq.MaskImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	refineMaskReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	refineMaskResp, _err := client.RefineMaskWithOptions(refineMaskReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2936,11 +3215,31 @@ func (client *Client) SegmentAnimalWithOptions(request *SegmentAnimalRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnForm)) {
+		query["ReturnForm"] = request.ReturnForm
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentAnimal"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentAnimalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentAnimal"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2971,11 +3270,27 @@ func (client *Client) SegmentAnimalAdvance(request *SegmentAnimalAdvanceRequest,
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -3003,40 +3318,43 @@ func (client *Client) SegmentAnimalAdvance(request *SegmentAnimalAdvanceRequest,
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentAnimalReq := &SegmentAnimalRequest{}
 	openapiutil.Convert(request, segmentAnimalReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentAnimalReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentAnimalReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentAnimalResp, _err := client.SegmentAnimalWithOptions(segmentAnimalReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3051,11 +3369,37 @@ func (client *Client) SegmentBodyWithOptions(request *SegmentBodyRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnForm)) {
+		query["ReturnForm"] = request.ReturnForm
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Async)) {
+		body["Async"] = request.Async
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentBody"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentBodyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentBody"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3086,11 +3430,27 @@ func (client *Client) SegmentBodyAdvance(request *SegmentBodyAdvanceRequest, run
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -3118,40 +3478,43 @@ func (client *Client) SegmentBodyAdvance(request *SegmentBodyAdvanceRequest, run
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentBodyReq := &SegmentBodyRequest{}
 	openapiutil.Convert(request, segmentBodyReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentBodyResp, _err := client.SegmentBodyWithOptions(segmentBodyReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3166,11 +3529,27 @@ func (client *Client) SegmentClothWithOptions(request *SegmentClothRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentCloth"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentClothResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentCloth"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3201,11 +3580,27 @@ func (client *Client) SegmentClothAdvance(request *SegmentClothAdvanceRequest, r
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -3233,40 +3628,43 @@ func (client *Client) SegmentClothAdvance(request *SegmentClothAdvanceRequest, r
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentClothReq := &SegmentClothRequest{}
 	openapiutil.Convert(request, segmentClothReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentClothReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentClothReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentClothResp, _err := client.SegmentClothWithOptions(segmentClothReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3281,11 +3679,31 @@ func (client *Client) SegmentCommodityWithOptions(request *SegmentCommodityReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnForm)) {
+		query["ReturnForm"] = request.ReturnForm
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentCommodity"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentCommodityResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentCommodity"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3316,11 +3734,27 @@ func (client *Client) SegmentCommodityAdvance(request *SegmentCommodityAdvanceRe
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -3348,40 +3782,43 @@ func (client *Client) SegmentCommodityAdvance(request *SegmentCommodityAdvanceRe
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentCommodityReq := &SegmentCommodityRequest{}
 	openapiutil.Convert(request, segmentCommodityReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentCommodityReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentCommodityReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentCommodityResp, _err := client.SegmentCommodityWithOptions(segmentCommodityReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3396,11 +3833,31 @@ func (client *Client) SegmentCommonImageWithOptions(request *SegmentCommonImageR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnForm)) {
+		query["ReturnForm"] = request.ReturnForm
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentCommonImage"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentCommonImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentCommonImage"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3431,11 +3888,27 @@ func (client *Client) SegmentCommonImageAdvance(request *SegmentCommonImageAdvan
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -3463,40 +3936,43 @@ func (client *Client) SegmentCommonImageAdvance(request *SegmentCommonImageAdvan
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentCommonImageReq := &SegmentCommonImageRequest{}
 	openapiutil.Convert(request, segmentCommonImageReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentCommonImageReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentCommonImageReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentCommonImageResp, _err := client.SegmentCommonImageWithOptions(segmentCommonImageReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3511,11 +3987,27 @@ func (client *Client) SegmentFaceWithOptions(request *SegmentFaceRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentFace"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentFaceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentFace"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3546,11 +4038,27 @@ func (client *Client) SegmentFaceAdvance(request *SegmentFaceAdvanceRequest, run
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -3578,40 +4086,43 @@ func (client *Client) SegmentFaceAdvance(request *SegmentFaceAdvanceRequest, run
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentFaceReq := &SegmentFaceRequest{}
 	openapiutil.Convert(request, segmentFaceReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentFaceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentFaceResp, _err := client.SegmentFaceWithOptions(segmentFaceReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3626,11 +4137,31 @@ func (client *Client) SegmentFoodWithOptions(request *SegmentFoodRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnForm)) {
+		query["ReturnForm"] = request.ReturnForm
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentFood"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentFoodResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentFood"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3661,11 +4192,27 @@ func (client *Client) SegmentFoodAdvance(request *SegmentFoodAdvanceRequest, run
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -3693,40 +4240,43 @@ func (client *Client) SegmentFoodAdvance(request *SegmentFoodAdvanceRequest, run
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentFoodReq := &SegmentFoodRequest{}
 	openapiutil.Convert(request, segmentFoodReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentFoodReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentFoodReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentFoodResp, _err := client.SegmentFoodWithOptions(segmentFoodReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3741,11 +4291,27 @@ func (client *Client) SegmentFurnitureWithOptions(request *SegmentFurnitureReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentFurniture"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentFurnitureResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentFurniture"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3776,11 +4342,27 @@ func (client *Client) SegmentFurnitureAdvance(request *SegmentFurnitureAdvanceRe
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -3808,40 +4390,43 @@ func (client *Client) SegmentFurnitureAdvance(request *SegmentFurnitureAdvanceRe
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentFurnitureReq := &SegmentFurnitureRequest{}
 	openapiutil.Convert(request, segmentFurnitureReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentFurnitureReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentFurnitureReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentFurnitureResp, _err := client.SegmentFurnitureWithOptions(segmentFurnitureReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3851,131 +4436,32 @@ func (client *Client) SegmentFurnitureAdvance(request *SegmentFurnitureAdvanceRe
 	return _result, _err
 }
 
-func (client *Client) SegmentHairWithOptions(request *SegmentHairRequest, runtime *util.RuntimeOptions) (_result *SegmentHairResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &SegmentHairResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentHair"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SegmentHair(request *SegmentHairRequest) (_result *SegmentHairResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SegmentHairResponse{}
-	_body, _err := client.SegmentHairWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SegmentHairAdvance(request *SegmentHairAdvanceRequest, runtime *util.RuntimeOptions) (_result *SegmentHairResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("imageseg"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
-	segmentHairReq := &SegmentHairRequest{}
-	openapiutil.Convert(request, segmentHairReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentHairReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	segmentHairResp, _err := client.SegmentHairWithOptions(segmentHairReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = segmentHairResp
-	return _result, _err
-}
-
 func (client *Client) SegmentHDBodyWithOptions(request *SegmentHDBodyRequest, runtime *util.RuntimeOptions) (_result *SegmentHDBodyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentHDBody"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentHDBodyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentHDBody"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4006,11 +4492,27 @@ func (client *Client) SegmentHDBodyAdvance(request *SegmentHDBodyAdvanceRequest,
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -4038,40 +4540,43 @@ func (client *Client) SegmentHDBodyAdvance(request *SegmentHDBodyAdvanceRequest,
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentHDBodyReq := &SegmentHDBodyRequest{}
 	openapiutil.Convert(request, segmentHDBodyReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentHDBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentHDBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentHDBodyResp, _err := client.SegmentHDBodyWithOptions(segmentHDBodyReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4086,11 +4591,27 @@ func (client *Client) SegmentHDCommonImageWithOptions(request *SegmentHDCommonIm
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentHDCommonImage"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentHDCommonImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentHDCommonImage"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4121,11 +4642,27 @@ func (client *Client) SegmentHDCommonImageAdvance(request *SegmentHDCommonImageA
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -4153,40 +4690,43 @@ func (client *Client) SegmentHDCommonImageAdvance(request *SegmentHDCommonImageA
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentHDCommonImageReq := &SegmentHDCommonImageRequest{}
 	openapiutil.Convert(request, segmentHDCommonImageReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentHDCommonImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageUrlObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentHDCommonImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentHDCommonImageResp, _err := client.SegmentHDCommonImageWithOptions(segmentHDCommonImageReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4201,11 +4741,27 @@ func (client *Client) SegmentHDSkyWithOptions(request *SegmentHDSkyRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentHDSky"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentHDSkyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentHDSky"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4236,11 +4792,27 @@ func (client *Client) SegmentHDSkyAdvance(request *SegmentHDSkyAdvanceRequest, r
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -4268,40 +4840,43 @@ func (client *Client) SegmentHDSkyAdvance(request *SegmentHDSkyAdvanceRequest, r
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentHDSkyReq := &SegmentHDSkyRequest{}
 	openapiutil.Convert(request, segmentHDSkyReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentHDSkyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentHDSkyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentHDSkyResp, _err := client.SegmentHDSkyWithOptions(segmentHDSkyReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4311,16 +4886,186 @@ func (client *Client) SegmentHDSkyAdvance(request *SegmentHDSkyAdvanceRequest, r
 	return _result, _err
 }
 
+func (client *Client) SegmentHairWithOptions(request *SegmentHairRequest, runtime *util.RuntimeOptions) (_result *SegmentHairResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentHair"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SegmentHairResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentHair(request *SegmentHairRequest) (_result *SegmentHairResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentHairResponse{}
+	_body, _err := client.SegmentHairWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SegmentHairAdvance(request *SegmentHairAdvanceRequest, runtime *util.RuntimeOptions) (_result *SegmentHairResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageseg"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	segmentHairReq := &SegmentHairRequest{}
+	openapiutil.Convert(request, segmentHairReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentHairReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	segmentHairResp, _err := client.SegmentHairWithOptions(segmentHairReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = segmentHairResp
+	return _result, _err
+}
+
 func (client *Client) SegmentHeadWithOptions(request *SegmentHeadRequest, runtime *util.RuntimeOptions) (_result *SegmentHeadResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnForm)) {
+		query["ReturnForm"] = request.ReturnForm
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentHead"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentHeadResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentHead"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4351,11 +5096,27 @@ func (client *Client) SegmentHeadAdvance(request *SegmentHeadAdvanceRequest, run
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -4383,40 +5144,43 @@ func (client *Client) SegmentHeadAdvance(request *SegmentHeadAdvanceRequest, run
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentHeadReq := &SegmentHeadRequest{}
 	openapiutil.Convert(request, segmentHeadReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentHeadReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentHeadReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentHeadResp, _err := client.SegmentHeadWithOptions(segmentHeadReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4431,11 +5195,27 @@ func (client *Client) SegmentLogoWithOptions(request *SegmentLogoRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentLogo"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentLogoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentLogo"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4466,11 +5246,27 @@ func (client *Client) SegmentLogoAdvance(request *SegmentLogoAdvanceRequest, run
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -4498,40 +5294,43 @@ func (client *Client) SegmentLogoAdvance(request *SegmentLogoAdvanceRequest, run
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentLogoReq := &SegmentLogoRequest{}
 	openapiutil.Convert(request, segmentLogoReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentLogoReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentLogoReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentLogoResp, _err := client.SegmentLogoWithOptions(segmentLogoReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4546,11 +5345,27 @@ func (client *Client) SegmentSceneWithOptions(request *SegmentSceneRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentScene"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentSceneResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentScene"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4581,11 +5396,27 @@ func (client *Client) SegmentSceneAdvance(request *SegmentSceneAdvanceRequest, r
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -4613,40 +5444,43 @@ func (client *Client) SegmentSceneAdvance(request *SegmentSceneAdvanceRequest, r
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentSceneReq := &SegmentSceneRequest{}
 	openapiutil.Convert(request, segmentSceneReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentSceneReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentSceneReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentSceneResp, _err := client.SegmentSceneWithOptions(segmentSceneReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4661,11 +5495,27 @@ func (client *Client) SegmentSkinWithOptions(request *SegmentSkinRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.URL)) {
+		body["URL"] = request.URL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentSkin"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentSkinResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentSkin"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4696,11 +5546,27 @@ func (client *Client) SegmentSkinAdvance(request *SegmentSkinAdvanceRequest, run
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -4728,40 +5594,43 @@ func (client *Client) SegmentSkinAdvance(request *SegmentSkinAdvanceRequest, run
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentSkinReq := &SegmentSkinRequest{}
 	openapiutil.Convert(request, segmentSkinReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.URLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.URLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentSkinReq.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.URLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentSkinReq.URL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentSkinResp, _err := client.SegmentSkinWithOptions(segmentSkinReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4776,11 +5645,27 @@ func (client *Client) SegmentSkyWithOptions(request *SegmentSkyRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentSky"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentSkyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentSky"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4811,11 +5696,27 @@ func (client *Client) SegmentSkyAdvance(request *SegmentSkyAdvanceRequest, runti
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -4843,40 +5744,43 @@ func (client *Client) SegmentSkyAdvance(request *SegmentSkyAdvanceRequest, runti
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentSkyReq := &SegmentSkyRequest{}
 	openapiutil.Convert(request, segmentSkyReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentSkyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentSkyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentSkyResp, _err := client.SegmentSkyWithOptions(segmentSkyReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4891,11 +5795,27 @@ func (client *Client) SegmentVehicleWithOptions(request *SegmentVehicleRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentVehicle"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentVehicleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentVehicle"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4926,11 +5846,27 @@ func (client *Client) SegmentVehicleAdvance(request *SegmentVehicleAdvanceReques
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -4958,40 +5894,43 @@ func (client *Client) SegmentVehicleAdvance(request *SegmentVehicleAdvanceReques
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentVehicleReq := &SegmentVehicleRequest{}
 	openapiutil.Convert(request, segmentVehicleReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentVehicleReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentVehicleReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentVehicleResp, _err := client.SegmentVehicleWithOptions(segmentVehicleReq, runtime)
 	if _err != nil {
 		return _result, _err
