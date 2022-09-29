@@ -5,32 +5,25 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
 
 type DetectObjectElement struct {
-	// 目标高度(像素)
-	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 目标置信度，范围为[0.0, 1.0]
-	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// 目标类型：PERSON, VEHICLE, PET
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 目标宽度(像素)
-	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
-	// 左上角x坐标(像素)
-	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
-	// 左上角y坐标(像素)
-	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
+	Height *int64   `json:"Height,omitempty" xml:"Height,omitempty"`
+	Score  *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Type   *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Width  *int64   `json:"Width,omitempty" xml:"Width,omitempty"`
+	X      *int64   `json:"X,omitempty" xml:"X,omitempty"`
+	Y      *int64   `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s DetectObjectElement) String() string {
@@ -72,10 +65,8 @@ func (s *DetectObjectElement) SetY(v int64) *DetectObjectElement {
 }
 
 type DetectObjectFrame struct {
-	// 结果集
 	Elements []*DetectObjectElement `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
-	// 时间
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	Time     *int64                 `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s DetectObjectFrame) String() string {
@@ -114,7 +105,7 @@ func (s *ClassifyVehicleInsuranceRequest) SetImageURL(v string) *ClassifyVehicle
 }
 
 type ClassifyVehicleInsuranceAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s ClassifyVehicleInsuranceAdvanceRequest) String() string {
@@ -200,8 +191,9 @@ func (s *ClassifyVehicleInsuranceResponseBodyDataLabels) SetScore(v float32) *Cl
 }
 
 type ClassifyVehicleInsuranceResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ClassifyVehicleInsuranceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ClassifyVehicleInsuranceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ClassifyVehicleInsuranceResponse) String() string {
@@ -217,13 +209,17 @@ func (s *ClassifyVehicleInsuranceResponse) SetHeaders(v map[string]*string) *Cla
 	return s
 }
 
+func (s *ClassifyVehicleInsuranceResponse) SetStatusCode(v int32) *ClassifyVehicleInsuranceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ClassifyVehicleInsuranceResponse) SetBody(v *ClassifyVehicleInsuranceResponseBody) *ClassifyVehicleInsuranceResponse {
 	s.Body = v
 	return s
 }
 
 type DetectIPCObjectRequest struct {
-	// 图片URL地址
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -240,10 +236,26 @@ func (s *DetectIPCObjectRequest) SetImageURL(v string) *DetectIPCObjectRequest {
 	return s
 }
 
+type DetectIPCObjectAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s DetectIPCObjectAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectIPCObjectAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectIPCObjectAdvanceRequest) SetImageURLObject(v io.Reader) *DetectIPCObjectAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
 type DetectIPCObjectResponseBody struct {
-	Data *DetectIPCObjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DetectIPCObjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectIPCObjectResponseBody) String() string {
@@ -329,8 +341,9 @@ func (s *DetectIPCObjectResponseBodyDataElements) SetType(v string) *DetectIPCOb
 }
 
 type DetectIPCObjectResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectIPCObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectIPCObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectIPCObjectResponse) String() string {
@@ -343,6 +356,11 @@ func (s DetectIPCObjectResponse) GoString() string {
 
 func (s *DetectIPCObjectResponse) SetHeaders(v map[string]*string) *DetectIPCObjectResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectIPCObjectResponse) SetStatusCode(v int32) *DetectIPCObjectResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -375,8 +393,8 @@ func (s *DetectKitchenAnimalsRequest) SetImageURLB(v string) *DetectKitchenAnima
 }
 
 type DetectKitchenAnimalsAdvanceRequest struct {
-	ImageURLAObject io.Reader `json:"ImageURLAObject,omitempty" xml:"ImageURLAObject,omitempty" require:"true"`
-	ImageURLB       *string   `json:"ImageURLB,omitempty" xml:"ImageURLB,omitempty"`
+	ImageURLAObject io.Reader `json:"ImageURLA,omitempty" xml:"ImageURLA,omitempty"`
+	ImageURLBObject io.Reader `json:"ImageURLB,omitempty" xml:"ImageURLB,omitempty"`
 }
 
 func (s DetectKitchenAnimalsAdvanceRequest) String() string {
@@ -392,15 +410,14 @@ func (s *DetectKitchenAnimalsAdvanceRequest) SetImageURLAObject(v io.Reader) *De
 	return s
 }
 
-func (s *DetectKitchenAnimalsAdvanceRequest) SetImageURLB(v string) *DetectKitchenAnimalsAdvanceRequest {
-	s.ImageURLB = &v
+func (s *DetectKitchenAnimalsAdvanceRequest) SetImageURLBObject(v io.Reader) *DetectKitchenAnimalsAdvanceRequest {
+	s.ImageURLBObject = v
 	return s
 }
 
 type DetectKitchenAnimalsResponseBody struct {
-	Data *DetectKitchenAnimalsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DetectKitchenAnimalsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectKitchenAnimalsResponseBody) String() string {
@@ -503,8 +520,9 @@ func (s *DetectKitchenAnimalsResponseBodyDataElementsRectangles) SetWidth(v int6
 }
 
 type DetectKitchenAnimalsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectKitchenAnimalsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectKitchenAnimalsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectKitchenAnimalsResponse) String() string {
@@ -517,6 +535,11 @@ func (s DetectKitchenAnimalsResponse) GoString() string {
 
 func (s *DetectKitchenAnimalsResponse) SetHeaders(v map[string]*string) *DetectKitchenAnimalsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectKitchenAnimalsResponse) SetStatusCode(v int32) *DetectKitchenAnimalsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -543,7 +566,7 @@ func (s *DetectMainBodyRequest) SetImageURL(v string) *DetectMainBodyRequest {
 }
 
 type DetectMainBodyAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s DetectMainBodyAdvanceRequest) String() string {
@@ -635,8 +658,9 @@ func (s *DetectMainBodyResponseBodyDataLocation) SetY(v int32) *DetectMainBodyRe
 }
 
 type DetectMainBodyResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectMainBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectMainBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectMainBodyResponse) String() string {
@@ -649,6 +673,11 @@ func (s DetectMainBodyResponse) GoString() string {
 
 func (s *DetectMainBodyResponse) SetHeaders(v map[string]*string) *DetectMainBodyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectMainBodyResponse) SetStatusCode(v int32) *DetectMainBodyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -675,7 +704,7 @@ func (s *DetectObjectRequest) SetImageURL(v string) *DetectObjectRequest {
 }
 
 type DetectObjectAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s DetectObjectAdvanceRequest) String() string {
@@ -773,8 +802,9 @@ func (s *DetectObjectResponseBodyDataElements) SetType(v string) *DetectObjectRe
 }
 
 type DetectObjectResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectObjectResponse) String() string {
@@ -787,6 +817,11 @@ func (s DetectObjectResponse) GoString() string {
 
 func (s *DetectObjectResponse) SetHeaders(v map[string]*string) *DetectObjectResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectObjectResponse) SetStatusCode(v int32) *DetectObjectResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -813,7 +848,7 @@ func (s *DetectTransparentImageRequest) SetImageURL(v string) *DetectTransparent
 }
 
 type DetectTransparentImageAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s DetectTransparentImageAdvanceRequest) String() string {
@@ -887,8 +922,9 @@ func (s *DetectTransparentImageResponseBodyDataElements) SetTransparentImage(v i
 }
 
 type DetectTransparentImageResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectTransparentImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectTransparentImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectTransparentImageResponse) String() string {
@@ -901,6 +937,11 @@ func (s DetectTransparentImageResponse) GoString() string {
 
 func (s *DetectTransparentImageResponse) SetHeaders(v map[string]*string) *DetectTransparentImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectTransparentImageResponse) SetStatusCode(v int32) *DetectTransparentImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -927,7 +968,7 @@ func (s *DetectVehicleRequest) SetImageURL(v string) *DetectVehicleRequest {
 }
 
 type DetectVehicleAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s DetectVehicleAdvanceRequest) String() string {
@@ -1031,8 +1072,9 @@ func (s *DetectVehicleResponseBodyDataDetectObjectInfoList) SetType(v string) *D
 }
 
 type DetectVehicleResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectVehicleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectVehicleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectVehicleResponse) String() string {
@@ -1048,13 +1090,17 @@ func (s *DetectVehicleResponse) SetHeaders(v map[string]*string) *DetectVehicleR
 	return s
 }
 
+func (s *DetectVehicleResponse) SetStatusCode(v int32) *DetectVehicleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DetectVehicleResponse) SetBody(v *DetectVehicleResponseBody) *DetectVehicleResponse {
 	s.Body = v
 	return s
 }
 
 type DetectVehicleICongestionRequest struct {
-	// A short description of struct
 	ImageURL                   *string                                                      `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	PreRegionIntersectFeatures []*DetectVehicleICongestionRequestPreRegionIntersectFeatures `json:"PreRegionIntersectFeatures,omitempty" xml:"PreRegionIntersectFeatures,omitempty" type:"Repeated"`
 	RoadRegions                []*DetectVehicleICongestionRequestRoadRegions                `json:"RoadRegions,omitempty" xml:"RoadRegions,omitempty" type:"Repeated"`
@@ -1157,8 +1203,110 @@ func (s *DetectVehicleICongestionRequestRoadRegionsRoadRegionPoint) SetY(v int64
 	return s
 }
 
+type DetectVehicleICongestionAdvanceRequest struct {
+	ImageURLObject             io.Reader                                                           `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	PreRegionIntersectFeatures []*DetectVehicleICongestionAdvanceRequestPreRegionIntersectFeatures `json:"PreRegionIntersectFeatures,omitempty" xml:"PreRegionIntersectFeatures,omitempty" type:"Repeated"`
+	RoadRegions                []*DetectVehicleICongestionAdvanceRequestRoadRegions                `json:"RoadRegions,omitempty" xml:"RoadRegions,omitempty" type:"Repeated"`
+}
+
+func (s DetectVehicleICongestionAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleICongestionAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleICongestionAdvanceRequest) SetImageURLObject(v io.Reader) *DetectVehicleICongestionAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+func (s *DetectVehicleICongestionAdvanceRequest) SetPreRegionIntersectFeatures(v []*DetectVehicleICongestionAdvanceRequestPreRegionIntersectFeatures) *DetectVehicleICongestionAdvanceRequest {
+	s.PreRegionIntersectFeatures = v
+	return s
+}
+
+func (s *DetectVehicleICongestionAdvanceRequest) SetRoadRegions(v []*DetectVehicleICongestionAdvanceRequestRoadRegions) *DetectVehicleICongestionAdvanceRequest {
+	s.RoadRegions = v
+	return s
+}
+
+type DetectVehicleICongestionAdvanceRequestPreRegionIntersectFeatures struct {
+	Features []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+}
+
+func (s DetectVehicleICongestionAdvanceRequestPreRegionIntersectFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleICongestionAdvanceRequestPreRegionIntersectFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleICongestionAdvanceRequestPreRegionIntersectFeatures) SetFeatures(v []*string) *DetectVehicleICongestionAdvanceRequestPreRegionIntersectFeatures {
+	s.Features = v
+	return s
+}
+
+type DetectVehicleICongestionAdvanceRequestRoadRegions struct {
+	RoadRegion []*DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegion `json:"RoadRegion,omitempty" xml:"RoadRegion,omitempty" type:"Repeated"`
+}
+
+func (s DetectVehicleICongestionAdvanceRequestRoadRegions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleICongestionAdvanceRequestRoadRegions) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleICongestionAdvanceRequestRoadRegions) SetRoadRegion(v []*DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegion) *DetectVehicleICongestionAdvanceRequestRoadRegions {
+	s.RoadRegion = v
+	return s
+}
+
+type DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegion struct {
+	Point *DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegionPoint `json:"Point,omitempty" xml:"Point,omitempty" type:"Struct"`
+}
+
+func (s DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegion) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegion) SetPoint(v *DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegionPoint) *DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegion {
+	s.Point = v
+	return s
+}
+
+type DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegionPoint struct {
+	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegionPoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegionPoint) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegionPoint) SetX(v int64) *DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegionPoint {
+	s.X = &v
+	return s
+}
+
+func (s *DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegionPoint) SetY(v int64) *DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegionPoint {
+	s.Y = &v
+	return s
+}
+
 type DetectVehicleICongestionShrinkRequest struct {
-	// A short description of struct
 	ImageURL                         *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	PreRegionIntersectFeaturesShrink *string `json:"PreRegionIntersectFeatures,omitempty" xml:"PreRegionIntersectFeatures,omitempty"`
 	RoadRegionsShrink                *string `json:"RoadRegions,omitempty" xml:"RoadRegions,omitempty"`
@@ -1188,9 +1336,8 @@ func (s *DetectVehicleICongestionShrinkRequest) SetRoadRegionsShrink(v string) *
 }
 
 type DetectVehicleICongestionResponseBody struct {
-	Data *DetectVehicleICongestionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DetectVehicleICongestionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectVehicleICongestionResponseBody) String() string {
@@ -1368,8 +1515,9 @@ func (s *DetectVehicleICongestionResponseBodyDataRegionIntersects) SetIds(v []*i
 }
 
 type DetectVehicleICongestionResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectVehicleICongestionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectVehicleICongestionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectVehicleICongestionResponse) String() string {
@@ -1385,13 +1533,17 @@ func (s *DetectVehicleICongestionResponse) SetHeaders(v map[string]*string) *Det
 	return s
 }
 
+func (s *DetectVehicleICongestionResponse) SetStatusCode(v int32) *DetectVehicleICongestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DetectVehicleICongestionResponse) SetBody(v *DetectVehicleICongestionResponseBody) *DetectVehicleICongestionResponse {
 	s.Body = v
 	return s
 }
 
 type DetectVehicleIllegalParkingRequest struct {
-	// A short description of struct
 	ImageURL    *string                                          `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	RoadRegions []*DetectVehicleIllegalParkingRequestRoadRegions `json:"RoadRegions,omitempty" xml:"RoadRegions,omitempty" type:"Repeated"`
 }
@@ -1471,8 +1623,87 @@ func (s *DetectVehicleIllegalParkingRequestRoadRegionsRoadRegionPoint) SetY(v in
 	return s
 }
 
+type DetectVehicleIllegalParkingAdvanceRequest struct {
+	ImageURLObject io.Reader                                               `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	RoadRegions    []*DetectVehicleIllegalParkingAdvanceRequestRoadRegions `json:"RoadRegions,omitempty" xml:"RoadRegions,omitempty" type:"Repeated"`
+}
+
+func (s DetectVehicleIllegalParkingAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleIllegalParkingAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleIllegalParkingAdvanceRequest) SetImageURLObject(v io.Reader) *DetectVehicleIllegalParkingAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+func (s *DetectVehicleIllegalParkingAdvanceRequest) SetRoadRegions(v []*DetectVehicleIllegalParkingAdvanceRequestRoadRegions) *DetectVehicleIllegalParkingAdvanceRequest {
+	s.RoadRegions = v
+	return s
+}
+
+type DetectVehicleIllegalParkingAdvanceRequestRoadRegions struct {
+	RoadRegion []*DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegion `json:"RoadRegion,omitempty" xml:"RoadRegion,omitempty" type:"Repeated"`
+}
+
+func (s DetectVehicleIllegalParkingAdvanceRequestRoadRegions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleIllegalParkingAdvanceRequestRoadRegions) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleIllegalParkingAdvanceRequestRoadRegions) SetRoadRegion(v []*DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegion) *DetectVehicleIllegalParkingAdvanceRequestRoadRegions {
+	s.RoadRegion = v
+	return s
+}
+
+type DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegion struct {
+	Point *DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegionPoint `json:"Point,omitempty" xml:"Point,omitempty" type:"Struct"`
+}
+
+func (s DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegion) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegion) SetPoint(v *DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegionPoint) *DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegion {
+	s.Point = v
+	return s
+}
+
+type DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegionPoint struct {
+	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegionPoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegionPoint) GoString() string {
+	return s.String()
+}
+
+func (s *DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegionPoint) SetX(v int64) *DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegionPoint {
+	s.X = &v
+	return s
+}
+
+func (s *DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegionPoint) SetY(v int64) *DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegionPoint {
+	s.Y = &v
+	return s
+}
+
 type DetectVehicleIllegalParkingShrinkRequest struct {
-	// A short description of struct
 	ImageURL          *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	RoadRegionsShrink *string `json:"RoadRegions,omitempty" xml:"RoadRegions,omitempty"`
 }
@@ -1496,9 +1727,8 @@ func (s *DetectVehicleIllegalParkingShrinkRequest) SetRoadRegionsShrink(v string
 }
 
 type DetectVehicleIllegalParkingResponseBody struct {
-	Data *DetectVehicleIllegalParkingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DetectVehicleIllegalParkingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectVehicleIllegalParkingResponseBody) String() string {
@@ -1630,8 +1860,9 @@ func (s *DetectVehicleIllegalParkingResponseBodyDataRegionIntersects) SetIds(v [
 }
 
 type DetectVehicleIllegalParkingResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectVehicleIllegalParkingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectVehicleIllegalParkingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectVehicleIllegalParkingResponse) String() string {
@@ -1647,28 +1878,25 @@ func (s *DetectVehicleIllegalParkingResponse) SetHeaders(v map[string]*string) *
 	return s
 }
 
+func (s *DetectVehicleIllegalParkingResponse) SetStatusCode(v int32) *DetectVehicleIllegalParkingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DetectVehicleIllegalParkingResponse) SetBody(v *DetectVehicleIllegalParkingResponseBody) *DetectVehicleIllegalParkingResponse {
 	s.Body = v
 	return s
 }
 
 type DetectVideoFrameRequest struct {
-	// 图片创建时间
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// AI每个功能具体配置描述，每个AI算法配置都不一样
-	FeatureConfig *string `json:"FeatureConfig,omitempty" xml:"FeatureConfig,omitempty"`
-	// AI功能名称列表
-	Features []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	// 图像高度
-	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 图片URL地址
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	// 自用拥有者pk
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 流资源唯一描述
-	StreamArn *string `json:"StreamArn,omitempty" xml:"StreamArn,omitempty"`
-	// 图像宽度
-	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	CreateTime    *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FeatureConfig *string   `json:"FeatureConfig,omitempty" xml:"FeatureConfig,omitempty"`
+	Features      []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	Height        *int64    `json:"Height,omitempty" xml:"Height,omitempty"`
+	ImageURL      *string   `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	OwnerId       *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StreamArn     *string   `json:"StreamArn,omitempty" xml:"StreamArn,omitempty"`
+	Width         *int64    `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s DetectVideoFrameRequest) String() string {
@@ -1720,22 +1948,14 @@ func (s *DetectVideoFrameRequest) SetWidth(v int64) *DetectVideoFrameRequest {
 }
 
 type DetectVideoFrameShrinkRequest struct {
-	// 图片创建时间
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// AI每个功能具体配置描述，每个AI算法配置都不一样
-	FeatureConfig *string `json:"FeatureConfig,omitempty" xml:"FeatureConfig,omitempty"`
-	// AI功能名称列表
+	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FeatureConfig  *string `json:"FeatureConfig,omitempty" xml:"FeatureConfig,omitempty"`
 	FeaturesShrink *string `json:"Features,omitempty" xml:"Features,omitempty"`
-	// 图像高度
-	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 图片URL地址
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	// 自用拥有者pk
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 流资源唯一描述
-	StreamArn *string `json:"StreamArn,omitempty" xml:"StreamArn,omitempty"`
-	// 图像宽度
-	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height         *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
+	ImageURL       *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StreamArn      *string `json:"StreamArn,omitempty" xml:"StreamArn,omitempty"`
+	Width          *int64  `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s DetectVideoFrameShrinkRequest) String() string {
@@ -1787,9 +2007,8 @@ func (s *DetectVideoFrameShrinkRequest) SetWidth(v int64) *DetectVideoFrameShrin
 }
 
 type DetectVideoFrameResponseBody struct {
-	Data *DetectVideoFrameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DetectVideoFrameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectVideoFrameResponseBody) String() string {
@@ -1811,7 +2030,6 @@ func (s *DetectVideoFrameResponseBody) SetRequestId(v string) *DetectVideoFrameR
 }
 
 type DetectVideoFrameResponseBodyData struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1829,8 +2047,9 @@ func (s *DetectVideoFrameResponseBodyData) SetRequestId(v string) *DetectVideoFr
 }
 
 type DetectVideoFrameResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectVideoFrameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectVideoFrameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectVideoFrameResponse) String() string {
@@ -1846,18 +2065,20 @@ func (s *DetectVideoFrameResponse) SetHeaders(v map[string]*string) *DetectVideo
 	return s
 }
 
+func (s *DetectVideoFrameResponse) SetStatusCode(v int32) *DetectVideoFrameResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DetectVideoFrameResponse) SetBody(v *DetectVideoFrameResponseBody) *DetectVideoFrameResponse {
 	s.Body = v
 	return s
 }
 
 type DetectVideoIPCObjectRequest struct {
-	// 是否只有检测到物体才回调
-	CallbackOnlyHasObject *bool `json:"CallbackOnlyHasObject,omitempty" xml:"CallbackOnlyHasObject,omitempty"`
-	// 视频的开始时间戳(秒)，即UTC时间，默认为0
-	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	// 视频文件URL地址
-	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
+	CallbackOnlyHasObject *bool   `json:"CallbackOnlyHasObject,omitempty" xml:"CallbackOnlyHasObject,omitempty"`
+	StartTimestamp        *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	VideoURL              *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
 func (s DetectVideoIPCObjectRequest) String() string {
@@ -1884,11 +2105,9 @@ func (s *DetectVideoIPCObjectRequest) SetVideoURL(v string) *DetectVideoIPCObjec
 }
 
 type DetectVideoIPCObjectAdvanceRequest struct {
-	VideoURLObject io.Reader `json:"VideoURLObject,omitempty" xml:"VideoURLObject,omitempty" require:"true"`
-	// 是否只有检测到物体才回调
-	CallbackOnlyHasObject *bool `json:"CallbackOnlyHasObject,omitempty" xml:"CallbackOnlyHasObject,omitempty"`
-	// 视频的开始时间戳(秒)，即UTC时间，默认为0
-	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	CallbackOnlyHasObject *bool     `json:"CallbackOnlyHasObject,omitempty" xml:"CallbackOnlyHasObject,omitempty"`
+	StartTimestamp        *int64    `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	VideoURLObject        io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
 func (s DetectVideoIPCObjectAdvanceRequest) String() string {
@@ -1897,11 +2116,6 @@ func (s DetectVideoIPCObjectAdvanceRequest) String() string {
 
 func (s DetectVideoIPCObjectAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DetectVideoIPCObjectAdvanceRequest) SetVideoURLObject(v io.Reader) *DetectVideoIPCObjectAdvanceRequest {
-	s.VideoURLObject = v
-	return s
 }
 
 func (s *DetectVideoIPCObjectAdvanceRequest) SetCallbackOnlyHasObject(v bool) *DetectVideoIPCObjectAdvanceRequest {
@@ -1914,10 +2128,14 @@ func (s *DetectVideoIPCObjectAdvanceRequest) SetStartTimestamp(v int64) *DetectV
 	return s
 }
 
+func (s *DetectVideoIPCObjectAdvanceRequest) SetVideoURLObject(v io.Reader) *DetectVideoIPCObjectAdvanceRequest {
+	s.VideoURLObject = v
+	return s
+}
+
 type DetectVideoIPCObjectResponseBody struct {
-	Data *DetectVideoIPCObjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// JobId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DetectVideoIPCObjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectVideoIPCObjectResponseBody) String() string {
@@ -1939,14 +2157,10 @@ func (s *DetectVideoIPCObjectResponseBody) SetRequestId(v string) *DetectVideoIP
 }
 
 type DetectVideoIPCObjectResponseBodyData struct {
-	// 视频帧的集合，未检测到目标的帧不列出
-	Frames []*DetectVideoIPCObjectResponseBodyDataFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
-	// 视频文件的分辨率(像素)
-	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 输入文件信息
-	InputFile *string `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
-	// 视频文件的分辨率(像素)
-	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Frames    []*DetectVideoIPCObjectResponseBodyDataFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
+	Height    *int64                                        `json:"Height,omitempty" xml:"Height,omitempty"`
+	InputFile *string                                       `json:"InputFile,omitempty" xml:"InputFile,omitempty"`
+	Width     *int64                                        `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s DetectVideoIPCObjectResponseBodyData) String() string {
@@ -1979,8 +2193,7 @@ func (s *DetectVideoIPCObjectResponseBodyData) SetWidth(v int64) *DetectVideoIPC
 
 type DetectVideoIPCObjectResponseBodyDataFrames struct {
 	Elements []*DetectVideoIPCObjectResponseBodyDataFramesElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
-	// 视频帧时间，startTimestamp+视频帧的相对时间的值，单位毫秒，如果startTimestamp为空，则是相对时间
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	Time     *int64                                                `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s DetectVideoIPCObjectResponseBodyDataFrames) String() string {
@@ -2049,8 +2262,9 @@ func (s *DetectVideoIPCObjectResponseBodyDataFramesElements) SetY(v int64) *Dete
 }
 
 type DetectVideoIPCObjectResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectVideoIPCObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectVideoIPCObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectVideoIPCObjectResponse) String() string {
@@ -2063,6 +2277,11 @@ func (s DetectVideoIPCObjectResponse) GoString() string {
 
 func (s *DetectVideoIPCObjectResponse) SetHeaders(v map[string]*string) *DetectVideoIPCObjectResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectVideoIPCObjectResponse) SetStatusCode(v int32) *DetectVideoIPCObjectResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2089,7 +2308,7 @@ func (s *DetectWhiteBaseImageRequest) SetImageURL(v string) *DetectWhiteBaseImag
 }
 
 type DetectWhiteBaseImageAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s DetectWhiteBaseImageAdvanceRequest) String() string {
@@ -2163,8 +2382,9 @@ func (s *DetectWhiteBaseImageResponseBodyDataElements) SetWhiteBase(v int32) *De
 }
 
 type DetectWhiteBaseImageResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectWhiteBaseImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectWhiteBaseImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectWhiteBaseImageResponse) String() string {
@@ -2177,6 +2397,11 @@ func (s DetectWhiteBaseImageResponse) GoString() string {
 
 func (s *DetectWhiteBaseImageResponse) SetHeaders(v map[string]*string) *DetectWhiteBaseImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectWhiteBaseImageResponse) SetStatusCode(v int32) *DetectWhiteBaseImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2238,8 +2463,8 @@ func (s *DetectWorkwearRequestClothes) SetThreshold(v float64) *DetectWorkwearRe
 }
 
 type DetectWorkwearAdvanceRequest struct {
-	ImageUrlObject io.Reader                            `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
 	Clothes        *DetectWorkwearAdvanceRequestClothes `json:"Clothes,omitempty" xml:"Clothes,omitempty" type:"Struct"`
+	ImageUrlObject io.Reader                            `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	Labels         []*string                            `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
@@ -2251,13 +2476,13 @@ func (s DetectWorkwearAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DetectWorkwearAdvanceRequest) SetImageUrlObject(v io.Reader) *DetectWorkwearAdvanceRequest {
-	s.ImageUrlObject = v
+func (s *DetectWorkwearAdvanceRequest) SetClothes(v *DetectWorkwearAdvanceRequestClothes) *DetectWorkwearAdvanceRequest {
+	s.Clothes = v
 	return s
 }
 
-func (s *DetectWorkwearAdvanceRequest) SetClothes(v *DetectWorkwearAdvanceRequestClothes) *DetectWorkwearAdvanceRequest {
-	s.Clothes = v
+func (s *DetectWorkwearAdvanceRequest) SetImageUrlObject(v io.Reader) *DetectWorkwearAdvanceRequest {
+	s.ImageUrlObject = v
 	return s
 }
 
@@ -2319,9 +2544,8 @@ func (s *DetectWorkwearShrinkRequest) SetLabels(v []*string) *DetectWorkwearShri
 }
 
 type DetectWorkwearResponseBody struct {
-	Data *DetectWorkwearResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DetectWorkwearResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectWorkwearResponseBody) String() string {
@@ -2488,8 +2712,9 @@ func (s *DetectWorkwearResponseBodyDataElementsRectangles) SetWidth(v int64) *De
 }
 
 type DetectWorkwearResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectWorkwearResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectWorkwearResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectWorkwearResponse) String() string {
@@ -2502,6 +2727,11 @@ func (s DetectWorkwearResponse) GoString() string {
 
 func (s *DetectWorkwearResponse) SetHeaders(v map[string]*string) *DetectWorkwearResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectWorkwearResponse) SetStatusCode(v int32) *DetectWorkwearResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2615,8 +2845,9 @@ func (s *GenerateVehicleRepairPlanResponseBodyData) SetTaskId(v string) *Generat
 }
 
 type GenerateVehicleRepairPlanResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateVehicleRepairPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateVehicleRepairPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GenerateVehicleRepairPlanResponse) String() string {
@@ -2629,6 +2860,11 @@ func (s GenerateVehicleRepairPlanResponse) GoString() string {
 
 func (s *GenerateVehicleRepairPlanResponse) SetHeaders(v map[string]*string) *GenerateVehicleRepairPlanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GenerateVehicleRepairPlanResponse) SetStatusCode(v int32) *GenerateVehicleRepairPlanResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2719,8 +2955,9 @@ func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResu
 }
 
 type GetAsyncJobResultResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAsyncJobResultResponse) String() string {
@@ -2733,6 +2970,11 @@ func (s GetAsyncJobResultResponse) GoString() string {
 
 func (s *GetAsyncJobResultResponse) SetHeaders(v map[string]*string) *GetAsyncJobResultResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetAsyncJobResultResponse) SetStatusCode(v int32) *GetAsyncJobResultResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2767,6 +3009,35 @@ func (s *GetVehicleRepairPlanRequest) SetTaskId(v string) *GetVehicleRepairPlanR
 
 func (s *GetVehicleRepairPlanRequest) SetVinCodeImage(v string) *GetVehicleRepairPlanRequest {
 	s.VinCodeImage = &v
+	return s
+}
+
+type GetVehicleRepairPlanAdvanceRequest struct {
+	CarNumberImageObject io.Reader `json:"CarNumberImage,omitempty" xml:"CarNumberImage,omitempty"`
+	TaskId               *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	VinCodeImageObject   io.Reader `json:"VinCodeImage,omitempty" xml:"VinCodeImage,omitempty"`
+}
+
+func (s GetVehicleRepairPlanAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVehicleRepairPlanAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVehicleRepairPlanAdvanceRequest) SetCarNumberImageObject(v io.Reader) *GetVehicleRepairPlanAdvanceRequest {
+	s.CarNumberImageObject = v
+	return s
+}
+
+func (s *GetVehicleRepairPlanAdvanceRequest) SetTaskId(v string) *GetVehicleRepairPlanAdvanceRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetVehicleRepairPlanAdvanceRequest) SetVinCodeImageObject(v io.Reader) *GetVehicleRepairPlanAdvanceRequest {
+	s.VinCodeImageObject = v
 	return s
 }
 
@@ -2918,8 +3189,9 @@ func (s *GetVehicleRepairPlanResponseBodyDataRepairParts) SetRepairTypeName(v st
 }
 
 type GetVehicleRepairPlanResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetVehicleRepairPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetVehicleRepairPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetVehicleRepairPlanResponse) String() string {
@@ -2932,6 +3204,11 @@ func (s GetVehicleRepairPlanResponse) GoString() string {
 
 func (s *GetVehicleRepairPlanResponse) SetHeaders(v map[string]*string) *GetVehicleRepairPlanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetVehicleRepairPlanResponse) SetStatusCode(v int32) *GetVehicleRepairPlanResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2958,7 +3235,7 @@ func (s *RecognizeVehicleDamageRequest) SetImageURL(v string) *RecognizeVehicleD
 }
 
 type RecognizeVehicleDamageAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeVehicleDamageAdvanceRequest) String() string {
@@ -3050,8 +3327,9 @@ func (s *RecognizeVehicleDamageResponseBodyDataElements) SetType(v string) *Reco
 }
 
 type RecognizeVehicleDamageResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeVehicleDamageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeVehicleDamageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeVehicleDamageResponse) String() string {
@@ -3064,6 +3342,11 @@ func (s RecognizeVehicleDamageResponse) GoString() string {
 
 func (s *RecognizeVehicleDamageResponse) SetHeaders(v map[string]*string) *RecognizeVehicleDamageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeVehicleDamageResponse) SetStatusCode(v int32) *RecognizeVehicleDamageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3090,7 +3373,7 @@ func (s *RecognizeVehicleDashboardRequest) SetImageURL(v string) *RecognizeVehic
 }
 
 type RecognizeVehicleDashboardAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeVehicleDashboardAdvanceRequest) String() string {
@@ -3182,8 +3465,9 @@ func (s *RecognizeVehicleDashboardResponseBodyDataElements) SetScore(v float32) 
 }
 
 type RecognizeVehicleDashboardResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeVehicleDashboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeVehicleDashboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeVehicleDashboardResponse) String() string {
@@ -3196,6 +3480,11 @@ func (s RecognizeVehicleDashboardResponse) GoString() string {
 
 func (s *RecognizeVehicleDashboardResponse) SetHeaders(v map[string]*string) *RecognizeVehicleDashboardResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeVehicleDashboardResponse) SetStatusCode(v int32) *RecognizeVehicleDashboardResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3222,7 +3511,7 @@ func (s *RecognizeVehiclePartsRequest) SetImageURL(v string) *RecognizeVehiclePa
 }
 
 type RecognizeVehiclePartsAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeVehiclePartsAdvanceRequest) String() string {
@@ -3314,8 +3603,9 @@ func (s *RecognizeVehiclePartsResponseBodyDataElements) SetType(v string) *Recog
 }
 
 type RecognizeVehiclePartsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeVehiclePartsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeVehiclePartsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeVehiclePartsResponse) String() string {
@@ -3328,6 +3618,11 @@ func (s RecognizeVehiclePartsResponse) GoString() string {
 
 func (s *RecognizeVehiclePartsResponse) SetHeaders(v map[string]*string) *RecognizeVehiclePartsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeVehiclePartsResponse) SetStatusCode(v int32) *RecognizeVehiclePartsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3388,11 +3683,27 @@ func (client *Client) ClassifyVehicleInsuranceWithOptions(request *ClassifyVehic
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ClassifyVehicleInsurance"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ClassifyVehicleInsuranceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ClassifyVehicleInsurance"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3438,7 +3749,7 @@ func (client *Client) ClassifyVehicleInsuranceAdvance(request *ClassifyVehicleIn
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -3477,35 +3788,35 @@ func (client *Client) ClassifyVehicleInsuranceAdvance(request *ClassifyVehicleIn
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		classifyVehicleInsuranceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		classifyVehicleInsuranceReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	classifyVehicleInsuranceResp, _err := client.ClassifyVehicleInsuranceWithOptions(classifyVehicleInsuranceReq, runtime)
@@ -3522,11 +3833,27 @@ func (client *Client) DetectIPCObjectWithOptions(request *DetectIPCObjectRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectIPCObject"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectIPCObjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectIPCObject"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3545,16 +3872,142 @@ func (client *Client) DetectIPCObject(request *DetectIPCObjectRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DetectIPCObjectAdvance(request *DetectIPCObjectAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectIPCObjectResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("objectdet"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectIPCObjectReq := &DetectIPCObjectRequest{}
+	openapiutil.Convert(request, detectIPCObjectReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		detectIPCObjectReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	detectIPCObjectResp, _err := client.DetectIPCObjectWithOptions(detectIPCObjectReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectIPCObjectResp
+	return _result, _err
+}
+
 func (client *Client) DetectKitchenAnimalsWithOptions(request *DetectKitchenAnimalsRequest, runtime *util.RuntimeOptions) (_result *DetectKitchenAnimalsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURLA)) {
+		body["ImageURLA"] = request.ImageURLA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURLB)) {
+		body["ImageURLB"] = request.ImageURLB
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectKitchenAnimals"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectKitchenAnimalsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectKitchenAnimals"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3600,7 +4053,7 @@ func (client *Client) DetectKitchenAnimalsAdvance(request *DetectKitchenAnimalsA
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -3639,35 +4092,72 @@ func (client *Client) DetectKitchenAnimalsAdvance(request *DetectKitchenAnimalsA
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLAObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectKitchenAnimalsReq.ImageURLA = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectKitchenAnimalsReq.ImageURLA = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURLBObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLBObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		detectKitchenAnimalsReq.ImageURLB = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectKitchenAnimalsResp, _err := client.DetectKitchenAnimalsWithOptions(detectKitchenAnimalsReq, runtime)
@@ -3684,11 +4174,27 @@ func (client *Client) DetectMainBodyWithOptions(request *DetectMainBodyRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectMainBody"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectMainBodyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectMainBody"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3734,7 +4240,7 @@ func (client *Client) DetectMainBodyAdvance(request *DetectMainBodyAdvanceReques
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -3773,35 +4279,35 @@ func (client *Client) DetectMainBodyAdvance(request *DetectMainBodyAdvanceReques
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectMainBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectMainBodyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectMainBodyResp, _err := client.DetectMainBodyWithOptions(detectMainBodyReq, runtime)
@@ -3818,11 +4324,27 @@ func (client *Client) DetectObjectWithOptions(request *DetectObjectRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectObject"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectObjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectObject"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3868,7 +4390,7 @@ func (client *Client) DetectObjectAdvance(request *DetectObjectAdvanceRequest, r
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -3907,35 +4429,35 @@ func (client *Client) DetectObjectAdvance(request *DetectObjectAdvanceRequest, r
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectObjectReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectObjectReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectObjectResp, _err := client.DetectObjectWithOptions(detectObjectReq, runtime)
@@ -3952,11 +4474,27 @@ func (client *Client) DetectTransparentImageWithOptions(request *DetectTranspare
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectTransparentImage"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectTransparentImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectTransparentImage"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4002,7 +4540,7 @@ func (client *Client) DetectTransparentImageAdvance(request *DetectTransparentIm
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -4041,35 +4579,35 @@ func (client *Client) DetectTransparentImageAdvance(request *DetectTransparentIm
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectTransparentImageReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectTransparentImageReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectTransparentImageResp, _err := client.DetectTransparentImageWithOptions(detectTransparentImageReq, runtime)
@@ -4086,11 +4624,27 @@ func (client *Client) DetectVehicleWithOptions(request *DetectVehicleRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectVehicle"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectVehicleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectVehicle"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4136,7 +4690,7 @@ func (client *Client) DetectVehicleAdvance(request *DetectVehicleAdvanceRequest,
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -4175,35 +4729,35 @@ func (client *Client) DetectVehicleAdvance(request *DetectVehicleAdvanceRequest,
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectVehicleReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectVehicleReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectVehicleResp, _err := client.DetectVehicleWithOptions(detectVehicleReq, runtime)
@@ -4230,11 +4784,35 @@ func (client *Client) DetectVehicleICongestionWithOptions(tmpReq *DetectVehicleI
 		request.RoadRegionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoadRegions, tea.String("RoadRegions"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreRegionIntersectFeaturesShrink)) {
+		body["PreRegionIntersectFeatures"] = request.PreRegionIntersectFeaturesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoadRegionsShrink)) {
+		body["RoadRegions"] = request.RoadRegionsShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectVehicleICongestion"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectVehicleICongestionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectVehicleICongestion"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4253,6 +4831,112 @@ func (client *Client) DetectVehicleICongestion(request *DetectVehicleICongestion
 	return _result, _err
 }
 
+func (client *Client) DetectVehicleICongestionAdvance(request *DetectVehicleICongestionAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectVehicleICongestionResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("objectdet"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectVehicleICongestionReq := &DetectVehicleICongestionRequest{}
+	openapiutil.Convert(request, detectVehicleICongestionReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		detectVehicleICongestionReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	detectVehicleICongestionResp, _err := client.DetectVehicleICongestionWithOptions(detectVehicleICongestionReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectVehicleICongestionResp
+	return _result, _err
+}
+
 func (client *Client) DetectVehicleIllegalParkingWithOptions(tmpReq *DetectVehicleIllegalParkingRequest, runtime *util.RuntimeOptions) (_result *DetectVehicleIllegalParkingResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4264,11 +4948,31 @@ func (client *Client) DetectVehicleIllegalParkingWithOptions(tmpReq *DetectVehic
 		request.RoadRegionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoadRegions, tea.String("RoadRegions"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoadRegionsShrink)) {
+		body["RoadRegions"] = request.RoadRegionsShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectVehicleIllegalParking"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectVehicleIllegalParkingResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectVehicleIllegalParking"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4287,6 +4991,112 @@ func (client *Client) DetectVehicleIllegalParking(request *DetectVehicleIllegalP
 	return _result, _err
 }
 
+func (client *Client) DetectVehicleIllegalParkingAdvance(request *DetectVehicleIllegalParkingAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectVehicleIllegalParkingResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("objectdet"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectVehicleIllegalParkingReq := &DetectVehicleIllegalParkingRequest{}
+	openapiutil.Convert(request, detectVehicleIllegalParkingReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		detectVehicleIllegalParkingReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	detectVehicleIllegalParkingResp, _err := client.DetectVehicleIllegalParkingWithOptions(detectVehicleIllegalParkingReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectVehicleIllegalParkingResp
+	return _result, _err
+}
+
 func (client *Client) DetectVideoFrameWithOptions(tmpReq *DetectVideoFrameRequest, runtime *util.RuntimeOptions) (_result *DetectVideoFrameResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4298,11 +5108,55 @@ func (client *Client) DetectVideoFrameWithOptions(tmpReq *DetectVideoFrameReques
 		request.FeaturesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Features, tea.String("Features"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateTime)) {
+		body["CreateTime"] = request.CreateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureConfig)) {
+		body["FeatureConfig"] = request.FeatureConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeaturesShrink)) {
+		body["Features"] = request.FeaturesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Height)) {
+		body["Height"] = request.Height
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		body["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamArn)) {
+		body["StreamArn"] = request.StreamArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Width)) {
+		body["Width"] = request.Width
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectVideoFrame"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectVideoFrameResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectVideoFrame"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4326,11 +5180,35 @@ func (client *Client) DetectVideoIPCObjectWithOptions(request *DetectVideoIPCObj
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallbackOnlyHasObject)) {
+		body["CallbackOnlyHasObject"] = request.CallbackOnlyHasObject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
+		body["StartTimestamp"] = request.StartTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoURL)) {
+		body["VideoURL"] = request.VideoURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectVideoIPCObject"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectVideoIPCObjectResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectVideoIPCObject"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4376,7 +5254,7 @@ func (client *Client) DetectVideoIPCObjectAdvance(request *DetectVideoIPCObjectA
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -4415,35 +5293,35 @@ func (client *Client) DetectVideoIPCObjectAdvance(request *DetectVideoIPCObjectA
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.VideoURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectVideoIPCObjectReq.VideoURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectVideoIPCObjectReq.VideoURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectVideoIPCObjectResp, _err := client.DetectVideoIPCObjectWithOptions(detectVideoIPCObjectReq, runtime)
@@ -4460,11 +5338,27 @@ func (client *Client) DetectWhiteBaseImageWithOptions(request *DetectWhiteBaseIm
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectWhiteBaseImage"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectWhiteBaseImageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectWhiteBaseImage"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4510,7 +5404,7 @@ func (client *Client) DetectWhiteBaseImageAdvance(request *DetectWhiteBaseImageA
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -4549,35 +5443,35 @@ func (client *Client) DetectWhiteBaseImageAdvance(request *DetectWhiteBaseImageA
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectWhiteBaseImageReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectWhiteBaseImageReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectWhiteBaseImageResp, _err := client.DetectWhiteBaseImageWithOptions(detectWhiteBaseImageReq, runtime)
@@ -4600,11 +5494,35 @@ func (client *Client) DetectWorkwearWithOptions(tmpReq *DetectWorkwearRequest, r
 		request.ClothesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Clothes), tea.String("Clothes"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClothesShrink)) {
+		body["Clothes"] = request.ClothesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectWorkwear"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DetectWorkwearResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DetectWorkwear"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4650,7 +5568,7 @@ func (client *Client) DetectWorkwearAdvance(request *DetectWorkwearAdvanceReques
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -4689,35 +5607,35 @@ func (client *Client) DetectWorkwearAdvance(request *DetectWorkwearAdvanceReques
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageUrlObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		detectWorkwearReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		detectWorkwearReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	detectWorkwearResp, _err := client.DetectWorkwearWithOptions(detectWorkwearReq, runtime)
@@ -4734,11 +5652,27 @@ func (client *Client) GenerateVehicleRepairPlanWithOptions(request *GenerateVehi
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DamageImageList)) {
+		body["DamageImageList"] = request.DamageImageList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateVehicleRepairPlan"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateVehicleRepairPlanResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateVehicleRepairPlan"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4762,11 +5696,27 @@ func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAsyncJobResult"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAsyncJobResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAsyncJobResult"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4790,11 +5740,35 @@ func (client *Client) GetVehicleRepairPlanWithOptions(request *GetVehicleRepairP
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CarNumberImage)) {
+		body["CarNumberImage"] = request.CarNumberImage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VinCodeImage)) {
+		body["VinCodeImage"] = request.VinCodeImage
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVehicleRepairPlan"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetVehicleRepairPlanResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetVehicleRepairPlan"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4813,16 +5787,175 @@ func (client *Client) GetVehicleRepairPlan(request *GetVehicleRepairPlanRequest)
 	return _result, _err
 }
 
+func (client *Client) GetVehicleRepairPlanAdvance(request *GetVehicleRepairPlanAdvanceRequest, runtime *util.RuntimeOptions) (_result *GetVehicleRepairPlanResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("objectdet"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	getVehicleRepairPlanReq := &GetVehicleRepairPlanRequest{}
+	openapiutil.Convert(request, getVehicleRepairPlanReq)
+	if !tea.BoolValue(util.IsUnset(request.CarNumberImageObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.CarNumberImageObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		getVehicleRepairPlanReq.CarNumberImage = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VinCodeImageObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.VinCodeImageObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		getVehicleRepairPlanReq.VinCodeImage = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	getVehicleRepairPlanResp, _err := client.GetVehicleRepairPlanWithOptions(getVehicleRepairPlanReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = getVehicleRepairPlanResp
+	return _result, _err
+}
+
 func (client *Client) RecognizeVehicleDamageWithOptions(request *RecognizeVehicleDamageRequest, runtime *util.RuntimeOptions) (_result *RecognizeVehicleDamageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeVehicleDamage"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeVehicleDamageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeVehicleDamage"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4868,7 +6001,7 @@ func (client *Client) RecognizeVehicleDamageAdvance(request *RecognizeVehicleDam
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -4907,35 +6040,35 @@ func (client *Client) RecognizeVehicleDamageAdvance(request *RecognizeVehicleDam
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		recognizeVehicleDamageReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		recognizeVehicleDamageReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	recognizeVehicleDamageResp, _err := client.RecognizeVehicleDamageWithOptions(recognizeVehicleDamageReq, runtime)
@@ -4952,11 +6085,27 @@ func (client *Client) RecognizeVehicleDashboardWithOptions(request *RecognizeVeh
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeVehicleDashboard"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeVehicleDashboardResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeVehicleDashboard"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5002,7 +6151,7 @@ func (client *Client) RecognizeVehicleDashboardAdvance(request *RecognizeVehicle
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -5041,35 +6190,35 @@ func (client *Client) RecognizeVehicleDashboardAdvance(request *RecognizeVehicle
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		recognizeVehicleDashboardReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		recognizeVehicleDashboardReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	recognizeVehicleDashboardResp, _err := client.RecognizeVehicleDashboardWithOptions(recognizeVehicleDashboardReq, runtime)
@@ -5086,11 +6235,27 @@ func (client *Client) RecognizeVehiclePartsWithOptions(request *RecognizeVehicle
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeVehicleParts"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeVehiclePartsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeVehicleParts"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5136,7 +6301,7 @@ func (client *Client) RecognizeVehiclePartsAdvance(request *RecognizeVehiclePart
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -5175,35 +6340,35 @@ func (client *Client) RecognizeVehiclePartsAdvance(request *RecognizeVehiclePart
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageURLObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		recognizeVehiclePartsReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		recognizeVehiclePartsReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	recognizeVehiclePartsResp, _err := client.RecognizeVehiclePartsWithOptions(recognizeVehiclePartsReq, runtime)
