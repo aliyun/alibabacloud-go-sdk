@@ -1457,34 +1457,35 @@ func (s *GetCredentialPoolStatisticsResponse) SetBody(v *GetCredentialPoolStatis
 }
 
 type ListCardInfoRequest struct {
-	ActiveTimeEnd      *string `json:"ActiveTimeEnd,omitempty" xml:"ActiveTimeEnd,omitempty"`
-	ActiveTimeStart    *string `json:"ActiveTimeStart,omitempty" xml:"ActiveTimeStart,omitempty"`
-	AliFee             *string `json:"AliFee,omitempty" xml:"AliFee,omitempty"`
-	AliyunOrderId      *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
-	ApnName            *string `json:"ApnName,omitempty" xml:"ApnName,omitempty"`
-	CertifyType        *string `json:"CertifyType,omitempty" xml:"CertifyType,omitempty"`
-	CredentialNo       *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
-	DataLevel          *string `json:"DataLevel,omitempty" xml:"DataLevel,omitempty"`
-	DataType           *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	DirectionalGroupId *string `json:"DirectionalGroupId,omitempty" xml:"DirectionalGroupId,omitempty"`
-	ExpireTimeEnd      *string `json:"ExpireTimeEnd,omitempty" xml:"ExpireTimeEnd,omitempty"`
-	ExpireTimeStart    *string `json:"ExpireTimeStart,omitempty" xml:"ExpireTimeStart,omitempty"`
-	Iccid              *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
-	Imsi               *string `json:"Imsi,omitempty" xml:"Imsi,omitempty"`
-	IsAutoRecharge     *bool   `json:"IsAutoRecharge,omitempty" xml:"IsAutoRecharge,omitempty"`
-	MaxFlow            *string `json:"MaxFlow,omitempty" xml:"MaxFlow,omitempty"`
-	MinFlow            *string `json:"MinFlow,omitempty" xml:"MinFlow,omitempty"`
-	Msisdn             *string `json:"Msisdn,omitempty" xml:"Msisdn,omitempty"`
-	NotifyId           *string `json:"NotifyId,omitempty" xml:"NotifyId,omitempty"`
-	OsStatus           *string `json:"OsStatus,omitempty" xml:"OsStatus,omitempty"`
-	PageNo             *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Period             *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	PoolId             *string `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
-	SimType            *string `json:"SimType,omitempty" xml:"SimType,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagName            *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	Vendor             *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	ActiveTimeEnd         *string  `json:"ActiveTimeEnd,omitempty" xml:"ActiveTimeEnd,omitempty"`
+	ActiveTimeStart       *string  `json:"ActiveTimeStart,omitempty" xml:"ActiveTimeStart,omitempty"`
+	AliFee                *string  `json:"AliFee,omitempty" xml:"AliFee,omitempty"`
+	AliyunOrderId         *string  `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
+	ApnName               *string  `json:"ApnName,omitempty" xml:"ApnName,omitempty"`
+	CertifyType           *string  `json:"CertifyType,omitempty" xml:"CertifyType,omitempty"`
+	CredentialNo          *string  `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
+	DataLevel             *string  `json:"DataLevel,omitempty" xml:"DataLevel,omitempty"`
+	DataType              *string  `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DirectionalGroupId    *string  `json:"DirectionalGroupId,omitempty" xml:"DirectionalGroupId,omitempty"`
+	ExpireTimeEnd         *string  `json:"ExpireTimeEnd,omitempty" xml:"ExpireTimeEnd,omitempty"`
+	ExpireTimeStart       *string  `json:"ExpireTimeStart,omitempty" xml:"ExpireTimeStart,omitempty"`
+	Iccid                 *string  `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	Imsi                  *string  `json:"Imsi,omitempty" xml:"Imsi,omitempty"`
+	IsAutoRecharge        *bool    `json:"IsAutoRecharge,omitempty" xml:"IsAutoRecharge,omitempty"`
+	MaxFlow               *string  `json:"MaxFlow,omitempty" xml:"MaxFlow,omitempty"`
+	MaxRestFlowPercentage *float64 `json:"MaxRestFlowPercentage,omitempty" xml:"MaxRestFlowPercentage,omitempty"`
+	MinFlow               *string  `json:"MinFlow,omitempty" xml:"MinFlow,omitempty"`
+	Msisdn                *string  `json:"Msisdn,omitempty" xml:"Msisdn,omitempty"`
+	NotifyId              *string  `json:"NotifyId,omitempty" xml:"NotifyId,omitempty"`
+	OsStatus              *string  `json:"OsStatus,omitempty" xml:"OsStatus,omitempty"`
+	PageNo                *int32   `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize              *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Period                *string  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PoolId                *string  `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
+	SimType               *string  `json:"SimType,omitempty" xml:"SimType,omitempty"`
+	Status                *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagName               *string  `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	Vendor                *string  `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListCardInfoRequest) String() string {
@@ -1572,6 +1573,11 @@ func (s *ListCardInfoRequest) SetIsAutoRecharge(v bool) *ListCardInfoRequest {
 
 func (s *ListCardInfoRequest) SetMaxFlow(v string) *ListCardInfoRequest {
 	s.MaxFlow = &v
+	return s
+}
+
+func (s *ListCardInfoRequest) SetMaxRestFlowPercentage(v float64) *ListCardInfoRequest {
+	s.MaxRestFlowPercentage = &v
 	return s
 }
 
@@ -4044,6 +4050,10 @@ func (client *Client) ListCardInfoWithOptions(request *ListCardInfoRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.MaxFlow)) {
 		query["MaxFlow"] = request.MaxFlow
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxRestFlowPercentage)) {
+		query["MaxRestFlowPercentage"] = request.MaxRestFlowPercentage
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MinFlow)) {
