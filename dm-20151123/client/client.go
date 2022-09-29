@@ -48,7 +48,8 @@ func (s *AddIpfilterRequest) SetResourceOwnerId(v int64) *AddIpfilterRequest {
 }
 
 type AddIpfilterResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	IpFilterId *string `json:"IpFilterId,omitempty" xml:"IpFilterId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddIpfilterResponseBody) String() string {
@@ -57,6 +58,11 @@ func (s AddIpfilterResponseBody) String() string {
 
 func (s AddIpfilterResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *AddIpfilterResponseBody) SetIpFilterId(v string) *AddIpfilterResponseBody {
+	s.IpFilterId = &v
+	return s
 }
 
 func (s *AddIpfilterResponseBody) SetRequestId(v string) *AddIpfilterResponseBody {
