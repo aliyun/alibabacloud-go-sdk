@@ -3317,6 +3317,8 @@ type SendBatchCardSmsRequest struct {
 	SmsTemplateCode          *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
 	SmsTemplateParamJson     *string `json:"SmsTemplateParamJson,omitempty" xml:"SmsTemplateParamJson,omitempty"`
 	SmsUpExtendCodeJson      *string `json:"SmsUpExtendCodeJson,omitempty" xml:"SmsUpExtendCodeJson,omitempty"`
+	TemplateCode             *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateParamJson        *string `json:"TemplateParamJson,omitempty" xml:"TemplateParamJson,omitempty"`
 }
 
 func (s SendBatchCardSmsRequest) String() string {
@@ -3379,6 +3381,16 @@ func (s *SendBatchCardSmsRequest) SetSmsTemplateParamJson(v string) *SendBatchCa
 
 func (s *SendBatchCardSmsRequest) SetSmsUpExtendCodeJson(v string) *SendBatchCardSmsRequest {
 	s.SmsUpExtendCodeJson = &v
+	return s
+}
+
+func (s *SendBatchCardSmsRequest) SetTemplateCode(v string) *SendBatchCardSmsRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *SendBatchCardSmsRequest) SetTemplateParamJson(v string) *SendBatchCardSmsRequest {
+	s.TemplateParamJson = &v
 	return s
 }
 
@@ -3633,6 +3645,8 @@ type SendCardSmsRequest struct {
 	SmsTemplateCode      *string                          `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
 	SmsTemplateParam     *string                          `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
 	SmsUpExtendCode      *string                          `json:"SmsUpExtendCode,omitempty" xml:"SmsUpExtendCode,omitempty"`
+	TemplateCode         *string                          `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateParam        *string                          `json:"TemplateParam,omitempty" xml:"TemplateParam,omitempty"`
 }
 
 func (s SendCardSmsRequest) String() string {
@@ -3690,6 +3704,16 @@ func (s *SendCardSmsRequest) SetSmsTemplateParam(v string) *SendCardSmsRequest {
 
 func (s *SendCardSmsRequest) SetSmsUpExtendCode(v string) *SendCardSmsRequest {
 	s.SmsUpExtendCode = &v
+	return s
+}
+
+func (s *SendCardSmsRequest) SetTemplateCode(v string) *SendCardSmsRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *SendCardSmsRequest) SetTemplateParam(v string) *SendCardSmsRequest {
+	s.TemplateParam = &v
 	return s
 }
 
@@ -5749,6 +5773,14 @@ func (client *Client) SendBatchCardSmsWithOptions(request *SendBatchCardSmsReque
 		query["SmsUpExtendCodeJson"] = request.SmsUpExtendCodeJson
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateParamJson)) {
+		query["TemplateParamJson"] = request.TemplateParamJson
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5905,6 +5937,14 @@ func (client *Client) SendCardSmsWithOptions(request *SendCardSmsRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.SmsUpExtendCode)) {
 		query["SmsUpExtendCode"] = request.SmsUpExtendCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateParam)) {
+		query["TemplateParam"] = request.TemplateParam
 	}
 
 	req := &openapi.OpenApiRequest{
