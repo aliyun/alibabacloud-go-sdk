@@ -14,6 +14,7 @@ import (
 
 type CreateDatabaseRequest struct {
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Collation    *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Encoding     *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
@@ -31,6 +32,11 @@ func (s CreateDatabaseRequest) GoString() string {
 
 func (s *CreateDatabaseRequest) SetClientToken(v string) *CreateDatabaseRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDatabaseRequest) SetCollation(v string) *CreateDatabaseRequest {
+	s.Collation = &v
 	return s
 }
 
@@ -116,8 +122,10 @@ type CreateInstanceRequest struct {
 	AutoRenewPeriod *int64  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
 	ChargeType      *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	DiskSize        *int64  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	DiskType        *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	InstanceClass   *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	ObVersion       *string `json:"ObVersion,omitempty" xml:"ObVersion,omitempty"`
 	Period          *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodUnit      *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -153,6 +161,11 @@ func (s *CreateInstanceRequest) SetDiskSize(v int64) *CreateInstanceRequest {
 	return s
 }
 
+func (s *CreateInstanceRequest) SetDiskType(v string) *CreateInstanceRequest {
+	s.DiskType = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetInstanceClass(v string) *CreateInstanceRequest {
 	s.InstanceClass = &v
 	return s
@@ -160,6 +173,11 @@ func (s *CreateInstanceRequest) SetInstanceClass(v string) *CreateInstanceReques
 
 func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetObVersion(v string) *CreateInstanceRequest {
+	s.ObVersion = &v
 	return s
 }
 
@@ -2777,7 +2795,8 @@ func (s *DescribeCharsetResponseBody) SetRequestId(v string) *DescribeCharsetRes
 }
 
 type DescribeCharsetResponseBodyCharset struct {
-	Charset *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	Charset    *string   `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	Collations []*string `json:"Collations,omitempty" xml:"Collations,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCharsetResponseBodyCharset) String() string {
@@ -2790,6 +2809,11 @@ func (s DescribeCharsetResponseBodyCharset) GoString() string {
 
 func (s *DescribeCharsetResponseBodyCharset) SetCharset(v string) *DescribeCharsetResponseBodyCharset {
 	s.Charset = &v
+	return s
+}
+
+func (s *DescribeCharsetResponseBodyCharset) SetCollations(v []*string) *DescribeCharsetResponseBodyCharset {
+	s.Collations = v
 	return s
 }
 
@@ -2899,6 +2923,7 @@ func (s *DescribeDatabasesResponseBody) SetTotalCount(v int32) *DescribeDatabase
 }
 
 type DescribeDatabasesResponseBodyDatabases struct {
+	Collation    *string                                         `json:"Collation,omitempty" xml:"Collation,omitempty"`
 	CreateTime   *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DataSize     *float64                                        `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
 	DatabaseName *string                                         `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
@@ -2918,6 +2943,11 @@ func (s DescribeDatabasesResponseBodyDatabases) String() string {
 
 func (s DescribeDatabasesResponseBodyDatabases) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabasesResponseBodyDatabases) SetCollation(v string) *DescribeDatabasesResponseBodyDatabases {
+	s.Collation = &v
+	return s
 }
 
 func (s *DescribeDatabasesResponseBodyDatabases) SetCreateTime(v string) *DescribeDatabasesResponseBodyDatabases {
@@ -3668,15 +3698,16 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopology) SetZones(v []*Des
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyTenants struct {
-	TenantCpu        *float32                                                                  `json:"TenantCpu,omitempty" xml:"TenantCpu,omitempty"`
-	TenantDeployType *string                                                                   `json:"TenantDeployType,omitempty" xml:"TenantDeployType,omitempty"`
-	TenantId         *string                                                                   `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	TenantMemory     *float32                                                                  `json:"TenantMemory,omitempty" xml:"TenantMemory,omitempty"`
-	TenantMode       *string                                                                   `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
-	TenantName       *string                                                                   `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	TenantStatus     *string                                                                   `json:"TenantStatus,omitempty" xml:"TenantStatus,omitempty"`
-	TenantUnitNum    *int32                                                                    `json:"TenantUnitNum,omitempty" xml:"TenantUnitNum,omitempty"`
-	TenantZones      []*DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones `json:"TenantZones,omitempty" xml:"TenantZones,omitempty" type:"Repeated"`
+	PrimaryZoneDeployType *string                                                                   `json:"PrimaryZoneDeployType,omitempty" xml:"PrimaryZoneDeployType,omitempty"`
+	TenantCpu             *float32                                                                  `json:"TenantCpu,omitempty" xml:"TenantCpu,omitempty"`
+	TenantDeployType      *string                                                                   `json:"TenantDeployType,omitempty" xml:"TenantDeployType,omitempty"`
+	TenantId              *string                                                                   `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantMemory          *float32                                                                  `json:"TenantMemory,omitempty" xml:"TenantMemory,omitempty"`
+	TenantMode            *string                                                                   `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
+	TenantName            *string                                                                   `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	TenantStatus          *string                                                                   `json:"TenantStatus,omitempty" xml:"TenantStatus,omitempty"`
+	TenantUnitNum         *int32                                                                    `json:"TenantUnitNum,omitempty" xml:"TenantUnitNum,omitempty"`
+	TenantZones           []*DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones `json:"TenantZones,omitempty" xml:"TenantZones,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstanceTopologyResponseBodyInstanceTopologyTenants) String() string {
@@ -3685,6 +3716,11 @@ func (s DescribeInstanceTopologyResponseBodyInstanceTopologyTenants) String() st
 
 func (s DescribeInstanceTopologyResponseBodyInstanceTopologyTenants) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants) SetPrimaryZoneDeployType(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants {
+	s.PrimaryZoneDeployType = &v
+	return s
 }
 
 func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants) SetTenantCpu(v float32) *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants {
@@ -8359,14 +8395,18 @@ func (s *DescribeTenantResponseBody) SetTenant(v *DescribeTenantResponseBodyTena
 }
 
 type DescribeTenantResponseBodyTenant struct {
+	Charset                      *string                                              `json:"Charset,omitempty" xml:"Charset,omitempty"`
 	ClogServiceStatus            *string                                              `json:"ClogServiceStatus,omitempty" xml:"ClogServiceStatus,omitempty"`
+	Collation                    *string                                              `json:"Collation,omitempty" xml:"Collation,omitempty"`
 	CreateTime                   *string                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DeployMode                   *string                                              `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
 	DeployType                   *string                                              `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
 	Description                  *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
 	EnableClogService            *bool                                                `json:"EnableClogService,omitempty" xml:"EnableClogService,omitempty"`
 	EnableInternetAddressService *bool                                                `json:"EnableInternetAddressService,omitempty" xml:"EnableInternetAddressService,omitempty"`
+	MasterIntranetAddressZone    *string                                              `json:"MasterIntranetAddressZone,omitempty" xml:"MasterIntranetAddressZone,omitempty"`
 	PrimaryZone                  *string                                              `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	PrimaryZoneDeployType        *string                                              `json:"PrimaryZoneDeployType,omitempty" xml:"PrimaryZoneDeployType,omitempty"`
 	Status                       *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
 	TenantConnections            []*DescribeTenantResponseBodyTenantTenantConnections `json:"TenantConnections,omitempty" xml:"TenantConnections,omitempty" type:"Repeated"`
 	TenantId                     *string                                              `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
@@ -8385,8 +8425,18 @@ func (s DescribeTenantResponseBodyTenant) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeTenantResponseBodyTenant) SetCharset(v string) *DescribeTenantResponseBodyTenant {
+	s.Charset = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenant) SetClogServiceStatus(v string) *DescribeTenantResponseBodyTenant {
 	s.ClogServiceStatus = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenant) SetCollation(v string) *DescribeTenantResponseBodyTenant {
+	s.Collation = &v
 	return s
 }
 
@@ -8420,8 +8470,18 @@ func (s *DescribeTenantResponseBodyTenant) SetEnableInternetAddressService(v boo
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenant) SetMasterIntranetAddressZone(v string) *DescribeTenantResponseBodyTenant {
+	s.MasterIntranetAddressZone = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenant) SetPrimaryZone(v string) *DescribeTenantResponseBodyTenant {
 	s.PrimaryZone = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenant) SetPrimaryZoneDeployType(v string) *DescribeTenantResponseBodyTenant {
+	s.PrimaryZoneDeployType = &v
 	return s
 }
 
@@ -9253,6 +9313,8 @@ func (s *DescribeTenantsResponseBody) SetTotalCount(v int32) *DescribeTenantsRes
 }
 
 type DescribeTenantsResponseBodyTenants struct {
+	Charset      *string  `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	Collation    *string  `json:"Collation,omitempty" xml:"Collation,omitempty"`
 	Cpu          *int32   `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	CreateTime   *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DeployMode   *string  `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
@@ -9277,6 +9339,16 @@ func (s DescribeTenantsResponseBodyTenants) String() string {
 
 func (s DescribeTenantsResponseBodyTenants) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeTenantsResponseBodyTenants) SetCharset(v string) *DescribeTenantsResponseBodyTenants {
+	s.Charset = &v
+	return s
+}
+
+func (s *DescribeTenantsResponseBodyTenants) SetCollation(v string) *DescribeTenantsResponseBodyTenants {
+	s.Collation = &v
+	return s
 }
 
 func (s *DescribeTenantsResponseBodyTenants) SetCpu(v int32) *DescribeTenantsResponseBodyTenants {
@@ -10623,11 +10695,13 @@ func (s *ModifySecurityIpsResponse) SetBody(v *ModifySecurityIpsResponseBody) *M
 }
 
 type ModifyTenantPrimaryZoneRequest struct {
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModifyType    *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	PrimaryZone   *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
-	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UserVSwitchId *string `json:"UserVSwitchId,omitempty" xml:"UserVSwitchId,omitempty"`
+	InstanceId                *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MasterIntranetAddressZone *string `json:"MasterIntranetAddressZone,omitempty" xml:"MasterIntranetAddressZone,omitempty"`
+	ModifyType                *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	PrimaryZone               *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	PrimaryZoneDeployType     *string `json:"PrimaryZoneDeployType,omitempty" xml:"PrimaryZoneDeployType,omitempty"`
+	TenantId                  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UserVSwitchId             *string `json:"UserVSwitchId,omitempty" xml:"UserVSwitchId,omitempty"`
 }
 
 func (s ModifyTenantPrimaryZoneRequest) String() string {
@@ -10643,6 +10717,11 @@ func (s *ModifyTenantPrimaryZoneRequest) SetInstanceId(v string) *ModifyTenantPr
 	return s
 }
 
+func (s *ModifyTenantPrimaryZoneRequest) SetMasterIntranetAddressZone(v string) *ModifyTenantPrimaryZoneRequest {
+	s.MasterIntranetAddressZone = &v
+	return s
+}
+
 func (s *ModifyTenantPrimaryZoneRequest) SetModifyType(v string) *ModifyTenantPrimaryZoneRequest {
 	s.ModifyType = &v
 	return s
@@ -10650,6 +10729,11 @@ func (s *ModifyTenantPrimaryZoneRequest) SetModifyType(v string) *ModifyTenantPr
 
 func (s *ModifyTenantPrimaryZoneRequest) SetPrimaryZone(v string) *ModifyTenantPrimaryZoneRequest {
 	s.PrimaryZone = &v
+	return s
+}
+
+func (s *ModifyTenantPrimaryZoneRequest) SetPrimaryZoneDeployType(v string) *ModifyTenantPrimaryZoneRequest {
+	s.PrimaryZoneDeployType = &v
 	return s
 }
 
@@ -13522,6 +13606,10 @@ func (client *Client) CreateDatabaseWithOptions(request *CreateDatabaseRequest, 
 		body["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Collation)) {
+		body["Collation"] = request.Collation
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
 		body["DatabaseName"] = request.DatabaseName
 	}
@@ -13598,12 +13686,20 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["DiskSize"] = request.DiskSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DiskType)) {
+		body["DiskType"] = request.DiskType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceClass)) {
 		body["InstanceClass"] = request.InstanceClass
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObVersion)) {
+		body["ObVersion"] = request.ObVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Period)) {
@@ -16576,12 +16672,20 @@ func (client *Client) ModifyTenantPrimaryZoneWithOptions(request *ModifyTenantPr
 		body["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MasterIntranetAddressZone)) {
+		body["MasterIntranetAddressZone"] = request.MasterIntranetAddressZone
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ModifyType)) {
 		body["ModifyType"] = request.ModifyType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PrimaryZone)) {
 		body["PrimaryZone"] = request.PrimaryZone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryZoneDeployType)) {
+		body["PrimaryZoneDeployType"] = request.PrimaryZoneDeployType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
