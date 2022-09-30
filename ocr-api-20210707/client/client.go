@@ -3460,6 +3460,99 @@ func (s *RecognizeIdcardResponse) SetBody(v *RecognizeIdcardResponseBody) *Recog
 	return s
 }
 
+type RecognizeInternationalIdcardRequest struct {
+	Country *string   `json:"Country,omitempty" xml:"Country,omitempty"`
+	Url     *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body    io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecognizeInternationalIdcardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeInternationalIdcardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeInternationalIdcardRequest) SetCountry(v string) *RecognizeInternationalIdcardRequest {
+	s.Country = &v
+	return s
+}
+
+func (s *RecognizeInternationalIdcardRequest) SetUrl(v string) *RecognizeInternationalIdcardRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *RecognizeInternationalIdcardRequest) SetBody(v io.Reader) *RecognizeInternationalIdcardRequest {
+	s.Body = v
+	return s
+}
+
+type RecognizeInternationalIdcardResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeInternationalIdcardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeInternationalIdcardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeInternationalIdcardResponseBody) SetCode(v string) *RecognizeInternationalIdcardResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RecognizeInternationalIdcardResponseBody) SetData(v string) *RecognizeInternationalIdcardResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RecognizeInternationalIdcardResponseBody) SetMessage(v string) *RecognizeInternationalIdcardResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RecognizeInternationalIdcardResponseBody) SetRequestId(v string) *RecognizeInternationalIdcardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeInternationalIdcardResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeInternationalIdcardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeInternationalIdcardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeInternationalIdcardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeInternationalIdcardResponse) SetHeaders(v map[string]*string) *RecognizeInternationalIdcardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeInternationalIdcardResponse) SetStatusCode(v int32) *RecognizeInternationalIdcardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecognizeInternationalIdcardResponse) SetBody(v *RecognizeInternationalIdcardResponseBody) *RecognizeInternationalIdcardResponse {
+	s.Body = v
+	return s
+}
+
 type RecognizeInvoiceRequest struct {
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
@@ -8329,6 +8422,56 @@ func (client *Client) RecognizeIdcard(request *RecognizeIdcardRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeIdcardResponse{}
 	_body, _err := client.RecognizeIdcardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeInternationalIdcardWithOptions(request *RecognizeInternationalIdcardRequest, runtime *util.RuntimeOptions) (_result *RecognizeInternationalIdcardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Country)) {
+		query["Country"] = request.Country
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query:  openapiutil.Query(query),
+		Body:   request.Body,
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeInternationalIdcard"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeInternationalIdcardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeInternationalIdcard(request *RecognizeInternationalIdcardRequest) (_result *RecognizeInternationalIdcardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeInternationalIdcardResponse{}
+	_body, _err := client.RecognizeInternationalIdcardWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

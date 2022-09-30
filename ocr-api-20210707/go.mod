@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/ocr-api-20210707/v2
+module github.com/alibabacloud-go/ocr-api-20210707
 
 go 1.15
 
