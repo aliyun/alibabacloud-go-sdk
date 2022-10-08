@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -44,6 +44,76 @@ func (s *LoginStateInfo) SetThirdUserType(v string) *LoginStateInfo {
 
 func (s *LoginStateInfo) SetUserId(v string) *LoginStateInfo {
 	s.UserId = &v
+	return s
+}
+
+type ResultValue struct {
+	DeviceOpenId    *string                      `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
+	DeviceUnionIds  []*ResultValueDeviceUnionIds `json:"DeviceUnionIds,omitempty" xml:"DeviceUnionIds,omitempty" type:"Repeated"`
+	Name            *string                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	FirmwareVersion *string                      `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
+	Mac             *string                      `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Sn              *string                      `json:"Sn,omitempty" xml:"Sn,omitempty"`
+}
+
+func (s ResultValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResultValue) GoString() string {
+	return s.String()
+}
+
+func (s *ResultValue) SetDeviceOpenId(v string) *ResultValue {
+	s.DeviceOpenId = &v
+	return s
+}
+
+func (s *ResultValue) SetDeviceUnionIds(v []*ResultValueDeviceUnionIds) *ResultValue {
+	s.DeviceUnionIds = v
+	return s
+}
+
+func (s *ResultValue) SetName(v string) *ResultValue {
+	s.Name = &v
+	return s
+}
+
+func (s *ResultValue) SetFirmwareVersion(v string) *ResultValue {
+	s.FirmwareVersion = &v
+	return s
+}
+
+func (s *ResultValue) SetMac(v string) *ResultValue {
+	s.Mac = &v
+	return s
+}
+
+func (s *ResultValue) SetSn(v string) *ResultValue {
+	s.Sn = &v
+	return s
+}
+
+type ResultValueDeviceUnionIds struct {
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	DeviceUnionId  *string `json:"DeviceUnionId,omitempty" xml:"DeviceUnionId,omitempty"`
+}
+
+func (s ResultValueDeviceUnionIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResultValueDeviceUnionIds) GoString() string {
+	return s.String()
+}
+
+func (s *ResultValueDeviceUnionIds) SetOrganizationId(v string) *ResultValueDeviceUnionIds {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ResultValueDeviceUnionIds) SetDeviceUnionId(v string) *ResultValueDeviceUnionIds {
+	s.DeviceUnionId = &v
 	return s
 }
 
@@ -5756,6 +5826,7 @@ type GetContentResponseBodyResult struct {
 	Id          *int64                                 `json:"Id,omitempty" xml:"Id,omitempty"`
 	ItemType    *string                                `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
 	Lyric       *string                                `json:"Lyric,omitempty" xml:"Lyric,omitempty"`
+	RawId       *string                                `json:"RawId,omitempty" xml:"RawId,omitempty"`
 	Source      *string                                `json:"Source,omitempty" xml:"Source,omitempty"`
 	Styles      []*string                              `json:"Styles,omitempty" xml:"Styles,omitempty" type:"Repeated"`
 	Title       *string                                `json:"Title,omitempty" xml:"Title,omitempty"`
@@ -5838,6 +5909,11 @@ func (s *GetContentResponseBodyResult) SetItemType(v string) *GetContentResponse
 
 func (s *GetContentResponseBodyResult) SetLyric(v string) *GetContentResponseBodyResult {
 	s.Lyric = &v
+	return s
+}
+
+func (s *GetContentResponseBodyResult) SetRawId(v string) *GetContentResponseBodyResult {
+	s.RawId = &v
 	return s
 }
 
@@ -19129,76 +19205,6 @@ func (s *UpdateAlarmResponse) SetStatusCode(v int32) *UpdateAlarmResponse {
 
 func (s *UpdateAlarmResponse) SetBody(v *UpdateAlarmResponseBody) *UpdateAlarmResponse {
 	s.Body = v
-	return s
-}
-
-type ResultValue struct {
-	DeviceOpenId    *string                      `json:"DeviceOpenId,omitempty" xml:"DeviceOpenId,omitempty"`
-	DeviceUnionIds  []*ResultValueDeviceUnionIds `json:"DeviceUnionIds,omitempty" xml:"DeviceUnionIds,omitempty" type:"Repeated"`
-	Name            *string                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	FirmwareVersion *string                      `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
-	Mac             *string                      `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	Sn              *string                      `json:"Sn,omitempty" xml:"Sn,omitempty"`
-}
-
-func (s ResultValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResultValue) GoString() string {
-	return s.String()
-}
-
-func (s *ResultValue) SetDeviceOpenId(v string) *ResultValue {
-	s.DeviceOpenId = &v
-	return s
-}
-
-func (s *ResultValue) SetDeviceUnionIds(v []*ResultValueDeviceUnionIds) *ResultValue {
-	s.DeviceUnionIds = v
-	return s
-}
-
-func (s *ResultValue) SetName(v string) *ResultValue {
-	s.Name = &v
-	return s
-}
-
-func (s *ResultValue) SetFirmwareVersion(v string) *ResultValue {
-	s.FirmwareVersion = &v
-	return s
-}
-
-func (s *ResultValue) SetMac(v string) *ResultValue {
-	s.Mac = &v
-	return s
-}
-
-func (s *ResultValue) SetSn(v string) *ResultValue {
-	s.Sn = &v
-	return s
-}
-
-type ResultValueDeviceUnionIds struct {
-	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	DeviceUnionId  *string `json:"DeviceUnionId,omitempty" xml:"DeviceUnionId,omitempty"`
-}
-
-func (s ResultValueDeviceUnionIds) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResultValueDeviceUnionIds) GoString() string {
-	return s.String()
-}
-
-func (s *ResultValueDeviceUnionIds) SetOrganizationId(v string) *ResultValueDeviceUnionIds {
-	s.OrganizationId = &v
-	return s
-}
-
-func (s *ResultValueDeviceUnionIds) SetDeviceUnionId(v string) *ResultValueDeviceUnionIds {
-	s.DeviceUnionId = &v
 	return s
 }
 
