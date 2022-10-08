@@ -3677,7 +3677,6 @@ func (s *DescribeBackupsResponse) SetBody(v *DescribeBackupsResponseBody) *Descr
 }
 
 type DescribeDBInstanceAttributeRequest struct {
-	ChargeType           *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -3694,11 +3693,6 @@ func (s DescribeDBInstanceAttributeRequest) String() string {
 
 func (s DescribeDBInstanceAttributeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDBInstanceAttributeRequest) SetChargeType(v string) *DescribeDBInstanceAttributeRequest {
-	s.ChargeType = &v
-	return s
 }
 
 func (s *DescribeDBInstanceAttributeRequest) SetDBInstanceId(v string) *DescribeDBInstanceAttributeRequest {
@@ -3794,7 +3788,6 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	DBInstanceStatus            *string                                                                       `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	DBInstanceStorage           *int32                                                                        `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
 	DBInstanceType              *string                                                                       `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	DestroyTime                 *string                                                                       `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
 	Engine                      *string                                                                       `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	EngineVersion               *string                                                                       `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	ExpireTime                  *string                                                                       `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
@@ -3807,9 +3800,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	MaxConnections              *int32                                                                        `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	MaxIOPS                     *int32                                                                        `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
 	MongosList                  *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosList       `json:"MongosList,omitempty" xml:"MongosList,omitempty" type:"Struct"`
-	NetworkAddresses            *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddresses `json:"NetworkAddresses,omitempty" xml:"NetworkAddresses,omitempty" type:"Struct"`
 	NetworkType                 *string                                                                       `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PaymentType                 *string                                                                       `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	ProtocolType                *string                                                                       `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	ReadonlyReplicas            *string                                                                       `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
 	RegionId                    *string                                                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3897,11 +3888,6 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetDBInst
 	return s
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetDestroyTime(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
-	s.DestroyTime = &v
-	return s
-}
-
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetEngine(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.Engine = &v
 	return s
@@ -3962,18 +3948,8 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetMongos
 	return s
 }
 
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetNetworkAddresses(v *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddresses) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
-	s.NetworkAddresses = v
-	return s
-}
-
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetNetworkType(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.NetworkType = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetPaymentType(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
-	s.PaymentType = &v
 	return s
 }
 
@@ -4235,94 +4211,6 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListM
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMongosAttribute) SetVpcCloudInstanceId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMongosAttribute {
 	s.VpcCloudInstanceId = &v
-	return s
-}
-
-type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddresses struct {
-	NetworkAddress []*DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress `json:"NetworkAddress,omitempty" xml:"NetworkAddress,omitempty" type:"Repeated"`
-}
-
-func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddresses) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddresses) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddresses) SetNetworkAddress(v []*DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddresses {
-	s.NetworkAddress = v
-	return s
-}
-
-type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress struct {
-	ExpiredTime    *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	IPAddress      *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	NetworkAddress *string `json:"NetworkAddress,omitempty" xml:"NetworkAddress,omitempty"`
-	NetworkType    *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	NodeId         *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeType       *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	Port           *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Role           *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	VPCId          *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId      *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-}
-
-func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetExpiredTime(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
-	s.ExpiredTime = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetIPAddress(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
-	s.IPAddress = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetNetworkAddress(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
-	s.NetworkAddress = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetNetworkType(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetNodeId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
-	s.NodeId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetNodeType(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
-	s.NodeType = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetPort(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
-	s.Port = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetRole(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
-	s.Role = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetVPCId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
-	s.VPCId = &v
-	return s
-}
-
-func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress) SetVSwitchId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceNetworkAddressesNetworkAddress {
-	s.VSwitchId = &v
 	return s
 }
 
@@ -17008,10 +16896,6 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
-		query["ChargeType"] = request.ChargeType
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
