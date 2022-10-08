@@ -12,6 +12,733 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type BeeBotAssociateRequest struct {
+	ChatBotInstnaceId *string   `json:"ChatBotInstnaceId,omitempty" xml:"ChatBotInstnaceId,omitempty"`
+	IsvCode           *string   `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	Perspective       []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
+	RecommendNum      *int32    `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
+	SessionId         *string   `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Utterance         *string   `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+}
+
+func (s BeeBotAssociateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotAssociateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotAssociateRequest) SetChatBotInstnaceId(v string) *BeeBotAssociateRequest {
+	s.ChatBotInstnaceId = &v
+	return s
+}
+
+func (s *BeeBotAssociateRequest) SetIsvCode(v string) *BeeBotAssociateRequest {
+	s.IsvCode = &v
+	return s
+}
+
+func (s *BeeBotAssociateRequest) SetPerspective(v []*string) *BeeBotAssociateRequest {
+	s.Perspective = v
+	return s
+}
+
+func (s *BeeBotAssociateRequest) SetRecommendNum(v int32) *BeeBotAssociateRequest {
+	s.RecommendNum = &v
+	return s
+}
+
+func (s *BeeBotAssociateRequest) SetSessionId(v string) *BeeBotAssociateRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *BeeBotAssociateRequest) SetUtterance(v string) *BeeBotAssociateRequest {
+	s.Utterance = &v
+	return s
+}
+
+type BeeBotAssociateShrinkRequest struct {
+	ChatBotInstnaceId *string `json:"ChatBotInstnaceId,omitempty" xml:"ChatBotInstnaceId,omitempty"`
+	IsvCode           *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	PerspectiveShrink *string `json:"Perspective,omitempty" xml:"Perspective,omitempty"`
+	RecommendNum      *int32  `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
+	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Utterance         *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+}
+
+func (s BeeBotAssociateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotAssociateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotAssociateShrinkRequest) SetChatBotInstnaceId(v string) *BeeBotAssociateShrinkRequest {
+	s.ChatBotInstnaceId = &v
+	return s
+}
+
+func (s *BeeBotAssociateShrinkRequest) SetIsvCode(v string) *BeeBotAssociateShrinkRequest {
+	s.IsvCode = &v
+	return s
+}
+
+func (s *BeeBotAssociateShrinkRequest) SetPerspectiveShrink(v string) *BeeBotAssociateShrinkRequest {
+	s.PerspectiveShrink = &v
+	return s
+}
+
+func (s *BeeBotAssociateShrinkRequest) SetRecommendNum(v int32) *BeeBotAssociateShrinkRequest {
+	s.RecommendNum = &v
+	return s
+}
+
+func (s *BeeBotAssociateShrinkRequest) SetSessionId(v string) *BeeBotAssociateShrinkRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *BeeBotAssociateShrinkRequest) SetUtterance(v string) *BeeBotAssociateShrinkRequest {
+	s.Utterance = &v
+	return s
+}
+
+type BeeBotAssociateResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *BeeBotAssociateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BeeBotAssociateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotAssociateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotAssociateResponseBody) SetCode(v string) *BeeBotAssociateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BeeBotAssociateResponseBody) SetData(v *BeeBotAssociateResponseBodyData) *BeeBotAssociateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BeeBotAssociateResponseBody) SetMessage(v string) *BeeBotAssociateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BeeBotAssociateResponseBody) SetRequestId(v string) *BeeBotAssociateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BeeBotAssociateResponseBodyData struct {
+	Associate []*BeeBotAssociateResponseBodyDataAssociate `json:"Associate,omitempty" xml:"Associate,omitempty" type:"Repeated"`
+	MessageId *string                                     `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	SessionId *string                                     `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s BeeBotAssociateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotAssociateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotAssociateResponseBodyData) SetAssociate(v []*BeeBotAssociateResponseBodyDataAssociate) *BeeBotAssociateResponseBodyData {
+	s.Associate = v
+	return s
+}
+
+func (s *BeeBotAssociateResponseBodyData) SetMessageId(v string) *BeeBotAssociateResponseBodyData {
+	s.MessageId = &v
+	return s
+}
+
+func (s *BeeBotAssociateResponseBodyData) SetSessionId(v string) *BeeBotAssociateResponseBodyData {
+	s.SessionId = &v
+	return s
+}
+
+type BeeBotAssociateResponseBodyDataAssociate struct {
+	Meta  *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s BeeBotAssociateResponseBodyDataAssociate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotAssociateResponseBodyDataAssociate) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotAssociateResponseBodyDataAssociate) SetMeta(v string) *BeeBotAssociateResponseBodyDataAssociate {
+	s.Meta = &v
+	return s
+}
+
+func (s *BeeBotAssociateResponseBodyDataAssociate) SetTitle(v string) *BeeBotAssociateResponseBodyDataAssociate {
+	s.Title = &v
+	return s
+}
+
+type BeeBotAssociateResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BeeBotAssociateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BeeBotAssociateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotAssociateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotAssociateResponse) SetHeaders(v map[string]*string) *BeeBotAssociateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BeeBotAssociateResponse) SetStatusCode(v int32) *BeeBotAssociateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BeeBotAssociateResponse) SetBody(v *BeeBotAssociateResponseBody) *BeeBotAssociateResponse {
+	s.Body = v
+	return s
+}
+
+type BeeBotChatRequest struct {
+	ChatBotInstnaceId *string                `json:"ChatBotInstnaceId,omitempty" xml:"ChatBotInstnaceId,omitempty"`
+	IntentName        *string                `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	IsvCode           *string                `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	KnowledgeId       *string                `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	Perspective       []*string              `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
+	SenderId          *string                `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	SenderNick        *string                `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
+	SessionId         *string                `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Utterance         *string                `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	VendorParam       map[string]interface{} `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
+}
+
+func (s BeeBotChatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotChatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotChatRequest) SetChatBotInstnaceId(v string) *BeeBotChatRequest {
+	s.ChatBotInstnaceId = &v
+	return s
+}
+
+func (s *BeeBotChatRequest) SetIntentName(v string) *BeeBotChatRequest {
+	s.IntentName = &v
+	return s
+}
+
+func (s *BeeBotChatRequest) SetIsvCode(v string) *BeeBotChatRequest {
+	s.IsvCode = &v
+	return s
+}
+
+func (s *BeeBotChatRequest) SetKnowledgeId(v string) *BeeBotChatRequest {
+	s.KnowledgeId = &v
+	return s
+}
+
+func (s *BeeBotChatRequest) SetPerspective(v []*string) *BeeBotChatRequest {
+	s.Perspective = v
+	return s
+}
+
+func (s *BeeBotChatRequest) SetSenderId(v string) *BeeBotChatRequest {
+	s.SenderId = &v
+	return s
+}
+
+func (s *BeeBotChatRequest) SetSenderNick(v string) *BeeBotChatRequest {
+	s.SenderNick = &v
+	return s
+}
+
+func (s *BeeBotChatRequest) SetSessionId(v string) *BeeBotChatRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *BeeBotChatRequest) SetUtterance(v string) *BeeBotChatRequest {
+	s.Utterance = &v
+	return s
+}
+
+func (s *BeeBotChatRequest) SetVendorParam(v map[string]interface{}) *BeeBotChatRequest {
+	s.VendorParam = v
+	return s
+}
+
+type BeeBotChatShrinkRequest struct {
+	ChatBotInstnaceId *string `json:"ChatBotInstnaceId,omitempty" xml:"ChatBotInstnaceId,omitempty"`
+	IntentName        *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	IsvCode           *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	KnowledgeId       *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	PerspectiveShrink *string `json:"Perspective,omitempty" xml:"Perspective,omitempty"`
+	SenderId          *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	SenderNick        *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
+	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Utterance         *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	VendorParamShrink *string `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
+}
+
+func (s BeeBotChatShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotChatShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotChatShrinkRequest) SetChatBotInstnaceId(v string) *BeeBotChatShrinkRequest {
+	s.ChatBotInstnaceId = &v
+	return s
+}
+
+func (s *BeeBotChatShrinkRequest) SetIntentName(v string) *BeeBotChatShrinkRequest {
+	s.IntentName = &v
+	return s
+}
+
+func (s *BeeBotChatShrinkRequest) SetIsvCode(v string) *BeeBotChatShrinkRequest {
+	s.IsvCode = &v
+	return s
+}
+
+func (s *BeeBotChatShrinkRequest) SetKnowledgeId(v string) *BeeBotChatShrinkRequest {
+	s.KnowledgeId = &v
+	return s
+}
+
+func (s *BeeBotChatShrinkRequest) SetPerspectiveShrink(v string) *BeeBotChatShrinkRequest {
+	s.PerspectiveShrink = &v
+	return s
+}
+
+func (s *BeeBotChatShrinkRequest) SetSenderId(v string) *BeeBotChatShrinkRequest {
+	s.SenderId = &v
+	return s
+}
+
+func (s *BeeBotChatShrinkRequest) SetSenderNick(v string) *BeeBotChatShrinkRequest {
+	s.SenderNick = &v
+	return s
+}
+
+func (s *BeeBotChatShrinkRequest) SetSessionId(v string) *BeeBotChatShrinkRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *BeeBotChatShrinkRequest) SetUtterance(v string) *BeeBotChatShrinkRequest {
+	s.Utterance = &v
+	return s
+}
+
+func (s *BeeBotChatShrinkRequest) SetVendorParamShrink(v string) *BeeBotChatShrinkRequest {
+	s.VendorParamShrink = &v
+	return s
+}
+
+type BeeBotChatResponseBody struct {
+	Code      *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *BeeBotChatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BeeBotChatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotChatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotChatResponseBody) SetCode(v string) *BeeBotChatResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBody) SetData(v *BeeBotChatResponseBodyData) *BeeBotChatResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BeeBotChatResponseBody) SetMessage(v string) *BeeBotChatResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBody) SetRequestId(v string) *BeeBotChatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BeeBotChatResponseBodyData struct {
+	MessageId *string                               `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	Messages  []*BeeBotChatResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	SessionId *string                               `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s BeeBotChatResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotChatResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotChatResponseBodyData) SetMessageId(v string) *BeeBotChatResponseBodyData {
+	s.MessageId = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyData) SetMessages(v []*BeeBotChatResponseBodyDataMessages) *BeeBotChatResponseBodyData {
+	s.Messages = v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyData) SetSessionId(v string) *BeeBotChatResponseBodyData {
+	s.SessionId = &v
+	return s
+}
+
+type BeeBotChatResponseBodyDataMessages struct {
+	AnswerSource *string                                         `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	AnswerType   *string                                         `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
+	Knowledge    *BeeBotChatResponseBodyDataMessagesKnowledge    `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
+	Recommends   []*BeeBotChatResponseBodyDataMessagesRecommends `json:"Recommends,omitempty" xml:"Recommends,omitempty" type:"Repeated"`
+	Text         *BeeBotChatResponseBodyDataMessagesText         `json:"Text,omitempty" xml:"Text,omitempty" type:"Struct"`
+}
+
+func (s BeeBotChatResponseBodyDataMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotChatResponseBodyDataMessages) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotChatResponseBodyDataMessages) SetAnswerSource(v string) *BeeBotChatResponseBodyDataMessages {
+	s.AnswerSource = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessages) SetAnswerType(v string) *BeeBotChatResponseBodyDataMessages {
+	s.AnswerType = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessages) SetKnowledge(v *BeeBotChatResponseBodyDataMessagesKnowledge) *BeeBotChatResponseBodyDataMessages {
+	s.Knowledge = v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessages) SetRecommends(v []*BeeBotChatResponseBodyDataMessagesRecommends) *BeeBotChatResponseBodyDataMessages {
+	s.Recommends = v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessages) SetText(v *BeeBotChatResponseBodyDataMessagesText) *BeeBotChatResponseBodyDataMessages {
+	s.Text = v
+	return s
+}
+
+type BeeBotChatResponseBodyDataMessagesKnowledge struct {
+	AnswerSource      *string                                                         `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	Category          *string                                                         `json:"Category,omitempty" xml:"Category,omitempty"`
+	Content           *string                                                         `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentType       *string                                                         `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	HitStatement      *string                                                         `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
+	Id                *string                                                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	RelatedKnowledges []*BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges `json:"RelatedKnowledges,omitempty" xml:"RelatedKnowledges,omitempty" type:"Repeated"`
+	Summary           *string                                                         `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Title             *string                                                         `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s BeeBotChatResponseBodyDataMessagesKnowledge) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotChatResponseBodyDataMessagesKnowledge) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetAnswerSource(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
+	s.AnswerSource = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetCategory(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
+	s.Category = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetContent(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
+	s.Content = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetContentType(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
+	s.ContentType = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetHitStatement(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
+	s.HitStatement = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetId(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
+	s.Id = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetRelatedKnowledges(v []*BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges) *BeeBotChatResponseBodyDataMessagesKnowledge {
+	s.RelatedKnowledges = v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetSummary(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
+	s.Summary = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetTitle(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
+	s.Title = &v
+	return s
+}
+
+type BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges struct {
+	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges) SetKnowledgeId(v string) *BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges {
+	s.KnowledgeId = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges) SetTitle(v string) *BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges {
+	s.Title = &v
+	return s
+}
+
+type BeeBotChatResponseBodyDataMessagesRecommends struct {
+	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	KnowledgeId  *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s BeeBotChatResponseBodyDataMessagesRecommends) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotChatResponseBodyDataMessagesRecommends) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesRecommends) SetAnswerSource(v string) *BeeBotChatResponseBodyDataMessagesRecommends {
+	s.AnswerSource = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesRecommends) SetKnowledgeId(v string) *BeeBotChatResponseBodyDataMessagesRecommends {
+	s.KnowledgeId = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesRecommends) SetTitle(v string) *BeeBotChatResponseBodyDataMessagesRecommends {
+	s.Title = &v
+	return s
+}
+
+type BeeBotChatResponseBodyDataMessagesText struct {
+	AnswerSource         *string                                        `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
+	Content              *string                                        `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentType          *string                                        `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	DialogName           *string                                        `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
+	Ext                  map[string]interface{}                         `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	ExternalFlags        map[string]interface{}                         `json:"ExternalFlags,omitempty" xml:"ExternalFlags,omitempty"`
+	HitStatement         *string                                        `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
+	IntentName           *string                                        `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	MetaData             *string                                        `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	NodeId               *string                                        `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName             *string                                        `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	Slots                []*BeeBotChatResponseBodyDataMessagesTextSlots `json:"Slots,omitempty" xml:"Slots,omitempty" type:"Repeated"`
+	UserDefinedChatTitle *string                                        `json:"UserDefinedChatTitle,omitempty" xml:"UserDefinedChatTitle,omitempty"`
+}
+
+func (s BeeBotChatResponseBodyDataMessagesText) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotChatResponseBodyDataMessagesText) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesText) SetAnswerSource(v string) *BeeBotChatResponseBodyDataMessagesText {
+	s.AnswerSource = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesText) SetContent(v string) *BeeBotChatResponseBodyDataMessagesText {
+	s.Content = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesText) SetContentType(v string) *BeeBotChatResponseBodyDataMessagesText {
+	s.ContentType = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesText) SetDialogName(v string) *BeeBotChatResponseBodyDataMessagesText {
+	s.DialogName = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesText) SetExt(v map[string]interface{}) *BeeBotChatResponseBodyDataMessagesText {
+	s.Ext = v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesText) SetExternalFlags(v map[string]interface{}) *BeeBotChatResponseBodyDataMessagesText {
+	s.ExternalFlags = v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesText) SetHitStatement(v string) *BeeBotChatResponseBodyDataMessagesText {
+	s.HitStatement = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesText) SetIntentName(v string) *BeeBotChatResponseBodyDataMessagesText {
+	s.IntentName = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesText) SetMetaData(v string) *BeeBotChatResponseBodyDataMessagesText {
+	s.MetaData = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesText) SetNodeId(v string) *BeeBotChatResponseBodyDataMessagesText {
+	s.NodeId = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesText) SetNodeName(v string) *BeeBotChatResponseBodyDataMessagesText {
+	s.NodeName = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesText) SetSlots(v []*BeeBotChatResponseBodyDataMessagesTextSlots) *BeeBotChatResponseBodyDataMessagesText {
+	s.Slots = v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesText) SetUserDefinedChatTitle(v string) *BeeBotChatResponseBodyDataMessagesText {
+	s.UserDefinedChatTitle = &v
+	return s
+}
+
+type BeeBotChatResponseBodyDataMessagesTextSlots struct {
+	Hit    *bool   `json:"Hit,omitempty" xml:"Hit,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s BeeBotChatResponseBodyDataMessagesTextSlots) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotChatResponseBodyDataMessagesTextSlots) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesTextSlots) SetHit(v bool) *BeeBotChatResponseBodyDataMessagesTextSlots {
+	s.Hit = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesTextSlots) SetName(v string) *BeeBotChatResponseBodyDataMessagesTextSlots {
+	s.Name = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesTextSlots) SetOrigin(v string) *BeeBotChatResponseBodyDataMessagesTextSlots {
+	s.Origin = &v
+	return s
+}
+
+func (s *BeeBotChatResponseBodyDataMessagesTextSlots) SetValue(v string) *BeeBotChatResponseBodyDataMessagesTextSlots {
+	s.Value = &v
+	return s
+}
+
+type BeeBotChatResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BeeBotChatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BeeBotChatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BeeBotChatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BeeBotChatResponse) SetHeaders(v map[string]*string) *BeeBotChatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BeeBotChatResponse) SetStatusCode(v int32) *BeeBotChatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BeeBotChatResponse) SetBody(v *BeeBotChatResponseBody) *BeeBotChatResponse {
+	s.Body = v
+	return s
+}
+
 type CreateChatappTemplateRequest struct {
 	Category     *string                                   `json:"Category,omitempty" xml:"Category,omitempty"`
 	Components   []*CreateChatappTemplateRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
@@ -866,6 +1593,281 @@ func (s *ListChatappTemplateResponse) SetBody(v *ListChatappTemplateResponseBody
 	return s
 }
 
+type ModifyChatappTemplateRequest struct {
+	Components   []*ModifyChatappTemplateRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	CustWabaId   *string                                   `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
+	Example      map[string]*string                        `json:"Example,omitempty" xml:"Example,omitempty"`
+	IsvCode      *string                                   `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	Language     *string                                   `json:"Language,omitempty" xml:"Language,omitempty"`
+	TemplateCode *string                                   `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s ModifyChatappTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyChatappTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyChatappTemplateRequest) SetComponents(v []*ModifyChatappTemplateRequestComponents) *ModifyChatappTemplateRequest {
+	s.Components = v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequest) SetCustWabaId(v string) *ModifyChatappTemplateRequest {
+	s.CustWabaId = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequest) SetExample(v map[string]*string) *ModifyChatappTemplateRequest {
+	s.Example = v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequest) SetIsvCode(v string) *ModifyChatappTemplateRequest {
+	s.IsvCode = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequest) SetLanguage(v string) *ModifyChatappTemplateRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequest) SetTemplateCode(v string) *ModifyChatappTemplateRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+type ModifyChatappTemplateRequestComponents struct {
+	Buttons  []*ModifyChatappTemplateRequestComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
+	Caption  *string                                          `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	FileName *string                                          `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Format   *string                                          `json:"Format,omitempty" xml:"Format,omitempty"`
+	Text     *string                                          `json:"Text,omitempty" xml:"Text,omitempty"`
+	Type     *string                                          `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url      *string                                          `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ModifyChatappTemplateRequestComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyChatappTemplateRequestComponents) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyChatappTemplateRequestComponents) SetButtons(v []*ModifyChatappTemplateRequestComponentsButtons) *ModifyChatappTemplateRequestComponents {
+	s.Buttons = v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequestComponents) SetCaption(v string) *ModifyChatappTemplateRequestComponents {
+	s.Caption = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequestComponents) SetFileName(v string) *ModifyChatappTemplateRequestComponents {
+	s.FileName = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequestComponents) SetFormat(v string) *ModifyChatappTemplateRequestComponents {
+	s.Format = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequestComponents) SetText(v string) *ModifyChatappTemplateRequestComponents {
+	s.Text = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequestComponents) SetType(v string) *ModifyChatappTemplateRequestComponents {
+	s.Type = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequestComponents) SetUrl(v string) *ModifyChatappTemplateRequestComponents {
+	s.Url = &v
+	return s
+}
+
+type ModifyChatappTemplateRequestComponentsButtons struct {
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url         *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	UrlType     *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
+}
+
+func (s ModifyChatappTemplateRequestComponentsButtons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyChatappTemplateRequestComponentsButtons) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyChatappTemplateRequestComponentsButtons) SetPhoneNumber(v string) *ModifyChatappTemplateRequestComponentsButtons {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequestComponentsButtons) SetText(v string) *ModifyChatappTemplateRequestComponentsButtons {
+	s.Text = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequestComponentsButtons) SetType(v string) *ModifyChatappTemplateRequestComponentsButtons {
+	s.Type = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequestComponentsButtons) SetUrl(v string) *ModifyChatappTemplateRequestComponentsButtons {
+	s.Url = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequestComponentsButtons) SetUrlType(v string) *ModifyChatappTemplateRequestComponentsButtons {
+	s.UrlType = &v
+	return s
+}
+
+type ModifyChatappTemplateShrinkRequest struct {
+	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
+	CustWabaId       *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
+	ExampleShrink    *string `json:"Example,omitempty" xml:"Example,omitempty"`
+	IsvCode          *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	Language         *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	TemplateCode     *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s ModifyChatappTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyChatappTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyChatappTemplateShrinkRequest) SetComponentsShrink(v string) *ModifyChatappTemplateShrinkRequest {
+	s.ComponentsShrink = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateShrinkRequest) SetCustWabaId(v string) *ModifyChatappTemplateShrinkRequest {
+	s.CustWabaId = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateShrinkRequest) SetExampleShrink(v string) *ModifyChatappTemplateShrinkRequest {
+	s.ExampleShrink = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateShrinkRequest) SetIsvCode(v string) *ModifyChatappTemplateShrinkRequest {
+	s.IsvCode = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateShrinkRequest) SetLanguage(v string) *ModifyChatappTemplateShrinkRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateShrinkRequest) SetTemplateCode(v string) *ModifyChatappTemplateShrinkRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+type ModifyChatappTemplateResponseBody struct {
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ModifyChatappTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyChatappTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyChatappTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyChatappTemplateResponseBody) SetCode(v string) *ModifyChatappTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateResponseBody) SetData(v *ModifyChatappTemplateResponseBodyData) *ModifyChatappTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyChatappTemplateResponseBody) SetMessage(v string) *ModifyChatappTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateResponseBody) SetRequestId(v string) *ModifyChatappTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyChatappTemplateResponseBodyData struct {
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s ModifyChatappTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyChatappTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyChatappTemplateResponseBodyData) SetTemplateCode(v string) *ModifyChatappTemplateResponseBodyData {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateResponseBodyData) SetTemplateName(v string) *ModifyChatappTemplateResponseBodyData {
+	s.TemplateName = &v
+	return s
+}
+
+type ModifyChatappTemplateResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyChatappTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyChatappTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyChatappTemplateResponse) SetHeaders(v map[string]*string) *ModifyChatappTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyChatappTemplateResponse) SetStatusCode(v int32) *ModifyChatappTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateResponse) SetBody(v *ModifyChatappTemplateResponseBody) *ModifyChatappTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type SendChatappMassMessageRequest struct {
 	ChannelType     *string                                    `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	CustWabaId      *string                                    `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
@@ -1402,6 +2404,166 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) BeeBotAssociateWithOptions(tmpReq *BeeBotAssociateRequest, runtime *util.RuntimeOptions) (_result *BeeBotAssociateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BeeBotAssociateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Perspective)) {
+		request.PerspectiveShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Perspective, tea.String("Perspective"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChatBotInstnaceId)) {
+		body["ChatBotInstnaceId"] = request.ChatBotInstnaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
+		body["IsvCode"] = request.IsvCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PerspectiveShrink)) {
+		body["Perspective"] = request.PerspectiveShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecommendNum)) {
+		body["RecommendNum"] = request.RecommendNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Utterance)) {
+		body["Utterance"] = request.Utterance
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BeeBotAssociate"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BeeBotAssociateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BeeBotAssociate(request *BeeBotAssociateRequest) (_result *BeeBotAssociateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BeeBotAssociateResponse{}
+	_body, _err := client.BeeBotAssociateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BeeBotChatWithOptions(tmpReq *BeeBotChatRequest, runtime *util.RuntimeOptions) (_result *BeeBotChatResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BeeBotChatShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Perspective)) {
+		request.PerspectiveShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Perspective, tea.String("Perspective"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.VendorParam)) {
+		request.VendorParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VendorParam, tea.String("VendorParam"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChatBotInstnaceId)) {
+		body["ChatBotInstnaceId"] = request.ChatBotInstnaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentName)) {
+		body["IntentName"] = request.IntentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
+		body["IsvCode"] = request.IsvCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeId)) {
+		body["KnowledgeId"] = request.KnowledgeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PerspectiveShrink)) {
+		body["Perspective"] = request.PerspectiveShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SenderId)) {
+		body["SenderId"] = request.SenderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SenderNick)) {
+		body["SenderNick"] = request.SenderNick
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Utterance)) {
+		body["Utterance"] = request.Utterance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VendorParamShrink)) {
+		body["VendorParam"] = request.VendorParamShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BeeBotChat"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BeeBotChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BeeBotChat(request *BeeBotChatRequest) (_result *BeeBotChatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BeeBotChatResponse{}
+	_body, _err := client.BeeBotChatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateChatappTemplateWithOptions(tmpReq *CreateChatappTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateChatappTemplateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -1655,6 +2817,80 @@ func (client *Client) ListChatappTemplate(request *ListChatappTemplateRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListChatappTemplateResponse{}
 	_body, _err := client.ListChatappTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyChatappTemplateWithOptions(tmpReq *ModifyChatappTemplateRequest, runtime *util.RuntimeOptions) (_result *ModifyChatappTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyChatappTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Components)) {
+		request.ComponentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Components, tea.String("Components"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Example)) {
+		request.ExampleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Example, tea.String("Example"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ComponentsShrink)) {
+		body["Components"] = request.ComponentsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
+		body["CustWabaId"] = request.CustWabaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExampleShrink)) {
+		body["Example"] = request.ExampleShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
+		body["IsvCode"] = request.IsvCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		body["TemplateCode"] = request.TemplateCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyChatappTemplate"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyChatappTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyChatappTemplate(request *ModifyChatappTemplateRequest) (_result *ModifyChatappTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyChatappTemplateResponse{}
+	_body, _err := client.ModifyChatappTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
