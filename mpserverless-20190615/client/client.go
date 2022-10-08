@@ -1950,9 +1950,10 @@ func (s *DescribeFileUploadSignedUrlRequest) SetSpaceId(v string) *DescribeFileU
 }
 
 type DescribeFileUploadSignedUrlResponseBody struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SignUrl   *string `json:"SignUrl,omitempty" xml:"SignUrl,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	OssCallbackUrl *string `json:"OssCallbackUrl,omitempty" xml:"OssCallbackUrl,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SignUrl        *string `json:"SignUrl,omitempty" xml:"SignUrl,omitempty"`
 }
 
 func (s DescribeFileUploadSignedUrlResponseBody) String() string {
@@ -1965,6 +1966,11 @@ func (s DescribeFileUploadSignedUrlResponseBody) GoString() string {
 
 func (s *DescribeFileUploadSignedUrlResponseBody) SetId(v string) *DescribeFileUploadSignedUrlResponseBody {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribeFileUploadSignedUrlResponseBody) SetOssCallbackUrl(v string) *DescribeFileUploadSignedUrlResponseBody {
+	s.OssCallbackUrl = &v
 	return s
 }
 
@@ -6580,14 +6586,16 @@ func (s *QuerySpaceConsumptionRequest) SetSpaceId(v string) *QuerySpaceConsumpti
 }
 
 type QuerySpaceConsumptionResponseBody struct {
-	CsUsage   *QuerySpaceConsumptionResponseBodyCsUsage `json:"CsUsage,omitempty" xml:"CsUsage,omitempty" type:"Struct"`
-	DbUsage   *QuerySpaceConsumptionResponseBodyDbUsage `json:"DbUsage,omitempty" xml:"DbUsage,omitempty" type:"Struct"`
-	FcUsage   *QuerySpaceConsumptionResponseBodyFcUsage `json:"FcUsage,omitempty" xml:"FcUsage,omitempty" type:"Struct"`
-	GmtCreate *string                                   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SpaceId   *string                                   `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
-	SpecCode  *string                                   `json:"SpecCode,omitempty" xml:"SpecCode,omitempty"`
-	WhUsage   *QuerySpaceConsumptionResponseBodyWhUsage `json:"WhUsage,omitempty" xml:"WhUsage,omitempty" type:"Struct"`
+	CsUsage        *QuerySpaceConsumptionResponseBodyCsUsage `json:"CsUsage,omitempty" xml:"CsUsage,omitempty" type:"Struct"`
+	CycleEndTime   *int64                                    `json:"CycleEndTime,omitempty" xml:"CycleEndTime,omitempty"`
+	CycleStartTime *int64                                    `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
+	DbUsage        *QuerySpaceConsumptionResponseBodyDbUsage `json:"DbUsage,omitempty" xml:"DbUsage,omitempty" type:"Struct"`
+	FcUsage        *QuerySpaceConsumptionResponseBodyFcUsage `json:"FcUsage,omitempty" xml:"FcUsage,omitempty" type:"Struct"`
+	GmtCreate      *string                                   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SpaceId        *string                                   `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	SpecCode       *string                                   `json:"SpecCode,omitempty" xml:"SpecCode,omitempty"`
+	WhUsage        *QuerySpaceConsumptionResponseBodyWhUsage `json:"WhUsage,omitempty" xml:"WhUsage,omitempty" type:"Struct"`
 }
 
 func (s QuerySpaceConsumptionResponseBody) String() string {
@@ -6600,6 +6608,16 @@ func (s QuerySpaceConsumptionResponseBody) GoString() string {
 
 func (s *QuerySpaceConsumptionResponseBody) SetCsUsage(v *QuerySpaceConsumptionResponseBodyCsUsage) *QuerySpaceConsumptionResponseBody {
 	s.CsUsage = v
+	return s
+}
+
+func (s *QuerySpaceConsumptionResponseBody) SetCycleEndTime(v int64) *QuerySpaceConsumptionResponseBody {
+	s.CycleEndTime = &v
+	return s
+}
+
+func (s *QuerySpaceConsumptionResponseBody) SetCycleStartTime(v int64) *QuerySpaceConsumptionResponseBody {
+	s.CycleStartTime = &v
 	return s
 }
 
