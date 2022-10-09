@@ -1,3 +1,6 @@
+2022-10-09 Version: v1.0.18
+- Update Syn Person.
+
 2022-09-29 Version: v1.0.17
 - Update Code and Message.
 

@@ -13087,6 +13087,7 @@ type IsvUserSaveRequestUserList struct {
 	Email             *string   `json:"email,omitempty" xml:"email,omitempty"`
 	JobNo             *string   `json:"job_no,omitempty" xml:"job_no,omitempty"`
 	LeaveStatus       *int32    `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
+	ManagerUserId     *string   `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
 	Phone             *string   `json:"phone,omitempty" xml:"phone,omitempty"`
 	Position          *string   `json:"position,omitempty" xml:"position,omitempty"`
 	PositionLevel     *string   `json:"position_level,omitempty" xml:"position_level,omitempty"`
@@ -13122,6 +13123,11 @@ func (s *IsvUserSaveRequestUserList) SetJobNo(v string) *IsvUserSaveRequestUserL
 
 func (s *IsvUserSaveRequestUserList) SetLeaveStatus(v int32) *IsvUserSaveRequestUserList {
 	s.LeaveStatus = &v
+	return s
+}
+
+func (s *IsvUserSaveRequestUserList) SetManagerUserId(v string) *IsvUserSaveRequestUserList {
+	s.ManagerUserId = &v
 	return s
 }
 
