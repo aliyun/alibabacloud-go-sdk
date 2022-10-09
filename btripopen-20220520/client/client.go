@@ -193,10 +193,10 @@ func (s *AddressGetRequest) SetUserId(v string) *AddressGetRequest {
 }
 
 type AddressGetResponseBody struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                        `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                       `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *AddressGetResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                         `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                       `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -207,11 +207,6 @@ func (s AddressGetResponseBody) String() string {
 
 func (s AddressGetResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *AddressGetResponseBody) SetRequestId(v string) *AddressGetResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *AddressGetResponseBody) SetCode(v int32) *AddressGetResponseBody {
@@ -226,6 +221,11 @@ func (s *AddressGetResponseBody) SetMessage(v string) *AddressGetResponseBody {
 
 func (s *AddressGetResponseBody) SetModule(v *AddressGetResponseBodyModule) *AddressGetResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *AddressGetResponseBody) SetRequestId(v string) *AddressGetResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1300,10 +1300,10 @@ func (s *ApplyAddShrinkRequest) SetVehicleBudget(v int64) *ApplyAddShrinkRequest
 }
 
 type ApplyAddResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                      `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                     `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *ApplyAddResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                       `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                     `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -1314,11 +1314,6 @@ func (s ApplyAddResponseBody) String() string {
 
 func (s ApplyAddResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ApplyAddResponseBody) SetRequestId(v string) *ApplyAddResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *ApplyAddResponseBody) SetCode(v int32) *ApplyAddResponseBody {
@@ -1333,6 +1328,11 @@ func (s *ApplyAddResponseBody) SetMessage(v string) *ApplyAddResponseBody {
 
 func (s *ApplyAddResponseBody) SetModule(v *ApplyAddResponseBodyModule) *ApplyAddResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *ApplyAddResponseBody) SetRequestId(v string) *ApplyAddResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1478,7 +1478,7 @@ type ApplyApproveResponseBody struct {
 	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *string `json:"module,omitempty" xml:"module,omitempty"`
-	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string `json:"trace_id,omitempty" xml:"trace_id,omitempty"`
 }
@@ -1651,10 +1651,10 @@ func (s *ApplyListQueryRequest) SetUserId(v string) *ApplyListQueryRequest {
 }
 
 type ApplyListQueryResponseBody struct {
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code       *int32                                  `json:"code,omitempty" xml:"code,omitempty"`
 	Message    *string                                 `json:"message,omitempty" xml:"message,omitempty"`
 	ModuleList []*ApplyListQueryResponseBodyModuleList `json:"module_list,omitempty" xml:"module_list,omitempty" type:"Repeated"`
+	RequestId  *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success    *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId    *string                                 `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -1665,11 +1665,6 @@ func (s ApplyListQueryResponseBody) String() string {
 
 func (s ApplyListQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ApplyListQueryResponseBody) SetRequestId(v string) *ApplyListQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *ApplyListQueryResponseBody) SetCode(v int32) *ApplyListQueryResponseBody {
@@ -1684,6 +1679,11 @@ func (s *ApplyListQueryResponseBody) SetMessage(v string) *ApplyListQueryRespons
 
 func (s *ApplyListQueryResponseBody) SetModuleList(v []*ApplyListQueryResponseBodyModuleList) *ApplyListQueryResponseBody {
 	s.ModuleList = v
+	return s
+}
+
+func (s *ApplyListQueryResponseBody) SetRequestId(v string) *ApplyListQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2945,10 +2945,10 @@ func (s *ApplyModifyShrinkRequest) SetVehicleBudget(v int64) *ApplyModifyShrinkR
 }
 
 type ApplyModifyResponseBody struct {
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                         `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                        `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *ApplyModifyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                          `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                        `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -2959,11 +2959,6 @@ func (s ApplyModifyResponseBody) String() string {
 
 func (s ApplyModifyResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ApplyModifyResponseBody) SetRequestId(v string) *ApplyModifyResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *ApplyModifyResponseBody) SetCode(v int32) *ApplyModifyResponseBody {
@@ -2978,6 +2973,11 @@ func (s *ApplyModifyResponseBody) SetMessage(v string) *ApplyModifyResponseBody 
 
 func (s *ApplyModifyResponseBody) SetModule(v *ApplyModifyResponseBodyModule) *ApplyModifyResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *ApplyModifyResponseBody) SetRequestId(v string) *ApplyModifyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3108,10 +3108,10 @@ func (s *ApplyQueryRequest) SetType(v int32) *ApplyQueryRequest {
 }
 
 type ApplyQueryResponseBody struct {
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                        `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                       `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *ApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                         `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                       `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -3122,11 +3122,6 @@ func (s ApplyQueryResponseBody) String() string {
 
 func (s ApplyQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ApplyQueryResponseBody) SetRequestId(v string) *ApplyQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *ApplyQueryResponseBody) SetCode(v int32) *ApplyQueryResponseBody {
@@ -3141,6 +3136,11 @@ func (s *ApplyQueryResponseBody) SetMessage(v string) *ApplyQueryResponseBody {
 
 func (s *ApplyQueryResponseBody) SetModule(v *ApplyQueryResponseBodyModule) *ApplyQueryResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *ApplyQueryResponseBody) SetRequestId(v string) *ApplyQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3941,10 +3941,10 @@ func (s *CarApplyAddRequest) SetUserId(v string) *CarApplyAddRequest {
 }
 
 type CarApplyAddResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *int64  `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -3955,11 +3955,6 @@ func (s CarApplyAddResponseBody) String() string {
 
 func (s CarApplyAddResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CarApplyAddResponseBody) SetRequestId(v string) *CarApplyAddResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *CarApplyAddResponseBody) SetCode(v int32) *CarApplyAddResponseBody {
@@ -3974,6 +3969,11 @@ func (s *CarApplyAddResponseBody) SetMessage(v string) *CarApplyAddResponseBody 
 
 func (s *CarApplyAddResponseBody) SetModule(v int64) *CarApplyAddResponseBody {
 	s.Module = &v
+	return s
+}
+
+func (s *CarApplyAddResponseBody) SetRequestId(v string) *CarApplyAddResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4081,10 +4081,10 @@ func (s *CarApplyModifyRequest) SetUserId(v string) *CarApplyModifyRequest {
 }
 
 type CarApplyModifyResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -4095,11 +4095,6 @@ func (s CarApplyModifyResponseBody) String() string {
 
 func (s CarApplyModifyResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CarApplyModifyResponseBody) SetRequestId(v string) *CarApplyModifyResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *CarApplyModifyResponseBody) SetCode(v int32) *CarApplyModifyResponseBody {
@@ -4114,6 +4109,11 @@ func (s *CarApplyModifyResponseBody) SetMessage(v string) *CarApplyModifyRespons
 
 func (s *CarApplyModifyResponseBody) SetModule(v bool) *CarApplyModifyResponseBody {
 	s.Module = &v
+	return s
+}
+
+func (s *CarApplyModifyResponseBody) SetRequestId(v string) *CarApplyModifyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4604,10 +4604,10 @@ func (s *CarBillSettlementQueryRequest) SetPeriodStart(v string) *CarBillSettlem
 }
 
 type CarBillSettlementQueryResponseBody struct {
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                                    `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                                   `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *CarBillSettlementQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                                   `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -4618,11 +4618,6 @@ func (s CarBillSettlementQueryResponseBody) String() string {
 
 func (s CarBillSettlementQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CarBillSettlementQueryResponseBody) SetRequestId(v string) *CarBillSettlementQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *CarBillSettlementQueryResponseBody) SetCode(v int32) *CarBillSettlementQueryResponseBody {
@@ -4637,6 +4632,11 @@ func (s *CarBillSettlementQueryResponseBody) SetMessage(v string) *CarBillSettle
 
 func (s *CarBillSettlementQueryResponseBody) SetModule(v *CarBillSettlementQueryResponseBodyModule) *CarBillSettlementQueryResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBody) SetRequestId(v string) *CarBillSettlementQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5180,11 +5180,11 @@ func (s *CarOrderListQueryRequest) SetUserId(v string) *CarOrderListQueryRequest
 }
 
 type CarOrderListQueryResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                                 `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
 	Module    []*CarOrderListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
 	PageInfo  *CarOrderListQueryResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -5195,11 +5195,6 @@ func (s CarOrderListQueryResponseBody) String() string {
 
 func (s CarOrderListQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CarOrderListQueryResponseBody) SetRequestId(v string) *CarOrderListQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *CarOrderListQueryResponseBody) SetCode(v int32) *CarOrderListQueryResponseBody {
@@ -5219,6 +5214,11 @@ func (s *CarOrderListQueryResponseBody) SetModule(v []*CarOrderListQueryResponse
 
 func (s *CarOrderListQueryResponseBody) SetPageInfo(v *CarOrderListQueryResponseBodyPageInfo) *CarOrderListQueryResponseBody {
 	s.PageInfo = v
+	return s
+}
+
+func (s *CarOrderListQueryResponseBody) SetRequestId(v string) *CarOrderListQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5904,10 +5904,10 @@ func (s *CommonApplyQueryRequest) SetUserId(v string) *CommonApplyQueryRequest {
 }
 
 type CommonApplyQueryResponseBody struct {
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                              `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *CommonApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -5918,11 +5918,6 @@ func (s CommonApplyQueryResponseBody) String() string {
 
 func (s CommonApplyQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CommonApplyQueryResponseBody) SetRequestId(v string) *CommonApplyQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *CommonApplyQueryResponseBody) SetCode(v int32) *CommonApplyQueryResponseBody {
@@ -5937,6 +5932,11 @@ func (s *CommonApplyQueryResponseBody) SetMessage(v string) *CommonApplyQueryRes
 
 func (s *CommonApplyQueryResponseBody) SetModule(v *CommonApplyQueryResponseBodyModule) *CommonApplyQueryResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *CommonApplyQueryResponseBody) SetRequestId(v string) *CommonApplyQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6127,10 +6127,10 @@ func (s *CommonApplySyncRequest) SetUserId(v string) *CommonApplySyncRequest {
 }
 
 type CommonApplySyncResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -6141,11 +6141,6 @@ func (s CommonApplySyncResponseBody) String() string {
 
 func (s CommonApplySyncResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CommonApplySyncResponseBody) SetRequestId(v string) *CommonApplySyncResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *CommonApplySyncResponseBody) SetCode(v int32) *CommonApplySyncResponseBody {
@@ -6160,6 +6155,11 @@ func (s *CommonApplySyncResponseBody) SetMessage(v string) *CommonApplySyncRespo
 
 func (s *CommonApplySyncResponseBody) SetModule(v bool) *CommonApplySyncResponseBody {
 	s.Module = &v
+	return s
+}
+
+func (s *CommonApplySyncResponseBody) SetRequestId(v string) *CommonApplySyncResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6382,9 +6382,9 @@ func (s *CostCenterDeleteRequest) SetThirdpartId(v string) *CostCenterDeleteRequ
 }
 
 type CostCenterDeleteResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -6397,11 +6397,6 @@ func (s CostCenterDeleteResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CostCenterDeleteResponseBody) SetRequestId(v string) *CostCenterDeleteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CostCenterDeleteResponseBody) SetCode(v int32) *CostCenterDeleteResponseBody {
 	s.Code = &v
 	return s
@@ -6409,6 +6404,11 @@ func (s *CostCenterDeleteResponseBody) SetCode(v int32) *CostCenterDeleteRespons
 
 func (s *CostCenterDeleteResponseBody) SetMessage(v string) *CostCenterDeleteResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *CostCenterDeleteResponseBody) SetRequestId(v string) *CostCenterDeleteResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6516,9 +6516,9 @@ func (s *CostCenterModifyRequest) SetTitle(v string) *CostCenterModifyRequest {
 }
 
 type CostCenterModifyResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -6531,11 +6531,6 @@ func (s CostCenterModifyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CostCenterModifyResponseBody) SetRequestId(v string) *CostCenterModifyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CostCenterModifyResponseBody) SetCode(v int32) *CostCenterModifyResponseBody {
 	s.Code = &v
 	return s
@@ -6543,6 +6538,11 @@ func (s *CostCenterModifyResponseBody) SetCode(v int32) *CostCenterModifyRespons
 
 func (s *CostCenterModifyResponseBody) SetMessage(v string) *CostCenterModifyResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *CostCenterModifyResponseBody) SetRequestId(v string) *CostCenterModifyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6644,11 +6644,11 @@ func (s *CostCenterQueryRequest) SetUserId(v string) *CostCenterQueryRequest {
 }
 
 type CostCenterQueryResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                               `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
 	Module    []*CostCenterQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
 	MorePage  *bool                                `json:"more_page,omitempty" xml:"more_page,omitempty"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -6659,11 +6659,6 @@ func (s CostCenterQueryResponseBody) String() string {
 
 func (s CostCenterQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CostCenterQueryResponseBody) SetRequestId(v string) *CostCenterQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *CostCenterQueryResponseBody) SetCode(v int32) *CostCenterQueryResponseBody {
@@ -6683,6 +6678,11 @@ func (s *CostCenterQueryResponseBody) SetModule(v []*CostCenterQueryResponseBody
 
 func (s *CostCenterQueryResponseBody) SetMorePage(v bool) *CostCenterQueryResponseBody {
 	s.MorePage = &v
+	return s
+}
+
+func (s *CostCenterQueryResponseBody) SetRequestId(v string) *CostCenterQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6896,10 +6896,10 @@ func (s *CostCenterSaveRequest) SetTitle(v string) *CostCenterSaveRequest {
 }
 
 type CostCenterSaveResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                            `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                           `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *CostCenterSaveResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                             `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -6910,11 +6910,6 @@ func (s CostCenterSaveResponseBody) String() string {
 
 func (s CostCenterSaveResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CostCenterSaveResponseBody) SetRequestId(v string) *CostCenterSaveResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *CostCenterSaveResponseBody) SetCode(v int32) *CostCenterSaveResponseBody {
@@ -6929,6 +6924,11 @@ func (s *CostCenterSaveResponseBody) SetMessage(v string) *CostCenterSaveRespons
 
 func (s *CostCenterSaveResponseBody) SetModule(v *CostCenterSaveResponseBodyModule) *CostCenterSaveResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *CostCenterSaveResponseBody) SetRequestId(v string) *CostCenterSaveResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7267,10 +7267,10 @@ func (s *EntityAddShrinkRequest) SetThirdpartId(v string) *EntityAddShrinkReques
 }
 
 type EntityAddResponseBody struct {
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                       `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                      `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *EntityAddResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                        `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -7281,11 +7281,6 @@ func (s EntityAddResponseBody) String() string {
 
 func (s EntityAddResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *EntityAddResponseBody) SetRequestId(v string) *EntityAddResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *EntityAddResponseBody) SetCode(v int32) *EntityAddResponseBody {
@@ -7300,6 +7295,11 @@ func (s *EntityAddResponseBody) SetMessage(v string) *EntityAddResponseBody {
 
 func (s *EntityAddResponseBody) SetModule(v *EntityAddResponseBodyModule) *EntityAddResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *EntityAddResponseBody) SetRequestId(v string) *EntityAddResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7667,11 +7667,11 @@ func (s *EntitySetShrinkRequest) SetThirdpartId(v string) *EntitySetShrinkReques
 }
 
 type EntitySetResponseBody struct {
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                       `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                      `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *EntitySetResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	MorePage  *bool                        `json:"more_page,omitempty" xml:"more_page,omitempty"`
+	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                        `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -7682,11 +7682,6 @@ func (s EntitySetResponseBody) String() string {
 
 func (s EntitySetResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *EntitySetResponseBody) SetRequestId(v string) *EntitySetResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *EntitySetResponseBody) SetCode(v int32) *EntitySetResponseBody {
@@ -7706,6 +7701,11 @@ func (s *EntitySetResponseBody) SetModule(v *EntitySetResponseBodyModule) *Entit
 
 func (s *EntitySetResponseBody) SetMorePage(v bool) *EntitySetResponseBody {
 	s.MorePage = &v
+	return s
+}
+
+func (s *EntitySetResponseBody) SetRequestId(v string) *EntitySetResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7982,10 +7982,10 @@ func (s *FlightBillSettlementQueryRequest) SetPeriodStart(v string) *FlightBillS
 }
 
 type FlightBillSettlementQueryResponseBody struct {
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                                       `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                                      `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *FlightBillSettlementQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                        `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -7996,11 +7996,6 @@ func (s FlightBillSettlementQueryResponseBody) String() string {
 
 func (s FlightBillSettlementQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *FlightBillSettlementQueryResponseBody) SetRequestId(v string) *FlightBillSettlementQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *FlightBillSettlementQueryResponseBody) SetCode(v int32) *FlightBillSettlementQueryResponseBody {
@@ -8015,6 +8010,11 @@ func (s *FlightBillSettlementQueryResponseBody) SetMessage(v string) *FlightBill
 
 func (s *FlightBillSettlementQueryResponseBody) SetModule(v *FlightBillSettlementQueryResponseBodyModule) *FlightBillSettlementQueryResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBody) SetRequestId(v string) *FlightBillSettlementQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8582,10 +8582,10 @@ func (s *FlightExceedApplyQueryRequest) SetApplyId(v int64) *FlightExceedApplyQu
 }
 
 type FlightExceedApplyQueryResponseBody struct {
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                                    `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                                   `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *FlightExceedApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                                   `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -8596,11 +8596,6 @@ func (s FlightExceedApplyQueryResponseBody) String() string {
 
 func (s FlightExceedApplyQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *FlightExceedApplyQueryResponseBody) SetRequestId(v string) *FlightExceedApplyQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *FlightExceedApplyQueryResponseBody) SetCode(v int32) *FlightExceedApplyQueryResponseBody {
@@ -8615,6 +8610,11 @@ func (s *FlightExceedApplyQueryResponseBody) SetMessage(v string) *FlightExceedA
 
 func (s *FlightExceedApplyQueryResponseBody) SetModule(v *FlightExceedApplyQueryResponseBodyModule) *FlightExceedApplyQueryResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBody) SetRequestId(v string) *FlightExceedApplyQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8930,11 +8930,11 @@ func (s *FlightOrderListQueryRequest) SetUserId(v string) *FlightOrderListQueryR
 }
 
 type FlightOrderListQueryResponseBody struct {
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                                    `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                                   `json:"message,omitempty" xml:"message,omitempty"`
 	Module    []*FlightOrderListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
 	PageInfo  *FlightOrderListQueryResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                                   `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -8945,11 +8945,6 @@ func (s FlightOrderListQueryResponseBody) String() string {
 
 func (s FlightOrderListQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *FlightOrderListQueryResponseBody) SetRequestId(v string) *FlightOrderListQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *FlightOrderListQueryResponseBody) SetCode(v int32) *FlightOrderListQueryResponseBody {
@@ -8969,6 +8964,11 @@ func (s *FlightOrderListQueryResponseBody) SetModule(v []*FlightOrderListQueryRe
 
 func (s *FlightOrderListQueryResponseBody) SetPageInfo(v *FlightOrderListQueryResponseBodyPageInfo) *FlightOrderListQueryResponseBody {
 	s.PageInfo = v
+	return s
+}
+
+func (s *FlightOrderListQueryResponseBody) SetRequestId(v string) *FlightOrderListQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9519,10 +9519,10 @@ func (s *FlightOrderQueryRequest) SetUserId(v string) *FlightOrderQueryRequest {
 }
 
 type FlightOrderQueryResponseBody struct {
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                              `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *FlightOrderQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -9533,11 +9533,6 @@ func (s FlightOrderQueryResponseBody) String() string {
 
 func (s FlightOrderQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *FlightOrderQueryResponseBody) SetRequestId(v string) *FlightOrderQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *FlightOrderQueryResponseBody) SetCode(v int32) *FlightOrderQueryResponseBody {
@@ -9552,6 +9547,11 @@ func (s *FlightOrderQueryResponseBody) SetMessage(v string) *FlightOrderQueryRes
 
 func (s *FlightOrderQueryResponseBody) SetModule(v *FlightOrderQueryResponseBodyModule) *FlightOrderQueryResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBody) SetRequestId(v string) *FlightOrderQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10849,10 +10849,10 @@ func (s *HotelExceedApplyQueryRequest) SetApplyId(v int64) *HotelExceedApplyQuer
 }
 
 type HotelExceedApplyQueryResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                                   `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *HotelExceedApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -10863,11 +10863,6 @@ func (s HotelExceedApplyQueryResponseBody) String() string {
 
 func (s HotelExceedApplyQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *HotelExceedApplyQueryResponseBody) SetRequestId(v string) *HotelExceedApplyQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *HotelExceedApplyQueryResponseBody) SetCode(v int32) *HotelExceedApplyQueryResponseBody {
@@ -10882,6 +10877,11 @@ func (s *HotelExceedApplyQueryResponseBody) SetMessage(v string) *HotelExceedApp
 
 func (s *HotelExceedApplyQueryResponseBody) SetModule(v *HotelExceedApplyQueryResponseBodyModule) *HotelExceedApplyQueryResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *HotelExceedApplyQueryResponseBody) SetRequestId(v string) *HotelExceedApplyQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11161,11 +11161,11 @@ func (s *HotelOrderListQueryRequest) SetUserId(v string) *HotelOrderListQueryReq
 }
 
 type HotelOrderListQueryResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                                   `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
 	Module    []*HotelOrderListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
 	PageInfo  *HotelOrderListQueryResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -11176,11 +11176,6 @@ func (s HotelOrderListQueryResponseBody) String() string {
 
 func (s HotelOrderListQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *HotelOrderListQueryResponseBody) SetRequestId(v string) *HotelOrderListQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *HotelOrderListQueryResponseBody) SetCode(v int32) *HotelOrderListQueryResponseBody {
@@ -11200,6 +11195,11 @@ func (s *HotelOrderListQueryResponseBody) SetModule(v []*HotelOrderListQueryResp
 
 func (s *HotelOrderListQueryResponseBody) SetPageInfo(v *HotelOrderListQueryResponseBodyPageInfo) *HotelOrderListQueryResponseBody {
 	s.PageInfo = v
+	return s
+}
+
+func (s *HotelOrderListQueryResponseBody) SetRequestId(v string) *HotelOrderListQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -12351,9 +12351,9 @@ func (s *InvoiceAddRequest) SetType(v int32) *InvoiceAddRequest {
 }
 
 type InvoiceAddResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -12366,11 +12366,6 @@ func (s InvoiceAddResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *InvoiceAddResponseBody) SetRequestId(v string) *InvoiceAddResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *InvoiceAddResponseBody) SetCode(v int32) *InvoiceAddResponseBody {
 	s.Code = &v
 	return s
@@ -12378,6 +12373,11 @@ func (s *InvoiceAddResponseBody) SetCode(v int32) *InvoiceAddResponseBody {
 
 func (s *InvoiceAddResponseBody) SetMessage(v string) *InvoiceAddResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *InvoiceAddResponseBody) SetRequestId(v string) *InvoiceAddResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -12461,9 +12461,9 @@ func (s *InvoiceDeleteRequest) SetThirdPartId(v string) *InvoiceDeleteRequest {
 }
 
 type InvoiceDeleteResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -12476,11 +12476,6 @@ func (s InvoiceDeleteResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *InvoiceDeleteResponseBody) SetRequestId(v string) *InvoiceDeleteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *InvoiceDeleteResponseBody) SetCode(v int32) *InvoiceDeleteResponseBody {
 	s.Code = &v
 	return s
@@ -12488,6 +12483,11 @@ func (s *InvoiceDeleteResponseBody) SetCode(v int32) *InvoiceDeleteResponseBody 
 
 func (s *InvoiceDeleteResponseBody) SetMessage(v string) *InvoiceDeleteResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *InvoiceDeleteResponseBody) SetRequestId(v string) *InvoiceDeleteResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -12613,9 +12613,9 @@ func (s *InvoiceModifyRequest) SetType(v int32) *InvoiceModifyRequest {
 }
 
 type InvoiceModifyResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -12628,11 +12628,6 @@ func (s InvoiceModifyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *InvoiceModifyResponseBody) SetRequestId(v string) *InvoiceModifyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *InvoiceModifyResponseBody) SetCode(v int32) *InvoiceModifyResponseBody {
 	s.Code = &v
 	return s
@@ -12640,6 +12635,11 @@ func (s *InvoiceModifyResponseBody) SetCode(v int32) *InvoiceModifyResponseBody 
 
 func (s *InvoiceModifyResponseBody) SetMessage(v string) *InvoiceModifyResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *InvoiceModifyResponseBody) SetRequestId(v string) *InvoiceModifyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -12793,10 +12793,10 @@ func (s *InvoiceRuleSaveShrinkRequest) SetThirdPartId(v string) *InvoiceRuleSave
 }
 
 type InvoiceRuleSaveResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                             `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                            `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *InvoiceRuleSaveResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                            `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -12807,11 +12807,6 @@ func (s InvoiceRuleSaveResponseBody) String() string {
 
 func (s InvoiceRuleSaveResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *InvoiceRuleSaveResponseBody) SetRequestId(v string) *InvoiceRuleSaveResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *InvoiceRuleSaveResponseBody) SetCode(v int32) *InvoiceRuleSaveResponseBody {
@@ -12826,6 +12821,11 @@ func (s *InvoiceRuleSaveResponseBody) SetMessage(v string) *InvoiceRuleSaveRespo
 
 func (s *InvoiceRuleSaveResponseBody) SetModule(v *InvoiceRuleSaveResponseBodyModule) *InvoiceRuleSaveResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *InvoiceRuleSaveResponseBody) SetRequestId(v string) *InvoiceRuleSaveResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -12938,10 +12938,10 @@ func (s *InvoiceSearchRequest) SetUserId(v string) *InvoiceSearchRequest {
 }
 
 type InvoiceSearchResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                             `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                            `json:"message,omitempty" xml:"message,omitempty"`
 	Module    []*InvoiceSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                            `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -12952,11 +12952,6 @@ func (s InvoiceSearchResponseBody) String() string {
 
 func (s InvoiceSearchResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *InvoiceSearchResponseBody) SetRequestId(v string) *InvoiceSearchResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *InvoiceSearchResponseBody) SetCode(v int32) *InvoiceSearchResponseBody {
@@ -12971,6 +12966,11 @@ func (s *InvoiceSearchResponseBody) SetMessage(v string) *InvoiceSearchResponseB
 
 func (s *InvoiceSearchResponseBody) SetModule(v []*InvoiceSearchResponseBodyModule) *InvoiceSearchResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *InvoiceSearchResponseBody) SetRequestId(v string) *InvoiceSearchResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -13305,10 +13305,10 @@ func (s *MonthBillGetRequest) SetBillMonth(v string) *MonthBillGetRequest {
 }
 
 type MonthBillGetResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                            `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                           `json:"message,omitempty" xml:"message,omitempty"`
 	Module    []*MonthBillGetResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                             `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -13319,11 +13319,6 @@ func (s MonthBillGetResponseBody) String() string {
 
 func (s MonthBillGetResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *MonthBillGetResponseBody) SetRequestId(v string) *MonthBillGetResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *MonthBillGetResponseBody) SetCode(v int32) *MonthBillGetResponseBody {
@@ -13338,6 +13333,11 @@ func (s *MonthBillGetResponseBody) SetMessage(v string) *MonthBillGetResponseBod
 
 func (s *MonthBillGetResponseBody) SetModule(v []*MonthBillGetResponseBodyModule) *MonthBillGetResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *MonthBillGetResponseBody) SetRequestId(v string) *MonthBillGetResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -13474,11 +13474,11 @@ func (s *ProjectAddRequest) SetThirdPartInvoiceId(v string) *ProjectAddRequest {
 }
 
 type ProjectAddResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *int64  `json:"module,omitempty" xml:"module,omitempty"`
 	MorePage  *bool   `json:"more_page,omitempty" xml:"more_page,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -13489,11 +13489,6 @@ func (s ProjectAddResponseBody) String() string {
 
 func (s ProjectAddResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ProjectAddResponseBody) SetRequestId(v string) *ProjectAddResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *ProjectAddResponseBody) SetCode(v int32) *ProjectAddResponseBody {
@@ -13513,6 +13508,11 @@ func (s *ProjectAddResponseBody) SetModule(v int64) *ProjectAddResponseBody {
 
 func (s *ProjectAddResponseBody) SetMorePage(v bool) *ProjectAddResponseBody {
 	s.MorePage = &v
+	return s
+}
+
+func (s *ProjectAddResponseBody) SetRequestId(v string) *ProjectAddResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -13596,10 +13596,10 @@ func (s *ProjectDeleteRequest) SetThirdPartId(v string) *ProjectDeleteRequest {
 }
 
 type ProjectDeleteResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -13610,11 +13610,6 @@ func (s ProjectDeleteResponseBody) String() string {
 
 func (s ProjectDeleteResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ProjectDeleteResponseBody) SetRequestId(v string) *ProjectDeleteResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *ProjectDeleteResponseBody) SetCode(v int32) *ProjectDeleteResponseBody {
@@ -13629,6 +13624,11 @@ func (s *ProjectDeleteResponseBody) SetMessage(v string) *ProjectDeleteResponseB
 
 func (s *ProjectDeleteResponseBody) SetModule(v bool) *ProjectDeleteResponseBody {
 	s.Module = &v
+	return s
+}
+
+func (s *ProjectDeleteResponseBody) SetRequestId(v string) *ProjectDeleteResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -13736,10 +13736,10 @@ func (s *ProjectModifyRequest) SetThirdPartInvoiceId(v string) *ProjectModifyReq
 }
 
 type ProjectModifyResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -13750,11 +13750,6 @@ func (s ProjectModifyResponseBody) String() string {
 
 func (s ProjectModifyResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ProjectModifyResponseBody) SetRequestId(v string) *ProjectModifyResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *ProjectModifyResponseBody) SetCode(v int32) *ProjectModifyResponseBody {
@@ -13769,6 +13764,11 @@ func (s *ProjectModifyResponseBody) SetMessage(v string) *ProjectModifyResponseB
 
 func (s *ProjectModifyResponseBody) SetModule(v bool) *ProjectModifyResponseBody {
 	s.Module = &v
+	return s
+}
+
+func (s *ProjectModifyResponseBody) SetRequestId(v string) *ProjectModifyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -13870,10 +13870,10 @@ func (s *TrainBillSettlementQueryRequest) SetPeriodStart(v string) *TrainBillSet
 }
 
 type TrainBillSettlementQueryResponseBody struct {
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                                      `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                                     `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *TrainBillSettlementQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                       `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                                     `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -13884,11 +13884,6 @@ func (s TrainBillSettlementQueryResponseBody) String() string {
 
 func (s TrainBillSettlementQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *TrainBillSettlementQueryResponseBody) SetRequestId(v string) *TrainBillSettlementQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *TrainBillSettlementQueryResponseBody) SetCode(v int32) *TrainBillSettlementQueryResponseBody {
@@ -13903,6 +13898,11 @@ func (s *TrainBillSettlementQueryResponseBody) SetMessage(v string) *TrainBillSe
 
 func (s *TrainBillSettlementQueryResponseBody) SetModule(v *TrainBillSettlementQueryResponseBodyModule) *TrainBillSettlementQueryResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBody) SetRequestId(v string) *TrainBillSettlementQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -14338,10 +14338,10 @@ func (s *TrainExceedApplyQueryRequest) SetApplyId(v int64) *TrainExceedApplyQuer
 }
 
 type TrainExceedApplyQueryResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                                   `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *TrainExceedApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -14352,11 +14352,6 @@ func (s TrainExceedApplyQueryResponseBody) String() string {
 
 func (s TrainExceedApplyQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *TrainExceedApplyQueryResponseBody) SetRequestId(v string) *TrainExceedApplyQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *TrainExceedApplyQueryResponseBody) SetCode(v int32) *TrainExceedApplyQueryResponseBody {
@@ -14371,6 +14366,11 @@ func (s *TrainExceedApplyQueryResponseBody) SetMessage(v string) *TrainExceedApp
 
 func (s *TrainExceedApplyQueryResponseBody) SetModule(v *TrainExceedApplyQueryResponseBodyModule) *TrainExceedApplyQueryResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *TrainExceedApplyQueryResponseBody) SetRequestId(v string) *TrainExceedApplyQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -14686,11 +14686,11 @@ func (s *TrainOrderListQueryRequest) SetUserId(v string) *TrainOrderListQueryReq
 }
 
 type TrainOrderListQueryResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                                   `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
 	Module    []*TrainOrderListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
 	PageInfo  *TrainOrderListQueryResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -14701,11 +14701,6 @@ func (s TrainOrderListQueryResponseBody) String() string {
 
 func (s TrainOrderListQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *TrainOrderListQueryResponseBody) SetRequestId(v string) *TrainOrderListQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *TrainOrderListQueryResponseBody) SetCode(v int32) *TrainOrderListQueryResponseBody {
@@ -14725,6 +14720,11 @@ func (s *TrainOrderListQueryResponseBody) SetModule(v []*TrainOrderListQueryResp
 
 func (s *TrainOrderListQueryResponseBody) SetPageInfo(v *TrainOrderListQueryResponseBodyPageInfo) *TrainOrderListQueryResponseBody {
 	s.PageInfo = v
+	return s
+}
+
+func (s *TrainOrderListQueryResponseBody) SetRequestId(v string) *TrainOrderListQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -15252,8 +15252,8 @@ func (s *TrainOrderQueryRequest) SetUserId(v string) *TrainOrderQueryRequest {
 }
 
 type TrainOrderQueryResponseBody struct {
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Module     *TrainOrderQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId  *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	ResultCode *int32                             `json:"result_code,omitempty" xml:"result_code,omitempty"`
 	ResultMsg  *string                            `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
 	Success    *bool                              `json:"success,omitempty" xml:"success,omitempty"`
@@ -15268,13 +15268,13 @@ func (s TrainOrderQueryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *TrainOrderQueryResponseBody) SetRequestId(v string) *TrainOrderQueryResponseBody {
-	s.RequestId = &v
+func (s *TrainOrderQueryResponseBody) SetModule(v *TrainOrderQueryResponseBodyModule) *TrainOrderQueryResponseBody {
+	s.Module = v
 	return s
 }
 
-func (s *TrainOrderQueryResponseBody) SetModule(v *TrainOrderQueryResponseBodyModule) *TrainOrderQueryResponseBody {
-	s.Module = v
+func (s *TrainOrderQueryResponseBody) SetRequestId(v string) *TrainOrderQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -16193,10 +16193,10 @@ func (s *UserQueryRequest) SetThirdPartJobNo(v string) *UserQueryRequest {
 }
 
 type UserQueryResponseBody struct {
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32                       `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                      `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *UserQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                        `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -16207,11 +16207,6 @@ func (s UserQueryResponseBody) String() string {
 
 func (s UserQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *UserQueryResponseBody) SetRequestId(v string) *UserQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *UserQueryResponseBody) SetCode(v int32) *UserQueryResponseBody {
@@ -16226,6 +16221,11 @@ func (s *UserQueryResponseBody) SetMessage(v string) *UserQueryResponseBody {
 
 func (s *UserQueryResponseBody) SetModule(v *UserQueryResponseBodyModule) *UserQueryResponseBody {
 	s.Module = v
+	return s
+}
+
+func (s *UserQueryResponseBody) SetRequestId(v string) *UserQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
