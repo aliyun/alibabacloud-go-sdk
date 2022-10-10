@@ -1480,7 +1480,7 @@ type ApplyApproveResponseBody struct {
 	Module    *string `json:"module,omitempty" xml:"module,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string `json:"trace_id,omitempty" xml:"trace_id,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s ApplyApproveResponseBody) String() string {
@@ -4227,10 +4227,10 @@ func (s *CarApplyQueryRequest) SetUserId(v string) *CarApplyQueryRequest {
 }
 
 type CarApplyQueryResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ApplyList []*CarApplyQueryResponseBodyApplyList `json:"apply_list,omitempty" xml:"apply_list,omitempty" type:"Repeated"`
 	Code      *int32                                `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
 	Total     *int32                                `json:"total,omitempty" xml:"total,omitempty"`
 	TraceId   *string                               `json:"traceId,omitempty" xml:"traceId,omitempty"`
@@ -4242,11 +4242,6 @@ func (s CarApplyQueryResponseBody) String() string {
 
 func (s CarApplyQueryResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CarApplyQueryResponseBody) SetRequestId(v string) *CarApplyQueryResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *CarApplyQueryResponseBody) SetApplyList(v []*CarApplyQueryResponseBodyApplyList) *CarApplyQueryResponseBody {
@@ -4261,6 +4256,11 @@ func (s *CarApplyQueryResponseBody) SetCode(v int32) *CarApplyQueryResponseBody 
 
 func (s *CarApplyQueryResponseBody) SetMessage(v string) *CarApplyQueryResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *CarApplyQueryResponseBody) SetRequestId(v string) *CarApplyQueryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7848,10 +7848,10 @@ func (s *ExceedApplySyncRequest) SetUserId(v string) *ExceedApplySyncRequest {
 }
 
 type ExceedApplySyncResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -7862,11 +7862,6 @@ func (s ExceedApplySyncResponseBody) String() string {
 
 func (s ExceedApplySyncResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ExceedApplySyncResponseBody) SetRequestId(v string) *ExceedApplySyncResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *ExceedApplySyncResponseBody) SetCode(v int32) *ExceedApplySyncResponseBody {
@@ -7881,6 +7876,11 @@ func (s *ExceedApplySyncResponseBody) SetMessage(v string) *ExceedApplySyncRespo
 
 func (s *ExceedApplySyncResponseBody) SetModule(v bool) *ExceedApplySyncResponseBody {
 	s.Module = &v
+	return s
+}
+
+func (s *ExceedApplySyncResponseBody) SetRequestId(v string) *ExceedApplySyncResponseBody {
+	s.RequestId = &v
 	return s
 }
 
