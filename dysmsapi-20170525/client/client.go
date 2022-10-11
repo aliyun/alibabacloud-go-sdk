@@ -2012,10 +2012,10 @@ func (s *QueryCardSmsTemplateReportRequest) SetTemplateCodes(v []*string) *Query
 }
 
 type QueryCardSmsTemplateReportResponseBody struct {
-	Code      *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryCardSmsTemplateReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryCardSmsTemplateReportResponseBody) String() string {
@@ -2031,7 +2031,7 @@ func (s *QueryCardSmsTemplateReportResponseBody) SetCode(v string) *QueryCardSms
 	return s
 }
 
-func (s *QueryCardSmsTemplateReportResponseBody) SetData(v []map[string]interface{}) *QueryCardSmsTemplateReportResponseBody {
+func (s *QueryCardSmsTemplateReportResponseBody) SetData(v *QueryCardSmsTemplateReportResponseBodyData) *QueryCardSmsTemplateReportResponseBody {
 	s.Data = v
 	return s
 }
@@ -2043,6 +2043,23 @@ func (s *QueryCardSmsTemplateReportResponseBody) SetRequestId(v string) *QueryCa
 
 func (s *QueryCardSmsTemplateReportResponseBody) SetSuccess(v bool) *QueryCardSmsTemplateReportResponseBody {
 	s.Success = &v
+	return s
+}
+
+type QueryCardSmsTemplateReportResponseBodyData struct {
+	Model []map[string]interface{} `json:"model,omitempty" xml:"model,omitempty" type:"Repeated"`
+}
+
+func (s QueryCardSmsTemplateReportResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCardSmsTemplateReportResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCardSmsTemplateReportResponseBodyData) SetModel(v []map[string]interface{}) *QueryCardSmsTemplateReportResponseBodyData {
+	s.Model = v
 	return s
 }
 
