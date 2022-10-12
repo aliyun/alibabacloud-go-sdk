@@ -13,7 +13,7 @@ import (
 )
 
 type BeeBotAssociateRequest struct {
-	ChatBotInstnaceId *string   `json:"ChatBotInstnaceId,omitempty" xml:"ChatBotInstnaceId,omitempty"`
+	ChatBotInstanceId *string   `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
 	IsvCode           *string   `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	Perspective       []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
 	RecommendNum      *int32    `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
@@ -29,8 +29,8 @@ func (s BeeBotAssociateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *BeeBotAssociateRequest) SetChatBotInstnaceId(v string) *BeeBotAssociateRequest {
-	s.ChatBotInstnaceId = &v
+func (s *BeeBotAssociateRequest) SetChatBotInstanceId(v string) *BeeBotAssociateRequest {
+	s.ChatBotInstanceId = &v
 	return s
 }
 
@@ -60,7 +60,7 @@ func (s *BeeBotAssociateRequest) SetUtterance(v string) *BeeBotAssociateRequest 
 }
 
 type BeeBotAssociateShrinkRequest struct {
-	ChatBotInstnaceId *string `json:"ChatBotInstnaceId,omitempty" xml:"ChatBotInstnaceId,omitempty"`
+	ChatBotInstanceId *string `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
 	IsvCode           *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	PerspectiveShrink *string `json:"Perspective,omitempty" xml:"Perspective,omitempty"`
 	RecommendNum      *int32  `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
@@ -76,8 +76,8 @@ func (s BeeBotAssociateShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *BeeBotAssociateShrinkRequest) SetChatBotInstnaceId(v string) *BeeBotAssociateShrinkRequest {
-	s.ChatBotInstnaceId = &v
+func (s *BeeBotAssociateShrinkRequest) SetChatBotInstanceId(v string) *BeeBotAssociateShrinkRequest {
+	s.ChatBotInstanceId = &v
 	return s
 }
 
@@ -223,7 +223,7 @@ func (s *BeeBotAssociateResponse) SetBody(v *BeeBotAssociateResponseBody) *BeeBo
 }
 
 type BeeBotChatRequest struct {
-	ChatBotInstnaceId *string                `json:"ChatBotInstnaceId,omitempty" xml:"ChatBotInstnaceId,omitempty"`
+	ChatBotInstanceId *string                `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
 	IntentName        *string                `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	IsvCode           *string                `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	KnowledgeId       *string                `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
@@ -243,8 +243,8 @@ func (s BeeBotChatRequest) GoString() string {
 	return s.String()
 }
 
-func (s *BeeBotChatRequest) SetChatBotInstnaceId(v string) *BeeBotChatRequest {
-	s.ChatBotInstnaceId = &v
+func (s *BeeBotChatRequest) SetChatBotInstanceId(v string) *BeeBotChatRequest {
+	s.ChatBotInstanceId = &v
 	return s
 }
 
@@ -294,7 +294,7 @@ func (s *BeeBotChatRequest) SetVendorParam(v map[string]interface{}) *BeeBotChat
 }
 
 type BeeBotChatShrinkRequest struct {
-	ChatBotInstnaceId *string `json:"ChatBotInstnaceId,omitempty" xml:"ChatBotInstnaceId,omitempty"`
+	ChatBotInstanceId *string `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
 	IntentName        *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	IsvCode           *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	KnowledgeId       *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
@@ -314,8 +314,8 @@ func (s BeeBotChatShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *BeeBotChatShrinkRequest) SetChatBotInstnaceId(v string) *BeeBotChatShrinkRequest {
-	s.ChatBotInstnaceId = &v
+func (s *BeeBotChatShrinkRequest) SetChatBotInstanceId(v string) *BeeBotChatShrinkRequest {
+	s.ChatBotInstanceId = &v
 	return s
 }
 
@@ -2416,8 +2416,8 @@ func (client *Client) BeeBotAssociateWithOptions(tmpReq *BeeBotAssociateRequest,
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ChatBotInstnaceId)) {
-		body["ChatBotInstnaceId"] = request.ChatBotInstnaceId
+	if !tea.BoolValue(util.IsUnset(request.ChatBotInstanceId)) {
+		body["ChatBotInstanceId"] = request.ChatBotInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
@@ -2490,8 +2490,8 @@ func (client *Client) BeeBotChatWithOptions(tmpReq *BeeBotChatRequest, runtime *
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ChatBotInstnaceId)) {
-		body["ChatBotInstnaceId"] = request.ChatBotInstnaceId
+	if !tea.BoolValue(util.IsUnset(request.ChatBotInstanceId)) {
+		body["ChatBotInstanceId"] = request.ChatBotInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IntentName)) {
