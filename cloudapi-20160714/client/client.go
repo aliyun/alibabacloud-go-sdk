@@ -1544,6 +1544,180 @@ func (s *CreateBackendModelResponse) SetBody(v *CreateBackendModelResponseBody) 
 	return s
 }
 
+type CreateDatasetRequest struct {
+	DatasetName   *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetType   *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s CreateDatasetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequest) SetDatasetName(v string) *CreateDatasetRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDatasetType(v string) *CreateDatasetRequest {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetSecurityToken(v string) *CreateDatasetRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type CreateDatasetResponseBody struct {
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetResponseBody) SetDatasetId(v string) *CreateDatasetResponseBody {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *CreateDatasetResponseBody) SetRequestId(v string) *CreateDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDatasetResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetResponse) SetHeaders(v map[string]*string) *CreateDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDatasetResponse) SetStatusCode(v int32) *CreateDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDatasetResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDatasetItemRequest struct {
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime   *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDatasetItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetItemRequest) SetDatasetId(v string) *CreateDatasetItemRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *CreateDatasetItemRequest) SetDescription(v string) *CreateDatasetItemRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDatasetItemRequest) SetExpiredTime(v string) *CreateDatasetItemRequest {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *CreateDatasetItemRequest) SetSecurityToken(v string) *CreateDatasetItemRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *CreateDatasetItemRequest) SetValue(v string) *CreateDatasetItemRequest {
+	s.Value = &v
+	return s
+}
+
+type CreateDatasetItemResponseBody struct {
+	DatasetItemId *string `json:"DatasetItemId,omitempty" xml:"DatasetItemId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDatasetItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetItemResponseBody) SetDatasetItemId(v string) *CreateDatasetItemResponseBody {
+	s.DatasetItemId = &v
+	return s
+}
+
+func (s *CreateDatasetItemResponseBody) SetRequestId(v string) *CreateDatasetItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDatasetItemResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDatasetItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDatasetItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetItemResponse) SetHeaders(v map[string]*string) *CreateDatasetItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDatasetItemResponse) SetStatusCode(v int32) *CreateDatasetItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDatasetItemResponse) SetBody(v *CreateDatasetItemResponseBody) *CreateDatasetItemResponse {
+	s.Body = v
+	return s
+}
+
 type CreateInstanceRequest struct {
 	AutoPay      *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	ChargeType   *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
@@ -3123,6 +3297,150 @@ func (s *DeleteBackendModelResponse) SetStatusCode(v int32) *DeleteBackendModelR
 }
 
 func (s *DeleteBackendModelResponse) SetBody(v *DeleteBackendModelResponseBody) *DeleteBackendModelResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDatasetRequest struct {
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DeleteDatasetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetRequest) SetDatasetId(v string) *DeleteDatasetRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *DeleteDatasetRequest) SetSecurityToken(v string) *DeleteDatasetRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DeleteDatasetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetResponseBody) SetRequestId(v string) *DeleteDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDatasetResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetResponse) SetHeaders(v map[string]*string) *DeleteDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDatasetResponse) SetStatusCode(v int32) *DeleteDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDatasetResponse) SetBody(v *DeleteDatasetResponseBody) *DeleteDatasetResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDatasetItemRequest struct {
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetItemId *string `json:"DatasetItemId,omitempty" xml:"DatasetItemId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DeleteDatasetItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetItemRequest) SetDatasetId(v string) *DeleteDatasetItemRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *DeleteDatasetItemRequest) SetDatasetItemId(v string) *DeleteDatasetItemRequest {
+	s.DatasetItemId = &v
+	return s
+}
+
+func (s *DeleteDatasetItemRequest) SetSecurityToken(v string) *DeleteDatasetItemRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DeleteDatasetItemResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDatasetItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetItemResponseBody) SetRequestId(v string) *DeleteDatasetItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDatasetItemResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDatasetItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDatasetItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetItemResponse) SetHeaders(v map[string]*string) *DeleteDatasetItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDatasetItemResponse) SetStatusCode(v int32) *DeleteDatasetItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDatasetItemResponse) SetBody(v *DeleteDatasetItemResponseBody) *DeleteDatasetItemResponse {
 	s.Body = v
 	return s
 }
@@ -12652,6 +12970,572 @@ func (s *DescribeBackendListResponse) SetBody(v *DescribeBackendListResponseBody
 	return s
 }
 
+type DescribeDatasetInfoRequest struct {
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeDatasetInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetInfoRequest) SetDatasetId(v string) *DescribeDatasetInfoRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *DescribeDatasetInfoRequest) SetSecurityToken(v string) *DescribeDatasetInfoRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeDatasetInfoResponseBody struct {
+	DatasetInfo *DescribeDatasetInfoResponseBodyDatasetInfo `json:"DatasetInfo,omitempty" xml:"DatasetInfo,omitempty" type:"Struct"`
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDatasetInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetInfoResponseBody) SetDatasetInfo(v *DescribeDatasetInfoResponseBodyDatasetInfo) *DescribeDatasetInfoResponseBody {
+	s.DatasetInfo = v
+	return s
+}
+
+func (s *DescribeDatasetInfoResponseBody) SetRequestId(v string) *DescribeDatasetInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDatasetInfoResponseBodyDatasetInfo struct {
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DatasetId    *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetName  *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetType  *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+}
+
+func (s DescribeDatasetInfoResponseBodyDatasetInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetInfoResponseBodyDatasetInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetInfoResponseBodyDatasetInfo) SetCreatedTime(v string) *DescribeDatasetInfoResponseBodyDatasetInfo {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeDatasetInfoResponseBodyDatasetInfo) SetDatasetId(v string) *DescribeDatasetInfoResponseBodyDatasetInfo {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *DescribeDatasetInfoResponseBodyDatasetInfo) SetDatasetName(v string) *DescribeDatasetInfoResponseBodyDatasetInfo {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *DescribeDatasetInfoResponseBodyDatasetInfo) SetDatasetType(v string) *DescribeDatasetInfoResponseBodyDatasetInfo {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *DescribeDatasetInfoResponseBodyDatasetInfo) SetModifiedTime(v string) *DescribeDatasetInfoResponseBodyDatasetInfo {
+	s.ModifiedTime = &v
+	return s
+}
+
+type DescribeDatasetInfoResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDatasetInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDatasetInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetInfoResponse) SetHeaders(v map[string]*string) *DescribeDatasetInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDatasetInfoResponse) SetStatusCode(v int32) *DescribeDatasetInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDatasetInfoResponse) SetBody(v *DescribeDatasetInfoResponseBody) *DescribeDatasetInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDatasetItemInfoRequest struct {
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetItemId *string `json:"DatasetItemId,omitempty" xml:"DatasetItemId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDatasetItemInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetItemInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetItemInfoRequest) SetDatasetId(v string) *DescribeDatasetItemInfoRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *DescribeDatasetItemInfoRequest) SetDatasetItemId(v string) *DescribeDatasetItemInfoRequest {
+	s.DatasetItemId = &v
+	return s
+}
+
+func (s *DescribeDatasetItemInfoRequest) SetSecurityToken(v string) *DescribeDatasetItemInfoRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeDatasetItemInfoRequest) SetValue(v string) *DescribeDatasetItemInfoRequest {
+	s.Value = &v
+	return s
+}
+
+type DescribeDatasetItemInfoResponseBody struct {
+	DatasetItemInfo *DescribeDatasetItemInfoResponseBodyDatasetItemInfo `json:"DatasetItemInfo,omitempty" xml:"DatasetItemInfo,omitempty" type:"Struct"`
+	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDatasetItemInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetItemInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetItemInfoResponseBody) SetDatasetItemInfo(v *DescribeDatasetItemInfoResponseBodyDatasetItemInfo) *DescribeDatasetItemInfoResponseBody {
+	s.DatasetItemInfo = v
+	return s
+}
+
+func (s *DescribeDatasetItemInfoResponseBody) SetRequestId(v string) *DescribeDatasetItemInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDatasetItemInfoResponseBodyDatasetItemInfo struct {
+	CreatedTime   *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetItemId *string `json:"DatasetItemId,omitempty" xml:"DatasetItemId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime   *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ModifiedTime  *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDatasetItemInfoResponseBodyDatasetItemInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetItemInfoResponseBodyDatasetItemInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetItemInfoResponseBodyDatasetItemInfo) SetCreatedTime(v string) *DescribeDatasetItemInfoResponseBodyDatasetItemInfo {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeDatasetItemInfoResponseBodyDatasetItemInfo) SetDatasetId(v string) *DescribeDatasetItemInfoResponseBodyDatasetItemInfo {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *DescribeDatasetItemInfoResponseBodyDatasetItemInfo) SetDatasetItemId(v string) *DescribeDatasetItemInfoResponseBodyDatasetItemInfo {
+	s.DatasetItemId = &v
+	return s
+}
+
+func (s *DescribeDatasetItemInfoResponseBodyDatasetItemInfo) SetDescription(v string) *DescribeDatasetItemInfoResponseBodyDatasetItemInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDatasetItemInfoResponseBodyDatasetItemInfo) SetExpiredTime(v string) *DescribeDatasetItemInfoResponseBodyDatasetItemInfo {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeDatasetItemInfoResponseBodyDatasetItemInfo) SetModifiedTime(v string) *DescribeDatasetItemInfoResponseBodyDatasetItemInfo {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *DescribeDatasetItemInfoResponseBodyDatasetItemInfo) SetValue(v string) *DescribeDatasetItemInfoResponseBodyDatasetItemInfo {
+	s.Value = &v
+	return s
+}
+
+type DescribeDatasetItemInfoResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDatasetItemInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDatasetItemInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetItemInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetItemInfoResponse) SetHeaders(v map[string]*string) *DescribeDatasetItemInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDatasetItemInfoResponse) SetStatusCode(v int32) *DescribeDatasetItemInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDatasetItemInfoResponse) SetBody(v *DescribeDatasetItemInfoResponseBody) *DescribeDatasetItemInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDatasetItemListRequest struct {
+	DatasetId      *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetItemIds *string `json:"DatasetItemIds,omitempty" xml:"DatasetItemIds,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeDatasetItemListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetItemListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetItemListRequest) SetDatasetId(v string) *DescribeDatasetItemListRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *DescribeDatasetItemListRequest) SetDatasetItemIds(v string) *DescribeDatasetItemListRequest {
+	s.DatasetItemIds = &v
+	return s
+}
+
+func (s *DescribeDatasetItemListRequest) SetPageNumber(v int32) *DescribeDatasetItemListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDatasetItemListRequest) SetPageSize(v int32) *DescribeDatasetItemListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDatasetItemListRequest) SetSecurityToken(v string) *DescribeDatasetItemListRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeDatasetItemListResponseBody struct {
+	DatasetItemInfoList []*DescribeDatasetItemListResponseBodyDatasetItemInfoList `json:"DatasetItemInfoList,omitempty" xml:"DatasetItemInfoList,omitempty" type:"Repeated"`
+	PageNumber          *int32                                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount          *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDatasetItemListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetItemListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetItemListResponseBody) SetDatasetItemInfoList(v []*DescribeDatasetItemListResponseBodyDatasetItemInfoList) *DescribeDatasetItemListResponseBody {
+	s.DatasetItemInfoList = v
+	return s
+}
+
+func (s *DescribeDatasetItemListResponseBody) SetPageNumber(v int32) *DescribeDatasetItemListResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDatasetItemListResponseBody) SetPageSize(v int32) *DescribeDatasetItemListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDatasetItemListResponseBody) SetRequestId(v string) *DescribeDatasetItemListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDatasetItemListResponseBody) SetTotalCount(v int32) *DescribeDatasetItemListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDatasetItemListResponseBodyDatasetItemInfoList struct {
+	CreatedTime   *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetItemId *string `json:"DatasetItemId,omitempty" xml:"DatasetItemId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime   *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ModifiedTime  *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDatasetItemListResponseBodyDatasetItemInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetItemListResponseBodyDatasetItemInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetItemListResponseBodyDatasetItemInfoList) SetCreatedTime(v string) *DescribeDatasetItemListResponseBodyDatasetItemInfoList {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeDatasetItemListResponseBodyDatasetItemInfoList) SetDatasetId(v string) *DescribeDatasetItemListResponseBodyDatasetItemInfoList {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *DescribeDatasetItemListResponseBodyDatasetItemInfoList) SetDatasetItemId(v string) *DescribeDatasetItemListResponseBodyDatasetItemInfoList {
+	s.DatasetItemId = &v
+	return s
+}
+
+func (s *DescribeDatasetItemListResponseBodyDatasetItemInfoList) SetDescription(v string) *DescribeDatasetItemListResponseBodyDatasetItemInfoList {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDatasetItemListResponseBodyDatasetItemInfoList) SetExpiredTime(v string) *DescribeDatasetItemListResponseBodyDatasetItemInfoList {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeDatasetItemListResponseBodyDatasetItemInfoList) SetModifiedTime(v string) *DescribeDatasetItemListResponseBodyDatasetItemInfoList {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *DescribeDatasetItemListResponseBodyDatasetItemInfoList) SetValue(v string) *DescribeDatasetItemListResponseBodyDatasetItemInfoList {
+	s.Value = &v
+	return s
+}
+
+type DescribeDatasetItemListResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDatasetItemListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDatasetItemListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetItemListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetItemListResponse) SetHeaders(v map[string]*string) *DescribeDatasetItemListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDatasetItemListResponse) SetStatusCode(v int32) *DescribeDatasetItemListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDatasetItemListResponse) SetBody(v *DescribeDatasetItemListResponseBody) *DescribeDatasetItemListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDatasetListRequest struct {
+	DatasetIds    *string `json:"DatasetIds,omitempty" xml:"DatasetIds,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeDatasetListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetListRequest) SetDatasetIds(v string) *DescribeDatasetListRequest {
+	s.DatasetIds = &v
+	return s
+}
+
+func (s *DescribeDatasetListRequest) SetPageNumber(v int32) *DescribeDatasetListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDatasetListRequest) SetPageSize(v int32) *DescribeDatasetListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDatasetListRequest) SetSecurityToken(v string) *DescribeDatasetListRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeDatasetListResponseBody struct {
+	DatasetInfoList []*DescribeDatasetListResponseBodyDatasetInfoList `json:"DatasetInfoList,omitempty" xml:"DatasetInfoList,omitempty" type:"Repeated"`
+	PageNumber      *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount      *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDatasetListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetListResponseBody) SetDatasetInfoList(v []*DescribeDatasetListResponseBodyDatasetInfoList) *DescribeDatasetListResponseBody {
+	s.DatasetInfoList = v
+	return s
+}
+
+func (s *DescribeDatasetListResponseBody) SetPageNumber(v int32) *DescribeDatasetListResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDatasetListResponseBody) SetPageSize(v int32) *DescribeDatasetListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDatasetListResponseBody) SetRequestId(v string) *DescribeDatasetListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDatasetListResponseBody) SetTotalCount(v int32) *DescribeDatasetListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDatasetListResponseBodyDatasetInfoList struct {
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DatasetId    *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetName  *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetType  *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+}
+
+func (s DescribeDatasetListResponseBodyDatasetInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetListResponseBodyDatasetInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetListResponseBodyDatasetInfoList) SetCreatedTime(v string) *DescribeDatasetListResponseBodyDatasetInfoList {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeDatasetListResponseBodyDatasetInfoList) SetDatasetId(v string) *DescribeDatasetListResponseBodyDatasetInfoList {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *DescribeDatasetListResponseBodyDatasetInfoList) SetDatasetName(v string) *DescribeDatasetListResponseBodyDatasetInfoList {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *DescribeDatasetListResponseBodyDatasetInfoList) SetDatasetType(v string) *DescribeDatasetListResponseBodyDatasetInfoList {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *DescribeDatasetListResponseBodyDatasetInfoList) SetModifiedTime(v string) *DescribeDatasetListResponseBodyDatasetInfoList {
+	s.ModifiedTime = &v
+	return s
+}
+
+type DescribeDatasetListResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDatasetListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDatasetListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDatasetListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDatasetListResponse) SetHeaders(v map[string]*string) *DescribeDatasetListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDatasetListResponse) SetStatusCode(v int32) *DescribeDatasetListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDatasetListResponse) SetBody(v *DescribeDatasetListResponseBody) *DescribeDatasetListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDeployApiTaskRequest struct {
 	OperationUid  *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -20738,6 +21622,168 @@ func (s *ModifyBackendModelResponse) SetBody(v *ModifyBackendModelResponseBody) 
 	return s
 }
 
+type ModifyDatasetRequest struct {
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetName   *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ModifyDatasetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDatasetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDatasetRequest) SetDatasetId(v string) *ModifyDatasetRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *ModifyDatasetRequest) SetDatasetName(v string) *ModifyDatasetRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *ModifyDatasetRequest) SetSecurityToken(v string) *ModifyDatasetRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ModifyDatasetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDatasetResponseBody) SetRequestId(v string) *ModifyDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDatasetResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDatasetResponse) SetHeaders(v map[string]*string) *ModifyDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDatasetResponse) SetStatusCode(v int32) *ModifyDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDatasetResponse) SetBody(v *ModifyDatasetResponseBody) *ModifyDatasetResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDatasetItemRequest struct {
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetItemId *string `json:"DatasetItemId,omitempty" xml:"DatasetItemId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime   *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ModifyDatasetItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDatasetItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDatasetItemRequest) SetDatasetId(v string) *ModifyDatasetItemRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *ModifyDatasetItemRequest) SetDatasetItemId(v string) *ModifyDatasetItemRequest {
+	s.DatasetItemId = &v
+	return s
+}
+
+func (s *ModifyDatasetItemRequest) SetDescription(v string) *ModifyDatasetItemRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyDatasetItemRequest) SetExpiredTime(v string) *ModifyDatasetItemRequest {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *ModifyDatasetItemRequest) SetSecurityToken(v string) *ModifyDatasetItemRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ModifyDatasetItemResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDatasetItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDatasetItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDatasetItemResponseBody) SetRequestId(v string) *ModifyDatasetItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDatasetItemResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDatasetItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDatasetItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDatasetItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDatasetItemResponse) SetHeaders(v map[string]*string) *ModifyDatasetItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDatasetItemResponse) SetStatusCode(v int32) *ModifyDatasetItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDatasetItemResponse) SetBody(v *ModifyDatasetItemResponseBody) *ModifyDatasetItemResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyInstanceSpecRequest struct {
 	AutoPay        *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -25261,6 +26307,118 @@ func (client *Client) CreateBackendModel(request *CreateBackendModelRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, runtime *util.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetType)) {
+		query["DatasetType"] = request.DatasetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataset"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CreateDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDatasetItemWithOptions(request *CreateDatasetItemRequest, runtime *util.RuntimeOptions) (_result *CreateDatasetItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		query["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpiredTime)) {
+		query["ExpiredTime"] = request.ExpiredTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		query["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDatasetItem"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDatasetItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDatasetItem(request *CreateDatasetItemRequest) (_result *CreateDatasetItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDatasetItemResponse{}
+	_body, _err := client.CreateDatasetItemWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26206,6 +27364,106 @@ func (client *Client) DeleteBackendModel(request *DeleteBackendModelRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBackendModelResponse{}
 	_body, _err := client.DeleteBackendModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, runtime *util.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		query["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataset"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDataset(request *DeleteDatasetRequest) (_result *DeleteDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.DeleteDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDatasetItemWithOptions(request *DeleteDatasetItemRequest, runtime *util.RuntimeOptions) (_result *DeleteDatasetItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		query["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetItemId)) {
+		query["DatasetItemId"] = request.DatasetItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDatasetItem"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDatasetItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDatasetItem(request *DeleteDatasetItemRequest) (_result *DeleteDatasetItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDatasetItemResponse{}
+	_body, _err := client.DeleteDatasetItemWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28698,6 +29956,226 @@ func (client *Client) DescribeBackendList(request *DescribeBackendListRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackendListResponse{}
 	_body, _err := client.DescribeBackendListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDatasetInfoWithOptions(request *DescribeDatasetInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDatasetInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		query["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDatasetInfo"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDatasetInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDatasetInfo(request *DescribeDatasetInfoRequest) (_result *DescribeDatasetInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDatasetInfoResponse{}
+	_body, _err := client.DescribeDatasetInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDatasetItemInfoWithOptions(request *DescribeDatasetItemInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDatasetItemInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		query["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetItemId)) {
+		query["DatasetItemId"] = request.DatasetItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		query["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDatasetItemInfo"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDatasetItemInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDatasetItemInfo(request *DescribeDatasetItemInfoRequest) (_result *DescribeDatasetItemInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDatasetItemInfoResponse{}
+	_body, _err := client.DescribeDatasetItemInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDatasetItemListWithOptions(request *DescribeDatasetItemListRequest, runtime *util.RuntimeOptions) (_result *DescribeDatasetItemListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		query["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetItemIds)) {
+		query["DatasetItemIds"] = request.DatasetItemIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDatasetItemList"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDatasetItemListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDatasetItemList(request *DescribeDatasetItemListRequest) (_result *DescribeDatasetItemListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDatasetItemListResponse{}
+	_body, _err := client.DescribeDatasetItemListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDatasetListWithOptions(request *DescribeDatasetListRequest, runtime *util.RuntimeOptions) (_result *DescribeDatasetListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetIds)) {
+		query["DatasetIds"] = request.DatasetIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDatasetList"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDatasetListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDatasetList(request *DescribeDatasetListRequest) (_result *DescribeDatasetListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDatasetListResponse{}
+	_body, _err := client.DescribeDatasetListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31334,6 +32812,118 @@ func (client *Client) ModifyBackendModel(request *ModifyBackendModelRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBackendModelResponse{}
 	_body, _err := client.ModifyBackendModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDatasetWithOptions(request *ModifyDatasetRequest, runtime *util.RuntimeOptions) (_result *ModifyDatasetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		query["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDataset"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDataset(request *ModifyDatasetRequest) (_result *ModifyDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDatasetResponse{}
+	_body, _err := client.ModifyDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDatasetItemWithOptions(request *ModifyDatasetItemRequest, runtime *util.RuntimeOptions) (_result *ModifyDatasetItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		query["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetItemId)) {
+		query["DatasetItemId"] = request.DatasetItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpiredTime)) {
+		query["ExpiredTime"] = request.ExpiredTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDatasetItem"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDatasetItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDatasetItem(request *ModifyDatasetItemRequest) (_result *ModifyDatasetItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDatasetItemResponse{}
+	_body, _err := client.ModifyDatasetItemWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
