@@ -5,7 +5,7 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
@@ -595,10 +595,11 @@ func (s *ByLoadScalingRuleSpec) SetTimeWindow(v int32) *ByLoadScalingRuleSpec {
 }
 
 type ByTimeScalingRule struct {
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	LaunchTime      *int64  `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
-	RecurrenceType  *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
-	RecurrenceValue *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
+	EndTime              *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LaunchExpirationTime *int32  `json:"LaunchExpirationTime,omitempty" xml:"LaunchExpirationTime,omitempty"`
+	LaunchTime           *int64  `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
+	RecurrenceType       *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	RecurrenceValue      *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
 }
 
 func (s ByTimeScalingRule) String() string {
@@ -611,6 +612,11 @@ func (s ByTimeScalingRule) GoString() string {
 
 func (s *ByTimeScalingRule) SetEndTime(v int64) *ByTimeScalingRule {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ByTimeScalingRule) SetLaunchExpirationTime(v int32) *ByTimeScalingRule {
+	s.LaunchExpirationTime = &v
 	return s
 }
 
@@ -719,7 +725,6 @@ type Cluster struct {
 	StateChangeReason  *ClusterStateChangeReason `json:"StateChangeReason,omitempty" xml:"StateChangeReason,omitempty"`
 	SubscriptionConfig *SubscriptionConfig       `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
 	Tags               []*Tag                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	VpcId              *string                   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s Cluster) String() string {
@@ -822,11 +827,6 @@ func (s *Cluster) SetSubscriptionConfig(v *SubscriptionConfig) *Cluster {
 
 func (s *Cluster) SetTags(v []*Tag) *Cluster {
 	s.Tags = v
-	return s
-}
-
-func (s *Cluster) SetVpcId(v string) *Cluster {
-	s.VpcId = &v
 	return s
 }
 
@@ -1838,12 +1838,66 @@ func (s *MetaStoreConf) SetDbUserName(v string) *MetaStoreConf {
 	return s
 }
 
+type MetricsTrigger struct {
+	ComparisonOperator *string  `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	CoolDownInterval   *int32   `json:"CoolDownInterval,omitempty" xml:"CoolDownInterval,omitempty"`
+	EvaluationCount    *int32   `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	MetricName         *string  `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Statistics         *string  `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *float64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	TimeWindow         *int32   `json:"TimeWindow,omitempty" xml:"TimeWindow,omitempty"`
+}
+
+func (s MetricsTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetricsTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *MetricsTrigger) SetComparisonOperator(v string) *MetricsTrigger {
+	s.ComparisonOperator = &v
+	return s
+}
+
+func (s *MetricsTrigger) SetCoolDownInterval(v int32) *MetricsTrigger {
+	s.CoolDownInterval = &v
+	return s
+}
+
+func (s *MetricsTrigger) SetEvaluationCount(v int32) *MetricsTrigger {
+	s.EvaluationCount = &v
+	return s
+}
+
+func (s *MetricsTrigger) SetMetricName(v string) *MetricsTrigger {
+	s.MetricName = &v
+	return s
+}
+
+func (s *MetricsTrigger) SetStatistics(v string) *MetricsTrigger {
+	s.Statistics = &v
+	return s
+}
+
+func (s *MetricsTrigger) SetThreshold(v float64) *MetricsTrigger {
+	s.Threshold = &v
+	return s
+}
+
+func (s *MetricsTrigger) SetTimeWindow(v int32) *MetricsTrigger {
+	s.TimeWindow = &v
+	return s
+}
+
 type Node struct {
 	AutoRenew             *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	AutoRenewDuration     *int32  `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
 	AutoRenewDurationUnit *string `json:"AutoRenewDurationUnit,omitempty" xml:"AutoRenewDurationUnit,omitempty"`
 	ExpireTime            *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	InstanceType          *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	MaintenanceStatus     *string `json:"MaintenanceStatus,omitempty" xml:"MaintenanceStatus,omitempty"`
 	NodeGroupId           *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
 	NodeGroupType         *string `json:"NodeGroupType,omitempty" xml:"NodeGroupType,omitempty"`
 	NodeId                *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
@@ -1884,6 +1938,11 @@ func (s *Node) SetExpireTime(v int64) *Node {
 
 func (s *Node) SetInstanceType(v string) *Node {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *Node) SetMaintenanceStatus(v string) *Node {
+	s.MaintenanceStatus = &v
 	return s
 }
 
@@ -3062,6 +3121,29 @@ func (s *ScalingActivity) SetTransition(v string) *ScalingActivity {
 	return s
 }
 
+type ScalingConstraints struct {
+	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
+	MinCapacity *int32 `json:"MinCapacity,omitempty" xml:"MinCapacity,omitempty"`
+}
+
+func (s ScalingConstraints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScalingConstraints) GoString() string {
+	return s.String()
+}
+
+func (s *ScalingConstraints) SetMaxCapacity(v int32) *ScalingConstraints {
+	s.MaxCapacity = &v
+	return s
+}
+
+func (s *ScalingConstraints) SetMinCapacity(v int32) *ScalingConstraints {
+	s.MinCapacity = &v
+	return s
+}
+
 type ScalingGroupConfig struct {
 	DataDiskCategory     *string                                 `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
 	DataDiskCount        *int32                                  `json:"DataDiskCount,omitempty" xml:"DataDiskCount,omitempty"`
@@ -3285,13 +3367,19 @@ func (s *ScalingGroupConfigPrivatePoolOptions) SetMatchCriteria(v string) *Scali
 }
 
 type ScalingRule struct {
-	AdjustmentValue     *int32                        `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
-	ByLoadScalingRule   *ScalingRuleByLoadScalingRule `json:"ByLoadScalingRule,omitempty" xml:"ByLoadScalingRule,omitempty" type:"Struct"`
-	ByTimeScalingRule   *ScalingRuleByTimeScalingRule `json:"ByTimeScalingRule,omitempty" xml:"ByTimeScalingRule,omitempty" type:"Struct"`
-	CoolDownInterval    *int32                        `json:"CoolDownInterval,omitempty" xml:"CoolDownInterval,omitempty"`
-	ScalingActivityType *string                       `json:"ScalingActivityType,omitempty" xml:"ScalingActivityType,omitempty"`
-	ScalingRuleName     *string                       `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
-	ScalingRuleType     *string                       `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
+	ActivityType        *string         `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
+	AdjustmentType      *string         `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
+	AdjustmentValue     *int32          `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
+	ByLoadScalingRule   *MetricsTrigger `json:"ByLoadScalingRule,omitempty" xml:"ByLoadScalingRule,omitempty"`
+	ByTimeScalingRule   *TimeTrigger    `json:"ByTimeScalingRule,omitempty" xml:"ByTimeScalingRule,omitempty"`
+	CoolDownInterval    *int32          `json:"CoolDownInterval,omitempty" xml:"CoolDownInterval,omitempty"`
+	MetricsTrigger      *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
+	RuleName            *string         `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	ScalingActivityType *string         `json:"ScalingActivityType,omitempty" xml:"ScalingActivityType,omitempty"`
+	ScalingRuleName     *string         `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
+	ScalingRuleType     *string         `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
+	TimeTrigger         *TimeTrigger    `json:"TimeTrigger,omitempty" xml:"TimeTrigger,omitempty"`
+	TriggerType         *string         `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 }
 
 func (s ScalingRule) String() string {
@@ -3302,23 +3390,43 @@ func (s ScalingRule) GoString() string {
 	return s.String()
 }
 
+func (s *ScalingRule) SetActivityType(v string) *ScalingRule {
+	s.ActivityType = &v
+	return s
+}
+
+func (s *ScalingRule) SetAdjustmentType(v string) *ScalingRule {
+	s.AdjustmentType = &v
+	return s
+}
+
 func (s *ScalingRule) SetAdjustmentValue(v int32) *ScalingRule {
 	s.AdjustmentValue = &v
 	return s
 }
 
-func (s *ScalingRule) SetByLoadScalingRule(v *ScalingRuleByLoadScalingRule) *ScalingRule {
+func (s *ScalingRule) SetByLoadScalingRule(v *MetricsTrigger) *ScalingRule {
 	s.ByLoadScalingRule = v
 	return s
 }
 
-func (s *ScalingRule) SetByTimeScalingRule(v *ScalingRuleByTimeScalingRule) *ScalingRule {
+func (s *ScalingRule) SetByTimeScalingRule(v *TimeTrigger) *ScalingRule {
 	s.ByTimeScalingRule = v
 	return s
 }
 
 func (s *ScalingRule) SetCoolDownInterval(v int32) *ScalingRule {
 	s.CoolDownInterval = &v
+	return s
+}
+
+func (s *ScalingRule) SetMetricsTrigger(v *MetricsTrigger) *ScalingRule {
+	s.MetricsTrigger = v
+	return s
+}
+
+func (s *ScalingRule) SetRuleName(v string) *ScalingRule {
+	s.RuleName = &v
 	return s
 }
 
@@ -3337,91 +3445,13 @@ func (s *ScalingRule) SetScalingRuleType(v string) *ScalingRule {
 	return s
 }
 
-type ScalingRuleByLoadScalingRule struct {
-	ComparisonOperator *string  `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	CoolDownInterval   *int32   `json:"CoolDownInterval,omitempty" xml:"CoolDownInterval,omitempty"`
-	EvaluationCount    *int32   `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	MetricName         *string  `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	Statistics         *string  `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	Threshold          *float64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	TimeWindow         *int32   `json:"TimeWindow,omitempty" xml:"TimeWindow,omitempty"`
-}
-
-func (s ScalingRuleByLoadScalingRule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScalingRuleByLoadScalingRule) GoString() string {
-	return s.String()
-}
-
-func (s *ScalingRuleByLoadScalingRule) SetComparisonOperator(v string) *ScalingRuleByLoadScalingRule {
-	s.ComparisonOperator = &v
+func (s *ScalingRule) SetTimeTrigger(v *TimeTrigger) *ScalingRule {
+	s.TimeTrigger = v
 	return s
 }
 
-func (s *ScalingRuleByLoadScalingRule) SetCoolDownInterval(v int32) *ScalingRuleByLoadScalingRule {
-	s.CoolDownInterval = &v
-	return s
-}
-
-func (s *ScalingRuleByLoadScalingRule) SetEvaluationCount(v int32) *ScalingRuleByLoadScalingRule {
-	s.EvaluationCount = &v
-	return s
-}
-
-func (s *ScalingRuleByLoadScalingRule) SetMetricName(v string) *ScalingRuleByLoadScalingRule {
-	s.MetricName = &v
-	return s
-}
-
-func (s *ScalingRuleByLoadScalingRule) SetStatistics(v string) *ScalingRuleByLoadScalingRule {
-	s.Statistics = &v
-	return s
-}
-
-func (s *ScalingRuleByLoadScalingRule) SetThreshold(v float64) *ScalingRuleByLoadScalingRule {
-	s.Threshold = &v
-	return s
-}
-
-func (s *ScalingRuleByLoadScalingRule) SetTimeWindow(v int32) *ScalingRuleByLoadScalingRule {
-	s.TimeWindow = &v
-	return s
-}
-
-type ScalingRuleByTimeScalingRule struct {
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	LaunchTime      *int64  `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
-	RecurrenceType  *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
-	RecurrenceValue *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
-}
-
-func (s ScalingRuleByTimeScalingRule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScalingRuleByTimeScalingRule) GoString() string {
-	return s.String()
-}
-
-func (s *ScalingRuleByTimeScalingRule) SetEndTime(v int64) *ScalingRuleByTimeScalingRule {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ScalingRuleByTimeScalingRule) SetLaunchTime(v int64) *ScalingRuleByTimeScalingRule {
-	s.LaunchTime = &v
-	return s
-}
-
-func (s *ScalingRuleByTimeScalingRule) SetRecurrenceType(v string) *ScalingRuleByTimeScalingRule {
-	s.RecurrenceType = &v
-	return s
-}
-
-func (s *ScalingRuleByTimeScalingRule) SetRecurrenceValue(v string) *ScalingRuleByTimeScalingRule {
-	s.RecurrenceValue = &v
+func (s *ScalingRule) SetTriggerType(v string) *ScalingRule {
+	s.TriggerType = &v
 	return s
 }
 
@@ -3972,6 +4002,47 @@ func (s *TagResource) SetTagKey(v string) *TagResource {
 
 func (s *TagResource) SetTagValue(v string) *TagResource {
 	s.TagValue = &v
+	return s
+}
+
+type TimeTrigger struct {
+	EndTime              *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LaunchExpirationTime *int32  `json:"LaunchExpirationTime,omitempty" xml:"LaunchExpirationTime,omitempty"`
+	LaunchTime           *int64  `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
+	RecurrenceType       *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	RecurrenceValue      *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
+}
+
+func (s TimeTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TimeTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *TimeTrigger) SetEndTime(v int64) *TimeTrigger {
+	s.EndTime = &v
+	return s
+}
+
+func (s *TimeTrigger) SetLaunchExpirationTime(v int32) *TimeTrigger {
+	s.LaunchExpirationTime = &v
+	return s
+}
+
+func (s *TimeTrigger) SetLaunchTime(v int64) *TimeTrigger {
+	s.LaunchTime = &v
+	return s
+}
+
+func (s *TimeTrigger) SetRecurrenceType(v string) *TimeTrigger {
+	s.RecurrenceType = &v
+	return s
+}
+
+func (s *TimeTrigger) SetRecurrenceValue(v string) *TimeTrigger {
+	s.RecurrenceValue = &v
 	return s
 }
 
@@ -5064,6 +5135,7 @@ type ListNodesRequest struct {
 	PrivateIps   []*string `json:"PrivateIps,omitempty" xml:"PrivateIps,omitempty" type:"Repeated"`
 	PublicIps    []*string `json:"PublicIps,omitempty" xml:"PublicIps,omitempty" type:"Repeated"`
 	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tags         []*Tag    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListNodesRequest) String() string {
@@ -5121,6 +5193,11 @@ func (s *ListNodesRequest) SetPublicIps(v []*string) *ListNodesRequest {
 
 func (s *ListNodesRequest) SetRegionId(v string) *ListNodesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetTags(v []*Tag) *ListNodesRequest {
+	s.Tags = v
 	return s
 }
 
@@ -5884,6 +5961,10 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{
