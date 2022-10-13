@@ -1544,6 +1544,193 @@ func (s *GetCreateCustomerInformationResponse) SetBody(v *GetCreateCustomerInfor
 	return s
 }
 
+type GetDiagnoseResultForSingleCardRequest struct {
+	DiagnoseTaskId *string `json:"DiagnoseTaskId,omitempty" xml:"DiagnoseTaskId,omitempty"`
+	RegionNo       *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+}
+
+func (s GetDiagnoseResultForSingleCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnoseResultForSingleCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnoseResultForSingleCardRequest) SetDiagnoseTaskId(v string) *GetDiagnoseResultForSingleCardRequest {
+	s.DiagnoseTaskId = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardRequest) SetRegionNo(v string) *GetDiagnoseResultForSingleCardRequest {
+	s.RegionNo = &v
+	return s
+}
+
+type GetDiagnoseResultForSingleCardResponseBody struct {
+	BeginTime                *int64                                                    `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	CardIp                   *string                                                   `json:"CardIp,omitempty" xml:"CardIp,omitempty"`
+	Destination              *string                                                   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationType          *string                                                   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	DiagnoseItem             []*GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem `json:"DiagnoseItem,omitempty" xml:"DiagnoseItem,omitempty" type:"Repeated"`
+	EndTime                  *int64                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ErrorResult              []*GetDiagnoseResultForSingleCardResponseBodyErrorResult  `json:"ErrorResult,omitempty" xml:"ErrorResult,omitempty" type:"Repeated"`
+	IccId                    *string                                                   `json:"IccId,omitempty" xml:"IccId,omitempty"`
+	RequestId                *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status                   *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	WirelessCloudConnectorId *string                                                   `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
+}
+
+func (s GetDiagnoseResultForSingleCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnoseResultForSingleCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetBeginTime(v int64) *GetDiagnoseResultForSingleCardResponseBody {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetCardIp(v string) *GetDiagnoseResultForSingleCardResponseBody {
+	s.CardIp = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetDestination(v string) *GetDiagnoseResultForSingleCardResponseBody {
+	s.Destination = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetDestinationType(v string) *GetDiagnoseResultForSingleCardResponseBody {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetDiagnoseItem(v []*GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem) *GetDiagnoseResultForSingleCardResponseBody {
+	s.DiagnoseItem = v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetEndTime(v int64) *GetDiagnoseResultForSingleCardResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetErrorResult(v []*GetDiagnoseResultForSingleCardResponseBodyErrorResult) *GetDiagnoseResultForSingleCardResponseBody {
+	s.ErrorResult = v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetIccId(v string) *GetDiagnoseResultForSingleCardResponseBody {
+	s.IccId = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetRequestId(v string) *GetDiagnoseResultForSingleCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetStatus(v string) *GetDiagnoseResultForSingleCardResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBody) SetWirelessCloudConnectorId(v string) *GetDiagnoseResultForSingleCardResponseBody {
+	s.WirelessCloudConnectorId = &v
+	return s
+}
+
+type GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem struct {
+	Part   *string `json:"Part,omitempty" xml:"Part,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem) SetPart(v string) *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem {
+	s.Part = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem) SetStatus(v string) *GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem {
+	s.Status = &v
+	return s
+}
+
+type GetDiagnoseResultForSingleCardResponseBodyErrorResult struct {
+	ErrorDesc       *string `json:"ErrorDesc,omitempty" xml:"ErrorDesc,omitempty"`
+	ErrorLevel      *string `json:"ErrorLevel,omitempty" xml:"ErrorLevel,omitempty"`
+	ErrorPart       *string `json:"ErrorPart,omitempty" xml:"ErrorPart,omitempty"`
+	ErrorSuggestion *string `json:"ErrorSuggestion,omitempty" xml:"ErrorSuggestion,omitempty"`
+}
+
+func (s GetDiagnoseResultForSingleCardResponseBodyErrorResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnoseResultForSingleCardResponseBodyErrorResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyErrorResult) SetErrorDesc(v string) *GetDiagnoseResultForSingleCardResponseBodyErrorResult {
+	s.ErrorDesc = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyErrorResult) SetErrorLevel(v string) *GetDiagnoseResultForSingleCardResponseBodyErrorResult {
+	s.ErrorLevel = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyErrorResult) SetErrorPart(v string) *GetDiagnoseResultForSingleCardResponseBodyErrorResult {
+	s.ErrorPart = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponseBodyErrorResult) SetErrorSuggestion(v string) *GetDiagnoseResultForSingleCardResponseBodyErrorResult {
+	s.ErrorSuggestion = &v
+	return s
+}
+
+type GetDiagnoseResultForSingleCardResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDiagnoseResultForSingleCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDiagnoseResultForSingleCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiagnoseResultForSingleCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiagnoseResultForSingleCardResponse) SetHeaders(v map[string]*string) *GetDiagnoseResultForSingleCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponse) SetStatusCode(v int32) *GetDiagnoseResultForSingleCardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponse) SetBody(v *GetDiagnoseResultForSingleCardResponseBody) *GetDiagnoseResultForSingleCardResponse {
+	s.Body = v
+	return s
+}
+
 type GetWirelessCloudConnectorRequest struct {
 	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	WirelessCloudConnectorId *string `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
@@ -1857,6 +2044,158 @@ func (s *GrantNetLinkResponse) SetStatusCode(v int32) *GrantNetLinkResponse {
 }
 
 func (s *GrantNetLinkResponse) SetBody(v *GrantNetLinkResponseBody) *GrantNetLinkResponse {
+	s.Body = v
+	return s
+}
+
+type ListAPNsRequest struct {
+	APN        *string `json:"APN,omitempty" xml:"APN,omitempty"`
+	ISP        *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListAPNsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAPNsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAPNsRequest) SetAPN(v string) *ListAPNsRequest {
+	s.APN = &v
+	return s
+}
+
+func (s *ListAPNsRequest) SetISP(v string) *ListAPNsRequest {
+	s.ISP = &v
+	return s
+}
+
+func (s *ListAPNsRequest) SetMaxResults(v int64) *ListAPNsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAPNsRequest) SetNextToken(v string) *ListAPNsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAPNsRequest) SetRegionId(v string) *ListAPNsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListAPNsResponseBody struct {
+	APNs       []*ListAPNsResponseBodyAPNs `json:"APNs,omitempty" xml:"APNs,omitempty" type:"Repeated"`
+	MaxResults *string                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *string                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAPNsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAPNsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAPNsResponseBody) SetAPNs(v []*ListAPNsResponseBodyAPNs) *ListAPNsResponseBody {
+	s.APNs = v
+	return s
+}
+
+func (s *ListAPNsResponseBody) SetMaxResults(v string) *ListAPNsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAPNsResponseBody) SetNextToken(v string) *ListAPNsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAPNsResponseBody) SetRequestId(v string) *ListAPNsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAPNsResponseBody) SetTotalCount(v string) *ListAPNsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAPNsResponseBodyAPNs struct {
+	APN         *string   `json:"APN,omitempty" xml:"APN,omitempty"`
+	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	ISP         *string   `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Zones       []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+}
+
+func (s ListAPNsResponseBodyAPNs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAPNsResponseBodyAPNs) GoString() string {
+	return s.String()
+}
+
+func (s *ListAPNsResponseBodyAPNs) SetAPN(v string) *ListAPNsResponseBodyAPNs {
+	s.APN = &v
+	return s
+}
+
+func (s *ListAPNsResponseBodyAPNs) SetDescription(v string) *ListAPNsResponseBodyAPNs {
+	s.Description = &v
+	return s
+}
+
+func (s *ListAPNsResponseBodyAPNs) SetISP(v string) *ListAPNsResponseBodyAPNs {
+	s.ISP = &v
+	return s
+}
+
+func (s *ListAPNsResponseBodyAPNs) SetName(v string) *ListAPNsResponseBodyAPNs {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAPNsResponseBodyAPNs) SetZones(v []*string) *ListAPNsResponseBodyAPNs {
+	s.Zones = v
+	return s
+}
+
+type ListAPNsResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAPNsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAPNsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAPNsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAPNsResponse) SetHeaders(v map[string]*string) *ListAPNsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAPNsResponse) SetStatusCode(v int32) *ListAPNsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAPNsResponse) SetBody(v *ListAPNsResponseBody) *ListAPNsResponse {
 	s.Body = v
 	return s
 }
@@ -2333,6 +2672,7 @@ type ListCardsRequest struct {
 	IpAddress                *string   `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	Lock                     *bool     `json:"Lock,omitempty" xml:"Lock,omitempty"`
 	MaxResults               *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Msisdn                   *string   `json:"Msisdn,omitempty" xml:"Msisdn,omitempty"`
 	NetLinkId                *string   `json:"NetLinkId,omitempty" xml:"NetLinkId,omitempty"`
 	NextToken                *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Online                   *bool     `json:"Online,omitempty" xml:"Online,omitempty"`
@@ -2375,6 +2715,11 @@ func (s *ListCardsRequest) SetLock(v bool) *ListCardsRequest {
 
 func (s *ListCardsRequest) SetMaxResults(v int64) *ListCardsRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ListCardsRequest) SetMsisdn(v string) *ListCardsRequest {
+	s.Msisdn = &v
 	return s
 }
 
@@ -2764,6 +3109,212 @@ func (s *ListDataPackagesResponse) SetStatusCode(v int32) *ListDataPackagesRespo
 }
 
 func (s *ListDataPackagesResponse) SetBody(v *ListDataPackagesResponseBody) *ListDataPackagesResponse {
+	s.Body = v
+	return s
+}
+
+type ListDiagnoseInfoForSingleCardRequest struct {
+	MaxResults               *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionNo                 *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	Source                   *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceType               *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Status                   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	WirelessCloudConnectorId *string `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
+}
+
+func (s ListDiagnoseInfoForSingleCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnoseInfoForSingleCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnoseInfoForSingleCardRequest) SetMaxResults(v int32) *ListDiagnoseInfoForSingleCardRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardRequest) SetNextToken(v string) *ListDiagnoseInfoForSingleCardRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardRequest) SetRegionNo(v string) *ListDiagnoseInfoForSingleCardRequest {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardRequest) SetSource(v string) *ListDiagnoseInfoForSingleCardRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardRequest) SetSourceType(v string) *ListDiagnoseInfoForSingleCardRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardRequest) SetStatus(v string) *ListDiagnoseInfoForSingleCardRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardRequest) SetWirelessCloudConnectorId(v string) *ListDiagnoseInfoForSingleCardRequest {
+	s.WirelessCloudConnectorId = &v
+	return s
+}
+
+type ListDiagnoseInfoForSingleCardResponseBody struct {
+	DiagnoseInfo []*ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo `json:"DiagnoseInfo,omitempty" xml:"DiagnoseInfo,omitempty" type:"Repeated"`
+	MaxResults   *int64                                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int64                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDiagnoseInfoForSingleCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnoseInfoForSingleCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBody) SetDiagnoseInfo(v []*ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) *ListDiagnoseInfoForSingleCardResponseBody {
+	s.DiagnoseInfo = v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBody) SetMaxResults(v int64) *ListDiagnoseInfoForSingleCardResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBody) SetNextToken(v string) *ListDiagnoseInfoForSingleCardResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBody) SetRequestId(v string) *ListDiagnoseInfoForSingleCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBody) SetTotalCount(v int64) *ListDiagnoseInfoForSingleCardResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo struct {
+	BeginTime                *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	CardIp                   *string `json:"CardIp,omitempty" xml:"CardIp,omitempty"`
+	Destination              *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationType          *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	DiagnoseTaskId           *string `json:"DiagnoseTaskId,omitempty" xml:"DiagnoseTaskId,omitempty"`
+	DiagnoseTime             *int64  `json:"DiagnoseTime,omitempty" xml:"DiagnoseTime,omitempty"`
+	EndTime                  *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IccId                    *string `json:"IccId,omitempty" xml:"IccId,omitempty"`
+	Source                   *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceType               *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Status                   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	WirelessCloudConnectorId *string `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
+}
+
+func (s ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetBeginTime(v int64) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetCardIp(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.CardIp = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetDestination(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.Destination = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetDestinationType(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetDiagnoseTaskId(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.DiagnoseTaskId = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetDiagnoseTime(v int64) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.DiagnoseTime = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetEndTime(v int64) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetIccId(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.IccId = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetSource(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.Source = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetSourceType(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetStatus(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetWirelessCloudConnectorId(v string) *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo {
+	s.WirelessCloudConnectorId = &v
+	return s
+}
+
+type ListDiagnoseInfoForSingleCardResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDiagnoseInfoForSingleCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDiagnoseInfoForSingleCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnoseInfoForSingleCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponse) SetHeaders(v map[string]*string) *ListDiagnoseInfoForSingleCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponse) SetStatusCode(v int32) *ListDiagnoseInfoForSingleCardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponse) SetBody(v *ListDiagnoseInfoForSingleCardResponseBody) *ListDiagnoseInfoForSingleCardResponse {
 	s.Body = v
 	return s
 }
@@ -3231,13 +3782,15 @@ func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsRe
 }
 
 type ListWirelessCloudConnectorsRequest struct {
-	BusinessType              *string   `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	MaxResults                *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Names                     []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
-	NextToken                 *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId                  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Statuses                  []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
-	WirelessCloudConnectorIds []*string `json:"WirelessCloudConnectorIds,omitempty" xml:"WirelessCloudConnectorIds,omitempty" type:"Repeated"`
+	BusinessType                  *string   `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	IsInGroup                     *string   `json:"IsInGroup,omitempty" xml:"IsInGroup,omitempty"`
+	MaxResults                    *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Names                         []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	NextToken                     *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId                      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Statuses                      []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	WirelessCloudConnectorGroupId *string   `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+	WirelessCloudConnectorIds     []*string `json:"WirelessCloudConnectorIds,omitempty" xml:"WirelessCloudConnectorIds,omitempty" type:"Repeated"`
 }
 
 func (s ListWirelessCloudConnectorsRequest) String() string {
@@ -3250,6 +3803,11 @@ func (s ListWirelessCloudConnectorsRequest) GoString() string {
 
 func (s *ListWirelessCloudConnectorsRequest) SetBusinessType(v string) *ListWirelessCloudConnectorsRequest {
 	s.BusinessType = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorsRequest) SetIsInGroup(v string) *ListWirelessCloudConnectorsRequest {
+	s.IsInGroup = &v
 	return s
 }
 
@@ -3275,6 +3833,11 @@ func (s *ListWirelessCloudConnectorsRequest) SetRegionId(v string) *ListWireless
 
 func (s *ListWirelessCloudConnectorsRequest) SetStatuses(v []*string) *ListWirelessCloudConnectorsRequest {
 	s.Statuses = v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorsRequest) SetWirelessCloudConnectorGroupId(v string) *ListWirelessCloudConnectorsRequest {
+	s.WirelessCloudConnectorGroupId = &v
 	return s
 }
 
@@ -3325,18 +3888,19 @@ func (s *ListWirelessCloudConnectorsResponseBody) SetWirelessCloudConnectors(v [
 }
 
 type ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors struct {
-	BusinessType             *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	CardCount                *string `json:"CardCount,omitempty" xml:"CardCount,omitempty"`
-	CreateTime               *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataPackageId            *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
-	DataPackageType          *string `json:"DataPackageType,omitempty" xml:"DataPackageType,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceType              *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	Status                   *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UseCase                  *string `json:"UseCase,omitempty" xml:"UseCase,omitempty"`
-	WirelessCloudConnectorId *string `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
+	BusinessType                  *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	CardCount                     *string `json:"CardCount,omitempty" xml:"CardCount,omitempty"`
+	CreateTime                    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataPackageId                 *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
+	DataPackageType               *string `json:"DataPackageType,omitempty" xml:"DataPackageType,omitempty"`
+	Description                   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId                      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceType                   *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Status                        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UseCase                       *string `json:"UseCase,omitempty" xml:"UseCase,omitempty"`
+	WirelessCloudConnectorGroupId *string `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+	WirelessCloudConnectorId      *string `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
 }
 
 func (s ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors) String() string {
@@ -3399,6 +3963,11 @@ func (s *ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors) SetStat
 
 func (s *ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors) SetUseCase(v string) *ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors {
 	s.UseCase = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors) SetWirelessCloudConnectorGroupId(v string) *ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors {
+	s.WirelessCloudConnectorGroupId = &v
 	return s
 }
 
@@ -3998,6 +4567,111 @@ func (s *StopCardsResponse) SetStatusCode(v int32) *StopCardsResponse {
 }
 
 func (s *StopCardsResponse) SetBody(v *StopCardsResponseBody) *StopCardsResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitDiagnoseTaskForSingleCardRequest struct {
+	BeginTime                *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	Destination              *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	EndTime                  *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RegionNo                 *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	ResourceUid              *int64  `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	Source                   *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	WirelessCloudConnectorId *string `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
+}
+
+func (s SubmitDiagnoseTaskForSingleCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDiagnoseTaskForSingleCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetBeginTime(v int64) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetDestination(v string) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.Destination = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetEndTime(v int64) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetRegionNo(v string) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetResourceUid(v int64) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetSource(v string) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardRequest) SetWirelessCloudConnectorId(v string) *SubmitDiagnoseTaskForSingleCardRequest {
+	s.WirelessCloudConnectorId = &v
+	return s
+}
+
+type SubmitDiagnoseTaskForSingleCardResponseBody struct {
+	DiagnoseTaskId *string `json:"DiagnoseTaskId,omitempty" xml:"DiagnoseTaskId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitDiagnoseTaskForSingleCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDiagnoseTaskForSingleCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardResponseBody) SetDiagnoseTaskId(v string) *SubmitDiagnoseTaskForSingleCardResponseBody {
+	s.DiagnoseTaskId = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardResponseBody) SetRequestId(v string) *SubmitDiagnoseTaskForSingleCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitDiagnoseTaskForSingleCardResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitDiagnoseTaskForSingleCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitDiagnoseTaskForSingleCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDiagnoseTaskForSingleCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardResponse) SetHeaders(v map[string]*string) *SubmitDiagnoseTaskForSingleCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardResponse) SetStatusCode(v int32) *SubmitDiagnoseTaskForSingleCardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardResponse) SetBody(v *SubmitDiagnoseTaskForSingleCardResponseBody) *SubmitDiagnoseTaskForSingleCardResponse {
 	s.Body = v
 	return s
 }
@@ -5630,6 +6304,54 @@ func (client *Client) GetCreateCustomerInformation(request *GetCreateCustomerInf
 	return _result, _err
 }
 
+func (client *Client) GetDiagnoseResultForSingleCardWithOptions(request *GetDiagnoseResultForSingleCardRequest, runtime *util.RuntimeOptions) (_result *GetDiagnoseResultForSingleCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiagnoseTaskId)) {
+		query["DiagnoseTaskId"] = request.DiagnoseTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionNo)) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDiagnoseResultForSingleCard"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDiagnoseResultForSingleCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDiagnoseResultForSingleCard(request *GetDiagnoseResultForSingleCardRequest) (_result *GetDiagnoseResultForSingleCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDiagnoseResultForSingleCardResponse{}
+	_body, _err := client.GetDiagnoseResultForSingleCardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetWirelessCloudConnectorWithOptions(request *GetWirelessCloudConnectorRequest, runtime *util.RuntimeOptions) (_result *GetWirelessCloudConnectorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5723,6 +6445,46 @@ func (client *Client) GrantNetLink(request *GrantNetLinkRequest) (_result *Grant
 	runtime := &util.RuntimeOptions{}
 	_result = &GrantNetLinkResponse{}
 	_body, _err := client.GrantNetLinkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAPNsWithOptions(request *ListAPNsRequest, runtime *util.RuntimeOptions) (_result *ListAPNsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAPNs"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAPNsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAPNs(request *ListAPNsRequest) (_result *ListAPNsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAPNsResponse{}
+	_body, _err := client.ListAPNsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5883,6 +6645,74 @@ func (client *Client) ListDataPackages(request *ListDataPackagesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDataPackagesResponse{}
 	_body, _err := client.ListDataPackagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDiagnoseInfoForSingleCardWithOptions(request *ListDiagnoseInfoForSingleCardRequest, runtime *util.RuntimeOptions) (_result *ListDiagnoseInfoForSingleCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionNo)) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorId)) {
+		query["WirelessCloudConnectorId"] = request.WirelessCloudConnectorId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDiagnoseInfoForSingleCard"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDiagnoseInfoForSingleCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDiagnoseInfoForSingleCard(request *ListDiagnoseInfoForSingleCardRequest) (_result *ListDiagnoseInfoForSingleCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDiagnoseInfoForSingleCardResponse{}
+	_body, _err := client.ListDiagnoseInfoForSingleCardWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6411,6 +7241,74 @@ func (client *Client) StopCards(request *StopCardsRequest) (_result *StopCardsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &StopCardsResponse{}
 	_body, _err := client.StopCardsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitDiagnoseTaskForSingleCardWithOptions(request *SubmitDiagnoseTaskForSingleCardRequest, runtime *util.RuntimeOptions) (_result *SubmitDiagnoseTaskForSingleCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
+		query["BeginTime"] = request.BeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionNo)) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorId)) {
+		query["WirelessCloudConnectorId"] = request.WirelessCloudConnectorId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitDiagnoseTaskForSingleCard"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitDiagnoseTaskForSingleCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitDiagnoseTaskForSingleCard(request *SubmitDiagnoseTaskForSingleCardRequest) (_result *SubmitDiagnoseTaskForSingleCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitDiagnoseTaskForSingleCardResponse{}
+	_body, _err := client.SubmitDiagnoseTaskForSingleCardWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
