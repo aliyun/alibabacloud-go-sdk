@@ -11384,7 +11384,8 @@ func (s *GetDeploymentResponseBody) SetSuccess(v bool) *GetDeploymentResponseBod
 }
 
 type GetDeploymentResponseBodyData struct {
-	Deployment *GetDeploymentResponseBodyDataDeployment `json:"Deployment,omitempty" xml:"Deployment,omitempty" type:"Struct"`
+	DeployedItems []*GetDeploymentResponseBodyDataDeployedItems `json:"DeployedItems,omitempty" xml:"DeployedItems,omitempty" type:"Repeated"`
+	Deployment    *GetDeploymentResponseBodyDataDeployment      `json:"Deployment,omitempty" xml:"Deployment,omitempty" type:"Struct"`
 }
 
 func (s GetDeploymentResponseBodyData) String() string {
@@ -11395,8 +11396,42 @@ func (s GetDeploymentResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetDeploymentResponseBodyData) SetDeployedItems(v []*GetDeploymentResponseBodyDataDeployedItems) *GetDeploymentResponseBodyData {
+	s.DeployedItems = v
+	return s
+}
+
 func (s *GetDeploymentResponseBodyData) SetDeployment(v *GetDeploymentResponseBodyDataDeployment) *GetDeploymentResponseBodyData {
 	s.Deployment = v
+	return s
+}
+
+type GetDeploymentResponseBodyDataDeployedItems struct {
+	FileId      *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	FileVersion *int64 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
+	Status      *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetDeploymentResponseBodyDataDeployedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentResponseBodyDataDeployedItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentResponseBodyDataDeployedItems) SetFileId(v int64) *GetDeploymentResponseBodyDataDeployedItems {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetDeploymentResponseBodyDataDeployedItems) SetFileVersion(v int64) *GetDeploymentResponseBodyDataDeployedItems {
+	s.FileVersion = &v
+	return s
+}
+
+func (s *GetDeploymentResponseBodyDataDeployedItems) SetStatus(v int32) *GetDeploymentResponseBodyDataDeployedItems {
+	s.Status = &v
 	return s
 }
 
@@ -34966,6 +35001,81 @@ func (s *ListUsageForResourceGroupResponse) SetBody(v *ListUsageForResourceGroup
 	return s
 }
 
+type OfflineNodeRequest struct {
+	NodeId    *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s OfflineNodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OfflineNodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OfflineNodeRequest) SetNodeId(v int64) *OfflineNodeRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *OfflineNodeRequest) SetProjectId(v int64) *OfflineNodeRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type OfflineNodeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s OfflineNodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OfflineNodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OfflineNodeResponseBody) SetRequestId(v string) *OfflineNodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OfflineNodeResponseBody) SetSuccess(v string) *OfflineNodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type OfflineNodeResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OfflineNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OfflineNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OfflineNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OfflineNodeResponse) SetHeaders(v map[string]*string) *OfflineNodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OfflineNodeResponse) SetStatusCode(v int32) *OfflineNodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OfflineNodeResponse) SetBody(v *OfflineNodeResponseBody) *OfflineNodeResponse {
+	s.Body = v
+	return s
+}
+
 type PublishDataServiceApiRequest struct {
 	ApiId     *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -51944,6 +52054,54 @@ func (client *Client) ListUsageForResourceGroup(request *ListUsageForResourceGro
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsageForResourceGroupResponse{}
 	_body, _err := client.ListUsageForResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) OfflineNodeWithOptions(request *OfflineNodeRequest, runtime *util.RuntimeOptions) (_result *OfflineNodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OfflineNode"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OfflineNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OfflineNode(request *OfflineNodeRequest) (_result *OfflineNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OfflineNodeResponse{}
+	_body, _err := client.OfflineNodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
