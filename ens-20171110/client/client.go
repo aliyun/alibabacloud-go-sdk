@@ -5540,6 +5540,134 @@ func (s *DeleteVSwitchResponse) SetBody(v *DeleteVSwitchResponseBody) *DeleteVSw
 	return s
 }
 
+type DescribeAICImagesRequest struct {
+	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageUrl   *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeAICImagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAICImagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAICImagesRequest) SetImageId(v string) *DescribeAICImagesRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeAICImagesRequest) SetImageUrl(v string) *DescribeAICImagesRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *DescribeAICImagesRequest) SetPageNumber(v string) *DescribeAICImagesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAICImagesRequest) SetPageSize(v string) *DescribeAICImagesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeAICImagesResponseBody struct {
+	Images    []*DescribeAICImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAICImagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAICImagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAICImagesResponseBody) SetImages(v []*DescribeAICImagesResponseBodyImages) *DescribeAICImagesResponseBody {
+	s.Images = v
+	return s
+}
+
+func (s *DescribeAICImagesResponseBody) SetRequestId(v string) *DescribeAICImagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAICImagesResponseBodyImages struct {
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageUrl     *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	User         *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeAICImagesResponseBodyImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAICImagesResponseBodyImages) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAICImagesResponseBodyImages) SetCreationTime(v string) *DescribeAICImagesResponseBodyImages {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeAICImagesResponseBodyImages) SetImageId(v string) *DescribeAICImagesResponseBodyImages {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeAICImagesResponseBodyImages) SetImageUrl(v string) *DescribeAICImagesResponseBodyImages {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *DescribeAICImagesResponseBodyImages) SetStatus(v string) *DescribeAICImagesResponseBodyImages {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeAICImagesResponseBodyImages) SetUser(v string) *DescribeAICImagesResponseBodyImages {
+	s.User = &v
+	return s
+}
+
+type DescribeAICImagesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAICImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAICImagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAICImagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAICImagesResponse) SetHeaders(v map[string]*string) *DescribeAICImagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAICImagesResponse) SetStatusCode(v int32) *DescribeAICImagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAICImagesResponse) SetBody(v *DescribeAICImagesResponseBody) *DescribeAICImagesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeARMServerInstancesRequest struct {
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	PageNumber   *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -11204,6 +11332,229 @@ func (s *DescribeExportImageStatusResponse) SetBody(v *DescribeExportImageStatus
 	return s
 }
 
+type DescribeFileSystemsRequest struct {
+	EnsRegionId    *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	FileSystemId   *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileSystemName *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeFileSystemsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsRequest) SetEnsRegionId(v string) *DescribeFileSystemsRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsRequest) SetFileSystemId(v string) *DescribeFileSystemsRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsRequest) SetFileSystemName(v string) *DescribeFileSystemsRequest {
+	s.FileSystemName = &v
+	return s
+}
+
+func (s *DescribeFileSystemsRequest) SetPageNumber(v int32) *DescribeFileSystemsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeFileSystemsRequest) SetPageSize(v int32) *DescribeFileSystemsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeFileSystemsResponseBody struct {
+	FileSystems []*DescribeFileSystemsResponseBodyFileSystems `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Repeated"`
+	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeFileSystemsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponseBody) SetFileSystems(v []*DescribeFileSystemsResponseBodyFileSystems) *DescribeFileSystemsResponseBody {
+	s.FileSystems = v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBody) SetPageNumber(v int32) *DescribeFileSystemsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBody) SetPageSize(v int32) *DescribeFileSystemsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBody) SetRequestId(v string) *DescribeFileSystemsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBody) SetTotalCount(v int32) *DescribeFileSystemsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeFileSystemsResponseBodyFileSystems struct {
+	Capacity       *int64                                                    `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	CreationTime   *string                                                   `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	EnsRegionId    *string                                                   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	FileSystemId   *string                                                   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileSystemName *string                                                   `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
+	MeteredSize    *int64                                                    `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
+	MountTargets   []*DescribeFileSystemsResponseBodyFileSystemsMountTargets `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Repeated"`
+	PayType        *string                                                   `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ProtocolType   *string                                                   `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	Status         *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageType    *string                                                   `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystems) SetCapacity(v int64) *DescribeFileSystemsResponseBodyFileSystems {
+	s.Capacity = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystems) SetCreationTime(v string) *DescribeFileSystemsResponseBodyFileSystems {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystems) SetEnsRegionId(v string) *DescribeFileSystemsResponseBodyFileSystems {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystems) SetFileSystemId(v string) *DescribeFileSystemsResponseBodyFileSystems {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystems) SetFileSystemName(v string) *DescribeFileSystemsResponseBodyFileSystems {
+	s.FileSystemName = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystems) SetMeteredSize(v int64) *DescribeFileSystemsResponseBodyFileSystems {
+	s.MeteredSize = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystems) SetMountTargets(v []*DescribeFileSystemsResponseBodyFileSystemsMountTargets) *DescribeFileSystemsResponseBodyFileSystems {
+	s.MountTargets = v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystems) SetPayType(v string) *DescribeFileSystemsResponseBodyFileSystems {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystems) SetProtocolType(v string) *DescribeFileSystemsResponseBodyFileSystems {
+	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystems) SetStatus(v string) *DescribeFileSystemsResponseBodyFileSystems {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystems) SetStorageType(v string) *DescribeFileSystemsResponseBodyFileSystems {
+	s.StorageType = &v
+	return s
+}
+
+type DescribeFileSystemsResponseBodyFileSystemsMountTargets struct {
+	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
+	MountTargetName   *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
+	NetWorkId         *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsMountTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsMountTargets) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsMountTargets) SetMountTargetDomain(v string) *DescribeFileSystemsResponseBodyFileSystemsMountTargets {
+	s.MountTargetDomain = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsMountTargets) SetMountTargetName(v string) *DescribeFileSystemsResponseBodyFileSystemsMountTargets {
+	s.MountTargetName = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsMountTargets) SetNetWorkId(v string) *DescribeFileSystemsResponseBodyFileSystemsMountTargets {
+	s.NetWorkId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsMountTargets) SetStatus(v string) *DescribeFileSystemsResponseBodyFileSystemsMountTargets {
+	s.Status = &v
+	return s
+}
+
+type DescribeFileSystemsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeFileSystemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeFileSystemsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponse) SetHeaders(v map[string]*string) *DescribeFileSystemsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFileSystemsResponse) SetStatusCode(v int32) *DescribeFileSystemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponse) SetBody(v *DescribeFileSystemsResponseBody) *DescribeFileSystemsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeForwardTableEntriesRequest struct {
 	ExternalIp       *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
 	ForwardEntryId   *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
@@ -16260,7 +16611,6 @@ type DescribePrePaidInstanceStockRequest struct {
 	EnsRegionId    *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	InstanceSpec   *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	SystemDiskSize *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	Version        *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribePrePaidInstanceStockRequest) String() string {
@@ -16291,11 +16641,6 @@ func (s *DescribePrePaidInstanceStockRequest) SetSystemDiskSize(v int32) *Descri
 	return s
 }
 
-func (s *DescribePrePaidInstanceStockRequest) SetVersion(v string) *DescribePrePaidInstanceStockRequest {
-	s.Version = &v
-	return s
-}
-
 type DescribePrePaidInstanceStockResponseBody struct {
 	AvaliableCount *int32  `json:"AvaliableCount,omitempty" xml:"AvaliableCount,omitempty"`
 	Cores          *int32  `json:"Cores,omitempty" xml:"Cores,omitempty"`
@@ -16304,6 +16649,7 @@ type DescribePrePaidInstanceStockResponseBody struct {
 	InstanceSpec   *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	Memory         *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGap    *string `json:"ResourceGap,omitempty" xml:"ResourceGap,omitempty"`
 	SystemDiskSize *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 }
 
@@ -16347,6 +16693,11 @@ func (s *DescribePrePaidInstanceStockResponseBody) SetMemory(v int32) *DescribeP
 
 func (s *DescribePrePaidInstanceStockResponseBody) SetRequestId(v string) *DescribePrePaidInstanceStockResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePrePaidInstanceStockResponseBody) SetResourceGap(v string) *DescribePrePaidInstanceStockResponseBody {
+	s.ResourceGap = &v
 	return s
 }
 
@@ -17920,7 +18271,6 @@ type DescribeUserBandWidthDataRequest struct {
 	Isp         *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	Period      *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeUserBandWidthDataRequest) String() string {
@@ -17958,11 +18308,6 @@ func (s *DescribeUserBandWidthDataRequest) SetPeriod(v string) *DescribeUserBand
 
 func (s *DescribeUserBandWidthDataRequest) SetStartTime(v string) *DescribeUserBandWidthDataRequest {
 	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeUserBandWidthDataRequest) SetVersion(v string) *DescribeUserBandWidthDataRequest {
-	s.Version = &v
 	return s
 }
 
@@ -18025,11 +18370,11 @@ func (s *DescribeUserBandWidthDataResponseBodyMonitorData) SetMaxUpBandWidth(v s
 }
 
 type DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData struct {
-	DownBandWidth *int32  `json:"DownBandWidth,omitempty" xml:"DownBandWidth,omitempty"`
-	InternetRX    *int32  `json:"InternetRX,omitempty" xml:"InternetRX,omitempty"`
-	InternetTX    *int32  `json:"InternetTX,omitempty" xml:"InternetTX,omitempty"`
+	DownBandWidth *int64  `json:"DownBandWidth,omitempty" xml:"DownBandWidth,omitempty"`
+	InternetRX    *int64  `json:"InternetRX,omitempty" xml:"InternetRX,omitempty"`
+	InternetTX    *int64  `json:"InternetTX,omitempty" xml:"InternetTX,omitempty"`
 	TimeStamp     *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	UpBandWidth   *int32  `json:"UpBandWidth,omitempty" xml:"UpBandWidth,omitempty"`
+	UpBandWidth   *int64  `json:"UpBandWidth,omitempty" xml:"UpBandWidth,omitempty"`
 }
 
 func (s DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData) String() string {
@@ -18040,17 +18385,17 @@ func (s DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData) Go
 	return s.String()
 }
 
-func (s *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData) SetDownBandWidth(v int32) *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData {
+func (s *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData) SetDownBandWidth(v int64) *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData {
 	s.DownBandWidth = &v
 	return s
 }
 
-func (s *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData) SetInternetRX(v int32) *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData {
+func (s *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData) SetInternetRX(v int64) *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData {
 	s.InternetRX = &v
 	return s
 }
 
-func (s *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData) SetInternetTX(v int32) *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData {
+func (s *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData) SetInternetTX(v int64) *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData {
 	s.InternetTX = &v
 	return s
 }
@@ -18060,7 +18405,7 @@ func (s *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData) S
 	return s
 }
 
-func (s *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData) SetUpBandWidth(v int32) *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData {
+func (s *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData) SetUpBandWidth(v int64) *DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData {
 	s.UpBandWidth = &v
 	return s
 }
@@ -28387,6 +28732,62 @@ func (client *Client) DeleteVSwitch(request *DeleteVSwitchRequest) (_result *Del
 	return _result, _err
 }
 
+func (client *Client) DescribeAICImagesWithOptions(request *DescribeAICImagesRequest, runtime *util.RuntimeOptions) (_result *DescribeAICImagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAICImages"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAICImagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAICImages(request *DescribeAICImagesRequest) (_result *DescribeAICImagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAICImagesResponse{}
+	_body, _err := client.DescribeAICImagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeARMServerInstancesWithOptions(tmpReq *DescribeARMServerInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeARMServerInstancesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -30128,6 +30529,46 @@ func (client *Client) DescribeExportImageStatus(request *DescribeExportImageStat
 	return _result, _err
 }
 
+func (client *Client) DescribeFileSystemsWithOptions(request *DescribeFileSystemsRequest, runtime *util.RuntimeOptions) (_result *DescribeFileSystemsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFileSystems"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeFileSystemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeFileSystems(request *DescribeFileSystemsRequest) (_result *DescribeFileSystemsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFileSystemsResponse{}
+	_body, _err := client.DescribeFileSystemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeForwardTableEntriesWithOptions(request *DescribeForwardTableEntriesRequest, runtime *util.RuntimeOptions) (_result *DescribeForwardTableEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31482,10 +31923,6 @@ func (client *Client) DescribePrePaidInstanceStockWithOptions(request *DescribeP
 		query["SystemDiskSize"] = request.SystemDiskSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -31966,10 +32403,6 @@ func (client *Client) DescribeUserBandWidthDataWithOptions(request *DescribeUser
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
