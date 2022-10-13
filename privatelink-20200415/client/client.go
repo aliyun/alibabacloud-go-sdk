@@ -845,6 +845,7 @@ func (s *CreateVpcEndpointServiceRequest) SetZoneAffinityEnabled(v bool) *Create
 type CreateVpcEndpointServiceRequestResource struct {
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateVpcEndpointServiceRequestResource) String() string {
@@ -862,6 +863,11 @@ func (s *CreateVpcEndpointServiceRequestResource) SetResourceId(v string) *Creat
 
 func (s *CreateVpcEndpointServiceRequestResource) SetResourceType(v string) *CreateVpcEndpointServiceRequestResource {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *CreateVpcEndpointServiceRequestResource) SetZoneId(v string) *CreateVpcEndpointServiceRequestResource {
+	s.ZoneId = &v
 	return s
 }
 
