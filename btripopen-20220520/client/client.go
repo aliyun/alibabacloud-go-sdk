@@ -507,6 +507,7 @@ type ApplyAddRequest struct {
 	Status                    *int32                                   `json:"status,omitempty" xml:"status,omitempty"`
 	ThirdpartApplyId          *string                                  `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	ThirdpartBusinessId       *string                                  `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
+	ThirdpartDepartId         *string                                  `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
 	TogetherBookRule          *int32                                   `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
 	TrainBudget               *int64                                   `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
 	TravelerList              []*ApplyAddRequestTravelerList           `json:"traveler_list,omitempty" xml:"traveler_list,omitempty" type:"Repeated"`
@@ -616,6 +617,11 @@ func (s *ApplyAddRequest) SetThirdpartApplyId(v string) *ApplyAddRequest {
 
 func (s *ApplyAddRequest) SetThirdpartBusinessId(v string) *ApplyAddRequest {
 	s.ThirdpartBusinessId = &v
+	return s
+}
+
+func (s *ApplyAddRequest) SetThirdpartDepartId(v string) *ApplyAddRequest {
+	s.ThirdpartDepartId = &v
 	return s
 }
 
@@ -1127,6 +1133,7 @@ type ApplyAddShrinkRequest struct {
 	Status                         *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	ThirdpartApplyId               *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	ThirdpartBusinessId            *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
+	ThirdpartDepartId              *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
 	TogetherBookRule               *int32  `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
 	TrainBudget                    *int64  `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
 	TravelerListShrink             *string `json:"traveler_list,omitempty" xml:"traveler_list,omitempty"`
@@ -1236,6 +1243,11 @@ func (s *ApplyAddShrinkRequest) SetThirdpartApplyId(v string) *ApplyAddShrinkReq
 
 func (s *ApplyAddShrinkRequest) SetThirdpartBusinessId(v string) *ApplyAddShrinkRequest {
 	s.ThirdpartBusinessId = &v
+	return s
+}
+
+func (s *ApplyAddShrinkRequest) SetThirdpartDepartId(v string) *ApplyAddShrinkRequest {
+	s.ThirdpartDepartId = &v
 	return s
 }
 
@@ -2175,6 +2187,7 @@ type ApplyModifyRequest struct {
 	Status                   *int32                                      `json:"status,omitempty" xml:"status,omitempty"`
 	ThirdpartApplyId         *string                                     `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	ThirdpartBusinessId      *string                                     `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
+	ThirdpartDepartId        *string                                     `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
 	TogetherBookRule         *int32                                      `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
 	TrainBudget              *int64                                      `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
 	TravelerList             []*ApplyModifyRequestTravelerList           `json:"traveler_list,omitempty" xml:"traveler_list,omitempty" type:"Repeated"`
@@ -2278,6 +2291,11 @@ func (s *ApplyModifyRequest) SetThirdpartApplyId(v string) *ApplyModifyRequest {
 
 func (s *ApplyModifyRequest) SetThirdpartBusinessId(v string) *ApplyModifyRequest {
 	s.ThirdpartBusinessId = &v
+	return s
+}
+
+func (s *ApplyModifyRequest) SetThirdpartDepartId(v string) *ApplyModifyRequest {
+	s.ThirdpartDepartId = &v
 	return s
 }
 
@@ -2783,6 +2801,7 @@ type ApplyModifyShrinkRequest struct {
 	Status                         *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	ThirdpartApplyId               *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	ThirdpartBusinessId            *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
+	ThirdpartDepartId              *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
 	TogetherBookRule               *int32  `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
 	TrainBudget                    *int64  `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
 	TravelerListShrink             *string `json:"traveler_list,omitempty" xml:"traveler_list,omitempty"`
@@ -2886,6 +2905,11 @@ func (s *ApplyModifyShrinkRequest) SetThirdpartApplyId(v string) *ApplyModifyShr
 
 func (s *ApplyModifyShrinkRequest) SetThirdpartBusinessId(v string) *ApplyModifyShrinkRequest {
 	s.ThirdpartBusinessId = &v
+	return s
+}
+
+func (s *ApplyModifyShrinkRequest) SetThirdpartDepartId(v string) *ApplyModifyShrinkRequest {
+	s.ThirdpartDepartId = &v
 	return s
 }
 
@@ -16680,6 +16704,10 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *Appl
 		body["thirdpart_business_id"] = request.ThirdpartBusinessId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ThirdpartDepartId)) {
+		body["thirdpart_depart_id"] = request.ThirdpartDepartId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TogetherBookRule)) {
 		body["together_book_rule"] = request.TogetherBookRule
 	}
@@ -17046,6 +17074,10 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 
 	if !tea.BoolValue(util.IsUnset(request.ThirdpartBusinessId)) {
 		body["thirdpart_business_id"] = request.ThirdpartBusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdpartDepartId)) {
+		body["thirdpart_depart_id"] = request.ThirdpartDepartId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TogetherBookRule)) {
