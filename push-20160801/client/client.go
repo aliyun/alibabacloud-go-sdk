@@ -1029,6 +1029,8 @@ type MassPushRequestPushTask struct {
 	AndroidNotificationBarPriority   *int32   `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
 	AndroidNotificationBarType       *int32   `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
 	AndroidNotificationChannel       *string  `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
+	AndroidNotificationGroup         *string  `json:"AndroidNotificationGroup,omitempty" xml:"AndroidNotificationGroup,omitempty"`
+	AndroidNotificationHonorChannel  *string  `json:"AndroidNotificationHonorChannel,omitempty" xml:"AndroidNotificationHonorChannel,omitempty"`
 	AndroidNotificationHuaweiChannel *string  `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
 	AndroidNotificationNotifyId      *int32   `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
 	AndroidNotificationVivoChannel   *string  `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
@@ -1147,6 +1149,16 @@ func (s *MassPushRequestPushTask) SetAndroidNotificationBarType(v int32) *MassPu
 
 func (s *MassPushRequestPushTask) SetAndroidNotificationChannel(v string) *MassPushRequestPushTask {
 	s.AndroidNotificationChannel = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidNotificationGroup(v string) *MassPushRequestPushTask {
+	s.AndroidNotificationGroup = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidNotificationHonorChannel(v string) *MassPushRequestPushTask {
+	s.AndroidNotificationHonorChannel = &v
 	return s
 }
 
@@ -1463,6 +1475,8 @@ type PushRequest struct {
 	AndroidNotificationBarPriority   *int32   `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
 	AndroidNotificationBarType       *int32   `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
 	AndroidNotificationChannel       *string  `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
+	AndroidNotificationGroup         *string  `json:"AndroidNotificationGroup,omitempty" xml:"AndroidNotificationGroup,omitempty"`
+	AndroidNotificationHonorChannel  *string  `json:"AndroidNotificationHonorChannel,omitempty" xml:"AndroidNotificationHonorChannel,omitempty"`
 	AndroidNotificationHuaweiChannel *string  `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
 	AndroidNotificationNotifyId      *int32   `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
 	AndroidNotificationVivoChannel   *string  `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
@@ -1587,6 +1601,16 @@ func (s *PushRequest) SetAndroidNotificationBarType(v int32) *PushRequest {
 
 func (s *PushRequest) SetAndroidNotificationChannel(v string) *PushRequest {
 	s.AndroidNotificationChannel = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidNotificationGroup(v string) *PushRequest {
+	s.AndroidNotificationGroup = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidNotificationHonorChannel(v string) *PushRequest {
+	s.AndroidNotificationHonorChannel = &v
 	return s
 }
 
@@ -4759,6 +4783,14 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidNotificationChannel)) {
 		query["AndroidNotificationChannel"] = request.AndroidNotificationChannel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidNotificationGroup)) {
+		query["AndroidNotificationGroup"] = request.AndroidNotificationGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidNotificationHonorChannel)) {
+		query["AndroidNotificationHonorChannel"] = request.AndroidNotificationHonorChannel
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidNotificationHuaweiChannel)) {
