@@ -1902,6 +1902,446 @@ func (s *CreateIngressResponse) SetBody(v *CreateIngressResponseBody) *CreateIng
 	return s
 }
 
+type CreateJobRequest struct {
+	AcrAssumeRoleArn              *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
+	AppDescription                *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	AppName                       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AssociateEip                  *bool   `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
+	AutoConfig                    *bool   `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty"`
+	BackoffLimit                  *int64  `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	Command                       *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	CommandArgs                   *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	ConcurrencyPolicy             *string `json:"ConcurrencyPolicy,omitempty" xml:"ConcurrencyPolicy,omitempty"`
+	ConfigMapMountDesc            *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
+	Cpu                           *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CustomHostAlias               *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	Deploy                        *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	EdasContainerVersion          *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	Envs                          *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImageUrl                      *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	JarStartArgs                  *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	JarStartOptions               *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	Jdk                           *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	Liveness                      *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	Memory                        *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	MountDesc                     *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
+	MountHost                     *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	NamespaceId                   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NasId                         *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	OssAkId                       *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
+	OssAkSecret                   *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
+	OssMountDescs                 *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
+	PackageType                   *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	PackageUrl                    *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	PackageVersion                *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	PhpArmsConfigLocation         *string `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
+	PhpConfig                     *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
+	PhpConfigLocation             *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
+	PostStart                     *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop                       *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	ProgrammingLanguage           *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	Readiness                     *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	RefAppId                      *string `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
+	Replicas                      *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	SecurityGroupId               *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Slice                         *bool   `json:"Slice,omitempty" xml:"Slice,omitempty"`
+	SliceEnvs                     *string `json:"SliceEnvs,omitempty" xml:"SliceEnvs,omitempty"`
+	SlsConfigs                    *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	TerminationGracePeriodSeconds *int32  `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
+	Timeout                       *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Timezone                      *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	TomcatConfig                  *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
+	TriggerConfig                 *string `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
+	VSwitchId                     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	WarStartOptions               *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
+	WebContainer                  *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+	Workload                      *string `json:"Workload,omitempty" xml:"Workload,omitempty"`
+}
+
+func (s CreateJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequest) SetAcrAssumeRoleArn(v string) *CreateJobRequest {
+	s.AcrAssumeRoleArn = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetAppDescription(v string) *CreateJobRequest {
+	s.AppDescription = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetAppName(v string) *CreateJobRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetAssociateEip(v bool) *CreateJobRequest {
+	s.AssociateEip = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetAutoConfig(v bool) *CreateJobRequest {
+	s.AutoConfig = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetBackoffLimit(v int64) *CreateJobRequest {
+	s.BackoffLimit = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetCommand(v string) *CreateJobRequest {
+	s.Command = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetCommandArgs(v string) *CreateJobRequest {
+	s.CommandArgs = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetConcurrencyPolicy(v string) *CreateJobRequest {
+	s.ConcurrencyPolicy = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetConfigMapMountDesc(v string) *CreateJobRequest {
+	s.ConfigMapMountDesc = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetCpu(v int32) *CreateJobRequest {
+	s.Cpu = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetCustomHostAlias(v string) *CreateJobRequest {
+	s.CustomHostAlias = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetDeploy(v bool) *CreateJobRequest {
+	s.Deploy = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetEdasContainerVersion(v string) *CreateJobRequest {
+	s.EdasContainerVersion = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetEnvs(v string) *CreateJobRequest {
+	s.Envs = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetImageUrl(v string) *CreateJobRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetJarStartArgs(v string) *CreateJobRequest {
+	s.JarStartArgs = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetJarStartOptions(v string) *CreateJobRequest {
+	s.JarStartOptions = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetJdk(v string) *CreateJobRequest {
+	s.Jdk = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetLiveness(v string) *CreateJobRequest {
+	s.Liveness = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetMemory(v int32) *CreateJobRequest {
+	s.Memory = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetMountDesc(v string) *CreateJobRequest {
+	s.MountDesc = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetMountHost(v string) *CreateJobRequest {
+	s.MountHost = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetNamespaceId(v string) *CreateJobRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetNasId(v string) *CreateJobRequest {
+	s.NasId = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetOssAkId(v string) *CreateJobRequest {
+	s.OssAkId = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetOssAkSecret(v string) *CreateJobRequest {
+	s.OssAkSecret = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetOssMountDescs(v string) *CreateJobRequest {
+	s.OssMountDescs = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetPackageType(v string) *CreateJobRequest {
+	s.PackageType = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetPackageUrl(v string) *CreateJobRequest {
+	s.PackageUrl = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetPackageVersion(v string) *CreateJobRequest {
+	s.PackageVersion = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetPhpArmsConfigLocation(v string) *CreateJobRequest {
+	s.PhpArmsConfigLocation = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetPhpConfig(v string) *CreateJobRequest {
+	s.PhpConfig = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetPhpConfigLocation(v string) *CreateJobRequest {
+	s.PhpConfigLocation = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetPostStart(v string) *CreateJobRequest {
+	s.PostStart = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetPreStop(v string) *CreateJobRequest {
+	s.PreStop = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetProgrammingLanguage(v string) *CreateJobRequest {
+	s.ProgrammingLanguage = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetReadiness(v string) *CreateJobRequest {
+	s.Readiness = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetRefAppId(v string) *CreateJobRequest {
+	s.RefAppId = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetReplicas(v int32) *CreateJobRequest {
+	s.Replicas = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetSecurityGroupId(v string) *CreateJobRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetSlice(v bool) *CreateJobRequest {
+	s.Slice = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetSliceEnvs(v string) *CreateJobRequest {
+	s.SliceEnvs = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetSlsConfigs(v string) *CreateJobRequest {
+	s.SlsConfigs = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetTerminationGracePeriodSeconds(v int32) *CreateJobRequest {
+	s.TerminationGracePeriodSeconds = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetTimeout(v int64) *CreateJobRequest {
+	s.Timeout = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetTimezone(v string) *CreateJobRequest {
+	s.Timezone = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetTomcatConfig(v string) *CreateJobRequest {
+	s.TomcatConfig = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetTriggerConfig(v string) *CreateJobRequest {
+	s.TriggerConfig = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetVSwitchId(v string) *CreateJobRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetVpcId(v string) *CreateJobRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetWarStartOptions(v string) *CreateJobRequest {
+	s.WarStartOptions = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetWebContainer(v string) *CreateJobRequest {
+	s.WebContainer = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetWorkload(v string) *CreateJobRequest {
+	s.Workload = &v
+	return s
+}
+
+type CreateJobResponseBody struct {
+	Code      *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                    `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s CreateJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobResponseBody) SetCode(v string) *CreateJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateJobResponseBody) SetData(v *CreateJobResponseBodyData) *CreateJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateJobResponseBody) SetErrorCode(v string) *CreateJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateJobResponseBody) SetMessage(v string) *CreateJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateJobResponseBody) SetRequestId(v string) *CreateJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateJobResponseBody) SetSuccess(v bool) *CreateJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateJobResponseBody) SetTraceId(v string) *CreateJobResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type CreateJobResponseBodyData struct {
+	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
+}
+
+func (s CreateJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobResponseBodyData) SetAppId(v string) *CreateJobResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateJobResponseBodyData) SetChangeOrderId(v string) *CreateJobResponseBodyData {
+	s.ChangeOrderId = &v
+	return s
+}
+
+type CreateJobResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobResponse) SetHeaders(v map[string]*string) *CreateJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateJobResponse) SetStatusCode(v int32) *CreateJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse {
+	s.Body = v
+	return s
+}
+
 type CreateNamespaceRequest struct {
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
 	NamespaceId          *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
@@ -2471,6 +2911,111 @@ func (s *DeleteGreyTagRouteResponse) SetBody(v *DeleteGreyTagRouteResponseBody) 
 	return s
 }
 
+type DeleteHistoryJobRequest struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s DeleteHistoryJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHistoryJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHistoryJobRequest) SetAppId(v string) *DeleteHistoryJobRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteHistoryJobRequest) SetJobId(v string) *DeleteHistoryJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type DeleteHistoryJobResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DeleteHistoryJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHistoryJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHistoryJobResponseBody) SetCode(v string) *DeleteHistoryJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteHistoryJobResponseBody) SetData(v string) *DeleteHistoryJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteHistoryJobResponseBody) SetErrorCode(v string) *DeleteHistoryJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteHistoryJobResponseBody) SetMessage(v string) *DeleteHistoryJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteHistoryJobResponseBody) SetRequestId(v string) *DeleteHistoryJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteHistoryJobResponseBody) SetSuccess(v bool) *DeleteHistoryJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteHistoryJobResponseBody) SetTraceId(v string) *DeleteHistoryJobResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DeleteHistoryJobResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteHistoryJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteHistoryJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHistoryJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHistoryJobResponse) SetHeaders(v map[string]*string) *DeleteHistoryJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHistoryJobResponse) SetStatusCode(v int32) *DeleteHistoryJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHistoryJobResponse) SetBody(v *DeleteHistoryJobResponseBody) *DeleteHistoryJobResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteIngressRequest struct {
 	IngressId *int64 `json:"IngressId,omitempty" xml:"IngressId,omitempty"`
 }
@@ -2583,6 +3128,105 @@ func (s *DeleteIngressResponse) SetStatusCode(v int32) *DeleteIngressResponse {
 }
 
 func (s *DeleteIngressResponse) SetBody(v *DeleteIngressResponseBody) *DeleteIngressResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteJobRequest struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s DeleteJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteJobRequest) SetAppId(v string) *DeleteJobRequest {
+	s.AppId = &v
+	return s
+}
+
+type DeleteJobResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DeleteJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteJobResponseBody) SetCode(v string) *DeleteJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteJobResponseBody) SetData(v string) *DeleteJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteJobResponseBody) SetErrorCode(v string) *DeleteJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteJobResponseBody) SetMessage(v string) *DeleteJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteJobResponseBody) SetRequestId(v string) *DeleteJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteJobResponseBody) SetSuccess(v bool) *DeleteJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteJobResponseBody) SetTraceId(v string) *DeleteJobResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DeleteJobResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteJobResponse) SetHeaders(v map[string]*string) *DeleteJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteJobResponse) SetStatusCode(v int32) *DeleteJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteJobResponse) SetBody(v *DeleteJobResponseBody) *DeleteJobResponse {
 	s.Body = v
 	return s
 }
@@ -7650,6 +8294,839 @@ func (s *DescribeInstanceSpecificationsResponse) SetBody(v *DescribeInstanceSpec
 	return s
 }
 
+type DescribeJobRequest struct {
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s DescribeJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobRequest) SetAppId(v string) *DescribeJobRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeJobRequest) SetJobId(v string) *DescribeJobRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeJobRequest) SetVersionId(v string) *DescribeJobRequest {
+	s.VersionId = &v
+	return s
+}
+
+type DescribeJobResponseBody struct {
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                      `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DescribeJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobResponseBody) SetCode(v string) *DescribeJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeJobResponseBody) SetData(v *DescribeJobResponseBodyData) *DescribeJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeJobResponseBody) SetErrorCode(v string) *DescribeJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeJobResponseBody) SetMessage(v string) *DescribeJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeJobResponseBody) SetRequestId(v string) *DescribeJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeJobResponseBody) SetSuccess(v bool) *DescribeJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeJobResponseBody) SetTraceId(v string) *DescribeJobResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DescribeJobResponseBodyData struct {
+	AcrAssumeRoleArn              *string                                          `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
+	AppDescription                *string                                          `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	AppId                         *string                                          `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName                       *string                                          `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AssociateEip                  *bool                                            `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
+	BackoffLimit                  *int64                                           `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	BatchWaitTime                 *int32                                           `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
+	Command                       *string                                          `json:"Command,omitempty" xml:"Command,omitempty"`
+	CommandArgs                   *string                                          `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	ConcurrencyPolicy             *string                                          `json:"ConcurrencyPolicy,omitempty" xml:"ConcurrencyPolicy,omitempty"`
+	ConfigMapMountDesc            []*DescribeJobResponseBodyDataConfigMapMountDesc `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty" type:"Repeated"`
+	Cpu                           *int32                                           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CustomHostAlias               *string                                          `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	EdasContainerVersion          *string                                          `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EnableAhas                    *string                                          `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	EnableGreyTagRoute            *bool                                            `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	Envs                          *string                                          `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImageUrl                      *string                                          `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	JarStartArgs                  *string                                          `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	JarStartOptions               *string                                          `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	Jdk                           *string                                          `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	Liveness                      *string                                          `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	Memory                        *int32                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	MinReadyInstances             *int32                                           `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
+	MountDesc                     []*DescribeJobResponseBodyDataMountDesc          `json:"MountDesc,omitempty" xml:"MountDesc,omitempty" type:"Repeated"`
+	MountHost                     *string                                          `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	MseApplicationId              *string                                          `json:"MseApplicationId,omitempty" xml:"MseApplicationId,omitempty"`
+	NamespaceId                   *string                                          `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NasConfigs                    *string                                          `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
+	NasId                         *string                                          `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	OssAkId                       *string                                          `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
+	OssAkSecret                   *string                                          `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
+	OssMountDescs                 []*DescribeJobResponseBodyDataOssMountDescs      `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty" type:"Repeated"`
+	PackageType                   *string                                          `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	PackageUrl                    *string                                          `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	PackageVersion                *string                                          `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	PhpArmsConfigLocation         *string                                          `json:"PhpArmsConfigLocation,omitempty" xml:"PhpArmsConfigLocation,omitempty"`
+	PhpConfig                     *string                                          `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
+	PhpConfigLocation             *string                                          `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
+	PostStart                     *string                                          `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop                       *string                                          `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	ProgrammingLanguage           *string                                          `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	PublicWebHookUrls             []*string                                        `json:"PublicWebHookUrls,omitempty" xml:"PublicWebHookUrls,omitempty" type:"Repeated"`
+	Readiness                     *string                                          `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	RefAppId                      *string                                          `json:"RefAppId,omitempty" xml:"RefAppId,omitempty"`
+	RefedAppIds                   []*string                                        `json:"RefedAppIds,omitempty" xml:"RefedAppIds,omitempty" type:"Repeated"`
+	RegionId                      *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Replicas                      *int32                                           `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	SecurityGroupId               *string                                          `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Slice                         *bool                                            `json:"Slice,omitempty" xml:"Slice,omitempty"`
+	SliceEnvs                     *string                                          `json:"SliceEnvs,omitempty" xml:"SliceEnvs,omitempty"`
+	SlsConfigs                    *string                                          `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	Suspend                       *bool                                            `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
+	Tags                          []*DescribeJobResponseBodyDataTags               `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TerminationGracePeriodSeconds *int32                                           `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
+	Timeout                       *int64                                           `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Timezone                      *string                                          `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	TomcatConfig                  *string                                          `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
+	TriggerConfig                 *string                                          `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
+	VSwitchId                     *string                                          `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                         *string                                          `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcWebHookUrls                []*string                                        `json:"VpcWebHookUrls,omitempty" xml:"VpcWebHookUrls,omitempty" type:"Repeated"`
+	WarStartOptions               *string                                          `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
+	WebContainer                  *string                                          `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+}
+
+func (s DescribeJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobResponseBodyData) SetAcrAssumeRoleArn(v string) *DescribeJobResponseBodyData {
+	s.AcrAssumeRoleArn = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetAppDescription(v string) *DescribeJobResponseBodyData {
+	s.AppDescription = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetAppId(v string) *DescribeJobResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetAppName(v string) *DescribeJobResponseBodyData {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetAssociateEip(v bool) *DescribeJobResponseBodyData {
+	s.AssociateEip = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetBackoffLimit(v int64) *DescribeJobResponseBodyData {
+	s.BackoffLimit = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetBatchWaitTime(v int32) *DescribeJobResponseBodyData {
+	s.BatchWaitTime = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetCommand(v string) *DescribeJobResponseBodyData {
+	s.Command = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetCommandArgs(v string) *DescribeJobResponseBodyData {
+	s.CommandArgs = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetConcurrencyPolicy(v string) *DescribeJobResponseBodyData {
+	s.ConcurrencyPolicy = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetConfigMapMountDesc(v []*DescribeJobResponseBodyDataConfigMapMountDesc) *DescribeJobResponseBodyData {
+	s.ConfigMapMountDesc = v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetCpu(v int32) *DescribeJobResponseBodyData {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetCustomHostAlias(v string) *DescribeJobResponseBodyData {
+	s.CustomHostAlias = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetEdasContainerVersion(v string) *DescribeJobResponseBodyData {
+	s.EdasContainerVersion = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetEnableAhas(v string) *DescribeJobResponseBodyData {
+	s.EnableAhas = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetEnableGreyTagRoute(v bool) *DescribeJobResponseBodyData {
+	s.EnableGreyTagRoute = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetEnvs(v string) *DescribeJobResponseBodyData {
+	s.Envs = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetImageUrl(v string) *DescribeJobResponseBodyData {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetJarStartArgs(v string) *DescribeJobResponseBodyData {
+	s.JarStartArgs = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetJarStartOptions(v string) *DescribeJobResponseBodyData {
+	s.JarStartOptions = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetJdk(v string) *DescribeJobResponseBodyData {
+	s.Jdk = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetLiveness(v string) *DescribeJobResponseBodyData {
+	s.Liveness = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetMemory(v int32) *DescribeJobResponseBodyData {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetMinReadyInstances(v int32) *DescribeJobResponseBodyData {
+	s.MinReadyInstances = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetMountDesc(v []*DescribeJobResponseBodyDataMountDesc) *DescribeJobResponseBodyData {
+	s.MountDesc = v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetMountHost(v string) *DescribeJobResponseBodyData {
+	s.MountHost = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetMseApplicationId(v string) *DescribeJobResponseBodyData {
+	s.MseApplicationId = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetNamespaceId(v string) *DescribeJobResponseBodyData {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetNasConfigs(v string) *DescribeJobResponseBodyData {
+	s.NasConfigs = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetNasId(v string) *DescribeJobResponseBodyData {
+	s.NasId = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetOssAkId(v string) *DescribeJobResponseBodyData {
+	s.OssAkId = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetOssAkSecret(v string) *DescribeJobResponseBodyData {
+	s.OssAkSecret = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetOssMountDescs(v []*DescribeJobResponseBodyDataOssMountDescs) *DescribeJobResponseBodyData {
+	s.OssMountDescs = v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetPackageType(v string) *DescribeJobResponseBodyData {
+	s.PackageType = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetPackageUrl(v string) *DescribeJobResponseBodyData {
+	s.PackageUrl = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetPackageVersion(v string) *DescribeJobResponseBodyData {
+	s.PackageVersion = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetPhpArmsConfigLocation(v string) *DescribeJobResponseBodyData {
+	s.PhpArmsConfigLocation = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetPhpConfig(v string) *DescribeJobResponseBodyData {
+	s.PhpConfig = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetPhpConfigLocation(v string) *DescribeJobResponseBodyData {
+	s.PhpConfigLocation = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetPostStart(v string) *DescribeJobResponseBodyData {
+	s.PostStart = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetPreStop(v string) *DescribeJobResponseBodyData {
+	s.PreStop = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetProgrammingLanguage(v string) *DescribeJobResponseBodyData {
+	s.ProgrammingLanguage = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetPublicWebHookUrls(v []*string) *DescribeJobResponseBodyData {
+	s.PublicWebHookUrls = v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetReadiness(v string) *DescribeJobResponseBodyData {
+	s.Readiness = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetRefAppId(v string) *DescribeJobResponseBodyData {
+	s.RefAppId = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetRefedAppIds(v []*string) *DescribeJobResponseBodyData {
+	s.RefedAppIds = v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetRegionId(v string) *DescribeJobResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetReplicas(v int32) *DescribeJobResponseBodyData {
+	s.Replicas = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetSecurityGroupId(v string) *DescribeJobResponseBodyData {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetSlice(v bool) *DescribeJobResponseBodyData {
+	s.Slice = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetSliceEnvs(v string) *DescribeJobResponseBodyData {
+	s.SliceEnvs = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetSlsConfigs(v string) *DescribeJobResponseBodyData {
+	s.SlsConfigs = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetSuspend(v bool) *DescribeJobResponseBodyData {
+	s.Suspend = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetTags(v []*DescribeJobResponseBodyDataTags) *DescribeJobResponseBodyData {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetTerminationGracePeriodSeconds(v int32) *DescribeJobResponseBodyData {
+	s.TerminationGracePeriodSeconds = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetTimeout(v int64) *DescribeJobResponseBodyData {
+	s.Timeout = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetTimezone(v string) *DescribeJobResponseBodyData {
+	s.Timezone = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetTomcatConfig(v string) *DescribeJobResponseBodyData {
+	s.TomcatConfig = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetTriggerConfig(v string) *DescribeJobResponseBodyData {
+	s.TriggerConfig = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetVSwitchId(v string) *DescribeJobResponseBodyData {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetVpcId(v string) *DescribeJobResponseBodyData {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetVpcWebHookUrls(v []*string) *DescribeJobResponseBodyData {
+	s.VpcWebHookUrls = v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetWarStartOptions(v string) *DescribeJobResponseBodyData {
+	s.WarStartOptions = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetWebContainer(v string) *DescribeJobResponseBodyData {
+	s.WebContainer = &v
+	return s
+}
+
+type DescribeJobResponseBodyDataConfigMapMountDesc struct {
+	ConfigMapId   *int64  `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
+	ConfigMapName *string `json:"ConfigMapName,omitempty" xml:"ConfigMapName,omitempty"`
+	Key           *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	MountPath     *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+}
+
+func (s DescribeJobResponseBodyDataConfigMapMountDesc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobResponseBodyDataConfigMapMountDesc) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobResponseBodyDataConfigMapMountDesc) SetConfigMapId(v int64) *DescribeJobResponseBodyDataConfigMapMountDesc {
+	s.ConfigMapId = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyDataConfigMapMountDesc) SetConfigMapName(v string) *DescribeJobResponseBodyDataConfigMapMountDesc {
+	s.ConfigMapName = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyDataConfigMapMountDesc) SetKey(v string) *DescribeJobResponseBodyDataConfigMapMountDesc {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyDataConfigMapMountDesc) SetMountPath(v string) *DescribeJobResponseBodyDataConfigMapMountDesc {
+	s.MountPath = &v
+	return s
+}
+
+type DescribeJobResponseBodyDataMountDesc struct {
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	NasPath   *string `json:"NasPath,omitempty" xml:"NasPath,omitempty"`
+}
+
+func (s DescribeJobResponseBodyDataMountDesc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobResponseBodyDataMountDesc) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobResponseBodyDataMountDesc) SetMountPath(v string) *DescribeJobResponseBodyDataMountDesc {
+	s.MountPath = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyDataMountDesc) SetNasPath(v string) *DescribeJobResponseBodyDataMountDesc {
+	s.NasPath = &v
+	return s
+}
+
+type DescribeJobResponseBodyDataOssMountDescs struct {
+	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
+	MountPath  *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
+	ReadOnly   *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+}
+
+func (s DescribeJobResponseBodyDataOssMountDescs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobResponseBodyDataOssMountDescs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobResponseBodyDataOssMountDescs) SetBucketName(v string) *DescribeJobResponseBodyDataOssMountDescs {
+	s.BucketName = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyDataOssMountDescs) SetBucketPath(v string) *DescribeJobResponseBodyDataOssMountDescs {
+	s.BucketPath = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyDataOssMountDescs) SetMountPath(v string) *DescribeJobResponseBodyDataOssMountDescs {
+	s.MountPath = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyDataOssMountDescs) SetReadOnly(v bool) *DescribeJobResponseBodyDataOssMountDescs {
+	s.ReadOnly = &v
+	return s
+}
+
+type DescribeJobResponseBodyDataTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeJobResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobResponseBodyDataTags) SetKey(v string) *DescribeJobResponseBodyDataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyDataTags) SetValue(v string) *DescribeJobResponseBodyDataTags {
+	s.Value = &v
+	return s
+}
+
+type DescribeJobResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobResponse) SetHeaders(v map[string]*string) *DescribeJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeJobResponse) SetStatusCode(v int32) *DescribeJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeJobResponse) SetBody(v *DescribeJobResponseBody) *DescribeJobResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeJobHistoryRequest struct {
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s DescribeJobHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobHistoryRequest) SetAppId(v string) *DescribeJobHistoryRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeJobHistoryRequest) SetCurrentPage(v int64) *DescribeJobHistoryRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeJobHistoryRequest) SetPageSize(v int64) *DescribeJobHistoryRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeJobHistoryRequest) SetState(v string) *DescribeJobHistoryRequest {
+	s.State = &v
+	return s
+}
+
+type DescribeJobHistoryResponseBody struct {
+	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeJobHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                             `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DescribeJobHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobHistoryResponseBody) SetCode(v string) *DescribeJobHistoryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBody) SetData(v *DescribeJobHistoryResponseBodyData) *DescribeJobHistoryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBody) SetErrorCode(v string) *DescribeJobHistoryResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBody) SetMessage(v string) *DescribeJobHistoryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBody) SetRequestId(v string) *DescribeJobHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBody) SetSuccess(v bool) *DescribeJobHistoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBody) SetTraceId(v string) *DescribeJobHistoryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DescribeJobHistoryResponseBodyData struct {
+	CurrentPage *int64                                    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Jobs        []*DescribeJobHistoryResponseBodyDataJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	PageSize    *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalSize   *int64                                    `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s DescribeJobHistoryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobHistoryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobHistoryResponseBodyData) SetCurrentPage(v int64) *DescribeJobHistoryResponseBodyData {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBodyData) SetJobs(v []*DescribeJobHistoryResponseBodyDataJobs) *DescribeJobHistoryResponseBodyData {
+	s.Jobs = v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBodyData) SetPageSize(v int64) *DescribeJobHistoryResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBodyData) SetTotalSize(v int64) *DescribeJobHistoryResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type DescribeJobHistoryResponseBodyDataJobs struct {
+	Active         *int64  `json:"Active,omitempty" xml:"Active,omitempty"`
+	CompletionTime *int64  `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
+	Failed         *int64  `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State          *string `json:"State,omitempty" xml:"State,omitempty"`
+	Succeeded      *int64  `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+}
+
+func (s DescribeJobHistoryResponseBodyDataJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobHistoryResponseBodyDataJobs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobHistoryResponseBodyDataJobs) SetActive(v int64) *DescribeJobHistoryResponseBodyDataJobs {
+	s.Active = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBodyDataJobs) SetCompletionTime(v int64) *DescribeJobHistoryResponseBodyDataJobs {
+	s.CompletionTime = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBodyDataJobs) SetFailed(v int64) *DescribeJobHistoryResponseBodyDataJobs {
+	s.Failed = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBodyDataJobs) SetJobId(v string) *DescribeJobHistoryResponseBodyDataJobs {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBodyDataJobs) SetMessage(v string) *DescribeJobHistoryResponseBodyDataJobs {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBodyDataJobs) SetStartTime(v int64) *DescribeJobHistoryResponseBodyDataJobs {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBodyDataJobs) SetState(v string) *DescribeJobHistoryResponseBodyDataJobs {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponseBodyDataJobs) SetSucceeded(v int64) *DescribeJobHistoryResponseBodyDataJobs {
+	s.Succeeded = &v
+	return s
+}
+
+type DescribeJobHistoryResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeJobHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeJobHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobHistoryResponse) SetHeaders(v map[string]*string) *DescribeJobHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeJobHistoryResponse) SetStatusCode(v int32) *DescribeJobHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeJobHistoryResponse) SetBody(v *DescribeJobHistoryResponseBody) *DescribeJobHistoryResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeJobStatusRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -9254,6 +10731,205 @@ func (s *ExecJobResponse) SetStatusCode(v int32) *ExecJobResponse {
 }
 
 func (s *ExecJobResponse) SetBody(v *ExecJobResponseBody) *ExecJobResponse {
+	s.Body = v
+	return s
+}
+
+type GetJobHistoryRequest struct {
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s GetJobHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobHistoryRequest) SetAppId(v string) *GetJobHistoryRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetJobHistoryRequest) SetCurrentPage(v int64) *GetJobHistoryRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetJobHistoryRequest) SetPageSize(v int64) *GetJobHistoryRequest {
+	s.PageSize = &v
+	return s
+}
+
+type GetJobHistoryResponseBody struct {
+	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetJobHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                        `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s GetJobHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobHistoryResponseBody) SetCode(v string) *GetJobHistoryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetJobHistoryResponseBody) SetData(v *GetJobHistoryResponseBodyData) *GetJobHistoryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetJobHistoryResponseBody) SetErrorCode(v string) *GetJobHistoryResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetJobHistoryResponseBody) SetMessage(v string) *GetJobHistoryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetJobHistoryResponseBody) SetRequestId(v string) *GetJobHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetJobHistoryResponseBody) SetSuccess(v bool) *GetJobHistoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetJobHistoryResponseBody) SetTraceId(v string) *GetJobHistoryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type GetJobHistoryResponseBodyData struct {
+	CurrentPage *int64                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Jobs        []*GetJobHistoryResponseBodyDataJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	PageSize    *int64                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalSize   *int64                               `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s GetJobHistoryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobHistoryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobHistoryResponseBodyData) SetCurrentPage(v int64) *GetJobHistoryResponseBodyData {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetJobHistoryResponseBodyData) SetJobs(v []*GetJobHistoryResponseBodyDataJobs) *GetJobHistoryResponseBodyData {
+	s.Jobs = v
+	return s
+}
+
+func (s *GetJobHistoryResponseBodyData) SetPageSize(v int64) *GetJobHistoryResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetJobHistoryResponseBodyData) SetTotalSize(v int64) *GetJobHistoryResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type GetJobHistoryResponseBodyDataJobs struct {
+	Active         *int64  `json:"Active,omitempty" xml:"Active,omitempty"`
+	CompletionTime *int64  `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
+	Failed         *int64  `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Succeeded      *int64  `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+}
+
+func (s GetJobHistoryResponseBodyDataJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobHistoryResponseBodyDataJobs) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobHistoryResponseBodyDataJobs) SetActive(v int64) *GetJobHistoryResponseBodyDataJobs {
+	s.Active = &v
+	return s
+}
+
+func (s *GetJobHistoryResponseBodyDataJobs) SetCompletionTime(v int64) *GetJobHistoryResponseBodyDataJobs {
+	s.CompletionTime = &v
+	return s
+}
+
+func (s *GetJobHistoryResponseBodyDataJobs) SetFailed(v int64) *GetJobHistoryResponseBodyDataJobs {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetJobHistoryResponseBodyDataJobs) SetJobId(v string) *GetJobHistoryResponseBodyDataJobs {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetJobHistoryResponseBodyDataJobs) SetMessage(v string) *GetJobHistoryResponseBodyDataJobs {
+	s.Message = &v
+	return s
+}
+
+func (s *GetJobHistoryResponseBodyDataJobs) SetStartTime(v int64) *GetJobHistoryResponseBodyDataJobs {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetJobHistoryResponseBodyDataJobs) SetSucceeded(v int64) *GetJobHistoryResponseBodyDataJobs {
+	s.Succeeded = &v
+	return s
+}
+
+type GetJobHistoryResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetJobHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetJobHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobHistoryResponse) SetHeaders(v map[string]*string) *GetJobHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetJobHistoryResponse) SetStatusCode(v int32) *GetJobHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetJobHistoryResponse) SetBody(v *GetJobHistoryResponseBody) *GetJobHistoryResponse {
 	s.Body = v
 	return s
 }
@@ -11071,6 +12747,336 @@ func (s *ListIngressesResponse) SetStatusCode(v int32) *ListIngressesResponse {
 }
 
 func (s *ListIngressesResponse) SetBody(v *ListIngressesResponseBody) *ListIngressesResponse {
+	s.Body = v
+	return s
+}
+
+type ListJobsRequest struct {
+	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	FieldType   *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
+	FieldValue  *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	OrderBy     *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Reverse     *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Workload    *string `json:"Workload,omitempty" xml:"Workload,omitempty"`
+}
+
+func (s ListJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsRequest) SetAppName(v string) *ListJobsRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetCurrentPage(v int32) *ListJobsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetFieldType(v string) *ListJobsRequest {
+	s.FieldType = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetFieldValue(v string) *ListJobsRequest {
+	s.FieldValue = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetNamespaceId(v string) *ListJobsRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetOrderBy(v string) *ListJobsRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetPageSize(v int32) *ListJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetReverse(v bool) *ListJobsRequest {
+	s.Reverse = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetTags(v string) *ListJobsRequest {
+	s.Tags = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetWorkload(v string) *ListJobsRequest {
+	s.Workload = &v
+	return s
+}
+
+type ListJobsResponseBody struct {
+	Code        *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	CurrentPage *int32                    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Data        *ListJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode   *string                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message     *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageSize    *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalSize   *int32                    `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsResponseBody) SetCode(v string) *ListJobsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListJobsResponseBody) SetCurrentPage(v int32) *ListJobsResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListJobsResponseBody) SetData(v *ListJobsResponseBodyData) *ListJobsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListJobsResponseBody) SetErrorCode(v string) *ListJobsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListJobsResponseBody) SetMessage(v string) *ListJobsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListJobsResponseBody) SetPageSize(v int32) *ListJobsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListJobsResponseBody) SetRequestId(v string) *ListJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListJobsResponseBody) SetSuccess(v bool) *ListJobsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListJobsResponseBody) SetTotalSize(v int32) *ListJobsResponseBody {
+	s.TotalSize = &v
+	return s
+}
+
+type ListJobsResponseBodyData struct {
+	Applications []*ListJobsResponseBodyDataApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	CurrentPage  *int32                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize     *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalSize    *int32                                  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListJobsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsResponseBodyData) SetApplications(v []*ListJobsResponseBodyDataApplications) *ListJobsResponseBodyData {
+	s.Applications = v
+	return s
+}
+
+func (s *ListJobsResponseBodyData) SetCurrentPage(v int32) *ListJobsResponseBodyData {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyData) SetPageSize(v int32) *ListJobsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyData) SetTotalSize(v int32) *ListJobsResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListJobsResponseBodyDataApplications struct {
+	Active            *int64                                      `json:"Active,omitempty" xml:"Active,omitempty"`
+	AppDeletingStatus *bool                                       `json:"AppDeletingStatus,omitempty" xml:"AppDeletingStatus,omitempty"`
+	AppDescription    *string                                     `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	AppId             *string                                     `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName           *string                                     `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CompletionTime    *int64                                      `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
+	Failed            *int64                                      `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	Instances         *int32                                      `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	LastStartTime     *int64                                      `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
+	NamespaceId       *string                                     `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	RegionId          *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RunningInstances  *int32                                      `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
+	Succeeded         *int64                                      `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+	Suspend           *bool                                       `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
+	Tags              []*ListJobsResponseBodyDataApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TriggerConfig     *string                                     `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
+}
+
+func (s ListJobsResponseBodyDataApplications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsResponseBodyDataApplications) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetActive(v int64) *ListJobsResponseBodyDataApplications {
+	s.Active = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetAppDeletingStatus(v bool) *ListJobsResponseBodyDataApplications {
+	s.AppDeletingStatus = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetAppDescription(v string) *ListJobsResponseBodyDataApplications {
+	s.AppDescription = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetAppId(v string) *ListJobsResponseBodyDataApplications {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetAppName(v string) *ListJobsResponseBodyDataApplications {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetCompletionTime(v int64) *ListJobsResponseBodyDataApplications {
+	s.CompletionTime = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetFailed(v int64) *ListJobsResponseBodyDataApplications {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetInstances(v int32) *ListJobsResponseBodyDataApplications {
+	s.Instances = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetLastStartTime(v int64) *ListJobsResponseBodyDataApplications {
+	s.LastStartTime = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetNamespaceId(v string) *ListJobsResponseBodyDataApplications {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetRegionId(v string) *ListJobsResponseBodyDataApplications {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetRunningInstances(v int32) *ListJobsResponseBodyDataApplications {
+	s.RunningInstances = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetSucceeded(v int64) *ListJobsResponseBodyDataApplications {
+	s.Succeeded = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetSuspend(v bool) *ListJobsResponseBodyDataApplications {
+	s.Suspend = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetTags(v []*ListJobsResponseBodyDataApplicationsTags) *ListJobsResponseBodyDataApplications {
+	s.Tags = v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetTriggerConfig(v string) *ListJobsResponseBodyDataApplications {
+	s.TriggerConfig = &v
+	return s
+}
+
+type ListJobsResponseBodyDataApplicationsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListJobsResponseBodyDataApplicationsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsResponseBodyDataApplicationsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsResponseBodyDataApplicationsTags) SetKey(v string) *ListJobsResponseBodyDataApplicationsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplicationsTags) SetValue(v string) *ListJobsResponseBodyDataApplicationsTags {
+	s.Value = &v
+	return s
+}
+
+type ListJobsResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsResponse) SetHeaders(v map[string]*string) *ListJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListJobsResponse) SetStatusCode(v int32) *ListJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 	s.Body = v
 	return s
 }
@@ -13316,6 +15322,111 @@ func (s *StopApplicationResponse) SetStatusCode(v int32) *StopApplicationRespons
 }
 
 func (s *StopApplicationResponse) SetBody(v *StopApplicationResponseBody) *StopApplicationResponse {
+	s.Body = v
+	return s
+}
+
+type SuspendJobRequest struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Suspend *bool   `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
+}
+
+func (s SuspendJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendJobRequest) SetAppId(v string) *SuspendJobRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SuspendJobRequest) SetSuspend(v bool) *SuspendJobRequest {
+	s.Suspend = &v
+	return s
+}
+
+type SuspendJobResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s SuspendJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendJobResponseBody) SetCode(v string) *SuspendJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SuspendJobResponseBody) SetData(v string) *SuspendJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SuspendJobResponseBody) SetErrorCode(v string) *SuspendJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SuspendJobResponseBody) SetMessage(v string) *SuspendJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SuspendJobResponseBody) SetRequestId(v string) *SuspendJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SuspendJobResponseBody) SetSuccess(v bool) *SuspendJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SuspendJobResponseBody) SetTraceId(v string) *SuspendJobResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type SuspendJobResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SuspendJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SuspendJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendJobResponse) SetHeaders(v map[string]*string) *SuspendJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SuspendJobResponse) SetStatusCode(v int32) *SuspendJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SuspendJobResponse) SetBody(v *SuspendJobResponseBody) *SuspendJobResponse {
 	s.Body = v
 	return s
 }
@@ -15805,6 +17916,266 @@ func (client *Client) CreateIngressWithOptions(request *CreateIngressRequest, he
 	return _result, _err
 }
 
+func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateJobResponse{}
+	_body, _err := client.CreateJobWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcrAssumeRoleArn)) {
+		query["AcrAssumeRoleArn"] = request.AcrAssumeRoleArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppDescription)) {
+		query["AppDescription"] = request.AppDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoConfig)) {
+		query["AutoConfig"] = request.AutoConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackoffLimit)) {
+		query["BackoffLimit"] = request.BackoffLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Command)) {
+		query["Command"] = request.Command
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommandArgs)) {
+		query["CommandArgs"] = request.CommandArgs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConcurrencyPolicy)) {
+		query["ConcurrencyPolicy"] = request.ConcurrencyPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
+		query["Cpu"] = request.Cpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomHostAlias)) {
+		query["CustomHostAlias"] = request.CustomHostAlias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Deploy)) {
+		query["Deploy"] = request.Deploy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EdasContainerVersion)) {
+		query["EdasContainerVersion"] = request.EdasContainerVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Envs)) {
+		query["Envs"] = request.Envs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JarStartArgs)) {
+		query["JarStartArgs"] = request.JarStartArgs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JarStartOptions)) {
+		query["JarStartOptions"] = request.JarStartOptions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Jdk)) {
+		query["Jdk"] = request.Jdk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Liveness)) {
+		query["Liveness"] = request.Liveness
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Memory)) {
+		query["Memory"] = request.Memory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MountDesc)) {
+		query["MountDesc"] = request.MountDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MountHost)) {
+		query["MountHost"] = request.MountHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NasId)) {
+		query["NasId"] = request.NasId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageType)) {
+		query["PackageType"] = request.PackageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageUrl)) {
+		query["PackageUrl"] = request.PackageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageVersion)) {
+		query["PackageVersion"] = request.PackageVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhpArmsConfigLocation)) {
+		query["PhpArmsConfigLocation"] = request.PhpArmsConfigLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhpConfigLocation)) {
+		query["PhpConfigLocation"] = request.PhpConfigLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PostStart)) {
+		query["PostStart"] = request.PostStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreStop)) {
+		query["PreStop"] = request.PreStop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProgrammingLanguage)) {
+		query["ProgrammingLanguage"] = request.ProgrammingLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Readiness)) {
+		query["Readiness"] = request.Readiness
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefAppId)) {
+		query["RefAppId"] = request.RefAppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
+		query["Replicas"] = request.Replicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Slice)) {
+		query["Slice"] = request.Slice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SliceEnvs)) {
+		query["SliceEnvs"] = request.SliceEnvs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsConfigs)) {
+		query["SlsConfigs"] = request.SlsConfigs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerminationGracePeriodSeconds)) {
+		query["TerminationGracePeriodSeconds"] = request.TerminationGracePeriodSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timezone)) {
+		query["Timezone"] = request.Timezone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TomcatConfig)) {
+		query["TomcatConfig"] = request.TomcatConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerConfig)) {
+		query["TriggerConfig"] = request.TriggerConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WarStartOptions)) {
+		query["WarStartOptions"] = request.WarStartOptions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WebContainer)) {
+		query["WebContainer"] = request.WebContainer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workload)) {
+		query["Workload"] = request.Workload
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssociateEip)) {
+		body["AssociateEip"] = request.AssociateEip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigMapMountDesc)) {
+		body["ConfigMapMountDesc"] = request.ConfigMapMountDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssAkId)) {
+		body["OssAkId"] = request.OssAkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssAkSecret)) {
+		body["OssAkSecret"] = request.OssAkSecret
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssMountDescs)) {
+		body["OssMountDescs"] = request.OssMountDescs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhpConfig)) {
+		body["PhpConfig"] = request.PhpConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateJob"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/job/createJob"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result *CreateNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16047,6 +18418,56 @@ func (client *Client) DeleteGreyTagRouteWithOptions(request *DeleteGreyTagRouteR
 	return _result, _err
 }
 
+func (client *Client) DeleteHistoryJob(request *DeleteHistoryJobRequest) (_result *DeleteHistoryJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteHistoryJobResponse{}
+	_body, _err := client.DeleteHistoryJobWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteHistoryJobWithOptions(request *DeleteHistoryJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteHistoryJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHistoryJob"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/job/deleteHistoryJob"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHistoryJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteIngress(request *DeleteIngressRequest) (_result *DeleteIngressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16085,6 +18506,52 @@ func (client *Client) DeleteIngressWithOptions(request *DeleteIngressRequest, he
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteIngressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteJob(request *DeleteJobRequest) (_result *DeleteJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteJobResponse{}
+	_body, _err := client.DeleteJobWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteJobWithOptions(request *DeleteJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteJob"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/job/deleteJob"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteJobResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -17243,6 +19710,118 @@ func (client *Client) DescribeInstanceSpecificationsWithOptions(headers map[stri
 	return _result, _err
 }
 
+func (client *Client) DescribeJob(request *DescribeJobRequest) (_result *DescribeJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeJobResponse{}
+	_body, _err := client.DescribeJobWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeJobWithOptions(request *DescribeJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeJob"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/job/describeJob"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeJobHistory(request *DescribeJobHistoryRequest) (_result *DescribeJobHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeJobHistoryResponse{}
+	_body, _err := client.DescribeJobHistoryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeJobHistoryWithOptions(request *DescribeJobHistoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeJobHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeJobHistory"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/job/describeJobHistory"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeJobHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DescribeJobStatus(request *DescribeJobStatusRequest) (_result *DescribeJobStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17741,6 +20320,60 @@ func (client *Client) ExecJobWithOptions(request *ExecJobRequest, headers map[st
 	return _result, _err
 }
 
+func (client *Client) GetJobHistory(request *GetJobHistoryRequest) (_result *GetJobHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetJobHistoryResponse{}
+	_body, _err := client.GetJobHistoryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetJobHistoryWithOptions(request *GetJobHistoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobHistory"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/job/getJobHistory"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetJobHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListAppEvents(request *ListAppEventsRequest) (_result *ListAppEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18197,6 +20830,88 @@ func (client *Client) ListIngressesWithOptions(request *ListIngressesRequest, he
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListIngressesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListJobsResponse{}
+	_body, _err := client.ListJobsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListJobsWithOptions(request *ListJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldType)) {
+		query["FieldType"] = request.FieldType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldValue)) {
+		query["FieldValue"] = request.FieldValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reverse)) {
+		query["Reverse"] = request.Reverse
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workload)) {
+		query["Workload"] = request.Workload
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobs"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/job/listJobs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListJobsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -18985,6 +21700,56 @@ func (client *Client) StopApplicationWithOptions(request *StopApplicationRequest
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SuspendJob(request *SuspendJobRequest) (_result *SuspendJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SuspendJobResponse{}
+	_body, _err := client.SuspendJobWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SuspendJobWithOptions(request *SuspendJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SuspendJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Suspend)) {
+		query["Suspend"] = request.Suspend
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SuspendJob"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/job/suspendJob"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SuspendJobResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
