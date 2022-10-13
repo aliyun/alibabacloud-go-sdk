@@ -1,3 +1,6 @@
+2022-10-13 Version: v3.0.0
+- Generated golang 2019-08-15 for Ims.
+
 2022-02-25 Version: v2.0.4
 - Add global switch AllowUserToManagePersonalDingTalk.
 
