@@ -692,6 +692,204 @@ func (s *AddMemberRoleResponse) SetBody(v *AddMemberRoleResponseBody) *AddMember
 	return s
 }
 
+type CreateDatasetRequest struct {
+	Accessibility  *string  `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	DataSourceType *string  `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	DataType       *string  `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Description    *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Labels         []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Name           *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Options        *string  `json:"Options,omitempty" xml:"Options,omitempty"`
+	Property       *string  `json:"Property,omitempty" xml:"Property,omitempty"`
+	SourceId       *string  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType     *string  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Uri            *string  `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	WorkspaceId    *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateDatasetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequest) SetAccessibility(v string) *CreateDatasetRequest {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDataSourceType(v string) *CreateDatasetRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDataType(v string) *CreateDatasetRequest {
+	s.DataType = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDescription(v string) *CreateDatasetRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetLabels(v []*Label) *CreateDatasetRequest {
+	s.Labels = v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetName(v string) *CreateDatasetRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetOptions(v string) *CreateDatasetRequest {
+	s.Options = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetProperty(v string) *CreateDatasetRequest {
+	s.Property = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetSourceId(v string) *CreateDatasetRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetSourceType(v string) *CreateDatasetRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetUri(v string) *CreateDatasetRequest {
+	s.Uri = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetWorkspaceId(v string) *CreateDatasetRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateDatasetResponseBody struct {
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetResponseBody) SetDatasetId(v string) *CreateDatasetResponseBody {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *CreateDatasetResponseBody) SetRequestId(v string) *CreateDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDatasetResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetResponse) SetHeaders(v map[string]*string) *CreateDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDatasetResponse) SetStatusCode(v int32) *CreateDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDatasetResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDatasetLabelsRequest struct {
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+}
+
+func (s CreateDatasetLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetLabelsRequest) SetLabels(v []*Label) *CreateDatasetLabelsRequest {
+	s.Labels = v
+	return s
+}
+
+type CreateDatasetLabelsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDatasetLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetLabelsResponseBody) SetRequestId(v string) *CreateDatasetLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDatasetLabelsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDatasetLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDatasetLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetLabelsResponse) SetHeaders(v map[string]*string) *CreateDatasetLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDatasetLabelsResponse) SetStatusCode(v int32) *CreateDatasetLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDatasetLabelsResponse) SetBody(v *CreateDatasetLabelsResponseBody) *CreateDatasetLabelsResponse {
+	s.Body = v
+	return s
+}
+
 type CreateMemberRequest struct {
 	Members []*CreateMemberRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 }
@@ -1080,6 +1278,115 @@ func (s *CreateWorkspaceResourceResponse) SetBody(v *CreateWorkspaceResourceResp
 	return s
 }
 
+type DeleteDatasetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetResponseBody) SetRequestId(v string) *DeleteDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDatasetResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetResponse) SetHeaders(v map[string]*string) *DeleteDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDatasetResponse) SetStatusCode(v int32) *DeleteDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDatasetResponse) SetBody(v *DeleteDatasetResponseBody) *DeleteDatasetResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDatasetLabelsRequest struct {
+	LabelKeys *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
+}
+
+func (s DeleteDatasetLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetLabelsRequest) SetLabelKeys(v string) *DeleteDatasetLabelsRequest {
+	s.LabelKeys = &v
+	return s
+}
+
+type DeleteDatasetLabelsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDatasetLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetLabelsResponseBody) SetRequestId(v string) *DeleteDatasetLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDatasetLabelsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDatasetLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDatasetLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetLabelsResponse) SetHeaders(v map[string]*string) *DeleteDatasetLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDatasetLabelsResponse) SetStatusCode(v int32) *DeleteDatasetLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDatasetLabelsResponse) SetBody(v *DeleteDatasetLabelsResponseBody) *DeleteDatasetLabelsResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteMembersRequest struct {
 	MemberIds *string `json:"MemberIds,omitempty" xml:"MemberIds,omitempty"`
 }
@@ -1260,6 +1567,154 @@ func (s *DeleteWorkspaceResourceResponse) SetStatusCode(v int32) *DeleteWorkspac
 }
 
 func (s *DeleteWorkspaceResourceResponse) SetBody(v *DeleteWorkspaceResourceResponseBody) *DeleteWorkspaceResourceResponse {
+	s.Body = v
+	return s
+}
+
+type GetDatasetResponseBody struct {
+	Accessibility   *string  `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	DataSourceType  *string  `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	DataType        *string  `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DatasetId       *string  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	Description     *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreateTime   *string  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Labels          []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Name            *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Options         *string  `json:"Options,omitempty" xml:"Options,omitempty"`
+	OwnerId         *string  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Property        *string  `json:"Property,omitempty" xml:"Property,omitempty"`
+	RequestId       *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceId        *string  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType      *string  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Uri             *string  `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	UserId          *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId     *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBody) SetAccessibility(v string) *GetDatasetResponseBody {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetDataSourceType(v string) *GetDatasetResponseBody {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetDataType(v string) *GetDatasetResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetDatasetId(v string) *GetDatasetResponseBody {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetDescription(v string) *GetDatasetResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetGmtCreateTime(v string) *GetDatasetResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetGmtModifiedTime(v string) *GetDatasetResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetLabels(v []*Label) *GetDatasetResponseBody {
+	s.Labels = v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetName(v string) *GetDatasetResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetOptions(v string) *GetDatasetResponseBody {
+	s.Options = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetOwnerId(v string) *GetDatasetResponseBody {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetProperty(v string) *GetDatasetResponseBody {
+	s.Property = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetRequestId(v string) *GetDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetSourceId(v string) *GetDatasetResponseBody {
+	s.SourceId = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetSourceType(v string) *GetDatasetResponseBody {
+	s.SourceType = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetUri(v string) *GetDatasetResponseBody {
+	s.Uri = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetUserId(v string) *GetDatasetResponseBody {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetWorkspaceId(v string) *GetDatasetResponseBody {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetDatasetResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponse) SetHeaders(v map[string]*string) *GetDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatasetResponse) SetStatusCode(v int32) *GetDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDatasetResponse) SetBody(v *GetDatasetResponseBody) *GetDatasetResponse {
 	s.Body = v
 	return s
 }
@@ -1972,6 +2427,135 @@ func (s *GetWorkspaceResponse) SetStatusCode(v int32) *GetWorkspaceResponse {
 }
 
 func (s *GetWorkspaceResponse) SetBody(v *GetWorkspaceResponseBody) *GetWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
+type ListDatasetsRequest struct {
+	DataSourceTypes *string `json:"DataSourceTypes,omitempty" xml:"DataSourceTypes,omitempty"`
+	DataTypes       *string `json:"DataTypes,omitempty" xml:"DataTypes,omitempty"`
+	Label           *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order           *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Properties      *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	SourceTypes     *string `json:"SourceTypes,omitempty" xml:"SourceTypes,omitempty"`
+	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListDatasetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsRequest) SetDataSourceTypes(v string) *ListDatasetsRequest {
+	s.DataSourceTypes = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetDataTypes(v string) *ListDatasetsRequest {
+	s.DataTypes = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetLabel(v string) *ListDatasetsRequest {
+	s.Label = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetName(v string) *ListDatasetsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetOrder(v string) *ListDatasetsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetPageNumber(v int32) *ListDatasetsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetPageSize(v int32) *ListDatasetsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetProperties(v string) *ListDatasetsRequest {
+	s.Properties = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetSourceTypes(v string) *ListDatasetsRequest {
+	s.SourceTypes = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetWorkspaceId(v string) *ListDatasetsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListDatasetsResponseBody struct {
+	Datasets   []*Dataset `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	RequestId  *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDatasetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsResponseBody) SetDatasets(v []*Dataset) *ListDatasetsResponseBody {
+	s.Datasets = v
+	return s
+}
+
+func (s *ListDatasetsResponseBody) SetRequestId(v string) *ListDatasetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBody) SetTotalCount(v int64) *ListDatasetsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDatasetsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDatasetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDatasetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsResponse) SetHeaders(v map[string]*string) *ListDatasetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatasetsResponse) SetStatusCode(v int32) *ListDatasetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDatasetsResponse) SetBody(v *ListDatasetsResponseBody) *ListDatasetsResponse {
 	s.Body = v
 	return s
 }
@@ -3297,6 +3881,52 @@ func (s *ListWorkspacesResponse) SetBody(v *ListWorkspacesResponseBody) *ListWor
 	return s
 }
 
+type PublishDatasetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PublishDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PublishDatasetResponseBody) SetRequestId(v string) *PublishDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PublishDatasetResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PublishDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PublishDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PublishDatasetResponse) SetHeaders(v map[string]*string) *PublishDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PublishDatasetResponse) SetStatusCode(v int32) *PublishDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PublishDatasetResponse) SetBody(v *PublishDatasetResponseBody) *PublishDatasetResponse {
+	s.Body = v
+	return s
+}
+
 type PublishImageResponseBody struct {
 	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3483,6 +4113,81 @@ func (s *RemoveMemberRoleResponse) SetStatusCode(v int32) *RemoveMemberRoleRespo
 }
 
 func (s *RemoveMemberRoleResponse) SetBody(v *RemoveMemberRoleResponseBody) *RemoveMemberRoleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDatasetRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Options     *string `json:"Options,omitempty" xml:"Options,omitempty"`
+}
+
+func (s UpdateDatasetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetRequest) SetDescription(v string) *UpdateDatasetRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetName(v string) *UpdateDatasetRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetOptions(v string) *UpdateDatasetRequest {
+	s.Options = &v
+	return s
+}
+
+type UpdateDatasetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetResponseBody) SetRequestId(v string) *UpdateDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateDatasetResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetResponse) SetHeaders(v map[string]*string) *UpdateDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDatasetResponse) SetStatusCode(v int32) *UpdateDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDatasetResponse) SetBody(v *UpdateDatasetResponseBody) *UpdateDatasetResponse {
 	s.Body = v
 	return s
 }
@@ -3889,6 +4594,142 @@ func (client *Client) AddMemberRoleWithOptions(WorkspaceId *string, MemberId *st
 	return _result, _err
 }
 
+func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CreateDatasetWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		body["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataType)) {
+		body["DataType"] = request.DataType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
+		body["Options"] = request.Options
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Property)) {
+		body["Property"] = request.Property
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		body["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uri)) {
+		body["Uri"] = request.Uri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataset"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDatasetLabels(DatasetId *string, request *CreateDatasetLabelsRequest) (_result *CreateDatasetLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDatasetLabelsResponse{}
+	_body, _err := client.CreateDatasetLabelsWithOptions(DatasetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDatasetLabelsWithOptions(DatasetId *string, request *CreateDatasetLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDatasetLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDatasetLabels"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets/" + tea.StringValue(openapiutil.GetEncodeParam(DatasetId)) + "/labels"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDatasetLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateMember(WorkspaceId *string, request *CreateMemberRequest) (_result *CreateMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4043,6 +4884,88 @@ func (client *Client) CreateWorkspaceResourceWithOptions(WorkspaceId *string, re
 	return _result, _err
 }
 
+func (client *Client) DeleteDataset(DatasetId *string) (_result *DeleteDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.DeleteDatasetWithOptions(DatasetId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDatasetWithOptions(DatasetId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataset"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets/" + tea.StringValue(openapiutil.GetEncodeParam(DatasetId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDatasetLabels(DatasetId *string, request *DeleteDatasetLabelsRequest) (_result *DeleteDatasetLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDatasetLabelsResponse{}
+	_body, _err := client.DeleteDatasetLabelsWithOptions(DatasetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDatasetLabelsWithOptions(DatasetId *string, request *DeleteDatasetLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDatasetLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LabelKeys)) {
+		query["LabelKeys"] = request.LabelKeys
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDatasetLabels"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets/" + tea.StringValue(openapiutil.GetEncodeParam(DatasetId)) + "/labels"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDatasetLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteMembers(WorkspaceId *string, request *DeleteMembersRequest) (_result *DeleteMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4171,6 +5094,42 @@ func (client *Client) DeleteWorkspaceResourceWithOptions(WorkspaceId *string, re
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteWorkspaceResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataset(DatasetId *string) (_result *GetDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDatasetResponse{}
+	_body, _err := client.GetDatasetWithOptions(DatasetId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDatasetWithOptions(DatasetId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataset"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets/" + tea.StringValue(openapiutil.GetEncodeParam(DatasetId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDatasetResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4405,6 +5364,88 @@ func (client *Client) GetWorkspaceWithOptions(WorkspaceId *string, request *GetW
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListDatasetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDatasetsResponse{}
+	_body, _err := client.ListDatasetsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDatasetsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceTypes)) {
+		query["DataSourceTypes"] = request.DataSourceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataTypes)) {
+		query["DataTypes"] = request.DataTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Label)) {
+		query["Label"] = request.Label
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Properties)) {
+		query["Properties"] = request.Properties
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTypes)) {
+		query["SourceTypes"] = request.SourceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDatasets"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDatasetsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4893,6 +5934,42 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 	return _result, _err
 }
 
+func (client *Client) PublishDataset(DatasetId *string) (_result *PublishDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PublishDatasetResponse{}
+	_body, _err := client.PublishDatasetWithOptions(DatasetId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PublishDatasetWithOptions(DatasetId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishDatasetResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishDataset"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets/" + tea.StringValue(openapiutil.GetEncodeParam(DatasetId)) + "/publish"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PublishDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) PublishImage(ImageId *string) (_result *PublishImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5029,6 +6106,60 @@ func (client *Client) RemoveMemberRoleWithOptions(WorkspaceId *string, MemberId 
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveMemberRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDataset(DatasetId *string, request *UpdateDatasetRequest) (_result *UpdateDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateDatasetResponse{}
+	_body, _err := client.UpdateDatasetWithOptions(DatasetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDatasetWithOptions(DatasetId *string, request *UpdateDatasetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDatasetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
+		body["Options"] = request.Options
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDataset"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/datasets/" + tea.StringValue(openapiutil.GetEncodeParam(DatasetId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDatasetResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
