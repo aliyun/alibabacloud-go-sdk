@@ -4940,6 +4940,7 @@ func (s *CreateOrUpdateSwimmingLaneResponse) SetBody(v *CreateOrUpdateSwimmingLa
 type CreateOrUpdateSwimmingLaneGroupRequest struct {
 	AcceptLanguage         *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	AppIds                 *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	DbGrayEnable           *bool   `json:"DbGrayEnable,omitempty" xml:"DbGrayEnable,omitempty"`
 	Enable                 *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	EntryApp               *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
 	GmtCreate              *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
@@ -4971,6 +4972,11 @@ func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetAcceptLanguage(v string) *Cr
 
 func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetAppIds(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
 	s.AppIds = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetDbGrayEnable(v bool) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.DbGrayEnable = &v
 	return s
 }
 
@@ -32634,6 +32640,10 @@ func (client *Client) CreateOrUpdateSwimmingLaneGroupWithOptions(request *Create
 
 	if !tea.BoolValue(util.IsUnset(request.AppIds)) {
 		query["AppIds"] = request.AppIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbGrayEnable)) {
+		query["DbGrayEnable"] = request.DbGrayEnable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Enable)) {
