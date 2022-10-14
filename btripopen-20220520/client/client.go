@@ -36,11 +36,12 @@ func (s *AccessTokenRequest) SetAppSecret(v string) *AccessTokenRequest {
 }
 
 type AccessTokenResponseBody struct {
-	Code      *string                      `json:"code,omitempty" xml:"code,omitempty"`
-	Data      *AccessTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message   *string                      `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TraceId   *string                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                        `json:"code,omitempty" xml:"code,omitempty"`
+	Data      *AccessTokenResponseBodyData   `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Message   *string                        `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *AccessTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TraceId   *string                        `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s AccessTokenResponseBody) String() string {
@@ -63,6 +64,11 @@ func (s *AccessTokenResponseBody) SetData(v *AccessTokenResponseBodyData) *Acces
 
 func (s *AccessTokenResponseBody) SetMessage(v string) *AccessTokenResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *AccessTokenResponseBody) SetModule(v *AccessTokenResponseBodyModule) *AccessTokenResponseBody {
+	s.Module = v
 	return s
 }
 
@@ -95,6 +101,35 @@ func (s *AccessTokenResponseBodyData) SetExpire(v int64) *AccessTokenResponseBod
 }
 
 func (s *AccessTokenResponseBodyData) SetToken(v string) *AccessTokenResponseBodyData {
+	s.Token = &v
+	return s
+}
+
+type AccessTokenResponseBodyModule struct {
+	Expire *int64  `json:"expire,omitempty" xml:"expire,omitempty"`
+	Start  *int64  `json:"start,omitempty" xml:"start,omitempty"`
+	Token  *string `json:"token,omitempty" xml:"token,omitempty"`
+}
+
+func (s AccessTokenResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AccessTokenResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *AccessTokenResponseBodyModule) SetExpire(v int64) *AccessTokenResponseBodyModule {
+	s.Expire = &v
+	return s
+}
+
+func (s *AccessTokenResponseBodyModule) SetStart(v int64) *AccessTokenResponseBodyModule {
+	s.Start = &v
+	return s
+}
+
+func (s *AccessTokenResponseBodyModule) SetToken(v string) *AccessTokenResponseBodyModule {
 	s.Token = &v
 	return s
 }
@@ -6273,11 +6308,12 @@ func (s *CorpTokenRequest) SetType(v int32) *CorpTokenRequest {
 }
 
 type CorpTokenResponseBody struct {
-	Code      *string                    `json:"code,omitempty" xml:"code,omitempty"`
-	Data      *CorpTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message   *string                    `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId *string                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TraceId   *string                    `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                      `json:"code,omitempty" xml:"code,omitempty"`
+	Data      *CorpTokenResponseBodyData   `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Message   *string                      `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *CorpTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TraceId   *string                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CorpTokenResponseBody) String() string {
@@ -6300,6 +6336,11 @@ func (s *CorpTokenResponseBody) SetData(v *CorpTokenResponseBodyData) *CorpToken
 
 func (s *CorpTokenResponseBody) SetMessage(v string) *CorpTokenResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *CorpTokenResponseBody) SetModule(v *CorpTokenResponseBodyModule) *CorpTokenResponseBody {
+	s.Module = v
 	return s
 }
 
@@ -6332,6 +6373,35 @@ func (s *CorpTokenResponseBodyData) SetExpire(v int64) *CorpTokenResponseBodyDat
 }
 
 func (s *CorpTokenResponseBodyData) SetToken(v string) *CorpTokenResponseBodyData {
+	s.Token = &v
+	return s
+}
+
+type CorpTokenResponseBodyModule struct {
+	Expire *int64  `json:"expire,omitempty" xml:"expire,omitempty"`
+	Start  *int64  `json:"start,omitempty" xml:"start,omitempty"`
+	Token  *string `json:"token,omitempty" xml:"token,omitempty"`
+}
+
+func (s CorpTokenResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CorpTokenResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *CorpTokenResponseBodyModule) SetExpire(v int64) *CorpTokenResponseBodyModule {
+	s.Expire = &v
+	return s
+}
+
+func (s *CorpTokenResponseBodyModule) SetStart(v int64) *CorpTokenResponseBodyModule {
+	s.Start = &v
+	return s
+}
+
+func (s *CorpTokenResponseBodyModule) SetToken(v string) *CorpTokenResponseBodyModule {
 	s.Token = &v
 	return s
 }
