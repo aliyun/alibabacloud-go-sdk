@@ -11715,6 +11715,7 @@ type RecognizeVATInvoiceResponseBodyDataBox struct {
 	InvoiceDates      []*float32 `json:"InvoiceDates,omitempty" xml:"InvoiceDates,omitempty" type:"Repeated"`
 	InvoiceFakeCodes  []*float32 `json:"InvoiceFakeCodes,omitempty" xml:"InvoiceFakeCodes,omitempty" type:"Repeated"`
 	InvoiceNoes       []*float32 `json:"InvoiceNoes,omitempty" xml:"InvoiceNoes,omitempty" type:"Repeated"`
+	ItemNames         []*int32   `json:"ItemNames,omitempty" xml:"ItemNames,omitempty" type:"Repeated"`
 	PayeeAddresses    []*float32 `json:"PayeeAddresses,omitempty" xml:"PayeeAddresses,omitempty" type:"Repeated"`
 	PayeeBankNames    []*float32 `json:"PayeeBankNames,omitempty" xml:"PayeeBankNames,omitempty" type:"Repeated"`
 	PayeeNames        []*float32 `json:"PayeeNames,omitempty" xml:"PayeeNames,omitempty" type:"Repeated"`
@@ -11769,6 +11770,11 @@ func (s *RecognizeVATInvoiceResponseBodyDataBox) SetInvoiceFakeCodes(v []*float3
 
 func (s *RecognizeVATInvoiceResponseBodyDataBox) SetInvoiceNoes(v []*float32) *RecognizeVATInvoiceResponseBodyDataBox {
 	s.InvoiceNoes = v
+	return s
+}
+
+func (s *RecognizeVATInvoiceResponseBodyDataBox) SetItemNames(v []*int32) *RecognizeVATInvoiceResponseBodyDataBox {
+	s.ItemNames = v
 	return s
 }
 
@@ -11833,25 +11839,26 @@ func (s *RecognizeVATInvoiceResponseBodyDataBox) SetWithoutTaxAmounts(v []*float
 }
 
 type RecognizeVATInvoiceResponseBodyDataContent struct {
-	AntiFakeCode     *string `json:"AntiFakeCode,omitempty" xml:"AntiFakeCode,omitempty"`
-	Checker          *string `json:"Checker,omitempty" xml:"Checker,omitempty"`
-	Clerk            *string `json:"Clerk,omitempty" xml:"Clerk,omitempty"`
-	InvoiceAmount    *string `json:"InvoiceAmount,omitempty" xml:"InvoiceAmount,omitempty"`
-	InvoiceCode      *string `json:"InvoiceCode,omitempty" xml:"InvoiceCode,omitempty"`
-	InvoiceDate      *string `json:"InvoiceDate,omitempty" xml:"InvoiceDate,omitempty"`
-	InvoiceNo        *string `json:"InvoiceNo,omitempty" xml:"InvoiceNo,omitempty"`
-	Payee            *string `json:"Payee,omitempty" xml:"Payee,omitempty"`
-	PayeeAddress     *string `json:"PayeeAddress,omitempty" xml:"PayeeAddress,omitempty"`
-	PayeeBankName    *string `json:"PayeeBankName,omitempty" xml:"PayeeBankName,omitempty"`
-	PayeeName        *string `json:"PayeeName,omitempty" xml:"PayeeName,omitempty"`
-	PayeeRegisterNo  *string `json:"PayeeRegisterNo,omitempty" xml:"PayeeRegisterNo,omitempty"`
-	PayerAddress     *string `json:"PayerAddress,omitempty" xml:"PayerAddress,omitempty"`
-	PayerBankName    *string `json:"PayerBankName,omitempty" xml:"PayerBankName,omitempty"`
-	PayerName        *string `json:"PayerName,omitempty" xml:"PayerName,omitempty"`
-	PayerRegisterNo  *string `json:"PayerRegisterNo,omitempty" xml:"PayerRegisterNo,omitempty"`
-	SumAmount        *string `json:"SumAmount,omitempty" xml:"SumAmount,omitempty"`
-	TaxAmount        *string `json:"TaxAmount,omitempty" xml:"TaxAmount,omitempty"`
-	WithoutTaxAmount *string `json:"WithoutTaxAmount,omitempty" xml:"WithoutTaxAmount,omitempty"`
+	AntiFakeCode     *string   `json:"AntiFakeCode,omitempty" xml:"AntiFakeCode,omitempty"`
+	Checker          *string   `json:"Checker,omitempty" xml:"Checker,omitempty"`
+	Clerk            *string   `json:"Clerk,omitempty" xml:"Clerk,omitempty"`
+	InvoiceAmount    *string   `json:"InvoiceAmount,omitempty" xml:"InvoiceAmount,omitempty"`
+	InvoiceCode      *string   `json:"InvoiceCode,omitempty" xml:"InvoiceCode,omitempty"`
+	InvoiceDate      *string   `json:"InvoiceDate,omitempty" xml:"InvoiceDate,omitempty"`
+	InvoiceNo        *string   `json:"InvoiceNo,omitempty" xml:"InvoiceNo,omitempty"`
+	ItemName         []*string `json:"ItemName,omitempty" xml:"ItemName,omitempty" type:"Repeated"`
+	Payee            *string   `json:"Payee,omitempty" xml:"Payee,omitempty"`
+	PayeeAddress     *string   `json:"PayeeAddress,omitempty" xml:"PayeeAddress,omitempty"`
+	PayeeBankName    *string   `json:"PayeeBankName,omitempty" xml:"PayeeBankName,omitempty"`
+	PayeeName        *string   `json:"PayeeName,omitempty" xml:"PayeeName,omitempty"`
+	PayeeRegisterNo  *string   `json:"PayeeRegisterNo,omitempty" xml:"PayeeRegisterNo,omitempty"`
+	PayerAddress     *string   `json:"PayerAddress,omitempty" xml:"PayerAddress,omitempty"`
+	PayerBankName    *string   `json:"PayerBankName,omitempty" xml:"PayerBankName,omitempty"`
+	PayerName        *string   `json:"PayerName,omitempty" xml:"PayerName,omitempty"`
+	PayerRegisterNo  *string   `json:"PayerRegisterNo,omitempty" xml:"PayerRegisterNo,omitempty"`
+	SumAmount        *string   `json:"SumAmount,omitempty" xml:"SumAmount,omitempty"`
+	TaxAmount        *string   `json:"TaxAmount,omitempty" xml:"TaxAmount,omitempty"`
+	WithoutTaxAmount *string   `json:"WithoutTaxAmount,omitempty" xml:"WithoutTaxAmount,omitempty"`
 }
 
 func (s RecognizeVATInvoiceResponseBodyDataContent) String() string {
@@ -11894,6 +11901,11 @@ func (s *RecognizeVATInvoiceResponseBodyDataContent) SetInvoiceDate(v string) *R
 
 func (s *RecognizeVATInvoiceResponseBodyDataContent) SetInvoiceNo(v string) *RecognizeVATInvoiceResponseBodyDataContent {
 	s.InvoiceNo = &v
+	return s
+}
+
+func (s *RecognizeVATInvoiceResponseBodyDataContent) SetItemName(v []*string) *RecognizeVATInvoiceResponseBodyDataContent {
+	s.ItemName = v
 	return s
 }
 
