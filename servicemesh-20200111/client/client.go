@@ -1735,6 +1735,186 @@ func (s *CreateServiceMeshResponse) SetBody(v *CreateServiceMeshResponseBody) *C
 	return s
 }
 
+type CreateSwimLaneRequest struct {
+	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	LabelSelectorKey   *string `json:"LabelSelectorKey,omitempty" xml:"LabelSelectorKey,omitempty"`
+	LabelSelectorValue *string `json:"LabelSelectorValue,omitempty" xml:"LabelSelectorValue,omitempty"`
+	ServiceMeshId      *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ServicesList       *string `json:"ServicesList,omitempty" xml:"ServicesList,omitempty"`
+	SwimLaneName       *string `json:"SwimLaneName,omitempty" xml:"SwimLaneName,omitempty"`
+}
+
+func (s CreateSwimLaneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSwimLaneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSwimLaneRequest) SetGroupName(v string) *CreateSwimLaneRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateSwimLaneRequest) SetLabelSelectorKey(v string) *CreateSwimLaneRequest {
+	s.LabelSelectorKey = &v
+	return s
+}
+
+func (s *CreateSwimLaneRequest) SetLabelSelectorValue(v string) *CreateSwimLaneRequest {
+	s.LabelSelectorValue = &v
+	return s
+}
+
+func (s *CreateSwimLaneRequest) SetServiceMeshId(v string) *CreateSwimLaneRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *CreateSwimLaneRequest) SetServicesList(v string) *CreateSwimLaneRequest {
+	s.ServicesList = &v
+	return s
+}
+
+func (s *CreateSwimLaneRequest) SetSwimLaneName(v string) *CreateSwimLaneRequest {
+	s.SwimLaneName = &v
+	return s
+}
+
+type CreateSwimLaneResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSwimLaneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSwimLaneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSwimLaneResponseBody) SetRequestId(v string) *CreateSwimLaneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSwimLaneResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSwimLaneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSwimLaneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSwimLaneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSwimLaneResponse) SetHeaders(v map[string]*string) *CreateSwimLaneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSwimLaneResponse) SetStatusCode(v int32) *CreateSwimLaneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSwimLaneResponse) SetBody(v *CreateSwimLaneResponseBody) *CreateSwimLaneResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSwimLaneGroupRequest struct {
+	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IngressGatewayName *string `json:"IngressGatewayName,omitempty" xml:"IngressGatewayName,omitempty"`
+	IngressType        *string `json:"IngressType,omitempty" xml:"IngressType,omitempty"`
+	ServiceMeshId      *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ServicesList       *string `json:"ServicesList,omitempty" xml:"ServicesList,omitempty"`
+}
+
+func (s CreateSwimLaneGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSwimLaneGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSwimLaneGroupRequest) SetGroupName(v string) *CreateSwimLaneGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateSwimLaneGroupRequest) SetIngressGatewayName(v string) *CreateSwimLaneGroupRequest {
+	s.IngressGatewayName = &v
+	return s
+}
+
+func (s *CreateSwimLaneGroupRequest) SetIngressType(v string) *CreateSwimLaneGroupRequest {
+	s.IngressType = &v
+	return s
+}
+
+func (s *CreateSwimLaneGroupRequest) SetServiceMeshId(v string) *CreateSwimLaneGroupRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *CreateSwimLaneGroupRequest) SetServicesList(v string) *CreateSwimLaneGroupRequest {
+	s.ServicesList = &v
+	return s
+}
+
+type CreateSwimLaneGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSwimLaneGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSwimLaneGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSwimLaneGroupResponseBody) SetRequestId(v string) *CreateSwimLaneGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSwimLaneGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSwimLaneGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSwimLaneGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSwimLaneGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSwimLaneGroupResponse) SetHeaders(v map[string]*string) *CreateSwimLaneGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSwimLaneGroupResponse) SetStatusCode(v int32) *CreateSwimLaneGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSwimLaneGroupResponse) SetBody(v *CreateSwimLaneGroupResponseBody) *CreateSwimLaneGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteGatewayRouteRequest struct {
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
 	RouteName        *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
@@ -2055,6 +2235,150 @@ func (s *DeleteServiceMeshResponse) SetStatusCode(v int32) *DeleteServiceMeshRes
 }
 
 func (s *DeleteServiceMeshResponse) SetBody(v *DeleteServiceMeshResponseBody) *DeleteServiceMeshResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSwimLaneRequest struct {
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	SwimLaneName  *string `json:"SwimLaneName,omitempty" xml:"SwimLaneName,omitempty"`
+}
+
+func (s DeleteSwimLaneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimLaneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimLaneRequest) SetGroupName(v string) *DeleteSwimLaneRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DeleteSwimLaneRequest) SetServiceMeshId(v string) *DeleteSwimLaneRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *DeleteSwimLaneRequest) SetSwimLaneName(v string) *DeleteSwimLaneRequest {
+	s.SwimLaneName = &v
+	return s
+}
+
+type DeleteSwimLaneResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteSwimLaneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimLaneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimLaneResponseBody) SetRequestId(v string) *DeleteSwimLaneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteSwimLaneResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSwimLaneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSwimLaneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimLaneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimLaneResponse) SetHeaders(v map[string]*string) *DeleteSwimLaneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSwimLaneResponse) SetStatusCode(v int32) *DeleteSwimLaneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSwimLaneResponse) SetBody(v *DeleteSwimLaneResponseBody) *DeleteSwimLaneResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSwimLaneGroupRequest struct {
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s DeleteSwimLaneGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimLaneGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimLaneGroupRequest) SetGroupName(v string) *DeleteSwimLaneGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DeleteSwimLaneGroupRequest) SetServiceMeshId(v string) *DeleteSwimLaneGroupRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type DeleteSwimLaneGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteSwimLaneGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimLaneGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimLaneGroupResponseBody) SetRequestId(v string) *DeleteSwimLaneGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteSwimLaneGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSwimLaneGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSwimLaneGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimLaneGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimLaneGroupResponse) SetHeaders(v map[string]*string) *DeleteSwimLaneGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSwimLaneGroupResponse) SetStatusCode(v int32) *DeleteSwimLaneGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSwimLaneGroupResponse) SetBody(v *DeleteSwimLaneGroupResponseBody) *DeleteSwimLaneGroupResponse {
 	s.Body = v
 	return s
 }
@@ -3220,6 +3544,7 @@ func (s *DescribeGuestClusterAccessLogDashboardsResponse) SetBody(v *DescribeGue
 type DescribeGuestClusterNamespacesRequest struct {
 	GuestClusterID *string `json:"GuestClusterID,omitempty" xml:"GuestClusterID,omitempty"`
 	ServiceMeshId  *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ShowNsLabels   *bool   `json:"ShowNsLabels,omitempty" xml:"ShowNsLabels,omitempty"`
 }
 
 func (s DescribeGuestClusterNamespacesRequest) String() string {
@@ -3240,9 +3565,15 @@ func (s *DescribeGuestClusterNamespacesRequest) SetServiceMeshId(v string) *Desc
 	return s
 }
 
+func (s *DescribeGuestClusterNamespacesRequest) SetShowNsLabels(v bool) *DescribeGuestClusterNamespacesRequest {
+	s.ShowNsLabels = &v
+	return s
+}
+
 type DescribeGuestClusterNamespacesResponseBody struct {
-	NsList    []*string `json:"NsList,omitempty" xml:"NsList,omitempty" type:"Repeated"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NsLabels  map[string]interface{} `json:"NsLabels,omitempty" xml:"NsLabels,omitempty"`
+	NsList    []*string              `json:"NsList,omitempty" xml:"NsList,omitempty" type:"Repeated"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeGuestClusterNamespacesResponseBody) String() string {
@@ -3251,6 +3582,11 @@ func (s DescribeGuestClusterNamespacesResponseBody) String() string {
 
 func (s DescribeGuestClusterNamespacesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeGuestClusterNamespacesResponseBody) SetNsLabels(v map[string]interface{}) *DescribeGuestClusterNamespacesResponseBody {
+	s.NsLabels = v
+	return s
 }
 
 func (s *DescribeGuestClusterNamespacesResponseBody) SetNsList(v []*string) *DescribeGuestClusterNamespacesResponseBody {
@@ -9006,6 +9342,262 @@ func (s *GetCaCertResponse) SetBody(v *GetCaCertResponseBody) *GetCaCertResponse
 	return s
 }
 
+type GetDeploymentBySelectorRequest struct {
+	GuestCluster  *string            `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
+	LabelSelector map[string]*string `json:"LabelSelector,omitempty" xml:"LabelSelector,omitempty"`
+	Limit         *int64             `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Mark          *string            `json:"Mark,omitempty" xml:"Mark,omitempty"`
+	NameSpace     *string            `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
+	ServiceMeshId *string            `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s GetDeploymentBySelectorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentBySelectorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentBySelectorRequest) SetGuestCluster(v string) *GetDeploymentBySelectorRequest {
+	s.GuestCluster = &v
+	return s
+}
+
+func (s *GetDeploymentBySelectorRequest) SetLabelSelector(v map[string]*string) *GetDeploymentBySelectorRequest {
+	s.LabelSelector = v
+	return s
+}
+
+func (s *GetDeploymentBySelectorRequest) SetLimit(v int64) *GetDeploymentBySelectorRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *GetDeploymentBySelectorRequest) SetMark(v string) *GetDeploymentBySelectorRequest {
+	s.Mark = &v
+	return s
+}
+
+func (s *GetDeploymentBySelectorRequest) SetNameSpace(v string) *GetDeploymentBySelectorRequest {
+	s.NameSpace = &v
+	return s
+}
+
+func (s *GetDeploymentBySelectorRequest) SetServiceMeshId(v string) *GetDeploymentBySelectorRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type GetDeploymentBySelectorShrinkRequest struct {
+	GuestCluster        *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
+	LabelSelectorShrink *string `json:"LabelSelector,omitempty" xml:"LabelSelector,omitempty"`
+	Limit               *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Mark                *string `json:"Mark,omitempty" xml:"Mark,omitempty"`
+	NameSpace           *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
+	ServiceMeshId       *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s GetDeploymentBySelectorShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentBySelectorShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentBySelectorShrinkRequest) SetGuestCluster(v string) *GetDeploymentBySelectorShrinkRequest {
+	s.GuestCluster = &v
+	return s
+}
+
+func (s *GetDeploymentBySelectorShrinkRequest) SetLabelSelectorShrink(v string) *GetDeploymentBySelectorShrinkRequest {
+	s.LabelSelectorShrink = &v
+	return s
+}
+
+func (s *GetDeploymentBySelectorShrinkRequest) SetLimit(v int64) *GetDeploymentBySelectorShrinkRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *GetDeploymentBySelectorShrinkRequest) SetMark(v string) *GetDeploymentBySelectorShrinkRequest {
+	s.Mark = &v
+	return s
+}
+
+func (s *GetDeploymentBySelectorShrinkRequest) SetNameSpace(v string) *GetDeploymentBySelectorShrinkRequest {
+	s.NameSpace = &v
+	return s
+}
+
+func (s *GetDeploymentBySelectorShrinkRequest) SetServiceMeshId(v string) *GetDeploymentBySelectorShrinkRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type GetDeploymentBySelectorResponseBody struct {
+	DeploymentNameList [][]byte `json:"DeploymentNameList,omitempty" xml:"DeploymentNameList,omitempty" type:"Repeated"`
+	Mark               *string  `json:"Mark,omitempty" xml:"Mark,omitempty"`
+	RequestId          *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDeploymentBySelectorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentBySelectorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentBySelectorResponseBody) SetDeploymentNameList(v [][]byte) *GetDeploymentBySelectorResponseBody {
+	s.DeploymentNameList = v
+	return s
+}
+
+func (s *GetDeploymentBySelectorResponseBody) SetMark(v string) *GetDeploymentBySelectorResponseBody {
+	s.Mark = &v
+	return s
+}
+
+func (s *GetDeploymentBySelectorResponseBody) SetRequestId(v string) *GetDeploymentBySelectorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDeploymentBySelectorResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDeploymentBySelectorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDeploymentBySelectorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentBySelectorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentBySelectorResponse) SetHeaders(v map[string]*string) *GetDeploymentBySelectorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDeploymentBySelectorResponse) SetStatusCode(v int32) *GetDeploymentBySelectorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDeploymentBySelectorResponse) SetBody(v *GetDeploymentBySelectorResponseBody) *GetDeploymentBySelectorResponse {
+	s.Body = v
+	return s
+}
+
+type GetGrafanaDashboardUrlRequest struct {
+	K8sClusterId  *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetGrafanaDashboardUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGrafanaDashboardUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGrafanaDashboardUrlRequest) SetK8sClusterId(v string) *GetGrafanaDashboardUrlRequest {
+	s.K8sClusterId = &v
+	return s
+}
+
+func (s *GetGrafanaDashboardUrlRequest) SetServiceMeshId(v string) *GetGrafanaDashboardUrlRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *GetGrafanaDashboardUrlRequest) SetTitle(v string) *GetGrafanaDashboardUrlRequest {
+	s.Title = &v
+	return s
+}
+
+type GetGrafanaDashboardUrlResponseBody struct {
+	Dashboards []*GetGrafanaDashboardUrlResponseBodyDashboards `json:"Dashboards,omitempty" xml:"Dashboards,omitempty" type:"Repeated"`
+	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetGrafanaDashboardUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGrafanaDashboardUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGrafanaDashboardUrlResponseBody) SetDashboards(v []*GetGrafanaDashboardUrlResponseBodyDashboards) *GetGrafanaDashboardUrlResponseBody {
+	s.Dashboards = v
+	return s
+}
+
+func (s *GetGrafanaDashboardUrlResponseBody) SetRequestId(v string) *GetGrafanaDashboardUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetGrafanaDashboardUrlResponseBodyDashboards struct {
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetGrafanaDashboardUrlResponseBodyDashboards) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGrafanaDashboardUrlResponseBodyDashboards) GoString() string {
+	return s.String()
+}
+
+func (s *GetGrafanaDashboardUrlResponseBodyDashboards) SetTitle(v string) *GetGrafanaDashboardUrlResponseBodyDashboards {
+	s.Title = &v
+	return s
+}
+
+func (s *GetGrafanaDashboardUrlResponseBodyDashboards) SetUrl(v string) *GetGrafanaDashboardUrlResponseBodyDashboards {
+	s.Url = &v
+	return s
+}
+
+type GetGrafanaDashboardUrlResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetGrafanaDashboardUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetGrafanaDashboardUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGrafanaDashboardUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGrafanaDashboardUrlResponse) SetHeaders(v map[string]*string) *GetGrafanaDashboardUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGrafanaDashboardUrlResponse) SetStatusCode(v int32) *GetGrafanaDashboardUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGrafanaDashboardUrlResponse) SetBody(v *GetGrafanaDashboardUrlResponseBody) *GetGrafanaDashboardUrlResponse {
+	s.Body = v
+	return s
+}
+
 type GetRegisteredServiceEndpointsRequest struct {
 	ClusterIds    *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -9275,6 +9867,343 @@ func (s *GetRegisteredServiceNamespacesResponse) SetStatusCode(v int32) *GetRegi
 }
 
 func (s *GetRegisteredServiceNamespacesResponse) SetBody(v *GetRegisteredServiceNamespacesResponseBody) *GetRegisteredServiceNamespacesResponse {
+	s.Body = v
+	return s
+}
+
+type GetSwimLaneDetailRequest struct {
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	SwimLaneName  *string `json:"SwimLaneName,omitempty" xml:"SwimLaneName,omitempty"`
+}
+
+func (s GetSwimLaneDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSwimLaneDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSwimLaneDetailRequest) SetGroupName(v string) *GetSwimLaneDetailRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetSwimLaneDetailRequest) SetServiceMeshId(v string) *GetSwimLaneDetailRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *GetSwimLaneDetailRequest) SetSwimLaneName(v string) *GetSwimLaneDetailRequest {
+	s.SwimLaneName = &v
+	return s
+}
+
+type GetSwimLaneDetailResponseBody struct {
+	IngressRule        *string `json:"IngressRule,omitempty" xml:"IngressRule,omitempty"`
+	IngressService     *string `json:"IngressService,omitempty" xml:"IngressService,omitempty"`
+	LabelSelectorKey   *string `json:"LabelSelectorKey,omitempty" xml:"LabelSelectorKey,omitempty"`
+	LabelSelectorValue *string `json:"LabelSelectorValue,omitempty" xml:"LabelSelectorValue,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServicesList       *string `json:"ServicesList,omitempty" xml:"ServicesList,omitempty"`
+}
+
+func (s GetSwimLaneDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSwimLaneDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSwimLaneDetailResponseBody) SetIngressRule(v string) *GetSwimLaneDetailResponseBody {
+	s.IngressRule = &v
+	return s
+}
+
+func (s *GetSwimLaneDetailResponseBody) SetIngressService(v string) *GetSwimLaneDetailResponseBody {
+	s.IngressService = &v
+	return s
+}
+
+func (s *GetSwimLaneDetailResponseBody) SetLabelSelectorKey(v string) *GetSwimLaneDetailResponseBody {
+	s.LabelSelectorKey = &v
+	return s
+}
+
+func (s *GetSwimLaneDetailResponseBody) SetLabelSelectorValue(v string) *GetSwimLaneDetailResponseBody {
+	s.LabelSelectorValue = &v
+	return s
+}
+
+func (s *GetSwimLaneDetailResponseBody) SetRequestId(v string) *GetSwimLaneDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSwimLaneDetailResponseBody) SetServicesList(v string) *GetSwimLaneDetailResponseBody {
+	s.ServicesList = &v
+	return s
+}
+
+type GetSwimLaneDetailResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSwimLaneDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSwimLaneDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSwimLaneDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSwimLaneDetailResponse) SetHeaders(v map[string]*string) *GetSwimLaneDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSwimLaneDetailResponse) SetStatusCode(v int32) *GetSwimLaneDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSwimLaneDetailResponse) SetBody(v *GetSwimLaneDetailResponseBody) *GetSwimLaneDetailResponse {
+	s.Body = v
+	return s
+}
+
+type GetSwimLaneGroupListRequest struct {
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s GetSwimLaneGroupListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSwimLaneGroupListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSwimLaneGroupListRequest) SetServiceMeshId(v string) *GetSwimLaneGroupListRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type GetSwimLaneGroupListResponseBody struct {
+	RequestId         *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SwimLaneGroupList []*GetSwimLaneGroupListResponseBodySwimLaneGroupList `json:"SwimLaneGroupList,omitempty" xml:"SwimLaneGroupList,omitempty" type:"Repeated"`
+}
+
+func (s GetSwimLaneGroupListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSwimLaneGroupListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSwimLaneGroupListResponseBody) SetRequestId(v string) *GetSwimLaneGroupListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSwimLaneGroupListResponseBody) SetSwimLaneGroupList(v []*GetSwimLaneGroupListResponseBodySwimLaneGroupList) *GetSwimLaneGroupListResponseBody {
+	s.SwimLaneGroupList = v
+	return s
+}
+
+type GetSwimLaneGroupListResponseBodySwimLaneGroupList struct {
+	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IngressGatewayName *string `json:"IngressGatewayName,omitempty" xml:"IngressGatewayName,omitempty"`
+	IngressType        *string `json:"IngressType,omitempty" xml:"IngressType,omitempty"`
+	ServiceList        *string `json:"ServiceList,omitempty" xml:"ServiceList,omitempty"`
+}
+
+func (s GetSwimLaneGroupListResponseBodySwimLaneGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSwimLaneGroupListResponseBodySwimLaneGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSwimLaneGroupListResponseBodySwimLaneGroupList) SetGroupName(v string) *GetSwimLaneGroupListResponseBodySwimLaneGroupList {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetSwimLaneGroupListResponseBodySwimLaneGroupList) SetIngressGatewayName(v string) *GetSwimLaneGroupListResponseBodySwimLaneGroupList {
+	s.IngressGatewayName = &v
+	return s
+}
+
+func (s *GetSwimLaneGroupListResponseBodySwimLaneGroupList) SetIngressType(v string) *GetSwimLaneGroupListResponseBodySwimLaneGroupList {
+	s.IngressType = &v
+	return s
+}
+
+func (s *GetSwimLaneGroupListResponseBodySwimLaneGroupList) SetServiceList(v string) *GetSwimLaneGroupListResponseBodySwimLaneGroupList {
+	s.ServiceList = &v
+	return s
+}
+
+type GetSwimLaneGroupListResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSwimLaneGroupListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSwimLaneGroupListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSwimLaneGroupListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSwimLaneGroupListResponse) SetHeaders(v map[string]*string) *GetSwimLaneGroupListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSwimLaneGroupListResponse) SetStatusCode(v int32) *GetSwimLaneGroupListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSwimLaneGroupListResponse) SetBody(v *GetSwimLaneGroupListResponseBody) *GetSwimLaneGroupListResponse {
+	s.Body = v
+	return s
+}
+
+type GetSwimLaneListRequest struct {
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s GetSwimLaneListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSwimLaneListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSwimLaneListRequest) SetGroupName(v string) *GetSwimLaneListRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetSwimLaneListRequest) SetServiceMeshId(v string) *GetSwimLaneListRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type GetSwimLaneListResponseBody struct {
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SwimLaneList []*GetSwimLaneListResponseBodySwimLaneList `json:"SwimLaneList,omitempty" xml:"SwimLaneList,omitempty" type:"Repeated"`
+}
+
+func (s GetSwimLaneListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSwimLaneListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSwimLaneListResponseBody) SetRequestId(v string) *GetSwimLaneListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSwimLaneListResponseBody) SetSwimLaneList(v []*GetSwimLaneListResponseBodySwimLaneList) *GetSwimLaneListResponseBody {
+	s.SwimLaneList = v
+	return s
+}
+
+type GetSwimLaneListResponseBodySwimLaneList struct {
+	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IngressRule        *string `json:"IngressRule,omitempty" xml:"IngressRule,omitempty"`
+	IngressService     *string `json:"IngressService,omitempty" xml:"IngressService,omitempty"`
+	LabelSelectorKey   *string `json:"LabelSelectorKey,omitempty" xml:"LabelSelectorKey,omitempty"`
+	LabelSelectorValue *string `json:"LabelSelectorValue,omitempty" xml:"LabelSelectorValue,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ServiceList        *string `json:"ServiceList,omitempty" xml:"ServiceList,omitempty"`
+}
+
+func (s GetSwimLaneListResponseBodySwimLaneList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSwimLaneListResponseBodySwimLaneList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSwimLaneListResponseBodySwimLaneList) SetGroupName(v string) *GetSwimLaneListResponseBodySwimLaneList {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetSwimLaneListResponseBodySwimLaneList) SetIngressRule(v string) *GetSwimLaneListResponseBodySwimLaneList {
+	s.IngressRule = &v
+	return s
+}
+
+func (s *GetSwimLaneListResponseBodySwimLaneList) SetIngressService(v string) *GetSwimLaneListResponseBodySwimLaneList {
+	s.IngressService = &v
+	return s
+}
+
+func (s *GetSwimLaneListResponseBodySwimLaneList) SetLabelSelectorKey(v string) *GetSwimLaneListResponseBodySwimLaneList {
+	s.LabelSelectorKey = &v
+	return s
+}
+
+func (s *GetSwimLaneListResponseBodySwimLaneList) SetLabelSelectorValue(v string) *GetSwimLaneListResponseBodySwimLaneList {
+	s.LabelSelectorValue = &v
+	return s
+}
+
+func (s *GetSwimLaneListResponseBodySwimLaneList) SetName(v string) *GetSwimLaneListResponseBodySwimLaneList {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSwimLaneListResponseBodySwimLaneList) SetServiceList(v string) *GetSwimLaneListResponseBodySwimLaneList {
+	s.ServiceList = &v
+	return s
+}
+
+type GetSwimLaneListResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSwimLaneListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSwimLaneListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSwimLaneListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSwimLaneListResponse) SetHeaders(v map[string]*string) *GetSwimLaneListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSwimLaneListResponse) SetStatusCode(v int32) *GetSwimLaneListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSwimLaneListResponse) SetBody(v *GetSwimLaneListResponseBody) *GetSwimLaneListResponse {
 	s.Body = v
 	return s
 }
@@ -11875,6 +12804,174 @@ func (s *UpdateNamespaceScopeSidecarConfigResponse) SetBody(v *UpdateNamespaceSc
 	return s
 }
 
+type UpdateSwimLaneRequest struct {
+	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	LabelSelectorKey   *string `json:"LabelSelectorKey,omitempty" xml:"LabelSelectorKey,omitempty"`
+	LabelSelectorValue *string `json:"LabelSelectorValue,omitempty" xml:"LabelSelectorValue,omitempty"`
+	ServiceMeshId      *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ServicesList       *string `json:"ServicesList,omitempty" xml:"ServicesList,omitempty"`
+	SwimLaneName       *string `json:"SwimLaneName,omitempty" xml:"SwimLaneName,omitempty"`
+}
+
+func (s UpdateSwimLaneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimLaneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimLaneRequest) SetGroupName(v string) *UpdateSwimLaneRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateSwimLaneRequest) SetLabelSelectorKey(v string) *UpdateSwimLaneRequest {
+	s.LabelSelectorKey = &v
+	return s
+}
+
+func (s *UpdateSwimLaneRequest) SetLabelSelectorValue(v string) *UpdateSwimLaneRequest {
+	s.LabelSelectorValue = &v
+	return s
+}
+
+func (s *UpdateSwimLaneRequest) SetServiceMeshId(v string) *UpdateSwimLaneRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *UpdateSwimLaneRequest) SetServicesList(v string) *UpdateSwimLaneRequest {
+	s.ServicesList = &v
+	return s
+}
+
+func (s *UpdateSwimLaneRequest) SetSwimLaneName(v string) *UpdateSwimLaneRequest {
+	s.SwimLaneName = &v
+	return s
+}
+
+type UpdateSwimLaneResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateSwimLaneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimLaneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimLaneResponseBody) SetRequestId(v string) *UpdateSwimLaneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateSwimLaneResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSwimLaneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSwimLaneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimLaneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimLaneResponse) SetHeaders(v map[string]*string) *UpdateSwimLaneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSwimLaneResponse) SetStatusCode(v int32) *UpdateSwimLaneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSwimLaneResponse) SetBody(v *UpdateSwimLaneResponseBody) *UpdateSwimLaneResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSwimLaneGroupRequest struct {
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ServicesList  *string `json:"ServicesList,omitempty" xml:"ServicesList,omitempty"`
+}
+
+func (s UpdateSwimLaneGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimLaneGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimLaneGroupRequest) SetGroupName(v string) *UpdateSwimLaneGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateSwimLaneGroupRequest) SetServiceMeshId(v string) *UpdateSwimLaneGroupRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *UpdateSwimLaneGroupRequest) SetServicesList(v string) *UpdateSwimLaneGroupRequest {
+	s.ServicesList = &v
+	return s
+}
+
+type UpdateSwimLaneGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateSwimLaneGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimLaneGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimLaneGroupResponseBody) SetRequestId(v string) *UpdateSwimLaneGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateSwimLaneGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSwimLaneGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSwimLaneGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimLaneGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimLaneGroupResponse) SetHeaders(v map[string]*string) *UpdateSwimLaneGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSwimLaneGroupResponse) SetStatusCode(v int32) *UpdateSwimLaneGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSwimLaneGroupResponse) SetBody(v *UpdateSwimLaneGroupResponseBody) *UpdateSwimLaneGroupResponse {
+	s.Body = v
+	return s
+}
+
 type UpgradeMeshEditionPartiallyRequest struct {
 	ASMGatewayContinue    *bool   `json:"ASMGatewayContinue,omitempty" xml:"ASMGatewayContinue,omitempty"`
 	ExpectedVersion       *string `json:"ExpectedVersion,omitempty" xml:"ExpectedVersion,omitempty"`
@@ -12735,6 +13832,130 @@ func (client *Client) CreateServiceMesh(request *CreateServiceMeshRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) CreateSwimLaneWithOptions(request *CreateSwimLaneRequest, runtime *util.RuntimeOptions) (_result *CreateSwimLaneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		body["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelSelectorKey)) {
+		body["LabelSelectorKey"] = request.LabelSelectorKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelSelectorValue)) {
+		body["LabelSelectorValue"] = request.LabelSelectorValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServicesList)) {
+		body["ServicesList"] = request.ServicesList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwimLaneName)) {
+		body["SwimLaneName"] = request.SwimLaneName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSwimLane"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSwimLaneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSwimLane(request *CreateSwimLaneRequest) (_result *CreateSwimLaneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSwimLaneResponse{}
+	_body, _err := client.CreateSwimLaneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSwimLaneGroupWithOptions(request *CreateSwimLaneGroupRequest, runtime *util.RuntimeOptions) (_result *CreateSwimLaneGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		body["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IngressGatewayName)) {
+		body["IngressGatewayName"] = request.IngressGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IngressType)) {
+		body["IngressType"] = request.IngressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServicesList)) {
+		body["ServicesList"] = request.ServicesList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSwimLaneGroup"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSwimLaneGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSwimLaneGroup(request *CreateSwimLaneGroupRequest) (_result *CreateSwimLaneGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSwimLaneGroupResponse{}
+	_body, _err := client.CreateSwimLaneGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteGatewayRouteWithOptions(request *DeleteGatewayRouteRequest, runtime *util.RuntimeOptions) (_result *DeleteGatewayRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12948,6 +14169,106 @@ func (client *Client) DeleteServiceMesh(request *DeleteServiceMeshRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteServiceMeshResponse{}
 	_body, _err := client.DeleteServiceMeshWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSwimLaneWithOptions(request *DeleteSwimLaneRequest, runtime *util.RuntimeOptions) (_result *DeleteSwimLaneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		body["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwimLaneName)) {
+		body["SwimLaneName"] = request.SwimLaneName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSwimLane"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSwimLaneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSwimLane(request *DeleteSwimLaneRequest) (_result *DeleteSwimLaneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSwimLaneResponse{}
+	_body, _err := client.DeleteSwimLaneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSwimLaneGroupWithOptions(request *DeleteSwimLaneGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteSwimLaneGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		body["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSwimLaneGroup"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSwimLaneGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSwimLaneGroup(request *DeleteSwimLaneGroupRequest) (_result *DeleteSwimLaneGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSwimLaneGroupResponse{}
+	_body, _err := client.DeleteSwimLaneGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13487,6 +14808,10 @@ func (client *Client) DescribeGuestClusterNamespacesWithOptions(request *Describ
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
 		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowNsLabels)) {
+		body["ShowNsLabels"] = request.ShowNsLabels
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -14721,6 +16046,128 @@ func (client *Client) GetCaCert(request *GetCaCertRequest) (_result *GetCaCertRe
 	return _result, _err
 }
 
+func (client *Client) GetDeploymentBySelectorWithOptions(tmpReq *GetDeploymentBySelectorRequest, runtime *util.RuntimeOptions) (_result *GetDeploymentBySelectorResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetDeploymentBySelectorShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LabelSelector)) {
+		request.LabelSelectorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelSelector, tea.String("LabelSelector"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GuestCluster)) {
+		body["GuestCluster"] = request.GuestCluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelSelectorShrink)) {
+		body["LabelSelector"] = request.LabelSelectorShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mark)) {
+		body["Mark"] = request.Mark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSpace)) {
+		body["NameSpace"] = request.NameSpace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDeploymentBySelector"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDeploymentBySelectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDeploymentBySelector(request *GetDeploymentBySelectorRequest) (_result *GetDeploymentBySelectorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDeploymentBySelectorResponse{}
+	_body, _err := client.GetDeploymentBySelectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetGrafanaDashboardUrlWithOptions(request *GetGrafanaDashboardUrlRequest, runtime *util.RuntimeOptions) (_result *GetGrafanaDashboardUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.K8sClusterId)) {
+		body["K8sClusterId"] = request.K8sClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		body["Title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGrafanaDashboardUrl"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGrafanaDashboardUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGrafanaDashboardUrl(request *GetGrafanaDashboardUrlRequest) (_result *GetGrafanaDashboardUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetGrafanaDashboardUrlResponse{}
+	_body, _err := client.GetGrafanaDashboardUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetRegisteredServiceEndpointsWithOptions(request *GetRegisteredServiceEndpointsRequest, runtime *util.RuntimeOptions) (_result *GetRegisteredServiceEndpointsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14818,6 +16265,150 @@ func (client *Client) GetRegisteredServiceNamespaces(request *GetRegisteredServi
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRegisteredServiceNamespacesResponse{}
 	_body, _err := client.GetRegisteredServiceNamespacesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSwimLaneDetailWithOptions(request *GetSwimLaneDetailRequest, runtime *util.RuntimeOptions) (_result *GetSwimLaneDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		body["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwimLaneName)) {
+		body["SwimLaneName"] = request.SwimLaneName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSwimLaneDetail"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSwimLaneDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSwimLaneDetail(request *GetSwimLaneDetailRequest) (_result *GetSwimLaneDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSwimLaneDetailResponse{}
+	_body, _err := client.GetSwimLaneDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSwimLaneGroupListWithOptions(request *GetSwimLaneGroupListRequest, runtime *util.RuntimeOptions) (_result *GetSwimLaneGroupListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSwimLaneGroupList"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSwimLaneGroupListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSwimLaneGroupList(request *GetSwimLaneGroupListRequest) (_result *GetSwimLaneGroupListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSwimLaneGroupListResponse{}
+	_body, _err := client.GetSwimLaneGroupListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSwimLaneListWithOptions(request *GetSwimLaneListRequest, runtime *util.RuntimeOptions) (_result *GetSwimLaneListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		body["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSwimLaneList"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSwimLaneListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSwimLaneList(request *GetSwimLaneListRequest) (_result *GetSwimLaneListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSwimLaneListResponse{}
+	_body, _err := client.GetSwimLaneListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16122,6 +17713,122 @@ func (client *Client) UpdateNamespaceScopeSidecarConfig(request *UpdateNamespace
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateNamespaceScopeSidecarConfigResponse{}
 	_body, _err := client.UpdateNamespaceScopeSidecarConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSwimLaneWithOptions(request *UpdateSwimLaneRequest, runtime *util.RuntimeOptions) (_result *UpdateSwimLaneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		body["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelSelectorKey)) {
+		body["LabelSelectorKey"] = request.LabelSelectorKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelSelectorValue)) {
+		body["LabelSelectorValue"] = request.LabelSelectorValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServicesList)) {
+		body["ServicesList"] = request.ServicesList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwimLaneName)) {
+		body["SwimLaneName"] = request.SwimLaneName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSwimLane"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSwimLaneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSwimLane(request *UpdateSwimLaneRequest) (_result *UpdateSwimLaneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSwimLaneResponse{}
+	_body, _err := client.UpdateSwimLaneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSwimLaneGroupWithOptions(request *UpdateSwimLaneGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateSwimLaneGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		body["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServicesList)) {
+		body["ServicesList"] = request.ServicesList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSwimLaneGroup"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSwimLaneGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSwimLaneGroup(request *UpdateSwimLaneGroupRequest) (_result *UpdateSwimLaneGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSwimLaneGroupResponse{}
+	_body, _err := client.UpdateSwimLaneGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
