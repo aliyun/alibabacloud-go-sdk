@@ -32501,6 +32501,7 @@ type DescribeInstanceTypesResponseBodyInstanceTypesInstanceType struct {
 	EniTrunkSupported           *bool    `json:"EniTrunkSupported,omitempty" xml:"EniTrunkSupported,omitempty"`
 	EriQuantity                 *int32   `json:"EriQuantity,omitempty" xml:"EriQuantity,omitempty"`
 	GPUAmount                   *int32   `json:"GPUAmount,omitempty" xml:"GPUAmount,omitempty"`
+	GPUMemorySize               *float32 `json:"GPUMemorySize,omitempty" xml:"GPUMemorySize,omitempty"`
 	GPUSpec                     *string  `json:"GPUSpec,omitempty" xml:"GPUSpec,omitempty"`
 	InitialCredit               *int32   `json:"InitialCredit,omitempty" xml:"InitialCredit,omitempty"`
 	InstanceBandwidthRx         *int32   `json:"InstanceBandwidthRx,omitempty" xml:"InstanceBandwidthRx,omitempty"`
@@ -32595,6 +32596,11 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetEriQuant
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetGPUAmount(v int32) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
 	s.GPUAmount = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetGPUMemorySize(v float32) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
+	s.GPUMemorySize = &v
 	return s
 }
 
