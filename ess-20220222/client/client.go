@@ -3889,6 +3889,7 @@ type CreateScalingGroupRequest struct {
 	ClientToken                         *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	CompensateWithOnDemand              *bool                                               `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
 	ContainerGroupId                    *string                                             `json:"ContainerGroupId,omitempty" xml:"ContainerGroupId,omitempty"`
+	CustomPolicyARN                     *string                                             `json:"CustomPolicyARN,omitempty" xml:"CustomPolicyARN,omitempty"`
 	DBInstanceIds                       *string                                             `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
 	DefaultCooldown                     *int32                                              `json:"DefaultCooldown,omitempty" xml:"DefaultCooldown,omitempty"`
 	DesiredCapacity                     *int32                                              `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
@@ -3959,6 +3960,11 @@ func (s *CreateScalingGroupRequest) SetCompensateWithOnDemand(v bool) *CreateSca
 
 func (s *CreateScalingGroupRequest) SetContainerGroupId(v string) *CreateScalingGroupRequest {
 	s.ContainerGroupId = &v
+	return s
+}
+
+func (s *CreateScalingGroupRequest) SetCustomPolicyARN(v string) *CreateScalingGroupRequest {
+	s.CustomPolicyARN = &v
 	return s
 }
 
@@ -4918,6 +4924,93 @@ func (s *DeleteAlarmResponse) SetStatusCode(v int32) *DeleteAlarmResponse {
 }
 
 func (s *DeleteAlarmResponse) SetBody(v *DeleteAlarmResponseBody) *DeleteAlarmResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEciScalingConfigurationRequest struct {
+	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScalingConfigurationId *string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
+}
+
+func (s DeleteEciScalingConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEciScalingConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEciScalingConfigurationRequest) SetOwnerAccount(v string) *DeleteEciScalingConfigurationRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteEciScalingConfigurationRequest) SetOwnerId(v int64) *DeleteEciScalingConfigurationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteEciScalingConfigurationRequest) SetRegionId(v string) *DeleteEciScalingConfigurationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteEciScalingConfigurationRequest) SetResourceOwnerAccount(v string) *DeleteEciScalingConfigurationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteEciScalingConfigurationRequest) SetScalingConfigurationId(v string) *DeleteEciScalingConfigurationRequest {
+	s.ScalingConfigurationId = &v
+	return s
+}
+
+type DeleteEciScalingConfigurationResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEciScalingConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEciScalingConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEciScalingConfigurationResponseBody) SetRequestId(v string) *DeleteEciScalingConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEciScalingConfigurationResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEciScalingConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEciScalingConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEciScalingConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEciScalingConfigurationResponse) SetHeaders(v map[string]*string) *DeleteEciScalingConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEciScalingConfigurationResponse) SetStatusCode(v int32) *DeleteEciScalingConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEciScalingConfigurationResponse) SetBody(v *DeleteEciScalingConfigurationResponseBody) *DeleteEciScalingConfigurationResponse {
 	s.Body = v
 	return s
 }
@@ -9040,6 +9133,7 @@ type DescribeScalingGroupsResponseBodyScalingGroups struct {
 	CompensateWithOnDemand              *bool                                                                    `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
 	CreationTime                        *string                                                                  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	CurrentHostName                     *string                                                                  `json:"CurrentHostName,omitempty" xml:"CurrentHostName,omitempty"`
+	CustomPolicyARN                     *string                                                                  `json:"CustomPolicyARN,omitempty" xml:"CustomPolicyARN,omitempty"`
 	DBInstanceIds                       []*string                                                                `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Repeated"`
 	DefaultCooldown                     *int32                                                                   `json:"DefaultCooldown,omitempty" xml:"DefaultCooldown,omitempty"`
 	DesiredCapacity                     *int32                                                                   `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
@@ -9130,6 +9224,11 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetCreationTime(v strin
 
 func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetCurrentHostName(v string) *DescribeScalingGroupsResponseBodyScalingGroups {
 	s.CurrentHostName = &v
+	return s
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetCustomPolicyARN(v string) *DescribeScalingGroupsResponseBodyScalingGroups {
+	s.CustomPolicyARN = &v
 	return s
 }
 
@@ -15307,6 +15406,7 @@ type ModifyScalingGroupRequest struct {
 	AllocationStrategy                  *string                                             `json:"AllocationStrategy,omitempty" xml:"AllocationStrategy,omitempty"`
 	AzBalance                           *bool                                               `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
 	CompensateWithOnDemand              *bool                                               `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
+	CustomPolicyARN                     *string                                             `json:"CustomPolicyARN,omitempty" xml:"CustomPolicyARN,omitempty"`
 	DefaultCooldown                     *int32                                              `json:"DefaultCooldown,omitempty" xml:"DefaultCooldown,omitempty"`
 	DesiredCapacity                     *int32                                              `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
 	GroupDeletionProtection             *bool                                               `json:"GroupDeletionProtection,omitempty" xml:"GroupDeletionProtection,omitempty"`
@@ -15358,6 +15458,11 @@ func (s *ModifyScalingGroupRequest) SetAzBalance(v bool) *ModifyScalingGroupRequ
 
 func (s *ModifyScalingGroupRequest) SetCompensateWithOnDemand(v bool) *ModifyScalingGroupRequest {
 	s.CompensateWithOnDemand = &v
+	return s
+}
+
+func (s *ModifyScalingGroupRequest) SetCustomPolicyARN(v string) *ModifyScalingGroupRequest {
+	s.CustomPolicyARN = &v
 	return s
 }
 
@@ -18452,6 +18557,10 @@ func (client *Client) CreateScalingGroupWithOptions(request *CreateScalingGroupR
 		query["ContainerGroupId"] = request.ContainerGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustomPolicyARN)) {
+		query["CustomPolicyARN"] = request.CustomPolicyARN
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceIds)) {
 		query["DBInstanceIds"] = request.DBInstanceIds
 	}
@@ -18963,6 +19072,66 @@ func (client *Client) DeleteAlarm(request *DeleteAlarmRequest) (_result *DeleteA
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAlarmResponse{}
 	_body, _err := client.DeleteAlarmWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEciScalingConfigurationWithOptions(request *DeleteEciScalingConfigurationRequest, runtime *util.RuntimeOptions) (_result *DeleteEciScalingConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingConfigurationId)) {
+		query["ScalingConfigurationId"] = request.ScalingConfigurationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEciScalingConfiguration"),
+		Version:     tea.String("2022-02-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEciScalingConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEciScalingConfiguration(request *DeleteEciScalingConfigurationRequest) (_result *DeleteEciScalingConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEciScalingConfigurationResponse{}
+	_body, _err := client.DeleteEciScalingConfigurationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22184,6 +22353,10 @@ func (client *Client) ModifyScalingGroupWithOptions(request *ModifyScalingGroupR
 
 	if !tea.BoolValue(util.IsUnset(request.CompensateWithOnDemand)) {
 		query["CompensateWithOnDemand"] = request.CompensateWithOnDemand
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomPolicyARN)) {
+		query["CustomPolicyARN"] = request.CustomPolicyARN
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DefaultCooldown)) {
