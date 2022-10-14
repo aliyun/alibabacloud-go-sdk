@@ -7295,6 +7295,7 @@ type DescribeLifecycleHooksResponseBodyLifecycleHooks struct {
 	HeartbeatTimeout     *int32  `json:"HeartbeatTimeout,omitempty" xml:"HeartbeatTimeout,omitempty"`
 	LifecycleHookId      *string `json:"LifecycleHookId,omitempty" xml:"LifecycleHookId,omitempty"`
 	LifecycleHookName    *string `json:"LifecycleHookName,omitempty" xml:"LifecycleHookName,omitempty"`
+	LifecycleHookStatus  *string `json:"LifecycleHookStatus,omitempty" xml:"LifecycleHookStatus,omitempty"`
 	LifecycleTransition  *string `json:"LifecycleTransition,omitempty" xml:"LifecycleTransition,omitempty"`
 	NotificationArn      *string `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
 	NotificationMetadata *string `json:"NotificationMetadata,omitempty" xml:"NotificationMetadata,omitempty"`
@@ -7326,6 +7327,11 @@ func (s *DescribeLifecycleHooksResponseBodyLifecycleHooks) SetLifecycleHookId(v 
 
 func (s *DescribeLifecycleHooksResponseBodyLifecycleHooks) SetLifecycleHookName(v string) *DescribeLifecycleHooksResponseBodyLifecycleHooks {
 	s.LifecycleHookName = &v
+	return s
+}
+
+func (s *DescribeLifecycleHooksResponseBodyLifecycleHooks) SetLifecycleHookStatus(v string) *DescribeLifecycleHooksResponseBodyLifecycleHooks {
+	s.LifecycleHookStatus = &v
 	return s
 }
 
@@ -13865,6 +13871,7 @@ type ModifyLifecycleHookRequest struct {
 	HeartbeatTimeout     *int32  `json:"HeartbeatTimeout,omitempty" xml:"HeartbeatTimeout,omitempty"`
 	LifecycleHookId      *string `json:"LifecycleHookId,omitempty" xml:"LifecycleHookId,omitempty"`
 	LifecycleHookName    *string `json:"LifecycleHookName,omitempty" xml:"LifecycleHookName,omitempty"`
+	LifecycleHookStatus  *string `json:"LifecycleHookStatus,omitempty" xml:"LifecycleHookStatus,omitempty"`
 	LifecycleTransition  *string `json:"LifecycleTransition,omitempty" xml:"LifecycleTransition,omitempty"`
 	NotificationArn      *string `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
 	NotificationMetadata *string `json:"NotificationMetadata,omitempty" xml:"NotificationMetadata,omitempty"`
@@ -13900,6 +13907,11 @@ func (s *ModifyLifecycleHookRequest) SetLifecycleHookId(v string) *ModifyLifecyc
 
 func (s *ModifyLifecycleHookRequest) SetLifecycleHookName(v string) *ModifyLifecycleHookRequest {
 	s.LifecycleHookName = &v
+	return s
+}
+
+func (s *ModifyLifecycleHookRequest) SetLifecycleHookStatus(v string) *ModifyLifecycleHookRequest {
+	s.LifecycleHookStatus = &v
 	return s
 }
 
@@ -21786,6 +21798,10 @@ func (client *Client) ModifyLifecycleHookWithOptions(request *ModifyLifecycleHoo
 
 	if !tea.BoolValue(util.IsUnset(request.LifecycleHookName)) {
 		query["LifecycleHookName"] = request.LifecycleHookName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LifecycleHookStatus)) {
+		query["LifecycleHookStatus"] = request.LifecycleHookStatus
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LifecycleTransition)) {
