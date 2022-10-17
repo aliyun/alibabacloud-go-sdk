@@ -1616,6 +1616,7 @@ func (s *SegmentHDCommonImageAdvanceRequest) SetImageUrlObject(v io.Reader) *Seg
 
 type SegmentHDCommonImageResponseBody struct {
 	Data      *SegmentHDCommonImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1629,6 +1630,11 @@ func (s SegmentHDCommonImageResponseBody) GoString() string {
 
 func (s *SegmentHDCommonImageResponseBody) SetData(v *SegmentHDCommonImageResponseBodyData) *SegmentHDCommonImageResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *SegmentHDCommonImageResponseBody) SetMessage(v string) *SegmentHDCommonImageResponseBody {
+	s.Message = &v
 	return s
 }
 
