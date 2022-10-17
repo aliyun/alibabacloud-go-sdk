@@ -5,7 +5,7 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
@@ -77,6 +77,7 @@ func (s *AnalyzeChestVesselRequestURLList) SetURL(v string) *AnalyzeChestVesselR
 
 type AnalyzeChestVesselResponseBody struct {
 	Data      *AnalyzeChestVesselResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -90,6 +91,11 @@ func (s AnalyzeChestVesselResponseBody) GoString() string {
 
 func (s *AnalyzeChestVesselResponseBody) SetData(v *AnalyzeChestVesselResponseBodyData) *AnalyzeChestVesselResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponseBody) SetMessage(v string) *AnalyzeChestVesselResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -316,6 +322,7 @@ func (s *CalcCACSRequestURLList) SetURL(v string) *CalcCACSRequestURLList {
 
 type CalcCACSResponseBody struct {
 	Data      *CalcCACSResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -329,6 +336,11 @@ func (s CalcCACSResponseBody) GoString() string {
 
 func (s *CalcCACSResponseBody) SetData(v *CalcCACSResponseBodyData) *CalcCACSResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *CalcCACSResponseBody) SetMessage(v string) *CalcCACSResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -705,6 +717,7 @@ func (s *DetectCovid19CadRequestURLList) SetURL(v string) *DetectCovid19CadReque
 
 type DetectCovid19CadResponseBody struct {
 	Data      *DetectCovid19CadResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -718,6 +731,11 @@ func (s DetectCovid19CadResponseBody) GoString() string {
 
 func (s *DetectCovid19CadResponseBody) SetData(v *DetectCovid19CadResponseBodyData) *DetectCovid19CadResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *DetectCovid19CadResponseBody) SetMessage(v string) *DetectCovid19CadResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1454,6 +1472,7 @@ func (s *DetectLungNoduleRequestURLList) SetURL(v string) *DetectLungNoduleReque
 
 type DetectLungNoduleResponseBody struct {
 	Data      *DetectLungNoduleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1467,6 +1486,11 @@ func (s DetectLungNoduleResponseBody) GoString() string {
 
 func (s *DetectLungNoduleResponseBody) SetData(v *DetectLungNoduleResponseBodyData) *DetectLungNoduleResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *DetectLungNoduleResponseBody) SetMessage(v string) *DetectLungNoduleResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -2017,6 +2041,7 @@ func (s *DetectRibFractureRequestURLList) SetURL(v string) *DetectRibFractureReq
 
 type DetectRibFractureResponseBody struct {
 	Data      *DetectRibFractureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2030,6 +2055,11 @@ func (s DetectRibFractureResponseBody) GoString() string {
 
 func (s *DetectRibFractureResponseBody) SetData(v *DetectRibFractureResponseBodyData) *DetectRibFractureResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *DetectRibFractureResponseBody) SetMessage(v string) *DetectRibFractureResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -2729,6 +2759,7 @@ func (s *RunCTRegistrationRequestReferenceList) SetReferenceURL(v string) *RunCT
 
 type RunCTRegistrationResponseBody struct {
 	Data      *RunCTRegistrationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2742,6 +2773,11 @@ func (s RunCTRegistrationResponseBody) GoString() string {
 
 func (s *RunCTRegistrationResponseBody) SetData(v *RunCTRegistrationResponseBodyData) *RunCTRegistrationResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *RunCTRegistrationResponseBody) SetMessage(v string) *RunCTRegistrationResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -3077,6 +3113,7 @@ func (s *ScreenChestCTRequestURLList) SetURL(v string) *ScreenChestCTRequestURLL
 
 type ScreenChestCTResponseBody struct {
 	Data      *ScreenChestCTResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3090,6 +3127,11 @@ func (s ScreenChestCTResponseBody) GoString() string {
 
 func (s *ScreenChestCTResponseBody) SetData(v *ScreenChestCTResponseBodyData) *ScreenChestCTResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBody) SetMessage(v string) *ScreenChestCTResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -3879,6 +3921,7 @@ func (s *ScreenECRequestURLList) SetURL(v string) *ScreenECRequestURLList {
 
 type ScreenECResponseBody struct {
 	Data      *ScreenECResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3892,6 +3935,11 @@ func (s ScreenECResponseBody) GoString() string {
 
 func (s *ScreenECResponseBody) SetData(v *ScreenECResponseBodyData) *ScreenECResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *ScreenECResponseBody) SetMessage(v string) *ScreenECResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -4059,6 +4107,7 @@ func (s *SegmentOARRequestURLList) SetURL(v string) *SegmentOARRequestURLList {
 
 type SegmentOARResponseBody struct {
 	Data      *SegmentOARResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4072,6 +4121,11 @@ func (s SegmentOARResponseBody) GoString() string {
 
 func (s *SegmentOARResponseBody) SetData(v *SegmentOARResponseBodyData) *SegmentOARResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *SegmentOARResponseBody) SetMessage(v string) *SegmentOARResponseBody {
+	s.Message = &v
 	return s
 }
 
