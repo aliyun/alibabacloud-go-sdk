@@ -12717,6 +12717,7 @@ func (s *RecognizeVideoCharacterRequest) SetVideoURL(v string) *RecognizeVideoCh
 
 type RecognizeVideoCharacterResponseBody struct {
 	Data      *RecognizeVideoCharacterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12730,6 +12731,11 @@ func (s RecognizeVideoCharacterResponseBody) GoString() string {
 
 func (s *RecognizeVideoCharacterResponseBody) SetData(v *RecognizeVideoCharacterResponseBodyData) *RecognizeVideoCharacterResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *RecognizeVideoCharacterResponseBody) SetMessage(v string) *RecognizeVideoCharacterResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -13922,6 +13928,7 @@ func (s *TrimDocumentAdvanceRequest) SetOutputType(v string) *TrimDocumentAdvanc
 
 type TrimDocumentResponseBody struct {
 	Data      *TrimDocumentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13935,6 +13942,11 @@ func (s TrimDocumentResponseBody) GoString() string {
 
 func (s *TrimDocumentResponseBody) SetData(v *TrimDocumentResponseBodyData) *TrimDocumentResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *TrimDocumentResponseBody) SetMessage(v string) *TrimDocumentResponseBody {
+	s.Message = &v
 	return s
 }
 
