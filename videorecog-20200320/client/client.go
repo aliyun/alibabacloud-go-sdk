@@ -53,6 +53,7 @@ func (s *DetectVideoShotAdvanceRequest) SetVideoUrlObject(v io.Reader) *DetectVi
 
 type DetectVideoShotResponseBody struct {
 	Data      *DetectVideoShotResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -66,6 +67,11 @@ func (s DetectVideoShotResponseBody) GoString() string {
 
 func (s *DetectVideoShotResponseBody) SetData(v *DetectVideoShotResponseBodyData) *DetectVideoShotResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *DetectVideoShotResponseBody) SetMessage(v string) *DetectVideoShotResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -168,6 +174,7 @@ func (s *GenerateVideoCoverAdvanceRequest) SetVideoUrlObject(v io.Reader) *Gener
 
 type GenerateVideoCoverResponseBody struct {
 	Data      *GenerateVideoCoverResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -181,6 +188,11 @@ func (s GenerateVideoCoverResponseBody) GoString() string {
 
 func (s *GenerateVideoCoverResponseBody) SetData(v *GenerateVideoCoverResponseBodyData) *GenerateVideoCoverResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *GenerateVideoCoverResponseBody) SetMessage(v string) *GenerateVideoCoverResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -491,6 +503,7 @@ func (s *RecognizeVideoCastCrewListShrinkRequest) SetVideoUrl(v string) *Recogni
 
 type RecognizeVideoCastCrewListResponseBody struct {
 	Data      *RecognizeVideoCastCrewListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -507,16 +520,23 @@ func (s *RecognizeVideoCastCrewListResponseBody) SetData(v *RecognizeVideoCastCr
 	return s
 }
 
+func (s *RecognizeVideoCastCrewListResponseBody) SetMessage(v string) *RecognizeVideoCastCrewListResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *RecognizeVideoCastCrewListResponseBody) SetRequestId(v string) *RecognizeVideoCastCrewListResponseBody {
 	s.RequestId = &v
 	return s
 }
 
 type RecognizeVideoCastCrewListResponseBodyData struct {
-	CastResults      []*RecognizeVideoCastCrewListResponseBodyDataCastResults      `json:"CastResults,omitempty" xml:"CastResults,omitempty" type:"Repeated"`
-	OcrResults       []*RecognizeVideoCastCrewListResponseBodyDataOcrResults       `json:"OcrResults,omitempty" xml:"OcrResults,omitempty" type:"Repeated"`
-	SubtitlesResults []*RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults `json:"SubtitlesResults,omitempty" xml:"SubtitlesResults,omitempty" type:"Repeated"`
-	VideoOcrResults  []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults  `json:"VideoOcrResults,omitempty" xml:"VideoOcrResults,omitempty" type:"Repeated"`
+	CastResults        []*RecognizeVideoCastCrewListResponseBodyDataCastResults      `json:"CastResults,omitempty" xml:"CastResults,omitempty" type:"Repeated"`
+	OcrResults         []*RecognizeVideoCastCrewListResponseBodyDataOcrResults       `json:"OcrResults,omitempty" xml:"OcrResults,omitempty" type:"Repeated"`
+	OcrResultsUrl      *string                                                       `json:"OcrResultsUrl,omitempty" xml:"OcrResultsUrl,omitempty"`
+	OcrVideoResultsUrl *string                                                       `json:"OcrVideoResultsUrl,omitempty" xml:"OcrVideoResultsUrl,omitempty"`
+	SubtitlesResults   []*RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults `json:"SubtitlesResults,omitempty" xml:"SubtitlesResults,omitempty" type:"Repeated"`
+	VideoOcrResults    []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults  `json:"VideoOcrResults,omitempty" xml:"VideoOcrResults,omitempty" type:"Repeated"`
 }
 
 func (s RecognizeVideoCastCrewListResponseBodyData) String() string {
@@ -534,6 +554,16 @@ func (s *RecognizeVideoCastCrewListResponseBodyData) SetCastResults(v []*Recogni
 
 func (s *RecognizeVideoCastCrewListResponseBodyData) SetOcrResults(v []*RecognizeVideoCastCrewListResponseBodyDataOcrResults) *RecognizeVideoCastCrewListResponseBodyData {
 	s.OcrResults = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyData) SetOcrResultsUrl(v string) *RecognizeVideoCastCrewListResponseBodyData {
+	s.OcrResultsUrl = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyData) SetOcrVideoResultsUrl(v string) *RecognizeVideoCastCrewListResponseBodyData {
+	s.OcrVideoResultsUrl = &v
 	return s
 }
 
@@ -898,6 +928,7 @@ func (s *SplitVideoPartsAdvanceRequest) SetVideoUrlObject(v io.Reader) *SplitVid
 
 type SplitVideoPartsResponseBody struct {
 	Data      *SplitVideoPartsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -911,6 +942,11 @@ func (s SplitVideoPartsResponseBody) GoString() string {
 
 func (s *SplitVideoPartsResponseBody) SetData(v *SplitVideoPartsResponseBodyData) *SplitVideoPartsResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *SplitVideoPartsResponseBody) SetMessage(v string) *SplitVideoPartsResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1030,6 +1066,7 @@ func (s *UnderstandVideoContentAdvanceRequest) SetVideoURLObject(v io.Reader) *U
 
 type UnderstandVideoContentResponseBody struct {
 	Data      *UnderstandVideoContentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1043,6 +1080,11 @@ func (s UnderstandVideoContentResponseBody) GoString() string {
 
 func (s *UnderstandVideoContentResponseBody) SetData(v *UnderstandVideoContentResponseBodyData) *UnderstandVideoContentResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *UnderstandVideoContentResponseBody) SetMessage(v string) *UnderstandVideoContentResponseBody {
+	s.Message = &v
 	return s
 }
 
