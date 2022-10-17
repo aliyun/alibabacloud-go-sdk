@@ -7157,6 +7157,7 @@ type DescribeKubernetesVersionMetadataResponseBodyImages struct {
 	ImageType     *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
 	OsType        *string `json:"os_type,omitempty" xml:"os_type,omitempty"`
 	ImageCategory *string `json:"image_category,omitempty" xml:"image_category,omitempty"`
+	Architecture  *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
 }
 
 func (s DescribeKubernetesVersionMetadataResponseBodyImages) String() string {
@@ -7199,6 +7200,11 @@ func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetOsType(v string
 
 func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetImageCategory(v string) *DescribeKubernetesVersionMetadataResponseBodyImages {
 	s.ImageCategory = &v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetArchitecture(v string) *DescribeKubernetesVersionMetadataResponseBodyImages {
+	s.Architecture = &v
 	return s
 }
 
@@ -12444,6 +12450,81 @@ func (s *UpgradeClusterAddonsResponse) SetHeaders(v map[string]*string) *Upgrade
 
 func (s *UpgradeClusterAddonsResponse) SetStatusCode(v int32) *UpgradeClusterAddonsResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type UpgradeClusterNodepoolRequest struct {
+	ImageId           *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	KubernetesVersion *string `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
+	RuntimeVersion    *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
+}
+
+func (s UpgradeClusterNodepoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeClusterNodepoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeClusterNodepoolRequest) SetImageId(v string) *UpgradeClusterNodepoolRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *UpgradeClusterNodepoolRequest) SetKubernetesVersion(v string) *UpgradeClusterNodepoolRequest {
+	s.KubernetesVersion = &v
+	return s
+}
+
+func (s *UpgradeClusterNodepoolRequest) SetRuntimeVersion(v string) *UpgradeClusterNodepoolRequest {
+	s.RuntimeVersion = &v
+	return s
+}
+
+type UpgradeClusterNodepoolResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpgradeClusterNodepoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeClusterNodepoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeClusterNodepoolResponseBody) SetRequestId(v string) *UpgradeClusterNodepoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpgradeClusterNodepoolResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpgradeClusterNodepoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpgradeClusterNodepoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeClusterNodepoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeClusterNodepoolResponse) SetHeaders(v map[string]*string) *UpgradeClusterNodepoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeClusterNodepoolResponse) SetStatusCode(v int32) *UpgradeClusterNodepoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpgradeClusterNodepoolResponse) SetBody(v *UpgradeClusterNodepoolResponseBody) *UpgradeClusterNodepoolResponse {
+	s.Body = v
 	return s
 }
 
@@ -17828,6 +17909,60 @@ func (client *Client) UpgradeClusterAddonsWithOptions(ClusterId *string, request
 		BodyType:    tea.String("none"),
 	}
 	_result = &UpgradeClusterAddonsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpgradeClusterNodepool(ClusterId *string, NodepoolId *string, request *UpgradeClusterNodepoolRequest) (_result *UpgradeClusterNodepoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpgradeClusterNodepoolResponse{}
+	_body, _err := client.UpgradeClusterNodepoolWithOptions(ClusterId, NodepoolId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpgradeClusterNodepoolWithOptions(ClusterId *string, NodepoolId *string, request *UpgradeClusterNodepoolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpgradeClusterNodepoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["image_id"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KubernetesVersion)) {
+		body["kubernetes_version"] = request.KubernetesVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuntimeVersion)) {
+		body["runtime_version"] = request.RuntimeVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeClusterNodepool"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/nodepools/" + tea.StringValue(openapiutil.GetEncodeParam(NodepoolId)) + "/upgrade"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpgradeClusterNodepoolResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
