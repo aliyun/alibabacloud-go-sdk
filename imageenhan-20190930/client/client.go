@@ -2075,6 +2075,7 @@ func (s *RecolorHDImageAdvanceRequestColorTemplate) SetColor(v string) *RecolorH
 
 type RecolorHDImageResponseBody struct {
 	Data      *RecolorHDImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2088,6 +2089,11 @@ func (s RecolorHDImageResponseBody) GoString() string {
 
 func (s *RecolorHDImageResponseBody) SetData(v *RecolorHDImageResponseBodyData) *RecolorHDImageResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *RecolorHDImageResponseBody) SetMessage(v string) *RecolorHDImageResponseBody {
+	s.Message = &v
 	return s
 }
 
