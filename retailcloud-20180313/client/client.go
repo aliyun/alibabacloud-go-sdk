@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -1749,18 +1749,12 @@ func (s *CreateDeployConfigResponse) SetBody(v *CreateDeployConfigResponseBody) 
 }
 
 type CreateEciConfigRequest struct {
-	// appEnvId
-	AppEnvId *int64 `json:"AppEnvId,omitempty" xml:"AppEnvId,omitempty"`
-	// eipBandwidth
-	EipBandwidth *int32 `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
-	// enableEciSchedulePolicy
-	EnableEciSchedulePolicy *bool `json:"EnableEciSchedulePolicy,omitempty" xml:"EnableEciSchedulePolicy,omitempty"`
-	// mirrorCache
-	MirrorCache *bool `json:"MirrorCache,omitempty" xml:"MirrorCache,omitempty"`
-	// normalInstanceLimit
-	NormalInstanceLimit *int32 `json:"NormalInstanceLimit,omitempty" xml:"NormalInstanceLimit,omitempty"`
-	// scheduleVirtualNode
-	ScheduleVirtualNode *bool `json:"ScheduleVirtualNode,omitempty" xml:"ScheduleVirtualNode,omitempty"`
+	AppEnvId                *int64 `json:"AppEnvId,omitempty" xml:"AppEnvId,omitempty"`
+	EipBandwidth            *int32 `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
+	EnableEciSchedulePolicy *bool  `json:"EnableEciSchedulePolicy,omitempty" xml:"EnableEciSchedulePolicy,omitempty"`
+	MirrorCache             *bool  `json:"MirrorCache,omitempty" xml:"MirrorCache,omitempty"`
+	NormalInstanceLimit     *int32 `json:"NormalInstanceLimit,omitempty" xml:"NormalInstanceLimit,omitempty"`
+	ScheduleVirtualNode     *bool  `json:"ScheduleVirtualNode,omitempty" xml:"ScheduleVirtualNode,omitempty"`
 }
 
 func (s CreateEciConfigRequest) String() string {
@@ -1802,14 +1796,10 @@ func (s *CreateEciConfigRequest) SetScheduleVirtualNode(v bool) *CreateEciConfig
 }
 
 type CreateEciConfigResponseBody struct {
-	// code
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// errMsg
-	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// result
-	Result *CreateEciConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Code      *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrMsg    *string                            `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CreateEciConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CreateEciConfigResponseBody) String() string {
@@ -1841,7 +1831,6 @@ func (s *CreateEciConfigResponseBody) SetResult(v *CreateEciConfigResponseBodyRe
 }
 
 type CreateEciConfigResponseBodyResult struct {
-	// success
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2163,6 +2152,7 @@ type CreatePersistentVolumeRequest struct {
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
 	NFSVersion        *string `json:"NFSVersion,omitempty" xml:"NFSVersion,omitempty"`
 	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NasType           *string `json:"NasType,omitempty" xml:"NasType,omitempty"`
 	ReclaimPolicy     *string `json:"ReclaimPolicy,omitempty" xml:"ReclaimPolicy,omitempty"`
 	StorageClass      *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 }
@@ -2207,6 +2197,11 @@ func (s *CreatePersistentVolumeRequest) SetNFSVersion(v string) *CreatePersisten
 
 func (s *CreatePersistentVolumeRequest) SetName(v string) *CreatePersistentVolumeRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreatePersistentVolumeRequest) SetNasType(v string) *CreatePersistentVolumeRequest {
+	s.NasType = &v
 	return s
 }
 
@@ -4457,7 +4452,6 @@ func (s *DescribeAppEnvDeployBaselineRequest) SetEnvId(v int64) *DescribeAppEnvD
 }
 
 type DescribeAppEnvDeployBaselineResponseBody struct {
-	// CodeEnum
 	Code      *int32                                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	ErrMsg    *string                                         `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -4499,18 +4493,13 @@ func (s *DescribeAppEnvDeployBaselineResponseBody) SetSuccess(v bool) *DescribeA
 }
 
 type DescribeAppEnvDeployBaselineResponseBodyResult struct {
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnvId      *int64  `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
-	// 代码包描述
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnvId         *int64  `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
 	PacketComment *string `json:"PacketComment,omitempty" xml:"PacketComment,omitempty"`
-	// 代码包id
-	PacketId *int64 `json:"PacketId,omitempty" xml:"PacketId,omitempty"`
-	// 指定代码包发布时，为代码包Url；纯镜像发布时，为镜像地址
-	PacketUrl *string `json:"PacketUrl,omitempty" xml:"PacketUrl,omitempty"`
-	// 部署配置schema_id
-	SchemaId *int64 `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	PacketId      *int64  `json:"PacketId,omitempty" xml:"PacketId,omitempty"`
+	PacketUrl     *string `json:"PacketUrl,omitempty" xml:"PacketUrl,omitempty"`
+	SchemaId      *int64  `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s DescribeAppEnvDeployBaselineResponseBodyResult) String() string {
@@ -4755,7 +4744,6 @@ func (s *DescribeAppGroupDeploySettingRequest) SetEnvType(v string) *DescribeApp
 }
 
 type DescribeAppGroupDeploySettingResponseBody struct {
-	// CodeEnum
 	Code      *int32                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	ErrMsg    *string                                          `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -4797,10 +4785,8 @@ func (s *DescribeAppGroupDeploySettingResponseBody) SetSuccess(v bool) *Describe
 }
 
 type DescribeAppGroupDeploySettingResponseBodyResult struct {
-	// 默认代码包描述
 	DefaultPacketComment *string `json:"DefaultPacketComment,omitempty" xml:"DefaultPacketComment,omitempty"`
-	// 默认代码包id
-	DefaultPacketId *int64 `json:"DefaultPacketId,omitempty" xml:"DefaultPacketId,omitempty"`
+	DefaultPacketId      *int64  `json:"DefaultPacketId,omitempty" xml:"DefaultPacketId,omitempty"`
 }
 
 func (s DescribeAppGroupDeploySettingResponseBodyResult) String() string {
@@ -6154,7 +6140,6 @@ func (s *DescribeDeployOrderDetailResponse) SetBody(v *DescribeDeployOrderDetail
 }
 
 type DescribeEciConfigRequest struct {
-	// appEnvId
 	AppEnvId *int64 `json:"AppEnvId,omitempty" xml:"AppEnvId,omitempty"`
 }
 
@@ -6172,14 +6157,10 @@ func (s *DescribeEciConfigRequest) SetAppEnvId(v int64) *DescribeEciConfigReques
 }
 
 type DescribeEciConfigResponseBody struct {
-	// code
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// errMsg
-	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// result
-	Result *DescribeEciConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrMsg    *string                              `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeEciConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DescribeEciConfigResponseBody) String() string {
@@ -6211,18 +6192,12 @@ func (s *DescribeEciConfigResponseBody) SetResult(v *DescribeEciConfigResponseBo
 }
 
 type DescribeEciConfigResponseBodyResult struct {
-	// appEnvId
-	AppEnvId *int64 `json:"AppEnvId,omitempty" xml:"AppEnvId,omitempty"`
-	// eipBandwidth
-	EipBandwidth *int32 `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
-	// enableEciSchedulePolicy
-	EnableEciSchedulePolicy *bool `json:"EnableEciSchedulePolicy,omitempty" xml:"EnableEciSchedulePolicy,omitempty"`
-	// mirrorCache
-	MirrorCache *bool `json:"MirrorCache,omitempty" xml:"MirrorCache,omitempty"`
-	// normalInstanceLimit
-	NormalInstanceLimit *int32 `json:"NormalInstanceLimit,omitempty" xml:"NormalInstanceLimit,omitempty"`
-	// scheduleVirtualNode
-	ScheduleVirtualNode *bool `json:"ScheduleVirtualNode,omitempty" xml:"ScheduleVirtualNode,omitempty"`
+	AppEnvId                *int64 `json:"AppEnvId,omitempty" xml:"AppEnvId,omitempty"`
+	EipBandwidth            *int32 `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
+	EnableEciSchedulePolicy *bool  `json:"EnableEciSchedulePolicy,omitempty" xml:"EnableEciSchedulePolicy,omitempty"`
+	MirrorCache             *bool  `json:"MirrorCache,omitempty" xml:"MirrorCache,omitempty"`
+	NormalInstanceLimit     *int32 `json:"NormalInstanceLimit,omitempty" xml:"NormalInstanceLimit,omitempty"`
+	ScheduleVirtualNode     *bool  `json:"ScheduleVirtualNode,omitempty" xml:"ScheduleVirtualNode,omitempty"`
 }
 
 func (s DescribeEciConfigResponseBodyResult) String() string {
@@ -12670,8 +12645,7 @@ func (s *ModifySlbAPResponse) SetBody(v *ModifySlbAPResponseBody) *ModifySlbAPRe
 }
 
 type OfflineAppEnvironmentRequest struct {
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 是否删除PVC，未传递默认不删除
+	AppId     *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	DeletePvc *bool  `json:"DeletePvc,omitempty" xml:"DeletePvc,omitempty"`
 	EnvId     *int64 `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
 }
@@ -12700,7 +12674,6 @@ func (s *OfflineAppEnvironmentRequest) SetEnvId(v int64) *OfflineAppEnvironmentR
 }
 
 type OfflineAppEnvironmentResponseBody struct {
-	// CodeEnum
 	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	ErrMsg    *string                                  `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -13547,12 +13520,9 @@ func (s *ResourceStatusNotifyResponse) SetStatusCode(v int32) *ResourceStatusNot
 }
 
 type RestartAppInstanceRequest struct {
-	// appId
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// appInstanceIdList
+	AppId             *int64   `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppInstanceIdList []*int64 `json:"AppInstanceIdList,omitempty" xml:"AppInstanceIdList,omitempty" type:"Repeated"`
-	// envId
-	EnvId *int64 `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	EnvId             *int64   `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
 }
 
 func (s RestartAppInstanceRequest) String() string {
@@ -13579,14 +13549,10 @@ func (s *RestartAppInstanceRequest) SetEnvId(v int64) *RestartAppInstanceRequest
 }
 
 type RestartAppInstanceResponseBody struct {
-	// code
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// errMsg
-	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// requestId
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrMsg    *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// result
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s RestartAppInstanceResponseBody) String() string {
@@ -14852,18 +14818,12 @@ func (s *UpdateDeployConfigResponse) SetBody(v *UpdateDeployConfigResponseBody) 
 }
 
 type UpdateEciConfigRequest struct {
-	// appEnvId
-	AppEnvId *int64 `json:"AppEnvId,omitempty" xml:"AppEnvId,omitempty"`
-	// eipBandwidth
-	EipBandwidth *int32 `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
-	// enableEciSchedulePolicy
-	EnableEciSchedulePolicy *bool `json:"EnableEciSchedulePolicy,omitempty" xml:"EnableEciSchedulePolicy,omitempty"`
-	// mirrorCache
-	MirrorCache *bool `json:"MirrorCache,omitempty" xml:"MirrorCache,omitempty"`
-	// normalInstanceLimit
-	NormalInstanceLimit *int32 `json:"NormalInstanceLimit,omitempty" xml:"NormalInstanceLimit,omitempty"`
-	// scheduleVirtualNode
-	ScheduleVirtualNode *bool `json:"ScheduleVirtualNode,omitempty" xml:"ScheduleVirtualNode,omitempty"`
+	AppEnvId                *int64 `json:"AppEnvId,omitempty" xml:"AppEnvId,omitempty"`
+	EipBandwidth            *int32 `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
+	EnableEciSchedulePolicy *bool  `json:"EnableEciSchedulePolicy,omitempty" xml:"EnableEciSchedulePolicy,omitempty"`
+	MirrorCache             *bool  `json:"MirrorCache,omitempty" xml:"MirrorCache,omitempty"`
+	NormalInstanceLimit     *int32 `json:"NormalInstanceLimit,omitempty" xml:"NormalInstanceLimit,omitempty"`
+	ScheduleVirtualNode     *bool  `json:"ScheduleVirtualNode,omitempty" xml:"ScheduleVirtualNode,omitempty"`
 }
 
 func (s UpdateEciConfigRequest) String() string {
@@ -14905,14 +14865,10 @@ func (s *UpdateEciConfigRequest) SetScheduleVirtualNode(v bool) *UpdateEciConfig
 }
 
 type UpdateEciConfigResponseBody struct {
-	// code
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// errMsg
-	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// requestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// result
-	Result *UpdateEciConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Code      *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrMsg    *string                            `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *UpdateEciConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s UpdateEciConfigResponseBody) String() string {
@@ -14944,7 +14900,6 @@ func (s *UpdateEciConfigResponseBody) SetResult(v *UpdateEciConfigResponseBodyRe
 }
 
 type UpdateEciConfigResponseBodyResult struct {
-	// success
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15223,9 +15178,8 @@ func (s *UpdateNormalDeployConfigShrinkRequest) SetId(v int64) *UpdateNormalDepl
 }
 
 type UpdateNormalDeployConfigResponseBody struct {
-	Code   *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// Id of the request
+	Code      *int32                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrMsg    *string                                     `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *UpdateNormalDeployConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -16493,6 +16447,10 @@ func (client *Client) CreatePersistentVolumeWithOptions(request *CreatePersisten
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NasType)) {
+		body["NasType"] = request.NasType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ReclaimPolicy)) {
