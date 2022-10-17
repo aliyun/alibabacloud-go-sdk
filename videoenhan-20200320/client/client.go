@@ -89,6 +89,7 @@ func (s *AbstractEcommerceVideoAdvanceRequest) SetWidth(v int32) *AbstractEcomme
 
 type AbstractEcommerceVideoResponseBody struct {
 	Data      *AbstractEcommerceVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -102,6 +103,11 @@ func (s AbstractEcommerceVideoResponseBody) GoString() string {
 
 func (s *AbstractEcommerceVideoResponseBody) SetData(v *AbstractEcommerceVideoResponseBodyData) *AbstractEcommerceVideoResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *AbstractEcommerceVideoResponseBody) SetMessage(v string) *AbstractEcommerceVideoResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -210,6 +216,7 @@ func (s *AbstractFilmVideoAdvanceRequest) SetVideoUrlObject(v io.Reader) *Abstra
 
 type AbstractFilmVideoResponseBody struct {
 	Data      *AbstractFilmVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -223,6 +230,11 @@ func (s AbstractFilmVideoResponseBody) GoString() string {
 
 func (s *AbstractFilmVideoResponseBody) SetData(v *AbstractFilmVideoResponseBodyData) *AbstractFilmVideoResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *AbstractFilmVideoResponseBody) SetMessage(v string) *AbstractFilmVideoResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -325,6 +337,7 @@ func (s *AddFaceVideoTemplateAdvanceRequest) SetVideoURLObject(v io.Reader) *Add
 
 type AddFaceVideoTemplateResponseBody struct {
 	Date      *AddFaceVideoTemplateResponseBodyDate `json:"Date,omitempty" xml:"Date,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -338,6 +351,11 @@ func (s AddFaceVideoTemplateResponseBody) GoString() string {
 
 func (s *AddFaceVideoTemplateResponseBody) SetDate(v *AddFaceVideoTemplateResponseBodyDate) *AddFaceVideoTemplateResponseBody {
 	s.Date = v
+	return s
+}
+
+func (s *AddFaceVideoTemplateResponseBody) SetMessage(v string) *AddFaceVideoTemplateResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -476,6 +494,7 @@ func (s *AdjustVideoColorAdvanceRequest) SetVideoUrlObject(v io.Reader) *AdjustV
 
 type AdjustVideoColorResponseBody struct {
 	Data      *AdjustVideoColorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -489,6 +508,11 @@ func (s AdjustVideoColorResponseBody) GoString() string {
 
 func (s *AdjustVideoColorResponseBody) SetData(v *AdjustVideoColorResponseBodyData) *AdjustVideoColorResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *AdjustVideoColorResponseBody) SetMessage(v string) *AdjustVideoColorResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -675,6 +699,7 @@ func (s *ChangeVideoSizeAdvanceRequest) SetWidth(v int32) *ChangeVideoSizeAdvanc
 
 type ChangeVideoSizeResponseBody struct {
 	Data      *ChangeVideoSizeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -688,6 +713,11 @@ func (s ChangeVideoSizeResponseBody) GoString() string {
 
 func (s *ChangeVideoSizeResponseBody) SetData(v *ChangeVideoSizeResponseBodyData) *ChangeVideoSizeResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *ChangeVideoSizeResponseBody) SetMessage(v string) *ChangeVideoSizeResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -820,6 +850,7 @@ func (s *ConvertHdrVideoAdvanceRequest) SetVideoURLObject(v io.Reader) *ConvertH
 
 type ConvertHdrVideoResponseBody struct {
 	Data      *ConvertHdrVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -833,6 +864,11 @@ func (s ConvertHdrVideoResponseBody) GoString() string {
 
 func (s *ConvertHdrVideoResponseBody) SetData(v *ConvertHdrVideoResponseBodyData) *ConvertHdrVideoResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *ConvertHdrVideoResponseBody) SetMessage(v string) *ConvertHdrVideoResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1064,6 +1100,7 @@ func (s *EnhanceVideoQualityAdvanceRequest) SetVideoURLObject(v io.Reader) *Enha
 
 type EnhanceVideoQualityResponseBody struct {
 	Data      *EnhanceVideoQualityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1077,6 +1114,11 @@ func (s EnhanceVideoQualityResponseBody) GoString() string {
 
 func (s *EnhanceVideoQualityResponseBody) SetData(v *EnhanceVideoQualityResponseBodyData) *EnhanceVideoQualityResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *EnhanceVideoQualityResponseBody) SetMessage(v string) *EnhanceVideoQualityResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1249,6 +1291,7 @@ func (s *EraseVideoLogoAdvanceRequestBoxes) SetY(v float32) *EraseVideoLogoAdvan
 
 type EraseVideoLogoResponseBody struct {
 	Data      *EraseVideoLogoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1262,6 +1305,11 @@ func (s EraseVideoLogoResponseBody) GoString() string {
 
 func (s *EraseVideoLogoResponseBody) SetData(v *EraseVideoLogoResponseBodyData) *EraseVideoLogoResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *EraseVideoLogoResponseBody) SetMessage(v string) *EraseVideoLogoResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1400,6 +1448,7 @@ func (s *EraseVideoSubtitlesAdvanceRequest) SetVideoUrlObject(v io.Reader) *Eras
 
 type EraseVideoSubtitlesResponseBody struct {
 	Data      *EraseVideoSubtitlesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1413,6 +1462,11 @@ func (s EraseVideoSubtitlesResponseBody) GoString() string {
 
 func (s *EraseVideoSubtitlesResponseBody) SetData(v *EraseVideoSubtitlesResponseBodyData) *EraseVideoSubtitlesResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *EraseVideoSubtitlesResponseBody) SetMessage(v string) *EraseVideoSubtitlesResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1575,6 +1629,7 @@ func (s *GenerateVideoRequestFileList) SetType(v string) *GenerateVideoRequestFi
 
 type GenerateVideoResponseBody struct {
 	Data      *GenerateVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1588,6 +1643,11 @@ func (s GenerateVideoResponseBody) GoString() string {
 
 func (s *GenerateVideoResponseBody) SetData(v *GenerateVideoResponseBodyData) *GenerateVideoResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *GenerateVideoResponseBody) SetMessage(v string) *GenerateVideoResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1818,6 +1878,7 @@ func (s *InterpolateVideoFrameAdvanceRequest) SetVideoURLObject(v io.Reader) *In
 
 type InterpolateVideoFrameResponseBody struct {
 	Data      *InterpolateVideoFrameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1831,6 +1892,11 @@ func (s InterpolateVideoFrameResponseBody) GoString() string {
 
 func (s *InterpolateVideoFrameResponseBody) SetData(v *InterpolateVideoFrameResponseBodyData) *InterpolateVideoFrameResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *InterpolateVideoFrameResponseBody) SetMessage(v string) *InterpolateVideoFrameResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -1945,6 +2011,7 @@ func (s *MergeVideoFaceAdvanceRequest) SetVideoURLObject(v io.Reader) *MergeVide
 
 type MergeVideoFaceResponseBody struct {
 	Data      *MergeVideoFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1958,6 +2025,11 @@ func (s MergeVideoFaceResponseBody) GoString() string {
 
 func (s *MergeVideoFaceResponseBody) SetData(v *MergeVideoFaceResponseBodyData) *MergeVideoFaceResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *MergeVideoFaceResponseBody) SetMessage(v string) *MergeVideoFaceResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -2072,6 +2144,7 @@ func (s *MergeVideoModelFaceAdvanceRequest) SetUserId(v string) *MergeVideoModel
 
 type MergeVideoModelFaceResponseBody struct {
 	Data      *MergeVideoModelFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2085,6 +2158,11 @@ func (s MergeVideoModelFaceResponseBody) GoString() string {
 
 func (s *MergeVideoModelFaceResponseBody) SetData(v *MergeVideoModelFaceResponseBodyData) *MergeVideoModelFaceResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *MergeVideoModelFaceResponseBody) SetMessage(v string) *MergeVideoModelFaceResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -2320,6 +2398,7 @@ func (s *SuperResolveVideoAdvanceRequest) SetVideoUrlObject(v io.Reader) *SuperR
 
 type SuperResolveVideoResponseBody struct {
 	Data      *SuperResolveVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2333,6 +2412,11 @@ func (s SuperResolveVideoResponseBody) GoString() string {
 
 func (s *SuperResolveVideoResponseBody) SetData(v *SuperResolveVideoResponseBodyData) *SuperResolveVideoResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *SuperResolveVideoResponseBody) SetMessage(v string) *SuperResolveVideoResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -2447,6 +2531,7 @@ func (s *ToneSdrVideoAdvanceRequest) SetVideoURLObject(v io.Reader) *ToneSdrVide
 
 type ToneSdrVideoResponseBody struct {
 	Data      *ToneSdrVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2460,6 +2545,11 @@ func (s ToneSdrVideoResponseBody) GoString() string {
 
 func (s *ToneSdrVideoResponseBody) SetData(v *ToneSdrVideoResponseBodyData) *ToneSdrVideoResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *ToneSdrVideoResponseBody) SetMessage(v string) *ToneSdrVideoResponseBody {
+	s.Message = &v
 	return s
 }
 
