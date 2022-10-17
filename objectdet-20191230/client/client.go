@@ -2135,6 +2135,7 @@ func (s *DetectVideoIPCObjectAdvanceRequest) SetVideoURLObject(v io.Reader) *Det
 
 type DetectVideoIPCObjectResponseBody struct {
 	Data      *DetectVideoIPCObjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2148,6 +2149,11 @@ func (s DetectVideoIPCObjectResponseBody) GoString() string {
 
 func (s *DetectVideoIPCObjectResponseBody) SetData(v *DetectVideoIPCObjectResponseBodyData) *DetectVideoIPCObjectResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *DetectVideoIPCObjectResponseBody) SetMessage(v string) *DetectVideoIPCObjectResponseBody {
+	s.Message = &v
 	return s
 }
 
