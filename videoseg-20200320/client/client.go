@@ -5,21 +5,19 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
 
 type GetAsyncJobResultRequest struct {
-	Async *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -31,19 +29,14 @@ func (s GetAsyncJobResultRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncJobResultRequest) SetAsync(v bool) *GetAsyncJobResultRequest {
-	s.Async = &v
-	return s
-}
-
 func (s *GetAsyncJobResultRequest) SetJobId(v string) *GetAsyncJobResultRequest {
 	s.JobId = &v
 	return s
 }
 
 type GetAsyncJobResultResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *GetAsyncJobResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAsyncJobResultResponseBody) String() string {
@@ -54,22 +47,22 @@ func (s GetAsyncJobResultResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncJobResultResponseBody) SetRequestId(v string) *GetAsyncJobResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetAsyncJobResultResponseBody) SetData(v *GetAsyncJobResultResponseBodyData) *GetAsyncJobResultResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *GetAsyncJobResultResponseBody) SetRequestId(v string) *GetAsyncJobResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetAsyncJobResultResponseBodyData struct {
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAsyncJobResultResponseBodyData) String() string {
@@ -80,8 +73,8 @@ func (s GetAsyncJobResultResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResultResponseBodyData {
-	s.Status = &v
+func (s *GetAsyncJobResultResponseBodyData) SetErrorCode(v string) *GetAsyncJobResultResponseBodyData {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -90,24 +83,25 @@ func (s *GetAsyncJobResultResponseBodyData) SetErrorMessage(v string) *GetAsyncJ
 	return s
 }
 
-func (s *GetAsyncJobResultResponseBodyData) SetResult(v string) *GetAsyncJobResultResponseBodyData {
-	s.Result = &v
-	return s
-}
-
-func (s *GetAsyncJobResultResponseBodyData) SetErrorCode(v string) *GetAsyncJobResultResponseBodyData {
-	s.ErrorCode = &v
-	return s
-}
-
 func (s *GetAsyncJobResultResponseBodyData) SetJobId(v string) *GetAsyncJobResultResponseBodyData {
 	s.JobId = &v
 	return s
 }
 
+func (s *GetAsyncJobResultResponseBodyData) SetResult(v string) *GetAsyncJobResultResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResultResponseBodyData {
+	s.Status = &v
+	return s
+}
+
 type GetAsyncJobResultResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAsyncJobResultResponse) String() string {
@@ -123,15 +117,18 @@ func (s *GetAsyncJobResultResponse) SetHeaders(v map[string]*string) *GetAsyncJo
 	return s
 }
 
+func (s *GetAsyncJobResultResponse) SetStatusCode(v int32) *GetAsyncJobResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *GetAsyncJobResultResponse {
 	s.Body = v
 	return s
 }
 
 type SegmentGreenScreenVideoRequest struct {
-	// A short description of struct
 	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
-	Async    *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 }
 
 func (s SegmentGreenScreenVideoRequest) String() string {
@@ -147,14 +144,8 @@ func (s *SegmentGreenScreenVideoRequest) SetVideoURL(v string) *SegmentGreenScre
 	return s
 }
 
-func (s *SegmentGreenScreenVideoRequest) SetAsync(v bool) *SegmentGreenScreenVideoRequest {
-	s.Async = &v
-	return s
-}
-
 type SegmentGreenScreenVideoAdvanceRequest struct {
-	VideoURLObject io.Reader `json:"VideoURLObject,omitempty" xml:"VideoURLObject,omitempty" require:"true"`
-	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+	VideoURLObject io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
 func (s SegmentGreenScreenVideoAdvanceRequest) String() string {
@@ -170,15 +161,10 @@ func (s *SegmentGreenScreenVideoAdvanceRequest) SetVideoURLObject(v io.Reader) *
 	return s
 }
 
-func (s *SegmentGreenScreenVideoAdvanceRequest) SetAsync(v bool) *SegmentGreenScreenVideoAdvanceRequest {
-	s.Async = &v
-	return s
-}
-
 type SegmentGreenScreenVideoResponseBody struct {
-	// Id of the request
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentGreenScreenVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentGreenScreenVideoResponseBody) String() string {
@@ -189,13 +175,18 @@ func (s SegmentGreenScreenVideoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentGreenScreenVideoResponseBody) SetRequestId(v string) *SegmentGreenScreenVideoResponseBody {
-	s.RequestId = &v
+func (s *SegmentGreenScreenVideoResponseBody) SetData(v *SegmentGreenScreenVideoResponseBodyData) *SegmentGreenScreenVideoResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentGreenScreenVideoResponseBody) SetData(v *SegmentGreenScreenVideoResponseBodyData) *SegmentGreenScreenVideoResponseBody {
-	s.Data = v
+func (s *SegmentGreenScreenVideoResponseBody) SetMessage(v string) *SegmentGreenScreenVideoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SegmentGreenScreenVideoResponseBody) SetRequestId(v string) *SegmentGreenScreenVideoResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -217,8 +208,9 @@ func (s *SegmentGreenScreenVideoResponseBodyData) SetVideoURL(v string) *Segment
 }
 
 type SegmentGreenScreenVideoResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentGreenScreenVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentGreenScreenVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentGreenScreenVideoResponse) String() string {
@@ -234,6 +226,11 @@ func (s *SegmentGreenScreenVideoResponse) SetHeaders(v map[string]*string) *Segm
 	return s
 }
 
+func (s *SegmentGreenScreenVideoResponse) SetStatusCode(v int32) *SegmentGreenScreenVideoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SegmentGreenScreenVideoResponse) SetBody(v *SegmentGreenScreenVideoResponseBody) *SegmentGreenScreenVideoResponse {
 	s.Body = v
 	return s
@@ -241,7 +238,6 @@ func (s *SegmentGreenScreenVideoResponse) SetBody(v *SegmentGreenScreenVideoResp
 
 type SegmentHalfBodyRequest struct {
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-	Async    *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 }
 
 func (s SegmentHalfBodyRequest) String() string {
@@ -257,14 +253,8 @@ func (s *SegmentHalfBodyRequest) SetVideoUrl(v string) *SegmentHalfBodyRequest {
 	return s
 }
 
-func (s *SegmentHalfBodyRequest) SetAsync(v bool) *SegmentHalfBodyRequest {
-	s.Async = &v
-	return s
-}
-
 type SegmentHalfBodyAdvanceRequest struct {
-	VideoUrlObject io.Reader `json:"VideoUrlObject,omitempty" xml:"VideoUrlObject,omitempty" require:"true"`
-	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s SegmentHalfBodyAdvanceRequest) String() string {
@@ -280,14 +270,10 @@ func (s *SegmentHalfBodyAdvanceRequest) SetVideoUrlObject(v io.Reader) *SegmentH
 	return s
 }
 
-func (s *SegmentHalfBodyAdvanceRequest) SetAsync(v bool) *SegmentHalfBodyAdvanceRequest {
-	s.Async = &v
-	return s
-}
-
 type SegmentHalfBodyResponseBody struct {
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentHalfBodyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentHalfBodyResponseBody) String() string {
@@ -298,13 +284,18 @@ func (s SegmentHalfBodyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentHalfBodyResponseBody) SetRequestId(v string) *SegmentHalfBodyResponseBody {
-	s.RequestId = &v
+func (s *SegmentHalfBodyResponseBody) SetData(v *SegmentHalfBodyResponseBodyData) *SegmentHalfBodyResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentHalfBodyResponseBody) SetData(v *SegmentHalfBodyResponseBodyData) *SegmentHalfBodyResponseBody {
-	s.Data = v
+func (s *SegmentHalfBodyResponseBody) SetMessage(v string) *SegmentHalfBodyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SegmentHalfBodyResponseBody) SetRequestId(v string) *SegmentHalfBodyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -326,8 +317,9 @@ func (s *SegmentHalfBodyResponseBodyData) SetVideoUrl(v string) *SegmentHalfBody
 }
 
 type SegmentHalfBodyResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentHalfBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentHalfBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentHalfBodyResponse) String() string {
@@ -343,6 +335,11 @@ func (s *SegmentHalfBodyResponse) SetHeaders(v map[string]*string) *SegmentHalfB
 	return s
 }
 
+func (s *SegmentHalfBodyResponse) SetStatusCode(v int32) *SegmentHalfBodyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SegmentHalfBodyResponse) SetBody(v *SegmentHalfBodyResponseBody) *SegmentHalfBodyResponse {
 	s.Body = v
 	return s
@@ -350,7 +347,6 @@ func (s *SegmentHalfBodyResponse) SetBody(v *SegmentHalfBodyResponseBody) *Segme
 
 type SegmentVideoBodyRequest struct {
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-	Async    *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 }
 
 func (s SegmentVideoBodyRequest) String() string {
@@ -366,14 +362,8 @@ func (s *SegmentVideoBodyRequest) SetVideoUrl(v string) *SegmentVideoBodyRequest
 	return s
 }
 
-func (s *SegmentVideoBodyRequest) SetAsync(v bool) *SegmentVideoBodyRequest {
-	s.Async = &v
-	return s
-}
-
 type SegmentVideoBodyAdvanceRequest struct {
-	VideoUrlObject io.Reader `json:"VideoUrlObject,omitempty" xml:"VideoUrlObject,omitempty" require:"true"`
-	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
+	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s SegmentVideoBodyAdvanceRequest) String() string {
@@ -389,14 +379,10 @@ func (s *SegmentVideoBodyAdvanceRequest) SetVideoUrlObject(v io.Reader) *Segment
 	return s
 }
 
-func (s *SegmentVideoBodyAdvanceRequest) SetAsync(v bool) *SegmentVideoBodyAdvanceRequest {
-	s.Async = &v
-	return s
-}
-
 type SegmentVideoBodyResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SegmentVideoBodyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentVideoBodyResponseBody) String() string {
@@ -407,13 +393,18 @@ func (s SegmentVideoBodyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SegmentVideoBodyResponseBody) SetRequestId(v string) *SegmentVideoBodyResponseBody {
-	s.RequestId = &v
+func (s *SegmentVideoBodyResponseBody) SetData(v *SegmentVideoBodyResponseBodyData) *SegmentVideoBodyResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *SegmentVideoBodyResponseBody) SetData(v *SegmentVideoBodyResponseBodyData) *SegmentVideoBodyResponseBody {
-	s.Data = v
+func (s *SegmentVideoBodyResponseBody) SetMessage(v string) *SegmentVideoBodyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SegmentVideoBodyResponseBody) SetRequestId(v string) *SegmentVideoBodyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -435,8 +426,9 @@ func (s *SegmentVideoBodyResponseBodyData) SetVideoUrl(v string) *SegmentVideoBo
 }
 
 type SegmentVideoBodyResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SegmentVideoBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentVideoBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SegmentVideoBodyResponse) String() string {
@@ -449,6 +441,11 @@ func (s SegmentVideoBodyResponse) GoString() string {
 
 func (s *SegmentVideoBodyResponse) SetHeaders(v map[string]*string) *SegmentVideoBodyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SegmentVideoBodyResponse) SetStatusCode(v int32) *SegmentVideoBodyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -509,11 +506,27 @@ func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAsyncJobResult"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAsyncJobResultResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAsyncJobResult"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -537,11 +550,27 @@ func (client *Client) SegmentGreenScreenVideoWithOptions(request *SegmentGreenSc
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VideoURL)) {
+		body["VideoURL"] = request.VideoURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentGreenScreenVideo"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentGreenScreenVideoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentGreenScreenVideo"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -572,11 +601,27 @@ func (client *Client) SegmentGreenScreenVideoAdvance(request *SegmentGreenScreen
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -604,40 +649,43 @@ func (client *Client) SegmentGreenScreenVideoAdvance(request *SegmentGreenScreen
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentGreenScreenVideoReq := &SegmentGreenScreenVideoRequest{}
 	openapiutil.Convert(request, segmentGreenScreenVideoReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.VideoURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.VideoURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentGreenScreenVideoReq.VideoURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.VideoURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentGreenScreenVideoReq.VideoURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentGreenScreenVideoResp, _err := client.SegmentGreenScreenVideoWithOptions(segmentGreenScreenVideoReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -652,11 +700,27 @@ func (client *Client) SegmentHalfBodyWithOptions(request *SegmentHalfBodyRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VideoUrl)) {
+		body["VideoUrl"] = request.VideoUrl
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentHalfBody"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentHalfBodyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentHalfBody"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -687,11 +751,27 @@ func (client *Client) SegmentHalfBodyAdvance(request *SegmentHalfBodyAdvanceRequ
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -719,40 +799,43 @@ func (client *Client) SegmentHalfBodyAdvance(request *SegmentHalfBodyAdvanceRequ
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentHalfBodyReq := &SegmentHalfBodyRequest{}
 	openapiutil.Convert(request, segmentHalfBodyReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.VideoUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.VideoUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentHalfBodyReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.VideoUrlObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentHalfBodyReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentHalfBodyResp, _err := client.SegmentHalfBodyWithOptions(segmentHalfBodyReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -767,11 +850,27 @@ func (client *Client) SegmentVideoBodyWithOptions(request *SegmentVideoBodyReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VideoUrl)) {
+		body["VideoUrl"] = request.VideoUrl
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentVideoBody"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SegmentVideoBodyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SegmentVideoBody"), tea.String("2020-03-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -802,11 +901,27 @@ func (client *Client) SegmentVideoBodyAdvance(request *SegmentVideoBodyAdvanceRe
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -834,40 +949,43 @@ func (client *Client) SegmentVideoBodyAdvance(request *SegmentVideoBodyAdvanceRe
 	openapiutil.Convert(runtime, ossRuntime)
 	segmentVideoBodyReq := &SegmentVideoBodyRequest{}
 	openapiutil.Convert(request, segmentVideoBodyReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.VideoUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.VideoUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		segmentVideoBodyReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.VideoUrlObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	segmentVideoBodyReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	segmentVideoBodyResp, _err := client.SegmentVideoBodyWithOptions(segmentVideoBodyReq, runtime)
 	if _err != nil {
 		return _result, _err

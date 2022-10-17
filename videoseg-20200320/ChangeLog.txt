@@ -1,3 +1,6 @@
+2022-10-17 Version: v2.0.3
+- Update videoseg.
+
 2021-03-08 Version: v2.0.2
 - Generated golang 2020-03-20 for videoseg.
 
