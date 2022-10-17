@@ -488,6 +488,7 @@ type CreateFlowRuleRequest struct {
 	RelationStrategy  *int32   `json:"RelationStrategy,omitempty" xml:"RelationStrategy,omitempty"`
 	Resource          *string  `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	Threshold         *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	ThresholdMode     *int32   `json:"ThresholdMode,omitempty" xml:"ThresholdMode,omitempty"`
 	WarmUpPeriodSec   *int32   `json:"WarmUpPeriodSec,omitempty" xml:"WarmUpPeriodSec,omitempty"`
 }
 
@@ -551,6 +552,11 @@ func (s *CreateFlowRuleRequest) SetResource(v string) *CreateFlowRuleRequest {
 
 func (s *CreateFlowRuleRequest) SetThreshold(v float32) *CreateFlowRuleRequest {
 	s.Threshold = &v
+	return s
+}
+
+func (s *CreateFlowRuleRequest) SetThresholdMode(v int32) *CreateFlowRuleRequest {
+	s.ThresholdMode = &v
 	return s
 }
 
@@ -618,6 +624,7 @@ type CreateFlowRuleResponseBodyData struct {
 	RuleId                   *int64   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	StatDurationMs           *int32   `json:"StatDurationMs,omitempty" xml:"StatDurationMs,omitempty"`
 	Threshold                *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	ThresholdMode            *int32   `json:"ThresholdMode,omitempty" xml:"ThresholdMode,omitempty"`
 	WarmUpPeriodSec          *int32   `json:"WarmUpPeriodSec,omitempty" xml:"WarmUpPeriodSec,omitempty"`
 }
 
@@ -711,6 +718,11 @@ func (s *CreateFlowRuleResponseBodyData) SetStatDurationMs(v int32) *CreateFlowR
 
 func (s *CreateFlowRuleResponseBodyData) SetThreshold(v float32) *CreateFlowRuleResponseBodyData {
 	s.Threshold = &v
+	return s
+}
+
+func (s *CreateFlowRuleResponseBodyData) SetThresholdMode(v int32) *CreateFlowRuleResponseBodyData {
+	s.ThresholdMode = &v
 	return s
 }
 
@@ -7276,6 +7288,7 @@ type ListFlowRulesOfAppResponseBodyDataDatas struct {
 	RuleId                   *int64   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	StatDurationMs           *int32   `json:"StatDurationMs,omitempty" xml:"StatDurationMs,omitempty"`
 	Threshold                *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	ThresholdMode            *int32   `json:"ThresholdMode,omitempty" xml:"ThresholdMode,omitempty"`
 	WarmUpPeriodSec          *int32   `json:"WarmUpPeriodSec,omitempty" xml:"WarmUpPeriodSec,omitempty"`
 }
 
@@ -7369,6 +7382,11 @@ func (s *ListFlowRulesOfAppResponseBodyDataDatas) SetStatDurationMs(v int32) *Li
 
 func (s *ListFlowRulesOfAppResponseBodyDataDatas) SetThreshold(v float32) *ListFlowRulesOfAppResponseBodyDataDatas {
 	s.Threshold = &v
+	return s
+}
+
+func (s *ListFlowRulesOfAppResponseBodyDataDatas) SetThresholdMode(v int32) *ListFlowRulesOfAppResponseBodyDataDatas {
+	s.ThresholdMode = &v
 	return s
 }
 
@@ -7553,6 +7571,7 @@ type ListFlowRulesOfResourceResponseBodyDataDatas struct {
 	RuleId                   *int64   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	StatDurationMs           *int32   `json:"StatDurationMs,omitempty" xml:"StatDurationMs,omitempty"`
 	Threshold                *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	ThresholdMode            *int32   `json:"ThresholdMode,omitempty" xml:"ThresholdMode,omitempty"`
 	WarmUpPeriodSec          *int32   `json:"WarmUpPeriodSec,omitempty" xml:"WarmUpPeriodSec,omitempty"`
 }
 
@@ -7646,6 +7665,11 @@ func (s *ListFlowRulesOfResourceResponseBodyDataDatas) SetStatDurationMs(v int32
 
 func (s *ListFlowRulesOfResourceResponseBodyDataDatas) SetThreshold(v float32) *ListFlowRulesOfResourceResponseBodyDataDatas {
 	s.Threshold = &v
+	return s
+}
+
+func (s *ListFlowRulesOfResourceResponseBodyDataDatas) SetThresholdMode(v int32) *ListFlowRulesOfResourceResponseBodyDataDatas {
+	s.ThresholdMode = &v
 	return s
 }
 
@@ -9108,6 +9132,7 @@ type ModifyFlowRuleRequest struct {
 	RelationStrategy  *int32   `json:"RelationStrategy,omitempty" xml:"RelationStrategy,omitempty"`
 	RuleId            *int64   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	Threshold         *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	ThresholdMode     *int32   `json:"ThresholdMode,omitempty" xml:"ThresholdMode,omitempty"`
 	WarmUpPeriodSec   *int32   `json:"WarmUpPeriodSec,omitempty" xml:"WarmUpPeriodSec,omitempty"`
 }
 
@@ -9161,6 +9186,11 @@ func (s *ModifyFlowRuleRequest) SetRuleId(v int64) *ModifyFlowRuleRequest {
 
 func (s *ModifyFlowRuleRequest) SetThreshold(v float32) *ModifyFlowRuleRequest {
 	s.Threshold = &v
+	return s
+}
+
+func (s *ModifyFlowRuleRequest) SetThresholdMode(v int32) *ModifyFlowRuleRequest {
+	s.ThresholdMode = &v
 	return s
 }
 
@@ -9228,6 +9258,7 @@ type ModifyFlowRuleResponseBodyData struct {
 	RuleId                   *int64   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	StatDurationMs           *int32   `json:"StatDurationMs,omitempty" xml:"StatDurationMs,omitempty"`
 	Threshold                *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	ThresholdMode            *int32   `json:"ThresholdMode,omitempty" xml:"ThresholdMode,omitempty"`
 	WarmUpPeriodSec          *int32   `json:"WarmUpPeriodSec,omitempty" xml:"WarmUpPeriodSec,omitempty"`
 }
 
@@ -9321,6 +9352,11 @@ func (s *ModifyFlowRuleResponseBodyData) SetStatDurationMs(v int32) *ModifyFlowR
 
 func (s *ModifyFlowRuleResponseBodyData) SetThreshold(v float32) *ModifyFlowRuleResponseBodyData {
 	s.Threshold = &v
+	return s
+}
+
+func (s *ModifyFlowRuleResponseBodyData) SetThresholdMode(v int32) *ModifyFlowRuleResponseBodyData {
+	s.ThresholdMode = &v
 	return s
 }
 
@@ -11477,6 +11513,10 @@ func (client *Client) CreateFlowRuleWithOptions(request *CreateFlowRuleRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
 		query["Threshold"] = request.Threshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThresholdMode)) {
+		query["ThresholdMode"] = request.ThresholdMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WarmUpPeriodSec)) {
@@ -13993,6 +14033,10 @@ func (client *Client) ModifyFlowRuleWithOptions(request *ModifyFlowRuleRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
 		query["Threshold"] = request.Threshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThresholdMode)) {
+		query["ThresholdMode"] = request.ThresholdMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WarmUpPeriodSec)) {
