@@ -5654,6 +5654,7 @@ type DescribeInstanceResponseBodyResult struct {
 	ExtendConfigs                []map[string]interface{}                                        `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
 	HaveClientNode               *bool                                                           `json:"haveClientNode,omitempty" xml:"haveClientNode,omitempty"`
 	HaveKibana                   *bool                                                           `json:"haveKibana,omitempty" xml:"haveKibana,omitempty"`
+	IkHotDicts                   []*DescribeInstanceResponseBodyResultIkHotDicts                 `json:"ikHotDicts,omitempty" xml:"ikHotDicts,omitempty" type:"Repeated"`
 	InstanceId                   *string                                                         `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	IsNewDeployment              *bool                                                           `json:"isNewDeployment,omitempty" xml:"isNewDeployment,omitempty"`
 	KibanaConfiguration          *DescribeInstanceResponseBodyResultKibanaConfiguration          `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
@@ -5791,6 +5792,11 @@ func (s *DescribeInstanceResponseBodyResult) SetHaveClientNode(v bool) *Describe
 
 func (s *DescribeInstanceResponseBodyResult) SetHaveKibana(v bool) *DescribeInstanceResponseBodyResult {
 	s.HaveKibana = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResult) SetIkHotDicts(v []*DescribeInstanceResponseBodyResultIkHotDicts) *DescribeInstanceResponseBodyResult {
+	s.IkHotDicts = v
 	return s
 }
 
@@ -6107,8 +6113,44 @@ func (s *DescribeInstanceResponseBodyResultElasticDataNodeConfiguration) SetSpec
 	return s
 }
 
+type DescribeInstanceResponseBodyResultIkHotDicts struct {
+	FileSize   *int32  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s DescribeInstanceResponseBodyResultIkHotDicts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceResponseBodyResultIkHotDicts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyResultIkHotDicts) SetFileSize(v int32) *DescribeInstanceResponseBodyResultIkHotDicts {
+	s.FileSize = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResultIkHotDicts) SetName(v string) *DescribeInstanceResponseBodyResultIkHotDicts {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResultIkHotDicts) SetSourceType(v string) *DescribeInstanceResponseBodyResultIkHotDicts {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResultIkHotDicts) SetType(v string) *DescribeInstanceResponseBodyResultIkHotDicts {
+	s.Type = &v
+	return s
+}
+
 type DescribeInstanceResponseBodyResultKibanaConfiguration struct {
 	Amount *int32  `json:"amount,omitempty" xml:"amount,omitempty"`
+	Disk   *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
 	Spec   *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -6122,6 +6164,11 @@ func (s DescribeInstanceResponseBodyResultKibanaConfiguration) GoString() string
 
 func (s *DescribeInstanceResponseBodyResultKibanaConfiguration) SetAmount(v int32) *DescribeInstanceResponseBodyResultKibanaConfiguration {
 	s.Amount = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResultKibanaConfiguration) SetDisk(v int32) *DescribeInstanceResponseBodyResultKibanaConfiguration {
+	s.Disk = &v
 	return s
 }
 
@@ -6236,10 +6283,11 @@ func (s *DescribeInstanceResponseBodyResultNetworkConfigWhiteIpGroupList) SetWhi
 }
 
 type DescribeInstanceResponseBodyResultNodeSpec struct {
-	Disk           *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
-	DiskEncryption *bool   `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
-	DiskType       *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	Spec           *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	Disk             *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
+	DiskEncryption   *bool   `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	DiskType         *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+	Spec             *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
 func (s DescribeInstanceResponseBodyResultNodeSpec) String() string {
@@ -6262,6 +6310,11 @@ func (s *DescribeInstanceResponseBodyResultNodeSpec) SetDiskEncryption(v bool) *
 
 func (s *DescribeInstanceResponseBodyResultNodeSpec) SetDiskType(v string) *DescribeInstanceResponseBodyResultNodeSpec {
 	s.DiskType = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyResultNodeSpec) SetPerformanceLevel(v string) *DescribeInstanceResponseBodyResultNodeSpec {
+	s.PerformanceLevel = &v
 	return s
 }
 
@@ -14004,6 +14057,7 @@ type ListInstanceResponseBodyResult struct {
 	Status                       *string                                                     `json:"status,omitempty" xml:"status,omitempty"`
 	Tags                         []*ListInstanceResponseBodyResultTags                       `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	UpdatedAt                    *string                                                     `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	VpcInstanceId                *string                                                     `json:"vpcInstanceId,omitempty" xml:"vpcInstanceId,omitempty"`
 }
 
 func (s ListInstanceResponseBodyResult) String() string {
@@ -14121,6 +14175,11 @@ func (s *ListInstanceResponseBodyResult) SetTags(v []*ListInstanceResponseBodyRe
 
 func (s *ListInstanceResponseBodyResult) SetUpdatedAt(v string) *ListInstanceResponseBodyResult {
 	s.UpdatedAt = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyResult) SetVpcInstanceId(v string) *ListInstanceResponseBodyResult {
+	s.VpcInstanceId = &v
 	return s
 }
 
@@ -14306,10 +14365,11 @@ func (s *ListInstanceResponseBodyResultNetworkConfig) SetVswitchId(v string) *Li
 }
 
 type ListInstanceResponseBodyResultNodeSpec struct {
-	Disk           *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
-	DiskEncryption *bool   `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
-	DiskType       *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	Spec           *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	Disk             *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
+	DiskEncryption   *bool   `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	DiskType         *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+	Spec             *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
 func (s ListInstanceResponseBodyResultNodeSpec) String() string {
@@ -14332,6 +14392,11 @@ func (s *ListInstanceResponseBodyResultNodeSpec) SetDiskEncryption(v bool) *List
 
 func (s *ListInstanceResponseBodyResultNodeSpec) SetDiskType(v string) *ListInstanceResponseBodyResultNodeSpec {
 	s.DiskType = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyResultNodeSpec) SetPerformanceLevel(v string) *ListInstanceResponseBodyResultNodeSpec {
+	s.PerformanceLevel = &v
 	return s
 }
 
@@ -20559,8 +20624,8 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateAdminPasswordRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	EsAdminPassword *string `json:"esAdminPassword,omitempty" xml:"esAdminPassword,omitempty"`
+	ClientToken     *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
 func (s UpdateAdminPasswordRequest) String() string {
@@ -20571,8 +20636,8 @@ func (s UpdateAdminPasswordRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateAdminPasswordRequest) SetBody(v string) *UpdateAdminPasswordRequest {
-	s.Body = &v
+func (s *UpdateAdminPasswordRequest) SetEsAdminPassword(v string) *UpdateAdminPasswordRequest {
+	s.EsAdminPassword = &v
 	return s
 }
 
@@ -20583,6 +20648,7 @@ func (s *UpdateAdminPasswordRequest) SetClientToken(v string) *UpdateAdminPasswo
 
 type UpdateAdminPasswordResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateAdminPasswordResponseBody) String() string {
@@ -20595,6 +20661,11 @@ func (s UpdateAdminPasswordResponseBody) GoString() string {
 
 func (s *UpdateAdminPasswordResponseBody) SetRequestId(v string) *UpdateAdminPasswordResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAdminPasswordResponseBody) SetResult(v bool) *UpdateAdminPasswordResponseBody {
+	s.Result = &v
 	return s
 }
 
@@ -32680,10 +32751,15 @@ func (client *Client) UpdateAdminPasswordWithOptions(InstanceId *string, request
 		query["clientToken"] = request.ClientToken
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EsAdminPassword)) {
+		body["esAdminPassword"] = request.EsAdminPassword
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAdminPassword"),
