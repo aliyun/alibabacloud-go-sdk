@@ -801,24 +801,25 @@ func (s *Figure) SetSharpness(v float32) *Figure {
 }
 
 type FigureCluster struct {
-	AverageAge   *float32               `json:"AverageAge,omitempty" xml:"AverageAge,omitempty"`
-	Cover        *File                  `json:"Cover,omitempty" xml:"Cover,omitempty"`
-	CreateTime   *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CustomId     *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName  *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FaceCount    *int64                 `json:"FaceCount,omitempty" xml:"FaceCount,omitempty"`
-	Gender       *string                `json:"Gender,omitempty" xml:"Gender,omitempty"`
-	ImageCount   *int64                 `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
-	MaxAge       *float32               `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
-	MinAge       *float32               `json:"MinAge,omitempty" xml:"MinAge,omitempty"`
-	Name         *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ObjectId     *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ObjectType   *string                `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	OwnerId      *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	UpdateTime   *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	VideoCount   *int64                 `json:"VideoCount,omitempty" xml:"VideoCount,omitempty"`
+	AverageAge      *float32               `json:"AverageAge,omitempty" xml:"AverageAge,omitempty"`
+	Cover           *File                  `json:"Cover,omitempty" xml:"Cover,omitempty"`
+	CreateTime      *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CustomId        *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	CustomLabels    map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	DatasetName     *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FaceCount       *int64                 `json:"FaceCount,omitempty" xml:"FaceCount,omitempty"`
+	Gender          *string                `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	ImageCount      *int64                 `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
+	MaxAge          *float32               `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
+	MetaLockVersion *int64                 `json:"MetaLockVersion,omitempty" xml:"MetaLockVersion,omitempty"`
+	MinAge          *float32               `json:"MinAge,omitempty" xml:"MinAge,omitempty"`
+	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ObjectId        *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ObjectType      *string                `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	OwnerId         *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProjectName     *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	UpdateTime      *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VideoCount      *int64                 `json:"VideoCount,omitempty" xml:"VideoCount,omitempty"`
 }
 
 func (s FigureCluster) String() string {
@@ -879,6 +880,11 @@ func (s *FigureCluster) SetMaxAge(v float32) *FigureCluster {
 	return s
 }
 
+func (s *FigureCluster) SetMetaLockVersion(v int64) *FigureCluster {
+	s.MetaLockVersion = &v
+	return s
+}
+
 func (s *FigureCluster) SetMinAge(v float32) *FigureCluster {
 	s.MinAge = &v
 	return s
@@ -920,11 +926,12 @@ func (s *FigureCluster) SetVideoCount(v int64) *FigureCluster {
 }
 
 type FigureClusterForReq struct {
-	Cover        *FigureClusterForReqCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
-	CustomId     *string                   `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	CustomLabels map[string]interface{}    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	Name         *string                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	ObjectId     *string                   `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	Cover           *FigureClusterForReqCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	CustomId        *string                   `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	CustomLabels    map[string]interface{}    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	MetaLockVersion *int64                    `json:"MetaLockVersion,omitempty" xml:"MetaLockVersion,omitempty"`
+	Name            *string                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	ObjectId        *string                   `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
 }
 
 func (s FigureClusterForReq) String() string {
@@ -947,6 +954,11 @@ func (s *FigureClusterForReq) SetCustomId(v string) *FigureClusterForReq {
 
 func (s *FigureClusterForReq) SetCustomLabels(v map[string]interface{}) *FigureClusterForReq {
 	s.CustomLabels = v
+	return s
+}
+
+func (s *FigureClusterForReq) SetMetaLockVersion(v int64) *FigureClusterForReq {
+	s.MetaLockVersion = &v
 	return s
 }
 
