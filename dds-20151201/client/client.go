@@ -1209,6 +1209,7 @@ type CreateShardingDBInstanceRequest struct {
 	SecurityToken         *string                                        `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	SrcDBInstanceId       *string                                        `json:"SrcDBInstanceId,omitempty" xml:"SrcDBInstanceId,omitempty"`
 	StorageEngine         *string                                        `json:"StorageEngine,omitempty" xml:"StorageEngine,omitempty"`
+	StorageType           *string                                        `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	VSwitchId             *string                                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcId                 *string                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	ZoneId                *string                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -1349,6 +1350,11 @@ func (s *CreateShardingDBInstanceRequest) SetSrcDBInstanceId(v string) *CreateSh
 
 func (s *CreateShardingDBInstanceRequest) SetStorageEngine(v string) *CreateShardingDBInstanceRequest {
 	s.StorageEngine = &v
+	return s
+}
+
+func (s *CreateShardingDBInstanceRequest) SetStorageType(v string) *CreateShardingDBInstanceRequest {
+	s.StorageType = &v
 	return s
 }
 
@@ -15886,6 +15892,10 @@ func (client *Client) CreateShardingDBInstanceWithOptions(request *CreateShardin
 
 	if !tea.BoolValue(util.IsUnset(request.StorageEngine)) {
 		query["StorageEngine"] = request.StorageEngine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
+		query["StorageType"] = request.StorageType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
