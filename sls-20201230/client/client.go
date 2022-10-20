@@ -1154,232 +1154,6 @@ func (s *ApplyConfigToMachineGroupResponse) SetStatusCode(v int32) *ApplyConfigT
 	return s
 }
 
-type BatchCreateEtlMetaRequest struct {
-	EtlMetaList []*BatchCreateEtlMetaRequestEtlMetaList `json:"etlMetaList,omitempty" xml:"etlMetaList,omitempty" type:"Repeated"`
-}
-
-func (s BatchCreateEtlMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchCreateEtlMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchCreateEtlMetaRequest) SetEtlMetaList(v []*BatchCreateEtlMetaRequestEtlMetaList) *BatchCreateEtlMetaRequest {
-	s.EtlMetaList = v
-	return s
-}
-
-type BatchCreateEtlMetaRequestEtlMetaList struct {
-	Enable       *bool                  `json:"enable,omitempty" xml:"enable,omitempty"`
-	EtlMetaKey   *string                `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	EtlMetaName  *string                `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	EtlMetaTag   *string                `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
-	EtlMetaValue map[string]interface{} `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
-}
-
-func (s BatchCreateEtlMetaRequestEtlMetaList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchCreateEtlMetaRequestEtlMetaList) GoString() string {
-	return s.String()
-}
-
-func (s *BatchCreateEtlMetaRequestEtlMetaList) SetEnable(v bool) *BatchCreateEtlMetaRequestEtlMetaList {
-	s.Enable = &v
-	return s
-}
-
-func (s *BatchCreateEtlMetaRequestEtlMetaList) SetEtlMetaKey(v string) *BatchCreateEtlMetaRequestEtlMetaList {
-	s.EtlMetaKey = &v
-	return s
-}
-
-func (s *BatchCreateEtlMetaRequestEtlMetaList) SetEtlMetaName(v string) *BatchCreateEtlMetaRequestEtlMetaList {
-	s.EtlMetaName = &v
-	return s
-}
-
-func (s *BatchCreateEtlMetaRequestEtlMetaList) SetEtlMetaTag(v string) *BatchCreateEtlMetaRequestEtlMetaList {
-	s.EtlMetaTag = &v
-	return s
-}
-
-func (s *BatchCreateEtlMetaRequestEtlMetaList) SetEtlMetaValue(v map[string]interface{}) *BatchCreateEtlMetaRequestEtlMetaList {
-	s.EtlMetaValue = v
-	return s
-}
-
-type BatchCreateEtlMetaResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s BatchCreateEtlMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchCreateEtlMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchCreateEtlMetaResponse) SetHeaders(v map[string]*string) *BatchCreateEtlMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchCreateEtlMetaResponse) SetStatusCode(v int32) *BatchCreateEtlMetaResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type BatchModifyEtlMetaStatusRequest struct {
-	EtlMetaKeyList []*string `json:"etlMetaKeyList,omitempty" xml:"etlMetaKeyList,omitempty" type:"Repeated"`
-	EtlMetaName    *string   `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	EtlMetaTag     *string   `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
-	Range          *string   `json:"range,omitempty" xml:"range,omitempty"`
-	Type           *string   `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s BatchModifyEtlMetaStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchModifyEtlMetaStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchModifyEtlMetaStatusRequest) SetEtlMetaKeyList(v []*string) *BatchModifyEtlMetaStatusRequest {
-	s.EtlMetaKeyList = v
-	return s
-}
-
-func (s *BatchModifyEtlMetaStatusRequest) SetEtlMetaName(v string) *BatchModifyEtlMetaStatusRequest {
-	s.EtlMetaName = &v
-	return s
-}
-
-func (s *BatchModifyEtlMetaStatusRequest) SetEtlMetaTag(v string) *BatchModifyEtlMetaStatusRequest {
-	s.EtlMetaTag = &v
-	return s
-}
-
-func (s *BatchModifyEtlMetaStatusRequest) SetRange(v string) *BatchModifyEtlMetaStatusRequest {
-	s.Range = &v
-	return s
-}
-
-func (s *BatchModifyEtlMetaStatusRequest) SetType(v string) *BatchModifyEtlMetaStatusRequest {
-	s.Type = &v
-	return s
-}
-
-type BatchModifyEtlMetaStatusResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s BatchModifyEtlMetaStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchModifyEtlMetaStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchModifyEtlMetaStatusResponse) SetHeaders(v map[string]*string) *BatchModifyEtlMetaStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchModifyEtlMetaStatusResponse) SetStatusCode(v int32) *BatchModifyEtlMetaStatusResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type BatchUpdateEtlMetaRequest struct {
-	EtlMetaList *BatchUpdateEtlMetaRequestEtlMetaList `json:"etlMetaList,omitempty" xml:"etlMetaList,omitempty" type:"Struct"`
-}
-
-func (s BatchUpdateEtlMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchUpdateEtlMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchUpdateEtlMetaRequest) SetEtlMetaList(v *BatchUpdateEtlMetaRequestEtlMetaList) *BatchUpdateEtlMetaRequest {
-	s.EtlMetaList = v
-	return s
-}
-
-type BatchUpdateEtlMetaRequestEtlMetaList struct {
-	Enable       *bool                  `json:"enable,omitempty" xml:"enable,omitempty"`
-	EtlMetaKey   *string                `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	EtlMetaName  *string                `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	EtlMetaTag   *string                `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
-	EtlMetaValue map[string]interface{} `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
-}
-
-func (s BatchUpdateEtlMetaRequestEtlMetaList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchUpdateEtlMetaRequestEtlMetaList) GoString() string {
-	return s.String()
-}
-
-func (s *BatchUpdateEtlMetaRequestEtlMetaList) SetEnable(v bool) *BatchUpdateEtlMetaRequestEtlMetaList {
-	s.Enable = &v
-	return s
-}
-
-func (s *BatchUpdateEtlMetaRequestEtlMetaList) SetEtlMetaKey(v string) *BatchUpdateEtlMetaRequestEtlMetaList {
-	s.EtlMetaKey = &v
-	return s
-}
-
-func (s *BatchUpdateEtlMetaRequestEtlMetaList) SetEtlMetaName(v string) *BatchUpdateEtlMetaRequestEtlMetaList {
-	s.EtlMetaName = &v
-	return s
-}
-
-func (s *BatchUpdateEtlMetaRequestEtlMetaList) SetEtlMetaTag(v string) *BatchUpdateEtlMetaRequestEtlMetaList {
-	s.EtlMetaTag = &v
-	return s
-}
-
-func (s *BatchUpdateEtlMetaRequestEtlMetaList) SetEtlMetaValue(v map[string]interface{}) *BatchUpdateEtlMetaRequestEtlMetaList {
-	s.EtlMetaValue = v
-	return s
-}
-
-type BatchUpdateEtlMetaResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s BatchUpdateEtlMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchUpdateEtlMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchUpdateEtlMetaResponse) SetHeaders(v map[string]*string) *BatchUpdateEtlMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchUpdateEtlMetaResponse) SetStatusCode(v int32) *BatchUpdateEtlMetaResponse {
-	s.StatusCode = &v
-	return s
-}
-
 type CreateConsumerGroupRequest struct {
 	ConsumerGroup *string `json:"consumerGroup,omitempty" xml:"consumerGroup,omitempty"`
 	Order         *bool   `json:"order,omitempty" xml:"order,omitempty"`
@@ -1468,286 +1242,6 @@ func (s *CreateDomainResponse) SetHeaders(v map[string]*string) *CreateDomainRes
 }
 
 func (s *CreateDomainResponse) SetStatusCode(v int32) *CreateDomainResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type CreateEtlJobRequest struct {
-	Enable            *bool                              `json:"enable,omitempty" xml:"enable,omitempty"`
-	EtlJobName        *string                            `json:"etlJobName,omitempty" xml:"etlJobName,omitempty"`
-	FunctionConfig    *CreateEtlJobRequestFunctionConfig `json:"functionConfig,omitempty" xml:"functionConfig,omitempty" type:"Struct"`
-	FunctionParameter map[string]interface{}             `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
-	LogConfig         *CreateEtlJobRequestLogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
-	SourceConfig      *CreateEtlJobRequestSourceConfig   `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty" type:"Struct"`
-	TriggerConfig     *CreateEtlJobRequestTriggerConfig  `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Struct"`
-}
-
-func (s CreateEtlJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEtlJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEtlJobRequest) SetEnable(v bool) *CreateEtlJobRequest {
-	s.Enable = &v
-	return s
-}
-
-func (s *CreateEtlJobRequest) SetEtlJobName(v string) *CreateEtlJobRequest {
-	s.EtlJobName = &v
-	return s
-}
-
-func (s *CreateEtlJobRequest) SetFunctionConfig(v *CreateEtlJobRequestFunctionConfig) *CreateEtlJobRequest {
-	s.FunctionConfig = v
-	return s
-}
-
-func (s *CreateEtlJobRequest) SetFunctionParameter(v map[string]interface{}) *CreateEtlJobRequest {
-	s.FunctionParameter = v
-	return s
-}
-
-func (s *CreateEtlJobRequest) SetLogConfig(v *CreateEtlJobRequestLogConfig) *CreateEtlJobRequest {
-	s.LogConfig = v
-	return s
-}
-
-func (s *CreateEtlJobRequest) SetSourceConfig(v *CreateEtlJobRequestSourceConfig) *CreateEtlJobRequest {
-	s.SourceConfig = v
-	return s
-}
-
-func (s *CreateEtlJobRequest) SetTriggerConfig(v *CreateEtlJobRequestTriggerConfig) *CreateEtlJobRequest {
-	s.TriggerConfig = v
-	return s
-}
-
-type CreateEtlJobRequestFunctionConfig struct {
-	AccountId        *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	Endpoint         *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	FunctionName     *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	FunctionProvider *string `json:"functionProvider,omitempty" xml:"functionProvider,omitempty"`
-	RegionName       *string `json:"regionName,omitempty" xml:"regionName,omitempty"`
-	RoleArn          *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	ServiceName      *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-}
-
-func (s CreateEtlJobRequestFunctionConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEtlJobRequestFunctionConfig) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEtlJobRequestFunctionConfig) SetAccountId(v string) *CreateEtlJobRequestFunctionConfig {
-	s.AccountId = &v
-	return s
-}
-
-func (s *CreateEtlJobRequestFunctionConfig) SetEndpoint(v string) *CreateEtlJobRequestFunctionConfig {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *CreateEtlJobRequestFunctionConfig) SetFunctionName(v string) *CreateEtlJobRequestFunctionConfig {
-	s.FunctionName = &v
-	return s
-}
-
-func (s *CreateEtlJobRequestFunctionConfig) SetFunctionProvider(v string) *CreateEtlJobRequestFunctionConfig {
-	s.FunctionProvider = &v
-	return s
-}
-
-func (s *CreateEtlJobRequestFunctionConfig) SetRegionName(v string) *CreateEtlJobRequestFunctionConfig {
-	s.RegionName = &v
-	return s
-}
-
-func (s *CreateEtlJobRequestFunctionConfig) SetRoleArn(v string) *CreateEtlJobRequestFunctionConfig {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *CreateEtlJobRequestFunctionConfig) SetServiceName(v string) *CreateEtlJobRequestFunctionConfig {
-	s.ServiceName = &v
-	return s
-}
-
-type CreateEtlJobRequestLogConfig struct {
-	Endpoint     *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	ProjectName  *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-}
-
-func (s CreateEtlJobRequestLogConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEtlJobRequestLogConfig) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEtlJobRequestLogConfig) SetEndpoint(v string) *CreateEtlJobRequestLogConfig {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *CreateEtlJobRequestLogConfig) SetLogstoreName(v string) *CreateEtlJobRequestLogConfig {
-	s.LogstoreName = &v
-	return s
-}
-
-func (s *CreateEtlJobRequestLogConfig) SetProjectName(v string) *CreateEtlJobRequestLogConfig {
-	s.ProjectName = &v
-	return s
-}
-
-type CreateEtlJobRequestSourceConfig struct {
-	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-}
-
-func (s CreateEtlJobRequestSourceConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEtlJobRequestSourceConfig) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEtlJobRequestSourceConfig) SetLogstoreName(v string) *CreateEtlJobRequestSourceConfig {
-	s.LogstoreName = &v
-	return s
-}
-
-type CreateEtlJobRequestTriggerConfig struct {
-	MaxRetryTime     *int32  `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
-	RoleArn          *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	StartingPosition *string `json:"startingPosition,omitempty" xml:"startingPosition,omitempty"`
-	StartingUnixtime *int64  `json:"startingUnixtime,omitempty" xml:"startingUnixtime,omitempty"`
-	TriggerInterval  *int32  `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
-}
-
-func (s CreateEtlJobRequestTriggerConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEtlJobRequestTriggerConfig) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEtlJobRequestTriggerConfig) SetMaxRetryTime(v int32) *CreateEtlJobRequestTriggerConfig {
-	s.MaxRetryTime = &v
-	return s
-}
-
-func (s *CreateEtlJobRequestTriggerConfig) SetRoleArn(v string) *CreateEtlJobRequestTriggerConfig {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *CreateEtlJobRequestTriggerConfig) SetStartingPosition(v string) *CreateEtlJobRequestTriggerConfig {
-	s.StartingPosition = &v
-	return s
-}
-
-func (s *CreateEtlJobRequestTriggerConfig) SetStartingUnixtime(v int64) *CreateEtlJobRequestTriggerConfig {
-	s.StartingUnixtime = &v
-	return s
-}
-
-func (s *CreateEtlJobRequestTriggerConfig) SetTriggerInterval(v int32) *CreateEtlJobRequestTriggerConfig {
-	s.TriggerInterval = &v
-	return s
-}
-
-type CreateEtlJobResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s CreateEtlJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEtlJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEtlJobResponse) SetHeaders(v map[string]*string) *CreateEtlJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateEtlJobResponse) SetStatusCode(v int32) *CreateEtlJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type CreateEtlMetaRequest struct {
-	Enable       *bool                  `json:"enable,omitempty" xml:"enable,omitempty"`
-	EtlMetaKey   *string                `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	EtlMetaName  *string                `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	EtlMetaTag   *string                `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
-	EtlMetaValue map[string]interface{} `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
-}
-
-func (s CreateEtlMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEtlMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEtlMetaRequest) SetEnable(v bool) *CreateEtlMetaRequest {
-	s.Enable = &v
-	return s
-}
-
-func (s *CreateEtlMetaRequest) SetEtlMetaKey(v string) *CreateEtlMetaRequest {
-	s.EtlMetaKey = &v
-	return s
-}
-
-func (s *CreateEtlMetaRequest) SetEtlMetaName(v string) *CreateEtlMetaRequest {
-	s.EtlMetaName = &v
-	return s
-}
-
-func (s *CreateEtlMetaRequest) SetEtlMetaTag(v string) *CreateEtlMetaRequest {
-	s.EtlMetaTag = &v
-	return s
-}
-
-func (s *CreateEtlMetaRequest) SetEtlMetaValue(v map[string]interface{}) *CreateEtlMetaRequest {
-	s.EtlMetaValue = v
-	return s
-}
-
-type CreateEtlMetaResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s CreateEtlMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEtlMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEtlMetaResponse) SetHeaders(v map[string]*string) *CreateEtlMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateEtlMetaResponse) SetStatusCode(v int32) *CreateEtlMetaResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -2777,81 +2271,6 @@ func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
 	return s
 }
 
-type DeleteEtlJobResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s DeleteEtlJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteEtlJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteEtlJobResponse) SetHeaders(v map[string]*string) *DeleteEtlJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteEtlJobResponse) SetStatusCode(v int32) *DeleteEtlJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type DeleteEtlMetaRequest struct {
-	EtlMetaKey  *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	EtlMetaTag  *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
-}
-
-func (s DeleteEtlMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteEtlMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteEtlMetaRequest) SetEtlMetaKey(v string) *DeleteEtlMetaRequest {
-	s.EtlMetaKey = &v
-	return s
-}
-
-func (s *DeleteEtlMetaRequest) SetEtlMetaName(v string) *DeleteEtlMetaRequest {
-	s.EtlMetaName = &v
-	return s
-}
-
-func (s *DeleteEtlMetaRequest) SetEtlMetaTag(v string) *DeleteEtlMetaRequest {
-	s.EtlMetaTag = &v
-	return s
-}
-
-type DeleteEtlMetaResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s DeleteEtlMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteEtlMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteEtlMetaResponse) SetHeaders(v map[string]*string) *DeleteEtlMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteEtlMetaResponse) SetStatusCode(v int32) *DeleteEtlMetaResponse {
-	s.StatusCode = &v
-	return s
-}
-
 type DeleteExternalStoreResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -2986,6 +2405,29 @@ func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectR
 }
 
 func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteProjectPolicyResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteProjectPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectPolicyResponse) SetHeaders(v map[string]*string) *DeleteProjectPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProjectPolicyResponse) SetStatusCode(v int32) *DeleteProjectPolicyResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -3334,7 +2776,6 @@ func (s *GetContextLogsResponse) SetBody(v *GetContextLogsResponseBody) *GetCont
 
 type GetCursorRequest struct {
 	From *string `json:"from,omitempty" xml:"from,omitempty"`
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetCursorRequest) String() string {
@@ -3347,11 +2788,6 @@ func (s GetCursorRequest) GoString() string {
 
 func (s *GetCursorRequest) SetFrom(v string) *GetCursorRequest {
 	s.From = &v
-	return s
-}
-
-func (s *GetCursorRequest) SetType(v string) *GetCursorRequest {
-	s.Type = &v
 	return s
 }
 
@@ -3403,7 +2839,6 @@ func (s *GetCursorResponse) SetBody(v *GetCursorResponseBody) *GetCursorResponse
 
 type GetCursorTimeRequest struct {
 	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
-	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetCursorTimeRequest) String() string {
@@ -3416,11 +2851,6 @@ func (s GetCursorTimeRequest) GoString() string {
 
 func (s *GetCursorTimeRequest) SetCursor(v string) *GetCursorTimeRequest {
 	s.Cursor = &v
-	return s
-}
-
-func (s *GetCursorTimeRequest) SetType(v string) *GetCursorTimeRequest {
-	s.Type = &v
 	return s
 }
 
@@ -3466,116 +2896,6 @@ func (s *GetCursorTimeResponse) SetStatusCode(v int32) *GetCursorTimeResponse {
 }
 
 func (s *GetCursorTimeResponse) SetBody(v *GetCursorTimeResponseBody) *GetCursorTimeResponse {
-	s.Body = v
-	return s
-}
-
-type GetEtlJobResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EtlJob            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetEtlJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEtlJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetEtlJobResponse) SetHeaders(v map[string]*string) *GetEtlJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetEtlJobResponse) SetStatusCode(v int32) *GetEtlJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetEtlJobResponse) SetBody(v *EtlJob) *GetEtlJobResponse {
-	s.Body = v
-	return s
-}
-
-type GetEtlMetaRequest struct {
-	EtlMetaKey  *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	EtlMetaTag  *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
-}
-
-func (s GetEtlMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEtlMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetEtlMetaRequest) SetEtlMetaKey(v string) *GetEtlMetaRequest {
-	s.EtlMetaKey = &v
-	return s
-}
-
-func (s *GetEtlMetaRequest) SetEtlMetaName(v string) *GetEtlMetaRequest {
-	s.EtlMetaName = &v
-	return s
-}
-
-func (s *GetEtlMetaRequest) SetEtlMetaTag(v string) *GetEtlMetaRequest {
-	s.EtlMetaTag = &v
-	return s
-}
-
-type GetEtlMetaResponseBody struct {
-	EtlMetaList []*EtlMeta `json:"etlMetaList,omitempty" xml:"etlMetaList,omitempty" type:"Repeated"`
-	Total       *int32     `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s GetEtlMetaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEtlMetaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetEtlMetaResponseBody) SetEtlMetaList(v []*EtlMeta) *GetEtlMetaResponseBody {
-	s.EtlMetaList = v
-	return s
-}
-
-func (s *GetEtlMetaResponseBody) SetTotal(v int32) *GetEtlMetaResponseBody {
-	s.Total = &v
-	return s
-}
-
-type GetEtlMetaResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEtlMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetEtlMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEtlMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetEtlMetaResponse) SetHeaders(v map[string]*string) *GetEtlMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetEtlMetaResponse) SetStatusCode(v int32) *GetEtlMetaResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetEtlMetaResponse) SetBody(v *GetEtlMetaResponseBody) *GetEtlMetaResponse {
 	s.Body = v
 	return s
 }
@@ -4105,6 +3425,29 @@ func (s *GetProjectLogsResponse) SetBody(v []map[string]*string) *GetProjectLogs
 	return s
 }
 
+type GetProjectPolicyResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s GetProjectPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectPolicyResponse) SetHeaders(v map[string]*string) *GetProjectPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProjectPolicyResponse) SetStatusCode(v int32) *GetProjectPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type GetSavedSearchResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -4439,261 +3782,6 @@ func (s *ListDomainsResponse) SetStatusCode(v int32) *ListDomainsResponse {
 }
 
 func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsResponse {
-	s.Body = v
-	return s
-}
-
-type ListEtlJobRequest struct {
-	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
-}
-
-func (s ListEtlJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEtlJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListEtlJobRequest) SetOffset(v int32) *ListEtlJobRequest {
-	s.Offset = &v
-	return s
-}
-
-func (s *ListEtlJobRequest) SetSize(v int32) *ListEtlJobRequest {
-	s.Size = &v
-	return s
-}
-
-type ListEtlJobResponseBody struct {
-	Count          *int32    `json:"count,omitempty" xml:"count,omitempty"`
-	EtlJobNameList []*string `json:"etlJobNameList,omitempty" xml:"etlJobNameList,omitempty" type:"Repeated"`
-	Total          *int32    `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s ListEtlJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEtlJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListEtlJobResponseBody) SetCount(v int32) *ListEtlJobResponseBody {
-	s.Count = &v
-	return s
-}
-
-func (s *ListEtlJobResponseBody) SetEtlJobNameList(v []*string) *ListEtlJobResponseBody {
-	s.EtlJobNameList = v
-	return s
-}
-
-func (s *ListEtlJobResponseBody) SetTotal(v int32) *ListEtlJobResponseBody {
-	s.Total = &v
-	return s
-}
-
-type ListEtlJobResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEtlJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListEtlJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEtlJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListEtlJobResponse) SetHeaders(v map[string]*string) *ListEtlJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListEtlJobResponse) SetStatusCode(v int32) *ListEtlJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListEtlJobResponse) SetBody(v *ListEtlJobResponseBody) *ListEtlJobResponse {
-	s.Body = v
-	return s
-}
-
-type ListEtlMetaRequest struct {
-	EtlMetaKey  *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	EtlMetaTag  *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
-	Offset      *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size        *int32  `json:"size,omitempty" xml:"size,omitempty"`
-}
-
-func (s ListEtlMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEtlMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListEtlMetaRequest) SetEtlMetaKey(v string) *ListEtlMetaRequest {
-	s.EtlMetaKey = &v
-	return s
-}
-
-func (s *ListEtlMetaRequest) SetEtlMetaName(v string) *ListEtlMetaRequest {
-	s.EtlMetaName = &v
-	return s
-}
-
-func (s *ListEtlMetaRequest) SetEtlMetaTag(v string) *ListEtlMetaRequest {
-	s.EtlMetaTag = &v
-	return s
-}
-
-func (s *ListEtlMetaRequest) SetOffset(v int32) *ListEtlMetaRequest {
-	s.Offset = &v
-	return s
-}
-
-func (s *ListEtlMetaRequest) SetSize(v int32) *ListEtlMetaRequest {
-	s.Size = &v
-	return s
-}
-
-type ListEtlMetaResponseBody struct {
-	EtlMetaList []*EtlMeta `json:"etlMetaList,omitempty" xml:"etlMetaList,omitempty" type:"Repeated"`
-	Total       *int32     `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s ListEtlMetaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEtlMetaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListEtlMetaResponseBody) SetEtlMetaList(v []*EtlMeta) *ListEtlMetaResponseBody {
-	s.EtlMetaList = v
-	return s
-}
-
-func (s *ListEtlMetaResponseBody) SetTotal(v int32) *ListEtlMetaResponseBody {
-	s.Total = &v
-	return s
-}
-
-type ListEtlMetaResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEtlMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListEtlMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEtlMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListEtlMetaResponse) SetHeaders(v map[string]*string) *ListEtlMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListEtlMetaResponse) SetStatusCode(v int32) *ListEtlMetaResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListEtlMetaResponse) SetBody(v *ListEtlMetaResponseBody) *ListEtlMetaResponse {
-	s.Body = v
-	return s
-}
-
-type ListEtlMetaNameRequest struct {
-	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
-}
-
-func (s ListEtlMetaNameRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEtlMetaNameRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListEtlMetaNameRequest) SetOffset(v int32) *ListEtlMetaNameRequest {
-	s.Offset = &v
-	return s
-}
-
-func (s *ListEtlMetaNameRequest) SetSize(v int32) *ListEtlMetaNameRequest {
-	s.Size = &v
-	return s
-}
-
-type ListEtlMetaNameResponseBody struct {
-	Count           *int32    `json:"count,omitempty" xml:"count,omitempty"`
-	EtlMetaNameList []*string `json:"etlMetaNameList,omitempty" xml:"etlMetaNameList,omitempty" type:"Repeated"`
-	Total           *int32    `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s ListEtlMetaNameResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEtlMetaNameResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListEtlMetaNameResponseBody) SetCount(v int32) *ListEtlMetaNameResponseBody {
-	s.Count = &v
-	return s
-}
-
-func (s *ListEtlMetaNameResponseBody) SetEtlMetaNameList(v []*string) *ListEtlMetaNameResponseBody {
-	s.EtlMetaNameList = v
-	return s
-}
-
-func (s *ListEtlMetaNameResponseBody) SetTotal(v int32) *ListEtlMetaNameResponseBody {
-	s.Total = &v
-	return s
-}
-
-type ListEtlMetaNameResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEtlMetaNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListEtlMetaNameResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEtlMetaNameResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListEtlMetaNameResponse) SetHeaders(v map[string]*string) *ListEtlMetaNameResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListEtlMetaNameResponse) SetStatusCode(v int32) *ListEtlMetaNameResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListEtlMetaNameResponse) SetBody(v *ListEtlMetaNameResponseBody) *ListEtlMetaNameResponse {
 	s.Body = v
 	return s
 }
@@ -5469,6 +4557,156 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
+type PullDataRequest struct {
+	Count     *string `json:"count,omitempty" xml:"count,omitempty"`
+	Cursor    *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
+	EndCursor *string `json:"endCursor,omitempty" xml:"endCursor,omitempty"`
+}
+
+func (s PullDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PullDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PullDataRequest) SetCount(v string) *PullDataRequest {
+	s.Count = &v
+	return s
+}
+
+func (s *PullDataRequest) SetCursor(v string) *PullDataRequest {
+	s.Cursor = &v
+	return s
+}
+
+func (s *PullDataRequest) SetEndCursor(v string) *PullDataRequest {
+	s.EndCursor = &v
+	return s
+}
+
+type PullDataResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s PullDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PullDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PullDataResponse) SetHeaders(v map[string]*string) *PullDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PullDataResponse) SetStatusCode(v int32) *PullDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type PutProjectPolicyRequest struct {
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PutProjectPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutProjectPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutProjectPolicyRequest) SetBody(v string) *PutProjectPolicyRequest {
+	s.Body = &v
+	return s
+}
+
+type PutProjectPolicyResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s PutProjectPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutProjectPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutProjectPolicyResponse) SetHeaders(v map[string]*string) *PutProjectPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutProjectPolicyResponse) SetStatusCode(v int32) *PutProjectPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type PutWebtrackingRequest struct {
+	Logs   []map[string]*string `json:"__logs__,omitempty" xml:"__logs__,omitempty" type:"Repeated"`
+	Source *string              `json:"__source__,omitempty" xml:"__source__,omitempty"`
+	Tags   map[string]*string   `json:"__tags__,omitempty" xml:"__tags__,omitempty"`
+	Topic  *string              `json:"__topic__,omitempty" xml:"__topic__,omitempty"`
+}
+
+func (s PutWebtrackingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutWebtrackingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutWebtrackingRequest) SetLogs(v []map[string]*string) *PutWebtrackingRequest {
+	s.Logs = v
+	return s
+}
+
+func (s *PutWebtrackingRequest) SetSource(v string) *PutWebtrackingRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *PutWebtrackingRequest) SetTags(v map[string]*string) *PutWebtrackingRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *PutWebtrackingRequest) SetTopic(v string) *PutWebtrackingRequest {
+	s.Topic = &v
+	return s
+}
+
+type PutWebtrackingResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s PutWebtrackingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutWebtrackingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutWebtrackingResponse) SetHeaders(v map[string]*string) *PutWebtrackingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutWebtrackingResponse) SetStatusCode(v int32) *PutWebtrackingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type RemoveConfigFromMachineGroupResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -5619,124 +4857,60 @@ func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
 	return s
 }
 
-type UnTagResourcesRequest struct {
+type UntagResourcesRequest struct {
 	All          *bool     `json:"all,omitempty" xml:"all,omitempty"`
-	ResourceId   []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	ResourceId   *string   `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 	ResourceType *string   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	Tags         []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
-func (s UnTagResourcesRequest) String() string {
+func (s UntagResourcesRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UnTagResourcesRequest) GoString() string {
+func (s UntagResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UnTagResourcesRequest) SetAll(v bool) *UnTagResourcesRequest {
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
 	s.All = &v
 	return s
 }
 
-func (s *UnTagResourcesRequest) SetResourceId(v []*string) *UnTagResourcesRequest {
-	s.ResourceId = v
+func (s *UntagResourcesRequest) SetResourceId(v string) *UntagResourcesRequest {
+	s.ResourceId = &v
 	return s
 }
 
-func (s *UnTagResourcesRequest) SetResourceType(v string) *UnTagResourcesRequest {
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
 	s.ResourceType = &v
 	return s
 }
 
-func (s *UnTagResourcesRequest) SetTags(v []*string) *UnTagResourcesRequest {
+func (s *UntagResourcesRequest) SetTags(v []*string) *UntagResourcesRequest {
 	s.Tags = v
 	return s
 }
 
-type UnTagResourcesResponse struct {
+type UntagResourcesResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
 }
 
-func (s UnTagResourcesResponse) String() string {
+func (s UntagResourcesResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UnTagResourcesResponse) GoString() string {
+func (s UntagResourcesResponse) GoString() string {
 	return s.String()
 }
 
-func (s *UnTagResourcesResponse) SetHeaders(v map[string]*string) *UnTagResourcesResponse {
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *UnTagResourcesResponse) SetStatusCode(v int32) *UnTagResourcesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type UpdateCheckPointRequest struct {
-	Checkpoint   *string `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
-	Shard        *int32  `json:"shard,omitempty" xml:"shard,omitempty"`
-	Consumer     *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
-	ForceSuccess *bool   `json:"forceSuccess,omitempty" xml:"forceSuccess,omitempty"`
-	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s UpdateCheckPointRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateCheckPointRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateCheckPointRequest) SetCheckpoint(v string) *UpdateCheckPointRequest {
-	s.Checkpoint = &v
-	return s
-}
-
-func (s *UpdateCheckPointRequest) SetShard(v int32) *UpdateCheckPointRequest {
-	s.Shard = &v
-	return s
-}
-
-func (s *UpdateCheckPointRequest) SetConsumer(v string) *UpdateCheckPointRequest {
-	s.Consumer = &v
-	return s
-}
-
-func (s *UpdateCheckPointRequest) SetForceSuccess(v bool) *UpdateCheckPointRequest {
-	s.ForceSuccess = &v
-	return s
-}
-
-func (s *UpdateCheckPointRequest) SetType(v string) *UpdateCheckPointRequest {
-	s.Type = &v
-	return s
-}
-
-type UpdateCheckPointResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s UpdateCheckPointResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateCheckPointResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateCheckPointResponse) SetHeaders(v map[string]*string) *UpdateCheckPointResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateCheckPointResponse) SetStatusCode(v int32) *UpdateCheckPointResponse {
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -5783,286 +4957,6 @@ func (s *UpdateConsumerGroupResponse) SetHeaders(v map[string]*string) *UpdateCo
 }
 
 func (s *UpdateConsumerGroupResponse) SetStatusCode(v int32) *UpdateConsumerGroupResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type UpdateEtlJobRequest struct {
-	Enable            *bool                              `json:"enable,omitempty" xml:"enable,omitempty"`
-	EtlJobName        *string                            `json:"etlJobName,omitempty" xml:"etlJobName,omitempty"`
-	FunctionConfig    *UpdateEtlJobRequestFunctionConfig `json:"functionConfig,omitempty" xml:"functionConfig,omitempty" type:"Struct"`
-	FunctionParameter map[string]interface{}             `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
-	LogConfig         *UpdateEtlJobRequestLogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
-	SourceConfig      *UpdateEtlJobRequestSourceConfig   `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty" type:"Struct"`
-	TriggerConfig     *UpdateEtlJobRequestTriggerConfig  `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Struct"`
-}
-
-func (s UpdateEtlJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEtlJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEtlJobRequest) SetEnable(v bool) *UpdateEtlJobRequest {
-	s.Enable = &v
-	return s
-}
-
-func (s *UpdateEtlJobRequest) SetEtlJobName(v string) *UpdateEtlJobRequest {
-	s.EtlJobName = &v
-	return s
-}
-
-func (s *UpdateEtlJobRequest) SetFunctionConfig(v *UpdateEtlJobRequestFunctionConfig) *UpdateEtlJobRequest {
-	s.FunctionConfig = v
-	return s
-}
-
-func (s *UpdateEtlJobRequest) SetFunctionParameter(v map[string]interface{}) *UpdateEtlJobRequest {
-	s.FunctionParameter = v
-	return s
-}
-
-func (s *UpdateEtlJobRequest) SetLogConfig(v *UpdateEtlJobRequestLogConfig) *UpdateEtlJobRequest {
-	s.LogConfig = v
-	return s
-}
-
-func (s *UpdateEtlJobRequest) SetSourceConfig(v *UpdateEtlJobRequestSourceConfig) *UpdateEtlJobRequest {
-	s.SourceConfig = v
-	return s
-}
-
-func (s *UpdateEtlJobRequest) SetTriggerConfig(v *UpdateEtlJobRequestTriggerConfig) *UpdateEtlJobRequest {
-	s.TriggerConfig = v
-	return s
-}
-
-type UpdateEtlJobRequestFunctionConfig struct {
-	AccountId        *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	Endpoint         *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	FunctionName     *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	FunctionProvider *string `json:"functionProvider,omitempty" xml:"functionProvider,omitempty"`
-	RegionName       *string `json:"regionName,omitempty" xml:"regionName,omitempty"`
-	RoleArn          *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	ServiceName      *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-}
-
-func (s UpdateEtlJobRequestFunctionConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEtlJobRequestFunctionConfig) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEtlJobRequestFunctionConfig) SetAccountId(v string) *UpdateEtlJobRequestFunctionConfig {
-	s.AccountId = &v
-	return s
-}
-
-func (s *UpdateEtlJobRequestFunctionConfig) SetEndpoint(v string) *UpdateEtlJobRequestFunctionConfig {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *UpdateEtlJobRequestFunctionConfig) SetFunctionName(v string) *UpdateEtlJobRequestFunctionConfig {
-	s.FunctionName = &v
-	return s
-}
-
-func (s *UpdateEtlJobRequestFunctionConfig) SetFunctionProvider(v string) *UpdateEtlJobRequestFunctionConfig {
-	s.FunctionProvider = &v
-	return s
-}
-
-func (s *UpdateEtlJobRequestFunctionConfig) SetRegionName(v string) *UpdateEtlJobRequestFunctionConfig {
-	s.RegionName = &v
-	return s
-}
-
-func (s *UpdateEtlJobRequestFunctionConfig) SetRoleArn(v string) *UpdateEtlJobRequestFunctionConfig {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *UpdateEtlJobRequestFunctionConfig) SetServiceName(v string) *UpdateEtlJobRequestFunctionConfig {
-	s.ServiceName = &v
-	return s
-}
-
-type UpdateEtlJobRequestLogConfig struct {
-	Endpoint     *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	ProjectName  *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-}
-
-func (s UpdateEtlJobRequestLogConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEtlJobRequestLogConfig) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEtlJobRequestLogConfig) SetEndpoint(v string) *UpdateEtlJobRequestLogConfig {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *UpdateEtlJobRequestLogConfig) SetLogstoreName(v string) *UpdateEtlJobRequestLogConfig {
-	s.LogstoreName = &v
-	return s
-}
-
-func (s *UpdateEtlJobRequestLogConfig) SetProjectName(v string) *UpdateEtlJobRequestLogConfig {
-	s.ProjectName = &v
-	return s
-}
-
-type UpdateEtlJobRequestSourceConfig struct {
-	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-}
-
-func (s UpdateEtlJobRequestSourceConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEtlJobRequestSourceConfig) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEtlJobRequestSourceConfig) SetLogstoreName(v string) *UpdateEtlJobRequestSourceConfig {
-	s.LogstoreName = &v
-	return s
-}
-
-type UpdateEtlJobRequestTriggerConfig struct {
-	MaxRetryTime     *int32  `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
-	RoleArn          *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	StartingPosition *string `json:"startingPosition,omitempty" xml:"startingPosition,omitempty"`
-	StartingUnixtime *int64  `json:"startingUnixtime,omitempty" xml:"startingUnixtime,omitempty"`
-	TriggerInterval  *int32  `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
-}
-
-func (s UpdateEtlJobRequestTriggerConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEtlJobRequestTriggerConfig) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEtlJobRequestTriggerConfig) SetMaxRetryTime(v int32) *UpdateEtlJobRequestTriggerConfig {
-	s.MaxRetryTime = &v
-	return s
-}
-
-func (s *UpdateEtlJobRequestTriggerConfig) SetRoleArn(v string) *UpdateEtlJobRequestTriggerConfig {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *UpdateEtlJobRequestTriggerConfig) SetStartingPosition(v string) *UpdateEtlJobRequestTriggerConfig {
-	s.StartingPosition = &v
-	return s
-}
-
-func (s *UpdateEtlJobRequestTriggerConfig) SetStartingUnixtime(v int64) *UpdateEtlJobRequestTriggerConfig {
-	s.StartingUnixtime = &v
-	return s
-}
-
-func (s *UpdateEtlJobRequestTriggerConfig) SetTriggerInterval(v int32) *UpdateEtlJobRequestTriggerConfig {
-	s.TriggerInterval = &v
-	return s
-}
-
-type UpdateEtlJobResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s UpdateEtlJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEtlJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEtlJobResponse) SetHeaders(v map[string]*string) *UpdateEtlJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateEtlJobResponse) SetStatusCode(v int32) *UpdateEtlJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type UpdateEtlMetaRequest struct {
-	Enable       *bool                  `json:"enable,omitempty" xml:"enable,omitempty"`
-	EtlMetaKey   *string                `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	EtlMetaName  *string                `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	EtlMetaTag   *string                `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
-	EtlMetaValue map[string]interface{} `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
-}
-
-func (s UpdateEtlMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEtlMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEtlMetaRequest) SetEnable(v bool) *UpdateEtlMetaRequest {
-	s.Enable = &v
-	return s
-}
-
-func (s *UpdateEtlMetaRequest) SetEtlMetaKey(v string) *UpdateEtlMetaRequest {
-	s.EtlMetaKey = &v
-	return s
-}
-
-func (s *UpdateEtlMetaRequest) SetEtlMetaName(v string) *UpdateEtlMetaRequest {
-	s.EtlMetaName = &v
-	return s
-}
-
-func (s *UpdateEtlMetaRequest) SetEtlMetaTag(v string) *UpdateEtlMetaRequest {
-	s.EtlMetaTag = &v
-	return s
-}
-
-func (s *UpdateEtlMetaRequest) SetEtlMetaValue(v map[string]interface{}) *UpdateEtlMetaRequest {
-	s.EtlMetaValue = v
-	return s
-}
-
-type UpdateEtlMetaResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s UpdateEtlMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateEtlMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateEtlMetaResponse) SetHeaders(v map[string]*string) *UpdateEtlMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateEtlMetaResponse) SetStatusCode(v int32) *UpdateEtlMetaResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -6436,6 +5330,52 @@ func (s *UpdateMachineGroupResponse) SetHeaders(v map[string]*string) *UpdateMac
 }
 
 func (s *UpdateMachineGroupResponse) SetStatusCode(v int32) *UpdateMachineGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateMachineGroupMachineRequest struct {
+	Action *string   `json:"action,omitempty" xml:"action,omitempty"`
+	Body   []*string `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+}
+
+func (s UpdateMachineGroupMachineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMachineGroupMachineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMachineGroupMachineRequest) SetAction(v string) *UpdateMachineGroupMachineRequest {
+	s.Action = &v
+	return s
+}
+
+func (s *UpdateMachineGroupMachineRequest) SetBody(v []*string) *UpdateMachineGroupMachineRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateMachineGroupMachineResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateMachineGroupMachineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMachineGroupMachineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMachineGroupMachineResponse) SetHeaders(v map[string]*string) *UpdateMachineGroupMachineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMachineGroupMachineResponse) SetStatusCode(v int32) *UpdateMachineGroupMachineResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -7104,171 +6044,6 @@ func (client *Client) ApplyConfigToMachineGroupWithOptions(project *string, mach
 	return _result, _err
 }
 
-func (client *Client) BatchCreateEtlMeta(project *string, request *BatchCreateEtlMetaRequest) (_result *BatchCreateEtlMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &BatchCreateEtlMetaResponse{}
-	_body, _err := client.BatchCreateEtlMetaWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) BatchCreateEtlMetaWithOptions(project *string, request *BatchCreateEtlMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchCreateEtlMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaList)) {
-		body["etlMetaList"] = request.EtlMetaList
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("BatchCreateEtlMeta"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etlmetas"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &BatchCreateEtlMetaResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) BatchModifyEtlMetaStatus(project *string, request *BatchModifyEtlMetaStatusRequest) (_result *BatchModifyEtlMetaStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &BatchModifyEtlMetaStatusResponse{}
-	_body, _err := client.BatchModifyEtlMetaStatusWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) BatchModifyEtlMetaStatusWithOptions(project *string, request *BatchModifyEtlMetaStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchModifyEtlMetaStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["type"] = request.Type
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaKeyList)) {
-		body["etlMetaKeyList"] = request.EtlMetaKeyList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaName)) {
-		body["etlMetaName"] = request.EtlMetaName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaTag)) {
-		body["etlMetaTag"] = request.EtlMetaTag
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Range)) {
-		body["range"] = request.Range
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("BatchModifyEtlMetaStatus"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etlmetas"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &BatchModifyEtlMetaStatusResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) BatchUpdateEtlMeta(project *string, request *BatchUpdateEtlMetaRequest) (_result *BatchUpdateEtlMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &BatchUpdateEtlMetaResponse{}
-	_body, _err := client.BatchUpdateEtlMetaWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) BatchUpdateEtlMetaWithOptions(project *string, request *BatchUpdateEtlMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchUpdateEtlMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.EtlMetaList))) {
-		body["etlMetaList"] = request.EtlMetaList
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("BatchUpdateEtlMeta"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etlmetas"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &BatchUpdateEtlMetaResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) CreateConsumerGroup(project *string, logstore *string, request *CreateConsumerGroupRequest) (_result *CreateConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7367,144 +6142,6 @@ func (client *Client) CreateDomainWithOptions(project *string, request *CreateDo
 		BodyType:    tea.String("none"),
 	}
 	_result = &CreateDomainResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateEtlJob(project *string, request *CreateEtlJobRequest) (_result *CreateEtlJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateEtlJobResponse{}
-	_body, _err := client.CreateEtlJobWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateEtlJobWithOptions(project *string, request *CreateEtlJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateEtlJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Enable)) {
-		body["enable"] = request.Enable
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlJobName)) {
-		body["etlJobName"] = request.EtlJobName
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.FunctionConfig))) {
-		body["functionConfig"] = request.FunctionConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FunctionParameter)) {
-		body["functionParameter"] = request.FunctionParameter
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.LogConfig))) {
-		body["logConfig"] = request.LogConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SourceConfig))) {
-		body["sourceConfig"] = request.SourceConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TriggerConfig))) {
-		body["triggerConfig"] = request.TriggerConfig
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateEtlJob"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etljobs"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &CreateEtlJobResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateEtlMeta(project *string, request *CreateEtlMetaRequest) (_result *CreateEtlMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateEtlMetaResponse{}
-	_body, _err := client.CreateEtlMetaWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateEtlMetaWithOptions(project *string, request *CreateEtlMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateEtlMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Enable)) {
-		body["enable"] = request.Enable
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaKey)) {
-		body["etlMetaKey"] = request.EtlMetaKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaName)) {
-		body["etlMetaName"] = request.EtlMetaName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaTag)) {
-		body["etlMetaTag"] = request.EtlMetaTag
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaValue)) {
-		body["etlMetaValue"] = request.EtlMetaValue
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateEtlMeta"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etlmetas"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &CreateEtlMetaResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8214,102 +6851,6 @@ func (client *Client) DeleteDomainWithOptions(project *string, domainName *strin
 	return _result, _err
 }
 
-func (client *Client) DeleteEtlJob(project *string, etlJobName *string) (_result *DeleteEtlJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteEtlJobResponse{}
-	_body, _err := client.DeleteEtlJobWithOptions(project, etlJobName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteEtlJobWithOptions(project *string, etlJobName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEtlJobResponse, _err error) {
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteEtlJob"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etljobs/" + tea.StringValue(etlJobName)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &DeleteEtlJobResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteEtlMeta(project *string, request *DeleteEtlMetaRequest) (_result *DeleteEtlMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteEtlMetaResponse{}
-	_body, _err := client.DeleteEtlMetaWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteEtlMetaWithOptions(project *string, request *DeleteEtlMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEtlMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaKey)) {
-		query["etlMetaKey"] = request.EtlMetaKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaName)) {
-		query["etlMetaName"] = request.EtlMetaName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaTag)) {
-		query["etlMetaTag"] = request.EtlMetaTag
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteEtlMeta"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etlmetas"),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &DeleteEtlMetaResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) DeleteExternalStore(project *string, externalStoreName *string) (_result *DeleteExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8536,6 +7077,45 @@ func (client *Client) DeleteProjectWithOptions(project *string, headers map[stri
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteProjectResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteProjectPolicy(project *string) (_result *DeleteProjectPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteProjectPolicyResponse{}
+	_body, _err := client.DeleteProjectPolicyWithOptions(project, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteProjectPolicyWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProjectPolicyResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProjectPolicy"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/policy"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteProjectPolicyResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8838,10 +7418,6 @@ func (client *Client) GetCursorWithOptions(project *string, logstore *string, sh
 		query["from"] = request.From
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["type"] = request.Type
-	}
-
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -8851,7 +7427,7 @@ func (client *Client) GetCursorWithOptions(project *string, logstore *string, sh
 		Action:      tea.String("GetCursor"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/" + tea.StringValue(shardId)),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/" + tea.StringValue(shardId) + "?type=cursor"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -8891,10 +7467,6 @@ func (client *Client) GetCursorTimeWithOptions(project *string, logstore *string
 		query["cursor"] = request.Cursor
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["type"] = request.Type
-	}
-
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
@@ -8904,7 +7476,7 @@ func (client *Client) GetCursorTimeWithOptions(project *string, logstore *string
 		Action:      tea.String("GetCursorTime"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/" + tea.StringValue(shardId)),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/" + tea.StringValue(shardId) + "?type=cursor_time"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -8912,102 +7484,6 @@ func (client *Client) GetCursorTimeWithOptions(project *string, logstore *string
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetCursorTimeResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetEtlJob(project *string, etlJobName *string) (_result *GetEtlJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetEtlJobResponse{}
-	_body, _err := client.GetEtlJobWithOptions(project, etlJobName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetEtlJobWithOptions(project *string, etlJobName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEtlJobResponse, _err error) {
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetEtlJob"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etljobs/" + tea.StringValue(etlJobName)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetEtlJobResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetEtlMeta(project *string, request *GetEtlMetaRequest) (_result *GetEtlMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetEtlMetaResponse{}
-	_body, _err := client.GetEtlMetaWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetEtlMetaWithOptions(project *string, request *GetEtlMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEtlMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaKey)) {
-		query["etlMetaKey"] = request.EtlMetaKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaName)) {
-		query["etlMetaName"] = request.EtlMetaName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaTag)) {
-		query["etlMetaTag"] = request.EtlMetaTag
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetEtlMeta"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etlmetas"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetEtlMetaResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9441,6 +7917,45 @@ func (client *Client) GetProjectLogsWithOptions(project *string, request *GetPro
 	return _result, _err
 }
 
+func (client *Client) GetProjectPolicy(project *string) (_result *GetProjectPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetProjectPolicyResponse{}
+	_body, _err := client.GetProjectPolicyWithOptions(project, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetProjectPolicyWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectPolicyResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProjectPolicy"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/policy"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetProjectPolicyResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetSavedSearch(project *string, savedsearchName *string) (_result *GetSavedSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9633,177 +8148,6 @@ func (client *Client) ListDomainsWithOptions(project *string, request *ListDomai
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListDomainsResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListEtlJob(project *string, request *ListEtlJobRequest) (_result *ListEtlJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListEtlJobResponse{}
-	_body, _err := client.ListEtlJobWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListEtlJobWithOptions(project *string, request *ListEtlJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEtlJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Offset)) {
-		query["offset"] = request.Offset
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Size)) {
-		query["size"] = request.Size
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListEtlJob"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etljobs"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListEtlJobResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListEtlMeta(project *string, request *ListEtlMetaRequest) (_result *ListEtlMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListEtlMetaResponse{}
-	_body, _err := client.ListEtlMetaWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListEtlMetaWithOptions(project *string, request *ListEtlMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEtlMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaKey)) {
-		query["etlMetaKey"] = request.EtlMetaKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaName)) {
-		query["etlMetaName"] = request.EtlMetaName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaTag)) {
-		query["etlMetaTag"] = request.EtlMetaTag
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Offset)) {
-		query["offset"] = request.Offset
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Size)) {
-		query["size"] = request.Size
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListEtlMeta"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etlmetas"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListEtlMetaResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListEtlMetaName(project *string, request *ListEtlMetaNameRequest) (_result *ListEtlMetaNameResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListEtlMetaNameResponse{}
-	_body, _err := client.ListEtlMetaNameWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListEtlMetaNameWithOptions(project *string, request *ListEtlMetaNameRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEtlMetaNameResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Offset)) {
-		query["offset"] = request.Offset
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Size)) {
-		query["size"] = request.Size
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListEtlMetaName"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etlmetanames"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListEtlMetaNameResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10293,6 +8637,168 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 	return _result, _err
 }
 
+func (client *Client) PullData(project *string, logstore *string, shard *string, request *PullDataRequest) (_result *PullDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PullDataResponse{}
+	_body, _err := client.PullDataWithOptions(project, logstore, shard, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PullDataWithOptions(project *string, logstore *string, shard *string, request *PullDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PullDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		query["count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Cursor)) {
+		query["cursor"] = request.Cursor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndCursor)) {
+		query["endCursor"] = request.EndCursor
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PullData"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/" + tea.StringValue(shard) + "?type=log"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PullDataResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutProjectPolicy(project *string, request *PutProjectPolicyRequest) (_result *PutProjectPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PutProjectPolicyResponse{}
+	_body, _err := client.PutProjectPolicyWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutProjectPolicyWithOptions(project *string, request *PutProjectPolicyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutProjectPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutProjectPolicy"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/policy"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PutProjectPolicyResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutWebtracking(project *string, logstoreName *string, request *PutWebtrackingRequest) (_result *PutWebtrackingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PutWebtrackingResponse{}
+	_body, _err := client.PutWebtrackingWithOptions(project, logstoreName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutWebtrackingWithOptions(project *string, logstoreName *string, request *PutWebtrackingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutWebtrackingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Logs)) {
+		body["__logs__"] = request.Logs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		body["__source__"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["__tags__"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["__topic__"] = request.Topic
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutWebtracking"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstoreName) + "/track"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &PutWebtrackingResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) RemoveConfigFromMachineGroup(project *string, machineGroup *string, configName *string) (_result *RemoveConfigFromMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10439,11 +8945,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 	return _result, _err
 }
 
-func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *UnTagResourcesResponse, _err error) {
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UnTagResourcesResponse{}
-	_body, _err := client.UnTagResourcesWithOptions(request, headers, runtime)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10451,7 +8957,7 @@ func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *U
 	return _result, _err
 }
 
-func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnTagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -10478,7 +8984,7 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("UnTagResources"),
+		Action:      tea.String("UntagResources"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/untag"),
@@ -10486,76 +8992,9 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
-	_result = &UnTagResourcesResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateCheckPoint(project *string, logstore *string, consumerGroup *string, request *UpdateCheckPointRequest) (_result *UpdateCheckPointResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateCheckPointResponse{}
-	_body, _err := client.UpdateCheckPointWithOptions(project, logstore, consumerGroup, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateCheckPointWithOptions(project *string, logstore *string, consumerGroup *string, request *UpdateCheckPointRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateCheckPointResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Consumer)) {
-		query["consumer"] = request.Consumer
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ForceSuccess)) {
-		query["forceSuccess"] = request.ForceSuccess
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["type"] = request.Type
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Checkpoint)) {
-		body["checkpoint"] = request.Checkpoint
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Shard)) {
-		body["shard"] = request.Shard
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateCheckPoint"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/consumergroups/" + tea.StringValue(consumerGroup)),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &UpdateCheckPointResponse{}
+	_result = &UntagResourcesResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10609,144 +9048,6 @@ func (client *Client) UpdateConsumerGroupWithOptions(project *string, logstore *
 		BodyType:    tea.String("none"),
 	}
 	_result = &UpdateConsumerGroupResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateEtlJob(project *string, etlJobName *string, request *UpdateEtlJobRequest) (_result *UpdateEtlJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateEtlJobResponse{}
-	_body, _err := client.UpdateEtlJobWithOptions(project, etlJobName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateEtlJobWithOptions(project *string, etlJobName *string, request *UpdateEtlJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateEtlJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Enable)) {
-		body["enable"] = request.Enable
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlJobName)) {
-		body["etlJobName"] = request.EtlJobName
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.FunctionConfig))) {
-		body["functionConfig"] = request.FunctionConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FunctionParameter)) {
-		body["functionParameter"] = request.FunctionParameter
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.LogConfig))) {
-		body["logConfig"] = request.LogConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SourceConfig))) {
-		body["sourceConfig"] = request.SourceConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TriggerConfig))) {
-		body["triggerConfig"] = request.TriggerConfig
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateEtlJob"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etljobs/" + tea.StringValue(etlJobName)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &UpdateEtlJobResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateEtlMeta(project *string, request *UpdateEtlMetaRequest) (_result *UpdateEtlMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateEtlMetaResponse{}
-	_body, _err := client.UpdateEtlMetaWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateEtlMetaWithOptions(project *string, request *UpdateEtlMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateEtlMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Enable)) {
-		body["enable"] = request.Enable
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaKey)) {
-		body["etlMetaKey"] = request.EtlMetaKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaName)) {
-		body["etlMetaName"] = request.EtlMetaName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaTag)) {
-		body["etlMetaTag"] = request.EtlMetaTag
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EtlMetaValue)) {
-		body["etlMetaValue"] = request.EtlMetaValue
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateEtlMeta"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/etlmetas"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &UpdateEtlMetaResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11027,6 +9328,56 @@ func (client *Client) UpdateMachineGroupWithOptions(project *string, groupName *
 		BodyType:    tea.String("none"),
 	}
 	_result = &UpdateMachineGroupResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMachineGroupMachine(project *string, machineGroup *string, request *UpdateMachineGroupMachineRequest) (_result *UpdateMachineGroupMachineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMachineGroupMachineResponse{}
+	_body, _err := client.UpdateMachineGroupMachineWithOptions(project, machineGroup, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMachineGroupMachineWithOptions(project *string, machineGroup *string, request *UpdateMachineGroupMachineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMachineGroupMachineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Action)) {
+		query["action"] = request.Action
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMachineGroupMachine"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/machinegroups/" + tea.StringValue(machineGroup) + "/machines"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateMachineGroupMachineResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
