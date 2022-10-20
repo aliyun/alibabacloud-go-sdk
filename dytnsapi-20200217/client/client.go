@@ -521,6 +521,7 @@ func (s *DescribePhoneNumberOnlineTimeResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribePhoneNumberOnlineTimeResponseBodyData struct {
+	CarrierCode  *string `json:"CarrierCode,omitempty" xml:"CarrierCode,omitempty"`
 	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
@@ -530,6 +531,11 @@ func (s DescribePhoneNumberOnlineTimeResponseBodyData) String() string {
 
 func (s DescribePhoneNumberOnlineTimeResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribePhoneNumberOnlineTimeResponseBodyData) SetCarrierCode(v string) *DescribePhoneNumberOnlineTimeResponseBodyData {
+	s.CarrierCode = &v
+	return s
 }
 
 func (s *DescribePhoneNumberOnlineTimeResponseBodyData) SetVerifyResult(v string) *DescribePhoneNumberOnlineTimeResponseBodyData {
@@ -1536,6 +1542,140 @@ func (s *PhoneNumberStatusForAccountResponse) SetStatusCode(v int32) *PhoneNumbe
 }
 
 func (s *PhoneNumberStatusForAccountResponse) SetBody(v *PhoneNumberStatusForAccountResponseBody) *PhoneNumberStatusForAccountResponse {
+	s.Body = v
+	return s
+}
+
+type PhoneNumberStatusForPublicRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s PhoneNumberStatusForPublicRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PhoneNumberStatusForPublicRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PhoneNumberStatusForPublicRequest) SetAuthCode(v string) *PhoneNumberStatusForPublicRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *PhoneNumberStatusForPublicRequest) SetInputNumber(v string) *PhoneNumberStatusForPublicRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *PhoneNumberStatusForPublicRequest) SetMask(v string) *PhoneNumberStatusForPublicRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *PhoneNumberStatusForPublicRequest) SetOwnerId(v int64) *PhoneNumberStatusForPublicRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *PhoneNumberStatusForPublicRequest) SetResourceOwnerAccount(v string) *PhoneNumberStatusForPublicRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *PhoneNumberStatusForPublicRequest) SetResourceOwnerId(v int64) *PhoneNumberStatusForPublicRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type PhoneNumberStatusForPublicResponseBody struct {
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *PhoneNumberStatusForPublicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PhoneNumberStatusForPublicResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PhoneNumberStatusForPublicResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PhoneNumberStatusForPublicResponseBody) SetCode(v string) *PhoneNumberStatusForPublicResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PhoneNumberStatusForPublicResponseBody) SetData(v *PhoneNumberStatusForPublicResponseBodyData) *PhoneNumberStatusForPublicResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PhoneNumberStatusForPublicResponseBody) SetMessage(v string) *PhoneNumberStatusForPublicResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PhoneNumberStatusForPublicResponseBody) SetRequestId(v string) *PhoneNumberStatusForPublicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PhoneNumberStatusForPublicResponseBodyData struct {
+	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s PhoneNumberStatusForPublicResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PhoneNumberStatusForPublicResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *PhoneNumberStatusForPublicResponseBodyData) SetCarrier(v string) *PhoneNumberStatusForPublicResponseBodyData {
+	s.Carrier = &v
+	return s
+}
+
+func (s *PhoneNumberStatusForPublicResponseBodyData) SetStatus(v string) *PhoneNumberStatusForPublicResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type PhoneNumberStatusForPublicResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PhoneNumberStatusForPublicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PhoneNumberStatusForPublicResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PhoneNumberStatusForPublicResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PhoneNumberStatusForPublicResponse) SetHeaders(v map[string]*string) *PhoneNumberStatusForPublicResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PhoneNumberStatusForPublicResponse) SetStatusCode(v int32) *PhoneNumberStatusForPublicResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PhoneNumberStatusForPublicResponse) SetBody(v *PhoneNumberStatusForPublicResponseBody) *PhoneNumberStatusForPublicResponse {
 	s.Body = v
 	return s
 }
@@ -3092,6 +3232,70 @@ func (client *Client) PhoneNumberStatusForAccount(request *PhoneNumberStatusForA
 	runtime := &util.RuntimeOptions{}
 	_result = &PhoneNumberStatusForAccountResponse{}
 	_body, _err := client.PhoneNumberStatusForAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PhoneNumberStatusForPublicWithOptions(request *PhoneNumberStatusForPublicRequest, runtime *util.RuntimeOptions) (_result *PhoneNumberStatusForPublicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		query["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PhoneNumberStatusForPublic"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PhoneNumberStatusForPublicResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PhoneNumberStatusForPublic(request *PhoneNumberStatusForPublicRequest) (_result *PhoneNumberStatusForPublicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PhoneNumberStatusForPublicResponse{}
+	_body, _err := client.PhoneNumberStatusForPublicWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
