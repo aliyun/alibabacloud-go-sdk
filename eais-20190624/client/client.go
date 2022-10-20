@@ -357,6 +357,99 @@ func (s *CreateEaiAllResponse) SetBody(v *CreateEaiAllResponseBody) *CreateEaiAl
 	return s
 }
 
+type CreateEaiJupyterRequest struct {
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EaisType        *string `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s CreateEaiJupyterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaiJupyterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaiJupyterRequest) SetClientToken(v string) *CreateEaiJupyterRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateEaiJupyterRequest) SetEaisType(v string) *CreateEaiJupyterRequest {
+	s.EaisType = &v
+	return s
+}
+
+func (s *CreateEaiJupyterRequest) SetRegionId(v string) *CreateEaiJupyterRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateEaiJupyterRequest) SetSecurityGroupId(v string) *CreateEaiJupyterRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateEaiJupyterRequest) SetVSwitchId(v string) *CreateEaiJupyterRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type CreateEaiJupyterResponseBody struct {
+	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
+	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateEaiJupyterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaiJupyterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaiJupyterResponseBody) SetElasticAcceleratedInstanceId(v string) *CreateEaiJupyterResponseBody {
+	s.ElasticAcceleratedInstanceId = &v
+	return s
+}
+
+func (s *CreateEaiJupyterResponseBody) SetRequestId(v string) *CreateEaiJupyterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateEaiJupyterResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateEaiJupyterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateEaiJupyterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaiJupyterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaiJupyterResponse) SetHeaders(v map[string]*string) *CreateEaiJupyterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEaiJupyterResponse) SetStatusCode(v int32) *CreateEaiJupyterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEaiJupyterResponse) SetBody(v *CreateEaiJupyterResponseBody) *CreateEaiJupyterResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteEaiRequest struct {
 	ElasticAcceleratedInstanceId *string `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
 	Force                        *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
@@ -619,6 +712,7 @@ func (s *DescribeEaisResponseBodyInstances) SetInstance(v []*DescribeEaisRespons
 }
 
 type DescribeEaisResponseBodyInstancesInstance struct {
+	Category                     *string                                        `json:"Category,omitempty" xml:"Category,omitempty"`
 	ClientInstanceId             *string                                        `json:"ClientInstanceId,omitempty" xml:"ClientInstanceId,omitempty"`
 	ClientInstanceName           *string                                        `json:"ClientInstanceName,omitempty" xml:"ClientInstanceName,omitempty"`
 	ClientInstanceType           *string                                        `json:"ClientInstanceType,omitempty" xml:"ClientInstanceType,omitempty"`
@@ -627,9 +721,12 @@ type DescribeEaisResponseBodyInstancesInstance struct {
 	ElasticAcceleratedInstanceId *string                                        `json:"ElasticAcceleratedInstanceId,omitempty" xml:"ElasticAcceleratedInstanceId,omitempty"`
 	InstanceName                 *string                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceType                 *string                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	JupyterUrl                   *string                                        `json:"JupyterUrl,omitempty" xml:"JupyterUrl,omitempty"`
 	RegionId                     *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId              *string                                        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	Status                       *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags                         *DescribeEaisResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VSwitchId                    *string                                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	ZoneId                       *string                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -639,6 +736,11 @@ func (s DescribeEaisResponseBodyInstancesInstance) String() string {
 
 func (s DescribeEaisResponseBodyInstancesInstance) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeEaisResponseBodyInstancesInstance) SetCategory(v string) *DescribeEaisResponseBodyInstancesInstance {
+	s.Category = &v
+	return s
 }
 
 func (s *DescribeEaisResponseBodyInstancesInstance) SetClientInstanceId(v string) *DescribeEaisResponseBodyInstancesInstance {
@@ -681,8 +783,18 @@ func (s *DescribeEaisResponseBodyInstancesInstance) SetInstanceType(v string) *D
 	return s
 }
 
+func (s *DescribeEaisResponseBodyInstancesInstance) SetJupyterUrl(v string) *DescribeEaisResponseBodyInstancesInstance {
+	s.JupyterUrl = &v
+	return s
+}
+
 func (s *DescribeEaisResponseBodyInstancesInstance) SetRegionId(v string) *DescribeEaisResponseBodyInstancesInstance {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeEaisResponseBodyInstancesInstance) SetSecurityGroupId(v string) *DescribeEaisResponseBodyInstancesInstance {
+	s.SecurityGroupId = &v
 	return s
 }
 
@@ -693,6 +805,11 @@ func (s *DescribeEaisResponseBodyInstancesInstance) SetStatus(v string) *Describ
 
 func (s *DescribeEaisResponseBodyInstancesInstance) SetTags(v *DescribeEaisResponseBodyInstancesInstanceTags) *DescribeEaisResponseBodyInstancesInstance {
 	s.Tags = v
+	return s
+}
+
+func (s *DescribeEaisResponseBodyInstancesInstance) SetVSwitchId(v string) *DescribeEaisResponseBodyInstancesInstance {
+	s.VSwitchId = &v
 	return s
 }
 
@@ -1246,6 +1363,66 @@ func (client *Client) CreateEaiAll(request *CreateEaiAllRequest) (_result *Creat
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEaiAllResponse{}
 	_body, _err := client.CreateEaiAllWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateEaiJupyterWithOptions(request *CreateEaiJupyterRequest, runtime *util.RuntimeOptions) (_result *CreateEaiJupyterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EaisType)) {
+		query["EaisType"] = request.EaisType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEaiJupyter"),
+		Version:     tea.String("2019-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEaiJupyterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateEaiJupyter(request *CreateEaiJupyterRequest) (_result *CreateEaiJupyterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEaiJupyterResponse{}
+	_body, _err := client.CreateEaiJupyterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
