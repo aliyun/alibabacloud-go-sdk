@@ -1,3 +1,6 @@
+2022-10-21 Version: v2.0.0
+- Golang update v2.
+
 2022-09-21 Version: v1.0.0
 - Generated golang 2022-03-02 for Green.
 
