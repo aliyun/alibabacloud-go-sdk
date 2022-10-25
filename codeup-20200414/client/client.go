@@ -2059,11 +2059,28 @@ func (s *CreateMergeRequestCommentResponse) SetBody(v *CreateMergeRequestComment
 }
 
 type CreateRepositoryRequest struct {
-	AccessToken      *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	CreateParentPath *bool   `json:"CreateParentPath,omitempty" xml:"CreateParentPath,omitempty"`
-	OrganizationId   *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	SubUserId        *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	Sync             *bool   `json:"Sync,omitempty" xml:"Sync,omitempty"`
+	AccessToken          *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	CreateParentPath     *bool   `json:"CreateParentPath,omitempty" xml:"CreateParentPath,omitempty"`
+	OrganizationId       *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	SubUserId            *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	Sync                 *bool   `json:"Sync,omitempty" xml:"Sync,omitempty"`
+	AvatarUrl            *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Description          *string `json:"description,omitempty" xml:"description,omitempty"`
+	GitignoreType        *string `json:"gitignoreType,omitempty" xml:"gitignoreType,omitempty"`
+	ImportAccount        *string `json:"importAccount,omitempty" xml:"importAccount,omitempty"`
+	ImportDemoProject    *bool   `json:"importDemoProject,omitempty" xml:"importDemoProject,omitempty"`
+	ImportRepoType       *string `json:"importRepoType,omitempty" xml:"importRepoType,omitempty"`
+	ImportToken          *string `json:"importToken,omitempty" xml:"importToken,omitempty"`
+	ImportTokenEncrypted *string `json:"importTokenEncrypted,omitempty" xml:"importTokenEncrypted,omitempty"`
+	ImportUrl            *string `json:"importUrl,omitempty" xml:"importUrl,omitempty"`
+	InitStandardService  *bool   `json:"initStandardService,omitempty" xml:"initStandardService,omitempty"`
+	IsCryptoEnabled      *bool   `json:"isCryptoEnabled,omitempty" xml:"isCryptoEnabled,omitempty"`
+	LocalImportUrl       *string `json:"localImportUrl,omitempty" xml:"localImportUrl,omitempty"`
+	Name                 *string `json:"name,omitempty" xml:"name,omitempty"`
+	NamespaceId          *int64  `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
+	Path                 *string `json:"path,omitempty" xml:"path,omitempty"`
+	ReadmeType           *string `json:"readmeType,omitempty" xml:"readmeType,omitempty"`
+	VisibilityLevel      *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
 }
 
 func (s CreateRepositoryRequest) String() string {
@@ -2096,6 +2113,91 @@ func (s *CreateRepositoryRequest) SetSubUserId(v string) *CreateRepositoryReques
 
 func (s *CreateRepositoryRequest) SetSync(v bool) *CreateRepositoryRequest {
 	s.Sync = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetAvatarUrl(v string) *CreateRepositoryRequest {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetDescription(v string) *CreateRepositoryRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetGitignoreType(v string) *CreateRepositoryRequest {
+	s.GitignoreType = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetImportAccount(v string) *CreateRepositoryRequest {
+	s.ImportAccount = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetImportDemoProject(v bool) *CreateRepositoryRequest {
+	s.ImportDemoProject = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetImportRepoType(v string) *CreateRepositoryRequest {
+	s.ImportRepoType = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetImportToken(v string) *CreateRepositoryRequest {
+	s.ImportToken = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetImportTokenEncrypted(v string) *CreateRepositoryRequest {
+	s.ImportTokenEncrypted = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetImportUrl(v string) *CreateRepositoryRequest {
+	s.ImportUrl = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetInitStandardService(v bool) *CreateRepositoryRequest {
+	s.InitStandardService = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetIsCryptoEnabled(v bool) *CreateRepositoryRequest {
+	s.IsCryptoEnabled = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetLocalImportUrl(v string) *CreateRepositoryRequest {
+	s.LocalImportUrl = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetName(v string) *CreateRepositoryRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetNamespaceId(v int64) *CreateRepositoryRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetPath(v string) *CreateRepositoryRequest {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetReadmeType(v string) *CreateRepositoryRequest {
+	s.ReadmeType = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetVisibilityLevel(v int32) *CreateRepositoryRequest {
+	s.VisibilityLevel = &v
 	return s
 }
 
@@ -16045,9 +16147,79 @@ func (client *Client) CreateRepositoryWithOptions(request *CreateRepositoryReque
 		query["Sync"] = request.Sync
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvatarUrl)) {
+		body["avatarUrl"] = request.AvatarUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GitignoreType)) {
+		body["gitignoreType"] = request.GitignoreType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportAccount)) {
+		body["importAccount"] = request.ImportAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportDemoProject)) {
+		body["importDemoProject"] = request.ImportDemoProject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportRepoType)) {
+		body["importRepoType"] = request.ImportRepoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportToken)) {
+		body["importToken"] = request.ImportToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportTokenEncrypted)) {
+		body["importTokenEncrypted"] = request.ImportTokenEncrypted
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportUrl)) {
+		body["importUrl"] = request.ImportUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitStandardService)) {
+		body["initStandardService"] = request.InitStandardService
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsCryptoEnabled)) {
+		body["isCryptoEnabled"] = request.IsCryptoEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalImportUrl)) {
+		body["localImportUrl"] = request.LocalImportUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		body["namespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		body["path"] = request.Path
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadmeType)) {
+		body["readmeType"] = request.ReadmeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VisibilityLevel)) {
+		body["visibilityLevel"] = request.VisibilityLevel
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRepository"),
