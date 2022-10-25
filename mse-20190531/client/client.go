@@ -386,7 +386,6 @@ type AddAuthResourceRequest struct {
 	DomainId        *int64  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	MatchType       *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Path            *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
@@ -420,11 +419,6 @@ func (s *AddAuthResourceRequest) SetGatewayUniqueId(v string) *AddAuthResourceRe
 
 func (s *AddAuthResourceRequest) SetMatchType(v string) *AddAuthResourceRequest {
 	s.MatchType = &v
-	return s
-}
-
-func (s *AddAuthResourceRequest) SetMseSessionId(v string) *AddAuthResourceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -514,7 +508,6 @@ type AddBlackWhiteListRequest struct {
 	Content            *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	GatewayUniqueId    *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	IsWhite            *bool   `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
-	MseSessionId       *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Note               *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	ResourceIdJsonList *string `json:"ResourceIdJsonList,omitempty" xml:"ResourceIdJsonList,omitempty"`
@@ -548,11 +541,6 @@ func (s *AddBlackWhiteListRequest) SetGatewayUniqueId(v string) *AddBlackWhiteLi
 
 func (s *AddBlackWhiteListRequest) SetIsWhite(v bool) *AddBlackWhiteListRequest {
 	s.IsWhite = &v
-	return s
-}
-
-func (s *AddBlackWhiteListRequest) SetMseSessionId(v string) *AddBlackWhiteListRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -669,7 +657,6 @@ type AddGatewayRequest struct {
 	EnableXtrace               *bool                   `json:"EnableXtrace,omitempty" xml:"EnableXtrace,omitempty"`
 	EnterpriseSecurityGroup    *bool                   `json:"EnterpriseSecurityGroup,omitempty" xml:"EnterpriseSecurityGroup,omitempty"`
 	InternetSlbSpec            *string                 `json:"InternetSlbSpec,omitempty" xml:"InternetSlbSpec,omitempty"`
-	MseSessionId               *string                 `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name                       *string                 `json:"Name,omitempty" xml:"Name,omitempty"`
 	Region                     *string                 `json:"Region,omitempty" xml:"Region,omitempty"`
 	Replica                    *int32                  `json:"Replica,omitempty" xml:"Replica,omitempty"`
@@ -717,11 +704,6 @@ func (s *AddGatewayRequest) SetEnterpriseSecurityGroup(v bool) *AddGatewayReques
 
 func (s *AddGatewayRequest) SetInternetSlbSpec(v string) *AddGatewayRequest {
 	s.InternetSlbSpec = &v
-	return s
-}
-
-func (s *AddGatewayRequest) SetMseSessionId(v string) *AddGatewayRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -896,7 +878,6 @@ type AddGatewayDomainRequest struct {
 	CertIdentifier  *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Http2           *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	MustHttps       *bool   `json:"MustHttps,omitempty" xml:"MustHttps,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Protocol        *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
@@ -929,11 +910,6 @@ func (s *AddGatewayDomainRequest) SetGatewayUniqueId(v string) *AddGatewayDomain
 
 func (s *AddGatewayDomainRequest) SetHttp2(v string) *AddGatewayDomainRequest {
 	s.Http2 = &v
-	return s
-}
-
-func (s *AddGatewayDomainRequest) SetMseSessionId(v string) *AddGatewayDomainRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -1049,7 +1025,6 @@ type AddGatewayRouteRequest struct {
 	FallbackServices   []*AddGatewayRouteRequestFallbackServices `json:"FallbackServices,omitempty" xml:"FallbackServices,omitempty" type:"Repeated"`
 	GatewayId          *int64                                    `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId    *string                                   `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId       *string                                   `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name               *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
 	Predicates         *AddGatewayRouteRequestPredicates         `json:"Predicates,omitempty" xml:"Predicates,omitempty" type:"Struct"`
 	RedirectJSON       *AddGatewayRouteRequestRedirectJSON       `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty" type:"Struct"`
@@ -1112,11 +1087,6 @@ func (s *AddGatewayRouteRequest) SetGatewayId(v int64) *AddGatewayRouteRequest {
 
 func (s *AddGatewayRouteRequest) SetGatewayUniqueId(v string) *AddGatewayRouteRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *AddGatewayRouteRequest) SetMseSessionId(v string) *AddGatewayRouteRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -1577,7 +1547,6 @@ type AddGatewayRouteShrinkRequest struct {
 	FallbackServicesShrink   *string `json:"FallbackServices,omitempty" xml:"FallbackServices,omitempty"`
 	GatewayId                *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId          *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId             *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PredicatesShrink         *string `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
 	RedirectJSONShrink       *string `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty"`
@@ -1640,11 +1609,6 @@ func (s *AddGatewayRouteShrinkRequest) SetGatewayId(v int64) *AddGatewayRouteShr
 
 func (s *AddGatewayRouteShrinkRequest) SetGatewayUniqueId(v string) *AddGatewayRouteShrinkRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *AddGatewayRouteShrinkRequest) SetMseSessionId(v string) *AddGatewayRouteShrinkRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -1752,7 +1716,6 @@ func (s *AddGatewayRouteResponse) SetBody(v *AddGatewayRouteResponseBody) *AddGa
 type AddGatewayServiceVersionRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	ServiceId       *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceVersion  *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
 }
@@ -1772,11 +1735,6 @@ func (s *AddGatewayServiceVersionRequest) SetAcceptLanguage(v string) *AddGatewa
 
 func (s *AddGatewayServiceVersionRequest) SetGatewayUniqueId(v string) *AddGatewayServiceVersionRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *AddGatewayServiceVersionRequest) SetMseSessionId(v string) *AddGatewayServiceVersionRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -1872,7 +1830,6 @@ type AddGatewaySlbRequest struct {
 	HttpPort            *int32  `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
 	HttpsPort           *int32  `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
 	HttpsVServerGroupId *string `json:"HttpsVServerGroupId,omitempty" xml:"HttpsVServerGroupId,omitempty"`
-	MseSessionId        *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	ServiceWeight       *int32  `json:"ServiceWeight,omitempty" xml:"ServiceWeight,omitempty"`
 	SlbId               *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
 	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -1909,11 +1866,6 @@ func (s *AddGatewaySlbRequest) SetHttpsPort(v int32) *AddGatewaySlbRequest {
 
 func (s *AddGatewaySlbRequest) SetHttpsVServerGroupId(v string) *AddGatewaySlbRequest {
 	s.HttpsVServerGroupId = &v
-	return s
-}
-
-func (s *AddGatewaySlbRequest) SetMseSessionId(v string) *AddGatewaySlbRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -2020,7 +1972,6 @@ type AddMockRuleRequest struct {
 	Enable          *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	ExtraJson       *string `json:"ExtraJson,omitempty" xml:"ExtraJson,omitempty"`
 	MockType        *int64  `json:"MockType,omitempty" xml:"MockType,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ProviderAppId   *string `json:"ProviderAppId,omitempty" xml:"ProviderAppId,omitempty"`
 	ProviderAppName *string `json:"ProviderAppName,omitempty" xml:"ProviderAppName,omitempty"`
@@ -2064,11 +2015,6 @@ func (s *AddMockRuleRequest) SetExtraJson(v string) *AddMockRuleRequest {
 
 func (s *AddMockRuleRequest) SetMockType(v int64) *AddMockRuleRequest {
 	s.MockType = &v
-	return s
-}
-
-func (s *AddMockRuleRequest) SetMseSessionId(v string) *AddMockRuleRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -2278,7 +2224,6 @@ type AddSSLCertRequest struct {
 	CertIdentifier  *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	DomainId        *int64  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s AddSSLCertRequest) String() string {
@@ -2306,11 +2251,6 @@ func (s *AddSSLCertRequest) SetDomainId(v int64) *AddSSLCertRequest {
 
 func (s *AddSSLCertRequest) SetGatewayUniqueId(v string) *AddSSLCertRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *AddSSLCertRequest) SetMseSessionId(v string) *AddSSLCertRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -2394,7 +2334,6 @@ type AddSecurityGroupRuleRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	PortRange       *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
@@ -2419,11 +2358,6 @@ func (s *AddSecurityGroupRuleRequest) SetDescription(v string) *AddSecurityGroup
 
 func (s *AddSecurityGroupRuleRequest) SetGatewayUniqueId(v string) *AddSecurityGroupRuleRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *AddSecurityGroupRuleRequest) SetMseSessionId(v string) *AddSecurityGroupRuleRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -2519,8 +2453,8 @@ type AddServiceSourceRequest struct {
 	GatewayUniqueId       *string                                       `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	GroupList             []*string                                     `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
 	IngressOptionsRequest *AddServiceSourceRequestIngressOptionsRequest `json:"IngressOptionsRequest,omitempty" xml:"IngressOptionsRequest,omitempty" type:"Struct"`
-	MseSessionId          *string                                       `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name                  *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	PathList              []*string                                     `json:"PathList,omitempty" xml:"PathList,omitempty" type:"Repeated"`
 	Source                *string                                       `json:"Source,omitempty" xml:"Source,omitempty"`
 	Type                  *string                                       `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -2558,13 +2492,13 @@ func (s *AddServiceSourceRequest) SetIngressOptionsRequest(v *AddServiceSourceRe
 	return s
 }
 
-func (s *AddServiceSourceRequest) SetMseSessionId(v string) *AddServiceSourceRequest {
-	s.MseSessionId = &v
+func (s *AddServiceSourceRequest) SetName(v string) *AddServiceSourceRequest {
+	s.Name = &v
 	return s
 }
 
-func (s *AddServiceSourceRequest) SetName(v string) *AddServiceSourceRequest {
-	s.Name = &v
+func (s *AddServiceSourceRequest) SetPathList(v []*string) *AddServiceSourceRequest {
+	s.PathList = v
 	return s
 }
 
@@ -2580,6 +2514,7 @@ func (s *AddServiceSourceRequest) SetType(v string) *AddServiceSourceRequest {
 
 type AddServiceSourceRequestIngressOptionsRequest struct {
 	EnableIngress  *bool   `json:"EnableIngress,omitempty" xml:"EnableIngress,omitempty"`
+	EnableStatus   *bool   `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
 	IngressClass   *string `json:"IngressClass,omitempty" xml:"IngressClass,omitempty"`
 	WatchNamespace *string `json:"WatchNamespace,omitempty" xml:"WatchNamespace,omitempty"`
 }
@@ -2594,6 +2529,11 @@ func (s AddServiceSourceRequestIngressOptionsRequest) GoString() string {
 
 func (s *AddServiceSourceRequestIngressOptionsRequest) SetEnableIngress(v bool) *AddServiceSourceRequestIngressOptionsRequest {
 	s.EnableIngress = &v
+	return s
+}
+
+func (s *AddServiceSourceRequestIngressOptionsRequest) SetEnableStatus(v bool) *AddServiceSourceRequestIngressOptionsRequest {
+	s.EnableStatus = &v
 	return s
 }
 
@@ -2613,8 +2553,8 @@ type AddServiceSourceShrinkRequest struct {
 	GatewayUniqueId             *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	GroupListShrink             *string `json:"GroupList,omitempty" xml:"GroupList,omitempty"`
 	IngressOptionsRequestShrink *string `json:"IngressOptionsRequest,omitempty" xml:"IngressOptionsRequest,omitempty"`
-	MseSessionId                *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name                        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PathListShrink              *string `json:"PathList,omitempty" xml:"PathList,omitempty"`
 	Source                      *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	Type                        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -2652,13 +2592,13 @@ func (s *AddServiceSourceShrinkRequest) SetIngressOptionsRequestShrink(v string)
 	return s
 }
 
-func (s *AddServiceSourceShrinkRequest) SetMseSessionId(v string) *AddServiceSourceShrinkRequest {
-	s.MseSessionId = &v
+func (s *AddServiceSourceShrinkRequest) SetName(v string) *AddServiceSourceShrinkRequest {
+	s.Name = &v
 	return s
 }
 
-func (s *AddServiceSourceShrinkRequest) SetName(v string) *AddServiceSourceShrinkRequest {
-	s.Name = &v
+func (s *AddServiceSourceShrinkRequest) SetPathListShrink(v string) *AddServiceSourceShrinkRequest {
+	s.PathListShrink = &v
 	return s
 }
 
@@ -2751,7 +2691,6 @@ func (s *AddServiceSourceResponse) SetBody(v *AddServiceSourceResponseBody) *Add
 type ApplyGatewayRouteRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RouteId         *string `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
 }
 
@@ -2770,11 +2709,6 @@ func (s *ApplyGatewayRouteRequest) SetAcceptLanguage(v string) *ApplyGatewayRout
 
 func (s *ApplyGatewayRouteRequest) SetGatewayUniqueId(v string) *ApplyGatewayRouteRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *ApplyGatewayRouteRequest) SetMseSessionId(v string) *ApplyGatewayRouteRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -2863,7 +2797,6 @@ type ApplyTagPoliciesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Enable         *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	Rules          *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
@@ -2890,11 +2823,6 @@ func (s *ApplyTagPoliciesRequest) SetAppId(v string) *ApplyTagPoliciesRequest {
 
 func (s *ApplyTagPoliciesRequest) SetEnable(v bool) *ApplyTagPoliciesRequest {
 	s.Enable = &v
-	return s
-}
-
-func (s *ApplyTagPoliciesRequest) SetMseSessionId(v string) *ApplyTagPoliciesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -3069,7 +2997,6 @@ type CloneNacosConfigRequest struct {
 	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	Ids               *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId      *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	OriginNamespaceId *string `json:"OriginNamespaceId,omitempty" xml:"OriginNamespaceId,omitempty"`
 	Policy            *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	TargetNamespaceId *string `json:"TargetNamespaceId,omitempty" xml:"TargetNamespaceId,omitempty"`
@@ -3095,11 +3022,6 @@ func (s *CloneNacosConfigRequest) SetIds(v string) *CloneNacosConfigRequest {
 
 func (s *CloneNacosConfigRequest) SetInstanceId(v string) *CloneNacosConfigRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *CloneNacosConfigRequest) SetMseSessionId(v string) *CloneNacosConfigRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -3292,7 +3214,6 @@ type CreateApplicationRequest struct {
 	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	ExtraInfo      *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	Language       *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	SentinelEnable *string `json:"SentinelEnable,omitempty" xml:"SentinelEnable,omitempty"`
 	Source         *string `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -3324,11 +3245,6 @@ func (s *CreateApplicationRequest) SetExtraInfo(v string) *CreateApplicationRequ
 
 func (s *CreateApplicationRequest) SetLanguage(v string) *CreateApplicationRequest {
 	s.Language = &v
-	return s
-}
-
-func (s *CreateApplicationRequest) SetMseSessionId(v string) *CreateApplicationRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -3514,7 +3430,6 @@ type CreateClusterRequest struct {
 	DiskType                *string                    `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	InstanceCount           *int32                     `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
 	InstanceName            *string                    `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MseSessionId            *string                    `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	MseVersion              *string                    `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
 	NetType                 *string                    `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	PrivateSlbSpecification *string                    `json:"PrivateSlbSpecification,omitempty" xml:"PrivateSlbSpecification,omitempty"`
@@ -3573,11 +3488,6 @@ func (s *CreateClusterRequest) SetInstanceCount(v int32) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetInstanceName(v string) *CreateClusterRequest {
 	s.InstanceName = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetMseSessionId(v string) *CreateClusterRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -3741,7 +3651,6 @@ type CreateEngineNamespaceRequest struct {
 	Desc           *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ServiceCount   *int32  `json:"ServiceCount,omitempty" xml:"ServiceCount,omitempty"`
 }
@@ -3776,11 +3685,6 @@ func (s *CreateEngineNamespaceRequest) SetId(v string) *CreateEngineNamespaceReq
 
 func (s *CreateEngineNamespaceRequest) SetInstanceId(v string) *CreateEngineNamespaceRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateEngineNamespaceRequest) SetMseSessionId(v string) *CreateEngineNamespaceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -3928,7 +3832,6 @@ type CreateMseServiceApplicationRequest struct {
 	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	ExtraInfo      *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	Language       *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	MseVersion     *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	SentinelEnable *string `json:"SentinelEnable,omitempty" xml:"SentinelEnable,omitempty"`
@@ -3961,11 +3864,6 @@ func (s *CreateMseServiceApplicationRequest) SetExtraInfo(v string) *CreateMseSe
 
 func (s *CreateMseServiceApplicationRequest) SetLanguage(v string) *CreateMseServiceApplicationRequest {
 	s.Language = &v
-	return s
-}
-
-func (s *CreateMseServiceApplicationRequest) SetMseSessionId(v string) *CreateMseServiceApplicationRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -4162,7 +4060,6 @@ type CreateNacosConfigRequest struct {
 	Desc           *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	Group          *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	Tags           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -4213,11 +4110,6 @@ func (s *CreateNacosConfigRequest) SetGroup(v string) *CreateNacosConfigRequest 
 
 func (s *CreateNacosConfigRequest) SetInstanceId(v string) *CreateNacosConfigRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateNacosConfigRequest) SetMseSessionId(v string) *CreateNacosConfigRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -4321,7 +4213,6 @@ type CreateNacosInstanceRequest struct {
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	Metadata       *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
@@ -4373,11 +4264,6 @@ func (s *CreateNacosInstanceRequest) SetIp(v string) *CreateNacosInstanceRequest
 
 func (s *CreateNacosInstanceRequest) SetMetadata(v string) *CreateNacosInstanceRequest {
 	s.Metadata = &v
-	return s
-}
-
-func (s *CreateNacosInstanceRequest) SetMseSessionId(v string) *CreateNacosInstanceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -4483,7 +4369,6 @@ type CreateNacosServiceRequest struct {
 	Ephemeral        *bool   `json:"Ephemeral,omitempty" xml:"Ephemeral,omitempty"`
 	GroupName        *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId     *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	ProtectThreshold *string `json:"ProtectThreshold,omitempty" xml:"ProtectThreshold,omitempty"`
 	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
@@ -4519,11 +4404,6 @@ func (s *CreateNacosServiceRequest) SetGroupName(v string) *CreateNacosServiceRe
 
 func (s *CreateNacosServiceRequest) SetInstanceId(v string) *CreateNacosServiceRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateNacosServiceRequest) SetMseSessionId(v string) *CreateNacosServiceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -4629,7 +4509,6 @@ type CreateOrUpdateSwimmingLaneRequest struct {
 	GroupId        *int64                                         `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Id             *int64                                         `json:"Id,omitempty" xml:"Id,omitempty"`
 	LicenseKey     *string                                        `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
-	MseSessionId   *string                                        `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name           *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId       *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Source         *string                                        `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -4693,11 +4572,6 @@ func (s *CreateOrUpdateSwimmingLaneRequest) SetId(v int64) *CreateOrUpdateSwimmi
 
 func (s *CreateOrUpdateSwimmingLaneRequest) SetLicenseKey(v string) *CreateOrUpdateSwimmingLaneRequest {
 	s.LicenseKey = &v
-	return s
-}
-
-func (s *CreateOrUpdateSwimmingLaneRequest) SetMseSessionId(v string) *CreateOrUpdateSwimmingLaneRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -4949,7 +4823,6 @@ type CreateOrUpdateSwimmingLaneGroupRequest struct {
 	LicenseKey             *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
 	MessageQueueFilterSide *string `json:"MessageQueueFilterSide,omitempty" xml:"MessageQueueFilterSide,omitempty"`
 	MessageQueueGrayEnable *bool   `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
-	MseSessionId           *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Region                 *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	Source                 *string `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -5017,11 +4890,6 @@ func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetMessageQueueFilterSide(v str
 
 func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetMessageQueueGrayEnable(v bool) *CreateOrUpdateSwimmingLaneGroupRequest {
 	s.MessageQueueGrayEnable = &v
-	return s
-}
-
-func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetMseSessionId(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -5142,7 +5010,6 @@ type CreateZnodeRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Path           *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
@@ -5166,11 +5033,6 @@ func (s *CreateZnodeRequest) SetClusterId(v string) *CreateZnodeRequest {
 
 func (s *CreateZnodeRequest) SetData(v string) *CreateZnodeRequest {
 	s.Data = &v
-	return s
-}
-
-func (s *CreateZnodeRequest) SetMseSessionId(v string) *CreateZnodeRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -5294,7 +5156,6 @@ type DeleteAuthResourceRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s DeleteAuthResourceRequest) String() string {
@@ -5317,11 +5178,6 @@ func (s *DeleteAuthResourceRequest) SetGatewayUniqueId(v string) *DeleteAuthReso
 
 func (s *DeleteAuthResourceRequest) SetId(v int64) *DeleteAuthResourceRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *DeleteAuthResourceRequest) SetMseSessionId(v string) *DeleteAuthResourceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -5475,7 +5331,6 @@ func (s *DeleteAuthResourceResponse) SetBody(v *DeleteAuthResourceResponseBody) 
 type DeleteClusterRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s DeleteClusterRequest) String() string {
@@ -5493,11 +5348,6 @@ func (s *DeleteClusterRequest) SetAcceptLanguage(v string) *DeleteClusterRequest
 
 func (s *DeleteClusterRequest) SetInstanceId(v string) *DeleteClusterRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteClusterRequest) SetMseSessionId(v string) *DeleteClusterRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -5576,7 +5426,6 @@ type DeleteEngineNamespaceRequest struct {
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s DeleteEngineNamespaceRequest) String() string {
@@ -5604,11 +5453,6 @@ func (s *DeleteEngineNamespaceRequest) SetId(v string) *DeleteEngineNamespaceReq
 
 func (s *DeleteEngineNamespaceRequest) SetInstanceId(v string) *DeleteEngineNamespaceRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteEngineNamespaceRequest) SetMseSessionId(v string) *DeleteEngineNamespaceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -5686,7 +5530,6 @@ type DeleteGatewayRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	DeleteSlb       *bool   `json:"DeleteSlb,omitempty" xml:"DeleteSlb,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s DeleteGatewayRequest) String() string {
@@ -5709,11 +5552,6 @@ func (s *DeleteGatewayRequest) SetDeleteSlb(v bool) *DeleteGatewayRequest {
 
 func (s *DeleteGatewayRequest) SetGatewayUniqueId(v string) *DeleteGatewayRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *DeleteGatewayRequest) SetMseSessionId(v string) *DeleteGatewayRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -5886,7 +5724,6 @@ type DeleteGatewayDomainRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s DeleteGatewayDomainRequest) String() string {
@@ -5909,11 +5746,6 @@ func (s *DeleteGatewayDomainRequest) SetGatewayUniqueId(v string) *DeleteGateway
 
 func (s *DeleteGatewayDomainRequest) SetId(v string) *DeleteGatewayDomainRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *DeleteGatewayDomainRequest) SetMseSessionId(v string) *DeleteGatewayDomainRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -6061,7 +5893,6 @@ func (s *DeleteGatewayDomainResponse) SetBody(v *DeleteGatewayDomainResponseBody
 type DeleteGatewayRouteRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RouteId         *string `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
 }
 
@@ -6080,11 +5911,6 @@ func (s *DeleteGatewayRouteRequest) SetAcceptLanguage(v string) *DeleteGatewayRo
 
 func (s *DeleteGatewayRouteRequest) SetGatewayUniqueId(v string) *DeleteGatewayRouteRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *DeleteGatewayRouteRequest) SetMseSessionId(v string) *DeleteGatewayRouteRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -6244,7 +6070,6 @@ type DeleteGatewayServiceRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayId       *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	ServiceId       *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -6268,11 +6093,6 @@ func (s *DeleteGatewayServiceRequest) SetGatewayId(v int64) *DeleteGatewayServic
 
 func (s *DeleteGatewayServiceRequest) SetGatewayUniqueId(v string) *DeleteGatewayServiceRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *DeleteGatewayServiceRequest) SetMseSessionId(v string) *DeleteGatewayServiceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -6449,7 +6269,6 @@ func (s *DeleteGatewayServiceResponse) SetBody(v *DeleteGatewayServiceResponseBo
 type DeleteGatewayServiceVersionRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	ServiceId       *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceVersion  *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
 }
@@ -6469,11 +6288,6 @@ func (s *DeleteGatewayServiceVersionRequest) SetAcceptLanguage(v string) *Delete
 
 func (s *DeleteGatewayServiceVersionRequest) SetGatewayUniqueId(v string) *DeleteGatewayServiceVersionRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *DeleteGatewayServiceVersionRequest) SetMseSessionId(v string) *DeleteGatewayServiceVersionRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -6568,7 +6382,6 @@ type DeleteGatewaySlbRequest struct {
 	DeleteSlb       *bool   `json:"DeleteSlb,omitempty" xml:"DeleteSlb,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s DeleteGatewaySlbRequest) String() string {
@@ -6596,11 +6409,6 @@ func (s *DeleteGatewaySlbRequest) SetGatewayUniqueId(v string) *DeleteGatewaySlb
 
 func (s *DeleteGatewaySlbRequest) SetId(v string) *DeleteGatewaySlbRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *DeleteGatewaySlbRequest) SetMseSessionId(v string) *DeleteGatewaySlbRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -6686,7 +6494,6 @@ type DeleteNacosConfigRequest struct {
 	DataId         *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	Group          *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -6720,11 +6527,6 @@ func (s *DeleteNacosConfigRequest) SetGroup(v string) *DeleteNacosConfigRequest 
 
 func (s *DeleteNacosConfigRequest) SetInstanceId(v string) *DeleteNacosConfigRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteNacosConfigRequest) SetMseSessionId(v string) *DeleteNacosConfigRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -6813,7 +6615,6 @@ type DeleteNacosConfigsRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	Ids            *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -6837,11 +6638,6 @@ func (s *DeleteNacosConfigsRequest) SetIds(v string) *DeleteNacosConfigsRequest 
 
 func (s *DeleteNacosConfigsRequest) SetInstanceId(v string) *DeleteNacosConfigsRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteNacosConfigsRequest) SetMseSessionId(v string) *DeleteNacosConfigsRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -6933,7 +6729,6 @@ type DeleteNacosInstanceRequest struct {
 	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
@@ -6974,11 +6769,6 @@ func (s *DeleteNacosInstanceRequest) SetInstanceId(v string) *DeleteNacosInstanc
 
 func (s *DeleteNacosInstanceRequest) SetIp(v string) *DeleteNacosInstanceRequest {
 	s.Ip = &v
-	return s
-}
-
-func (s *DeleteNacosInstanceRequest) SetMseSessionId(v string) *DeleteNacosInstanceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -7089,7 +6879,6 @@ type DeleteNacosServiceRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
@@ -7114,11 +6903,6 @@ func (s *DeleteNacosServiceRequest) SetGroupName(v string) *DeleteNacosServiceRe
 
 func (s *DeleteNacosServiceRequest) SetInstanceId(v string) *DeleteNacosServiceRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteNacosServiceRequest) SetMseSessionId(v string) *DeleteNacosServiceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -7212,7 +6996,6 @@ type DeleteSecurityGroupRuleRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s DeleteSecurityGroupRuleRequest) String() string {
@@ -7235,11 +7018,6 @@ func (s *DeleteSecurityGroupRuleRequest) SetGatewayUniqueId(v string) *DeleteSec
 
 func (s *DeleteSecurityGroupRuleRequest) SetId(v int64) *DeleteSecurityGroupRuleRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *DeleteSecurityGroupRuleRequest) SetMseSessionId(v string) *DeleteSecurityGroupRuleRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -7387,7 +7165,6 @@ func (s *DeleteSecurityGroupRuleResponse) SetBody(v *DeleteSecurityGroupRuleResp
 type DeleteServiceSourceRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	SourceId        *int64  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 }
 
@@ -7406,11 +7183,6 @@ func (s *DeleteServiceSourceRequest) SetAcceptLanguage(v string) *DeleteServiceS
 
 func (s *DeleteServiceSourceRequest) SetGatewayUniqueId(v string) *DeleteServiceSourceRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *DeleteServiceSourceRequest) SetMseSessionId(v string) *DeleteServiceSourceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -7492,7 +7264,6 @@ func (s *DeleteServiceSourceResponse) SetBody(v *DeleteServiceSourceResponseBody
 type DeleteSwimmingLaneRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	LaneId         *int64  `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s DeleteSwimmingLaneRequest) String() string {
@@ -7510,11 +7281,6 @@ func (s *DeleteSwimmingLaneRequest) SetAcceptLanguage(v string) *DeleteSwimmingL
 
 func (s *DeleteSwimmingLaneRequest) SetLaneId(v int64) *DeleteSwimmingLaneRequest {
 	s.LaneId = &v
-	return s
-}
-
-func (s *DeleteSwimmingLaneRequest) SetMseSessionId(v string) *DeleteSwimmingLaneRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -7609,7 +7375,6 @@ func (s *DeleteSwimmingLaneResponse) SetBody(v *DeleteSwimmingLaneResponseBody) 
 type DeleteSwimmingLaneGroupRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GroupId        *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s DeleteSwimmingLaneGroupRequest) String() string {
@@ -7627,11 +7392,6 @@ func (s *DeleteSwimmingLaneGroupRequest) SetAcceptLanguage(v string) *DeleteSwim
 
 func (s *DeleteSwimmingLaneGroupRequest) SetGroupId(v int64) *DeleteSwimmingLaneGroupRequest {
 	s.GroupId = &v
-	return s
-}
-
-func (s *DeleteSwimmingLaneGroupRequest) SetMseSessionId(v string) *DeleteSwimmingLaneGroupRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -7726,7 +7486,6 @@ func (s *DeleteSwimmingLaneGroupResponse) SetBody(v *DeleteSwimmingLaneGroupResp
 type DeleteZnodeRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Path           *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
@@ -7746,11 +7505,6 @@ func (s *DeleteZnodeRequest) SetAcceptLanguage(v string) *DeleteZnodeRequest {
 
 func (s *DeleteZnodeRequest) SetClusterId(v string) *DeleteZnodeRequest {
 	s.ClusterId = &v
-	return s
-}
-
-func (s *DeleteZnodeRequest) SetMseSessionId(v string) *DeleteZnodeRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -7882,7 +7636,6 @@ type ExportNacosConfigRequest struct {
 	Group          *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	Ids            *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -7921,11 +7674,6 @@ func (s *ExportNacosConfigRequest) SetIds(v string) *ExportNacosConfigRequest {
 
 func (s *ExportNacosConfigRequest) SetInstanceId(v string) *ExportNacosConfigRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *ExportNacosConfigRequest) SetMseSessionId(v string) *ExportNacosConfigRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -8042,7 +7790,6 @@ func (s *ExportNacosConfigResponse) SetBody(v *ExportNacosConfigResponseBody) *E
 type GetAppMessageQueueRouteRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
@@ -8061,11 +7808,6 @@ func (s *GetAppMessageQueueRouteRequest) SetAcceptLanguage(v string) *GetAppMess
 
 func (s *GetAppMessageQueueRouteRequest) SetAppId(v string) *GetAppMessageQueueRouteRequest {
 	s.AppId = &v
-	return s
-}
-
-func (s *GetAppMessageQueueRouteRequest) SetMseSessionId(v string) *GetAppMessageQueueRouteRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -8196,7 +7938,6 @@ type GetApplicationListRequest struct {
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	Language       *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
@@ -8230,11 +7971,6 @@ func (s *GetApplicationListRequest) SetAppName(v string) *GetApplicationListRequ
 
 func (s *GetApplicationListRequest) SetLanguage(v string) *GetApplicationListRequest {
 	s.Language = &v
-	return s
-}
-
-func (s *GetApplicationListRequest) SetMseSessionId(v string) *GetApplicationListRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -8454,7 +8190,6 @@ type GetBlackWhiteListRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	IsWhite         *bool   `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -8479,11 +8214,6 @@ func (s *GetBlackWhiteListRequest) SetGatewayUniqueId(v string) *GetBlackWhiteLi
 
 func (s *GetBlackWhiteListRequest) SetIsWhite(v bool) *GetBlackWhiteListRequest {
 	s.IsWhite = &v
-	return s
-}
-
-func (s *GetBlackWhiteListRequest) SetMseSessionId(v string) *GetBlackWhiteListRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -8655,7 +8385,6 @@ type GetEngineNamepaceRequest struct {
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s GetEngineNamepaceRequest) String() string {
@@ -8683,11 +8412,6 @@ func (s *GetEngineNamepaceRequest) SetId(v string) *GetEngineNamepaceRequest {
 
 func (s *GetEngineNamepaceRequest) SetInstanceId(v string) *GetEngineNamepaceRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetEngineNamepaceRequest) SetMseSessionId(v string) *GetEngineNamepaceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -8800,7 +8524,6 @@ func (s *GetEngineNamepaceResponse) SetBody(v *GetEngineNamepaceResponseBody) *G
 type GetGatewayRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s GetGatewayRequest) String() string {
@@ -8818,11 +8541,6 @@ func (s *GetGatewayRequest) SetAcceptLanguage(v string) *GetGatewayRequest {
 
 func (s *GetGatewayRequest) SetGatewayUniqueId(v string) *GetGatewayRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *GetGatewayRequest) SetMseSessionId(v string) *GetGatewayRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -9095,7 +8813,6 @@ type GetGatewayDomainDetailRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s GetGatewayDomainDetailRequest) String() string {
@@ -9118,11 +8835,6 @@ func (s *GetGatewayDomainDetailRequest) SetGatewayUniqueId(v string) *GetGateway
 
 func (s *GetGatewayDomainDetailRequest) SetId(v string) *GetGatewayDomainDetailRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *GetGatewayDomainDetailRequest) SetMseSessionId(v string) *GetGatewayDomainDetailRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -9343,7 +9055,6 @@ type GetGatewayOptionRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayId       *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s GetGatewayOptionRequest) String() string {
@@ -9366,11 +9077,6 @@ func (s *GetGatewayOptionRequest) SetGatewayId(v int64) *GetGatewayOptionRequest
 
 func (s *GetGatewayOptionRequest) SetGatewayUniqueId(v string) *GetGatewayOptionRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *GetGatewayOptionRequest) SetMseSessionId(v string) *GetGatewayOptionRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -9453,7 +9159,6 @@ func (s *GetGatewayOptionResponse) SetBody(v *GetGatewayOptionResponseBody) *Get
 type GetGatewayRouteDetailRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RouteId         *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
 }
 
@@ -9472,11 +9177,6 @@ func (s *GetGatewayRouteDetailRequest) SetAcceptLanguage(v string) *GetGatewayRo
 
 func (s *GetGatewayRouteDetailRequest) SetGatewayUniqueId(v string) *GetGatewayRouteDetailRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *GetGatewayRouteDetailRequest) SetMseSessionId(v string) *GetGatewayRouteDetailRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -10299,7 +9999,6 @@ func (s *GetGatewayRouteDetailResponse) SetBody(v *GetGatewayRouteDetailResponse
 type GetGatewayServiceDetailRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	ServiceId       *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -10318,11 +10017,6 @@ func (s *GetGatewayServiceDetailRequest) SetAcceptLanguage(v string) *GetGateway
 
 func (s *GetGatewayServiceDetailRequest) SetGatewayUniqueId(v string) *GetGatewayServiceDetailRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *GetGatewayServiceDetailRequest) SetMseSessionId(v string) *GetGatewayServiceDetailRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -10733,7 +10427,6 @@ func (s *GetGatewayServiceDetailResponse) SetBody(v *GetGatewayServiceDetailResp
 type GetGovernanceKubernetesClusterRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10752,11 +10445,6 @@ func (s *GetGovernanceKubernetesClusterRequest) SetAcceptLanguage(v string) *Get
 
 func (s *GetGovernanceKubernetesClusterRequest) SetClusterId(v string) *GetGovernanceKubernetesClusterRequest {
 	s.ClusterId = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterRequest) SetMseSessionId(v string) *GetGovernanceKubernetesClusterRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -10925,7 +10613,6 @@ func (s *GetGovernanceKubernetesClusterResponse) SetBody(v *GetGovernanceKuberne
 
 type GetImageRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	VersionCode    *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 }
 
@@ -10939,11 +10626,6 @@ func (s GetImageRequest) GoString() string {
 
 func (s *GetImageRequest) SetAcceptLanguage(v string) *GetImageRequest {
 	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *GetImageRequest) SetMseSessionId(v string) *GetImageRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -11067,7 +10749,6 @@ type GetImportFileUrlRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ContentType    *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -11091,11 +10772,6 @@ func (s *GetImportFileUrlRequest) SetContentType(v string) *GetImportFileUrlRequ
 
 func (s *GetImportFileUrlRequest) SetInstanceId(v string) *GetImportFileUrlRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetImportFileUrlRequest) SetMseSessionId(v string) *GetImportFileUrlRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -11212,7 +10888,6 @@ func (s *GetImportFileUrlResponse) SetBody(v *GetImportFileUrlResponseBody) *Get
 type GetKubernetesSourceRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s GetKubernetesSourceRequest) String() string {
@@ -11230,11 +10905,6 @@ func (s *GetKubernetesSourceRequest) SetAcceptLanguage(v string) *GetKubernetesS
 
 func (s *GetKubernetesSourceRequest) SetGatewayUniqueId(v string) *GetKubernetesSourceRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *GetKubernetesSourceRequest) SetMseSessionId(v string) *GetKubernetesSourceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -11339,7 +11009,6 @@ func (s *GetKubernetesSourceResponse) SetBody(v *GetKubernetesSourceResponseBody
 
 type GetMseFeatureSwitchRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s GetMseFeatureSwitchRequest) String() string {
@@ -11352,11 +11021,6 @@ func (s GetMseFeatureSwitchRequest) GoString() string {
 
 func (s *GetMseFeatureSwitchRequest) SetAcceptLanguage(v string) *GetMseFeatureSwitchRequest {
 	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *GetMseFeatureSwitchRequest) SetMseSessionId(v string) *GetMseFeatureSwitchRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -11433,7 +11097,6 @@ func (s *GetMseFeatureSwitchResponse) SetBody(v *GetMseFeatureSwitchResponseBody
 type GetMseSourceRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -11452,11 +11115,6 @@ func (s *GetMseSourceRequest) SetAcceptLanguage(v string) *GetMseSourceRequest {
 
 func (s *GetMseSourceRequest) SetGatewayUniqueId(v string) *GetMseSourceRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *GetMseSourceRequest) SetMseSessionId(v string) *GetMseSourceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -11588,7 +11246,6 @@ type GetNacosConfigRequest struct {
 	DataId         *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	Group          *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -11622,11 +11279,6 @@ func (s *GetNacosConfigRequest) SetGroup(v string) *GetNacosConfigRequest {
 
 func (s *GetNacosConfigRequest) SetInstanceId(v string) *GetNacosConfigRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetNacosConfigRequest) SetMseSessionId(v string) *GetNacosConfigRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -11781,7 +11433,6 @@ type GetNacosHistoryConfigRequest struct {
 	DataId         *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	Group          *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	Nid            *string `json:"Nid,omitempty" xml:"Nid,omitempty"`
 }
@@ -11811,11 +11462,6 @@ func (s *GetNacosHistoryConfigRequest) SetGroup(v string) *GetNacosHistoryConfig
 
 func (s *GetNacosHistoryConfigRequest) SetInstanceId(v string) *GetNacosHistoryConfigRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetNacosHistoryConfigRequest) SetMseSessionId(v string) *GetNacosHistoryConfigRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -11954,7 +11600,6 @@ func (s *GetNacosHistoryConfigResponse) SetBody(v *GetNacosHistoryConfigResponse
 
 type GetOverviewRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Period         *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
@@ -11969,11 +11614,6 @@ func (s GetOverviewRequest) GoString() string {
 
 func (s *GetOverviewRequest) SetAcceptLanguage(v string) *GetOverviewRequest {
 	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *GetOverviewRequest) SetMseSessionId(v string) *GetOverviewRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -12066,7 +11706,6 @@ func (s *GetOverviewResponse) SetBody(v *GetOverviewResponseBody) *GetOverviewRe
 type GetPluginConfigRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	PluginId        *int64  `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
 }
 
@@ -12085,11 +11724,6 @@ func (s *GetPluginConfigRequest) SetAcceptLanguage(v string) *GetPluginConfigReq
 
 func (s *GetPluginConfigRequest) SetGatewayUniqueId(v string) *GetPluginConfigRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *GetPluginConfigRequest) SetMseSessionId(v string) *GetPluginConfigRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -12381,7 +12015,6 @@ type GetPluginsRequest struct {
 	Category        *int32  `json:"Category,omitempty" xml:"Category,omitempty"`
 	EnableOnly      *bool   `json:"EnableOnly,omitempty" xml:"EnableOnly,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -12410,11 +12043,6 @@ func (s *GetPluginsRequest) SetEnableOnly(v bool) *GetPluginsRequest {
 
 func (s *GetPluginsRequest) SetGatewayUniqueId(v string) *GetPluginsRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *GetPluginsRequest) SetMseSessionId(v string) *GetPluginsRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -12610,7 +12238,6 @@ type GetServiceListRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	ServiceType    *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
@@ -12636,11 +12263,6 @@ func (s *GetServiceListRequest) SetAppId(v string) *GetServiceListRequest {
 
 func (s *GetServiceListRequest) SetIp(v string) *GetServiceListRequest {
 	s.Ip = &v
-	return s
-}
-
-func (s *GetServiceListRequest) SetMseSessionId(v string) *GetServiceListRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -12860,7 +12482,6 @@ type GetServiceListenersRequest struct {
 	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	HasIpCount     *string `json:"HasIpCount,omitempty" xml:"HasIpCount,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -12904,11 +12525,6 @@ func (s *GetServiceListenersRequest) SetHasIpCount(v string) *GetServiceListener
 
 func (s *GetServiceListenersRequest) SetInstanceId(v string) *GetServiceListenersRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetServiceListenersRequest) SetMseSessionId(v string) *GetServiceListenersRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -13098,7 +12714,6 @@ func (s *GetServiceListenersResponse) SetBody(v *GetServiceListenersResponseBody
 type GetTagsBySwimmingLaneGroupIdRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GroupId        *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s GetTagsBySwimmingLaneGroupIdRequest) String() string {
@@ -13116,11 +12731,6 @@ func (s *GetTagsBySwimmingLaneGroupIdRequest) SetAcceptLanguage(v string) *GetTa
 
 func (s *GetTagsBySwimmingLaneGroupIdRequest) SetGroupId(v int64) *GetTagsBySwimmingLaneGroupIdRequest {
 	s.GroupId = &v
-	return s
-}
-
-func (s *GetTagsBySwimmingLaneGroupIdRequest) SetMseSessionId(v string) *GetTagsBySwimmingLaneGroupIdRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -13216,7 +12826,6 @@ type ImportNacosConfigRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	FileUrl        *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	Policy         *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 }
@@ -13241,11 +12850,6 @@ func (s *ImportNacosConfigRequest) SetFileUrl(v string) *ImportNacosConfigReques
 
 func (s *ImportNacosConfigRequest) SetInstanceId(v string) *ImportNacosConfigRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *ImportNacosConfigRequest) SetMseSessionId(v string) *ImportNacosConfigRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -13431,7 +13035,6 @@ func (s *ImportNacosConfigResponse) SetBody(v *ImportNacosConfigResponseBody) *I
 type ImportServicesRequest struct {
 	AcceptLanguage  *string                             `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string                             `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string                             `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	ServiceList     []*ImportServicesRequestServiceList `json:"ServiceList,omitempty" xml:"ServiceList,omitempty" type:"Repeated"`
 	SourceType      *string                             `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	TlsSetting      *string                             `json:"TlsSetting,omitempty" xml:"TlsSetting,omitempty"`
@@ -13452,11 +13055,6 @@ func (s *ImportServicesRequest) SetAcceptLanguage(v string) *ImportServicesReque
 
 func (s *ImportServicesRequest) SetGatewayUniqueId(v string) *ImportServicesRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *ImportServicesRequest) SetMseSessionId(v string) *ImportServicesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -13525,7 +13123,6 @@ func (s *ImportServicesRequestServiceList) SetServiceProtocol(v string) *ImportS
 type ImportServicesShrinkRequest struct {
 	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId   *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId      *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	ServiceListShrink *string `json:"ServiceList,omitempty" xml:"ServiceList,omitempty"`
 	SourceType        *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	TlsSetting        *string `json:"TlsSetting,omitempty" xml:"TlsSetting,omitempty"`
@@ -13546,11 +13143,6 @@ func (s *ImportServicesShrinkRequest) SetAcceptLanguage(v string) *ImportService
 
 func (s *ImportServicesShrinkRequest) SetGatewayUniqueId(v string) *ImportServicesShrinkRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *ImportServicesShrinkRequest) SetMseSessionId(v string) *ImportServicesShrinkRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -13651,7 +13243,6 @@ type ListAnsInstancesRequest struct {
 	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -13689,11 +13280,6 @@ func (s *ListAnsInstancesRequest) SetGroupName(v string) *ListAnsInstancesReques
 
 func (s *ListAnsInstancesRequest) SetInstanceId(v string) *ListAnsInstancesRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *ListAnsInstancesRequest) SetMseSessionId(v string) *ListAnsInstancesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -13953,7 +13539,6 @@ type ListAnsServiceClustersRequest struct {
 	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -13991,11 +13576,6 @@ func (s *ListAnsServiceClustersRequest) SetGroupName(v string) *ListAnsServiceCl
 
 func (s *ListAnsServiceClustersRequest) SetInstanceId(v string) *ListAnsServiceClustersRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *ListAnsServiceClustersRequest) SetMseSessionId(v string) *ListAnsServiceClustersRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -14206,7 +13786,6 @@ type ListAnsServicesRequest struct {
 	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	HasIpCount     *string `json:"HasIpCount,omitempty" xml:"HasIpCount,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -14244,11 +13823,6 @@ func (s *ListAnsServicesRequest) SetHasIpCount(v string) *ListAnsServicesRequest
 
 func (s *ListAnsServicesRequest) SetInstanceId(v string) *ListAnsServicesRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *ListAnsServicesRequest) SetMseSessionId(v string) *ListAnsServicesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -14415,7 +13989,6 @@ func (s *ListAnsServicesResponse) SetBody(v *ListAnsServicesResponseBody) *ListA
 type ListAppBySwimmingLaneGroupTagRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GroupId        *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Tag            *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -14434,11 +14007,6 @@ func (s *ListAppBySwimmingLaneGroupTagRequest) SetAcceptLanguage(v string) *List
 
 func (s *ListAppBySwimmingLaneGroupTagRequest) SetGroupId(v int64) *ListAppBySwimmingLaneGroupTagRequest {
 	s.GroupId = &v
-	return s
-}
-
-func (s *ListAppBySwimmingLaneGroupTagRequest) SetMseSessionId(v string) *ListAppBySwimmingLaneGroupTagRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -14539,7 +14107,6 @@ type ListApplicationsWithTagRulesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
@@ -14566,11 +14133,6 @@ func (s *ListApplicationsWithTagRulesRequest) SetAppId(v string) *ListApplicatio
 
 func (s *ListApplicationsWithTagRulesRequest) SetAppName(v string) *ListApplicationsWithTagRulesRequest {
 	s.AppName = &v
-	return s
-}
-
-func (s *ListApplicationsWithTagRulesRequest) SetMseSessionId(v string) *ListApplicationsWithTagRulesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -14819,7 +14381,6 @@ func (s *ListApplicationsWithTagRulesResponse) SetBody(v *ListApplicationsWithTa
 
 type ListClusterConnectionTypesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s ListClusterConnectionTypesRequest) String() string {
@@ -14832,11 +14393,6 @@ func (s ListClusterConnectionTypesRequest) GoString() string {
 
 func (s *ListClusterConnectionTypesRequest) SetAcceptLanguage(v string) *ListClusterConnectionTypesRequest {
 	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *ListClusterConnectionTypesRequest) SetMseSessionId(v string) *ListClusterConnectionTypesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -14948,7 +14504,6 @@ func (s *ListClusterConnectionTypesResponse) SetBody(v *ListClusterConnectionTyp
 type ListClusterTypesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ConnectType    *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	MseVersion     *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -14968,11 +14523,6 @@ func (s *ListClusterTypesRequest) SetAcceptLanguage(v string) *ListClusterTypesR
 
 func (s *ListClusterTypesRequest) SetConnectType(v string) *ListClusterTypesRequest {
 	s.ConnectType = &v
-	return s
-}
-
-func (s *ListClusterTypesRequest) SetMseSessionId(v string) *ListClusterTypesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -15094,7 +14644,6 @@ func (s *ListClusterTypesResponse) SetBody(v *ListClusterTypesResponseBody) *Lis
 type ListClusterVersionsRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterType    *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	MseVersion     *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
 }
 
@@ -15113,11 +14662,6 @@ func (s *ListClusterVersionsRequest) SetAcceptLanguage(v string) *ListClusterVer
 
 func (s *ListClusterVersionsRequest) SetClusterType(v string) *ListClusterVersionsRequest {
 	s.ClusterType = &v
-	return s
-}
-
-func (s *ListClusterVersionsRequest) SetMseSessionId(v string) *ListClusterVersionsRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -15246,7 +14790,6 @@ func (s *ListClusterVersionsResponse) SetBody(v *ListClusterVersionsResponseBody
 type ListClustersRequest struct {
 	AcceptLanguage   *string                   `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterAliasName *string                   `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
-	MseSessionId     *string                   `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	PageNum          *int32                    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize         *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId         *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -15270,11 +14813,6 @@ func (s *ListClustersRequest) SetAcceptLanguage(v string) *ListClustersRequest {
 
 func (s *ListClustersRequest) SetClusterAliasName(v string) *ListClustersRequest {
 	s.ClusterAliasName = &v
-	return s
-}
-
-func (s *ListClustersRequest) SetMseSessionId(v string) *ListClustersRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -15553,7 +15091,6 @@ func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListCluster
 type ListEngineNamespacesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s ListEngineNamespacesRequest) String() string {
@@ -15571,11 +15108,6 @@ func (s *ListEngineNamespacesRequest) SetAcceptLanguage(v string) *ListEngineNam
 
 func (s *ListEngineNamespacesRequest) SetInstanceId(v string) *ListEngineNamespacesRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *ListEngineNamespacesRequest) SetMseSessionId(v string) *ListEngineNamespacesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -15729,7 +15261,6 @@ func (s *ListEngineNamespacesResponse) SetBody(v *ListEngineNamespacesResponseBo
 type ListEurekaInstancesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
@@ -15751,11 +15282,6 @@ func (s *ListEurekaInstancesRequest) SetAcceptLanguage(v string) *ListEurekaInst
 
 func (s *ListEurekaInstancesRequest) SetClusterId(v string) *ListEurekaInstancesRequest {
 	s.ClusterId = &v
-	return s
-}
-
-func (s *ListEurekaInstancesRequest) SetMseSessionId(v string) *ListEurekaInstancesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -15971,7 +15497,6 @@ func (s *ListEurekaInstancesResponse) SetBody(v *ListEurekaInstancesResponseBody
 type ListEurekaServicesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -15993,11 +15518,6 @@ func (s *ListEurekaServicesRequest) SetAcceptLanguage(v string) *ListEurekaServi
 
 func (s *ListEurekaServicesRequest) SetClusterId(v string) *ListEurekaServicesRequest {
 	s.ClusterId = &v
-	return s
-}
-
-func (s *ListEurekaServicesRequest) SetMseSessionId(v string) *ListEurekaServicesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -16148,7 +15668,6 @@ type ListGatewayRequest struct {
 	AcceptLanguage *string                         `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	DescSort       *bool                           `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
 	FilterParams   *ListGatewayRequestFilterParams `json:"FilterParams,omitempty" xml:"FilterParams,omitempty" type:"Struct"`
-	MseSessionId   *string                         `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	OrderItem      *string                         `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
 	PageNumber     *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -16174,11 +15693,6 @@ func (s *ListGatewayRequest) SetDescSort(v bool) *ListGatewayRequest {
 
 func (s *ListGatewayRequest) SetFilterParams(v *ListGatewayRequestFilterParams) *ListGatewayRequest {
 	s.FilterParams = v
-	return s
-}
-
-func (s *ListGatewayRequest) SetMseSessionId(v string) *ListGatewayRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -16248,7 +15762,6 @@ type ListGatewayShrinkRequest struct {
 	AcceptLanguage     *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	DescSort           *bool   `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
 	FilterParamsShrink *string `json:"FilterParams,omitempty" xml:"FilterParams,omitempty"`
-	MseSessionId       *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	OrderItem          *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
 	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -16274,11 +15787,6 @@ func (s *ListGatewayShrinkRequest) SetDescSort(v bool) *ListGatewayShrinkRequest
 
 func (s *ListGatewayShrinkRequest) SetFilterParamsShrink(v string) *ListGatewayShrinkRequest {
 	s.FilterParamsShrink = &v
-	return s
-}
-
-func (s *ListGatewayShrinkRequest) SetMseSessionId(v string) *ListGatewayShrinkRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -16755,7 +16263,6 @@ func (s *ListGatewayResponse) SetBody(v *ListGatewayResponseBody) *ListGatewayRe
 type ListGatewayDomainRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -16774,11 +16281,6 @@ func (s *ListGatewayDomainRequest) SetAcceptLanguage(v string) *ListGatewayDomai
 
 func (s *ListGatewayDomainRequest) SetGatewayUniqueId(v string) *ListGatewayDomainRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *ListGatewayDomainRequest) SetMseSessionId(v string) *ListGatewayDomainRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -16985,7 +16487,6 @@ type ListGatewayRouteRequest struct {
 	AcceptLanguage *string                              `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	DescSort       *bool                                `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
 	FilterParams   *ListGatewayRouteRequestFilterParams `json:"FilterParams,omitempty" xml:"FilterParams,omitempty" type:"Struct"`
-	MseSessionId   *string                              `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	OrderItem      *string                              `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
 	PageNumber     *int32                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -17011,11 +16512,6 @@ func (s *ListGatewayRouteRequest) SetDescSort(v bool) *ListGatewayRouteRequest {
 
 func (s *ListGatewayRouteRequest) SetFilterParams(v *ListGatewayRouteRequestFilterParams) *ListGatewayRouteRequest {
 	s.FilterParams = v
-	return s
-}
-
-func (s *ListGatewayRouteRequest) SetMseSessionId(v string) *ListGatewayRouteRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -17097,7 +16593,6 @@ type ListGatewayRouteShrinkRequest struct {
 	AcceptLanguage     *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	DescSort           *bool   `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
 	FilterParamsShrink *string `json:"FilterParams,omitempty" xml:"FilterParams,omitempty"`
-	MseSessionId       *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	OrderItem          *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
 	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -17123,11 +16618,6 @@ func (s *ListGatewayRouteShrinkRequest) SetDescSort(v bool) *ListGatewayRouteShr
 
 func (s *ListGatewayRouteShrinkRequest) SetFilterParamsShrink(v string) *ListGatewayRouteShrinkRequest {
 	s.FilterParamsShrink = &v
-	return s
-}
-
-func (s *ListGatewayRouteShrinkRequest) SetMseSessionId(v string) *ListGatewayRouteShrinkRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -17878,7 +17368,6 @@ type ListGatewayServiceRequest struct {
 	AcceptLanguage *string                                `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	DescSort       *bool                                  `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
 	FilterParams   *ListGatewayServiceRequestFilterParams `json:"FilterParams,omitempty" xml:"FilterParams,omitempty" type:"Struct"`
-	MseSessionId   *string                                `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	OrderItem      *string                                `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
 	PageNumber     *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -17904,11 +17393,6 @@ func (s *ListGatewayServiceRequest) SetDescSort(v bool) *ListGatewayServiceReque
 
 func (s *ListGatewayServiceRequest) SetFilterParams(v *ListGatewayServiceRequestFilterParams) *ListGatewayServiceRequest {
 	s.FilterParams = v
-	return s
-}
-
-func (s *ListGatewayServiceRequest) SetMseSessionId(v string) *ListGatewayServiceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -17978,7 +17462,6 @@ type ListGatewayServiceShrinkRequest struct {
 	AcceptLanguage     *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	DescSort           *bool   `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
 	FilterParamsShrink *string `json:"FilterParams,omitempty" xml:"FilterParams,omitempty"`
-	MseSessionId       *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	OrderItem          *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
 	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -18004,11 +17487,6 @@ func (s *ListGatewayServiceShrinkRequest) SetDescSort(v bool) *ListGatewayServic
 
 func (s *ListGatewayServiceShrinkRequest) SetFilterParamsShrink(v string) *ListGatewayServiceShrinkRequest {
 	s.FilterParamsShrink = &v
-	return s
-}
-
-func (s *ListGatewayServiceShrinkRequest) SetMseSessionId(v string) *ListGatewayServiceShrinkRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -18535,7 +18013,6 @@ func (s *ListGatewayServiceResponse) SetBody(v *ListGatewayServiceResponseBody) 
 type ListGatewaySlbRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s ListGatewaySlbRequest) String() string {
@@ -18553,11 +18030,6 @@ func (s *ListGatewaySlbRequest) SetAcceptLanguage(v string) *ListGatewaySlbReque
 
 func (s *ListGatewaySlbRequest) SetGatewayUniqueId(v string) *ListGatewaySlbRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *ListGatewaySlbRequest) SetMseSessionId(v string) *ListGatewaySlbRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -18747,7 +18219,6 @@ func (s *ListGatewaySlbResponse) SetBody(v *ListGatewaySlbResponseBody) *ListGat
 type ListInstanceCountRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterType    *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	MseVersion     *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
@@ -18768,11 +18239,6 @@ func (s *ListInstanceCountRequest) SetAcceptLanguage(v string) *ListInstanceCoun
 
 func (s *ListInstanceCountRequest) SetClusterType(v string) *ListInstanceCountRequest {
 	s.ClusterType = &v
-	return s
-}
-
-func (s *ListInstanceCountRequest) SetMseSessionId(v string) *ListInstanceCountRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -18887,7 +18353,6 @@ func (s *ListInstanceCountResponse) SetBody(v *ListInstanceCountResponseBody) *L
 
 type ListInstancesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -18902,11 +18367,6 @@ func (s ListInstancesRequest) GoString() string {
 
 func (s *ListInstancesRequest) SetAcceptLanguage(v string) *ListInstancesRequest {
 	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *ListInstancesRequest) SetMseSessionId(v string) *ListInstancesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -19210,7 +18670,6 @@ type ListListenersByConfigRequest struct {
 	DataId         *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	Group          *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
@@ -19240,11 +18699,6 @@ func (s *ListListenersByConfigRequest) SetGroup(v string) *ListListenersByConfig
 
 func (s *ListListenersByConfigRequest) SetInstanceId(v string) *ListListenersByConfigRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *ListListenersByConfigRequest) SetMseSessionId(v string) *ListListenersByConfigRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -19385,7 +18839,6 @@ type ListListenersByIpRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
@@ -19410,11 +18863,6 @@ func (s *ListListenersByIpRequest) SetInstanceId(v string) *ListListenersByIpReq
 
 func (s *ListListenersByIpRequest) SetIp(v string) *ListListenersByIpRequest {
 	s.Ip = &v
-	return s
-}
-
-func (s *ListListenersByIpRequest) SetMseSessionId(v string) *ListListenersByIpRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -19557,7 +19005,6 @@ type ListNacosConfigsRequest struct {
 	DataId         *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	Group          *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -19596,11 +19043,6 @@ func (s *ListNacosConfigsRequest) SetGroup(v string) *ListNacosConfigsRequest {
 
 func (s *ListNacosConfigsRequest) SetInstanceId(v string) *ListNacosConfigsRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *ListNacosConfigsRequest) SetMseSessionId(v string) *ListNacosConfigsRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -19774,7 +19216,6 @@ type ListNacosHistoryConfigsRequest struct {
 	DataId         *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	Group          *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -19807,11 +19248,6 @@ func (s *ListNacosHistoryConfigsRequest) SetGroup(v string) *ListNacosHistoryCon
 
 func (s *ListNacosHistoryConfigsRequest) SetInstanceId(v string) *ListNacosHistoryConfigsRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *ListNacosHistoryConfigsRequest) SetMseSessionId(v string) *ListNacosHistoryConfigsRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -19984,7 +19420,6 @@ func (s *ListNacosHistoryConfigsResponse) SetBody(v *ListNacosHistoryConfigsResp
 type ListSSLCertRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s ListSSLCertRequest) String() string {
@@ -20002,11 +19437,6 @@ func (s *ListSSLCertRequest) SetAcceptLanguage(v string) *ListSSLCertRequest {
 
 func (s *ListSSLCertRequest) SetGatewayUniqueId(v string) *ListSSLCertRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *ListSSLCertRequest) SetMseSessionId(v string) *ListSSLCertRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -20160,7 +19590,6 @@ func (s *ListSSLCertResponse) SetBody(v *ListSSLCertResponseBody) *ListSSLCertRe
 type ListSecurityGroupRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s ListSecurityGroupRequest) String() string {
@@ -20178,11 +19607,6 @@ func (s *ListSecurityGroupRequest) SetAcceptLanguage(v string) *ListSecurityGrou
 
 func (s *ListSecurityGroupRequest) SetGatewayUniqueId(v string) *ListSecurityGroupRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *ListSecurityGroupRequest) SetMseSessionId(v string) *ListSecurityGroupRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -20300,7 +19724,6 @@ func (s *ListSecurityGroupResponse) SetBody(v *ListSecurityGroupResponseBody) *L
 type ListSecurityGroupRuleRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s ListSecurityGroupRuleRequest) String() string {
@@ -20318,11 +19741,6 @@ func (s *ListSecurityGroupRuleRequest) SetAcceptLanguage(v string) *ListSecurity
 
 func (s *ListSecurityGroupRuleRequest) SetGatewayUniqueId(v string) *ListSecurityGroupRuleRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *ListSecurityGroupRuleRequest) SetMseSessionId(v string) *ListSecurityGroupRuleRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -20470,7 +19888,6 @@ func (s *ListSecurityGroupRuleResponse) SetBody(v *ListSecurityGroupRuleResponse
 type ListServiceSourceRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s ListServiceSourceRequest) String() string {
@@ -20488,11 +19905,6 @@ func (s *ListServiceSourceRequest) SetAcceptLanguage(v string) *ListServiceSourc
 
 func (s *ListServiceSourceRequest) SetGatewayUniqueId(v string) *ListServiceSourceRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *ListServiceSourceRequest) SetMseSessionId(v string) *ListServiceSourceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -20547,11 +19959,14 @@ type ListServiceSourceResponseBodyData struct {
 	Address            *string                                          `json:"Address,omitempty" xml:"Address,omitempty"`
 	BindingWithGateway *int32                                           `json:"BindingWithGateway,omitempty" xml:"BindingWithGateway,omitempty"`
 	GatewayId          *int64                                           `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId    *string                                          `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	GmtCreate          *string                                          `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified        *string                                          `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GroupList          []*string                                        `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
 	Id                 *int64                                           `json:"Id,omitempty" xml:"Id,omitempty"`
 	IngressOptions     *ListServiceSourceResponseBodyDataIngressOptions `json:"IngressOptions,omitempty" xml:"IngressOptions,omitempty" type:"Struct"`
 	Name               *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	PathList           []*string                                        `json:"PathList,omitempty" xml:"PathList,omitempty" type:"Repeated"`
 	Source             *string                                          `json:"Source,omitempty" xml:"Source,omitempty"`
 	SourceUniqueId     *string                                          `json:"SourceUniqueId,omitempty" xml:"SourceUniqueId,omitempty"`
 	Type               *string                                          `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -20580,6 +19995,11 @@ func (s *ListServiceSourceResponseBodyData) SetGatewayId(v int64) *ListServiceSo
 	return s
 }
 
+func (s *ListServiceSourceResponseBodyData) SetGatewayUniqueId(v string) *ListServiceSourceResponseBodyData {
+	s.GatewayUniqueId = &v
+	return s
+}
+
 func (s *ListServiceSourceResponseBodyData) SetGmtCreate(v string) *ListServiceSourceResponseBodyData {
 	s.GmtCreate = &v
 	return s
@@ -20587,6 +20007,11 @@ func (s *ListServiceSourceResponseBodyData) SetGmtCreate(v string) *ListServiceS
 
 func (s *ListServiceSourceResponseBodyData) SetGmtModified(v string) *ListServiceSourceResponseBodyData {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *ListServiceSourceResponseBodyData) SetGroupList(v []*string) *ListServiceSourceResponseBodyData {
+	s.GroupList = v
 	return s
 }
 
@@ -20602,6 +20027,11 @@ func (s *ListServiceSourceResponseBodyData) SetIngressOptions(v *ListServiceSour
 
 func (s *ListServiceSourceResponseBodyData) SetName(v string) *ListServiceSourceResponseBodyData {
 	s.Name = &v
+	return s
+}
+
+func (s *ListServiceSourceResponseBodyData) SetPathList(v []*string) *ListServiceSourceResponseBodyData {
+	s.PathList = v
 	return s
 }
 
@@ -20622,6 +20052,7 @@ func (s *ListServiceSourceResponseBodyData) SetType(v string) *ListServiceSource
 
 type ListServiceSourceResponseBodyDataIngressOptions struct {
 	EnableIngress  *bool   `json:"EnableIngress,omitempty" xml:"EnableIngress,omitempty"`
+	EnableStatus   *bool   `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
 	IngressClass   *string `json:"IngressClass,omitempty" xml:"IngressClass,omitempty"`
 	WatchNamespace *string `json:"WatchNamespace,omitempty" xml:"WatchNamespace,omitempty"`
 }
@@ -20636,6 +20067,11 @@ func (s ListServiceSourceResponseBodyDataIngressOptions) GoString() string {
 
 func (s *ListServiceSourceResponseBodyDataIngressOptions) SetEnableIngress(v bool) *ListServiceSourceResponseBodyDataIngressOptions {
 	s.EnableIngress = &v
+	return s
+}
+
+func (s *ListServiceSourceResponseBodyDataIngressOptions) SetEnableStatus(v bool) *ListServiceSourceResponseBodyDataIngressOptions {
+	s.EnableStatus = &v
 	return s
 }
 
@@ -20680,7 +20116,6 @@ func (s *ListServiceSourceResponse) SetBody(v *ListServiceSourceResponseBody) *L
 
 type ListTagResourcesRequest struct {
 	AcceptLanguage *string                       `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	MseSessionId   *string                       `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NextToken      *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RegionId       *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId     []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
@@ -20698,11 +20133,6 @@ func (s ListTagResourcesRequest) GoString() string {
 
 func (s *ListTagResourcesRequest) SetAcceptLanguage(v string) *ListTagResourcesRequest {
 	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetMseSessionId(v string) *ListTagResourcesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -20884,7 +20314,6 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 
 type ListUserInstancesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -20899,11 +20328,6 @@ func (s ListUserInstancesRequest) GoString() string {
 
 func (s *ListUserInstancesRequest) SetAcceptLanguage(v string) *ListUserInstancesRequest {
 	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *ListUserInstancesRequest) SetMseSessionId(v string) *ListUserInstancesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -21192,7 +20616,6 @@ func (s *ListUserInstancesResponse) SetBody(v *ListUserInstancesResponseBody) *L
 
 type ListVgroupsRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -21207,11 +20630,6 @@ func (s ListVgroupsRequest) GoString() string {
 
 func (s *ListVgroupsRequest) SetAcceptLanguage(v string) *ListVgroupsRequest {
 	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *ListVgroupsRequest) SetMseSessionId(v string) *ListVgroupsRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -21363,7 +20781,6 @@ func (s *ListVgroupsResponse) SetBody(v *ListVgroupsResponseBody) *ListVgroupsRe
 type ListZnodeChildrenRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Path           *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
@@ -21382,11 +20799,6 @@ func (s *ListZnodeChildrenRequest) SetAcceptLanguage(v string) *ListZnodeChildre
 
 func (s *ListZnodeChildrenRequest) SetClusterId(v string) *ListZnodeChildrenRequest {
 	s.ClusterId = &v
-	return s
-}
-
-func (s *ListZnodeChildrenRequest) SetMseSessionId(v string) *ListZnodeChildrenRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -21503,7 +20915,6 @@ func (s *ListZnodeChildrenResponse) SetBody(v *ListZnodeChildrenResponseBody) *L
 type ModifyGovernanceKubernetesClusterRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceInfos *string `json:"NamespaceInfos,omitempty" xml:"NamespaceInfos,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -21523,11 +20934,6 @@ func (s *ModifyGovernanceKubernetesClusterRequest) SetAcceptLanguage(v string) *
 
 func (s *ModifyGovernanceKubernetesClusterRequest) SetClusterId(v string) *ModifyGovernanceKubernetesClusterRequest {
 	s.ClusterId = &v
-	return s
-}
-
-func (s *ModifyGovernanceKubernetesClusterRequest) SetMseSessionId(v string) *ModifyGovernanceKubernetesClusterRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -21625,7 +21031,6 @@ type ModifyLosslessRuleRequest struct {
 	DelayTime           *int64  `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
 	Enable              *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	FuncType            *int64  `json:"FuncType,omitempty" xml:"FuncType,omitempty"`
-	MseSessionId        *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Related             *bool   `json:"Related,omitempty" xml:"Related,omitempty"`
 	ShutdownWaitSeconds *int32  `json:"ShutdownWaitSeconds,omitempty" xml:"ShutdownWaitSeconds,omitempty"`
@@ -21673,11 +21078,6 @@ func (s *ModifyLosslessRuleRequest) SetEnable(v bool) *ModifyLosslessRuleRequest
 
 func (s *ModifyLosslessRuleRequest) SetFuncType(v int64) *ModifyLosslessRuleRequest {
 	s.FuncType = &v
-	return s
-}
-
-func (s *ModifyLosslessRuleRequest) SetMseSessionId(v string) *ModifyLosslessRuleRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -21779,7 +21179,6 @@ func (s *ModifyLosslessRuleResponse) SetBody(v *ModifyLosslessRuleResponseBody) 
 type OfflineGatewayRouteRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RouteId         *string `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
 }
 
@@ -21798,11 +21197,6 @@ func (s *OfflineGatewayRouteRequest) SetAcceptLanguage(v string) *OfflineGateway
 
 func (s *OfflineGatewayRouteRequest) SetGatewayUniqueId(v string) *OfflineGatewayRouteRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *OfflineGatewayRouteRequest) SetMseSessionId(v string) *OfflineGatewayRouteRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -21890,7 +21284,6 @@ func (s *OfflineGatewayRouteResponse) SetBody(v *OfflineGatewayRouteResponseBody
 type PullServicesRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
@@ -21910,11 +21303,6 @@ func (s *PullServicesRequest) SetAcceptLanguage(v string) *PullServicesRequest {
 
 func (s *PullServicesRequest) SetGatewayUniqueId(v string) *PullServicesRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *PullServicesRequest) SetMseSessionId(v string) *PullServicesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -22083,7 +21471,6 @@ func (s *PullServicesResponse) SetBody(v *PullServicesResponseBody) *PullService
 type QueryAllSwimmingLaneRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GroupId        *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s QueryAllSwimmingLaneRequest) String() string {
@@ -22101,11 +21488,6 @@ func (s *QueryAllSwimmingLaneRequest) SetAcceptLanguage(v string) *QueryAllSwimm
 
 func (s *QueryAllSwimmingLaneRequest) SetGroupId(v int64) *QueryAllSwimmingLaneRequest {
 	s.GroupId = &v
-	return s
-}
-
-func (s *QueryAllSwimmingLaneRequest) SetMseSessionId(v string) *QueryAllSwimmingLaneRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -22199,7 +21581,6 @@ func (s *QueryAllSwimmingLaneResponse) SetBody(v *QueryAllSwimmingLaneResponseBo
 
 type QueryAllSwimmingLaneGroupRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s QueryAllSwimmingLaneGroupRequest) String() string {
@@ -22212,11 +21593,6 @@ func (s QueryAllSwimmingLaneGroupRequest) GoString() string {
 
 func (s *QueryAllSwimmingLaneGroupRequest) SetAcceptLanguage(v string) *QueryAllSwimmingLaneGroupRequest {
 	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *QueryAllSwimmingLaneGroupRequest) SetMseSessionId(v string) *QueryAllSwimmingLaneGroupRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -22310,7 +21686,6 @@ func (s *QueryAllSwimmingLaneGroupResponse) SetBody(v *QueryAllSwimmingLaneGroup
 
 type QueryBusinessLocationsRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s QueryBusinessLocationsRequest) String() string {
@@ -22323,11 +21698,6 @@ func (s QueryBusinessLocationsRequest) GoString() string {
 
 func (s *QueryBusinessLocationsRequest) SetAcceptLanguage(v string) *QueryBusinessLocationsRequest {
 	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *QueryBusinessLocationsRequest) SetMseSessionId(v string) *QueryBusinessLocationsRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -22494,7 +21864,6 @@ type QueryClusterDetailRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	AclSwitch      *bool   `json:"AclSwitch,omitempty" xml:"AclSwitch,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	OrderId        *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -22518,11 +21887,6 @@ func (s *QueryClusterDetailRequest) SetAclSwitch(v bool) *QueryClusterDetailRequ
 
 func (s *QueryClusterDetailRequest) SetInstanceId(v string) *QueryClusterDetailRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *QueryClusterDetailRequest) SetMseSessionId(v string) *QueryClusterDetailRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -22896,7 +22260,6 @@ func (s *QueryClusterDetailResponse) SetBody(v *QueryClusterDetailResponseBody) 
 type QueryClusterDiskSpecificationRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterType    *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s QueryClusterDiskSpecificationRequest) String() string {
@@ -22914,11 +22277,6 @@ func (s *QueryClusterDiskSpecificationRequest) SetAcceptLanguage(v string) *Quer
 
 func (s *QueryClusterDiskSpecificationRequest) SetClusterType(v string) *QueryClusterDiskSpecificationRequest {
 	s.ClusterType = &v
-	return s
-}
-
-func (s *QueryClusterDiskSpecificationRequest) SetMseSessionId(v string) *QueryClusterDiskSpecificationRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -23042,7 +22400,6 @@ func (s *QueryClusterDiskSpecificationResponse) SetBody(v *QueryClusterDiskSpeci
 type QueryClusterSpecificationRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ConnectType    *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	MseVersion     *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
 }
 
@@ -23061,11 +22418,6 @@ func (s *QueryClusterSpecificationRequest) SetAcceptLanguage(v string) *QueryClu
 
 func (s *QueryClusterSpecificationRequest) SetConnectType(v string) *QueryClusterSpecificationRequest {
 	s.ConnectType = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationRequest) SetMseSessionId(v string) *QueryClusterSpecificationRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -23214,7 +22566,6 @@ type QueryConfigRequest struct {
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ConfigType     *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
 
@@ -23243,11 +22594,6 @@ func (s *QueryConfigRequest) SetConfigType(v string) *QueryConfigRequest {
 
 func (s *QueryConfigRequest) SetInstanceId(v string) *QueryConfigRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *QueryConfigRequest) SetMseSessionId(v string) *QueryConfigRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -23495,7 +22841,6 @@ func (s *QueryConfigResponse) SetBody(v *QueryConfigResponseBody) *QueryConfigRe
 
 type QueryGatewayRegionRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s QueryGatewayRegionRequest) String() string {
@@ -23508,11 +22853,6 @@ func (s QueryGatewayRegionRequest) GoString() string {
 
 func (s *QueryGatewayRegionRequest) SetAcceptLanguage(v string) *QueryGatewayRegionRequest {
 	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *QueryGatewayRegionRequest) SetMseSessionId(v string) *QueryGatewayRegionRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -23594,7 +22934,6 @@ func (s *QueryGatewayRegionResponse) SetBody(v *QueryGatewayRegionResponseBody) 
 
 type QueryGatewayTypeRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s QueryGatewayTypeRequest) String() string {
@@ -23607,11 +22946,6 @@ func (s QueryGatewayTypeRequest) GoString() string {
 
 func (s *QueryGatewayTypeRequest) SetAcceptLanguage(v string) *QueryGatewayTypeRequest {
 	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *QueryGatewayTypeRequest) SetMseSessionId(v string) *QueryGatewayTypeRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -23695,7 +23029,6 @@ type QueryGovernanceKubernetesClusterRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
@@ -23720,11 +23053,6 @@ func (s *QueryGovernanceKubernetesClusterRequest) SetClusterId(v string) *QueryG
 
 func (s *QueryGovernanceKubernetesClusterRequest) SetClusterName(v string) *QueryGovernanceKubernetesClusterRequest {
 	s.ClusterName = &v
-	return s
-}
-
-func (s *QueryGovernanceKubernetesClusterRequest) SetMseSessionId(v string) *QueryGovernanceKubernetesClusterRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -23901,7 +23229,6 @@ type QueryMonitorRequest struct {
 	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MonitorType    *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Step           *int64  `json:"Step,omitempty" xml:"Step,omitempty"`
@@ -23932,11 +23259,6 @@ func (s *QueryMonitorRequest) SetInstanceId(v string) *QueryMonitorRequest {
 
 func (s *QueryMonitorRequest) SetMonitorType(v string) *QueryMonitorRequest {
 	s.MonitorType = &v
-	return s
-}
-
-func (s *QueryMonitorRequest) SetMseSessionId(v string) *QueryMonitorRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -24056,7 +23378,6 @@ func (s *QueryMonitorResponse) SetBody(v *QueryMonitorResponseBody) *QueryMonito
 
 type QuerySlbSpecRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s QuerySlbSpecRequest) String() string {
@@ -24069,11 +23390,6 @@ func (s QuerySlbSpecRequest) GoString() string {
 
 func (s *QuerySlbSpecRequest) SetAcceptLanguage(v string) *QuerySlbSpecRequest {
 	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *QuerySlbSpecRequest) SetMseSessionId(v string) *QuerySlbSpecRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -24203,7 +23519,6 @@ func (s *QuerySlbSpecResponse) SetBody(v *QuerySlbSpecResponseBody) *QuerySlbSpe
 type QuerySwimmingLaneByIdRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	LaneId         *int64  `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s QuerySwimmingLaneByIdRequest) String() string {
@@ -24221,11 +23536,6 @@ func (s *QuerySwimmingLaneByIdRequest) SetAcceptLanguage(v string) *QuerySwimmin
 
 func (s *QuerySwimmingLaneByIdRequest) SetLaneId(v int64) *QuerySwimmingLaneByIdRequest {
 	s.LaneId = &v
-	return s
-}
-
-func (s *QuerySwimmingLaneByIdRequest) SetMseSessionId(v string) *QuerySwimmingLaneByIdRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -24321,7 +23631,6 @@ type QueryZnodeDetailRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Path           *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
@@ -24346,11 +23655,6 @@ func (s *QueryZnodeDetailRequest) SetClusterId(v string) *QueryZnodeDetailReques
 
 func (s *QueryZnodeDetailRequest) SetInstanceId(v string) *QueryZnodeDetailRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *QueryZnodeDetailRequest) SetMseSessionId(v string) *QueryZnodeDetailRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -24473,7 +23777,6 @@ type RestartClusterRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	PodNameList    *string `json:"PodNameList,omitempty" xml:"PodNameList,omitempty"`
 	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
@@ -24498,11 +23801,6 @@ func (s *RestartClusterRequest) SetClusterId(v string) *RestartClusterRequest {
 
 func (s *RestartClusterRequest) SetInstanceId(v string) *RestartClusterRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *RestartClusterRequest) SetMseSessionId(v string) *RestartClusterRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -24583,7 +23881,6 @@ func (s *RestartClusterResponse) SetBody(v *RestartClusterResponseBody) *Restart
 type RetryClusterRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
 
@@ -24602,11 +23899,6 @@ func (s *RetryClusterRequest) SetAcceptLanguage(v string) *RetryClusterRequest {
 
 func (s *RetryClusterRequest) SetInstanceId(v string) *RetryClusterRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *RetryClusterRequest) SetMseSessionId(v string) *RetryClusterRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -24682,7 +23974,6 @@ func (s *RetryClusterResponse) SetBody(v *RetryClusterResponseBody) *RetryCluste
 type SelectGatewaySlbRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -24702,11 +23993,6 @@ func (s *SelectGatewaySlbRequest) SetAcceptLanguage(v string) *SelectGatewaySlbR
 
 func (s *SelectGatewaySlbRequest) SetGatewayUniqueId(v string) *SelectGatewaySlbRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *SelectGatewaySlbRequest) SetMseSessionId(v string) *SelectGatewaySlbRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -24821,7 +24107,6 @@ func (s *SelectGatewaySlbResponse) SetBody(v *SelectGatewaySlbResponseBody) *Sel
 
 type TagResourcesRequest struct {
 	AcceptLanguage *string                   `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	MseSessionId   *string                   `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RegionId       *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId     []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceType   *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -24838,11 +24123,6 @@ func (s TagResourcesRequest) GoString() string {
 
 func (s *TagResourcesRequest) SetAcceptLanguage(v string) *TagResourcesRequest {
 	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *TagResourcesRequest) SetMseSessionId(v string) *TagResourcesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -24956,7 +24236,6 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 type UntagResourcesRequest struct {
 	AcceptLanguage *string   `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	All            *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	MseSessionId   *string   `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId     []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceType   *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -24978,11 +24257,6 @@ func (s *UntagResourcesRequest) SetAcceptLanguage(v string) *UntagResourcesReque
 
 func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
 	s.All = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetMseSessionId(v string) *UntagResourcesRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -25074,7 +24348,6 @@ type UpdateAclRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	AclEntryList   *string `json:"AclEntryList,omitempty" xml:"AclEntryList,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s UpdateAclRequest) String() string {
@@ -25097,11 +24370,6 @@ func (s *UpdateAclRequest) SetAclEntryList(v string) *UpdateAclRequest {
 
 func (s *UpdateAclRequest) SetInstanceId(v string) *UpdateAclRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *UpdateAclRequest) SetMseSessionId(v string) *UpdateAclRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -25175,7 +24443,6 @@ type UpdateBlackWhiteListRequest struct {
 	GatewayUniqueId    *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	IsWhite            *bool   `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
-	MseSessionId       *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Note               *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	ResourceIdJsonList *string `json:"ResourceIdJsonList,omitempty" xml:"ResourceIdJsonList,omitempty"`
@@ -25214,11 +24481,6 @@ func (s *UpdateBlackWhiteListRequest) SetId(v int64) *UpdateBlackWhiteListReques
 
 func (s *UpdateBlackWhiteListRequest) SetIsWhite(v bool) *UpdateBlackWhiteListRequest {
 	s.IsWhite = &v
-	return s
-}
-
-func (s *UpdateBlackWhiteListRequest) SetMseSessionId(v string) *UpdateBlackWhiteListRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -25332,7 +24594,6 @@ type UpdateClusterRequest struct {
 	AcceptLanguage   *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterAliasName *string `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId     *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RequestPars      *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
 
@@ -25356,11 +24617,6 @@ func (s *UpdateClusterRequest) SetClusterAliasName(v string) *UpdateClusterReque
 
 func (s *UpdateClusterRequest) SetInstanceId(v string) *UpdateClusterRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *UpdateClusterRequest) SetMseSessionId(v string) *UpdateClusterRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -25445,7 +24701,6 @@ type UpdateClusterSpecRequest struct {
 	ClusterSpecification *string `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
 	InstanceCount        *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId         *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s UpdateClusterSpecRequest) String() string {
@@ -25478,11 +24733,6 @@ func (s *UpdateClusterSpecRequest) SetInstanceCount(v int32) *UpdateClusterSpecR
 
 func (s *UpdateClusterSpecRequest) SetInstanceId(v string) *UpdateClusterSpecRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *UpdateClusterSpecRequest) SetMseSessionId(v string) *UpdateClusterSpecRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -25577,7 +24827,6 @@ type UpdateConfigRequest struct {
 	MaxClientCnxns           *string `json:"MaxClientCnxns,omitempty" xml:"MaxClientCnxns,omitempty"`
 	MaxSessionTimeout        *string `json:"MaxSessionTimeout,omitempty" xml:"MaxSessionTimeout,omitempty"`
 	MinSessionTimeout        *string `json:"MinSessionTimeout,omitempty" xml:"MinSessionTimeout,omitempty"`
-	MseSessionId             *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamingAuthEnabled        *bool   `json:"NamingAuthEnabled,omitempty" xml:"NamingAuthEnabled,omitempty"`
 	OpenSuperAcl             *string `json:"OpenSuperAcl,omitempty" xml:"OpenSuperAcl,omitempty"`
 	PassWord                 *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
@@ -25663,11 +24912,6 @@ func (s *UpdateConfigRequest) SetMaxSessionTimeout(v string) *UpdateConfigReques
 
 func (s *UpdateConfigRequest) SetMinSessionTimeout(v string) *UpdateConfigRequest {
 	s.MinSessionTimeout = &v
-	return s
-}
-
-func (s *UpdateConfigRequest) SetMseSessionId(v string) *UpdateConfigRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -25787,7 +25031,6 @@ type UpdateEngineNamespaceRequest struct {
 	Desc           *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ServiceCount   *int32  `json:"ServiceCount,omitempty" xml:"ServiceCount,omitempty"`
 }
@@ -25822,11 +25065,6 @@ func (s *UpdateEngineNamespaceRequest) SetId(v string) *UpdateEngineNamespaceReq
 
 func (s *UpdateEngineNamespaceRequest) SetInstanceId(v string) *UpdateEngineNamespaceRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *UpdateEngineNamespaceRequest) SetMseSessionId(v string) *UpdateEngineNamespaceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -25963,7 +25201,6 @@ type UpdateGatewayDomainRequest struct {
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Http2           *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	MustHttps       *bool   `json:"MustHttps,omitempty" xml:"MustHttps,omitempty"`
 	Protocol        *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	TlsMax          *string `json:"TlsMax,omitempty" xml:"TlsMax,omitempty"`
@@ -26000,11 +25237,6 @@ func (s *UpdateGatewayDomainRequest) SetHttp2(v string) *UpdateGatewayDomainRequ
 
 func (s *UpdateGatewayDomainRequest) SetId(v int64) *UpdateGatewayDomainRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *UpdateGatewayDomainRequest) SetMseSessionId(v string) *UpdateGatewayDomainRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -26107,7 +25339,6 @@ func (s *UpdateGatewayDomainResponse) SetBody(v *UpdateGatewayDomainResponseBody
 type UpdateGatewayNameRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -26126,11 +25357,6 @@ func (s *UpdateGatewayNameRequest) SetAcceptLanguage(v string) *UpdateGatewayNam
 
 func (s *UpdateGatewayNameRequest) SetGatewayUniqueId(v string) *UpdateGatewayNameRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *UpdateGatewayNameRequest) SetMseSessionId(v string) *UpdateGatewayNameRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -26220,7 +25446,6 @@ type UpdateGatewayOptionRequest struct {
 	GatewayId       *int64         `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayOption   *GatewayOption `json:"GatewayOption,omitempty" xml:"GatewayOption,omitempty"`
 	GatewayUniqueId *string        `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string        `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s UpdateGatewayOptionRequest) String() string {
@@ -26251,17 +25476,11 @@ func (s *UpdateGatewayOptionRequest) SetGatewayUniqueId(v string) *UpdateGateway
 	return s
 }
 
-func (s *UpdateGatewayOptionRequest) SetMseSessionId(v string) *UpdateGatewayOptionRequest {
-	s.MseSessionId = &v
-	return s
-}
-
 type UpdateGatewayOptionShrinkRequest struct {
 	AcceptLanguage      *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayId           *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayOptionShrink *string `json:"GatewayOption,omitempty" xml:"GatewayOption,omitempty"`
 	GatewayUniqueId     *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId        *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s UpdateGatewayOptionShrinkRequest) String() string {
@@ -26289,11 +25508,6 @@ func (s *UpdateGatewayOptionShrinkRequest) SetGatewayOptionShrink(v string) *Upd
 
 func (s *UpdateGatewayOptionShrinkRequest) SetGatewayUniqueId(v string) *UpdateGatewayOptionShrinkRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *UpdateGatewayOptionShrinkRequest) SetMseSessionId(v string) *UpdateGatewayOptionShrinkRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -26384,7 +25598,6 @@ type UpdateGatewayRouteRequest struct {
 	GatewayId          *int64                                       `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId    *string                                      `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id                 *int64                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId       *string                                      `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name               *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
 	Predicates         *UpdateGatewayRouteRequestPredicates         `json:"Predicates,omitempty" xml:"Predicates,omitempty" type:"Struct"`
 	RedirectJSON       *UpdateGatewayRouteRequestRedirectJSON       `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty" type:"Struct"`
@@ -26447,11 +25660,6 @@ func (s *UpdateGatewayRouteRequest) SetGatewayUniqueId(v string) *UpdateGatewayR
 
 func (s *UpdateGatewayRouteRequest) SetId(v int64) *UpdateGatewayRouteRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteRequest) SetMseSessionId(v string) *UpdateGatewayRouteRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -26912,7 +26120,6 @@ type UpdateGatewayRouteShrinkRequest struct {
 	GatewayId                *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId          *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id                       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId             *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PredicatesShrink         *string `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
 	RedirectJSONShrink       *string `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty"`
@@ -26975,11 +26182,6 @@ func (s *UpdateGatewayRouteShrinkRequest) SetGatewayUniqueId(v string) *UpdateGa
 
 func (s *UpdateGatewayRouteShrinkRequest) SetId(v int64) *UpdateGatewayRouteShrinkRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteShrinkRequest) SetMseSessionId(v string) *UpdateGatewayRouteShrinkRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -27090,7 +26292,6 @@ type UpdateGatewayRouteCORSRequest struct {
 	GatewayId       *int64                                 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId *string                                `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id              *int64                                 `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId    *string                                `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s UpdateGatewayRouteCORSRequest) String() string {
@@ -27123,11 +26324,6 @@ func (s *UpdateGatewayRouteCORSRequest) SetGatewayUniqueId(v string) *UpdateGate
 
 func (s *UpdateGatewayRouteCORSRequest) SetId(v int64) *UpdateGatewayRouteCORSRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteCORSRequest) SetMseSessionId(v string) *UpdateGatewayRouteCORSRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -27196,7 +26392,6 @@ type UpdateGatewayRouteCORSShrinkRequest struct {
 	GatewayId       *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s UpdateGatewayRouteCORSShrinkRequest) String() string {
@@ -27229,11 +26424,6 @@ func (s *UpdateGatewayRouteCORSShrinkRequest) SetGatewayUniqueId(v string) *Upda
 
 func (s *UpdateGatewayRouteCORSShrinkRequest) SetId(v int64) *UpdateGatewayRouteCORSShrinkRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteCORSShrinkRequest) SetMseSessionId(v string) *UpdateGatewayRouteCORSShrinkRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -27319,7 +26509,6 @@ type UpdateGatewayRouteHTTPRewriteRequest struct {
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	HttpRewriteJSON *string `json:"HttpRewriteJSON,omitempty" xml:"HttpRewriteJSON,omitempty"`
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s UpdateGatewayRouteHTTPRewriteRequest) String() string {
@@ -27352,11 +26541,6 @@ func (s *UpdateGatewayRouteHTTPRewriteRequest) SetHttpRewriteJSON(v string) *Upd
 
 func (s *UpdateGatewayRouteHTTPRewriteRequest) SetId(v int64) *UpdateGatewayRouteHTTPRewriteRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteHTTPRewriteRequest) SetMseSessionId(v string) *UpdateGatewayRouteHTTPRewriteRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -27442,7 +26626,6 @@ type UpdateGatewayRouteHeaderOpRequest struct {
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	HeaderOpJSON    *string `json:"HeaderOpJSON,omitempty" xml:"HeaderOpJSON,omitempty"`
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s UpdateGatewayRouteHeaderOpRequest) String() string {
@@ -27475,11 +26658,6 @@ func (s *UpdateGatewayRouteHeaderOpRequest) SetHeaderOpJSON(v string) *UpdateGat
 
 func (s *UpdateGatewayRouteHeaderOpRequest) SetId(v int64) *UpdateGatewayRouteHeaderOpRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteHeaderOpRequest) SetMseSessionId(v string) *UpdateGatewayRouteHeaderOpRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -27564,7 +26742,6 @@ type UpdateGatewayRouteRetryRequest struct {
 	GatewayId       *int64                                   `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId *string                                  `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id              *int64                                   `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId    *string                                  `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RetryJSON       *UpdateGatewayRouteRetryRequestRetryJSON `json:"RetryJSON,omitempty" xml:"RetryJSON,omitempty" type:"Struct"`
 }
 
@@ -27593,11 +26770,6 @@ func (s *UpdateGatewayRouteRetryRequest) SetGatewayUniqueId(v string) *UpdateGat
 
 func (s *UpdateGatewayRouteRetryRequest) SetId(v int64) *UpdateGatewayRouteRetryRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteRetryRequest) SetMseSessionId(v string) *UpdateGatewayRouteRetryRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -27646,7 +26818,6 @@ type UpdateGatewayRouteRetryShrinkRequest struct {
 	GatewayId       *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RetryJSONShrink *string `json:"RetryJSON,omitempty" xml:"RetryJSON,omitempty"`
 }
 
@@ -27675,11 +26846,6 @@ func (s *UpdateGatewayRouteRetryShrinkRequest) SetGatewayUniqueId(v string) *Upd
 
 func (s *UpdateGatewayRouteRetryShrinkRequest) SetId(v int64) *UpdateGatewayRouteRetryShrinkRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteRetryShrinkRequest) SetMseSessionId(v string) *UpdateGatewayRouteRetryShrinkRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -27769,7 +26935,6 @@ type UpdateGatewayRouteTimeoutRequest struct {
 	GatewayId       *int64                                       `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId *string                                      `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id              *int64                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId    *string                                      `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	TimeoutJSON     *UpdateGatewayRouteTimeoutRequestTimeoutJSON `json:"TimeoutJSON,omitempty" xml:"TimeoutJSON,omitempty" type:"Struct"`
 }
 
@@ -27798,11 +26963,6 @@ func (s *UpdateGatewayRouteTimeoutRequest) SetGatewayUniqueId(v string) *UpdateG
 
 func (s *UpdateGatewayRouteTimeoutRequest) SetId(v int64) *UpdateGatewayRouteTimeoutRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteTimeoutRequest) SetMseSessionId(v string) *UpdateGatewayRouteTimeoutRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -27845,7 +27005,6 @@ type UpdateGatewayRouteTimeoutShrinkRequest struct {
 	GatewayId         *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId   *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId      *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	TimeoutJSONShrink *string `json:"TimeoutJSON,omitempty" xml:"TimeoutJSON,omitempty"`
 }
 
@@ -27874,11 +27033,6 @@ func (s *UpdateGatewayRouteTimeoutShrinkRequest) SetGatewayUniqueId(v string) *U
 
 func (s *UpdateGatewayRouteTimeoutShrinkRequest) SetId(v int64) *UpdateGatewayRouteTimeoutShrinkRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteTimeoutShrinkRequest) SetMseSessionId(v string) *UpdateGatewayRouteTimeoutShrinkRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -27967,7 +27121,6 @@ type UpdateGatewayRouteWafStatusRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	EnableWaf       *bool   `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RouteId         *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
 }
 
@@ -27991,11 +27144,6 @@ func (s *UpdateGatewayRouteWafStatusRequest) SetEnableWaf(v bool) *UpdateGateway
 
 func (s *UpdateGatewayRouteWafStatusRequest) SetGatewayUniqueId(v string) *UpdateGatewayRouteWafStatusRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteWafStatusRequest) SetMseSessionId(v string) *UpdateGatewayRouteWafStatusRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -28719,7 +27867,6 @@ type UpdateGatewayServiceTrafficPolicyRequest struct {
 	GatewayId            *int64         `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayTrafficPolicy *TrafficPolicy `json:"GatewayTrafficPolicy,omitempty" xml:"GatewayTrafficPolicy,omitempty"`
 	GatewayUniqueId      *string        `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId         *string        `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	ServiceId            *int64         `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -28751,11 +27898,6 @@ func (s *UpdateGatewayServiceTrafficPolicyRequest) SetGatewayUniqueId(v string) 
 	return s
 }
 
-func (s *UpdateGatewayServiceTrafficPolicyRequest) SetMseSessionId(v string) *UpdateGatewayServiceTrafficPolicyRequest {
-	s.MseSessionId = &v
-	return s
-}
-
 func (s *UpdateGatewayServiceTrafficPolicyRequest) SetServiceId(v int64) *UpdateGatewayServiceTrafficPolicyRequest {
 	s.ServiceId = &v
 	return s
@@ -28766,7 +27908,6 @@ type UpdateGatewayServiceTrafficPolicyShrinkRequest struct {
 	GatewayId                  *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayTrafficPolicyShrink *string `json:"GatewayTrafficPolicy,omitempty" xml:"GatewayTrafficPolicy,omitempty"`
 	GatewayUniqueId            *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId               *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	ServiceId                  *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -28795,11 +27936,6 @@ func (s *UpdateGatewayServiceTrafficPolicyShrinkRequest) SetGatewayTrafficPolicy
 
 func (s *UpdateGatewayServiceTrafficPolicyShrinkRequest) SetGatewayUniqueId(v string) *UpdateGatewayServiceTrafficPolicyShrinkRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *UpdateGatewayServiceTrafficPolicyShrinkRequest) SetMseSessionId(v string) *UpdateGatewayServiceTrafficPolicyShrinkRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -28887,7 +28023,6 @@ func (s *UpdateGatewayServiceTrafficPolicyResponse) SetBody(v *UpdateGatewayServ
 type UpdateGatewayServiceVersionRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	ServiceId       *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceVersion  *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
 }
@@ -28907,11 +28042,6 @@ func (s *UpdateGatewayServiceVersionRequest) SetAcceptLanguage(v string) *Update
 
 func (s *UpdateGatewayServiceVersionRequest) SetGatewayUniqueId(v string) *UpdateGatewayServiceVersionRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *UpdateGatewayServiceVersionRequest) SetMseSessionId(v string) *UpdateGatewayServiceVersionRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -29004,7 +28134,6 @@ func (s *UpdateGatewayServiceVersionResponse) SetBody(v *UpdateGatewayServiceVer
 type UpdateGatewaySpecRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Replica         *int32  `json:"Replica,omitempty" xml:"Replica,omitempty"`
 	Spec            *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
@@ -29024,11 +28153,6 @@ func (s *UpdateGatewaySpecRequest) SetAcceptLanguage(v string) *UpdateGatewaySpe
 
 func (s *UpdateGatewaySpecRequest) SetGatewayUniqueId(v string) *UpdateGatewaySpecRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *UpdateGatewaySpecRequest) SetMseSessionId(v string) *UpdateGatewaySpecRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -29121,7 +28245,6 @@ func (s *UpdateGatewaySpecResponse) SetBody(v *UpdateGatewaySpecResponseBody) *U
 type UpdateImageRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	VersionCode    *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 }
 
@@ -29140,11 +28263,6 @@ func (s *UpdateImageRequest) SetAcceptLanguage(v string) *UpdateImageRequest {
 
 func (s *UpdateImageRequest) SetClusterId(v string) *UpdateImageRequest {
 	s.ClusterId = &v
-	return s
-}
-
-func (s *UpdateImageRequest) SetMseSessionId(v string) *UpdateImageRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -29222,7 +28340,6 @@ type UpdateMessageQueueRouteRequest struct {
 	AppId          *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Enable         *bool     `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	FilterSide     *string   `json:"FilterSide,omitempty" xml:"FilterSide,omitempty"`
-	MseSessionId   *string   `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Region         *string   `json:"Region,omitempty" xml:"Region,omitempty"`
 	Tags           []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -29255,11 +28372,6 @@ func (s *UpdateMessageQueueRouteRequest) SetFilterSide(v string) *UpdateMessageQ
 	return s
 }
 
-func (s *UpdateMessageQueueRouteRequest) SetMseSessionId(v string) *UpdateMessageQueueRouteRequest {
-	s.MseSessionId = &v
-	return s
-}
-
 func (s *UpdateMessageQueueRouteRequest) SetRegion(v string) *UpdateMessageQueueRouteRequest {
 	s.Region = &v
 	return s
@@ -29275,7 +28387,6 @@ type UpdateMessageQueueRouteShrinkRequest struct {
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Enable         *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	FilterSide     *string `json:"FilterSide,omitempty" xml:"FilterSide,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	TagsShrink     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
@@ -29305,11 +28416,6 @@ func (s *UpdateMessageQueueRouteShrinkRequest) SetEnable(v bool) *UpdateMessageQ
 
 func (s *UpdateMessageQueueRouteShrinkRequest) SetFilterSide(v string) *UpdateMessageQueueRouteShrinkRequest {
 	s.FilterSide = &v
-	return s
-}
-
-func (s *UpdateMessageQueueRouteShrinkRequest) SetMseSessionId(v string) *UpdateMessageQueueRouteShrinkRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -29406,7 +28512,6 @@ type UpdateNacosClusterRequest struct {
 	GroupName               *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	HealthChecker           *string `json:"HealthChecker,omitempty" xml:"HealthChecker,omitempty"`
 	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId            *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId             *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	ServiceName             *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	UseInstancePortForCheck *bool   `json:"UseInstancePortForCheck,omitempty" xml:"UseInstancePortForCheck,omitempty"`
@@ -29447,11 +28552,6 @@ func (s *UpdateNacosClusterRequest) SetHealthChecker(v string) *UpdateNacosClust
 
 func (s *UpdateNacosClusterRequest) SetInstanceId(v string) *UpdateNacosClusterRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *UpdateNacosClusterRequest) SetMseSessionId(v string) *UpdateNacosClusterRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -29557,7 +28657,6 @@ type UpdateNacosConfigRequest struct {
 	Group            *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Md5              *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	MseSessionId     *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	Tags             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -29618,11 +28717,6 @@ func (s *UpdateNacosConfigRequest) SetInstanceId(v string) *UpdateNacosConfigReq
 
 func (s *UpdateNacosConfigRequest) SetMd5(v string) *UpdateNacosConfigRequest {
 	s.Md5 = &v
-	return s
-}
-
-func (s *UpdateNacosConfigRequest) SetMseSessionId(v string) *UpdateNacosConfigRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -29720,7 +28814,6 @@ type UpdateNacosInstanceRequest struct {
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Ip             *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	Metadata       *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
@@ -29772,11 +28865,6 @@ func (s *UpdateNacosInstanceRequest) SetIp(v string) *UpdateNacosInstanceRequest
 
 func (s *UpdateNacosInstanceRequest) SetMetadata(v string) *UpdateNacosInstanceRequest {
 	s.Metadata = &v
-	return s
-}
-
-func (s *UpdateNacosInstanceRequest) SetMseSessionId(v string) *UpdateNacosInstanceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -29881,7 +28969,6 @@ type UpdateNacosServiceRequest struct {
 	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	GroupName        *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId     *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	ProtectThreshold *string `json:"ProtectThreshold,omitempty" xml:"ProtectThreshold,omitempty"`
 	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
@@ -29912,11 +28999,6 @@ func (s *UpdateNacosServiceRequest) SetGroupName(v string) *UpdateNacosServiceRe
 
 func (s *UpdateNacosServiceRequest) SetInstanceId(v string) *UpdateNacosServiceRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *UpdateNacosServiceRequest) SetMseSessionId(v string) *UpdateNacosServiceRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -30021,7 +29103,6 @@ type UpdatePluginConfigRequest struct {
 	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified     *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	PluginId        *int64  `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
 }
 
@@ -30075,11 +29156,6 @@ func (s *UpdatePluginConfigRequest) SetGmtModified(v string) *UpdatePluginConfig
 
 func (s *UpdatePluginConfigRequest) SetId(v int64) *UpdatePluginConfigRequest {
 	s.Id = &v
-	return s
-}
-
-func (s *UpdatePluginConfigRequest) SetMseSessionId(v string) *UpdatePluginConfigRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -30181,7 +29257,6 @@ type UpdateSSLCertRequest struct {
 	CertIdentifier  *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	DomainId        *int64  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	MseSessionId    *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 }
 
 func (s UpdateSSLCertRequest) String() string {
@@ -30209,11 +29284,6 @@ func (s *UpdateSSLCertRequest) SetDomainId(v int64) *UpdateSSLCertRequest {
 
 func (s *UpdateSSLCertRequest) SetGatewayUniqueId(v string) *UpdateSSLCertRequest {
 	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *UpdateSSLCertRequest) SetMseSessionId(v string) *UpdateSSLCertRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -30300,8 +29370,8 @@ type UpdateServiceSourceRequest struct {
 	GatewayUniqueId       *string                                          `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id                    *int64                                           `json:"Id,omitempty" xml:"Id,omitempty"`
 	IngressOptionsRequest *UpdateServiceSourceRequestIngressOptionsRequest `json:"IngressOptionsRequest,omitempty" xml:"IngressOptionsRequest,omitempty" type:"Struct"`
-	MseSessionId          *string                                          `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name                  *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	PathList              []*string                                        `json:"PathList,omitempty" xml:"PathList,omitempty" type:"Repeated"`
 	Source                *string                                          `json:"Source,omitempty" xml:"Source,omitempty"`
 	Type                  *string                                          `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -30344,13 +29414,13 @@ func (s *UpdateServiceSourceRequest) SetIngressOptionsRequest(v *UpdateServiceSo
 	return s
 }
 
-func (s *UpdateServiceSourceRequest) SetMseSessionId(v string) *UpdateServiceSourceRequest {
-	s.MseSessionId = &v
+func (s *UpdateServiceSourceRequest) SetName(v string) *UpdateServiceSourceRequest {
+	s.Name = &v
 	return s
 }
 
-func (s *UpdateServiceSourceRequest) SetName(v string) *UpdateServiceSourceRequest {
-	s.Name = &v
+func (s *UpdateServiceSourceRequest) SetPathList(v []*string) *UpdateServiceSourceRequest {
+	s.PathList = v
 	return s
 }
 
@@ -30366,6 +29436,7 @@ func (s *UpdateServiceSourceRequest) SetType(v string) *UpdateServiceSourceReque
 
 type UpdateServiceSourceRequestIngressOptionsRequest struct {
 	EnableIngress  *bool   `json:"EnableIngress,omitempty" xml:"EnableIngress,omitempty"`
+	EnableStatus   *bool   `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
 	IngressClass   *string `json:"IngressClass,omitempty" xml:"IngressClass,omitempty"`
 	WatchNamespace *string `json:"WatchNamespace,omitempty" xml:"WatchNamespace,omitempty"`
 }
@@ -30380,6 +29451,11 @@ func (s UpdateServiceSourceRequestIngressOptionsRequest) GoString() string {
 
 func (s *UpdateServiceSourceRequestIngressOptionsRequest) SetEnableIngress(v bool) *UpdateServiceSourceRequestIngressOptionsRequest {
 	s.EnableIngress = &v
+	return s
+}
+
+func (s *UpdateServiceSourceRequestIngressOptionsRequest) SetEnableStatus(v bool) *UpdateServiceSourceRequestIngressOptionsRequest {
+	s.EnableStatus = &v
 	return s
 }
 
@@ -30400,8 +29476,8 @@ type UpdateServiceSourceShrinkRequest struct {
 	GatewayUniqueId             *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id                          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	IngressOptionsRequestShrink *string `json:"IngressOptionsRequest,omitempty" xml:"IngressOptionsRequest,omitempty"`
-	MseSessionId                *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Name                        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PathListShrink              *string `json:"PathList,omitempty" xml:"PathList,omitempty"`
 	Source                      *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	Type                        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -30444,13 +29520,13 @@ func (s *UpdateServiceSourceShrinkRequest) SetIngressOptionsRequestShrink(v stri
 	return s
 }
 
-func (s *UpdateServiceSourceShrinkRequest) SetMseSessionId(v string) *UpdateServiceSourceShrinkRequest {
-	s.MseSessionId = &v
+func (s *UpdateServiceSourceShrinkRequest) SetName(v string) *UpdateServiceSourceShrinkRequest {
+	s.Name = &v
 	return s
 }
 
-func (s *UpdateServiceSourceShrinkRequest) SetName(v string) *UpdateServiceSourceShrinkRequest {
-	s.Name = &v
+func (s *UpdateServiceSourceShrinkRequest) SetPathListShrink(v string) *UpdateServiceSourceShrinkRequest {
+	s.PathListShrink = &v
 	return s
 }
 
@@ -30544,7 +29620,6 @@ type UpdateZnodeRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	Path           *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
@@ -30569,11 +29644,6 @@ func (s *UpdateZnodeRequest) SetClusterId(v string) *UpdateZnodeRequest {
 
 func (s *UpdateZnodeRequest) SetData(v string) *UpdateZnodeRequest {
 	s.Data = &v
-	return s
-}
-
-func (s *UpdateZnodeRequest) SetMseSessionId(v string) *UpdateZnodeRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -30654,7 +29724,6 @@ func (s *UpdateZnodeResponse) SetBody(v *UpdateZnodeResponseBody) *UpdateZnodeRe
 type UpgradeClusterRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
 	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 	UpgradeVersion *string `json:"UpgradeVersion,omitempty" xml:"UpgradeVersion,omitempty"`
 }
@@ -30674,11 +29743,6 @@ func (s *UpgradeClusterRequest) SetAcceptLanguage(v string) *UpgradeClusterReque
 
 func (s *UpgradeClusterRequest) SetInstanceId(v string) *UpgradeClusterRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *UpgradeClusterRequest) SetMseSessionId(v string) *UpgradeClusterRequest {
-	s.MseSessionId = &v
 	return s
 }
 
@@ -30836,10 +29900,6 @@ func (client *Client) AddAuthResourceWithOptions(request *AddAuthResourceRequest
 		query["MatchType"] = request.MatchType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Path)) {
 		query["Path"] = request.Path
 	}
@@ -30898,10 +29958,6 @@ func (client *Client) AddBlackWhiteListWithOptions(request *AddBlackWhiteListReq
 
 	if !tea.BoolValue(util.IsUnset(request.IsWhite)) {
 		query["IsWhite"] = request.IsWhite
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -30990,10 +30046,6 @@ func (client *Client) AddGatewayWithOptions(request *AddGatewayRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.InternetSlbSpec)) {
 		query["InternetSlbSpec"] = request.InternetSlbSpec
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -31090,10 +30142,6 @@ func (client *Client) AddGatewayDomainWithOptions(request *AddGatewayDomainReque
 
 	if !tea.BoolValue(util.IsUnset(request.Http2)) {
 		query["Http2"] = request.Http2
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MustHttps)) {
@@ -31218,10 +30266,6 @@ func (client *Client) AddGatewayRouteWithOptions(tmpReq *AddGatewayRouteRequest,
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -31290,10 +30334,6 @@ func (client *Client) AddGatewayServiceVersionWithOptions(request *AddGatewaySer
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
 		query["ServiceId"] = request.ServiceId
 	}
@@ -31360,10 +30400,6 @@ func (client *Client) AddGatewaySlbWithOptions(request *AddGatewaySlbRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.HttpsVServerGroupId)) {
 		query["HttpsVServerGroupId"] = request.HttpsVServerGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceWeight)) {
@@ -31446,10 +30482,6 @@ func (client *Client) AddMockRuleWithOptions(request *AddMockRuleRequest, runtim
 		query["MockType"] = request.MockType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -31530,10 +30562,6 @@ func (client *Client) AddSSLCertWithOptions(request *AddSSLCertRequest, runtime 
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -31584,10 +30612,6 @@ func (client *Client) AddSecurityGroupRuleWithOptions(request *AddSecurityGroupR
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PortRange)) {
@@ -31647,6 +30671,10 @@ func (client *Client) AddServiceSourceWithOptions(tmpReq *AddServiceSourceReques
 		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IngressOptionsRequest), tea.String("IngressOptionsRequest"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.PathList)) {
+		request.PathListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PathList, tea.String("PathList"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
@@ -31668,12 +30696,12 @@ func (client *Client) AddServiceSourceWithOptions(tmpReq *AddServiceSourceReques
 		query["IngressOptionsRequest"] = request.IngressOptionsRequestShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PathListShrink)) {
+		query["PathList"] = request.PathListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
@@ -31732,10 +30760,6 @@ func (client *Client) ApplyGatewayRouteWithOptions(request *ApplyGatewayRouteReq
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
 		query["RouteId"] = request.RouteId
 	}
@@ -31790,10 +30814,6 @@ func (client *Client) ApplyTagPoliciesWithOptions(request *ApplyTagPoliciesReque
 
 	if !tea.BoolValue(util.IsUnset(request.Enable)) {
 		query["Enable"] = request.Enable
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
@@ -31864,10 +30884,6 @@ func (client *Client) CloneNacosConfigWithOptions(request *CloneNacosConfigReque
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.OriginNamespaceId)) {
 		query["OriginNamespaceId"] = request.OriginNamespaceId
 	}
@@ -31934,10 +30950,6 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
 		query["Language"] = request.Language
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
@@ -32026,10 +31038,6 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		query["InstanceName"] = request.InstanceName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MseVersion)) {
@@ -32136,10 +31144,6 @@ func (client *Client) CreateEngineNamespaceWithOptions(request *CreateEngineName
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -32202,10 +31206,6 @@ func (client *Client) CreateMseServiceApplicationWithOptions(request *CreateMseS
 
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
 		query["Language"] = request.Language
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MseVersion)) {
@@ -32300,10 +31300,6 @@ func (client *Client) CreateNacosConfigWithOptions(request *CreateNacosConfigReq
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -32382,10 +31378,6 @@ func (client *Client) CreateNacosInstanceWithOptions(request *CreateNacosInstanc
 
 	if !tea.BoolValue(util.IsUnset(request.Ip)) {
 		query["Ip"] = request.Ip
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
@@ -32468,10 +31460,6 @@ func (client *Client) CreateNacosServiceWithOptions(request *CreateNacosServiceR
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
@@ -32564,10 +31552,6 @@ func (client *Client) CreateOrUpdateSwimmingLaneWithOptions(request *CreateOrUpd
 
 	if !tea.BoolValue(util.IsUnset(request.LicenseKey)) {
 		query["LicenseKey"] = request.LicenseKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -32678,10 +31662,6 @@ func (client *Client) CreateOrUpdateSwimmingLaneGroupWithOptions(request *Create
 		query["MessageQueueGrayEnable"] = request.MessageQueueGrayEnable
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -32754,10 +31734,6 @@ func (client *Client) CreateZnodeWithOptions(request *CreateZnodeRequest, runtim
 		query["Data"] = request.Data
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Path)) {
 		query["Path"] = request.Path
 	}
@@ -32814,10 +31790,6 @@ func (client *Client) DeleteAuthResourceWithOptions(request *DeleteAuthResourceR
 		query["Id"] = request.Id
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -32864,10 +31836,6 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -32926,10 +31894,6 @@ func (client *Client) DeleteEngineNamespaceWithOptions(request *DeleteEngineName
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -32980,10 +31944,6 @@ func (client *Client) DeleteGatewayWithOptions(request *DeleteGatewayRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -33038,10 +31998,6 @@ func (client *Client) DeleteGatewayDomainWithOptions(request *DeleteGatewayDomai
 		query["Id"] = request.Id
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -33088,10 +32044,6 @@ func (client *Client) DeleteGatewayRouteWithOptions(request *DeleteGatewayRouteR
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
@@ -33150,10 +32102,6 @@ func (client *Client) DeleteGatewayServiceWithOptions(request *DeleteGatewayServ
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
 		query["ServiceId"] = request.ServiceId
 	}
@@ -33204,10 +32152,6 @@ func (client *Client) DeleteGatewayServiceVersionWithOptions(request *DeleteGate
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
@@ -33274,10 +32218,6 @@ func (client *Client) DeleteGatewaySlbWithOptions(request *DeleteGatewaySlbReque
 		query["Id"] = request.Id
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -33338,10 +32278,6 @@ func (client *Client) DeleteNacosConfigWithOptions(request *DeleteNacosConfigReq
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -33396,10 +32332,6 @@ func (client *Client) DeleteNacosConfigsWithOptions(request *DeleteNacosConfigsR
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
@@ -33470,10 +32402,6 @@ func (client *Client) DeleteNacosInstanceWithOptions(request *DeleteNacosInstanc
 		query["Ip"] = request.Ip
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -33538,10 +32466,6 @@ func (client *Client) DeleteNacosServiceWithOptions(request *DeleteNacosServiceR
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -33602,10 +32526,6 @@ func (client *Client) DeleteSecurityGroupRuleWithOptions(request *DeleteSecurity
 		query["Id"] = request.Id
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -33652,10 +32572,6 @@ func (client *Client) DeleteServiceSourceWithOptions(request *DeleteServiceSourc
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
@@ -33710,10 +32626,6 @@ func (client *Client) DeleteSwimmingLaneWithOptions(request *DeleteSwimmingLaneR
 		query["LaneId"] = request.LaneId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -33762,10 +32674,6 @@ func (client *Client) DeleteSwimmingLaneGroupWithOptions(request *DeleteSwimming
 		query["GroupId"] = request.GroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -33812,10 +32720,6 @@ func (client *Client) DeleteZnodeWithOptions(request *DeleteZnodeRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Path)) {
@@ -33890,10 +32794,6 @@ func (client *Client) ExportNacosConfigWithOptions(request *ExportNacosConfigReq
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -33944,10 +32844,6 @@ func (client *Client) GetAppMessageQueueRouteWithOptions(request *GetAppMessageQ
 
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
@@ -34008,10 +32904,6 @@ func (client *Client) GetApplicationListWithOptions(request *GetApplicationListR
 
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
 		query["Language"] = request.Language
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -34090,10 +32982,6 @@ func (client *Client) GetBlackWhiteListWithOptions(request *GetBlackWhiteListReq
 		query["IsWhite"] = request.IsWhite
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		query["ResourceType"] = request.ResourceType
 	}
@@ -34158,10 +33046,6 @@ func (client *Client) GetEngineNamepaceWithOptions(request *GetEngineNamepaceReq
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -34208,10 +33092,6 @@ func (client *Client) GetGatewayWithOptions(request *GetGatewayRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -34266,10 +33146,6 @@ func (client *Client) GetGatewayDomainDetailWithOptions(request *GetGatewayDomai
 		query["Id"] = request.Id
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -34322,10 +33198,6 @@ func (client *Client) GetGatewayOptionWithOptions(request *GetGatewayOptionReque
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -34372,10 +33244,6 @@ func (client *Client) GetGatewayRouteDetailWithOptions(request *GetGatewayRouteD
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
@@ -34430,10 +33298,6 @@ func (client *Client) GetGatewayServiceDetailWithOptions(request *GetGatewayServ
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
 		query["ServiceId"] = request.ServiceId
 	}
@@ -34486,10 +33350,6 @@ func (client *Client) GetGovernanceKubernetesClusterWithOptions(request *GetGove
 		query["ClusterId"] = request.ClusterId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -34536,10 +33396,6 @@ func (client *Client) GetImageWithOptions(request *GetImageRequest, runtime *uti
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VersionCode)) {
@@ -34598,10 +33454,6 @@ func (client *Client) GetImportFileUrlWithOptions(request *GetImportFileUrlReque
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -34654,10 +33506,6 @@ func (client *Client) GetKubernetesSourceWithOptions(request *GetKubernetesSourc
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -34700,10 +33548,6 @@ func (client *Client) GetMseFeatureSwitchWithOptions(request *GetMseFeatureSwitc
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -34752,10 +33596,6 @@ func (client *Client) GetMseSourceWithOptions(request *GetMseSourceRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -34822,10 +33662,6 @@ func (client *Client) GetNacosConfigWithOptions(request *GetNacosConfigRequest, 
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -34886,10 +33722,6 @@ func (client *Client) GetNacosHistoryConfigWithOptions(request *GetNacosHistoryC
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -34940,10 +33772,6 @@ func (client *Client) GetOverviewWithOptions(request *GetOverviewRequest, runtim
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Period)) {
@@ -35000,10 +33828,6 @@ func (client *Client) GetPluginConfigWithOptions(request *GetPluginConfigRequest
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
@@ -35066,10 +33890,6 @@ func (client *Client) GetPluginsWithOptions(request *GetPluginsRequest, runtime 
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -35124,10 +33944,6 @@ func (client *Client) GetServiceListWithOptions(request *GetServiceListRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Ip)) {
 		query["Ip"] = request.Ip
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
@@ -35206,10 +34022,6 @@ func (client *Client) GetServiceListenersWithOptions(request *GetServiceListener
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -35282,10 +34094,6 @@ func (client *Client) GetTagsBySwimmingLaneGroupIdWithOptions(request *GetTagsBy
 		query["GroupId"] = request.GroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -35336,10 +34144,6 @@ func (client *Client) ImportNacosConfigWithOptions(request *ImportNacosConfigReq
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
@@ -35402,10 +34206,6 @@ func (client *Client) ImportServicesWithOptions(tmpReq *ImportServicesRequest, r
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceListShrink)) {
@@ -35588,10 +34388,6 @@ func (client *Client) ListAppBySwimmingLaneGroupTagWithOptions(request *ListAppB
 		query["GroupId"] = request.GroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
 	}
@@ -35680,10 +34476,6 @@ func (client *Client) ListClusterConnectionTypesWithOptions(request *ListCluster
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -35730,10 +34522,6 @@ func (client *Client) ListClusterTypesWithOptions(request *ListClusterTypesReque
 
 	if !tea.BoolValue(util.IsUnset(request.ConnectType)) {
 		query["ConnectType"] = request.ConnectType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MseVersion)) {
@@ -35790,10 +34578,6 @@ func (client *Client) ListClusterVersionsWithOptions(request *ListClusterVersion
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
 		query["ClusterType"] = request.ClusterType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MseVersion)) {
@@ -36018,10 +34802,6 @@ func (client *Client) ListGatewayWithOptions(tmpReq *ListGatewayRequest, runtime
 		query["FilterParams"] = request.FilterParamsShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.OrderItem)) {
 		query["OrderItem"] = request.OrderItem
 	}
@@ -36080,10 +34860,6 @@ func (client *Client) ListGatewayDomainWithOptions(request *ListGatewayDomainReq
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -36146,10 +34922,6 @@ func (client *Client) ListGatewayRouteWithOptions(tmpReq *ListGatewayRouteReques
 
 	if !tea.BoolValue(util.IsUnset(request.FilterParamsShrink)) {
 		query["FilterParams"] = request.FilterParamsShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OrderItem)) {
@@ -36222,10 +34994,6 @@ func (client *Client) ListGatewayServiceWithOptions(tmpReq *ListGatewayServiceRe
 		query["FilterParams"] = request.FilterParamsShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.OrderItem)) {
 		query["OrderItem"] = request.OrderItem
 	}
@@ -36286,10 +35054,6 @@ func (client *Client) ListGatewaySlbWithOptions(request *ListGatewaySlbRequest, 
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -36336,10 +35100,6 @@ func (client *Client) ListInstanceCountWithOptions(request *ListInstanceCountReq
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
 		query["ClusterType"] = request.ClusterType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MseVersion)) {
@@ -36450,10 +35210,6 @@ func (client *Client) ListListenersByConfigWithOptions(request *ListListenersByC
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -36512,10 +35268,6 @@ func (client *Client) ListListenersByIpWithOptions(request *ListListenersByIpReq
 
 	if !tea.BoolValue(util.IsUnset(request.Ip)) {
 		query["Ip"] = request.Ip
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
@@ -36584,10 +35336,6 @@ func (client *Client) ListNacosConfigsWithOptions(request *ListNacosConfigsReque
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
@@ -36670,10 +35418,6 @@ func (client *Client) ListNacosHistoryConfigsWithOptions(request *ListNacosHisto
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -36742,10 +35486,6 @@ func (client *Client) ListSSLCertWithOptions(request *ListSSLCertRequest, runtim
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -36792,10 +35532,6 @@ func (client *Client) ListSecurityGroupWithOptions(request *ListSecurityGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -36846,10 +35582,6 @@ func (client *Client) ListSecurityGroupRuleWithOptions(request *ListSecurityGrou
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -36898,10 +35630,6 @@ func (client *Client) ListServiceSourceWithOptions(request *ListServiceSourceReq
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -36944,10 +35672,6 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
@@ -37138,10 +35862,6 @@ func (client *Client) ModifyGovernanceKubernetesClusterWithOptions(request *Modi
 		query["ClusterId"] = request.ClusterId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamespaceInfos)) {
 		query["NamespaceInfos"] = request.NamespaceInfos
 	}
@@ -37218,10 +35938,6 @@ func (client *Client) ModifyLosslessRuleWithOptions(request *ModifyLosslessRuleR
 		query["FuncType"] = request.FuncType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -37290,10 +36006,6 @@ func (client *Client) OfflineGatewayRouteWithOptions(request *OfflineGatewayRout
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
 		query["RouteId"] = request.RouteId
 	}
@@ -37344,10 +36056,6 @@ func (client *Client) PullServicesWithOptions(request *PullServicesRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
@@ -37406,10 +36114,6 @@ func (client *Client) QueryAllSwimmingLaneWithOptions(request *QueryAllSwimmingL
 		query["GroupId"] = request.GroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -37452,10 +36156,6 @@ func (client *Client) QueryAllSwimmingLaneGroupWithOptions(request *QueryAllSwim
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -37550,10 +36250,6 @@ func (client *Client) QueryClusterDetailWithOptions(request *QueryClusterDetailR
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
 		query["OrderId"] = request.OrderId
 	}
@@ -37606,10 +36302,6 @@ func (client *Client) QueryClusterDiskSpecificationWithOptions(request *QueryClu
 		query["ClusterType"] = request.ClusterType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -37656,10 +36348,6 @@ func (client *Client) QueryClusterSpecificationWithOptions(request *QueryCluster
 
 	if !tea.BoolValue(util.IsUnset(request.ConnectType)) {
 		query["ConnectType"] = request.ConnectType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MseVersion)) {
@@ -37750,10 +36438,6 @@ func (client *Client) QueryGatewayRegionWithOptions(request *QueryGatewayRegionR
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -37796,10 +36480,6 @@ func (client *Client) QueryGatewayTypeWithOptions(request *QueryGatewayTypeReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -37970,10 +36650,6 @@ func (client *Client) QuerySwimmingLaneByIdWithOptions(request *QuerySwimmingLan
 		query["LaneId"] = request.LaneId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -38066,10 +36742,6 @@ func (client *Client) RestartClusterWithOptions(request *RestartClusterRequest, 
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.PodNameList)) {
 		query["PodNameList"] = request.PodNameList
 	}
@@ -38126,10 +36798,6 @@ func (client *Client) RetryClusterWithOptions(request *RetryClusterRequest, runt
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
 		query["RequestPars"] = request.RequestPars
 	}
@@ -38182,10 +36850,6 @@ func (client *Client) SelectGatewaySlbWithOptions(request *SelectGatewaySlbReque
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -38236,10 +36900,6 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -38304,10 +36964,6 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.All)) {
 		query["All"] = request.All
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -38378,10 +37034,6 @@ func (client *Client) UpdateAclWithOptions(request *UpdateAclRequest, runtime *u
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -38440,10 +37092,6 @@ func (client *Client) UpdateBlackWhiteListWithOptions(request *UpdateBlackWhiteL
 
 	if !tea.BoolValue(util.IsUnset(request.IsWhite)) {
 		query["IsWhite"] = request.IsWhite
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -38522,10 +37170,6 @@ func (client *Client) UpdateClusterWithOptions(request *UpdateClusterRequest, ru
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
 		query["RequestPars"] = request.RequestPars
 	}
@@ -38588,10 +37232,6 @@ func (client *Client) UpdateClusterSpecWithOptions(request *UpdateClusterSpecReq
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -38690,10 +37330,6 @@ func (client *Client) UpdateConfigWithOptions(request *UpdateConfigRequest, runt
 		query["MinSessionTimeout"] = request.MinSessionTimeout
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamingAuthEnabled)) {
 		query["NamingAuthEnabled"] = request.NamingAuthEnabled
 	}
@@ -38788,10 +37424,6 @@ func (client *Client) UpdateEngineNamespaceWithOptions(request *UpdateEngineName
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -38860,10 +37492,6 @@ func (client *Client) UpdateGatewayDomainWithOptions(request *UpdateGatewayDomai
 		query["Id"] = request.Id
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.MustHttps)) {
 		query["MustHttps"] = request.MustHttps
 	}
@@ -38926,10 +37554,6 @@ func (client *Client) UpdateGatewayNameWithOptions(request *UpdateGatewayNameReq
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -38996,10 +37620,6 @@ func (client *Client) UpdateGatewayOptionWithOptions(tmpReq *UpdateGatewayOption
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -39104,10 +37724,6 @@ func (client *Client) UpdateGatewayRouteWithOptions(tmpReq *UpdateGatewayRouteRe
 		query["Id"] = request.Id
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -39194,10 +37810,6 @@ func (client *Client) UpdateGatewayRouteCORSWithOptions(tmpReq *UpdateGatewayRou
 		query["Id"] = request.Id
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -39256,10 +37868,6 @@ func (client *Client) UpdateGatewayRouteHTTPRewriteWithOptions(request *UpdateGa
 
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		query["Id"] = request.Id
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -39322,10 +37930,6 @@ func (client *Client) UpdateGatewayRouteHeaderOpWithOptions(request *UpdateGatew
 		query["Id"] = request.Id
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -39386,10 +37990,6 @@ func (client *Client) UpdateGatewayRouteRetryWithOptions(tmpReq *UpdateGatewayRo
 
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		query["Id"] = request.Id
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RetryJSONShrink)) {
@@ -39458,10 +38058,6 @@ func (client *Client) UpdateGatewayRouteTimeoutWithOptions(tmpReq *UpdateGateway
 		query["Id"] = request.Id
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.TimeoutJSONShrink)) {
 		query["TimeoutJSON"] = request.TimeoutJSONShrink
 	}
@@ -39516,10 +38112,6 @@ func (client *Client) UpdateGatewayRouteWafStatusWithOptions(request *UpdateGate
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
@@ -39588,10 +38180,6 @@ func (client *Client) UpdateGatewayServiceTrafficPolicyWithOptions(tmpReq *Updat
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
 		query["ServiceId"] = request.ServiceId
 	}
@@ -39642,10 +38230,6 @@ func (client *Client) UpdateGatewayServiceVersionWithOptions(request *UpdateGate
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
 		query["GatewayUniqueId"] = request.GatewayUniqueId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
@@ -39704,10 +38288,6 @@ func (client *Client) UpdateGatewaySpecWithOptions(request *UpdateGatewaySpecReq
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Replica)) {
 		query["Replica"] = request.Replica
 	}
@@ -39762,10 +38342,6 @@ func (client *Client) UpdateImageWithOptions(request *UpdateImageRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VersionCode)) {
@@ -39832,10 +38408,6 @@ func (client *Client) UpdateMessageQueueRouteWithOptions(tmpReq *UpdateMessageQu
 
 	if !tea.BoolValue(util.IsUnset(request.FilterSide)) {
 		query["FilterSide"] = request.FilterSide
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
@@ -39908,10 +38480,6 @@ func (client *Client) UpdateNacosClusterWithOptions(request *UpdateNacosClusterR
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
@@ -40006,10 +38574,6 @@ func (client *Client) UpdateNacosConfigWithOptions(request *UpdateNacosConfigReq
 		query["Md5"] = request.Md5
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -40090,10 +38654,6 @@ func (client *Client) UpdateNacosInstanceWithOptions(request *UpdateNacosInstanc
 		query["Ip"] = request.Ip
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -40170,10 +38730,6 @@ func (client *Client) UpdateNacosServiceWithOptions(request *UpdateNacosServiceR
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
@@ -40264,10 +38820,6 @@ func (client *Client) UpdatePluginConfigWithOptions(request *UpdatePluginConfigR
 		query["Id"] = request.Id
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
 		query["PluginId"] = request.PluginId
 	}
@@ -40328,10 +38880,6 @@ func (client *Client) UpdateSSLCertWithOptions(request *UpdateSSLCertRequest, ru
 		query["GatewayUniqueId"] = request.GatewayUniqueId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -40377,6 +38925,10 @@ func (client *Client) UpdateServiceSourceWithOptions(tmpReq *UpdateServiceSource
 		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IngressOptionsRequest), tea.String("IngressOptionsRequest"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.PathList)) {
+		request.PathListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PathList, tea.String("PathList"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
@@ -40402,12 +38954,12 @@ func (client *Client) UpdateServiceSourceWithOptions(tmpReq *UpdateServiceSource
 		query["IngressOptionsRequest"] = request.IngressOptionsRequestShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PathListShrink)) {
+		query["PathList"] = request.PathListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
@@ -40470,10 +39022,6 @@ func (client *Client) UpdateZnodeWithOptions(request *UpdateZnodeRequest, runtim
 		query["Data"] = request.Data
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Path)) {
 		query["Path"] = request.Path
 	}
@@ -40528,10 +39076,6 @@ func (client *Client) UpgradeClusterWithOptions(request *UpgradeClusterRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
-		query["MseSessionId"] = request.MseSessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
