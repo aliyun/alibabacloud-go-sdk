@@ -3474,6 +3474,7 @@ type GetFileLastCommitRequest struct {
 	Filepath       *string `json:"filepath,omitempty" xml:"filepath,omitempty"`
 	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
 	Sha            *string `json:"sha,omitempty" xml:"sha,omitempty"`
+	ShowSignature  *bool   `json:"showSignature,omitempty" xml:"showSignature,omitempty"`
 }
 
 func (s GetFileLastCommitRequest) String() string {
@@ -3501,6 +3502,11 @@ func (s *GetFileLastCommitRequest) SetOrganizationId(v string) *GetFileLastCommi
 
 func (s *GetFileLastCommitRequest) SetSha(v string) *GetFileLastCommitRequest {
 	s.Sha = &v
+	return s
+}
+
+func (s *GetFileLastCommitRequest) SetShowSignature(v bool) *GetFileLastCommitRequest {
+	s.ShowSignature = &v
 	return s
 }
 
@@ -17364,6 +17370,10 @@ func (client *Client) GetFileLastCommitWithOptions(repositoryId *string, request
 
 	if !tea.BoolValue(util.IsUnset(request.Sha)) {
 		query["sha"] = request.Sha
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowSignature)) {
+		query["showSignature"] = request.ShowSignature
 	}
 
 	req := &openapi.OpenApiRequest{
