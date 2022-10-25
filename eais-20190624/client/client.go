@@ -358,11 +358,12 @@ func (s *CreateEaiAllResponse) SetBody(v *CreateEaiAllResponseBody) *CreateEaiAl
 }
 
 type CreateEaiJupyterRequest struct {
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EaisType        *string `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ClientToken     *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EaisType        *string                                  `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
+	EnvironmentVar  []*CreateEaiJupyterRequestEnvironmentVar `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty" type:"Repeated"`
+	RegionId        *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId *string                                  `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId       *string                                  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateEaiJupyterRequest) String() string {
@@ -383,6 +384,11 @@ func (s *CreateEaiJupyterRequest) SetEaisType(v string) *CreateEaiJupyterRequest
 	return s
 }
 
+func (s *CreateEaiJupyterRequest) SetEnvironmentVar(v []*CreateEaiJupyterRequestEnvironmentVar) *CreateEaiJupyterRequest {
+	s.EnvironmentVar = v
+	return s
+}
+
 func (s *CreateEaiJupyterRequest) SetRegionId(v string) *CreateEaiJupyterRequest {
 	s.RegionId = &v
 	return s
@@ -394,6 +400,76 @@ func (s *CreateEaiJupyterRequest) SetSecurityGroupId(v string) *CreateEaiJupyter
 }
 
 func (s *CreateEaiJupyterRequest) SetVSwitchId(v string) *CreateEaiJupyterRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type CreateEaiJupyterRequestEnvironmentVar struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEaiJupyterRequestEnvironmentVar) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaiJupyterRequestEnvironmentVar) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaiJupyterRequestEnvironmentVar) SetKey(v string) *CreateEaiJupyterRequestEnvironmentVar {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEaiJupyterRequestEnvironmentVar) SetValue(v string) *CreateEaiJupyterRequestEnvironmentVar {
+	s.Value = &v
+	return s
+}
+
+type CreateEaiJupyterShrinkRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EaisType             *string `json:"EaisType,omitempty" xml:"EaisType,omitempty"`
+	EnvironmentVarShrink *string `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId      *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s CreateEaiJupyterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEaiJupyterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEaiJupyterShrinkRequest) SetClientToken(v string) *CreateEaiJupyterShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateEaiJupyterShrinkRequest) SetEaisType(v string) *CreateEaiJupyterShrinkRequest {
+	s.EaisType = &v
+	return s
+}
+
+func (s *CreateEaiJupyterShrinkRequest) SetEnvironmentVarShrink(v string) *CreateEaiJupyterShrinkRequest {
+	s.EnvironmentVarShrink = &v
+	return s
+}
+
+func (s *CreateEaiJupyterShrinkRequest) SetRegionId(v string) *CreateEaiJupyterShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateEaiJupyterShrinkRequest) SetSecurityGroupId(v string) *CreateEaiJupyterShrinkRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateEaiJupyterShrinkRequest) SetVSwitchId(v string) *CreateEaiJupyterShrinkRequest {
 	s.VSwitchId = &v
 	return s
 }
@@ -1370,11 +1446,17 @@ func (client *Client) CreateEaiAll(request *CreateEaiAllRequest) (_result *Creat
 	return _result, _err
 }
 
-func (client *Client) CreateEaiJupyterWithOptions(request *CreateEaiJupyterRequest, runtime *util.RuntimeOptions) (_result *CreateEaiJupyterResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateEaiJupyterWithOptions(tmpReq *CreateEaiJupyterRequest, runtime *util.RuntimeOptions) (_result *CreateEaiJupyterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateEaiJupyterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EnvironmentVar)) {
+		request.EnvironmentVarShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EnvironmentVar, tea.String("EnvironmentVar"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -1382,6 +1464,10 @@ func (client *Client) CreateEaiJupyterWithOptions(request *CreateEaiJupyterReque
 
 	if !tea.BoolValue(util.IsUnset(request.EaisType)) {
 		query["EaisType"] = request.EaisType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentVarShrink)) {
+		query["EnvironmentVar"] = request.EnvironmentVarShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
