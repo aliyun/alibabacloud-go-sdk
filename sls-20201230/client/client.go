@@ -766,6 +766,7 @@ type Logstore struct {
 	LogstoreName   *string      `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
 	MaxSplitShard  *int32       `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
 	Mode           *string      `json:"mode,omitempty" xml:"mode,omitempty"`
+	ProductType    *string      `json:"productType,omitempty" xml:"productType,omitempty"`
 	ShardCount     *int32       `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
 	TelemetryType  *string      `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
 	Ttl            *int32       `json:"ttl,omitempty" xml:"ttl,omitempty"`
@@ -826,6 +827,11 @@ func (s *Logstore) SetMaxSplitShard(v int32) *Logstore {
 
 func (s *Logstore) SetMode(v string) *Logstore {
 	s.Mode = &v
+	return s
+}
+
+func (s *Logstore) SetProductType(v string) *Logstore {
+	s.ProductType = &v
 	return s
 }
 
