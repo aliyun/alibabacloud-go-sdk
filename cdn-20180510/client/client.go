@@ -20208,7 +20208,8 @@ func (s *SetCdnDomainStagingConfigRequest) SetOwnerId(v int64) *SetCdnDomainStag
 }
 
 type SetCdnDomainStagingConfigResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DomainConfigList []*SetCdnDomainStagingConfigResponseBodyDomainConfigList `json:"DomainConfigList,omitempty" xml:"DomainConfigList,omitempty" type:"Repeated"`
+	RequestId        *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetCdnDomainStagingConfigResponseBody) String() string {
@@ -20219,8 +20220,42 @@ func (s SetCdnDomainStagingConfigResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *SetCdnDomainStagingConfigResponseBody) SetDomainConfigList(v []*SetCdnDomainStagingConfigResponseBodyDomainConfigList) *SetCdnDomainStagingConfigResponseBody {
+	s.DomainConfigList = v
+	return s
+}
+
 func (s *SetCdnDomainStagingConfigResponseBody) SetRequestId(v string) *SetCdnDomainStagingConfigResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type SetCdnDomainStagingConfigResponseBodyDomainConfigList struct {
+	ConfigId     *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+}
+
+func (s SetCdnDomainStagingConfigResponseBodyDomainConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetCdnDomainStagingConfigResponseBodyDomainConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *SetCdnDomainStagingConfigResponseBodyDomainConfigList) SetConfigId(v int64) *SetCdnDomainStagingConfigResponseBodyDomainConfigList {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *SetCdnDomainStagingConfigResponseBodyDomainConfigList) SetDomainName(v string) *SetCdnDomainStagingConfigResponseBodyDomainConfigList {
+	s.DomainName = &v
+	return s
+}
+
+func (s *SetCdnDomainStagingConfigResponseBodyDomainConfigList) SetFunctionName(v string) *SetCdnDomainStagingConfigResponseBodyDomainConfigList {
+	s.FunctionName = &v
 	return s
 }
 
