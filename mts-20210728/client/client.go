@@ -883,6 +883,7 @@ type SubmitCopyrightJobRequest struct {
 	Level          *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
 	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Output         *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Params         *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TotalTime      *int64  `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
 	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
@@ -925,6 +926,11 @@ func (s *SubmitCopyrightJobRequest) SetMessage(v string) *SubmitCopyrightJobRequ
 
 func (s *SubmitCopyrightJobRequest) SetOutput(v string) *SubmitCopyrightJobRequest {
 	s.Output = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobRequest) SetParams(v string) *SubmitCopyrightJobRequest {
+	s.Params = &v
 	return s
 }
 
@@ -1035,12 +1041,10 @@ func (s *SubmitCopyrightJobResponse) SetBody(v *SubmitCopyrightJobResponseBody) 
 }
 
 type SubmitImageCopyrightRequest struct {
-	Input   *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	Level   *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Output  *string `json:"Output,omitempty" xml:"Output,omitempty"`
 	Params  *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	Url     *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s SubmitImageCopyrightRequest) String() string {
@@ -1049,11 +1053,6 @@ func (s SubmitImageCopyrightRequest) String() string {
 
 func (s SubmitImageCopyrightRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SubmitImageCopyrightRequest) SetInput(v string) *SubmitImageCopyrightRequest {
-	s.Input = &v
-	return s
 }
 
 func (s *SubmitImageCopyrightRequest) SetLevel(v int64) *SubmitImageCopyrightRequest {
@@ -1073,11 +1072,6 @@ func (s *SubmitImageCopyrightRequest) SetOutput(v string) *SubmitImageCopyrightR
 
 func (s *SubmitImageCopyrightRequest) SetParams(v string) *SubmitImageCopyrightRequest {
 	s.Params = &v
-	return s
-}
-
-func (s *SubmitImageCopyrightRequest) SetUrl(v string) *SubmitImageCopyrightRequest {
-	s.Url = &v
 	return s
 }
 
@@ -2021,6 +2015,10 @@ func (client *Client) SubmitCopyrightJobWithOptions(request *SubmitCopyrightJobR
 		body["Output"] = request.Output
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		body["StartTime"] = request.StartTime
 	}
@@ -2083,10 +2081,6 @@ func (client *Client) SubmitImageCopyrightWithOptions(request *SubmitImageCopyri
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Input)) {
-		body["Input"] = request.Input
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Level)) {
 		body["Level"] = request.Level
 	}
@@ -2101,10 +2095,6 @@ func (client *Client) SubmitImageCopyrightWithOptions(request *SubmitImageCopyri
 
 	if !tea.BoolValue(util.IsUnset(request.Params)) {
 		body["Params"] = request.Params
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Url)) {
-		body["Url"] = request.Url
 	}
 
 	req := &openapi.OpenApiRequest{
