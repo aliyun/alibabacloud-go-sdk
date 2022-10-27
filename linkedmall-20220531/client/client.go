@@ -3711,6 +3711,875 @@ func (s *QueryItemDetailResponse) SetBody(v *QueryItemDetailResponseBody) *Query
 	return s
 }
 
+type QueryItemDetailWithDivisionRequest struct {
+	DistributionMallId *string `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	DistributorId      *string `json:"DistributorId,omitempty" xml:"DistributorId,omitempty"`
+	DivisionCode       *string `json:"DivisionCode,omitempty" xml:"DivisionCode,omitempty"`
+	LmItemId           *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	TenantId           *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s QueryItemDetailWithDivisionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemDetailWithDivisionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemDetailWithDivisionRequest) SetDistributionMallId(v string) *QueryItemDetailWithDivisionRequest {
+	s.DistributionMallId = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionRequest) SetDistributorId(v string) *QueryItemDetailWithDivisionRequest {
+	s.DistributorId = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionRequest) SetDivisionCode(v string) *QueryItemDetailWithDivisionRequest {
+	s.DivisionCode = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionRequest) SetLmItemId(v string) *QueryItemDetailWithDivisionRequest {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionRequest) SetTenantId(v string) *QueryItemDetailWithDivisionRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QueryItemDetailWithDivisionResponseBody struct {
+	Code       *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                       `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *QueryItemDetailWithDivisionResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	PageNumber *int64                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string                                       `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string                                       `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryItemDetailWithDivisionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemDetailWithDivisionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemDetailWithDivisionResponseBody) SetCode(v string) *QueryItemDetailWithDivisionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBody) SetLogsId(v string) *QueryItemDetailWithDivisionResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBody) SetMessage(v string) *QueryItemDetailWithDivisionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBody) SetModel(v *QueryItemDetailWithDivisionResponseBodyModel) *QueryItemDetailWithDivisionResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBody) SetPageNumber(v int64) *QueryItemDetailWithDivisionResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBody) SetPageSize(v int64) *QueryItemDetailWithDivisionResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBody) SetRequestId(v string) *QueryItemDetailWithDivisionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBody) SetSubCode(v string) *QueryItemDetailWithDivisionResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBody) SetSubMessage(v string) *QueryItemDetailWithDivisionResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBody) SetSuccess(v bool) *QueryItemDetailWithDivisionResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBody) SetTotalCount(v int64) *QueryItemDetailWithDivisionResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryItemDetailWithDivisionResponseBodyModel struct {
+	CanNotBeSoldCode       *string                                                     `json:"CanNotBeSoldCode,omitempty" xml:"CanNotBeSoldCode,omitempty"`
+	CanNotBeSoldMassage    *string                                                     `json:"CanNotBeSoldMassage,omitempty" xml:"CanNotBeSoldMassage,omitempty"`
+	CanSell                *bool                                                       `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	CategoryId             *int64                                                      `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryIds            []*int64                                                    `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	City                   *string                                                     `json:"City,omitempty" xml:"City,omitempty"`
+	Current                *string                                                     `json:"Current,omitempty" xml:"Current,omitempty"`
+	CustomizedAttributeMap map[string]*string                                          `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
+	DescOption             *string                                                     `json:"DescOption,omitempty" xml:"DescOption,omitempty"`
+	DescPath               *string                                                     `json:"DescPath,omitempty" xml:"DescPath,omitempty"`
+	DistributionMallId     *string                                                     `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	Features               map[string]*string                                          `json:"Features,omitempty" xml:"Features,omitempty"`
+	FirstPicUrl            *string                                                     `json:"FirstPicUrl,omitempty" xml:"FirstPicUrl,omitempty"`
+	HasQuantity            *bool                                                       `json:"HasQuantity,omitempty" xml:"HasQuantity,omitempty"`
+	IforestProps           []map[string]*string                                        `json:"IforestProps,omitempty" xml:"IforestProps,omitempty" type:"Repeated"`
+	InvoiceType            *int32                                                      `json:"InvoiceType,omitempty" xml:"InvoiceType,omitempty"`
+	ItemId                 *int64                                                      `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemImages             []*string                                                   `json:"ItemImages,omitempty" xml:"ItemImages,omitempty" type:"Repeated"`
+	ItemTitle              *string                                                     `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	ItemTotalSimpleValue   *string                                                     `json:"ItemTotalSimpleValue,omitempty" xml:"ItemTotalSimpleValue,omitempty"`
+	ItemTotalValue         *int32                                                      `json:"ItemTotalValue,omitempty" xml:"ItemTotalValue,omitempty"`
+	LmItemAttributeMap     map[string]*string                                          `json:"LmItemAttributeMap,omitempty" xml:"LmItemAttributeMap,omitempty"`
+	LmItemCategory         *string                                                     `json:"LmItemCategory,omitempty" xml:"LmItemCategory,omitempty"`
+	LmItemId               *string                                                     `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	MainPicUrl             *string                                                     `json:"MainPicUrl,omitempty" xml:"MainPicUrl,omitempty"`
+	MinPrice               *int64                                                      `json:"MinPrice,omitempty" xml:"MinPrice,omitempty"`
+	Properties             map[string][]*string                                        `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	Prov                   *string                                                     `json:"Prov,omitempty" xml:"Prov,omitempty"`
+	Quantity               *int32                                                      `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	ReservePrice           *int64                                                      `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	SecuredTransactions    *int32                                                      `json:"SecuredTransactions,omitempty" xml:"SecuredTransactions,omitempty"`
+	SellerPayPostfee       *bool                                                       `json:"SellerPayPostfee,omitempty" xml:"SellerPayPostfee,omitempty"`
+	SimpleQuantity         *string                                                     `json:"SimpleQuantity,omitempty" xml:"SimpleQuantity,omitempty"`
+	SkuModels              []*QueryItemDetailWithDivisionResponseBodyModelSkuModels    `json:"SkuModels,omitempty" xml:"SkuModels,omitempty" type:"Repeated"`
+	SkuPropertys           []*QueryItemDetailWithDivisionResponseBodyModelSkuPropertys `json:"SkuPropertys,omitempty" xml:"SkuPropertys,omitempty" type:"Repeated"`
+	ThirdPartyItemId       *string                                                     `json:"ThirdPartyItemId,omitempty" xml:"ThirdPartyItemId,omitempty"`
+	ThirdPartyName         *string                                                     `json:"ThirdPartyName,omitempty" xml:"ThirdPartyName,omitempty"`
+	UserType               *int32                                                      `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	VideoPicUrl            *string                                                     `json:"VideoPicUrl,omitempty" xml:"VideoPicUrl,omitempty"`
+	VideoUrl               *string                                                     `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	VirtualItemType        *string                                                     `json:"VirtualItemType,omitempty" xml:"VirtualItemType,omitempty"`
+}
+
+func (s QueryItemDetailWithDivisionResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemDetailWithDivisionResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetCanNotBeSoldCode(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.CanNotBeSoldCode = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetCanNotBeSoldMassage(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.CanNotBeSoldMassage = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetCanSell(v bool) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.CanSell = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetCategoryId(v int64) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetCategoryIds(v []*int64) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.CategoryIds = v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetCity(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.City = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetCurrent(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.Current = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetCustomizedAttributeMap(v map[string]*string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.CustomizedAttributeMap = v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetDescOption(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.DescOption = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetDescPath(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.DescPath = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetDistributionMallId(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.DistributionMallId = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetFeatures(v map[string]*string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.Features = v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetFirstPicUrl(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.FirstPicUrl = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetHasQuantity(v bool) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.HasQuantity = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetIforestProps(v []map[string]*string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.IforestProps = v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetInvoiceType(v int32) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.InvoiceType = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetItemId(v int64) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetItemImages(v []*string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.ItemImages = v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetItemTitle(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.ItemTitle = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetItemTotalSimpleValue(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.ItemTotalSimpleValue = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetItemTotalValue(v int32) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.ItemTotalValue = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetLmItemAttributeMap(v map[string]*string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.LmItemAttributeMap = v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetLmItemCategory(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.LmItemCategory = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetLmItemId(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetMainPicUrl(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.MainPicUrl = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetMinPrice(v int64) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.MinPrice = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetProperties(v map[string][]*string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.Properties = v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetProv(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.Prov = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetQuantity(v int32) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.Quantity = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetReservePrice(v int64) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.ReservePrice = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetSecuredTransactions(v int32) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.SecuredTransactions = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetSellerPayPostfee(v bool) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.SellerPayPostfee = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetSimpleQuantity(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.SimpleQuantity = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetSkuModels(v []*QueryItemDetailWithDivisionResponseBodyModelSkuModels) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.SkuModels = v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetSkuPropertys(v []*QueryItemDetailWithDivisionResponseBodyModelSkuPropertys) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.SkuPropertys = v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetThirdPartyItemId(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.ThirdPartyItemId = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetThirdPartyName(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.ThirdPartyName = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetUserType(v int32) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.UserType = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetVideoPicUrl(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.VideoPicUrl = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetVideoUrl(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.VideoUrl = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModel) SetVirtualItemType(v string) *QueryItemDetailWithDivisionResponseBodyModel {
+	s.VirtualItemType = &v
+	return s
+}
+
+type QueryItemDetailWithDivisionResponseBodyModelSkuModels struct {
+	CanNotBeSoldCode       *string            `json:"CanNotBeSoldCode,omitempty" xml:"CanNotBeSoldCode,omitempty"`
+	CanNotBeSoldMassage    *string            `json:"CanNotBeSoldMassage,omitempty" xml:"CanNotBeSoldMassage,omitempty"`
+	CustomizedAttributeMap map[string]*string `json:"CustomizedAttributeMap,omitempty" xml:"CustomizedAttributeMap,omitempty"`
+	DistributionMallId     *string            `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	ExtJson                *string            `json:"ExtJson,omitempty" xml:"ExtJson,omitempty"`
+	HasQuantity            *bool              `json:"HasQuantity,omitempty" xml:"HasQuantity,omitempty"`
+	InvoiceType            *int32             `json:"InvoiceType,omitempty" xml:"InvoiceType,omitempty"`
+	ItemId                 *int64             `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId               *string            `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	LmSkuAttributeMap      map[string]*string `json:"LmSkuAttributeMap,omitempty" xml:"LmSkuAttributeMap,omitempty"`
+	PriceCent              *int64             `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
+	Quantity               *int32             `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	ReservePrice           *int64             `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	SimpleQuantity         *string            `json:"SimpleQuantity,omitempty" xml:"SimpleQuantity,omitempty"`
+	SkuId                  *int64             `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	SkuPicUrl              *string            `json:"SkuPicUrl,omitempty" xml:"SkuPicUrl,omitempty"`
+	SkuPvs                 *string            `json:"SkuPvs,omitempty" xml:"SkuPvs,omitempty"`
+	SkuTitle               *string            `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
+	Status                 *int32             `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupplierPrice          *int64             `json:"SupplierPrice,omitempty" xml:"SupplierPrice,omitempty"`
+}
+
+func (s QueryItemDetailWithDivisionResponseBodyModelSkuModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemDetailWithDivisionResponseBodyModelSkuModels) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetCanNotBeSoldCode(v string) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.CanNotBeSoldCode = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetCanNotBeSoldMassage(v string) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.CanNotBeSoldMassage = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetCustomizedAttributeMap(v map[string]*string) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.CustomizedAttributeMap = v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetDistributionMallId(v string) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.DistributionMallId = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetExtJson(v string) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.ExtJson = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetHasQuantity(v bool) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.HasQuantity = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetInvoiceType(v int32) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.InvoiceType = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetItemId(v int64) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetLmItemId(v string) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetLmSkuAttributeMap(v map[string]*string) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.LmSkuAttributeMap = v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetPriceCent(v int64) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.PriceCent = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetQuantity(v int32) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.Quantity = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetReservePrice(v int64) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.ReservePrice = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetSimpleQuantity(v string) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.SimpleQuantity = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetSkuId(v int64) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.SkuId = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetSkuPicUrl(v string) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.SkuPicUrl = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetSkuPvs(v string) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.SkuPvs = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetSkuTitle(v string) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.SkuTitle = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetStatus(v int32) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuModels) SetSupplierPrice(v int64) *QueryItemDetailWithDivisionResponseBodyModelSkuModels {
+	s.SupplierPrice = &v
+	return s
+}
+
+type QueryItemDetailWithDivisionResponseBodyModelSkuPropertys struct {
+	Id     *int64                                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	Text   *string                                                           `json:"Text,omitempty" xml:"Text,omitempty"`
+	Values []*QueryItemDetailWithDivisionResponseBodyModelSkuPropertysValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s QueryItemDetailWithDivisionResponseBodyModelSkuPropertys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemDetailWithDivisionResponseBodyModelSkuPropertys) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuPropertys) SetId(v int64) *QueryItemDetailWithDivisionResponseBodyModelSkuPropertys {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuPropertys) SetText(v string) *QueryItemDetailWithDivisionResponseBodyModelSkuPropertys {
+	s.Text = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuPropertys) SetValues(v []*QueryItemDetailWithDivisionResponseBodyModelSkuPropertysValues) *QueryItemDetailWithDivisionResponseBodyModelSkuPropertys {
+	s.Values = v
+	return s
+}
+
+type QueryItemDetailWithDivisionResponseBodyModelSkuPropertysValues struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s QueryItemDetailWithDivisionResponseBodyModelSkuPropertysValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemDetailWithDivisionResponseBodyModelSkuPropertysValues) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuPropertysValues) SetId(v int64) *QueryItemDetailWithDivisionResponseBodyModelSkuPropertysValues {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponseBodyModelSkuPropertysValues) SetText(v string) *QueryItemDetailWithDivisionResponseBodyModelSkuPropertysValues {
+	s.Text = &v
+	return s
+}
+
+type QueryItemDetailWithDivisionResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryItemDetailWithDivisionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryItemDetailWithDivisionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemDetailWithDivisionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemDetailWithDivisionResponse) SetHeaders(v map[string]*string) *QueryItemDetailWithDivisionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponse) SetStatusCode(v int32) *QueryItemDetailWithDivisionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryItemDetailWithDivisionResponse) SetBody(v *QueryItemDetailWithDivisionResponseBody) *QueryItemDetailWithDivisionResponse {
+	s.Body = v
+	return s
+}
+
+type QueryItemGuideRetailPriceRequest struct {
+	DistributionMallId *string   `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	DistributorId      *string   `json:"DistributorId,omitempty" xml:"DistributorId,omitempty"`
+	LmItemIds          []*string `json:"LmItemIds,omitempty" xml:"LmItemIds,omitempty" type:"Repeated"`
+	TenantId           *string   `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s QueryItemGuideRetailPriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemGuideRetailPriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemGuideRetailPriceRequest) SetDistributionMallId(v string) *QueryItemGuideRetailPriceRequest {
+	s.DistributionMallId = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceRequest) SetDistributorId(v string) *QueryItemGuideRetailPriceRequest {
+	s.DistributorId = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceRequest) SetLmItemIds(v []*string) *QueryItemGuideRetailPriceRequest {
+	s.LmItemIds = v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceRequest) SetTenantId(v string) *QueryItemGuideRetailPriceRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QueryItemGuideRetailPriceShrinkRequest struct {
+	DistributionMallId *string `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	DistributorId      *string `json:"DistributorId,omitempty" xml:"DistributorId,omitempty"`
+	LmItemIdsShrink    *string `json:"LmItemIds,omitempty" xml:"LmItemIds,omitempty"`
+	TenantId           *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s QueryItemGuideRetailPriceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemGuideRetailPriceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemGuideRetailPriceShrinkRequest) SetDistributionMallId(v string) *QueryItemGuideRetailPriceShrinkRequest {
+	s.DistributionMallId = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceShrinkRequest) SetDistributorId(v string) *QueryItemGuideRetailPriceShrinkRequest {
+	s.DistributorId = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceShrinkRequest) SetLmItemIdsShrink(v string) *QueryItemGuideRetailPriceShrinkRequest {
+	s.LmItemIdsShrink = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceShrinkRequest) SetTenantId(v string) *QueryItemGuideRetailPriceShrinkRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QueryItemGuideRetailPriceResponseBody struct {
+	Code       *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                       `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      []*QueryItemGuideRetailPriceResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string                                       `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string                                       `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryItemGuideRetailPriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemGuideRetailPriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemGuideRetailPriceResponseBody) SetCode(v string) *QueryItemGuideRetailPriceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBody) SetLogsId(v string) *QueryItemGuideRetailPriceResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBody) SetMessage(v string) *QueryItemGuideRetailPriceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBody) SetModel(v []*QueryItemGuideRetailPriceResponseBodyModel) *QueryItemGuideRetailPriceResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBody) SetRequestId(v string) *QueryItemGuideRetailPriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBody) SetSubCode(v string) *QueryItemGuideRetailPriceResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBody) SetSubMessage(v string) *QueryItemGuideRetailPriceResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBody) SetSuccess(v bool) *QueryItemGuideRetailPriceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryItemGuideRetailPriceResponseBodyModel struct {
+	DistributionMallId    *string                                                `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	GuideRetailPriceScope *string                                                `json:"GuideRetailPriceScope,omitempty" xml:"GuideRetailPriceScope,omitempty"`
+	ItemId                *int64                                                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemTitle             *string                                                `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	LmItemId              *string                                                `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	ReservedPrice         *int64                                                 `json:"ReservedPrice,omitempty" xml:"ReservedPrice,omitempty"`
+	ReservedPriceScope    *string                                                `json:"ReservedPriceScope,omitempty" xml:"ReservedPriceScope,omitempty"`
+	SkuModels             []*QueryItemGuideRetailPriceResponseBodyModelSkuModels `json:"SkuModels,omitempty" xml:"SkuModels,omitempty" type:"Repeated"`
+}
+
+func (s QueryItemGuideRetailPriceResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemGuideRetailPriceResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModel) SetDistributionMallId(v string) *QueryItemGuideRetailPriceResponseBodyModel {
+	s.DistributionMallId = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModel) SetGuideRetailPriceScope(v string) *QueryItemGuideRetailPriceResponseBodyModel {
+	s.GuideRetailPriceScope = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModel) SetItemId(v int64) *QueryItemGuideRetailPriceResponseBodyModel {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModel) SetItemTitle(v string) *QueryItemGuideRetailPriceResponseBodyModel {
+	s.ItemTitle = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModel) SetLmItemId(v string) *QueryItemGuideRetailPriceResponseBodyModel {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModel) SetReservedPrice(v int64) *QueryItemGuideRetailPriceResponseBodyModel {
+	s.ReservedPrice = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModel) SetReservedPriceScope(v string) *QueryItemGuideRetailPriceResponseBodyModel {
+	s.ReservedPriceScope = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModel) SetSkuModels(v []*QueryItemGuideRetailPriceResponseBodyModelSkuModels) *QueryItemGuideRetailPriceResponseBodyModel {
+	s.SkuModels = v
+	return s
+}
+
+type QueryItemGuideRetailPriceResponseBodyModelSkuModels struct {
+	DistributionMallId *string `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	GuideRetailPrice   *int64  `json:"GuideRetailPrice,omitempty" xml:"GuideRetailPrice,omitempty"`
+	ItemId             *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId           *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	PriceCent          *int64  `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
+	ReservedPrice      *int64  `json:"ReservedPrice,omitempty" xml:"ReservedPrice,omitempty"`
+	SkuId              *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	SkuTitle           *string `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
+	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QueryItemGuideRetailPriceResponseBodyModelSkuModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemGuideRetailPriceResponseBodyModelSkuModels) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModelSkuModels) SetDistributionMallId(v string) *QueryItemGuideRetailPriceResponseBodyModelSkuModels {
+	s.DistributionMallId = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModelSkuModels) SetGuideRetailPrice(v int64) *QueryItemGuideRetailPriceResponseBodyModelSkuModels {
+	s.GuideRetailPrice = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModelSkuModels) SetItemId(v int64) *QueryItemGuideRetailPriceResponseBodyModelSkuModels {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModelSkuModels) SetLmItemId(v string) *QueryItemGuideRetailPriceResponseBodyModelSkuModels {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModelSkuModels) SetPriceCent(v int64) *QueryItemGuideRetailPriceResponseBodyModelSkuModels {
+	s.PriceCent = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModelSkuModels) SetReservedPrice(v int64) *QueryItemGuideRetailPriceResponseBodyModelSkuModels {
+	s.ReservedPrice = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModelSkuModels) SetSkuId(v int64) *QueryItemGuideRetailPriceResponseBodyModelSkuModels {
+	s.SkuId = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModelSkuModels) SetSkuTitle(v string) *QueryItemGuideRetailPriceResponseBodyModelSkuModels {
+	s.SkuTitle = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponseBodyModelSkuModels) SetStatus(v int32) *QueryItemGuideRetailPriceResponseBodyModelSkuModels {
+	s.Status = &v
+	return s
+}
+
+type QueryItemGuideRetailPriceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryItemGuideRetailPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryItemGuideRetailPriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryItemGuideRetailPriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryItemGuideRetailPriceResponse) SetHeaders(v map[string]*string) *QueryItemGuideRetailPriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponse) SetStatusCode(v int32) *QueryItemGuideRetailPriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryItemGuideRetailPriceResponse) SetBody(v *QueryItemGuideRetailPriceResponseBody) *QueryItemGuideRetailPriceResponse {
+	s.Body = v
+	return s
+}
+
 type QueryLogistics4DistributionRequest struct {
 	DistributorId           *string `json:"DistributorId,omitempty" xml:"DistributorId,omitempty"`
 	MainDistributionOrderId *string `json:"MainDistributionOrderId,omitempty" xml:"MainDistributionOrderId,omitempty"`
@@ -3947,6 +4816,164 @@ func (s *QueryLogistics4DistributionResponse) SetStatusCode(v int32) *QueryLogis
 }
 
 func (s *QueryLogistics4DistributionResponse) SetBody(v *QueryLogistics4DistributionResponseBody) *QueryLogistics4DistributionResponse {
+	s.Body = v
+	return s
+}
+
+type QueryMallCategoryListRequest struct {
+	CategoryId         *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	DistributionMallId *string `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	DistributorId      *string `json:"DistributorId,omitempty" xml:"DistributorId,omitempty"`
+	TenantId           *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s QueryMallCategoryListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMallCategoryListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMallCategoryListRequest) SetCategoryId(v int64) *QueryMallCategoryListRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *QueryMallCategoryListRequest) SetDistributionMallId(v string) *QueryMallCategoryListRequest {
+	s.DistributionMallId = &v
+	return s
+}
+
+func (s *QueryMallCategoryListRequest) SetDistributorId(v string) *QueryMallCategoryListRequest {
+	s.DistributorId = &v
+	return s
+}
+
+func (s *QueryMallCategoryListRequest) SetTenantId(v string) *QueryMallCategoryListRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QueryMallCategoryListResponseBody struct {
+	Code       *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                   `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      []*QueryMallCategoryListResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string                                   `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string                                   `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryMallCategoryListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMallCategoryListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMallCategoryListResponseBody) SetCode(v string) *QueryMallCategoryListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryMallCategoryListResponseBody) SetLogsId(v string) *QueryMallCategoryListResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryMallCategoryListResponseBody) SetMessage(v string) *QueryMallCategoryListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryMallCategoryListResponseBody) SetModel(v []*QueryMallCategoryListResponseBodyModel) *QueryMallCategoryListResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QueryMallCategoryListResponseBody) SetRequestId(v string) *QueryMallCategoryListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryMallCategoryListResponseBody) SetSubCode(v string) *QueryMallCategoryListResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryMallCategoryListResponseBody) SetSubMessage(v string) *QueryMallCategoryListResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryMallCategoryListResponseBody) SetSuccess(v bool) *QueryMallCategoryListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryMallCategoryListResponseBodyModel struct {
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Leaf       *bool   `json:"Leaf,omitempty" xml:"Leaf,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParentId   *int64  `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+}
+
+func (s QueryMallCategoryListResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMallCategoryListResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMallCategoryListResponseBodyModel) SetCategoryId(v int64) *QueryMallCategoryListResponseBodyModel {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *QueryMallCategoryListResponseBodyModel) SetLeaf(v bool) *QueryMallCategoryListResponseBodyModel {
+	s.Leaf = &v
+	return s
+}
+
+func (s *QueryMallCategoryListResponseBodyModel) SetName(v string) *QueryMallCategoryListResponseBodyModel {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryMallCategoryListResponseBodyModel) SetParentId(v int64) *QueryMallCategoryListResponseBodyModel {
+	s.ParentId = &v
+	return s
+}
+
+type QueryMallCategoryListResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryMallCategoryListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryMallCategoryListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMallCategoryListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMallCategoryListResponse) SetHeaders(v map[string]*string) *QueryMallCategoryListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMallCategoryListResponse) SetStatusCode(v int32) *QueryMallCategoryListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryMallCategoryListResponse) SetBody(v *QueryMallCategoryListResponseBody) *QueryMallCategoryListResponse {
 	s.Body = v
 	return s
 }
@@ -7570,6 +8597,128 @@ func (client *Client) QueryItemDetail(request *QueryItemDetailRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) QueryItemDetailWithDivisionWithOptions(request *QueryItemDetailWithDivisionRequest, runtime *util.RuntimeOptions) (_result *QueryItemDetailWithDivisionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DistributionMallId)) {
+		body["DistributionMallId"] = request.DistributionMallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistributorId)) {
+		body["DistributorId"] = request.DistributorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DivisionCode)) {
+		body["DivisionCode"] = request.DivisionCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmItemId)) {
+		body["LmItemId"] = request.LmItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryItemDetailWithDivision"),
+		Version:     tea.String("2022-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryItemDetailWithDivisionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryItemDetailWithDivision(request *QueryItemDetailWithDivisionRequest) (_result *QueryItemDetailWithDivisionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryItemDetailWithDivisionResponse{}
+	_body, _err := client.QueryItemDetailWithDivisionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryItemGuideRetailPriceWithOptions(tmpReq *QueryItemGuideRetailPriceRequest, runtime *util.RuntimeOptions) (_result *QueryItemGuideRetailPriceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryItemGuideRetailPriceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LmItemIds)) {
+		request.LmItemIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LmItemIds, tea.String("LmItemIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DistributionMallId)) {
+		body["DistributionMallId"] = request.DistributionMallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistributorId)) {
+		body["DistributorId"] = request.DistributorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmItemIdsShrink)) {
+		body["LmItemIds"] = request.LmItemIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryItemGuideRetailPrice"),
+		Version:     tea.String("2022-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryItemGuideRetailPriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryItemGuideRetailPrice(request *QueryItemGuideRetailPriceRequest) (_result *QueryItemGuideRetailPriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryItemGuideRetailPriceResponse{}
+	_body, _err := client.QueryItemGuideRetailPriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryLogistics4DistributionWithOptions(request *QueryLogistics4DistributionRequest, runtime *util.RuntimeOptions) (_result *QueryLogistics4DistributionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7615,6 +8764,62 @@ func (client *Client) QueryLogistics4Distribution(request *QueryLogistics4Distri
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryLogistics4DistributionResponse{}
 	_body, _err := client.QueryLogistics4DistributionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryMallCategoryListWithOptions(request *QueryMallCategoryListRequest, runtime *util.RuntimeOptions) (_result *QueryMallCategoryListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		body["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistributionMallId)) {
+		body["DistributionMallId"] = request.DistributionMallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistributorId)) {
+		body["DistributorId"] = request.DistributorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryMallCategoryList"),
+		Version:     tea.String("2022-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryMallCategoryListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryMallCategoryList(request *QueryMallCategoryListRequest) (_result *QueryMallCategoryListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryMallCategoryListResponse{}
+	_body, _err := client.QueryMallCategoryListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

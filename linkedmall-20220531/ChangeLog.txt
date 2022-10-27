@@ -1,3 +1,8 @@
+2022-10-27 Version: v2.0.2
+- ADD QueryItemGuideRetailPrice .
+- ADD QueryItemDetailWithDivision .
+- ADD QueryMallCategoryList .
+
 2022-10-26 Version: v2.0.1
 - ADD QueryItemGuideRetailPrice .
 
