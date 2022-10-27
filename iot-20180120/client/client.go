@@ -23383,6 +23383,122 @@ func (s *GisSearchDeviceTraceResponse) SetBody(v *GisSearchDeviceTraceResponseBo
 	return s
 }
 
+type ImportDTDataRequest struct {
+	IotInstanceId *string                     `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Items         []*ImportDTDataRequestItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	ProductKey    *string                     `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s ImportDTDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportDTDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportDTDataRequest) SetIotInstanceId(v string) *ImportDTDataRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ImportDTDataRequest) SetItems(v []*ImportDTDataRequestItems) *ImportDTDataRequest {
+	s.Items = v
+	return s
+}
+
+func (s *ImportDTDataRequest) SetProductKey(v string) *ImportDTDataRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type ImportDTDataRequestItems struct {
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	Params     *string `json:"Params,omitempty" xml:"Params,omitempty"`
+}
+
+func (s ImportDTDataRequestItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportDTDataRequestItems) GoString() string {
+	return s.String()
+}
+
+func (s *ImportDTDataRequestItems) SetDeviceName(v string) *ImportDTDataRequestItems {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *ImportDTDataRequestItems) SetParams(v string) *ImportDTDataRequestItems {
+	s.Params = &v
+	return s
+}
+
+type ImportDTDataResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ImportDTDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportDTDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportDTDataResponseBody) SetCode(v string) *ImportDTDataResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImportDTDataResponseBody) SetErrorMessage(v string) *ImportDTDataResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ImportDTDataResponseBody) SetRequestId(v string) *ImportDTDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportDTDataResponseBody) SetSuccess(v bool) *ImportDTDataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ImportDTDataResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImportDTDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImportDTDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportDTDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportDTDataResponse) SetHeaders(v map[string]*string) *ImportDTDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportDTDataResponse) SetStatusCode(v int32) *ImportDTDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportDTDataResponse) SetBody(v *ImportDTDataResponseBody) *ImportDTDataResponse {
+	s.Body = v
+	return s
+}
+
 type ImportDeviceRequest struct {
 	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	DeviceSecret  *string `json:"DeviceSecret,omitempty" xml:"DeviceSecret,omitempty"`
@@ -67031,6 +67147,58 @@ func (client *Client) GisSearchDeviceTrace(request *GisSearchDeviceTraceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GisSearchDeviceTraceResponse{}
 	_body, _err := client.GisSearchDeviceTraceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImportDTDataWithOptions(request *ImportDTDataRequest, runtime *util.RuntimeOptions) (_result *ImportDTDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Items)) {
+		body["Items"] = request.Items
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		body["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportDTData"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportDTDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportDTData(request *ImportDTDataRequest) (_result *ImportDTDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportDTDataResponse{}
+	_body, _err := client.ImportDTDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
