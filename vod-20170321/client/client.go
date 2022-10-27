@@ -1507,15 +1507,16 @@ func (s *CreateUploadAttachedMediaResponse) SetBody(v *CreateUploadAttachedMedia
 }
 
 type CreateUploadImageRequest struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	CateId          *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageExt        *string `json:"ImageExt,omitempty" xml:"ImageExt,omitempty"`
-	ImageType       *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	Tags            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CateId           *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ImageExt         *string `json:"ImageExt,omitempty" xml:"ImageExt,omitempty"`
+	ImageType        *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	OriginalFileName *string `json:"OriginalFileName,omitempty" xml:"OriginalFileName,omitempty"`
+	StorageLocation  *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	Tags             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData         *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateUploadImageRequest) String() string {
@@ -1548,6 +1549,11 @@ func (s *CreateUploadImageRequest) SetImageExt(v string) *CreateUploadImageReque
 
 func (s *CreateUploadImageRequest) SetImageType(v string) *CreateUploadImageRequest {
 	s.ImageType = &v
+	return s
+}
+
+func (s *CreateUploadImageRequest) SetOriginalFileName(v string) *CreateUploadImageRequest {
+	s.OriginalFileName = &v
 	return s
 }
 
@@ -15269,10 +15275,9 @@ func (s *ListAITemplateResponse) SetBody(v *ListAITemplateResponseBody) *ListAIT
 }
 
 type ListAppInfoRequest struct {
-	PageNo   *int32                 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int32                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status   *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag      *ListAppInfoRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
+	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAppInfoRequest) String() string {
@@ -15295,34 +15300,6 @@ func (s *ListAppInfoRequest) SetPageSize(v int32) *ListAppInfoRequest {
 
 func (s *ListAppInfoRequest) SetStatus(v string) *ListAppInfoRequest {
 	s.Status = &v
-	return s
-}
-
-func (s *ListAppInfoRequest) SetTag(v *ListAppInfoRequestTag) *ListAppInfoRequest {
-	s.Tag = v
-	return s
-}
-
-type ListAppInfoRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListAppInfoRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAppInfoRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *ListAppInfoRequestTag) SetKey(v string) *ListAppInfoRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *ListAppInfoRequestTag) SetValue(v string) *ListAppInfoRequestTag {
-	s.Value = &v
 	return s
 }
 
@@ -15356,14 +15333,13 @@ func (s *ListAppInfoResponseBody) SetTotal(v int32) *ListAppInfoResponseBody {
 }
 
 type ListAppInfoResponseBodyAppInfoList struct {
-	AppId            *string                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName          *string                                   `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	CreationTime     *string                                   `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description      *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	ModificationTime *string                                   `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	Status           *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags             []*ListAppInfoResponseBodyAppInfoListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Type             *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName          *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAppInfoResponseBodyAppInfoList) String() string {
@@ -15404,36 +15380,8 @@ func (s *ListAppInfoResponseBodyAppInfoList) SetStatus(v string) *ListAppInfoRes
 	return s
 }
 
-func (s *ListAppInfoResponseBodyAppInfoList) SetTags(v []*ListAppInfoResponseBodyAppInfoListTags) *ListAppInfoResponseBodyAppInfoList {
-	s.Tags = v
-	return s
-}
-
 func (s *ListAppInfoResponseBodyAppInfoList) SetType(v string) *ListAppInfoResponseBodyAppInfoList {
 	s.Type = &v
-	return s
-}
-
-type ListAppInfoResponseBodyAppInfoListTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-}
-
-func (s ListAppInfoResponseBodyAppInfoListTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAppInfoResponseBodyAppInfoListTags) GoString() string {
-	return s.String()
-}
-
-func (s *ListAppInfoResponseBodyAppInfoListTags) SetTagKey(v string) *ListAppInfoResponseBodyAppInfoListTags {
-	s.TagKey = &v
-	return s
-}
-
-func (s *ListAppInfoResponseBodyAppInfoListTags) SetTagValue(v string) *ListAppInfoResponseBodyAppInfoListTags {
-	s.TagValue = &v
 	return s
 }
 
@@ -22607,6 +22555,10 @@ func (client *Client) CreateUploadImageWithOptions(request *CreateUploadImageReq
 		query["ImageType"] = request.ImageType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OriginalFileName)) {
+		query["OriginalFileName"] = request.OriginalFileName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StorageLocation)) {
 		query["StorageLocation"] = request.StorageLocation
 	}
@@ -26805,10 +26757,6 @@ func (client *Client) ListAppInfoWithOptions(request *ListAppInfoRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Tag))) {
-		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
