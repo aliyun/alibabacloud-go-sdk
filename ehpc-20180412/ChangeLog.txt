@@ -1,3 +1,6 @@
+2022-10-27 Version: v2.0.1
+- ListNodesByQueue and ListJobsWithFilters add Async.
+
 2022-09-23 Version: v2.0.0
 - Generated golang 2018-04-12 for EHPC.
 

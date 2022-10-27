@@ -12686,6 +12686,7 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 }
 
 type ListJobsWithFiltersRequest struct {
+	Async           *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
 	ClusterId       *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CreateTimeEnd   *string   `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
 	CreateTimeStart *string   `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
@@ -12708,6 +12709,11 @@ func (s ListJobsWithFiltersRequest) String() string {
 
 func (s ListJobsWithFiltersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListJobsWithFiltersRequest) SetAsync(v bool) *ListJobsWithFiltersRequest {
+	s.Async = &v
+	return s
 }
 
 func (s *ListJobsWithFiltersRequest) SetClusterId(v string) *ListJobsWithFiltersRequest {
@@ -13405,6 +13411,7 @@ func (s *ListNodesResponse) SetBody(v *ListNodesResponseBody) *ListNodesResponse
 }
 
 type ListNodesByQueueRequest struct {
+	Async      *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -13417,6 +13424,11 @@ func (s ListNodesByQueueRequest) String() string {
 
 func (s ListNodesByQueueRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListNodesByQueueRequest) SetAsync(v bool) *ListNodesByQueueRequest {
+	s.Async = &v
+	return s
 }
 
 func (s *ListNodesByQueueRequest) SetClusterId(v string) *ListNodesByQueueRequest {
@@ -14098,6 +14110,7 @@ func (s *ListPreferredEcsTypesResponse) SetBody(v *ListPreferredEcsTypesResponse
 }
 
 type ListQueuesRequest struct {
+	Async     *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -14107,6 +14120,11 @@ func (s ListQueuesRequest) String() string {
 
 func (s ListQueuesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListQueuesRequest) SetAsync(v bool) *ListQueuesRequest {
+	s.Async = &v
+	return s
 }
 
 func (s *ListQueuesRequest) SetClusterId(v string) *ListQueuesRequest {
@@ -15305,6 +15323,181 @@ func (s *ListUsersResponse) SetStatusCode(v int32) *ListUsersResponse {
 }
 
 func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse {
+	s.Body = v
+	return s
+}
+
+type ListUsersAsyncRequest struct {
+	AsyncId    *string `json:"AsyncId,omitempty" xml:"AsyncId,omitempty"`
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListUsersAsyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersAsyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersAsyncRequest) SetAsyncId(v string) *ListUsersAsyncRequest {
+	s.AsyncId = &v
+	return s
+}
+
+func (s *ListUsersAsyncRequest) SetClusterId(v string) *ListUsersAsyncRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListUsersAsyncRequest) SetPageNumber(v int32) *ListUsersAsyncRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUsersAsyncRequest) SetPageSize(v int32) *ListUsersAsyncRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListUsersAsyncResponseBody struct {
+	AsyncId     *string                          `json:"AsyncId,omitempty" xml:"AsyncId,omitempty"`
+	AsyncStatus *string                          `json:"AsyncStatus,omitempty" xml:"AsyncStatus,omitempty"`
+	PageNumber  *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Users       *ListUsersAsyncResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+}
+
+func (s ListUsersAsyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersAsyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersAsyncResponseBody) SetAsyncId(v string) *ListUsersAsyncResponseBody {
+	s.AsyncId = &v
+	return s
+}
+
+func (s *ListUsersAsyncResponseBody) SetAsyncStatus(v string) *ListUsersAsyncResponseBody {
+	s.AsyncStatus = &v
+	return s
+}
+
+func (s *ListUsersAsyncResponseBody) SetPageNumber(v int32) *ListUsersAsyncResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUsersAsyncResponseBody) SetPageSize(v int32) *ListUsersAsyncResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUsersAsyncResponseBody) SetRequestId(v string) *ListUsersAsyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUsersAsyncResponseBody) SetTotalCount(v int32) *ListUsersAsyncResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListUsersAsyncResponseBody) SetUsers(v *ListUsersAsyncResponseBodyUsers) *ListUsersAsyncResponseBody {
+	s.Users = v
+	return s
+}
+
+type ListUsersAsyncResponseBodyUsers struct {
+	UserInfo []*ListUsersAsyncResponseBodyUsersUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Repeated"`
+}
+
+func (s ListUsersAsyncResponseBodyUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersAsyncResponseBodyUsers) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersAsyncResponseBodyUsers) SetUserInfo(v []*ListUsersAsyncResponseBodyUsersUserInfo) *ListUsersAsyncResponseBodyUsers {
+	s.UserInfo = v
+	return s
+}
+
+type ListUsersAsyncResponseBodyUsersUserInfo struct {
+	AddTime *string `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
+	Group   *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListUsersAsyncResponseBodyUsersUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersAsyncResponseBodyUsersUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersAsyncResponseBodyUsersUserInfo) SetAddTime(v string) *ListUsersAsyncResponseBodyUsersUserInfo {
+	s.AddTime = &v
+	return s
+}
+
+func (s *ListUsersAsyncResponseBodyUsersUserInfo) SetGroup(v string) *ListUsersAsyncResponseBodyUsersUserInfo {
+	s.Group = &v
+	return s
+}
+
+func (s *ListUsersAsyncResponseBodyUsersUserInfo) SetGroupId(v string) *ListUsersAsyncResponseBodyUsersUserInfo {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListUsersAsyncResponseBodyUsersUserInfo) SetName(v string) *ListUsersAsyncResponseBodyUsersUserInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *ListUsersAsyncResponseBodyUsersUserInfo) SetUserId(v string) *ListUsersAsyncResponseBodyUsersUserInfo {
+	s.UserId = &v
+	return s
+}
+
+type ListUsersAsyncResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUsersAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUsersAsyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersAsyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersAsyncResponse) SetHeaders(v map[string]*string) *ListUsersAsyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUsersAsyncResponse) SetStatusCode(v int32) *ListUsersAsyncResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUsersAsyncResponse) SetBody(v *ListUsersAsyncResponseBody) *ListUsersAsyncResponse {
 	s.Body = v
 	return s
 }
@@ -23225,6 +23418,46 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersResponse{}
 	_body, _err := client.ListUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListUsersAsyncWithOptions(request *ListUsersAsyncRequest, runtime *util.RuntimeOptions) (_result *ListUsersAsyncResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUsersAsync"),
+		Version:     tea.String("2018-04-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUsersAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUsersAsync(request *ListUsersAsyncRequest) (_result *ListUsersAsyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUsersAsyncResponse{}
+	_body, _err := client.ListUsersAsyncWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
