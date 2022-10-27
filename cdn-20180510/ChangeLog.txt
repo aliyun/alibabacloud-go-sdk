@@ -1,3 +1,6 @@
+2022-10-27 Version: v2.0.4
+- Add BatchDescribeCdnIpInfo.
+
 2022-10-27 Version: v2.0.3
 - Add DescribeWildcardDomainDetailData.
 
