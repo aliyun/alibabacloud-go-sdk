@@ -1069,156 +1069,6 @@ func (s *BatchSetDcdnWafDomainConfigsResponse) SetBody(v *BatchSetDcdnWafDomainC
 	return s
 }
 
-type BatchStartDcdnDomainRequest struct {
-	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-}
-
-func (s BatchStartDcdnDomainRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchStartDcdnDomainRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchStartDcdnDomainRequest) SetDomainNames(v string) *BatchStartDcdnDomainRequest {
-	s.DomainNames = &v
-	return s
-}
-
-func (s *BatchStartDcdnDomainRequest) SetOwnerId(v int64) *BatchStartDcdnDomainRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchStartDcdnDomainRequest) SetSecurityToken(v string) *BatchStartDcdnDomainRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-type BatchStartDcdnDomainResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s BatchStartDcdnDomainResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchStartDcdnDomainResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BatchStartDcdnDomainResponseBody) SetRequestId(v string) *BatchStartDcdnDomainResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type BatchStartDcdnDomainResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchStartDcdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s BatchStartDcdnDomainResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchStartDcdnDomainResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchStartDcdnDomainResponse) SetHeaders(v map[string]*string) *BatchStartDcdnDomainResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchStartDcdnDomainResponse) SetStatusCode(v int32) *BatchStartDcdnDomainResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *BatchStartDcdnDomainResponse) SetBody(v *BatchStartDcdnDomainResponseBody) *BatchStartDcdnDomainResponse {
-	s.Body = v
-	return s
-}
-
-type BatchStopDcdnDomainRequest struct {
-	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-}
-
-func (s BatchStopDcdnDomainRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchStopDcdnDomainRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchStopDcdnDomainRequest) SetDomainNames(v string) *BatchStopDcdnDomainRequest {
-	s.DomainNames = &v
-	return s
-}
-
-func (s *BatchStopDcdnDomainRequest) SetOwnerId(v int64) *BatchStopDcdnDomainRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *BatchStopDcdnDomainRequest) SetSecurityToken(v string) *BatchStopDcdnDomainRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-type BatchStopDcdnDomainResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s BatchStopDcdnDomainResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchStopDcdnDomainResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BatchStopDcdnDomainResponseBody) SetRequestId(v string) *BatchStopDcdnDomainResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type BatchStopDcdnDomainResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchStopDcdnDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s BatchStopDcdnDomainResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchStopDcdnDomainResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchStopDcdnDomainResponse) SetHeaders(v map[string]*string) *BatchStopDcdnDomainResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchStopDcdnDomainResponse) SetStatusCode(v int32) *BatchStopDcdnDomainResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *BatchStopDcdnDomainResponse) SetBody(v *BatchStopDcdnDomainResponseBody) *BatchStopDcdnDomainResponse {
-	s.Body = v
-	return s
-}
-
 type CheckDcdnProjectExistRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -5407,6 +5257,7 @@ type DescribeDcdnDomainConfigsResponseBodyDomainConfigsDomainConfig struct {
 	ConfigId     *string                                                                     `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	FunctionArgs *DescribeDcdnDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Struct"`
 	FunctionName *string                                                                     `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	ParentId     *string                                                                     `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	Status       *string                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -5430,6 +5281,11 @@ func (s *DescribeDcdnDomainConfigsResponseBodyDomainConfigsDomainConfig) SetFunc
 
 func (s *DescribeDcdnDomainConfigsResponseBodyDomainConfigsDomainConfig) SetFunctionName(v string) *DescribeDcdnDomainConfigsResponseBodyDomainConfigsDomainConfig {
 	s.FunctionName = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainConfigsResponseBodyDomainConfigsDomainConfig) SetParentId(v string) *DescribeDcdnDomainConfigsResponseBodyDomainConfigsDomainConfig {
+	s.ParentId = &v
 	return s
 }
 
@@ -24826,110 +24682,6 @@ func (client *Client) BatchSetDcdnWafDomainConfigs(request *BatchSetDcdnWafDomai
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchSetDcdnWafDomainConfigsResponse{}
 	_body, _err := client.BatchSetDcdnWafDomainConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) BatchStartDcdnDomainWithOptions(request *BatchStartDcdnDomainRequest, runtime *util.RuntimeOptions) (_result *BatchStartDcdnDomainResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
-		query["DomainNames"] = request.DomainNames
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("BatchStartDcdnDomain"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &BatchStartDcdnDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) BatchStartDcdnDomain(request *BatchStartDcdnDomainRequest) (_result *BatchStartDcdnDomainResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BatchStartDcdnDomainResponse{}
-	_body, _err := client.BatchStartDcdnDomainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) BatchStopDcdnDomainWithOptions(request *BatchStopDcdnDomainRequest, runtime *util.RuntimeOptions) (_result *BatchStopDcdnDomainResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
-		query["DomainNames"] = request.DomainNames
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("BatchStopDcdnDomain"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &BatchStopDcdnDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) BatchStopDcdnDomain(request *BatchStopDcdnDomainRequest) (_result *BatchStopDcdnDomainResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BatchStopDcdnDomainResponse{}
-	_body, _err := client.BatchStopDcdnDomainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
