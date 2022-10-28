@@ -13480,6 +13480,7 @@ type DescribeDBInstancePerformanceRequest struct {
 	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Key             *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -13504,6 +13505,11 @@ func (s *DescribeDBInstancePerformanceRequest) SetEndTime(v string) *DescribeDBI
 
 func (s *DescribeDBInstancePerformanceRequest) SetKey(v string) *DescribeDBInstancePerformanceRequest {
 	s.Key = &v
+	return s
+}
+
+func (s *DescribeDBInstancePerformanceRequest) SetNodeId(v string) *DescribeDBInstancePerformanceRequest {
+	s.NodeId = &v
 	return s
 }
 
@@ -21882,8 +21888,9 @@ func (s *DescribeParameterGroupRequest) SetResourceOwnerId(v int64) *DescribePar
 }
 
 type DescribeParameterGroupResponseBody struct {
-	ParamGroup *DescribeParameterGroupResponseBodyParamGroup `json:"ParamGroup,omitempty" xml:"ParamGroup,omitempty" type:"Struct"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ParamGroup         *DescribeParameterGroupResponseBodyParamGroup         `json:"ParamGroup,omitempty" xml:"ParamGroup,omitempty" type:"Struct"`
+	RelatedCustinsInfo *DescribeParameterGroupResponseBodyRelatedCustinsInfo `json:"RelatedCustinsInfo,omitempty" xml:"RelatedCustinsInfo,omitempty" type:"Struct"`
+	RequestId          *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeParameterGroupResponseBody) String() string {
@@ -21896,6 +21903,11 @@ func (s DescribeParameterGroupResponseBody) GoString() string {
 
 func (s *DescribeParameterGroupResponseBody) SetParamGroup(v *DescribeParameterGroupResponseBodyParamGroup) *DescribeParameterGroupResponseBody {
 	s.ParamGroup = v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBody) SetRelatedCustinsInfo(v *DescribeParameterGroupResponseBodyRelatedCustinsInfo) *DescribeParameterGroupResponseBody {
+	s.RelatedCustinsInfo = v
 	return s
 }
 
@@ -22035,6 +22047,46 @@ func (s *DescribeParameterGroupResponseBodyParamGroupParameterGroupParamDetailPa
 
 func (s *DescribeParameterGroupResponseBodyParamGroupParameterGroupParamDetailParameterDetail) SetParamValue(v string) *DescribeParameterGroupResponseBodyParamGroupParameterGroupParamDetailParameterDetail {
 	s.ParamValue = &v
+	return s
+}
+
+type DescribeParameterGroupResponseBodyRelatedCustinsInfo struct {
+	RelatedCustinsInfo []*DescribeParameterGroupResponseBodyRelatedCustinsInfoRelatedCustinsInfo `json:"RelatedCustinsInfo,omitempty" xml:"RelatedCustinsInfo,omitempty" type:"Repeated"`
+}
+
+func (s DescribeParameterGroupResponseBodyRelatedCustinsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupResponseBodyRelatedCustinsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupResponseBodyRelatedCustinsInfo) SetRelatedCustinsInfo(v []*DescribeParameterGroupResponseBodyRelatedCustinsInfoRelatedCustinsInfo) *DescribeParameterGroupResponseBodyRelatedCustinsInfo {
+	s.RelatedCustinsInfo = v
+	return s
+}
+
+type DescribeParameterGroupResponseBodyRelatedCustinsInfoRelatedCustinsInfo struct {
+	AppliedTime    *string `json:"AppliedTime,omitempty" xml:"AppliedTime,omitempty"`
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+}
+
+func (s DescribeParameterGroupResponseBodyRelatedCustinsInfoRelatedCustinsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupResponseBodyRelatedCustinsInfoRelatedCustinsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupResponseBodyRelatedCustinsInfoRelatedCustinsInfo) SetAppliedTime(v string) *DescribeParameterGroupResponseBodyRelatedCustinsInfoRelatedCustinsInfo {
+	s.AppliedTime = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyRelatedCustinsInfoRelatedCustinsInfo) SetDBInstanceName(v string) *DescribeParameterGroupResponseBodyRelatedCustinsInfoRelatedCustinsInfo {
+	s.DBInstanceName = &v
 	return s
 }
 
@@ -44850,6 +44902,10 @@ func (client *Client) DescribeDBInstancePerformanceWithOptions(request *Describe
 
 	if !tea.BoolValue(util.IsUnset(request.Key)) {
 		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
