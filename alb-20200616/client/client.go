@@ -1523,6 +1523,7 @@ func (s *CreateRuleRequest) SetRuleName(v string) *CreateRuleRequest {
 }
 
 type CreateRuleRequestRuleActions struct {
+	CorsConfig          *CreateRuleRequestRuleActionsCorsConfig          `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty" type:"Struct"`
 	FixedResponseConfig *CreateRuleRequestRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
 	ForwardGroupConfig  *CreateRuleRequestRuleActionsForwardGroupConfig  `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	InsertHeaderConfig  *CreateRuleRequestRuleActionsInsertHeaderConfig  `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
@@ -1540,6 +1541,11 @@ func (s CreateRuleRequestRuleActions) String() string {
 
 func (s CreateRuleRequestRuleActions) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRuleRequestRuleActions) SetCorsConfig(v *CreateRuleRequestRuleActionsCorsConfig) *CreateRuleRequestRuleActions {
+	s.CorsConfig = v
+	return s
 }
 
 func (s *CreateRuleRequestRuleActions) SetFixedResponseConfig(v *CreateRuleRequestRuleActionsFixedResponseConfig) *CreateRuleRequestRuleActions {
@@ -1584,6 +1590,53 @@ func (s *CreateRuleRequestRuleActions) SetTrafficMirrorConfig(v *CreateRuleReque
 
 func (s *CreateRuleRequestRuleActions) SetType(v string) *CreateRuleRequestRuleActions {
 	s.Type = &v
+	return s
+}
+
+type CreateRuleRequestRuleActionsCorsConfig struct {
+	AllowCredentials *string   `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
+	AllowHeaders     []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
+	AllowMethods     []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
+	AllowOrigin      []*string `json:"AllowOrigin,omitempty" xml:"AllowOrigin,omitempty" type:"Repeated"`
+	ExposeHeaders    []*string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty" type:"Repeated"`
+	MaxAge           *int64    `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
+}
+
+func (s CreateRuleRequestRuleActionsCorsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleRequestRuleActionsCorsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleRequestRuleActionsCorsConfig) SetAllowCredentials(v string) *CreateRuleRequestRuleActionsCorsConfig {
+	s.AllowCredentials = &v
+	return s
+}
+
+func (s *CreateRuleRequestRuleActionsCorsConfig) SetAllowHeaders(v []*string) *CreateRuleRequestRuleActionsCorsConfig {
+	s.AllowHeaders = v
+	return s
+}
+
+func (s *CreateRuleRequestRuleActionsCorsConfig) SetAllowMethods(v []*string) *CreateRuleRequestRuleActionsCorsConfig {
+	s.AllowMethods = v
+	return s
+}
+
+func (s *CreateRuleRequestRuleActionsCorsConfig) SetAllowOrigin(v []*string) *CreateRuleRequestRuleActionsCorsConfig {
+	s.AllowOrigin = v
+	return s
+}
+
+func (s *CreateRuleRequestRuleActionsCorsConfig) SetExposeHeaders(v []*string) *CreateRuleRequestRuleActionsCorsConfig {
+	s.ExposeHeaders = v
+	return s
+}
+
+func (s *CreateRuleRequestRuleActionsCorsConfig) SetMaxAge(v int64) *CreateRuleRequestRuleActionsCorsConfig {
+	s.MaxAge = &v
 	return s
 }
 
@@ -2235,6 +2288,7 @@ func (s *CreateRulesRequestRules) SetRuleName(v string) *CreateRulesRequestRules
 }
 
 type CreateRulesRequestRulesRuleActions struct {
+	CorsConfig          *CreateRulesRequestRulesRuleActionsCorsConfig          `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty" type:"Struct"`
 	FixedResponseConfig *CreateRulesRequestRulesRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
 	ForwardGroupConfig  *CreateRulesRequestRulesRuleActionsForwardGroupConfig  `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	InsertHeaderConfig  *CreateRulesRequestRulesRuleActionsInsertHeaderConfig  `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
@@ -2252,6 +2306,11 @@ func (s CreateRulesRequestRulesRuleActions) String() string {
 
 func (s CreateRulesRequestRulesRuleActions) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRulesRequestRulesRuleActions) SetCorsConfig(v *CreateRulesRequestRulesRuleActionsCorsConfig) *CreateRulesRequestRulesRuleActions {
+	s.CorsConfig = v
+	return s
 }
 
 func (s *CreateRulesRequestRulesRuleActions) SetFixedResponseConfig(v *CreateRulesRequestRulesRuleActionsFixedResponseConfig) *CreateRulesRequestRulesRuleActions {
@@ -2296,6 +2355,53 @@ func (s *CreateRulesRequestRulesRuleActions) SetTrafficMirrorConfig(v *CreateRul
 
 func (s *CreateRulesRequestRulesRuleActions) SetType(v string) *CreateRulesRequestRulesRuleActions {
 	s.Type = &v
+	return s
+}
+
+type CreateRulesRequestRulesRuleActionsCorsConfig struct {
+	AllowCredentials *string   `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
+	AllowHeaders     []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
+	AllowMethods     []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
+	AllowOrigin      []*string `json:"AllowOrigin,omitempty" xml:"AllowOrigin,omitempty" type:"Repeated"`
+	ExposeHeaders    []*string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty" type:"Repeated"`
+	MaxAge           *int64    `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
+}
+
+func (s CreateRulesRequestRulesRuleActionsCorsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRulesRequestRulesRuleActionsCorsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRulesRequestRulesRuleActionsCorsConfig) SetAllowCredentials(v string) *CreateRulesRequestRulesRuleActionsCorsConfig {
+	s.AllowCredentials = &v
+	return s
+}
+
+func (s *CreateRulesRequestRulesRuleActionsCorsConfig) SetAllowHeaders(v []*string) *CreateRulesRequestRulesRuleActionsCorsConfig {
+	s.AllowHeaders = v
+	return s
+}
+
+func (s *CreateRulesRequestRulesRuleActionsCorsConfig) SetAllowMethods(v []*string) *CreateRulesRequestRulesRuleActionsCorsConfig {
+	s.AllowMethods = v
+	return s
+}
+
+func (s *CreateRulesRequestRulesRuleActionsCorsConfig) SetAllowOrigin(v []*string) *CreateRulesRequestRulesRuleActionsCorsConfig {
+	s.AllowOrigin = v
+	return s
+}
+
+func (s *CreateRulesRequestRulesRuleActionsCorsConfig) SetExposeHeaders(v []*string) *CreateRulesRequestRulesRuleActionsCorsConfig {
+	s.ExposeHeaders = v
+	return s
+}
+
+func (s *CreateRulesRequestRulesRuleActionsCorsConfig) SetMaxAge(v int64) *CreateRulesRequestRulesRuleActionsCorsConfig {
+	s.MaxAge = &v
 	return s
 }
 
@@ -8012,6 +8118,7 @@ func (s *ListRulesResponseBodyRules) SetRuleStatus(v string) *ListRulesResponseB
 }
 
 type ListRulesResponseBodyRulesRuleActions struct {
+	CorsConfig          *ListRulesResponseBodyRulesRuleActionsCorsConfig          `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty" type:"Struct"`
 	FixedResponseConfig *ListRulesResponseBodyRulesRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
 	ForwardGroupConfig  *ListRulesResponseBodyRulesRuleActionsForwardGroupConfig  `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	InsertHeaderConfig  *ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig  `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
@@ -8029,6 +8136,11 @@ func (s ListRulesResponseBodyRulesRuleActions) String() string {
 
 func (s ListRulesResponseBodyRulesRuleActions) GoString() string {
 	return s.String()
+}
+
+func (s *ListRulesResponseBodyRulesRuleActions) SetCorsConfig(v *ListRulesResponseBodyRulesRuleActionsCorsConfig) *ListRulesResponseBodyRulesRuleActions {
+	s.CorsConfig = v
+	return s
 }
 
 func (s *ListRulesResponseBodyRulesRuleActions) SetFixedResponseConfig(v *ListRulesResponseBodyRulesRuleActionsFixedResponseConfig) *ListRulesResponseBodyRulesRuleActions {
@@ -8073,6 +8185,53 @@ func (s *ListRulesResponseBodyRulesRuleActions) SetTrafficMirrorConfig(v *ListRu
 
 func (s *ListRulesResponseBodyRulesRuleActions) SetType(v string) *ListRulesResponseBodyRulesRuleActions {
 	s.Type = &v
+	return s
+}
+
+type ListRulesResponseBodyRulesRuleActionsCorsConfig struct {
+	AllowCredentials *string   `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
+	AllowHeaders     []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
+	AllowMethods     []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
+	AllowOrigin      []*string `json:"AllowOrigin,omitempty" xml:"AllowOrigin,omitempty" type:"Repeated"`
+	ExposeHeaders    []*string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty" type:"Repeated"`
+	MaxAge           *int64    `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsCorsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsCorsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsCorsConfig) SetAllowCredentials(v string) *ListRulesResponseBodyRulesRuleActionsCorsConfig {
+	s.AllowCredentials = &v
+	return s
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsCorsConfig) SetAllowHeaders(v []*string) *ListRulesResponseBodyRulesRuleActionsCorsConfig {
+	s.AllowHeaders = v
+	return s
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsCorsConfig) SetAllowMethods(v []*string) *ListRulesResponseBodyRulesRuleActionsCorsConfig {
+	s.AllowMethods = v
+	return s
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsCorsConfig) SetAllowOrigin(v []*string) *ListRulesResponseBodyRulesRuleActionsCorsConfig {
+	s.AllowOrigin = v
+	return s
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsCorsConfig) SetExposeHeaders(v []*string) *ListRulesResponseBodyRulesRuleActionsCorsConfig {
+	s.ExposeHeaders = v
+	return s
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsCorsConfig) SetMaxAge(v int64) *ListRulesResponseBodyRulesRuleActionsCorsConfig {
+	s.MaxAge = &v
 	return s
 }
 
@@ -11980,6 +12139,7 @@ func (s *UpdateRuleAttributeRequest) SetRuleName(v string) *UpdateRuleAttributeR
 }
 
 type UpdateRuleAttributeRequestRuleActions struct {
+	CorsConfig          *UpdateRuleAttributeRequestRuleActionsCorsConfig          `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty" type:"Struct"`
 	FixedResponseConfig *UpdateRuleAttributeRequestRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
 	ForwardGroupConfig  *UpdateRuleAttributeRequestRuleActionsForwardGroupConfig  `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	InsertHeaderConfig  *UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig  `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
@@ -11997,6 +12157,11 @@ func (s UpdateRuleAttributeRequestRuleActions) String() string {
 
 func (s UpdateRuleAttributeRequestRuleActions) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateRuleAttributeRequestRuleActions) SetCorsConfig(v *UpdateRuleAttributeRequestRuleActionsCorsConfig) *UpdateRuleAttributeRequestRuleActions {
+	s.CorsConfig = v
+	return s
 }
 
 func (s *UpdateRuleAttributeRequestRuleActions) SetFixedResponseConfig(v *UpdateRuleAttributeRequestRuleActionsFixedResponseConfig) *UpdateRuleAttributeRequestRuleActions {
@@ -12041,6 +12206,53 @@ func (s *UpdateRuleAttributeRequestRuleActions) SetTrafficMirrorConfig(v *Update
 
 func (s *UpdateRuleAttributeRequestRuleActions) SetType(v string) *UpdateRuleAttributeRequestRuleActions {
 	s.Type = &v
+	return s
+}
+
+type UpdateRuleAttributeRequestRuleActionsCorsConfig struct {
+	AllowCredentials *string   `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
+	AllowHeaders     []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
+	AllowMethods     []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
+	AllowOrigin      []*string `json:"AllowOrigin,omitempty" xml:"AllowOrigin,omitempty" type:"Repeated"`
+	ExposeHeaders    []*string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty" type:"Repeated"`
+	MaxAge           *int64    `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
+}
+
+func (s UpdateRuleAttributeRequestRuleActionsCorsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRuleAttributeRequestRuleActionsCorsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsCorsConfig) SetAllowCredentials(v string) *UpdateRuleAttributeRequestRuleActionsCorsConfig {
+	s.AllowCredentials = &v
+	return s
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsCorsConfig) SetAllowHeaders(v []*string) *UpdateRuleAttributeRequestRuleActionsCorsConfig {
+	s.AllowHeaders = v
+	return s
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsCorsConfig) SetAllowMethods(v []*string) *UpdateRuleAttributeRequestRuleActionsCorsConfig {
+	s.AllowMethods = v
+	return s
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsCorsConfig) SetAllowOrigin(v []*string) *UpdateRuleAttributeRequestRuleActionsCorsConfig {
+	s.AllowOrigin = v
+	return s
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsCorsConfig) SetExposeHeaders(v []*string) *UpdateRuleAttributeRequestRuleActionsCorsConfig {
+	s.ExposeHeaders = v
+	return s
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsCorsConfig) SetMaxAge(v int64) *UpdateRuleAttributeRequestRuleActionsCorsConfig {
+	s.MaxAge = &v
 	return s
 }
 
@@ -12680,6 +12892,7 @@ func (s *UpdateRulesAttributeRequestRules) SetRuleName(v string) *UpdateRulesAtt
 }
 
 type UpdateRulesAttributeRequestRulesRuleActions struct {
+	CorsConfig          *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig          `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty" type:"Struct"`
 	FixedResponseConfig *UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
 	ForwardGroupConfig  *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig  `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	InsertHeaderConfig  *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig  `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
@@ -12698,6 +12911,11 @@ func (s UpdateRulesAttributeRequestRulesRuleActions) String() string {
 
 func (s UpdateRulesAttributeRequestRulesRuleActions) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActions) SetCorsConfig(v *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig) *UpdateRulesAttributeRequestRulesRuleActions {
+	s.CorsConfig = v
+	return s
 }
 
 func (s *UpdateRulesAttributeRequestRulesRuleActions) SetFixedResponseConfig(v *UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig) *UpdateRulesAttributeRequestRulesRuleActions {
@@ -12747,6 +12965,53 @@ func (s *UpdateRulesAttributeRequestRulesRuleActions) SetTrafficMirrorConfig(v *
 
 func (s *UpdateRulesAttributeRequestRulesRuleActions) SetType(v string) *UpdateRulesAttributeRequestRulesRuleActions {
 	s.Type = &v
+	return s
+}
+
+type UpdateRulesAttributeRequestRulesRuleActionsCorsConfig struct {
+	AllowCredentials *string   `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
+	AllowHeaders     []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
+	AllowMethods     []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
+	AllowOrigin      []*string `json:"AllowOrigin,omitempty" xml:"AllowOrigin,omitempty" type:"Repeated"`
+	ExposeHeaders    []*string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty" type:"Repeated"`
+	MaxAge           *int64    `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsCorsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRulesAttributeRequestRulesRuleActionsCorsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig) SetAllowCredentials(v string) *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig {
+	s.AllowCredentials = &v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig) SetAllowHeaders(v []*string) *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig {
+	s.AllowHeaders = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig) SetAllowMethods(v []*string) *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig {
+	s.AllowMethods = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig) SetAllowOrigin(v []*string) *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig {
+	s.AllowOrigin = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig) SetExposeHeaders(v []*string) *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig {
+	s.ExposeHeaders = v
+	return s
+}
+
+func (s *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig) SetMaxAge(v int64) *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig {
+	s.MaxAge = &v
 	return s
 }
 
