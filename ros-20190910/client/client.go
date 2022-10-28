@@ -93,6 +93,7 @@ type ContinueCreateStackRequest struct {
 	Parallelism         *int64                                  `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
 	Parameters          []*ContinueCreateStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	RamRoleName         *string                                 `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	RecreatingOptions   []*string                               `json:"RecreatingOptions,omitempty" xml:"RecreatingOptions,omitempty" type:"Repeated"`
 	RecreatingResources []*string                               `json:"RecreatingResources,omitempty" xml:"RecreatingResources,omitempty" type:"Repeated"`
 	RegionId            *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	StackId             *string                                 `json:"StackId,omitempty" xml:"StackId,omitempty"`
@@ -132,6 +133,11 @@ func (s *ContinueCreateStackRequest) SetParameters(v []*ContinueCreateStackReque
 
 func (s *ContinueCreateStackRequest) SetRamRoleName(v string) *ContinueCreateStackRequest {
 	s.RamRoleName = &v
+	return s
+}
+
+func (s *ContinueCreateStackRequest) SetRecreatingOptions(v []*string) *ContinueCreateStackRequest {
+	s.RecreatingOptions = v
 	return s
 }
 
@@ -762,6 +768,7 @@ type CreateStackGroupRequest struct {
 	RegionId               *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId        *string                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	StackGroupName         *string                                `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	Tags                   []*CreateStackGroupRequestTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TemplateBody           *string                                `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	TemplateId             *string                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateURL            *string                                `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
@@ -823,6 +830,11 @@ func (s *CreateStackGroupRequest) SetResourceGroupId(v string) *CreateStackGroup
 
 func (s *CreateStackGroupRequest) SetStackGroupName(v string) *CreateStackGroupRequest {
 	s.StackGroupName = &v
+	return s
+}
+
+func (s *CreateStackGroupRequest) SetTags(v []*CreateStackGroupRequestTags) *CreateStackGroupRequest {
+	s.Tags = v
 	return s
 }
 
@@ -892,6 +904,29 @@ func (s *CreateStackGroupRequestParameters) SetParameterValue(v string) *CreateS
 	return s
 }
 
+type CreateStackGroupRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateStackGroupRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStackGroupRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStackGroupRequestTags) SetKey(v string) *CreateStackGroupRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateStackGroupRequestTags) SetValue(v string) *CreateStackGroupRequestTags {
+	s.Value = &v
+	return s
+}
+
 type CreateStackGroupShrinkRequest struct {
 	AdministrationRoleName *string                                    `json:"AdministrationRoleName,omitempty" xml:"AdministrationRoleName,omitempty"`
 	AutoDeploymentShrink   *string                                    `json:"AutoDeployment,omitempty" xml:"AutoDeployment,omitempty"`
@@ -903,6 +938,7 @@ type CreateStackGroupShrinkRequest struct {
 	RegionId               *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId        *string                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	StackGroupName         *string                                    `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
+	Tags                   []*CreateStackGroupShrinkRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TemplateBody           *string                                    `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	TemplateId             *string                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateURL            *string                                    `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
@@ -967,6 +1003,11 @@ func (s *CreateStackGroupShrinkRequest) SetStackGroupName(v string) *CreateStack
 	return s
 }
 
+func (s *CreateStackGroupShrinkRequest) SetTags(v []*CreateStackGroupShrinkRequestTags) *CreateStackGroupShrinkRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateStackGroupShrinkRequest) SetTemplateBody(v string) *CreateStackGroupShrinkRequest {
 	s.TemplateBody = &v
 	return s
@@ -1007,6 +1048,29 @@ func (s *CreateStackGroupShrinkRequestParameters) SetParameterKey(v string) *Cre
 
 func (s *CreateStackGroupShrinkRequestParameters) SetParameterValue(v string) *CreateStackGroupShrinkRequestParameters {
 	s.ParameterValue = &v
+	return s
+}
+
+type CreateStackGroupShrinkRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateStackGroupShrinkRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStackGroupShrinkRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStackGroupShrinkRequestTags) SetKey(v string) *CreateStackGroupShrinkRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateStackGroupShrinkRequestTags) SetValue(v string) *CreateStackGroupShrinkRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -1332,11 +1396,12 @@ func (s *CreateStackInstancesResponse) SetBody(v *CreateStackInstancesResponseBo
 }
 
 type CreateTemplateRequest struct {
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TemplateBody    *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateURL     *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	Description     *string                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	ResourceGroupId *string                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*CreateTemplateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateBody    *string                      `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateName    *string                      `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateURL     *string                      `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 }
 
 func (s CreateTemplateRequest) String() string {
@@ -1357,6 +1422,11 @@ func (s *CreateTemplateRequest) SetResourceGroupId(v string) *CreateTemplateRequ
 	return s
 }
 
+func (s *CreateTemplateRequest) SetTags(v []*CreateTemplateRequestTags) *CreateTemplateRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateTemplateRequest) SetTemplateBody(v string) *CreateTemplateRequest {
 	s.TemplateBody = &v
 	return s
@@ -1369,6 +1439,29 @@ func (s *CreateTemplateRequest) SetTemplateName(v string) *CreateTemplateRequest
 
 func (s *CreateTemplateRequest) SetTemplateURL(v string) *CreateTemplateRequest {
 	s.TemplateURL = &v
+	return s
+}
+
+type CreateTemplateRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateTemplateRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateRequestTags) SetKey(v string) *CreateTemplateRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateTemplateRequestTags) SetValue(v string) *CreateTemplateRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -4010,9 +4103,10 @@ func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision) SetRole
 }
 
 type GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles struct {
-	Created  *bool   `json:"Created,omitempty" xml:"Created,omitempty"`
-	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
-	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	ApiForCreation *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation `json:"ApiForCreation,omitempty" xml:"ApiForCreation,omitempty" type:"Struct"`
+	Created        *bool                                                                              `json:"Created,omitempty" xml:"Created,omitempty"`
+	Function       *string                                                                            `json:"Function,omitempty" xml:"Function,omitempty"`
+	RoleName       *string                                                                            `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) String() string {
@@ -4021,6 +4115,11 @@ func (s GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) Str
 
 func (s GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) GoString() string {
 	return s.String()
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) SetApiForCreation(v *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation) *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles {
+	s.ApiForCreation = v
+	return s
 }
 
 func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) SetCreated(v bool) *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles {
@@ -4035,6 +4134,41 @@ func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) Se
 
 func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles) SetRoleName(v string) *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles {
 	s.RoleName = &v
+	return s
+}
+
+type GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation struct {
+	ApiName      *string                `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiProductId *string                `json:"ApiProductId,omitempty" xml:"ApiProductId,omitempty"`
+	ApiType      *string                `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
+	Parameters   map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+}
+
+func (s GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation) SetApiName(v string) *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation {
+	s.ApiName = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation) SetApiProductId(v string) *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation {
+	s.ApiProductId = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation) SetApiType(v string) *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation {
+	s.ApiType = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation) SetParameters(v map[string]interface{}) *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForCreation {
+	s.Parameters = v
 	return s
 }
 
@@ -8164,6 +8298,10 @@ type ListStackOperationRisksRequest struct {
 	RetainAllResources *bool     `json:"RetainAllResources,omitempty" xml:"RetainAllResources,omitempty"`
 	RetainResources    []*string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty" type:"Repeated"`
 	StackId            *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	TemplateBody       *string   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	TemplateId         *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL        *string   `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateVersion    *string   `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
 func (s ListStackOperationRisksRequest) String() string {
@@ -8209,9 +8347,30 @@ func (s *ListStackOperationRisksRequest) SetStackId(v string) *ListStackOperatio
 	return s
 }
 
+func (s *ListStackOperationRisksRequest) SetTemplateBody(v string) *ListStackOperationRisksRequest {
+	s.TemplateBody = &v
+	return s
+}
+
+func (s *ListStackOperationRisksRequest) SetTemplateId(v string) *ListStackOperationRisksRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListStackOperationRisksRequest) SetTemplateURL(v string) *ListStackOperationRisksRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *ListStackOperationRisksRequest) SetTemplateVersion(v string) *ListStackOperationRisksRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
 type ListStackOperationRisksResponseBody struct {
-	RequestId     *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RiskResources []*ListStackOperationRisksResponseBodyRiskResources `json:"RiskResources,omitempty" xml:"RiskResources,omitempty" type:"Repeated"`
+	MissingPolicyActions []*string                                           `json:"MissingPolicyActions,omitempty" xml:"MissingPolicyActions,omitempty" type:"Repeated"`
+	RequestId            *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RiskResources        []*ListStackOperationRisksResponseBodyRiskResources `json:"RiskResources,omitempty" xml:"RiskResources,omitempty" type:"Repeated"`
 }
 
 func (s ListStackOperationRisksResponseBody) String() string {
@@ -8220,6 +8379,11 @@ func (s ListStackOperationRisksResponseBody) String() string {
 
 func (s ListStackOperationRisksResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListStackOperationRisksResponseBody) SetMissingPolicyActions(v []*string) *ListStackOperationRisksResponseBody {
+	s.MissingPolicyActions = v
+	return s
 }
 
 func (s *ListStackOperationRisksResponseBody) SetRequestId(v string) *ListStackOperationRisksResponseBody {
@@ -12990,6 +13154,10 @@ func (client *Client) ContinueCreateStackWithOptions(request *ContinueCreateStac
 		query["RamRoleName"] = request.RamRoleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RecreatingOptions)) {
+		query["RecreatingOptions"] = request.RecreatingOptions
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RecreatingResources)) {
 		query["RecreatingResources"] = request.RecreatingResources
 	}
@@ -13368,6 +13536,10 @@ func (client *Client) CreateStackGroupWithOptions(tmpReq *CreateStackGroupReques
 		query["StackGroupName"] = request.StackGroupName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
 		query["TemplateBody"] = request.TemplateBody
 	}
@@ -13532,6 +13704,10 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
@@ -15848,6 +16024,22 @@ func (client *Client) ListStackOperationRisksWithOptions(request *ListStackOpera
 
 	if !tea.BoolValue(util.IsUnset(request.StackId)) {
 		query["StackId"] = request.StackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBody)) {
+		query["TemplateBody"] = request.TemplateBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
 	}
 
 	req := &openapi.OpenApiRequest{
