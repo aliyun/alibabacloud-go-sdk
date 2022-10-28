@@ -11936,13 +11936,15 @@ func (s *MergeFigureClustersResponse) SetBody(v *MergeFigureClustersResponseBody
 }
 
 type QueryFigureClustersRequest struct {
-	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName  *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults   *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sort         *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	CreateTimeRange *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
+	CustomLabels    *string    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	DatasetName     *string    `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResults      *int64     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Order           *string    `json:"Order,omitempty" xml:"Order,omitempty"`
+	ProjectName     *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sort            *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	UpdateTimeRange *TimeRange `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
 }
 
 func (s QueryFigureClustersRequest) String() string {
@@ -11951,6 +11953,11 @@ func (s QueryFigureClustersRequest) String() string {
 
 func (s QueryFigureClustersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryFigureClustersRequest) SetCreateTimeRange(v *TimeRange) *QueryFigureClustersRequest {
+	s.CreateTimeRange = v
+	return s
 }
 
 func (s *QueryFigureClustersRequest) SetCustomLabels(v string) *QueryFigureClustersRequest {
@@ -11985,6 +11992,76 @@ func (s *QueryFigureClustersRequest) SetProjectName(v string) *QueryFigureCluste
 
 func (s *QueryFigureClustersRequest) SetSort(v string) *QueryFigureClustersRequest {
 	s.Sort = &v
+	return s
+}
+
+func (s *QueryFigureClustersRequest) SetUpdateTimeRange(v *TimeRange) *QueryFigureClustersRequest {
+	s.UpdateTimeRange = v
+	return s
+}
+
+type QueryFigureClustersShrinkRequest struct {
+	CreateTimeRangeShrink *string `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
+	CustomLabels          *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	DatasetName           *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResults            *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken             *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Order                 *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	ProjectName           *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sort                  *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	UpdateTimeRangeShrink *string `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
+}
+
+func (s QueryFigureClustersShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFigureClustersShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFigureClustersShrinkRequest) SetCreateTimeRangeShrink(v string) *QueryFigureClustersShrinkRequest {
+	s.CreateTimeRangeShrink = &v
+	return s
+}
+
+func (s *QueryFigureClustersShrinkRequest) SetCustomLabels(v string) *QueryFigureClustersShrinkRequest {
+	s.CustomLabels = &v
+	return s
+}
+
+func (s *QueryFigureClustersShrinkRequest) SetDatasetName(v string) *QueryFigureClustersShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *QueryFigureClustersShrinkRequest) SetMaxResults(v int64) *QueryFigureClustersShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QueryFigureClustersShrinkRequest) SetNextToken(v string) *QueryFigureClustersShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryFigureClustersShrinkRequest) SetOrder(v string) *QueryFigureClustersShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *QueryFigureClustersShrinkRequest) SetProjectName(v string) *QueryFigureClustersShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *QueryFigureClustersShrinkRequest) SetSort(v string) *QueryFigureClustersShrinkRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *QueryFigureClustersShrinkRequest) SetUpdateTimeRangeShrink(v string) *QueryFigureClustersShrinkRequest {
+	s.UpdateTimeRangeShrink = &v
 	return s
 }
 
@@ -13361,7 +13438,8 @@ func (s *UpdateFigureClusterShrinkRequest) SetProjectName(v string) *UpdateFigur
 }
 
 type UpdateFigureClusterResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	FigureCluster *FigureCluster `json:"FigureCluster,omitempty" xml:"FigureCluster,omitempty"`
+	RequestId     *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateFigureClusterResponseBody) String() string {
@@ -13370,6 +13448,11 @@ func (s UpdateFigureClusterResponseBody) String() string {
 
 func (s UpdateFigureClusterResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateFigureClusterResponseBody) SetFigureCluster(v *FigureCluster) *UpdateFigureClusterResponseBody {
+	s.FigureCluster = v
+	return s
 }
 
 func (s *UpdateFigureClusterResponseBody) SetRequestId(v string) *UpdateFigureClusterResponseBody {
@@ -17748,12 +17831,26 @@ func (client *Client) MergeFigureClusters(request *MergeFigureClustersRequest) (
 	return _result, _err
 }
 
-func (client *Client) QueryFigureClustersWithOptions(request *QueryFigureClustersRequest, runtime *util.RuntimeOptions) (_result *QueryFigureClustersResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) QueryFigureClustersWithOptions(tmpReq *QueryFigureClustersRequest, runtime *util.RuntimeOptions) (_result *QueryFigureClustersResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &QueryFigureClustersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CreateTimeRange))) {
+		request.CreateTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CreateTimeRange), tea.String("CreateTimeRange"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UpdateTimeRange))) {
+		request.UpdateTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UpdateTimeRange), tea.String("UpdateTimeRange"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeRangeShrink)) {
+		query["CreateTimeRange"] = request.CreateTimeRangeShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CustomLabels)) {
 		query["CustomLabels"] = request.CustomLabels
 	}
@@ -17780,6 +17877,10 @@ func (client *Client) QueryFigureClustersWithOptions(request *QueryFigureCluster
 
 	if !tea.BoolValue(util.IsUnset(request.Sort)) {
 		query["Sort"] = request.Sort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateTimeRangeShrink)) {
+		query["UpdateTimeRange"] = request.UpdateTimeRangeShrink
 	}
 
 	req := &openapi.OpenApiRequest{
