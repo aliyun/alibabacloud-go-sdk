@@ -692,6 +692,123 @@ func (s *AddMemberRoleResponse) SetBody(v *AddMemberRoleResponseBody) *AddMember
 	return s
 }
 
+type CreateCodeSourceRequest struct {
+	Accessibility       *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	CodeBranch          *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
+	CodeRepo            *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
+	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
+	CodeRepoUserName    *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	MountPath           *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	WorkspaceId         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateCodeSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCodeSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCodeSourceRequest) SetAccessibility(v string) *CreateCodeSourceRequest {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *CreateCodeSourceRequest) SetCodeBranch(v string) *CreateCodeSourceRequest {
+	s.CodeBranch = &v
+	return s
+}
+
+func (s *CreateCodeSourceRequest) SetCodeRepo(v string) *CreateCodeSourceRequest {
+	s.CodeRepo = &v
+	return s
+}
+
+func (s *CreateCodeSourceRequest) SetCodeRepoAccessToken(v string) *CreateCodeSourceRequest {
+	s.CodeRepoAccessToken = &v
+	return s
+}
+
+func (s *CreateCodeSourceRequest) SetCodeRepoUserName(v string) *CreateCodeSourceRequest {
+	s.CodeRepoUserName = &v
+	return s
+}
+
+func (s *CreateCodeSourceRequest) SetDescription(v string) *CreateCodeSourceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateCodeSourceRequest) SetDisplayName(v string) *CreateCodeSourceRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateCodeSourceRequest) SetMountPath(v string) *CreateCodeSourceRequest {
+	s.MountPath = &v
+	return s
+}
+
+func (s *CreateCodeSourceRequest) SetWorkspaceId(v string) *CreateCodeSourceRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateCodeSourceResponseBody struct {
+	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCodeSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCodeSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCodeSourceResponseBody) SetCodeSourceId(v string) *CreateCodeSourceResponseBody {
+	s.CodeSourceId = &v
+	return s
+}
+
+func (s *CreateCodeSourceResponseBody) SetRequestId(v string) *CreateCodeSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCodeSourceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCodeSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCodeSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCodeSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCodeSourceResponse) SetHeaders(v map[string]*string) *CreateCodeSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCodeSourceResponse) SetStatusCode(v int32) *CreateCodeSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCodeSourceResponse) SetBody(v *CreateCodeSourceResponseBody) *CreateCodeSourceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDatasetRequest struct {
 	Accessibility  *string  `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	DataSourceType *string  `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
@@ -1017,6 +1134,348 @@ func (s *CreateMemberResponse) SetBody(v *CreateMemberResponseBody) *CreateMembe
 	return s
 }
 
+type CreateModelRequest struct {
+	Accessibility    *string  `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Labels           []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	ModelDescription *string  `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	ModelName        *string  `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	WorkspaceId      *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateModelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelRequest) SetAccessibility(v string) *CreateModelRequest {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *CreateModelRequest) SetLabels(v []*Label) *CreateModelRequest {
+	s.Labels = v
+	return s
+}
+
+func (s *CreateModelRequest) SetModelDescription(v string) *CreateModelRequest {
+	s.ModelDescription = &v
+	return s
+}
+
+func (s *CreateModelRequest) SetModelName(v string) *CreateModelRequest {
+	s.ModelName = &v
+	return s
+}
+
+func (s *CreateModelRequest) SetWorkspaceId(v string) *CreateModelRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateModelResponseBody struct {
+	ModelId   *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateModelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelResponseBody) SetModelId(v string) *CreateModelResponseBody {
+	s.ModelId = &v
+	return s
+}
+
+func (s *CreateModelResponseBody) SetRequestId(v string) *CreateModelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateModelResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateModelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelResponse) SetHeaders(v map[string]*string) *CreateModelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateModelResponse) SetStatusCode(v int32) *CreateModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateModelResponse) SetBody(v *CreateModelResponseBody) *CreateModelResponse {
+	s.Body = v
+	return s
+}
+
+type CreateModelLabelsRequest struct {
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+}
+
+func (s CreateModelLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelLabelsRequest) SetLabels(v []*Label) *CreateModelLabelsRequest {
+	s.Labels = v
+	return s
+}
+
+type CreateModelLabelsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateModelLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelLabelsResponseBody) SetRequestId(v string) *CreateModelLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateModelLabelsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateModelLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateModelLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelLabelsResponse) SetHeaders(v map[string]*string) *CreateModelLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateModelLabelsResponse) SetStatusCode(v int32) *CreateModelLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateModelLabelsResponse) SetBody(v *CreateModelLabelsResponseBody) *CreateModelLabelsResponse {
+	s.Body = v
+	return s
+}
+
+type CreateModelVersionRequest struct {
+	FormatType         *string                `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	FrameworkType      *string                `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
+	InferenceSpec      map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
+	Labels             []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Options            *string                `json:"Options,omitempty" xml:"Options,omitempty"`
+	SourceId           *string                `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType         *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Uri                *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	VersionDescription *string                `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
+	VersionName        *string                `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+}
+
+func (s CreateModelVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelVersionRequest) SetFormatType(v string) *CreateModelVersionRequest {
+	s.FormatType = &v
+	return s
+}
+
+func (s *CreateModelVersionRequest) SetFrameworkType(v string) *CreateModelVersionRequest {
+	s.FrameworkType = &v
+	return s
+}
+
+func (s *CreateModelVersionRequest) SetInferenceSpec(v map[string]interface{}) *CreateModelVersionRequest {
+	s.InferenceSpec = v
+	return s
+}
+
+func (s *CreateModelVersionRequest) SetLabels(v []*Label) *CreateModelVersionRequest {
+	s.Labels = v
+	return s
+}
+
+func (s *CreateModelVersionRequest) SetOptions(v string) *CreateModelVersionRequest {
+	s.Options = &v
+	return s
+}
+
+func (s *CreateModelVersionRequest) SetSourceId(v string) *CreateModelVersionRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *CreateModelVersionRequest) SetSourceType(v string) *CreateModelVersionRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *CreateModelVersionRequest) SetUri(v string) *CreateModelVersionRequest {
+	s.Uri = &v
+	return s
+}
+
+func (s *CreateModelVersionRequest) SetVersionDescription(v string) *CreateModelVersionRequest {
+	s.VersionDescription = &v
+	return s
+}
+
+func (s *CreateModelVersionRequest) SetVersionName(v string) *CreateModelVersionRequest {
+	s.VersionName = &v
+	return s
+}
+
+type CreateModelVersionResponseBody struct {
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+}
+
+func (s CreateModelVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelVersionResponseBody) SetRequestId(v string) *CreateModelVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateModelVersionResponseBody) SetVersionName(v string) *CreateModelVersionResponseBody {
+	s.VersionName = &v
+	return s
+}
+
+type CreateModelVersionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateModelVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateModelVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelVersionResponse) SetHeaders(v map[string]*string) *CreateModelVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateModelVersionResponse) SetStatusCode(v int32) *CreateModelVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateModelVersionResponse) SetBody(v *CreateModelVersionResponseBody) *CreateModelVersionResponse {
+	s.Body = v
+	return s
+}
+
+type CreateModelVersionLabelsRequest struct {
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+}
+
+func (s CreateModelVersionLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelVersionLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelVersionLabelsRequest) SetLabels(v []*Label) *CreateModelVersionLabelsRequest {
+	s.Labels = v
+	return s
+}
+
+type CreateModelVersionLabelsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateModelVersionLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelVersionLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelVersionLabelsResponseBody) SetRequestId(v string) *CreateModelVersionLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateModelVersionLabelsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateModelVersionLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateModelVersionLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelVersionLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelVersionLabelsResponse) SetHeaders(v map[string]*string) *CreateModelVersionLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateModelVersionLabelsResponse) SetStatusCode(v int32) *CreateModelVersionLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateModelVersionLabelsResponse) SetBody(v *CreateModelVersionLabelsResponseBody) *CreateModelVersionLabelsResponse {
+	s.Body = v
+	return s
+}
+
 type CreateWorkspaceRequest struct {
 	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisplayName   *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
@@ -1278,6 +1737,58 @@ func (s *CreateWorkspaceResourceResponse) SetBody(v *CreateWorkspaceResourceResp
 	return s
 }
 
+type DeleteCodeSourceResponseBody struct {
+	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCodeSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCodeSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCodeSourceResponseBody) SetCodeSourceId(v string) *DeleteCodeSourceResponseBody {
+	s.CodeSourceId = &v
+	return s
+}
+
+func (s *DeleteCodeSourceResponseBody) SetRequestId(v string) *DeleteCodeSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCodeSourceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCodeSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCodeSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCodeSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCodeSourceResponse) SetHeaders(v map[string]*string) *DeleteCodeSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCodeSourceResponse) SetStatusCode(v int32) *DeleteCodeSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCodeSourceResponse) SetBody(v *DeleteCodeSourceResponseBody) *DeleteCodeSourceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDatasetResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -1450,6 +1961,224 @@ func (s *DeleteMembersResponse) SetBody(v *DeleteMembersResponseBody) *DeleteMem
 	return s
 }
 
+type DeleteModelResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteModelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteModelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteModelResponseBody) SetRequestId(v string) *DeleteModelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteModelResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteModelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteModelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteModelResponse) SetHeaders(v map[string]*string) *DeleteModelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteModelResponse) SetStatusCode(v int32) *DeleteModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteModelResponse) SetBody(v *DeleteModelResponseBody) *DeleteModelResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteModelLabelsRequest struct {
+	LabelKeys *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
+}
+
+func (s DeleteModelLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteModelLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteModelLabelsRequest) SetLabelKeys(v string) *DeleteModelLabelsRequest {
+	s.LabelKeys = &v
+	return s
+}
+
+type DeleteModelLabelsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteModelLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteModelLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteModelLabelsResponseBody) SetRequestId(v string) *DeleteModelLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteModelLabelsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteModelLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteModelLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteModelLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteModelLabelsResponse) SetHeaders(v map[string]*string) *DeleteModelLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteModelLabelsResponse) SetStatusCode(v int32) *DeleteModelLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteModelLabelsResponse) SetBody(v *DeleteModelLabelsResponseBody) *DeleteModelLabelsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteModelVersionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteModelVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteModelVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteModelVersionResponseBody) SetRequestId(v string) *DeleteModelVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteModelVersionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteModelVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteModelVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteModelVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteModelVersionResponse) SetHeaders(v map[string]*string) *DeleteModelVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteModelVersionResponse) SetStatusCode(v int32) *DeleteModelVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteModelVersionResponse) SetBody(v *DeleteModelVersionResponseBody) *DeleteModelVersionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteModelVersionLabelsRequest struct {
+	LabelKeys *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
+}
+
+func (s DeleteModelVersionLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteModelVersionLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteModelVersionLabelsRequest) SetLabelKeys(v string) *DeleteModelVersionLabelsRequest {
+	s.LabelKeys = &v
+	return s
+}
+
+type DeleteModelVersionLabelsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteModelVersionLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteModelVersionLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteModelVersionLabelsResponseBody) SetRequestId(v string) *DeleteModelVersionLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteModelVersionLabelsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteModelVersionLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteModelVersionLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteModelVersionLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteModelVersionLabelsResponse) SetHeaders(v map[string]*string) *DeleteModelVersionLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteModelVersionLabelsResponse) SetStatusCode(v int32) *DeleteModelVersionLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteModelVersionLabelsResponse) SetBody(v *DeleteModelVersionLabelsResponseBody) *DeleteModelVersionLabelsResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteWorkspaceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -1567,6 +2296,136 @@ func (s *DeleteWorkspaceResourceResponse) SetStatusCode(v int32) *DeleteWorkspac
 }
 
 func (s *DeleteWorkspaceResourceResponse) SetBody(v *DeleteWorkspaceResourceResponseBody) *DeleteWorkspaceResourceResponse {
+	s.Body = v
+	return s
+}
+
+type GetCodeSourceResponseBody struct {
+	Accessibility       *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	CodeBranch          *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
+	CodeCommit          *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
+	CodeRepo            *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
+	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
+	CodeRepoUserName    *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
+	CodeSourceId        *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	GmtCreateTime       *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifyTime       *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	MountPath           *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetCodeSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCodeSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCodeSourceResponseBody) SetAccessibility(v string) *GetCodeSourceResponseBody {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetCodeBranch(v string) *GetCodeSourceResponseBody {
+	s.CodeBranch = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetCodeCommit(v string) *GetCodeSourceResponseBody {
+	s.CodeCommit = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetCodeRepo(v string) *GetCodeSourceResponseBody {
+	s.CodeRepo = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetCodeRepoAccessToken(v string) *GetCodeSourceResponseBody {
+	s.CodeRepoAccessToken = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetCodeRepoUserName(v string) *GetCodeSourceResponseBody {
+	s.CodeRepoUserName = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetCodeSourceId(v string) *GetCodeSourceResponseBody {
+	s.CodeSourceId = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetDescription(v string) *GetCodeSourceResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetDisplayName(v string) *GetCodeSourceResponseBody {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetGmtCreateTime(v string) *GetCodeSourceResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetGmtModifyTime(v string) *GetCodeSourceResponseBody {
+	s.GmtModifyTime = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetMountPath(v string) *GetCodeSourceResponseBody {
+	s.MountPath = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetRequestId(v string) *GetCodeSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetUserId(v string) *GetCodeSourceResponseBody {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetWorkspaceId(v string) *GetCodeSourceResponseBody {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetCodeSourceResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCodeSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCodeSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCodeSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCodeSourceResponse) SetHeaders(v map[string]*string) *GetCodeSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCodeSourceResponse) SetStatusCode(v int32) *GetCodeSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCodeSourceResponse) SetBody(v *GetCodeSourceResponseBody) *GetCodeSourceResponse {
 	s.Body = v
 	return s
 }
@@ -2151,6 +3010,248 @@ func (s *GetMemberResponse) SetBody(v *GetMemberResponseBody) *GetMemberResponse
 	return s
 }
 
+type GetModelResponseBody struct {
+	Accessibility    *string       `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	GmtCreateTime    *string       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime  *string       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Labels           []*Label      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestVersion    *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	ModelDescription *string       `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	ModelId          *string       `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelName        *string       `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	OwnerId          *string       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RequestId        *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserId           *string       `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId      *string       `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetModelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelResponseBody) SetAccessibility(v string) *GetModelResponseBody {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetGmtCreateTime(v string) *GetModelResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetGmtModifiedTime(v string) *GetModelResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetLabels(v []*Label) *GetModelResponseBody {
+	s.Labels = v
+	return s
+}
+
+func (s *GetModelResponseBody) SetLatestVersion(v *ModelVersion) *GetModelResponseBody {
+	s.LatestVersion = v
+	return s
+}
+
+func (s *GetModelResponseBody) SetModelDescription(v string) *GetModelResponseBody {
+	s.ModelDescription = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetModelId(v string) *GetModelResponseBody {
+	s.ModelId = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetModelName(v string) *GetModelResponseBody {
+	s.ModelName = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetOwnerId(v string) *GetModelResponseBody {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetRequestId(v string) *GetModelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetUserId(v string) *GetModelResponseBody {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetWorkspaceId(v string) *GetModelResponseBody {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetModelResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetModelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelResponse) SetHeaders(v map[string]*string) *GetModelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetModelResponse) SetStatusCode(v int32) *GetModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetModelResponse) SetBody(v *GetModelResponseBody) *GetModelResponse {
+	s.Body = v
+	return s
+}
+
+type GetModelVersionResponseBody struct {
+	FormatType         *string                `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	FrameworkType      *string                `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
+	GmtCreateTime      *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime    *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	InferenceSpec      map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
+	Labels             []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Options            *string                `json:"Options,omitempty" xml:"Options,omitempty"`
+	OwnerId            *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RequestId          *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceId           *string                `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType         *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Uri                *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	UserId             *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VersionDescription *string                `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
+	VersionName        *string                `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+}
+
+func (s GetModelVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelVersionResponseBody) SetFormatType(v string) *GetModelVersionResponseBody {
+	s.FormatType = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetFrameworkType(v string) *GetModelVersionResponseBody {
+	s.FrameworkType = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetGmtCreateTime(v string) *GetModelVersionResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetGmtModifiedTime(v string) *GetModelVersionResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetInferenceSpec(v map[string]interface{}) *GetModelVersionResponseBody {
+	s.InferenceSpec = v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetLabels(v []*Label) *GetModelVersionResponseBody {
+	s.Labels = v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetOptions(v string) *GetModelVersionResponseBody {
+	s.Options = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetOwnerId(v string) *GetModelVersionResponseBody {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetRequestId(v string) *GetModelVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetSourceId(v string) *GetModelVersionResponseBody {
+	s.SourceId = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetSourceType(v string) *GetModelVersionResponseBody {
+	s.SourceType = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetUri(v string) *GetModelVersionResponseBody {
+	s.Uri = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetUserId(v string) *GetModelVersionResponseBody {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetVersionDescription(v string) *GetModelVersionResponseBody {
+	s.VersionDescription = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetVersionName(v string) *GetModelVersionResponseBody {
+	s.VersionName = &v
+	return s
+}
+
+type GetModelVersionResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetModelVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetModelVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelVersionResponse) SetHeaders(v map[string]*string) *GetModelVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetModelVersionResponse) SetStatusCode(v int32) *GetModelVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetModelVersionResponse) SetBody(v *GetModelVersionResponseBody) *GetModelVersionResponse {
+	s.Body = v
+	return s
+}
+
 type GetPermissionRequest struct {
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	Creator       *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
@@ -2427,6 +3528,111 @@ func (s *GetWorkspaceResponse) SetStatusCode(v int32) *GetWorkspaceResponse {
 }
 
 func (s *GetWorkspaceResponse) SetBody(v *GetWorkspaceResponseBody) *GetWorkspaceResponse {
+	s.Body = v
+	return s
+}
+
+type ListCodeSourcesRequest struct {
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListCodeSourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCodeSourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCodeSourcesRequest) SetDisplayName(v string) *ListCodeSourcesRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListCodeSourcesRequest) SetOrder(v string) *ListCodeSourcesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListCodeSourcesRequest) SetPageNumber(v int32) *ListCodeSourcesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCodeSourcesRequest) SetPageSize(v int32) *ListCodeSourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCodeSourcesRequest) SetSortBy(v string) *ListCodeSourcesRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListCodeSourcesRequest) SetWorkspaceId(v string) *ListCodeSourcesRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListCodeSourcesResponseBody struct {
+	CodeSources []*CodeSourceItem `json:"CodeSources,omitempty" xml:"CodeSources,omitempty" type:"Repeated"`
+	RequestId   *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int64            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCodeSourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCodeSourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCodeSourcesResponseBody) SetCodeSources(v []*CodeSourceItem) *ListCodeSourcesResponseBody {
+	s.CodeSources = v
+	return s
+}
+
+func (s *ListCodeSourcesResponseBody) SetRequestId(v string) *ListCodeSourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCodeSourcesResponseBody) SetTotalCount(v int64) *ListCodeSourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCodeSourcesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCodeSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCodeSourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCodeSourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCodeSourcesResponse) SetHeaders(v map[string]*string) *ListCodeSourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCodeSourcesResponse) SetStatusCode(v int32) *ListCodeSourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCodeSourcesResponse) SetBody(v *ListCodeSourcesResponseBody) *ListCodeSourcesResponse {
 	s.Body = v
 	return s
 }
@@ -3047,6 +4253,246 @@ func (s *ListMembersResponse) SetStatusCode(v int32) *ListMembersResponse {
 }
 
 func (s *ListMembersResponse) SetBody(v *ListMembersResponseBody) *ListMembersResponse {
+	s.Body = v
+	return s
+}
+
+type ListModelVersionsRequest struct {
+	FormatType    *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
+	Label         *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SourceId      *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	VersionName   *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+}
+
+func (s ListModelVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelVersionsRequest) SetFormatType(v string) *ListModelVersionsRequest {
+	s.FormatType = &v
+	return s
+}
+
+func (s *ListModelVersionsRequest) SetFrameworkType(v string) *ListModelVersionsRequest {
+	s.FrameworkType = &v
+	return s
+}
+
+func (s *ListModelVersionsRequest) SetLabel(v string) *ListModelVersionsRequest {
+	s.Label = &v
+	return s
+}
+
+func (s *ListModelVersionsRequest) SetOrder(v string) *ListModelVersionsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListModelVersionsRequest) SetPageNumber(v int32) *ListModelVersionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListModelVersionsRequest) SetPageSize(v int32) *ListModelVersionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListModelVersionsRequest) SetSortBy(v string) *ListModelVersionsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListModelVersionsRequest) SetSourceId(v string) *ListModelVersionsRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *ListModelVersionsRequest) SetSourceType(v string) *ListModelVersionsRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListModelVersionsRequest) SetVersionName(v string) *ListModelVersionsRequest {
+	s.VersionName = &v
+	return s
+}
+
+type ListModelVersionsResponseBody struct {
+	RequestId  *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Versions   []*ModelVersion `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+}
+
+func (s ListModelVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelVersionsResponseBody) SetRequestId(v string) *ListModelVersionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListModelVersionsResponseBody) SetTotalCount(v int64) *ListModelVersionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListModelVersionsResponseBody) SetVersions(v []*ModelVersion) *ListModelVersionsResponseBody {
+	s.Versions = v
+	return s
+}
+
+type ListModelVersionsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListModelVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListModelVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelVersionsResponse) SetHeaders(v map[string]*string) *ListModelVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListModelVersionsResponse) SetStatusCode(v int32) *ListModelVersionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListModelVersionsResponse) SetBody(v *ListModelVersionsResponseBody) *ListModelVersionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListModelsRequest struct {
+	Label       *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	ModelName   *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListModelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsRequest) SetLabel(v string) *ListModelsRequest {
+	s.Label = &v
+	return s
+}
+
+func (s *ListModelsRequest) SetModelName(v string) *ListModelsRequest {
+	s.ModelName = &v
+	return s
+}
+
+func (s *ListModelsRequest) SetOrder(v string) *ListModelsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListModelsRequest) SetPageNumber(v int32) *ListModelsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListModelsRequest) SetPageSize(v int32) *ListModelsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListModelsRequest) SetSortBy(v string) *ListModelsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListModelsRequest) SetWorkspaceId(v string) *ListModelsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListModelsResponseBody struct {
+	Models     []*Model `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	RequestId  *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListModelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsResponseBody) SetModels(v []*Model) *ListModelsResponseBody {
+	s.Models = v
+	return s
+}
+
+func (s *ListModelsResponseBody) SetRequestId(v string) *ListModelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListModelsResponseBody) SetTotalCount(v int64) *ListModelsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListModelsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListModelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListModelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsResponse) SetHeaders(v map[string]*string) *ListModelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListModelsResponse) SetStatusCode(v int32) *ListModelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListModelsResponse) SetBody(v *ListModelsResponseBody) *ListModelsResponse {
 	s.Body = v
 	return s
 }
@@ -3881,6 +5327,58 @@ func (s *ListWorkspacesResponse) SetBody(v *ListWorkspacesResponseBody) *ListWor
 	return s
 }
 
+type PublishCodeSourceResponseBody struct {
+	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PublishCodeSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishCodeSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PublishCodeSourceResponseBody) SetCodeSourceId(v string) *PublishCodeSourceResponseBody {
+	s.CodeSourceId = &v
+	return s
+}
+
+func (s *PublishCodeSourceResponseBody) SetRequestId(v string) *PublishCodeSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PublishCodeSourceResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PublishCodeSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PublishCodeSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishCodeSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PublishCodeSourceResponse) SetHeaders(v map[string]*string) *PublishCodeSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PublishCodeSourceResponse) SetStatusCode(v int32) *PublishCodeSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PublishCodeSourceResponse) SetBody(v *PublishCodeSourceResponseBody) *PublishCodeSourceResponse {
+	s.Body = v
+	return s
+}
+
 type PublishDatasetResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -4255,6 +5753,168 @@ func (s *UpdateDefaultWorkspaceResponse) SetBody(v *UpdateDefaultWorkspaceRespon
 	return s
 }
 
+type UpdateModelRequest struct {
+	Accessibility    *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	ModelName        *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+}
+
+func (s UpdateModelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelRequest) SetAccessibility(v string) *UpdateModelRequest {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *UpdateModelRequest) SetModelDescription(v string) *UpdateModelRequest {
+	s.ModelDescription = &v
+	return s
+}
+
+func (s *UpdateModelRequest) SetModelName(v string) *UpdateModelRequest {
+	s.ModelName = &v
+	return s
+}
+
+type UpdateModelResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateModelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelResponseBody) SetRequestId(v string) *UpdateModelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateModelResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateModelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelResponse) SetHeaders(v map[string]*string) *UpdateModelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateModelResponse) SetStatusCode(v int32) *UpdateModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateModelResponse) SetBody(v *UpdateModelResponseBody) *UpdateModelResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateModelVersionRequest struct {
+	InferenceSpec      map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
+	Options            *string                `json:"Options,omitempty" xml:"Options,omitempty"`
+	SourceId           *string                `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType         *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	VersionDescription *string                `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
+}
+
+func (s UpdateModelVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelVersionRequest) SetInferenceSpec(v map[string]interface{}) *UpdateModelVersionRequest {
+	s.InferenceSpec = v
+	return s
+}
+
+func (s *UpdateModelVersionRequest) SetOptions(v string) *UpdateModelVersionRequest {
+	s.Options = &v
+	return s
+}
+
+func (s *UpdateModelVersionRequest) SetSourceId(v string) *UpdateModelVersionRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *UpdateModelVersionRequest) SetSourceType(v string) *UpdateModelVersionRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *UpdateModelVersionRequest) SetVersionDescription(v string) *UpdateModelVersionRequest {
+	s.VersionDescription = &v
+	return s
+}
+
+type UpdateModelVersionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateModelVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelVersionResponseBody) SetRequestId(v string) *UpdateModelVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateModelVersionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateModelVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateModelVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateModelVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateModelVersionResponse) SetHeaders(v map[string]*string) *UpdateModelVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateModelVersionResponse) SetStatusCode(v int32) *UpdateModelVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateModelVersionResponse) SetBody(v *UpdateModelVersionResponseBody) *UpdateModelVersionResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateWorkspaceRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
@@ -4594,6 +6254,84 @@ func (client *Client) AddMemberRoleWithOptions(WorkspaceId *string, MemberId *st
 	return _result, _err
 }
 
+func (client *Client) CreateCodeSource(request *CreateCodeSourceRequest) (_result *CreateCodeSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateCodeSourceResponse{}
+	_body, _err := client.CreateCodeSourceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateCodeSourceWithOptions(request *CreateCodeSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCodeSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeBranch)) {
+		body["CodeBranch"] = request.CodeBranch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeRepo)) {
+		body["CodeRepo"] = request.CodeRepo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeRepoAccessToken)) {
+		body["CodeRepoAccessToken"] = request.CodeRepoAccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeRepoUserName)) {
+		body["CodeRepoUserName"] = request.CodeRepoUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MountPath)) {
+		body["MountPath"] = request.MountPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCodeSource"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/codesources"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCodeSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4776,6 +6514,242 @@ func (client *Client) CreateMemberWithOptions(WorkspaceId *string, request *Crea
 	return _result, _err
 }
 
+func (client *Client) CreateModel(request *CreateModelRequest) (_result *CreateModelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateModelResponse{}
+	_body, _err := client.CreateModelWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateModelWithOptions(request *CreateModelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelDescription)) {
+		body["ModelDescription"] = request.ModelDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		body["ModelName"] = request.ModelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateModel"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/models"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateModelLabels(ModelId *string, request *CreateModelLabelsRequest) (_result *CreateModelLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateModelLabelsResponse{}
+	_body, _err := client.CreateModelLabelsWithOptions(ModelId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateModelLabelsWithOptions(ModelId *string, request *CreateModelLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateModelLabels"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/models/" + tea.StringValue(openapiutil.GetEncodeParam(ModelId)) + "/labels"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateModelLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateModelVersion(ModelId *string, request *CreateModelVersionRequest) (_result *CreateModelVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateModelVersionResponse{}
+	_body, _err := client.CreateModelVersionWithOptions(ModelId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateModelVersionWithOptions(ModelId *string, request *CreateModelVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FormatType)) {
+		body["FormatType"] = request.FormatType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FrameworkType)) {
+		body["FrameworkType"] = request.FrameworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InferenceSpec)) {
+		body["InferenceSpec"] = request.InferenceSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
+		body["Options"] = request.Options
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		body["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uri)) {
+		body["Uri"] = request.Uri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionDescription)) {
+		body["VersionDescription"] = request.VersionDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionName)) {
+		body["VersionName"] = request.VersionName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateModelVersion"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/models/" + tea.StringValue(openapiutil.GetEncodeParam(ModelId)) + "/versions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateModelVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateModelVersionLabels(ModelId *string, VersionName *string, request *CreateModelVersionLabelsRequest) (_result *CreateModelVersionLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateModelVersionLabelsResponse{}
+	_body, _err := client.CreateModelVersionLabelsWithOptions(ModelId, VersionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateModelVersionLabelsWithOptions(ModelId *string, VersionName *string, request *CreateModelVersionLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelVersionLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateModelVersionLabels"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/models/" + tea.StringValue(openapiutil.GetEncodeParam(ModelId)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(VersionName)) + "/labels"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateModelVersionLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result *CreateWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4876,6 +6850,42 @@ func (client *Client) CreateWorkspaceResourceWithOptions(WorkspaceId *string, re
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateWorkspaceResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCodeSource(CodeSourceId *string) (_result *DeleteCodeSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteCodeSourceResponse{}
+	_body, _err := client.DeleteCodeSourceWithOptions(CodeSourceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteCodeSourceWithOptions(CodeSourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteCodeSourceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCodeSource"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/codesources/" + tea.StringValue(openapiutil.GetEncodeParam(CodeSourceId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCodeSourceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5012,6 +7022,170 @@ func (client *Client) DeleteMembersWithOptions(WorkspaceId *string, request *Del
 	return _result, _err
 }
 
+func (client *Client) DeleteModel(ModelId *string) (_result *DeleteModelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteModelResponse{}
+	_body, _err := client.DeleteModelWithOptions(ModelId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteModelWithOptions(ModelId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteModelResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteModel"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/models/" + tea.StringValue(openapiutil.GetEncodeParam(ModelId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteModelLabels(ModelId *string, request *DeleteModelLabelsRequest) (_result *DeleteModelLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteModelLabelsResponse{}
+	_body, _err := client.DeleteModelLabelsWithOptions(ModelId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteModelLabelsWithOptions(ModelId *string, request *DeleteModelLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteModelLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LabelKeys)) {
+		query["LabelKeys"] = request.LabelKeys
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteModelLabels"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/models/" + tea.StringValue(openapiutil.GetEncodeParam(ModelId)) + "/labels"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteModelLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteModelVersion(ModelId *string, VersionName *string) (_result *DeleteModelVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteModelVersionResponse{}
+	_body, _err := client.DeleteModelVersionWithOptions(ModelId, VersionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteModelVersionWithOptions(ModelId *string, VersionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteModelVersionResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteModelVersion"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/models/" + tea.StringValue(openapiutil.GetEncodeParam(ModelId)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(VersionName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteModelVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteModelVersionLabels(ModelId *string, VersionName *string, request *DeleteModelVersionLabelsRequest) (_result *DeleteModelVersionLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteModelVersionLabelsResponse{}
+	_body, _err := client.DeleteModelVersionLabelsWithOptions(ModelId, VersionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteModelVersionLabelsWithOptions(ModelId *string, VersionName *string, request *DeleteModelVersionLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteModelVersionLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LabelKeys)) {
+		query["LabelKeys"] = request.LabelKeys
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteModelVersionLabels"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/models/" + tea.StringValue(openapiutil.GetEncodeParam(ModelId)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(VersionName)) + "/labels"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteModelVersionLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteWorkspace(WorkspaceId *string) (_result *DeleteWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5094,6 +7268,42 @@ func (client *Client) DeleteWorkspaceResourceWithOptions(WorkspaceId *string, re
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteWorkspaceResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCodeSource(CodeSourceId *string) (_result *GetCodeSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCodeSourceResponse{}
+	_body, _err := client.GetCodeSourceWithOptions(CodeSourceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCodeSourceWithOptions(CodeSourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCodeSourceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCodeSource"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/codesources/" + tea.StringValue(openapiutil.GetEncodeParam(CodeSourceId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCodeSourceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5276,6 +7486,78 @@ func (client *Client) GetMemberWithOptions(WorkspaceId *string, request *GetMemb
 	return _result, _err
 }
 
+func (client *Client) GetModel(ModelId *string) (_result *GetModelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetModelResponse{}
+	_body, _err := client.GetModelWithOptions(ModelId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetModelWithOptions(ModelId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetModelResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetModel"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/models/" + tea.StringValue(openapiutil.GetEncodeParam(ModelId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetModelVersion(ModelId *string, VersionName *string) (_result *GetModelVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetModelVersionResponse{}
+	_body, _err := client.GetModelVersionWithOptions(ModelId, VersionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetModelVersionWithOptions(ModelId *string, VersionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetModelVersionResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetModelVersion"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/models/" + tea.StringValue(openapiutil.GetEncodeParam(ModelId)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(VersionName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetModelVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetPermission(WorkspaceId *string, PermissionCode *string, request *GetPermissionRequest) (_result *GetPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5364,6 +7646,72 @@ func (client *Client) GetWorkspaceWithOptions(WorkspaceId *string, request *GetW
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCodeSources(request *ListCodeSourcesRequest) (_result *ListCodeSourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListCodeSourcesResponse{}
+	_body, _err := client.ListCodeSourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCodeSourcesWithOptions(request *ListCodeSourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCodeSourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCodeSources"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/codesources"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCodeSourcesResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5656,6 +8004,158 @@ func (client *Client) ListMembersWithOptions(WorkspaceId *string, request *ListM
 	return _result, _err
 }
 
+func (client *Client) ListModelVersions(ModelId *string, request *ListModelVersionsRequest) (_result *ListModelVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListModelVersionsResponse{}
+	_body, _err := client.ListModelVersionsWithOptions(ModelId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListModelVersionsWithOptions(ModelId *string, request *ListModelVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListModelVersionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FormatType)) {
+		query["FormatType"] = request.FormatType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FrameworkType)) {
+		query["FrameworkType"] = request.FrameworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Label)) {
+		query["Label"] = request.Label
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionName)) {
+		query["VersionName"] = request.VersionName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListModelVersions"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/models/" + tea.StringValue(openapiutil.GetEncodeParam(ModelId)) + "/versions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListModelVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListModels(request *ListModelsRequest) (_result *ListModelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListModelsResponse{}
+	_body, _err := client.ListModelsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListModelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Label)) {
+		query["Label"] = request.Label
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListModels"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/models"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListModelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListPermissions(WorkspaceId *string) (_result *ListPermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5926,6 +8426,42 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListWorkspacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PublishCodeSource(CodeSourceId *string) (_result *PublishCodeSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PublishCodeSourceResponse{}
+	_body, _err := client.PublishCodeSourceWithOptions(CodeSourceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PublishCodeSourceWithOptions(CodeSourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishCodeSourceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishCodeSource"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/codesources/" + tea.StringValue(openapiutil.GetEncodeParam(CodeSourceId)) + "/publish"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PublishCodeSourceResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6206,6 +8742,122 @@ func (client *Client) UpdateDefaultWorkspaceWithOptions(request *UpdateDefaultWo
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateDefaultWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateModel(ModelId *string, request *UpdateModelRequest) (_result *UpdateModelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateModelResponse{}
+	_body, _err := client.UpdateModelWithOptions(ModelId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateModelWithOptions(ModelId *string, request *UpdateModelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateModelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelDescription)) {
+		body["ModelDescription"] = request.ModelDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		body["ModelName"] = request.ModelName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateModel"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/models/" + tea.StringValue(openapiutil.GetEncodeParam(ModelId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateModelVersion(ModelId *string, VersionName *string, request *UpdateModelVersionRequest) (_result *UpdateModelVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateModelVersionResponse{}
+	_body, _err := client.UpdateModelVersionWithOptions(ModelId, VersionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateModelVersionWithOptions(ModelId *string, VersionName *string, request *UpdateModelVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateModelVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InferenceSpec)) {
+		body["InferenceSpec"] = request.InferenceSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
+		body["Options"] = request.Options
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		body["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionDescription)) {
+		body["VersionDescription"] = request.VersionDescription
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateModelVersion"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/models/" + tea.StringValue(openapiutil.GetEncodeParam(ModelId)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(VersionName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateModelVersionResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
