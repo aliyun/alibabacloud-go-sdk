@@ -12,6 +12,483 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AsyncTaskVO struct {
+	DatasetId  *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	TaskName   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskStatus *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskType   *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	UserId     *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s AsyncTaskVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncTaskVO) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncTaskVO) SetDatasetId(v string) *AsyncTaskVO {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *AsyncTaskVO) SetId(v int64) *AsyncTaskVO {
+	s.Id = &v
+	return s
+}
+
+func (s *AsyncTaskVO) SetRemark(v string) *AsyncTaskVO {
+	s.Remark = &v
+	return s
+}
+
+func (s *AsyncTaskVO) SetTaskName(v string) *AsyncTaskVO {
+	s.TaskName = &v
+	return s
+}
+
+func (s *AsyncTaskVO) SetTaskStatus(v int32) *AsyncTaskVO {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *AsyncTaskVO) SetTaskType(v int32) *AsyncTaskVO {
+	s.TaskType = &v
+	return s
+}
+
+func (s *AsyncTaskVO) SetUserId(v int64) *AsyncTaskVO {
+	s.UserId = &v
+	return s
+}
+
+type DatasetItemVO struct {
+	AsyncTaskList    []*AsyncTaskVO          `json:"AsyncTaskList,omitempty" xml:"AsyncTaskList,omitempty" type:"Repeated"`
+	DatasetStatus    *int32                  `json:"DatasetStatus,omitempty" xml:"DatasetStatus,omitempty"`
+	DatasetType      *int32                  `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	FileSystem       *string                 `json:"FileSystem,omitempty" xml:"FileSystem,omitempty"`
+	Id               *string                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	KeyName          *string                 `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	MoreInfo         *string                 `json:"MoreInfo,omitempty" xml:"MoreInfo,omitempty"`
+	Path             *string                 `json:"Path,omitempty" xml:"Path,omitempty"`
+	ProjectsLinked   []*ProjectDetailsLiteVO `json:"ProjectsLinked,omitempty" xml:"ProjectsLinked,omitempty" type:"Repeated"`
+	RecentTaskStatus *int32                  `json:"RecentTaskStatus,omitempty" xml:"RecentTaskStatus,omitempty"`
+	Remark           *string                 `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Schema           *string                 `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	TableName        *string                 `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Url              *string                 `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s DatasetItemVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DatasetItemVO) GoString() string {
+	return s.String()
+}
+
+func (s *DatasetItemVO) SetAsyncTaskList(v []*AsyncTaskVO) *DatasetItemVO {
+	s.AsyncTaskList = v
+	return s
+}
+
+func (s *DatasetItemVO) SetDatasetStatus(v int32) *DatasetItemVO {
+	s.DatasetStatus = &v
+	return s
+}
+
+func (s *DatasetItemVO) SetDatasetType(v int32) *DatasetItemVO {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *DatasetItemVO) SetFileSystem(v string) *DatasetItemVO {
+	s.FileSystem = &v
+	return s
+}
+
+func (s *DatasetItemVO) SetId(v string) *DatasetItemVO {
+	s.Id = &v
+	return s
+}
+
+func (s *DatasetItemVO) SetKeyName(v string) *DatasetItemVO {
+	s.KeyName = &v
+	return s
+}
+
+func (s *DatasetItemVO) SetMoreInfo(v string) *DatasetItemVO {
+	s.MoreInfo = &v
+	return s
+}
+
+func (s *DatasetItemVO) SetPath(v string) *DatasetItemVO {
+	s.Path = &v
+	return s
+}
+
+func (s *DatasetItemVO) SetProjectsLinked(v []*ProjectDetailsLiteVO) *DatasetItemVO {
+	s.ProjectsLinked = v
+	return s
+}
+
+func (s *DatasetItemVO) SetRecentTaskStatus(v int32) *DatasetItemVO {
+	s.RecentTaskStatus = &v
+	return s
+}
+
+func (s *DatasetItemVO) SetRemark(v string) *DatasetItemVO {
+	s.Remark = &v
+	return s
+}
+
+func (s *DatasetItemVO) SetSchema(v string) *DatasetItemVO {
+	s.Schema = &v
+	return s
+}
+
+func (s *DatasetItemVO) SetTableName(v string) *DatasetItemVO {
+	s.TableName = &v
+	return s
+}
+
+func (s *DatasetItemVO) SetUrl(v string) *DatasetItemVO {
+	s.Url = &v
+	return s
+}
+
+type GetTableDataKeyVO struct {
+	ColName    *string `json:"ColName,omitempty" xml:"ColName,omitempty"`
+	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	MekId      *int64  `json:"MekId,omitempty" xml:"MekId,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TblName    *string `json:"TblName,omitempty" xml:"TblName,omitempty"`
+	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s GetTableDataKeyVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableDataKeyVO) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableDataKeyVO) SetColName(v string) *GetTableDataKeyVO {
+	s.ColName = &v
+	return s
+}
+
+func (s *GetTableDataKeyVO) SetDbName(v string) *GetTableDataKeyVO {
+	s.DbName = &v
+	return s
+}
+
+func (s *GetTableDataKeyVO) SetMekId(v int64) *GetTableDataKeyVO {
+	s.MekId = &v
+	return s
+}
+
+func (s *GetTableDataKeyVO) SetSchemaName(v string) *GetTableDataKeyVO {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *GetTableDataKeyVO) SetTblName(v string) *GetTableDataKeyVO {
+	s.TblName = &v
+	return s
+}
+
+func (s *GetTableDataKeyVO) SetUserName(v string) *GetTableDataKeyVO {
+	s.UserName = &v
+	return s
+}
+
+type ImportMasterKeyVO struct {
+	EncryptMekDataBase64 *string  `json:"EncryptMekDataBase64,omitempty" xml:"EncryptMekDataBase64,omitempty"`
+	MekId                *int64   `json:"MekId,omitempty" xml:"MekId,omitempty"`
+	ProjectId            []*int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty" type:"Repeated"`
+}
+
+func (s ImportMasterKeyVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportMasterKeyVO) GoString() string {
+	return s.String()
+}
+
+func (s *ImportMasterKeyVO) SetEncryptMekDataBase64(v string) *ImportMasterKeyVO {
+	s.EncryptMekDataBase64 = &v
+	return s
+}
+
+func (s *ImportMasterKeyVO) SetMekId(v int64) *ImportMasterKeyVO {
+	s.MekId = &v
+	return s
+}
+
+func (s *ImportMasterKeyVO) SetProjectId(v []*int64) *ImportMasterKeyVO {
+	s.ProjectId = v
+	return s
+}
+
+type ProjectDetailsLiteVO struct {
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s ProjectDetailsLiteVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProjectDetailsLiteVO) GoString() string {
+	return s.String()
+}
+
+func (s *ProjectDetailsLiteVO) SetId(v int64) *ProjectDetailsLiteVO {
+	s.Id = &v
+	return s
+}
+
+func (s *ProjectDetailsLiteVO) SetProjectName(v string) *ProjectDetailsLiteVO {
+	s.ProjectName = &v
+	return s
+}
+
+type StsApplyVO struct {
+	AliyunId *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	Duration *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+}
+
+func (s StsApplyVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StsApplyVO) GoString() string {
+	return s.String()
+}
+
+func (s *StsApplyVO) SetAliyunId(v string) *StsApplyVO {
+	s.AliyunId = &v
+	return s
+}
+
+func (s *StsApplyVO) SetDuration(v int64) *StsApplyVO {
+	s.Duration = &v
+	return s
+}
+
+type StsTokenVO struct {
+	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	Expiration      *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s StsTokenVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StsTokenVO) GoString() string {
+	return s.String()
+}
+
+func (s *StsTokenVO) SetAccessKeyId(v string) *StsTokenVO {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *StsTokenVO) SetAccessKeySecret(v string) *StsTokenVO {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *StsTokenVO) SetExpiration(v string) *StsTokenVO {
+	s.Expiration = &v
+	return s
+}
+
+func (s *StsTokenVO) SetSecurityToken(v string) *StsTokenVO {
+	s.SecurityToken = &v
+	return s
+}
+
+type TeeEvidenceVO struct {
+	CipherSuite          *string   `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	EnclaveData          *string   `json:"EnclaveData,omitempty" xml:"EnclaveData,omitempty"`
+	EncryptPublicKeyPem  *string   `json:"EncryptPublicKeyPem,omitempty" xml:"EncryptPublicKeyPem,omitempty"`
+	EncryptPublicKeyType *string   `json:"EncryptPublicKeyType,omitempty" xml:"EncryptPublicKeyType,omitempty"`
+	ModifiedDate         *string   `json:"ModifiedDate,omitempty" xml:"ModifiedDate,omitempty"`
+	PublicKey            *string   `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
+	PublicKeyRaBase64    *string   `json:"PublicKeyRaBase64,omitempty" xml:"PublicKeyRaBase64,omitempty"`
+	PublicKeyRaType      *string   `json:"PublicKeyRaType,omitempty" xml:"PublicKeyRaType,omitempty"`
+	QuoteReport          *string   `json:"QuoteReport,omitempty" xml:"QuoteReport,omitempty"`
+	SignPublicKeyPem     *string   `json:"SignPublicKeyPem,omitempty" xml:"SignPublicKeyPem,omitempty"`
+	SignPublicKeyType    *string   `json:"SignPublicKeyType,omitempty" xml:"SignPublicKeyType,omitempty"`
+	TrustedMrEnclave     []*string `json:"TrustedMrEnclave,omitempty" xml:"TrustedMrEnclave,omitempty" type:"Repeated"`
+}
+
+func (s TeeEvidenceVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TeeEvidenceVO) GoString() string {
+	return s.String()
+}
+
+func (s *TeeEvidenceVO) SetCipherSuite(v string) *TeeEvidenceVO {
+	s.CipherSuite = &v
+	return s
+}
+
+func (s *TeeEvidenceVO) SetEnclaveData(v string) *TeeEvidenceVO {
+	s.EnclaveData = &v
+	return s
+}
+
+func (s *TeeEvidenceVO) SetEncryptPublicKeyPem(v string) *TeeEvidenceVO {
+	s.EncryptPublicKeyPem = &v
+	return s
+}
+
+func (s *TeeEvidenceVO) SetEncryptPublicKeyType(v string) *TeeEvidenceVO {
+	s.EncryptPublicKeyType = &v
+	return s
+}
+
+func (s *TeeEvidenceVO) SetModifiedDate(v string) *TeeEvidenceVO {
+	s.ModifiedDate = &v
+	return s
+}
+
+func (s *TeeEvidenceVO) SetPublicKey(v string) *TeeEvidenceVO {
+	s.PublicKey = &v
+	return s
+}
+
+func (s *TeeEvidenceVO) SetPublicKeyRaBase64(v string) *TeeEvidenceVO {
+	s.PublicKeyRaBase64 = &v
+	return s
+}
+
+func (s *TeeEvidenceVO) SetPublicKeyRaType(v string) *TeeEvidenceVO {
+	s.PublicKeyRaType = &v
+	return s
+}
+
+func (s *TeeEvidenceVO) SetQuoteReport(v string) *TeeEvidenceVO {
+	s.QuoteReport = &v
+	return s
+}
+
+func (s *TeeEvidenceVO) SetSignPublicKeyPem(v string) *TeeEvidenceVO {
+	s.SignPublicKeyPem = &v
+	return s
+}
+
+func (s *TeeEvidenceVO) SetSignPublicKeyType(v string) *TeeEvidenceVO {
+	s.SignPublicKeyType = &v
+	return s
+}
+
+func (s *TeeEvidenceVO) SetTrustedMrEnclave(v []*string) *TeeEvidenceVO {
+	s.TrustedMrEnclave = v
+	return s
+}
+
+type UsersDetailsVO struct {
+	ApprovalSignatureBase64 *string `json:"ApprovalSignatureBase64,omitempty" xml:"ApprovalSignatureBase64,omitempty"`
+	ApprovalSqlTemplate     *string `json:"ApprovalSqlTemplate,omitempty" xml:"ApprovalSqlTemplate,omitempty"`
+	ApprovalStatus          *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	Creator                 *int32  `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	DataReady               *int32  `json:"DataReady,omitempty" xml:"DataReady,omitempty"`
+	Id                      *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Mekid                   *int64  `json:"Mekid,omitempty" xml:"Mekid,omitempty"`
+	PathPrefix              *string `json:"PathPrefix,omitempty" xml:"PathPrefix,omitempty"`
+	ResultParty             *int32  `json:"ResultParty,omitempty" xml:"ResultParty,omitempty"`
+	Uid                     *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	UserConfirmed           *int32  `json:"UserConfirmed,omitempty" xml:"UserConfirmed,omitempty"`
+	UserName                *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	UserPublicKeyPem        *string `json:"UserPublicKeyPem,omitempty" xml:"UserPublicKeyPem,omitempty"`
+}
+
+func (s UsersDetailsVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UsersDetailsVO) GoString() string {
+	return s.String()
+}
+
+func (s *UsersDetailsVO) SetApprovalSignatureBase64(v string) *UsersDetailsVO {
+	s.ApprovalSignatureBase64 = &v
+	return s
+}
+
+func (s *UsersDetailsVO) SetApprovalSqlTemplate(v string) *UsersDetailsVO {
+	s.ApprovalSqlTemplate = &v
+	return s
+}
+
+func (s *UsersDetailsVO) SetApprovalStatus(v string) *UsersDetailsVO {
+	s.ApprovalStatus = &v
+	return s
+}
+
+func (s *UsersDetailsVO) SetCreator(v int32) *UsersDetailsVO {
+	s.Creator = &v
+	return s
+}
+
+func (s *UsersDetailsVO) SetDataReady(v int32) *UsersDetailsVO {
+	s.DataReady = &v
+	return s
+}
+
+func (s *UsersDetailsVO) SetId(v int64) *UsersDetailsVO {
+	s.Id = &v
+	return s
+}
+
+func (s *UsersDetailsVO) SetMekid(v int64) *UsersDetailsVO {
+	s.Mekid = &v
+	return s
+}
+
+func (s *UsersDetailsVO) SetPathPrefix(v string) *UsersDetailsVO {
+	s.PathPrefix = &v
+	return s
+}
+
+func (s *UsersDetailsVO) SetResultParty(v int32) *UsersDetailsVO {
+	s.ResultParty = &v
+	return s
+}
+
+func (s *UsersDetailsVO) SetUid(v string) *UsersDetailsVO {
+	s.Uid = &v
+	return s
+}
+
+func (s *UsersDetailsVO) SetUserConfirmed(v int32) *UsersDetailsVO {
+	s.UserConfirmed = &v
+	return s
+}
+
+func (s *UsersDetailsVO) SetUserName(v string) *UsersDetailsVO {
+	s.UserName = &v
+	return s
+}
+
+func (s *UsersDetailsVO) SetUserPublicKeyPem(v string) *UsersDetailsVO {
+	s.UserPublicKeyPem = &v
+	return s
+}
+
 type AddDesensitizationRuleRequest struct {
 	FunctionParams  []map[string]*string `json:"FunctionParams,omitempty" xml:"FunctionParams,omitempty" type:"Repeated"`
 	FunctionType    *string              `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
@@ -837,6 +1314,111 @@ func (s *BackFillResponse) SetStatusCode(v int32) *BackFillResponse {
 }
 
 func (s *BackFillResponse) SetBody(v *BackFillResponseBody) *BackFillResponse {
+	s.Body = v
+	return s
+}
+
+type BuyPayAsYouGoOrderRequest struct {
+	CommodityType *string `json:"CommodityType,omitempty" xml:"CommodityType,omitempty"`
+	InsNum        *int32  `json:"InsNum,omitempty" xml:"InsNum,omitempty"`
+	Tid           *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	VersionType   *string `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
+}
+
+func (s BuyPayAsYouGoOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuyPayAsYouGoOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BuyPayAsYouGoOrderRequest) SetCommodityType(v string) *BuyPayAsYouGoOrderRequest {
+	s.CommodityType = &v
+	return s
+}
+
+func (s *BuyPayAsYouGoOrderRequest) SetInsNum(v int32) *BuyPayAsYouGoOrderRequest {
+	s.InsNum = &v
+	return s
+}
+
+func (s *BuyPayAsYouGoOrderRequest) SetTid(v int64) *BuyPayAsYouGoOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *BuyPayAsYouGoOrderRequest) SetVersionType(v string) *BuyPayAsYouGoOrderRequest {
+	s.VersionType = &v
+	return s
+}
+
+type BuyPayAsYouGoOrderResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BuyPayAsYouGoOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuyPayAsYouGoOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BuyPayAsYouGoOrderResponseBody) SetErrorCode(v string) *BuyPayAsYouGoOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *BuyPayAsYouGoOrderResponseBody) SetErrorMessage(v string) *BuyPayAsYouGoOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BuyPayAsYouGoOrderResponseBody) SetInstanceId(v string) *BuyPayAsYouGoOrderResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *BuyPayAsYouGoOrderResponseBody) SetRequestId(v string) *BuyPayAsYouGoOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BuyPayAsYouGoOrderResponseBody) SetSuccess(v bool) *BuyPayAsYouGoOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BuyPayAsYouGoOrderResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BuyPayAsYouGoOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BuyPayAsYouGoOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BuyPayAsYouGoOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BuyPayAsYouGoOrderResponse) SetHeaders(v map[string]*string) *BuyPayAsYouGoOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BuyPayAsYouGoOrderResponse) SetStatusCode(v int32) *BuyPayAsYouGoOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BuyPayAsYouGoOrderResponse) SetBody(v *BuyPayAsYouGoOrderResponseBody) *BuyPayAsYouGoOrderResponse {
 	s.Body = v
 	return s
 }
@@ -6114,6 +6696,7 @@ type GetApprovalDetailResponseBodyApprovalDetail struct {
 	OrderId         *int64                                                      `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OrderType       *string                                                     `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	ReasonList      *GetApprovalDetailResponseBodyApprovalDetailReasonList      `json:"ReasonList,omitempty" xml:"ReasonList,omitempty" type:"Struct"`
+	TemplateId      *int64                                                      `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	Title           *string                                                     `json:"Title,omitempty" xml:"Title,omitempty"`
 	WorkflowInsCode *string                                                     `json:"WorkflowInsCode,omitempty" xml:"WorkflowInsCode,omitempty"`
 	WorkflowNodes   *GetApprovalDetailResponseBodyApprovalDetailWorkflowNodes   `json:"WorkflowNodes,omitempty" xml:"WorkflowNodes,omitempty" type:"Struct"`
@@ -6159,6 +6742,11 @@ func (s *GetApprovalDetailResponseBodyApprovalDetail) SetOrderType(v string) *Ge
 
 func (s *GetApprovalDetailResponseBodyApprovalDetail) SetReasonList(v *GetApprovalDetailResponseBodyApprovalDetailReasonList) *GetApprovalDetailResponseBodyApprovalDetail {
 	s.ReasonList = v
+	return s
+}
+
+func (s *GetApprovalDetailResponseBodyApprovalDetail) SetTemplateId(v int64) *GetApprovalDetailResponseBodyApprovalDetail {
+	s.TemplateId = &v
 	return s
 }
 
@@ -8156,6 +8744,7 @@ type GetInstanceResponseBodyInstance struct {
 	Port             *int32                                        `json:"Port,omitempty" xml:"Port,omitempty"`
 	QueryTimeout     *int32                                        `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
 	SafeRuleId       *string                                       `json:"SafeRuleId,omitempty" xml:"SafeRuleId,omitempty"`
+	SellSitd         *string                                       `json:"SellSitd,omitempty" xml:"SellSitd,omitempty"`
 	Sid              *string                                       `json:"Sid,omitempty" xml:"Sid,omitempty"`
 	StandardGroup    *GetInstanceResponseBodyInstanceStandardGroup `json:"StandardGroup,omitempty" xml:"StandardGroup,omitempty" type:"Struct"`
 	State            *string                                       `json:"State,omitempty" xml:"State,omitempty"`
@@ -8268,6 +8857,11 @@ func (s *GetInstanceResponseBodyInstance) SetQueryTimeout(v int32) *GetInstanceR
 
 func (s *GetInstanceResponseBodyInstance) SetSafeRuleId(v string) *GetInstanceResponseBodyInstance {
 	s.SafeRuleId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetSellSitd(v string) *GetInstanceResponseBodyInstance {
+	s.SellSitd = &v
 	return s
 }
 
@@ -13829,6 +14423,128 @@ func (s *InspectProxyAccessSecretResponse) SetBody(v *InspectProxyAccessSecretRe
 	return s
 }
 
+type ListClassificationTemplatesRequest struct {
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListClassificationTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClassificationTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListClassificationTemplatesRequest) SetTid(v int64) *ListClassificationTemplatesRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListClassificationTemplatesResponseBody struct {
+	ErrorCode    *string                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	TemplateList []*ListClassificationTemplatesResponseBodyTemplateList `json:"TemplateList,omitempty" xml:"TemplateList,omitempty" type:"Repeated"`
+}
+
+func (s ListClassificationTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClassificationTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListClassificationTemplatesResponseBody) SetErrorCode(v string) *ListClassificationTemplatesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListClassificationTemplatesResponseBody) SetErrorMessage(v string) *ListClassificationTemplatesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListClassificationTemplatesResponseBody) SetRequestId(v string) *ListClassificationTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListClassificationTemplatesResponseBody) SetSuccess(v bool) *ListClassificationTemplatesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListClassificationTemplatesResponseBody) SetTemplateList(v []*ListClassificationTemplatesResponseBodyTemplateList) *ListClassificationTemplatesResponseBody {
+	s.TemplateList = v
+	return s
+}
+
+type ListClassificationTemplatesResponseBodyTemplateList struct {
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s ListClassificationTemplatesResponseBodyTemplateList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClassificationTemplatesResponseBodyTemplateList) GoString() string {
+	return s.String()
+}
+
+func (s *ListClassificationTemplatesResponseBodyTemplateList) SetName(v string) *ListClassificationTemplatesResponseBodyTemplateList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListClassificationTemplatesResponseBodyTemplateList) SetRemark(v string) *ListClassificationTemplatesResponseBodyTemplateList {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListClassificationTemplatesResponseBodyTemplateList) SetTemplateId(v int64) *ListClassificationTemplatesResponseBodyTemplateList {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListClassificationTemplatesResponseBodyTemplateList) SetTemplateType(v string) *ListClassificationTemplatesResponseBodyTemplateList {
+	s.TemplateType = &v
+	return s
+}
+
+type ListClassificationTemplatesResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListClassificationTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListClassificationTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClassificationTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListClassificationTemplatesResponse) SetHeaders(v map[string]*string) *ListClassificationTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListClassificationTemplatesResponse) SetStatusCode(v int32) *ListClassificationTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListClassificationTemplatesResponse) SetBody(v *ListClassificationTemplatesResponseBody) *ListClassificationTemplatesResponse {
+	s.Body = v
+	return s
+}
+
 type ListColumnsRequest struct {
 	Logic   *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
@@ -16096,6 +16812,181 @@ func (s *ListDesensitizationRuleResponse) SetBody(v *ListDesensitizationRuleResp
 	return s
 }
 
+type ListEffectiveOrdersRequest struct {
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListEffectiveOrdersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEffectiveOrdersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEffectiveOrdersRequest) SetTid(v int64) *ListEffectiveOrdersRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListEffectiveOrdersResponseBody struct {
+	ErrorCode    *string                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	OrderSummary []*ListEffectiveOrdersResponseBodyOrderSummary `json:"OrderSummary,omitempty" xml:"OrderSummary,omitempty" type:"Repeated"`
+	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListEffectiveOrdersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEffectiveOrdersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEffectiveOrdersResponseBody) SetErrorCode(v string) *ListEffectiveOrdersResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponseBody) SetErrorMessage(v string) *ListEffectiveOrdersResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponseBody) SetOrderSummary(v []*ListEffectiveOrdersResponseBodyOrderSummary) *ListEffectiveOrdersResponseBody {
+	s.OrderSummary = v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponseBody) SetRequestId(v string) *ListEffectiveOrdersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponseBody) SetSuccess(v bool) *ListEffectiveOrdersResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEffectiveOrdersResponseBodyOrderSummary struct {
+	CommodityCode *string                                                 `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CommodityType *string                                                 `json:"CommodityType,omitempty" xml:"CommodityType,omitempty"`
+	OrderList     []*ListEffectiveOrdersResponseBodyOrderSummaryOrderList `json:"OrderList,omitempty" xml:"OrderList,omitempty" type:"Repeated"`
+	TotalQuota    *int32                                                  `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
+	VersionType   *string                                                 `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
+}
+
+func (s ListEffectiveOrdersResponseBodyOrderSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEffectiveOrdersResponseBodyOrderSummary) GoString() string {
+	return s.String()
+}
+
+func (s *ListEffectiveOrdersResponseBodyOrderSummary) SetCommodityCode(v string) *ListEffectiveOrdersResponseBodyOrderSummary {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponseBodyOrderSummary) SetCommodityType(v string) *ListEffectiveOrdersResponseBodyOrderSummary {
+	s.CommodityType = &v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponseBodyOrderSummary) SetOrderList(v []*ListEffectiveOrdersResponseBodyOrderSummaryOrderList) *ListEffectiveOrdersResponseBodyOrderSummary {
+	s.OrderList = v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponseBodyOrderSummary) SetTotalQuota(v int32) *ListEffectiveOrdersResponseBodyOrderSummary {
+	s.TotalQuota = &v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponseBodyOrderSummary) SetVersionType(v string) *ListEffectiveOrdersResponseBodyOrderSummary {
+	s.VersionType = &v
+	return s
+}
+
+type ListEffectiveOrdersResponseBodyOrderSummaryOrderList struct {
+	BuyerId    *string `json:"BuyerId,omitempty" xml:"BuyerId,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InsNum     *string `json:"InsNum,omitempty" xml:"InsNum,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListEffectiveOrdersResponseBodyOrderSummaryOrderList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEffectiveOrdersResponseBodyOrderSummaryOrderList) GoString() string {
+	return s.String()
+}
+
+func (s *ListEffectiveOrdersResponseBodyOrderSummaryOrderList) SetBuyerId(v string) *ListEffectiveOrdersResponseBodyOrderSummaryOrderList {
+	s.BuyerId = &v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponseBodyOrderSummaryOrderList) SetEndTime(v string) *ListEffectiveOrdersResponseBodyOrderSummaryOrderList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponseBodyOrderSummaryOrderList) SetInsNum(v string) *ListEffectiveOrdersResponseBodyOrderSummaryOrderList {
+	s.InsNum = &v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponseBodyOrderSummaryOrderList) SetInstanceId(v string) *ListEffectiveOrdersResponseBodyOrderSummaryOrderList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponseBodyOrderSummaryOrderList) SetOrderId(v string) *ListEffectiveOrdersResponseBodyOrderSummaryOrderList {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponseBodyOrderSummaryOrderList) SetStartTime(v string) *ListEffectiveOrdersResponseBodyOrderSummaryOrderList {
+	s.StartTime = &v
+	return s
+}
+
+type ListEffectiveOrdersResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEffectiveOrdersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEffectiveOrdersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEffectiveOrdersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEffectiveOrdersResponse) SetHeaders(v map[string]*string) *ListEffectiveOrdersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponse) SetStatusCode(v int32) *ListEffectiveOrdersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEffectiveOrdersResponse) SetBody(v *ListEffectiveOrdersResponseBody) *ListEffectiveOrdersResponse {
+	s.Body = v
+	return s
+}
+
 type ListIndexesRequest struct {
 	Logic   *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
@@ -16835,6 +17726,7 @@ type ListInstancesResponseBodyInstanceListInstance struct {
 	Port             *int32                                                      `json:"Port,omitempty" xml:"Port,omitempty"`
 	QueryTimeout     *int32                                                      `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
 	SafeRuleId       *string                                                     `json:"SafeRuleId,omitempty" xml:"SafeRuleId,omitempty"`
+	SellSitd         *bool                                                       `json:"SellSitd,omitempty" xml:"SellSitd,omitempty"`
 	Sid              *string                                                     `json:"Sid,omitempty" xml:"Sid,omitempty"`
 	StandardGroup    *ListInstancesResponseBodyInstanceListInstanceStandardGroup `json:"StandardGroup,omitempty" xml:"StandardGroup,omitempty" type:"Struct"`
 	State            *string                                                     `json:"State,omitempty" xml:"State,omitempty"`
@@ -16947,6 +17839,11 @@ func (s *ListInstancesResponseBodyInstanceListInstance) SetQueryTimeout(v int32)
 
 func (s *ListInstancesResponseBodyInstanceListInstance) SetSafeRuleId(v string) *ListInstancesResponseBodyInstanceListInstance {
 	s.SafeRuleId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstanceListInstance) SetSellSitd(v bool) *ListInstancesResponseBodyInstanceListInstance {
+	s.SellSitd = &v
 	return s
 }
 
@@ -19461,6 +20358,7 @@ type ListSQLReviewOriginSQLResponseBodyOriginSQLList struct {
 	ReviewSummary     *string `json:"ReviewSummary,omitempty" xml:"ReviewSummary,omitempty"`
 	SQLContent        *string `json:"SQLContent,omitempty" xml:"SQLContent,omitempty"`
 	SQLId             *int64  `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
+	SQLName           *string `json:"SQLName,omitempty" xml:"SQLName,omitempty"`
 	SQLReviewQueryKey *string `json:"SQLReviewQueryKey,omitempty" xml:"SQLReviewQueryKey,omitempty"`
 	SqlHash           *string `json:"SqlHash,omitempty" xml:"SqlHash,omitempty"`
 	StatusDesc        *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
@@ -19506,6 +20404,11 @@ func (s *ListSQLReviewOriginSQLResponseBodyOriginSQLList) SetSQLContent(v string
 
 func (s *ListSQLReviewOriginSQLResponseBodyOriginSQLList) SetSQLId(v int64) *ListSQLReviewOriginSQLResponseBodyOriginSQLList {
 	s.SQLId = &v
+	return s
+}
+
+func (s *ListSQLReviewOriginSQLResponseBodyOriginSQLList) SetSQLName(v string) *ListSQLReviewOriginSQLResponseBodyOriginSQLList {
+	s.SQLName = &v
 	return s
 }
 
@@ -24122,6 +25025,93 @@ func (s *ReRunTaskFlowInstanceResponse) SetBody(v *ReRunTaskFlowInstanceResponse
 	return s
 }
 
+type RefundPayAsYouGoOrderRequest struct {
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s RefundPayAsYouGoOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefundPayAsYouGoOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefundPayAsYouGoOrderRequest) SetOrderId(v string) *RefundPayAsYouGoOrderRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *RefundPayAsYouGoOrderRequest) SetTid(v int64) *RefundPayAsYouGoOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+type RefundPayAsYouGoOrderResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RefundPayAsYouGoOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefundPayAsYouGoOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefundPayAsYouGoOrderResponseBody) SetErrorCode(v string) *RefundPayAsYouGoOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RefundPayAsYouGoOrderResponseBody) SetErrorMessage(v string) *RefundPayAsYouGoOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RefundPayAsYouGoOrderResponseBody) SetRequestId(v string) *RefundPayAsYouGoOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RefundPayAsYouGoOrderResponseBody) SetSuccess(v bool) *RefundPayAsYouGoOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RefundPayAsYouGoOrderResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RefundPayAsYouGoOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RefundPayAsYouGoOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefundPayAsYouGoOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefundPayAsYouGoOrderResponse) SetHeaders(v map[string]*string) *RefundPayAsYouGoOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefundPayAsYouGoOrderResponse) SetStatusCode(v int32) *RefundPayAsYouGoOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RefundPayAsYouGoOrderResponse) SetBody(v *RefundPayAsYouGoOrderResponseBody) *RefundPayAsYouGoOrderResponse {
+	s.Body = v
+	return s
+}
+
 type RegisterInstanceRequest struct {
 	DataLinkName     *string `json:"DataLinkName,omitempty" xml:"DataLinkName,omitempty"`
 	DatabasePassword *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
@@ -24130,6 +25120,7 @@ type RegisterInstanceRequest struct {
 	DdlOnline        *int32  `json:"DdlOnline,omitempty" xml:"DdlOnline,omitempty"`
 	EcsInstanceId    *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
 	EcsRegion        *string `json:"EcsRegion,omitempty" xml:"EcsRegion,omitempty"`
+	EnableSellSitd   *string `json:"EnableSellSitd,omitempty" xml:"EnableSellSitd,omitempty"`
 	EnvType          *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	ExportTimeout    *int32  `json:"ExportTimeout,omitempty" xml:"ExportTimeout,omitempty"`
 	Host             *string `json:"Host,omitempty" xml:"Host,omitempty"`
@@ -24142,6 +25133,8 @@ type RegisterInstanceRequest struct {
 	SafeRule         *string `json:"SafeRule,omitempty" xml:"SafeRule,omitempty"`
 	Sid              *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 	SkipTest         *bool   `json:"SkipTest,omitempty" xml:"SkipTest,omitempty"`
+	TemplateId       *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType     *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	Tid              *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	UseDsql          *int32  `json:"UseDsql,omitempty" xml:"UseDsql,omitempty"`
 	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -24187,6 +25180,11 @@ func (s *RegisterInstanceRequest) SetEcsInstanceId(v string) *RegisterInstanceRe
 
 func (s *RegisterInstanceRequest) SetEcsRegion(v string) *RegisterInstanceRequest {
 	s.EcsRegion = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetEnableSellSitd(v string) *RegisterInstanceRequest {
+	s.EnableSellSitd = &v
 	return s
 }
 
@@ -24247,6 +25245,16 @@ func (s *RegisterInstanceRequest) SetSid(v string) *RegisterInstanceRequest {
 
 func (s *RegisterInstanceRequest) SetSkipTest(v bool) *RegisterInstanceRequest {
 	s.SkipTest = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetTemplateId(v int64) *RegisterInstanceRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetTemplateType(v string) *RegisterInstanceRequest {
+	s.TemplateType = &v
 	return s
 }
 
@@ -26093,6 +27101,7 @@ type UpdateInstanceRequest struct {
 	DdlOnline        *int32  `json:"DdlOnline,omitempty" xml:"DdlOnline,omitempty"`
 	EcsInstanceId    *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
 	EcsRegion        *string `json:"EcsRegion,omitempty" xml:"EcsRegion,omitempty"`
+	EnableSellSitd   *string `json:"EnableSellSitd,omitempty" xml:"EnableSellSitd,omitempty"`
 	EnvType          *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	ExportTimeout    *int32  `json:"ExportTimeout,omitempty" xml:"ExportTimeout,omitempty"`
 	Host             *string `json:"Host,omitempty" xml:"Host,omitempty"`
@@ -26105,6 +27114,8 @@ type UpdateInstanceRequest struct {
 	SafeRuleId       *string `json:"SafeRuleId,omitempty" xml:"SafeRuleId,omitempty"`
 	Sid              *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 	SkipTest         *bool   `json:"SkipTest,omitempty" xml:"SkipTest,omitempty"`
+	TemplateId       *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType     *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	Tid              *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	UseDsql          *int32  `json:"UseDsql,omitempty" xml:"UseDsql,omitempty"`
 	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -26150,6 +27161,11 @@ func (s *UpdateInstanceRequest) SetEcsInstanceId(v string) *UpdateInstanceReques
 
 func (s *UpdateInstanceRequest) SetEcsRegion(v string) *UpdateInstanceRequest {
 	s.EcsRegion = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetEnableSellSitd(v string) *UpdateInstanceRequest {
+	s.EnableSellSitd = &v
 	return s
 }
 
@@ -26210,6 +27226,16 @@ func (s *UpdateInstanceRequest) SetSid(v string) *UpdateInstanceRequest {
 
 func (s *UpdateInstanceRequest) SetSkipTest(v bool) *UpdateInstanceRequest {
 	s.SkipTest = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetTemplateId(v int64) *UpdateInstanceRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetTemplateType(v string) *UpdateInstanceRequest {
+	s.TemplateType = &v
 	return s
 }
 
@@ -28651,6 +29677,62 @@ func (client *Client) BackFill(request *BackFillRequest) (_result *BackFillRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &BackFillResponse{}
 	_body, _err := client.BackFillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BuyPayAsYouGoOrderWithOptions(request *BuyPayAsYouGoOrderRequest, runtime *util.RuntimeOptions) (_result *BuyPayAsYouGoOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommodityType)) {
+		query["CommodityType"] = request.CommodityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InsNum)) {
+		query["InsNum"] = request.InsNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionType)) {
+		query["VersionType"] = request.VersionType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BuyPayAsYouGoOrder"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BuyPayAsYouGoOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BuyPayAsYouGoOrder(request *BuyPayAsYouGoOrderRequest) (_result *BuyPayAsYouGoOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BuyPayAsYouGoOrderResponse{}
+	_body, _err := client.BuyPayAsYouGoOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33058,6 +34140,50 @@ func (client *Client) InspectProxyAccessSecret(request *InspectProxyAccessSecret
 	return _result, _err
 }
 
+func (client *Client) ListClassificationTemplatesWithOptions(request *ListClassificationTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListClassificationTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListClassificationTemplates"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListClassificationTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListClassificationTemplates(request *ListClassificationTemplatesRequest) (_result *ListClassificationTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListClassificationTemplatesResponse{}
+	_body, _err := client.ListClassificationTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListColumnsWithOptions(request *ListColumnsRequest, runtime *util.RuntimeOptions) (_result *ListColumnsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33675,6 +34801,50 @@ func (client *Client) ListDesensitizationRule(request *ListDesensitizationRuleRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDesensitizationRuleResponse{}
 	_body, _err := client.ListDesensitizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEffectiveOrdersWithOptions(request *ListEffectiveOrdersRequest, runtime *util.RuntimeOptions) (_result *ListEffectiveOrdersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEffectiveOrders"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEffectiveOrdersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEffectiveOrders(request *ListEffectiveOrdersRequest) (_result *ListEffectiveOrdersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEffectiveOrdersResponse{}
+	_body, _err := client.ListEffectiveOrdersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36152,6 +37322,54 @@ func (client *Client) ReRunTaskFlowInstance(request *ReRunTaskFlowInstanceReques
 	return _result, _err
 }
 
+func (client *Client) RefundPayAsYouGoOrderWithOptions(request *RefundPayAsYouGoOrderRequest, runtime *util.RuntimeOptions) (_result *RefundPayAsYouGoOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefundPayAsYouGoOrder"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefundPayAsYouGoOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RefundPayAsYouGoOrder(request *RefundPayAsYouGoOrderRequest) (_result *RefundPayAsYouGoOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefundPayAsYouGoOrderResponse{}
+	_body, _err := client.RefundPayAsYouGoOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RegisterInstanceWithOptions(request *RegisterInstanceRequest, runtime *util.RuntimeOptions) (_result *RegisterInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36184,6 +37402,10 @@ func (client *Client) RegisterInstanceWithOptions(request *RegisterInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.EcsRegion)) {
 		query["EcsRegion"] = request.EcsRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSellSitd)) {
+		query["EnableSellSitd"] = request.EnableSellSitd
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
@@ -36232,6 +37454,14 @@ func (client *Client) RegisterInstanceWithOptions(request *RegisterInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.SkipTest)) {
 		query["SkipTest"] = request.SkipTest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
@@ -37122,6 +38352,10 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 		query["EcsRegion"] = request.EcsRegion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableSellSitd)) {
+		query["EnableSellSitd"] = request.EnableSellSitd
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
 		query["EnvType"] = request.EnvType
 	}
@@ -37168,6 +38402,14 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.SkipTest)) {
 		query["SkipTest"] = request.SkipTest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
