@@ -4714,15 +4714,15 @@ func (s *CreateFigureClustersMergingTaskResponse) SetBody(v *CreateFigureCluster
 }
 
 type CreateFileCompressionTaskRequest struct {
-	CompressedFormat *string                                    `json:"CompressedFormat,omitempty" xml:"CompressedFormat,omitempty"`
-	CredentialConfig *CredentialConfig                          `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ManifestURI      *string                                    `json:"ManifestURI,omitempty" xml:"ManifestURI,omitempty"`
-	NotifyTopicName  *string                                    `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	Password         *string                                    `json:"Password,omitempty" xml:"Password,omitempty"`
-	ProjectName      *string                                    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sources          []*CreateFileCompressionTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	TargetURI        *string                                    `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData         *string                                    `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CompressedFormat  *string                                    `json:"CompressedFormat,omitempty" xml:"CompressedFormat,omitempty"`
+	CredentialConfig  *CredentialConfig                          `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotifyTopicName   *string                                    `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	Password          *string                                    `json:"Password,omitempty" xml:"Password,omitempty"`
+	ProjectName       *string                                    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceManifestURI *string                                    `json:"SourceManifestURI,omitempty" xml:"SourceManifestURI,omitempty"`
+	Sources           []*CreateFileCompressionTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	TargetURI         *string                                    `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData          *string                                    `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFileCompressionTaskRequest) String() string {
@@ -4743,11 +4743,6 @@ func (s *CreateFileCompressionTaskRequest) SetCredentialConfig(v *CredentialConf
 	return s
 }
 
-func (s *CreateFileCompressionTaskRequest) SetManifestURI(v string) *CreateFileCompressionTaskRequest {
-	s.ManifestURI = &v
-	return s
-}
-
 func (s *CreateFileCompressionTaskRequest) SetNotifyTopicName(v string) *CreateFileCompressionTaskRequest {
 	s.NotifyTopicName = &v
 	return s
@@ -4760,6 +4755,11 @@ func (s *CreateFileCompressionTaskRequest) SetPassword(v string) *CreateFileComp
 
 func (s *CreateFileCompressionTaskRequest) SetProjectName(v string) *CreateFileCompressionTaskRequest {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateFileCompressionTaskRequest) SetSourceManifestURI(v string) *CreateFileCompressionTaskRequest {
+	s.SourceManifestURI = &v
 	return s
 }
 
@@ -4804,10 +4804,10 @@ func (s *CreateFileCompressionTaskRequestSources) SetURI(v string) *CreateFileCo
 type CreateFileCompressionTaskShrinkRequest struct {
 	CompressedFormat       *string `json:"CompressedFormat,omitempty" xml:"CompressedFormat,omitempty"`
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ManifestURI            *string `json:"ManifestURI,omitempty" xml:"ManifestURI,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceManifestURI      *string `json:"SourceManifestURI,omitempty" xml:"SourceManifestURI,omitempty"`
 	SourcesShrink          *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
 	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
 	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
@@ -4831,11 +4831,6 @@ func (s *CreateFileCompressionTaskShrinkRequest) SetCredentialConfigShrink(v str
 	return s
 }
 
-func (s *CreateFileCompressionTaskShrinkRequest) SetManifestURI(v string) *CreateFileCompressionTaskShrinkRequest {
-	s.ManifestURI = &v
-	return s
-}
-
 func (s *CreateFileCompressionTaskShrinkRequest) SetNotifyTopicName(v string) *CreateFileCompressionTaskShrinkRequest {
 	s.NotifyTopicName = &v
 	return s
@@ -4848,6 +4843,11 @@ func (s *CreateFileCompressionTaskShrinkRequest) SetPassword(v string) *CreateFi
 
 func (s *CreateFileCompressionTaskShrinkRequest) SetProjectName(v string) *CreateFileCompressionTaskShrinkRequest {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateFileCompressionTaskShrinkRequest) SetSourceManifestURI(v string) *CreateFileCompressionTaskShrinkRequest {
+	s.SourceManifestURI = &v
 	return s
 }
 
@@ -14933,10 +14933,6 @@ func (client *Client) CreateFileCompressionTaskWithOptions(tmpReq *CreateFileCom
 		query["CredentialConfig"] = request.CredentialConfigShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ManifestURI)) {
-		query["ManifestURI"] = request.ManifestURI
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
 		query["NotifyTopicName"] = request.NotifyTopicName
 	}
@@ -14947,6 +14943,10 @@ func (client *Client) CreateFileCompressionTaskWithOptions(tmpReq *CreateFileCom
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceManifestURI)) {
+		query["SourceManifestURI"] = request.SourceManifestURI
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourcesShrink)) {
