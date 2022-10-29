@@ -827,17 +827,18 @@ func (s *ConfigEndpointProbeResponse) SetBody(v *ConfigEndpointProbeResponseBody
 }
 
 type CreateAcceleratorRequest struct {
-	AutoPay           *bool                                `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew         *bool                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoRenewDuration *int32                               `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
-	AutoUseCoupon     *string                              `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	ClientToken       *string                              `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Duration          *int32                               `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	IpSetConfig       *CreateAcceleratorRequestIpSetConfig `json:"IpSetConfig,omitempty" xml:"IpSetConfig,omitempty" type:"Struct"`
-	Name              *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	PricingCycle      *string                              `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	RegionId          *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Spec              *string                              `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	AutoPay              *bool                                `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew            *bool                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewDuration    *int32                               `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
+	AutoUseCoupon        *string                              `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	BandwidthBillingType *string                              `json:"BandwidthBillingType,omitempty" xml:"BandwidthBillingType,omitempty"`
+	ClientToken          *string                              `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Duration             *int32                               `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	IpSetConfig          *CreateAcceleratorRequestIpSetConfig `json:"IpSetConfig,omitempty" xml:"IpSetConfig,omitempty" type:"Struct"`
+	Name                 *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	PricingCycle         *string                              `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	RegionId             *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Spec                 *string                              `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
 func (s CreateAcceleratorRequest) String() string {
@@ -865,6 +866,11 @@ func (s *CreateAcceleratorRequest) SetAutoRenewDuration(v int32) *CreateAccelera
 
 func (s *CreateAcceleratorRequest) SetAutoUseCoupon(v string) *CreateAcceleratorRequest {
 	s.AutoUseCoupon = &v
+	return s
+}
+
+func (s *CreateAcceleratorRequest) SetBandwidthBillingType(v string) *CreateAcceleratorRequest {
+	s.BandwidthBillingType = &v
 	return s
 }
 
@@ -1395,14 +1401,15 @@ func (s *CreateBandwidthPackageResponse) SetBody(v *CreateBandwidthPackageRespon
 }
 
 type CreateBasicAcceleratorRequest struct {
-	AutoPay           *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew         *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoRenewDuration *int32  `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
-	AutoUseCoupon     *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Duration          *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	PricingCycle      *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AutoPay              *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew            *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewDuration    *int32  `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
+	AutoUseCoupon        *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	BandwidthBillingType *string `json:"BandwidthBillingType,omitempty" xml:"BandwidthBillingType,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Duration             *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	PricingCycle         *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateBasicAcceleratorRequest) String() string {
@@ -1430,6 +1437,11 @@ func (s *CreateBasicAcceleratorRequest) SetAutoRenewDuration(v int32) *CreateBas
 
 func (s *CreateBasicAcceleratorRequest) SetAutoUseCoupon(v string) *CreateBasicAcceleratorRequest {
 	s.AutoUseCoupon = &v
+	return s
+}
+
+func (s *CreateBasicAcceleratorRequest) SetBandwidthBillingType(v string) *CreateBasicAcceleratorRequest {
+	s.BandwidthBillingType = &v
 	return s
 }
 
@@ -1517,6 +1529,7 @@ type CreateBasicEndpointGroupRequest struct {
 	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EndpointAddress     *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	EndpointSubAddress  *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
 	EndpointType        *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1552,6 +1565,11 @@ func (s *CreateBasicEndpointGroupRequest) SetEndpointAddress(v string) *CreateBa
 
 func (s *CreateBasicEndpointGroupRequest) SetEndpointGroupRegion(v string) *CreateBasicEndpointGroupRequest {
 	s.EndpointGroupRegion = &v
+	return s
+}
+
+func (s *CreateBasicEndpointGroupRequest) SetEndpointSubAddress(v string) *CreateBasicEndpointGroupRequest {
+	s.EndpointSubAddress = &v
 	return s
 }
 
@@ -1625,6 +1643,7 @@ func (s *CreateBasicEndpointGroupResponse) SetBody(v *CreateBasicEndpointGroupRe
 type CreateBasicIpSetRequest struct {
 	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
 	AcceleratorId      *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Bandwidth          *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	IspType            *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1645,6 +1664,11 @@ func (s *CreateBasicIpSetRequest) SetAccelerateRegionId(v string) *CreateBasicIp
 
 func (s *CreateBasicIpSetRequest) SetAcceleratorId(v string) *CreateBasicIpSetRequest {
 	s.AcceleratorId = &v
+	return s
+}
+
+func (s *CreateBasicIpSetRequest) SetBandwidth(v int64) *CreateBasicIpSetRequest {
+	s.Bandwidth = &v
 	return s
 }
 
@@ -3203,6 +3227,7 @@ type CreateIpSetsRequestAccelerateRegion struct {
 	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
 	Bandwidth          *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	IpVersion          *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IspType            *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
 }
 
 func (s CreateIpSetsRequestAccelerateRegion) String() string {
@@ -3225,6 +3250,11 @@ func (s *CreateIpSetsRequestAccelerateRegion) SetBandwidth(v int32) *CreateIpSet
 
 func (s *CreateIpSetsRequestAccelerateRegion) SetIpVersion(v string) *CreateIpSetsRequestAccelerateRegion {
 	s.IpVersion = &v
+	return s
+}
+
+func (s *CreateIpSetsRequestAccelerateRegion) SetIspType(v string) *CreateIpSetsRequestAccelerateRegion {
+	s.IspType = &v
 	return s
 }
 
@@ -3261,6 +3291,7 @@ type CreateIpSetsResponseBodyIpSets struct {
 	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
 	Bandwidth          *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	IpSetId            *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	IspType            *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
 }
 
 func (s CreateIpSetsResponseBodyIpSets) String() string {
@@ -3283,6 +3314,11 @@ func (s *CreateIpSetsResponseBodyIpSets) SetBandwidth(v int32) *CreateIpSetsResp
 
 func (s *CreateIpSetsResponseBodyIpSets) SetIpSetId(v string) *CreateIpSetsResponseBodyIpSets {
 	s.IpSetId = &v
+	return s
+}
+
+func (s *CreateIpSetsResponseBodyIpSets) SetIspType(v string) *CreateIpSetsResponseBodyIpSets {
+	s.IspType = &v
 	return s
 }
 
@@ -5422,10 +5458,12 @@ func (s *DescribeAcceleratorRequest) SetRegionId(v string) *DescribeAcceleratorR
 
 type DescribeAcceleratorResponseBody struct {
 	AcceleratorId               *string                                                     `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	BandwidthBillingType        *string                                                     `json:"BandwidthBillingType,omitempty" xml:"BandwidthBillingType,omitempty"`
 	BasicBandwidthPackage       *DescribeAcceleratorResponseBodyBasicBandwidthPackage       `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
 	CenId                       *string                                                     `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	CreateTime                  *int64                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CrossDomainBandwidthPackage *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage `json:"CrossDomainBandwidthPackage,omitempty" xml:"CrossDomainBandwidthPackage,omitempty" type:"Struct"`
+	CrossPrivateState           *string                                                     `json:"CrossPrivateState,omitempty" xml:"CrossPrivateState,omitempty"`
 	DdosId                      *string                                                     `json:"DdosId,omitempty" xml:"DdosId,omitempty"`
 	Description                 *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
 	DnsName                     *string                                                     `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
@@ -5453,6 +5491,11 @@ func (s *DescribeAcceleratorResponseBody) SetAcceleratorId(v string) *DescribeAc
 	return s
 }
 
+func (s *DescribeAcceleratorResponseBody) SetBandwidthBillingType(v string) *DescribeAcceleratorResponseBody {
+	s.BandwidthBillingType = &v
+	return s
+}
+
 func (s *DescribeAcceleratorResponseBody) SetBasicBandwidthPackage(v *DescribeAcceleratorResponseBodyBasicBandwidthPackage) *DescribeAcceleratorResponseBody {
 	s.BasicBandwidthPackage = v
 	return s
@@ -5470,6 +5513,11 @@ func (s *DescribeAcceleratorResponseBody) SetCreateTime(v int64) *DescribeAccele
 
 func (s *DescribeAcceleratorResponseBody) SetCrossDomainBandwidthPackage(v *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage) *DescribeAcceleratorResponseBody {
 	s.CrossDomainBandwidthPackage = v
+	return s
+}
+
+func (s *DescribeAcceleratorResponseBody) SetCrossPrivateState(v string) *DescribeAcceleratorResponseBody {
+	s.CrossPrivateState = &v
 	return s
 }
 
@@ -7010,6 +7058,7 @@ type DescribeIpSetResponseBody struct {
 	IpAddressList      []*string `json:"IpAddressList,omitempty" xml:"IpAddressList,omitempty" type:"Repeated"`
 	IpSetId            *string   `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
 	IpVersion          *string   `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IspType            *string   `json:"IspType,omitempty" xml:"IspType,omitempty"`
 	RequestId          *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	State              *string   `json:"State,omitempty" xml:"State,omitempty"`
 }
@@ -7049,6 +7098,11 @@ func (s *DescribeIpSetResponseBody) SetIpSetId(v string) *DescribeIpSetResponseB
 
 func (s *DescribeIpSetResponseBody) SetIpVersion(v string) *DescribeIpSetResponseBody {
 	s.IpVersion = &v
+	return s
+}
+
+func (s *DescribeIpSetResponseBody) SetIspType(v string) *DescribeIpSetResponseBody {
+	s.IspType = &v
 	return s
 }
 
@@ -8242,12 +8296,14 @@ func (s *GetBasicAcceleratorRequest) SetRegionId(v string) *GetBasicAcceleratorR
 
 type GetBasicAcceleratorResponseBody struct {
 	AcceleratorId               *string                                                     `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	BandwidthBillingType        *string                                                     `json:"BandwidthBillingType,omitempty" xml:"BandwidthBillingType,omitempty"`
 	BasicBandwidthPackage       *GetBasicAcceleratorResponseBodyBasicBandwidthPackage       `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
 	BasicEndpointGroupId        *string                                                     `json:"BasicEndpointGroupId,omitempty" xml:"BasicEndpointGroupId,omitempty"`
 	BasicIpSetId                *string                                                     `json:"BasicIpSetId,omitempty" xml:"BasicIpSetId,omitempty"`
 	CenId                       *string                                                     `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	CreateTime                  *int64                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CrossDomainBandwidthPackage *GetBasicAcceleratorResponseBodyCrossDomainBandwidthPackage `json:"CrossDomainBandwidthPackage,omitempty" xml:"CrossDomainBandwidthPackage,omitempty" type:"Struct"`
+	CrossPrivateState           *string                                                     `json:"CrossPrivateState,omitempty" xml:"CrossPrivateState,omitempty"`
 	Description                 *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExpiredTime                 *int64                                                      `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	InstanceChargeType          *string                                                     `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
@@ -8267,6 +8323,11 @@ func (s GetBasicAcceleratorResponseBody) GoString() string {
 
 func (s *GetBasicAcceleratorResponseBody) SetAcceleratorId(v string) *GetBasicAcceleratorResponseBody {
 	s.AcceleratorId = &v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetBandwidthBillingType(v string) *GetBasicAcceleratorResponseBody {
+	s.BandwidthBillingType = &v
 	return s
 }
 
@@ -8297,6 +8358,11 @@ func (s *GetBasicAcceleratorResponseBody) SetCreateTime(v int64) *GetBasicAccele
 
 func (s *GetBasicAcceleratorResponseBody) SetCrossDomainBandwidthPackage(v *GetBasicAcceleratorResponseBodyCrossDomainBandwidthPackage) *GetBasicAcceleratorResponseBody {
 	s.CrossDomainBandwidthPackage = v
+	return s
+}
+
+func (s *GetBasicAcceleratorResponseBody) SetCrossPrivateState(v string) *GetBasicAcceleratorResponseBody {
+	s.CrossPrivateState = &v
 	return s
 }
 
@@ -8451,6 +8517,7 @@ type GetBasicEndpointGroupResponseBody struct {
 	EndpointAddress     *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
 	EndpointGroupId     *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	EndpointSubAddress  *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
 	EndpointType        *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -8487,6 +8554,11 @@ func (s *GetBasicEndpointGroupResponseBody) SetEndpointGroupId(v string) *GetBas
 
 func (s *GetBasicEndpointGroupResponseBody) SetEndpointGroupRegion(v string) *GetBasicEndpointGroupResponseBody {
 	s.EndpointGroupRegion = &v
+	return s
+}
+
+func (s *GetBasicEndpointGroupResponseBody) SetEndpointSubAddress(v string) *GetBasicEndpointGroupResponseBody {
+	s.EndpointSubAddress = &v
 	return s
 }
 
@@ -8571,7 +8643,7 @@ func (s *GetBasicIpSetRequest) SetRegionId(v string) *GetBasicIpSetRequest {
 type GetBasicIpSetResponseBody struct {
 	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
 	AcceleratorId      *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	Bandwidth          *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Bandwidth          *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	IpAddress          *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	IpSetId            *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
 	IpVersion          *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
@@ -8598,7 +8670,7 @@ func (s *GetBasicIpSetResponseBody) SetAcceleratorId(v string) *GetBasicIpSetRes
 	return s
 }
 
-func (s *GetBasicIpSetResponseBody) SetBandwidth(v int32) *GetBasicIpSetResponseBody {
+func (s *GetBasicIpSetResponseBody) SetBandwidth(v int64) *GetBasicIpSetResponseBody {
 	s.Bandwidth = &v
 	return s
 }
@@ -9154,6 +9226,7 @@ func (s *ListAcceleratorsResponseBody) SetTotalCount(v int32) *ListAcceleratorsR
 type ListAcceleratorsResponseBodyAccelerators struct {
 	AcceleratorId               *string                                                              `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	Bandwidth                   *int32                                                               `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BandwidthBillingType        *string                                                              `json:"BandwidthBillingType,omitempty" xml:"BandwidthBillingType,omitempty"`
 	BasicBandwidthPackage       *ListAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage       `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
 	CenId                       *string                                                              `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	CreateTime                  *int64                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
@@ -9187,6 +9260,11 @@ func (s *ListAcceleratorsResponseBodyAccelerators) SetAcceleratorId(v string) *L
 
 func (s *ListAcceleratorsResponseBodyAccelerators) SetBandwidth(v int32) *ListAcceleratorsResponseBodyAccelerators {
 	s.Bandwidth = &v
+	return s
+}
+
+func (s *ListAcceleratorsResponseBodyAccelerators) SetBandwidthBillingType(v string) *ListAcceleratorsResponseBodyAccelerators {
+	s.BandwidthBillingType = &v
 	return s
 }
 
@@ -10599,6 +10677,7 @@ func (s *ListBasicAcceleratorsResponseBody) SetTotalCount(v int32) *ListBasicAcc
 
 type ListBasicAcceleratorsResponseBodyAccelerators struct {
 	AcceleratorId               *string                                                                   `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	BandwidthBillingType        *string                                                                   `json:"BandwidthBillingType,omitempty" xml:"BandwidthBillingType,omitempty"`
 	BasicBandwidthPackage       *ListBasicAcceleratorsResponseBodyAcceleratorsBasicBandwidthPackage       `json:"BasicBandwidthPackage,omitempty" xml:"BasicBandwidthPackage,omitempty" type:"Struct"`
 	BasicEndpointGroupId        *string                                                                   `json:"BasicEndpointGroupId,omitempty" xml:"BasicEndpointGroupId,omitempty"`
 	BasicIpSetId                *string                                                                   `json:"BasicIpSetId,omitempty" xml:"BasicIpSetId,omitempty"`
@@ -10623,6 +10702,11 @@ func (s ListBasicAcceleratorsResponseBodyAccelerators) GoString() string {
 
 func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetAcceleratorId(v string) *ListBasicAcceleratorsResponseBodyAccelerators {
 	s.AcceleratorId = &v
+	return s
+}
+
+func (s *ListBasicAcceleratorsResponseBodyAccelerators) SetBandwidthBillingType(v string) *ListBasicAcceleratorsResponseBodyAccelerators {
+	s.BandwidthBillingType = &v
 	return s
 }
 
@@ -12764,6 +12848,7 @@ type ListIpSetsResponseBodyIpSets struct {
 	IpAddressList      []*string `json:"IpAddressList,omitempty" xml:"IpAddressList,omitempty" type:"Repeated"`
 	IpSetId            *string   `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
 	IpVersion          *string   `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IspType            *string   `json:"IspType,omitempty" xml:"IspType,omitempty"`
 	State              *string   `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -12797,6 +12882,11 @@ func (s *ListIpSetsResponseBodyIpSets) SetIpSetId(v string) *ListIpSetsResponseB
 
 func (s *ListIpSetsResponseBodyIpSets) SetIpVersion(v string) *ListIpSetsResponseBodyIpSets {
 	s.IpVersion = &v
+	return s
+}
+
+func (s *ListIpSetsResponseBodyIpSets) SetIspType(v string) *ListIpSetsResponseBodyIpSets {
+	s.IspType = &v
 	return s
 }
 
@@ -14530,13 +14620,14 @@ func (s *UpdateBasicAcceleratorResponse) SetBody(v *UpdateBasicAcceleratorRespon
 }
 
 type UpdateBasicEndpointGroupRequest struct {
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndpointAddress *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
-	EndpointGroupId *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	EndpointType    *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndpointAddress    *string `json:"EndpointAddress,omitempty" xml:"EndpointAddress,omitempty"`
+	EndpointGroupId    *string `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
+	EndpointSubAddress *string `json:"EndpointSubAddress,omitempty" xml:"EndpointSubAddress,omitempty"`
+	EndpointType       *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateBasicEndpointGroupRequest) String() string {
@@ -14564,6 +14655,11 @@ func (s *UpdateBasicEndpointGroupRequest) SetEndpointAddress(v string) *UpdateBa
 
 func (s *UpdateBasicEndpointGroupRequest) SetEndpointGroupId(v string) *UpdateBasicEndpointGroupRequest {
 	s.EndpointGroupId = &v
+	return s
+}
+
+func (s *UpdateBasicEndpointGroupRequest) SetEndpointSubAddress(v string) *UpdateBasicEndpointGroupRequest {
+	s.EndpointSubAddress = &v
 	return s
 }
 
@@ -14624,6 +14720,87 @@ func (s *UpdateBasicEndpointGroupResponse) SetStatusCode(v int32) *UpdateBasicEn
 }
 
 func (s *UpdateBasicEndpointGroupResponse) SetBody(v *UpdateBasicEndpointGroupResponseBody) *UpdateBasicEndpointGroupResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateBasicIpSetRequest struct {
+	Bandwidth   *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	IpSetId     *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateBasicIpSetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicIpSetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicIpSetRequest) SetBandwidth(v int32) *UpdateBasicIpSetRequest {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *UpdateBasicIpSetRequest) SetClientToken(v string) *UpdateBasicIpSetRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateBasicIpSetRequest) SetIpSetId(v string) *UpdateBasicIpSetRequest {
+	s.IpSetId = &v
+	return s
+}
+
+func (s *UpdateBasicIpSetRequest) SetRegionId(v string) *UpdateBasicIpSetRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateBasicIpSetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateBasicIpSetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicIpSetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicIpSetResponseBody) SetRequestId(v string) *UpdateBasicIpSetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateBasicIpSetResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateBasicIpSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateBasicIpSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBasicIpSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBasicIpSetResponse) SetHeaders(v map[string]*string) *UpdateBasicIpSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateBasicIpSetResponse) SetStatusCode(v int32) *UpdateBasicIpSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateBasicIpSetResponse) SetBody(v *UpdateBasicIpSetResponseBody) *UpdateBasicIpSetResponse {
 	s.Body = v
 	return s
 }
@@ -16946,6 +17123,10 @@ func (client *Client) CreateAcceleratorWithOptions(request *CreateAcceleratorReq
 		query["AutoUseCoupon"] = request.AutoUseCoupon
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BandwidthBillingType)) {
+		query["BandwidthBillingType"] = request.BandwidthBillingType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -17282,6 +17463,10 @@ func (client *Client) CreateBasicAcceleratorWithOptions(request *CreateBasicAcce
 		query["AutoUseCoupon"] = request.AutoUseCoupon
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BandwidthBillingType)) {
+		query["BandwidthBillingType"] = request.BandwidthBillingType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -17358,6 +17543,10 @@ func (client *Client) CreateBasicEndpointGroupWithOptions(request *CreateBasicEn
 		query["EndpointGroupRegion"] = request.EndpointGroupRegion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndpointSubAddress)) {
+		query["EndpointSubAddress"] = request.EndpointSubAddress
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
 		query["EndpointType"] = request.EndpointType
 	}
@@ -17416,6 +17605,10 @@ func (client *Client) CreateBasicIpSetWithOptions(request *CreateBasicIpSetReque
 
 	if !tea.BoolValue(util.IsUnset(request.AcceleratorId)) {
 		query["AcceleratorId"] = request.AcceleratorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
@@ -22546,6 +22739,10 @@ func (client *Client) UpdateBasicEndpointGroupWithOptions(request *UpdateBasicEn
 		query["EndpointGroupId"] = request.EndpointGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndpointSubAddress)) {
+		query["EndpointSubAddress"] = request.EndpointSubAddress
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
 		query["EndpointType"] = request.EndpointType
 	}
@@ -22585,6 +22782,62 @@ func (client *Client) UpdateBasicEndpointGroup(request *UpdateBasicEndpointGroup
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateBasicEndpointGroupResponse{}
 	_body, _err := client.UpdateBasicEndpointGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateBasicIpSetWithOptions(request *UpdateBasicIpSetRequest, runtime *util.RuntimeOptions) (_result *UpdateBasicIpSetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpSetId)) {
+		query["IpSetId"] = request.IpSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateBasicIpSet"),
+		Version:     tea.String("2019-11-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateBasicIpSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateBasicIpSet(request *UpdateBasicIpSetRequest) (_result *UpdateBasicIpSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateBasicIpSetResponse{}
+	_body, _err := client.UpdateBasicIpSetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

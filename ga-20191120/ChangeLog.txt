@@ -1,3 +1,6 @@
+2022-10-29 Version: v2.0.1
+- Update Basic Ga Api.
+
 2022-09-23 Version: v2.0.0
 - Generated golang 2019-11-20 for Ga.
 
