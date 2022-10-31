@@ -117,6 +117,198 @@ func (s *AddDNSAuthorizationRuleResponse) SetBody(v *AddDNSAuthorizationRuleResp
 	return s
 }
 
+type AddGroupDnsAuthorizationRuleRequest struct {
+	ClientToken                   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description                   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationIp                 *string `json:"DestinationIp,omitempty" xml:"DestinationIp,omitempty"`
+	DryRun                        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Name                          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SourceDNSIp                   *string `json:"SourceDNSIp,omitempty" xml:"SourceDNSIp,omitempty"`
+	WirelessCloudConnectorGroupId *string `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+}
+
+func (s AddGroupDnsAuthorizationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGroupDnsAuthorizationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddGroupDnsAuthorizationRuleRequest) SetClientToken(v string) *AddGroupDnsAuthorizationRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AddGroupDnsAuthorizationRuleRequest) SetDescription(v string) *AddGroupDnsAuthorizationRuleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *AddGroupDnsAuthorizationRuleRequest) SetDestinationIp(v string) *AddGroupDnsAuthorizationRuleRequest {
+	s.DestinationIp = &v
+	return s
+}
+
+func (s *AddGroupDnsAuthorizationRuleRequest) SetDryRun(v bool) *AddGroupDnsAuthorizationRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *AddGroupDnsAuthorizationRuleRequest) SetName(v string) *AddGroupDnsAuthorizationRuleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddGroupDnsAuthorizationRuleRequest) SetSourceDNSIp(v string) *AddGroupDnsAuthorizationRuleRequest {
+	s.SourceDNSIp = &v
+	return s
+}
+
+func (s *AddGroupDnsAuthorizationRuleRequest) SetWirelessCloudConnectorGroupId(v string) *AddGroupDnsAuthorizationRuleRequest {
+	s.WirelessCloudConnectorGroupId = &v
+	return s
+}
+
+type AddGroupDnsAuthorizationRuleResponseBody struct {
+	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddGroupDnsAuthorizationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGroupDnsAuthorizationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddGroupDnsAuthorizationRuleResponseBody) SetAuthorizationRuleId(v string) *AddGroupDnsAuthorizationRuleResponseBody {
+	s.AuthorizationRuleId = &v
+	return s
+}
+
+func (s *AddGroupDnsAuthorizationRuleResponseBody) SetRequestId(v string) *AddGroupDnsAuthorizationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddGroupDnsAuthorizationRuleResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddGroupDnsAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddGroupDnsAuthorizationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGroupDnsAuthorizationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddGroupDnsAuthorizationRuleResponse) SetHeaders(v map[string]*string) *AddGroupDnsAuthorizationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddGroupDnsAuthorizationRuleResponse) SetStatusCode(v int32) *AddGroupDnsAuthorizationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddGroupDnsAuthorizationRuleResponse) SetBody(v *AddGroupDnsAuthorizationRuleResponseBody) *AddGroupDnsAuthorizationRuleResponse {
+	s.Body = v
+	return s
+}
+
+type AddWirelessCloudConnectorToGroupRequest struct {
+	ClientToken                   *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                        *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	RegionId                      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WirelessCloudConnectorGroupId *string   `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+	WirelessCloudConnectorIds     []*string `json:"WirelessCloudConnectorIds,omitempty" xml:"WirelessCloudConnectorIds,omitempty" type:"Repeated"`
+}
+
+func (s AddWirelessCloudConnectorToGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddWirelessCloudConnectorToGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddWirelessCloudConnectorToGroupRequest) SetClientToken(v string) *AddWirelessCloudConnectorToGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AddWirelessCloudConnectorToGroupRequest) SetDryRun(v bool) *AddWirelessCloudConnectorToGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *AddWirelessCloudConnectorToGroupRequest) SetRegionId(v string) *AddWirelessCloudConnectorToGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AddWirelessCloudConnectorToGroupRequest) SetWirelessCloudConnectorGroupId(v string) *AddWirelessCloudConnectorToGroupRequest {
+	s.WirelessCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *AddWirelessCloudConnectorToGroupRequest) SetWirelessCloudConnectorIds(v []*string) *AddWirelessCloudConnectorToGroupRequest {
+	s.WirelessCloudConnectorIds = v
+	return s
+}
+
+type AddWirelessCloudConnectorToGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddWirelessCloudConnectorToGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddWirelessCloudConnectorToGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddWirelessCloudConnectorToGroupResponseBody) SetRequestId(v string) *AddWirelessCloudConnectorToGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddWirelessCloudConnectorToGroupResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddWirelessCloudConnectorToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddWirelessCloudConnectorToGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddWirelessCloudConnectorToGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddWirelessCloudConnectorToGroupResponse) SetHeaders(v map[string]*string) *AddWirelessCloudConnectorToGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddWirelessCloudConnectorToGroupResponse) SetStatusCode(v int32) *AddWirelessCloudConnectorToGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddWirelessCloudConnectorToGroupResponse) SetBody(v *AddWirelessCloudConnectorToGroupResponseBody) *AddWirelessCloudConnectorToGroupResponse {
+	s.Body = v
+	return s
+}
+
 type AttachVpcToNetLinkRequest struct {
 	ClientToken              *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                   *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -480,6 +672,135 @@ func (s *CreateBatchOperateCardsTaskResponse) SetBody(v *CreateBatchOperateCards
 	return s
 }
 
+type CreateGroupAuthorizationRuleRequest struct {
+	ClientToken                   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description                   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Destination                   *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort               *string `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
+	DestinationType               *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	DryRun                        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Name                          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policy                        *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol                      *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	SourceCidr                    *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
+	WirelessCloudConnectorGroupId *string `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+}
+
+func (s CreateGroupAuthorizationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupAuthorizationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetClientToken(v string) *CreateGroupAuthorizationRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetDescription(v string) *CreateGroupAuthorizationRuleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetDestination(v string) *CreateGroupAuthorizationRuleRequest {
+	s.Destination = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetDestinationPort(v string) *CreateGroupAuthorizationRuleRequest {
+	s.DestinationPort = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetDestinationType(v string) *CreateGroupAuthorizationRuleRequest {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetDryRun(v bool) *CreateGroupAuthorizationRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetName(v string) *CreateGroupAuthorizationRuleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetPolicy(v string) *CreateGroupAuthorizationRuleRequest {
+	s.Policy = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetProtocol(v string) *CreateGroupAuthorizationRuleRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetSourceCidr(v string) *CreateGroupAuthorizationRuleRequest {
+	s.SourceCidr = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetWirelessCloudConnectorGroupId(v string) *CreateGroupAuthorizationRuleRequest {
+	s.WirelessCloudConnectorGroupId = &v
+	return s
+}
+
+type CreateGroupAuthorizationRuleResponseBody struct {
+	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateGroupAuthorizationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupAuthorizationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupAuthorizationRuleResponseBody) SetAuthorizationRuleId(v string) *CreateGroupAuthorizationRuleResponseBody {
+	s.AuthorizationRuleId = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleResponseBody) SetRequestId(v string) *CreateGroupAuthorizationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGroupAuthorizationRuleResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGroupAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGroupAuthorizationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupAuthorizationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupAuthorizationRuleResponse) SetHeaders(v map[string]*string) *CreateGroupAuthorizationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleResponse) SetStatusCode(v int32) *CreateGroupAuthorizationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleResponse) SetBody(v *CreateGroupAuthorizationRuleResponseBody) *CreateGroupAuthorizationRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateIoTCloudConnectorBackhaulRouteRequest struct {
 	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -713,6 +1034,99 @@ func (s *CreateWirelessCloudConnectorResponse) SetBody(v *CreateWirelessCloudCon
 	return s
 }
 
+type CreateWirelessCloudConnectorGroupRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateWirelessCloudConnectorGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWirelessCloudConnectorGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWirelessCloudConnectorGroupRequest) SetClientToken(v string) *CreateWirelessCloudConnectorGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateWirelessCloudConnectorGroupRequest) SetDescription(v string) *CreateWirelessCloudConnectorGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateWirelessCloudConnectorGroupRequest) SetDryRun(v bool) *CreateWirelessCloudConnectorGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateWirelessCloudConnectorGroupRequest) SetName(v string) *CreateWirelessCloudConnectorGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateWirelessCloudConnectorGroupRequest) SetRegionId(v string) *CreateWirelessCloudConnectorGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateWirelessCloudConnectorGroupResponseBody struct {
+	RequestId                     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	WirelessCloudConnectorGroupId *string `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+}
+
+func (s CreateWirelessCloudConnectorGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWirelessCloudConnectorGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWirelessCloudConnectorGroupResponseBody) SetRequestId(v string) *CreateWirelessCloudConnectorGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateWirelessCloudConnectorGroupResponseBody) SetWirelessCloudConnectorGroupId(v string) *CreateWirelessCloudConnectorGroupResponseBody {
+	s.WirelessCloudConnectorGroupId = &v
+	return s
+}
+
+type CreateWirelessCloudConnectorGroupResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateWirelessCloudConnectorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateWirelessCloudConnectorGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWirelessCloudConnectorGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWirelessCloudConnectorGroupResponse) SetHeaders(v map[string]*string) *CreateWirelessCloudConnectorGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWirelessCloudConnectorGroupResponse) SetStatusCode(v int32) *CreateWirelessCloudConnectorGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWirelessCloudConnectorGroupResponse) SetBody(v *CreateWirelessCloudConnectorGroupResponseBody) *CreateWirelessCloudConnectorGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAuthorizationRuleRequest struct {
 	AuthorizationRuleId      *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
 	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -875,6 +1289,87 @@ func (s *DeleteBatchOperateCardsTaskResponse) SetBody(v *DeleteBatchOperateCards
 	return s
 }
 
+type DeleteGroupAuthorizationRuleRequest struct {
+	AuthorizationRuleId           *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	ClientToken                   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	WirelessCloudConnectorGroupId *string `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+}
+
+func (s DeleteGroupAuthorizationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupAuthorizationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupAuthorizationRuleRequest) SetAuthorizationRuleId(v string) *DeleteGroupAuthorizationRuleRequest {
+	s.AuthorizationRuleId = &v
+	return s
+}
+
+func (s *DeleteGroupAuthorizationRuleRequest) SetClientToken(v string) *DeleteGroupAuthorizationRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteGroupAuthorizationRuleRequest) SetDryRun(v bool) *DeleteGroupAuthorizationRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteGroupAuthorizationRuleRequest) SetWirelessCloudConnectorGroupId(v string) *DeleteGroupAuthorizationRuleRequest {
+	s.WirelessCloudConnectorGroupId = &v
+	return s
+}
+
+type DeleteGroupAuthorizationRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteGroupAuthorizationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupAuthorizationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupAuthorizationRuleResponseBody) SetRequestId(v string) *DeleteGroupAuthorizationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGroupAuthorizationRuleResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGroupAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGroupAuthorizationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupAuthorizationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupAuthorizationRuleResponse) SetHeaders(v map[string]*string) *DeleteGroupAuthorizationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGroupAuthorizationRuleResponse) SetStatusCode(v int32) *DeleteGroupAuthorizationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGroupAuthorizationRuleResponse) SetBody(v *DeleteGroupAuthorizationRuleResponseBody) *DeleteGroupAuthorizationRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteIoTCloudConnectorBackhaulRouteRequest struct {
 	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -1027,6 +1522,81 @@ func (s *DeleteWirelessCloudConnectorResponse) SetStatusCode(v int32) *DeleteWir
 }
 
 func (s *DeleteWirelessCloudConnectorResponse) SetBody(v *DeleteWirelessCloudConnectorResponseBody) *DeleteWirelessCloudConnectorResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteWirelessCloudConnectorGroupRequest struct {
+	ClientToken                   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	WirelessCloudConnectorGroupId *string `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+}
+
+func (s DeleteWirelessCloudConnectorGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWirelessCloudConnectorGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWirelessCloudConnectorGroupRequest) SetClientToken(v string) *DeleteWirelessCloudConnectorGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteWirelessCloudConnectorGroupRequest) SetDryRun(v bool) *DeleteWirelessCloudConnectorGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteWirelessCloudConnectorGroupRequest) SetWirelessCloudConnectorGroupId(v string) *DeleteWirelessCloudConnectorGroupRequest {
+	s.WirelessCloudConnectorGroupId = &v
+	return s
+}
+
+type DeleteWirelessCloudConnectorGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteWirelessCloudConnectorGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWirelessCloudConnectorGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWirelessCloudConnectorGroupResponseBody) SetRequestId(v string) *DeleteWirelessCloudConnectorGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteWirelessCloudConnectorGroupResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteWirelessCloudConnectorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteWirelessCloudConnectorGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWirelessCloudConnectorGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWirelessCloudConnectorGroupResponse) SetHeaders(v map[string]*string) *DeleteWirelessCloudConnectorGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteWirelessCloudConnectorGroupResponse) SetStatusCode(v int32) *DeleteWirelessCloudConnectorGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteWirelessCloudConnectorGroupResponse) SetBody(v *DeleteWirelessCloudConnectorGroupResponseBody) *DeleteWirelessCloudConnectorGroupResponse {
 	s.Body = v
 	return s
 }
@@ -1755,21 +2325,22 @@ func (s *GetWirelessCloudConnectorRequest) SetWirelessCloudConnectorId(v string)
 }
 
 type GetWirelessCloudConnectorResponseBody struct {
-	BusinessType             *string                                          `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	CardCount                *string                                          `json:"CardCount,omitempty" xml:"CardCount,omitempty"`
-	CreateTime               *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataPackageId            *string                                          `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
-	DataPackageType          *string                                          `json:"DataPackageType,omitempty" xml:"DataPackageType,omitempty"`
-	Description              *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
-	Features                 []*string                                        `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	Name                     *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	NetLinks                 []*GetWirelessCloudConnectorResponseBodyNetLinks `json:"NetLinks,omitempty" xml:"NetLinks,omitempty" type:"Repeated"`
-	RegionId                 *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId                *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceType              *string                                          `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	Status                   *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	UseCase                  *string                                          `json:"UseCase,omitempty" xml:"UseCase,omitempty"`
-	WirelessCloudConnectorId *string                                          `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
+	BusinessType                  *string                                          `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	CardCount                     *string                                          `json:"CardCount,omitempty" xml:"CardCount,omitempty"`
+	CreateTime                    *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataPackageId                 *string                                          `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
+	DataPackageType               *string                                          `json:"DataPackageType,omitempty" xml:"DataPackageType,omitempty"`
+	Description                   *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	Features                      []*string                                        `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	Name                          *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetLinks                      []*GetWirelessCloudConnectorResponseBodyNetLinks `json:"NetLinks,omitempty" xml:"NetLinks,omitempty" type:"Repeated"`
+	RegionId                      *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId                     *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceType                   *string                                          `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Status                        *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	UseCase                       *string                                          `json:"UseCase,omitempty" xml:"UseCase,omitempty"`
+	WirelessCloudConnectorGroupId *string                                          `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+	WirelessCloudConnectorId      *string                                          `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
 }
 
 func (s GetWirelessCloudConnectorResponseBody) String() string {
@@ -1847,6 +2418,11 @@ func (s *GetWirelessCloudConnectorResponseBody) SetStatus(v string) *GetWireless
 
 func (s *GetWirelessCloudConnectorResponseBody) SetUseCase(v string) *GetWirelessCloudConnectorResponseBody {
 	s.UseCase = &v
+	return s
+}
+
+func (s *GetWirelessCloudConnectorResponseBody) SetWirelessCloudConnectorGroupId(v string) *GetWirelessCloudConnectorResponseBody {
+	s.WirelessCloudConnectorGroupId = &v
 	return s
 }
 
@@ -3319,6 +3895,254 @@ func (s *ListDiagnoseInfoForSingleCardResponse) SetBody(v *ListDiagnoseInfoForSi
 	return s
 }
 
+type ListGroupAuthorizationRulesRequest struct {
+	AuthorizationRuleIds          []*string `json:"AuthorizationRuleIds,omitempty" xml:"AuthorizationRuleIds,omitempty" type:"Repeated"`
+	Destination                   *string   `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort               *string   `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
+	DestinationType               *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	Dns                           *bool     `json:"Dns,omitempty" xml:"Dns,omitempty"`
+	MaxResults                    *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Names                         []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	NextToken                     *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Policy                        *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol                      *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Statuses                      []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	Type                          *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	WirelessCloudConnectorGroupId *string   `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+}
+
+func (s ListGroupAuthorizationRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAuthorizationRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetAuthorizationRuleIds(v []*string) *ListGroupAuthorizationRulesRequest {
+	s.AuthorizationRuleIds = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetDestination(v string) *ListGroupAuthorizationRulesRequest {
+	s.Destination = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetDestinationPort(v string) *ListGroupAuthorizationRulesRequest {
+	s.DestinationPort = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetDestinationType(v string) *ListGroupAuthorizationRulesRequest {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetDns(v bool) *ListGroupAuthorizationRulesRequest {
+	s.Dns = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetMaxResults(v int64) *ListGroupAuthorizationRulesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetNames(v []*string) *ListGroupAuthorizationRulesRequest {
+	s.Names = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetNextToken(v string) *ListGroupAuthorizationRulesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetPolicy(v string) *ListGroupAuthorizationRulesRequest {
+	s.Policy = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetProtocol(v string) *ListGroupAuthorizationRulesRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetStatuses(v []*string) *ListGroupAuthorizationRulesRequest {
+	s.Statuses = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetType(v string) *ListGroupAuthorizationRulesRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesRequest) SetWirelessCloudConnectorGroupId(v string) *ListGroupAuthorizationRulesRequest {
+	s.WirelessCloudConnectorGroupId = &v
+	return s
+}
+
+type ListGroupAuthorizationRulesResponseBody struct {
+	GroupAuthorizationRules []*ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules `json:"GroupAuthorizationRules,omitempty" xml:"GroupAuthorizationRules,omitempty" type:"Repeated"`
+	MaxResults              *string                                                           `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken               *string                                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId               *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount              *string                                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListGroupAuthorizationRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAuthorizationRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAuthorizationRulesResponseBody) SetGroupAuthorizationRules(v []*ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) *ListGroupAuthorizationRulesResponseBody {
+	s.GroupAuthorizationRules = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBody) SetMaxResults(v string) *ListGroupAuthorizationRulesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBody) SetNextToken(v string) *ListGroupAuthorizationRulesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBody) SetRequestId(v string) *ListGroupAuthorizationRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBody) SetTotalCount(v string) *ListGroupAuthorizationRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules struct {
+	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Destination         *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort     *string `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
+	DestinationType     *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	Dns                 *bool   `json:"Dns,omitempty" xml:"Dns,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	SourceCidr          *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetAuthorizationRuleId(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.AuthorizationRuleId = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetCreateTime(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetDescription(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.Description = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetDestination(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.Destination = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetDestinationPort(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.DestinationPort = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetDestinationType(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetDns(v bool) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.Dns = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetName(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetPolicy(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.Policy = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetProtocol(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetSourceCidr(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.SourceCidr = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetStatus(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.Status = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetType(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.Type = &v
+	return s
+}
+
+type ListGroupAuthorizationRulesResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGroupAuthorizationRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGroupAuthorizationRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupAuthorizationRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupAuthorizationRulesResponse) SetHeaders(v map[string]*string) *ListGroupAuthorizationRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponse) SetStatusCode(v int32) *ListGroupAuthorizationRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponse) SetBody(v *ListGroupAuthorizationRulesResponseBody) *ListGroupAuthorizationRulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListIoTCloudConnectorBackhaulRouteRequest struct {
 	NetLinkId                *string `json:"NetLinkId,omitempty" xml:"NetLinkId,omitempty"`
 	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3777,6 +4601,259 @@ func (s *ListRegionsResponse) SetStatusCode(v int32) *ListRegionsResponse {
 }
 
 func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListWirelessCloudConnectorGroupsRequest struct {
+	MaxResults                        *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                         *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId                          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WirelessCloudConnectorGroupIds    []*string `json:"WirelessCloudConnectorGroupIds,omitempty" xml:"WirelessCloudConnectorGroupIds,omitempty" type:"Repeated"`
+	WirelessCloudConnectorGroupNames  []*string `json:"WirelessCloudConnectorGroupNames,omitempty" xml:"WirelessCloudConnectorGroupNames,omitempty" type:"Repeated"`
+	WirelessCloudConnectorGroupStatus []*string `json:"WirelessCloudConnectorGroupStatus,omitempty" xml:"WirelessCloudConnectorGroupStatus,omitempty" type:"Repeated"`
+}
+
+func (s ListWirelessCloudConnectorGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWirelessCloudConnectorGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWirelessCloudConnectorGroupsRequest) SetMaxResults(v int64) *ListWirelessCloudConnectorGroupsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsRequest) SetNextToken(v string) *ListWirelessCloudConnectorGroupsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsRequest) SetRegionId(v string) *ListWirelessCloudConnectorGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsRequest) SetWirelessCloudConnectorGroupIds(v []*string) *ListWirelessCloudConnectorGroupsRequest {
+	s.WirelessCloudConnectorGroupIds = v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsRequest) SetWirelessCloudConnectorGroupNames(v []*string) *ListWirelessCloudConnectorGroupsRequest {
+	s.WirelessCloudConnectorGroupNames = v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsRequest) SetWirelessCloudConnectorGroupStatus(v []*string) *ListWirelessCloudConnectorGroupsRequest {
+	s.WirelessCloudConnectorGroupStatus = v
+	return s
+}
+
+type ListWirelessCloudConnectorGroupsResponseBody struct {
+	MaxResults                   *string                                                                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                    *string                                                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId                    *string                                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount                   *string                                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	WirelessCloudConnectorGroups []*ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups `json:"WirelessCloudConnectorGroups,omitempty" xml:"WirelessCloudConnectorGroups,omitempty" type:"Repeated"`
+}
+
+func (s ListWirelessCloudConnectorGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWirelessCloudConnectorGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBody) SetMaxResults(v string) *ListWirelessCloudConnectorGroupsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBody) SetNextToken(v string) *ListWirelessCloudConnectorGroupsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBody) SetRequestId(v string) *ListWirelessCloudConnectorGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBody) SetTotalCount(v string) *ListWirelessCloudConnectorGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBody) SetWirelessCloudConnectorGroups(v []*ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups) *ListWirelessCloudConnectorGroupsResponseBody {
+	s.WirelessCloudConnectorGroups = v
+	return s
+}
+
+type ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups struct {
+	CreateTime                    *string                                                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description                   *string                                                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                          *string                                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId                      *string                                                                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status                        *string                                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	WirelessCloudConnectorGroupId *string                                                                                            `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+	WirelessCloudConnectors       []*ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors `json:"WirelessCloudConnectors,omitempty" xml:"WirelessCloudConnectors,omitempty" type:"Repeated"`
+}
+
+func (s ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups) SetCreateTime(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups) SetDescription(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups {
+	s.Description = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups) SetName(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups) SetRegionId(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups) SetStatus(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups {
+	s.Status = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups) SetWirelessCloudConnectorGroupId(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups {
+	s.WirelessCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups) SetWirelessCloudConnectors(v []*ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups {
+	s.WirelessCloudConnectors = v
+	return s
+}
+
+type ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors struct {
+	BusinessType             *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	CardCount                *string `json:"CardCount,omitempty" xml:"CardCount,omitempty"`
+	CreateTime               *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataPackageId            *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
+	DataPackageType          *string `json:"DataPackageType,omitempty" xml:"DataPackageType,omitempty"`
+	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceType              *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Status                   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UseCase                  *string `json:"UseCase,omitempty" xml:"UseCase,omitempty"`
+	WirelessCloudConnectorId *string `json:"WirelessCloudConnectorId,omitempty" xml:"WirelessCloudConnectorId,omitempty"`
+}
+
+func (s ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) GoString() string {
+	return s.String()
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) SetBusinessType(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) SetCardCount(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors {
+	s.CardCount = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) SetCreateTime(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) SetDataPackageId(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors {
+	s.DataPackageId = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) SetDataPackageType(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors {
+	s.DataPackageType = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) SetDescription(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors {
+	s.Description = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) SetName(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) SetRegionId(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) SetServiceType(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) SetStatus(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors {
+	s.Status = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) SetUseCase(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors {
+	s.UseCase = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors) SetWirelessCloudConnectorId(v string) *ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroupsWirelessCloudConnectors {
+	s.WirelessCloudConnectorId = &v
+	return s
+}
+
+type ListWirelessCloudConnectorGroupsResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListWirelessCloudConnectorGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListWirelessCloudConnectorGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWirelessCloudConnectorGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponse) SetHeaders(v map[string]*string) *ListWirelessCloudConnectorGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponse) SetStatusCode(v int32) *ListWirelessCloudConnectorGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWirelessCloudConnectorGroupsResponse) SetBody(v *ListWirelessCloudConnectorGroupsResponseBody) *ListWirelessCloudConnectorGroupsResponse {
 	s.Body = v
 	return s
 }
@@ -4324,6 +5401,93 @@ func (s *OpenCc5gServiceResponse) SetStatusCode(v int32) *OpenCc5gServiceRespons
 }
 
 func (s *OpenCc5gServiceResponse) SetBody(v *OpenCc5gServiceResponseBody) *OpenCc5gServiceResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveWirelessCloudConnectorFromGroupRequest struct {
+	ClientToken                   *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                        *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	RegionId                      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WirelessCloudConnectorGroupId *string   `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+	WirelessCloudConnectorIds     []*string `json:"WirelessCloudConnectorIds,omitempty" xml:"WirelessCloudConnectorIds,omitempty" type:"Repeated"`
+}
+
+func (s RemoveWirelessCloudConnectorFromGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveWirelessCloudConnectorFromGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveWirelessCloudConnectorFromGroupRequest) SetClientToken(v string) *RemoveWirelessCloudConnectorFromGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RemoveWirelessCloudConnectorFromGroupRequest) SetDryRun(v bool) *RemoveWirelessCloudConnectorFromGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *RemoveWirelessCloudConnectorFromGroupRequest) SetRegionId(v string) *RemoveWirelessCloudConnectorFromGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RemoveWirelessCloudConnectorFromGroupRequest) SetWirelessCloudConnectorGroupId(v string) *RemoveWirelessCloudConnectorFromGroupRequest {
+	s.WirelessCloudConnectorGroupId = &v
+	return s
+}
+
+func (s *RemoveWirelessCloudConnectorFromGroupRequest) SetWirelessCloudConnectorIds(v []*string) *RemoveWirelessCloudConnectorFromGroupRequest {
+	s.WirelessCloudConnectorIds = v
+	return s
+}
+
+type RemoveWirelessCloudConnectorFromGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveWirelessCloudConnectorFromGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveWirelessCloudConnectorFromGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveWirelessCloudConnectorFromGroupResponseBody) SetRequestId(v string) *RemoveWirelessCloudConnectorFromGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveWirelessCloudConnectorFromGroupResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveWirelessCloudConnectorFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveWirelessCloudConnectorFromGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveWirelessCloudConnectorFromGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveWirelessCloudConnectorFromGroupResponse) SetHeaders(v map[string]*string) *RemoveWirelessCloudConnectorFromGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveWirelessCloudConnectorFromGroupResponse) SetStatusCode(v int32) *RemoveWirelessCloudConnectorFromGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveWirelessCloudConnectorFromGroupResponse) SetBody(v *RemoveWirelessCloudConnectorFromGroupResponseBody) *RemoveWirelessCloudConnectorFromGroupResponse {
 	s.Body = v
 	return s
 }
@@ -5282,6 +6446,234 @@ func (s *UpdateDNSAuthorizationRuleResponse) SetBody(v *UpdateDNSAuthorizationRu
 	return s
 }
 
+type UpdateGroupAuthorizationRuleRequest struct {
+	AuthorizationRuleId           *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	ClientToken                   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description                   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Destination                   *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DestinationPort               *string `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
+	DryRun                        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Name                          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Policy                        *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Protocol                      *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	SourceCidr                    *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
+	WirelessCloudConnectorGroupId *string `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+}
+
+func (s UpdateGroupAuthorizationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupAuthorizationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupAuthorizationRuleRequest) SetAuthorizationRuleId(v string) *UpdateGroupAuthorizationRuleRequest {
+	s.AuthorizationRuleId = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleRequest) SetClientToken(v string) *UpdateGroupAuthorizationRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleRequest) SetDescription(v string) *UpdateGroupAuthorizationRuleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleRequest) SetDestination(v string) *UpdateGroupAuthorizationRuleRequest {
+	s.Destination = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleRequest) SetDestinationPort(v string) *UpdateGroupAuthorizationRuleRequest {
+	s.DestinationPort = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleRequest) SetDryRun(v bool) *UpdateGroupAuthorizationRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleRequest) SetName(v string) *UpdateGroupAuthorizationRuleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleRequest) SetPolicy(v string) *UpdateGroupAuthorizationRuleRequest {
+	s.Policy = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleRequest) SetProtocol(v string) *UpdateGroupAuthorizationRuleRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleRequest) SetSourceCidr(v string) *UpdateGroupAuthorizationRuleRequest {
+	s.SourceCidr = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleRequest) SetWirelessCloudConnectorGroupId(v string) *UpdateGroupAuthorizationRuleRequest {
+	s.WirelessCloudConnectorGroupId = &v
+	return s
+}
+
+type UpdateGroupAuthorizationRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateGroupAuthorizationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupAuthorizationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupAuthorizationRuleResponseBody) SetRequestId(v string) *UpdateGroupAuthorizationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateGroupAuthorizationRuleResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGroupAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGroupAuthorizationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupAuthorizationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupAuthorizationRuleResponse) SetHeaders(v map[string]*string) *UpdateGroupAuthorizationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleResponse) SetStatusCode(v int32) *UpdateGroupAuthorizationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleResponse) SetBody(v *UpdateGroupAuthorizationRuleResponseBody) *UpdateGroupAuthorizationRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGroupDnsAuthorizationRuleRequest struct {
+	AuthorizationRuleId           *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
+	ClientToken                   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description                   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationIp                 *string `json:"DestinationIp,omitempty" xml:"DestinationIp,omitempty"`
+	DryRun                        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Name                          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SourceDNSIp                   *string `json:"SourceDNSIp,omitempty" xml:"SourceDNSIp,omitempty"`
+	WirelessCloudConnectorGroupId *string `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+}
+
+func (s UpdateGroupDnsAuthorizationRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupDnsAuthorizationRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupDnsAuthorizationRuleRequest) SetAuthorizationRuleId(v string) *UpdateGroupDnsAuthorizationRuleRequest {
+	s.AuthorizationRuleId = &v
+	return s
+}
+
+func (s *UpdateGroupDnsAuthorizationRuleRequest) SetClientToken(v string) *UpdateGroupDnsAuthorizationRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateGroupDnsAuthorizationRuleRequest) SetDescription(v string) *UpdateGroupDnsAuthorizationRuleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateGroupDnsAuthorizationRuleRequest) SetDestinationIp(v string) *UpdateGroupDnsAuthorizationRuleRequest {
+	s.DestinationIp = &v
+	return s
+}
+
+func (s *UpdateGroupDnsAuthorizationRuleRequest) SetDryRun(v bool) *UpdateGroupDnsAuthorizationRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateGroupDnsAuthorizationRuleRequest) SetName(v string) *UpdateGroupDnsAuthorizationRuleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateGroupDnsAuthorizationRuleRequest) SetSourceDNSIp(v string) *UpdateGroupDnsAuthorizationRuleRequest {
+	s.SourceDNSIp = &v
+	return s
+}
+
+func (s *UpdateGroupDnsAuthorizationRuleRequest) SetWirelessCloudConnectorGroupId(v string) *UpdateGroupDnsAuthorizationRuleRequest {
+	s.WirelessCloudConnectorGroupId = &v
+	return s
+}
+
+type UpdateGroupDnsAuthorizationRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateGroupDnsAuthorizationRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupDnsAuthorizationRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupDnsAuthorizationRuleResponseBody) SetRequestId(v string) *UpdateGroupDnsAuthorizationRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateGroupDnsAuthorizationRuleResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGroupDnsAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGroupDnsAuthorizationRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupDnsAuthorizationRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupDnsAuthorizationRuleResponse) SetHeaders(v map[string]*string) *UpdateGroupDnsAuthorizationRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGroupDnsAuthorizationRuleResponse) SetStatusCode(v int32) *UpdateGroupDnsAuthorizationRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGroupDnsAuthorizationRuleResponse) SetBody(v *UpdateGroupDnsAuthorizationRuleResponseBody) *UpdateGroupDnsAuthorizationRuleResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateWirelessCloudConnectorRequest struct {
 	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -5365,6 +6757,93 @@ func (s *UpdateWirelessCloudConnectorResponse) SetStatusCode(v int32) *UpdateWir
 }
 
 func (s *UpdateWirelessCloudConnectorResponse) SetBody(v *UpdateWirelessCloudConnectorResponseBody) *UpdateWirelessCloudConnectorResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateWirelessCloudConnectorGroupRequest struct {
+	ClientToken                   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description                   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun                        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Name                          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	WirelessCloudConnectorGroupId *string `json:"WirelessCloudConnectorGroupId,omitempty" xml:"WirelessCloudConnectorGroupId,omitempty"`
+}
+
+func (s UpdateWirelessCloudConnectorGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWirelessCloudConnectorGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWirelessCloudConnectorGroupRequest) SetClientToken(v string) *UpdateWirelessCloudConnectorGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateWirelessCloudConnectorGroupRequest) SetDescription(v string) *UpdateWirelessCloudConnectorGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateWirelessCloudConnectorGroupRequest) SetDryRun(v bool) *UpdateWirelessCloudConnectorGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateWirelessCloudConnectorGroupRequest) SetName(v string) *UpdateWirelessCloudConnectorGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateWirelessCloudConnectorGroupRequest) SetWirelessCloudConnectorGroupId(v string) *UpdateWirelessCloudConnectorGroupRequest {
+	s.WirelessCloudConnectorGroupId = &v
+	return s
+}
+
+type UpdateWirelessCloudConnectorGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateWirelessCloudConnectorGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWirelessCloudConnectorGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWirelessCloudConnectorGroupResponseBody) SetRequestId(v string) *UpdateWirelessCloudConnectorGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateWirelessCloudConnectorGroupResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateWirelessCloudConnectorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateWirelessCloudConnectorGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWirelessCloudConnectorGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWirelessCloudConnectorGroupResponse) SetHeaders(v map[string]*string) *UpdateWirelessCloudConnectorGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWirelessCloudConnectorGroupResponse) SetStatusCode(v int32) *UpdateWirelessCloudConnectorGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateWirelessCloudConnectorGroupResponse) SetBody(v *UpdateWirelessCloudConnectorGroupResponseBody) *UpdateWirelessCloudConnectorGroupResponse {
 	s.Body = v
 	return s
 }
@@ -5477,6 +6956,134 @@ func (client *Client) AddDNSAuthorizationRule(request *AddDNSAuthorizationRuleRe
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDNSAuthorizationRuleResponse{}
 	_body, _err := client.AddDNSAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddGroupDnsAuthorizationRuleWithOptions(request *AddGroupDnsAuthorizationRuleRequest, runtime *util.RuntimeOptions) (_result *AddGroupDnsAuthorizationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationIp)) {
+		query["DestinationIp"] = request.DestinationIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceDNSIp)) {
+		query["SourceDNSIp"] = request.SourceDNSIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorGroupId)) {
+		query["WirelessCloudConnectorGroupId"] = request.WirelessCloudConnectorGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddGroupDnsAuthorizationRule"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddGroupDnsAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddGroupDnsAuthorizationRule(request *AddGroupDnsAuthorizationRuleRequest) (_result *AddGroupDnsAuthorizationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddGroupDnsAuthorizationRuleResponse{}
+	_body, _err := client.AddGroupDnsAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddWirelessCloudConnectorToGroupWithOptions(request *AddWirelessCloudConnectorToGroupRequest, runtime *util.RuntimeOptions) (_result *AddWirelessCloudConnectorToGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorGroupId)) {
+		query["WirelessCloudConnectorGroupId"] = request.WirelessCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorIds)) {
+		query["WirelessCloudConnectorIds"] = request.WirelessCloudConnectorIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddWirelessCloudConnectorToGroup"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddWirelessCloudConnectorToGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddWirelessCloudConnectorToGroup(request *AddWirelessCloudConnectorToGroupRequest) (_result *AddWirelessCloudConnectorToGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddWirelessCloudConnectorToGroupResponse{}
+	_body, _err := client.AddWirelessCloudConnectorToGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5720,6 +7327,90 @@ func (client *Client) CreateBatchOperateCardsTask(request *CreateBatchOperateCar
 	return _result, _err
 }
 
+func (client *Client) CreateGroupAuthorizationRuleWithOptions(request *CreateGroupAuthorizationRuleRequest, runtime *util.RuntimeOptions) (_result *CreateGroupAuthorizationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationPort)) {
+		query["DestinationPort"] = request.DestinationPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCidr)) {
+		query["SourceCidr"] = request.SourceCidr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorGroupId)) {
+		query["WirelessCloudConnectorGroupId"] = request.WirelessCloudConnectorGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGroupAuthorizationRule"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGroupAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGroupAuthorizationRule(request *CreateGroupAuthorizationRuleRequest) (_result *CreateGroupAuthorizationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGroupAuthorizationRuleResponse{}
+	_body, _err := client.CreateGroupAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateIoTCloudConnectorBackhaulRouteWithOptions(request *CreateIoTCloudConnectorBackhaulRouteRequest, runtime *util.RuntimeOptions) (_result *CreateIoTCloudConnectorBackhaulRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5852,6 +7543,66 @@ func (client *Client) CreateWirelessCloudConnector(request *CreateWirelessCloudC
 	return _result, _err
 }
 
+func (client *Client) CreateWirelessCloudConnectorGroupWithOptions(request *CreateWirelessCloudConnectorGroupRequest, runtime *util.RuntimeOptions) (_result *CreateWirelessCloudConnectorGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWirelessCloudConnectorGroup"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateWirelessCloudConnectorGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateWirelessCloudConnectorGroup(request *CreateWirelessCloudConnectorGroupRequest) (_result *CreateWirelessCloudConnectorGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateWirelessCloudConnectorGroupResponse{}
+	_body, _err := client.CreateWirelessCloudConnectorGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteAuthorizationRuleWithOptions(request *DeleteAuthorizationRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteAuthorizationRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5964,6 +7715,62 @@ func (client *Client) DeleteBatchOperateCardsTask(request *DeleteBatchOperateCar
 	return _result, _err
 }
 
+func (client *Client) DeleteGroupAuthorizationRuleWithOptions(request *DeleteGroupAuthorizationRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteGroupAuthorizationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleId)) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorGroupId)) {
+		query["WirelessCloudConnectorGroupId"] = request.WirelessCloudConnectorGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGroupAuthorizationRule"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGroupAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGroupAuthorizationRule(request *DeleteGroupAuthorizationRuleRequest) (_result *DeleteGroupAuthorizationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGroupAuthorizationRuleResponse{}
+	_body, _err := client.DeleteGroupAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteIoTCloudConnectorBackhaulRouteWithOptions(request *DeleteIoTCloudConnectorBackhaulRouteRequest, runtime *util.RuntimeOptions) (_result *DeleteIoTCloudConnectorBackhaulRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6065,6 +7872,58 @@ func (client *Client) DeleteWirelessCloudConnector(request *DeleteWirelessCloudC
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteWirelessCloudConnectorResponse{}
 	_body, _err := client.DeleteWirelessCloudConnectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteWirelessCloudConnectorGroupWithOptions(request *DeleteWirelessCloudConnectorGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteWirelessCloudConnectorGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorGroupId)) {
+		query["WirelessCloudConnectorGroupId"] = request.WirelessCloudConnectorGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWirelessCloudConnectorGroup"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteWirelessCloudConnectorGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteWirelessCloudConnectorGroup(request *DeleteWirelessCloudConnectorGroupRequest) (_result *DeleteWirelessCloudConnectorGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteWirelessCloudConnectorGroupResponse{}
+	_body, _err := client.DeleteWirelessCloudConnectorGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6720,6 +8579,46 @@ func (client *Client) ListDiagnoseInfoForSingleCard(request *ListDiagnoseInfoFor
 	return _result, _err
 }
 
+func (client *Client) ListGroupAuthorizationRulesWithOptions(request *ListGroupAuthorizationRulesRequest, runtime *util.RuntimeOptions) (_result *ListGroupAuthorizationRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroupAuthorizationRules"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGroupAuthorizationRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGroupAuthorizationRules(request *ListGroupAuthorizationRulesRequest) (_result *ListGroupAuthorizationRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGroupAuthorizationRulesResponse{}
+	_body, _err := client.ListGroupAuthorizationRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListIoTCloudConnectorBackhaulRouteWithOptions(request *ListIoTCloudConnectorBackhaulRouteRequest, runtime *util.RuntimeOptions) (_result *ListIoTCloudConnectorBackhaulRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6833,6 +8732,46 @@ func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListReg
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRegionsResponse{}
 	_body, _err := client.ListRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWirelessCloudConnectorGroupsWithOptions(request *ListWirelessCloudConnectorGroupsRequest, runtime *util.RuntimeOptions) (_result *ListWirelessCloudConnectorGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWirelessCloudConnectorGroups"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWirelessCloudConnectorGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListWirelessCloudConnectorGroups(request *ListWirelessCloudConnectorGroupsRequest) (_result *ListWirelessCloudConnectorGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWirelessCloudConnectorGroupsResponse{}
+	_body, _err := client.ListWirelessCloudConnectorGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7073,6 +9012,66 @@ func (client *Client) OpenCc5gService(request *OpenCc5gServiceRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenCc5gServiceResponse{}
 	_body, _err := client.OpenCc5gServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveWirelessCloudConnectorFromGroupWithOptions(request *RemoveWirelessCloudConnectorFromGroupRequest, runtime *util.RuntimeOptions) (_result *RemoveWirelessCloudConnectorFromGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorGroupId)) {
+		query["WirelessCloudConnectorGroupId"] = request.WirelessCloudConnectorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorIds)) {
+		query["WirelessCloudConnectorIds"] = request.WirelessCloudConnectorIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveWirelessCloudConnectorFromGroup"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveWirelessCloudConnectorFromGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveWirelessCloudConnectorFromGroup(request *RemoveWirelessCloudConnectorFromGroupRequest) (_result *RemoveWirelessCloudConnectorFromGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveWirelessCloudConnectorFromGroupResponse{}
+	_body, _err := client.RemoveWirelessCloudConnectorFromGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7732,6 +9731,162 @@ func (client *Client) UpdateDNSAuthorizationRule(request *UpdateDNSAuthorization
 	return _result, _err
 }
 
+func (client *Client) UpdateGroupAuthorizationRuleWithOptions(request *UpdateGroupAuthorizationRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateGroupAuthorizationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleId)) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Destination)) {
+		query["Destination"] = request.Destination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationPort)) {
+		query["DestinationPort"] = request.DestinationPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCidr)) {
+		query["SourceCidr"] = request.SourceCidr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorGroupId)) {
+		query["WirelessCloudConnectorGroupId"] = request.WirelessCloudConnectorGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGroupAuthorizationRule"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGroupAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGroupAuthorizationRule(request *UpdateGroupAuthorizationRuleRequest) (_result *UpdateGroupAuthorizationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGroupAuthorizationRuleResponse{}
+	_body, _err := client.UpdateGroupAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGroupDnsAuthorizationRuleWithOptions(request *UpdateGroupDnsAuthorizationRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateGroupDnsAuthorizationRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleId)) {
+		query["AuthorizationRuleId"] = request.AuthorizationRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationIp)) {
+		query["DestinationIp"] = request.DestinationIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceDNSIp)) {
+		query["SourceDNSIp"] = request.SourceDNSIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorGroupId)) {
+		query["WirelessCloudConnectorGroupId"] = request.WirelessCloudConnectorGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGroupDnsAuthorizationRule"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGroupDnsAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGroupDnsAuthorizationRule(request *UpdateGroupDnsAuthorizationRuleRequest) (_result *UpdateGroupDnsAuthorizationRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGroupDnsAuthorizationRuleResponse{}
+	_body, _err := client.UpdateGroupDnsAuthorizationRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateWirelessCloudConnectorWithOptions(request *UpdateWirelessCloudConnectorRequest, runtime *util.RuntimeOptions) (_result *UpdateWirelessCloudConnectorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7785,6 +9940,66 @@ func (client *Client) UpdateWirelessCloudConnector(request *UpdateWirelessCloudC
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateWirelessCloudConnectorResponse{}
 	_body, _err := client.UpdateWirelessCloudConnectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateWirelessCloudConnectorGroupWithOptions(request *UpdateWirelessCloudConnectorGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateWirelessCloudConnectorGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WirelessCloudConnectorGroupId)) {
+		query["WirelessCloudConnectorGroupId"] = request.WirelessCloudConnectorGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWirelessCloudConnectorGroup"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateWirelessCloudConnectorGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateWirelessCloudConnectorGroup(request *UpdateWirelessCloudConnectorGroupRequest) (_result *UpdateWirelessCloudConnectorGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateWirelessCloudConnectorGroupResponse{}
+	_body, _err := client.UpdateWirelessCloudConnectorGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
