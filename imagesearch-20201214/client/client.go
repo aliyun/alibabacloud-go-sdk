@@ -5,15 +5,14 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
@@ -90,12 +89,12 @@ func (s *AddImageRequest) SetStrAttr(v string) *AddImageRequest {
 }
 
 type AddImageAdvanceRequest struct {
-	PicContentObject io.Reader `json:"PicContentObject,omitempty" xml:"PicContentObject,omitempty" require:"true"`
 	CategoryId       *int32    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Crop             *bool     `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	CustomContent    *string   `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
 	InstanceName     *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	IntAttr          *int32    `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	PicContentObject io.Reader `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
 	PicName          *string   `json:"PicName,omitempty" xml:"PicName,omitempty"`
 	ProductId        *string   `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	Region           *string   `json:"Region,omitempty" xml:"Region,omitempty"`
@@ -108,11 +107,6 @@ func (s AddImageAdvanceRequest) String() string {
 
 func (s AddImageAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AddImageAdvanceRequest) SetPicContentObject(v io.Reader) *AddImageAdvanceRequest {
-	s.PicContentObject = v
-	return s
 }
 
 func (s *AddImageAdvanceRequest) SetCategoryId(v int32) *AddImageAdvanceRequest {
@@ -137,6 +131,11 @@ func (s *AddImageAdvanceRequest) SetInstanceName(v string) *AddImageAdvanceReque
 
 func (s *AddImageAdvanceRequest) SetIntAttr(v int32) *AddImageAdvanceRequest {
 	s.IntAttr = &v
+	return s
+}
+
+func (s *AddImageAdvanceRequest) SetPicContentObject(v io.Reader) *AddImageAdvanceRequest {
+	s.PicContentObject = v
 	return s
 }
 
@@ -225,8 +224,9 @@ func (s *AddImageResponseBodyPicInfo) SetRegion(v string) *AddImageResponseBodyP
 }
 
 type AddImageResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddImageResponse) String() string {
@@ -239,6 +239,11 @@ func (s AddImageResponse) GoString() string {
 
 func (s *AddImageResponse) SetHeaders(v map[string]*string) *AddImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddImageResponse) SetStatusCode(v int32) *AddImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -335,8 +340,9 @@ func (s *DeleteImageResponseBodyData) SetPicNames(v []*string) *DeleteImageRespo
 }
 
 type DeleteImageResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteImageResponse) String() string {
@@ -349,6 +355,11 @@ func (s DeleteImageResponse) GoString() string {
 
 func (s *DeleteImageResponse) SetHeaders(v map[string]*string) *DeleteImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteImageResponse) SetStatusCode(v int32) *DeleteImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -463,8 +474,9 @@ func (s *DetailResponseBodyInstance) SetUtcExpireTime(v string) *DetailResponseB
 }
 
 type DetailResponse struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetailResponse) String() string {
@@ -477,6 +489,11 @@ func (s DetailResponse) GoString() string {
 
 func (s *DetailResponse) SetHeaders(v map[string]*string) *DetailResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetailResponse) SetStatusCode(v int32) *DetailResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -555,8 +572,9 @@ func (s *DumpMetaResponseBodyData) SetId(v string) *DumpMetaResponseBodyData {
 }
 
 type DumpMetaResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DumpMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DumpMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DumpMetaResponse) String() string {
@@ -569,6 +587,11 @@ func (s DumpMetaResponse) GoString() string {
 
 func (s *DumpMetaResponse) SetHeaders(v map[string]*string) *DumpMetaResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DumpMetaResponse) SetStatusCode(v int32) *DumpMetaResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -724,8 +747,9 @@ func (s *DumpMetaListResponseBodyDataDumpMetaList) SetUtcModified(v int64) *Dump
 }
 
 type DumpMetaListResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DumpMetaListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DumpMetaListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DumpMetaListResponse) String() string {
@@ -738,6 +762,11 @@ func (s DumpMetaListResponse) GoString() string {
 
 func (s *DumpMetaListResponse) SetHeaders(v map[string]*string) *DumpMetaListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DumpMetaListResponse) SetStatusCode(v int32) *DumpMetaListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -834,8 +863,9 @@ func (s *IncreaseInstanceResponseBodyData) SetIncrementStatus(v string) *Increas
 }
 
 type IncreaseInstanceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *IncreaseInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *IncreaseInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s IncreaseInstanceResponse) String() string {
@@ -848,6 +878,11 @@ func (s IncreaseInstanceResponse) GoString() string {
 
 func (s *IncreaseInstanceResponse) SetHeaders(v map[string]*string) *IncreaseInstanceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *IncreaseInstanceResponse) SetStatusCode(v int32) *IncreaseInstanceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1050,8 +1085,9 @@ func (s *IncreaseListResponseBodyDataIncrementsInstance) SetUtcModified(v int64)
 }
 
 type IncreaseListResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *IncreaseListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *IncreaseListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s IncreaseListResponse) String() string {
@@ -1067,6 +1103,11 @@ func (s *IncreaseListResponse) SetHeaders(v map[string]*string) *IncreaseListRes
 	return s
 }
 
+func (s *IncreaseListResponse) SetStatusCode(v int32) *IncreaseListResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *IncreaseListResponse) SetBody(v *IncreaseListResponseBody) *IncreaseListResponse {
 	s.Body = v
 	return s
@@ -1079,7 +1120,6 @@ type SearchImageByNameRequest struct {
 	Num          *int32  `json:"Num,omitempty" xml:"Num,omitempty"`
 	PicName      *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
 	ProductId    *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Start        *int32  `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -1118,11 +1158,6 @@ func (s *SearchImageByNameRequest) SetPicName(v string) *SearchImageByNameReques
 
 func (s *SearchImageByNameRequest) SetProductId(v string) *SearchImageByNameRequest {
 	s.ProductId = &v
-	return s
-}
-
-func (s *SearchImageByNameRequest) SetRegionId(v string) *SearchImageByNameRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1348,8 +1383,9 @@ func (s *SearchImageByNameResponseBodyPicInfoMultiRegion) SetRegion(v string) *S
 }
 
 type SearchImageByNameResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SearchImageByNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchImageByNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SearchImageByNameResponse) String() string {
@@ -1362,6 +1398,11 @@ func (s SearchImageByNameResponse) GoString() string {
 
 func (s *SearchImageByNameResponse) SetHeaders(v map[string]*string) *SearchImageByNameResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SearchImageByNameResponse) SetStatusCode(v int32) *SearchImageByNameResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1378,7 +1419,6 @@ type SearchImageByPicRequest struct {
 	Num          *int32  `json:"Num,omitempty" xml:"Num,omitempty"`
 	PicContent   *string `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
 	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Start        *int32  `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -1425,25 +1465,19 @@ func (s *SearchImageByPicRequest) SetRegion(v string) *SearchImageByPicRequest {
 	return s
 }
 
-func (s *SearchImageByPicRequest) SetRegionId(v string) *SearchImageByPicRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *SearchImageByPicRequest) SetStart(v int32) *SearchImageByPicRequest {
 	s.Start = &v
 	return s
 }
 
 type SearchImageByPicAdvanceRequest struct {
-	PicContentObject io.Reader `json:"PicContentObject,omitempty" xml:"PicContentObject,omitempty" require:"true"`
 	CategoryId       *int32    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	Crop             *bool     `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	Filter           *string   `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	InstanceName     *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	Num              *int32    `json:"Num,omitempty" xml:"Num,omitempty"`
+	PicContentObject io.Reader `json:"PicContent,omitempty" xml:"PicContent,omitempty"`
 	Region           *string   `json:"Region,omitempty" xml:"Region,omitempty"`
-	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Start            *int32    `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -1453,11 +1487,6 @@ func (s SearchImageByPicAdvanceRequest) String() string {
 
 func (s SearchImageByPicAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SearchImageByPicAdvanceRequest) SetPicContentObject(v io.Reader) *SearchImageByPicAdvanceRequest {
-	s.PicContentObject = v
-	return s
 }
 
 func (s *SearchImageByPicAdvanceRequest) SetCategoryId(v int32) *SearchImageByPicAdvanceRequest {
@@ -1485,13 +1514,13 @@ func (s *SearchImageByPicAdvanceRequest) SetNum(v int32) *SearchImageByPicAdvanc
 	return s
 }
 
-func (s *SearchImageByPicAdvanceRequest) SetRegion(v string) *SearchImageByPicAdvanceRequest {
-	s.Region = &v
+func (s *SearchImageByPicAdvanceRequest) SetPicContentObject(v io.Reader) *SearchImageByPicAdvanceRequest {
+	s.PicContentObject = v
 	return s
 }
 
-func (s *SearchImageByPicAdvanceRequest) SetRegionId(v string) *SearchImageByPicAdvanceRequest {
-	s.RegionId = &v
+func (s *SearchImageByPicAdvanceRequest) SetRegion(v string) *SearchImageByPicAdvanceRequest {
+	s.Region = &v
 	return s
 }
 
@@ -1717,8 +1746,9 @@ func (s *SearchImageByPicResponseBodyPicInfoMultiRegion) SetRegion(v string) *Se
 }
 
 type SearchImageByPicResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SearchImageByPicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchImageByPicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SearchImageByPicResponse) String() string {
@@ -1731,6 +1761,11 @@ func (s SearchImageByPicResponse) GoString() string {
 
 func (s *SearchImageByPicResponse) SetHeaders(v map[string]*string) *SearchImageByPicResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SearchImageByPicResponse) SetStatusCode(v int32) *SearchImageByPicResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1787,8 +1822,7 @@ func (s *UpdateImageRequest) SetStrAttr(v string) *UpdateImageRequest {
 }
 
 type UpdateImageResponseBody struct {
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Id of the request
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -1823,8 +1857,9 @@ func (s *UpdateImageResponseBody) SetSuccess(v bool) *UpdateImageResponseBody {
 }
 
 type UpdateImageResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateImageResponse) String() string {
@@ -1837,6 +1872,11 @@ func (s UpdateImageResponse) GoString() string {
 
 func (s *UpdateImageResponse) SetHeaders(v map[string]*string) *UpdateImageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateImageResponse) SetStatusCode(v int32) *UpdateImageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1999,7 +2039,7 @@ func (client *Client) AddImageAdvance(request *AddImageAdvanceRequest, runtime *
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -2038,35 +2078,35 @@ func (client *Client) AddImageAdvance(request *AddImageAdvanceRequest, runtime *
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.PicContentObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		addImageReq.PicContent = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		addImageReq.PicContent = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	addImageResp, _err := client.AddImageWithOptions(addImageReq, runtime)
@@ -2136,7 +2176,10 @@ func (client *Client) DetailWithOptions(request *DetailRequest, runtime *util.Ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceName"] = request.InstanceName
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2177,7 +2220,10 @@ func (client *Client) DumpMetaWithOptions(request *DumpMetaRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceName"] = request.InstanceName
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2218,10 +2264,22 @@ func (client *Client) DumpMetaListWithOptions(request *DumpMetaListRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Id"] = request.Id
-	query["InstanceName"] = request.InstanceName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2262,10 +2320,22 @@ func (client *Client) IncreaseInstanceWithOptions(request *IncreaseInstanceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BucketName"] = request.BucketName
-	query["CallbackAddress"] = request.CallbackAddress
-	query["InstanceName"] = request.InstanceName
-	query["Path"] = request.Path
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackAddress)) {
+		query["CallbackAddress"] = request.CallbackAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		query["Path"] = request.Path
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2306,12 +2376,30 @@ func (client *Client) IncreaseListWithOptions(request *IncreaseListRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BucketName"] = request.BucketName
-	query["Id"] = request.Id
-	query["InstanceName"] = request.InstanceName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["Path"] = request.Path
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		query["Path"] = request.Path
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2513,7 +2601,7 @@ func (client *Client) SearchImageByPicAdvance(request *SearchImageByPicAdvanceRe
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -2552,35 +2640,35 @@ func (client *Client) SearchImageByPicAdvance(request *SearchImageByPicAdvanceRe
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.PicContentObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		searchImageByPicReq.PicContent = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		searchImageByPicReq.PicContent = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	searchImageByPicResp, _err := client.SearchImageByPicWithOptions(searchImageByPicReq, runtime)
