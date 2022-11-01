@@ -622,7 +622,6 @@ func (s *SegmentAnimalResponse) SetBody(v *SegmentAnimalResponseBody) *SegmentAn
 }
 
 type SegmentBodyRequest struct {
-	Async      *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
 	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
@@ -633,11 +632,6 @@ func (s SegmentBodyRequest) String() string {
 
 func (s SegmentBodyRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SegmentBodyRequest) SetAsync(v bool) *SegmentBodyRequest {
-	s.Async = &v
-	return s
 }
 
 func (s *SegmentBodyRequest) SetImageURL(v string) *SegmentBodyRequest {
@@ -651,7 +645,6 @@ func (s *SegmentBodyRequest) SetReturnForm(v string) *SegmentBodyRequest {
 }
 
 type SegmentBodyAdvanceRequest struct {
-	Async          *bool     `json:"Async,omitempty" xml:"Async,omitempty"`
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
@@ -662,11 +655,6 @@ func (s SegmentBodyAdvanceRequest) String() string {
 
 func (s SegmentBodyAdvanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *SegmentBodyAdvanceRequest) SetAsync(v bool) *SegmentBodyAdvanceRequest {
-	s.Async = &v
-	return s
 }
 
 func (s *SegmentBodyAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentBodyAdvanceRequest {
@@ -3384,14 +3372,8 @@ func (client *Client) SegmentBodyWithOptions(request *SegmentBodyRequest, runtim
 		query["ReturnForm"] = request.ReturnForm
 	}
 
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Async)) {
-		body["Async"] = request.Async
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SegmentBody"),
