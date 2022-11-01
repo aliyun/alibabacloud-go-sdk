@@ -1,3 +1,6 @@
+2022-11-01 Version: v1.1.13
+- Add layersArnV2 for GetFunction.
+
 2022-09-06 Version: v1.1.12
 - Update PutLayerACL output.
 

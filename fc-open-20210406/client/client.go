@@ -6,10 +6,10 @@ package client
 
 import (
 	fcutil "github.com/alibabacloud-go/alibabacloud-gateway-fc-util/client"
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	
 	"net/http"
@@ -555,8 +555,9 @@ func (s *EventSourceParameters) SetSourceRocketMQParameters(v *SourceRocketMQPar
 }
 
 type HTTPTriggerConfig struct {
-	AuthType *string   `json:"authType,omitempty" xml:"authType,omitempty"`
-	Methods  []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+	AuthType           *string   `json:"authType,omitempty" xml:"authType,omitempty"`
+	DisableURLInternet *bool     `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
+	Methods            []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
 }
 
 func (s HTTPTriggerConfig) String() string {
@@ -569,6 +570,11 @@ func (s HTTPTriggerConfig) GoString() string {
 
 func (s *HTTPTriggerConfig) SetAuthType(v string) *HTTPTriggerConfig {
 	s.AuthType = &v
+	return s
+}
+
+func (s *HTTPTriggerConfig) SetDisableURLInternet(v bool) *HTTPTriggerConfig {
+	s.DisableURLInternet = &v
 	return s
 }
 
@@ -1851,6 +1857,101 @@ func (s *TracingConfig) SetType(v string) *TracingConfig {
 	return s
 }
 
+type Trigger struct {
+	CreatedTime      *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DomainName       *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	InvocationRole   *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Qualifier        *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	SourceArn        *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
+	TargetArn        *string `json:"targetArn,omitempty" xml:"targetArn,omitempty"`
+	TriggerConfig    *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	TriggerId        *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
+	TriggerName      *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	TriggerType      *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	UrlInternet      *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	UrlIntranet      *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
+}
+
+func (s Trigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Trigger) GoString() string {
+	return s.String()
+}
+
+func (s *Trigger) SetCreatedTime(v string) *Trigger {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *Trigger) SetDomainName(v string) *Trigger {
+	s.DomainName = &v
+	return s
+}
+
+func (s *Trigger) SetInvocationRole(v string) *Trigger {
+	s.InvocationRole = &v
+	return s
+}
+
+func (s *Trigger) SetLastModifiedTime(v string) *Trigger {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *Trigger) SetQualifier(v string) *Trigger {
+	s.Qualifier = &v
+	return s
+}
+
+func (s *Trigger) SetSourceArn(v string) *Trigger {
+	s.SourceArn = &v
+	return s
+}
+
+func (s *Trigger) SetStatus(v string) *Trigger {
+	s.Status = &v
+	return s
+}
+
+func (s *Trigger) SetTargetArn(v string) *Trigger {
+	s.TargetArn = &v
+	return s
+}
+
+func (s *Trigger) SetTriggerConfig(v string) *Trigger {
+	s.TriggerConfig = &v
+	return s
+}
+
+func (s *Trigger) SetTriggerId(v string) *Trigger {
+	s.TriggerId = &v
+	return s
+}
+
+func (s *Trigger) SetTriggerName(v string) *Trigger {
+	s.TriggerName = &v
+	return s
+}
+
+func (s *Trigger) SetTriggerType(v string) *Trigger {
+	s.TriggerType = &v
+	return s
+}
+
+func (s *Trigger) SetUrlInternet(v string) *Trigger {
+	s.UrlInternet = &v
+	return s
+}
+
+func (s *Trigger) SetUrlIntranet(v string) *Trigger {
+	s.UrlIntranet = &v
+	return s
+}
+
 type VPCConfig struct {
 	Role            *string   `json:"role,omitempty" xml:"role,omitempty"`
 	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
@@ -2433,11 +2534,13 @@ func (s *CreateFunctionHeaders) SetXFcTraceId(v string) *CreateFunctionHeaders {
 type CreateFunctionRequest struct {
 	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
 	Code                    *Code                    `json:"code,omitempty" xml:"code,omitempty"`
+	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
 	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	FunctionName            *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
 	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
@@ -2471,6 +2574,11 @@ func (s *CreateFunctionRequest) SetCode(v *Code) *CreateFunctionRequest {
 	return s
 }
 
+func (s *CreateFunctionRequest) SetCpu(v float32) *CreateFunctionRequest {
+	s.Cpu = &v
+	return s
+}
+
 func (s *CreateFunctionRequest) SetCustomContainerConfig(v *CustomContainerConfig) *CreateFunctionRequest {
 	s.CustomContainerConfig = v
 	return s
@@ -2493,6 +2601,11 @@ func (s *CreateFunctionRequest) SetCustomRuntimeConfig(v *CustomRuntimeConfig) *
 
 func (s *CreateFunctionRequest) SetDescription(v string) *CreateFunctionRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateFunctionRequest) SetDiskSize(v int32) *CreateFunctionRequest {
+	s.DiskSize = &v
 	return s
 }
 
@@ -2565,12 +2678,14 @@ type CreateFunctionResponseBody struct {
 	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
 	CodeChecksum            *string                  `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
 	CodeSize                *int64                   `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	CreatedTime             *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
 	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	FunctionId              *string                  `json:"functionId,omitempty" xml:"functionId,omitempty"`
 	FunctionName            *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
@@ -2611,6 +2726,11 @@ func (s *CreateFunctionResponseBody) SetCodeSize(v int64) *CreateFunctionRespons
 	return s
 }
 
+func (s *CreateFunctionResponseBody) SetCpu(v float32) *CreateFunctionResponseBody {
+	s.Cpu = &v
+	return s
+}
+
 func (s *CreateFunctionResponseBody) SetCreatedTime(v string) *CreateFunctionResponseBody {
 	s.CreatedTime = &v
 	return s
@@ -2638,6 +2758,11 @@ func (s *CreateFunctionResponseBody) SetCustomRuntimeConfig(v *CustomRuntimeConf
 
 func (s *CreateFunctionResponseBody) SetDescription(v string) *CreateFunctionResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateFunctionResponseBody) SetDiskSize(v int32) *CreateFunctionResponseBody {
+	s.DiskSize = &v
 	return s
 }
 
@@ -4516,12 +4641,14 @@ type GetFunctionResponseBody struct {
 	CaPort                  *int32                     `json:"caPort,omitempty" xml:"caPort,omitempty"`
 	CodeChecksum            *string                    `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
 	CodeSize                *int64                     `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	Cpu                     *float32                   `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	CreatedTime             *string                    `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	CustomContainerConfig   *CustomContainerConfigInfo `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	CustomDNS               *CustomDNS                 `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
 	CustomHealthCheckConfig *CustomHealthCheckConfig   `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	CustomRuntimeConfig     *CustomRuntimeConfig       `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
 	Description             *string                    `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize                *int32                     `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	EnvironmentVariables    map[string]*string         `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	FunctionId              *string                    `json:"functionId,omitempty" xml:"functionId,omitempty"`
 	FunctionName            *string                    `json:"functionName,omitempty" xml:"functionName,omitempty"`
@@ -4534,6 +4661,7 @@ type GetFunctionResponseBody struct {
 	InstanceType            *string                    `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	LastModifiedTime        *string                    `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	Layers                  []*string                  `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	LayersArnV2             []*string                  `json:"layersArnV2,omitempty" xml:"layersArnV2,omitempty" type:"Repeated"`
 	MemorySize              *int32                     `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
 	Runtime                 *string                    `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	Timeout                 *int32                     `json:"timeout,omitempty" xml:"timeout,omitempty"`
@@ -4559,6 +4687,11 @@ func (s *GetFunctionResponseBody) SetCodeChecksum(v string) *GetFunctionResponse
 
 func (s *GetFunctionResponseBody) SetCodeSize(v int64) *GetFunctionResponseBody {
 	s.CodeSize = &v
+	return s
+}
+
+func (s *GetFunctionResponseBody) SetCpu(v float32) *GetFunctionResponseBody {
+	s.Cpu = &v
 	return s
 }
 
@@ -4589,6 +4722,11 @@ func (s *GetFunctionResponseBody) SetCustomRuntimeConfig(v *CustomRuntimeConfig)
 
 func (s *GetFunctionResponseBody) SetDescription(v string) *GetFunctionResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *GetFunctionResponseBody) SetDiskSize(v int32) *GetFunctionResponseBody {
+	s.DiskSize = &v
 	return s
 }
 
@@ -4649,6 +4787,11 @@ func (s *GetFunctionResponseBody) SetLastModifiedTime(v string) *GetFunctionResp
 
 func (s *GetFunctionResponseBody) SetLayers(v []*string) *GetFunctionResponseBody {
 	s.Layers = v
+	return s
+}
+
+func (s *GetFunctionResponseBody) SetLayersArnV2(v []*string) *GetFunctionResponseBody {
+	s.LayersArnV2 = v
 	return s
 }
 
@@ -6658,10 +6801,12 @@ type ListFunctionsResponseBodyFunctions struct {
 	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
 	CodeChecksum            *string                  `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
 	CodeSize                *int64                   `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	CreatedTime             *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	FunctionId              *string                  `json:"functionId,omitempty" xml:"functionId,omitempty"`
 	FunctionName            *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
@@ -6702,6 +6847,11 @@ func (s *ListFunctionsResponseBodyFunctions) SetCodeSize(v int64) *ListFunctions
 	return s
 }
 
+func (s *ListFunctionsResponseBodyFunctions) SetCpu(v float32) *ListFunctionsResponseBodyFunctions {
+	s.Cpu = &v
+	return s
+}
+
 func (s *ListFunctionsResponseBodyFunctions) SetCreatedTime(v string) *ListFunctionsResponseBodyFunctions {
 	s.CreatedTime = &v
 	return s
@@ -6719,6 +6869,11 @@ func (s *ListFunctionsResponseBodyFunctions) SetCustomHealthCheckConfig(v *Custo
 
 func (s *ListFunctionsResponseBodyFunctions) SetDescription(v string) *ListFunctionsResponseBodyFunctions {
 	s.Description = &v
+	return s
+}
+
+func (s *ListFunctionsResponseBodyFunctions) SetDiskSize(v int32) *ListFunctionsResponseBodyFunctions {
+	s.DiskSize = &v
 	return s
 }
 
@@ -10067,11 +10222,13 @@ type UpdateFunctionRequest struct {
 	InstanceConcurrency     *int32                   `json:"InstanceConcurrency,omitempty" xml:"InstanceConcurrency,omitempty"`
 	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
 	Code                    *Code                    `json:"code,omitempty" xml:"code,omitempty"`
+	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
 	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
 	InitializationTimeout   *int32                   `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
@@ -10108,6 +10265,11 @@ func (s *UpdateFunctionRequest) SetCode(v *Code) *UpdateFunctionRequest {
 	return s
 }
 
+func (s *UpdateFunctionRequest) SetCpu(v float32) *UpdateFunctionRequest {
+	s.Cpu = &v
+	return s
+}
+
 func (s *UpdateFunctionRequest) SetCustomContainerConfig(v *CustomContainerConfig) *UpdateFunctionRequest {
 	s.CustomContainerConfig = v
 	return s
@@ -10130,6 +10292,11 @@ func (s *UpdateFunctionRequest) SetCustomRuntimeConfig(v *CustomRuntimeConfig) *
 
 func (s *UpdateFunctionRequest) SetDescription(v string) *UpdateFunctionRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateFunctionRequest) SetDiskSize(v int32) *UpdateFunctionRequest {
+	s.DiskSize = &v
 	return s
 }
 
@@ -10192,12 +10359,14 @@ type UpdateFunctionResponseBody struct {
 	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
 	CodeChecksum            *string                  `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
 	CodeSize                *int64                   `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	CreatedTime             *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
 	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	FunctionId              *string                  `json:"functionId,omitempty" xml:"functionId,omitempty"`
 	FunctionName            *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
@@ -10237,6 +10406,11 @@ func (s *UpdateFunctionResponseBody) SetCodeSize(v int64) *UpdateFunctionRespons
 	return s
 }
 
+func (s *UpdateFunctionResponseBody) SetCpu(v float32) *UpdateFunctionResponseBody {
+	s.Cpu = &v
+	return s
+}
+
 func (s *UpdateFunctionResponseBody) SetCreatedTime(v string) *UpdateFunctionResponseBody {
 	s.CreatedTime = &v
 	return s
@@ -10264,6 +10438,11 @@ func (s *UpdateFunctionResponseBody) SetCustomRuntimeConfig(v *CustomRuntimeConf
 
 func (s *UpdateFunctionResponseBody) SetDescription(v string) *UpdateFunctionResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateFunctionResponseBody) SetDiskSize(v int32) *UpdateFunctionResponseBody {
+	s.DiskSize = &v
 	return s
 }
 
@@ -10954,7 +11133,6 @@ func (client *Client) CreateAliasWithOptions(serviceName *string, request *Creat
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AdditionalVersionWeight)) {
 		body["additionalVersionWeight"] = request.AdditionalVersionWeight
@@ -11005,7 +11183,7 @@ func (client *Client) CreateAliasWithOptions(serviceName *string, request *Creat
 		Action:      tea.String("CreateAlias"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/aliases"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -11117,7 +11295,6 @@ func (client *Client) CreateFunctionWithOptions(serviceName *string, request *Cr
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CaPort)) {
 		body["caPort"] = request.CaPort
@@ -11125,6 +11302,10 @@ func (client *Client) CreateFunctionWithOptions(serviceName *string, request *Cr
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Code))) {
 		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
+		body["cpu"] = request.Cpu
 	}
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CustomContainerConfig))) {
@@ -11145,6 +11326,10 @@ func (client *Client) CreateFunctionWithOptions(serviceName *string, request *Cr
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskSize)) {
+		body["diskSize"] = request.DiskSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentVariables)) {
@@ -11228,7 +11413,7 @@ func (client *Client) CreateFunctionWithOptions(serviceName *string, request *Cr
 		Action:      tea.String("CreateFunction"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -11261,7 +11446,6 @@ func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	layerName = openapiutil.GetEncodeParam(layerName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Code))) {
 		body["Code"] = request.Code
@@ -11300,7 +11484,7 @@ func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *
 		Action:      tea.String("CreateLayerVersion"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions"),
+		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(openapiutil.GetEncodeParam(layerName)) + "/versions"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -11428,8 +11612,6 @@ func (client *Client) CreateTriggerWithOptions(serviceName *string, functionName
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
@@ -11484,7 +11666,7 @@ func (client *Client) CreateTriggerWithOptions(serviceName *string, functionName
 		Action:      tea.String("CreateTrigger"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/triggers"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -11517,7 +11699,6 @@ func (client *Client) CreateVpcBindingWithOptions(serviceName *string, request *
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
 		body["vpcId"] = request.VpcId
@@ -11548,7 +11729,7 @@ func (client *Client) CreateVpcBindingWithOptions(serviceName *string, request *
 		Action:      tea.String("CreateVpcBinding"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/bindings"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/bindings"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -11577,8 +11758,6 @@ func (client *Client) DeleteAlias(serviceName *string, aliasName *string) (_resu
 }
 
 func (client *Client) DeleteAliasWithOptions(serviceName *string, aliasName *string, headers *DeleteAliasHeaders, runtime *util.RuntimeOptions) (_result *DeleteAliasResponse, _err error) {
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	aliasName = openapiutil.GetEncodeParam(aliasName)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -11607,7 +11786,7 @@ func (client *Client) DeleteAliasWithOptions(serviceName *string, aliasName *str
 		Action:      tea.String("DeleteAlias"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases/" + tea.StringValue(aliasName)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/aliases/" + tea.StringValue(openapiutil.GetEncodeParam(aliasName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -11636,7 +11815,6 @@ func (client *Client) DeleteCustomDomain(domainName *string) (_result *DeleteCus
 }
 
 func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers *DeleteCustomDomainHeaders, runtime *util.RuntimeOptions) (_result *DeleteCustomDomainResponse, _err error) {
-	domainName = openapiutil.GetEncodeParam(domainName)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -11661,7 +11839,7 @@ func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers 
 		Action:      tea.String("DeleteCustomDomain"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/custom-domains/" + tea.StringValue(domainName)),
+		Pathname:    tea.String("/2021-04-06/custom-domains/" + tea.StringValue(openapiutil.GetEncodeParam(domainName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -11690,8 +11868,6 @@ func (client *Client) DeleteFunction(serviceName *string, functionName *string) 
 }
 
 func (client *Client) DeleteFunctionWithOptions(serviceName *string, functionName *string, headers *DeleteFunctionHeaders, runtime *util.RuntimeOptions) (_result *DeleteFunctionResponse, _err error) {
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -11720,7 +11896,7 @@ func (client *Client) DeleteFunctionWithOptions(serviceName *string, functionNam
 		Action:      tea.String("DeleteFunction"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -11753,8 +11929,6 @@ func (client *Client) DeleteFunctionAsyncInvokeConfigWithOptions(serviceName *st
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -11785,7 +11959,7 @@ func (client *Client) DeleteFunctionAsyncInvokeConfigWithOptions(serviceName *st
 		Action:      tea.String("DeleteFunctionAsyncInvokeConfig"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/async-invoke-config"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/async-invoke-config"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -11818,8 +11992,6 @@ func (client *Client) DeleteFunctionOnDemandConfigWithOptions(serviceName *strin
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -11854,7 +12026,7 @@ func (client *Client) DeleteFunctionOnDemandConfigWithOptions(serviceName *strin
 		Action:      tea.String("DeleteFunctionOnDemandConfig"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/on-demand-config"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/on-demand-config"),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -11883,8 +12055,6 @@ func (client *Client) DeleteLayerVersion(layerName *string, version *string) (_r
 }
 
 func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *string, headers *DeleteLayerVersionHeaders, runtime *util.RuntimeOptions) (_result *DeleteLayerVersionResponse, _err error) {
-	layerName = openapiutil.GetEncodeParam(layerName)
-	version = openapiutil.GetEncodeParam(version)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -11909,7 +12079,7 @@ func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *
 		Action:      tea.String("DeleteLayerVersion"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions/" + tea.StringValue(version)),
+		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(openapiutil.GetEncodeParam(layerName)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(version))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -11938,7 +12108,6 @@ func (client *Client) DeleteService(serviceName *string) (_result *DeleteService
 }
 
 func (client *Client) DeleteServiceWithOptions(serviceName *string, headers *DeleteServiceHeaders, runtime *util.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
-	serviceName = openapiutil.GetEncodeParam(serviceName)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -11967,7 +12136,7 @@ func (client *Client) DeleteServiceWithOptions(serviceName *string, headers *Del
 		Action:      tea.String("DeleteService"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -11996,8 +12165,6 @@ func (client *Client) DeleteServiceVersion(serviceName *string, versionId *strin
 }
 
 func (client *Client) DeleteServiceVersionWithOptions(serviceName *string, versionId *string, headers *DeleteServiceVersionHeaders, runtime *util.RuntimeOptions) (_result *DeleteServiceVersionResponse, _err error) {
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	versionId = openapiutil.GetEncodeParam(versionId)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -12022,7 +12189,7 @@ func (client *Client) DeleteServiceVersionWithOptions(serviceName *string, versi
 		Action:      tea.String("DeleteServiceVersion"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/versions/" + tea.StringValue(versionId)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(versionId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12051,9 +12218,6 @@ func (client *Client) DeleteTrigger(serviceName *string, functionName *string, t
 }
 
 func (client *Client) DeleteTriggerWithOptions(serviceName *string, functionName *string, triggerName *string, headers *DeleteTriggerHeaders, runtime *util.RuntimeOptions) (_result *DeleteTriggerResponse, _err error) {
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
-	triggerName = openapiutil.GetEncodeParam(triggerName)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -12082,7 +12246,7 @@ func (client *Client) DeleteTriggerWithOptions(serviceName *string, functionName
 		Action:      tea.String("DeleteTrigger"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers/" + tea.StringValue(triggerName)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/triggers/" + tea.StringValue(openapiutil.GetEncodeParam(triggerName))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12111,8 +12275,6 @@ func (client *Client) DeleteVpcBinding(serviceName *string, vpcId *string) (_res
 }
 
 func (client *Client) DeleteVpcBindingWithOptions(serviceName *string, vpcId *string, headers *DeleteVpcBindingHeaders, runtime *util.RuntimeOptions) (_result *DeleteVpcBindingResponse, _err error) {
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	vpcId = openapiutil.GetEncodeParam(vpcId)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -12137,7 +12299,7 @@ func (client *Client) DeleteVpcBindingWithOptions(serviceName *string, vpcId *st
 		Action:      tea.String("DeleteVpcBinding"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/bindings/" + tea.StringValue(vpcId)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/bindings/" + tea.StringValue(openapiutil.GetEncodeParam(vpcId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12170,9 +12332,6 @@ func (client *Client) DeregisterEventSourceWithOptions(serviceName *string, func
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
-	sourceArn = openapiutil.GetEncodeParam(sourceArn)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -12203,7 +12362,7 @@ func (client *Client) DeregisterEventSourceWithOptions(serviceName *string, func
 		Action:      tea.String("DeregisterEventSource"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/event-sources/" + tea.StringValue(sourceArn)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/event-sources/" + tea.StringValue(openapiutil.GetEncodeParam(sourceArn))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12285,8 +12444,6 @@ func (client *Client) GetAlias(serviceName *string, aliasName *string) (_result 
 }
 
 func (client *Client) GetAliasWithOptions(serviceName *string, aliasName *string, headers *GetAliasHeaders, runtime *util.RuntimeOptions) (_result *GetAliasResponse, _err error) {
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	aliasName = openapiutil.GetEncodeParam(aliasName)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -12311,7 +12468,7 @@ func (client *Client) GetAliasWithOptions(serviceName *string, aliasName *string
 		Action:      tea.String("GetAlias"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases/" + tea.StringValue(aliasName)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/aliases/" + tea.StringValue(openapiutil.GetEncodeParam(aliasName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12340,7 +12497,6 @@ func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDom
 }
 
 func (client *Client) GetCustomDomainWithOptions(domainName *string, headers *GetCustomDomainHeaders, runtime *util.RuntimeOptions) (_result *GetCustomDomainResponse, _err error) {
-	domainName = openapiutil.GetEncodeParam(domainName)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -12365,7 +12521,7 @@ func (client *Client) GetCustomDomainWithOptions(domainName *string, headers *Ge
 		Action:      tea.String("GetCustomDomain"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/custom-domains/" + tea.StringValue(domainName)),
+		Pathname:    tea.String("/2021-04-06/custom-domains/" + tea.StringValue(openapiutil.GetEncodeParam(domainName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12398,8 +12554,6 @@ func (client *Client) GetFunctionWithOptions(serviceName *string, functionName *
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -12430,7 +12584,7 @@ func (client *Client) GetFunctionWithOptions(serviceName *string, functionName *
 		Action:      tea.String("GetFunction"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12463,8 +12617,6 @@ func (client *Client) GetFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -12495,7 +12647,7 @@ func (client *Client) GetFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 		Action:      tea.String("GetFunctionAsyncInvokeConfig"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/async-invoke-config"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/async-invoke-config"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12528,8 +12680,6 @@ func (client *Client) GetFunctionCodeWithOptions(serviceName *string, functionNa
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -12560,7 +12710,7 @@ func (client *Client) GetFunctionCodeWithOptions(serviceName *string, functionNa
 		Action:      tea.String("GetFunctionCode"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/code"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/code"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12593,8 +12743,6 @@ func (client *Client) GetFunctionOnDemandConfigWithOptions(serviceName *string, 
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -12625,7 +12773,7 @@ func (client *Client) GetFunctionOnDemandConfigWithOptions(serviceName *string, 
 		Action:      tea.String("GetFunctionOnDemandConfig"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/on-demand-config"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/on-demand-config"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12654,8 +12802,6 @@ func (client *Client) GetLayerVersion(layerName *string, version *string) (_resu
 }
 
 func (client *Client) GetLayerVersionWithOptions(layerName *string, version *string, headers *GetLayerVersionHeaders, runtime *util.RuntimeOptions) (_result *GetLayerVersionResponse, _err error) {
-	layerName = openapiutil.GetEncodeParam(layerName)
-	version = openapiutil.GetEncodeParam(version)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -12680,7 +12826,7 @@ func (client *Client) GetLayerVersionWithOptions(layerName *string, version *str
 		Action:      tea.String("GetLayerVersion"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions/" + tea.StringValue(version)),
+		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(openapiutil.GetEncodeParam(layerName)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(version))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12713,8 +12859,6 @@ func (client *Client) GetProvisionConfigWithOptions(serviceName *string, functio
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -12745,7 +12889,7 @@ func (client *Client) GetProvisionConfigWithOptions(serviceName *string, functio
 		Action:      tea.String("GetProvisionConfig"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/provision-config"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/provision-config"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12841,7 +12985,6 @@ func (client *Client) GetServiceWithOptions(serviceName *string, request *GetSer
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -12872,7 +13015,7 @@ func (client *Client) GetServiceWithOptions(serviceName *string, request *GetSer
 		Action:      tea.String("GetService"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12905,9 +13048,6 @@ func (client *Client) GetStatefulAsyncInvocationWithOptions(serviceName *string,
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
-	invocationId = openapiutil.GetEncodeParam(invocationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -12950,7 +13090,7 @@ func (client *Client) GetStatefulAsyncInvocationWithOptions(serviceName *string,
 		Action:      tea.String("GetStatefulAsyncInvocation"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/stateful-async-invocations/" + tea.StringValue(invocationId)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/stateful-async-invocations/" + tea.StringValue(openapiutil.GetEncodeParam(invocationId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -12979,9 +13119,6 @@ func (client *Client) GetTrigger(serviceName *string, functionName *string, trig
 }
 
 func (client *Client) GetTriggerWithOptions(serviceName *string, functionName *string, triggerName *string, headers *GetTriggerHeaders, runtime *util.RuntimeOptions) (_result *GetTriggerResponse, _err error) {
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
-	triggerName = openapiutil.GetEncodeParam(triggerName)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -13006,7 +13143,7 @@ func (client *Client) GetTriggerWithOptions(serviceName *string, functionName *s
 		Action:      tea.String("GetTrigger"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers/" + tea.StringValue(triggerName)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/triggers/" + tea.StringValue(openapiutil.GetEncodeParam(triggerName))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13039,8 +13176,6 @@ func (client *Client) InvokeFunctionWithOptions(serviceName *string, functionNam
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -13089,7 +13224,7 @@ func (client *Client) InvokeFunctionWithOptions(serviceName *string, functionNam
 		Action:      tea.String("InvokeFunction"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/invocations"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/invocations"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13122,7 +13257,6 @@ func (client *Client) ListAliasesWithOptions(serviceName *string, request *ListA
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Limit)) {
 		query["limit"] = request.Limit
@@ -13165,7 +13299,7 @@ func (client *Client) ListAliasesWithOptions(serviceName *string, request *ListA
 		Action:      tea.String("ListAliases"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/aliases"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13273,8 +13407,6 @@ func (client *Client) ListEventSourcesWithOptions(serviceName *string, functionN
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -13305,7 +13437,7 @@ func (client *Client) ListEventSourcesWithOptions(serviceName *string, functionN
 		Action:      tea.String("ListEventSources"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/event-sources"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/event-sources"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13338,8 +13470,6 @@ func (client *Client) ListFunctionAsyncInvokeConfigsWithOptions(serviceName *str
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Limit)) {
 		query["limit"] = request.Limit
@@ -13386,7 +13516,7 @@ func (client *Client) ListFunctionAsyncInvokeConfigsWithOptions(serviceName *str
 		Action:      tea.String("ListFunctionAsyncInvokeConfigs"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/async-invoke-configs"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/async-invoke-configs"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13419,7 +13549,6 @@ func (client *Client) ListFunctionsWithOptions(serviceName *string, request *Lis
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Limit)) {
 		query["limit"] = request.Limit
@@ -13466,7 +13595,7 @@ func (client *Client) ListFunctionsWithOptions(serviceName *string, request *Lis
 		Action:      tea.String("ListFunctions"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13499,8 +13628,6 @@ func (client *Client) ListInstancesWithOptions(serviceName *string, functionName
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
 		query["instanceIds"] = request.InstanceIds
@@ -13531,7 +13658,7 @@ func (client *Client) ListInstancesWithOptions(serviceName *string, functionName
 		Action:      tea.String("ListInstances"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/instances"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/instances"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13564,7 +13691,6 @@ func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *L
 	if _err != nil {
 		return _result, _err
 	}
-	layerName = openapiutil.GetEncodeParam(layerName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Limit)) {
 		query["limit"] = request.Limit
@@ -13599,7 +13725,7 @@ func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *L
 		Action:      tea.String("ListLayerVersions"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions"),
+		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(openapiutil.GetEncodeParam(layerName)) + "/versions"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -13932,7 +14058,6 @@ func (client *Client) ListServiceVersionsWithOptions(serviceName *string, reques
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Direction)) {
 		query["direction"] = request.Direction
@@ -13975,7 +14100,7 @@ func (client *Client) ListServiceVersionsWithOptions(serviceName *string, reques
 		Action:      tea.String("ListServiceVersions"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/versions"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/versions"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14150,8 +14275,6 @@ func (client *Client) ListStatefulAsyncInvocationsWithOptions(serviceName *strin
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IncludePayload)) {
 		query["includePayload"] = request.IncludePayload
@@ -14226,7 +14349,7 @@ func (client *Client) ListStatefulAsyncInvocationsWithOptions(serviceName *strin
 		Action:      tea.String("ListStatefulAsyncInvocations"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/stateful-async-invocations"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/stateful-async-invocations"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14326,8 +14449,6 @@ func (client *Client) ListTriggersWithOptions(serviceName *string, functionName 
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Limit)) {
 		query["limit"] = request.Limit
@@ -14370,7 +14491,7 @@ func (client *Client) ListTriggersWithOptions(serviceName *string, functionName 
 		Action:      tea.String("ListTriggers"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/triggers"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14399,7 +14520,6 @@ func (client *Client) ListVpcBindings(serviceName *string) (_result *ListVpcBind
 }
 
 func (client *Client) ListVpcBindingsWithOptions(serviceName *string, headers *ListVpcBindingsHeaders, runtime *util.RuntimeOptions) (_result *ListVpcBindingsResponse, _err error) {
-	serviceName = openapiutil.GetEncodeParam(serviceName)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -14424,7 +14544,7 @@ func (client *Client) ListVpcBindingsWithOptions(serviceName *string, headers *L
 		Action:      tea.String("ListVpcBindings"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/bindings"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/bindings"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14457,7 +14577,6 @@ func (client *Client) PublishServiceVersionWithOptions(serviceName *string, requ
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
@@ -14492,7 +14611,7 @@ func (client *Client) PublishServiceVersionWithOptions(serviceName *string, requ
 		Action:      tea.String("PublishServiceVersion"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/versions"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/versions"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14525,8 +14644,6 @@ func (client *Client) PutFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -14575,7 +14692,7 @@ func (client *Client) PutFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 		Action:      tea.String("PutFunctionAsyncInvokeConfig"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/async-invoke-config"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/async-invoke-config"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14608,8 +14725,6 @@ func (client *Client) PutFunctionOnDemandConfigWithOptions(serviceName *string, 
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -14650,7 +14765,7 @@ func (client *Client) PutFunctionOnDemandConfigWithOptions(serviceName *string, 
 		Action:      tea.String("PutFunctionOnDemandConfig"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/on-demand-config"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/on-demand-config"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14683,7 +14798,6 @@ func (client *Client) PutLayerACLWithOptions(layerName *string, request *PutLaye
 	if _err != nil {
 		return _result, _err
 	}
-	layerName = openapiutil.GetEncodeParam(layerName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Public)) {
 		query["public"] = request.Public
@@ -14714,7 +14828,7 @@ func (client *Client) PutLayerACLWithOptions(layerName *string, request *PutLaye
 		Action:      tea.String("PutLayerACL"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/acl"),
+		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(openapiutil.GetEncodeParam(layerName)) + "/acl"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14747,8 +14861,6 @@ func (client *Client) PutProvisionConfigWithOptions(serviceName *string, functio
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -14797,7 +14909,7 @@ func (client *Client) PutProvisionConfigWithOptions(serviceName *string, functio
 		Action:      tea.String("PutProvisionConfig"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/provision-config"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/provision-config"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14830,8 +14942,6 @@ func (client *Client) RegisterEventSourceWithOptions(serviceName *string, functi
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -14868,7 +14978,7 @@ func (client *Client) RegisterEventSourceWithOptions(serviceName *string, functi
 		Action:      tea.String("RegisterEventSource"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/event-sources"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/event-sources"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14897,7 +15007,6 @@ func (client *Client) ReleaseGPUInstance(instanceId *string) (_result *ReleaseGP
 }
 
 func (client *Client) ReleaseGPUInstanceWithOptions(instanceId *string, headers *ReleaseGPUInstanceHeaders, runtime *util.RuntimeOptions) (_result *ReleaseGPUInstanceResponse, _err error) {
-	instanceId = openapiutil.GetEncodeParam(instanceId)
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -14922,7 +15031,7 @@ func (client *Client) ReleaseGPUInstanceWithOptions(instanceId *string, headers 
 		Action:      tea.String("ReleaseGPUInstance"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/gpuInstances/" + tea.StringValue(instanceId)),
+		Pathname:    tea.String("/2021-04-06/gpuInstances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -14955,9 +15064,6 @@ func (client *Client) StopStatefulAsyncInvocationWithOptions(serviceName *string
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
-	invocationId = openapiutil.GetEncodeParam(invocationId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
@@ -14988,7 +15094,7 @@ func (client *Client) StopStatefulAsyncInvocationWithOptions(serviceName *string
 		Action:      tea.String("StopStatefulAsyncInvocation"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/stateful-async-invocations/" + tea.StringValue(invocationId)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/stateful-async-invocations/" + tea.StringValue(openapiutil.GetEncodeParam(invocationId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15159,8 +15265,6 @@ func (client *Client) UpdateAliasWithOptions(serviceName *string, aliasName *str
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	aliasName = openapiutil.GetEncodeParam(aliasName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AdditionalVersionWeight)) {
 		body["additionalVersionWeight"] = request.AdditionalVersionWeight
@@ -15211,7 +15315,7 @@ func (client *Client) UpdateAliasWithOptions(serviceName *string, aliasName *str
 		Action:      tea.String("UpdateAlias"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/aliases/" + tea.StringValue(aliasName)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/aliases/" + tea.StringValue(openapiutil.GetEncodeParam(aliasName))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15244,7 +15348,6 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	domainName = openapiutil.GetEncodeParam(domainName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CertConfig))) {
 		body["certConfig"] = request.CertConfig
@@ -15287,7 +15390,7 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 		Action:      tea.String("UpdateCustomDomain"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/custom-domains/" + tea.StringValue(domainName)),
+		Pathname:    tea.String("/2021-04-06/custom-domains/" + tea.StringValue(openapiutil.GetEncodeParam(domainName))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15320,8 +15423,6 @@ func (client *Client) UpdateFunctionWithOptions(serviceName *string, functionNam
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceConcurrency)) {
 		body["InstanceConcurrency"] = request.InstanceConcurrency
@@ -15333,6 +15434,10 @@ func (client *Client) UpdateFunctionWithOptions(serviceName *string, functionNam
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Code))) {
 		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
+		body["cpu"] = request.Cpu
 	}
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CustomContainerConfig))) {
@@ -15353,6 +15458,10 @@ func (client *Client) UpdateFunctionWithOptions(serviceName *string, functionNam
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskSize)) {
+		body["diskSize"] = request.DiskSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentVariables)) {
@@ -15432,7 +15541,7 @@ func (client *Client) UpdateFunctionWithOptions(serviceName *string, functionNam
 		Action:      tea.String("UpdateFunction"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15465,7 +15574,6 @@ func (client *Client) UpdateServiceWithOptions(serviceName *string, request *Upd
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
@@ -15528,7 +15636,7 @@ func (client *Client) UpdateServiceWithOptions(serviceName *string, request *Upd
 		Action:      tea.String("UpdateService"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -15561,9 +15669,6 @@ func (client *Client) UpdateTriggerWithOptions(serviceName *string, functionName
 	if _err != nil {
 		return _result, _err
 	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
-	triggerName = openapiutil.GetEncodeParam(triggerName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
@@ -15610,7 +15715,7 @@ func (client *Client) UpdateTriggerWithOptions(serviceName *string, functionName
 		Action:      tea.String("UpdateTrigger"),
 		Version:     tea.String("2021-04-06"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/triggers/" + tea.StringValue(triggerName)),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/triggers/" + tea.StringValue(openapiutil.GetEncodeParam(triggerName))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
