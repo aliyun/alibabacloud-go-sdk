@@ -1,3 +1,6 @@
+2022-11-02 Version: v3.0.2
+- UpdateMeshFetaure support additional global Sidecar config.
+
 2022-10-14 Version: v3.0.1
 - DescribeGuestClusterNamespaces support show namespace labels.
 

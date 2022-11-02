@@ -5038,6 +5038,7 @@ type DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches struct {
 	SidecarProxyResourceLimit       *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyResourceLimit       `json:"SidecarProxyResourceLimit,omitempty" xml:"SidecarProxyResourceLimit,omitempty" type:"Struct"`
 	SidecarProxyResourceRequest     *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyResourceRequest     `json:"SidecarProxyResourceRequest,omitempty" xml:"SidecarProxyResourceRequest,omitempty" type:"Struct"`
 	TerminationDrainDuration        *string                                                                                      `json:"TerminationDrainDuration,omitempty" xml:"TerminationDrainDuration,omitempty"`
+	Tracing                         *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing                         `json:"Tracing,omitempty" xml:"Tracing,omitempty" type:"Struct"`
 }
 
 func (s DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) String() string {
@@ -5130,6 +5131,11 @@ func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetSideca
 
 func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetTerminationDrainDuration(v string) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches {
 	s.TerminationDrainDuration = &v
+	return s
+}
+
+func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches) SetTracing(v *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches {
+	s.Tracing = v
 	return s
 }
 
@@ -5251,6 +5257,35 @@ func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProx
 
 func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyResourceRequest) SetResourceMemoryRequest(v string) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyResourceRequest {
 	s.ResourceMemoryRequest = &v
+	return s
+}
+
+type DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing struct {
+	CustomTags       map[string]interface{} `json:"CustomTags,omitempty" xml:"CustomTags,omitempty"`
+	MaxPathTagLength *int32                 `json:"MaxPathTagLength,omitempty" xml:"MaxPathTagLength,omitempty"`
+	Sampling         *float64               `json:"Sampling,omitempty" xml:"Sampling,omitempty"`
+}
+
+func (s DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing) SetCustomTags(v map[string]interface{}) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing {
+	s.CustomTags = v
+	return s
+}
+
+func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing) SetMaxPathTagLength(v int32) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing {
+	s.MaxPathTagLength = &v
+	return s
+}
+
+func (s *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing) SetSampling(v float64) *DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing {
+	s.Sampling = &v
 	return s
 }
 
@@ -12040,6 +12075,7 @@ type UpdateMeshFeatureRequest struct {
 	ClusterSpec                     *string  `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	CniEnabled                      *bool    `json:"CniEnabled,omitempty" xml:"CniEnabled,omitempty"`
 	CniExcludeNamespaces            *string  `json:"CniExcludeNamespaces,omitempty" xml:"CniExcludeNamespaces,omitempty"`
+	Concurrency                     *int32   `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
 	ConfigSourceEnabled             *bool    `json:"ConfigSourceEnabled,omitempty" xml:"ConfigSourceEnabled,omitempty"`
 	ConfigSourceNacosID             *string  `json:"ConfigSourceNacosID,omitempty" xml:"ConfigSourceNacosID,omitempty"`
 	CustomizedPrometheus            *bool    `json:"CustomizedPrometheus,omitempty" xml:"CustomizedPrometheus,omitempty"`
@@ -12058,14 +12094,17 @@ type UpdateMeshFeatureRequest struct {
 	FilterGatewayClusterConfig      *bool    `json:"FilterGatewayClusterConfig,omitempty" xml:"FilterGatewayClusterConfig,omitempty"`
 	GatewayAPIEnabled               *bool    `json:"GatewayAPIEnabled,omitempty" xml:"GatewayAPIEnabled,omitempty"`
 	GlobalRateLimitEnabled          *bool    `json:"GlobalRateLimitEnabled,omitempty" xml:"GlobalRateLimitEnabled,omitempty"`
+	HoldApplicationUntilProxyStarts *bool    `json:"HoldApplicationUntilProxyStarts,omitempty" xml:"HoldApplicationUntilProxyStarts,omitempty"`
 	Http10Enabled                   *bool    `json:"Http10Enabled,omitempty" xml:"Http10Enabled,omitempty"`
 	IncludeIPRanges                 *string  `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
 	IncludeInboundPorts             *string  `json:"IncludeInboundPorts,omitempty" xml:"IncludeInboundPorts,omitempty"`
+	IncludeOutboundPorts            *string  `json:"IncludeOutboundPorts,omitempty" xml:"IncludeOutboundPorts,omitempty"`
 	IntegrateKiali                  *bool    `json:"IntegrateKiali,omitempty" xml:"IntegrateKiali,omitempty"`
 	KialiEnabled                    *bool    `json:"KialiEnabled,omitempty" xml:"KialiEnabled,omitempty"`
 	Lifecycle                       *string  `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
 	LocalityLBConf                  *string  `json:"LocalityLBConf,omitempty" xml:"LocalityLBConf,omitempty"`
 	LocalityLoadBalancing           *bool    `json:"LocalityLoadBalancing,omitempty" xml:"LocalityLoadBalancing,omitempty"`
+	LogLevel                        *string  `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
 	MSEEnabled                      *bool    `json:"MSEEnabled,omitempty" xml:"MSEEnabled,omitempty"`
 	MultiBufferEnabled              *bool    `json:"MultiBufferEnabled,omitempty" xml:"MultiBufferEnabled,omitempty"`
 	MultiBufferPollDelay            *string  `json:"MultiBufferPollDelay,omitempty" xml:"MultiBufferPollDelay,omitempty"`
@@ -12094,6 +12133,7 @@ type UpdateMeshFeatureRequest struct {
 	ProxyLimitMemory                *string  `json:"ProxyLimitMemory,omitempty" xml:"ProxyLimitMemory,omitempty"`
 	ProxyRequestCPU                 *string  `json:"ProxyRequestCPU,omitempty" xml:"ProxyRequestCPU,omitempty"`
 	ProxyRequestMemory              *string  `json:"ProxyRequestMemory,omitempty" xml:"ProxyRequestMemory,omitempty"`
+	ProxyStatsMatcher               *string  `json:"ProxyStatsMatcher,omitempty" xml:"ProxyStatsMatcher,omitempty"`
 	RedisFilterEnabled              *bool    `json:"RedisFilterEnabled,omitempty" xml:"RedisFilterEnabled,omitempty"`
 	ServiceMeshId                   *string  `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	SidecarInjectorLimitCPU         *string  `json:"SidecarInjectorLimitCPU,omitempty" xml:"SidecarInjectorLimitCPU,omitempty"`
@@ -12104,6 +12144,8 @@ type UpdateMeshFeatureRequest struct {
 	Telemetry                       *bool    `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
 	TerminationDrainDuration        *string  `json:"TerminationDrainDuration,omitempty" xml:"TerminationDrainDuration,omitempty"`
 	ThriftFilterEnabled             *bool    `json:"ThriftFilterEnabled,omitempty" xml:"ThriftFilterEnabled,omitempty"`
+	TraceCustomTags                 *string  `json:"TraceCustomTags,omitempty" xml:"TraceCustomTags,omitempty"`
+	TraceMaxPathTagLength           *string  `json:"TraceMaxPathTagLength,omitempty" xml:"TraceMaxPathTagLength,omitempty"`
 	TraceSampling                   *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
 	Tracing                         *bool    `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
 	TracingOnExtZipkinLimitCPU      *string  `json:"TracingOnExtZipkinLimitCPU,omitempty" xml:"TracingOnExtZipkinLimitCPU,omitempty"`
@@ -12193,6 +12235,11 @@ func (s *UpdateMeshFeatureRequest) SetCniEnabled(v bool) *UpdateMeshFeatureReque
 
 func (s *UpdateMeshFeatureRequest) SetCniExcludeNamespaces(v string) *UpdateMeshFeatureRequest {
 	s.CniExcludeNamespaces = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetConcurrency(v int32) *UpdateMeshFeatureRequest {
+	s.Concurrency = &v
 	return s
 }
 
@@ -12286,6 +12333,11 @@ func (s *UpdateMeshFeatureRequest) SetGlobalRateLimitEnabled(v bool) *UpdateMesh
 	return s
 }
 
+func (s *UpdateMeshFeatureRequest) SetHoldApplicationUntilProxyStarts(v bool) *UpdateMeshFeatureRequest {
+	s.HoldApplicationUntilProxyStarts = &v
+	return s
+}
+
 func (s *UpdateMeshFeatureRequest) SetHttp10Enabled(v bool) *UpdateMeshFeatureRequest {
 	s.Http10Enabled = &v
 	return s
@@ -12298,6 +12350,11 @@ func (s *UpdateMeshFeatureRequest) SetIncludeIPRanges(v string) *UpdateMeshFeatu
 
 func (s *UpdateMeshFeatureRequest) SetIncludeInboundPorts(v string) *UpdateMeshFeatureRequest {
 	s.IncludeInboundPorts = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetIncludeOutboundPorts(v string) *UpdateMeshFeatureRequest {
+	s.IncludeOutboundPorts = &v
 	return s
 }
 
@@ -12323,6 +12380,11 @@ func (s *UpdateMeshFeatureRequest) SetLocalityLBConf(v string) *UpdateMeshFeatur
 
 func (s *UpdateMeshFeatureRequest) SetLocalityLoadBalancing(v bool) *UpdateMeshFeatureRequest {
 	s.LocalityLoadBalancing = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetLogLevel(v string) *UpdateMeshFeatureRequest {
+	s.LogLevel = &v
 	return s
 }
 
@@ -12466,6 +12528,11 @@ func (s *UpdateMeshFeatureRequest) SetProxyRequestMemory(v string) *UpdateMeshFe
 	return s
 }
 
+func (s *UpdateMeshFeatureRequest) SetProxyStatsMatcher(v string) *UpdateMeshFeatureRequest {
+	s.ProxyStatsMatcher = &v
+	return s
+}
+
 func (s *UpdateMeshFeatureRequest) SetRedisFilterEnabled(v bool) *UpdateMeshFeatureRequest {
 	s.RedisFilterEnabled = &v
 	return s
@@ -12513,6 +12580,16 @@ func (s *UpdateMeshFeatureRequest) SetTerminationDrainDuration(v string) *Update
 
 func (s *UpdateMeshFeatureRequest) SetThriftFilterEnabled(v bool) *UpdateMeshFeatureRequest {
 	s.ThriftFilterEnabled = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetTraceCustomTags(v string) *UpdateMeshFeatureRequest {
+	s.TraceCustomTags = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetTraceMaxPathTagLength(v string) *UpdateMeshFeatureRequest {
+	s.TraceMaxPathTagLength = &v
 	return s
 }
 
@@ -12623,6 +12700,7 @@ type UpdateNamespaceScopeSidecarConfigRequest struct {
 	SidecarProxyMemoryResourceLimit   *string `json:"SidecarProxyMemoryResourceLimit,omitempty" xml:"SidecarProxyMemoryResourceLimit,omitempty"`
 	SidecarProxyMemoryResourceRequest *string `json:"SidecarProxyMemoryResourceRequest,omitempty" xml:"SidecarProxyMemoryResourceRequest,omitempty"`
 	TerminationDrainDuration          *string `json:"TerminationDrainDuration,omitempty" xml:"TerminationDrainDuration,omitempty"`
+	Tracing                           *string `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
 }
 
 func (s UpdateNamespaceScopeSidecarConfigRequest) String() string {
@@ -12755,6 +12833,11 @@ func (s *UpdateNamespaceScopeSidecarConfigRequest) SetSidecarProxyMemoryResource
 
 func (s *UpdateNamespaceScopeSidecarConfigRequest) SetTerminationDrainDuration(v string) *UpdateNamespaceScopeSidecarConfigRequest {
 	s.TerminationDrainDuration = &v
+	return s
+}
+
+func (s *UpdateNamespaceScopeSidecarConfigRequest) SetTracing(v string) *UpdateNamespaceScopeSidecarConfigRequest {
+	s.Tracing = &v
 	return s
 }
 
@@ -17262,6 +17345,10 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 		body["CniExcludeNamespaces"] = request.CniExcludeNamespaces
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Concurrency)) {
+		body["Concurrency"] = request.Concurrency
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ConfigSourceEnabled)) {
 		body["ConfigSourceEnabled"] = request.ConfigSourceEnabled
 	}
@@ -17334,6 +17421,10 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 		body["GlobalRateLimitEnabled"] = request.GlobalRateLimitEnabled
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HoldApplicationUntilProxyStarts)) {
+		body["HoldApplicationUntilProxyStarts"] = request.HoldApplicationUntilProxyStarts
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Http10Enabled)) {
 		body["Http10Enabled"] = request.Http10Enabled
 	}
@@ -17344,6 +17435,10 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 
 	if !tea.BoolValue(util.IsUnset(request.IncludeInboundPorts)) {
 		body["IncludeInboundPorts"] = request.IncludeInboundPorts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeOutboundPorts)) {
+		body["IncludeOutboundPorts"] = request.IncludeOutboundPorts
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IntegrateKiali)) {
@@ -17364,6 +17459,10 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 
 	if !tea.BoolValue(util.IsUnset(request.LocalityLoadBalancing)) {
 		body["LocalityLoadBalancing"] = request.LocalityLoadBalancing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogLevel)) {
+		body["LogLevel"] = request.LogLevel
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MSEEnabled)) {
@@ -17478,6 +17577,10 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 		body["ProxyRequestMemory"] = request.ProxyRequestMemory
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProxyStatsMatcher)) {
+		body["ProxyStatsMatcher"] = request.ProxyStatsMatcher
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RedisFilterEnabled)) {
 		body["RedisFilterEnabled"] = request.RedisFilterEnabled
 	}
@@ -17516,6 +17619,14 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 
 	if !tea.BoolValue(util.IsUnset(request.ThriftFilterEnabled)) {
 		body["ThriftFilterEnabled"] = request.ThriftFilterEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceCustomTags)) {
+		body["TraceCustomTags"] = request.TraceCustomTags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceMaxPathTagLength)) {
+		body["TraceMaxPathTagLength"] = request.TraceMaxPathTagLength
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TraceSampling)) {
@@ -17684,6 +17795,10 @@ func (client *Client) UpdateNamespaceScopeSidecarConfigWithOptions(request *Upda
 
 	if !tea.BoolValue(util.IsUnset(request.TerminationDrainDuration)) {
 		body["TerminationDrainDuration"] = request.TerminationDrainDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tracing)) {
+		body["Tracing"] = request.Tracing
 	}
 
 	req := &openapi.OpenApiRequest{
