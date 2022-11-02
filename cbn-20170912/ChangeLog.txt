@@ -1,3 +1,9 @@
+2022-11-02 Version: v2.0.1
+- Update ListTransitRouterPrefixListAssociation support NextHop and NextHopType filter.
+- Update ListTransitRouterPrefixListAssociation support TransitRouterRouteTableId  filter.
+- Update ListTrafficMarkingPolicies no TrafficMatchRules field in response if no TrafficMarkingPolicyId in request.
+- Update ListCenInterRegionTrafficQosPolicies no TrafficQosQueues field in response if no TrafficQosPolicyId in request.
+
 2022-09-23 Version: v2.0.0
 - Generated golang 2017-09-12 for Cbn.
 

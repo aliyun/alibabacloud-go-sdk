@@ -1092,6 +1092,7 @@ type CreateCenBandwidthPackageRequest struct {
 	PricingCycle               *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	ResourceOwnerAccount       *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId            *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ServiceType                *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
 func (s CreateCenBandwidthPackageRequest) String() string {
@@ -1179,6 +1180,11 @@ func (s *CreateCenBandwidthPackageRequest) SetResourceOwnerAccount(v string) *Cr
 
 func (s *CreateCenBandwidthPackageRequest) SetResourceOwnerId(v int64) *CreateCenBandwidthPackageRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateCenBandwidthPackageRequest) SetServiceType(v string) *CreateCenBandwidthPackageRequest {
+	s.ServiceType = &v
 	return s
 }
 
@@ -6524,6 +6530,7 @@ type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPac
 	ReservationBandwidth            *string                                                                                                         `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
 	ReservationInternetChargeType   *string                                                                                                         `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
 	ReservationOrderType            *string                                                                                                         `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
+	ServiceType                     *string                                                                                                         `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	Status                          *string                                                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -6627,6 +6634,11 @@ func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidt
 
 func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetReservationOrderType(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
 	s.ReservationOrderType = &v
+	return s
+}
+
+func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) SetServiceType(v string) *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage {
+	s.ServiceType = &v
 	return s
 }
 
@@ -13761,6 +13773,7 @@ func (s *ListTransitRouterMulticastDomainsResponse) SetBody(v *ListTransitRouter
 
 type ListTransitRouterMulticastGroupsRequest struct {
 	ClientToken                       *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConnectPeerIds                    []*string `json:"ConnectPeerIds,omitempty" xml:"ConnectPeerIds,omitempty" type:"Repeated"`
 	GroupIpAddress                    *string   `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
 	MaxResults                        *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken                         *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -13786,6 +13799,11 @@ func (s ListTransitRouterMulticastGroupsRequest) GoString() string {
 
 func (s *ListTransitRouterMulticastGroupsRequest) SetClientToken(v string) *ListTransitRouterMulticastGroupsRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetConnectPeerIds(v []*string) *ListTransitRouterMulticastGroupsRequest {
+	s.ConnectPeerIds = v
 	return s
 }
 
@@ -14262,6 +14280,8 @@ func (s *ListTransitRouterPeerAttachmentsResponse) SetBody(v *ListTransitRouterP
 }
 
 type ListTransitRouterPrefixListAssociationRequest struct {
+	NextHop              *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	OwnerUid             *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
@@ -14281,6 +14301,16 @@ func (s ListTransitRouterPrefixListAssociationRequest) String() string {
 
 func (s ListTransitRouterPrefixListAssociationRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListTransitRouterPrefixListAssociationRequest) SetNextHop(v string) *ListTransitRouterPrefixListAssociationRequest {
+	s.NextHop = &v
+	return s
+}
+
+func (s *ListTransitRouterPrefixListAssociationRequest) SetNextHopType(v string) *ListTransitRouterPrefixListAssociationRequest {
+	s.NextHopType = &v
+	return s
 }
 
 func (s *ListTransitRouterPrefixListAssociationRequest) SetOwnerAccount(v string) *ListTransitRouterPrefixListAssociationRequest {
@@ -14587,6 +14617,8 @@ func (s *ListTransitRouterRouteEntriesResponseBody) SetTransitRouterRouteEntries
 
 type ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries struct {
 	CreateTime                                  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	OperationalMode                             *bool   `json:"OperationalMode,omitempty" xml:"OperationalMode,omitempty"`
+	Tag                                         *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	TransitRouterRouteEntryDescription          *string `json:"TransitRouterRouteEntryDescription,omitempty" xml:"TransitRouterRouteEntryDescription,omitempty"`
 	TransitRouterRouteEntryDestinationCidrBlock *string `json:"TransitRouterRouteEntryDestinationCidrBlock,omitempty" xml:"TransitRouterRouteEntryDestinationCidrBlock,omitempty"`
 	TransitRouterRouteEntryId                   *string `json:"TransitRouterRouteEntryId,omitempty" xml:"TransitRouterRouteEntryId,omitempty"`
@@ -14607,6 +14639,16 @@ func (s ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries) GoSt
 
 func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries) SetCreateTime(v string) *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries) SetOperationalMode(v bool) *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries {
+	s.OperationalMode = &v
+	return s
+}
+
+func (s *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries) SetTag(v string) *ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries {
+	s.Tag = &v
 	return s
 }
 
@@ -15799,7 +15841,7 @@ func (s *ListTransitRouterVpnAttachmentsResponseBody) SetTransitRouterAttachment
 type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments struct {
 	AutoPublishRouteEnabled            *bool                                                                       `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
 	CreationTime                       *string                                                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	ResourceType                       *int32                                                                      `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType                       *string                                                                     `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Status                             *string                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 	TransitRouterAttachmentDescription *string                                                                     `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
 	TransitRouterAttachmentId          *string                                                                     `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
@@ -15829,7 +15871,7 @@ func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) Se
 	return s
 }
 
-func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetResourceType(v int32) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetResourceType(v string) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
 	s.ResourceType = &v
 	return s
 }
@@ -16032,16 +16074,17 @@ func (s *ListTransitRoutersResponseBody) SetTransitRouters(v []*ListTransitRoute
 }
 
 type ListTransitRoutersResponseBodyTransitRouters struct {
-	AliUid                   *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	CenId                    *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CreationTime             *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status                   *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportMulticast         *bool   `json:"SupportMulticast,omitempty" xml:"SupportMulticast,omitempty"`
-	TransitRouterDescription *string `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
-	TransitRouterId          *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	TransitRouterName        *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
-	Type                     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AliUid                   *int64                                                               `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	CenId                    *string                                                              `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CreationTime             *string                                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	RegionId                 *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status                   *string                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportMulticast         *bool                                                                `json:"SupportMulticast,omitempty" xml:"SupportMulticast,omitempty"`
+	TransitRouterCidrList    []*ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList `json:"TransitRouterCidrList,omitempty" xml:"TransitRouterCidrList,omitempty" type:"Repeated"`
+	TransitRouterDescription *string                                                              `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
+	TransitRouterId          *string                                                              `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterName        *string                                                              `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
+	Type                     *string                                                              `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTransitRoutersResponseBodyTransitRouters) String() string {
@@ -16082,6 +16125,11 @@ func (s *ListTransitRoutersResponseBodyTransitRouters) SetSupportMulticast(v boo
 	return s
 }
 
+func (s *ListTransitRoutersResponseBodyTransitRouters) SetTransitRouterCidrList(v []*ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList) *ListTransitRoutersResponseBodyTransitRouters {
+	s.TransitRouterCidrList = v
+	return s
+}
+
 func (s *ListTransitRoutersResponseBodyTransitRouters) SetTransitRouterDescription(v string) *ListTransitRoutersResponseBodyTransitRouters {
 	s.TransitRouterDescription = &v
 	return s
@@ -16099,6 +16147,47 @@ func (s *ListTransitRoutersResponseBodyTransitRouters) SetTransitRouterName(v st
 
 func (s *ListTransitRoutersResponseBodyTransitRouters) SetType(v string) *ListTransitRoutersResponseBodyTransitRouters {
 	s.Type = &v
+	return s
+}
+
+type ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList struct {
+	Cidr                *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PublishCidrRoute    *bool   `json:"PublishCidrRoute,omitempty" xml:"PublishCidrRoute,omitempty"`
+	TransitRouterCidrId *string `json:"TransitRouterCidrId,omitempty" xml:"TransitRouterCidrId,omitempty"`
+}
+
+func (s ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList) SetCidr(v string) *ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList {
+	s.Cidr = &v
+	return s
+}
+
+func (s *ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList) SetDescription(v string) *ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList) SetName(v string) *ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList) SetPublishCidrRoute(v bool) *ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList {
+	s.PublishCidrRoute = &v
+	return s
+}
+
+func (s *ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList) SetTransitRouterCidrId(v string) *ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList {
+	s.TransitRouterCidrId = &v
 	return s
 }
 
@@ -16342,6 +16431,7 @@ type ModifyCenBandwidthPackageSpecRequest struct {
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ServiceType           *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
 func (s ModifyCenBandwidthPackageSpecRequest) String() string {
@@ -16379,6 +16469,11 @@ func (s *ModifyCenBandwidthPackageSpecRequest) SetResourceOwnerAccount(v string)
 
 func (s *ModifyCenBandwidthPackageSpecRequest) SetResourceOwnerId(v int64) *ModifyCenBandwidthPackageSpecRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyCenBandwidthPackageSpecRequest) SetServiceType(v string) *ModifyCenBandwidthPackageSpecRequest {
+	s.ServiceType = &v
 	return s
 }
 
@@ -20908,6 +21003,10 @@ func (client *Client) CreateCenBandwidthPackageWithOptions(request *CreateCenBan
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -27098,6 +27197,10 @@ func (client *Client) ListTransitRouterMulticastGroupsWithOptions(request *ListT
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ConnectPeerIds)) {
+		query["ConnectPeerIds"] = request.ConnectPeerIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GroupIpAddress)) {
 		query["GroupIpAddress"] = request.GroupIpAddress
 	}
@@ -27270,6 +27373,14 @@ func (client *Client) ListTransitRouterPrefixListAssociationWithOptions(request 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextHop)) {
+		query["NextHop"] = request.NextHop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextHopType)) {
+		query["NextHopType"] = request.NextHopType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -28144,6 +28255,10 @@ func (client *Client) ModifyCenBandwidthPackageSpecWithOptions(request *ModifyCe
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
 	}
 
 	req := &openapi.OpenApiRequest{
