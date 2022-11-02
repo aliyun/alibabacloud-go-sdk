@@ -10363,6 +10363,7 @@ type ListAggregateConfigRulesRequest struct {
 	ComplianceType  *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
 	ConfigRuleName  *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
+	Keyword         *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RiskLevel       *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
@@ -10393,6 +10394,11 @@ func (s *ListAggregateConfigRulesRequest) SetConfigRuleName(v string) *ListAggre
 
 func (s *ListAggregateConfigRulesRequest) SetConfigRuleState(v string) *ListAggregateConfigRulesRequest {
 	s.ConfigRuleState = &v
+	return s
+}
+
+func (s *ListAggregateConfigRulesRequest) SetKeyword(v string) *ListAggregateConfigRulesRequest {
+	s.Keyword = &v
 	return s
 }
 
@@ -19163,6 +19169,10 @@ func (client *Client) ListAggregateConfigRulesWithOptions(request *ListAggregate
 
 	if !tea.BoolValue(util.IsUnset(request.ConfigRuleState)) {
 		query["ConfigRuleState"] = request.ConfigRuleState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
