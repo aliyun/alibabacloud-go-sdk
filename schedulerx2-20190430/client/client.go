@@ -2226,6 +2226,7 @@ type GetJobInfoResponseBodyDataJobConfigInfo struct {
 	JarUrl          *string                                                `json:"JarUrl,omitempty" xml:"JarUrl,omitempty"`
 	JobId           *int64                                                 `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	JobMonitorInfo  *GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfo `json:"JobMonitorInfo,omitempty" xml:"JobMonitorInfo,omitempty" type:"Struct"`
+	JobType         *string                                                `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	MapTaskXAttrs   *GetJobInfoResponseBodyDataJobConfigInfoMapTaskXAttrs  `json:"MapTaskXAttrs,omitempty" xml:"MapTaskXAttrs,omitempty" type:"Struct"`
 	MaxAttempt      *int32                                                 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
 	MaxConcurrency  *string                                                `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
@@ -2233,6 +2234,7 @@ type GetJobInfoResponseBodyDataJobConfigInfo struct {
 	Parameters      *string                                                `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	Status          *int32                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
 	TimeConfig      *GetJobInfoResponseBodyDataJobConfigInfoTimeConfig     `json:"TimeConfig,omitempty" xml:"TimeConfig,omitempty" type:"Struct"`
+	XAttrs          *string                                                `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s GetJobInfoResponseBodyDataJobConfigInfo) String() string {
@@ -2283,6 +2285,11 @@ func (s *GetJobInfoResponseBodyDataJobConfigInfo) SetJobMonitorInfo(v *GetJobInf
 	return s
 }
 
+func (s *GetJobInfoResponseBodyDataJobConfigInfo) SetJobType(v string) *GetJobInfoResponseBodyDataJobConfigInfo {
+	s.JobType = &v
+	return s
+}
+
 func (s *GetJobInfoResponseBodyDataJobConfigInfo) SetMapTaskXAttrs(v *GetJobInfoResponseBodyDataJobConfigInfoMapTaskXAttrs) *GetJobInfoResponseBodyDataJobConfigInfo {
 	s.MapTaskXAttrs = v
 	return s
@@ -2315,6 +2322,11 @@ func (s *GetJobInfoResponseBodyDataJobConfigInfo) SetStatus(v int32) *GetJobInfo
 
 func (s *GetJobInfoResponseBodyDataJobConfigInfo) SetTimeConfig(v *GetJobInfoResponseBodyDataJobConfigInfoTimeConfig) *GetJobInfoResponseBodyDataJobConfigInfo {
 	s.TimeConfig = v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyDataJobConfigInfo) SetXAttrs(v string) *GetJobInfoResponseBodyDataJobConfigInfo {
+	s.XAttrs = &v
 	return s
 }
 
@@ -3775,6 +3787,7 @@ type ListJobsResponseBodyDataJobs struct {
 	JarUrl          *string                                     `json:"JarUrl,omitempty" xml:"JarUrl,omitempty"`
 	JobId           *int64                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	JobMonitorInfo  *ListJobsResponseBodyDataJobsJobMonitorInfo `json:"JobMonitorInfo,omitempty" xml:"JobMonitorInfo,omitempty" type:"Struct"`
+	JobType         *string                                     `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	MapTaskXAttrs   *ListJobsResponseBodyDataJobsMapTaskXAttrs  `json:"MapTaskXAttrs,omitempty" xml:"MapTaskXAttrs,omitempty" type:"Struct"`
 	MaxAttempt      *int32                                      `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
 	MaxConcurrency  *string                                     `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
@@ -3782,6 +3795,7 @@ type ListJobsResponseBodyDataJobs struct {
 	Parameters      *string                                     `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	Status          *int32                                      `json:"Status,omitempty" xml:"Status,omitempty"`
 	TimeConfig      *ListJobsResponseBodyDataJobsTimeConfig     `json:"TimeConfig,omitempty" xml:"TimeConfig,omitempty" type:"Struct"`
+	XAttrs          *string                                     `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s ListJobsResponseBodyDataJobs) String() string {
@@ -3832,6 +3846,11 @@ func (s *ListJobsResponseBodyDataJobs) SetJobMonitorInfo(v *ListJobsResponseBody
 	return s
 }
 
+func (s *ListJobsResponseBodyDataJobs) SetJobType(v string) *ListJobsResponseBodyDataJobs {
+	s.JobType = &v
+	return s
+}
+
 func (s *ListJobsResponseBodyDataJobs) SetMapTaskXAttrs(v *ListJobsResponseBodyDataJobsMapTaskXAttrs) *ListJobsResponseBodyDataJobs {
 	s.MapTaskXAttrs = v
 	return s
@@ -3864,6 +3883,11 @@ func (s *ListJobsResponseBodyDataJobs) SetStatus(v int32) *ListJobsResponseBodyD
 
 func (s *ListJobsResponseBodyDataJobs) SetTimeConfig(v *ListJobsResponseBodyDataJobsTimeConfig) *ListJobsResponseBodyDataJobs {
 	s.TimeConfig = v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataJobs) SetXAttrs(v string) *ListJobsResponseBodyDataJobs {
+	s.XAttrs = &v
 	return s
 }
 
