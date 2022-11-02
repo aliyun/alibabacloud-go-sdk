@@ -1,3 +1,6 @@
+2022-11-02 Version: v1.1.14
+- Add webServerMode to CustomContainerConfig and CustomContainerConfigInfo.
+
 2022-11-01 Version: v1.1.13
 - Add layersArnV2 for GetFunction.
 

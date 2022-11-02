@@ -177,6 +177,7 @@ type CustomContainerConfig struct {
 	Command          *string `json:"command,omitempty" xml:"command,omitempty"`
 	Image            *string `json:"image,omitempty" xml:"image,omitempty"`
 	InstanceID       *string `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
+	WebServerMode    *bool   `json:"webServerMode,omitempty" xml:"webServerMode,omitempty"`
 }
 
 func (s CustomContainerConfig) String() string {
@@ -212,6 +213,11 @@ func (s *CustomContainerConfig) SetInstanceID(v string) *CustomContainerConfig {
 	return s
 }
 
+func (s *CustomContainerConfig) SetWebServerMode(v bool) *CustomContainerConfig {
+	s.WebServerMode = &v
+	return s
+}
+
 type CustomContainerConfigInfo struct {
 	AccelerationInfo *AccelerationInfo `json:"accelerationInfo,omitempty" xml:"accelerationInfo,omitempty"`
 	AccelerationType *string           `json:"accelerationType,omitempty" xml:"accelerationType,omitempty"`
@@ -219,6 +225,7 @@ type CustomContainerConfigInfo struct {
 	Command          *string           `json:"command,omitempty" xml:"command,omitempty"`
 	Image            *string           `json:"image,omitempty" xml:"image,omitempty"`
 	InstanceID       *string           `json:"instanceID,omitempty" xml:"instanceID,omitempty"`
+	WebServerMode    *bool             `json:"webServerMode,omitempty" xml:"webServerMode,omitempty"`
 }
 
 func (s CustomContainerConfigInfo) String() string {
@@ -256,6 +263,11 @@ func (s *CustomContainerConfigInfo) SetImage(v string) *CustomContainerConfigInf
 
 func (s *CustomContainerConfigInfo) SetInstanceID(v string) *CustomContainerConfigInfo {
 	s.InstanceID = &v
+	return s
+}
+
+func (s *CustomContainerConfigInfo) SetWebServerMode(v bool) *CustomContainerConfigInfo {
+	s.WebServerMode = &v
 	return s
 }
 
