@@ -2137,29 +2137,30 @@ func (s *DetectFaceAttributesResponse) SetBody(v *DetectFaceAttributesResponseBo
 }
 
 type InitFaceVerifyRequest struct {
-	AuthId                 *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
-	CallbackToken          *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
-	CallbackUrl            *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	CertName               *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	CertNo                 *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	CertType               *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	CertifyId              *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	CertifyUrlType         *string `json:"CertifyUrlType,omitempty" xml:"CertifyUrlType,omitempty"`
-	Crop                   *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	EncryptType            *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	FaceContrastPicture    *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
-	FaceContrastPictureUrl *string `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
-	Ip                     *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	MetaInfo               *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
-	Mobile                 *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Model                  *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	OssBucketName          *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	OssObjectName          *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
-	OuterOrderNo           *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	ProductCode            *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ReturnUrl              *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
-	SceneId                *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AuthId                     *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
+	CallbackToken              *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
+	CallbackUrl                *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	CertName                   *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertNo                     *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
+	CertType                   *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	CertifyId                  *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	CertifyUrlType             *string `json:"CertifyUrlType,omitempty" xml:"CertifyUrlType,omitempty"`
+	Crop                       *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	EncryptType                *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	FaceContrastPicture        *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
+	FaceContrastPictureUrl     *string `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
+	Ip                         *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	MetaInfo                   *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
+	Mobile                     *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Model                      *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	OssBucketName              *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	OssObjectName              *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
+	OuterOrderNo               *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	ProductCode                *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ReturnUrl                  *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
+	SceneId                    *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VoluntaryCustomizedContent *string `json:"VoluntaryCustomizedContent,omitempty" xml:"VoluntaryCustomizedContent,omitempty"`
 }
 
 func (s InitFaceVerifyRequest) String() string {
@@ -2282,6 +2283,11 @@ func (s *InitFaceVerifyRequest) SetSceneId(v int64) *InitFaceVerifyRequest {
 
 func (s *InitFaceVerifyRequest) SetUserId(v string) *InitFaceVerifyRequest {
 	s.UserId = &v
+	return s
+}
+
+func (s *InitFaceVerifyRequest) SetVoluntaryCustomizedContent(v string) *InitFaceVerifyRequest {
+	s.VoluntaryCustomizedContent = &v
 	return s
 }
 
@@ -3958,6 +3964,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
 		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoluntaryCustomizedContent)) {
+		query["VoluntaryCustomizedContent"] = request.VoluntaryCustomizedContent
 	}
 
 	body := map[string]interface{}{}
