@@ -382,6 +382,7 @@ type CreateDBInstanceRequest struct {
 	DBInstanceMode        *string                       `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
 	Engine                *string                       `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	EngineVersion         *string                       `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	IdleTime              *int32                        `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
 	InstanceNetworkType   *string                       `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	InstanceSpec          *string                       `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	MasterNodeNum         *string                       `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
@@ -394,6 +395,8 @@ type CreateDBInstanceRequest struct {
 	SecurityIPList        *string                       `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	SegNodeNum            *string                       `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
 	SegStorageType        *string                       `json:"SegStorageType,omitempty" xml:"SegStorageType,omitempty"`
+	ServerlessMode        *string                       `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
+	ServerlessResource    *int32                        `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
 	StorageSize           *int64                        `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	StorageType           *string                       `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	Tag                   []*CreateDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -456,6 +459,11 @@ func (s *CreateDBInstanceRequest) SetEngineVersion(v string) *CreateDBInstanceRe
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetIdleTime(v int32) *CreateDBInstanceRequest {
+	s.IdleTime = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetInstanceNetworkType(v string) *CreateDBInstanceRequest {
 	s.InstanceNetworkType = &v
 	return s
@@ -513,6 +521,16 @@ func (s *CreateDBInstanceRequest) SetSegNodeNum(v string) *CreateDBInstanceReque
 
 func (s *CreateDBInstanceRequest) SetSegStorageType(v string) *CreateDBInstanceRequest {
 	s.SegStorageType = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetServerlessMode(v string) *CreateDBInstanceRequest {
+	s.ServerlessMode = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetServerlessResource(v int32) *CreateDBInstanceRequest {
+	s.ServerlessResource = &v
 	return s
 }
 
@@ -2306,6 +2324,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	EngineVersion         *string                                                              `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	ExpireTime            *string                                                              `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	HostType              *string                                                              `json:"HostType,omitempty" xml:"HostType,omitempty"`
+	IdleTime              *int32                                                               `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
 	InstanceNetworkType   *string                                                              `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	LockMode              *string                                                              `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	LockReason            *string                                                              `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
@@ -2326,6 +2345,8 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	SecurityIPList        *string                                                              `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	SegNodeNum            *int32                                                               `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
 	SegmentCounts         *int32                                                               `json:"SegmentCounts,omitempty" xml:"SegmentCounts,omitempty"`
+	ServerlessMode        *string                                                              `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
+	ServerlessResource    *int32                                                               `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
 	StartTime             *string                                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StoragePerNode        *int32                                                               `json:"StoragePerNode,omitempty" xml:"StoragePerNode,omitempty"`
 	StorageSize           *int64                                                               `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
@@ -2476,6 +2497,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetHos
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetIdleTime(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.IdleTime = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetInstanceNetworkType(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.InstanceNetworkType = &v
 	return s
@@ -2573,6 +2599,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSeg
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSegmentCounts(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.SegmentCounts = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetServerlessMode(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.ServerlessMode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetServerlessResource(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.ServerlessResource = &v
 	return s
 }
 
@@ -5152,6 +5188,7 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	RegionId              *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId       *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SegNodeNum            *string                                             `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	ServerlessMode        *string                                             `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
 	StorageSize           *string                                             `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	StorageType           *string                                             `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	Tags                  *DescribeDBInstancesResponseBodyItemsDBInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
@@ -5265,6 +5302,11 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetResourceGroupId(v st
 
 func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetSegNodeNum(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
 	s.SegNodeNum = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyItemsDBInstance) SetServerlessMode(v string) *DescribeDBInstancesResponseBodyItemsDBInstance {
+	s.ServerlessMode = &v
 	return s
 }
 
@@ -10720,6 +10762,358 @@ func (s *DescribeUserEncryptionKeyListResponse) SetBody(v *DescribeUserEncryptio
 	return s
 }
 
+type DescribeWaitingSQLInfoRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	PID          *string `json:"PID,omitempty" xml:"PID,omitempty"`
+}
+
+func (s DescribeWaitingSQLInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWaitingSQLInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWaitingSQLInfoRequest) SetDBInstanceId(v string) *DescribeWaitingSQLInfoRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoRequest) SetDatabase(v string) *DescribeWaitingSQLInfoRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoRequest) SetPID(v string) *DescribeWaitingSQLInfoRequest {
+	s.PID = &v
+	return s
+}
+
+type DescribeWaitingSQLInfoResponseBody struct {
+	Database  *string                                    `json:"Database,omitempty" xml:"Database,omitempty"`
+	Items     []*DescribeWaitingSQLInfoResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeWaitingSQLInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWaitingSQLInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWaitingSQLInfoResponseBody) SetDatabase(v string) *DescribeWaitingSQLInfoResponseBody {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoResponseBody) SetItems(v []*DescribeWaitingSQLInfoResponseBodyItems) *DescribeWaitingSQLInfoResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoResponseBody) SetRequestId(v string) *DescribeWaitingSQLInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeWaitingSQLInfoResponseBodyItems struct {
+	Application          *string `json:"Application,omitempty" xml:"Application,omitempty"`
+	BlockedByApplication *string `json:"BlockedByApplication,omitempty" xml:"BlockedByApplication,omitempty"`
+	BlockedByPID         *string `json:"BlockedByPID,omitempty" xml:"BlockedByPID,omitempty"`
+	BlockedBySQLStmt     *string `json:"BlockedBySQLStmt,omitempty" xml:"BlockedBySQLStmt,omitempty"`
+	BlockedByUser        *string `json:"BlockedByUser,omitempty" xml:"BlockedByUser,omitempty"`
+	GrantLocks           *string `json:"GrantLocks,omitempty" xml:"GrantLocks,omitempty"`
+	NotGrantLocks        *string `json:"NotGrantLocks,omitempty" xml:"NotGrantLocks,omitempty"`
+	PID                  *string `json:"PID,omitempty" xml:"PID,omitempty"`
+	SQLStmt              *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
+	User                 *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeWaitingSQLInfoResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWaitingSQLInfoResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWaitingSQLInfoResponseBodyItems) SetApplication(v string) *DescribeWaitingSQLInfoResponseBodyItems {
+	s.Application = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoResponseBodyItems) SetBlockedByApplication(v string) *DescribeWaitingSQLInfoResponseBodyItems {
+	s.BlockedByApplication = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoResponseBodyItems) SetBlockedByPID(v string) *DescribeWaitingSQLInfoResponseBodyItems {
+	s.BlockedByPID = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoResponseBodyItems) SetBlockedBySQLStmt(v string) *DescribeWaitingSQLInfoResponseBodyItems {
+	s.BlockedBySQLStmt = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoResponseBodyItems) SetBlockedByUser(v string) *DescribeWaitingSQLInfoResponseBodyItems {
+	s.BlockedByUser = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoResponseBodyItems) SetGrantLocks(v string) *DescribeWaitingSQLInfoResponseBodyItems {
+	s.GrantLocks = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoResponseBodyItems) SetNotGrantLocks(v string) *DescribeWaitingSQLInfoResponseBodyItems {
+	s.NotGrantLocks = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoResponseBodyItems) SetPID(v string) *DescribeWaitingSQLInfoResponseBodyItems {
+	s.PID = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoResponseBodyItems) SetSQLStmt(v string) *DescribeWaitingSQLInfoResponseBodyItems {
+	s.SQLStmt = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoResponseBodyItems) SetUser(v string) *DescribeWaitingSQLInfoResponseBodyItems {
+	s.User = &v
+	return s
+}
+
+type DescribeWaitingSQLInfoResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeWaitingSQLInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeWaitingSQLInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWaitingSQLInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWaitingSQLInfoResponse) SetHeaders(v map[string]*string) *DescribeWaitingSQLInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoResponse) SetStatusCode(v int32) *DescribeWaitingSQLInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLInfoResponse) SetBody(v *DescribeWaitingSQLInfoResponseBody) *DescribeWaitingSQLInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWaitingSQLRecordsRequest struct {
+	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database       *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Keyword        *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Order          *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	User           *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeWaitingSQLRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWaitingSQLRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWaitingSQLRecordsRequest) SetDBInstanceId(v string) *DescribeWaitingSQLRecordsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsRequest) SetDatabase(v string) *DescribeWaitingSQLRecordsRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsRequest) SetEndTime(v string) *DescribeWaitingSQLRecordsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsRequest) SetKeyword(v string) *DescribeWaitingSQLRecordsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsRequest) SetOrder(v string) *DescribeWaitingSQLRecordsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsRequest) SetPageNumber(v int32) *DescribeWaitingSQLRecordsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsRequest) SetPageSize(v int32) *DescribeWaitingSQLRecordsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsRequest) SetQueryCondition(v string) *DescribeWaitingSQLRecordsRequest {
+	s.QueryCondition = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsRequest) SetStartTime(v string) *DescribeWaitingSQLRecordsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsRequest) SetUser(v string) *DescribeWaitingSQLRecordsRequest {
+	s.User = &v
+	return s
+}
+
+type DescribeWaitingSQLRecordsResponseBody struct {
+	Items      []*DescribeWaitingSQLRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageNumber *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeWaitingSQLRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWaitingSQLRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWaitingSQLRecordsResponseBody) SetItems(v []*DescribeWaitingSQLRecordsResponseBodyItems) *DescribeWaitingSQLRecordsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsResponseBody) SetPageNumber(v int32) *DescribeWaitingSQLRecordsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsResponseBody) SetRequestId(v string) *DescribeWaitingSQLRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsResponseBody) SetTotalCount(v int32) *DescribeWaitingSQLRecordsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeWaitingSQLRecordsResponseBodyItems struct {
+	Database    *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	PID         *string `json:"PID,omitempty" xml:"PID,omitempty"`
+	SQLStmt     *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
+	SessionID   *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
+	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	User        *string `json:"User,omitempty" xml:"User,omitempty"`
+	WaitingTime *int64  `json:"WaitingTime,omitempty" xml:"WaitingTime,omitempty"`
+}
+
+func (s DescribeWaitingSQLRecordsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWaitingSQLRecordsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWaitingSQLRecordsResponseBodyItems) SetDatabase(v string) *DescribeWaitingSQLRecordsResponseBodyItems {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsResponseBodyItems) SetPID(v string) *DescribeWaitingSQLRecordsResponseBodyItems {
+	s.PID = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsResponseBodyItems) SetSQLStmt(v string) *DescribeWaitingSQLRecordsResponseBodyItems {
+	s.SQLStmt = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsResponseBodyItems) SetSessionID(v string) *DescribeWaitingSQLRecordsResponseBodyItems {
+	s.SessionID = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsResponseBodyItems) SetStartTime(v int64) *DescribeWaitingSQLRecordsResponseBodyItems {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsResponseBodyItems) SetStatus(v string) *DescribeWaitingSQLRecordsResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsResponseBodyItems) SetUser(v string) *DescribeWaitingSQLRecordsResponseBodyItems {
+	s.User = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsResponseBodyItems) SetWaitingTime(v int64) *DescribeWaitingSQLRecordsResponseBodyItems {
+	s.WaitingTime = &v
+	return s
+}
+
+type DescribeWaitingSQLRecordsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeWaitingSQLRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeWaitingSQLRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWaitingSQLRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWaitingSQLRecordsResponse) SetHeaders(v map[string]*string) *DescribeWaitingSQLRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsResponse) SetStatusCode(v int32) *DescribeWaitingSQLRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWaitingSQLRecordsResponse) SetBody(v *DescribeWaitingSQLRecordsResponseBody) *DescribeWaitingSQLRecordsResponse {
+	s.Body = v
+	return s
+}
+
 type DownloadDiagnosisRecordsRequest struct {
 	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Database        *string `json:"Database,omitempty" xml:"Database,omitempty"`
@@ -13814,6 +14208,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["EngineVersion"] = request.EngineVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IdleTime)) {
+		query["IdleTime"] = request.IdleTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceNetworkType)) {
 		query["InstanceNetworkType"] = request.InstanceNetworkType
 	}
@@ -13860,6 +14258,14 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.SegStorageType)) {
 		query["SegStorageType"] = request.SegStorageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerlessMode)) {
+		query["ServerlessMode"] = request.ServerlessMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerlessResource)) {
+		query["ServerlessResource"] = request.ServerlessResource
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
@@ -17407,6 +17813,138 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserEncryptionKeyListResponse{}
 	_body, _err := client.DescribeUserEncryptionKeyListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeWaitingSQLInfoWithOptions(request *DescribeWaitingSQLInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeWaitingSQLInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PID)) {
+		query["PID"] = request.PID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWaitingSQLInfo"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWaitingSQLInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeWaitingSQLInfo(request *DescribeWaitingSQLInfoRequest) (_result *DescribeWaitingSQLInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWaitingSQLInfoResponse{}
+	_body, _err := client.DescribeWaitingSQLInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeWaitingSQLRecordsWithOptions(request *DescribeWaitingSQLRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeWaitingSQLRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryCondition)) {
+		query["QueryCondition"] = request.QueryCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWaitingSQLRecords"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWaitingSQLRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeWaitingSQLRecords(request *DescribeWaitingSQLRecordsRequest) (_result *DescribeWaitingSQLRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWaitingSQLRecordsResponse{}
+	_body, _err := client.DescribeWaitingSQLRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
