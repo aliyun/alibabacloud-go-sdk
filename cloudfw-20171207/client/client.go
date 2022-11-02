@@ -6343,7 +6343,6 @@ type ModifyControlPolicyRequest struct {
 	DestinationType     *string   `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	Direction           *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	Lang                *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MessageType         *string   `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 	Proto               *string   `json:"Proto,omitempty" xml:"Proto,omitempty"`
 	Release             *string   `json:"Release,omitempty" xml:"Release,omitempty"`
 	Source              *string   `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -6416,11 +6415,6 @@ func (s *ModifyControlPolicyRequest) SetDirection(v string) *ModifyControlPolicy
 
 func (s *ModifyControlPolicyRequest) SetLang(v string) *ModifyControlPolicyRequest {
 	s.Lang = &v
-	return s
-}
-
-func (s *ModifyControlPolicyRequest) SetMessageType(v string) *ModifyControlPolicyRequest {
-	s.MessageType = &v
 	return s
 }
 
@@ -10270,10 +10264,6 @@ func (client *Client) ModifyControlPolicyWithOptions(request *ModifyControlPolic
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MessageType)) {
-		query["MessageType"] = request.MessageType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Proto)) {
