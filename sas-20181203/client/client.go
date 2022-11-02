@@ -12,6 +12,23 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type QueryIncidentTracingSubNodesCountRequest struct {
+	VertexIdAndTypeList [][]*string `json:"VertexIdAndTypeList,omitempty" xml:"VertexIdAndTypeList,omitempty" type:"Repeated"`
+}
+
+func (s QueryIncidentTracingSubNodesCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIncidentTracingSubNodesCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIncidentTracingSubNodesCountRequest) SetVertexIdAndTypeList(v [][]*string) *QueryIncidentTracingSubNodesCountRequest {
+	s.VertexIdAndTypeList = v
+	return s
+}
+
 type AddInstallCodeRequest struct {
 	ExpiredDate *int64  `json:"ExpiredDate,omitempty" xml:"ExpiredDate,omitempty"`
 	GroupId     *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -448,9 +465,7 @@ func (s *CheckSecurityEventIdResponse) SetBody(v *CheckSecurityEventIdResponseBo
 }
 
 type CheckUserHasEcsRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s CheckUserHasEcsRequest) String() string {
@@ -461,18 +476,8 @@ func (s CheckUserHasEcsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CheckUserHasEcsRequest) SetCurrentPage(v int32) *CheckUserHasEcsRequest {
-	s.CurrentPage = &v
-	return s
-}
-
 func (s *CheckUserHasEcsRequest) SetLang(v string) *CheckUserHasEcsRequest {
 	s.Lang = &v
-	return s
-}
-
-func (s *CheckUserHasEcsRequest) SetPageSize(v int32) *CheckUserHasEcsRequest {
-	s.PageSize = &v
 	return s
 }
 
@@ -13489,11 +13494,12 @@ func (s *DescribeLogstoreStorageRequest) SetLang(v string) *DescribeLogstoreStor
 }
 
 type DescribeLogstoreStorageResponseBody struct {
-	Logstore  *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	Preserve  *int64  `json:"Preserve,omitempty" xml:"Preserve,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Ttl       *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	Used      *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	Logstore    *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
+	Preserve    *int64  `json:"Preserve,omitempty" xml:"Preserve,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Ttl         *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	Used        *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	UserProject *string `json:"UserProject,omitempty" xml:"UserProject,omitempty"`
 }
 
 func (s DescribeLogstoreStorageResponseBody) String() string {
@@ -13526,6 +13532,11 @@ func (s *DescribeLogstoreStorageResponseBody) SetTtl(v int32) *DescribeLogstoreS
 
 func (s *DescribeLogstoreStorageResponseBody) SetUsed(v int64) *DescribeLogstoreStorageResponseBody {
 	s.Used = &v
+	return s
+}
+
+func (s *DescribeLogstoreStorageResponseBody) SetUserProject(v string) *DescribeLogstoreStorageResponseBody {
+	s.UserProject = &v
 	return s
 }
 
@@ -21022,6 +21033,7 @@ func (s *DescribeSuspEventQuaraFilesResponse) SetBody(v *DescribeSuspEventQuaraF
 
 type DescribeSuspEventsRequest struct {
 	AlarmUniqueInfo      *string   `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	AssetsTypeList       []*string `json:"AssetsTypeList,omitempty" xml:"AssetsTypeList,omitempty" type:"Repeated"`
 	ClusterId            *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ContainerFieldName   *string   `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
 	ContainerFieldValue  *string   `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
@@ -21061,6 +21073,11 @@ func (s DescribeSuspEventsRequest) GoString() string {
 
 func (s *DescribeSuspEventsRequest) SetAlarmUniqueInfo(v string) *DescribeSuspEventsRequest {
 	s.AlarmUniqueInfo = &v
+	return s
+}
+
+func (s *DescribeSuspEventsRequest) SetAssetsTypeList(v []*string) *DescribeSuspEventsRequest {
+	s.AssetsTypeList = v
 	return s
 }
 
@@ -21297,6 +21314,7 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	TacticItems           []*DescribeSuspEventsResponseBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`
 	UniqueInfo            *string                                                `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
 	Uuid                  *string                                                `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	ClusterId             *string                                                `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
 }
 
 func (s DescribeSuspEventsResponseBodySuspEvents) String() string {
@@ -21554,6 +21572,11 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) SetUniqueInfo(v string) *Desc
 
 func (s *DescribeSuspEventsResponseBodySuspEvents) SetUuid(v string) *DescribeSuspEventsResponseBodySuspEvents {
 	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetClusterId(v string) *DescribeSuspEventsResponseBodySuspEvents {
+	s.ClusterId = &v
 	return s
 }
 
@@ -22382,31 +22405,32 @@ func (s *DescribeVersionConfigRequest) SetSourceIp(v string) *DescribeVersionCon
 }
 
 type DescribeVersionConfigResponseBody struct {
-	AllowPartialBuy       *int32  `json:"AllowPartialBuy,omitempty" xml:"AllowPartialBuy,omitempty"`
-	AppWhiteList          *int32  `json:"AppWhiteList,omitempty" xml:"AppWhiteList,omitempty"`
-	AppWhiteListAuthCount *int64  `json:"AppWhiteListAuthCount,omitempty" xml:"AppWhiteListAuthCount,omitempty"`
-	AssetLevel            *int32  `json:"AssetLevel,omitempty" xml:"AssetLevel,omitempty"`
-	HighestVersion        *int32  `json:"HighestVersion,omitempty" xml:"HighestVersion,omitempty"`
-	HoneypotCapacity      *int64  `json:"HoneypotCapacity,omitempty" xml:"HoneypotCapacity,omitempty"`
-	ImageScanCapacity     *int64  `json:"ImageScanCapacity,omitempty" xml:"ImageScanCapacity,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsNewContainerVersion *bool   `json:"IsNewContainerVersion,omitempty" xml:"IsNewContainerVersion,omitempty"`
-	IsOverBalance         *bool   `json:"IsOverBalance,omitempty" xml:"IsOverBalance,omitempty"`
-	IsTrialVersion        *int32  `json:"IsTrialVersion,omitempty" xml:"IsTrialVersion,omitempty"`
-	LastTrailEndTime      *int64  `json:"LastTrailEndTime,omitempty" xml:"LastTrailEndTime,omitempty"`
-	MVAuthCount           *int32  `json:"MVAuthCount,omitempty" xml:"MVAuthCount,omitempty"`
-	MVUnusedAuthCount     *int32  `json:"MVUnusedAuthCount,omitempty" xml:"MVUnusedAuthCount,omitempty"`
-	OpenTime              *int64  `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
-	ReleaseTime           *int64  `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SasLog                *int32  `json:"SasLog,omitempty" xml:"SasLog,omitempty"`
-	SasScreen             *int32  `json:"SasScreen,omitempty" xml:"SasScreen,omitempty"`
-	SlsCapacity           *int64  `json:"SlsCapacity,omitempty" xml:"SlsCapacity,omitempty"`
-	UserDefinedAlarms     *int32  `json:"UserDefinedAlarms,omitempty" xml:"UserDefinedAlarms,omitempty"`
-	Version               *int32  `json:"Version,omitempty" xml:"Version,omitempty"`
-	VmCores               *int32  `json:"VmCores,omitempty" xml:"VmCores,omitempty"`
-	WebLock               *int32  `json:"WebLock,omitempty" xml:"WebLock,omitempty"`
-	WebLockAuthCount      *int64  `json:"WebLockAuthCount,omitempty" xml:"WebLockAuthCount,omitempty"`
+	AllowPartialBuy        *int32  `json:"AllowPartialBuy,omitempty" xml:"AllowPartialBuy,omitempty"`
+	AppWhiteList           *int32  `json:"AppWhiteList,omitempty" xml:"AppWhiteList,omitempty"`
+	AppWhiteListAuthCount  *int64  `json:"AppWhiteListAuthCount,omitempty" xml:"AppWhiteListAuthCount,omitempty"`
+	AssetLevel             *int32  `json:"AssetLevel,omitempty" xml:"AssetLevel,omitempty"`
+	HighestVersion         *int32  `json:"HighestVersion,omitempty" xml:"HighestVersion,omitempty"`
+	HoneypotCapacity       *int64  `json:"HoneypotCapacity,omitempty" xml:"HoneypotCapacity,omitempty"`
+	ImageScanCapacity      *int64  `json:"ImageScanCapacity,omitempty" xml:"ImageScanCapacity,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsNewContainerVersion  *bool   `json:"IsNewContainerVersion,omitempty" xml:"IsNewContainerVersion,omitempty"`
+	IsOverBalance          *bool   `json:"IsOverBalance,omitempty" xml:"IsOverBalance,omitempty"`
+	IsTrialVersion         *int32  `json:"IsTrialVersion,omitempty" xml:"IsTrialVersion,omitempty"`
+	LastTrailEndTime       *int64  `json:"LastTrailEndTime,omitempty" xml:"LastTrailEndTime,omitempty"`
+	MVAuthCount            *int32  `json:"MVAuthCount,omitempty" xml:"MVAuthCount,omitempty"`
+	MVUnusedAuthCount      *int32  `json:"MVUnusedAuthCount,omitempty" xml:"MVUnusedAuthCount,omitempty"`
+	OpenTime               *int64  `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
+	ReleaseTime            *int64  `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SasLog                 *int32  `json:"SasLog,omitempty" xml:"SasLog,omitempty"`
+	SasScreen              *int32  `json:"SasScreen,omitempty" xml:"SasScreen,omitempty"`
+	SlsCapacity            *int64  `json:"SlsCapacity,omitempty" xml:"SlsCapacity,omitempty"`
+	ThreatAnalysisCapacity *int64  `json:"ThreatAnalysisCapacity,omitempty" xml:"ThreatAnalysisCapacity,omitempty"`
+	UserDefinedAlarms      *int32  `json:"UserDefinedAlarms,omitempty" xml:"UserDefinedAlarms,omitempty"`
+	Version                *int32  `json:"Version,omitempty" xml:"Version,omitempty"`
+	VmCores                *int32  `json:"VmCores,omitempty" xml:"VmCores,omitempty"`
+	WebLock                *int32  `json:"WebLock,omitempty" xml:"WebLock,omitempty"`
+	WebLockAuthCount       *int64  `json:"WebLockAuthCount,omitempty" xml:"WebLockAuthCount,omitempty"`
 }
 
 func (s DescribeVersionConfigResponseBody) String() string {
@@ -22514,6 +22538,11 @@ func (s *DescribeVersionConfigResponseBody) SetSasScreen(v int32) *DescribeVersi
 
 func (s *DescribeVersionConfigResponseBody) SetSlsCapacity(v int64) *DescribeVersionConfigResponseBody {
 	s.SlsCapacity = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetThreatAnalysisCapacity(v int64) *DescribeVersionConfigResponseBody {
+	s.ThreatAnalysisCapacity = &v
 	return s
 }
 
@@ -33596,16 +33625,8 @@ func (client *Client) CheckUserHasEcsWithOptions(request *CheckUserHasEcsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
-		query["CurrentPage"] = request.CurrentPage
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -40694,6 +40715,10 @@ func (client *Client) DescribeSuspEventsWithOptions(request *DescribeSuspEventsR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AlarmUniqueInfo)) {
 		query["AlarmUniqueInfo"] = request.AlarmUniqueInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetsTypeList)) {
+		query["AssetsTypeList"] = request.AssetsTypeList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
