@@ -12,6 +12,65 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type Group struct {
+	AccessToken      *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
+	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	QueueService     *string `json:"QueueService,omitempty" xml:"QueueService,omitempty"`
+	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s Group) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Group) GoString() string {
+	return s.String()
+}
+
+func (s *Group) SetAccessToken(v string) *Group {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *Group) SetClusterId(v string) *Group {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *Group) SetCreateTime(v string) *Group {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *Group) SetInternetEndpoint(v string) *Group {
+	s.InternetEndpoint = &v
+	return s
+}
+
+func (s *Group) SetIntranetEndpoint(v string) *Group {
+	s.IntranetEndpoint = &v
+	return s
+}
+
+func (s *Group) SetName(v string) *Group {
+	s.Name = &v
+	return s
+}
+
+func (s *Group) SetQueueService(v string) *Group {
+	s.QueueService = &v
+	return s
+}
+
+func (s *Group) SetUpdateTime(v string) *Group {
+	s.UpdateTime = &v
+	return s
+}
+
 type Instance struct {
 	HostIP         *string                  `json:"HostIP,omitempty" xml:"HostIP,omitempty"`
 	HostName       *string                  `json:"HostName,omitempty" xml:"HostName,omitempty"`
@@ -191,12 +250,14 @@ func (s *Resource) SetUpdateTime(v string) *Resource {
 }
 
 type ResourceInstance struct {
+	Arch               *string  `json:"Arch,omitempty" xml:"Arch,omitempty"`
 	AutoRenewal        *bool    `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	ChargeType         *string  `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	CreateTime         *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ExpiredTime        *string  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	InstanceCpuCount   *int32   `json:"InstanceCpuCount,omitempty" xml:"InstanceCpuCount,omitempty"`
 	InstanceGpuCount   *int32   `json:"InstanceGpuCount,omitempty" xml:"InstanceGpuCount,omitempty"`
+	InstanceGpuMemory  *string  `json:"InstanceGpuMemory,omitempty" xml:"InstanceGpuMemory,omitempty"`
 	InstanceId         *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceIp         *string  `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
 	InstanceMemory     *string  `json:"InstanceMemory,omitempty" xml:"InstanceMemory,omitempty"`
@@ -206,6 +267,8 @@ type ResourceInstance struct {
 	InstanceUsedCpu    *float32 `json:"InstanceUsedCpu,omitempty" xml:"InstanceUsedCpu,omitempty"`
 	InstanceUsedGpu    *int32   `json:"InstanceUsedGpu,omitempty" xml:"InstanceUsedGpu,omitempty"`
 	InstanceUsedMemory *string  `json:"InstanceUsedMemory,omitempty" xml:"InstanceUsedMemory,omitempty"`
+	Region             *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	Zone               *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s ResourceInstance) String() string {
@@ -214,6 +277,11 @@ func (s ResourceInstance) String() string {
 
 func (s ResourceInstance) GoString() string {
 	return s.String()
+}
+
+func (s *ResourceInstance) SetArch(v string) *ResourceInstance {
+	s.Arch = &v
+	return s
 }
 
 func (s *ResourceInstance) SetAutoRenewal(v bool) *ResourceInstance {
@@ -243,6 +311,11 @@ func (s *ResourceInstance) SetInstanceCpuCount(v int32) *ResourceInstance {
 
 func (s *ResourceInstance) SetInstanceGpuCount(v int32) *ResourceInstance {
 	s.InstanceGpuCount = &v
+	return s
+}
+
+func (s *ResourceInstance) SetInstanceGpuMemory(v string) *ResourceInstance {
+	s.InstanceGpuMemory = &v
 	return s
 }
 
@@ -288,6 +361,16 @@ func (s *ResourceInstance) SetInstanceUsedGpu(v int32) *ResourceInstance {
 
 func (s *ResourceInstance) SetInstanceUsedMemory(v string) *ResourceInstance {
 	s.InstanceUsedMemory = &v
+	return s
+}
+
+func (s *ResourceInstance) SetRegion(v string) *ResourceInstance {
+	s.Region = &v
+	return s
+}
+
+func (s *ResourceInstance) SetZone(v string) *ResourceInstance {
+	s.Zone = &v
 	return s
 }
 
@@ -396,6 +479,8 @@ type Service struct {
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resource         *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	ResourceAlias    *string `json:"ResourceAlias,omitempty" xml:"ResourceAlias,omitempty"`
+	Role             *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	RoleAttrs        *string `json:"RoleAttrs,omitempty" xml:"RoleAttrs,omitempty"`
 	RunningInstance  *int32  `json:"RunningInstance,omitempty" xml:"RunningInstance,omitempty"`
 	ServiceConfig    *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
 	ServiceGroup     *string `json:"ServiceGroup,omitempty" xml:"ServiceGroup,omitempty"`
@@ -519,6 +604,16 @@ func (s *Service) SetResource(v string) *Service {
 
 func (s *Service) SetResourceAlias(v string) *Service {
 	s.ResourceAlias = &v
+	return s
+}
+
+func (s *Service) SetRole(v string) *Service {
+	s.Role = &v
+	return s
+}
+
+func (s *Service) SetRoleAttrs(v string) *Service {
+	s.RoleAttrs = &v
 	return s
 }
 
@@ -1883,6 +1978,7 @@ type DescribeBenchmarkTaskResponseBody struct {
 	AvailableAgent *int64  `json:"AvailableAgent,omitempty" xml:"AvailableAgent,omitempty"`
 	CallerUid      *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
 	DesiredAgent   *int64  `json:"DesiredAgent,omitempty" xml:"DesiredAgent,omitempty"`
+	Endpoint       *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	ParentUid      *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
 	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
@@ -1914,6 +2010,11 @@ func (s *DescribeBenchmarkTaskResponseBody) SetCallerUid(v string) *DescribeBenc
 
 func (s *DescribeBenchmarkTaskResponseBody) SetDesiredAgent(v int64) *DescribeBenchmarkTaskResponseBody {
 	s.DesiredAgent = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskResponseBody) SetEndpoint(v string) *DescribeBenchmarkTaskResponseBody {
+	s.Endpoint = &v
 	return s
 }
 
@@ -1991,9 +2092,27 @@ func (s *DescribeBenchmarkTaskResponse) SetBody(v *DescribeBenchmarkTaskResponse
 	return s
 }
 
+type DescribeBenchmarkTaskReportRequest struct {
+	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+}
+
+func (s DescribeBenchmarkTaskReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBenchmarkTaskReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBenchmarkTaskReportRequest) SetReportType(v string) *DescribeBenchmarkTaskReportRequest {
+	s.ReportType = &v
+	return s
+}
+
 type DescribeBenchmarkTaskReportResponseBody struct {
-	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ReportUrl *string     `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBenchmarkTaskReportResponseBody) String() string {
@@ -2002,6 +2121,11 @@ func (s DescribeBenchmarkTaskReportResponseBody) String() string {
 
 func (s DescribeBenchmarkTaskReportResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeBenchmarkTaskReportResponseBody) SetData(v interface{}) *DescribeBenchmarkTaskReportResponseBody {
+	s.Data = v
+	return s
 }
 
 func (s *DescribeBenchmarkTaskReportResponseBody) SetReportUrl(v string) *DescribeBenchmarkTaskReportResponseBody {
@@ -2039,6 +2163,35 @@ func (s *DescribeBenchmarkTaskReportResponse) SetStatusCode(v int32) *DescribeBe
 }
 
 func (s *DescribeBenchmarkTaskReportResponse) SetBody(v *DescribeBenchmarkTaskReportResponseBody) *DescribeBenchmarkTaskReportResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeGroupResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Group             `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupResponse) SetHeaders(v map[string]*string) *DescribeGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGroupResponse) SetStatusCode(v int32) *DescribeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeGroupResponse) SetBody(v *Group) *DescribeGroupResponse {
 	s.Body = v
 	return s
 }
@@ -2926,9 +3079,47 @@ func (s *DescribeServiceMirrorResponse) SetBody(v *DescribeServiceMirrorResponse
 	return s
 }
 
+type ListBenchmarkTaskRequest struct {
+	Fileter     *string `json:"Fileter,omitempty" xml:"Fileter,omitempty"`
+	PageNumber  *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s ListBenchmarkTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBenchmarkTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBenchmarkTaskRequest) SetFileter(v string) *ListBenchmarkTaskRequest {
+	s.Fileter = &v
+	return s
+}
+
+func (s *ListBenchmarkTaskRequest) SetPageNumber(v string) *ListBenchmarkTaskRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBenchmarkTaskRequest) SetPageSize(v string) *ListBenchmarkTaskRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBenchmarkTaskRequest) SetServiceName(v string) *ListBenchmarkTaskRequest {
+	s.ServiceName = &v
+	return s
+}
+
 type ListBenchmarkTaskResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*ListBenchmarkTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks      []*ListBenchmarkTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListBenchmarkTaskResponseBody) String() string {
@@ -2939,6 +3130,16 @@ func (s ListBenchmarkTaskResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListBenchmarkTaskResponseBody) SetPageNumber(v int32) *ListBenchmarkTaskResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBenchmarkTaskResponseBody) SetPageSize(v int32) *ListBenchmarkTaskResponseBody {
+	s.PageSize = &v
+	return s
+}
+
 func (s *ListBenchmarkTaskResponseBody) SetRequestId(v string) *ListBenchmarkTaskResponseBody {
 	s.RequestId = &v
 	return s
@@ -2946,6 +3147,11 @@ func (s *ListBenchmarkTaskResponseBody) SetRequestId(v string) *ListBenchmarkTas
 
 func (s *ListBenchmarkTaskResponseBody) SetTasks(v []*ListBenchmarkTaskResponseBodyTasks) *ListBenchmarkTaskResponseBody {
 	s.Tasks = v
+	return s
+}
+
+func (s *ListBenchmarkTaskResponseBody) SetTotalCount(v int32) *ListBenchmarkTaskResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -3039,6 +3245,105 @@ func (s *ListBenchmarkTaskResponse) SetStatusCode(v int32) *ListBenchmarkTaskRes
 }
 
 func (s *ListBenchmarkTaskResponse) SetBody(v *ListBenchmarkTaskResponseBody) *ListBenchmarkTaskResponse {
+	s.Body = v
+	return s
+}
+
+type ListGroupsRequest struct {
+	Filter     *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsRequest) SetFilter(v string) *ListGroupsRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListGroupsRequest) SetPageNumber(v string) *ListGroupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGroupsRequest) SetPageSize(v string) *ListGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListGroupsResponseBody struct {
+	Groups     []*Group `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	PageNumber *int64   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsResponseBody) SetGroups(v []*Group) *ListGroupsResponseBody {
+	s.Groups = v
+	return s
+}
+
+func (s *ListGroupsResponseBody) SetPageNumber(v int64) *ListGroupsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGroupsResponseBody) SetPageSize(v int64) *ListGroupsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGroupsResponseBody) SetRequestId(v string) *ListGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGroupsResponseBody) SetTotalCount(v int64) *ListGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListGroupsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsResponse) SetHeaders(v map[string]*string) *ListGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGroupsResponse) SetStatusCode(v int32) *ListGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGroupsResponse) SetBody(v *ListGroupsResponseBody) *ListGroupsResponse {
 	s.Body = v
 	return s
 }
@@ -3650,6 +3955,7 @@ func (s *ListServiceVersionsResponse) SetBody(v *ListServiceVersionsResponseBody
 
 type ListServicesRequest struct {
 	Filter     *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -3666,6 +3972,11 @@ func (s ListServicesRequest) GoString() string {
 
 func (s *ListServicesRequest) SetFilter(v string) *ListServicesRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetGroupName(v string) *ListServicesRequest {
+	s.GroupName = &v
 	return s
 }
 
@@ -5590,11 +5901,11 @@ func (client *Client) DescribeBenchmarkTaskWithOptions(ClusterId *string, TaskNa
 	return _result, _err
 }
 
-func (client *Client) DescribeBenchmarkTaskReport(ClusterId *string, TaskName *string) (_result *DescribeBenchmarkTaskReportResponse, _err error) {
+func (client *Client) DescribeBenchmarkTaskReport(ClusterId *string, TaskName *string, request *DescribeBenchmarkTaskReportRequest) (_result *DescribeBenchmarkTaskReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeBenchmarkTaskReportResponse{}
-	_body, _err := client.DescribeBenchmarkTaskReportWithOptions(ClusterId, TaskName, headers, runtime)
+	_body, _err := client.DescribeBenchmarkTaskReportWithOptions(ClusterId, TaskName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5602,9 +5913,19 @@ func (client *Client) DescribeBenchmarkTaskReport(ClusterId *string, TaskName *s
 	return _result, _err
 }
 
-func (client *Client) DescribeBenchmarkTaskReportWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeBenchmarkTaskReportResponse, _err error) {
+func (client *Client) DescribeBenchmarkTaskReportWithOptions(ClusterId *string, TaskName *string, request *DescribeBenchmarkTaskReportRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeBenchmarkTaskReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReportType)) {
+		query["ReportType"] = request.ReportType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeBenchmarkTaskReport"),
@@ -5618,6 +5939,42 @@ func (client *Client) DescribeBenchmarkTaskReportWithOptions(ClusterId *string, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBenchmarkTaskReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeGroup(ClusterId *string, GroupName *string) (_result *DescribeGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeGroupResponse{}
+	_body, _err := client.DescribeGroupWithOptions(ClusterId, GroupName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeGroupWithOptions(ClusterId *string, GroupName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeGroupResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGroup"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/groups/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GroupName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6002,11 +6359,11 @@ func (client *Client) DescribeServiceMirrorWithOptions(ClusterId *string, Servic
 	return _result, _err
 }
 
-func (client *Client) ListBenchmarkTask() (_result *ListBenchmarkTaskResponse, _err error) {
+func (client *Client) ListBenchmarkTask(request *ListBenchmarkTaskRequest) (_result *ListBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListBenchmarkTaskResponse{}
-	_body, _err := client.ListBenchmarkTaskWithOptions(headers, runtime)
+	_body, _err := client.ListBenchmarkTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6014,9 +6371,31 @@ func (client *Client) ListBenchmarkTask() (_result *ListBenchmarkTaskResponse, _
 	return _result, _err
 }
 
-func (client *Client) ListBenchmarkTaskWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListBenchmarkTaskResponse, _err error) {
+func (client *Client) ListBenchmarkTaskWithOptions(request *ListBenchmarkTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListBenchmarkTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Fileter)) {
+		query["Fileter"] = request.Fileter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListBenchmarkTask"),
@@ -6030,6 +6409,60 @@ func (client *Client) ListBenchmarkTaskWithOptions(headers map[string]*string, r
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListBenchmarkTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListGroupsResponse{}
+	_body, _err := client.ListGroupsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroups"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/groups"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGroupsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6362,6 +6795,10 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
