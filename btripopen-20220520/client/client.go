@@ -6285,8 +6285,9 @@ func (s *CorpTokenHeaders) SetXAcsBtripAccessToken(v string) *CorpTokenHeaders {
 }
 
 type CorpTokenRequest struct {
-	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	Type   *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	AppSecret *string `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
+	CorpId    *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	Type      *int32  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CorpTokenRequest) String() string {
@@ -6295,6 +6296,11 @@ func (s CorpTokenRequest) String() string {
 
 func (s CorpTokenRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CorpTokenRequest) SetAppSecret(v string) *CorpTokenRequest {
+	s.AppSecret = &v
+	return s
 }
 
 func (s *CorpTokenRequest) SetCorpId(v string) *CorpTokenRequest {
@@ -17924,6 +17930,10 @@ func (client *Client) CorpTokenWithOptions(request *CorpTokenRequest, headers *C
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppSecret)) {
+		query["app_secret"] = request.AppSecret
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
 		query["corp_id"] = request.CorpId
 	}
