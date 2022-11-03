@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -125,6 +125,146 @@ func (s *ChangeApplicationInfoResponse) SetStatusCode(v int32) *ChangeApplicatio
 }
 
 func (s *ChangeApplicationInfoResponse) SetBody(v *ChangeApplicationInfoResponseBody) *ChangeApplicationInfoResponse {
+	s.Body = v
+	return s
+}
+
+type ChargeFlowRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemCode   *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+	Mobile     *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	UId        *int64  `json:"UId,omitempty" xml:"UId,omitempty"`
+}
+
+func (s ChargeFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChargeFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChargeFlowRequest) SetInstanceId(v string) *ChargeFlowRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ChargeFlowRequest) SetItemCode(v string) *ChargeFlowRequest {
+	s.ItemCode = &v
+	return s
+}
+
+func (s *ChargeFlowRequest) SetMobile(v string) *ChargeFlowRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *ChargeFlowRequest) SetUId(v int64) *ChargeFlowRequest {
+	s.UId = &v
+	return s
+}
+
+type ChargeFlowResponseBody struct {
+	Code      *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ChargeFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                      `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ChargeFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChargeFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChargeFlowResponseBody) SetCode(v string) *ChargeFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChargeFlowResponseBody) SetData(v *ChargeFlowResponseBodyData) *ChargeFlowResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ChargeFlowResponseBody) SetMessage(v string) *ChargeFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChargeFlowResponseBody) SetRequestId(v string) *ChargeFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChargeFlowResponseBody) SetRt(v int64) *ChargeFlowResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *ChargeFlowResponseBody) SetSuccess(v bool) *ChargeFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ChargeFlowResponseBodyData struct {
+	CustomerFlowRequestId *string `json:"CustomerFlowRequestId,omitempty" xml:"CustomerFlowRequestId,omitempty"`
+	Mobile                *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Status                *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ChargeFlowResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChargeFlowResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ChargeFlowResponseBodyData) SetCustomerFlowRequestId(v string) *ChargeFlowResponseBodyData {
+	s.CustomerFlowRequestId = &v
+	return s
+}
+
+func (s *ChargeFlowResponseBodyData) SetMobile(v string) *ChargeFlowResponseBodyData {
+	s.Mobile = &v
+	return s
+}
+
+func (s *ChargeFlowResponseBodyData) SetStatus(v bool) *ChargeFlowResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type ChargeFlowResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChargeFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChargeFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChargeFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChargeFlowResponse) SetHeaders(v map[string]*string) *ChargeFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChargeFlowResponse) SetStatusCode(v int32) *ChargeFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChargeFlowResponse) SetBody(v *ChargeFlowResponseBody) *ChargeFlowResponse {
 	s.Body = v
 	return s
 }
@@ -1225,6 +1365,368 @@ func (s *GetFreeFlowUsageStatisticResponse) SetBody(v *GetFreeFlowUsageStatistic
 	return s
 }
 
+type GetInventoryInfoRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemCode   *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+	Mobile     *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	UId        *int64  `json:"UId,omitempty" xml:"UId,omitempty"`
+}
+
+func (s GetInventoryInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInventoryInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInventoryInfoRequest) SetInstanceId(v string) *GetInventoryInfoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInventoryInfoRequest) SetItemCode(v string) *GetInventoryInfoRequest {
+	s.ItemCode = &v
+	return s
+}
+
+func (s *GetInventoryInfoRequest) SetMobile(v string) *GetInventoryInfoRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *GetInventoryInfoRequest) SetUId(v int64) *GetInventoryInfoRequest {
+	s.UId = &v
+	return s
+}
+
+type GetInventoryInfoResponseBody struct {
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetInventoryInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                            `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetInventoryInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInventoryInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInventoryInfoResponseBody) SetCode(v string) *GetInventoryInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetInventoryInfoResponseBody) SetData(v *GetInventoryInfoResponseBodyData) *GetInventoryInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetInventoryInfoResponseBody) SetMessage(v string) *GetInventoryInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetInventoryInfoResponseBody) SetRequestId(v string) *GetInventoryInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetInventoryInfoResponseBody) SetRt(v int64) *GetInventoryInfoResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetInventoryInfoResponseBody) SetSuccess(v bool) *GetInventoryInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetInventoryInfoResponseBodyData struct {
+	Inventory         *int64 `json:"Inventory,omitempty" xml:"Inventory,omitempty"`
+	ResidualInventory *int64 `json:"ResidualInventory,omitempty" xml:"ResidualInventory,omitempty"`
+	UsedStock         *int64 `json:"UsedStock,omitempty" xml:"UsedStock,omitempty"`
+}
+
+func (s GetInventoryInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInventoryInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetInventoryInfoResponseBodyData) SetInventory(v int64) *GetInventoryInfoResponseBodyData {
+	s.Inventory = &v
+	return s
+}
+
+func (s *GetInventoryInfoResponseBodyData) SetResidualInventory(v int64) *GetInventoryInfoResponseBodyData {
+	s.ResidualInventory = &v
+	return s
+}
+
+func (s *GetInventoryInfoResponseBodyData) SetUsedStock(v int64) *GetInventoryInfoResponseBodyData {
+	s.UsedStock = &v
+	return s
+}
+
+type GetInventoryInfoResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInventoryInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetInventoryInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInventoryInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInventoryInfoResponse) SetHeaders(v map[string]*string) *GetInventoryInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInventoryInfoResponse) SetStatusCode(v int32) *GetInventoryInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInventoryInfoResponse) SetBody(v *GetInventoryInfoResponseBody) *GetInventoryInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetItemInstListRequest struct {
+	Current    *int32  `json:"Current,omitempty" xml:"Current,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemCode   *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+	Mobile     *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	UId        *int64  `json:"UId,omitempty" xml:"UId,omitempty"`
+}
+
+func (s GetItemInstListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetItemInstListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetItemInstListRequest) SetCurrent(v int32) *GetItemInstListRequest {
+	s.Current = &v
+	return s
+}
+
+func (s *GetItemInstListRequest) SetInstanceId(v string) *GetItemInstListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetItemInstListRequest) SetItemCode(v string) *GetItemInstListRequest {
+	s.ItemCode = &v
+	return s
+}
+
+func (s *GetItemInstListRequest) SetMobile(v string) *GetItemInstListRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *GetItemInstListRequest) SetPageSize(v int32) *GetItemInstListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetItemInstListRequest) SetUId(v int64) *GetItemInstListRequest {
+	s.UId = &v
+	return s
+}
+
+type GetItemInstListResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetItemInstListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                           `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetItemInstListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetItemInstListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetItemInstListResponseBody) SetCode(v string) *GetItemInstListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetItemInstListResponseBody) SetData(v *GetItemInstListResponseBodyData) *GetItemInstListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetItemInstListResponseBody) SetMessage(v string) *GetItemInstListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetItemInstListResponseBody) SetRequestId(v string) *GetItemInstListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetItemInstListResponseBody) SetRt(v int64) *GetItemInstListResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetItemInstListResponseBody) SetSuccess(v bool) *GetItemInstListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetItemInstListResponseBodyData struct {
+	List     []*GetItemInstListResponseBodyDataList   `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageInfo *GetItemInstListResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+}
+
+func (s GetItemInstListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetItemInstListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetItemInstListResponseBodyData) SetList(v []*GetItemInstListResponseBodyDataList) *GetItemInstListResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *GetItemInstListResponseBodyData) SetPageInfo(v *GetItemInstListResponseBodyDataPageInfo) *GetItemInstListResponseBodyData {
+	s.PageInfo = v
+	return s
+}
+
+type GetItemInstListResponseBodyDataList struct {
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime  *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ProductId   *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetItemInstListResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetItemInstListResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *GetItemInstListResponseBodyDataList) SetCreateTime(v string) *GetItemInstListResponseBodyDataList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetItemInstListResponseBodyDataList) SetExpireTime(v string) *GetItemInstListResponseBodyDataList {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GetItemInstListResponseBodyDataList) SetInstanceId(v string) *GetItemInstListResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetItemInstListResponseBodyDataList) SetProductId(v string) *GetItemInstListResponseBodyDataList {
+	s.ProductId = &v
+	return s
+}
+
+func (s *GetItemInstListResponseBodyDataList) SetProductName(v string) *GetItemInstListResponseBodyDataList {
+	s.ProductName = &v
+	return s
+}
+
+func (s *GetItemInstListResponseBodyDataList) SetStatus(v int32) *GetItemInstListResponseBodyDataList {
+	s.Status = &v
+	return s
+}
+
+type GetItemInstListResponseBodyDataPageInfo struct {
+	Current  *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetItemInstListResponseBodyDataPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetItemInstListResponseBodyDataPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetItemInstListResponseBodyDataPageInfo) SetCurrent(v int32) *GetItemInstListResponseBodyDataPageInfo {
+	s.Current = &v
+	return s
+}
+
+func (s *GetItemInstListResponseBodyDataPageInfo) SetPageSize(v int32) *GetItemInstListResponseBodyDataPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetItemInstListResponseBodyDataPageInfo) SetTotal(v int64) *GetItemInstListResponseBodyDataPageInfo {
+	s.Total = &v
+	return s
+}
+
+type GetItemInstListResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetItemInstListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetItemInstListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetItemInstListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetItemInstListResponse) SetHeaders(v map[string]*string) *GetItemInstListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetItemInstListResponse) SetStatusCode(v int32) *GetItemInstListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetItemInstListResponse) SetBody(v *GetItemInstListResponseBody) *GetItemInstListResponse {
+	s.Body = v
+	return s
+}
+
 type GetItemListRequest struct {
 	AliUid  *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
@@ -1501,6 +2003,82 @@ func (s *GetOrderFreeFlowProductStatusResponse) SetStatusCode(v int32) *GetOrder
 }
 
 func (s *GetOrderFreeFlowProductStatusResponse) SetBody(v *GetOrderFreeFlowProductStatusResponseBody) *GetOrderFreeFlowProductStatusResponse {
+	s.Body = v
+	return s
+}
+
+type GetOrderItemListResponseBody struct {
+	Code      *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64      `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetOrderItemListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderItemListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderItemListResponseBody) SetCode(v string) *GetOrderItemListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetOrderItemListResponseBody) SetData(v interface{}) *GetOrderItemListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetOrderItemListResponseBody) SetMessage(v string) *GetOrderItemListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetOrderItemListResponseBody) SetRequestId(v string) *GetOrderItemListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOrderItemListResponseBody) SetRt(v int64) *GetOrderItemListResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetOrderItemListResponseBody) SetSuccess(v bool) *GetOrderItemListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetOrderItemListResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOrderItemListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOrderItemListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderItemListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderItemListResponse) SetHeaders(v map[string]*string) *GetOrderItemListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOrderItemListResponse) SetStatusCode(v int32) *GetOrderItemListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOrderItemListResponse) SetBody(v *GetOrderItemListResponseBody) *GetOrderItemListResponse {
 	s.Body = v
 	return s
 }
@@ -3195,6 +3773,246 @@ func (s *OrderQosProductResponse) SetBody(v *OrderQosProductResponseBody) *Order
 	return s
 }
 
+type QueryOrderListRequest struct {
+	Current    *int32  `json:"Current,omitempty" xml:"Current,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemCode   *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+	Mobile     *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	UId        *int64  `json:"UId,omitempty" xml:"UId,omitempty"`
+}
+
+func (s QueryOrderListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListRequest) SetCurrent(v int32) *QueryOrderListRequest {
+	s.Current = &v
+	return s
+}
+
+func (s *QueryOrderListRequest) SetInstanceId(v string) *QueryOrderListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryOrderListRequest) SetItemCode(v string) *QueryOrderListRequest {
+	s.ItemCode = &v
+	return s
+}
+
+func (s *QueryOrderListRequest) SetMobile(v string) *QueryOrderListRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *QueryOrderListRequest) SetPageSize(v int32) *QueryOrderListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryOrderListRequest) SetUId(v int64) *QueryOrderListRequest {
+	s.UId = &v
+	return s
+}
+
+type QueryOrderListResponseBody struct {
+	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryOrderListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                          `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryOrderListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListResponseBody) SetCode(v string) *QueryOrderListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBody) SetData(v *QueryOrderListResponseBodyData) *QueryOrderListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryOrderListResponseBody) SetMessage(v string) *QueryOrderListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBody) SetRequestId(v string) *QueryOrderListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBody) SetRt(v int64) *QueryOrderListResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBody) SetSuccess(v bool) *QueryOrderListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryOrderListResponseBodyData struct {
+	List     []*QueryOrderListResponseBodyDataList   `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageInfo *QueryOrderListResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+}
+
+func (s QueryOrderListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListResponseBodyData) SetList(v []*QueryOrderListResponseBodyDataList) *QueryOrderListResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyData) SetPageInfo(v *QueryOrderListResponseBodyDataPageInfo) *QueryOrderListResponseBodyData {
+	s.PageInfo = v
+	return s
+}
+
+type QueryOrderListResponseBodyDataList struct {
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Operator    *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	OrderId     *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderTime   *string `json:"OrderTime,omitempty" xml:"OrderTime,omitempty"`
+	ProductId   *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QueryOrderListResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListResponseBodyDataList) SetInstanceId(v string) *QueryOrderListResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyDataList) SetMessage(v string) *QueryOrderListResponseBodyDataList {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyDataList) SetMobile(v string) *QueryOrderListResponseBodyDataList {
+	s.Mobile = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyDataList) SetOperator(v string) *QueryOrderListResponseBodyDataList {
+	s.Operator = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyDataList) SetOrderId(v string) *QueryOrderListResponseBodyDataList {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyDataList) SetOrderTime(v string) *QueryOrderListResponseBodyDataList {
+	s.OrderTime = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyDataList) SetProductId(v string) *QueryOrderListResponseBodyDataList {
+	s.ProductId = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyDataList) SetProductName(v string) *QueryOrderListResponseBodyDataList {
+	s.ProductName = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyDataList) SetStatus(v string) *QueryOrderListResponseBodyDataList {
+	s.Status = &v
+	return s
+}
+
+type QueryOrderListResponseBodyDataPageInfo struct {
+	Current  *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QueryOrderListResponseBodyDataPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListResponseBodyDataPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListResponseBodyDataPageInfo) SetCurrent(v int32) *QueryOrderListResponseBodyDataPageInfo {
+	s.Current = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyDataPageInfo) SetPageSize(v int32) *QueryOrderListResponseBodyDataPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryOrderListResponseBodyDataPageInfo) SetTotal(v int64) *QueryOrderListResponseBodyDataPageInfo {
+	s.Total = &v
+	return s
+}
+
+type QueryOrderListResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryOrderListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryOrderListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListResponse) SetHeaders(v map[string]*string) *QueryOrderListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryOrderListResponse) SetStatusCode(v int32) *QueryOrderListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryOrderListResponse) SetBody(v *QueryOrderListResponseBody) *QueryOrderListResponse {
+	s.Body = v
+	return s
+}
+
 type SaveApplicationInfoRequest struct {
 	AliUid      *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -3308,6 +4126,556 @@ func (s *SaveApplicationInfoResponse) SetStatusCode(v int32) *SaveApplicationInf
 }
 
 func (s *SaveApplicationInfoResponse) SetBody(v *SaveApplicationInfoResponseBody) *SaveApplicationInfoResponse {
+	s.Body = v
+	return s
+}
+
+type SdkChargeFlowRequest struct {
+	ChannelCode *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemCode    *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	OutBizNo    *string `json:"OutBizNo,omitempty" xml:"OutBizNo,omitempty"`
+	UId         *int64  `json:"UId,omitempty" xml:"UId,omitempty"`
+}
+
+func (s SdkChargeFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkChargeFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SdkChargeFlowRequest) SetChannelCode(v string) *SdkChargeFlowRequest {
+	s.ChannelCode = &v
+	return s
+}
+
+func (s *SdkChargeFlowRequest) SetInstanceId(v string) *SdkChargeFlowRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SdkChargeFlowRequest) SetItemCode(v string) *SdkChargeFlowRequest {
+	s.ItemCode = &v
+	return s
+}
+
+func (s *SdkChargeFlowRequest) SetMobile(v string) *SdkChargeFlowRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *SdkChargeFlowRequest) SetOutBizNo(v string) *SdkChargeFlowRequest {
+	s.OutBizNo = &v
+	return s
+}
+
+func (s *SdkChargeFlowRequest) SetUId(v int64) *SdkChargeFlowRequest {
+	s.UId = &v
+	return s
+}
+
+type SdkChargeFlowResponseBody struct {
+	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *SdkChargeFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                         `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SdkChargeFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkChargeFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SdkChargeFlowResponseBody) SetCode(v string) *SdkChargeFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SdkChargeFlowResponseBody) SetData(v *SdkChargeFlowResponseBodyData) *SdkChargeFlowResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SdkChargeFlowResponseBody) SetMessage(v string) *SdkChargeFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SdkChargeFlowResponseBody) SetRequestId(v string) *SdkChargeFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SdkChargeFlowResponseBody) SetRt(v int64) *SdkChargeFlowResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *SdkChargeFlowResponseBody) SetSuccess(v bool) *SdkChargeFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SdkChargeFlowResponseBodyData struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Mobile    *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SdkChargeFlowResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkChargeFlowResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SdkChargeFlowResponseBodyData) SetCode(v string) *SdkChargeFlowResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *SdkChargeFlowResponseBodyData) SetMessage(v string) *SdkChargeFlowResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *SdkChargeFlowResponseBodyData) SetMobile(v string) *SdkChargeFlowResponseBodyData {
+	s.Mobile = &v
+	return s
+}
+
+func (s *SdkChargeFlowResponseBodyData) SetRequestId(v string) *SdkChargeFlowResponseBodyData {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SdkChargeFlowResponseBodyData) SetSuccess(v bool) *SdkChargeFlowResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type SdkChargeFlowResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SdkChargeFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SdkChargeFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkChargeFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SdkChargeFlowResponse) SetHeaders(v map[string]*string) *SdkChargeFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SdkChargeFlowResponse) SetStatusCode(v int32) *SdkChargeFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SdkChargeFlowResponse) SetBody(v *SdkChargeFlowResponseBody) *SdkChargeFlowResponse {
+	s.Body = v
+	return s
+}
+
+type SdkGetInventoryInfoRequest struct {
+	ChannelCode *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemCode    *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	OutBizNo    *string `json:"OutBizNo,omitempty" xml:"OutBizNo,omitempty"`
+	UId         *int64  `json:"UId,omitempty" xml:"UId,omitempty"`
+}
+
+func (s SdkGetInventoryInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkGetInventoryInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SdkGetInventoryInfoRequest) SetChannelCode(v string) *SdkGetInventoryInfoRequest {
+	s.ChannelCode = &v
+	return s
+}
+
+func (s *SdkGetInventoryInfoRequest) SetInstanceId(v string) *SdkGetInventoryInfoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SdkGetInventoryInfoRequest) SetItemCode(v string) *SdkGetInventoryInfoRequest {
+	s.ItemCode = &v
+	return s
+}
+
+func (s *SdkGetInventoryInfoRequest) SetMobile(v string) *SdkGetInventoryInfoRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *SdkGetInventoryInfoRequest) SetOutBizNo(v string) *SdkGetInventoryInfoRequest {
+	s.OutBizNo = &v
+	return s
+}
+
+func (s *SdkGetInventoryInfoRequest) SetUId(v int64) *SdkGetInventoryInfoRequest {
+	s.UId = &v
+	return s
+}
+
+type SdkGetInventoryInfoResponseBody struct {
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *SdkGetInventoryInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                               `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SdkGetInventoryInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkGetInventoryInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SdkGetInventoryInfoResponseBody) SetCode(v string) *SdkGetInventoryInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SdkGetInventoryInfoResponseBody) SetData(v *SdkGetInventoryInfoResponseBodyData) *SdkGetInventoryInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SdkGetInventoryInfoResponseBody) SetMessage(v string) *SdkGetInventoryInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SdkGetInventoryInfoResponseBody) SetRequestId(v string) *SdkGetInventoryInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SdkGetInventoryInfoResponseBody) SetRt(v int64) *SdkGetInventoryInfoResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *SdkGetInventoryInfoResponseBody) SetSuccess(v bool) *SdkGetInventoryInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SdkGetInventoryInfoResponseBodyData struct {
+	Inventory         *int64 `json:"Inventory,omitempty" xml:"Inventory,omitempty"`
+	ResidualInventory *int64 `json:"ResidualInventory,omitempty" xml:"ResidualInventory,omitempty"`
+	UsedStock         *int64 `json:"UsedStock,omitempty" xml:"UsedStock,omitempty"`
+}
+
+func (s SdkGetInventoryInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkGetInventoryInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SdkGetInventoryInfoResponseBodyData) SetInventory(v int64) *SdkGetInventoryInfoResponseBodyData {
+	s.Inventory = &v
+	return s
+}
+
+func (s *SdkGetInventoryInfoResponseBodyData) SetResidualInventory(v int64) *SdkGetInventoryInfoResponseBodyData {
+	s.ResidualInventory = &v
+	return s
+}
+
+func (s *SdkGetInventoryInfoResponseBodyData) SetUsedStock(v int64) *SdkGetInventoryInfoResponseBodyData {
+	s.UsedStock = &v
+	return s
+}
+
+type SdkGetInventoryInfoResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SdkGetInventoryInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SdkGetInventoryInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkGetInventoryInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SdkGetInventoryInfoResponse) SetHeaders(v map[string]*string) *SdkGetInventoryInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SdkGetInventoryInfoResponse) SetStatusCode(v int32) *SdkGetInventoryInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SdkGetInventoryInfoResponse) SetBody(v *SdkGetInventoryInfoResponseBody) *SdkGetInventoryInfoResponse {
+	s.Body = v
+	return s
+}
+
+type SdkGetItemInstListRequest struct {
+	ChannelCode *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
+	Current     *int32  `json:"Current,omitempty" xml:"Current,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemCode    *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	OutBizNo    *string `json:"OutBizNo,omitempty" xml:"OutBizNo,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	UId         *int64  `json:"UId,omitempty" xml:"UId,omitempty"`
+}
+
+func (s SdkGetItemInstListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkGetItemInstListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SdkGetItemInstListRequest) SetChannelCode(v string) *SdkGetItemInstListRequest {
+	s.ChannelCode = &v
+	return s
+}
+
+func (s *SdkGetItemInstListRequest) SetCurrent(v int32) *SdkGetItemInstListRequest {
+	s.Current = &v
+	return s
+}
+
+func (s *SdkGetItemInstListRequest) SetInstanceId(v string) *SdkGetItemInstListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SdkGetItemInstListRequest) SetItemCode(v string) *SdkGetItemInstListRequest {
+	s.ItemCode = &v
+	return s
+}
+
+func (s *SdkGetItemInstListRequest) SetMobile(v string) *SdkGetItemInstListRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *SdkGetItemInstListRequest) SetOutBizNo(v string) *SdkGetItemInstListRequest {
+	s.OutBizNo = &v
+	return s
+}
+
+func (s *SdkGetItemInstListRequest) SetPageSize(v int32) *SdkGetItemInstListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SdkGetItemInstListRequest) SetUId(v int64) *SdkGetItemInstListRequest {
+	s.UId = &v
+	return s
+}
+
+type SdkGetItemInstListResponseBody struct {
+	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *SdkGetItemInstListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64                              `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SdkGetItemInstListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkGetItemInstListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SdkGetItemInstListResponseBody) SetCode(v string) *SdkGetItemInstListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SdkGetItemInstListResponseBody) SetData(v *SdkGetItemInstListResponseBodyData) *SdkGetItemInstListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SdkGetItemInstListResponseBody) SetMessage(v string) *SdkGetItemInstListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SdkGetItemInstListResponseBody) SetRequestId(v string) *SdkGetItemInstListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SdkGetItemInstListResponseBody) SetRt(v int64) *SdkGetItemInstListResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *SdkGetItemInstListResponseBody) SetSuccess(v bool) *SdkGetItemInstListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SdkGetItemInstListResponseBodyData struct {
+	List     []*SdkGetItemInstListResponseBodyDataList   `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageInfo *SdkGetItemInstListResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+}
+
+func (s SdkGetItemInstListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkGetItemInstListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SdkGetItemInstListResponseBodyData) SetList(v []*SdkGetItemInstListResponseBodyDataList) *SdkGetItemInstListResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *SdkGetItemInstListResponseBodyData) SetPageInfo(v *SdkGetItemInstListResponseBodyDataPageInfo) *SdkGetItemInstListResponseBodyData {
+	s.PageInfo = v
+	return s
+}
+
+type SdkGetItemInstListResponseBodyDataList struct {
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime  *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ProductId   *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s SdkGetItemInstListResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkGetItemInstListResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *SdkGetItemInstListResponseBodyDataList) SetCreateTime(v string) *SdkGetItemInstListResponseBodyDataList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *SdkGetItemInstListResponseBodyDataList) SetExpireTime(v string) *SdkGetItemInstListResponseBodyDataList {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *SdkGetItemInstListResponseBodyDataList) SetInstanceId(v string) *SdkGetItemInstListResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SdkGetItemInstListResponseBodyDataList) SetProductId(v string) *SdkGetItemInstListResponseBodyDataList {
+	s.ProductId = &v
+	return s
+}
+
+func (s *SdkGetItemInstListResponseBodyDataList) SetProductName(v string) *SdkGetItemInstListResponseBodyDataList {
+	s.ProductName = &v
+	return s
+}
+
+func (s *SdkGetItemInstListResponseBodyDataList) SetStatus(v int32) *SdkGetItemInstListResponseBodyDataList {
+	s.Status = &v
+	return s
+}
+
+type SdkGetItemInstListResponseBodyDataPageInfo struct {
+	Current  *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s SdkGetItemInstListResponseBodyDataPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkGetItemInstListResponseBodyDataPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SdkGetItemInstListResponseBodyDataPageInfo) SetCurrent(v int32) *SdkGetItemInstListResponseBodyDataPageInfo {
+	s.Current = &v
+	return s
+}
+
+func (s *SdkGetItemInstListResponseBodyDataPageInfo) SetPageSize(v int32) *SdkGetItemInstListResponseBodyDataPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SdkGetItemInstListResponseBodyDataPageInfo) SetTotal(v int64) *SdkGetItemInstListResponseBodyDataPageInfo {
+	s.Total = &v
+	return s
+}
+
+type SdkGetItemInstListResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SdkGetItemInstListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SdkGetItemInstListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkGetItemInstListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SdkGetItemInstListResponse) SetHeaders(v map[string]*string) *SdkGetItemInstListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SdkGetItemInstListResponse) SetStatusCode(v int32) *SdkGetItemInstListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SdkGetItemInstListResponse) SetBody(v *SdkGetItemInstListResponseBody) *SdkGetItemInstListResponse {
 	s.Body = v
 	return s
 }
@@ -3781,6 +5149,117 @@ func (s *ValidControllerAuthorResponse) SetBody(v *ValidControllerAuthorResponse
 	return s
 }
 
+type ValidFlowRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemCode   *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+	Mobile     *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	UId        *int64  `json:"UId,omitempty" xml:"UId,omitempty"`
+}
+
+func (s ValidFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ValidFlowRequest) SetInstanceId(v string) *ValidFlowRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ValidFlowRequest) SetItemCode(v string) *ValidFlowRequest {
+	s.ItemCode = &v
+	return s
+}
+
+func (s *ValidFlowRequest) SetMobile(v string) *ValidFlowRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *ValidFlowRequest) SetUId(v int64) *ValidFlowRequest {
+	s.UId = &v
+	return s
+}
+
+type ValidFlowResponseBody struct {
+	Code      *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rt        *int64      `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ValidFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ValidFlowResponseBody) SetCode(v string) *ValidFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ValidFlowResponseBody) SetData(v interface{}) *ValidFlowResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ValidFlowResponseBody) SetMessage(v string) *ValidFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ValidFlowResponseBody) SetRequestId(v string) *ValidFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ValidFlowResponseBody) SetRt(v int64) *ValidFlowResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *ValidFlowResponseBody) SetSuccess(v bool) *ValidFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ValidFlowResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ValidFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ValidFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ValidFlowResponse) SetHeaders(v map[string]*string) *ValidFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ValidFlowResponse) SetStatusCode(v int32) *ValidFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ValidFlowResponse) SetBody(v *ValidFlowResponseBody) *ValidFlowResponse {
+	s.Body = v
+	return s
+}
+
 type ValidateStatusRequest struct {
 	AliUid          *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -4073,6 +5552,62 @@ func (client *Client) ChangeApplicationInfo(request *ChangeApplicationInfoReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeApplicationInfoResponse{}
 	_body, _err := client.ChangeApplicationInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChargeFlowWithOptions(request *ChargeFlowRequest, runtime *util.RuntimeOptions) (_result *ChargeFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemCode)) {
+		query["ItemCode"] = request.ItemCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UId)) {
+		query["UId"] = request.UId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChargeFlow"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChargeFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChargeFlow(request *ChargeFlowRequest) (_result *ChargeFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChargeFlowResponse{}
+	_body, _err := client.ChargeFlowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4373,6 +5908,86 @@ func (client *Client) GetFreeFlowUsageStatistic(request *GetFreeFlowUsageStatist
 	return _result, _err
 }
 
+func (client *Client) GetInventoryInfoWithOptions(request *GetInventoryInfoRequest, runtime *util.RuntimeOptions) (_result *GetInventoryInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInventoryInfo"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInventoryInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInventoryInfo(request *GetInventoryInfoRequest) (_result *GetInventoryInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetInventoryInfoResponse{}
+	_body, _err := client.GetInventoryInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetItemInstListWithOptions(request *GetItemInstListRequest, runtime *util.RuntimeOptions) (_result *GetItemInstListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetItemInstList"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetItemInstListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetItemInstList(request *GetItemInstListRequest) (_result *GetItemInstListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetItemInstListResponse{}
+	_body, _err := client.GetItemInstListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetItemListWithOptions(request *GetItemListRequest, runtime *util.RuntimeOptions) (_result *GetItemListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4446,6 +6061,39 @@ func (client *Client) GetOrderFreeFlowProductStatus(request *GetOrderFreeFlowPro
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOrderFreeFlowProductStatusResponse{}
 	_body, _err := client.GetOrderFreeFlowProductStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOrderItemListWithOptions(runtime *util.RuntimeOptions) (_result *GetOrderItemListResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetOrderItemList"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOrderItemListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOrderItemList() (_result *GetOrderItemListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOrderItemListResponse{}
+	_body, _err := client.GetOrderItemListWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4975,6 +6623,46 @@ func (client *Client) OrderQosProduct(request *OrderQosProductRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) QueryOrderListWithOptions(request *QueryOrderListRequest, runtime *util.RuntimeOptions) (_result *QueryOrderListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryOrderList"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryOrderListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryOrderList(request *QueryOrderListRequest) (_result *QueryOrderListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryOrderListResponse{}
+	_body, _err := client.QueryOrderListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SaveApplicationInfoWithOptions(request *SaveApplicationInfoRequest, runtime *util.RuntimeOptions) (_result *SaveApplicationInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5032,6 +6720,150 @@ func (client *Client) SaveApplicationInfo(request *SaveApplicationInfoRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveApplicationInfoResponse{}
 	_body, _err := client.SaveApplicationInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SdkChargeFlowWithOptions(request *SdkChargeFlowRequest, runtime *util.RuntimeOptions) (_result *SdkChargeFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelCode)) {
+		query["ChannelCode"] = request.ChannelCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemCode)) {
+		query["ItemCode"] = request.ItemCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutBizNo)) {
+		query["OutBizNo"] = request.OutBizNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UId)) {
+		query["UId"] = request.UId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SdkChargeFlow"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SdkChargeFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SdkChargeFlow(request *SdkChargeFlowRequest) (_result *SdkChargeFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SdkChargeFlowResponse{}
+	_body, _err := client.SdkChargeFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SdkGetInventoryInfoWithOptions(request *SdkGetInventoryInfoRequest, runtime *util.RuntimeOptions) (_result *SdkGetInventoryInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SdkGetInventoryInfo"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SdkGetInventoryInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SdkGetInventoryInfo(request *SdkGetInventoryInfoRequest) (_result *SdkGetInventoryInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SdkGetInventoryInfoResponse{}
+	_body, _err := client.SdkGetInventoryInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SdkGetItemInstListWithOptions(request *SdkGetItemInstListRequest, runtime *util.RuntimeOptions) (_result *SdkGetItemInstListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SdkGetItemInstList"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SdkGetItemInstListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SdkGetItemInstList(request *SdkGetItemInstListRequest) (_result *SdkGetItemInstListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SdkGetItemInstListResponse{}
+	_body, _err := client.SdkGetItemInstListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5216,6 +7048,46 @@ func (client *Client) ValidControllerAuthor(request *ValidControllerAuthorReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ValidControllerAuthorResponse{}
 	_body, _err := client.ValidControllerAuthorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ValidFlowWithOptions(request *ValidFlowRequest, runtime *util.RuntimeOptions) (_result *ValidFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidFlow"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ValidFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ValidFlow(request *ValidFlowRequest) (_result *ValidFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ValidFlowResponse{}
+	_body, _err := client.ValidFlowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
