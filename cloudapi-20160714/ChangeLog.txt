@@ -1,3 +1,6 @@
+2022-11-03 Version: v3.0.2
+- Add QueryRequestLogs.
+
 2022-10-13 Version: v3.0.1
 - Add DatasetMethods.
 

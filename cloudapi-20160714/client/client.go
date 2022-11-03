@@ -22702,6 +22702,319 @@ func (s *OpenApiGatewayServiceResponse) SetBody(v *OpenApiGatewayServiceResponse
 	return s
 }
 
+type QueryRequestLogsRequest struct {
+	RequestLogId  *string `json:"RequestLogId,omitempty" xml:"RequestLogId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s QueryRequestLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRequestLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRequestLogsRequest) SetRequestLogId(v string) *QueryRequestLogsRequest {
+	s.RequestLogId = &v
+	return s
+}
+
+func (s *QueryRequestLogsRequest) SetSecurityToken(v string) *QueryRequestLogsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type QueryRequestLogsResponseBody struct {
+	RequestId   *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestLogs *QueryRequestLogsResponseBodyRequestLogs `json:"RequestLogs,omitempty" xml:"RequestLogs,omitempty" type:"Struct"`
+}
+
+func (s QueryRequestLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRequestLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRequestLogsResponseBody) SetRequestId(v string) *QueryRequestLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBody) SetRequestLogs(v *QueryRequestLogsResponseBodyRequestLogs) *QueryRequestLogsResponseBody {
+	s.RequestLogs = v
+	return s
+}
+
+type QueryRequestLogsResponseBodyRequestLogs struct {
+	RequestLog []*QueryRequestLogsResponseBodyRequestLogsRequestLog `json:"RequestLog,omitempty" xml:"RequestLog,omitempty" type:"Repeated"`
+}
+
+func (s QueryRequestLogsResponseBodyRequestLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRequestLogsResponseBodyRequestLogs) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogs) SetRequestLog(v []*QueryRequestLogsResponseBodyRequestLogsRequestLog) *QueryRequestLogsResponseBodyRequestLogs {
+	s.RequestLog = v
+	return s
+}
+
+type QueryRequestLogsResponseBodyRequestLogsRequestLog struct {
+	ApiId              *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName            *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ClientIp           *int32  `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	ClientNonce        *string `json:"ClientNonce,omitempty" xml:"ClientNonce,omitempty"`
+	ConsumerAppId      *string `json:"ConsumerAppId,omitempty" xml:"ConsumerAppId,omitempty"`
+	ConsumerAppKey     *string `json:"ConsumerAppKey,omitempty" xml:"ConsumerAppKey,omitempty"`
+	CustomTraceId      *string `json:"CustomTraceId,omitempty" xml:"CustomTraceId,omitempty"`
+	Domain             *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ErrorCode          *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage       *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Exception          *string `json:"Exception,omitempty" xml:"Exception,omitempty"`
+	GroupId            *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	HttpMethod         *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
+	HttpPath           *string `json:"HttpPath,omitempty" xml:"HttpPath,omitempty"`
+	InitialRequestId   *string `json:"InitialRequestId,omitempty" xml:"InitialRequestId,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JwtClaims          *string `json:"JwtClaims,omitempty" xml:"JwtClaims,omitempty"`
+	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RequestBody        *string `json:"RequestBody,omitempty" xml:"RequestBody,omitempty"`
+	RequestHeaders     *string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestProtocol    *string `json:"RequestProtocol,omitempty" xml:"RequestProtocol,omitempty"`
+	RequestQueryString *string `json:"RequestQueryString,omitempty" xml:"RequestQueryString,omitempty"`
+	RequestSize        *string `json:"RequestSize,omitempty" xml:"RequestSize,omitempty"`
+	RequestTime        *string `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
+	ResponseBody       *string `json:"ResponseBody,omitempty" xml:"ResponseBody,omitempty"`
+	ResponseHeaders    *string `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty"`
+	ResponseSize       *string `json:"ResponseSize,omitempty" xml:"ResponseSize,omitempty"`
+	ServiceLatency     *string `json:"ServiceLatency,omitempty" xml:"ServiceLatency,omitempty"`
+	StageId            *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	StageName          *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StatusCode         *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	TotalLatency       *string `json:"TotalLatency,omitempty" xml:"TotalLatency,omitempty"`
+	Plugin             *string `json:"plugin,omitempty" xml:"plugin,omitempty"`
+}
+
+func (s QueryRequestLogsResponseBodyRequestLogsRequestLog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRequestLogsResponseBodyRequestLogsRequestLog) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetApiId(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.ApiId = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetApiName(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.ApiName = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetClientIp(v int32) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetClientNonce(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.ClientNonce = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetConsumerAppId(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.ConsumerAppId = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetConsumerAppKey(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.ConsumerAppKey = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetCustomTraceId(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.CustomTraceId = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetDomain(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.Domain = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetErrorCode(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetErrorMessage(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetException(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.Exception = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetGroupId(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.GroupId = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetGroupName(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.GroupName = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetHttpMethod(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.HttpMethod = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetHttpPath(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.HttpPath = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetInitialRequestId(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.InitialRequestId = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetInstanceId(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetJwtClaims(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.JwtClaims = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetRegion(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.Region = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetRequestBody(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.RequestBody = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetRequestHeaders(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.RequestHeaders = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetRequestId(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetRequestProtocol(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.RequestProtocol = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetRequestQueryString(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.RequestQueryString = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetRequestSize(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.RequestSize = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetRequestTime(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.RequestTime = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetResponseBody(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.ResponseBody = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetResponseHeaders(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.ResponseHeaders = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetResponseSize(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.ResponseSize = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetServiceLatency(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.ServiceLatency = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetStageId(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.StageId = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetStageName(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.StageName = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetStatusCode(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetTotalLatency(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.TotalLatency = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetPlugin(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.Plugin = &v
+	return s
+}
+
+type QueryRequestLogsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryRequestLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryRequestLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRequestLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRequestLogsResponse) SetHeaders(v map[string]*string) *QueryRequestLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryRequestLogsResponse) SetStatusCode(v int32) *QueryRequestLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponse) SetBody(v *QueryRequestLogsResponseBody) *QueryRequestLogsResponse {
+	s.Body = v
+	return s
+}
+
 type ReactivateDomainRequest struct {
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -33525,6 +33838,54 @@ func (client *Client) OpenApiGatewayService() (_result *OpenApiGatewayServiceRes
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenApiGatewayServiceResponse{}
 	_body, _err := client.OpenApiGatewayServiceWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryRequestLogsWithOptions(request *QueryRequestLogsRequest, runtime *util.RuntimeOptions) (_result *QueryRequestLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RequestLogId)) {
+		query["RequestLogId"] = request.RequestLogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRequestLogs"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryRequestLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryRequestLogs(request *QueryRequestLogsRequest) (_result *QueryRequestLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryRequestLogsResponse{}
+	_body, _err := client.QueryRequestLogsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
