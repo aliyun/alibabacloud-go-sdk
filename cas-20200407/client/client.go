@@ -447,6 +447,411 @@ func (s *CreateCertificateWithCsrRequestResponse) SetBody(v *CreateCertificateWi
 	return s
 }
 
+type CreateWHCertificateWithExtensionRequest struct {
+	AfterTime                *int64  `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
+	AlgorithmKeySize         *string `json:"AlgorithmKeySize,omitempty" xml:"AlgorithmKeySize,omitempty"`
+	AliasName                *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	AppendCrl                *bool   `json:"AppendCrl,omitempty" xml:"AppendCrl,omitempty"`
+	BasicConstraintsCritical *bool   `json:"BasicConstraintsCritical,omitempty" xml:"BasicConstraintsCritical,omitempty"`
+	BeforeTime               *int64  `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
+	CertType                 *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	CommonName               *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	CountryCode              *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CsrPemString             *string `json:"CsrPemString,omitempty" xml:"CsrPemString,omitempty"`
+	Locality                 *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	Organization             *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	OrganizationUnit         *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	ParentIdentifier         *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	Sans                     *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	State                    *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s CreateWHCertificateWithExtensionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWHCertificateWithExtensionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetAfterTime(v int64) *CreateWHCertificateWithExtensionRequest {
+	s.AfterTime = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetAlgorithmKeySize(v string) *CreateWHCertificateWithExtensionRequest {
+	s.AlgorithmKeySize = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetAliasName(v string) *CreateWHCertificateWithExtensionRequest {
+	s.AliasName = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetAppendCrl(v bool) *CreateWHCertificateWithExtensionRequest {
+	s.AppendCrl = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetBasicConstraintsCritical(v bool) *CreateWHCertificateWithExtensionRequest {
+	s.BasicConstraintsCritical = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetBeforeTime(v int64) *CreateWHCertificateWithExtensionRequest {
+	s.BeforeTime = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetCertType(v string) *CreateWHCertificateWithExtensionRequest {
+	s.CertType = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetCommonName(v string) *CreateWHCertificateWithExtensionRequest {
+	s.CommonName = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetCountryCode(v string) *CreateWHCertificateWithExtensionRequest {
+	s.CountryCode = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetCsrPemString(v string) *CreateWHCertificateWithExtensionRequest {
+	s.CsrPemString = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetLocality(v string) *CreateWHCertificateWithExtensionRequest {
+	s.Locality = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetOrganization(v string) *CreateWHCertificateWithExtensionRequest {
+	s.Organization = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetOrganizationUnit(v string) *CreateWHCertificateWithExtensionRequest {
+	s.OrganizationUnit = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetParentIdentifier(v string) *CreateWHCertificateWithExtensionRequest {
+	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetSans(v string) *CreateWHCertificateWithExtensionRequest {
+	s.Sans = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetState(v string) *CreateWHCertificateWithExtensionRequest {
+	s.State = &v
+	return s
+}
+
+type CreateWHCertificateWithExtensionResponseBody struct {
+	Certificate      *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
+	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateWHCertificateWithExtensionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWHCertificateWithExtensionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWHCertificateWithExtensionResponseBody) SetCertificate(v string) *CreateWHCertificateWithExtensionResponseBody {
+	s.Certificate = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionResponseBody) SetCertificateChain(v string) *CreateWHCertificateWithExtensionResponseBody {
+	s.CertificateChain = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionResponseBody) SetIdentifier(v string) *CreateWHCertificateWithExtensionResponseBody {
+	s.Identifier = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionResponseBody) SetRequestId(v string) *CreateWHCertificateWithExtensionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateWHCertificateWithExtensionResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateWHCertificateWithExtensionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateWHCertificateWithExtensionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWHCertificateWithExtensionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWHCertificateWithExtensionResponse) SetHeaders(v map[string]*string) *CreateWHCertificateWithExtensionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionResponse) SetStatusCode(v int32) *CreateWHCertificateWithExtensionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionResponse) SetBody(v *CreateWHCertificateWithExtensionResponseBody) *CreateWHCertificateWithExtensionResponse {
+	s.Body = v
+	return s
+}
+
+type CreateWHClientCertificateRequest struct {
+	AfterTime        *int64  `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
+	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	BeforeTime       *int64  `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
+	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	Csr              *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	Days             *int64  `json:"Days,omitempty" xml:"Days,omitempty"`
+	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	SanType          *int64  `json:"SanType,omitempty" xml:"SanType,omitempty"`
+	SanValue         *string `json:"SanValue,omitempty" xml:"SanValue,omitempty"`
+}
+
+func (s CreateWHClientCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWHClientCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWHClientCertificateRequest) SetAfterTime(v int64) *CreateWHClientCertificateRequest {
+	s.AfterTime = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetAlgorithm(v string) *CreateWHClientCertificateRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetBeforeTime(v int64) *CreateWHClientCertificateRequest {
+	s.BeforeTime = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetCommonName(v string) *CreateWHClientCertificateRequest {
+	s.CommonName = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetCsr(v string) *CreateWHClientCertificateRequest {
+	s.Csr = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetDays(v int64) *CreateWHClientCertificateRequest {
+	s.Days = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetParentIdentifier(v string) *CreateWHClientCertificateRequest {
+	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetSanType(v int64) *CreateWHClientCertificateRequest {
+	s.SanType = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetSanValue(v string) *CreateWHClientCertificateRequest {
+	s.SanValue = &v
+	return s
+}
+
+type CreateWHClientCertificateResponseBody struct {
+	CertificateChain      *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
+	Identifier            *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	ParentX509Certificate *string `json:"ParentX509Certificate,omitempty" xml:"ParentX509Certificate,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RootX509Certificate   *string `json:"RootX509Certificate,omitempty" xml:"RootX509Certificate,omitempty"`
+	X509Certificate       *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
+}
+
+func (s CreateWHClientCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWHClientCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWHClientCertificateResponseBody) SetCertificateChain(v string) *CreateWHClientCertificateResponseBody {
+	s.CertificateChain = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateResponseBody) SetIdentifier(v string) *CreateWHClientCertificateResponseBody {
+	s.Identifier = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateResponseBody) SetParentX509Certificate(v string) *CreateWHClientCertificateResponseBody {
+	s.ParentX509Certificate = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateResponseBody) SetRequestId(v string) *CreateWHClientCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateResponseBody) SetRootX509Certificate(v string) *CreateWHClientCertificateResponseBody {
+	s.RootX509Certificate = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateResponseBody) SetX509Certificate(v string) *CreateWHClientCertificateResponseBody {
+	s.X509Certificate = &v
+	return s
+}
+
+type CreateWHClientCertificateResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateWHClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateWHClientCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWHClientCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWHClientCertificateResponse) SetHeaders(v map[string]*string) *CreateWHClientCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWHClientCertificateResponse) SetStatusCode(v int32) *CreateWHClientCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateResponse) SetBody(v *CreateWHClientCertificateResponseBody) *CreateWHClientCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type DecryptRequest struct {
+	Algorithm      *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+	MessageType    *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+}
+
+func (s DecryptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecryptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DecryptRequest) SetAlgorithm(v string) *DecryptRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *DecryptRequest) SetCertIdentifier(v string) *DecryptRequest {
+	s.CertIdentifier = &v
+	return s
+}
+
+func (s *DecryptRequest) SetCiphertextBlob(v string) *DecryptRequest {
+	s.CiphertextBlob = &v
+	return s
+}
+
+func (s *DecryptRequest) SetMessageType(v string) *DecryptRequest {
+	s.MessageType = &v
+	return s
+}
+
+type DecryptResponseBody struct {
+	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	Plaintext      *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DecryptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecryptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DecryptResponseBody) SetCertIdentifier(v string) *DecryptResponseBody {
+	s.CertIdentifier = &v
+	return s
+}
+
+func (s *DecryptResponseBody) SetPlaintext(v string) *DecryptResponseBody {
+	s.Plaintext = &v
+	return s
+}
+
+func (s *DecryptResponseBody) SetRequestId(v string) *DecryptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DecryptResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DecryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DecryptResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecryptResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DecryptResponse) SetHeaders(v map[string]*string) *DecryptResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DecryptResponse) SetStatusCode(v int32) *DecryptResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DecryptResponse) SetBody(v *DecryptResponseBody) *DecryptResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteCertificateRequestRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
@@ -779,6 +1184,99 @@ func (s *DescribePackageStateResponse) SetStatusCode(v int32) *DescribePackageSt
 }
 
 func (s *DescribePackageStateResponse) SetBody(v *DescribePackageStateResponseBody) *DescribePackageStateResponse {
+	s.Body = v
+	return s
+}
+
+type EncryptRequest struct {
+	Algorithm      *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	MessageType    *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	Plaintext      *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
+}
+
+func (s EncryptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EncryptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EncryptRequest) SetAlgorithm(v string) *EncryptRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *EncryptRequest) SetCertIdentifier(v string) *EncryptRequest {
+	s.CertIdentifier = &v
+	return s
+}
+
+func (s *EncryptRequest) SetMessageType(v string) *EncryptRequest {
+	s.MessageType = &v
+	return s
+}
+
+func (s *EncryptRequest) SetPlaintext(v string) *EncryptRequest {
+	s.Plaintext = &v
+	return s
+}
+
+type EncryptResponseBody struct {
+	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EncryptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EncryptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EncryptResponseBody) SetCertIdentifier(v string) *EncryptResponseBody {
+	s.CertIdentifier = &v
+	return s
+}
+
+func (s *EncryptResponseBody) SetCiphertextBlob(v string) *EncryptResponseBody {
+	s.CiphertextBlob = &v
+	return s
+}
+
+func (s *EncryptResponseBody) SetRequestId(v string) *EncryptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EncryptResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EncryptResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EncryptResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EncryptResponse) SetHeaders(v map[string]*string) *EncryptResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EncryptResponse) SetStatusCode(v int32) *EncryptResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EncryptResponse) SetBody(v *EncryptResponseBody) *EncryptResponse {
 	s.Body = v
 	return s
 }
@@ -1452,6 +1950,69 @@ func (s *RenewCertificateOrderForPackageRequestResponse) SetBody(v *RenewCertifi
 	return s
 }
 
+type RevokeWHClientCertificateRequest struct {
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+}
+
+func (s RevokeWHClientCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeWHClientCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeWHClientCertificateRequest) SetIdentifier(v string) *RevokeWHClientCertificateRequest {
+	s.Identifier = &v
+	return s
+}
+
+type RevokeWHClientCertificateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RevokeWHClientCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeWHClientCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeWHClientCertificateResponseBody) SetRequestId(v string) *RevokeWHClientCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RevokeWHClientCertificateResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RevokeWHClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RevokeWHClientCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeWHClientCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeWHClientCertificateResponse) SetHeaders(v map[string]*string) *RevokeWHClientCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RevokeWHClientCertificateResponse) SetStatusCode(v int32) *RevokeWHClientCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RevokeWHClientCertificateResponse) SetBody(v *RevokeWHClientCertificateResponseBody) *RevokeWHClientCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type SignRequest struct {
 	CertIdentifier   *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -2099,6 +2660,242 @@ func (client *Client) CreateCertificateWithCsrRequest(request *CreateCertificate
 	return _result, _err
 }
 
+func (client *Client) CreateWHCertificateWithExtensionWithOptions(request *CreateWHCertificateWithExtensionRequest, runtime *util.RuntimeOptions) (_result *CreateWHCertificateWithExtensionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AfterTime)) {
+		query["AfterTime"] = request.AfterTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlgorithmKeySize)) {
+		query["AlgorithmKeySize"] = request.AlgorithmKeySize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppendCrl)) {
+		query["AppendCrl"] = request.AppendCrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BasicConstraintsCritical)) {
+		query["BasicConstraintsCritical"] = request.BasicConstraintsCritical
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeforeTime)) {
+		query["BeforeTime"] = request.BeforeTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertType)) {
+		query["CertType"] = request.CertType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommonName)) {
+		query["CommonName"] = request.CommonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CountryCode)) {
+		query["CountryCode"] = request.CountryCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CsrPemString)) {
+		query["CsrPemString"] = request.CsrPemString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Locality)) {
+		query["Locality"] = request.Locality
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Organization)) {
+		query["Organization"] = request.Organization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationUnit)) {
+		query["OrganizationUnit"] = request.OrganizationUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentIdentifier)) {
+		query["ParentIdentifier"] = request.ParentIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sans)) {
+		query["Sans"] = request.Sans
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWHCertificateWithExtension"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateWHCertificateWithExtensionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateWHCertificateWithExtension(request *CreateWHCertificateWithExtensionRequest) (_result *CreateWHCertificateWithExtensionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateWHCertificateWithExtensionResponse{}
+	_body, _err := client.CreateWHCertificateWithExtensionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateWHClientCertificateWithOptions(request *CreateWHClientCertificateRequest, runtime *util.RuntimeOptions) (_result *CreateWHClientCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AfterTime)) {
+		query["AfterTime"] = request.AfterTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeforeTime)) {
+		query["BeforeTime"] = request.BeforeTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommonName)) {
+		query["CommonName"] = request.CommonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Csr)) {
+		query["Csr"] = request.Csr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Days)) {
+		query["Days"] = request.Days
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentIdentifier)) {
+		query["ParentIdentifier"] = request.ParentIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SanType)) {
+		query["SanType"] = request.SanType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SanValue)) {
+		query["SanValue"] = request.SanValue
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWHClientCertificate"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateWHClientCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateWHClientCertificate(request *CreateWHClientCertificateRequest) (_result *CreateWHClientCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateWHClientCertificateResponse{}
+	_body, _err := client.CreateWHClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DecryptWithOptions(request *DecryptRequest, runtime *util.RuntimeOptions) (_result *DecryptResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertIdentifier)) {
+		query["CertIdentifier"] = request.CertIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CiphertextBlob)) {
+		query["CiphertextBlob"] = request.CiphertextBlob
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageType)) {
+		query["MessageType"] = request.MessageType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Decrypt"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DecryptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) Decrypt(request *DecryptRequest) (_result *DecryptResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DecryptResponse{}
+	_body, _err := client.DecryptWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteCertificateRequestWithOptions(request *DeleteCertificateRequestRequest, runtime *util.RuntimeOptions) (_result *DeleteCertificateRequestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2268,6 +3065,62 @@ func (client *Client) DescribePackageState(request *DescribePackageStateRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePackageStateResponse{}
 	_body, _err := client.DescribePackageStateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EncryptWithOptions(request *EncryptRequest, runtime *util.RuntimeOptions) (_result *EncryptResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertIdentifier)) {
+		query["CertIdentifier"] = request.CertIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageType)) {
+		query["MessageType"] = request.MessageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Plaintext)) {
+		query["Plaintext"] = request.Plaintext
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Encrypt"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EncryptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) Encrypt(request *EncryptRequest) (_result *EncryptResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EncryptResponse{}
+	_body, _err := client.EncryptWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2496,6 +3349,50 @@ func (client *Client) RenewCertificateOrderForPackageRequest(request *RenewCerti
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewCertificateOrderForPackageRequestResponse{}
 	_body, _err := client.RenewCertificateOrderForPackageRequestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RevokeWHClientCertificateWithOptions(request *RevokeWHClientCertificateRequest, runtime *util.RuntimeOptions) (_result *RevokeWHClientCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
+		query["Identifier"] = request.Identifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevokeWHClientCertificate"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevokeWHClientCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RevokeWHClientCertificate(request *RevokeWHClientCertificateRequest) (_result *RevokeWHClientCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RevokeWHClientCertificateResponse{}
+	_body, _err := client.RevokeWHClientCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
