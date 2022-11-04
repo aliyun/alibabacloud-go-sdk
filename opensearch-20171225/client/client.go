@@ -6921,13 +6921,14 @@ func (s *ListAppGroupMetricsResponse) SetBody(v *ListAppGroupMetricsResponseBody
 }
 
 type ListAppGroupsRequest struct {
-	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
-	PageNumber      *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	SortBy          *int32  `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
-	Type            *string `json:"type,omitempty" xml:"type,omitempty"`
+	InstanceId      *string                     `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Name            *string                     `json:"name,omitempty" xml:"name,omitempty"`
+	PageNumber      *int32                      `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize        *int32                      `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ResourceGroupId *string                     `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	SortBy          *int32                      `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
+	Tags            []*ListAppGroupsRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Type            *string                     `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListAppGroupsRequest) String() string {
@@ -6968,7 +6969,94 @@ func (s *ListAppGroupsRequest) SetSortBy(v int32) *ListAppGroupsRequest {
 	return s
 }
 
+func (s *ListAppGroupsRequest) SetTags(v []*ListAppGroupsRequestTags) *ListAppGroupsRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *ListAppGroupsRequest) SetType(v string) *ListAppGroupsRequest {
+	s.Type = &v
+	return s
+}
+
+type ListAppGroupsRequestTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListAppGroupsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppGroupsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppGroupsRequestTags) SetKey(v string) *ListAppGroupsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListAppGroupsRequestTags) SetValue(v string) *ListAppGroupsRequestTags {
+	s.Value = &v
+	return s
+}
+
+type ListAppGroupsShrinkRequest struct {
+	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	PageNumber      *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	SortBy          *int32  `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
+	TagsShrink      *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	Type            *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListAppGroupsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppGroupsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppGroupsShrinkRequest) SetInstanceId(v string) *ListAppGroupsShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListAppGroupsShrinkRequest) SetName(v string) *ListAppGroupsShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAppGroupsShrinkRequest) SetPageNumber(v int32) *ListAppGroupsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAppGroupsShrinkRequest) SetPageSize(v int32) *ListAppGroupsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAppGroupsShrinkRequest) SetResourceGroupId(v string) *ListAppGroupsShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListAppGroupsShrinkRequest) SetSortBy(v int32) *ListAppGroupsShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListAppGroupsShrinkRequest) SetTagsShrink(v string) *ListAppGroupsShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *ListAppGroupsShrinkRequest) SetType(v string) *ListAppGroupsShrinkRequest {
 	s.Type = &v
 	return s
 }
@@ -17313,11 +17401,17 @@ func (client *Client) ListAppGroups(request *ListAppGroupsRequest) (_result *Lis
 	return _result, _err
 }
 
-func (client *Client) ListAppGroupsWithOptions(request *ListAppGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAppGroupsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListAppGroupsWithOptions(tmpReq *ListAppGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAppGroupsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListAppGroupsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("tags"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["instanceId"] = request.InstanceId
@@ -17341,6 +17435,10 @@ func (client *Client) ListAppGroupsWithOptions(request *ListAppGroupsRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
 		query["sortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["tags"] = request.TagsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
