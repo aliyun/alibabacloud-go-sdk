@@ -1145,6 +1145,7 @@ func (s *GetStoreSearchTopResponse) SetBody(v *GetStoreSearchTopResponseBody) *G
 
 type GetStyleTopRequest struct {
 	CateIds     *string `json:"CateIds,omitempty" xml:"CateIds,omitempty"`
+	PageIndex   *int64  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	SortOrder   *int64  `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	TimeDisplay *int64  `json:"TimeDisplay,omitempty" xml:"TimeDisplay,omitempty"`
 }
@@ -1159,6 +1160,11 @@ func (s GetStyleTopRequest) GoString() string {
 
 func (s *GetStyleTopRequest) SetCateIds(v string) *GetStyleTopRequest {
 	s.CateIds = &v
+	return s
+}
+
+func (s *GetStyleTopRequest) SetPageIndex(v int64) *GetStyleTopRequest {
+	s.PageIndex = &v
 	return s
 }
 
@@ -1214,6 +1220,7 @@ func (s *GetStyleTopResponseBody) SetSuccessResponse(v string) *GetStyleTopRespo
 }
 
 type GetStyleTopResponseBodyData struct {
+	BuyerTags    *string   `json:"BuyerTags,omitempty" xml:"BuyerTags,omitempty"`
 	CateName     *string   `json:"CateName,omitempty" xml:"CateName,omitempty"`
 	Color        *string   `json:"Color,omitempty" xml:"Color,omitempty"`
 	Images       []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
@@ -1231,6 +1238,11 @@ func (s GetStyleTopResponseBodyData) String() string {
 
 func (s GetStyleTopResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetStyleTopResponseBodyData) SetBuyerTags(v string) *GetStyleTopResponseBodyData {
+	s.BuyerTags = &v
+	return s
 }
 
 func (s *GetStyleTopResponseBodyData) SetCateName(v string) *GetStyleTopResponseBodyData {
@@ -2432,6 +2444,10 @@ func (client *Client) GetStyleTopWithOptions(request *GetStyleTopRequest, runtim
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CateIds)) {
 		body["CateIds"] = request.CateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		body["PageIndex"] = request.PageIndex
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
