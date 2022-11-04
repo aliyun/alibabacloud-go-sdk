@@ -2267,7 +2267,11 @@ func (s *DetectSkinDiseaseResponseBody) SetRequestId(v string) *DetectSkinDiseas
 }
 
 type DetectSkinDiseaseResponseBodyData struct {
-	Results map[string]interface{} `json:"Results,omitempty" xml:"Results,omitempty"`
+	BodyPart       *string                `json:"BodyPart,omitempty" xml:"BodyPart,omitempty"`
+	ImageQuality   *float32               `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty"`
+	ImageType      *string                `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	Results        map[string]interface{} `json:"Results,omitempty" xml:"Results,omitempty"`
+	ResultsEnglish map[string]interface{} `json:"ResultsEnglish,omitempty" xml:"ResultsEnglish,omitempty"`
 }
 
 func (s DetectSkinDiseaseResponseBodyData) String() string {
@@ -2278,8 +2282,28 @@ func (s DetectSkinDiseaseResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *DetectSkinDiseaseResponseBodyData) SetBodyPart(v string) *DetectSkinDiseaseResponseBodyData {
+	s.BodyPart = &v
+	return s
+}
+
+func (s *DetectSkinDiseaseResponseBodyData) SetImageQuality(v float32) *DetectSkinDiseaseResponseBodyData {
+	s.ImageQuality = &v
+	return s
+}
+
+func (s *DetectSkinDiseaseResponseBodyData) SetImageType(v string) *DetectSkinDiseaseResponseBodyData {
+	s.ImageType = &v
+	return s
+}
+
 func (s *DetectSkinDiseaseResponseBodyData) SetResults(v map[string]interface{}) *DetectSkinDiseaseResponseBodyData {
 	s.Results = v
+	return s
+}
+
+func (s *DetectSkinDiseaseResponseBodyData) SetResultsEnglish(v map[string]interface{}) *DetectSkinDiseaseResponseBodyData {
+	s.ResultsEnglish = v
 	return s
 }
 
