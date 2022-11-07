@@ -4504,6 +4504,514 @@ func (s *CreateNacosServiceResponse) SetBody(v *CreateNacosServiceResponseBody) 
 	return s
 }
 
+type CreateOrUpdateSwimmingLaneRequest struct {
+	AcceptLanguage *string                                        `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Enable         *bool                                          `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EnableRules    *bool                                          `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
+	EntryRule      *string                                        `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
+	EntryRules     []*CreateOrUpdateSwimmingLaneRequestEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
+	GmtCreate      *string                                        `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified    *string                                        `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GroupId        *int64                                         `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Id             *int64                                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	LicenseKey     *string                                        `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
+	Name           *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId       *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Source         *string                                        `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status         *int32                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag            *string                                        `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	UserId         *string                                        `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetAcceptLanguage(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetEnable(v bool) *CreateOrUpdateSwimmingLaneRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetEnableRules(v bool) *CreateOrUpdateSwimmingLaneRequest {
+	s.EnableRules = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetEntryRule(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.EntryRule = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetEntryRules(v []*CreateOrUpdateSwimmingLaneRequestEntryRules) *CreateOrUpdateSwimmingLaneRequest {
+	s.EntryRules = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetGmtCreate(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetGmtModified(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetGroupId(v int64) *CreateOrUpdateSwimmingLaneRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetId(v int64) *CreateOrUpdateSwimmingLaneRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetLicenseKey(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.LicenseKey = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetName(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetRegionId(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetSource(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetStatus(v int32) *CreateOrUpdateSwimmingLaneRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetTag(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.Tag = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetUserId(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneRequestEntryRules struct {
+	Condition *string                                                 `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	Enable    *bool                                                   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Path      *string                                                 `json:"Path,omitempty" xml:"Path,omitempty"`
+	Paths     []*string                                               `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	Priority  *int32                                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RestItems []*CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems `json:"RestItems,omitempty" xml:"RestItems,omitempty" type:"Repeated"`
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestEntryRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestEntryRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) SetCondition(v string) *CreateOrUpdateSwimmingLaneRequestEntryRules {
+	s.Condition = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) SetEnable(v bool) *CreateOrUpdateSwimmingLaneRequestEntryRules {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) SetPath(v string) *CreateOrUpdateSwimmingLaneRequestEntryRules {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) SetPaths(v []*string) *CreateOrUpdateSwimmingLaneRequestEntryRules {
+	s.Paths = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) SetPriority(v int32) *CreateOrUpdateSwimmingLaneRequestEntryRules {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) SetRestItems(v []*CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) *CreateOrUpdateSwimmingLaneRequestEntryRules {
+	s.RestItems = v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems struct {
+	Cond      *string   `json:"Cond,omitempty" xml:"Cond,omitempty"`
+	Datum     *string   `json:"Datum,omitempty" xml:"Datum,omitempty"`
+	Divisor   *int32    `json:"Divisor,omitempty" xml:"Divisor,omitempty"`
+	Name      *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NameList  []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
+	Operator  *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Rate      *int32    `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Remainder *int32    `json:"Remainder,omitempty" xml:"Remainder,omitempty"`
+	Type      *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value     *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetCond(v string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Cond = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetDatum(v string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Datum = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetDivisor(v int32) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Divisor = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetName(v string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetNameList(v []*string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.NameList = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetOperator(v string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetRate(v int32) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Rate = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetRemainder(v int32) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Remainder = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetType(v string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) SetValue(v string) *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems {
+	s.Value = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneResponseBody struct {
+	Code           *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicMessage *string     `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetCode(v int32) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetData(v interface{}) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetDynamicMessage(v string) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetErrorCode(v string) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetHttpStatusCode(v int32) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetMessage(v string) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetRequestId(v string) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetSuccess(v bool) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateOrUpdateSwimmingLaneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateOrUpdateSwimmingLaneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponse) SetHeaders(v map[string]*string) *CreateOrUpdateSwimmingLaneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponse) SetStatusCode(v int32) *CreateOrUpdateSwimmingLaneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponse) SetBody(v *CreateOrUpdateSwimmingLaneResponseBody) *CreateOrUpdateSwimmingLaneResponse {
+	s.Body = v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneGroupRequest struct {
+	AcceptLanguage         *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppIds                 *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	DbGrayEnable           *bool   `json:"DbGrayEnable,omitempty" xml:"DbGrayEnable,omitempty"`
+	Enable                 *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EntryApp               *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
+	GmtCreate              *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified            *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LicenseKey             *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
+	MessageQueueFilterSide *string `json:"MessageQueueFilterSide,omitempty" xml:"MessageQueueFilterSide,omitempty"`
+	MessageQueueGrayEnable *bool   `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Region                 *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Source                 *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status                 *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetAcceptLanguage(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetAppIds(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.AppIds = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetDbGrayEnable(v bool) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.DbGrayEnable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetEnable(v bool) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetEntryApp(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.EntryApp = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetGmtCreate(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetGmtModified(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetId(v int64) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetLicenseKey(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.LicenseKey = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetMessageQueueFilterSide(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.MessageQueueFilterSide = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetMessageQueueGrayEnable(v bool) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.MessageQueueGrayEnable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetName(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetRegion(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetSource(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetStatus(v int32) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetUserId(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneGroupResponseBody struct {
+	Code           *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicMessage *string     `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetCode(v int32) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetData(v interface{}) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetDynamicMessage(v string) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetErrorCode(v string) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetHttpStatusCode(v int32) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetMessage(v string) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetRequestId(v string) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetSuccess(v bool) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneGroupResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateOrUpdateSwimmingLaneGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponse) SetHeaders(v map[string]*string) *CreateOrUpdateSwimmingLaneGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponse) SetStatusCode(v int32) *CreateOrUpdateSwimmingLaneGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponse) SetBody(v *CreateOrUpdateSwimmingLaneGroupResponseBody) *CreateOrUpdateSwimmingLaneGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateZnodeRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -30241,6 +30749,214 @@ func (client *Client) CreateNacosService(request *CreateNacosServiceRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNacosServiceResponse{}
 	_body, _err := client.CreateNacosServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOrUpdateSwimmingLaneWithOptions(request *CreateOrUpdateSwimmingLaneRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateSwimmingLaneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableRules)) {
+		query["EnableRules"] = request.EnableRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntryRule)) {
+		query["EntryRule"] = request.EntryRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntryRules)) {
+		query["EntryRules"] = request.EntryRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtCreate)) {
+		query["GmtCreate"] = request.GmtCreate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtModified)) {
+		query["GmtModified"] = request.GmtModified
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LicenseKey)) {
+		query["LicenseKey"] = request.LicenseKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOrUpdateSwimmingLane"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOrUpdateSwimmingLaneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOrUpdateSwimmingLane(request *CreateOrUpdateSwimmingLaneRequest) (_result *CreateOrUpdateSwimmingLaneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOrUpdateSwimmingLaneResponse{}
+	_body, _err := client.CreateOrUpdateSwimmingLaneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOrUpdateSwimmingLaneGroupWithOptions(request *CreateOrUpdateSwimmingLaneGroupRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateSwimmingLaneGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppIds)) {
+		query["AppIds"] = request.AppIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbGrayEnable)) {
+		query["DbGrayEnable"] = request.DbGrayEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntryApp)) {
+		query["EntryApp"] = request.EntryApp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtCreate)) {
+		query["GmtCreate"] = request.GmtCreate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtModified)) {
+		query["GmtModified"] = request.GmtModified
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LicenseKey)) {
+		query["LicenseKey"] = request.LicenseKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageQueueFilterSide)) {
+		query["MessageQueueFilterSide"] = request.MessageQueueFilterSide
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageQueueGrayEnable)) {
+		query["MessageQueueGrayEnable"] = request.MessageQueueGrayEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOrUpdateSwimmingLaneGroup"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOrUpdateSwimmingLaneGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOrUpdateSwimmingLaneGroup(request *CreateOrUpdateSwimmingLaneGroupRequest) (_result *CreateOrUpdateSwimmingLaneGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOrUpdateSwimmingLaneGroupResponse{}
+	_body, _err := client.CreateOrUpdateSwimmingLaneGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
