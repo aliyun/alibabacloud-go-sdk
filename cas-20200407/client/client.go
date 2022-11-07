@@ -458,6 +458,7 @@ type CreateWHCertificateWithExtensionRequest struct {
 	CommonName               *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
 	CountryCode              *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
 	CsrPemString             *string `json:"CsrPemString,omitempty" xml:"CsrPemString,omitempty"`
+	Immediately              *int64  `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
 	Locality                 *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
 	Organization             *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
 	OrganizationUnit         *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
@@ -521,6 +522,11 @@ func (s *CreateWHCertificateWithExtensionRequest) SetCountryCode(v string) *Crea
 
 func (s *CreateWHCertificateWithExtensionRequest) SetCsrPemString(v string) *CreateWHCertificateWithExtensionRequest {
 	s.CsrPemString = &v
+	return s
+}
+
+func (s *CreateWHCertificateWithExtensionRequest) SetImmediately(v int64) *CreateWHCertificateWithExtensionRequest {
+	s.Immediately = &v
 	return s
 }
 
@@ -623,11 +629,19 @@ type CreateWHClientCertificateRequest struct {
 	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	BeforeTime       *int64  `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
 	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	Country          *string `json:"Country,omitempty" xml:"Country,omitempty"`
 	Csr              *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
 	Days             *int64  `json:"Days,omitempty" xml:"Days,omitempty"`
+	Immediately      *int64  `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
+	Locality         *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	Months           *int64  `json:"Months,omitempty" xml:"Months,omitempty"`
+	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
 	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
 	SanType          *int64  `json:"SanType,omitempty" xml:"SanType,omitempty"`
 	SanValue         *string `json:"SanValue,omitempty" xml:"SanValue,omitempty"`
+	State            *string `json:"State,omitempty" xml:"State,omitempty"`
+	Years            *int64  `json:"Years,omitempty" xml:"Years,omitempty"`
 }
 
 func (s CreateWHClientCertificateRequest) String() string {
@@ -658,6 +672,11 @@ func (s *CreateWHClientCertificateRequest) SetCommonName(v string) *CreateWHClie
 	return s
 }
 
+func (s *CreateWHClientCertificateRequest) SetCountry(v string) *CreateWHClientCertificateRequest {
+	s.Country = &v
+	return s
+}
+
 func (s *CreateWHClientCertificateRequest) SetCsr(v string) *CreateWHClientCertificateRequest {
 	s.Csr = &v
 	return s
@@ -665,6 +684,31 @@ func (s *CreateWHClientCertificateRequest) SetCsr(v string) *CreateWHClientCerti
 
 func (s *CreateWHClientCertificateRequest) SetDays(v int64) *CreateWHClientCertificateRequest {
 	s.Days = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetImmediately(v int64) *CreateWHClientCertificateRequest {
+	s.Immediately = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetLocality(v string) *CreateWHClientCertificateRequest {
+	s.Locality = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetMonths(v int64) *CreateWHClientCertificateRequest {
+	s.Months = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetOrganization(v string) *CreateWHClientCertificateRequest {
+	s.Organization = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetOrganizationUnit(v string) *CreateWHClientCertificateRequest {
+	s.OrganizationUnit = &v
 	return s
 }
 
@@ -680,6 +724,16 @@ func (s *CreateWHClientCertificateRequest) SetSanType(v int64) *CreateWHClientCe
 
 func (s *CreateWHClientCertificateRequest) SetSanValue(v string) *CreateWHClientCertificateRequest {
 	s.SanValue = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetState(v string) *CreateWHClientCertificateRequest {
+	s.State = &v
+	return s
+}
+
+func (s *CreateWHClientCertificateRequest) SetYears(v int64) *CreateWHClientCertificateRequest {
+	s.Years = &v
 	return s
 }
 
@@ -2706,6 +2760,10 @@ func (client *Client) CreateWHCertificateWithExtensionWithOptions(request *Creat
 		query["CsrPemString"] = request.CsrPemString
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Immediately)) {
+		query["Immediately"] = request.Immediately
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Locality)) {
 		query["Locality"] = request.Locality
 	}
@@ -2786,12 +2844,36 @@ func (client *Client) CreateWHClientCertificateWithOptions(request *CreateWHClie
 		query["CommonName"] = request.CommonName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Country)) {
+		query["Country"] = request.Country
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Csr)) {
 		query["Csr"] = request.Csr
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Days)) {
 		query["Days"] = request.Days
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Immediately)) {
+		query["Immediately"] = request.Immediately
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Locality)) {
+		query["Locality"] = request.Locality
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Months)) {
+		query["Months"] = request.Months
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Organization)) {
+		query["Organization"] = request.Organization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationUnit)) {
+		query["OrganizationUnit"] = request.OrganizationUnit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ParentIdentifier)) {
@@ -2804,6 +2886,14 @@ func (client *Client) CreateWHClientCertificateWithOptions(request *CreateWHClie
 
 	if !tea.BoolValue(util.IsUnset(request.SanValue)) {
 		query["SanValue"] = request.SanValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Years)) {
+		query["Years"] = request.Years
 	}
 
 	req := &openapi.OpenApiRequest{
