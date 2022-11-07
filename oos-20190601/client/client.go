@@ -5725,6 +5725,7 @@ type ListApplicationGroupsRequest struct {
 	Product         *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
 	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -5768,6 +5769,11 @@ func (s *ListApplicationGroupsRequest) SetRegionId(v string) *ListApplicationGro
 
 func (s *ListApplicationGroupsRequest) SetResourceId(v string) *ListApplicationGroupsRequest {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *ListApplicationGroupsRequest) SetResourceProduct(v string) *ListApplicationGroupsRequest {
+	s.ResourceProduct = &v
 	return s
 }
 
@@ -7668,6 +7674,7 @@ type ListOpsItemsResponseBodyOpsItems struct {
 	CreateDate *string                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	OpsItemId  *string                `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
 	Priority   *int32                 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Resources  []*string              `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	Severity   *string                `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	Source     *string                `json:"Source,omitempty" xml:"Source,omitempty"`
 	Status     *string                `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -7701,6 +7708,11 @@ func (s *ListOpsItemsResponseBodyOpsItems) SetOpsItemId(v string) *ListOpsItemsR
 
 func (s *ListOpsItemsResponseBodyOpsItems) SetPriority(v int32) *ListOpsItemsResponseBodyOpsItems {
 	s.Priority = &v
+	return s
+}
+
+func (s *ListOpsItemsResponseBodyOpsItems) SetResources(v []*string) *ListOpsItemsResponseBodyOpsItems {
+	s.Resources = v
 	return s
 }
 
@@ -9176,6 +9188,7 @@ func (s *ListStateConfigurationsShrinkRequest) SetTemplateVersion(v string) *Lis
 }
 
 type ListStateConfigurationsResponseBody struct {
+	NextToken           *string                                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StateConfigurations []*ListStateConfigurationsResponseBodyStateConfigurations `json:"StateConfigurations,omitempty" xml:"StateConfigurations,omitempty" type:"Repeated"`
 }
@@ -9186,6 +9199,11 @@ func (s ListStateConfigurationsResponseBody) String() string {
 
 func (s ListStateConfigurationsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListStateConfigurationsResponseBody) SetNextToken(v string) *ListStateConfigurationsResponseBody {
+	s.NextToken = &v
+	return s
 }
 
 func (s *ListStateConfigurationsResponseBody) SetRequestId(v string) *ListStateConfigurationsResponseBody {
@@ -11125,6 +11143,7 @@ type StartExecutionRequest struct {
 	Tags              map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	TemplateContent   *string                `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 	TemplateName      *string                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateURL       *string                `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 	TemplateVersion   *string                `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -11196,6 +11215,11 @@ func (s *StartExecutionRequest) SetTemplateName(v string) *StartExecutionRequest
 	return s
 }
 
+func (s *StartExecutionRequest) SetTemplateURL(v string) *StartExecutionRequest {
+	s.TemplateURL = &v
+	return s
+}
+
 func (s *StartExecutionRequest) SetTemplateVersion(v string) *StartExecutionRequest {
 	s.TemplateVersion = &v
 	return s
@@ -11214,6 +11238,7 @@ type StartExecutionShrinkRequest struct {
 	TagsShrink        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	TemplateContent   *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 	TemplateName      *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateURL       *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 	TemplateVersion   *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -11282,6 +11307,11 @@ func (s *StartExecutionShrinkRequest) SetTemplateContent(v string) *StartExecuti
 
 func (s *StartExecutionShrinkRequest) SetTemplateName(v string) *StartExecutionShrinkRequest {
 	s.TemplateName = &v
+	return s
+}
+
+func (s *StartExecutionShrinkRequest) SetTemplateURL(v string) *StartExecutionShrinkRequest {
+	s.TemplateURL = &v
 	return s
 }
 
@@ -13756,8 +13786,9 @@ func (s *UpdateTemplateResponse) SetBody(v *UpdateTemplateResponseBody) *UpdateT
 }
 
 type ValidateTemplateContentRequest struct {
-	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
 }
 
 func (s ValidateTemplateContentRequest) String() string {
@@ -13775,6 +13806,11 @@ func (s *ValidateTemplateContentRequest) SetContent(v string) *ValidateTemplateC
 
 func (s *ValidateTemplateContentRequest) SetRegionId(v string) *ValidateTemplateContentRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ValidateTemplateContentRequest) SetTemplateURL(v string) *ValidateTemplateContentRequest {
+	s.TemplateURL = &v
 	return s
 }
 
@@ -16170,6 +16206,10 @@ func (client *Client) ListApplicationGroupsWithOptions(request *ListApplicationG
 		query["ResourceId"] = request.ResourceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceProduct)) {
+		query["ResourceProduct"] = request.ResourceProduct
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		query["ResourceType"] = request.ResourceType
 	}
@@ -18052,6 +18092,10 @@ func (client *Client) StartExecutionWithOptions(tmpReq *StartExecutionRequest, r
 		query["TemplateName"] = request.TemplateName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
 		query["TemplateVersion"] = request.TemplateVersion
 	}
@@ -18936,6 +18980,10 @@ func (client *Client) ValidateTemplateContentWithOptions(request *ValidateTempla
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
 	}
 
 	req := &openapi.OpenApiRequest{
