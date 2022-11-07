@@ -660,6 +660,7 @@ type AddGatewayRequest struct {
 	Name                       *string                 `json:"Name,omitempty" xml:"Name,omitempty"`
 	Region                     *string                 `json:"Region,omitempty" xml:"Region,omitempty"`
 	Replica                    *int32                  `json:"Replica,omitempty" xml:"Replica,omitempty"`
+	ResourceGroupId            *string                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SlbSpec                    *string                 `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
 	Spec                       *string                 `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	Tag                        []*AddGatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -719,6 +720,11 @@ func (s *AddGatewayRequest) SetRegion(v string) *AddGatewayRequest {
 
 func (s *AddGatewayRequest) SetReplica(v int32) *AddGatewayRequest {
 	s.Replica = &v
+	return s
+}
+
+func (s *AddGatewayRequest) SetResourceGroupId(v string) *AddGatewayRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -8097,6 +8103,7 @@ type GetGatewayResponseBodyData struct {
 	PrimaryUser      *string                                     `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
 	Region           *string                                     `json:"Region,omitempty" xml:"Region,omitempty"`
 	Replica          *int32                                      `json:"Replica,omitempty" xml:"Replica,omitempty"`
+	ResourceGroupId  *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityGroup    *string                                     `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
 	Spec             *string                                     `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	Status           *int32                                      `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -8177,6 +8184,11 @@ func (s *GetGatewayResponseBodyData) SetRegion(v string) *GetGatewayResponseBody
 
 func (s *GetGatewayResponseBodyData) SetReplica(v int32) *GetGatewayResponseBodyData {
 	s.Replica = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetResourceGroupId(v string) *GetGatewayResponseBodyData {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -15209,6 +15221,7 @@ type ListGatewayRequestFilterParams struct {
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MseTag          *string `json:"MseTag,omitempty" xml:"MseTag,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Vpc             *string `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
 }
 
@@ -15242,6 +15255,11 @@ func (s *ListGatewayRequestFilterParams) SetMseTag(v string) *ListGatewayRequest
 
 func (s *ListGatewayRequestFilterParams) SetName(v string) *ListGatewayRequestFilterParams {
 	s.Name = &v
+	return s
+}
+
+func (s *ListGatewayRequestFilterParams) SetResourceGroupId(v string) *ListGatewayRequestFilterParams {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -15402,6 +15420,7 @@ type ListGatewayResponseBodyDataResult struct {
 	PrimaryUser     *string                                         `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
 	Region          *string                                         `json:"Region,omitempty" xml:"Region,omitempty"`
 	Replica         *int32                                          `json:"Replica,omitempty" xml:"Replica,omitempty"`
+	ResourceGroupId *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	RollBack        *bool                                           `json:"RollBack,omitempty" xml:"RollBack,omitempty"`
 	Slb             []*ListGatewayResponseBodyDataResultSlb         `json:"Slb,omitempty" xml:"Slb,omitempty" type:"Repeated"`
 	Spec            *string                                         `json:"Spec,omitempty" xml:"Spec,omitempty"`
@@ -15528,6 +15547,11 @@ func (s *ListGatewayResponseBodyDataResult) SetRegion(v string) *ListGatewayResp
 
 func (s *ListGatewayResponseBodyDataResult) SetReplica(v int32) *ListGatewayResponseBodyDataResult {
 	s.Replica = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResult) SetResourceGroupId(v string) *ListGatewayResponseBodyDataResult {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -28770,6 +28794,10 @@ func (client *Client) AddGatewayWithOptions(request *AddGatewayRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Replica)) {
 		query["Replica"] = request.Replica
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SlbSpec)) {
