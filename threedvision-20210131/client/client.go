@@ -618,6 +618,7 @@ func (s *ReconstructThreeDMultiViewAdvanceRequest) SetZipFileUrlObject(v io.Read
 
 type ReconstructThreeDMultiViewResponseBody struct {
 	Data      *ReconstructThreeDMultiViewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -631,6 +632,11 @@ func (s ReconstructThreeDMultiViewResponseBody) GoString() string {
 
 func (s *ReconstructThreeDMultiViewResponseBody) SetData(v *ReconstructThreeDMultiViewResponseBodyData) *ReconstructThreeDMultiViewResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *ReconstructThreeDMultiViewResponseBody) SetMessage(v string) *ReconstructThreeDMultiViewResponseBody {
+	s.Message = &v
 	return s
 }
 
