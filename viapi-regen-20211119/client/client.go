@@ -5,15 +5,14 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
@@ -145,6 +144,7 @@ type CreateLabelsetRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ObjectKey   *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
+	PreLabelId  *int64  `json:"PreLabelId,omitempty" xml:"PreLabelId,omitempty"`
 	TagSettings *string `json:"TagSettings,omitempty" xml:"TagSettings,omitempty"`
 	TagUserList *string `json:"TagUserList,omitempty" xml:"TagUserList,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -176,6 +176,11 @@ func (s *CreateLabelsetRequest) SetName(v string) *CreateLabelsetRequest {
 
 func (s *CreateLabelsetRequest) SetObjectKey(v string) *CreateLabelsetRequest {
 	s.ObjectKey = &v
+	return s
+}
+
+func (s *CreateLabelsetRequest) SetPreLabelId(v int64) *CreateLabelsetRequest {
+	s.PreLabelId = &v
 	return s
 }
 
@@ -562,10 +567,11 @@ func (s *CreateTagTaskResponse) SetBody(v *CreateTagTaskResponseBody) *CreateTag
 
 type CreateTrainTaskRequest struct {
 	AdvancedParameters *string `json:"AdvancedParameters,omitempty" xml:"AdvancedParameters,omitempty"`
-	DatasetId          *int64  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetIds         *string `json:"DatasetIds,omitempty" xml:"DatasetIds,omitempty"`
 	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	LabelId            *int64  `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
+	LabelIds           *string `json:"LabelIds,omitempty" xml:"LabelIds,omitempty"`
 	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreTrainTaskId     *int64  `json:"PreTrainTaskId,omitempty" xml:"PreTrainTaskId,omitempty"`
 	TrainMode          *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
 	WorkspaceId        *int64  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -583,8 +589,8 @@ func (s *CreateTrainTaskRequest) SetAdvancedParameters(v string) *CreateTrainTas
 	return s
 }
 
-func (s *CreateTrainTaskRequest) SetDatasetId(v int64) *CreateTrainTaskRequest {
-	s.DatasetId = &v
+func (s *CreateTrainTaskRequest) SetDatasetIds(v string) *CreateTrainTaskRequest {
+	s.DatasetIds = &v
 	return s
 }
 
@@ -593,13 +599,18 @@ func (s *CreateTrainTaskRequest) SetDescription(v string) *CreateTrainTaskReques
 	return s
 }
 
-func (s *CreateTrainTaskRequest) SetLabelId(v int64) *CreateTrainTaskRequest {
-	s.LabelId = &v
+func (s *CreateTrainTaskRequest) SetLabelIds(v string) *CreateTrainTaskRequest {
+	s.LabelIds = &v
 	return s
 }
 
 func (s *CreateTrainTaskRequest) SetName(v string) *CreateTrainTaskRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateTrainTaskRequest) SetPreTrainTaskId(v int64) *CreateTrainTaskRequest {
+	s.PreTrainTaskId = &v
 	return s
 }
 
@@ -647,6 +658,8 @@ type CreateTrainTaskResponseBodyData struct {
 	LabelName          *string `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
 	ModelEffect        *string `json:"ModelEffect,omitempty" xml:"ModelEffect,omitempty"`
 	ModelId            *int64  `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	RelyOnTaskId       *int64  `json:"RelyOnTaskId,omitempty" xml:"RelyOnTaskId,omitempty"`
+	RelyOnTaskName     *string `json:"RelyOnTaskName,omitempty" xml:"RelyOnTaskName,omitempty"`
 	TaskName           *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	TrainMode          *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
 	TrainStatus        *string `json:"TrainStatus,omitempty" xml:"TrainStatus,omitempty"`
@@ -707,6 +720,16 @@ func (s *CreateTrainTaskResponseBodyData) SetModelEffect(v string) *CreateTrainT
 
 func (s *CreateTrainTaskResponseBodyData) SetModelId(v int64) *CreateTrainTaskResponseBodyData {
 	s.ModelId = &v
+	return s
+}
+
+func (s *CreateTrainTaskResponseBodyData) SetRelyOnTaskId(v int64) *CreateTrainTaskResponseBodyData {
+	s.RelyOnTaskId = &v
+	return s
+}
+
+func (s *CreateTrainTaskResponseBodyData) SetRelyOnTaskName(v string) *CreateTrainTaskResponseBodyData {
+	s.RelyOnTaskName = &v
 	return s
 }
 
@@ -900,7 +923,7 @@ func (s *CustomizeClassifyImageRequest) SetServiceId(v string) *CustomizeClassif
 }
 
 type CustomizeClassifyImageAdvanceRequest struct {
-	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+	ImageUrlObject io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	ServiceId      *string   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -1021,7 +1044,7 @@ func (s *CustomizeDetectImageRequest) SetServiceId(v string) *CustomizeDetectIma
 }
 
 type CustomizeDetectImageAdvanceRequest struct {
-	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+	ImageUrlObject io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	ServiceId      *string   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -1200,7 +1223,7 @@ func (s *CustomizeInstanceSegmentImageRequest) SetServiceId(v string) *Customize
 }
 
 type CustomizeInstanceSegmentImageAdvanceRequest struct {
-	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+	ImageUrlObject io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	ServiceId      *string   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -1437,6 +1460,7 @@ func (s *DebugServiceRequest) SetParam(v string) *DebugServiceRequest {
 }
 
 type DebugServiceResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1446,6 +1470,11 @@ func (s DebugServiceResponseBody) String() string {
 
 func (s DebugServiceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DebugServiceResponseBody) SetData(v string) *DebugServiceResponseBody {
+	s.Data = &v
+	return s
 }
 
 func (s *DebugServiceResponseBody) SetRequestId(v string) *DebugServiceResponseBody {
@@ -1478,6 +1507,116 @@ func (s *DebugServiceResponse) SetStatusCode(v int32) *DebugServiceResponse {
 }
 
 func (s *DebugServiceResponse) SetBody(v *DebugServiceResponseBody) *DebugServiceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDataReflowDataRequest struct {
+	Id        *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s DeleteDataReflowDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataReflowDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataReflowDataRequest) SetId(v int64) *DeleteDataReflowDataRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteDataReflowDataRequest) SetServiceId(v int64) *DeleteDataReflowDataRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type DeleteDataReflowDataResponseBody struct {
+	Data      *DeleteDataReflowDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDataReflowDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataReflowDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataReflowDataResponseBody) SetData(v *DeleteDataReflowDataResponseBodyData) *DeleteDataReflowDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteDataReflowDataResponseBody) SetRequestId(v string) *DeleteDataReflowDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDataReflowDataResponseBodyData struct {
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ServiceId   *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteDataReflowDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataReflowDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataReflowDataResponseBodyData) SetGmtModified(v int64) *DeleteDataReflowDataResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DeleteDataReflowDataResponseBodyData) SetId(v int64) *DeleteDataReflowDataResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteDataReflowDataResponseBodyData) SetServiceId(v int64) *DeleteDataReflowDataResponseBodyData {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *DeleteDataReflowDataResponseBodyData) SetStatus(v string) *DeleteDataReflowDataResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type DeleteDataReflowDataResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDataReflowDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDataReflowDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataReflowDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataReflowDataResponse) SetHeaders(v map[string]*string) *DeleteDataReflowDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDataReflowDataResponse) SetStatusCode(v int32) *DeleteDataReflowDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDataReflowDataResponse) SetBody(v *DeleteDataReflowDataResponseBody) *DeleteDataReflowDataResponse {
 	s.Body = v
 	return s
 }
@@ -2178,6 +2317,98 @@ func (s *DeleteWorkspaceResponse) SetBody(v *DeleteWorkspaceResponseBody) *Delet
 	return s
 }
 
+type DisableDataReflowRequest struct {
+	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s DisableDataReflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDataReflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDataReflowRequest) SetServiceId(v int64) *DisableDataReflowRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type DisableDataReflowResponseBody struct {
+	Data      *DisableDataReflowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableDataReflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDataReflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDataReflowResponseBody) SetData(v *DisableDataReflowResponseBodyData) *DisableDataReflowResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DisableDataReflowResponseBody) SetRequestId(v string) *DisableDataReflowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableDataReflowResponseBodyData struct {
+	EnableDataReflowFlag *bool  `json:"EnableDataReflowFlag,omitempty" xml:"EnableDataReflowFlag,omitempty"`
+	ServiceId            *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s DisableDataReflowResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDataReflowResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDataReflowResponseBodyData) SetEnableDataReflowFlag(v bool) *DisableDataReflowResponseBodyData {
+	s.EnableDataReflowFlag = &v
+	return s
+}
+
+func (s *DisableDataReflowResponseBodyData) SetServiceId(v int64) *DisableDataReflowResponseBodyData {
+	s.ServiceId = &v
+	return s
+}
+
+type DisableDataReflowResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableDataReflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableDataReflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDataReflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDataReflowResponse) SetHeaders(v map[string]*string) *DisableDataReflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableDataReflowResponse) SetStatusCode(v int32) *DisableDataReflowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableDataReflowResponse) SetBody(v *DisableDataReflowResponseBody) *DisableDataReflowResponse {
+	s.Body = v
+	return s
+}
+
 type DownloadFileNameListRequest struct {
 	DatasetId *int64  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	Identity  *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
@@ -2352,6 +2583,238 @@ func (s *DownloadLabelFileResponse) SetStatusCode(v int32) *DownloadLabelFileRes
 }
 
 func (s *DownloadLabelFileResponse) SetBody(v *DownloadLabelFileResponseBody) *DownloadLabelFileResponse {
+	s.Body = v
+	return s
+}
+
+type EnableDataReflowRequest struct {
+	DataReflowOssPath *string `json:"DataReflowOssPath,omitempty" xml:"DataReflowOssPath,omitempty"`
+	DataReflowRate    *int64  `json:"DataReflowRate,omitempty" xml:"DataReflowRate,omitempty"`
+	ServiceId         *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s EnableDataReflowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDataReflowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDataReflowRequest) SetDataReflowOssPath(v string) *EnableDataReflowRequest {
+	s.DataReflowOssPath = &v
+	return s
+}
+
+func (s *EnableDataReflowRequest) SetDataReflowRate(v int64) *EnableDataReflowRequest {
+	s.DataReflowRate = &v
+	return s
+}
+
+func (s *EnableDataReflowRequest) SetServiceId(v int64) *EnableDataReflowRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type EnableDataReflowResponseBody struct {
+	Data      *EnableDataReflowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableDataReflowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDataReflowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDataReflowResponseBody) SetData(v *EnableDataReflowResponseBodyData) *EnableDataReflowResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *EnableDataReflowResponseBody) SetRequestId(v string) *EnableDataReflowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableDataReflowResponseBodyData struct {
+	DataReflowOssPath    *string `json:"DataReflowOssPath,omitempty" xml:"DataReflowOssPath,omitempty"`
+	DataReflowRate       *int64  `json:"DataReflowRate,omitempty" xml:"DataReflowRate,omitempty"`
+	EnableDataReflowFlag *bool   `json:"EnableDataReflowFlag,omitempty" xml:"EnableDataReflowFlag,omitempty"`
+	ServiceId            *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s EnableDataReflowResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDataReflowResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDataReflowResponseBodyData) SetDataReflowOssPath(v string) *EnableDataReflowResponseBodyData {
+	s.DataReflowOssPath = &v
+	return s
+}
+
+func (s *EnableDataReflowResponseBodyData) SetDataReflowRate(v int64) *EnableDataReflowResponseBodyData {
+	s.DataReflowRate = &v
+	return s
+}
+
+func (s *EnableDataReflowResponseBodyData) SetEnableDataReflowFlag(v bool) *EnableDataReflowResponseBodyData {
+	s.EnableDataReflowFlag = &v
+	return s
+}
+
+func (s *EnableDataReflowResponseBodyData) SetServiceId(v int64) *EnableDataReflowResponseBodyData {
+	s.ServiceId = &v
+	return s
+}
+
+type EnableDataReflowResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableDataReflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableDataReflowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDataReflowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDataReflowResponse) SetHeaders(v map[string]*string) *EnableDataReflowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableDataReflowResponse) SetStatusCode(v int32) *EnableDataReflowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableDataReflowResponse) SetBody(v *EnableDataReflowResponseBody) *EnableDataReflowResponse {
+	s.Body = v
+	return s
+}
+
+type ExportDataReflowDataListRequest struct {
+	Category  *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FileType  *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ServiceId *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ExportDataReflowDataListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportDataReflowDataListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportDataReflowDataListRequest) SetCategory(v string) *ExportDataReflowDataListRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ExportDataReflowDataListRequest) SetEndTime(v int64) *ExportDataReflowDataListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ExportDataReflowDataListRequest) SetFileType(v string) *ExportDataReflowDataListRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *ExportDataReflowDataListRequest) SetImageName(v string) *ExportDataReflowDataListRequest {
+	s.ImageName = &v
+	return s
+}
+
+func (s *ExportDataReflowDataListRequest) SetServiceId(v int64) *ExportDataReflowDataListRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ExportDataReflowDataListRequest) SetStartTime(v int64) *ExportDataReflowDataListRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ExportDataReflowDataListResponseBody struct {
+	Data      *ExportDataReflowDataListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExportDataReflowDataListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportDataReflowDataListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportDataReflowDataListResponseBody) SetData(v *ExportDataReflowDataListResponseBodyData) *ExportDataReflowDataListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExportDataReflowDataListResponseBody) SetRequestId(v string) *ExportDataReflowDataListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExportDataReflowDataListResponseBodyData struct {
+	OssHttpUrl *string `json:"OssHttpUrl,omitempty" xml:"OssHttpUrl,omitempty"`
+}
+
+func (s ExportDataReflowDataListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportDataReflowDataListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExportDataReflowDataListResponseBodyData) SetOssHttpUrl(v string) *ExportDataReflowDataListResponseBodyData {
+	s.OssHttpUrl = &v
+	return s
+}
+
+type ExportDataReflowDataListResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExportDataReflowDataListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExportDataReflowDataListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportDataReflowDataListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportDataReflowDataListResponse) SetHeaders(v map[string]*string) *ExportDataReflowDataListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportDataReflowDataListResponse) SetStatusCode(v int32) *ExportDataReflowDataListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportDataReflowDataListResponse) SetBody(v *ExportDataReflowDataListResponseBody) *ExportDataReflowDataListResponse {
 	s.Body = v
 	return s
 }
@@ -2691,13 +3154,16 @@ func (s *GetLabelsetResponseBody) SetRequestId(v string) *GetLabelsetResponseBod
 }
 
 type GetLabelsetResponseBodyData struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	LabelType   *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Total       *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate          *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LabelType          *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubTaskPackageSize *string `json:"SubTaskPackageSize,omitempty" xml:"SubTaskPackageSize,omitempty"`
+	TagUserList        *string `json:"TagUserList,omitempty" xml:"TagUserList,omitempty"`
+	Tags               *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Total              *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetLabelsetResponseBodyData) String() string {
@@ -2735,6 +3201,21 @@ func (s *GetLabelsetResponseBodyData) SetName(v string) *GetLabelsetResponseBody
 
 func (s *GetLabelsetResponseBodyData) SetStatus(v string) *GetLabelsetResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *GetLabelsetResponseBodyData) SetSubTaskPackageSize(v string) *GetLabelsetResponseBodyData {
+	s.SubTaskPackageSize = &v
+	return s
+}
+
+func (s *GetLabelsetResponseBodyData) SetTagUserList(v string) *GetLabelsetResponseBodyData {
+	s.TagUserList = &v
+	return s
+}
+
+func (s *GetLabelsetResponseBodyData) SetTags(v string) *GetLabelsetResponseBodyData {
+	s.Tags = &v
 	return s
 }
 
@@ -2813,17 +3294,18 @@ func (s *GetServiceResponseBody) SetRequestId(v string) *GetServiceResponseBody 
 }
 
 type GetServiceResponseBodyData struct {
-	Errorcodes         *string `json:"Errorcodes,omitempty" xml:"Errorcodes,omitempty"`
-	GmtCreate          *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	InputExample       *string `json:"InputExample,omitempty" xml:"InputExample,omitempty"`
-	InputParams        *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
-	OutputExample      *string `json:"OutputExample,omitempty" xml:"OutputExample,omitempty"`
-	OutputParams       *string `json:"OutputParams,omitempty" xml:"OutputParams,omitempty"`
-	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
-	ServiceId          *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceName        *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	DataReflowInfo     *GetServiceResponseBodyDataDataReflowInfo `json:"DataReflowInfo,omitempty" xml:"DataReflowInfo,omitempty" type:"Struct"`
+	Errorcodes         *string                                   `json:"Errorcodes,omitempty" xml:"Errorcodes,omitempty"`
+	GmtCreate          *int64                                    `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Id                 *int64                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	InputExample       *string                                   `json:"InputExample,omitempty" xml:"InputExample,omitempty"`
+	InputParams        *string                                   `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
+	OutputExample      *string                                   `json:"OutputExample,omitempty" xml:"OutputExample,omitempty"`
+	OutputParams       *string                                   `json:"OutputParams,omitempty" xml:"OutputParams,omitempty"`
+	ServiceDescription *string                                   `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	ServiceId          *string                                   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName        *string                                   `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Status             *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetServiceResponseBodyData) String() string {
@@ -2832,6 +3314,11 @@ func (s GetServiceResponseBodyData) String() string {
 
 func (s GetServiceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetServiceResponseBodyData) SetDataReflowInfo(v *GetServiceResponseBodyDataDataReflowInfo) *GetServiceResponseBodyData {
+	s.DataReflowInfo = v
+	return s
 }
 
 func (s *GetServiceResponseBodyData) SetErrorcodes(v string) *GetServiceResponseBodyData {
@@ -2886,6 +3373,41 @@ func (s *GetServiceResponseBodyData) SetServiceName(v string) *GetServiceRespons
 
 func (s *GetServiceResponseBodyData) SetStatus(v string) *GetServiceResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+type GetServiceResponseBodyDataDataReflowInfo struct {
+	DataReflowCount      *int64  `json:"DataReflowCount,omitempty" xml:"DataReflowCount,omitempty"`
+	DataReflowOssPath    *string `json:"DataReflowOssPath,omitempty" xml:"DataReflowOssPath,omitempty"`
+	DataReflowRate       *int64  `json:"DataReflowRate,omitempty" xml:"DataReflowRate,omitempty"`
+	EnableDataReflowFlag *bool   `json:"EnableDataReflowFlag,omitempty" xml:"EnableDataReflowFlag,omitempty"`
+}
+
+func (s GetServiceResponseBodyDataDataReflowInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyDataDataReflowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyDataDataReflowInfo) SetDataReflowCount(v int64) *GetServiceResponseBodyDataDataReflowInfo {
+	s.DataReflowCount = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyDataDataReflowInfo) SetDataReflowOssPath(v string) *GetServiceResponseBodyDataDataReflowInfo {
+	s.DataReflowOssPath = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyDataDataReflowInfo) SetDataReflowRate(v int64) *GetServiceResponseBodyDataDataReflowInfo {
+	s.DataReflowRate = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyDataDataReflowInfo) SetEnableDataReflowFlag(v bool) *GetServiceResponseBodyDataDataReflowInfo {
+	s.EnableDataReflowFlag = &v
 	return s
 }
 
@@ -3510,6 +4032,152 @@ func (s *GetWorkspaceResponse) SetBody(v *GetWorkspaceResponseBody) *GetWorkspac
 	return s
 }
 
+type ListDataReflowDatasRequest struct {
+	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ImageName   *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ServiceId   *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListDataReflowDatasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataReflowDatasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataReflowDatasRequest) SetCategory(v string) *ListDataReflowDatasRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListDataReflowDatasRequest) SetCurrentPage(v int64) *ListDataReflowDatasRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListDataReflowDatasRequest) SetEndTime(v int64) *ListDataReflowDatasRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListDataReflowDatasRequest) SetImageName(v string) *ListDataReflowDatasRequest {
+	s.ImageName = &v
+	return s
+}
+
+func (s *ListDataReflowDatasRequest) SetPageSize(v int64) *ListDataReflowDatasRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataReflowDatasRequest) SetServiceId(v int64) *ListDataReflowDatasRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ListDataReflowDatasRequest) SetStartTime(v int64) *ListDataReflowDatasRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListDataReflowDatasResponseBody struct {
+	Data      *ListDataReflowDatasResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDataReflowDatasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataReflowDatasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataReflowDatasResponseBody) SetData(v *ListDataReflowDatasResponseBodyData) *ListDataReflowDatasResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDataReflowDatasResponseBody) SetRequestId(v string) *ListDataReflowDatasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDataReflowDatasResponseBodyData struct {
+	CurrentPage *int64                   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Elements    []map[string]interface{} `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+	PageSize    *int64                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int64                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage   *int64                   `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListDataReflowDatasResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataReflowDatasResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataReflowDatasResponseBodyData) SetCurrentPage(v int64) *ListDataReflowDatasResponseBodyData {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListDataReflowDatasResponseBodyData) SetElements(v []map[string]interface{}) *ListDataReflowDatasResponseBodyData {
+	s.Elements = v
+	return s
+}
+
+func (s *ListDataReflowDatasResponseBodyData) SetPageSize(v int64) *ListDataReflowDatasResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataReflowDatasResponseBodyData) SetTotalCount(v int64) *ListDataReflowDatasResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListDataReflowDatasResponseBodyData) SetTotalPage(v int64) *ListDataReflowDatasResponseBodyData {
+	s.TotalPage = &v
+	return s
+}
+
+type ListDataReflowDatasResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDataReflowDatasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDataReflowDatasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataReflowDatasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataReflowDatasResponse) SetHeaders(v map[string]*string) *ListDataReflowDatasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataReflowDatasResponse) SetStatusCode(v int32) *ListDataReflowDatasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataReflowDatasResponse) SetBody(v *ListDataReflowDatasResponseBody) *ListDataReflowDatasResponse {
+	s.Body = v
+	return s
+}
+
 type ListDatasetDatasRequest struct {
 	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DatasetId   *int64  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
@@ -3762,6 +4430,7 @@ func (s *ListDatasetsResponse) SetBody(v *ListDatasetsResponseBody) *ListDataset
 
 type ListLabelsetDatasRequest struct {
 	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	IsAbandon   *bool   `json:"IsAbandon,omitempty" xml:"IsAbandon,omitempty"`
 	LabelId     *int64  `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Operation   *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
@@ -3779,6 +4448,11 @@ func (s ListLabelsetDatasRequest) GoString() string {
 
 func (s *ListLabelsetDatasRequest) SetCurrentPage(v int64) *ListLabelsetDatasRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListLabelsetDatasRequest) SetIsAbandon(v bool) *ListLabelsetDatasRequest {
+	s.IsAbandon = &v
 	return s
 }
 
@@ -3901,9 +4575,10 @@ func (s *ListLabelsetDatasResponse) SetBody(v *ListLabelsetDatasResponseBody) *L
 }
 
 type ListLabelsetsRequest struct {
-	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DatasetId   *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	PageSize    *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DatasetId   *int64  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListLabelsetsRequest) String() string {
@@ -3926,6 +4601,11 @@ func (s *ListLabelsetsRequest) SetDatasetId(v int64) *ListLabelsetsRequest {
 
 func (s *ListLabelsetsRequest) SetPageSize(v int64) *ListLabelsetsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListLabelsetsRequest) SetStatus(v string) *ListLabelsetsRequest {
+	s.Status = &v
 	return s
 }
 
@@ -4157,9 +4837,10 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 }
 
 type ListTrainTasksRequest struct {
-	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	WorkspaceId *int64  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListTrainTasksRequest) String() string {
@@ -4177,6 +4858,11 @@ func (s *ListTrainTasksRequest) SetCurrentPage(v int64) *ListTrainTasksRequest {
 
 func (s *ListTrainTasksRequest) SetPageSize(v int64) *ListTrainTasksRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListTrainTasksRequest) SetStatus(v string) *ListTrainTasksRequest {
+	s.Status = &v
 	return s
 }
 
@@ -4652,6 +5338,7 @@ func (s *StartServiceResponse) SetBody(v *StartServiceResponseBody) *StartServic
 type StartTrainTaskRequest struct {
 	ForceStartFlag *bool  `json:"ForceStartFlag,omitempty" xml:"ForceStartFlag,omitempty"`
 	Id             *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	RelyOnTaskId   *int64 `json:"RelyOnTaskId,omitempty" xml:"RelyOnTaskId,omitempty"`
 }
 
 func (s StartTrainTaskRequest) String() string {
@@ -4669,6 +5356,11 @@ func (s *StartTrainTaskRequest) SetForceStartFlag(v bool) *StartTrainTaskRequest
 
 func (s *StartTrainTaskRequest) SetId(v int64) *StartTrainTaskRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *StartTrainTaskRequest) SetRelyOnTaskId(v int64) *StartTrainTaskRequest {
+	s.RelyOnTaskId = &v
 	return s
 }
 
@@ -5196,6 +5888,7 @@ type UpdateLabelsetRequest struct {
 	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ObjectKey   *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
+	TagUserList *string `json:"TagUserList,omitempty" xml:"TagUserList,omitempty"`
 	UserOssUrl  *string `json:"UserOssUrl,omitempty" xml:"UserOssUrl,omitempty"`
 }
 
@@ -5224,6 +5917,11 @@ func (s *UpdateLabelsetRequest) SetName(v string) *UpdateLabelsetRequest {
 
 func (s *UpdateLabelsetRequest) SetObjectKey(v string) *UpdateLabelsetRequest {
 	s.ObjectKey = &v
+	return s
+}
+
+func (s *UpdateLabelsetRequest) SetTagUserList(v string) *UpdateLabelsetRequest {
+	s.TagUserList = &v
 	return s
 }
 
@@ -5461,9 +6159,14 @@ func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateSer
 
 type UpdateTrainTaskRequest struct {
 	AdvancedParameters *string `json:"AdvancedParameters,omitempty" xml:"AdvancedParameters,omitempty"`
+	DatasetIds         *string `json:"DatasetIds,omitempty" xml:"DatasetIds,omitempty"`
 	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LabelIds           *string `json:"LabelIds,omitempty" xml:"LabelIds,omitempty"`
 	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreTrainTaskFlag   *bool   `json:"PreTrainTaskFlag,omitempty" xml:"PreTrainTaskFlag,omitempty"`
+	PreTrainTaskId     *int64  `json:"PreTrainTaskId,omitempty" xml:"PreTrainTaskId,omitempty"`
+	TrainMode          *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
 }
 
 func (s UpdateTrainTaskRequest) String() string {
@@ -5479,6 +6182,11 @@ func (s *UpdateTrainTaskRequest) SetAdvancedParameters(v string) *UpdateTrainTas
 	return s
 }
 
+func (s *UpdateTrainTaskRequest) SetDatasetIds(v string) *UpdateTrainTaskRequest {
+	s.DatasetIds = &v
+	return s
+}
+
 func (s *UpdateTrainTaskRequest) SetDescription(v string) *UpdateTrainTaskRequest {
 	s.Description = &v
 	return s
@@ -5489,8 +6197,28 @@ func (s *UpdateTrainTaskRequest) SetId(v int64) *UpdateTrainTaskRequest {
 	return s
 }
 
+func (s *UpdateTrainTaskRequest) SetLabelIds(v string) *UpdateTrainTaskRequest {
+	s.LabelIds = &v
+	return s
+}
+
 func (s *UpdateTrainTaskRequest) SetName(v string) *UpdateTrainTaskRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateTrainTaskRequest) SetPreTrainTaskFlag(v bool) *UpdateTrainTaskRequest {
+	s.PreTrainTaskFlag = &v
+	return s
+}
+
+func (s *UpdateTrainTaskRequest) SetPreTrainTaskId(v int64) *UpdateTrainTaskRequest {
+	s.PreTrainTaskId = &v
+	return s
+}
+
+func (s *UpdateTrainTaskRequest) SetTrainMode(v string) *UpdateTrainTaskRequest {
+	s.TrainMode = &v
 	return s
 }
 
@@ -5939,6 +6667,10 @@ func (client *Client) CreateLabelsetWithOptions(request *CreateLabelsetRequest, 
 		body["ObjectKey"] = request.ObjectKey
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PreLabelId)) {
+		body["PreLabelId"] = request.PreLabelId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TagSettings)) {
 		body["TagSettings"] = request.TagSettings
 	}
@@ -6103,20 +6835,24 @@ func (client *Client) CreateTrainTaskWithOptions(request *CreateTrainTaskRequest
 		body["AdvancedParameters"] = request.AdvancedParameters
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
-		body["DatasetId"] = request.DatasetId
+	if !tea.BoolValue(util.IsUnset(request.DatasetIds)) {
+		body["DatasetIds"] = request.DatasetIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.LabelId)) {
-		body["LabelId"] = request.LabelId
+	if !tea.BoolValue(util.IsUnset(request.LabelIds)) {
+		body["LabelIds"] = request.LabelIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreTrainTaskId)) {
+		body["PreTrainTaskId"] = request.PreTrainTaskId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TrainMode)) {
@@ -6288,7 +7024,7 @@ func (client *Client) CustomizeClassifyImageAdvance(request *CustomizeClassifyIm
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -6327,35 +7063,35 @@ func (client *Client) CustomizeClassifyImageAdvance(request *CustomizeClassifyIm
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageUrlObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		customizeClassifyImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		customizeClassifyImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	customizeClassifyImageResp, _err := client.CustomizeClassifyImageWithOptions(customizeClassifyImageReq, runtime)
@@ -6442,7 +7178,7 @@ func (client *Client) CustomizeDetectImageAdvance(request *CustomizeDetectImageA
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -6481,35 +7217,35 @@ func (client *Client) CustomizeDetectImageAdvance(request *CustomizeDetectImageA
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageUrlObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		customizeDetectImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		customizeDetectImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	customizeDetectImageResp, _err := client.CustomizeDetectImageWithOptions(customizeDetectImageReq, runtime)
@@ -6596,7 +7332,7 @@ func (client *Client) CustomizeInstanceSegmentImageAdvance(request *CustomizeIns
 		credentialType = tea.String("access_key")
 	}
 
-	authConfig := &rpc.Config{
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		SecurityToken:   securityToken,
@@ -6635,35 +7371,35 @@ func (client *Client) CustomizeInstanceSegmentImageAdvance(request *CustomizeIns
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
 		ossClient, _err = oss.NewClient(ossConfig)
 		if _err != nil {
 			return _result, _err
 		}
 
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
+			Filename:    authResponse.Body.ObjectKey,
 			Content:     request.ImageUrlObject,
 			ContentType: tea.String(""),
 		}
 		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
 			File:                fileObj,
 			SuccessActionStatus: tea.String("201"),
 		}
 		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
+			BucketName: authResponse.Body.Bucket,
 			Header:     ossHeader,
 		}
 		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
 		if _err != nil {
 			return _result, _err
 		}
-		customizeInstanceSegmentImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+		customizeInstanceSegmentImageReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	customizeInstanceSegmentImageResp, _err := client.CustomizeInstanceSegmentImageWithOptions(customizeInstanceSegmentImageReq, runtime)
@@ -6716,6 +7452,54 @@ func (client *Client) DebugService(request *DebugServiceRequest) (_result *Debug
 	runtime := &util.RuntimeOptions{}
 	_result = &DebugServiceResponse{}
 	_body, _err := client.DebugServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDataReflowDataWithOptions(request *DeleteDataReflowDataRequest, runtime *util.RuntimeOptions) (_result *DeleteDataReflowDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataReflowData"),
+		Version:     tea.String("2021-11-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDataReflowDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDataReflowData(request *DeleteDataReflowDataRequest) (_result *DeleteDataReflowDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDataReflowDataResponse{}
+	_body, _err := client.DeleteDataReflowDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6991,6 +7775,50 @@ func (client *Client) DeleteWorkspace(request *DeleteWorkspaceRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DisableDataReflowWithOptions(request *DisableDataReflowRequest, runtime *util.RuntimeOptions) (_result *DisableDataReflowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableDataReflow"),
+		Version:     tea.String("2021-11-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableDataReflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableDataReflow(request *DisableDataReflowRequest) (_result *DisableDataReflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableDataReflowResponse{}
+	_body, _err := client.DisableDataReflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DownloadFileNameListWithOptions(request *DownloadFileNameListRequest, runtime *util.RuntimeOptions) (_result *DownloadFileNameListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7076,6 +7904,122 @@ func (client *Client) DownloadLabelFile(request *DownloadLabelFileRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DownloadLabelFileResponse{}
 	_body, _err := client.DownloadLabelFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableDataReflowWithOptions(request *EnableDataReflowRequest, runtime *util.RuntimeOptions) (_result *EnableDataReflowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataReflowOssPath)) {
+		body["DataReflowOssPath"] = request.DataReflowOssPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataReflowRate)) {
+		body["DataReflowRate"] = request.DataReflowRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableDataReflow"),
+		Version:     tea.String("2021-11-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableDataReflowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableDataReflow(request *EnableDataReflowRequest) (_result *EnableDataReflowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableDataReflowResponse{}
+	_body, _err := client.EnableDataReflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExportDataReflowDataListWithOptions(request *ExportDataReflowDataListRequest, runtime *util.RuntimeOptions) (_result *ExportDataReflowDataListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		body["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		body["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+		body["ImageName"] = request.ImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportDataReflowDataList"),
+		Version:     tea.String("2021-11-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportDataReflowDataListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExportDataReflowDataList(request *ExportDataReflowDataListRequest) (_result *ExportDataReflowDataListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportDataReflowDataListResponse{}
+	_body, _err := client.ExportDataReflowDataListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7531,6 +8475,74 @@ func (client *Client) GetWorkspace(request *GetWorkspaceRequest) (_result *GetWo
 	return _result, _err
 }
 
+func (client *Client) ListDataReflowDatasWithOptions(request *ListDataReflowDatasRequest, runtime *util.RuntimeOptions) (_result *ListDataReflowDatasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		body["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+		body["ImageName"] = request.ImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataReflowDatas"),
+		Version:     tea.String("2021-11-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataReflowDatasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDataReflowDatas(request *ListDataReflowDatasRequest) (_result *ListDataReflowDatasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataReflowDatasResponse{}
+	_body, _err := client.ListDataReflowDatasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListDatasetDatasWithOptions(request *ListDatasetDatasRequest, runtime *util.RuntimeOptions) (_result *ListDatasetDatasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7649,6 +8661,10 @@ func (client *Client) ListLabelsetDatasWithOptions(request *ListLabelsetDatasReq
 		body["CurrentPage"] = request.CurrentPage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsAbandon)) {
+		body["IsAbandon"] = request.IsAbandon
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LabelId)) {
 		body["LabelId"] = request.LabelId
 	}
@@ -7719,6 +8735,10 @@ func (client *Client) ListLabelsetsWithOptions(request *ListLabelsetsRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7827,6 +8847,10 @@ func (client *Client) ListTrainTasksWithOptions(request *ListTrainTasksRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
@@ -8025,6 +9049,10 @@ func (client *Client) StartTrainTaskWithOptions(request *StartTrainTaskRequest, 
 		body["Id"] = request.Id
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RelyOnTaskId)) {
+		body["RelyOnTaskId"] = request.RelyOnTaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -8221,6 +9249,10 @@ func (client *Client) UpdateLabelsetWithOptions(request *UpdateLabelsetRequest, 
 		body["ObjectKey"] = request.ObjectKey
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagUserList)) {
+		body["TagUserList"] = request.TagUserList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserOssUrl)) {
 		body["UserOssUrl"] = request.UserOssUrl
 	}
@@ -8329,6 +9361,10 @@ func (client *Client) UpdateTrainTaskWithOptions(request *UpdateTrainTaskRequest
 		body["AdvancedParameters"] = request.AdvancedParameters
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DatasetIds)) {
+		body["DatasetIds"] = request.DatasetIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
 	}
@@ -8337,8 +9373,24 @@ func (client *Client) UpdateTrainTaskWithOptions(request *UpdateTrainTaskRequest
 		body["Id"] = request.Id
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LabelIds)) {
+		body["LabelIds"] = request.LabelIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreTrainTaskFlag)) {
+		body["PreTrainTaskFlag"] = request.PreTrainTaskFlag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreTrainTaskId)) {
+		body["PreTrainTaskId"] = request.PreTrainTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrainMode)) {
+		body["TrainMode"] = request.TrainMode
 	}
 
 	req := &openapi.OpenApiRequest{
