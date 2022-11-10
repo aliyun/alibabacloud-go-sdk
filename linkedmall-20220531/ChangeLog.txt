@@ -1,3 +1,6 @@
+2022-11-10 Version: v2.0.3
+- ADD QueryDistributionBillDetail .
+
 2022-10-27 Version: v2.0.2
 - ADD QueryItemGuideRetailPrice .
 - ADD QueryItemDetailWithDivision .
