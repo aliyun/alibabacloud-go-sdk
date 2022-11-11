@@ -2409,6 +2409,92 @@ func (s *DisableDataReflowResponse) SetBody(v *DisableDataReflowResponseBody) *D
 	return s
 }
 
+type DownloadDatasetRequest struct {
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+}
+
+func (s DownloadDatasetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDatasetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDatasetRequest) SetDatasetId(v int64) *DownloadDatasetRequest {
+	s.DatasetId = &v
+	return s
+}
+
+type DownloadDatasetResponseBody struct {
+	Data      *DownloadDatasetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DownloadDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDatasetResponseBody) SetData(v *DownloadDatasetResponseBodyData) *DownloadDatasetResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DownloadDatasetResponseBody) SetRequestId(v string) *DownloadDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DownloadDatasetResponseBodyData struct {
+	OssHttpUrl *string `json:"OssHttpUrl,omitempty" xml:"OssHttpUrl,omitempty"`
+}
+
+func (s DownloadDatasetResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDatasetResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDatasetResponseBodyData) SetOssHttpUrl(v string) *DownloadDatasetResponseBodyData {
+	s.OssHttpUrl = &v
+	return s
+}
+
+type DownloadDatasetResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DownloadDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DownloadDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDatasetResponse) SetHeaders(v map[string]*string) *DownloadDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DownloadDatasetResponse) SetStatusCode(v int32) *DownloadDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DownloadDatasetResponse) SetBody(v *DownloadDatasetResponseBody) *DownloadDatasetResponse {
+	s.Body = v
+	return s
+}
+
 type DownloadFileNameListRequest struct {
 	DatasetId *int64  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	Identity  *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
@@ -3436,6 +3522,284 @@ func (s *GetServiceResponse) SetStatusCode(v int32) *GetServiceResponse {
 }
 
 func (s *GetServiceResponse) SetBody(v *GetServiceResponseBody) *GetServiceResponse {
+	s.Body = v
+	return s
+}
+
+type GetServiceInvokeRequest struct {
+	CallerParentIdList []*string `json:"CallerParentIdList,omitempty" xml:"CallerParentIdList,omitempty" type:"Repeated"`
+	EndTime            *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Id                 *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	StartTime          *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetServiceInvokeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInvokeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInvokeRequest) SetCallerParentIdList(v []*string) *GetServiceInvokeRequest {
+	s.CallerParentIdList = v
+	return s
+}
+
+func (s *GetServiceInvokeRequest) SetEndTime(v int64) *GetServiceInvokeRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetServiceInvokeRequest) SetId(v int64) *GetServiceInvokeRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetServiceInvokeRequest) SetStartTime(v int64) *GetServiceInvokeRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetServiceInvokeShrinkRequest struct {
+	CallerParentIdListShrink *string `json:"CallerParentIdList,omitempty" xml:"CallerParentIdList,omitempty"`
+	EndTime                  *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Id                       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	StartTime                *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetServiceInvokeShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInvokeShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInvokeShrinkRequest) SetCallerParentIdListShrink(v string) *GetServiceInvokeShrinkRequest {
+	s.CallerParentIdListShrink = &v
+	return s
+}
+
+func (s *GetServiceInvokeShrinkRequest) SetEndTime(v int64) *GetServiceInvokeShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetServiceInvokeShrinkRequest) SetId(v int64) *GetServiceInvokeShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetServiceInvokeShrinkRequest) SetStartTime(v int64) *GetServiceInvokeShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetServiceInvokeResponseBody struct {
+	Data      *GetServiceInvokeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetServiceInvokeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInvokeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInvokeResponseBody) SetData(v *GetServiceInvokeResponseBodyData) *GetServiceInvokeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetServiceInvokeResponseBody) SetRequestId(v string) *GetServiceInvokeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetServiceInvokeResponseBodyData struct {
+	UserInvoke map[string]interface{} `json:"UserInvoke,omitempty" xml:"UserInvoke,omitempty"`
+}
+
+func (s GetServiceInvokeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInvokeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInvokeResponseBodyData) SetUserInvoke(v map[string]interface{}) *GetServiceInvokeResponseBodyData {
+	s.UserInvoke = v
+	return s
+}
+
+type GetServiceInvokeResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetServiceInvokeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetServiceInvokeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInvokeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInvokeResponse) SetHeaders(v map[string]*string) *GetServiceInvokeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceInvokeResponse) SetStatusCode(v int32) *GetServiceInvokeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetServiceInvokeResponse) SetBody(v *GetServiceInvokeResponseBody) *GetServiceInvokeResponse {
+	s.Body = v
+	return s
+}
+
+type GetServiceQpsRequest struct {
+	CallerParentIdList []*string `json:"CallerParentIdList,omitempty" xml:"CallerParentIdList,omitempty" type:"Repeated"`
+	EndTime            *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Id                 *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	StartTime          *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetServiceQpsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceQpsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceQpsRequest) SetCallerParentIdList(v []*string) *GetServiceQpsRequest {
+	s.CallerParentIdList = v
+	return s
+}
+
+func (s *GetServiceQpsRequest) SetEndTime(v int64) *GetServiceQpsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetServiceQpsRequest) SetId(v int64) *GetServiceQpsRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetServiceQpsRequest) SetStartTime(v int64) *GetServiceQpsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetServiceQpsShrinkRequest struct {
+	CallerParentIdListShrink *string `json:"CallerParentIdList,omitempty" xml:"CallerParentIdList,omitempty"`
+	EndTime                  *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Id                       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	StartTime                *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetServiceQpsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceQpsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceQpsShrinkRequest) SetCallerParentIdListShrink(v string) *GetServiceQpsShrinkRequest {
+	s.CallerParentIdListShrink = &v
+	return s
+}
+
+func (s *GetServiceQpsShrinkRequest) SetEndTime(v int64) *GetServiceQpsShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetServiceQpsShrinkRequest) SetId(v int64) *GetServiceQpsShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetServiceQpsShrinkRequest) SetStartTime(v int64) *GetServiceQpsShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetServiceQpsResponseBody struct {
+	Data      *GetServiceQpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetServiceQpsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceQpsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceQpsResponseBody) SetData(v *GetServiceQpsResponseBodyData) *GetServiceQpsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetServiceQpsResponseBody) SetRequestId(v string) *GetServiceQpsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetServiceQpsResponseBodyData struct {
+	UserQps map[string]interface{} `json:"UserQps,omitempty" xml:"UserQps,omitempty"`
+}
+
+func (s GetServiceQpsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceQpsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceQpsResponseBodyData) SetUserQps(v map[string]interface{}) *GetServiceQpsResponseBodyData {
+	s.UserQps = v
+	return s
+}
+
+type GetServiceQpsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetServiceQpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetServiceQpsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceQpsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceQpsResponse) SetHeaders(v map[string]*string) *GetServiceQpsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceQpsResponse) SetStatusCode(v int32) *GetServiceQpsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetServiceQpsResponse) SetBody(v *GetServiceQpsResponseBody) *GetServiceQpsResponse {
 	s.Body = v
 	return s
 }
@@ -7819,6 +8183,50 @@ func (client *Client) DisableDataReflow(request *DisableDataReflowRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DownloadDatasetWithOptions(request *DownloadDatasetRequest, runtime *util.RuntimeOptions) (_result *DownloadDatasetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DownloadDataset"),
+		Version:     tea.String("2021-11-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DownloadDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DownloadDataset(request *DownloadDatasetRequest) (_result *DownloadDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DownloadDatasetResponse{}
+	_body, _err := client.DownloadDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DownloadFileNameListWithOptions(request *DownloadFileNameListRequest, runtime *util.RuntimeOptions) (_result *DownloadFileNameListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8240,6 +8648,130 @@ func (client *Client) GetService(request *GetServiceRequest) (_result *GetServic
 	runtime := &util.RuntimeOptions{}
 	_result = &GetServiceResponse{}
 	_body, _err := client.GetServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetServiceInvokeWithOptions(tmpReq *GetServiceInvokeRequest, runtime *util.RuntimeOptions) (_result *GetServiceInvokeResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetServiceInvokeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CallerParentIdList)) {
+		request.CallerParentIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallerParentIdList, tea.String("CallerParentIdList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallerParentIdListShrink)) {
+		body["CallerParentIdList"] = request.CallerParentIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceInvoke"),
+		Version:     tea.String("2021-11-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetServiceInvokeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetServiceInvoke(request *GetServiceInvokeRequest) (_result *GetServiceInvokeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetServiceInvokeResponse{}
+	_body, _err := client.GetServiceInvokeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetServiceQpsWithOptions(tmpReq *GetServiceQpsRequest, runtime *util.RuntimeOptions) (_result *GetServiceQpsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetServiceQpsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CallerParentIdList)) {
+		request.CallerParentIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallerParentIdList, tea.String("CallerParentIdList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallerParentIdListShrink)) {
+		body["CallerParentIdList"] = request.CallerParentIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceQps"),
+		Version:     tea.String("2021-11-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetServiceQpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetServiceQps(request *GetServiceQpsRequest) (_result *GetServiceQpsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetServiceQpsResponse{}
+	_body, _err := client.GetServiceQpsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
