@@ -1941,6 +1941,7 @@ type AssociateEipAddressRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s AssociateEipAddressRequest) String() string {
@@ -2008,6 +2009,11 @@ func (s *AssociateEipAddressRequest) SetResourceOwnerAccount(v string) *Associat
 
 func (s *AssociateEipAddressRequest) SetResourceOwnerId(v int64) *AssociateEipAddressRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *AssociateEipAddressRequest) SetVpcId(v string) *AssociateEipAddressRequest {
+	s.VpcId = &v
 	return s
 }
 
@@ -4781,7 +4787,6 @@ func (s *CreateCustomerGatewayResponse) SetBody(v *CreateCustomerGatewayResponse
 }
 
 type CreateDhcpOptionsSetRequest struct {
-	BootFileName              *string `json:"BootFileName,omitempty" xml:"BootFileName,omitempty"`
 	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DhcpOptionsSetDescription *string `json:"DhcpOptionsSetDescription,omitempty" xml:"DhcpOptionsSetDescription,omitempty"`
 	DhcpOptionsSetName        *string `json:"DhcpOptionsSetName,omitempty" xml:"DhcpOptionsSetName,omitempty"`
@@ -4795,7 +4800,6 @@ type CreateDhcpOptionsSetRequest struct {
 	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TFTPServerName            *string `json:"TFTPServerName,omitempty" xml:"TFTPServerName,omitempty"`
 }
 
 func (s CreateDhcpOptionsSetRequest) String() string {
@@ -4804,11 +4808,6 @@ func (s CreateDhcpOptionsSetRequest) String() string {
 
 func (s CreateDhcpOptionsSetRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateDhcpOptionsSetRequest) SetBootFileName(v string) *CreateDhcpOptionsSetRequest {
-	s.BootFileName = &v
-	return s
 }
 
 func (s *CreateDhcpOptionsSetRequest) SetClientToken(v string) *CreateDhcpOptionsSetRequest {
@@ -4873,11 +4872,6 @@ func (s *CreateDhcpOptionsSetRequest) SetResourceOwnerAccount(v string) *CreateD
 
 func (s *CreateDhcpOptionsSetRequest) SetResourceOwnerId(v int64) *CreateDhcpOptionsSetRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *CreateDhcpOptionsSetRequest) SetTFTPServerName(v string) *CreateDhcpOptionsSetRequest {
-	s.TFTPServerName = &v
 	return s
 }
 
@@ -5093,19 +5087,20 @@ func (s *CreateExpressCloudConnectionResponse) SetBody(v *CreateExpressCloudConn
 }
 
 type CreateFlowLogRequest struct {
-	AggregationInterval  *int32  `json:"AggregationInterval,omitempty" xml:"AggregationInterval,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FlowLogName          *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	LogStoreName         *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProjectName          *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TrafficType          *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
+	AggregationInterval  *int32    `json:"AggregationInterval,omitempty" xml:"AggregationInterval,omitempty"`
+	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	FlowLogName          *string   `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	LogStoreName         *string   `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProjectName          *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId           *string   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TrafficPath          []*string `json:"TrafficPath,omitempty" xml:"TrafficPath,omitempty" type:"Repeated"`
+	TrafficType          *string   `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
 }
 
 func (s CreateFlowLogRequest) String() string {
@@ -5173,6 +5168,11 @@ func (s *CreateFlowLogRequest) SetResourceOwnerId(v int64) *CreateFlowLogRequest
 
 func (s *CreateFlowLogRequest) SetResourceType(v string) *CreateFlowLogRequest {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *CreateFlowLogRequest) SetTrafficPath(v []*string) *CreateFlowLogRequest {
+	s.TrafficPath = v
 	return s
 }
 
@@ -7911,7 +7911,8 @@ func (s *CreatePhysicalConnectionOccupancyOrderRequest) SetResourceOwnerId(v int
 }
 
 type CreatePhysicalConnectionOccupancyOrderResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *CreatePhysicalConnectionOccupancyOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePhysicalConnectionOccupancyOrderResponseBody) String() string {
@@ -7922,8 +7923,30 @@ func (s CreatePhysicalConnectionOccupancyOrderResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePhysicalConnectionOccupancyOrderResponseBody) SetData(v *CreatePhysicalConnectionOccupancyOrderResponseBodyData) *CreatePhysicalConnectionOccupancyOrderResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *CreatePhysicalConnectionOccupancyOrderResponseBody) SetRequestId(v string) *CreatePhysicalConnectionOccupancyOrderResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type CreatePhysicalConnectionOccupancyOrderResponseBodyData struct {
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s CreatePhysicalConnectionOccupancyOrderResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePhysicalConnectionOccupancyOrderResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePhysicalConnectionOccupancyOrderResponseBodyData) SetOrderId(v string) *CreatePhysicalConnectionOccupancyOrderResponseBodyData {
+	s.OrderId = &v
 	return s
 }
 
@@ -8210,6 +8233,211 @@ func (s *CreatePublicIpAddressPoolResponse) SetStatusCode(v int32) *CreatePublic
 }
 
 func (s *CreatePublicIpAddressPoolResponse) SetBody(v *CreatePublicIpAddressPoolResponseBody) *CreatePublicIpAddressPoolResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRouteEntriesRequest struct {
+	OwnerAccount         *string                                  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                                  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RouteEntries         []*CreateRouteEntriesRequestRouteEntries `json:"RouteEntries,omitempty" xml:"RouteEntries,omitempty" type:"Repeated"`
+}
+
+func (s CreateRouteEntriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRouteEntriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRouteEntriesRequest) SetOwnerAccount(v string) *CreateRouteEntriesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateRouteEntriesRequest) SetOwnerId(v int64) *CreateRouteEntriesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateRouteEntriesRequest) SetRegionId(v string) *CreateRouteEntriesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateRouteEntriesRequest) SetResourceOwnerAccount(v string) *CreateRouteEntriesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateRouteEntriesRequest) SetResourceOwnerId(v int64) *CreateRouteEntriesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateRouteEntriesRequest) SetRouteEntries(v []*CreateRouteEntriesRequestRouteEntries) *CreateRouteEntriesRequest {
+	s.RouteEntries = v
+	return s
+}
+
+type CreateRouteEntriesRequestRouteEntries struct {
+	Describption *string `json:"Describption,omitempty" xml:"Describption,omitempty"`
+	DstCidrBlock *string `json:"DstCidrBlock,omitempty" xml:"DstCidrBlock,omitempty"`
+	IpVersion    *int32  `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextHop      *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	NextHopType  *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+}
+
+func (s CreateRouteEntriesRequestRouteEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRouteEntriesRequestRouteEntries) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRouteEntriesRequestRouteEntries) SetDescribption(v string) *CreateRouteEntriesRequestRouteEntries {
+	s.Describption = &v
+	return s
+}
+
+func (s *CreateRouteEntriesRequestRouteEntries) SetDstCidrBlock(v string) *CreateRouteEntriesRequestRouteEntries {
+	s.DstCidrBlock = &v
+	return s
+}
+
+func (s *CreateRouteEntriesRequestRouteEntries) SetIpVersion(v int32) *CreateRouteEntriesRequestRouteEntries {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *CreateRouteEntriesRequestRouteEntries) SetName(v string) *CreateRouteEntriesRequestRouteEntries {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRouteEntriesRequestRouteEntries) SetNextHop(v string) *CreateRouteEntriesRequestRouteEntries {
+	s.NextHop = &v
+	return s
+}
+
+func (s *CreateRouteEntriesRequestRouteEntries) SetNextHopType(v string) *CreateRouteEntriesRequestRouteEntries {
+	s.NextHopType = &v
+	return s
+}
+
+func (s *CreateRouteEntriesRequestRouteEntries) SetRouteTableId(v string) *CreateRouteEntriesRequestRouteEntries {
+	s.RouteTableId = &v
+	return s
+}
+
+type CreateRouteEntriesResponseBody struct {
+	FailedCount        *int32                                              `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedRouteEntries []*CreateRouteEntriesResponseBodyFailedRouteEntries `json:"FailedRouteEntries,omitempty" xml:"FailedRouteEntries,omitempty" type:"Repeated"`
+	RequestId          *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RouteEntryIds      []*string                                           `json:"RouteEntryIds,omitempty" xml:"RouteEntryIds,omitempty" type:"Repeated"`
+	SuccessCount       *int32                                              `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s CreateRouteEntriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRouteEntriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRouteEntriesResponseBody) SetFailedCount(v int32) *CreateRouteEntriesResponseBody {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *CreateRouteEntriesResponseBody) SetFailedRouteEntries(v []*CreateRouteEntriesResponseBodyFailedRouteEntries) *CreateRouteEntriesResponseBody {
+	s.FailedRouteEntries = v
+	return s
+}
+
+func (s *CreateRouteEntriesResponseBody) SetRequestId(v string) *CreateRouteEntriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRouteEntriesResponseBody) SetRouteEntryIds(v []*string) *CreateRouteEntriesResponseBody {
+	s.RouteEntryIds = v
+	return s
+}
+
+func (s *CreateRouteEntriesResponseBody) SetSuccessCount(v int32) *CreateRouteEntriesResponseBody {
+	s.SuccessCount = &v
+	return s
+}
+
+type CreateRouteEntriesResponseBodyFailedRouteEntries struct {
+	DstCidrBlock  *string `json:"DstCidrBlock,omitempty" xml:"DstCidrBlock,omitempty"`
+	FailedCode    *string `json:"FailedCode,omitempty" xml:"FailedCode,omitempty"`
+	FailedMessage *string `json:"FailedMessage,omitempty" xml:"FailedMessage,omitempty"`
+	NextHop       *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+}
+
+func (s CreateRouteEntriesResponseBodyFailedRouteEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRouteEntriesResponseBodyFailedRouteEntries) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRouteEntriesResponseBodyFailedRouteEntries) SetDstCidrBlock(v string) *CreateRouteEntriesResponseBodyFailedRouteEntries {
+	s.DstCidrBlock = &v
+	return s
+}
+
+func (s *CreateRouteEntriesResponseBodyFailedRouteEntries) SetFailedCode(v string) *CreateRouteEntriesResponseBodyFailedRouteEntries {
+	s.FailedCode = &v
+	return s
+}
+
+func (s *CreateRouteEntriesResponseBodyFailedRouteEntries) SetFailedMessage(v string) *CreateRouteEntriesResponseBodyFailedRouteEntries {
+	s.FailedMessage = &v
+	return s
+}
+
+func (s *CreateRouteEntriesResponseBodyFailedRouteEntries) SetNextHop(v string) *CreateRouteEntriesResponseBodyFailedRouteEntries {
+	s.NextHop = &v
+	return s
+}
+
+type CreateRouteEntriesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRouteEntriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRouteEntriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRouteEntriesResponse) SetHeaders(v map[string]*string) *CreateRouteEntriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRouteEntriesResponse) SetStatusCode(v int32) *CreateRouteEntriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRouteEntriesResponse) SetBody(v *CreateRouteEntriesResponseBody) *CreateRouteEntriesResponse {
 	s.Body = v
 	return s
 }
@@ -11738,6 +11966,7 @@ type CreateVpnPbrRouteEntryRequest struct {
 	OverlayMode          *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Priority             *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	PublishVpc           *bool   `json:"PublishVpc,omitempty" xml:"PublishVpc,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -11786,6 +12015,11 @@ func (s *CreateVpnPbrRouteEntryRequest) SetOwnerId(v int64) *CreateVpnPbrRouteEn
 	return s
 }
 
+func (s *CreateVpnPbrRouteEntryRequest) SetPriority(v int32) *CreateVpnPbrRouteEntryRequest {
+	s.Priority = &v
+	return s
+}
+
 func (s *CreateVpnPbrRouteEntryRequest) SetPublishVpc(v bool) *CreateVpnPbrRouteEntryRequest {
 	s.PublishVpc = &v
 	return s
@@ -11831,6 +12065,7 @@ type CreateVpnPbrRouteEntryResponseBody struct {
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	NextHop       *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
 	OverlayMode   *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
+	Priority      *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteDest     *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
 	RouteSource   *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
@@ -11864,6 +12099,11 @@ func (s *CreateVpnPbrRouteEntryResponseBody) SetNextHop(v string) *CreateVpnPbrR
 
 func (s *CreateVpnPbrRouteEntryResponseBody) SetOverlayMode(v string) *CreateVpnPbrRouteEntryResponseBody {
 	s.OverlayMode = &v
+	return s
+}
+
+func (s *CreateVpnPbrRouteEntryResponseBody) SetPriority(v int32) *CreateVpnPbrRouteEntryResponseBody {
+	s.Priority = &v
 	return s
 }
 
@@ -14911,6 +15151,193 @@ func (s *DeletePublicIpAddressPoolCidrBlockResponse) SetBody(v *DeletePublicIpAd
 	return s
 }
 
+type DeleteRouteEntriesRequest struct {
+	OwnerAccount         *string                                  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                                  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RouteEntries         []*DeleteRouteEntriesRequestRouteEntries `json:"RouteEntries,omitempty" xml:"RouteEntries,omitempty" type:"Repeated"`
+}
+
+func (s DeleteRouteEntriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRouteEntriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRouteEntriesRequest) SetOwnerAccount(v string) *DeleteRouteEntriesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesRequest) SetOwnerId(v int64) *DeleteRouteEntriesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesRequest) SetRegionId(v string) *DeleteRouteEntriesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesRequest) SetResourceOwnerAccount(v string) *DeleteRouteEntriesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesRequest) SetResourceOwnerId(v int64) *DeleteRouteEntriesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesRequest) SetRouteEntries(v []*DeleteRouteEntriesRequestRouteEntries) *DeleteRouteEntriesRequest {
+	s.RouteEntries = v
+	return s
+}
+
+type DeleteRouteEntriesRequestRouteEntries struct {
+	DstCidrBlock *string `json:"DstCidrBlock,omitempty" xml:"DstCidrBlock,omitempty"`
+	NextHop      *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+}
+
+func (s DeleteRouteEntriesRequestRouteEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRouteEntriesRequestRouteEntries) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRouteEntriesRequestRouteEntries) SetDstCidrBlock(v string) *DeleteRouteEntriesRequestRouteEntries {
+	s.DstCidrBlock = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesRequestRouteEntries) SetNextHop(v string) *DeleteRouteEntriesRequestRouteEntries {
+	s.NextHop = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesRequestRouteEntries) SetRouteEntryId(v string) *DeleteRouteEntriesRequestRouteEntries {
+	s.RouteEntryId = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesRequestRouteEntries) SetRouteTableId(v string) *DeleteRouteEntriesRequestRouteEntries {
+	s.RouteTableId = &v
+	return s
+}
+
+type DeleteRouteEntriesResponseBody struct {
+	FailedCount        *int32                                              `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedRouteEntries []*DeleteRouteEntriesResponseBodyFailedRouteEntries `json:"FailedRouteEntries,omitempty" xml:"FailedRouteEntries,omitempty" type:"Repeated"`
+	RequestId          *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessCount       *int32                                              `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s DeleteRouteEntriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRouteEntriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRouteEntriesResponseBody) SetFailedCount(v int32) *DeleteRouteEntriesResponseBody {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesResponseBody) SetFailedRouteEntries(v []*DeleteRouteEntriesResponseBodyFailedRouteEntries) *DeleteRouteEntriesResponseBody {
+	s.FailedRouteEntries = v
+	return s
+}
+
+func (s *DeleteRouteEntriesResponseBody) SetRequestId(v string) *DeleteRouteEntriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesResponseBody) SetSuccessCount(v int32) *DeleteRouteEntriesResponseBody {
+	s.SuccessCount = &v
+	return s
+}
+
+type DeleteRouteEntriesResponseBodyFailedRouteEntries struct {
+	DstCidrBlock  *string `json:"DstCidrBlock,omitempty" xml:"DstCidrBlock,omitempty"`
+	FailedCode    *string `json:"FailedCode,omitempty" xml:"FailedCode,omitempty"`
+	FailedMessage *string `json:"FailedMessage,omitempty" xml:"FailedMessage,omitempty"`
+	NextHop       *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	RouteEntryId  *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+}
+
+func (s DeleteRouteEntriesResponseBodyFailedRouteEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRouteEntriesResponseBodyFailedRouteEntries) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRouteEntriesResponseBodyFailedRouteEntries) SetDstCidrBlock(v string) *DeleteRouteEntriesResponseBodyFailedRouteEntries {
+	s.DstCidrBlock = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesResponseBodyFailedRouteEntries) SetFailedCode(v string) *DeleteRouteEntriesResponseBodyFailedRouteEntries {
+	s.FailedCode = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesResponseBodyFailedRouteEntries) SetFailedMessage(v string) *DeleteRouteEntriesResponseBodyFailedRouteEntries {
+	s.FailedMessage = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesResponseBodyFailedRouteEntries) SetNextHop(v string) *DeleteRouteEntriesResponseBodyFailedRouteEntries {
+	s.NextHop = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesResponseBodyFailedRouteEntries) SetRouteEntryId(v string) *DeleteRouteEntriesResponseBodyFailedRouteEntries {
+	s.RouteEntryId = &v
+	return s
+}
+
+type DeleteRouteEntriesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteRouteEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteRouteEntriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRouteEntriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRouteEntriesResponse) SetHeaders(v map[string]*string) *DeleteRouteEntriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRouteEntriesResponse) SetStatusCode(v int32) *DeleteRouteEntriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRouteEntriesResponse) SetBody(v *DeleteRouteEntriesResponseBody) *DeleteRouteEntriesResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteRouteEntryRequest struct {
 	DestinationCidrBlock *string                               `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
 	NextHopId            *string                               `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
@@ -16893,6 +17320,7 @@ type DeleteVpnPbrRouteEntryRequest struct {
 	OverlayMode          *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Priority             *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -16932,6 +17360,11 @@ func (s *DeleteVpnPbrRouteEntryRequest) SetOwnerAccount(v string) *DeleteVpnPbrR
 
 func (s *DeleteVpnPbrRouteEntryRequest) SetOwnerId(v int64) *DeleteVpnPbrRouteEntryRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteVpnPbrRouteEntryRequest) SetPriority(v int32) *DeleteVpnPbrRouteEntryRequest {
+	s.Priority = &v
 	return s
 }
 
@@ -18946,6 +19379,194 @@ func (s *DescribeCustomerGatewaysResponse) SetBody(v *DescribeCustomerGatewaysRe
 	return s
 }
 
+type DescribeEcGrantRelationRequest struct {
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	VbrRegionNo  *string `json:"VbrRegionNo,omitempty" xml:"VbrRegionNo,omitempty"`
+}
+
+func (s DescribeEcGrantRelationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEcGrantRelationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEcGrantRelationRequest) SetInstanceId(v string) *DescribeEcGrantRelationRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationRequest) SetInstanceType(v string) *DescribeEcGrantRelationRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationRequest) SetPageNumber(v int64) *DescribeEcGrantRelationRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationRequest) SetPageSize(v int64) *DescribeEcGrantRelationRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationRequest) SetVbrRegionNo(v string) *DescribeEcGrantRelationRequest {
+	s.VbrRegionNo = &v
+	return s
+}
+
+type DescribeEcGrantRelationResponseBody struct {
+	Count            *int32                                                 `json:"Count,omitempty" xml:"Count,omitempty"`
+	EcGrantRelations []*DescribeEcGrantRelationResponseBodyEcGrantRelations `json:"EcGrantRelations,omitempty" xml:"EcGrantRelations,omitempty" type:"Repeated"`
+	Page             *int32                                                 `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize         *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId        *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int32                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeEcGrantRelationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEcGrantRelationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEcGrantRelationResponseBody) SetCount(v int32) *DescribeEcGrantRelationResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBody) SetEcGrantRelations(v []*DescribeEcGrantRelationResponseBodyEcGrantRelations) *DescribeEcGrantRelationResponseBody {
+	s.EcGrantRelations = v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBody) SetPage(v int32) *DescribeEcGrantRelationResponseBody {
+	s.Page = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBody) SetPageSize(v int32) *DescribeEcGrantRelationResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBody) SetRequestId(v string) *DescribeEcGrantRelationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBody) SetTotalCount(v int32) *DescribeEcGrantRelationResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeEcGrantRelationResponseBodyEcGrantRelations struct {
+	AliUid           *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName     *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceRouterId *string `json:"InstanceRouterId,omitempty" xml:"InstanceRouterId,omitempty"`
+	RegionNo         *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VbrInstanceId    *string `json:"VbrInstanceId,omitempty" xml:"VbrInstanceId,omitempty"`
+	VbrOwnerUid      *int64  `json:"VbrOwnerUid,omitempty" xml:"VbrOwnerUid,omitempty"`
+	VbrRegionNo      *string `json:"VbrRegionNo,omitempty" xml:"VbrRegionNo,omitempty"`
+}
+
+func (s DescribeEcGrantRelationResponseBodyEcGrantRelations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEcGrantRelationResponseBodyEcGrantRelations) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEcGrantRelationResponseBodyEcGrantRelations) SetAliUid(v int64) *DescribeEcGrantRelationResponseBodyEcGrantRelations {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBodyEcGrantRelations) SetGmtCreate(v string) *DescribeEcGrantRelationResponseBodyEcGrantRelations {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBodyEcGrantRelations) SetInstanceId(v string) *DescribeEcGrantRelationResponseBodyEcGrantRelations {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBodyEcGrantRelations) SetInstanceName(v string) *DescribeEcGrantRelationResponseBodyEcGrantRelations {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBodyEcGrantRelations) SetInstanceRouterId(v string) *DescribeEcGrantRelationResponseBodyEcGrantRelations {
+	s.InstanceRouterId = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBodyEcGrantRelations) SetRegionNo(v string) *DescribeEcGrantRelationResponseBodyEcGrantRelations {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBodyEcGrantRelations) SetStatus(v string) *DescribeEcGrantRelationResponseBodyEcGrantRelations {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBodyEcGrantRelations) SetVbrInstanceId(v string) *DescribeEcGrantRelationResponseBodyEcGrantRelations {
+	s.VbrInstanceId = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBodyEcGrantRelations) SetVbrOwnerUid(v int64) *DescribeEcGrantRelationResponseBodyEcGrantRelations {
+	s.VbrOwnerUid = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponseBodyEcGrantRelations) SetVbrRegionNo(v string) *DescribeEcGrantRelationResponseBodyEcGrantRelations {
+	s.VbrRegionNo = &v
+	return s
+}
+
+type DescribeEcGrantRelationResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEcGrantRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEcGrantRelationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEcGrantRelationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEcGrantRelationResponse) SetHeaders(v map[string]*string) *DescribeEcGrantRelationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponse) SetStatusCode(v int32) *DescribeEcGrantRelationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEcGrantRelationResponse) SetBody(v *DescribeEcGrantRelationResponseBody) *DescribeEcGrantRelationResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeEipAddressesRequest struct {
 	Filter                    []*DescribeEipAddressesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	AllocationId              *string                              `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
@@ -19214,6 +19835,8 @@ type DescribeEipAddressesResponseBodyEipAddressesEipAddress struct {
 	ServiceManaged                *int32                                                                         `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	Status                        *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags                          *DescribeEipAddressesResponseBodyEipAddressesEipAddressTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcId                         *string                                                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Zone                          *string                                                                        `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeEipAddressesResponseBodyEipAddressesEipAddress) String() string {
@@ -19406,6 +20029,16 @@ func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetStatus(v str
 
 func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetTags(v *DescribeEipAddressesResponseBodyEipAddressesEipAddressTags) *DescribeEipAddressesResponseBodyEipAddressesEipAddress {
 	s.Tags = v
+	return s
+}
+
+func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetVpcId(v string) *DescribeEipAddressesResponseBodyEipAddressesEipAddress {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeEipAddressesResponseBodyEipAddressesEipAddress) SetZone(v string) *DescribeEipAddressesResponseBodyEipAddressesEipAddress {
+	s.Zone = &v
 	return s
 }
 
@@ -20273,19 +20906,21 @@ func (s *DescribeFlowLogsResponseBodyFlowLogs) SetFlowLog(v []*DescribeFlowLogsR
 }
 
 type DescribeFlowLogsResponseBodyFlowLogsFlowLog struct {
-	AggregationInterval *int32  `json:"AggregationInterval,omitempty" xml:"AggregationInterval,omitempty"`
-	BusinessStatus      *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	CreationTime        *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FlowLogId           *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
-	FlowLogName         *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	LogStoreName        *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	ProjectName         *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId          *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType        *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TrafficType         *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
+	AggregationInterval *int32                                                  `json:"AggregationInterval,omitempty" xml:"AggregationInterval,omitempty"`
+	BusinessStatus      *string                                                 `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	CreationTime        *string                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description         *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	FlowLogId           *string                                                 `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+	FlowLogName         *string                                                 `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	LogStoreName        *string                                                 `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	ProjectName         *string                                                 `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RegionId            *string                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId          *string                                                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType        *string                                                 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ServiceType         *string                                                 `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Status              *string                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	TrafficPath         *DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath `json:"TrafficPath,omitempty" xml:"TrafficPath,omitempty" type:"Struct"`
+	TrafficType         *string                                                 `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
 }
 
 func (s DescribeFlowLogsResponseBodyFlowLogsFlowLog) String() string {
@@ -20351,13 +20986,40 @@ func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetResourceType(v string) 
 	return s
 }
 
+func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetServiceType(v string) *DescribeFlowLogsResponseBodyFlowLogsFlowLog {
+	s.ServiceType = &v
+	return s
+}
+
 func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetStatus(v string) *DescribeFlowLogsResponseBodyFlowLogsFlowLog {
 	s.Status = &v
 	return s
 }
 
+func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetTrafficPath(v *DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath) *DescribeFlowLogsResponseBodyFlowLogsFlowLog {
+	s.TrafficPath = v
+	return s
+}
+
 func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLog) SetTrafficType(v string) *DescribeFlowLogsResponseBodyFlowLogsFlowLog {
 	s.TrafficType = &v
+	return s
+}
+
+type DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath struct {
+	TrafficPathList []*string `json:"trafficPathList,omitempty" xml:"trafficPathList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath) SetTrafficPathList(v []*string) *DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath {
+	s.TrafficPathList = v
 	return s
 }
 
@@ -25941,21 +26603,23 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeRouteEntryListRequest struct {
-	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	IpVersion            *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	MaxResult            *int32  `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RouteEntryId         *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
-	RouteEntryName       *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
-	RouteEntryType       *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
-	RouteTableId         *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	DestCidrBlockList    []*string `json:"DestCidrBlockList,omitempty" xml:"DestCidrBlockList,omitempty" type:"Repeated"`
+	DestinationCidrBlock *string   `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	IpVersion            *string   `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	MaxResult            *int32    `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	NextHopId            *string   `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	NextHopType          *string   `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	NextToken            *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RouteEntryId         *string   `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+	RouteEntryName       *string   `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
+	RouteEntryType       *string   `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
+	RouteTableId         *string   `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	ServiceType          *string   `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
 func (s DescribeRouteEntryListRequest) String() string {
@@ -25964,6 +26628,11 @@ func (s DescribeRouteEntryListRequest) String() string {
 
 func (s DescribeRouteEntryListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRouteEntryListRequest) SetDestCidrBlockList(v []*string) *DescribeRouteEntryListRequest {
+	s.DestCidrBlockList = v
+	return s
 }
 
 func (s *DescribeRouteEntryListRequest) SetDestinationCidrBlock(v string) *DescribeRouteEntryListRequest {
@@ -26041,6 +26710,11 @@ func (s *DescribeRouteEntryListRequest) SetRouteTableId(v string) *DescribeRoute
 	return s
 }
 
+func (s *DescribeRouteEntryListRequest) SetServiceType(v string) *DescribeRouteEntryListRequest {
+	s.ServiceType = &v
+	return s
+}
+
 type DescribeRouteEntryListResponseBody struct {
 	NextToken   *string                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -26096,6 +26770,7 @@ type DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry struct {
 	RouteEntryId         *string                                                          `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
 	RouteEntryName       *string                                                          `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
 	RouteTableId         *string                                                          `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	ServiceType          *string                                                          `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	Status               *string                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type                 *string                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -26145,6 +26820,11 @@ func (s *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry) SetRouteEntryN
 
 func (s *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry) SetRouteTableId(v string) *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry {
 	s.RouteTableId = &v
+	return s
+}
+
+func (s *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry) SetServiceType(v string) *DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry {
+	s.ServiceType = &v
 	return s
 }
 
@@ -29973,13 +30653,14 @@ func (s *DescribeVcoRouteEntriesResponse) SetBody(v *DescribeVcoRouteEntriesResp
 }
 
 type DescribeVirtualBorderRoutersRequest struct {
-	Filter               []*DescribeVirtualBorderRoutersRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	OwnerId              *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Filter                 []*DescribeVirtualBorderRoutersRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	IncludeCrossAccountVbr *bool                                        `json:"IncludeCrossAccountVbr,omitempty" xml:"IncludeCrossAccountVbr,omitempty"`
+	OwnerId                *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber             *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize               *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId               *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount   *string                                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64                                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DescribeVirtualBorderRoutersRequest) String() string {
@@ -29992,6 +30673,11 @@ func (s DescribeVirtualBorderRoutersRequest) GoString() string {
 
 func (s *DescribeVirtualBorderRoutersRequest) SetFilter(v []*DescribeVirtualBorderRoutersRequestFilter) *DescribeVirtualBorderRoutersRequest {
 	s.Filter = v
+	return s
+}
+
+func (s *DescribeVirtualBorderRoutersRequest) SetIncludeCrossAccountVbr(v bool) *DescribeVirtualBorderRoutersRequest {
+	s.IncludeCrossAccountVbr = &v
 	return s
 }
 
@@ -32530,6 +33216,7 @@ type DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection struct {
 	EnableDpd              *bool                                                                        `json:"EnableDpd,omitempty" xml:"EnableDpd,omitempty"`
 	EnableNatTraversal     *bool                                                                        `json:"EnableNatTraversal,omitempty" xml:"EnableNatTraversal,omitempty"`
 	IkeConfig              *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig      `json:"IkeConfig,omitempty" xml:"IkeConfig,omitempty" type:"Struct"`
+	InternetIp             *string                                                                      `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	IpsecConfig            *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIpsecConfig    `json:"IpsecConfig,omitempty" xml:"IpsecConfig,omitempty" type:"Struct"`
 	LocalSubnet            *string                                                                      `json:"LocalSubnet,omitempty" xml:"LocalSubnet,omitempty"`
 	Name                   *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -32597,6 +33284,11 @@ func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetEnabl
 
 func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetIkeConfig(v *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection {
 	s.IkeConfig = v
+	return s
+}
+
+func (s *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection) SetInternetIp(v string) *DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection {
+	s.InternetIp = &v
 	return s
 }
 
@@ -33959,6 +34651,7 @@ func (s *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntries) SetVpnPbrRout
 type DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry struct {
 	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	NextHop       *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	Priority      *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RouteDest     *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
 	RouteSource   *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
 	State         *string `json:"State,omitempty" xml:"State,omitempty"`
@@ -33981,6 +34674,11 @@ func (s *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntr
 
 func (s *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry) SetNextHop(v string) *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry {
 	s.NextHop = &v
+	return s
+}
+
+func (s *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry) SetPriority(v int32) *DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry {
+	s.Priority = &v
 	return s
 }
 
@@ -35948,12 +36646,10 @@ func (s *GetDhcpOptionsSetResponseBodyAssociateVpcs) SetVpcId(v string) *GetDhcp
 }
 
 type GetDhcpOptionsSetResponseBodyDhcpOptions struct {
-	BootFileName      *string `json:"BootFileName,omitempty" xml:"BootFileName,omitempty"`
 	DomainName        *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainNameServers *string `json:"DomainNameServers,omitempty" xml:"DomainNameServers,omitempty"`
 	Ipv6LeaseTime     *string `json:"Ipv6LeaseTime,omitempty" xml:"Ipv6LeaseTime,omitempty"`
 	LeaseTime         *string `json:"LeaseTime,omitempty" xml:"LeaseTime,omitempty"`
-	TFTPServerName    *string `json:"TFTPServerName,omitempty" xml:"TFTPServerName,omitempty"`
 }
 
 func (s GetDhcpOptionsSetResponseBodyDhcpOptions) String() string {
@@ -35962,11 +36658,6 @@ func (s GetDhcpOptionsSetResponseBodyDhcpOptions) String() string {
 
 func (s GetDhcpOptionsSetResponseBodyDhcpOptions) GoString() string {
 	return s.String()
-}
-
-func (s *GetDhcpOptionsSetResponseBodyDhcpOptions) SetBootFileName(v string) *GetDhcpOptionsSetResponseBodyDhcpOptions {
-	s.BootFileName = &v
-	return s
 }
 
 func (s *GetDhcpOptionsSetResponseBodyDhcpOptions) SetDomainName(v string) *GetDhcpOptionsSetResponseBodyDhcpOptions {
@@ -35986,11 +36677,6 @@ func (s *GetDhcpOptionsSetResponseBodyDhcpOptions) SetIpv6LeaseTime(v string) *G
 
 func (s *GetDhcpOptionsSetResponseBodyDhcpOptions) SetLeaseTime(v string) *GetDhcpOptionsSetResponseBodyDhcpOptions {
 	s.LeaseTime = &v
-	return s
-}
-
-func (s *GetDhcpOptionsSetResponseBodyDhcpOptions) SetTFTPServerName(v string) *GetDhcpOptionsSetResponseBodyDhcpOptions {
-	s.TFTPServerName = &v
 	return s
 }
 
@@ -37232,6 +37918,7 @@ type GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation struct {
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PrefixListId *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
 	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -37257,6 +37944,11 @@ func (s *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation) SetPrefi
 
 func (s *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation) SetReason(v string) *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation {
 	s.Reason = &v
+	return s
+}
+
+func (s *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation) SetRegionId(v string) *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation {
+	s.RegionId = &v
 	return s
 }
 
@@ -37408,6 +38100,7 @@ type GetVpcPrefixListEntriesResponseBodyPrefixListEntry struct {
 	Cidr         *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	PrefixListId *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetVpcPrefixListEntriesResponseBodyPrefixListEntry) String() string {
@@ -37430,6 +38123,11 @@ func (s *GetVpcPrefixListEntriesResponseBodyPrefixListEntry) SetDescription(v st
 
 func (s *GetVpcPrefixListEntriesResponseBodyPrefixListEntry) SetPrefixListId(v string) *GetVpcPrefixListEntriesResponseBodyPrefixListEntry {
 	s.PrefixListId = &v
+	return s
+}
+
+func (s *GetVpcPrefixListEntriesResponseBodyPrefixListEntry) SetRegionId(v string) *GetVpcPrefixListEntriesResponseBodyPrefixListEntry {
+	s.RegionId = &v
 	return s
 }
 
@@ -37458,6 +38156,163 @@ func (s *GetVpcPrefixListEntriesResponse) SetStatusCode(v int32) *GetVpcPrefixLi
 }
 
 func (s *GetVpcPrefixListEntriesResponse) SetBody(v *GetVpcPrefixListEntriesResponseBody) *GetVpcPrefixListEntriesResponse {
+	s.Body = v
+	return s
+}
+
+type GetVpcRouteEntrySummaryRequest struct {
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RouteEntryType       *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
+	RouteTableId         *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s GetVpcRouteEntrySummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVpcRouteEntrySummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVpcRouteEntrySummaryRequest) SetOwnerAccount(v string) *GetVpcRouteEntrySummaryRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetVpcRouteEntrySummaryRequest) SetOwnerId(v int64) *GetVpcRouteEntrySummaryRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetVpcRouteEntrySummaryRequest) SetRegionId(v string) *GetVpcRouteEntrySummaryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetVpcRouteEntrySummaryRequest) SetResourceOwnerAccount(v string) *GetVpcRouteEntrySummaryRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetVpcRouteEntrySummaryRequest) SetResourceOwnerId(v int64) *GetVpcRouteEntrySummaryRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetVpcRouteEntrySummaryRequest) SetRouteEntryType(v string) *GetVpcRouteEntrySummaryRequest {
+	s.RouteEntryType = &v
+	return s
+}
+
+func (s *GetVpcRouteEntrySummaryRequest) SetRouteTableId(v string) *GetVpcRouteEntrySummaryRequest {
+	s.RouteTableId = &v
+	return s
+}
+
+func (s *GetVpcRouteEntrySummaryRequest) SetVpcId(v string) *GetVpcRouteEntrySummaryRequest {
+	s.VpcId = &v
+	return s
+}
+
+type GetVpcRouteEntrySummaryResponseBody struct {
+	RequestId          *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RouteEntrySummarys []*GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys `json:"RouteEntrySummarys,omitempty" xml:"RouteEntrySummarys,omitempty" type:"Repeated"`
+}
+
+func (s GetVpcRouteEntrySummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVpcRouteEntrySummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVpcRouteEntrySummaryResponseBody) SetRequestId(v string) *GetVpcRouteEntrySummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVpcRouteEntrySummaryResponseBody) SetRouteEntrySummarys(v []*GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys) *GetVpcRouteEntrySummaryResponseBody {
+	s.RouteEntrySummarys = v
+	return s
+}
+
+type GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys struct {
+	EntrySummarys []*GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys `json:"EntrySummarys,omitempty" xml:"EntrySummarys,omitempty" type:"Repeated"`
+	RouteTableId  *string                                                               `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+}
+
+func (s GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys) GoString() string {
+	return s.String()
+}
+
+func (s *GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys) SetEntrySummarys(v []*GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys) *GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys {
+	s.EntrySummarys = v
+	return s
+}
+
+func (s *GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys) SetRouteTableId(v string) *GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys {
+	s.RouteTableId = &v
+	return s
+}
+
+type GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys struct {
+	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
+}
+
+func (s GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys) GoString() string {
+	return s.String()
+}
+
+func (s *GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys) SetCount(v int32) *GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys {
+	s.Count = &v
+	return s
+}
+
+func (s *GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys) SetRouteEntryType(v string) *GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys {
+	s.RouteEntryType = &v
+	return s
+}
+
+type GetVpcRouteEntrySummaryResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetVpcRouteEntrySummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVpcRouteEntrySummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVpcRouteEntrySummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVpcRouteEntrySummaryResponse) SetHeaders(v map[string]*string) *GetVpcRouteEntrySummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVpcRouteEntrySummaryResponse) SetStatusCode(v int32) *GetVpcRouteEntrySummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVpcRouteEntrySummaryResponse) SetBody(v *GetVpcRouteEntrySummaryResponseBody) *GetVpcRouteEntrySummaryResponse {
 	s.Body = v
 	return s
 }
@@ -38285,12 +39140,13 @@ func (s *ListGatewayRouteTableEntriesResponseBody) SetTotalCount(v string) *List
 }
 
 type ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels struct {
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Description          *string                                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationCidrBlock *string                                                                    `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	Name                 *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextHopId            *string                                                                    `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	NextHopType          *string                                                                    `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	NextHops             []*ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops `json:"NextHops,omitempty" xml:"NextHops,omitempty" type:"Repeated"`
+	Status               *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels) String() string {
@@ -38326,8 +39182,48 @@ func (s *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels) SetNex
 	return s
 }
 
+func (s *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels) SetNextHops(v []*ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops) *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels {
+	s.NextHops = v
+	return s
+}
+
 func (s *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels) SetStatus(v string) *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels {
 	s.Status = &v
+	return s
+}
+
+type ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops struct {
+	Enabled     *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	NextHopId   *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	Weight      *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops) SetEnabled(v string) *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops) SetNextHopId(v string) *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops {
+	s.NextHopId = &v
+	return s
+}
+
+func (s *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops) SetNextHopType(v string) *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops {
+	s.NextHopType = &v
+	return s
+}
+
+func (s *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops) SetWeight(v string) *ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops {
+	s.Weight = &v
 	return s
 }
 
@@ -39430,6 +40326,7 @@ type ListPrefixListsResponseBodyPrefixLists struct {
 	PrefixListId          *string   `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
 	PrefixListName        *string   `json:"PrefixListName,omitempty" xml:"PrefixListName,omitempty"`
 	PrefixListStatus      *string   `json:"PrefixListStatus,omitempty" xml:"PrefixListStatus,omitempty"`
+	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ShareType             *string   `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	Status                *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -39484,6 +40381,11 @@ func (s *ListPrefixListsResponseBodyPrefixLists) SetPrefixListName(v string) *Li
 
 func (s *ListPrefixListsResponseBodyPrefixLists) SetPrefixListStatus(v string) *ListPrefixListsResponseBodyPrefixLists {
 	s.PrefixListStatus = &v
+	return s
+}
+
+func (s *ListPrefixListsResponseBodyPrefixLists) SetRegionId(v string) *ListPrefixListsResponseBodyPrefixLists {
+	s.RegionId = &v
 	return s
 }
 
@@ -39839,18 +40741,17 @@ func (s *ListPublicIpAddressPoolsResponseBody) SetTotalCount(v int32) *ListPubli
 }
 
 type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList struct {
-	CreationTime          *string                                                                             `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description           *string                                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	IpAddressRemaining    *bool                                                                               `json:"IpAddressRemaining,omitempty" xml:"IpAddressRemaining,omitempty"`
-	Isp                   *string                                                                             `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	Name                  *string                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	PublicIpAddressPoolId *string                                                                             `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
-	PublicIpCidrBlockList []*ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList `json:"PublicIpCidrBlockList,omitempty" xml:"PublicIpCidrBlockList,omitempty" type:"Repeated"`
-	RegionId              *string                                                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status                *string                                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalIpNum            *int32                                                                              `json:"TotalIpNum,omitempty" xml:"TotalIpNum,omitempty"`
-	UsedIpNum             *int32                                                                              `json:"UsedIpNum,omitempty" xml:"UsedIpNum,omitempty"`
-	UserType              *bool                                                                               `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	CreationTime          *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IpAddressRemaining    *bool   `json:"IpAddressRemaining,omitempty" xml:"IpAddressRemaining,omitempty"`
+	Isp                   *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PublicIpAddressPoolId *string `json:"PublicIpAddressPoolId,omitempty" xml:"PublicIpAddressPoolId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalIpNum            *int32  `json:"TotalIpNum,omitempty" xml:"TotalIpNum,omitempty"`
+	UsedIpNum             *int32  `json:"UsedIpNum,omitempty" xml:"UsedIpNum,omitempty"`
+	UserType              *bool   `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) String() string {
@@ -39891,11 +40792,6 @@ func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetPublicI
 	return s
 }
 
-func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetPublicIpCidrBlockList(v []*ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
-	s.PublicIpCidrBlockList = v
-	return s
-}
-
 func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetRegionId(v string) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
 	s.RegionId = &v
 	return s
@@ -39918,47 +40814,6 @@ func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetUsedIpN
 
 func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList) SetUserType(v bool) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList {
 	s.UserType = &v
-	return s
-}
-
-type ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList struct {
-	CidrBlock    *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalIpNum   *int32  `json:"TotalIpNum,omitempty" xml:"TotalIpNum,omitempty"`
-	UsedIpNum    *int32  `json:"UsedIpNum,omitempty" xml:"UsedIpNum,omitempty"`
-}
-
-func (s ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList) GoString() string {
-	return s.String()
-}
-
-func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList) SetCidrBlock(v string) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList {
-	s.CidrBlock = &v
-	return s
-}
-
-func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList) SetCreationTime(v string) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList {
-	s.CreationTime = &v
-	return s
-}
-
-func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList) SetStatus(v string) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList {
-	s.Status = &v
-	return s
-}
-
-func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList) SetTotalIpNum(v int32) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList {
-	s.TotalIpNum = &v
-	return s
-}
-
-func (s *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList) SetUsedIpNum(v int32) *ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListPublicIpCidrBlockList {
-	s.UsedIpNum = &v
 	return s
 }
 
@@ -41869,6 +42724,7 @@ func (s *ListVpnCertificateAssociationsResponse) SetBody(v *ListVpnCertificateAs
 type ModifyBgpGroupAttributeRequest struct {
 	AuthKey              *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 	BgpGroupId           *string `json:"BgpGroupId,omitempty" xml:"BgpGroupId,omitempty"`
+	ClearAuthKey         *bool   `json:"ClearAuthKey,omitempty" xml:"ClearAuthKey,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	IsFakeAsn            *bool   `json:"IsFakeAsn,omitempty" xml:"IsFakeAsn,omitempty"`
@@ -41896,6 +42752,11 @@ func (s *ModifyBgpGroupAttributeRequest) SetAuthKey(v string) *ModifyBgpGroupAtt
 
 func (s *ModifyBgpGroupAttributeRequest) SetBgpGroupId(v string) *ModifyBgpGroupAttributeRequest {
 	s.BgpGroupId = &v
+	return s
+}
+
+func (s *ModifyBgpGroupAttributeRequest) SetClearAuthKey(v bool) *ModifyBgpGroupAttributeRequest {
+	s.ClearAuthKey = &v
 	return s
 }
 
@@ -44664,6 +45525,7 @@ func (s *ModifyIpv6InternetBandwidthResponse) SetBody(v *ModifyIpv6InternetBandw
 
 type ModifyNatGatewayAttributeRequest struct {
 	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EipBindMode          *string `json:"EipBindMode,omitempty" xml:"EipBindMode,omitempty"`
 	IcmpReplyEnabled     *bool   `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NatGatewayId         *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
@@ -44684,6 +45546,11 @@ func (s ModifyNatGatewayAttributeRequest) GoString() string {
 
 func (s *ModifyNatGatewayAttributeRequest) SetDescription(v string) *ModifyNatGatewayAttributeRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModifyNatGatewayAttributeRequest) SetEipBindMode(v string) *ModifyNatGatewayAttributeRequest {
+	s.EipBindMode = &v
 	return s
 }
 
@@ -47567,6 +48434,7 @@ type ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck struct {
 	Dip      *string `json:"Dip,omitempty" xml:"Dip,omitempty"`
 	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	Interval *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Policy   *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	Retry    *int32  `json:"Retry,omitempty" xml:"Retry,omitempty"`
 	Sip      *string `json:"Sip,omitempty" xml:"Sip,omitempty"`
 }
@@ -47591,6 +48459,11 @@ func (s *ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck) SetEnable(v str
 
 func (s *ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck) SetInterval(v int32) *ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck {
 	s.Interval = &v
+	return s
+}
+
+func (s *ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck) SetPolicy(v string) *ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck {
+	s.Policy = &v
 	return s
 }
 
@@ -48342,6 +49215,282 @@ func (s *ModifyVpnGatewayAttributeResponse) SetBody(v *ModifyVpnGatewayAttribute
 	return s
 }
 
+type ModifyVpnPbrRouteEntryAttributeRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	NewPriority          *int32  `json:"NewPriority,omitempty" xml:"NewPriority,omitempty"`
+	NewWeight            *int32  `json:"NewWeight,omitempty" xml:"NewWeight,omitempty"`
+	NextHop              *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Priority             *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RouteDest            *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
+	RouteSource          *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
+	VpnGatewayId         *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
+	Weight               *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s ModifyVpnPbrRouteEntryAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnPbrRouteEntryAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetClientToken(v string) *ModifyVpnPbrRouteEntryAttributeRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetNewPriority(v int32) *ModifyVpnPbrRouteEntryAttributeRequest {
+	s.NewPriority = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetNewWeight(v int32) *ModifyVpnPbrRouteEntryAttributeRequest {
+	s.NewWeight = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetNextHop(v string) *ModifyVpnPbrRouteEntryAttributeRequest {
+	s.NextHop = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetOwnerAccount(v string) *ModifyVpnPbrRouteEntryAttributeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetOwnerId(v int64) *ModifyVpnPbrRouteEntryAttributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetPriority(v int32) *ModifyVpnPbrRouteEntryAttributeRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetRegionId(v string) *ModifyVpnPbrRouteEntryAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetResourceOwnerAccount(v string) *ModifyVpnPbrRouteEntryAttributeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetResourceOwnerId(v int64) *ModifyVpnPbrRouteEntryAttributeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetRouteDest(v string) *ModifyVpnPbrRouteEntryAttributeRequest {
+	s.RouteDest = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetRouteSource(v string) *ModifyVpnPbrRouteEntryAttributeRequest {
+	s.RouteSource = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetVpnGatewayId(v string) *ModifyVpnPbrRouteEntryAttributeRequest {
+	s.VpnGatewayId = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeRequest) SetWeight(v int32) *ModifyVpnPbrRouteEntryAttributeRequest {
+	s.Weight = &v
+	return s
+}
+
+type ModifyVpnPbrRouteEntryAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyVpnPbrRouteEntryAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnPbrRouteEntryAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeResponseBody) SetRequestId(v string) *ModifyVpnPbrRouteEntryAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyVpnPbrRouteEntryAttributeResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyVpnPbrRouteEntryAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyVpnPbrRouteEntryAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnPbrRouteEntryAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeResponse) SetHeaders(v map[string]*string) *ModifyVpnPbrRouteEntryAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeResponse) SetStatusCode(v int32) *ModifyVpnPbrRouteEntryAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryAttributeResponse) SetBody(v *ModifyVpnPbrRouteEntryAttributeResponseBody) *ModifyVpnPbrRouteEntryAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyVpnPbrRouteEntryPriorityRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	NewPriority          *int32  `json:"NewPriority,omitempty" xml:"NewPriority,omitempty"`
+	NextHop              *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Priority             *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RouteDest            *string `json:"RouteDest,omitempty" xml:"RouteDest,omitempty"`
+	RouteSource          *string `json:"RouteSource,omitempty" xml:"RouteSource,omitempty"`
+	VpnGatewayId         *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
+	Weight               *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s ModifyVpnPbrRouteEntryPriorityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnPbrRouteEntryPriorityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityRequest) SetClientToken(v string) *ModifyVpnPbrRouteEntryPriorityRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityRequest) SetNewPriority(v int32) *ModifyVpnPbrRouteEntryPriorityRequest {
+	s.NewPriority = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityRequest) SetNextHop(v string) *ModifyVpnPbrRouteEntryPriorityRequest {
+	s.NextHop = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityRequest) SetOwnerAccount(v string) *ModifyVpnPbrRouteEntryPriorityRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityRequest) SetOwnerId(v int64) *ModifyVpnPbrRouteEntryPriorityRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityRequest) SetPriority(v int32) *ModifyVpnPbrRouteEntryPriorityRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityRequest) SetRegionId(v string) *ModifyVpnPbrRouteEntryPriorityRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityRequest) SetResourceOwnerAccount(v string) *ModifyVpnPbrRouteEntryPriorityRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityRequest) SetResourceOwnerId(v int64) *ModifyVpnPbrRouteEntryPriorityRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityRequest) SetRouteDest(v string) *ModifyVpnPbrRouteEntryPriorityRequest {
+	s.RouteDest = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityRequest) SetRouteSource(v string) *ModifyVpnPbrRouteEntryPriorityRequest {
+	s.RouteSource = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityRequest) SetVpnGatewayId(v string) *ModifyVpnPbrRouteEntryPriorityRequest {
+	s.VpnGatewayId = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityRequest) SetWeight(v int32) *ModifyVpnPbrRouteEntryPriorityRequest {
+	s.Weight = &v
+	return s
+}
+
+type ModifyVpnPbrRouteEntryPriorityResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyVpnPbrRouteEntryPriorityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnPbrRouteEntryPriorityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityResponseBody) SetRequestId(v string) *ModifyVpnPbrRouteEntryPriorityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyVpnPbrRouteEntryPriorityResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyVpnPbrRouteEntryPriorityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyVpnPbrRouteEntryPriorityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyVpnPbrRouteEntryPriorityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityResponse) SetHeaders(v map[string]*string) *ModifyVpnPbrRouteEntryPriorityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityResponse) SetStatusCode(v int32) *ModifyVpnPbrRouteEntryPriorityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryPriorityResponse) SetBody(v *ModifyVpnPbrRouteEntryPriorityResponseBody) *ModifyVpnPbrRouteEntryPriorityResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyVpnPbrRouteEntryWeightRequest struct {
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	NewWeight            *int32  `json:"NewWeight,omitempty" xml:"NewWeight,omitempty"`
@@ -48349,6 +49498,7 @@ type ModifyVpnPbrRouteEntryWeightRequest struct {
 	OverlayMode          *string `json:"OverlayMode,omitempty" xml:"OverlayMode,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Priority             *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -48393,6 +49543,11 @@ func (s *ModifyVpnPbrRouteEntryWeightRequest) SetOwnerAccount(v string) *ModifyV
 
 func (s *ModifyVpnPbrRouteEntryWeightRequest) SetOwnerId(v int64) *ModifyVpnPbrRouteEntryWeightRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyVpnPbrRouteEntryWeightRequest) SetPriority(v int32) *ModifyVpnPbrRouteEntryWeightRequest {
+	s.Priority = &v
 	return s
 }
 
@@ -51469,6 +52624,7 @@ func (s *UnassociateRouteTableResponse) SetBody(v *UnassociateRouteTableResponse
 }
 
 type UnassociateVpcCidrBlockRequest struct {
+	IPv6CidrBlock        *string `json:"IPv6CidrBlock,omitempty" xml:"IPv6CidrBlock,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -51484,6 +52640,11 @@ func (s UnassociateVpcCidrBlockRequest) String() string {
 
 func (s UnassociateVpcCidrBlockRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UnassociateVpcCidrBlockRequest) SetIPv6CidrBlock(v string) *UnassociateVpcCidrBlockRequest {
+	s.IPv6CidrBlock = &v
+	return s
 }
 
 func (s *UnassociateVpcCidrBlockRequest) SetOwnerAccount(v string) *UnassociateVpcCidrBlockRequest {
@@ -51679,7 +52840,6 @@ func (s *UntagResourcesForExpressConnectResponse) SetBody(v *UntagResourcesForEx
 }
 
 type UpdateDhcpOptionsSetAttributeRequest struct {
-	BootFileName              *string `json:"BootFileName,omitempty" xml:"BootFileName,omitempty"`
 	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DhcpOptionsSetDescription *string `json:"DhcpOptionsSetDescription,omitempty" xml:"DhcpOptionsSetDescription,omitempty"`
 	DhcpOptionsSetId          *string `json:"DhcpOptionsSetId,omitempty" xml:"DhcpOptionsSetId,omitempty"`
@@ -51694,7 +52854,6 @@ type UpdateDhcpOptionsSetAttributeRequest struct {
 	RegionId                  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TFTPServerName            *string `json:"TFTPServerName,omitempty" xml:"TFTPServerName,omitempty"`
 }
 
 func (s UpdateDhcpOptionsSetAttributeRequest) String() string {
@@ -51703,11 +52862,6 @@ func (s UpdateDhcpOptionsSetAttributeRequest) String() string {
 
 func (s UpdateDhcpOptionsSetAttributeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateDhcpOptionsSetAttributeRequest) SetBootFileName(v string) *UpdateDhcpOptionsSetAttributeRequest {
-	s.BootFileName = &v
-	return s
 }
 
 func (s *UpdateDhcpOptionsSetAttributeRequest) SetClientToken(v string) *UpdateDhcpOptionsSetAttributeRequest {
@@ -51777,11 +52931,6 @@ func (s *UpdateDhcpOptionsSetAttributeRequest) SetResourceOwnerAccount(v string)
 
 func (s *UpdateDhcpOptionsSetAttributeRequest) SetResourceOwnerId(v int64) *UpdateDhcpOptionsSetAttributeRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *UpdateDhcpOptionsSetAttributeRequest) SetTFTPServerName(v string) *UpdateDhcpOptionsSetAttributeRequest {
-	s.TFTPServerName = &v
 	return s
 }
 
@@ -54828,6 +55977,10 @@ func (client *Client) AssociateEipAddressWithOptions(request *AssociateEipAddres
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -56692,10 +57845,6 @@ func (client *Client) CreateDhcpOptionsSetWithOptions(request *CreateDhcpOptions
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BootFileName)) {
-		query["BootFileName"] = request.BootFileName
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -56746,10 +57895,6 @@ func (client *Client) CreateDhcpOptionsSetWithOptions(request *CreateDhcpOptions
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TFTPServerName)) {
-		query["TFTPServerName"] = request.TFTPServerName
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -56942,6 +58087,10 @@ func (client *Client) CreateFlowLogWithOptions(request *CreateFlowLogRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficPath)) {
+		query["TrafficPath"] = request.TrafficPath
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TrafficType)) {
@@ -58691,6 +59840,74 @@ func (client *Client) CreatePublicIpAddressPool(request *CreatePublicIpAddressPo
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePublicIpAddressPoolResponse{}
 	_body, _err := client.CreatePublicIpAddressPoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRouteEntriesWithOptions(request *CreateRouteEntriesRequest, runtime *util.RuntimeOptions) (_result *CreateRouteEntriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteEntries)) {
+		query["RouteEntries"] = request.RouteEntries
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRouteEntries"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRouteEntriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRouteEntries(request *CreateRouteEntriesRequest) (_result *CreateRouteEntriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRouteEntriesResponse{}
+	_body, _err := client.CreateRouteEntriesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -60734,6 +61951,10 @@ func (client *Client) CreateVpnPbrRouteEntryWithOptions(request *CreateVpnPbrRou
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PublishVpc)) {
@@ -62838,6 +64059,74 @@ func (client *Client) DeletePublicIpAddressPoolCidrBlock(request *DeletePublicIp
 	return _result, _err
 }
 
+func (client *Client) DeleteRouteEntriesWithOptions(request *DeleteRouteEntriesRequest, runtime *util.RuntimeOptions) (_result *DeleteRouteEntriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteEntries)) {
+		query["RouteEntries"] = request.RouteEntries
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRouteEntries"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRouteEntriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteRouteEntries(request *DeleteRouteEntriesRequest) (_result *DeleteRouteEntriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRouteEntriesResponse{}
+	_body, _err := client.DeleteRouteEntriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteRouteEntryWithOptions(request *DeleteRouteEntryRequest, runtime *util.RuntimeOptions) (_result *DeleteRouteEntryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64196,6 +65485,10 @@ func (client *Client) DeleteVpnPbrRouteEntryWithOptions(request *DeleteVpnPbrRou
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -64939,6 +66232,66 @@ func (client *Client) DescribeCustomerGateways(request *DescribeCustomerGateways
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCustomerGatewaysResponse{}
 	_body, _err := client.DescribeCustomerGatewaysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEcGrantRelationWithOptions(request *DescribeEcGrantRelationRequest, runtime *util.RuntimeOptions) (_result *DescribeEcGrantRelationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VbrRegionNo)) {
+		query["VbrRegionNo"] = request.VbrRegionNo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEcGrantRelation"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEcGrantRelationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEcGrantRelation(request *DescribeEcGrantRelationRequest) (_result *DescribeEcGrantRelationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEcGrantRelationResponse{}
+	_body, _err := client.DescribeEcGrantRelationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -67108,6 +68461,10 @@ func (client *Client) DescribeRouteEntryListWithOptions(request *DescribeRouteEn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestCidrBlockList)) {
+		query["DestCidrBlockList"] = request.DestCidrBlockList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DestinationCidrBlock)) {
 		query["DestinationCidrBlock"] = request.DestinationCidrBlock
 	}
@@ -67170,6 +68527,10 @@ func (client *Client) DescribeRouteEntryListWithOptions(request *DescribeRouteEn
 
 	if !tea.BoolValue(util.IsUnset(request.RouteTableId)) {
 		query["RouteTableId"] = request.RouteTableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -68318,6 +69679,10 @@ func (client *Client) DescribeVirtualBorderRoutersWithOptions(request *DescribeV
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeCrossAccountVbr)) {
+		query["IncludeCrossAccountVbr"] = request.IncludeCrossAccountVbr
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
@@ -70778,6 +72143,78 @@ func (client *Client) GetVpcPrefixListEntries(request *GetVpcPrefixListEntriesRe
 	return _result, _err
 }
 
+func (client *Client) GetVpcRouteEntrySummaryWithOptions(request *GetVpcRouteEntrySummaryRequest, runtime *util.RuntimeOptions) (_result *GetVpcRouteEntrySummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteEntryType)) {
+		query["RouteEntryType"] = request.RouteEntryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteTableId)) {
+		query["RouteTableId"] = request.RouteTableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVpcRouteEntrySummary"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVpcRouteEntrySummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetVpcRouteEntrySummary(request *GetVpcRouteEntrySummaryRequest) (_result *GetVpcRouteEntrySummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVpcRouteEntrySummaryResponse{}
+	_body, _err := client.GetVpcRouteEntrySummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GrantInstanceToCenWithOptions(request *GrantInstanceToCenRequest, runtime *util.RuntimeOptions) (_result *GrantInstanceToCenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -72422,6 +73859,10 @@ func (client *Client) ModifyBgpGroupAttributeWithOptions(request *ModifyBgpGroup
 
 	if !tea.BoolValue(util.IsUnset(request.BgpGroupId)) {
 		query["BgpGroupId"] = request.BgpGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClearAuthKey)) {
+		query["ClearAuthKey"] = request.ClearAuthKey
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
@@ -74318,6 +75759,10 @@ func (client *Client) ModifyNatGatewayAttributeWithOptions(request *ModifyNatGat
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EipBindMode)) {
+		query["EipBindMode"] = request.EipBindMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IcmpReplyEnabled)) {
@@ -76258,6 +77703,194 @@ func (client *Client) ModifyVpnGatewayAttribute(request *ModifyVpnGatewayAttribu
 	return _result, _err
 }
 
+func (client *Client) ModifyVpnPbrRouteEntryAttributeWithOptions(request *ModifyVpnPbrRouteEntryAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyVpnPbrRouteEntryAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewPriority)) {
+		query["NewPriority"] = request.NewPriority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewWeight)) {
+		query["NewWeight"] = request.NewWeight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextHop)) {
+		query["NextHop"] = request.NextHop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteDest)) {
+		query["RouteDest"] = request.RouteDest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteSource)) {
+		query["RouteSource"] = request.RouteSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpnGatewayId)) {
+		query["VpnGatewayId"] = request.VpnGatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Weight)) {
+		query["Weight"] = request.Weight
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyVpnPbrRouteEntryAttribute"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyVpnPbrRouteEntryAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyVpnPbrRouteEntryAttribute(request *ModifyVpnPbrRouteEntryAttributeRequest) (_result *ModifyVpnPbrRouteEntryAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyVpnPbrRouteEntryAttributeResponse{}
+	_body, _err := client.ModifyVpnPbrRouteEntryAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyVpnPbrRouteEntryPriorityWithOptions(request *ModifyVpnPbrRouteEntryPriorityRequest, runtime *util.RuntimeOptions) (_result *ModifyVpnPbrRouteEntryPriorityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewPriority)) {
+		query["NewPriority"] = request.NewPriority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextHop)) {
+		query["NextHop"] = request.NextHop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteDest)) {
+		query["RouteDest"] = request.RouteDest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteSource)) {
+		query["RouteSource"] = request.RouteSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpnGatewayId)) {
+		query["VpnGatewayId"] = request.VpnGatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Weight)) {
+		query["Weight"] = request.Weight
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyVpnPbrRouteEntryPriority"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyVpnPbrRouteEntryPriorityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyVpnPbrRouteEntryPriority(request *ModifyVpnPbrRouteEntryPriorityRequest) (_result *ModifyVpnPbrRouteEntryPriorityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyVpnPbrRouteEntryPriorityResponse{}
+	_body, _err := client.ModifyVpnPbrRouteEntryPriorityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyVpnPbrRouteEntryWeightWithOptions(request *ModifyVpnPbrRouteEntryWeightRequest, runtime *util.RuntimeOptions) (_result *ModifyVpnPbrRouteEntryWeightResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76286,6 +77919,10 @@ func (client *Client) ModifyVpnPbrRouteEntryWeightWithOptions(request *ModifyVpn
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -78360,6 +79997,10 @@ func (client *Client) UnassociateVpcCidrBlockWithOptions(request *UnassociateVpc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IPv6CidrBlock)) {
+		query["IPv6CidrBlock"] = request.IPv6CidrBlock
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -78508,10 +80149,6 @@ func (client *Client) UpdateDhcpOptionsSetAttributeWithOptions(request *UpdateDh
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BootFileName)) {
-		query["BootFileName"] = request.BootFileName
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -78566,10 +80203,6 @@ func (client *Client) UpdateDhcpOptionsSetAttributeWithOptions(request *UpdateDh
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TFTPServerName)) {
-		query["TFTPServerName"] = request.TFTPServerName
 	}
 
 	req := &openapi.OpenApiRequest{
