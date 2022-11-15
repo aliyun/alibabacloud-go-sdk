@@ -13,7 +13,11 @@ import (
 )
 
 type CreateLindormInstanceRequest struct {
+	ArbiterVSwitchId     *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	ArbiterZoneId        *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	ArchVersion          *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
 	ColdStorage          *int32  `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
+	CoreSingleStorage    *int32  `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
 	CoreSpec             *string `json:"CoreSpec,omitempty" xml:"CoreSpec,omitempty"`
 	DiskCategory         *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
 	Duration             *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
@@ -23,10 +27,17 @@ type CreateLindormInstanceRequest struct {
 	InstanceStorage      *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
 	LindormNum           *int32  `json:"LindormNum,omitempty" xml:"LindormNum,omitempty"`
 	LindormSpec          *string `json:"LindormSpec,omitempty" xml:"LindormSpec,omitempty"`
+	LogDiskCategory      *string `json:"LogDiskCategory,omitempty" xml:"LogDiskCategory,omitempty"`
+	LogNum               *int32  `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
+	LogSingleStorage     *int32  `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
+	LogSpec              *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
+	MultiZoneCombination *string `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	PricingCycle         *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	PrimaryVSwitchId     *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	PrimaryZoneId        *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -34,6 +45,8 @@ type CreateLindormInstanceRequest struct {
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	SolrNum              *int32  `json:"SolrNum,omitempty" xml:"SolrNum,omitempty"`
 	SolrSpec             *string `json:"SolrSpec,omitempty" xml:"SolrSpec,omitempty"`
+	StandbyVSwitchId     *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	StandbyZoneId        *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
 	TsdbNum              *int32  `json:"TsdbNum,omitempty" xml:"TsdbNum,omitempty"`
 	TsdbSpec             *string `json:"TsdbSpec,omitempty" xml:"TsdbSpec,omitempty"`
 	VPCId                *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
@@ -49,8 +62,28 @@ func (s CreateLindormInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateLindormInstanceRequest) SetArbiterVSwitchId(v string) *CreateLindormInstanceRequest {
+	s.ArbiterVSwitchId = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetArbiterZoneId(v string) *CreateLindormInstanceRequest {
+	s.ArbiterZoneId = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetArchVersion(v string) *CreateLindormInstanceRequest {
+	s.ArchVersion = &v
+	return s
+}
+
 func (s *CreateLindormInstanceRequest) SetColdStorage(v int32) *CreateLindormInstanceRequest {
 	s.ColdStorage = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetCoreSingleStorage(v int32) *CreateLindormInstanceRequest {
+	s.CoreSingleStorage = &v
 	return s
 }
 
@@ -99,6 +132,31 @@ func (s *CreateLindormInstanceRequest) SetLindormSpec(v string) *CreateLindormIn
 	return s
 }
 
+func (s *CreateLindormInstanceRequest) SetLogDiskCategory(v string) *CreateLindormInstanceRequest {
+	s.LogDiskCategory = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetLogNum(v int32) *CreateLindormInstanceRequest {
+	s.LogNum = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetLogSingleStorage(v int32) *CreateLindormInstanceRequest {
+	s.LogSingleStorage = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetLogSpec(v string) *CreateLindormInstanceRequest {
+	s.LogSpec = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetMultiZoneCombination(v string) *CreateLindormInstanceRequest {
+	s.MultiZoneCombination = &v
+	return s
+}
+
 func (s *CreateLindormInstanceRequest) SetOwnerAccount(v string) *CreateLindormInstanceRequest {
 	s.OwnerAccount = &v
 	return s
@@ -116,6 +174,16 @@ func (s *CreateLindormInstanceRequest) SetPayType(v string) *CreateLindormInstan
 
 func (s *CreateLindormInstanceRequest) SetPricingCycle(v string) *CreateLindormInstanceRequest {
 	s.PricingCycle = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetPrimaryVSwitchId(v string) *CreateLindormInstanceRequest {
+	s.PrimaryVSwitchId = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetPrimaryZoneId(v string) *CreateLindormInstanceRequest {
+	s.PrimaryZoneId = &v
 	return s
 }
 
@@ -151,6 +219,16 @@ func (s *CreateLindormInstanceRequest) SetSolrNum(v int32) *CreateLindormInstanc
 
 func (s *CreateLindormInstanceRequest) SetSolrSpec(v string) *CreateLindormInstanceRequest {
 	s.SolrSpec = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetStandbyVSwitchId(v string) *CreateLindormInstanceRequest {
+	s.StandbyVSwitchId = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetStandbyZoneId(v string) *CreateLindormInstanceRequest {
+	s.StandbyZoneId = &v
 	return s
 }
 
@@ -524,40 +602,55 @@ func (s *GetLindormInstanceRequest) SetSecurityToken(v string) *GetLindormInstan
 }
 
 type GetLindormInstanceResponseBody struct {
-	AliUid              *int64                                      `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AutoRenew           *bool                                       `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ColdStorage         *int32                                      `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
-	CreateMilliseconds  *int64                                      `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
-	CreateTime          *string                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeletionProtection  *string                                     `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	DiskCategory        *string                                     `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	DiskThreshold       *string                                     `json:"DiskThreshold,omitempty" xml:"DiskThreshold,omitempty"`
-	DiskUsage           *string                                     `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
-	EnableCdc           *bool                                       `json:"EnableCdc,omitempty" xml:"EnableCdc,omitempty"`
-	EnableCompute       *bool                                       `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
-	EnableKms           *bool                                       `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
-	EnableSSL           *bool                                       `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
-	EnableShs           *bool                                       `json:"EnableShs,omitempty" xml:"EnableShs,omitempty"`
-	EnableStream        *bool                                       `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
-	EngineList          []*GetLindormInstanceResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
-	EngineType          *int32                                      `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	ExpireTime          *string                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExpiredMilliseconds *int64                                      `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
-	InstanceAlias       *string                                     `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	InstanceId          *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceStatus      *string                                     `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceStorage     *string                                     `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
-	MaintainEndTime     *string                                     `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime   *string                                     `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	NetworkType         *string                                     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType             *string                                     `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RegionId            *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId           *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId     *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceType         *string                                     `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	VpcId               *string                                     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId           *string                                     `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId              *string                                     `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AliUid               *int64                                      `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ArbiterVSwitchId     *string                                     `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	ArbiterZoneId        *string                                     `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	AutoRenew            *bool                                       `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ColdStorage          *int32                                      `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
+	CoreDiskCategory     *string                                     `json:"CoreDiskCategory,omitempty" xml:"CoreDiskCategory,omitempty"`
+	CoreNum              *int32                                      `json:"CoreNum,omitempty" xml:"CoreNum,omitempty"`
+	CoreSingleStorage    *int32                                      `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
+	CoreSpec             *string                                     `json:"CoreSpec,omitempty" xml:"CoreSpec,omitempty"`
+	CreateMilliseconds   *int64                                      `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
+	CreateTime           *string                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletionProtection   *string                                     `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	DiskCategory         *string                                     `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	DiskThreshold        *string                                     `json:"DiskThreshold,omitempty" xml:"DiskThreshold,omitempty"`
+	DiskUsage            *string                                     `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	EnableCdc            *bool                                       `json:"EnableCdc,omitempty" xml:"EnableCdc,omitempty"`
+	EnableCompute        *bool                                       `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
+	EnableKms            *bool                                       `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
+	EnableSSL            *bool                                       `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	EnableShs            *bool                                       `json:"EnableShs,omitempty" xml:"EnableShs,omitempty"`
+	EnableStream         *bool                                       `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
+	EngineList           []*GetLindormInstanceResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
+	EngineType           *int32                                      `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	ExpireTime           *string                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpiredMilliseconds  *int64                                      `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
+	InstanceAlias        *string                                     `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	InstanceId           *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceStatus       *string                                     `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceStorage      *string                                     `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
+	LogDiskCategory      *string                                     `json:"LogDiskCategory,omitempty" xml:"LogDiskCategory,omitempty"`
+	LogNum               *int32                                      `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
+	LogSingleStorage     *int32                                      `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
+	LogSpec              *string                                     `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
+	MaintainEndTime      *string                                     `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime    *string                                     `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MultiZoneCombination *string                                     `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
+	NetworkType          *string                                     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	PayType              *string                                     `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PrimaryVSwitchId     *string                                     `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	PrimaryZoneId        *string                                     `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	RegionId             *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId            *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId      *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceType          *string                                     `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	StandbyVSwitchId     *string                                     `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	StandbyZoneId        *string                                     `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	VpcId                *string                                     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId            *string                                     `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId               *string                                     `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetLindormInstanceResponseBody) String() string {
@@ -573,6 +666,16 @@ func (s *GetLindormInstanceResponseBody) SetAliUid(v int64) *GetLindormInstanceR
 	return s
 }
 
+func (s *GetLindormInstanceResponseBody) SetArbiterVSwitchId(v string) *GetLindormInstanceResponseBody {
+	s.ArbiterVSwitchId = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetArbiterZoneId(v string) *GetLindormInstanceResponseBody {
+	s.ArbiterZoneId = &v
+	return s
+}
+
 func (s *GetLindormInstanceResponseBody) SetAutoRenew(v bool) *GetLindormInstanceResponseBody {
 	s.AutoRenew = &v
 	return s
@@ -580,6 +683,26 @@ func (s *GetLindormInstanceResponseBody) SetAutoRenew(v bool) *GetLindormInstanc
 
 func (s *GetLindormInstanceResponseBody) SetColdStorage(v int32) *GetLindormInstanceResponseBody {
 	s.ColdStorage = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetCoreDiskCategory(v string) *GetLindormInstanceResponseBody {
+	s.CoreDiskCategory = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetCoreNum(v int32) *GetLindormInstanceResponseBody {
+	s.CoreNum = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetCoreSingleStorage(v int32) *GetLindormInstanceResponseBody {
+	s.CoreSingleStorage = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetCoreSpec(v string) *GetLindormInstanceResponseBody {
+	s.CoreSpec = &v
 	return s
 }
 
@@ -683,6 +806,26 @@ func (s *GetLindormInstanceResponseBody) SetInstanceStorage(v string) *GetLindor
 	return s
 }
 
+func (s *GetLindormInstanceResponseBody) SetLogDiskCategory(v string) *GetLindormInstanceResponseBody {
+	s.LogDiskCategory = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetLogNum(v int32) *GetLindormInstanceResponseBody {
+	s.LogNum = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetLogSingleStorage(v int32) *GetLindormInstanceResponseBody {
+	s.LogSingleStorage = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetLogSpec(v string) *GetLindormInstanceResponseBody {
+	s.LogSpec = &v
+	return s
+}
+
 func (s *GetLindormInstanceResponseBody) SetMaintainEndTime(v string) *GetLindormInstanceResponseBody {
 	s.MaintainEndTime = &v
 	return s
@@ -693,6 +836,11 @@ func (s *GetLindormInstanceResponseBody) SetMaintainStartTime(v string) *GetLind
 	return s
 }
 
+func (s *GetLindormInstanceResponseBody) SetMultiZoneCombination(v string) *GetLindormInstanceResponseBody {
+	s.MultiZoneCombination = &v
+	return s
+}
+
 func (s *GetLindormInstanceResponseBody) SetNetworkType(v string) *GetLindormInstanceResponseBody {
 	s.NetworkType = &v
 	return s
@@ -700,6 +848,16 @@ func (s *GetLindormInstanceResponseBody) SetNetworkType(v string) *GetLindormIns
 
 func (s *GetLindormInstanceResponseBody) SetPayType(v string) *GetLindormInstanceResponseBody {
 	s.PayType = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetPrimaryVSwitchId(v string) *GetLindormInstanceResponseBody {
+	s.PrimaryVSwitchId = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetPrimaryZoneId(v string) *GetLindormInstanceResponseBody {
+	s.PrimaryZoneId = &v
 	return s
 }
 
@@ -720,6 +878,16 @@ func (s *GetLindormInstanceResponseBody) SetResourceGroupId(v string) *GetLindor
 
 func (s *GetLindormInstanceResponseBody) SetServiceType(v string) *GetLindormInstanceResponseBody {
 	s.ServiceType = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetStandbyVSwitchId(v string) *GetLindormInstanceResponseBody {
+	s.StandbyVSwitchId = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetStandbyZoneId(v string) *GetLindormInstanceResponseBody {
+	s.StandbyZoneId = &v
 	return s
 }
 
@@ -1512,6 +1680,129 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
+type ModifyInstancePayTypeRequest struct {
+	Duration             *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PricingCycle         *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ModifyInstancePayTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstancePayTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstancePayTypeRequest) SetDuration(v int32) *ModifyInstancePayTypeRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *ModifyInstancePayTypeRequest) SetInstanceId(v string) *ModifyInstancePayTypeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstancePayTypeRequest) SetOwnerAccount(v string) *ModifyInstancePayTypeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyInstancePayTypeRequest) SetOwnerId(v int64) *ModifyInstancePayTypeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyInstancePayTypeRequest) SetPayType(v string) *ModifyInstancePayTypeRequest {
+	s.PayType = &v
+	return s
+}
+
+func (s *ModifyInstancePayTypeRequest) SetPricingCycle(v string) *ModifyInstancePayTypeRequest {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *ModifyInstancePayTypeRequest) SetResourceOwnerAccount(v string) *ModifyInstancePayTypeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyInstancePayTypeRequest) SetResourceOwnerId(v int64) *ModifyInstancePayTypeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyInstancePayTypeRequest) SetSecurityToken(v string) *ModifyInstancePayTypeRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ModifyInstancePayTypeResponseBody struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstancePayTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstancePayTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstancePayTypeResponseBody) SetInstanceId(v string) *ModifyInstancePayTypeResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstancePayTypeResponseBody) SetOrderId(v int64) *ModifyInstancePayTypeResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ModifyInstancePayTypeResponseBody) SetRequestId(v string) *ModifyInstancePayTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstancePayTypeResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyInstancePayTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyInstancePayTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstancePayTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstancePayTypeResponse) SetHeaders(v map[string]*string) *ModifyInstancePayTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstancePayTypeResponse) SetStatusCode(v int32) *ModifyInstancePayTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstancePayTypeResponse) SetBody(v *ModifyInstancePayTypeResponseBody) *ModifyInstancePayTypeResponse {
+	s.Body = v
+	return s
+}
+
 type ReleaseLindormInstanceRequest struct {
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -1601,6 +1892,129 @@ func (s *ReleaseLindormInstanceResponse) SetStatusCode(v int32) *ReleaseLindormI
 }
 
 func (s *ReleaseLindormInstanceResponse) SetBody(v *ReleaseLindormInstanceResponseBody) *ReleaseLindormInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type RenewLindormInstanceRequest struct {
+	Duration             *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PricingCycle         *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s RenewLindormInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewLindormInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenewLindormInstanceRequest) SetDuration(v int32) *RenewLindormInstanceRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *RenewLindormInstanceRequest) SetInstanceId(v string) *RenewLindormInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RenewLindormInstanceRequest) SetOwnerAccount(v string) *RenewLindormInstanceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *RenewLindormInstanceRequest) SetOwnerId(v int64) *RenewLindormInstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RenewLindormInstanceRequest) SetPricingCycle(v string) *RenewLindormInstanceRequest {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *RenewLindormInstanceRequest) SetRegionId(v string) *RenewLindormInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RenewLindormInstanceRequest) SetResourceOwnerAccount(v string) *RenewLindormInstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RenewLindormInstanceRequest) SetResourceOwnerId(v int64) *RenewLindormInstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *RenewLindormInstanceRequest) SetSecurityToken(v string) *RenewLindormInstanceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type RenewLindormInstanceResponseBody struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RenewLindormInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewLindormInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenewLindormInstanceResponseBody) SetInstanceId(v string) *RenewLindormInstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RenewLindormInstanceResponseBody) SetOrderId(v int64) *RenewLindormInstanceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *RenewLindormInstanceResponseBody) SetRequestId(v string) *RenewLindormInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RenewLindormInstanceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RenewLindormInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RenewLindormInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewLindormInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenewLindormInstanceResponse) SetHeaders(v map[string]*string) *RenewLindormInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenewLindormInstanceResponse) SetStatusCode(v int32) *RenewLindormInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RenewLindormInstanceResponse) SetBody(v *RenewLindormInstanceResponseBody) *RenewLindormInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -1958,13 +2372,15 @@ func (s *UpdateInstanceIpWhiteListResponse) SetBody(v *UpdateInstanceIpWhiteList
 type UpgradeLindormInstanceRequest struct {
 	ClusterStorage       *int32  `json:"ClusterStorage,omitempty" xml:"ClusterStorage,omitempty"`
 	ColdStorage          *int32  `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
-	CoreNum              *int32  `json:"CoreNum,omitempty" xml:"CoreNum,omitempty"`
-	CoreSpec             *string `json:"CoreSpec,omitempty" xml:"CoreSpec,omitempty"`
+	CoreSingleStorage    *int32  `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
 	FilestoreNum         *int32  `json:"FilestoreNum,omitempty" xml:"FilestoreNum,omitempty"`
 	FilestoreSpec        *string `json:"FilestoreSpec,omitempty" xml:"FilestoreSpec,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LindormNum           *int32  `json:"LindormNum,omitempty" xml:"LindormNum,omitempty"`
 	LindormSpec          *string `json:"LindormSpec,omitempty" xml:"LindormSpec,omitempty"`
+	LogNum               *int32  `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
+	LogSingleStorage     *int32  `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
+	LogSpec              *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
 	LtsCoreNum           *int32  `json:"LtsCoreNum,omitempty" xml:"LtsCoreNum,omitempty"`
 	LtsCoreSpec          *string `json:"LtsCoreSpec,omitempty" xml:"LtsCoreSpec,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -2001,13 +2417,8 @@ func (s *UpgradeLindormInstanceRequest) SetColdStorage(v int32) *UpgradeLindormI
 	return s
 }
 
-func (s *UpgradeLindormInstanceRequest) SetCoreNum(v int32) *UpgradeLindormInstanceRequest {
-	s.CoreNum = &v
-	return s
-}
-
-func (s *UpgradeLindormInstanceRequest) SetCoreSpec(v string) *UpgradeLindormInstanceRequest {
-	s.CoreSpec = &v
+func (s *UpgradeLindormInstanceRequest) SetCoreSingleStorage(v int32) *UpgradeLindormInstanceRequest {
+	s.CoreSingleStorage = &v
 	return s
 }
 
@@ -2033,6 +2444,21 @@ func (s *UpgradeLindormInstanceRequest) SetLindormNum(v int32) *UpgradeLindormIn
 
 func (s *UpgradeLindormInstanceRequest) SetLindormSpec(v string) *UpgradeLindormInstanceRequest {
 	s.LindormSpec = &v
+	return s
+}
+
+func (s *UpgradeLindormInstanceRequest) SetLogNum(v int32) *UpgradeLindormInstanceRequest {
+	s.LogNum = &v
+	return s
+}
+
+func (s *UpgradeLindormInstanceRequest) SetLogSingleStorage(v int32) *UpgradeLindormInstanceRequest {
+	s.LogSingleStorage = &v
+	return s
+}
+
+func (s *UpgradeLindormInstanceRequest) SetLogSpec(v string) *UpgradeLindormInstanceRequest {
+	s.LogSpec = &v
 	return s
 }
 
@@ -2270,8 +2696,24 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArbiterVSwitchId)) {
+		query["ArbiterVSwitchId"] = request.ArbiterVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArbiterZoneId)) {
+		query["ArbiterZoneId"] = request.ArbiterZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArchVersion)) {
+		query["ArchVersion"] = request.ArchVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ColdStorage)) {
 		query["ColdStorage"] = request.ColdStorage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreSingleStorage)) {
+		query["CoreSingleStorage"] = request.CoreSingleStorage
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CoreSpec)) {
@@ -2310,6 +2752,26 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 		query["LindormSpec"] = request.LindormSpec
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LogDiskCategory)) {
+		query["LogDiskCategory"] = request.LogDiskCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogNum)) {
+		query["LogNum"] = request.LogNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogSingleStorage)) {
+		query["LogSingleStorage"] = request.LogSingleStorage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogSpec)) {
+		query["LogSpec"] = request.LogSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiZoneCombination)) {
+		query["MultiZoneCombination"] = request.MultiZoneCombination
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -2324,6 +2786,14 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 
 	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
 		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryVSwitchId)) {
+		query["PrimaryVSwitchId"] = request.PrimaryVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryZoneId)) {
+		query["PrimaryZoneId"] = request.PrimaryZoneId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -2352,6 +2822,14 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 
 	if !tea.BoolValue(util.IsUnset(request.SolrSpec)) {
 		query["SolrSpec"] = request.SolrSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyVSwitchId)) {
+		query["StandbyVSwitchId"] = request.StandbyVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyZoneId)) {
+		query["StandbyZoneId"] = request.StandbyZoneId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TsdbNum)) {
@@ -2844,6 +3322,82 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) ModifyInstancePayTypeWithOptions(request *ModifyInstancePayTypeRequest, runtime *util.RuntimeOptions) (_result *ModifyInstancePayTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstancePayType"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyInstancePayTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyInstancePayType(request *ModifyInstancePayTypeRequest) (_result *ModifyInstancePayTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstancePayTypeResponse{}
+	_body, _err := client.ModifyInstancePayTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ReleaseLindormInstanceWithOptions(request *ReleaseLindormInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseLindormInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2901,6 +3455,82 @@ func (client *Client) ReleaseLindormInstance(request *ReleaseLindormInstanceRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseLindormInstanceResponse{}
 	_body, _err := client.ReleaseLindormInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RenewLindormInstanceWithOptions(request *RenewLindormInstanceRequest, runtime *util.RuntimeOptions) (_result *RenewLindormInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewLindormInstance"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RenewLindormInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RenewLindormInstance(request *RenewLindormInstanceRequest) (_result *RenewLindormInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RenewLindormInstanceResponse{}
+	_body, _err := client.RenewLindormInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3146,12 +3776,8 @@ func (client *Client) UpgradeLindormInstanceWithOptions(request *UpgradeLindormI
 		query["ColdStorage"] = request.ColdStorage
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CoreNum)) {
-		query["CoreNum"] = request.CoreNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CoreSpec)) {
-		query["CoreSpec"] = request.CoreSpec
+	if !tea.BoolValue(util.IsUnset(request.CoreSingleStorage)) {
+		query["CoreSingleStorage"] = request.CoreSingleStorage
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FilestoreNum)) {
@@ -3172,6 +3798,18 @@ func (client *Client) UpgradeLindormInstanceWithOptions(request *UpgradeLindormI
 
 	if !tea.BoolValue(util.IsUnset(request.LindormSpec)) {
 		query["LindormSpec"] = request.LindormSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogNum)) {
+		query["LogNum"] = request.LogNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogSingleStorage)) {
+		query["LogSingleStorage"] = request.LogSingleStorage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogSpec)) {
+		query["LogSpec"] = request.LogSpec
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LtsCoreNum)) {
