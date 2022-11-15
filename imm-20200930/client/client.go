@@ -4539,6 +4539,158 @@ func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDat
 	return s
 }
 
+type CreateDetectVideoLabelsTaskRequest struct {
+	CredentialConfig *CredentialConfig      `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotifyTopicName  *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName      *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI        *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Tags             map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData         *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateDetectVideoLabelsTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDetectVideoLabelsTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDetectVideoLabelsTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateDetectVideoLabelsTaskRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskRequest) SetNotifyTopicName(v string) *CreateDetectVideoLabelsTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskRequest) SetProjectName(v string) *CreateDetectVideoLabelsTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskRequest) SetSourceURI(v string) *CreateDetectVideoLabelsTaskRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskRequest) SetTags(v map[string]interface{}) *CreateDetectVideoLabelsTaskRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskRequest) SetUserData(v string) *CreateDetectVideoLabelsTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateDetectVideoLabelsTaskShrinkRequest struct {
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateDetectVideoLabelsTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDetectVideoLabelsTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetNotifyTopicName(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetProjectName(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetSourceURI(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetTagsShrink(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetUserData(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateDetectVideoLabelsTaskResponseBody struct {
+	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateDetectVideoLabelsTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDetectVideoLabelsTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetEventId(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetRequestId(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetTaskId(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateDetectVideoLabelsTaskResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDetectVideoLabelsTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDetectVideoLabelsTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDetectVideoLabelsTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDetectVideoLabelsTaskResponse) SetHeaders(v map[string]*string) *CreateDetectVideoLabelsTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponse) SetStatusCode(v int32) *CreateDetectVideoLabelsTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponse) SetBody(v *CreateDetectVideoLabelsTaskResponseBody) *CreateDetectVideoLabelsTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateFigureClusteringTaskRequest struct {
 	DatasetName     *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	NotifyTopicName *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
@@ -5919,6 +6071,216 @@ func (s *CreateImageToPDFTaskResponse) SetStatusCode(v int32) *CreateImageToPDFT
 }
 
 func (s *CreateImageToPDFTaskResponse) SetBody(v *CreateImageToPDFTaskResponseBody) *CreateImageToPDFTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateLocationDateClusteringTaskRequest struct {
+	DatasetName     *string                                                 `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DateOptions     *CreateLocationDateClusteringTaskRequestDateOptions     `json:"DateOptions,omitempty" xml:"DateOptions,omitempty" type:"Struct"`
+	LocationOptions *CreateLocationDateClusteringTaskRequestLocationOptions `json:"LocationOptions,omitempty" xml:"LocationOptions,omitempty" type:"Struct"`
+	NotifyTopicName *string                                                 `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName     *string                                                 `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Tags            map[string]interface{}                                  `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData        *string                                                 `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateLocationDateClusteringTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLocationDateClusteringTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLocationDateClusteringTaskRequest) SetDatasetName(v string) *CreateLocationDateClusteringTaskRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskRequest) SetDateOptions(v *CreateLocationDateClusteringTaskRequestDateOptions) *CreateLocationDateClusteringTaskRequest {
+	s.DateOptions = v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskRequest) SetLocationOptions(v *CreateLocationDateClusteringTaskRequestLocationOptions) *CreateLocationDateClusteringTaskRequest {
+	s.LocationOptions = v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskRequest) SetNotifyTopicName(v string) *CreateLocationDateClusteringTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskRequest) SetProjectName(v string) *CreateLocationDateClusteringTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskRequest) SetTags(v map[string]interface{}) *CreateLocationDateClusteringTaskRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskRequest) SetUserData(v string) *CreateLocationDateClusteringTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateLocationDateClusteringTaskRequestDateOptions struct {
+	GapDays *int64 `json:"GapDays,omitempty" xml:"GapDays,omitempty"`
+	MaxDays *int64 `json:"MaxDays,omitempty" xml:"MaxDays,omitempty"`
+	MinDays *int64 `json:"MinDays,omitempty" xml:"MinDays,omitempty"`
+}
+
+func (s CreateLocationDateClusteringTaskRequestDateOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLocationDateClusteringTaskRequestDateOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLocationDateClusteringTaskRequestDateOptions) SetGapDays(v int64) *CreateLocationDateClusteringTaskRequestDateOptions {
+	s.GapDays = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskRequestDateOptions) SetMaxDays(v int64) *CreateLocationDateClusteringTaskRequestDateOptions {
+	s.MaxDays = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskRequestDateOptions) SetMinDays(v int64) *CreateLocationDateClusteringTaskRequestDateOptions {
+	s.MinDays = &v
+	return s
+}
+
+type CreateLocationDateClusteringTaskRequestLocationOptions struct {
+	LocationDateClusterLevels []*string `json:"LocationDateClusterLevels,omitempty" xml:"LocationDateClusterLevels,omitempty" type:"Repeated"`
+}
+
+func (s CreateLocationDateClusteringTaskRequestLocationOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLocationDateClusteringTaskRequestLocationOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLocationDateClusteringTaskRequestLocationOptions) SetLocationDateClusterLevels(v []*string) *CreateLocationDateClusteringTaskRequestLocationOptions {
+	s.LocationDateClusterLevels = v
+	return s
+}
+
+type CreateLocationDateClusteringTaskShrinkRequest struct {
+	DatasetName           *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DateOptionsShrink     *string `json:"DateOptions,omitempty" xml:"DateOptions,omitempty"`
+	LocationOptionsShrink *string `json:"LocationOptions,omitempty" xml:"LocationOptions,omitempty"`
+	NotifyTopicName       *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName           *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TagsShrink            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData              *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateLocationDateClusteringTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLocationDateClusteringTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLocationDateClusteringTaskShrinkRequest) SetDatasetName(v string) *CreateLocationDateClusteringTaskShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskShrinkRequest) SetDateOptionsShrink(v string) *CreateLocationDateClusteringTaskShrinkRequest {
+	s.DateOptionsShrink = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskShrinkRequest) SetLocationOptionsShrink(v string) *CreateLocationDateClusteringTaskShrinkRequest {
+	s.LocationOptionsShrink = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskShrinkRequest) SetNotifyTopicName(v string) *CreateLocationDateClusteringTaskShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskShrinkRequest) SetProjectName(v string) *CreateLocationDateClusteringTaskShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskShrinkRequest) SetTagsShrink(v string) *CreateLocationDateClusteringTaskShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskShrinkRequest) SetUserData(v string) *CreateLocationDateClusteringTaskShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateLocationDateClusteringTaskResponseBody struct {
+	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateLocationDateClusteringTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLocationDateClusteringTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLocationDateClusteringTaskResponseBody) SetEventId(v string) *CreateLocationDateClusteringTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskResponseBody) SetRequestId(v string) *CreateLocationDateClusteringTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskResponseBody) SetTaskId(v string) *CreateLocationDateClusteringTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateLocationDateClusteringTaskResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateLocationDateClusteringTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLocationDateClusteringTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLocationDateClusteringTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLocationDateClusteringTaskResponse) SetHeaders(v map[string]*string) *CreateLocationDateClusteringTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskResponse) SetStatusCode(v int32) *CreateLocationDateClusteringTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskResponse) SetBody(v *CreateLocationDateClusteringTaskResponseBody) *CreateLocationDateClusteringTaskResponse {
 	s.Body = v
 	return s
 }
@@ -7735,6 +8097,158 @@ func (s *CreateStoryResponse) SetStatusCode(v int32) *CreateStoryResponse {
 }
 
 func (s *CreateStoryResponse) SetBody(v *CreateStoryResponseBody) *CreateStoryResponse {
+	s.Body = v
+	return s
+}
+
+type CreateVideoLabelClassificationTaskRequest struct {
+	CredentialConfig *CredentialConfig      `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotifyTopicName  *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName      *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI        *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Tags             map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData         *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateVideoLabelClassificationTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoLabelClassificationTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoLabelClassificationTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateVideoLabelClassificationTaskRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskRequest) SetNotifyTopicName(v string) *CreateVideoLabelClassificationTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskRequest) SetProjectName(v string) *CreateVideoLabelClassificationTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskRequest) SetSourceURI(v string) *CreateVideoLabelClassificationTaskRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskRequest) SetTags(v map[string]interface{}) *CreateVideoLabelClassificationTaskRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskRequest) SetUserData(v string) *CreateVideoLabelClassificationTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateVideoLabelClassificationTaskShrinkRequest struct {
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateVideoLabelClassificationTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoLabelClassificationTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoLabelClassificationTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateVideoLabelClassificationTaskShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskShrinkRequest) SetNotifyTopicName(v string) *CreateVideoLabelClassificationTaskShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskShrinkRequest) SetProjectName(v string) *CreateVideoLabelClassificationTaskShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskShrinkRequest) SetSourceURI(v string) *CreateVideoLabelClassificationTaskShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskShrinkRequest) SetTagsShrink(v string) *CreateVideoLabelClassificationTaskShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskShrinkRequest) SetUserData(v string) *CreateVideoLabelClassificationTaskShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateVideoLabelClassificationTaskResponseBody struct {
+	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateVideoLabelClassificationTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoLabelClassificationTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoLabelClassificationTaskResponseBody) SetEventId(v string) *CreateVideoLabelClassificationTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskResponseBody) SetRequestId(v string) *CreateVideoLabelClassificationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskResponseBody) SetTaskId(v string) *CreateVideoLabelClassificationTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateVideoLabelClassificationTaskResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVideoLabelClassificationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateVideoLabelClassificationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoLabelClassificationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoLabelClassificationTaskResponse) SetHeaders(v map[string]*string) *CreateVideoLabelClassificationTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskResponse) SetStatusCode(v int32) *CreateVideoLabelClassificationTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskResponse) SetBody(v *CreateVideoLabelClassificationTaskResponseBody) *CreateVideoLabelClassificationTaskResponse {
 	s.Body = v
 	return s
 }
@@ -10396,6 +10910,147 @@ func (s *GetTaskResponse) SetStatusCode(v int32) *GetTaskResponse {
 }
 
 func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetVideoLabelClassificationResultRequest struct {
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s GetVideoLabelClassificationResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoLabelClassificationResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoLabelClassificationResultRequest) SetProjectName(v string) *GetVideoLabelClassificationResultRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultRequest) SetTaskId(v string) *GetVideoLabelClassificationResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultRequest) SetTaskType(v string) *GetVideoLabelClassificationResultRequest {
+	s.TaskType = &v
+	return s
+}
+
+type GetVideoLabelClassificationResultResponseBody struct {
+	Code        *string  `json:"Code,omitempty" xml:"Code,omitempty"`
+	EndTime     *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EventId     *string  `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	Labels      []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Message     *string  `json:"Message,omitempty" xml:"Message,omitempty"`
+	ProjectName *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RequestId   *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime   *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status      *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId      *string  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType    *string  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	UserData    *string  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s GetVideoLabelClassificationResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoLabelClassificationResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoLabelClassificationResultResponseBody) SetCode(v string) *GetVideoLabelClassificationResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultResponseBody) SetEndTime(v string) *GetVideoLabelClassificationResultResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultResponseBody) SetEventId(v string) *GetVideoLabelClassificationResultResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultResponseBody) SetLabels(v []*Label) *GetVideoLabelClassificationResultResponseBody {
+	s.Labels = v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultResponseBody) SetMessage(v string) *GetVideoLabelClassificationResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultResponseBody) SetProjectName(v string) *GetVideoLabelClassificationResultResponseBody {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultResponseBody) SetRequestId(v string) *GetVideoLabelClassificationResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultResponseBody) SetStartTime(v string) *GetVideoLabelClassificationResultResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultResponseBody) SetStatus(v string) *GetVideoLabelClassificationResultResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultResponseBody) SetTaskId(v string) *GetVideoLabelClassificationResultResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultResponseBody) SetTaskType(v string) *GetVideoLabelClassificationResultResponseBody {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultResponseBody) SetUserData(v string) *GetVideoLabelClassificationResultResponseBody {
+	s.UserData = &v
+	return s
+}
+
+type GetVideoLabelClassificationResultResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetVideoLabelClassificationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVideoLabelClassificationResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoLabelClassificationResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoLabelClassificationResultResponse) SetHeaders(v map[string]*string) *GetVideoLabelClassificationResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultResponse) SetStatusCode(v int32) *GetVideoLabelClassificationResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVideoLabelClassificationResultResponse) SetBody(v *GetVideoLabelClassificationResultResponseBody) *GetVideoLabelClassificationResultResponse {
 	s.Body = v
 	return s
 }
@@ -15585,6 +16240,80 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 	return _result, _err
 }
 
+func (client *Client) CreateDetectVideoLabelsTaskWithOptions(tmpReq *CreateDetectVideoLabelsTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDetectVideoLabelsTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDetectVideoLabelsTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDetectVideoLabelsTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDetectVideoLabelsTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDetectVideoLabelsTask(request *CreateDetectVideoLabelsTaskRequest) (_result *CreateDetectVideoLabelsTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDetectVideoLabelsTaskResponse{}
+	_body, _err := client.CreateDetectVideoLabelsTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateFigureClusteringTaskWithOptions(tmpReq *CreateFigureClusteringTaskRequest, runtime *util.RuntimeOptions) (_result *CreateFigureClusteringTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -16187,6 +16916,88 @@ func (client *Client) CreateImageToPDFTask(request *CreateImageToPDFTaskRequest)
 	return _result, _err
 }
 
+func (client *Client) CreateLocationDateClusteringTaskWithOptions(tmpReq *CreateLocationDateClusteringTaskRequest, runtime *util.RuntimeOptions) (_result *CreateLocationDateClusteringTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateLocationDateClusteringTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DateOptions)) {
+		request.DateOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DateOptions, tea.String("DateOptions"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.LocationOptions)) {
+		request.LocationOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LocationOptions, tea.String("LocationOptions"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DateOptionsShrink)) {
+		query["DateOptions"] = request.DateOptionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationOptionsShrink)) {
+		query["LocationOptions"] = request.LocationOptionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLocationDateClusteringTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateLocationDateClusteringTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLocationDateClusteringTask(request *CreateLocationDateClusteringTaskRequest) (_result *CreateLocationDateClusteringTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLocationDateClusteringTaskResponse{}
+	_body, _err := client.CreateLocationDateClusteringTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateMediaConvertTaskWithOptions(tmpReq *CreateMediaConvertTaskRequest, runtime *util.RuntimeOptions) (_result *CreateMediaConvertTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -16652,6 +17463,80 @@ func (client *Client) CreateStory(request *CreateStoryRequest) (_result *CreateS
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateStoryResponse{}
 	_body, _err := client.CreateStoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateVideoLabelClassificationTaskWithOptions(tmpReq *CreateVideoLabelClassificationTaskRequest, runtime *util.RuntimeOptions) (_result *CreateVideoLabelClassificationTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateVideoLabelClassificationTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVideoLabelClassificationTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateVideoLabelClassificationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateVideoLabelClassificationTask(request *CreateVideoLabelClassificationTaskRequest) (_result *CreateVideoLabelClassificationTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateVideoLabelClassificationTaskResponse{}
+	_body, _err := client.CreateVideoLabelClassificationTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18078,6 +18963,58 @@ func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTaskResponse{}
 	_body, _err := client.GetTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetVideoLabelClassificationResultWithOptions(request *GetVideoLabelClassificationResultRequest, runtime *util.RuntimeOptions) (_result *GetVideoLabelClassificationResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVideoLabelClassificationResult"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVideoLabelClassificationResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetVideoLabelClassificationResult(request *GetVideoLabelClassificationResultRequest) (_result *GetVideoLabelClassificationResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVideoLabelClassificationResultResponse{}
+	_body, _err := client.GetVideoLabelClassificationResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
