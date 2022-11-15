@@ -8192,6 +8192,365 @@ func (s *GetApplicationListResponse) SetBody(v *GetApplicationListResponseBody) 
 	return s
 }
 
+type GetApplicationListWithMetircsRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Source         *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s GetApplicationListWithMetircsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationListWithMetircsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationListWithMetircsRequest) SetAcceptLanguage(v string) *GetApplicationListWithMetircsRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsRequest) SetAppId(v string) *GetApplicationListWithMetircsRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsRequest) SetAppName(v string) *GetApplicationListWithMetircsRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsRequest) SetPageNumber(v int32) *GetApplicationListWithMetircsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsRequest) SetPageSize(v int32) *GetApplicationListWithMetircsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsRequest) SetRegion(v string) *GetApplicationListWithMetircsRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsRequest) SetSource(v string) *GetApplicationListWithMetircsRequest {
+	s.Source = &v
+	return s
+}
+
+type GetApplicationListWithMetircsResponseBody struct {
+	Code           *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetApplicationListWithMetircsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetApplicationListWithMetircsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationListWithMetircsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationListWithMetircsResponseBody) SetCode(v int32) *GetApplicationListWithMetircsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBody) SetData(v *GetApplicationListWithMetircsResponseBodyData) *GetApplicationListWithMetircsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBody) SetHttpStatusCode(v int32) *GetApplicationListWithMetircsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBody) SetMessage(v string) *GetApplicationListWithMetircsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBody) SetRequestId(v string) *GetApplicationListWithMetircsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBody) SetSuccess(v bool) *GetApplicationListWithMetircsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetApplicationListWithMetircsResponseBodyData struct {
+	PageNumber *int32                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result     []*GetApplicationListWithMetircsResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	TotalSize  *int32                                                 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s GetApplicationListWithMetircsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationListWithMetircsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyData) SetPageNumber(v int32) *GetApplicationListWithMetircsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyData) SetPageSize(v int32) *GetApplicationListWithMetircsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyData) SetResult(v []*GetApplicationListWithMetircsResponseBodyDataResult) *GetApplicationListWithMetircsResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyData) SetTotalSize(v int32) *GetApplicationListWithMetircsResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type GetApplicationListWithMetircsResponseBodyDataResult struct {
+	AppId           *string                                                          `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName         *string                                                          `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CurMetrics      []*GetApplicationListWithMetircsResponseBodyDataResultCurMetrics `json:"CurMetrics,omitempty" xml:"CurMetrics,omitempty" type:"Repeated"`
+	CurMetricsFm    *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm `json:"CurMetricsFm,omitempty" xml:"CurMetricsFm,omitempty" type:"Struct"`
+	ExtraInfo       *string                                                          `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	InstancesNumber *int32                                                           `json:"InstancesNumber,omitempty" xml:"InstancesNumber,omitempty"`
+	Language        *string                                                          `json:"Language,omitempty" xml:"Language,omitempty"`
+	LicenseKey      *string                                                          `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
+	RegionId        *string                                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Source          *string                                                          `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status          *int64                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags            []*string                                                        `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UserId          *string                                                          `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetApplicationListWithMetircsResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationListWithMetircsResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResult) SetAppId(v string) *GetApplicationListWithMetircsResponseBodyDataResult {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResult) SetAppName(v string) *GetApplicationListWithMetircsResponseBodyDataResult {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResult) SetCurMetrics(v []*GetApplicationListWithMetircsResponseBodyDataResultCurMetrics) *GetApplicationListWithMetircsResponseBodyDataResult {
+	s.CurMetrics = v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResult) SetCurMetricsFm(v *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm) *GetApplicationListWithMetircsResponseBodyDataResult {
+	s.CurMetricsFm = v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResult) SetExtraInfo(v string) *GetApplicationListWithMetircsResponseBodyDataResult {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResult) SetInstancesNumber(v int32) *GetApplicationListWithMetircsResponseBodyDataResult {
+	s.InstancesNumber = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResult) SetLanguage(v string) *GetApplicationListWithMetircsResponseBodyDataResult {
+	s.Language = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResult) SetLicenseKey(v string) *GetApplicationListWithMetircsResponseBodyDataResult {
+	s.LicenseKey = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResult) SetRegionId(v string) *GetApplicationListWithMetircsResponseBodyDataResult {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResult) SetSource(v string) *GetApplicationListWithMetircsResponseBodyDataResult {
+	s.Source = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResult) SetStatus(v int64) *GetApplicationListWithMetircsResponseBodyDataResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResult) SetTags(v []*string) *GetApplicationListWithMetircsResponseBodyDataResult {
+	s.Tags = v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResult) SetUserId(v string) *GetApplicationListWithMetircsResponseBodyDataResult {
+	s.UserId = &v
+	return s
+}
+
+type GetApplicationListWithMetircsResponseBodyDataResultCurMetrics struct {
+	BlockQps  *float64 `json:"BlockQps,omitempty" xml:"BlockQps,omitempty"`
+	ExpQps    *float64 `json:"ExpQps,omitempty" xml:"ExpQps,omitempty"`
+	PassQps   *float64 `json:"PassQps,omitempty" xml:"PassQps,omitempty"`
+	Qps       *float64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	Rt        *float64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Thread    *float64 `json:"Thread,omitempty" xml:"Thread,omitempty"`
+	Timestamp *int64   `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s GetApplicationListWithMetircsResponseBodyDataResultCurMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationListWithMetircsResponseBodyDataResultCurMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics) SetBlockQps(v float64) *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics {
+	s.BlockQps = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics) SetExpQps(v float64) *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics {
+	s.ExpQps = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics) SetPassQps(v float64) *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics {
+	s.PassQps = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics) SetQps(v float64) *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics {
+	s.Qps = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics) SetRt(v float64) *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics) SetThread(v float64) *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics {
+	s.Thread = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics) SetTimestamp(v int64) *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics {
+	s.Timestamp = &v
+	return s
+}
+
+type GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm struct {
+	BlockQps  *float64 `json:"BlockQps,omitempty" xml:"BlockQps,omitempty"`
+	ExpQps    *float64 `json:"ExpQps,omitempty" xml:"ExpQps,omitempty"`
+	PassQps   *float64 `json:"PassQps,omitempty" xml:"PassQps,omitempty"`
+	Qps       *float64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	Rt        *float64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Thread    *float64 `json:"Thread,omitempty" xml:"Thread,omitempty"`
+	Timestamp *int64   `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm) SetBlockQps(v float64) *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm {
+	s.BlockQps = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm) SetExpQps(v float64) *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm {
+	s.ExpQps = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm) SetPassQps(v float64) *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm {
+	s.PassQps = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm) SetQps(v float64) *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm {
+	s.Qps = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm) SetRt(v float64) *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm) SetThread(v float64) *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm {
+	s.Thread = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm) SetTimestamp(v int64) *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm {
+	s.Timestamp = &v
+	return s
+}
+
+type GetApplicationListWithMetircsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetApplicationListWithMetircsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetApplicationListWithMetircsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationListWithMetircsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationListWithMetircsResponse) SetHeaders(v map[string]*string) *GetApplicationListWithMetircsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponse) SetStatusCode(v int32) *GetApplicationListWithMetircsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetApplicationListWithMetircsResponse) SetBody(v *GetApplicationListWithMetircsResponseBody) *GetApplicationListWithMetircsResponse {
+	s.Body = v
+	return s
+}
+
 type GetBlackWhiteListRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
@@ -29453,20 +29812,20 @@ func (client *Client) AddGatewayRouteWithOptions(tmpReq *AddGatewayRouteRequest,
 	}
 	request := &AddGatewayRouteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DirectResponseJSON))) {
-		request.DirectResponseJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DirectResponseJSON), tea.String("DirectResponseJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DirectResponseJSON)) {
+		request.DirectResponseJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DirectResponseJSON, tea.String("DirectResponseJSON"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.FallbackServices)) {
 		request.FallbackServicesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FallbackServices, tea.String("FallbackServices"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Predicates))) {
-		request.PredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Predicates), tea.String("Predicates"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Predicates)) {
+		request.PredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Predicates, tea.String("Predicates"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RedirectJSON))) {
-		request.RedirectJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RedirectJSON), tea.String("RedirectJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.RedirectJSON)) {
+		request.RedirectJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RedirectJSON, tea.String("RedirectJSON"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Services)) {
@@ -29915,8 +30274,8 @@ func (client *Client) AddServiceSourceWithOptions(tmpReq *AddServiceSourceReques
 		request.GroupListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GroupList, tea.String("GroupList"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.IngressOptionsRequest))) {
-		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IngressOptionsRequest), tea.String("IngressOptionsRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.IngressOptionsRequest)) {
+		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IngressOptionsRequest, tea.String("IngressOptionsRequest"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.PathList)) {
@@ -32212,6 +32571,74 @@ func (client *Client) GetApplicationList(request *GetApplicationListRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) GetApplicationListWithMetircsWithOptions(request *GetApplicationListWithMetircsRequest, runtime *util.RuntimeOptions) (_result *GetApplicationListWithMetircsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApplicationListWithMetircs"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetApplicationListWithMetircsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetApplicationListWithMetircs(request *GetApplicationListWithMetircsRequest) (_result *GetApplicationListWithMetircsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetApplicationListWithMetircsResponse{}
+	_body, _err := client.GetApplicationListWithMetircsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetBlackWhiteListWithOptions(request *GetBlackWhiteListRequest, runtime *util.RuntimeOptions) (_result *GetBlackWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34033,8 +34460,8 @@ func (client *Client) ListGatewayWithOptions(tmpReq *ListGatewayRequest, runtime
 	}
 	request := &ListGatewayShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.FilterParams))) {
-		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.FilterParams), tea.String("FilterParams"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterParams)) {
+		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParams, tea.String("FilterParams"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -34155,8 +34582,8 @@ func (client *Client) ListGatewayRouteWithOptions(tmpReq *ListGatewayRouteReques
 	}
 	request := &ListGatewayRouteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.FilterParams))) {
-		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.FilterParams), tea.String("FilterParams"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterParams)) {
+		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParams, tea.String("FilterParams"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -34225,8 +34652,8 @@ func (client *Client) ListGatewayServiceWithOptions(tmpReq *ListGatewayServiceRe
 	}
 	request := &ListGatewayServiceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.FilterParams))) {
-		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.FilterParams), tea.String("FilterParams"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterParams)) {
+		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParams, tea.String("FilterParams"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -36729,8 +37156,8 @@ func (client *Client) UpdateGatewayOptionWithOptions(tmpReq *UpdateGatewayOption
 	}
 	request := &UpdateGatewayOptionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.GatewayOption))) {
-		request.GatewayOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.GatewayOption), tea.String("GatewayOption"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.GatewayOption)) {
+		request.GatewayOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GatewayOption, tea.String("GatewayOption"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -36791,20 +37218,20 @@ func (client *Client) UpdateGatewayRouteWithOptions(tmpReq *UpdateGatewayRouteRe
 	}
 	request := &UpdateGatewayRouteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.DirectResponseJSON))) {
-		request.DirectResponseJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.DirectResponseJSON), tea.String("DirectResponseJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.DirectResponseJSON)) {
+		request.DirectResponseJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DirectResponseJSON, tea.String("DirectResponseJSON"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.FallbackServices)) {
 		request.FallbackServicesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FallbackServices, tea.String("FallbackServices"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Predicates))) {
-		request.PredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Predicates), tea.String("Predicates"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Predicates)) {
+		request.PredicatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Predicates, tea.String("Predicates"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RedirectJSON))) {
-		request.RedirectJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RedirectJSON), tea.String("RedirectJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.RedirectJSON)) {
+		request.RedirectJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RedirectJSON, tea.String("RedirectJSON"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Services)) {
@@ -36913,8 +37340,8 @@ func (client *Client) UpdateGatewayRouteCORSWithOptions(tmpReq *UpdateGatewayRou
 	}
 	request := &UpdateGatewayRouteCORSShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CorsJSON))) {
-		request.CorsJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CorsJSON), tea.String("CorsJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CorsJSON)) {
+		request.CorsJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CorsJSON, tea.String("CorsJSON"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -37099,8 +37526,8 @@ func (client *Client) UpdateGatewayRouteRetryWithOptions(tmpReq *UpdateGatewayRo
 	}
 	request := &UpdateGatewayRouteRetryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.RetryJSON))) {
-		request.RetryJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.RetryJSON), tea.String("RetryJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.RetryJSON)) {
+		request.RetryJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RetryJSON, tea.String("RetryJSON"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -37165,8 +37592,8 @@ func (client *Client) UpdateGatewayRouteTimeoutWithOptions(tmpReq *UpdateGateway
 	}
 	request := &UpdateGatewayRouteTimeoutShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TimeoutJSON))) {
-		request.TimeoutJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TimeoutJSON), tea.String("TimeoutJSON"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.TimeoutJSON)) {
+		request.TimeoutJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimeoutJSON, tea.String("TimeoutJSON"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -37287,8 +37714,8 @@ func (client *Client) UpdateGatewayServiceTrafficPolicyWithOptions(tmpReq *Updat
 	}
 	request := &UpdateGatewayServiceTrafficPolicyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.GatewayTrafficPolicy))) {
-		request.GatewayTrafficPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.GatewayTrafficPolicy), tea.String("GatewayTrafficPolicy"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.GatewayTrafficPolicy)) {
+		request.GatewayTrafficPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GatewayTrafficPolicy, tea.String("GatewayTrafficPolicy"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -38049,8 +38476,8 @@ func (client *Client) UpdateServiceSourceWithOptions(tmpReq *UpdateServiceSource
 	}
 	request := &UpdateServiceSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.IngressOptionsRequest))) {
-		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IngressOptionsRequest), tea.String("IngressOptionsRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.IngressOptionsRequest)) {
+		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IngressOptionsRequest, tea.String("IngressOptionsRequest"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.PathList)) {
