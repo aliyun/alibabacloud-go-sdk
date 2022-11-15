@@ -7217,6 +7217,128 @@ func (s *DescribeCommonOverallConfigResponse) SetBody(v *DescribeCommonOverallCo
 	return s
 }
 
+type DescribeCommonTargetResultListRequest struct {
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCommonTargetResultListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommonTargetResultListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommonTargetResultListRequest) SetSourceIp(v string) *DescribeCommonTargetResultListRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeCommonTargetResultListRequest) SetType(v string) *DescribeCommonTargetResultListRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeCommonTargetResultListResponseBody struct {
+	RequestId    *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TargetConfig *DescribeCommonTargetResultListResponseBodyTargetConfig `json:"TargetConfig,omitempty" xml:"TargetConfig,omitempty" type:"Struct"`
+}
+
+func (s DescribeCommonTargetResultListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommonTargetResultListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommonTargetResultListResponseBody) SetRequestId(v string) *DescribeCommonTargetResultListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCommonTargetResultListResponseBody) SetTargetConfig(v *DescribeCommonTargetResultListResponseBodyTargetConfig) *DescribeCommonTargetResultListResponseBody {
+	s.TargetConfig = v
+	return s
+}
+
+type DescribeCommonTargetResultListResponseBodyTargetConfig struct {
+	Flag          *string   `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	TargetDefault *string   `json:"TargetDefault,omitempty" xml:"TargetDefault,omitempty"`
+	TargetList    []*string `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
+	TargetType    *string   `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	TotalCount    *string   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Type          *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCommonTargetResultListResponseBodyTargetConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommonTargetResultListResponseBodyTargetConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommonTargetResultListResponseBodyTargetConfig) SetFlag(v string) *DescribeCommonTargetResultListResponseBodyTargetConfig {
+	s.Flag = &v
+	return s
+}
+
+func (s *DescribeCommonTargetResultListResponseBodyTargetConfig) SetTargetDefault(v string) *DescribeCommonTargetResultListResponseBodyTargetConfig {
+	s.TargetDefault = &v
+	return s
+}
+
+func (s *DescribeCommonTargetResultListResponseBodyTargetConfig) SetTargetList(v []*string) *DescribeCommonTargetResultListResponseBodyTargetConfig {
+	s.TargetList = v
+	return s
+}
+
+func (s *DescribeCommonTargetResultListResponseBodyTargetConfig) SetTargetType(v string) *DescribeCommonTargetResultListResponseBodyTargetConfig {
+	s.TargetType = &v
+	return s
+}
+
+func (s *DescribeCommonTargetResultListResponseBodyTargetConfig) SetTotalCount(v string) *DescribeCommonTargetResultListResponseBodyTargetConfig {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeCommonTargetResultListResponseBodyTargetConfig) SetType(v string) *DescribeCommonTargetResultListResponseBodyTargetConfig {
+	s.Type = &v
+	return s
+}
+
+type DescribeCommonTargetResultListResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCommonTargetResultListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCommonTargetResultListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCommonTargetResultListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCommonTargetResultListResponse) SetHeaders(v map[string]*string) *DescribeCommonTargetResultListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCommonTargetResultListResponse) SetStatusCode(v int32) *DescribeCommonTargetResultListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCommonTargetResultListResponse) SetBody(v *DescribeCommonTargetResultListResponseBody) *DescribeCommonTargetResultListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeConcernNecessityRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
@@ -13821,6 +13943,206 @@ func (s *DescribeNoticeConfigResponse) SetStatusCode(v int32) *DescribeNoticeCon
 }
 
 func (s *DescribeNoticeConfigResponse) SetBody(v *DescribeNoticeConfigResponseBody) *DescribeNoticeConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeOfflineMachinesRequest struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Os          *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionIdStr *string `json:"RegionIdStr,omitempty" xml:"RegionIdStr,omitempty"`
+	RegionNo    *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Vendor      *int32  `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s DescribeOfflineMachinesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOfflineMachinesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOfflineMachinesRequest) SetCurrentPage(v int32) *DescribeOfflineMachinesRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesRequest) SetOs(v string) *DescribeOfflineMachinesRequest {
+	s.Os = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesRequest) SetPageSize(v int32) *DescribeOfflineMachinesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesRequest) SetRegionIdStr(v string) *DescribeOfflineMachinesRequest {
+	s.RegionIdStr = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesRequest) SetRegionNo(v string) *DescribeOfflineMachinesRequest {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesRequest) SetRemark(v string) *DescribeOfflineMachinesRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesRequest) SetSourceIp(v string) *DescribeOfflineMachinesRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesRequest) SetVendor(v int32) *DescribeOfflineMachinesRequest {
+	s.Vendor = &v
+	return s
+}
+
+type DescribeOfflineMachinesResponseBody struct {
+	CurrentPage *int32                                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	MachineList []*DescribeOfflineMachinesResponseBodyMachineList `json:"MachineList,omitempty" xml:"MachineList,omitempty" type:"Repeated"`
+	PageSize    *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeOfflineMachinesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOfflineMachinesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOfflineMachinesResponseBody) SetCurrentPage(v int32) *DescribeOfflineMachinesResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponseBody) SetMachineList(v []*DescribeOfflineMachinesResponseBodyMachineList) *DescribeOfflineMachinesResponseBody {
+	s.MachineList = v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponseBody) SetPageSize(v int32) *DescribeOfflineMachinesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponseBody) SetRequestId(v string) *DescribeOfflineMachinesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponseBody) SetTotalCount(v int32) *DescribeOfflineMachinesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeOfflineMachinesResponseBodyMachineList struct {
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp    *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp    *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	MachineRegion *string `json:"MachineRegion,omitempty" xml:"MachineRegion,omitempty"`
+	Os            *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Vendor        *int32  `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	VendorName    *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
+}
+
+func (s DescribeOfflineMachinesResponseBodyMachineList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOfflineMachinesResponseBodyMachineList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOfflineMachinesResponseBodyMachineList) SetInstanceId(v string) *DescribeOfflineMachinesResponseBodyMachineList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponseBodyMachineList) SetInstanceName(v string) *DescribeOfflineMachinesResponseBodyMachineList {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponseBodyMachineList) SetInternetIp(v string) *DescribeOfflineMachinesResponseBodyMachineList {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponseBodyMachineList) SetIntranetIp(v string) *DescribeOfflineMachinesResponseBodyMachineList {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponseBodyMachineList) SetMachineRegion(v string) *DescribeOfflineMachinesResponseBodyMachineList {
+	s.MachineRegion = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponseBodyMachineList) SetOs(v string) *DescribeOfflineMachinesResponseBodyMachineList {
+	s.Os = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponseBodyMachineList) SetRegionId(v string) *DescribeOfflineMachinesResponseBodyMachineList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponseBodyMachineList) SetUuid(v string) *DescribeOfflineMachinesResponseBodyMachineList {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponseBodyMachineList) SetVendor(v int32) *DescribeOfflineMachinesResponseBodyMachineList {
+	s.Vendor = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponseBodyMachineList) SetVendorName(v string) *DescribeOfflineMachinesResponseBodyMachineList {
+	s.VendorName = &v
+	return s
+}
+
+type DescribeOfflineMachinesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOfflineMachinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeOfflineMachinesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOfflineMachinesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOfflineMachinesResponse) SetHeaders(v map[string]*string) *DescribeOfflineMachinesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponse) SetStatusCode(v int32) *DescribeOfflineMachinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOfflineMachinesResponse) SetBody(v *DescribeOfflineMachinesResponseBody) *DescribeOfflineMachinesResponse {
 	s.Body = v
 	return s
 }
@@ -27892,12 +28214,10 @@ func (s *ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList) S
 }
 
 type ListHoneypotAlarmEventsResponseBodyPageInfo struct {
-	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	LastRowKey  *string `json:"LastRowKey,omitempty" xml:"LastRowKey,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListHoneypotAlarmEventsResponseBodyPageInfo) String() string {
@@ -27915,16 +28235,6 @@ func (s *ListHoneypotAlarmEventsResponseBodyPageInfo) SetCount(v int32) *ListHon
 
 func (s *ListHoneypotAlarmEventsResponseBodyPageInfo) SetCurrentPage(v int32) *ListHoneypotAlarmEventsResponseBodyPageInfo {
 	s.CurrentPage = &v
-	return s
-}
-
-func (s *ListHoneypotAlarmEventsResponseBodyPageInfo) SetLastRowKey(v string) *ListHoneypotAlarmEventsResponseBodyPageInfo {
-	s.LastRowKey = &v
-	return s
-}
-
-func (s *ListHoneypotAlarmEventsResponseBodyPageInfo) SetNextToken(v string) *ListHoneypotAlarmEventsResponseBodyPageInfo {
-	s.NextToken = &v
 	return s
 }
 
@@ -36191,6 +36501,54 @@ func (client *Client) DescribeCommonOverallConfig(request *DescribeCommonOverall
 	return _result, _err
 }
 
+func (client *Client) DescribeCommonTargetResultListWithOptions(request *DescribeCommonTargetResultListRequest, runtime *util.RuntimeOptions) (_result *DescribeCommonTargetResultListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCommonTargetResultList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCommonTargetResultListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCommonTargetResultList(request *DescribeCommonTargetResultListRequest) (_result *DescribeCommonTargetResultListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCommonTargetResultListResponse{}
+	_body, _err := client.DescribeCommonTargetResultListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeConcernNecessityWithOptions(request *DescribeConcernNecessityRequest, runtime *util.RuntimeOptions) (_result *DescribeConcernNecessityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38462,6 +38820,78 @@ func (client *Client) DescribeNoticeConfig(request *DescribeNoticeConfigRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNoticeConfigResponse{}
 	_body, _err := client.DescribeNoticeConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeOfflineMachinesWithOptions(request *DescribeOfflineMachinesRequest, runtime *util.RuntimeOptions) (_result *DescribeOfflineMachinesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Os)) {
+		query["Os"] = request.Os
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionIdStr)) {
+		query["RegionIdStr"] = request.RegionIdStr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionNo)) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Vendor)) {
+		query["Vendor"] = request.Vendor
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOfflineMachines"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOfflineMachinesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeOfflineMachines(request *DescribeOfflineMachinesRequest) (_result *DescribeOfflineMachinesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOfflineMachinesResponse{}
+	_body, _err := client.DescribeOfflineMachinesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
