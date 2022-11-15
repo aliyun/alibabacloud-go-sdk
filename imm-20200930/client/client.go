@@ -65,6 +65,47 @@ func (s *Address) SetTownship(v string) *Address {
 	return s
 }
 
+type AddressForStory struct {
+	City     *string `json:"City,omitempty" xml:"City,omitempty"`
+	Country  *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	District *string `json:"District,omitempty" xml:"District,omitempty"`
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	Township *string `json:"Township,omitempty" xml:"Township,omitempty"`
+}
+
+func (s AddressForStory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddressForStory) GoString() string {
+	return s.String()
+}
+
+func (s *AddressForStory) SetCity(v string) *AddressForStory {
+	s.City = &v
+	return s
+}
+
+func (s *AddressForStory) SetCountry(v string) *AddressForStory {
+	s.Country = &v
+	return s
+}
+
+func (s *AddressForStory) SetDistrict(v string) *AddressForStory {
+	s.District = &v
+	return s
+}
+
+func (s *AddressForStory) SetProvince(v string) *AddressForStory {
+	s.Province = &v
+	return s
+}
+
+func (s *AddressForStory) SetTownship(v string) *AddressForStory {
+	s.Township = &v
+	return s
+}
+
 type AssumeRoleChain struct {
 	Chain  []*AssumeRoleChainNode `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Repeated"`
 	Policy *string                `json:"Policy,omitempty" xml:"Policy,omitempty"`
@@ -1771,6 +1812,77 @@ func (s *Label) SetParentLabelName(v string) *Label {
 	return s
 }
 
+type LocationDateCluster struct {
+	Addresses                    []*Address             `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	CreateTime                   *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CustomId                     *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	CustomLabels                 map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	LocationDateClusterEndTime   *string                `json:"LocationDateClusterEndTime,omitempty" xml:"LocationDateClusterEndTime,omitempty"`
+	LocationDateClusterLevel     *string                `json:"LocationDateClusterLevel,omitempty" xml:"LocationDateClusterLevel,omitempty"`
+	LocationDateClusterStartTime *string                `json:"LocationDateClusterStartTime,omitempty" xml:"LocationDateClusterStartTime,omitempty"`
+	ObjectId                     *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	Title                        *string                `json:"Title,omitempty" xml:"Title,omitempty"`
+	UpdateTime                   *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s LocationDateCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LocationDateCluster) GoString() string {
+	return s.String()
+}
+
+func (s *LocationDateCluster) SetAddresses(v []*Address) *LocationDateCluster {
+	s.Addresses = v
+	return s
+}
+
+func (s *LocationDateCluster) SetCreateTime(v string) *LocationDateCluster {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *LocationDateCluster) SetCustomId(v string) *LocationDateCluster {
+	s.CustomId = &v
+	return s
+}
+
+func (s *LocationDateCluster) SetCustomLabels(v map[string]interface{}) *LocationDateCluster {
+	s.CustomLabels = v
+	return s
+}
+
+func (s *LocationDateCluster) SetLocationDateClusterEndTime(v string) *LocationDateCluster {
+	s.LocationDateClusterEndTime = &v
+	return s
+}
+
+func (s *LocationDateCluster) SetLocationDateClusterLevel(v string) *LocationDateCluster {
+	s.LocationDateClusterLevel = &v
+	return s
+}
+
+func (s *LocationDateCluster) SetLocationDateClusterStartTime(v string) *LocationDateCluster {
+	s.LocationDateClusterStartTime = &v
+	return s
+}
+
+func (s *LocationDateCluster) SetObjectId(v string) *LocationDateCluster {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *LocationDateCluster) SetTitle(v string) *LocationDateCluster {
+	s.Title = &v
+	return s
+}
+
+func (s *LocationDateCluster) SetUpdateTime(v string) *LocationDateCluster {
+	s.UpdateTime = &v
+	return s
+}
+
 type OCRContents struct {
 	Boundary   *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
 	Confidence *float32  `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
@@ -2053,6 +2165,7 @@ func (s *SimpleQuery) SetValue(v string) *SimpleQuery {
 }
 
 type Story struct {
+	Addresses        []*Address             `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	Cover            *File                  `json:"Cover,omitempty" xml:"Cover,omitempty"`
 	CreateTime       *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CustomId         *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
@@ -2078,6 +2191,11 @@ func (s Story) String() string {
 
 func (s Story) GoString() string {
 	return s.String()
+}
+
+func (s *Story) SetAddresses(v []*Address) *Story {
+	s.Addresses = v
+	return s
 }
 
 func (s *Story) SetCover(v *File) *Story {
@@ -3631,6 +3749,170 @@ func (s *BatchUpdateFileMetaResponse) SetBody(v *BatchUpdateFileMetaResponseBody
 	return s
 }
 
+type CreateArchiveFileInspectionTaskRequest struct {
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotifyTopicName  *string           `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	Password         *string           `json:"Password,omitempty" xml:"Password,omitempty"`
+	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TargetURI        *string           `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData         *string           `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateArchiveFileInspectionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArchiveFileInspectionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArchiveFileInspectionTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateArchiveFileInspectionTaskRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskRequest) SetNotifyTopicName(v string) *CreateArchiveFileInspectionTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskRequest) SetPassword(v string) *CreateArchiveFileInspectionTaskRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskRequest) SetProjectName(v string) *CreateArchiveFileInspectionTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskRequest) SetSourceURI(v string) *CreateArchiveFileInspectionTaskRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskRequest) SetTargetURI(v string) *CreateArchiveFileInspectionTaskRequest {
+	s.TargetURI = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskRequest) SetUserData(v string) *CreateArchiveFileInspectionTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateArchiveFileInspectionTaskShrinkRequest struct {
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateArchiveFileInspectionTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArchiveFileInspectionTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArchiveFileInspectionTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateArchiveFileInspectionTaskShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskShrinkRequest) SetNotifyTopicName(v string) *CreateArchiveFileInspectionTaskShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskShrinkRequest) SetPassword(v string) *CreateArchiveFileInspectionTaskShrinkRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskShrinkRequest) SetProjectName(v string) *CreateArchiveFileInspectionTaskShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskShrinkRequest) SetSourceURI(v string) *CreateArchiveFileInspectionTaskShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskShrinkRequest) SetTargetURI(v string) *CreateArchiveFileInspectionTaskShrinkRequest {
+	s.TargetURI = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskShrinkRequest) SetUserData(v string) *CreateArchiveFileInspectionTaskShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateArchiveFileInspectionTaskResponseBody struct {
+	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateArchiveFileInspectionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArchiveFileInspectionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArchiveFileInspectionTaskResponseBody) SetEventId(v string) *CreateArchiveFileInspectionTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskResponseBody) SetRequestId(v string) *CreateArchiveFileInspectionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskResponseBody) SetTaskId(v string) *CreateArchiveFileInspectionTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateArchiveFileInspectionTaskResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateArchiveFileInspectionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateArchiveFileInspectionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArchiveFileInspectionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArchiveFileInspectionTaskResponse) SetHeaders(v map[string]*string) *CreateArchiveFileInspectionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskResponse) SetStatusCode(v int32) *CreateArchiveFileInspectionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskResponse) SetBody(v *CreateArchiveFileInspectionTaskResponseBody) *CreateArchiveFileInspectionTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateBindingRequest struct {
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -4257,158 +4539,6 @@ func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDat
 	return s
 }
 
-type CreateDetectVideoLabelsTaskRequest struct {
-	CredentialConfig *CredentialConfig      `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	NotifyTopicName  *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName      *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI        *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Tags             map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData         *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
-}
-
-func (s CreateDetectVideoLabelsTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDetectVideoLabelsTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDetectVideoLabelsTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateDetectVideoLabelsTaskRequest {
-	s.CredentialConfig = v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskRequest) SetNotifyTopicName(v string) *CreateDetectVideoLabelsTaskRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskRequest) SetProjectName(v string) *CreateDetectVideoLabelsTaskRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskRequest) SetSourceURI(v string) *CreateDetectVideoLabelsTaskRequest {
-	s.SourceURI = &v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskRequest) SetTags(v map[string]interface{}) *CreateDetectVideoLabelsTaskRequest {
-	s.Tags = v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskRequest) SetUserData(v string) *CreateDetectVideoLabelsTaskRequest {
-	s.UserData = &v
-	return s
-}
-
-type CreateDetectVideoLabelsTaskShrinkRequest struct {
-	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-}
-
-func (s CreateDetectVideoLabelsTaskShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDetectVideoLabelsTaskShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
-	s.CredentialConfigShrink = &v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetNotifyTopicName(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
-	s.NotifyTopicName = &v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetProjectName(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetSourceURI(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
-	s.SourceURI = &v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetTagsShrink(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
-	s.TagsShrink = &v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetUserData(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
-	s.UserData = &v
-	return s
-}
-
-type CreateDetectVideoLabelsTaskResponseBody struct {
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s CreateDetectVideoLabelsTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDetectVideoLabelsTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDetectVideoLabelsTaskResponseBody) SetEventId(v string) *CreateDetectVideoLabelsTaskResponseBody {
-	s.EventId = &v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskResponseBody) SetRequestId(v string) *CreateDetectVideoLabelsTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskResponseBody) SetTaskId(v string) *CreateDetectVideoLabelsTaskResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-type CreateDetectVideoLabelsTaskResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDetectVideoLabelsTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDetectVideoLabelsTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDetectVideoLabelsTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDetectVideoLabelsTaskResponse) SetHeaders(v map[string]*string) *CreateDetectVideoLabelsTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskResponse) SetStatusCode(v int32) *CreateDetectVideoLabelsTaskResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateDetectVideoLabelsTaskResponse) SetBody(v *CreateDetectVideoLabelsTaskResponseBody) *CreateDetectVideoLabelsTaskResponse {
-	s.Body = v
-	return s
-}
-
 type CreateFigureClusteringTaskRequest struct {
 	DatasetName     *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	NotifyTopicName *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
@@ -4920,6 +5050,205 @@ func (s *CreateFileCompressionTaskResponse) SetStatusCode(v int32) *CreateFileCo
 }
 
 func (s *CreateFileCompressionTaskResponse) SetBody(v *CreateFileCompressionTaskResponseBody) *CreateFileCompressionTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFileUncompressionTaskRequest struct {
+	CredentialConfig *CredentialConfig                         `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotifyTopicName  *string                                   `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	Password         *string                                   `json:"Password,omitempty" xml:"Password,omitempty"`
+	ProjectName      *string                                   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SelectedFiles    []*string                                 `json:"SelectedFiles,omitempty" xml:"SelectedFiles,omitempty" type:"Repeated"`
+	SourceURI        *string                                   `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Target           *CreateFileUncompressionTaskRequestTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	UserData         *string                                   `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateFileUncompressionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileUncompressionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileUncompressionTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateFileUncompressionTaskRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskRequest) SetNotifyTopicName(v string) *CreateFileUncompressionTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskRequest) SetPassword(v string) *CreateFileUncompressionTaskRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskRequest) SetProjectName(v string) *CreateFileUncompressionTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskRequest) SetSelectedFiles(v []*string) *CreateFileUncompressionTaskRequest {
+	s.SelectedFiles = v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskRequest) SetSourceURI(v string) *CreateFileUncompressionTaskRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskRequest) SetTarget(v *CreateFileUncompressionTaskRequestTarget) *CreateFileUncompressionTaskRequest {
+	s.Target = v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskRequest) SetUserData(v string) *CreateFileUncompressionTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateFileUncompressionTaskRequestTarget struct {
+	ManifestURI *string `json:"ManifestURI,omitempty" xml:"ManifestURI,omitempty"`
+	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s CreateFileUncompressionTaskRequestTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileUncompressionTaskRequestTarget) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileUncompressionTaskRequestTarget) SetManifestURI(v string) *CreateFileUncompressionTaskRequestTarget {
+	s.ManifestURI = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskRequestTarget) SetURI(v string) *CreateFileUncompressionTaskRequestTarget {
+	s.URI = &v
+	return s
+}
+
+type CreateFileUncompressionTaskShrinkRequest struct {
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SelectedFilesShrink    *string `json:"SelectedFiles,omitempty" xml:"SelectedFiles,omitempty"`
+	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TargetShrink           *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateFileUncompressionTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileUncompressionTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileUncompressionTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateFileUncompressionTaskShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskShrinkRequest) SetNotifyTopicName(v string) *CreateFileUncompressionTaskShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskShrinkRequest) SetPassword(v string) *CreateFileUncompressionTaskShrinkRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskShrinkRequest) SetProjectName(v string) *CreateFileUncompressionTaskShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskShrinkRequest) SetSelectedFilesShrink(v string) *CreateFileUncompressionTaskShrinkRequest {
+	s.SelectedFilesShrink = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskShrinkRequest) SetSourceURI(v string) *CreateFileUncompressionTaskShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskShrinkRequest) SetTargetShrink(v string) *CreateFileUncompressionTaskShrinkRequest {
+	s.TargetShrink = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskShrinkRequest) SetUserData(v string) *CreateFileUncompressionTaskShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateFileUncompressionTaskResponseBody struct {
+	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateFileUncompressionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileUncompressionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileUncompressionTaskResponseBody) SetEventId(v string) *CreateFileUncompressionTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskResponseBody) SetRequestId(v string) *CreateFileUncompressionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskResponseBody) SetTaskId(v string) *CreateFileUncompressionTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateFileUncompressionTaskResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFileUncompressionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFileUncompressionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileUncompressionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileUncompressionTaskResponse) SetHeaders(v map[string]*string) *CreateFileUncompressionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskResponse) SetStatusCode(v int32) *CreateFileUncompressionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskResponse) SetBody(v *CreateFileUncompressionTaskResponseBody) *CreateFileUncompressionTaskResponse {
 	s.Body = v
 	return s
 }
@@ -7139,6 +7468,7 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 }
 
 type CreateStoryRequest struct {
+	Address         *AddressForStory       `json:"Address,omitempty" xml:"Address,omitempty"`
 	CustomId        *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
 	CustomLabels    map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
 	DatasetName     *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
@@ -7162,6 +7492,11 @@ func (s CreateStoryRequest) String() string {
 
 func (s CreateStoryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateStoryRequest) SetAddress(v *AddressForStory) *CreateStoryRequest {
+	s.Address = v
+	return s
 }
 
 func (s *CreateStoryRequest) SetCustomId(v string) *CreateStoryRequest {
@@ -7240,6 +7575,7 @@ func (s *CreateStoryRequest) SetUserData(v string) *CreateStoryRequest {
 }
 
 type CreateStoryShrinkRequest struct {
+	AddressShrink      *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	CustomId           *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
 	CustomLabelsShrink *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
 	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
@@ -7263,6 +7599,11 @@ func (s CreateStoryShrinkRequest) String() string {
 
 func (s CreateStoryShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateStoryShrinkRequest) SetAddressShrink(v string) *CreateStoryShrinkRequest {
+	s.AddressShrink = &v
+	return s
 }
 
 func (s *CreateStoryShrinkRequest) SetCustomId(v string) *CreateStoryShrinkRequest {
@@ -7819,6 +8160,81 @@ func (s *DeleteFileMetaResponse) SetStatusCode(v int32) *DeleteFileMetaResponse 
 }
 
 func (s *DeleteFileMetaResponse) SetBody(v *DeleteFileMetaResponseBody) *DeleteFileMetaResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLocationDateClusterRequest struct {
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	ObjectId    *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s DeleteLocationDateClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLocationDateClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLocationDateClusterRequest) SetDatasetName(v string) *DeleteLocationDateClusterRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *DeleteLocationDateClusterRequest) SetObjectId(v string) *DeleteLocationDateClusterRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *DeleteLocationDateClusterRequest) SetProjectName(v string) *DeleteLocationDateClusterRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type DeleteLocationDateClusterResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteLocationDateClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLocationDateClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLocationDateClusterResponseBody) SetRequestId(v string) *DeleteLocationDateClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteLocationDateClusterResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteLocationDateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLocationDateClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLocationDateClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLocationDateClusterResponse) SetHeaders(v map[string]*string) *DeleteLocationDateClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLocationDateClusterResponse) SetStatusCode(v int32) *DeleteLocationDateClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLocationDateClusterResponse) SetBody(v *DeleteLocationDateClusterResponseBody) *DeleteLocationDateClusterResponse {
 	s.Body = v
 	return s
 }
@@ -12123,6 +12539,266 @@ func (s *QueryFigureClustersResponse) SetBody(v *QueryFigureClustersResponseBody
 	return s
 }
 
+type QueryLocationDateClustersRequest struct {
+	Address                           *Address   `json:"Address,omitempty" xml:"Address,omitempty"`
+	CreateTimeRange                   *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
+	CustomLabels                      *string    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	DatasetName                       *string    `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	LocationDateClusterEndTimeRange   *TimeRange `json:"LocationDateClusterEndTimeRange,omitempty" xml:"LocationDateClusterEndTimeRange,omitempty"`
+	LocationDateClusterLevels         []*string  `json:"LocationDateClusterLevels,omitempty" xml:"LocationDateClusterLevels,omitempty" type:"Repeated"`
+	LocationDateClusterStartTimeRange *TimeRange `json:"LocationDateClusterStartTimeRange,omitempty" xml:"LocationDateClusterStartTimeRange,omitempty"`
+	MaxResults                        *int32     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                         *string    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ObjectId                          *string    `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	Order                             *string    `json:"Order,omitempty" xml:"Order,omitempty"`
+	ProjectName                       *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sort                              *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Title                             *string    `json:"Title,omitempty" xml:"Title,omitempty"`
+	UpdateTimeRange                   *TimeRange `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
+}
+
+func (s QueryLocationDateClustersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryLocationDateClustersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryLocationDateClustersRequest) SetAddress(v *Address) *QueryLocationDateClustersRequest {
+	s.Address = v
+	return s
+}
+
+func (s *QueryLocationDateClustersRequest) SetCreateTimeRange(v *TimeRange) *QueryLocationDateClustersRequest {
+	s.CreateTimeRange = v
+	return s
+}
+
+func (s *QueryLocationDateClustersRequest) SetCustomLabels(v string) *QueryLocationDateClustersRequest {
+	s.CustomLabels = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersRequest) SetDatasetName(v string) *QueryLocationDateClustersRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersRequest) SetLocationDateClusterEndTimeRange(v *TimeRange) *QueryLocationDateClustersRequest {
+	s.LocationDateClusterEndTimeRange = v
+	return s
+}
+
+func (s *QueryLocationDateClustersRequest) SetLocationDateClusterLevels(v []*string) *QueryLocationDateClustersRequest {
+	s.LocationDateClusterLevels = v
+	return s
+}
+
+func (s *QueryLocationDateClustersRequest) SetLocationDateClusterStartTimeRange(v *TimeRange) *QueryLocationDateClustersRequest {
+	s.LocationDateClusterStartTimeRange = v
+	return s
+}
+
+func (s *QueryLocationDateClustersRequest) SetMaxResults(v int32) *QueryLocationDateClustersRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersRequest) SetNextToken(v string) *QueryLocationDateClustersRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersRequest) SetObjectId(v string) *QueryLocationDateClustersRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersRequest) SetOrder(v string) *QueryLocationDateClustersRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersRequest) SetProjectName(v string) *QueryLocationDateClustersRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersRequest) SetSort(v string) *QueryLocationDateClustersRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersRequest) SetTitle(v string) *QueryLocationDateClustersRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersRequest) SetUpdateTimeRange(v *TimeRange) *QueryLocationDateClustersRequest {
+	s.UpdateTimeRange = v
+	return s
+}
+
+type QueryLocationDateClustersShrinkRequest struct {
+	AddressShrink                           *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	CreateTimeRangeShrink                   *string `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
+	CustomLabels                            *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	DatasetName                             *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	LocationDateClusterEndTimeRangeShrink   *string `json:"LocationDateClusterEndTimeRange,omitempty" xml:"LocationDateClusterEndTimeRange,omitempty"`
+	LocationDateClusterLevelsShrink         *string `json:"LocationDateClusterLevels,omitempty" xml:"LocationDateClusterLevels,omitempty"`
+	LocationDateClusterStartTimeRangeShrink *string `json:"LocationDateClusterStartTimeRange,omitempty" xml:"LocationDateClusterStartTimeRange,omitempty"`
+	MaxResults                              *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                               *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ObjectId                                *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	Order                                   *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	ProjectName                             *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sort                                    *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Title                                   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UpdateTimeRangeShrink                   *string `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
+}
+
+func (s QueryLocationDateClustersShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryLocationDateClustersShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetAddressShrink(v string) *QueryLocationDateClustersShrinkRequest {
+	s.AddressShrink = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetCreateTimeRangeShrink(v string) *QueryLocationDateClustersShrinkRequest {
+	s.CreateTimeRangeShrink = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetCustomLabels(v string) *QueryLocationDateClustersShrinkRequest {
+	s.CustomLabels = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetDatasetName(v string) *QueryLocationDateClustersShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetLocationDateClusterEndTimeRangeShrink(v string) *QueryLocationDateClustersShrinkRequest {
+	s.LocationDateClusterEndTimeRangeShrink = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetLocationDateClusterLevelsShrink(v string) *QueryLocationDateClustersShrinkRequest {
+	s.LocationDateClusterLevelsShrink = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetLocationDateClusterStartTimeRangeShrink(v string) *QueryLocationDateClustersShrinkRequest {
+	s.LocationDateClusterStartTimeRangeShrink = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetMaxResults(v int32) *QueryLocationDateClustersShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetNextToken(v string) *QueryLocationDateClustersShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetObjectId(v string) *QueryLocationDateClustersShrinkRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetOrder(v string) *QueryLocationDateClustersShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetProjectName(v string) *QueryLocationDateClustersShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetSort(v string) *QueryLocationDateClustersShrinkRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetTitle(v string) *QueryLocationDateClustersShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersShrinkRequest) SetUpdateTimeRangeShrink(v string) *QueryLocationDateClustersShrinkRequest {
+	s.UpdateTimeRangeShrink = &v
+	return s
+}
+
+type QueryLocationDateClustersResponseBody struct {
+	LocationDateClusters []*LocationDateCluster `json:"LocationDateClusters,omitempty" xml:"LocationDateClusters,omitempty" type:"Repeated"`
+	NextToken            *string                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId            *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryLocationDateClustersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryLocationDateClustersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryLocationDateClustersResponseBody) SetLocationDateClusters(v []*LocationDateCluster) *QueryLocationDateClustersResponseBody {
+	s.LocationDateClusters = v
+	return s
+}
+
+func (s *QueryLocationDateClustersResponseBody) SetNextToken(v string) *QueryLocationDateClustersResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersResponseBody) SetRequestId(v string) *QueryLocationDateClustersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryLocationDateClustersResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryLocationDateClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryLocationDateClustersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryLocationDateClustersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryLocationDateClustersResponse) SetHeaders(v map[string]*string) *QueryLocationDateClustersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryLocationDateClustersResponse) SetStatusCode(v int32) *QueryLocationDateClustersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryLocationDateClustersResponse) SetBody(v *QueryLocationDateClustersResponseBody) *QueryLocationDateClustersResponse {
+	s.Body = v
+	return s
+}
+
 type QueryStoriesRequest struct {
 	CreateTimeRange     *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
 	CustomLabels        *string    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
@@ -13593,6 +14269,146 @@ func (s *UpdateFileMetaResponse) SetBody(v *UpdateFileMetaResponseBody) *UpdateF
 	return s
 }
 
+type UpdateLocationDateClusterRequest struct {
+	CustomId     *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	DatasetName  *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	ObjectId     *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Title        *string                `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateLocationDateClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLocationDateClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLocationDateClusterRequest) SetCustomId(v string) *UpdateLocationDateClusterRequest {
+	s.CustomId = &v
+	return s
+}
+
+func (s *UpdateLocationDateClusterRequest) SetCustomLabels(v map[string]interface{}) *UpdateLocationDateClusterRequest {
+	s.CustomLabels = v
+	return s
+}
+
+func (s *UpdateLocationDateClusterRequest) SetDatasetName(v string) *UpdateLocationDateClusterRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *UpdateLocationDateClusterRequest) SetObjectId(v string) *UpdateLocationDateClusterRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *UpdateLocationDateClusterRequest) SetProjectName(v string) *UpdateLocationDateClusterRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *UpdateLocationDateClusterRequest) SetTitle(v string) *UpdateLocationDateClusterRequest {
+	s.Title = &v
+	return s
+}
+
+type UpdateLocationDateClusterShrinkRequest struct {
+	CustomId           *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	CustomLabelsShrink *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	ObjectId           *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Title              *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateLocationDateClusterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLocationDateClusterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLocationDateClusterShrinkRequest) SetCustomId(v string) *UpdateLocationDateClusterShrinkRequest {
+	s.CustomId = &v
+	return s
+}
+
+func (s *UpdateLocationDateClusterShrinkRequest) SetCustomLabelsShrink(v string) *UpdateLocationDateClusterShrinkRequest {
+	s.CustomLabelsShrink = &v
+	return s
+}
+
+func (s *UpdateLocationDateClusterShrinkRequest) SetDatasetName(v string) *UpdateLocationDateClusterShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *UpdateLocationDateClusterShrinkRequest) SetObjectId(v string) *UpdateLocationDateClusterShrinkRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *UpdateLocationDateClusterShrinkRequest) SetProjectName(v string) *UpdateLocationDateClusterShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *UpdateLocationDateClusterShrinkRequest) SetTitle(v string) *UpdateLocationDateClusterShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+type UpdateLocationDateClusterResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateLocationDateClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLocationDateClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLocationDateClusterResponseBody) SetRequestId(v string) *UpdateLocationDateClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateLocationDateClusterResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateLocationDateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateLocationDateClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLocationDateClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLocationDateClusterResponse) SetHeaders(v map[string]*string) *UpdateLocationDateClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLocationDateClusterResponse) SetStatusCode(v int32) *UpdateLocationDateClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLocationDateClusterResponse) SetBody(v *UpdateLocationDateClusterResponseBody) *UpdateLocationDateClusterResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateProjectRequest struct {
 	DatasetMaxBindCount     *int64  `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
 	DatasetMaxEntityCount   *int64  `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
@@ -13954,8 +14770,8 @@ func (client *Client) AddImageMosaicWithOptions(tmpReq *AddImageMosaicRequest, r
 	}
 	request := &AddImageMosaicShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Targets)) {
@@ -14371,6 +15187,80 @@ func (client *Client) BatchUpdateFileMeta(request *BatchUpdateFileMetaRequest) (
 	return _result, _err
 }
 
+func (client *Client) CreateArchiveFileInspectionTaskWithOptions(tmpReq *CreateArchiveFileInspectionTaskRequest, runtime *util.RuntimeOptions) (_result *CreateArchiveFileInspectionTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateArchiveFileInspectionTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetURI)) {
+		query["TargetURI"] = request.TargetURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateArchiveFileInspectionTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateArchiveFileInspectionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateArchiveFileInspectionTask(request *CreateArchiveFileInspectionTaskRequest) (_result *CreateArchiveFileInspectionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateArchiveFileInspectionTaskResponse{}
+	_body, _err := client.CreateArchiveFileInspectionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, runtime *util.RuntimeOptions) (_result *CreateBindingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14430,16 +15320,16 @@ func (client *Client) CreateCompressPointCloudTaskWithOptions(tmpReq *CreateComp
 	}
 	request := &CreateCompressPointCloudTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.KdtreeOption))) {
-		request.KdtreeOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.KdtreeOption), tea.String("KdtreeOption"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.KdtreeOption)) {
+		request.KdtreeOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KdtreeOption, tea.String("KdtreeOption"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OctreeOption))) {
-		request.OctreeOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OctreeOption), tea.String("OctreeOption"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.OctreeOption)) {
+		request.OctreeOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OctreeOption, tea.String("OctreeOption"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.PointCloudFields)) {
@@ -14540,8 +15430,8 @@ func (client *Client) CreateCustomizedStoryWithOptions(tmpReq *CreateCustomizedS
 	}
 	request := &CreateCustomizedStoryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Cover))) {
-		request.CoverShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Cover), tea.String("Cover"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Cover)) {
+		request.CoverShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Cover, tea.String("Cover"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.CustomLabels)) {
@@ -14688,80 +15578,6 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDatasetResponse{}
 	_body, _err := client.CreateDatasetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateDetectVideoLabelsTaskWithOptions(tmpReq *CreateDetectVideoLabelsTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDetectVideoLabelsTaskResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &CreateDetectVideoLabelsTaskShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
-		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
-		query["CredentialConfig"] = request.CredentialConfigShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
-		query["NotifyTopicName"] = request.NotifyTopicName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
-		query["ProjectName"] = request.ProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
-		query["SourceURI"] = request.SourceURI
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
-		query["Tags"] = request.TagsShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserData)) {
-		query["UserData"] = request.UserData
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateDetectVideoLabelsTask"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateDetectVideoLabelsTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDetectVideoLabelsTask(request *CreateDetectVideoLabelsTaskRequest) (_result *CreateDetectVideoLabelsTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateDetectVideoLabelsTaskResponse{}
-	_body, _err := client.CreateDetectVideoLabelsTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14916,8 +15732,8 @@ func (client *Client) CreateFileCompressionTaskWithOptions(tmpReq *CreateFileCom
 	}
 	request := &CreateFileCompressionTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Sources)) {
@@ -14995,6 +15811,92 @@ func (client *Client) CreateFileCompressionTask(request *CreateFileCompressionTa
 	return _result, _err
 }
 
+func (client *Client) CreateFileUncompressionTaskWithOptions(tmpReq *CreateFileUncompressionTaskRequest, runtime *util.RuntimeOptions) (_result *CreateFileUncompressionTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateFileUncompressionTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SelectedFiles)) {
+		request.SelectedFilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SelectedFiles, tea.String("SelectedFiles"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Target)) {
+		request.TargetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Target, tea.String("Target"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SelectedFilesShrink)) {
+		query["SelectedFiles"] = request.SelectedFilesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetShrink)) {
+		query["Target"] = request.TargetShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFileUncompressionTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFileUncompressionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFileUncompressionTask(request *CreateFileUncompressionTaskRequest) (_result *CreateFileUncompressionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFileUncompressionTaskResponse{}
+	_body, _err := client.CreateFileUncompressionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateImageModerationTaskWithOptions(tmpReq *CreateImageModerationTaskRequest, runtime *util.RuntimeOptions) (_result *CreateImageModerationTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -15002,8 +15904,8 @@ func (client *Client) CreateImageModerationTaskWithOptions(tmpReq *CreateImageMo
 	}
 	request := &CreateImageModerationTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Scenes)) {
@@ -15096,8 +15998,8 @@ func (client *Client) CreateImageSplicingTaskWithOptions(tmpReq *CreateImageSpli
 	}
 	request := &CreateImageSplicingTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Sources)) {
@@ -15210,8 +16112,8 @@ func (client *Client) CreateImageToPDFTaskWithOptions(tmpReq *CreateImageToPDFTa
 	}
 	request := &CreateImageToPDFTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Sources)) {
@@ -15292,8 +16194,8 @@ func (client *Client) CreateMediaConvertTaskWithOptions(tmpReq *CreateMediaConve
 	}
 	request := &CreateMediaConvertTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Sources)) {
@@ -15378,16 +16280,16 @@ func (client *Client) CreateOfficeConversionTaskWithOptions(tmpReq *CreateOffice
 	}
 	request := &CreateOfficeConversionTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.TrimPolicy))) {
-		request.TrimPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.TrimPolicy), tea.String("TrimPolicy"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.TrimPolicy)) {
+		request.TrimPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TrimPolicy, tea.String("TrimPolicy"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -15644,6 +16546,10 @@ func (client *Client) CreateStoryWithOptions(tmpReq *CreateStoryRequest, runtime
 	}
 	request := &CreateStoryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Address)) {
+		request.AddressShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Address, tea.String("Address"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.CustomLabels)) {
 		request.CustomLabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomLabels, tea.String("CustomLabels"), tea.String("json"))
 	}
@@ -15662,6 +16568,10 @@ func (client *Client) CreateStoryWithOptions(tmpReq *CreateStoryRequest, runtime
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressShrink)) {
+		body["Address"] = request.AddressShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CustomId)) {
 		body["CustomId"] = request.CustomId
 	}
@@ -15756,8 +16666,8 @@ func (client *Client) CreateVideoModerationTaskWithOptions(tmpReq *CreateVideoMo
 	}
 	request := &CreateVideoModerationTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Scenes)) {
@@ -15999,6 +16909,60 @@ func (client *Client) DeleteFileMeta(request *DeleteFileMetaRequest) (_result *D
 	return _result, _err
 }
 
+func (client *Client) DeleteLocationDateClusterWithOptions(request *DeleteLocationDateClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteLocationDateClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		body["ObjectId"] = request.ObjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLocationDateCluster"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLocationDateClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLocationDateCluster(request *DeleteLocationDateClusterRequest) (_result *DeleteLocationDateClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLocationDateClusterResponse{}
+	_body, _err := client.DeleteLocationDateClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16146,8 +17110,8 @@ func (client *Client) DetectImageBodiesWithOptions(tmpReq *DetectImageBodiesRequ
 	}
 	request := &DetectImageBodiesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -16208,8 +17172,8 @@ func (client *Client) DetectImageCodesWithOptions(tmpReq *DetectImageCodesReques
 	}
 	request := &DetectImageCodesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -16266,8 +17230,8 @@ func (client *Client) DetectImageCroppingWithOptions(tmpReq *DetectImageCropping
 	}
 	request := &DetectImageCroppingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -16328,8 +17292,8 @@ func (client *Client) DetectImageFacesWithOptions(tmpReq *DetectImageFacesReques
 	}
 	request := &DetectImageFacesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -16386,8 +17350,8 @@ func (client *Client) DetectImageLabelsWithOptions(tmpReq *DetectImageLabelsRequ
 	}
 	request := &DetectImageLabelsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -16448,8 +17412,8 @@ func (client *Client) DetectImageScoreWithOptions(tmpReq *DetectImageScoreReques
 	}
 	request := &DetectImageScoreShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -16874,8 +17838,8 @@ func (client *Client) GetMediaMetaWithOptions(tmpReq *GetMediaMetaRequest, runti
 	}
 	request := &GetMediaMetaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -17128,8 +18092,8 @@ func (client *Client) GetVideoPlaylistWithOptions(tmpReq *GetVideoPlaylistReques
 	}
 	request := &GetVideoPlaylistShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.SourceSubtitles)) {
@@ -17222,20 +18186,20 @@ func (client *Client) GetWebofficeURLWithOptions(tmpReq *GetWebofficeURLRequest,
 	}
 	request := &GetWebofficeURLShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Permission))) {
-		request.PermissionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Permission), tea.String("Permission"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Permission)) {
+		request.PermissionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Permission, tea.String("Permission"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.User))) {
-		request.UserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.User), tea.String("User"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.User)) {
+		request.UserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.User, tea.String("User"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Watermark))) {
-		request.WatermarkShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Watermark), tea.String("Watermark"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Watermark)) {
+		request.WatermarkShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Watermark, tea.String("Watermark"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -17340,8 +18304,8 @@ func (client *Client) IndexFileMetaWithOptions(tmpReq *IndexFileMetaRequest, run
 	}
 	request := &IndexFileMetaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.File))) {
-		request.FileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.File), tea.String("File"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.File)) {
+		request.FileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.File, tea.String("File"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -17610,12 +18574,12 @@ func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, runtime *ut
 	}
 	request := &ListTasksShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.EndTimeRange))) {
-		request.EndTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.EndTimeRange), tea.String("EndTimeRange"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.EndTimeRange)) {
+		request.EndTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EndTimeRange, tea.String("EndTimeRange"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.StartTimeRange))) {
-		request.StartTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.StartTimeRange), tea.String("StartTimeRange"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.StartTimeRange)) {
+		request.StartTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StartTimeRange, tea.String("StartTimeRange"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.TaskTypes)) {
@@ -17704,8 +18668,8 @@ func (client *Client) LiveTranscodingWithOptions(tmpReq *LiveTranscodingRequest,
 	}
 	request := &LiveTranscodingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -17838,12 +18802,12 @@ func (client *Client) QueryFigureClustersWithOptions(tmpReq *QueryFigureClusters
 	}
 	request := &QueryFigureClustersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CreateTimeRange))) {
-		request.CreateTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CreateTimeRange), tea.String("CreateTimeRange"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CreateTimeRange)) {
+		request.CreateTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateTimeRange, tea.String("CreateTimeRange"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.UpdateTimeRange))) {
-		request.UpdateTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.UpdateTimeRange), tea.String("UpdateTimeRange"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.UpdateTimeRange)) {
+		request.UpdateTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateTimeRange, tea.String("UpdateTimeRange"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -17917,6 +18881,132 @@ func (client *Client) QueryFigureClusters(request *QueryFigureClustersRequest) (
 	return _result, _err
 }
 
+func (client *Client) QueryLocationDateClustersWithOptions(tmpReq *QueryLocationDateClustersRequest, runtime *util.RuntimeOptions) (_result *QueryLocationDateClustersResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryLocationDateClustersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Address)) {
+		request.AddressShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Address, tea.String("Address"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CreateTimeRange)) {
+		request.CreateTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateTimeRange, tea.String("CreateTimeRange"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.LocationDateClusterEndTimeRange)) {
+		request.LocationDateClusterEndTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LocationDateClusterEndTimeRange, tea.String("LocationDateClusterEndTimeRange"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.LocationDateClusterLevels)) {
+		request.LocationDateClusterLevelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LocationDateClusterLevels, tea.String("LocationDateClusterLevels"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.LocationDateClusterStartTimeRange)) {
+		request.LocationDateClusterStartTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LocationDateClusterStartTimeRange, tea.String("LocationDateClusterStartTimeRange"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UpdateTimeRange)) {
+		request.UpdateTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateTimeRange, tea.String("UpdateTimeRange"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressShrink)) {
+		query["Address"] = request.AddressShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeRangeShrink)) {
+		query["CreateTimeRange"] = request.CreateTimeRangeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomLabels)) {
+		query["CustomLabels"] = request.CustomLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationDateClusterEndTimeRangeShrink)) {
+		query["LocationDateClusterEndTimeRange"] = request.LocationDateClusterEndTimeRangeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationDateClusterLevelsShrink)) {
+		query["LocationDateClusterLevels"] = request.LocationDateClusterLevelsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationDateClusterStartTimeRangeShrink)) {
+		query["LocationDateClusterStartTimeRange"] = request.LocationDateClusterStartTimeRangeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		query["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateTimeRangeShrink)) {
+		query["UpdateTimeRange"] = request.UpdateTimeRangeShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryLocationDateClusters"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryLocationDateClustersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryLocationDateClusters(request *QueryLocationDateClustersRequest) (_result *QueryLocationDateClustersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryLocationDateClustersResponse{}
+	_body, _err := client.QueryLocationDateClustersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryStoriesWithOptions(tmpReq *QueryStoriesRequest, runtime *util.RuntimeOptions) (_result *QueryStoriesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -17924,20 +19014,20 @@ func (client *Client) QueryStoriesWithOptions(tmpReq *QueryStoriesRequest, runti
 	}
 	request := &QueryStoriesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CreateTimeRange))) {
-		request.CreateTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CreateTimeRange), tea.String("CreateTimeRange"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CreateTimeRange)) {
+		request.CreateTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateTimeRange, tea.String("CreateTimeRange"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.FigureClusterIds)) {
 		request.FigureClusterIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FigureClusterIds, tea.String("FigureClusterIds"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.StoryEndTimeRange))) {
-		request.StoryEndTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.StoryEndTimeRange), tea.String("StoryEndTimeRange"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.StoryEndTimeRange)) {
+		request.StoryEndTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StoryEndTimeRange, tea.String("StoryEndTimeRange"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.StoryStartTimeRange))) {
-		request.StoryStartTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.StoryStartTimeRange), tea.String("StoryStartTimeRange"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.StoryStartTimeRange)) {
+		request.StoryStartTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StoryStartTimeRange, tea.String("StoryStartTimeRange"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -18046,8 +19136,8 @@ func (client *Client) RefreshWebofficeTokenWithOptions(tmpReq *RefreshWebofficeT
 	}
 	request := &RefreshWebofficeTokenShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
-		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -18286,8 +19376,8 @@ func (client *Client) SimpleQueryWithOptions(tmpReq *SimpleQueryRequest, runtime
 		request.AggregationsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Aggregations, tea.String("Aggregations"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Query))) {
-		request.QueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Query), tea.String("Query"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Query)) {
+		request.QueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Query, tea.String("Query"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.WithFields)) {
@@ -18504,8 +19594,8 @@ func (client *Client) UpdateFigureClusterWithOptions(tmpReq *UpdateFigureCluster
 	}
 	request := &UpdateFigureClusterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.FigureCluster))) {
-		request.FigureClusterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.FigureCluster), tea.String("FigureCluster"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.FigureCluster)) {
+		request.FigureClusterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FigureCluster, tea.String("FigureCluster"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -18562,8 +19652,8 @@ func (client *Client) UpdateFileMetaWithOptions(tmpReq *UpdateFileMetaRequest, r
 	}
 	request := &UpdateFileMetaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.File))) {
-		request.FileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.File), tea.String("File"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.File)) {
+		request.FileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.File, tea.String("File"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -18606,6 +19696,76 @@ func (client *Client) UpdateFileMeta(request *UpdateFileMetaRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateFileMetaResponse{}
 	_body, _err := client.UpdateFileMetaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateLocationDateClusterWithOptions(tmpReq *UpdateLocationDateClusterRequest, runtime *util.RuntimeOptions) (_result *UpdateLocationDateClusterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateLocationDateClusterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomLabels)) {
+		request.CustomLabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomLabels, tea.String("CustomLabels"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomId)) {
+		query["CustomId"] = request.CustomId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomLabelsShrink)) {
+		query["CustomLabels"] = request.CustomLabelsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		query["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLocationDateCluster"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLocationDateClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateLocationDateCluster(request *UpdateLocationDateClusterRequest) (_result *UpdateLocationDateClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateLocationDateClusterResponse{}
+	_body, _err := client.UpdateLocationDateClusterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18708,8 +19868,8 @@ func (client *Client) UpdateStoryWithOptions(tmpReq *UpdateStoryRequest, runtime
 	}
 	request := &UpdateStoryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Cover))) {
-		request.CoverShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Cover), tea.String("Cover"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Cover)) {
+		request.CoverShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Cover, tea.String("Cover"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.CustomLabels)) {
