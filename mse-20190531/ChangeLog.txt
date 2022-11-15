@@ -1,3 +1,7 @@
+2022-11-15 Version: v3.0.316
+- MSE.
+- Fixed Describe For These API.
+
 2022-11-15 Version: v3.0.315
 - Support MSE and AHAS integrated.
 

@@ -22085,10 +22085,6 @@ func (s *QueryClusterSpecificationResponseBody) SetSuccess(v bool) *QueryCluster
 type QueryClusterSpecificationResponseBodyData struct {
 	ClusterSpecificationName *string `json:"ClusterSpecificationName,omitempty" xml:"ClusterSpecificationName,omitempty"`
 	CpuCapacity              *string `json:"CpuCapacity,omitempty" xml:"CpuCapacity,omitempty"`
-	DiskCapacity             *string `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
-	InstanceCount            *string `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	MaxCon                   *string `json:"MaxCon,omitempty" xml:"MaxCon,omitempty"`
-	MaxTps                   *string `json:"MaxTps,omitempty" xml:"MaxTps,omitempty"`
 	MemoryCapacity           *string `json:"MemoryCapacity,omitempty" xml:"MemoryCapacity,omitempty"`
 }
 
@@ -22107,26 +22103,6 @@ func (s *QueryClusterSpecificationResponseBodyData) SetClusterSpecificationName(
 
 func (s *QueryClusterSpecificationResponseBodyData) SetCpuCapacity(v string) *QueryClusterSpecificationResponseBodyData {
 	s.CpuCapacity = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBodyData) SetDiskCapacity(v string) *QueryClusterSpecificationResponseBodyData {
-	s.DiskCapacity = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBodyData) SetInstanceCount(v string) *QueryClusterSpecificationResponseBodyData {
-	s.InstanceCount = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBodyData) SetMaxCon(v string) *QueryClusterSpecificationResponseBodyData {
-	s.MaxCon = &v
-	return s
-}
-
-func (s *QueryClusterSpecificationResponseBodyData) SetMaxTps(v string) *QueryClusterSpecificationResponseBodyData {
-	s.MaxTps = &v
 	return s
 }
 
