@@ -1476,6 +1476,175 @@ func (s *CreateModelVersionLabelsResponse) SetBody(v *CreateModelVersionLabelsRe
 	return s
 }
 
+type CreateProductOrdersRequest struct {
+	AutoPay  *bool                               `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	Products *CreateProductOrdersRequestProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Struct"`
+}
+
+func (s CreateProductOrdersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductOrdersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductOrdersRequest) SetAutoPay(v bool) *CreateProductOrdersRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateProductOrdersRequest) SetProducts(v *CreateProductOrdersRequestProducts) *CreateProductOrdersRequest {
+	s.Products = v
+	return s
+}
+
+type CreateProductOrdersRequestProducts struct {
+	AutoRenew          *bool                                                   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ChargeType         *string                                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Duration           *int64                                                  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InstanceProperties []*CreateProductOrdersRequestProductsInstanceProperties `json:"InstanceProperties,omitempty" xml:"InstanceProperties,omitempty" type:"Repeated"`
+	OrderType          *string                                                 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	PricingCycle       *string                                                 `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	ProductCode        *string                                                 `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+}
+
+func (s CreateProductOrdersRequestProducts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductOrdersRequestProducts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductOrdersRequestProducts) SetAutoRenew(v bool) *CreateProductOrdersRequestProducts {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateProductOrdersRequestProducts) SetChargeType(v string) *CreateProductOrdersRequestProducts {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateProductOrdersRequestProducts) SetDuration(v int64) *CreateProductOrdersRequestProducts {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateProductOrdersRequestProducts) SetInstanceProperties(v []*CreateProductOrdersRequestProductsInstanceProperties) *CreateProductOrdersRequestProducts {
+	s.InstanceProperties = v
+	return s
+}
+
+func (s *CreateProductOrdersRequestProducts) SetOrderType(v string) *CreateProductOrdersRequestProducts {
+	s.OrderType = &v
+	return s
+}
+
+func (s *CreateProductOrdersRequestProducts) SetPricingCycle(v string) *CreateProductOrdersRequestProducts {
+	s.PricingCycle = &v
+	return s
+}
+
+func (s *CreateProductOrdersRequestProducts) SetProductCode(v string) *CreateProductOrdersRequestProducts {
+	s.ProductCode = &v
+	return s
+}
+
+type CreateProductOrdersRequestProductsInstanceProperties struct {
+	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateProductOrdersRequestProductsInstanceProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductOrdersRequestProductsInstanceProperties) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductOrdersRequestProductsInstanceProperties) SetCode(v string) *CreateProductOrdersRequestProductsInstanceProperties {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateProductOrdersRequestProductsInstanceProperties) SetName(v string) *CreateProductOrdersRequestProductsInstanceProperties {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProductOrdersRequestProductsInstanceProperties) SetValue(v string) *CreateProductOrdersRequestProductsInstanceProperties {
+	s.Value = &v
+	return s
+}
+
+type CreateProductOrdersResponseBody struct {
+	BuyProductRequestId *string `json:"BuyProductRequestId,omitempty" xml:"BuyProductRequestId,omitempty"`
+	Message             *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OrderId             *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateProductOrdersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductOrdersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductOrdersResponseBody) SetBuyProductRequestId(v string) *CreateProductOrdersResponseBody {
+	s.BuyProductRequestId = &v
+	return s
+}
+
+func (s *CreateProductOrdersResponseBody) SetMessage(v string) *CreateProductOrdersResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateProductOrdersResponseBody) SetOrderId(v string) *CreateProductOrdersResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateProductOrdersResponseBody) SetRequestId(v string) *CreateProductOrdersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateProductOrdersResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProductOrdersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateProductOrdersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductOrdersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductOrdersResponse) SetHeaders(v map[string]*string) *CreateProductOrdersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProductOrdersResponse) SetStatusCode(v int32) *CreateProductOrdersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProductOrdersResponse) SetBody(v *CreateProductOrdersResponseBody) *CreateProductOrdersResponse {
+	s.Body = v
+	return s
+}
+
 type CreateWorkspaceRequest struct {
 	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisplayName   *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
@@ -4601,6 +4770,163 @@ func (s *ListPermissionsResponse) SetBody(v *ListPermissionsResponseBody) *ListP
 	return s
 }
 
+type ListProductsRequest struct {
+	ProductCodes *string `json:"ProductCodes,omitempty" xml:"ProductCodes,omitempty"`
+	ServiceCodes *string `json:"ServiceCodes,omitempty" xml:"ServiceCodes,omitempty"`
+	Verbose      *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+}
+
+func (s ListProductsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductsRequest) SetProductCodes(v string) *ListProductsRequest {
+	s.ProductCodes = &v
+	return s
+}
+
+func (s *ListProductsRequest) SetServiceCodes(v string) *ListProductsRequest {
+	s.ServiceCodes = &v
+	return s
+}
+
+func (s *ListProductsRequest) SetVerbose(v bool) *ListProductsRequest {
+	s.Verbose = &v
+	return s
+}
+
+type ListProductsResponseBody struct {
+	Products  []*ListProductsResponseBodyProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Services  []*ListProductsResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+}
+
+func (s ListProductsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductsResponseBody) SetProducts(v []*ListProductsResponseBodyProducts) *ListProductsResponseBody {
+	s.Products = v
+	return s
+}
+
+func (s *ListProductsResponseBody) SetRequestId(v string) *ListProductsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProductsResponseBody) SetServices(v []*ListProductsResponseBodyServices) *ListProductsResponseBody {
+	s.Services = v
+	return s
+}
+
+type ListProductsResponseBodyProducts struct {
+	HasPermissionToPurchase *bool   `json:"HasPermissionToPurchase,omitempty" xml:"HasPermissionToPurchase,omitempty"`
+	IsPurchased             *bool   `json:"IsPurchased,omitempty" xml:"IsPurchased,omitempty"`
+	ProductCode             *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductInstanceId       *string `json:"ProductInstanceId,omitempty" xml:"ProductInstanceId,omitempty"`
+	PurchaseUrl             *string `json:"PurchaseUrl,omitempty" xml:"PurchaseUrl,omitempty"`
+}
+
+func (s ListProductsResponseBodyProducts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductsResponseBodyProducts) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductsResponseBodyProducts) SetHasPermissionToPurchase(v bool) *ListProductsResponseBodyProducts {
+	s.HasPermissionToPurchase = &v
+	return s
+}
+
+func (s *ListProductsResponseBodyProducts) SetIsPurchased(v bool) *ListProductsResponseBodyProducts {
+	s.IsPurchased = &v
+	return s
+}
+
+func (s *ListProductsResponseBodyProducts) SetProductCode(v string) *ListProductsResponseBodyProducts {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *ListProductsResponseBodyProducts) SetProductInstanceId(v string) *ListProductsResponseBodyProducts {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *ListProductsResponseBodyProducts) SetPurchaseUrl(v string) *ListProductsResponseBodyProducts {
+	s.PurchaseUrl = &v
+	return s
+}
+
+type ListProductsResponseBodyServices struct {
+	IsOpen      *bool   `json:"IsOpen,omitempty" xml:"IsOpen,omitempty"`
+	OpenUrl     *string `json:"OpenUrl,omitempty" xml:"OpenUrl,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+}
+
+func (s ListProductsResponseBodyServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductsResponseBodyServices) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductsResponseBodyServices) SetIsOpen(v bool) *ListProductsResponseBodyServices {
+	s.IsOpen = &v
+	return s
+}
+
+func (s *ListProductsResponseBodyServices) SetOpenUrl(v string) *ListProductsResponseBodyServices {
+	s.OpenUrl = &v
+	return s
+}
+
+func (s *ListProductsResponseBodyServices) SetServiceCode(v string) *ListProductsResponseBodyServices {
+	s.ServiceCode = &v
+	return s
+}
+
+type ListProductsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProductsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProductsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductsResponse) SetHeaders(v map[string]*string) *ListProductsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProductsResponse) SetStatusCode(v int32) *ListProductsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListProductsResponse) SetBody(v *ListProductsResponseBody) *ListProductsResponse {
+	s.Body = v
+	return s
+}
+
 type ListQuotasRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
@@ -6750,6 +7076,56 @@ func (client *Client) CreateModelVersionLabelsWithOptions(ModelId *string, Versi
 	return _result, _err
 }
 
+func (client *Client) CreateProductOrders(request *CreateProductOrdersRequest) (_result *CreateProductOrdersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateProductOrdersResponse{}
+	_body, _err := client.CreateProductOrdersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateProductOrdersWithOptions(request *CreateProductOrdersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProductOrdersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		body["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Products)) {
+		body["Products"] = request.Products
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProductOrders"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/productorders"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateProductOrdersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result *CreateWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8184,6 +8560,60 @@ func (client *Client) ListPermissionsWithOptions(WorkspaceId *string, headers ma
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListPermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListProductsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListProductsResponse{}
+	_body, _err := client.ListProductsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProductsWithOptions(request *ListProductsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProductsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductCodes)) {
+		query["ProductCodes"] = request.ProductCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCodes)) {
+		query["ServiceCodes"] = request.ServiceCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProducts"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/products"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProductsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
