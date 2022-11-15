@@ -2530,6 +2530,8 @@ func (s *ListOrderResponseBodyData) SetTotal(v int32) *ListOrderResponseBodyData
 
 type ListOrderResponseBodyDataList struct {
 	AliFee            *string                                    `json:"AliFee,omitempty" xml:"AliFee,omitempty"`
+	ApnName           *string                                    `json:"ApnName,omitempty" xml:"ApnName,omitempty"`
+	ApnRegion         *string                                    `json:"ApnRegion,omitempty" xml:"ApnRegion,omitempty"`
 	BillingCycle      *string                                    `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	BuyNum            *int32                                     `json:"BuyNum,omitempty" xml:"BuyNum,omitempty"`
 	CardPayCount      *int32                                     `json:"CardPayCount,omitempty" xml:"CardPayCount,omitempty"`
@@ -2550,6 +2552,7 @@ type ListOrderResponseBodyDataList struct {
 	PoolCapacity      *string                                    `json:"PoolCapacity,omitempty" xml:"PoolCapacity,omitempty"`
 	PoolCapacityUnit  *string                                    `json:"PoolCapacityUnit,omitempty" xml:"PoolCapacityUnit,omitempty"`
 	PoolNo            *string                                    `json:"PoolNo,omitempty" xml:"PoolNo,omitempty"`
+	ResourceQuantity  *int64                                     `json:"ResourceQuantity,omitempty" xml:"ResourceQuantity,omitempty"`
 	Vendor            *string                                    `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
@@ -2563,6 +2566,16 @@ func (s ListOrderResponseBodyDataList) GoString() string {
 
 func (s *ListOrderResponseBodyDataList) SetAliFee(v string) *ListOrderResponseBodyDataList {
 	s.AliFee = &v
+	return s
+}
+
+func (s *ListOrderResponseBodyDataList) SetApnName(v string) *ListOrderResponseBodyDataList {
+	s.ApnName = &v
+	return s
+}
+
+func (s *ListOrderResponseBodyDataList) SetApnRegion(v string) *ListOrderResponseBodyDataList {
+	s.ApnRegion = &v
 	return s
 }
 
@@ -2666,6 +2679,11 @@ func (s *ListOrderResponseBodyDataList) SetPoolNo(v string) *ListOrderResponseBo
 	return s
 }
 
+func (s *ListOrderResponseBodyDataList) SetResourceQuantity(v int64) *ListOrderResponseBodyDataList {
+	s.ResourceQuantity = &v
+	return s
+}
+
 func (s *ListOrderResponseBodyDataList) SetVendor(v string) *ListOrderResponseBodyDataList {
 	s.Vendor = &v
 	return s
@@ -2742,8 +2760,8 @@ func (s *ListOrderResponse) SetBody(v *ListOrderResponseBody) *ListOrderResponse
 }
 
 type RebindResumeSingleCardRequest struct {
-	Iccid      *string                `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
-	OptMsisdns map[string]interface{} `json:"OptMsisdns,omitempty" xml:"OptMsisdns,omitempty"`
+	Iccid      *string   `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	OptMsisdns []*string `json:"OptMsisdns,omitempty" xml:"OptMsisdns,omitempty" type:"Repeated"`
 }
 
 func (s RebindResumeSingleCardRequest) String() string {
@@ -2759,7 +2777,7 @@ func (s *RebindResumeSingleCardRequest) SetIccid(v string) *RebindResumeSingleCa
 	return s
 }
 
-func (s *RebindResumeSingleCardRequest) SetOptMsisdns(v map[string]interface{}) *RebindResumeSingleCardRequest {
+func (s *RebindResumeSingleCardRequest) SetOptMsisdns(v []*string) *RebindResumeSingleCardRequest {
 	s.OptMsisdns = v
 	return s
 }
@@ -3016,8 +3034,8 @@ func (s *RenewResponse) SetBody(v *RenewResponseBody) *RenewResponse {
 }
 
 type ResumeSingleCardRequest struct {
-	Iccid      *string                `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
-	OptMsisdns map[string]interface{} `json:"OptMsisdns,omitempty" xml:"OptMsisdns,omitempty"`
+	Iccid      *string   `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	OptMsisdns []*string `json:"OptMsisdns,omitempty" xml:"OptMsisdns,omitempty" type:"Repeated"`
 }
 
 func (s ResumeSingleCardRequest) String() string {
@@ -3033,7 +3051,7 @@ func (s *ResumeSingleCardRequest) SetIccid(v string) *ResumeSingleCardRequest {
 	return s
 }
 
-func (s *ResumeSingleCardRequest) SetOptMsisdns(v map[string]interface{}) *ResumeSingleCardRequest {
+func (s *ResumeSingleCardRequest) SetOptMsisdns(v []*string) *ResumeSingleCardRequest {
 	s.OptMsisdns = v
 	return s
 }
@@ -3243,8 +3261,8 @@ func (s *SetCardStopRuleResponse) SetBody(v *SetCardStopRuleResponseBody) *SetCa
 }
 
 type StopSingleCardRequest struct {
-	Iccid      *string                `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
-	OptMsisdns map[string]interface{} `json:"OptMsisdns,omitempty" xml:"OptMsisdns,omitempty"`
+	Iccid      *string   `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	OptMsisdns []*string `json:"OptMsisdns,omitempty" xml:"OptMsisdns,omitempty" type:"Repeated"`
 }
 
 func (s StopSingleCardRequest) String() string {
@@ -3260,7 +3278,7 @@ func (s *StopSingleCardRequest) SetIccid(v string) *StopSingleCardRequest {
 	return s
 }
 
-func (s *StopSingleCardRequest) SetOptMsisdns(v map[string]interface{}) *StopSingleCardRequest {
+func (s *StopSingleCardRequest) SetOptMsisdns(v []*string) *StopSingleCardRequest {
 	s.OptMsisdns = v
 	return s
 }
