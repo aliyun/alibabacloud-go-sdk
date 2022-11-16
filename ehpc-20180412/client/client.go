@@ -2211,8 +2211,10 @@ type CreateHybridClusterRequest struct {
 	OnPremiseVolumeMountPoint *string                                        `json:"OnPremiseVolumeMountPoint,omitempty" xml:"OnPremiseVolumeMountPoint,omitempty"`
 	OnPremiseVolumeProtocol   *string                                        `json:"OnPremiseVolumeProtocol,omitempty" xml:"OnPremiseVolumeProtocol,omitempty"`
 	OnPremiseVolumeRemotePath *string                                        `json:"OnPremiseVolumeRemotePath,omitempty" xml:"OnPremiseVolumeRemotePath,omitempty"`
+	OpenldapPar               *CreateHybridClusterRequestOpenldapPar         `json:"OpenldapPar,omitempty" xml:"OpenldapPar,omitempty" type:"Struct"`
 	OsTag                     *string                                        `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
 	Password                  *string                                        `json:"Password,omitempty" xml:"Password,omitempty"`
+	Plugin                    *string                                        `json:"Plugin,omitempty" xml:"Plugin,omitempty"`
 	PostInstallScript         []*CreateHybridClusterRequestPostInstallScript `json:"PostInstallScript,omitempty" xml:"PostInstallScript,omitempty" type:"Repeated"`
 	RemoteDirectory           *string                                        `json:"RemoteDirectory,omitempty" xml:"RemoteDirectory,omitempty"`
 	ResourceGroupId           *string                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -2225,6 +2227,7 @@ type CreateHybridClusterRequest struct {
 	VolumeProtocol            *string                                        `json:"VolumeProtocol,omitempty" xml:"VolumeProtocol,omitempty"`
 	VolumeType                *string                                        `json:"VolumeType,omitempty" xml:"VolumeType,omitempty"`
 	VpcId                     *string                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	WinAdPar                  *CreateHybridClusterRequestWinAdPar            `json:"WinAdPar,omitempty" xml:"WinAdPar,omitempty" type:"Struct"`
 	ZoneId                    *string                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -2341,6 +2344,11 @@ func (s *CreateHybridClusterRequest) SetOnPremiseVolumeRemotePath(v string) *Cre
 	return s
 }
 
+func (s *CreateHybridClusterRequest) SetOpenldapPar(v *CreateHybridClusterRequestOpenldapPar) *CreateHybridClusterRequest {
+	s.OpenldapPar = v
+	return s
+}
+
 func (s *CreateHybridClusterRequest) SetOsTag(v string) *CreateHybridClusterRequest {
 	s.OsTag = &v
 	return s
@@ -2348,6 +2356,11 @@ func (s *CreateHybridClusterRequest) SetOsTag(v string) *CreateHybridClusterRequ
 
 func (s *CreateHybridClusterRequest) SetPassword(v string) *CreateHybridClusterRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *CreateHybridClusterRequest) SetPlugin(v string) *CreateHybridClusterRequest {
+	s.Plugin = &v
 	return s
 }
 
@@ -2408,6 +2421,11 @@ func (s *CreateHybridClusterRequest) SetVolumeType(v string) *CreateHybridCluste
 
 func (s *CreateHybridClusterRequest) SetVpcId(v string) *CreateHybridClusterRequest {
 	s.VpcId = &v
+	return s
+}
+
+func (s *CreateHybridClusterRequest) SetWinAdPar(v *CreateHybridClusterRequestWinAdPar) *CreateHybridClusterRequest {
+	s.WinAdPar = v
 	return s
 }
 
@@ -2537,6 +2555,29 @@ func (s *CreateHybridClusterRequestNodes) SetSchedulerType(v string) *CreateHybr
 	return s
 }
 
+type CreateHybridClusterRequestOpenldapPar struct {
+	BaseDn       *string `json:"BaseDn,omitempty" xml:"BaseDn,omitempty"`
+	LdapServerIp *string `json:"LdapServerIp,omitempty" xml:"LdapServerIp,omitempty"`
+}
+
+func (s CreateHybridClusterRequestOpenldapPar) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridClusterRequestOpenldapPar) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridClusterRequestOpenldapPar) SetBaseDn(v string) *CreateHybridClusterRequestOpenldapPar {
+	s.BaseDn = &v
+	return s
+}
+
+func (s *CreateHybridClusterRequestOpenldapPar) SetLdapServerIp(v string) *CreateHybridClusterRequestOpenldapPar {
+	s.LdapServerIp = &v
+	return s
+}
+
 type CreateHybridClusterRequestPostInstallScript struct {
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
 	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
@@ -2557,6 +2598,41 @@ func (s *CreateHybridClusterRequestPostInstallScript) SetArgs(v string) *CreateH
 
 func (s *CreateHybridClusterRequestPostInstallScript) SetUrl(v string) *CreateHybridClusterRequestPostInstallScript {
 	s.Url = &v
+	return s
+}
+
+type CreateHybridClusterRequestWinAdPar struct {
+	AdDc         *string `json:"AdDc,omitempty" xml:"AdDc,omitempty"`
+	AdIp         *string `json:"AdIp,omitempty" xml:"AdIp,omitempty"`
+	AdUser       *string `json:"AdUser,omitempty" xml:"AdUser,omitempty"`
+	AdUserPasswd *string `json:"AdUserPasswd,omitempty" xml:"AdUserPasswd,omitempty"`
+}
+
+func (s CreateHybridClusterRequestWinAdPar) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridClusterRequestWinAdPar) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridClusterRequestWinAdPar) SetAdDc(v string) *CreateHybridClusterRequestWinAdPar {
+	s.AdDc = &v
+	return s
+}
+
+func (s *CreateHybridClusterRequestWinAdPar) SetAdIp(v string) *CreateHybridClusterRequestWinAdPar {
+	s.AdIp = &v
+	return s
+}
+
+func (s *CreateHybridClusterRequestWinAdPar) SetAdUser(v string) *CreateHybridClusterRequestWinAdPar {
+	s.AdUser = &v
+	return s
+}
+
+func (s *CreateHybridClusterRequestWinAdPar) SetAdUserPasswd(v string) *CreateHybridClusterRequestWinAdPar {
+	s.AdUserPasswd = &v
 	return s
 }
 
