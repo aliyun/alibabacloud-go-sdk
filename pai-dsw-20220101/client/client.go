@@ -3572,7 +3572,16 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 }
 
 type UpdateInstanceRequest struct {
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Accessibility        *string                                 `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Datasets             []*UpdateInstanceRequestDatasets        `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	DisassociateDatasets *bool                                   `json:"DisassociateDatasets,omitempty" xml:"DisassociateDatasets,omitempty"`
+	DisassociateVpc      *bool                                   `json:"DisassociateVpc,omitempty" xml:"DisassociateVpc,omitempty"`
+	EcsSpec              *string                                 `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	ImageId              *string                                 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageUrl             *string                                 `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InstanceName         *string                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	RequestedResource    *UpdateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
+	UserVpc              *UpdateInstanceRequestUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
 }
 
 func (s UpdateInstanceRequest) String() string {
@@ -3583,8 +3592,146 @@ func (s UpdateInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateInstanceRequest) SetAccessibility(v string) *UpdateInstanceRequest {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetDatasets(v []*UpdateInstanceRequestDatasets) *UpdateInstanceRequest {
+	s.Datasets = v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetDisassociateDatasets(v bool) *UpdateInstanceRequest {
+	s.DisassociateDatasets = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetDisassociateVpc(v bool) *UpdateInstanceRequest {
+	s.DisassociateVpc = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetEcsSpec(v string) *UpdateInstanceRequest {
+	s.EcsSpec = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetImageId(v string) *UpdateInstanceRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetImageUrl(v string) *UpdateInstanceRequest {
+	s.ImageUrl = &v
+	return s
+}
+
 func (s *UpdateInstanceRequest) SetInstanceName(v string) *UpdateInstanceRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetRequestedResource(v *UpdateInstanceRequestRequestedResource) *UpdateInstanceRequest {
+	s.RequestedResource = v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetUserVpc(v *UpdateInstanceRequestUserVpc) *UpdateInstanceRequest {
+	s.UserVpc = v
+	return s
+}
+
+type UpdateInstanceRequestDatasets struct {
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+}
+
+func (s UpdateInstanceRequestDatasets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceRequestDatasets) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceRequestDatasets) SetDatasetId(v string) *UpdateInstanceRequestDatasets {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestDatasets) SetMountPath(v string) *UpdateInstanceRequestDatasets {
+	s.MountPath = &v
+	return s
+}
+
+type UpdateInstanceRequestRequestedResource struct {
+	CPU          *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	GPU          *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUType      *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	SharedMemory *string `json:"SharedMemory,omitempty" xml:"SharedMemory,omitempty"`
+}
+
+func (s UpdateInstanceRequestRequestedResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceRequestRequestedResource) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceRequestRequestedResource) SetCPU(v string) *UpdateInstanceRequestRequestedResource {
+	s.CPU = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestRequestedResource) SetGPU(v string) *UpdateInstanceRequestRequestedResource {
+	s.GPU = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestRequestedResource) SetGPUType(v string) *UpdateInstanceRequestRequestedResource {
+	s.GPUType = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestRequestedResource) SetMemory(v string) *UpdateInstanceRequestRequestedResource {
+	s.Memory = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestRequestedResource) SetSharedMemory(v string) *UpdateInstanceRequestRequestedResource {
+	s.SharedMemory = &v
+	return s
+}
+
+type UpdateInstanceRequestUserVpc struct {
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s UpdateInstanceRequestUserVpc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceRequestUserVpc) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceRequestUserVpc) SetSecurityGroupId(v string) *UpdateInstanceRequestUserVpc {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestUserVpc) SetVSwitchId(v string) *UpdateInstanceRequestUserVpc {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestUserVpc) SetVpcId(v string) *UpdateInstanceRequestUserVpc {
+	s.VpcId = &v
 	return s
 }
 
@@ -4841,8 +4988,44 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Datasets)) {
+		body["Datasets"] = request.Datasets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisassociateDatasets)) {
+		body["DisassociateDatasets"] = request.DisassociateDatasets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisassociateVpc)) {
+		body["DisassociateVpc"] = request.DisassociateVpc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsSpec)) {
+		body["EcsSpec"] = request.EcsSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.RequestedResource))) {
+		body["RequestedResource"] = request.RequestedResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.UserVpc))) {
+		body["UserVpc"] = request.UserVpc
 	}
 
 	req := &openapi.OpenApiRequest{
