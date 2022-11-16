@@ -1750,6 +1750,7 @@ type CreateLoadBalancerTCPListenerRequest struct {
 	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
 	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
 	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	HealthCheckSwitch         *string `json:"HealthCheckSwitch,omitempty" xml:"HealthCheckSwitch,omitempty"`
 	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
 	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
 	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
@@ -1839,6 +1840,11 @@ func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckDomain(v string) *C
 
 func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckHttpCode(v string) *CreateLoadBalancerTCPListenerRequest {
 	s.HealthCheckHttpCode = &v
+	return s
+}
+
+func (s *CreateLoadBalancerTCPListenerRequest) SetHealthCheckSwitch(v string) *CreateLoadBalancerTCPListenerRequest {
+	s.HealthCheckSwitch = &v
 	return s
 }
 
@@ -1982,6 +1988,7 @@ type CreateLoadBalancerUDPListenerRequest struct {
 	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	HealthCheckSwitch         *string `json:"HealthCheckSwitch,omitempty" xml:"HealthCheckSwitch,omitempty"`
 	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	LoadBalancerId            *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
@@ -2045,6 +2052,11 @@ func (s *CreateLoadBalancerUDPListenerRequest) SetHealthCheckConnectPort(v int32
 
 func (s *CreateLoadBalancerUDPListenerRequest) SetHealthCheckConnectTimeout(v int32) *CreateLoadBalancerUDPListenerRequest {
 	s.HealthCheckConnectTimeout = &v
+	return s
+}
+
+func (s *CreateLoadBalancerUDPListenerRequest) SetHealthCheckSwitch(v string) *CreateLoadBalancerUDPListenerRequest {
+	s.HealthCheckSwitch = &v
 	return s
 }
 
@@ -3798,6 +3810,7 @@ type DescribeAccessControlListAttributeResponseBody struct {
 	AclId            *string                                                         `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclName          *string                                                         `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	AddressIPVersion *string                                                         `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	CreateTime       *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	RelatedListeners *DescribeAccessControlListAttributeResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Struct"`
 	RequestId        *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroupId  *string                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -3828,6 +3841,11 @@ func (s *DescribeAccessControlListAttributeResponseBody) SetAclName(v string) *D
 
 func (s *DescribeAccessControlListAttributeResponseBody) SetAddressIPVersion(v string) *DescribeAccessControlListAttributeResponseBody {
 	s.AddressIPVersion = &v
+	return s
+}
+
+func (s *DescribeAccessControlListAttributeResponseBody) SetCreateTime(v string) *DescribeAccessControlListAttributeResponseBody {
+	s.CreateTime = &v
 	return s
 }
 
@@ -4106,6 +4124,7 @@ type DescribeAccessControlListsResponseBodyAclsAcl struct {
 	AclId            *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclName          *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -4129,6 +4148,11 @@ func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetAclName(v string) *De
 
 func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetAddressIPVersion(v string) *DescribeAccessControlListsResponseBodyAclsAcl {
 	s.AddressIPVersion = &v
+	return s
+}
+
+func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetCreateTime(v string) *DescribeAccessControlListsResponseBodyAclsAcl {
+	s.CreateTime = &v
 	return s
 }
 
@@ -7236,6 +7260,7 @@ type DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig struct 
 	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
 	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	ProxyProtocolV2Enabled    *string `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
 	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
@@ -7322,6 +7347,11 @@ func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) Se
 	return s
 }
 
+func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetProxyProtocolV2Enabled(v string) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
+	s.ProxyProtocolV2Enabled = &v
+	return s
+}
+
 func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig {
 	s.UnhealthyThreshold = &v
 	return s
@@ -7338,6 +7368,7 @@ type DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig struct 
 	HealthCheckReq            *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
 	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	MasterSlaveServerGroupId  *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	ProxyProtocolV2Enabled    *string `json:"ProxyProtocolV2Enabled,omitempty" xml:"ProxyProtocolV2Enabled,omitempty"`
 	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
@@ -7396,6 +7427,11 @@ func (s *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) Se
 
 func (s *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) SetMasterSlaveServerGroupId(v string) *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig {
 	s.MasterSlaveServerGroupId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig) SetProxyProtocolV2Enabled(v string) *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig {
+	s.ProxyProtocolV2Enabled = &v
 	return s
 }
 
@@ -8416,6 +8452,7 @@ func (s *DescribeMasterSlaveServerGroupAttributeRequest) SetResourceOwnerId(v in
 }
 
 type DescribeMasterSlaveServerGroupAttributeResponseBody struct {
+	CreateTime                 *string                                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	LoadBalancerId             *string                                                                       `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	MasterSlaveBackendServers  *DescribeMasterSlaveServerGroupAttributeResponseBodyMasterSlaveBackendServers `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty" type:"Struct"`
 	MasterSlaveServerGroupId   *string                                                                       `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
@@ -8429,6 +8466,11 @@ func (s DescribeMasterSlaveServerGroupAttributeResponseBody) String() string {
 
 func (s DescribeMasterSlaveServerGroupAttributeResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeMasterSlaveServerGroupAttributeResponseBody) SetCreateTime(v string) *DescribeMasterSlaveServerGroupAttributeResponseBody {
+	s.CreateTime = &v
+	return s
 }
 
 func (s *DescribeMasterSlaveServerGroupAttributeResponseBody) SetLoadBalancerId(v string) *DescribeMasterSlaveServerGroupAttributeResponseBody {
@@ -8644,6 +8686,7 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups) Set
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup struct {
 	AssociatedObjects          *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects `json:"AssociatedObjects,omitempty" xml:"AssociatedObjects,omitempty" type:"Struct"`
+	CreateTime                 *string                                                                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	MasterSlaveServerGroupId   *string                                                                                                    `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
 	MasterSlaveServerGroupName *string                                                                                                    `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
 }
@@ -8658,6 +8701,11 @@ func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaster
 
 func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) SetAssociatedObjects(v *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup {
 	s.AssociatedObjects = v
+	return s
+}
+
+func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) SetCreateTime(v string) *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup {
+	s.CreateTime = &v
 	return s
 }
 
@@ -9856,6 +9904,7 @@ func (s *DescribeVServerGroupAttributeRequest) SetVServerGroupId(v string) *Desc
 
 type DescribeVServerGroupAttributeResponseBody struct {
 	BackendServers   *DescribeVServerGroupAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+	CreateTime       *string                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	LoadBalancerId   *string                                                  `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	RequestId        *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VServerGroupId   *string                                                  `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
@@ -9872,6 +9921,11 @@ func (s DescribeVServerGroupAttributeResponseBody) GoString() string {
 
 func (s *DescribeVServerGroupAttributeResponseBody) SetBackendServers(v *DescribeVServerGroupAttributeResponseBodyBackendServers) *DescribeVServerGroupAttributeResponseBody {
 	s.BackendServers = v
+	return s
+}
+
+func (s *DescribeVServerGroupAttributeResponseBody) SetCreateTime(v string) *DescribeVServerGroupAttributeResponseBody {
+	s.CreateTime = &v
 	return s
 }
 
@@ -9916,6 +9970,7 @@ type DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer struct
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp    *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
@@ -9940,6 +9995,11 @@ func (s *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer) S
 
 func (s *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer) SetServerId(v string) *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer {
 	s.ServerId = &v
+	return s
+}
+
+func (s *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer) SetServerIp(v string) *DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer {
+	s.ServerIp = &v
 	return s
 }
 
@@ -10083,6 +10143,7 @@ func (s *DescribeVServerGroupsResponseBodyVServerGroups) SetVServerGroup(v []*De
 
 type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup struct {
 	AssociatedObjects *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects `json:"AssociatedObjects,omitempty" xml:"AssociatedObjects,omitempty" type:"Struct"`
+	CreateTime        *string                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ServerCount       *int64                                                                       `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
 	VServerGroupId    *string                                                                      `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 	VServerGroupName  *string                                                                      `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
@@ -10098,6 +10159,11 @@ func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup) GoString() s
 
 func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup) SetAssociatedObjects(v *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup {
 	s.AssociatedObjects = v
+	return s
+}
+
+func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup) SetCreateTime(v string) *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup {
+	s.CreateTime = &v
 	return s
 }
 
@@ -13695,6 +13761,7 @@ type SetLoadBalancerTCPListenerAttributeRequest struct {
 	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
 	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
 	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckSwitch         *string `json:"HealthCheckSwitch,omitempty" xml:"HealthCheckSwitch,omitempty"`
 	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
 	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
 	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
@@ -13786,6 +13853,11 @@ func (s *SetLoadBalancerTCPListenerAttributeRequest) SetHealthCheckHttpCode(v st
 
 func (s *SetLoadBalancerTCPListenerAttributeRequest) SetHealthCheckInterval(v int32) *SetLoadBalancerTCPListenerAttributeRequest {
 	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetHealthCheckSwitch(v string) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.HealthCheckSwitch = &v
 	return s
 }
 
@@ -13939,6 +14011,7 @@ type SetLoadBalancerUDPListenerAttributeRequest struct {
 	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
 	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckSwitch         *string `json:"HealthCheckSwitch,omitempty" xml:"HealthCheckSwitch,omitempty"`
 	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	LoadBalancerId            *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
@@ -14003,6 +14076,11 @@ func (s *SetLoadBalancerUDPListenerAttributeRequest) SetHealthCheckConnectTimeou
 
 func (s *SetLoadBalancerUDPListenerAttributeRequest) SetHealthCheckInterval(v int32) *SetLoadBalancerUDPListenerAttributeRequest {
 	s.HealthCheckInterval = &v
+	return s
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetHealthCheckSwitch(v string) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.HealthCheckSwitch = &v
 	return s
 }
 
@@ -16749,6 +16827,10 @@ func (client *Client) CreateLoadBalancerTCPListenerWithOptions(request *CreateLo
 		query["HealthCheckHttpCode"] = request.HealthCheckHttpCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckSwitch)) {
+		query["HealthCheckSwitch"] = request.HealthCheckSwitch
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.HealthCheckType)) {
 		query["HealthCheckType"] = request.HealthCheckType
 	}
@@ -16887,6 +16969,10 @@ func (client *Client) CreateLoadBalancerUDPListenerWithOptions(request *CreateLo
 
 	if !tea.BoolValue(util.IsUnset(request.HealthCheckConnectTimeout)) {
 		query["HealthCheckConnectTimeout"] = request.HealthCheckConnectTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckSwitch)) {
+		query["HealthCheckSwitch"] = request.HealthCheckSwitch
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
@@ -21745,6 +21831,10 @@ func (client *Client) SetLoadBalancerTCPListenerAttributeWithOptions(request *Se
 		query["HealthCheckInterval"] = request.HealthCheckInterval
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckSwitch)) {
+		query["HealthCheckSwitch"] = request.HealthCheckSwitch
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.HealthCheckType)) {
 		query["HealthCheckType"] = request.HealthCheckType
 	}
@@ -21891,6 +21981,10 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithOptions(request *Se
 
 	if !tea.BoolValue(util.IsUnset(request.HealthCheckInterval)) {
 		query["HealthCheckInterval"] = request.HealthCheckInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthCheckSwitch)) {
+		query["HealthCheckSwitch"] = request.HealthCheckSwitch
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
