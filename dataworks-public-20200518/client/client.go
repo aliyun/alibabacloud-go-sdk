@@ -674,6 +674,176 @@ func (s *CheckMetaTableResponse) SetBody(v *CheckMetaTableResponseBody) *CheckMe
 	return s
 }
 
+type CreateBaselineRequest struct {
+	AlertMarginThreshold *int32                                   `json:"AlertMarginThreshold,omitempty" xml:"AlertMarginThreshold,omitempty"`
+	BaselineName         *string                                  `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	BaselineType         *string                                  `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
+	OvertimeSettings     []*CreateBaselineRequestOvertimeSettings `json:"OvertimeSettings,omitempty" xml:"OvertimeSettings,omitempty" type:"Repeated"`
+	Owner                *string                                  `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Priority             *int32                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProjectId            *int64                                   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	TaskIds              *string                                  `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+}
+
+func (s CreateBaselineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBaselineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBaselineRequest) SetAlertMarginThreshold(v int32) *CreateBaselineRequest {
+	s.AlertMarginThreshold = &v
+	return s
+}
+
+func (s *CreateBaselineRequest) SetBaselineName(v string) *CreateBaselineRequest {
+	s.BaselineName = &v
+	return s
+}
+
+func (s *CreateBaselineRequest) SetBaselineType(v string) *CreateBaselineRequest {
+	s.BaselineType = &v
+	return s
+}
+
+func (s *CreateBaselineRequest) SetOvertimeSettings(v []*CreateBaselineRequestOvertimeSettings) *CreateBaselineRequest {
+	s.OvertimeSettings = v
+	return s
+}
+
+func (s *CreateBaselineRequest) SetOwner(v string) *CreateBaselineRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *CreateBaselineRequest) SetPriority(v int32) *CreateBaselineRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateBaselineRequest) SetProjectId(v int64) *CreateBaselineRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateBaselineRequest) SetTaskIds(v string) *CreateBaselineRequest {
+	s.TaskIds = &v
+	return s
+}
+
+type CreateBaselineRequestOvertimeSettings struct {
+	Cycle *int32  `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	Time  *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s CreateBaselineRequestOvertimeSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBaselineRequestOvertimeSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBaselineRequestOvertimeSettings) SetCycle(v int32) *CreateBaselineRequestOvertimeSettings {
+	s.Cycle = &v
+	return s
+}
+
+func (s *CreateBaselineRequestOvertimeSettings) SetTime(v string) *CreateBaselineRequestOvertimeSettings {
+	s.Time = &v
+	return s
+}
+
+type CreateBaselineResponseBody struct {
+	Data                *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicErrorCode    *string `json:"DynamicErrorCode,omitempty" xml:"DynamicErrorCode,omitempty"`
+	DynamicErrorMessage *string `json:"DynamicErrorMessage,omitempty" xml:"DynamicErrorMessage,omitempty"`
+	ErrorCode           *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode      *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success             *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateBaselineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBaselineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBaselineResponseBody) SetData(v int64) *CreateBaselineResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateBaselineResponseBody) SetDynamicErrorCode(v string) *CreateBaselineResponseBody {
+	s.DynamicErrorCode = &v
+	return s
+}
+
+func (s *CreateBaselineResponseBody) SetDynamicErrorMessage(v string) *CreateBaselineResponseBody {
+	s.DynamicErrorMessage = &v
+	return s
+}
+
+func (s *CreateBaselineResponseBody) SetErrorCode(v string) *CreateBaselineResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateBaselineResponseBody) SetErrorMessage(v string) *CreateBaselineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateBaselineResponseBody) SetHttpStatusCode(v int32) *CreateBaselineResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateBaselineResponseBody) SetRequestId(v string) *CreateBaselineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateBaselineResponseBody) SetSuccess(v bool) *CreateBaselineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateBaselineResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateBaselineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBaselineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBaselineResponse) SetHeaders(v map[string]*string) *CreateBaselineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBaselineResponse) SetStatusCode(v int32) *CreateBaselineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateBaselineResponse) SetBody(v *CreateBaselineResponseBody) *CreateBaselineResponse {
+	s.Body = v
+	return s
+}
+
 type CreateBusinessRequest struct {
 	BusinessName      *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
 	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -3619,6 +3789,7 @@ type CreateRemindRequest struct {
 	RemindType    *string `json:"RemindType,omitempty" xml:"RemindType,omitempty"`
 	RemindUnit    *string `json:"RemindUnit,omitempty" xml:"RemindUnit,omitempty"`
 	RobotUrls     *string `json:"RobotUrls,omitempty" xml:"RobotUrls,omitempty"`
+	Webhooks      *string `json:"Webhooks,omitempty" xml:"Webhooks,omitempty"`
 }
 
 func (s CreateRemindRequest) String() string {
@@ -3701,6 +3872,11 @@ func (s *CreateRemindRequest) SetRemindUnit(v string) *CreateRemindRequest {
 
 func (s *CreateRemindRequest) SetRobotUrls(v string) *CreateRemindRequest {
 	s.RobotUrls = &v
+	return s
+}
+
+func (s *CreateRemindRequest) SetWebhooks(v string) *CreateRemindRequest {
+	s.Webhooks = &v
 	return s
 }
 
@@ -4451,6 +4627,117 @@ func (s *CreateUdfFileResponse) SetStatusCode(v int32) *CreateUdfFileResponse {
 }
 
 func (s *CreateUdfFileResponse) SetBody(v *CreateUdfFileResponseBody) *CreateUdfFileResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteBaselineRequest struct {
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	ProjectId  *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s DeleteBaselineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBaselineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBaselineRequest) SetBaselineId(v int64) *DeleteBaselineRequest {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *DeleteBaselineRequest) SetProjectId(v int64) *DeleteBaselineRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type DeleteBaselineResponseBody struct {
+	Data                *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicErrorCode    *string `json:"DynamicErrorCode,omitempty" xml:"DynamicErrorCode,omitempty"`
+	DynamicErrorMessage *string `json:"DynamicErrorMessage,omitempty" xml:"DynamicErrorMessage,omitempty"`
+	ErrorCode           *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode      *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success             *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteBaselineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBaselineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBaselineResponseBody) SetData(v bool) *DeleteBaselineResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteBaselineResponseBody) SetDynamicErrorCode(v string) *DeleteBaselineResponseBody {
+	s.DynamicErrorCode = &v
+	return s
+}
+
+func (s *DeleteBaselineResponseBody) SetDynamicErrorMessage(v string) *DeleteBaselineResponseBody {
+	s.DynamicErrorMessage = &v
+	return s
+}
+
+func (s *DeleteBaselineResponseBody) SetErrorCode(v string) *DeleteBaselineResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteBaselineResponseBody) SetErrorMessage(v string) *DeleteBaselineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteBaselineResponseBody) SetHttpStatusCode(v int32) *DeleteBaselineResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteBaselineResponseBody) SetRequestId(v string) *DeleteBaselineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteBaselineResponseBody) SetSuccess(v bool) *DeleteBaselineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteBaselineResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBaselineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBaselineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBaselineResponse) SetHeaders(v map[string]*string) *DeleteBaselineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBaselineResponse) SetStatusCode(v int32) *DeleteBaselineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBaselineResponse) SetBody(v *DeleteBaselineResponseBody) *DeleteBaselineResponse {
 	s.Body = v
 	return s
 }
@@ -7250,6 +7537,329 @@ func (s *GenerateDISyncTaskConfigForUpdatingResponse) SetBody(v *GenerateDISyncT
 	return s
 }
 
+type GetBaselineRequest struct {
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	ProjectId  *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s GetBaselineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBaselineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBaselineRequest) SetBaselineId(v int64) *GetBaselineRequest {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *GetBaselineRequest) SetProjectId(v int64) *GetBaselineRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type GetBaselineResponseBody struct {
+	Data                *GetBaselineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DynamicErrorCode    *string                      `json:"DynamicErrorCode,omitempty" xml:"DynamicErrorCode,omitempty"`
+	DynamicErrorMessage *string                      `json:"DynamicErrorMessage,omitempty" xml:"DynamicErrorMessage,omitempty"`
+	ErrorCode           *string                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode      *int32                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId           *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success             *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetBaselineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBaselineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBaselineResponseBody) SetData(v *GetBaselineResponseBodyData) *GetBaselineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetBaselineResponseBody) SetDynamicErrorCode(v string) *GetBaselineResponseBody {
+	s.DynamicErrorCode = &v
+	return s
+}
+
+func (s *GetBaselineResponseBody) SetDynamicErrorMessage(v string) *GetBaselineResponseBody {
+	s.DynamicErrorMessage = &v
+	return s
+}
+
+func (s *GetBaselineResponseBody) SetErrorCode(v string) *GetBaselineResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetBaselineResponseBody) SetErrorMessage(v string) *GetBaselineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetBaselineResponseBody) SetHttpStatusCode(v int32) *GetBaselineResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetBaselineResponseBody) SetRequestId(v string) *GetBaselineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBaselineResponseBody) SetSuccess(v bool) *GetBaselineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetBaselineResponseBodyData struct {
+	AlertEnabled         *bool                                          `json:"AlertEnabled,omitempty" xml:"AlertEnabled,omitempty"`
+	AlertMarginThreshold *int32                                         `json:"AlertMarginThreshold,omitempty" xml:"AlertMarginThreshold,omitempty"`
+	AlertSettings        []*GetBaselineResponseBodyDataAlertSettings    `json:"AlertSettings,omitempty" xml:"AlertSettings,omitempty" type:"Repeated"`
+	BaselineId           *int64                                         `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	BaselineName         *string                                        `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	BaselineType         *string                                        `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
+	Enabled              *bool                                          `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	OverTimeSettings     []*GetBaselineResponseBodyDataOverTimeSettings `json:"OverTimeSettings,omitempty" xml:"OverTimeSettings,omitempty" type:"Repeated"`
+	Owner                *string                                        `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Priority             *int32                                         `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProjectId            *int64                                         `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	TaskIds              []*int64                                       `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+}
+
+func (s GetBaselineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBaselineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetBaselineResponseBodyData) SetAlertEnabled(v bool) *GetBaselineResponseBodyData {
+	s.AlertEnabled = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyData) SetAlertMarginThreshold(v int32) *GetBaselineResponseBodyData {
+	s.AlertMarginThreshold = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyData) SetAlertSettings(v []*GetBaselineResponseBodyDataAlertSettings) *GetBaselineResponseBodyData {
+	s.AlertSettings = v
+	return s
+}
+
+func (s *GetBaselineResponseBodyData) SetBaselineId(v int64) *GetBaselineResponseBodyData {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyData) SetBaselineName(v string) *GetBaselineResponseBodyData {
+	s.BaselineName = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyData) SetBaselineType(v string) *GetBaselineResponseBodyData {
+	s.BaselineType = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyData) SetEnabled(v bool) *GetBaselineResponseBodyData {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyData) SetOverTimeSettings(v []*GetBaselineResponseBodyDataOverTimeSettings) *GetBaselineResponseBodyData {
+	s.OverTimeSettings = v
+	return s
+}
+
+func (s *GetBaselineResponseBodyData) SetOwner(v string) *GetBaselineResponseBodyData {
+	s.Owner = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyData) SetPriority(v int32) *GetBaselineResponseBodyData {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyData) SetProjectId(v int64) *GetBaselineResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyData) SetTaskIds(v []*int64) *GetBaselineResponseBodyData {
+	s.TaskIds = v
+	return s
+}
+
+type GetBaselineResponseBodyDataAlertSettings struct {
+	AlertInterval        *int32                                                `json:"AlertInterval,omitempty" xml:"AlertInterval,omitempty"`
+	AlertMaximum         *int32                                                `json:"AlertMaximum,omitempty" xml:"AlertMaximum,omitempty"`
+	AlertMethods         []*string                                             `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty" type:"Repeated"`
+	AlertRecipient       *string                                               `json:"AlertRecipient,omitempty" xml:"AlertRecipient,omitempty"`
+	AlertRecipientType   *string                                               `json:"AlertRecipientType,omitempty" xml:"AlertRecipientType,omitempty"`
+	AlertType            *string                                               `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	BaselineAlertEnabled *bool                                                 `json:"BaselineAlertEnabled,omitempty" xml:"BaselineAlertEnabled,omitempty"`
+	DingRobots           []*GetBaselineResponseBodyDataAlertSettingsDingRobots `json:"DingRobots,omitempty" xml:"DingRobots,omitempty" type:"Repeated"`
+	SilenceEndTime       *string                                               `json:"SilenceEndTime,omitempty" xml:"SilenceEndTime,omitempty"`
+	SilenceStartTime     *string                                               `json:"SilenceStartTime,omitempty" xml:"SilenceStartTime,omitempty"`
+	TopicTypes           []*string                                             `json:"TopicTypes,omitempty" xml:"TopicTypes,omitempty" type:"Repeated"`
+	Webhooks             []*string                                             `json:"Webhooks,omitempty" xml:"Webhooks,omitempty" type:"Repeated"`
+}
+
+func (s GetBaselineResponseBodyDataAlertSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBaselineResponseBodyDataAlertSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettings) SetAlertInterval(v int32) *GetBaselineResponseBodyDataAlertSettings {
+	s.AlertInterval = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettings) SetAlertMaximum(v int32) *GetBaselineResponseBodyDataAlertSettings {
+	s.AlertMaximum = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettings) SetAlertMethods(v []*string) *GetBaselineResponseBodyDataAlertSettings {
+	s.AlertMethods = v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettings) SetAlertRecipient(v string) *GetBaselineResponseBodyDataAlertSettings {
+	s.AlertRecipient = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettings) SetAlertRecipientType(v string) *GetBaselineResponseBodyDataAlertSettings {
+	s.AlertRecipientType = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettings) SetAlertType(v string) *GetBaselineResponseBodyDataAlertSettings {
+	s.AlertType = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettings) SetBaselineAlertEnabled(v bool) *GetBaselineResponseBodyDataAlertSettings {
+	s.BaselineAlertEnabled = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettings) SetDingRobots(v []*GetBaselineResponseBodyDataAlertSettingsDingRobots) *GetBaselineResponseBodyDataAlertSettings {
+	s.DingRobots = v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettings) SetSilenceEndTime(v string) *GetBaselineResponseBodyDataAlertSettings {
+	s.SilenceEndTime = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettings) SetSilenceStartTime(v string) *GetBaselineResponseBodyDataAlertSettings {
+	s.SilenceStartTime = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettings) SetTopicTypes(v []*string) *GetBaselineResponseBodyDataAlertSettings {
+	s.TopicTypes = v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettings) SetWebhooks(v []*string) *GetBaselineResponseBodyDataAlertSettings {
+	s.Webhooks = v
+	return s
+}
+
+type GetBaselineResponseBodyDataAlertSettingsDingRobots struct {
+	AtAll  *bool   `json:"AtAll,omitempty" xml:"AtAll,omitempty"`
+	WebUrl *string `json:"WebUrl,omitempty" xml:"WebUrl,omitempty"`
+}
+
+func (s GetBaselineResponseBodyDataAlertSettingsDingRobots) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBaselineResponseBodyDataAlertSettingsDingRobots) GoString() string {
+	return s.String()
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettingsDingRobots) SetAtAll(v bool) *GetBaselineResponseBodyDataAlertSettingsDingRobots {
+	s.AtAll = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettingsDingRobots) SetWebUrl(v string) *GetBaselineResponseBodyDataAlertSettingsDingRobots {
+	s.WebUrl = &v
+	return s
+}
+
+type GetBaselineResponseBodyDataOverTimeSettings struct {
+	Cycle *int32  `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	Time  *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s GetBaselineResponseBodyDataOverTimeSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBaselineResponseBodyDataOverTimeSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetBaselineResponseBodyDataOverTimeSettings) SetCycle(v int32) *GetBaselineResponseBodyDataOverTimeSettings {
+	s.Cycle = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataOverTimeSettings) SetTime(v string) *GetBaselineResponseBodyDataOverTimeSettings {
+	s.Time = &v
+	return s
+}
+
+type GetBaselineResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBaselineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBaselineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBaselineResponse) SetHeaders(v map[string]*string) *GetBaselineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBaselineResponse) SetStatusCode(v int32) *GetBaselineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetBaselineResponse) SetBody(v *GetBaselineResponseBody) *GetBaselineResponse {
+	s.Body = v
+	return s
+}
+
 type GetBaselineConfigRequest struct {
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 }
@@ -8729,170 +9339,6 @@ func (s *GetDISyncTaskResponse) SetStatusCode(v int32) *GetDISyncTaskResponse {
 }
 
 func (s *GetDISyncTaskResponse) SetBody(v *GetDISyncTaskResponseBody) *GetDISyncTaskResponse {
-	s.Body = v
-	return s
-}
-
-type GetDISyncTaskMetricInfoRequest struct {
-	EndDate   *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	FileId    *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-}
-
-func (s GetDISyncTaskMetricInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDISyncTaskMetricInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDISyncTaskMetricInfoRequest) SetEndDate(v int64) *GetDISyncTaskMetricInfoRequest {
-	s.EndDate = &v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoRequest) SetFileId(v int64) *GetDISyncTaskMetricInfoRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoRequest) SetProjectId(v int64) *GetDISyncTaskMetricInfoRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoRequest) SetStartDate(v int64) *GetDISyncTaskMetricInfoRequest {
-	s.StartDate = &v
-	return s
-}
-
-type GetDISyncTaskMetricInfoResponseBody struct {
-	MetricInfo *GetDISyncTaskMetricInfoResponseBodyMetricInfo `json:"MetricInfo,omitempty" xml:"MetricInfo,omitempty" type:"Struct"`
-	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetDISyncTaskMetricInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDISyncTaskMetricInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDISyncTaskMetricInfoResponseBody) SetMetricInfo(v *GetDISyncTaskMetricInfoResponseBodyMetricInfo) *GetDISyncTaskMetricInfoResponseBody {
-	s.MetricInfo = v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoResponseBody) SetRequestId(v string) *GetDISyncTaskMetricInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoResponseBody) SetSuccess(v bool) *GetDISyncTaskMetricInfoResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetDISyncTaskMetricInfoResponseBodyMetricInfo struct {
-	DeleteReaderRecords *int64  `json:"DeleteReaderRecords,omitempty" xml:"DeleteReaderRecords,omitempty"`
-	DeleteWriterRecords *int64  `json:"DeleteWriterRecords,omitempty" xml:"DeleteWriterRecords,omitempty"`
-	InsertReaderRecords *int64  `json:"InsertReaderRecords,omitempty" xml:"InsertReaderRecords,omitempty"`
-	InsertWriterRecords *int64  `json:"InsertWriterRecords,omitempty" xml:"InsertWriterRecords,omitempty"`
-	LastTaskDelay       *int64  `json:"LastTaskDelay,omitempty" xml:"LastTaskDelay,omitempty"`
-	Message             *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	SumReaderRecords    *int64  `json:"SumReaderRecords,omitempty" xml:"SumReaderRecords,omitempty"`
-	SumWriterRecords    *int64  `json:"SumWriterRecords,omitempty" xml:"SumWriterRecords,omitempty"`
-	UpdateReaderRecords *int64  `json:"UpdateReaderRecords,omitempty" xml:"UpdateReaderRecords,omitempty"`
-	UpdateWriterRecords *int64  `json:"UpdateWriterRecords,omitempty" xml:"UpdateWriterRecords,omitempty"`
-}
-
-func (s GetDISyncTaskMetricInfoResponseBodyMetricInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDISyncTaskMetricInfoResponseBodyMetricInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetDeleteReaderRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
-	s.DeleteReaderRecords = &v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetDeleteWriterRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
-	s.DeleteWriterRecords = &v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetInsertReaderRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
-	s.InsertReaderRecords = &v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetInsertWriterRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
-	s.InsertWriterRecords = &v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetLastTaskDelay(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
-	s.LastTaskDelay = &v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetMessage(v string) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
-	s.Message = &v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetSumReaderRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
-	s.SumReaderRecords = &v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetSumWriterRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
-	s.SumWriterRecords = &v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetUpdateReaderRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
-	s.UpdateReaderRecords = &v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoResponseBodyMetricInfo) SetUpdateWriterRecords(v int64) *GetDISyncTaskMetricInfoResponseBodyMetricInfo {
-	s.UpdateWriterRecords = &v
-	return s
-}
-
-type GetDISyncTaskMetricInfoResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDISyncTaskMetricInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDISyncTaskMetricInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDISyncTaskMetricInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDISyncTaskMetricInfoResponse) SetHeaders(v map[string]*string) *GetDISyncTaskMetricInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoResponse) SetStatusCode(v int32) *GetDISyncTaskMetricInfoResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetDISyncTaskMetricInfoResponse) SetBody(v *GetDISyncTaskMetricInfoResponseBody) *GetDISyncTaskMetricInfoResponse {
 	s.Body = v
 	return s
 }
@@ -19384,34 +19830,36 @@ func (s *GetProjectResponseBody) SetSuccess(v bool) *GetProjectResponseBody {
 }
 
 type GetProjectResponseBodyData struct {
-	Appkey                           *string   `json:"Appkey,omitempty" xml:"Appkey,omitempty"`
-	BaseProject                      *bool     `json:"BaseProject,omitempty" xml:"BaseProject,omitempty"`
-	DefaultDiResourceGroupIdentifier *string   `json:"DefaultDiResourceGroupIdentifier,omitempty" xml:"DefaultDiResourceGroupIdentifier,omitempty"`
-	Destination                      *int32    `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	DevStorageQuota                  *string   `json:"DevStorageQuota,omitempty" xml:"DevStorageQuota,omitempty"`
-	DevelopmentType                  *int32    `json:"DevelopmentType,omitempty" xml:"DevelopmentType,omitempty"`
-	DisableDevelopment               *bool     `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
-	EnvTypes                         []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
-	GmtCreate                        *string   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified                      *string   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IsAllowDownload                  *int32    `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
-	IsDefault                        *int32    `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	MaxFlowNode                      *int32    `json:"MaxFlowNode,omitempty" xml:"MaxFlowNode,omitempty"`
-	ProdStorageQuota                 *string   `json:"ProdStorageQuota,omitempty" xml:"ProdStorageQuota,omitempty"`
-	ProjectDescription               *string   `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	ProjectId                        *int32    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectIdentifier                *string   `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
-	ProjectMode                      *int32    `json:"ProjectMode,omitempty" xml:"ProjectMode,omitempty"`
-	ProjectName                      *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectOwnerBaseId               *string   `json:"ProjectOwnerBaseId,omitempty" xml:"ProjectOwnerBaseId,omitempty"`
-	ProtectedMode                    *int32    `json:"ProtectedMode,omitempty" xml:"ProtectedMode,omitempty"`
-	ResidentArea                     *string   `json:"ResidentArea,omitempty" xml:"ResidentArea,omitempty"`
-	SchedulerMaxRetryTimes           *int32    `json:"SchedulerMaxRetryTimes,omitempty" xml:"SchedulerMaxRetryTimes,omitempty"`
-	SchedulerRetryInterval           *int32    `json:"SchedulerRetryInterval,omitempty" xml:"SchedulerRetryInterval,omitempty"`
-	Status                           *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
-	TablePrivacyMode                 *int32    `json:"TablePrivacyMode,omitempty" xml:"TablePrivacyMode,omitempty"`
-	TenantId                         *int64    `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UseProxyOdpsAccount              *bool     `json:"UseProxyOdpsAccount,omitempty" xml:"UseProxyOdpsAccount,omitempty"`
+	Appkey                           *string                           `json:"Appkey,omitempty" xml:"Appkey,omitempty"`
+	BaseProject                      *bool                             `json:"BaseProject,omitempty" xml:"BaseProject,omitempty"`
+	DefaultDiResourceGroupIdentifier *string                           `json:"DefaultDiResourceGroupIdentifier,omitempty" xml:"DefaultDiResourceGroupIdentifier,omitempty"`
+	Destination                      *int32                            `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	DevStorageQuota                  *string                           `json:"DevStorageQuota,omitempty" xml:"DevStorageQuota,omitempty"`
+	DevelopmentType                  *int32                            `json:"DevelopmentType,omitempty" xml:"DevelopmentType,omitempty"`
+	DisableDevelopment               *bool                             `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
+	EnvTypes                         []*string                         `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
+	GmtCreate                        *string                           `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified                      *string                           `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	IsAllowDownload                  *int32                            `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
+	IsDefault                        *int32                            `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	MaxFlowNode                      *int32                            `json:"MaxFlowNode,omitempty" xml:"MaxFlowNode,omitempty"`
+	ProdStorageQuota                 *string                           `json:"ProdStorageQuota,omitempty" xml:"ProdStorageQuota,omitempty"`
+	ProjectDescription               *string                           `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
+	ProjectId                        *int32                            `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectIdentifier                *string                           `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	ProjectMode                      *int32                            `json:"ProjectMode,omitempty" xml:"ProjectMode,omitempty"`
+	ProjectName                      *string                           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectOwnerBaseId               *string                           `json:"ProjectOwnerBaseId,omitempty" xml:"ProjectOwnerBaseId,omitempty"`
+	ProtectedMode                    *int32                            `json:"ProtectedMode,omitempty" xml:"ProtectedMode,omitempty"`
+	ResidentArea                     *string                           `json:"ResidentArea,omitempty" xml:"ResidentArea,omitempty"`
+	ResourceManagerResourceGroupId   *string                           `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	SchedulerMaxRetryTimes           *int32                            `json:"SchedulerMaxRetryTimes,omitempty" xml:"SchedulerMaxRetryTimes,omitempty"`
+	SchedulerRetryInterval           *int32                            `json:"SchedulerRetryInterval,omitempty" xml:"SchedulerRetryInterval,omitempty"`
+	Status                           *int32                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	TablePrivacyMode                 *int32                            `json:"TablePrivacyMode,omitempty" xml:"TablePrivacyMode,omitempty"`
+	Tags                             []*GetProjectResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TenantId                         *int64                            `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UseProxyOdpsAccount              *bool                             `json:"UseProxyOdpsAccount,omitempty" xml:"UseProxyOdpsAccount,omitempty"`
 }
 
 func (s GetProjectResponseBodyData) String() string {
@@ -19532,6 +19980,11 @@ func (s *GetProjectResponseBodyData) SetResidentArea(v string) *GetProjectRespon
 	return s
 }
 
+func (s *GetProjectResponseBodyData) SetResourceManagerResourceGroupId(v string) *GetProjectResponseBodyData {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *GetProjectResponseBodyData) SetSchedulerMaxRetryTimes(v int32) *GetProjectResponseBodyData {
 	s.SchedulerMaxRetryTimes = &v
 	return s
@@ -19552,6 +20005,11 @@ func (s *GetProjectResponseBodyData) SetTablePrivacyMode(v int32) *GetProjectRes
 	return s
 }
 
+func (s *GetProjectResponseBodyData) SetTags(v []*GetProjectResponseBodyDataTags) *GetProjectResponseBodyData {
+	s.Tags = v
+	return s
+}
+
 func (s *GetProjectResponseBodyData) SetTenantId(v int64) *GetProjectResponseBodyData {
 	s.TenantId = &v
 	return s
@@ -19559,6 +20017,29 @@ func (s *GetProjectResponseBodyData) SetTenantId(v int64) *GetProjectResponseBod
 
 func (s *GetProjectResponseBodyData) SetUseProxyOdpsAccount(v bool) *GetProjectResponseBodyData {
 	s.UseProxyOdpsAccount = &v
+	return s
+}
+
+type GetProjectResponseBodyDataTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetProjectResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponseBodyDataTags) SetKey(v string) *GetProjectResponseBodyDataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataTags) SetValue(v string) *GetProjectResponseBodyDataTags {
+	s.Value = &v
 	return s
 }
 
@@ -19644,24 +20125,30 @@ func (s *GetProjectDetailResponseBody) SetSuccess(v bool) *GetProjectDetailRespo
 }
 
 type GetProjectDetailResponseBodyData struct {
-	DefaultDiResourceGroupIdentifier *string   `json:"DefaultDiResourceGroupIdentifier,omitempty" xml:"DefaultDiResourceGroupIdentifier,omitempty"`
-	DevelopmentType                  *int32    `json:"DevelopmentType,omitempty" xml:"DevelopmentType,omitempty"`
-	EnvTypes                         []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
-	GmtCreate                        *string   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified                      *string   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IsAllowDownload                  *int32    `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
-	ProjectDescription               *string   `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	ProjectId                        *int32    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectIdentifier                *string   `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
-	ProjectMode                      *int32    `json:"ProjectMode,omitempty" xml:"ProjectMode,omitempty"`
-	ProjectName                      *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectOwnerBaseId               *string   `json:"ProjectOwnerBaseId,omitempty" xml:"ProjectOwnerBaseId,omitempty"`
-	ProtectedMode                    *int32    `json:"ProtectedMode,omitempty" xml:"ProtectedMode,omitempty"`
-	ResidentArea                     *string   `json:"ResidentArea,omitempty" xml:"ResidentArea,omitempty"`
-	SchedulerMaxRetryTimes           *int32    `json:"SchedulerMaxRetryTimes,omitempty" xml:"SchedulerMaxRetryTimes,omitempty"`
-	SchedulerRetryInterval           *int32    `json:"SchedulerRetryInterval,omitempty" xml:"SchedulerRetryInterval,omitempty"`
-	Status                           *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId                         *int64    `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	DefaultDiResourceGroupIdentifier *string                                 `json:"DefaultDiResourceGroupIdentifier,omitempty" xml:"DefaultDiResourceGroupIdentifier,omitempty"`
+	DevelopmentType                  *int32                                  `json:"DevelopmentType,omitempty" xml:"DevelopmentType,omitempty"`
+	DisableDevelopment               *bool                                   `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
+	EnvTypes                         []*string                               `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
+	GmtCreate                        *string                                 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified                      *string                                 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	IsAllowDownload                  *int32                                  `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
+	IsDefault                        *int32                                  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	ProjectDescription               *string                                 `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
+	ProjectId                        *int32                                  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectIdentifier                *string                                 `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	ProjectMode                      *int32                                  `json:"ProjectMode,omitempty" xml:"ProjectMode,omitempty"`
+	ProjectName                      *string                                 `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectOwnerBaseId               *string                                 `json:"ProjectOwnerBaseId,omitempty" xml:"ProjectOwnerBaseId,omitempty"`
+	ProtectedMode                    *int32                                  `json:"ProtectedMode,omitempty" xml:"ProtectedMode,omitempty"`
+	ResidentArea                     *string                                 `json:"ResidentArea,omitempty" xml:"ResidentArea,omitempty"`
+	ResourceManagerResourceGroupId   *string                                 `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	SchedulerMaxRetryTimes           *int32                                  `json:"SchedulerMaxRetryTimes,omitempty" xml:"SchedulerMaxRetryTimes,omitempty"`
+	SchedulerRetryInterval           *int32                                  `json:"SchedulerRetryInterval,omitempty" xml:"SchedulerRetryInterval,omitempty"`
+	Status                           *int32                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TablePrivacyMode                 *int32                                  `json:"TablePrivacyMode,omitempty" xml:"TablePrivacyMode,omitempty"`
+	Tags                             []*GetProjectDetailResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TenantId                         *int64                                  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UseProxyOdpsAccount              *bool                                   `json:"UseProxyOdpsAccount,omitempty" xml:"UseProxyOdpsAccount,omitempty"`
 }
 
 func (s GetProjectDetailResponseBodyData) String() string {
@@ -19682,6 +20169,11 @@ func (s *GetProjectDetailResponseBodyData) SetDevelopmentType(v int32) *GetProje
 	return s
 }
 
+func (s *GetProjectDetailResponseBodyData) SetDisableDevelopment(v bool) *GetProjectDetailResponseBodyData {
+	s.DisableDevelopment = &v
+	return s
+}
+
 func (s *GetProjectDetailResponseBodyData) SetEnvTypes(v []*string) *GetProjectDetailResponseBodyData {
 	s.EnvTypes = v
 	return s
@@ -19699,6 +20191,11 @@ func (s *GetProjectDetailResponseBodyData) SetGmtModified(v string) *GetProjectD
 
 func (s *GetProjectDetailResponseBodyData) SetIsAllowDownload(v int32) *GetProjectDetailResponseBodyData {
 	s.IsAllowDownload = &v
+	return s
+}
+
+func (s *GetProjectDetailResponseBodyData) SetIsDefault(v int32) *GetProjectDetailResponseBodyData {
+	s.IsDefault = &v
 	return s
 }
 
@@ -19742,6 +20239,11 @@ func (s *GetProjectDetailResponseBodyData) SetResidentArea(v string) *GetProject
 	return s
 }
 
+func (s *GetProjectDetailResponseBodyData) SetResourceManagerResourceGroupId(v string) *GetProjectDetailResponseBodyData {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *GetProjectDetailResponseBodyData) SetSchedulerMaxRetryTimes(v int32) *GetProjectDetailResponseBodyData {
 	s.SchedulerMaxRetryTimes = &v
 	return s
@@ -19757,8 +20259,46 @@ func (s *GetProjectDetailResponseBodyData) SetStatus(v int32) *GetProjectDetailR
 	return s
 }
 
+func (s *GetProjectDetailResponseBodyData) SetTablePrivacyMode(v int32) *GetProjectDetailResponseBodyData {
+	s.TablePrivacyMode = &v
+	return s
+}
+
+func (s *GetProjectDetailResponseBodyData) SetTags(v []*GetProjectDetailResponseBodyDataTags) *GetProjectDetailResponseBodyData {
+	s.Tags = v
+	return s
+}
+
 func (s *GetProjectDetailResponseBodyData) SetTenantId(v int64) *GetProjectDetailResponseBodyData {
 	s.TenantId = &v
+	return s
+}
+
+func (s *GetProjectDetailResponseBodyData) SetUseProxyOdpsAccount(v bool) *GetProjectDetailResponseBodyData {
+	s.UseProxyOdpsAccount = &v
+	return s
+}
+
+type GetProjectDetailResponseBodyDataTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetProjectDetailResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectDetailResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectDetailResponseBodyDataTags) SetKey(v string) *GetProjectDetailResponseBodyDataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetProjectDetailResponseBodyDataTags) SetValue(v string) *GetProjectDetailResponseBodyDataTags {
+	s.Value = &v
 	return s
 }
 
@@ -20493,6 +21033,7 @@ type GetRemindResponseBodyData struct {
 	RemindUnit    *string                                  `json:"RemindUnit,omitempty" xml:"RemindUnit,omitempty"`
 	Robots        []*GetRemindResponseBodyDataRobots       `json:"Robots,omitempty" xml:"Robots,omitempty" type:"Repeated"`
 	Useflag       *bool                                    `json:"Useflag,omitempty" xml:"Useflag,omitempty"`
+	Webhooks      []*string                                `json:"Webhooks,omitempty" xml:"Webhooks,omitempty" type:"Repeated"`
 }
 
 func (s GetRemindResponseBodyData) String() string {
@@ -20595,6 +21136,11 @@ func (s *GetRemindResponseBodyData) SetRobots(v []*GetRemindResponseBodyDataRobo
 
 func (s *GetRemindResponseBodyData) SetUseflag(v bool) *GetRemindResponseBodyData {
 	s.Useflag = &v
+	return s
+}
+
+func (s *GetRemindResponseBodyData) SetWebhooks(v []*string) *GetRemindResponseBodyData {
+	s.Webhooks = v
 	return s
 }
 
@@ -22506,6 +23052,288 @@ func (s *ListBaselineStatusesResponse) SetBody(v *ListBaselineStatusesResponseBo
 	return s
 }
 
+type ListBaselinesRequest struct {
+	BaselineTypes *string `json:"BaselineTypes,omitempty" xml:"BaselineTypes,omitempty"`
+	Enable        *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Priority      *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProjectEnv    *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	ProjectId     *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SearchText    *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
+}
+
+func (s ListBaselinesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBaselinesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBaselinesRequest) SetBaselineTypes(v string) *ListBaselinesRequest {
+	s.BaselineTypes = &v
+	return s
+}
+
+func (s *ListBaselinesRequest) SetEnable(v bool) *ListBaselinesRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListBaselinesRequest) SetOwner(v string) *ListBaselinesRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListBaselinesRequest) SetPageNumber(v int32) *ListBaselinesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBaselinesRequest) SetPageSize(v int32) *ListBaselinesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBaselinesRequest) SetPriority(v string) *ListBaselinesRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListBaselinesRequest) SetProjectEnv(v string) *ListBaselinesRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListBaselinesRequest) SetProjectId(v int64) *ListBaselinesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListBaselinesRequest) SetSearchText(v string) *ListBaselinesRequest {
+	s.SearchText = &v
+	return s
+}
+
+type ListBaselinesResponseBody struct {
+	Data                *ListBaselinesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DynamicErrorCode    *string                        `json:"DynamicErrorCode,omitempty" xml:"DynamicErrorCode,omitempty"`
+	DynamicErrorMessage *string                        `json:"DynamicErrorMessage,omitempty" xml:"DynamicErrorMessage,omitempty"`
+	ErrorCode           *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode      *int32                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId           *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success             *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListBaselinesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBaselinesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBaselinesResponseBody) SetData(v *ListBaselinesResponseBodyData) *ListBaselinesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListBaselinesResponseBody) SetDynamicErrorCode(v string) *ListBaselinesResponseBody {
+	s.DynamicErrorCode = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBody) SetDynamicErrorMessage(v string) *ListBaselinesResponseBody {
+	s.DynamicErrorMessage = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBody) SetErrorCode(v string) *ListBaselinesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBody) SetErrorMessage(v string) *ListBaselinesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBody) SetHttpStatusCode(v int32) *ListBaselinesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBody) SetRequestId(v string) *ListBaselinesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBody) SetSuccess(v bool) *ListBaselinesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListBaselinesResponseBodyData struct {
+	Baselines  []*ListBaselinesResponseBodyDataBaselines `json:"Baselines,omitempty" xml:"Baselines,omitempty" type:"Repeated"`
+	PageNumber *string                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *string                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListBaselinesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBaselinesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListBaselinesResponseBodyData) SetBaselines(v []*ListBaselinesResponseBodyDataBaselines) *ListBaselinesResponseBodyData {
+	s.Baselines = v
+	return s
+}
+
+func (s *ListBaselinesResponseBodyData) SetPageNumber(v string) *ListBaselinesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBodyData) SetPageSize(v string) *ListBaselinesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBodyData) SetTotalCount(v string) *ListBaselinesResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListBaselinesResponseBodyDataBaselines struct {
+	AlertEnabled         *bool                                                     `json:"AlertEnabled,omitempty" xml:"AlertEnabled,omitempty"`
+	AlertMarginThreshold *int32                                                    `json:"AlertMarginThreshold,omitempty" xml:"AlertMarginThreshold,omitempty"`
+	BaselineId           *int64                                                    `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	BaselineName         *string                                                   `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	BaselineType         *string                                                   `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
+	Enabled              *bool                                                     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	OverTimeSettings     []*ListBaselinesResponseBodyDataBaselinesOverTimeSettings `json:"OverTimeSettings,omitempty" xml:"OverTimeSettings,omitempty" type:"Repeated"`
+	Owner                *string                                                   `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Priority             *int32                                                    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProjectId            *int64                                                    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s ListBaselinesResponseBodyDataBaselines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBaselinesResponseBodyDataBaselines) GoString() string {
+	return s.String()
+}
+
+func (s *ListBaselinesResponseBodyDataBaselines) SetAlertEnabled(v bool) *ListBaselinesResponseBodyDataBaselines {
+	s.AlertEnabled = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBodyDataBaselines) SetAlertMarginThreshold(v int32) *ListBaselinesResponseBodyDataBaselines {
+	s.AlertMarginThreshold = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBodyDataBaselines) SetBaselineId(v int64) *ListBaselinesResponseBodyDataBaselines {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBodyDataBaselines) SetBaselineName(v string) *ListBaselinesResponseBodyDataBaselines {
+	s.BaselineName = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBodyDataBaselines) SetBaselineType(v string) *ListBaselinesResponseBodyDataBaselines {
+	s.BaselineType = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBodyDataBaselines) SetEnabled(v bool) *ListBaselinesResponseBodyDataBaselines {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBodyDataBaselines) SetOverTimeSettings(v []*ListBaselinesResponseBodyDataBaselinesOverTimeSettings) *ListBaselinesResponseBodyDataBaselines {
+	s.OverTimeSettings = v
+	return s
+}
+
+func (s *ListBaselinesResponseBodyDataBaselines) SetOwner(v string) *ListBaselinesResponseBodyDataBaselines {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBodyDataBaselines) SetPriority(v int32) *ListBaselinesResponseBodyDataBaselines {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBodyDataBaselines) SetProjectId(v int64) *ListBaselinesResponseBodyDataBaselines {
+	s.ProjectId = &v
+	return s
+}
+
+type ListBaselinesResponseBodyDataBaselinesOverTimeSettings struct {
+	Cycle *int32  `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	Time  *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s ListBaselinesResponseBodyDataBaselinesOverTimeSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBaselinesResponseBodyDataBaselinesOverTimeSettings) GoString() string {
+	return s.String()
+}
+
+func (s *ListBaselinesResponseBodyDataBaselinesOverTimeSettings) SetCycle(v int32) *ListBaselinesResponseBodyDataBaselinesOverTimeSettings {
+	s.Cycle = &v
+	return s
+}
+
+func (s *ListBaselinesResponseBodyDataBaselinesOverTimeSettings) SetTime(v string) *ListBaselinesResponseBodyDataBaselinesOverTimeSettings {
+	s.Time = &v
+	return s
+}
+
+type ListBaselinesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListBaselinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListBaselinesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBaselinesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBaselinesResponse) SetHeaders(v map[string]*string) *ListBaselinesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBaselinesResponse) SetStatusCode(v int32) *ListBaselinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBaselinesResponse) SetBody(v *ListBaselinesResponseBody) *ListBaselinesResponse {
+	s.Body = v
+	return s
+}
+
 type ListBusinessRequest struct {
 	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -23213,327 +24041,6 @@ func (s *ListConnectionsResponse) SetStatusCode(v int32) *ListConnectionsRespons
 }
 
 func (s *ListConnectionsResponse) SetBody(v *ListConnectionsResponseBody) *ListConnectionsResponse {
-	s.Body = v
-	return s
-}
-
-type ListCurrentTasksForResourceGroupRequest struct {
-	PageNumber              *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectEnv              *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
-	Status                  *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s ListCurrentTasksForResourceGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCurrentTasksForResourceGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListCurrentTasksForResourceGroupRequest) SetPageNumber(v int32) *ListCurrentTasksForResourceGroupRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupRequest) SetPageSize(v int32) *ListCurrentTasksForResourceGroupRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupRequest) SetProjectEnv(v string) *ListCurrentTasksForResourceGroupRequest {
-	s.ProjectEnv = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupRequest) SetResourceGroupIdentifier(v string) *ListCurrentTasksForResourceGroupRequest {
-	s.ResourceGroupIdentifier = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupRequest) SetStatus(v int32) *ListCurrentTasksForResourceGroupRequest {
-	s.Status = &v
-	return s
-}
-
-type ListCurrentTasksForResourceGroupResponseBody struct {
-	Data           *ListCurrentTasksForResourceGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListCurrentTasksForResourceGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCurrentTasksForResourceGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBody) SetData(v *ListCurrentTasksForResourceGroupResponseBodyData) *ListCurrentTasksForResourceGroupResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBody) SetErrorCode(v string) *ListCurrentTasksForResourceGroupResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBody) SetErrorMessage(v string) *ListCurrentTasksForResourceGroupResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBody) SetHttpStatusCode(v int32) *ListCurrentTasksForResourceGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBody) SetRequestId(v string) *ListCurrentTasksForResourceGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBody) SetSuccess(v bool) *ListCurrentTasksForResourceGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListCurrentTasksForResourceGroupResponseBodyData struct {
-	PageNum  *int32                                                   `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tasks    []*ListCurrentTasksForResourceGroupResponseBodyDataTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	TotalNum *int32                                                   `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-}
-
-func (s ListCurrentTasksForResourceGroupResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCurrentTasksForResourceGroupResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBodyData) SetPageNum(v int32) *ListCurrentTasksForResourceGroupResponseBodyData {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBodyData) SetPageSize(v int32) *ListCurrentTasksForResourceGroupResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBodyData) SetTasks(v []*ListCurrentTasksForResourceGroupResponseBodyDataTasks) *ListCurrentTasksForResourceGroupResponseBodyData {
-	s.Tasks = v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBodyData) SetTotalNum(v int32) *ListCurrentTasksForResourceGroupResponseBodyData {
-	s.TotalNum = &v
-	return s
-}
-
-type ListCurrentTasksForResourceGroupResponseBodyDataTasks struct {
-	Concurrency *string `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskSource  *string `json:"TaskSource,omitempty" xml:"TaskSource,omitempty"`
-	TaskType    *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-}
-
-func (s ListCurrentTasksForResourceGroupResponseBodyDataTasks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCurrentTasksForResourceGroupResponseBodyDataTasks) GoString() string {
-	return s.String()
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBodyDataTasks) SetConcurrency(v string) *ListCurrentTasksForResourceGroupResponseBodyDataTasks {
-	s.Concurrency = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBodyDataTasks) SetProjectName(v string) *ListCurrentTasksForResourceGroupResponseBodyDataTasks {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBodyDataTasks) SetStatus(v int32) *ListCurrentTasksForResourceGroupResponseBodyDataTasks {
-	s.Status = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBodyDataTasks) SetTaskId(v string) *ListCurrentTasksForResourceGroupResponseBodyDataTasks {
-	s.TaskId = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBodyDataTasks) SetTaskName(v string) *ListCurrentTasksForResourceGroupResponseBodyDataTasks {
-	s.TaskName = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBodyDataTasks) SetTaskSource(v string) *ListCurrentTasksForResourceGroupResponseBodyDataTasks {
-	s.TaskSource = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponseBodyDataTasks) SetTaskType(v int32) *ListCurrentTasksForResourceGroupResponseBodyDataTasks {
-	s.TaskType = &v
-	return s
-}
-
-type ListCurrentTasksForResourceGroupResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCurrentTasksForResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListCurrentTasksForResourceGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCurrentTasksForResourceGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListCurrentTasksForResourceGroupResponse) SetHeaders(v map[string]*string) *ListCurrentTasksForResourceGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponse) SetStatusCode(v int32) *ListCurrentTasksForResourceGroupResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListCurrentTasksForResourceGroupResponse) SetBody(v *ListCurrentTasksForResourceGroupResponseBody) *ListCurrentTasksForResourceGroupResponse {
-	s.Body = v
-	return s
-}
-
-type ListCurrentUsageForResourceGroupRequest struct {
-	ProjectEnv              *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
-}
-
-func (s ListCurrentUsageForResourceGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCurrentUsageForResourceGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListCurrentUsageForResourceGroupRequest) SetProjectEnv(v string) *ListCurrentUsageForResourceGroupRequest {
-	s.ProjectEnv = &v
-	return s
-}
-
-func (s *ListCurrentUsageForResourceGroupRequest) SetResourceGroupIdentifier(v string) *ListCurrentUsageForResourceGroupRequest {
-	s.ResourceGroupIdentifier = &v
-	return s
-}
-
-type ListCurrentUsageForResourceGroupResponseBody struct {
-	Data           *ListCurrentUsageForResourceGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage   *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListCurrentUsageForResourceGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCurrentUsageForResourceGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListCurrentUsageForResourceGroupResponseBody) SetData(v *ListCurrentUsageForResourceGroupResponseBodyData) *ListCurrentUsageForResourceGroupResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListCurrentUsageForResourceGroupResponseBody) SetErrorMessage(v string) *ListCurrentUsageForResourceGroupResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListCurrentUsageForResourceGroupResponseBody) SetHttpStatusCode(v int32) *ListCurrentUsageForResourceGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListCurrentUsageForResourceGroupResponseBody) SetRequestId(v string) *ListCurrentUsageForResourceGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListCurrentUsageForResourceGroupResponseBody) SetSuccess(v bool) *ListCurrentUsageForResourceGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListCurrentUsageForResourceGroupResponseBodyData struct {
-	RecodeTime *int64   `json:"RecodeTime,omitempty" xml:"RecodeTime,omitempty"`
-	Usage      *float32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
-}
-
-func (s ListCurrentUsageForResourceGroupResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCurrentUsageForResourceGroupResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListCurrentUsageForResourceGroupResponseBodyData) SetRecodeTime(v int64) *ListCurrentUsageForResourceGroupResponseBodyData {
-	s.RecodeTime = &v
-	return s
-}
-
-func (s *ListCurrentUsageForResourceGroupResponseBodyData) SetUsage(v float32) *ListCurrentUsageForResourceGroupResponseBodyData {
-	s.Usage = &v
-	return s
-}
-
-type ListCurrentUsageForResourceGroupResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCurrentUsageForResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListCurrentUsageForResourceGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCurrentUsageForResourceGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListCurrentUsageForResourceGroupResponse) SetHeaders(v map[string]*string) *ListCurrentUsageForResourceGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListCurrentUsageForResourceGroupResponse) SetStatusCode(v int32) *ListCurrentUsageForResourceGroupResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListCurrentUsageForResourceGroupResponse) SetBody(v *ListCurrentUsageForResourceGroupResponseBody) *ListCurrentUsageForResourceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -27187,6 +27694,158 @@ func (s *ListDeploymentsResponse) SetBody(v *ListDeploymentsResponseBody) *ListD
 	return s
 }
 
+type ListEnabledExtensionsForProjectRequest struct {
+	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
+	FileType  *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s ListEnabledExtensionsForProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnabledExtensionsForProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnabledExtensionsForProjectRequest) SetEventCode(v string) *ListEnabledExtensionsForProjectRequest {
+	s.EventCode = &v
+	return s
+}
+
+func (s *ListEnabledExtensionsForProjectRequest) SetFileType(v string) *ListEnabledExtensionsForProjectRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *ListEnabledExtensionsForProjectRequest) SetProjectId(v int64) *ListEnabledExtensionsForProjectRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type ListEnabledExtensionsForProjectResponseBody struct {
+	Extensions []*ListEnabledExtensionsForProjectResponseBodyExtensions `json:"Extensions,omitempty" xml:"Extensions,omitempty" type:"Repeated"`
+	RequestId  *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListEnabledExtensionsForProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnabledExtensionsForProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnabledExtensionsForProjectResponseBody) SetExtensions(v []*ListEnabledExtensionsForProjectResponseBodyExtensions) *ListEnabledExtensionsForProjectResponseBody {
+	s.Extensions = v
+	return s
+}
+
+func (s *ListEnabledExtensionsForProjectResponseBody) SetRequestId(v string) *ListEnabledExtensionsForProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListEnabledExtensionsForProjectResponseBodyExtensions struct {
+	CreateUser       *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	ExtensionCode    *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
+	ExtensionDesc    *string `json:"ExtensionDesc,omitempty" xml:"ExtensionDesc,omitempty"`
+	ExtensionName    *string `json:"ExtensionName,omitempty" xml:"ExtensionName,omitempty"`
+	GmtCreate        *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified      *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	ModifyUser       *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	Owner            *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ParameterSetting *string `json:"ParameterSetting,omitempty" xml:"ParameterSetting,omitempty"`
+	TenantId         *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ListEnabledExtensionsForProjectResponseBodyExtensions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnabledExtensionsForProjectResponseBodyExtensions) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnabledExtensionsForProjectResponseBodyExtensions) SetCreateUser(v string) *ListEnabledExtensionsForProjectResponseBodyExtensions {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListEnabledExtensionsForProjectResponseBodyExtensions) SetExtensionCode(v string) *ListEnabledExtensionsForProjectResponseBodyExtensions {
+	s.ExtensionCode = &v
+	return s
+}
+
+func (s *ListEnabledExtensionsForProjectResponseBodyExtensions) SetExtensionDesc(v string) *ListEnabledExtensionsForProjectResponseBodyExtensions {
+	s.ExtensionDesc = &v
+	return s
+}
+
+func (s *ListEnabledExtensionsForProjectResponseBodyExtensions) SetExtensionName(v string) *ListEnabledExtensionsForProjectResponseBodyExtensions {
+	s.ExtensionName = &v
+	return s
+}
+
+func (s *ListEnabledExtensionsForProjectResponseBodyExtensions) SetGmtCreate(v int64) *ListEnabledExtensionsForProjectResponseBodyExtensions {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListEnabledExtensionsForProjectResponseBodyExtensions) SetGmtModified(v int64) *ListEnabledExtensionsForProjectResponseBodyExtensions {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListEnabledExtensionsForProjectResponseBodyExtensions) SetModifyUser(v string) *ListEnabledExtensionsForProjectResponseBodyExtensions {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *ListEnabledExtensionsForProjectResponseBodyExtensions) SetOwner(v string) *ListEnabledExtensionsForProjectResponseBodyExtensions {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListEnabledExtensionsForProjectResponseBodyExtensions) SetParameterSetting(v string) *ListEnabledExtensionsForProjectResponseBodyExtensions {
+	s.ParameterSetting = &v
+	return s
+}
+
+func (s *ListEnabledExtensionsForProjectResponseBodyExtensions) SetTenantId(v int64) *ListEnabledExtensionsForProjectResponseBodyExtensions {
+	s.TenantId = &v
+	return s
+}
+
+type ListEnabledExtensionsForProjectResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEnabledExtensionsForProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEnabledExtensionsForProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnabledExtensionsForProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnabledExtensionsForProjectResponse) SetHeaders(v map[string]*string) *ListEnabledExtensionsForProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnabledExtensionsForProjectResponse) SetStatusCode(v int32) *ListEnabledExtensionsForProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEnabledExtensionsForProjectResponse) SetBody(v *ListEnabledExtensionsForProjectResponseBody) *ListEnabledExtensionsForProjectResponse {
+	s.Body = v
+	return s
+}
+
 type ListExtensionsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -28255,211 +28914,6 @@ func (s *ListFoldersResponse) SetStatusCode(v int32) *ListFoldersResponse {
 }
 
 func (s *ListFoldersResponse) SetBody(v *ListFoldersResponseBody) *ListFoldersResponse {
-	s.Body = v
-	return s
-}
-
-type ListHistoryTasksForResourceGroupRequest struct {
-	EndTime                 *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageNumber              *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectEnv              *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
-	StartTime               *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s ListHistoryTasksForResourceGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListHistoryTasksForResourceGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListHistoryTasksForResourceGroupRequest) SetEndTime(v int64) *ListHistoryTasksForResourceGroupRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupRequest) SetPageNumber(v int32) *ListHistoryTasksForResourceGroupRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupRequest) SetPageSize(v int32) *ListHistoryTasksForResourceGroupRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupRequest) SetProjectEnv(v string) *ListHistoryTasksForResourceGroupRequest {
-	s.ProjectEnv = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupRequest) SetResourceGroupIdentifier(v string) *ListHistoryTasksForResourceGroupRequest {
-	s.ResourceGroupIdentifier = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupRequest) SetStartTime(v int64) *ListHistoryTasksForResourceGroupRequest {
-	s.StartTime = &v
-	return s
-}
-
-type ListHistoryTasksForResourceGroupResponseBody struct {
-	Data           *ListHistoryTasksForResourceGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListHistoryTasksForResourceGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListHistoryTasksForResourceGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBody) SetData(v *ListHistoryTasksForResourceGroupResponseBodyData) *ListHistoryTasksForResourceGroupResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBody) SetErrorCode(v string) *ListHistoryTasksForResourceGroupResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBody) SetErrorMessage(v string) *ListHistoryTasksForResourceGroupResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBody) SetHttpStatusCode(v int32) *ListHistoryTasksForResourceGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBody) SetRequestId(v string) *ListHistoryTasksForResourceGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBody) SetSuccess(v bool) *ListHistoryTasksForResourceGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListHistoryTasksForResourceGroupResponseBodyData struct {
-	PageNum  *int32                                                   `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tasks    []*ListHistoryTasksForResourceGroupResponseBodyDataTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	TotalNum *int32                                                   `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-}
-
-func (s ListHistoryTasksForResourceGroupResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListHistoryTasksForResourceGroupResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBodyData) SetPageNum(v int32) *ListHistoryTasksForResourceGroupResponseBodyData {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBodyData) SetPageSize(v int32) *ListHistoryTasksForResourceGroupResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBodyData) SetTasks(v []*ListHistoryTasksForResourceGroupResponseBodyDataTasks) *ListHistoryTasksForResourceGroupResponseBodyData {
-	s.Tasks = v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBodyData) SetTotalNum(v int32) *ListHistoryTasksForResourceGroupResponseBodyData {
-	s.TotalNum = &v
-	return s
-}
-
-type ListHistoryTasksForResourceGroupResponseBodyDataTasks struct {
-	Concurrency *int32  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskType    *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-}
-
-func (s ListHistoryTasksForResourceGroupResponseBodyDataTasks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListHistoryTasksForResourceGroupResponseBodyDataTasks) GoString() string {
-	return s.String()
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBodyDataTasks) SetConcurrency(v int32) *ListHistoryTasksForResourceGroupResponseBodyDataTasks {
-	s.Concurrency = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBodyDataTasks) SetProjectName(v string) *ListHistoryTasksForResourceGroupResponseBodyDataTasks {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBodyDataTasks) SetStatus(v int32) *ListHistoryTasksForResourceGroupResponseBodyDataTasks {
-	s.Status = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBodyDataTasks) SetTaskId(v string) *ListHistoryTasksForResourceGroupResponseBodyDataTasks {
-	s.TaskId = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBodyDataTasks) SetTaskName(v string) *ListHistoryTasksForResourceGroupResponseBodyDataTasks {
-	s.TaskName = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponseBodyDataTasks) SetTaskType(v int32) *ListHistoryTasksForResourceGroupResponseBodyDataTasks {
-	s.TaskType = &v
-	return s
-}
-
-type ListHistoryTasksForResourceGroupResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHistoryTasksForResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListHistoryTasksForResourceGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListHistoryTasksForResourceGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListHistoryTasksForResourceGroupResponse) SetHeaders(v map[string]*string) *ListHistoryTasksForResourceGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponse) SetStatusCode(v int32) *ListHistoryTasksForResourceGroupResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListHistoryTasksForResourceGroupResponse) SetBody(v *ListHistoryTasksForResourceGroupResponseBody) *ListHistoryTasksForResourceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -31704,8 +32158,10 @@ func (s *ListProjectRolesResponse) SetBody(v *ListProjectRolesResponseBody) *Lis
 }
 
 type ListProjectsRequest struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber                     *int32                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                       *int32                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceManagerResourceGroupId *string                    `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	Tags                           []*ListProjectsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListProjectsRequest) String() string {
@@ -31723,6 +32179,74 @@ func (s *ListProjectsRequest) SetPageNumber(v int32) *ListProjectsRequest {
 
 func (s *ListProjectsRequest) SetPageSize(v int32) *ListProjectsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetResourceManagerResourceGroupId(v string) *ListProjectsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetTags(v []*ListProjectsRequestTags) *ListProjectsRequest {
+	s.Tags = v
+	return s
+}
+
+type ListProjectsRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListProjectsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsRequestTags) SetKey(v string) *ListProjectsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListProjectsRequestTags) SetValue(v string) *ListProjectsRequestTags {
+	s.Value = &v
+	return s
+}
+
+type ListProjectsShrinkRequest struct {
+	PageNumber                     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	TagsShrink                     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s ListProjectsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsShrinkRequest) SetPageNumber(v int32) *ListProjectsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetPageSize(v int32) *ListProjectsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetResourceManagerResourceGroupId(v string) *ListProjectsShrinkRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetTagsShrink(v string) *ListProjectsShrinkRequest {
+	s.TagsShrink = &v
 	return s
 }
 
@@ -31785,13 +32309,19 @@ func (s *ListProjectsResponseBodyPageResult) SetTotalCount(v int32) *ListProject
 }
 
 type ListProjectsResponseBodyPageResultProjectList struct {
-	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	ProjectId          *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectIdentifier  *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectOwnerBaseId *string `json:"ProjectOwnerBaseId,omitempty" xml:"ProjectOwnerBaseId,omitempty"`
-	ProjectStatus      *int32  `json:"ProjectStatus,omitempty" xml:"ProjectStatus,omitempty"`
-	ProjectStatusCode  *string `json:"ProjectStatusCode,omitempty" xml:"ProjectStatusCode,omitempty"`
+	DisableDevelopment             *bool                                                `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
+	IsDefault                      *int32                                               `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	ProjectDescription             *string                                              `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
+	ProjectId                      *int64                                               `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectIdentifier              *string                                              `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	ProjectName                    *string                                              `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectOwnerBaseId             *string                                              `json:"ProjectOwnerBaseId,omitempty" xml:"ProjectOwnerBaseId,omitempty"`
+	ProjectStatus                  *int32                                               `json:"ProjectStatus,omitempty" xml:"ProjectStatus,omitempty"`
+	ProjectStatusCode              *string                                              `json:"ProjectStatusCode,omitempty" xml:"ProjectStatusCode,omitempty"`
+	ResourceManagerResourceGroupId *string                                              `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	TablePrivacyMode               *int32                                               `json:"TablePrivacyMode,omitempty" xml:"TablePrivacyMode,omitempty"`
+	Tags                           []*ListProjectsResponseBodyPageResultProjectListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UseProxyOdpsAccount            *bool                                                `json:"UseProxyOdpsAccount,omitempty" xml:"UseProxyOdpsAccount,omitempty"`
 }
 
 func (s ListProjectsResponseBodyPageResultProjectList) String() string {
@@ -31800,6 +32330,16 @@ func (s ListProjectsResponseBodyPageResultProjectList) String() string {
 
 func (s ListProjectsResponseBodyPageResultProjectList) GoString() string {
 	return s.String()
+}
+
+func (s *ListProjectsResponseBodyPageResultProjectList) SetDisableDevelopment(v bool) *ListProjectsResponseBodyPageResultProjectList {
+	s.DisableDevelopment = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPageResultProjectList) SetIsDefault(v int32) *ListProjectsResponseBodyPageResultProjectList {
+	s.IsDefault = &v
+	return s
 }
 
 func (s *ListProjectsResponseBodyPageResultProjectList) SetProjectDescription(v string) *ListProjectsResponseBodyPageResultProjectList {
@@ -31834,6 +32374,49 @@ func (s *ListProjectsResponseBodyPageResultProjectList) SetProjectStatus(v int32
 
 func (s *ListProjectsResponseBodyPageResultProjectList) SetProjectStatusCode(v string) *ListProjectsResponseBodyPageResultProjectList {
 	s.ProjectStatusCode = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPageResultProjectList) SetResourceManagerResourceGroupId(v string) *ListProjectsResponseBodyPageResultProjectList {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPageResultProjectList) SetTablePrivacyMode(v int32) *ListProjectsResponseBodyPageResultProjectList {
+	s.TablePrivacyMode = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPageResultProjectList) SetTags(v []*ListProjectsResponseBodyPageResultProjectListTags) *ListProjectsResponseBodyPageResultProjectList {
+	s.Tags = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPageResultProjectList) SetUseProxyOdpsAccount(v bool) *ListProjectsResponseBodyPageResultProjectList {
+	s.UseProxyOdpsAccount = &v
+	return s
+}
+
+type ListProjectsResponseBodyPageResultProjectListTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListProjectsResponseBodyPageResultProjectListTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyPageResultProjectListTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyPageResultProjectListTags) SetKey(v string) *ListProjectsResponseBodyPageResultProjectListTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyPageResultProjectListTags) SetValue(v string) *ListProjectsResponseBodyPageResultProjectListTags {
+	s.Value = &v
 	return s
 }
 
@@ -33578,9 +34161,11 @@ func (s *ListRemindsResponse) SetBody(v *ListRemindsResponseBody) *ListRemindsRe
 }
 
 type ListResourceGroupsRequest struct {
-	BizExtKey         *string `json:"BizExtKey,omitempty" xml:"BizExtKey,omitempty"`
-	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	ResourceGroupType *int32  `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
+	BizExtKey                      *string                          `json:"BizExtKey,omitempty" xml:"BizExtKey,omitempty"`
+	Keyword                        *string                          `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	ResourceGroupType              *int32                           `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
+	ResourceManagerResourceGroupId *string                          `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	Tags                           []*ListResourceGroupsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListResourceGroupsRequest) String() string {
@@ -33603,6 +34188,80 @@ func (s *ListResourceGroupsRequest) SetKeyword(v string) *ListResourceGroupsRequ
 
 func (s *ListResourceGroupsRequest) SetResourceGroupType(v int32) *ListResourceGroupsRequest {
 	s.ResourceGroupType = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequest) SetResourceManagerResourceGroupId(v string) *ListResourceGroupsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequest) SetTags(v []*ListResourceGroupsRequestTags) *ListResourceGroupsRequest {
+	s.Tags = v
+	return s
+}
+
+type ListResourceGroupsRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListResourceGroupsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceGroupsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceGroupsRequestTags) SetKey(v string) *ListResourceGroupsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequestTags) SetValue(v string) *ListResourceGroupsRequestTags {
+	s.Value = &v
+	return s
+}
+
+type ListResourceGroupsShrinkRequest struct {
+	BizExtKey                      *string `json:"BizExtKey,omitempty" xml:"BizExtKey,omitempty"`
+	Keyword                        *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	ResourceGroupType              *int32  `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	TagsShrink                     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s ListResourceGroupsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceGroupsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceGroupsShrinkRequest) SetBizExtKey(v string) *ListResourceGroupsShrinkRequest {
+	s.BizExtKey = &v
+	return s
+}
+
+func (s *ListResourceGroupsShrinkRequest) SetKeyword(v string) *ListResourceGroupsShrinkRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListResourceGroupsShrinkRequest) SetResourceGroupType(v int32) *ListResourceGroupsShrinkRequest {
+	s.ResourceGroupType = &v
+	return s
+}
+
+func (s *ListResourceGroupsShrinkRequest) SetResourceManagerResourceGroupId(v string) *ListResourceGroupsShrinkRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ListResourceGroupsShrinkRequest) SetTagsShrink(v string) *ListResourceGroupsShrinkRequest {
+	s.TagsShrink = &v
 	return s
 }
 
@@ -33642,21 +34301,23 @@ func (s *ListResourceGroupsResponseBody) SetSuccess(v bool) *ListResourceGroupsR
 }
 
 type ListResourceGroupsResponseBodyData struct {
-	BizExtKey         *string                `json:"BizExtKey,omitempty" xml:"BizExtKey,omitempty"`
-	Cluster           *string                `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
-	CreateTime        *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnableKp          *bool                  `json:"EnableKp,omitempty" xml:"EnableKp,omitempty"`
-	Id                *int64                 `json:"Id,omitempty" xml:"Id,omitempty"`
-	Identifier        *string                `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	IsDefault         *bool                  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Mode              *string                `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Name              *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResourceGroupType *string                `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
-	Sequence          *int32                 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	Specs             map[string]interface{} `json:"Specs,omitempty" xml:"Specs,omitempty"`
-	Status            *int32                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId          *int64                 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UpdateTime        *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	BizExtKey                      *string                                   `json:"BizExtKey,omitempty" xml:"BizExtKey,omitempty"`
+	Cluster                        *string                                   `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
+	CreateTime                     *string                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableKp                       *bool                                     `json:"EnableKp,omitempty" xml:"EnableKp,omitempty"`
+	Id                             *int64                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Identifier                     *string                                   `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	IsDefault                      *bool                                     `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Mode                           *string                                   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Name                           *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceGroupType              *string                                   `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
+	ResourceManagerResourceGroupId *string                                   `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	Sequence                       *int32                                    `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	Specs                          map[string]interface{}                    `json:"Specs,omitempty" xml:"Specs,omitempty"`
+	Status                         *int32                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                           []*ListResourceGroupsResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TenantId                       *int64                                    `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UpdateTime                     *string                                   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListResourceGroupsResponseBodyData) String() string {
@@ -33717,6 +34378,11 @@ func (s *ListResourceGroupsResponseBodyData) SetResourceGroupType(v string) *Lis
 	return s
 }
 
+func (s *ListResourceGroupsResponseBodyData) SetResourceManagerResourceGroupId(v string) *ListResourceGroupsResponseBodyData {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *ListResourceGroupsResponseBodyData) SetSequence(v int32) *ListResourceGroupsResponseBodyData {
 	s.Sequence = &v
 	return s
@@ -33732,6 +34398,11 @@ func (s *ListResourceGroupsResponseBodyData) SetStatus(v int32) *ListResourceGro
 	return s
 }
 
+func (s *ListResourceGroupsResponseBodyData) SetTags(v []*ListResourceGroupsResponseBodyDataTags) *ListResourceGroupsResponseBodyData {
+	s.Tags = v
+	return s
+}
+
 func (s *ListResourceGroupsResponseBodyData) SetTenantId(v int64) *ListResourceGroupsResponseBodyData {
 	s.TenantId = &v
 	return s
@@ -33739,6 +34410,29 @@ func (s *ListResourceGroupsResponseBodyData) SetTenantId(v int64) *ListResourceG
 
 func (s *ListResourceGroupsResponseBodyData) SetUpdateTime(v string) *ListResourceGroupsResponseBodyData {
 	s.UpdateTime = &v
+	return s
+}
+
+type ListResourceGroupsResponseBodyDataTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListResourceGroupsResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceGroupsResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceGroupsResponseBodyDataTags) SetKey(v string) *ListResourceGroupsResponseBodyDataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListResourceGroupsResponseBodyDataTags) SetValue(v string) *ListResourceGroupsResponseBodyDataTags {
+	s.Value = &v
 	return s
 }
 
@@ -34863,140 +35557,6 @@ func (s *ListTopicsResponse) SetStatusCode(v int32) *ListTopicsResponse {
 }
 
 func (s *ListTopicsResponse) SetBody(v *ListTopicsResponseBody) *ListTopicsResponse {
-	s.Body = v
-	return s
-}
-
-type ListUsageForResourceGroupRequest struct {
-	EndTime                 *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ProjectEnv              *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
-	StartTime               *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s ListUsageForResourceGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUsageForResourceGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListUsageForResourceGroupRequest) SetEndTime(v int64) *ListUsageForResourceGroupRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ListUsageForResourceGroupRequest) SetProjectEnv(v string) *ListUsageForResourceGroupRequest {
-	s.ProjectEnv = &v
-	return s
-}
-
-func (s *ListUsageForResourceGroupRequest) SetResourceGroupIdentifier(v string) *ListUsageForResourceGroupRequest {
-	s.ResourceGroupIdentifier = &v
-	return s
-}
-
-func (s *ListUsageForResourceGroupRequest) SetStartTime(v int64) *ListUsageForResourceGroupRequest {
-	s.StartTime = &v
-	return s
-}
-
-type ListUsageForResourceGroupResponseBody struct {
-	Data           []*ListUsageForResourceGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode      *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListUsageForResourceGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUsageForResourceGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListUsageForResourceGroupResponseBody) SetData(v []*ListUsageForResourceGroupResponseBodyData) *ListUsageForResourceGroupResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListUsageForResourceGroupResponseBody) SetErrorCode(v string) *ListUsageForResourceGroupResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListUsageForResourceGroupResponseBody) SetErrorMessage(v string) *ListUsageForResourceGroupResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListUsageForResourceGroupResponseBody) SetHttpStatusCode(v int32) *ListUsageForResourceGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListUsageForResourceGroupResponseBody) SetRequestId(v string) *ListUsageForResourceGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListUsageForResourceGroupResponseBody) SetSuccess(v bool) *ListUsageForResourceGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListUsageForResourceGroupResponseBodyData struct {
-	RecodeTime *int64   `json:"RecodeTime,omitempty" xml:"RecodeTime,omitempty"`
-	Usage      *float64 `json:"Usage,omitempty" xml:"Usage,omitempty"`
-}
-
-func (s ListUsageForResourceGroupResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUsageForResourceGroupResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListUsageForResourceGroupResponseBodyData) SetRecodeTime(v int64) *ListUsageForResourceGroupResponseBodyData {
-	s.RecodeTime = &v
-	return s
-}
-
-func (s *ListUsageForResourceGroupResponseBodyData) SetUsage(v float64) *ListUsageForResourceGroupResponseBodyData {
-	s.Usage = &v
-	return s
-}
-
-type ListUsageForResourceGroupResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUsageForResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListUsageForResourceGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUsageForResourceGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListUsageForResourceGroupResponse) SetHeaders(v map[string]*string) *ListUsageForResourceGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListUsageForResourceGroupResponse) SetStatusCode(v int32) *ListUsageForResourceGroupResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListUsageForResourceGroupResponse) SetBody(v *ListUsageForResourceGroupResponseBody) *ListUsageForResourceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -38317,6 +38877,401 @@ func (s *TopTenErrorTimesInstanceResponse) SetBody(v *TopTenErrorTimesInstanceRe
 	return s
 }
 
+type UpdateBaselineRequest struct {
+	AlertEnabled         *bool                                    `json:"AlertEnabled,omitempty" xml:"AlertEnabled,omitempty"`
+	AlertMarginThreshold *int32                                   `json:"AlertMarginThreshold,omitempty" xml:"AlertMarginThreshold,omitempty"`
+	AlertSettings        []*UpdateBaselineRequestAlertSettings    `json:"AlertSettings,omitempty" xml:"AlertSettings,omitempty" type:"Repeated"`
+	BaselineId           *int64                                   `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	BaselineName         *string                                  `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	BaselineType         *string                                  `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
+	Enabled              *bool                                    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	OvertimeSettings     []*UpdateBaselineRequestOvertimeSettings `json:"OvertimeSettings,omitempty" xml:"OvertimeSettings,omitempty" type:"Repeated"`
+	Owner                *string                                  `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Priority             *int32                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProjectId            *int64                                   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RemoveTaskIds        *string                                  `json:"RemoveTaskIds,omitempty" xml:"RemoveTaskIds,omitempty"`
+	TaskIds              *string                                  `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+}
+
+func (s UpdateBaselineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBaselineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBaselineRequest) SetAlertEnabled(v bool) *UpdateBaselineRequest {
+	s.AlertEnabled = &v
+	return s
+}
+
+func (s *UpdateBaselineRequest) SetAlertMarginThreshold(v int32) *UpdateBaselineRequest {
+	s.AlertMarginThreshold = &v
+	return s
+}
+
+func (s *UpdateBaselineRequest) SetAlertSettings(v []*UpdateBaselineRequestAlertSettings) *UpdateBaselineRequest {
+	s.AlertSettings = v
+	return s
+}
+
+func (s *UpdateBaselineRequest) SetBaselineId(v int64) *UpdateBaselineRequest {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *UpdateBaselineRequest) SetBaselineName(v string) *UpdateBaselineRequest {
+	s.BaselineName = &v
+	return s
+}
+
+func (s *UpdateBaselineRequest) SetBaselineType(v string) *UpdateBaselineRequest {
+	s.BaselineType = &v
+	return s
+}
+
+func (s *UpdateBaselineRequest) SetEnabled(v bool) *UpdateBaselineRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateBaselineRequest) SetOvertimeSettings(v []*UpdateBaselineRequestOvertimeSettings) *UpdateBaselineRequest {
+	s.OvertimeSettings = v
+	return s
+}
+
+func (s *UpdateBaselineRequest) SetOwner(v string) *UpdateBaselineRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *UpdateBaselineRequest) SetPriority(v int32) *UpdateBaselineRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateBaselineRequest) SetProjectId(v int64) *UpdateBaselineRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateBaselineRequest) SetRemoveTaskIds(v string) *UpdateBaselineRequest {
+	s.RemoveTaskIds = &v
+	return s
+}
+
+func (s *UpdateBaselineRequest) SetTaskIds(v string) *UpdateBaselineRequest {
+	s.TaskIds = &v
+	return s
+}
+
+type UpdateBaselineRequestAlertSettings struct {
+	AlertInterval        *int32                                          `json:"AlertInterval,omitempty" xml:"AlertInterval,omitempty"`
+	AlertMaximum         *int32                                          `json:"AlertMaximum,omitempty" xml:"AlertMaximum,omitempty"`
+	AlertMethods         []*string                                       `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty" type:"Repeated"`
+	AlertRecipient       *string                                         `json:"AlertRecipient,omitempty" xml:"AlertRecipient,omitempty"`
+	AlertRecipientType   *string                                         `json:"AlertRecipientType,omitempty" xml:"AlertRecipientType,omitempty"`
+	AlertType            *string                                         `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	BaselineAlertEnabled *bool                                           `json:"BaselineAlertEnabled,omitempty" xml:"BaselineAlertEnabled,omitempty"`
+	DingRobots           []*UpdateBaselineRequestAlertSettingsDingRobots `json:"DingRobots,omitempty" xml:"DingRobots,omitempty" type:"Repeated"`
+	SilenceEndTime       *string                                         `json:"SilenceEndTime,omitempty" xml:"SilenceEndTime,omitempty"`
+	SilenceStartTime     *string                                         `json:"SilenceStartTime,omitempty" xml:"SilenceStartTime,omitempty"`
+	TopicTypes           []*string                                       `json:"TopicTypes,omitempty" xml:"TopicTypes,omitempty" type:"Repeated"`
+	Webhooks             []*string                                       `json:"Webhooks,omitempty" xml:"Webhooks,omitempty" type:"Repeated"`
+}
+
+func (s UpdateBaselineRequestAlertSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBaselineRequestAlertSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBaselineRequestAlertSettings) SetAlertInterval(v int32) *UpdateBaselineRequestAlertSettings {
+	s.AlertInterval = &v
+	return s
+}
+
+func (s *UpdateBaselineRequestAlertSettings) SetAlertMaximum(v int32) *UpdateBaselineRequestAlertSettings {
+	s.AlertMaximum = &v
+	return s
+}
+
+func (s *UpdateBaselineRequestAlertSettings) SetAlertMethods(v []*string) *UpdateBaselineRequestAlertSettings {
+	s.AlertMethods = v
+	return s
+}
+
+func (s *UpdateBaselineRequestAlertSettings) SetAlertRecipient(v string) *UpdateBaselineRequestAlertSettings {
+	s.AlertRecipient = &v
+	return s
+}
+
+func (s *UpdateBaselineRequestAlertSettings) SetAlertRecipientType(v string) *UpdateBaselineRequestAlertSettings {
+	s.AlertRecipientType = &v
+	return s
+}
+
+func (s *UpdateBaselineRequestAlertSettings) SetAlertType(v string) *UpdateBaselineRequestAlertSettings {
+	s.AlertType = &v
+	return s
+}
+
+func (s *UpdateBaselineRequestAlertSettings) SetBaselineAlertEnabled(v bool) *UpdateBaselineRequestAlertSettings {
+	s.BaselineAlertEnabled = &v
+	return s
+}
+
+func (s *UpdateBaselineRequestAlertSettings) SetDingRobots(v []*UpdateBaselineRequestAlertSettingsDingRobots) *UpdateBaselineRequestAlertSettings {
+	s.DingRobots = v
+	return s
+}
+
+func (s *UpdateBaselineRequestAlertSettings) SetSilenceEndTime(v string) *UpdateBaselineRequestAlertSettings {
+	s.SilenceEndTime = &v
+	return s
+}
+
+func (s *UpdateBaselineRequestAlertSettings) SetSilenceStartTime(v string) *UpdateBaselineRequestAlertSettings {
+	s.SilenceStartTime = &v
+	return s
+}
+
+func (s *UpdateBaselineRequestAlertSettings) SetTopicTypes(v []*string) *UpdateBaselineRequestAlertSettings {
+	s.TopicTypes = v
+	return s
+}
+
+func (s *UpdateBaselineRequestAlertSettings) SetWebhooks(v []*string) *UpdateBaselineRequestAlertSettings {
+	s.Webhooks = v
+	return s
+}
+
+type UpdateBaselineRequestAlertSettingsDingRobots struct {
+	AtAll  *bool   `json:"AtAll,omitempty" xml:"AtAll,omitempty"`
+	WebUrl *string `json:"WebUrl,omitempty" xml:"WebUrl,omitempty"`
+}
+
+func (s UpdateBaselineRequestAlertSettingsDingRobots) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBaselineRequestAlertSettingsDingRobots) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBaselineRequestAlertSettingsDingRobots) SetAtAll(v bool) *UpdateBaselineRequestAlertSettingsDingRobots {
+	s.AtAll = &v
+	return s
+}
+
+func (s *UpdateBaselineRequestAlertSettingsDingRobots) SetWebUrl(v string) *UpdateBaselineRequestAlertSettingsDingRobots {
+	s.WebUrl = &v
+	return s
+}
+
+type UpdateBaselineRequestOvertimeSettings struct {
+	Cycle *int32  `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	Time  *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s UpdateBaselineRequestOvertimeSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBaselineRequestOvertimeSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBaselineRequestOvertimeSettings) SetCycle(v int32) *UpdateBaselineRequestOvertimeSettings {
+	s.Cycle = &v
+	return s
+}
+
+func (s *UpdateBaselineRequestOvertimeSettings) SetTime(v string) *UpdateBaselineRequestOvertimeSettings {
+	s.Time = &v
+	return s
+}
+
+type UpdateBaselineShrinkRequest struct {
+	AlertEnabled           *bool   `json:"AlertEnabled,omitempty" xml:"AlertEnabled,omitempty"`
+	AlertMarginThreshold   *int32  `json:"AlertMarginThreshold,omitempty" xml:"AlertMarginThreshold,omitempty"`
+	AlertSettingsShrink    *string `json:"AlertSettings,omitempty" xml:"AlertSettings,omitempty"`
+	BaselineId             *int64  `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	BaselineName           *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	BaselineType           *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
+	Enabled                *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	OvertimeSettingsShrink *string `json:"OvertimeSettings,omitempty" xml:"OvertimeSettings,omitempty"`
+	Owner                  *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Priority               *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProjectId              *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RemoveTaskIds          *string `json:"RemoveTaskIds,omitempty" xml:"RemoveTaskIds,omitempty"`
+	TaskIds                *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+}
+
+func (s UpdateBaselineShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBaselineShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBaselineShrinkRequest) SetAlertEnabled(v bool) *UpdateBaselineShrinkRequest {
+	s.AlertEnabled = &v
+	return s
+}
+
+func (s *UpdateBaselineShrinkRequest) SetAlertMarginThreshold(v int32) *UpdateBaselineShrinkRequest {
+	s.AlertMarginThreshold = &v
+	return s
+}
+
+func (s *UpdateBaselineShrinkRequest) SetAlertSettingsShrink(v string) *UpdateBaselineShrinkRequest {
+	s.AlertSettingsShrink = &v
+	return s
+}
+
+func (s *UpdateBaselineShrinkRequest) SetBaselineId(v int64) *UpdateBaselineShrinkRequest {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *UpdateBaselineShrinkRequest) SetBaselineName(v string) *UpdateBaselineShrinkRequest {
+	s.BaselineName = &v
+	return s
+}
+
+func (s *UpdateBaselineShrinkRequest) SetBaselineType(v string) *UpdateBaselineShrinkRequest {
+	s.BaselineType = &v
+	return s
+}
+
+func (s *UpdateBaselineShrinkRequest) SetEnabled(v bool) *UpdateBaselineShrinkRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateBaselineShrinkRequest) SetOvertimeSettingsShrink(v string) *UpdateBaselineShrinkRequest {
+	s.OvertimeSettingsShrink = &v
+	return s
+}
+
+func (s *UpdateBaselineShrinkRequest) SetOwner(v string) *UpdateBaselineShrinkRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *UpdateBaselineShrinkRequest) SetPriority(v int32) *UpdateBaselineShrinkRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateBaselineShrinkRequest) SetProjectId(v int64) *UpdateBaselineShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateBaselineShrinkRequest) SetRemoveTaskIds(v string) *UpdateBaselineShrinkRequest {
+	s.RemoveTaskIds = &v
+	return s
+}
+
+func (s *UpdateBaselineShrinkRequest) SetTaskIds(v string) *UpdateBaselineShrinkRequest {
+	s.TaskIds = &v
+	return s
+}
+
+type UpdateBaselineResponseBody struct {
+	Data                *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicErrorCode    *string `json:"DynamicErrorCode,omitempty" xml:"DynamicErrorCode,omitempty"`
+	DynamicErrorMessage *string `json:"DynamicErrorMessage,omitempty" xml:"DynamicErrorMessage,omitempty"`
+	ErrorCode           *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode      *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success             *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateBaselineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBaselineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBaselineResponseBody) SetData(v bool) *UpdateBaselineResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateBaselineResponseBody) SetDynamicErrorCode(v string) *UpdateBaselineResponseBody {
+	s.DynamicErrorCode = &v
+	return s
+}
+
+func (s *UpdateBaselineResponseBody) SetDynamicErrorMessage(v string) *UpdateBaselineResponseBody {
+	s.DynamicErrorMessage = &v
+	return s
+}
+
+func (s *UpdateBaselineResponseBody) SetErrorCode(v string) *UpdateBaselineResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateBaselineResponseBody) SetErrorMessage(v string) *UpdateBaselineResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateBaselineResponseBody) SetHttpStatusCode(v int32) *UpdateBaselineResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateBaselineResponseBody) SetRequestId(v string) *UpdateBaselineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateBaselineResponseBody) SetSuccess(v bool) *UpdateBaselineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateBaselineResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateBaselineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBaselineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBaselineResponse) SetHeaders(v map[string]*string) *UpdateBaselineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateBaselineResponse) SetStatusCode(v int32) *UpdateBaselineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateBaselineResponse) SetBody(v *UpdateBaselineResponseBody) *UpdateBaselineResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateBusinessRequest struct {
 	BusinessId        *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	BusinessName      *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
@@ -40289,6 +41244,7 @@ type UpdateRemindRequest struct {
 	RemindUnit    *string `json:"RemindUnit,omitempty" xml:"RemindUnit,omitempty"`
 	RobotUrls     *string `json:"RobotUrls,omitempty" xml:"RobotUrls,omitempty"`
 	UseFlag       *bool   `json:"UseFlag,omitempty" xml:"UseFlag,omitempty"`
+	Webhooks      *string `json:"Webhooks,omitempty" xml:"Webhooks,omitempty"`
 }
 
 func (s UpdateRemindRequest) String() string {
@@ -40381,6 +41337,11 @@ func (s *UpdateRemindRequest) SetRobotUrls(v string) *UpdateRemindRequest {
 
 func (s *UpdateRemindRequest) SetUseFlag(v bool) *UpdateRemindRequest {
 	s.UseFlag = &v
+	return s
+}
+
+func (s *UpdateRemindRequest) SetWebhooks(v string) *UpdateRemindRequest {
+	s.Webhooks = &v
 	return s
 }
 
@@ -41904,6 +42865,78 @@ func (client *Client) CheckMetaTable(request *CheckMetaTableRequest) (_result *C
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckMetaTableResponse{}
 	_body, _err := client.CheckMetaTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateBaselineWithOptions(request *CreateBaselineRequest, runtime *util.RuntimeOptions) (_result *CreateBaselineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertMarginThreshold)) {
+		body["AlertMarginThreshold"] = request.AlertMarginThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaselineName)) {
+		body["BaselineName"] = request.BaselineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaselineType)) {
+		body["BaselineType"] = request.BaselineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OvertimeSettings)) {
+		body["OvertimeSettings"] = request.OvertimeSettings
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIds)) {
+		body["TaskIds"] = request.TaskIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBaseline"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBaselineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateBaseline(request *CreateBaselineRequest) (_result *CreateBaselineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBaselineResponse{}
+	_body, _err := client.CreateBaselineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43675,6 +44708,10 @@ func (client *Client) CreateRemindWithOptions(request *CreateRemindRequest, runt
 		body["RobotUrls"] = request.RobotUrls
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Webhooks)) {
+		body["Webhooks"] = request.Webhooks
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -44024,6 +45061,54 @@ func (client *Client) CreateUdfFile(request *CreateUdfFileRequest) (_result *Cre
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUdfFileResponse{}
 	_body, _err := client.CreateUdfFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteBaselineWithOptions(request *DeleteBaselineRequest, runtime *util.RuntimeOptions) (_result *DeleteBaselineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaselineId)) {
+		body["BaselineId"] = request.BaselineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBaseline"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBaselineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBaseline(request *DeleteBaselineRequest) (_result *DeleteBaselineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBaselineResponse{}
+	_body, _err := client.DeleteBaselineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45359,6 +46444,54 @@ func (client *Client) GenerateDISyncTaskConfigForUpdating(request *GenerateDISyn
 	return _result, _err
 }
 
+func (client *Client) GetBaselineWithOptions(request *GetBaselineRequest, runtime *util.RuntimeOptions) (_result *GetBaselineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaselineId)) {
+		body["BaselineId"] = request.BaselineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBaseline"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBaselineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBaseline(request *GetBaselineRequest) (_result *GetBaselineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBaselineResponse{}
+	_body, _err := client.GetBaselineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetBaselineConfigWithOptions(request *GetBaselineConfigRequest, runtime *util.RuntimeOptions) (_result *GetBaselineConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45696,46 +46829,6 @@ func (client *Client) GetDISyncTask(request *GetDISyncTaskRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDISyncTaskResponse{}
 	_body, _err := client.GetDISyncTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDISyncTaskMetricInfoWithOptions(request *GetDISyncTaskMetricInfoRequest, runtime *util.RuntimeOptions) (_result *GetDISyncTaskMetricInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDISyncTaskMetricInfo"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetDISyncTaskMetricInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDISyncTaskMetricInfo(request *GetDISyncTaskMetricInfoRequest) (_result *GetDISyncTaskMetricInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDISyncTaskMetricInfoResponse{}
-	_body, _err := client.GetDISyncTaskMetricInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -48977,6 +50070,82 @@ func (client *Client) ListBaselineStatuses(request *ListBaselineStatusesRequest)
 	return _result, _err
 }
 
+func (client *Client) ListBaselinesWithOptions(request *ListBaselinesRequest, runtime *util.RuntimeOptions) (_result *ListBaselinesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaselineTypes)) {
+		body["BaselineTypes"] = request.BaselineTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchText)) {
+		body["SearchText"] = request.SearchText
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBaselines"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBaselinesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBaselines(request *ListBaselinesRequest) (_result *ListBaselinesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBaselinesResponse{}
+	_body, _err := client.ListBaselinesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListBusinessWithOptions(request *ListBusinessRequest, runtime *util.RuntimeOptions) (_result *ListBusinessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49134,114 +50303,6 @@ func (client *Client) ListConnections(request *ListConnectionsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ListConnectionsResponse{}
 	_body, _err := client.ListConnectionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListCurrentTasksForResourceGroupWithOptions(request *ListCurrentTasksForResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ListCurrentTasksForResourceGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		body["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		body["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
-		body["ProjectEnv"] = request.ProjectEnv
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdentifier)) {
-		body["ResourceGroupIdentifier"] = request.ResourceGroupIdentifier
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		body["Status"] = request.Status
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListCurrentTasksForResourceGroup"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListCurrentTasksForResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListCurrentTasksForResourceGroup(request *ListCurrentTasksForResourceGroupRequest) (_result *ListCurrentTasksForResourceGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListCurrentTasksForResourceGroupResponse{}
-	_body, _err := client.ListCurrentTasksForResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListCurrentUsageForResourceGroupWithOptions(request *ListCurrentUsageForResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ListCurrentUsageForResourceGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
-		body["ProjectEnv"] = request.ProjectEnv
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdentifier)) {
-		body["ResourceGroupIdentifier"] = request.ResourceGroupIdentifier
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListCurrentUsageForResourceGroup"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListCurrentUsageForResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListCurrentUsageForResourceGroup(request *ListCurrentUsageForResourceGroupRequest) (_result *ListCurrentUsageForResourceGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListCurrentUsageForResourceGroupResponse{}
-	_body, _err := client.ListCurrentUsageForResourceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49949,12 +51010,72 @@ func (client *Client) ListDeployments(request *ListDeploymentsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) ListEnabledExtensionsForProjectWithOptions(request *ListEnabledExtensionsForProjectRequest, runtime *util.RuntimeOptions) (_result *ListEnabledExtensionsForProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventCode)) {
+		body["EventCode"] = request.EventCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		body["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnabledExtensionsForProject"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnabledExtensionsForProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEnabledExtensionsForProject(request *ListEnabledExtensionsForProjectRequest) (_result *ListEnabledExtensionsForProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEnabledExtensionsForProjectResponse{}
+	_body, _err := client.ListEnabledExtensionsForProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListExtensionsWithOptions(request *ListExtensionsRequest, runtime *util.RuntimeOptions) (_result *ListExtensionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -49963,7 +51084,7 @@ func (client *Client) ListExtensionsWithOptions(request *ListExtensionsRequest, 
 		Version:     tea.String("2020-05-18"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -50246,70 +51367,6 @@ func (client *Client) ListFolders(request *ListFoldersRequest) (_result *ListFol
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFoldersResponse{}
 	_body, _err := client.ListFoldersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListHistoryTasksForResourceGroupWithOptions(request *ListHistoryTasksForResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ListHistoryTasksForResourceGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		body["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		body["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		body["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
-		body["ProjectEnv"] = request.ProjectEnv
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdentifier)) {
-		body["ResourceGroupIdentifier"] = request.ResourceGroupIdentifier
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		body["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListHistoryTasksForResourceGroup"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListHistoryTasksForResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListHistoryTasksForResourceGroup(request *ListHistoryTasksForResourceGroupRequest) (_result *ListHistoryTasksForResourceGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListHistoryTasksForResourceGroupResponse{}
-	_body, _err := client.ListHistoryTasksForResourceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51273,11 +52330,17 @@ func (client *Client) ListProjectRoles(request *ListProjectRolesRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListProjectsWithOptions(tmpReq *ListProjectsRequest, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListProjectsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
@@ -51285,6 +52348,14 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -51637,11 +52708,17 @@ func (client *Client) ListReminds(request *ListRemindsRequest) (_result *ListRem
 	return _result, _err
 }
 
-func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsRequest, runtime *util.RuntimeOptions) (_result *ListResourceGroupsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListResourceGroupsWithOptions(tmpReq *ListResourceGroupsRequest, runtime *util.RuntimeOptions) (_result *ListResourceGroupsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListResourceGroupsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BizExtKey)) {
 		query["BizExtKey"] = request.BizExtKey
@@ -51653,6 +52730,14 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupType)) {
 		query["ResourceGroupType"] = request.ResourceGroupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -51998,62 +53083,6 @@ func (client *Client) ListTopics(request *ListTopicsRequest) (_result *ListTopic
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTopicsResponse{}
 	_body, _err := client.ListTopicsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListUsageForResourceGroupWithOptions(request *ListUsageForResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ListUsageForResourceGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		body["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
-		body["ProjectEnv"] = request.ProjectEnv
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdentifier)) {
-		body["ResourceGroupIdentifier"] = request.ResourceGroupIdentifier
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		body["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListUsageForResourceGroup"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListUsageForResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListUsageForResourceGroup(request *ListUsageForResourceGroupRequest) (_result *ListUsageForResourceGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListUsageForResourceGroupResponse{}
-	_body, _err := client.ListUsageForResourceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -53659,6 +54688,108 @@ func (client *Client) TopTenErrorTimesInstance(request *TopTenErrorTimesInstance
 	return _result, _err
 }
 
+func (client *Client) UpdateBaselineWithOptions(tmpReq *UpdateBaselineRequest, runtime *util.RuntimeOptions) (_result *UpdateBaselineResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateBaselineShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AlertSettings)) {
+		request.AlertSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlertSettings, tea.String("AlertSettings"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.OvertimeSettings)) {
+		request.OvertimeSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OvertimeSettings, tea.String("OvertimeSettings"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertEnabled)) {
+		body["AlertEnabled"] = request.AlertEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertMarginThreshold)) {
+		body["AlertMarginThreshold"] = request.AlertMarginThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertSettingsShrink)) {
+		body["AlertSettings"] = request.AlertSettingsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaselineId)) {
+		body["BaselineId"] = request.BaselineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaselineName)) {
+		body["BaselineName"] = request.BaselineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaselineType)) {
+		body["BaselineType"] = request.BaselineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		body["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OvertimeSettingsShrink)) {
+		body["OvertimeSettings"] = request.OvertimeSettingsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoveTaskIds)) {
+		body["RemoveTaskIds"] = request.RemoveTaskIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIds)) {
+		body["TaskIds"] = request.TaskIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateBaseline"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateBaselineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateBaseline(request *UpdateBaselineRequest) (_result *UpdateBaselineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateBaselineResponse{}
+	_body, _err := client.UpdateBaselineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateBusinessWithOptions(request *UpdateBusinessRequest, runtime *util.RuntimeOptions) (_result *UpdateBusinessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -54859,6 +55990,10 @@ func (client *Client) UpdateRemindWithOptions(request *UpdateRemindRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.UseFlag)) {
 		body["UseFlag"] = request.UseFlag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Webhooks)) {
+		body["Webhooks"] = request.Webhooks
 	}
 
 	req := &openapi.OpenApiRequest{
