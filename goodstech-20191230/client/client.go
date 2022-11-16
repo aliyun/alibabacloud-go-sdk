@@ -5,15 +5,14 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/client"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
 	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
 	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	rpc "github.com/alibabacloud-go/tea-rpc/client"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 	"io"
 )
@@ -36,7 +35,7 @@ func (s *ClassifyCommodityRequest) SetImageURL(v string) *ClassifyCommodityReque
 }
 
 type ClassifyCommodityAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s ClassifyCommodityAdvanceRequest) String() string {
@@ -53,8 +52,8 @@ func (s *ClassifyCommodityAdvanceRequest) SetImageURLObject(v io.Reader) *Classi
 }
 
 type ClassifyCommodityResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *ClassifyCommodityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ClassifyCommodityResponseBody) String() string {
@@ -65,13 +64,13 @@ func (s ClassifyCommodityResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ClassifyCommodityResponseBody) SetRequestId(v string) *ClassifyCommodityResponseBody {
-	s.RequestId = &v
+func (s *ClassifyCommodityResponseBody) SetData(v *ClassifyCommodityResponseBodyData) *ClassifyCommodityResponseBody {
+	s.Data = v
 	return s
 }
 
-func (s *ClassifyCommodityResponseBody) SetData(v *ClassifyCommodityResponseBodyData) *ClassifyCommodityResponseBody {
-	s.Data = v
+func (s *ClassifyCommodityResponseBody) SetRequestId(v string) *ClassifyCommodityResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -93,9 +92,9 @@ func (s *ClassifyCommodityResponseBodyData) SetCategories(v []*ClassifyCommodity
 }
 
 type ClassifyCommodityResponseBodyDataCategories struct {
-	Score        *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	CategoryId   *string  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	CategoryName *string  `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	Score        *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
 }
 
 func (s ClassifyCommodityResponseBodyDataCategories) String() string {
@@ -104,11 +103,6 @@ func (s ClassifyCommodityResponseBodyDataCategories) String() string {
 
 func (s ClassifyCommodityResponseBodyDataCategories) GoString() string {
 	return s.String()
-}
-
-func (s *ClassifyCommodityResponseBodyDataCategories) SetScore(v float32) *ClassifyCommodityResponseBodyDataCategories {
-	s.Score = &v
-	return s
 }
 
 func (s *ClassifyCommodityResponseBodyDataCategories) SetCategoryId(v string) *ClassifyCommodityResponseBodyDataCategories {
@@ -121,9 +115,15 @@ func (s *ClassifyCommodityResponseBodyDataCategories) SetCategoryName(v string) 
 	return s
 }
 
+func (s *ClassifyCommodityResponseBodyDataCategories) SetScore(v float32) *ClassifyCommodityResponseBodyDataCategories {
+	s.Score = &v
+	return s
+}
+
 type ClassifyCommodityResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ClassifyCommodityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ClassifyCommodityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ClassifyCommodityResponse) String() string {
@@ -136,6 +136,11 @@ func (s ClassifyCommodityResponse) GoString() string {
 
 func (s *ClassifyCommodityResponse) SetHeaders(v map[string]*string) *ClassifyCommodityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ClassifyCommodityResponse) SetStatusCode(v int32) *ClassifyCommodityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -162,7 +167,7 @@ func (s *RecognizeFurnitureAttributeRequest) SetImageURL(v string) *RecognizeFur
 }
 
 type RecognizeFurnitureAttributeAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s RecognizeFurnitureAttributeAdvanceRequest) String() string {
@@ -179,8 +184,8 @@ func (s *RecognizeFurnitureAttributeAdvanceRequest) SetImageURLObject(v io.Reade
 }
 
 type RecognizeFurnitureAttributeResponseBody struct {
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *RecognizeFurnitureAttributeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RecognizeFurnitureAttributeResponseBody) String() string {
@@ -191,19 +196,19 @@ func (s RecognizeFurnitureAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeFurnitureAttributeResponseBody) SetRequestId(v string) *RecognizeFurnitureAttributeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *RecognizeFurnitureAttributeResponseBody) SetData(v *RecognizeFurnitureAttributeResponseBodyData) *RecognizeFurnitureAttributeResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *RecognizeFurnitureAttributeResponseBody) SetRequestId(v string) *RecognizeFurnitureAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type RecognizeFurnitureAttributeResponseBodyData struct {
-	PredStyle       *string  `json:"PredStyle,omitempty" xml:"PredStyle,omitempty"`
 	PredProbability *float32 `json:"PredProbability,omitempty" xml:"PredProbability,omitempty"`
+	PredStyle       *string  `json:"PredStyle,omitempty" xml:"PredStyle,omitempty"`
 	PredStyleId     *string  `json:"PredStyleId,omitempty" xml:"PredStyleId,omitempty"`
 }
 
@@ -215,13 +220,13 @@ func (s RecognizeFurnitureAttributeResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeFurnitureAttributeResponseBodyData) SetPredStyle(v string) *RecognizeFurnitureAttributeResponseBodyData {
-	s.PredStyle = &v
+func (s *RecognizeFurnitureAttributeResponseBodyData) SetPredProbability(v float32) *RecognizeFurnitureAttributeResponseBodyData {
+	s.PredProbability = &v
 	return s
 }
 
-func (s *RecognizeFurnitureAttributeResponseBodyData) SetPredProbability(v float32) *RecognizeFurnitureAttributeResponseBodyData {
-	s.PredProbability = &v
+func (s *RecognizeFurnitureAttributeResponseBodyData) SetPredStyle(v string) *RecognizeFurnitureAttributeResponseBodyData {
+	s.PredStyle = &v
 	return s
 }
 
@@ -231,8 +236,9 @@ func (s *RecognizeFurnitureAttributeResponseBodyData) SetPredStyleId(v string) *
 }
 
 type RecognizeFurnitureAttributeResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeFurnitureAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeFurnitureAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeFurnitureAttributeResponse) String() string {
@@ -245,6 +251,11 @@ func (s RecognizeFurnitureAttributeResponse) GoString() string {
 
 func (s *RecognizeFurnitureAttributeResponse) SetHeaders(v map[string]*string) *RecognizeFurnitureAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeFurnitureAttributeResponse) SetStatusCode(v int32) *RecognizeFurnitureAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -289,7 +300,7 @@ func (s *RecognizeFurnitureSpuRequest) SetZLength(v float32) *RecognizeFurniture
 }
 
 type RecognizeFurnitureSpuAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	XLength        *float32  `json:"XLength,omitempty" xml:"XLength,omitempty"`
 	YLength        *float32  `json:"YLength,omitempty" xml:"YLength,omitempty"`
 	ZLength        *float32  `json:"ZLength,omitempty" xml:"ZLength,omitempty"`
@@ -324,8 +335,8 @@ func (s *RecognizeFurnitureSpuAdvanceRequest) SetZLength(v float32) *RecognizeFu
 }
 
 type RecognizeFurnitureSpuResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *RecognizeFurnitureSpuResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RecognizeFurnitureSpuResponseBody) String() string {
@@ -336,19 +347,19 @@ func (s RecognizeFurnitureSpuResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeFurnitureSpuResponseBody) SetRequestId(v string) *RecognizeFurnitureSpuResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *RecognizeFurnitureSpuResponseBody) SetData(v *RecognizeFurnitureSpuResponseBodyData) *RecognizeFurnitureSpuResponseBody {
 	s.Data = v
 	return s
 }
 
+func (s *RecognizeFurnitureSpuResponseBody) SetRequestId(v string) *RecognizeFurnitureSpuResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type RecognizeFurnitureSpuResponseBodyData struct {
-	PredCateId      *string  `json:"PredCateId,omitempty" xml:"PredCateId,omitempty"`
 	PredCate        *string  `json:"PredCate,omitempty" xml:"PredCate,omitempty"`
+	PredCateId      *string  `json:"PredCateId,omitempty" xml:"PredCateId,omitempty"`
 	PredProbability *float32 `json:"PredProbability,omitempty" xml:"PredProbability,omitempty"`
 }
 
@@ -360,13 +371,13 @@ func (s RecognizeFurnitureSpuResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeFurnitureSpuResponseBodyData) SetPredCateId(v string) *RecognizeFurnitureSpuResponseBodyData {
-	s.PredCateId = &v
+func (s *RecognizeFurnitureSpuResponseBodyData) SetPredCate(v string) *RecognizeFurnitureSpuResponseBodyData {
+	s.PredCate = &v
 	return s
 }
 
-func (s *RecognizeFurnitureSpuResponseBodyData) SetPredCate(v string) *RecognizeFurnitureSpuResponseBodyData {
-	s.PredCate = &v
+func (s *RecognizeFurnitureSpuResponseBodyData) SetPredCateId(v string) *RecognizeFurnitureSpuResponseBodyData {
+	s.PredCateId = &v
 	return s
 }
 
@@ -376,8 +387,9 @@ func (s *RecognizeFurnitureSpuResponseBodyData) SetPredProbability(v float32) *R
 }
 
 type RecognizeFurnitureSpuResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeFurnitureSpuResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeFurnitureSpuResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeFurnitureSpuResponse) String() string {
@@ -390,6 +402,11 @@ func (s RecognizeFurnitureSpuResponse) GoString() string {
 
 func (s *RecognizeFurnitureSpuResponse) SetHeaders(v map[string]*string) *RecognizeFurnitureSpuResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeFurnitureSpuResponse) SetStatusCode(v int32) *RecognizeFurnitureSpuResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -450,11 +467,27 @@ func (client *Client) ClassifyCommodityWithOptions(request *ClassifyCommodityReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ClassifyCommodity"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ClassifyCommodityResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ClassifyCommodity"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -485,11 +518,27 @@ func (client *Client) ClassifyCommodityAdvance(request *ClassifyCommodityAdvance
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -517,40 +566,43 @@ func (client *Client) ClassifyCommodityAdvance(request *ClassifyCommodityAdvance
 	openapiutil.Convert(runtime, ossRuntime)
 	classifyCommodityReq := &ClassifyCommodityRequest{}
 	openapiutil.Convert(request, classifyCommodityReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		classifyCommodityReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	classifyCommodityReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	classifyCommodityResp, _err := client.ClassifyCommodityWithOptions(classifyCommodityReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -565,11 +617,27 @@ func (client *Client) RecognizeFurnitureAttributeWithOptions(request *RecognizeF
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeFurnitureAttribute"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeFurnitureAttributeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeFurnitureAttribute"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -600,11 +668,27 @@ func (client *Client) RecognizeFurnitureAttributeAdvance(request *RecognizeFurni
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -632,40 +716,43 @@ func (client *Client) RecognizeFurnitureAttributeAdvance(request *RecognizeFurni
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeFurnitureAttributeReq := &RecognizeFurnitureAttributeRequest{}
 	openapiutil.Convert(request, recognizeFurnitureAttributeReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeFurnitureAttributeReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeFurnitureAttributeReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeFurnitureAttributeResp, _err := client.RecognizeFurnitureAttributeWithOptions(recognizeFurnitureAttributeReq, runtime)
 	if _err != nil {
 		return _result, _err
@@ -680,11 +767,39 @@ func (client *Client) RecognizeFurnitureSpuWithOptions(request *RecognizeFurnitu
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XLength)) {
+		body["XLength"] = request.XLength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.YLength)) {
+		body["YLength"] = request.YLength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZLength)) {
+		body["ZLength"] = request.ZLength
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeFurnitureSpu"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RecognizeFurnitureSpuResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RecognizeFurnitureSpu"), tea.String("2019-12-30"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -715,11 +830,27 @@ func (client *Client) RecognizeFurnitureSpuAdvance(request *RecognizeFurnitureSp
 		return _result, _err
 	}
 
-	authConfig := &rpc.Config{
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
 		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Endpoint:        tea.String("openplatform.aliyuncs.com"),
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
@@ -747,40 +878,43 @@ func (client *Client) RecognizeFurnitureSpuAdvance(request *RecognizeFurnitureSp
 	openapiutil.Convert(runtime, ossRuntime)
 	recognizeFurnitureSpuReq := &RecognizeFurnitureSpuRequest{}
 	openapiutil.Convert(request, recognizeFurnitureSpuReq)
-	authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-	if _err != nil {
-		return _result, _err
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeFurnitureSpuReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
-	ossConfig.AccessKeyId = authResponse.AccessKeyId
-	ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-	ossClient, _err = oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	fileObj = &fileform.FileField{
-		Filename:    authResponse.ObjectKey,
-		Content:     request.ImageURLObject,
-		ContentType: tea.String(""),
-	}
-	ossHeader = &oss.PostObjectRequestHeader{
-		AccessKeyId:         authResponse.AccessKeyId,
-		Policy:              authResponse.EncodedPolicy,
-		Signature:           authResponse.Signature,
-		Key:                 authResponse.ObjectKey,
-		File:                fileObj,
-		SuccessActionStatus: tea.String("201"),
-	}
-	uploadRequest = &oss.PostObjectRequest{
-		BucketName: authResponse.Bucket,
-		Header:     ossHeader,
-	}
-	_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-	if _err != nil {
-		return _result, _err
-	}
-	recognizeFurnitureSpuReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
 	recognizeFurnitureSpuResp, _err := client.RecognizeFurnitureSpuWithOptions(recognizeFurnitureSpuReq, runtime)
 	if _err != nil {
 		return _result, _err
