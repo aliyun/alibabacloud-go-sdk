@@ -20019,6 +20019,395 @@ func (s *EnableInstanceAccessControlResponse) SetBody(v *EnableInstanceAccessCon
 	return s
 }
 
+type ImportOASRequest struct {
+	AuthType      *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	BackendName   *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	Data          *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IgnoreWarning *bool   `json:"IgnoreWarning,omitempty" xml:"IgnoreWarning,omitempty"`
+	OASVersion    *string `json:"OASVersion,omitempty" xml:"OASVersion,omitempty"`
+	Overwrite     *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	RequestMode   *string `json:"RequestMode,omitempty" xml:"RequestMode,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	SkipDryRun    *bool   `json:"SkipDryRun,omitempty" xml:"SkipDryRun,omitempty"`
+}
+
+func (s ImportOASRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportOASRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportOASRequest) SetAuthType(v string) *ImportOASRequest {
+	s.AuthType = &v
+	return s
+}
+
+func (s *ImportOASRequest) SetBackendName(v string) *ImportOASRequest {
+	s.BackendName = &v
+	return s
+}
+
+func (s *ImportOASRequest) SetData(v string) *ImportOASRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *ImportOASRequest) SetGroupId(v string) *ImportOASRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ImportOASRequest) SetIgnoreWarning(v bool) *ImportOASRequest {
+	s.IgnoreWarning = &v
+	return s
+}
+
+func (s *ImportOASRequest) SetOASVersion(v string) *ImportOASRequest {
+	s.OASVersion = &v
+	return s
+}
+
+func (s *ImportOASRequest) SetOverwrite(v bool) *ImportOASRequest {
+	s.Overwrite = &v
+	return s
+}
+
+func (s *ImportOASRequest) SetRequestMode(v string) *ImportOASRequest {
+	s.RequestMode = &v
+	return s
+}
+
+func (s *ImportOASRequest) SetSecurityToken(v string) *ImportOASRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ImportOASRequest) SetSkipDryRun(v bool) *ImportOASRequest {
+	s.SkipDryRun = &v
+	return s
+}
+
+type ImportOASResponseBody struct {
+	ErrorMessages   *ImportOASResponseBodyErrorMessages   `json:"ErrorMessages,omitempty" xml:"ErrorMessages,omitempty" type:"Struct"`
+	FailedApis      *ImportOASResponseBodyFailedApis      `json:"FailedApis,omitempty" xml:"FailedApis,omitempty" type:"Struct"`
+	FailedModels    *ImportOASResponseBodyFailedModels    `json:"FailedModels,omitempty" xml:"FailedModels,omitempty" type:"Struct"`
+	OperationId     *string                               `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	RequestId       *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessApis     *ImportOASResponseBodySuccessApis     `json:"SuccessApis,omitempty" xml:"SuccessApis,omitempty" type:"Struct"`
+	SuccessModels   *ImportOASResponseBodySuccessModels   `json:"SuccessModels,omitempty" xml:"SuccessModels,omitempty" type:"Struct"`
+	WarningMessages *ImportOASResponseBodyWarningMessages `json:"WarningMessages,omitempty" xml:"WarningMessages,omitempty" type:"Struct"`
+}
+
+func (s ImportOASResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportOASResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportOASResponseBody) SetErrorMessages(v *ImportOASResponseBodyErrorMessages) *ImportOASResponseBody {
+	s.ErrorMessages = v
+	return s
+}
+
+func (s *ImportOASResponseBody) SetFailedApis(v *ImportOASResponseBodyFailedApis) *ImportOASResponseBody {
+	s.FailedApis = v
+	return s
+}
+
+func (s *ImportOASResponseBody) SetFailedModels(v *ImportOASResponseBodyFailedModels) *ImportOASResponseBody {
+	s.FailedModels = v
+	return s
+}
+
+func (s *ImportOASResponseBody) SetOperationId(v string) *ImportOASResponseBody {
+	s.OperationId = &v
+	return s
+}
+
+func (s *ImportOASResponseBody) SetRequestId(v string) *ImportOASResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportOASResponseBody) SetSuccessApis(v *ImportOASResponseBodySuccessApis) *ImportOASResponseBody {
+	s.SuccessApis = v
+	return s
+}
+
+func (s *ImportOASResponseBody) SetSuccessModels(v *ImportOASResponseBodySuccessModels) *ImportOASResponseBody {
+	s.SuccessModels = v
+	return s
+}
+
+func (s *ImportOASResponseBody) SetWarningMessages(v *ImportOASResponseBodyWarningMessages) *ImportOASResponseBody {
+	s.WarningMessages = v
+	return s
+}
+
+type ImportOASResponseBodyErrorMessages struct {
+	ErrorMessage []*string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty" type:"Repeated"`
+}
+
+func (s ImportOASResponseBodyErrorMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportOASResponseBodyErrorMessages) GoString() string {
+	return s.String()
+}
+
+func (s *ImportOASResponseBodyErrorMessages) SetErrorMessage(v []*string) *ImportOASResponseBodyErrorMessages {
+	s.ErrorMessage = v
+	return s
+}
+
+type ImportOASResponseBodyFailedApis struct {
+	FailedApi []*ImportOASResponseBodyFailedApisFailedApi `json:"FailedApi,omitempty" xml:"FailedApi,omitempty" type:"Repeated"`
+}
+
+func (s ImportOASResponseBodyFailedApis) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportOASResponseBodyFailedApis) GoString() string {
+	return s.String()
+}
+
+func (s *ImportOASResponseBodyFailedApis) SetFailedApi(v []*ImportOASResponseBodyFailedApisFailedApi) *ImportOASResponseBodyFailedApis {
+	s.FailedApi = v
+	return s
+}
+
+type ImportOASResponseBodyFailedApisFailedApi struct {
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
+	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s ImportOASResponseBodyFailedApisFailedApi) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportOASResponseBodyFailedApisFailedApi) GoString() string {
+	return s.String()
+}
+
+func (s *ImportOASResponseBodyFailedApisFailedApi) SetErrorMsg(v string) *ImportOASResponseBodyFailedApisFailedApi {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ImportOASResponseBodyFailedApisFailedApi) SetHttpMethod(v string) *ImportOASResponseBodyFailedApisFailedApi {
+	s.HttpMethod = &v
+	return s
+}
+
+func (s *ImportOASResponseBodyFailedApisFailedApi) SetPath(v string) *ImportOASResponseBodyFailedApisFailedApi {
+	s.Path = &v
+	return s
+}
+
+type ImportOASResponseBodyFailedModels struct {
+	FailedModel []*ImportOASResponseBodyFailedModelsFailedModel `json:"FailedModel,omitempty" xml:"FailedModel,omitempty" type:"Repeated"`
+}
+
+func (s ImportOASResponseBodyFailedModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportOASResponseBodyFailedModels) GoString() string {
+	return s.String()
+}
+
+func (s *ImportOASResponseBodyFailedModels) SetFailedModel(v []*ImportOASResponseBodyFailedModelsFailedModel) *ImportOASResponseBodyFailedModels {
+	s.FailedModel = v
+	return s
+}
+
+type ImportOASResponseBodyFailedModelsFailedModel struct {
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+}
+
+func (s ImportOASResponseBodyFailedModelsFailedModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportOASResponseBodyFailedModelsFailedModel) GoString() string {
+	return s.String()
+}
+
+func (s *ImportOASResponseBodyFailedModelsFailedModel) SetErrorMsg(v string) *ImportOASResponseBodyFailedModelsFailedModel {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ImportOASResponseBodyFailedModelsFailedModel) SetGroupId(v string) *ImportOASResponseBodyFailedModelsFailedModel {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ImportOASResponseBodyFailedModelsFailedModel) SetModelName(v string) *ImportOASResponseBodyFailedModelsFailedModel {
+	s.ModelName = &v
+	return s
+}
+
+type ImportOASResponseBodySuccessApis struct {
+	SuccessApi []*ImportOASResponseBodySuccessApisSuccessApi `json:"SuccessApi,omitempty" xml:"SuccessApi,omitempty" type:"Repeated"`
+}
+
+func (s ImportOASResponseBodySuccessApis) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportOASResponseBodySuccessApis) GoString() string {
+	return s.String()
+}
+
+func (s *ImportOASResponseBodySuccessApis) SetSuccessApi(v []*ImportOASResponseBodySuccessApisSuccessApi) *ImportOASResponseBodySuccessApis {
+	s.SuccessApi = v
+	return s
+}
+
+type ImportOASResponseBodySuccessApisSuccessApi struct {
+	ApiId        *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiOperation *string `json:"ApiOperation,omitempty" xml:"ApiOperation,omitempty"`
+	HttpMethod   *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
+	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s ImportOASResponseBodySuccessApisSuccessApi) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportOASResponseBodySuccessApisSuccessApi) GoString() string {
+	return s.String()
+}
+
+func (s *ImportOASResponseBodySuccessApisSuccessApi) SetApiId(v string) *ImportOASResponseBodySuccessApisSuccessApi {
+	s.ApiId = &v
+	return s
+}
+
+func (s *ImportOASResponseBodySuccessApisSuccessApi) SetApiOperation(v string) *ImportOASResponseBodySuccessApisSuccessApi {
+	s.ApiOperation = &v
+	return s
+}
+
+func (s *ImportOASResponseBodySuccessApisSuccessApi) SetHttpMethod(v string) *ImportOASResponseBodySuccessApisSuccessApi {
+	s.HttpMethod = &v
+	return s
+}
+
+func (s *ImportOASResponseBodySuccessApisSuccessApi) SetPath(v string) *ImportOASResponseBodySuccessApisSuccessApi {
+	s.Path = &v
+	return s
+}
+
+type ImportOASResponseBodySuccessModels struct {
+	SuccessModel []*ImportOASResponseBodySuccessModelsSuccessModel `json:"SuccessModel,omitempty" xml:"SuccessModel,omitempty" type:"Repeated"`
+}
+
+func (s ImportOASResponseBodySuccessModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportOASResponseBodySuccessModels) GoString() string {
+	return s.String()
+}
+
+func (s *ImportOASResponseBodySuccessModels) SetSuccessModel(v []*ImportOASResponseBodySuccessModelsSuccessModel) *ImportOASResponseBodySuccessModels {
+	s.SuccessModel = v
+	return s
+}
+
+type ImportOASResponseBodySuccessModelsSuccessModel struct {
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ModelName      *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelOperation *string `json:"ModelOperation,omitempty" xml:"ModelOperation,omitempty"`
+	ModelUid       *string `json:"ModelUid,omitempty" xml:"ModelUid,omitempty"`
+}
+
+func (s ImportOASResponseBodySuccessModelsSuccessModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportOASResponseBodySuccessModelsSuccessModel) GoString() string {
+	return s.String()
+}
+
+func (s *ImportOASResponseBodySuccessModelsSuccessModel) SetGroupId(v string) *ImportOASResponseBodySuccessModelsSuccessModel {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ImportOASResponseBodySuccessModelsSuccessModel) SetModelName(v string) *ImportOASResponseBodySuccessModelsSuccessModel {
+	s.ModelName = &v
+	return s
+}
+
+func (s *ImportOASResponseBodySuccessModelsSuccessModel) SetModelOperation(v string) *ImportOASResponseBodySuccessModelsSuccessModel {
+	s.ModelOperation = &v
+	return s
+}
+
+func (s *ImportOASResponseBodySuccessModelsSuccessModel) SetModelUid(v string) *ImportOASResponseBodySuccessModelsSuccessModel {
+	s.ModelUid = &v
+	return s
+}
+
+type ImportOASResponseBodyWarningMessages struct {
+	WarningMessage []*string `json:"WarningMessage,omitempty" xml:"WarningMessage,omitempty" type:"Repeated"`
+}
+
+func (s ImportOASResponseBodyWarningMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportOASResponseBodyWarningMessages) GoString() string {
+	return s.String()
+}
+
+func (s *ImportOASResponseBodyWarningMessages) SetWarningMessage(v []*string) *ImportOASResponseBodyWarningMessages {
+	s.WarningMessage = v
+	return s
+}
+
+type ImportOASResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImportOASResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImportOASResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportOASResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportOASResponse) SetHeaders(v map[string]*string) *ImportOASResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportOASResponse) SetStatusCode(v int32) *ImportOASResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportOASResponse) SetBody(v *ImportOASResponseBody) *ImportOASResponse {
+	s.Body = v
+	return s
+}
+
 type ImportSwaggerRequest struct {
 	Data            *string                `json:"Data,omitempty" xml:"Data,omitempty"`
 	DataFormat      *string                `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
@@ -32325,6 +32714,88 @@ func (client *Client) EnableInstanceAccessControl(request *EnableInstanceAccessC
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableInstanceAccessControlResponse{}
 	_body, _err := client.EnableInstanceAccessControlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImportOASWithOptions(request *ImportOASRequest, runtime *util.RuntimeOptions) (_result *ImportOASResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthType)) {
+		query["AuthType"] = request.AuthType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendName)) {
+		query["BackendName"] = request.BackendName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IgnoreWarning)) {
+		query["IgnoreWarning"] = request.IgnoreWarning
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OASVersion)) {
+		query["OASVersion"] = request.OASVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Overwrite)) {
+		query["Overwrite"] = request.Overwrite
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestMode)) {
+		query["RequestMode"] = request.RequestMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkipDryRun)) {
+		query["SkipDryRun"] = request.SkipDryRun
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		body["Data"] = request.Data
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportOAS"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportOASResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportOAS(request *ImportOASRequest) (_result *ImportOASResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportOASResponse{}
+	_body, _err := client.ImportOASWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
