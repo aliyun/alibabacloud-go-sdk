@@ -3126,87 +3126,6 @@ func (s *DeleteWasmResponse) SetBody(v *DeleteWasmResponseBody) *DeleteWasmRespo
 	return s
 }
 
-type DeleteWasmCodeRevisionRequest struct {
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SelectCodeRevision *string `json:"SelectCodeRevision,omitempty" xml:"SelectCodeRevision,omitempty"`
-}
-
-func (s DeleteWasmCodeRevisionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteWasmCodeRevisionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteWasmCodeRevisionRequest) SetName(v string) *DeleteWasmCodeRevisionRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *DeleteWasmCodeRevisionRequest) SetOwnerId(v int64) *DeleteWasmCodeRevisionRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteWasmCodeRevisionRequest) SetSelectCodeRevision(v string) *DeleteWasmCodeRevisionRequest {
-	s.SelectCodeRevision = &v
-	return s
-}
-
-type DeleteWasmCodeRevisionResponseBody struct {
-	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteWasmCodeRevisionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteWasmCodeRevisionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteWasmCodeRevisionResponseBody) SetContent(v map[string]interface{}) *DeleteWasmCodeRevisionResponseBody {
-	s.Content = v
-	return s
-}
-
-func (s *DeleteWasmCodeRevisionResponseBody) SetRequestId(v string) *DeleteWasmCodeRevisionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteWasmCodeRevisionResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteWasmCodeRevisionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteWasmCodeRevisionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteWasmCodeRevisionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteWasmCodeRevisionResponse) SetHeaders(v map[string]*string) *DeleteWasmCodeRevisionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteWasmCodeRevisionResponse) SetStatusCode(v int32) *DeleteWasmCodeRevisionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteWasmCodeRevisionResponse) SetBody(v *DeleteWasmCodeRevisionResponseBody) *DeleteWasmCodeRevisionResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeDcdnAclFieldsRequest struct {
 	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -20320,8 +20239,7 @@ func (s *DescribeUserDcdnIpaStatusResponse) SetBody(v *DescribeUserDcdnIpaStatus
 }
 
 type DescribeUserDcdnStatusRequest struct {
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeUserDcdnStatusRequest) String() string {
@@ -20334,11 +20252,6 @@ func (s DescribeUserDcdnStatusRequest) GoString() string {
 
 func (s *DescribeUserDcdnStatusRequest) SetOwnerId(v int64) *DescribeUserDcdnStatusRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeUserDcdnStatusRequest) SetSecurityToken(v string) *DescribeUserDcdnStatusRequest {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -20598,150 +20511,6 @@ func (s *DescribeUserLogserviceStatusResponse) SetBody(v *DescribeUserLogservice
 	return s
 }
 
-type DescribeWasmRequest struct {
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeWasmRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWasmRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWasmRequest) SetName(v string) *DescribeWasmRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeWasmRequest) SetOwnerId(v int64) *DescribeWasmRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type DescribeWasmResponseBody struct {
-	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeWasmResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWasmResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWasmResponseBody) SetContent(v map[string]interface{}) *DescribeWasmResponseBody {
-	s.Content = v
-	return s
-}
-
-func (s *DescribeWasmResponseBody) SetRequestId(v string) *DescribeWasmResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeWasmResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeWasmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeWasmResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWasmResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWasmResponse) SetHeaders(v map[string]*string) *DescribeWasmResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeWasmResponse) SetStatusCode(v int32) *DescribeWasmResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeWasmResponse) SetBody(v *DescribeWasmResponseBody) *DescribeWasmResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeWasmUserInfoRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeWasmUserInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWasmUserInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWasmUserInfoRequest) SetOwnerId(v int64) *DescribeWasmUserInfoRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type DescribeWasmUserInfoResponseBody struct {
-	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeWasmUserInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWasmUserInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWasmUserInfoResponseBody) SetContent(v map[string]interface{}) *DescribeWasmUserInfoResponseBody {
-	s.Content = v
-	return s
-}
-
-func (s *DescribeWasmUserInfoResponseBody) SetRequestId(v string) *DescribeWasmUserInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeWasmUserInfoResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeWasmUserInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeWasmUserInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeWasmUserInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeWasmUserInfoResponse) SetHeaders(v map[string]*string) *DescribeWasmUserInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeWasmUserInfoResponse) SetStatusCode(v int32) *DescribeWasmUserInfoResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeWasmUserInfoResponse) SetBody(v *DescribeWasmUserInfoResponseBody) *DescribeWasmUserInfoResponse {
-	s.Body = v
-	return s
-}
-
 type EditRoutineConfRequest struct {
 	Description *string                `json:"Description,omitempty" xml:"Description,omitempty"`
 	EnvConf     map[string]interface{} `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
@@ -20860,87 +20629,6 @@ func (s *EditRoutineConfResponse) SetStatusCode(v int32) *EditRoutineConfRespons
 }
 
 func (s *EditRoutineConfResponse) SetBody(v *EditRoutineConfResponseBody) *EditRoutineConfResponse {
-	s.Body = v
-	return s
-}
-
-type EditWasmConfRequest struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s EditWasmConfRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EditWasmConfRequest) GoString() string {
-	return s.String()
-}
-
-func (s *EditWasmConfRequest) SetDescription(v string) *EditWasmConfRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *EditWasmConfRequest) SetName(v string) *EditWasmConfRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *EditWasmConfRequest) SetOwnerId(v int64) *EditWasmConfRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type EditWasmConfResponseBody struct {
-	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s EditWasmConfResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EditWasmConfResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *EditWasmConfResponseBody) SetContent(v map[string]interface{}) *EditWasmConfResponseBody {
-	s.Content = v
-	return s
-}
-
-func (s *EditWasmConfResponseBody) SetRequestId(v string) *EditWasmConfResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type EditWasmConfResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EditWasmConfResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s EditWasmConfResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EditWasmConfResponse) GoString() string {
-	return s.String()
-}
-
-func (s *EditWasmConfResponse) SetHeaders(v map[string]*string) *EditWasmConfResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *EditWasmConfResponse) SetStatusCode(v int32) *EditWasmConfResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *EditWasmConfResponse) SetBody(v *EditWasmConfResponseBody) *EditWasmConfResponse {
 	s.Body = v
 	return s
 }
@@ -25922,60 +25610,6 @@ func (client *Client) DeleteWasm(request *DeleteWasmRequest) (_result *DeleteWas
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteWasmResponse{}
 	_body, _err := client.DeleteWasmWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteWasmCodeRevisionWithOptions(request *DeleteWasmCodeRevisionRequest, runtime *util.RuntimeOptions) (_result *DeleteWasmCodeRevisionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SelectCodeRevision)) {
-		body["SelectCodeRevision"] = request.SelectCodeRevision
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteWasmCodeRevision"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteWasmCodeRevisionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteWasmCodeRevision(request *DeleteWasmCodeRevisionRequest) (_result *DeleteWasmCodeRevisionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteWasmCodeRevisionResponse{}
-	_body, _err := client.DeleteWasmCodeRevisionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32185,10 +31819,6 @@ func (client *Client) DescribeUserDcdnStatusWithOptions(request *DescribeUserDcd
 		query["OwnerId"] = request.OwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -32319,100 +31949,6 @@ func (client *Client) DescribeUserLogserviceStatus(request *DescribeUserLogservi
 	return _result, _err
 }
 
-func (client *Client) DescribeWasmWithOptions(request *DescribeWasmRequest, runtime *util.RuntimeOptions) (_result *DescribeWasmResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["Name"] = request.Name
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeWasm"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeWasmResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeWasm(request *DescribeWasmRequest) (_result *DescribeWasmResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeWasmResponse{}
-	_body, _err := client.DescribeWasmWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeWasmUserInfoWithOptions(request *DescribeWasmUserInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeWasmUserInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeWasmUserInfo"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeWasmUserInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeWasmUserInfo(request *DescribeWasmUserInfoRequest) (_result *DescribeWasmUserInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeWasmUserInfoResponse{}
-	_body, _err := client.DescribeWasmUserInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) EditRoutineConfWithOptions(tmpReq *EditRoutineConfRequest, runtime *util.RuntimeOptions) (_result *EditRoutineConfResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -32470,60 +32006,6 @@ func (client *Client) EditRoutineConf(request *EditRoutineConfRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &EditRoutineConfResponse{}
 	_body, _err := client.EditRoutineConfWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) EditWasmConfWithOptions(request *EditWasmConfRequest, runtime *util.RuntimeOptions) (_result *EditWasmConfResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		body["Description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["Name"] = request.Name
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("EditWasmConf"),
-		Version:     tea.String("2018-01-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &EditWasmConfResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) EditWasmConf(request *EditWasmConfRequest) (_result *EditWasmConfResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &EditWasmConfResponse{}
-	_body, _err := client.EditWasmConfWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
