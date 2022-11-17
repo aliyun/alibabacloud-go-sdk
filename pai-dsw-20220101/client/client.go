@@ -1947,6 +1947,158 @@ func (s *GetInstanceSnapshotResponse) SetBody(v *GetInstanceSnapshotResponseBody
 	return s
 }
 
+type GetLifecycleRequest struct {
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Limit         *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	SessionNumber *int32  `json:"SessionNumber,omitempty" xml:"SessionNumber,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetLifecycleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLifecycleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLifecycleRequest) SetEndTime(v string) *GetLifecycleRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetLifecycleRequest) SetLimit(v int32) *GetLifecycleRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *GetLifecycleRequest) SetOrder(v string) *GetLifecycleRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *GetLifecycleRequest) SetSessionNumber(v int32) *GetLifecycleRequest {
+	s.SessionNumber = &v
+	return s
+}
+
+func (s *GetLifecycleRequest) SetStartTime(v string) *GetLifecycleRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetLifecycleResponseBody struct {
+	Code       *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Lifecycle  [][]*GetLifecycleResponseBodyLifecycle `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty" type:"Repeated"`
+	Message    *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetLifecycleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLifecycleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLifecycleResponseBody) SetCode(v string) *GetLifecycleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetLifecycleResponseBody) SetLifecycle(v [][]*GetLifecycleResponseBodyLifecycle) *GetLifecycleResponseBody {
+	s.Lifecycle = v
+	return s
+}
+
+func (s *GetLifecycleResponseBody) SetMessage(v string) *GetLifecycleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetLifecycleResponseBody) SetRequestId(v string) *GetLifecycleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLifecycleResponseBody) SetSuccess(v bool) *GetLifecycleResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetLifecycleResponseBody) SetTotalCount(v int32) *GetLifecycleResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type GetLifecycleResponseBodyLifecycle struct {
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ReasonCode    *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+}
+
+func (s GetLifecycleResponseBodyLifecycle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLifecycleResponseBodyLifecycle) GoString() string {
+	return s.String()
+}
+
+func (s *GetLifecycleResponseBodyLifecycle) SetStatus(v string) *GetLifecycleResponseBodyLifecycle {
+	s.Status = &v
+	return s
+}
+
+func (s *GetLifecycleResponseBodyLifecycle) SetReasonCode(v string) *GetLifecycleResponseBodyLifecycle {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *GetLifecycleResponseBodyLifecycle) SetReasonMessage(v string) *GetLifecycleResponseBodyLifecycle {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *GetLifecycleResponseBodyLifecycle) SetGmtCreateTime(v string) *GetLifecycleResponseBodyLifecycle {
+	s.GmtCreateTime = &v
+	return s
+}
+
+type GetLifecycleResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLifecycleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLifecycleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLifecycleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLifecycleResponse) SetHeaders(v map[string]*string) *GetLifecycleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLifecycleResponse) SetStatusCode(v int32) *GetLifecycleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLifecycleResponse) SetBody(v *GetLifecycleResponseBody) *GetLifecycleResponse {
+	s.Body = v
+	return s
+}
+
 type GetTokenRequest struct {
 	ExpireTime *int32  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -4448,6 +4600,68 @@ func (client *Client) GetInstanceSnapshotWithOptions(InstanceId *string, Snapsho
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetInstanceSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLifecycle(InstanceId *string, request *GetLifecycleRequest) (_result *GetLifecycleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetLifecycleResponse{}
+	_body, _err := client.GetLifecycleWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLifecycleWithOptions(InstanceId *string, request *GetLifecycleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLifecycleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionNumber)) {
+		query["SessionNumber"] = request.SessionNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLifecycle"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/lifecycle"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLifecycleResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
