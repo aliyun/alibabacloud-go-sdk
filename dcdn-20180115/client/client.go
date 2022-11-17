@@ -19782,6 +19782,145 @@ func (s *DescribeDcdnsecServiceResponse) SetBody(v *DescribeDcdnsecServiceRespon
 	return s
 }
 
+type DescribeRDDomainConfigRequest struct {
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+}
+
+func (s DescribeRDDomainConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRDDomainConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRDDomainConfigRequest) SetDomainName(v string) *DescribeRDDomainConfigRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeRDDomainConfigRequest) SetFunctionName(v string) *DescribeRDDomainConfigRequest {
+	s.FunctionName = &v
+	return s
+}
+
+type DescribeRDDomainConfigResponseBody struct {
+	DomainConfigs []*DescribeRDDomainConfigResponseBodyDomainConfigs `json:"DomainConfigs,omitempty" xml:"DomainConfigs,omitempty" type:"Repeated"`
+	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRDDomainConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRDDomainConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRDDomainConfigResponseBody) SetDomainConfigs(v []*DescribeRDDomainConfigResponseBodyDomainConfigs) *DescribeRDDomainConfigResponseBody {
+	s.DomainConfigs = v
+	return s
+}
+
+func (s *DescribeRDDomainConfigResponseBody) SetRequestId(v string) *DescribeRDDomainConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRDDomainConfigResponseBodyDomainConfigs struct {
+	ConfigId     *int64                                                         `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	FunctionArgs []*DescribeRDDomainConfigResponseBodyDomainConfigsFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Repeated"`
+	FunctionName *string                                                        `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	ParentId     *string                                                        `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	Status       *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeRDDomainConfigResponseBodyDomainConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRDDomainConfigResponseBodyDomainConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRDDomainConfigResponseBodyDomainConfigs) SetConfigId(v int64) *DescribeRDDomainConfigResponseBodyDomainConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DescribeRDDomainConfigResponseBodyDomainConfigs) SetFunctionArgs(v []*DescribeRDDomainConfigResponseBodyDomainConfigsFunctionArgs) *DescribeRDDomainConfigResponseBodyDomainConfigs {
+	s.FunctionArgs = v
+	return s
+}
+
+func (s *DescribeRDDomainConfigResponseBodyDomainConfigs) SetFunctionName(v string) *DescribeRDDomainConfigResponseBodyDomainConfigs {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *DescribeRDDomainConfigResponseBodyDomainConfigs) SetParentId(v string) *DescribeRDDomainConfigResponseBodyDomainConfigs {
+	s.ParentId = &v
+	return s
+}
+
+func (s *DescribeRDDomainConfigResponseBodyDomainConfigs) SetStatus(v string) *DescribeRDDomainConfigResponseBodyDomainConfigs {
+	s.Status = &v
+	return s
+}
+
+type DescribeRDDomainConfigResponseBodyDomainConfigsFunctionArgs struct {
+	ArgName  *string `json:"ArgName,omitempty" xml:"ArgName,omitempty"`
+	ArgValue *string `json:"ArgValue,omitempty" xml:"ArgValue,omitempty"`
+}
+
+func (s DescribeRDDomainConfigResponseBodyDomainConfigsFunctionArgs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRDDomainConfigResponseBodyDomainConfigsFunctionArgs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRDDomainConfigResponseBodyDomainConfigsFunctionArgs) SetArgName(v string) *DescribeRDDomainConfigResponseBodyDomainConfigsFunctionArgs {
+	s.ArgName = &v
+	return s
+}
+
+func (s *DescribeRDDomainConfigResponseBodyDomainConfigsFunctionArgs) SetArgValue(v string) *DescribeRDDomainConfigResponseBodyDomainConfigsFunctionArgs {
+	s.ArgValue = &v
+	return s
+}
+
+type DescribeRDDomainConfigResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRDDomainConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRDDomainConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRDDomainConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRDDomainConfigResponse) SetHeaders(v map[string]*string) *DescribeRDDomainConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRDDomainConfigResponse) SetStatusCode(v int32) *DescribeRDDomainConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRDDomainConfigResponse) SetBody(v *DescribeRDDomainConfigResponseBody) *DescribeRDDomainConfigResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRoutineRequest struct {
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -31518,6 +31657,54 @@ func (client *Client) DescribeDcdnsecService(request *DescribeDcdnsecServiceRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnsecServiceResponse{}
 	_body, _err := client.DescribeDcdnsecServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRDDomainConfigWithOptions(request *DescribeRDDomainConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeRDDomainConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["FunctionName"] = request.FunctionName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRDDomainConfig"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRDDomainConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRDDomainConfig(request *DescribeRDDomainConfigRequest) (_result *DescribeRDDomainConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRDDomainConfigResponse{}
+	_body, _err := client.DescribeRDDomainConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
