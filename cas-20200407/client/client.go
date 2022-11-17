@@ -447,183 +447,6 @@ func (s *CreateCertificateWithCsrRequestResponse) SetBody(v *CreateCertificateWi
 	return s
 }
 
-type CreateWHCertificateWithExtensionRequest struct {
-	AfterTime                *int64  `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
-	AlgorithmKeySize         *string `json:"AlgorithmKeySize,omitempty" xml:"AlgorithmKeySize,omitempty"`
-	AliasName                *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	AppendCrl                *bool   `json:"AppendCrl,omitempty" xml:"AppendCrl,omitempty"`
-	BasicConstraintsCritical *bool   `json:"BasicConstraintsCritical,omitempty" xml:"BasicConstraintsCritical,omitempty"`
-	BeforeTime               *int64  `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
-	CertType                 *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	CommonName               *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	CountryCode              *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	CsrPemString             *string `json:"CsrPemString,omitempty" xml:"CsrPemString,omitempty"`
-	Immediately              *int64  `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
-	Locality                 *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
-	Organization             *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
-	OrganizationUnit         *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
-	ParentIdentifier         *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
-	Sans                     *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
-	State                    *string `json:"State,omitempty" xml:"State,omitempty"`
-}
-
-func (s CreateWHCertificateWithExtensionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateWHCertificateWithExtensionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetAfterTime(v int64) *CreateWHCertificateWithExtensionRequest {
-	s.AfterTime = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetAlgorithmKeySize(v string) *CreateWHCertificateWithExtensionRequest {
-	s.AlgorithmKeySize = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetAliasName(v string) *CreateWHCertificateWithExtensionRequest {
-	s.AliasName = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetAppendCrl(v bool) *CreateWHCertificateWithExtensionRequest {
-	s.AppendCrl = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetBasicConstraintsCritical(v bool) *CreateWHCertificateWithExtensionRequest {
-	s.BasicConstraintsCritical = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetBeforeTime(v int64) *CreateWHCertificateWithExtensionRequest {
-	s.BeforeTime = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetCertType(v string) *CreateWHCertificateWithExtensionRequest {
-	s.CertType = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetCommonName(v string) *CreateWHCertificateWithExtensionRequest {
-	s.CommonName = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetCountryCode(v string) *CreateWHCertificateWithExtensionRequest {
-	s.CountryCode = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetCsrPemString(v string) *CreateWHCertificateWithExtensionRequest {
-	s.CsrPemString = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetImmediately(v int64) *CreateWHCertificateWithExtensionRequest {
-	s.Immediately = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetLocality(v string) *CreateWHCertificateWithExtensionRequest {
-	s.Locality = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetOrganization(v string) *CreateWHCertificateWithExtensionRequest {
-	s.Organization = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetOrganizationUnit(v string) *CreateWHCertificateWithExtensionRequest {
-	s.OrganizationUnit = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetParentIdentifier(v string) *CreateWHCertificateWithExtensionRequest {
-	s.ParentIdentifier = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetSans(v string) *CreateWHCertificateWithExtensionRequest {
-	s.Sans = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionRequest) SetState(v string) *CreateWHCertificateWithExtensionRequest {
-	s.State = &v
-	return s
-}
-
-type CreateWHCertificateWithExtensionResponseBody struct {
-	Certificate      *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
-	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateWHCertificateWithExtensionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateWHCertificateWithExtensionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateWHCertificateWithExtensionResponseBody) SetCertificate(v string) *CreateWHCertificateWithExtensionResponseBody {
-	s.Certificate = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionResponseBody) SetCertificateChain(v string) *CreateWHCertificateWithExtensionResponseBody {
-	s.CertificateChain = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionResponseBody) SetIdentifier(v string) *CreateWHCertificateWithExtensionResponseBody {
-	s.Identifier = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionResponseBody) SetRequestId(v string) *CreateWHCertificateWithExtensionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateWHCertificateWithExtensionResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateWHCertificateWithExtensionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateWHCertificateWithExtensionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateWHCertificateWithExtensionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateWHCertificateWithExtensionResponse) SetHeaders(v map[string]*string) *CreateWHCertificateWithExtensionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionResponse) SetStatusCode(v int32) *CreateWHCertificateWithExtensionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateWHCertificateWithExtensionResponse) SetBody(v *CreateWHCertificateWithExtensionResponseBody) *CreateWHCertificateWithExtensionResponse {
-	s.Body = v
-	return s
-}
-
 type CreateWHClientCertificateRequest struct {
 	AfterTime        *int64  `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
 	Algorithm        *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
@@ -1335,10 +1158,69 @@ func (s *EncryptResponse) SetBody(v *EncryptResponseBody) *EncryptResponse {
 	return s
 }
 
+type GetCertWarehouseQuotaResponseBody struct {
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalQuota *int64  `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
+	UseCount   *int64  `json:"UseCount,omitempty" xml:"UseCount,omitempty"`
+}
+
+func (s GetCertWarehouseQuotaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertWarehouseQuotaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertWarehouseQuotaResponseBody) SetRequestId(v string) *GetCertWarehouseQuotaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCertWarehouseQuotaResponseBody) SetTotalQuota(v int64) *GetCertWarehouseQuotaResponseBody {
+	s.TotalQuota = &v
+	return s
+}
+
+func (s *GetCertWarehouseQuotaResponseBody) SetUseCount(v int64) *GetCertWarehouseQuotaResponseBody {
+	s.UseCount = &v
+	return s
+}
+
+type GetCertWarehouseQuotaResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCertWarehouseQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCertWarehouseQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertWarehouseQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertWarehouseQuotaResponse) SetHeaders(v map[string]*string) *GetCertWarehouseQuotaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCertWarehouseQuotaResponse) SetStatusCode(v int32) *GetCertWarehouseQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCertWarehouseQuotaResponse) SetBody(v *GetCertWarehouseQuotaResponseBody) *GetCertWarehouseQuotaResponse {
+	s.Body = v
+	return s
+}
+
 type ListCertRequest struct {
 	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	KeyWord     *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	ShowSize    *int64  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	SourceType  *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	WarehouseId *int64  `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
 }
@@ -1363,6 +1245,11 @@ func (s *ListCertRequest) SetKeyWord(v string) *ListCertRequest {
 
 func (s *ListCertRequest) SetShowSize(v int64) *ListCertRequest {
 	s.ShowSize = &v
+	return s
+}
+
+func (s *ListCertRequest) SetSourceType(v string) *ListCertRequest {
+	s.SourceType = &v
 	return s
 }
 
@@ -1782,18 +1669,34 @@ type ListUserCertificateOrderResponseBodyCertificateOrderList struct {
 	CertEndTime     *int64  `json:"CertEndTime,omitempty" xml:"CertEndTime,omitempty"`
 	CertStartTime   *int64  `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
 	CertType        *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	CertificateId   *int64  `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	City            *string `json:"City,omitempty" xml:"City,omitempty"`
+	CommonName      *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	Country         *string `json:"Country,omitempty" xml:"Country,omitempty"`
 	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DomainCount     *int64  `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
 	DomainType      *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	EndDate         *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	Expired         *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	Fingerprint     *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Issuer          *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OrderId         *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrgName         *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	PartnerOrderId  *string `json:"PartnerOrderId,omitempty" xml:"PartnerOrderId,omitempty"`
 	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductName     *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	Province        *string `json:"Province,omitempty" xml:"Province,omitempty"`
 	RootBrand       *string `json:"RootBrand,omitempty" xml:"RootBrand,omitempty"`
+	Sans            *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	SerialNo        *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	Sha2            *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
 	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartDate       *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TrusteeStatus   *string `json:"TrusteeStatus,omitempty" xml:"TrusteeStatus,omitempty"`
+	Upload          *bool   `json:"Upload,omitempty" xml:"Upload,omitempty"`
 	WildDomainCount *int64  `json:"WildDomainCount,omitempty" xml:"WildDomainCount,omitempty"`
 }
 
@@ -1835,6 +1738,26 @@ func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetCertType(v
 	return s
 }
 
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetCertificateId(v int64) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.CertificateId = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetCity(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.City = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetCommonName(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.CommonName = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetCountry(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.Country = &v
+	return s
+}
+
 func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetDomain(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
 	s.Domain = &v
 	return s
@@ -1850,13 +1773,43 @@ func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetDomainType
 	return s
 }
 
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetEndDate(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.EndDate = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetExpired(v bool) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.Expired = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetFingerprint(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.Fingerprint = &v
+	return s
+}
+
 func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetInstanceId(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
 	s.InstanceId = &v
 	return s
 }
 
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetIssuer(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.Issuer = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetName(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.Name = &v
+	return s
+}
+
 func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetOrderId(v int64) *ListUserCertificateOrderResponseBodyCertificateOrderList {
 	s.OrderId = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetOrgName(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.OrgName = &v
 	return s
 }
 
@@ -1875,13 +1828,38 @@ func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetProductNam
 	return s
 }
 
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetProvince(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.Province = &v
+	return s
+}
+
 func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetRootBrand(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
 	s.RootBrand = &v
 	return s
 }
 
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetSans(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.Sans = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetSerialNo(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.SerialNo = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetSha2(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.Sha2 = &v
+	return s
+}
+
 func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetSourceType(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
 	s.SourceType = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetStartDate(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.StartDate = &v
 	return s
 }
 
@@ -1892,6 +1870,11 @@ func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetStatus(v s
 
 func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetTrusteeStatus(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
 	s.TrusteeStatus = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetUpload(v bool) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.Upload = &v
 	return s
 }
 
@@ -2190,7 +2173,8 @@ func (s *UploadPCACertRequest) SetWarehouseId(v int64) *UploadPCACertRequest {
 }
 
 type UploadPCACertResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UploadPCACertResponseBody) String() string {
@@ -2199,6 +2183,11 @@ func (s UploadPCACertResponseBody) String() string {
 
 func (s UploadPCACertResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UploadPCACertResponseBody) SetIdentifier(v string) *UploadPCACertResponseBody {
+	s.Identifier = &v
+	return s
 }
 
 func (s *UploadPCACertResponseBody) SetRequestId(v string) *UploadPCACertResponseBody {
@@ -2714,114 +2703,6 @@ func (client *Client) CreateCertificateWithCsrRequest(request *CreateCertificate
 	return _result, _err
 }
 
-func (client *Client) CreateWHCertificateWithExtensionWithOptions(request *CreateWHCertificateWithExtensionRequest, runtime *util.RuntimeOptions) (_result *CreateWHCertificateWithExtensionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AfterTime)) {
-		query["AfterTime"] = request.AfterTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AlgorithmKeySize)) {
-		query["AlgorithmKeySize"] = request.AlgorithmKeySize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
-		query["AliasName"] = request.AliasName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AppendCrl)) {
-		query["AppendCrl"] = request.AppendCrl
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BasicConstraintsCritical)) {
-		query["BasicConstraintsCritical"] = request.BasicConstraintsCritical
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BeforeTime)) {
-		query["BeforeTime"] = request.BeforeTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CertType)) {
-		query["CertType"] = request.CertType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CommonName)) {
-		query["CommonName"] = request.CommonName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CountryCode)) {
-		query["CountryCode"] = request.CountryCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CsrPemString)) {
-		query["CsrPemString"] = request.CsrPemString
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Immediately)) {
-		query["Immediately"] = request.Immediately
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Locality)) {
-		query["Locality"] = request.Locality
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Organization)) {
-		query["Organization"] = request.Organization
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrganizationUnit)) {
-		query["OrganizationUnit"] = request.OrganizationUnit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ParentIdentifier)) {
-		query["ParentIdentifier"] = request.ParentIdentifier
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Sans)) {
-		query["Sans"] = request.Sans
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.State)) {
-		query["State"] = request.State
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateWHCertificateWithExtension"),
-		Version:     tea.String("2020-04-07"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateWHCertificateWithExtensionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateWHCertificateWithExtension(request *CreateWHCertificateWithExtensionRequest) (_result *CreateWHCertificateWithExtensionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateWHCertificateWithExtensionResponse{}
-	_body, _err := client.CreateWHCertificateWithExtensionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateWHClientCertificateWithOptions(request *CreateWHClientCertificateRequest, runtime *util.RuntimeOptions) (_result *CreateWHClientCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3218,6 +3099,39 @@ func (client *Client) Encrypt(request *EncryptRequest) (_result *EncryptResponse
 	return _result, _err
 }
 
+func (client *Client) GetCertWarehouseQuotaWithOptions(runtime *util.RuntimeOptions) (_result *GetCertWarehouseQuotaResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetCertWarehouseQuota"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCertWarehouseQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCertWarehouseQuota() (_result *GetCertWarehouseQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCertWarehouseQuotaResponse{}
+	_body, _err := client.GetCertWarehouseQuotaWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListCertWithOptions(request *ListCertRequest, runtime *util.RuntimeOptions) (_result *ListCertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3234,6 +3148,10 @@ func (client *Client) ListCertWithOptions(request *ListCertRequest, runtime *uti
 
 	if !tea.BoolValue(util.IsUnset(request.ShowSize)) {
 		query["ShowSize"] = request.ShowSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
