@@ -8352,13 +8352,17 @@ func (s *GetInstanceInspectionsResponseBodyData) SetTotal(v int64) *GetInstanceI
 }
 
 type GetInstanceInspectionsResponseBodyDataList struct {
-	Data      map[string]interface{}                              `json:"Data,omitempty" xml:"Data,omitempty"`
-	EndTime   *int64                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GmtCreate *int64                                              `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Instance  *GetInstanceInspectionsResponseBodyDataListInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
-	Score     *int32                                              `json:"Score,omitempty" xml:"Score,omitempty"`
-	ScoreMap  map[string]interface{}                              `json:"ScoreMap,omitempty" xml:"ScoreMap,omitempty"`
-	StartTime *int64                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	AutoFunction *GetInstanceInspectionsResponseBodyDataListAutoFunction `json:"AutoFunction,omitempty" xml:"AutoFunction,omitempty" type:"Struct"`
+	Data         map[string]interface{}                                  `json:"Data,omitempty" xml:"Data,omitempty"`
+	EnableDasPro *int32                                                  `json:"EnableDasPro,omitempty" xml:"EnableDasPro,omitempty"`
+	EndTime      *int64                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GmtCreate    *int64                                                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Instance     *GetInstanceInspectionsResponseBodyDataListInstance     `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	Score        *int32                                                  `json:"Score,omitempty" xml:"Score,omitempty"`
+	ScoreMap     map[string]interface{}                                  `json:"ScoreMap,omitempty" xml:"ScoreMap,omitempty"`
+	StartTime    *int64                                                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State        *int32                                                  `json:"State,omitempty" xml:"State,omitempty"`
+	TaskType     *int32                                                  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s GetInstanceInspectionsResponseBodyDataList) String() string {
@@ -8369,8 +8373,18 @@ func (s GetInstanceInspectionsResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
+func (s *GetInstanceInspectionsResponseBodyDataList) SetAutoFunction(v *GetInstanceInspectionsResponseBodyDataListAutoFunction) *GetInstanceInspectionsResponseBodyDataList {
+	s.AutoFunction = v
+	return s
+}
+
 func (s *GetInstanceInspectionsResponseBodyDataList) SetData(v map[string]interface{}) *GetInstanceInspectionsResponseBodyDataList {
 	s.Data = v
+	return s
+}
+
+func (s *GetInstanceInspectionsResponseBodyDataList) SetEnableDasPro(v int32) *GetInstanceInspectionsResponseBodyDataList {
+	s.EnableDasPro = &v
 	return s
 }
 
@@ -8404,16 +8418,72 @@ func (s *GetInstanceInspectionsResponseBodyDataList) SetStartTime(v int64) *GetI
 	return s
 }
 
+func (s *GetInstanceInspectionsResponseBodyDataList) SetState(v int32) *GetInstanceInspectionsResponseBodyDataList {
+	s.State = &v
+	return s
+}
+
+func (s *GetInstanceInspectionsResponseBodyDataList) SetTaskType(v int32) *GetInstanceInspectionsResponseBodyDataList {
+	s.TaskType = &v
+	return s
+}
+
+type GetInstanceInspectionsResponseBodyDataListAutoFunction struct {
+	AutoIndex            *int32 `json:"AutoIndex,omitempty" xml:"AutoIndex,omitempty"`
+	AutoLimitedSql       *int32 `json:"AutoLimitedSql,omitempty" xml:"AutoLimitedSql,omitempty"`
+	AutoResourceOptimize *int32 `json:"AutoResourceOptimize,omitempty" xml:"AutoResourceOptimize,omitempty"`
+	AutoScale            *int32 `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	EventSubscription    *int32 `json:"EventSubscription,omitempty" xml:"EventSubscription,omitempty"`
+}
+
+func (s GetInstanceInspectionsResponseBodyDataListAutoFunction) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceInspectionsResponseBodyDataListAutoFunction) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceInspectionsResponseBodyDataListAutoFunction) SetAutoIndex(v int32) *GetInstanceInspectionsResponseBodyDataListAutoFunction {
+	s.AutoIndex = &v
+	return s
+}
+
+func (s *GetInstanceInspectionsResponseBodyDataListAutoFunction) SetAutoLimitedSql(v int32) *GetInstanceInspectionsResponseBodyDataListAutoFunction {
+	s.AutoLimitedSql = &v
+	return s
+}
+
+func (s *GetInstanceInspectionsResponseBodyDataListAutoFunction) SetAutoResourceOptimize(v int32) *GetInstanceInspectionsResponseBodyDataListAutoFunction {
+	s.AutoResourceOptimize = &v
+	return s
+}
+
+func (s *GetInstanceInspectionsResponseBodyDataListAutoFunction) SetAutoScale(v int32) *GetInstanceInspectionsResponseBodyDataListAutoFunction {
+	s.AutoScale = &v
+	return s
+}
+
+func (s *GetInstanceInspectionsResponseBodyDataListAutoFunction) SetEventSubscription(v int32) *GetInstanceInspectionsResponseBodyDataListAutoFunction {
+	s.EventSubscription = &v
+	return s
+}
+
 type GetInstanceInspectionsResponseBodyDataListInstance struct {
 	AccountId     *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Category      *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Cpu           *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
 	InstanceArea  *string `json:"InstanceArea,omitempty" xml:"InstanceArea,omitempty"`
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Memory        *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	NetworkType   *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	NodeId        *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Storage       *int32  `json:"Storage,omitempty" xml:"Storage,omitempty"`
 	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -8431,6 +8501,16 @@ func (s *GetInstanceInspectionsResponseBodyDataListInstance) SetAccountId(v stri
 	return s
 }
 
+func (s *GetInstanceInspectionsResponseBodyDataListInstance) SetCategory(v string) *GetInstanceInspectionsResponseBodyDataListInstance {
+	s.Category = &v
+	return s
+}
+
+func (s *GetInstanceInspectionsResponseBodyDataListInstance) SetCpu(v string) *GetInstanceInspectionsResponseBodyDataListInstance {
+	s.Cpu = &v
+	return s
+}
+
 func (s *GetInstanceInspectionsResponseBodyDataListInstance) SetEngine(v string) *GetInstanceInspectionsResponseBodyDataListInstance {
 	s.Engine = &v
 	return s
@@ -8438,6 +8518,11 @@ func (s *GetInstanceInspectionsResponseBodyDataListInstance) SetEngine(v string)
 
 func (s *GetInstanceInspectionsResponseBodyDataListInstance) SetEngineVersion(v string) *GetInstanceInspectionsResponseBodyDataListInstance {
 	s.EngineVersion = &v
+	return s
+}
+
+func (s *GetInstanceInspectionsResponseBodyDataListInstance) SetInstanceAlias(v string) *GetInstanceInspectionsResponseBodyDataListInstance {
+	s.InstanceAlias = &v
 	return s
 }
 
@@ -8456,6 +8541,11 @@ func (s *GetInstanceInspectionsResponseBodyDataListInstance) SetInstanceId(v str
 	return s
 }
 
+func (s *GetInstanceInspectionsResponseBodyDataListInstance) SetMemory(v int32) *GetInstanceInspectionsResponseBodyDataListInstance {
+	s.Memory = &v
+	return s
+}
+
 func (s *GetInstanceInspectionsResponseBodyDataListInstance) SetNetworkType(v string) *GetInstanceInspectionsResponseBodyDataListInstance {
 	s.NetworkType = &v
 	return s
@@ -8468,6 +8558,11 @@ func (s *GetInstanceInspectionsResponseBodyDataListInstance) SetNodeId(v string)
 
 func (s *GetInstanceInspectionsResponseBodyDataListInstance) SetRegion(v string) *GetInstanceInspectionsResponseBodyDataListInstance {
 	s.Region = &v
+	return s
+}
+
+func (s *GetInstanceInspectionsResponseBodyDataListInstance) SetStorage(v int32) *GetInstanceInspectionsResponseBodyDataListInstance {
+	s.Storage = &v
 	return s
 }
 
