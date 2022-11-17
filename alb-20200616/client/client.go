@@ -1471,6 +1471,7 @@ func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) 
 
 type CreateRuleRequest struct {
 	ClientToken    *string                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Direction      *string                            `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	DryRun         *bool                              `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	ListenerId     *string                            `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	Priority       *int32                             `json:"Priority,omitempty" xml:"Priority,omitempty"`
@@ -1489,6 +1490,11 @@ func (s CreateRuleRequest) GoString() string {
 
 func (s *CreateRuleRequest) SetClientToken(v string) *CreateRuleRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateRuleRequest) SetDirection(v string) *CreateRuleRequest {
+	s.Direction = &v
 	return s
 }
 
@@ -7977,6 +7983,7 @@ func (s *ListLoadBalancersResponse) SetBody(v *ListLoadBalancersResponseBody) *L
 }
 
 type ListRulesRequest struct {
+	Direction       *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	ListenerIds     []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
 	MaxResults      *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -7990,6 +7997,11 @@ func (s ListRulesRequest) String() string {
 
 func (s ListRulesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListRulesRequest) SetDirection(v string) *ListRulesRequest {
+	s.Direction = &v
+	return s
 }
 
 func (s *ListRulesRequest) SetListenerIds(v []*string) *ListRulesRequest {
@@ -14870,6 +14882,10 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["DryRun"] = request.DryRun
 	}
@@ -16695,6 +16711,10 @@ func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ListenerIds)) {
 		query["ListenerIds"] = request.ListenerIds
 	}
