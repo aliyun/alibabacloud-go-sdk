@@ -3460,6 +3460,99 @@ func (s *RecognizeIdcardResponse) SetBody(v *RecognizeIdcardResponseBody) *Recog
 	return s
 }
 
+type RecognizeInternationalBusinessLicenseRequest struct {
+	Country *string   `json:"Country,omitempty" xml:"Country,omitempty"`
+	Url     *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body    io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecognizeInternationalBusinessLicenseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeInternationalBusinessLicenseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeInternationalBusinessLicenseRequest) SetCountry(v string) *RecognizeInternationalBusinessLicenseRequest {
+	s.Country = &v
+	return s
+}
+
+func (s *RecognizeInternationalBusinessLicenseRequest) SetUrl(v string) *RecognizeInternationalBusinessLicenseRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *RecognizeInternationalBusinessLicenseRequest) SetBody(v io.Reader) *RecognizeInternationalBusinessLicenseRequest {
+	s.Body = v
+	return s
+}
+
+type RecognizeInternationalBusinessLicenseResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeInternationalBusinessLicenseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeInternationalBusinessLicenseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeInternationalBusinessLicenseResponseBody) SetCode(v string) *RecognizeInternationalBusinessLicenseResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RecognizeInternationalBusinessLicenseResponseBody) SetData(v string) *RecognizeInternationalBusinessLicenseResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RecognizeInternationalBusinessLicenseResponseBody) SetMessage(v string) *RecognizeInternationalBusinessLicenseResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RecognizeInternationalBusinessLicenseResponseBody) SetRequestId(v string) *RecognizeInternationalBusinessLicenseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeInternationalBusinessLicenseResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeInternationalBusinessLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeInternationalBusinessLicenseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeInternationalBusinessLicenseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeInternationalBusinessLicenseResponse) SetHeaders(v map[string]*string) *RecognizeInternationalBusinessLicenseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeInternationalBusinessLicenseResponse) SetStatusCode(v int32) *RecognizeInternationalBusinessLicenseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecognizeInternationalBusinessLicenseResponse) SetBody(v *RecognizeInternationalBusinessLicenseResponseBody) *RecognizeInternationalBusinessLicenseResponse {
+	s.Body = v
+	return s
+}
+
 type RecognizeInternationalIdcardRequest struct {
 	Country *string   `json:"Country,omitempty" xml:"Country,omitempty"`
 	Url     *string   `json:"Url,omitempty" xml:"Url,omitempty"`
@@ -8422,6 +8515,56 @@ func (client *Client) RecognizeIdcard(request *RecognizeIdcardRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeIdcardResponse{}
 	_body, _err := client.RecognizeIdcardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeInternationalBusinessLicenseWithOptions(request *RecognizeInternationalBusinessLicenseRequest, runtime *util.RuntimeOptions) (_result *RecognizeInternationalBusinessLicenseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Country)) {
+		query["Country"] = request.Country
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query:  openapiutil.Query(query),
+		Body:   request.Body,
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeInternationalBusinessLicense"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeInternationalBusinessLicenseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeInternationalBusinessLicense(request *RecognizeInternationalBusinessLicenseRequest) (_result *RecognizeInternationalBusinessLicenseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeInternationalBusinessLicenseResponse{}
+	_body, _err := client.RecognizeInternationalBusinessLicenseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
