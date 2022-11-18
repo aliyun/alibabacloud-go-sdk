@@ -634,6 +634,212 @@ func (s *AddDnatEntryResponse) SetBody(v *AddDnatEntryResponseBody) *AddDnatEntr
 	return s
 }
 
+type AddSmartAccessGatewayDnsForwardRequest struct {
+	Domain            *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	MasterIp          *string `json:"MasterIp,omitempty" xml:"MasterIp,omitempty"`
+	Mode              *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	OutboundPortIndex *string `json:"OutboundPortIndex,omitempty" xml:"OutboundPortIndex,omitempty"`
+	OutboundPortName  *string `json:"OutboundPortName,omitempty" xml:"OutboundPortName,omitempty"`
+	OutboundPortType  *string `json:"OutboundPortType,omitempty" xml:"OutboundPortType,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SagInsId          *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn             *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+	SlaveIp           *string `json:"SlaveIp,omitempty" xml:"SlaveIp,omitempty"`
+}
+
+func (s AddSmartAccessGatewayDnsForwardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddSmartAccessGatewayDnsForwardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddSmartAccessGatewayDnsForwardRequest) SetDomain(v string) *AddSmartAccessGatewayDnsForwardRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardRequest) SetMasterIp(v string) *AddSmartAccessGatewayDnsForwardRequest {
+	s.MasterIp = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardRequest) SetMode(v string) *AddSmartAccessGatewayDnsForwardRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardRequest) SetOutboundPortIndex(v string) *AddSmartAccessGatewayDnsForwardRequest {
+	s.OutboundPortIndex = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardRequest) SetOutboundPortName(v string) *AddSmartAccessGatewayDnsForwardRequest {
+	s.OutboundPortName = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardRequest) SetOutboundPortType(v string) *AddSmartAccessGatewayDnsForwardRequest {
+	s.OutboundPortType = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardRequest) SetRegionId(v string) *AddSmartAccessGatewayDnsForwardRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardRequest) SetSagInsId(v string) *AddSmartAccessGatewayDnsForwardRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardRequest) SetSagSn(v string) *AddSmartAccessGatewayDnsForwardRequest {
+	s.SagSn = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardRequest) SetSlaveIp(v string) *AddSmartAccessGatewayDnsForwardRequest {
+	s.SlaveIp = &v
+	return s
+}
+
+type AddSmartAccessGatewayDnsForwardResponseBody struct {
+	Code           *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *AddSmartAccessGatewayDnsForwardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddSmartAccessGatewayDnsForwardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddSmartAccessGatewayDnsForwardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponseBody) SetCode(v string) *AddSmartAccessGatewayDnsForwardResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponseBody) SetData(v *AddSmartAccessGatewayDnsForwardResponseBodyData) *AddSmartAccessGatewayDnsForwardResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponseBody) SetHttpStatusCode(v int32) *AddSmartAccessGatewayDnsForwardResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponseBody) SetMessage(v string) *AddSmartAccessGatewayDnsForwardResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponseBody) SetRequestId(v string) *AddSmartAccessGatewayDnsForwardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponseBody) SetSuccess(v bool) *AddSmartAccessGatewayDnsForwardResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddSmartAccessGatewayDnsForwardResponseBodyData struct {
+	Domain            *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MasterIp          *string `json:"MasterIp,omitempty" xml:"MasterIp,omitempty"`
+	Mode              *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	OutboundPortIndex *int32  `json:"OutboundPortIndex,omitempty" xml:"OutboundPortIndex,omitempty"`
+	OutboundPortName  *string `json:"OutboundPortName,omitempty" xml:"OutboundPortName,omitempty"`
+	OutboundPortType  *string `json:"OutboundPortType,omitempty" xml:"OutboundPortType,omitempty"`
+	SlaveIp           *string `json:"SlaveIp,omitempty" xml:"SlaveIp,omitempty"`
+}
+
+func (s AddSmartAccessGatewayDnsForwardResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddSmartAccessGatewayDnsForwardResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponseBodyData) SetDomain(v string) *AddSmartAccessGatewayDnsForwardResponseBodyData {
+	s.Domain = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponseBodyData) SetInstanceId(v string) *AddSmartAccessGatewayDnsForwardResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponseBodyData) SetMasterIp(v string) *AddSmartAccessGatewayDnsForwardResponseBodyData {
+	s.MasterIp = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponseBodyData) SetMode(v string) *AddSmartAccessGatewayDnsForwardResponseBodyData {
+	s.Mode = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponseBodyData) SetOutboundPortIndex(v int32) *AddSmartAccessGatewayDnsForwardResponseBodyData {
+	s.OutboundPortIndex = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponseBodyData) SetOutboundPortName(v string) *AddSmartAccessGatewayDnsForwardResponseBodyData {
+	s.OutboundPortName = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponseBodyData) SetOutboundPortType(v string) *AddSmartAccessGatewayDnsForwardResponseBodyData {
+	s.OutboundPortType = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponseBodyData) SetSlaveIp(v string) *AddSmartAccessGatewayDnsForwardResponseBodyData {
+	s.SlaveIp = &v
+	return s
+}
+
+type AddSmartAccessGatewayDnsForwardResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddSmartAccessGatewayDnsForwardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddSmartAccessGatewayDnsForwardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddSmartAccessGatewayDnsForwardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponse) SetHeaders(v map[string]*string) *AddSmartAccessGatewayDnsForwardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponse) SetStatusCode(v int32) *AddSmartAccessGatewayDnsForwardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddSmartAccessGatewayDnsForwardResponse) SetBody(v *AddSmartAccessGatewayDnsForwardResponseBody) *AddSmartAccessGatewayDnsForwardResponse {
+	s.Body = v
+	return s
+}
+
 type AddSnatEntryRequest struct {
 	CidrBlock            *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -2346,6 +2552,147 @@ func (s *CreateHealthCheckResponse) SetBody(v *CreateHealthCheckResponseBody) *C
 	return s
 }
 
+type CreateProbeTaskRequest struct {
+	Domain                 *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Enable                 *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	PacketNumber           *int32  `json:"PacketNumber,omitempty" xml:"PacketNumber,omitempty"`
+	Port                   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProbeTaskSourceAddress *string `json:"ProbeTaskSourceAddress,omitempty" xml:"ProbeTaskSourceAddress,omitempty"`
+	Protocol               *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SagId                  *string `json:"SagId,omitempty" xml:"SagId,omitempty"`
+	Sn                     *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	TaskName               *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateProbeTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProbeTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProbeTaskRequest) SetDomain(v string) *CreateProbeTaskRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateProbeTaskRequest) SetEnable(v bool) *CreateProbeTaskRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateProbeTaskRequest) SetPacketNumber(v int32) *CreateProbeTaskRequest {
+	s.PacketNumber = &v
+	return s
+}
+
+func (s *CreateProbeTaskRequest) SetPort(v int32) *CreateProbeTaskRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateProbeTaskRequest) SetProbeTaskSourceAddress(v string) *CreateProbeTaskRequest {
+	s.ProbeTaskSourceAddress = &v
+	return s
+}
+
+func (s *CreateProbeTaskRequest) SetProtocol(v string) *CreateProbeTaskRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateProbeTaskRequest) SetRegionId(v string) *CreateProbeTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateProbeTaskRequest) SetSagId(v string) *CreateProbeTaskRequest {
+	s.SagId = &v
+	return s
+}
+
+func (s *CreateProbeTaskRequest) SetSn(v string) *CreateProbeTaskRequest {
+	s.Sn = &v
+	return s
+}
+
+func (s *CreateProbeTaskRequest) SetTaskName(v string) *CreateProbeTaskRequest {
+	s.TaskName = &v
+	return s
+}
+
+func (s *CreateProbeTaskRequest) SetType(v string) *CreateProbeTaskRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateProbeTaskResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateProbeTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProbeTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProbeTaskResponseBody) SetCode(v string) *CreateProbeTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateProbeTaskResponseBody) SetData(v string) *CreateProbeTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateProbeTaskResponseBody) SetMessage(v string) *CreateProbeTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateProbeTaskResponseBody) SetRequestId(v string) *CreateProbeTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateProbeTaskResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProbeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateProbeTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProbeTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProbeTaskResponse) SetHeaders(v map[string]*string) *CreateProbeTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProbeTaskResponse) SetStatusCode(v int32) *CreateProbeTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProbeTaskResponse) SetBody(v *CreateProbeTaskResponseBody) *CreateProbeTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateQosRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3189,6 +3536,105 @@ func (s *CreateSagStaticRouteResponse) SetStatusCode(v int32) *CreateSagStaticRo
 }
 
 func (s *CreateSagStaticRouteResponse) SetBody(v *CreateSagStaticRouteResponseBody) *CreateSagStaticRouteResponse {
+	s.Body = v
+	return s
+}
+
+type CreateServiceAddressRequest struct {
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SagId       *string `json:"SagId,omitempty" xml:"SagId,omitempty"`
+	Sn          *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+}
+
+func (s CreateServiceAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceAddressRequest) SetAddress(v string) *CreateServiceAddressRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *CreateServiceAddressRequest) SetAddressType(v string) *CreateServiceAddressRequest {
+	s.AddressType = &v
+	return s
+}
+
+func (s *CreateServiceAddressRequest) SetRegionId(v string) *CreateServiceAddressRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateServiceAddressRequest) SetSagId(v string) *CreateServiceAddressRequest {
+	s.SagId = &v
+	return s
+}
+
+func (s *CreateServiceAddressRequest) SetSn(v string) *CreateServiceAddressRequest {
+	s.Sn = &v
+	return s
+}
+
+type CreateServiceAddressResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateServiceAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceAddressResponseBody) SetCode(v string) *CreateServiceAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateServiceAddressResponseBody) SetMessage(v string) *CreateServiceAddressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateServiceAddressResponseBody) SetRequestId(v string) *CreateServiceAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateServiceAddressResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateServiceAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceAddressResponse) SetHeaders(v map[string]*string) *CreateServiceAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceAddressResponse) SetStatusCode(v int32) *CreateServiceAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateServiceAddressResponse) SetBody(v *CreateServiceAddressResponseBody) *CreateServiceAddressResponse {
 	s.Body = v
 	return s
 }
@@ -4462,6 +4908,99 @@ func (s *DeleteHealthCheckResponse) SetBody(v *DeleteHealthCheckResponseBody) *D
 	return s
 }
 
+type DeleteProbeTaskRequest struct {
+	ProbeTaskId *string `json:"ProbeTaskId,omitempty" xml:"ProbeTaskId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SagId       *string `json:"SagId,omitempty" xml:"SagId,omitempty"`
+	Sn          *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+}
+
+func (s DeleteProbeTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProbeTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProbeTaskRequest) SetProbeTaskId(v string) *DeleteProbeTaskRequest {
+	s.ProbeTaskId = &v
+	return s
+}
+
+func (s *DeleteProbeTaskRequest) SetRegionId(v string) *DeleteProbeTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteProbeTaskRequest) SetSagId(v string) *DeleteProbeTaskRequest {
+	s.SagId = &v
+	return s
+}
+
+func (s *DeleteProbeTaskRequest) SetSn(v string) *DeleteProbeTaskRequest {
+	s.Sn = &v
+	return s
+}
+
+type DeleteProbeTaskResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteProbeTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProbeTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProbeTaskResponseBody) SetCode(v string) *DeleteProbeTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteProbeTaskResponseBody) SetMessage(v string) *DeleteProbeTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteProbeTaskResponseBody) SetRequestId(v string) *DeleteProbeTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteProbeTaskResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteProbeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteProbeTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProbeTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProbeTaskResponse) SetHeaders(v map[string]*string) *DeleteProbeTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProbeTaskResponse) SetStatusCode(v int32) *DeleteProbeTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteProbeTaskResponse) SetBody(v *DeleteProbeTaskResponseBody) *DeleteProbeTaskResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteQosRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -5092,6 +5631,105 @@ func (s *DeleteSagStaticRouteResponse) SetBody(v *DeleteSagStaticRouteResponseBo
 	return s
 }
 
+type DeleteServiceAddressRequest struct {
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SagId       *string `json:"SagId,omitempty" xml:"SagId,omitempty"`
+	Sn          *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+}
+
+func (s DeleteServiceAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceAddressRequest) SetAddress(v string) *DeleteServiceAddressRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *DeleteServiceAddressRequest) SetAddressType(v string) *DeleteServiceAddressRequest {
+	s.AddressType = &v
+	return s
+}
+
+func (s *DeleteServiceAddressRequest) SetRegionId(v string) *DeleteServiceAddressRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteServiceAddressRequest) SetSagId(v string) *DeleteServiceAddressRequest {
+	s.SagId = &v
+	return s
+}
+
+func (s *DeleteServiceAddressRequest) SetSn(v string) *DeleteServiceAddressRequest {
+	s.Sn = &v
+	return s
+}
+
+type DeleteServiceAddressResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteServiceAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceAddressResponseBody) SetCode(v string) *DeleteServiceAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteServiceAddressResponseBody) SetMessage(v string) *DeleteServiceAddressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteServiceAddressResponseBody) SetRequestId(v string) *DeleteServiceAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteServiceAddressResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteServiceAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceAddressResponse) SetHeaders(v map[string]*string) *DeleteServiceAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceAddressResponse) SetStatusCode(v int32) *DeleteServiceAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteServiceAddressResponse) SetBody(v *DeleteServiceAddressResponseBody) *DeleteServiceAddressResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSmartAccessGatewayRequest struct {
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -5262,6 +5900,111 @@ func (s *DeleteSmartAccessGatewayClientUserResponse) SetStatusCode(v int32) *Del
 }
 
 func (s *DeleteSmartAccessGatewayClientUserResponse) SetBody(v *DeleteSmartAccessGatewayClientUserResponseBody) *DeleteSmartAccessGatewayClientUserResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSmartAccessGatewayDnsForwardRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SagInsId   *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn      *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+}
+
+func (s DeleteSmartAccessGatewayDnsForwardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSmartAccessGatewayDnsForwardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSmartAccessGatewayDnsForwardRequest) SetInstanceId(v string) *DeleteSmartAccessGatewayDnsForwardRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteSmartAccessGatewayDnsForwardRequest) SetRegionId(v string) *DeleteSmartAccessGatewayDnsForwardRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteSmartAccessGatewayDnsForwardRequest) SetSagInsId(v string) *DeleteSmartAccessGatewayDnsForwardRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *DeleteSmartAccessGatewayDnsForwardRequest) SetSagSn(v string) *DeleteSmartAccessGatewayDnsForwardRequest {
+	s.SagSn = &v
+	return s
+}
+
+type DeleteSmartAccessGatewayDnsForwardResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteSmartAccessGatewayDnsForwardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSmartAccessGatewayDnsForwardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSmartAccessGatewayDnsForwardResponseBody) SetCode(v string) *DeleteSmartAccessGatewayDnsForwardResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSmartAccessGatewayDnsForwardResponseBody) SetHttpStatusCode(v string) *DeleteSmartAccessGatewayDnsForwardResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteSmartAccessGatewayDnsForwardResponseBody) SetMessage(v string) *DeleteSmartAccessGatewayDnsForwardResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteSmartAccessGatewayDnsForwardResponseBody) SetRequestId(v string) *DeleteSmartAccessGatewayDnsForwardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSmartAccessGatewayDnsForwardResponseBody) SetSuccess(v string) *DeleteSmartAccessGatewayDnsForwardResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteSmartAccessGatewayDnsForwardResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSmartAccessGatewayDnsForwardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSmartAccessGatewayDnsForwardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSmartAccessGatewayDnsForwardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSmartAccessGatewayDnsForwardResponse) SetHeaders(v map[string]*string) *DeleteSmartAccessGatewayDnsForwardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSmartAccessGatewayDnsForwardResponse) SetStatusCode(v int32) *DeleteSmartAccessGatewayDnsForwardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSmartAccessGatewayDnsForwardResponse) SetBody(v *DeleteSmartAccessGatewayDnsForwardResponseBody) *DeleteSmartAccessGatewayDnsForwardResponse {
 	s.Body = v
 	return s
 }
@@ -13280,6 +14023,7 @@ type DescribeSmartAccessGatewayAttributeResponseBody struct {
 	EnableSoftwareConnectionAudit              *bool                                                                                     `json:"EnableSoftwareConnectionAudit,omitempty" xml:"EnableSoftwareConnectionAudit,omitempty"`
 	EndTime                                    *int64                                                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	FlowLogIds                                 *DescribeSmartAccessGatewayAttributeResponseBodyFlowLogIds                                `json:"FlowLogIds,omitempty" xml:"FlowLogIds,omitempty" type:"Struct"`
+	IRIds                                      *DescribeSmartAccessGatewayAttributeResponseBodyIRIds                                     `json:"IRIds,omitempty" xml:"IRIds,omitempty" type:"Struct"`
 	InstanceType                               *string                                                                                   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	IpsecStatus                                *string                                                                                   `json:"IpsecStatus,omitempty" xml:"IpsecStatus,omitempty"`
 	Links                                      *DescribeSmartAccessGatewayAttributeResponseBodyLinks                                     `json:"Links,omitempty" xml:"Links,omitempty" type:"Struct"`
@@ -13414,6 +14158,11 @@ func (s *DescribeSmartAccessGatewayAttributeResponseBody) SetEndTime(v int64) *D
 
 func (s *DescribeSmartAccessGatewayAttributeResponseBody) SetFlowLogIds(v *DescribeSmartAccessGatewayAttributeResponseBodyFlowLogIds) *DescribeSmartAccessGatewayAttributeResponseBody {
 	s.FlowLogIds = v
+	return s
+}
+
+func (s *DescribeSmartAccessGatewayAttributeResponseBody) SetIRIds(v *DescribeSmartAccessGatewayAttributeResponseBodyIRIds) *DescribeSmartAccessGatewayAttributeResponseBody {
+	s.IRIds = v
 	return s
 }
 
@@ -13657,6 +14406,23 @@ func (s DescribeSmartAccessGatewayAttributeResponseBodyFlowLogIds) GoString() st
 
 func (s *DescribeSmartAccessGatewayAttributeResponseBodyFlowLogIds) SetFlowLogId(v []*string) *DescribeSmartAccessGatewayAttributeResponseBodyFlowLogIds {
 	s.FlowLogId = v
+	return s
+}
+
+type DescribeSmartAccessGatewayAttributeResponseBodyIRIds struct {
+	IRId []*string `json:"IRId,omitempty" xml:"IRId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSmartAccessGatewayAttributeResponseBodyIRIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSmartAccessGatewayAttributeResponseBodyIRIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSmartAccessGatewayAttributeResponseBodyIRIds) SetIRId(v []*string) *DescribeSmartAccessGatewayAttributeResponseBodyIRIds {
+	s.IRId = v
 	return s
 }
 
@@ -14578,16 +15344,20 @@ type DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGatewa
 	Description                   *string                                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
 	DpiMonitorStatus              *string                                                                            `json:"DpiMonitorStatus,omitempty" xml:"DpiMonitorStatus,omitempty"`
 	DpiStatus                     *string                                                                            `json:"DpiStatus,omitempty" xml:"DpiStatus,omitempty"`
+	EnableAdvancedMonitor         *bool                                                                              `json:"EnableAdvancedMonitor,omitempty" xml:"EnableAdvancedMonitor,omitempty"`
 	EnableSoftwareConnectionAudit *bool                                                                              `json:"EnableSoftwareConnectionAudit,omitempty" xml:"EnableSoftwareConnectionAudit,omitempty"`
 	EndTime                       *int64                                                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	EnterpriseCode                *string                                                                            `json:"EnterpriseCode,omitempty" xml:"EnterpriseCode,omitempty"`
 	HardwareVersion               *string                                                                            `json:"HardwareVersion,omitempty" xml:"HardwareVersion,omitempty"`
+	IRIds                         *string                                                                            `json:"IRIds,omitempty" xml:"IRIds,omitempty"`
 	IdaasApplicationId            *string                                                                            `json:"IdaasApplicationId,omitempty" xml:"IdaasApplicationId,omitempty"`
 	IdaasId                       *string                                                                            `json:"IdaasId,omitempty" xml:"IdaasId,omitempty"`
 	IpsecStatus                   *string                                                                            `json:"IpsecStatus,omitempty" xml:"IpsecStatus,omitempty"`
+	Isp                           *string                                                                            `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	Links                         *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGatewayLinks `json:"Links,omitempty" xml:"Links,omitempty" type:"Struct"`
 	MaxBandwidth                  *string                                                                            `json:"MaxBandwidth,omitempty" xml:"MaxBandwidth,omitempty"`
 	Name                          *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Position                      *string                                                                            `json:"Position,omitempty" xml:"Position,omitempty"`
 	QosIds                        *string                                                                            `json:"QosIds,omitempty" xml:"QosIds,omitempty"`
 	ResellerInstanceId            *string                                                                            `json:"ResellerInstanceId,omitempty" xml:"ResellerInstanceId,omitempty"`
 	ResellerUid                   *string                                                                            `json:"ResellerUid,omitempty" xml:"ResellerUid,omitempty"`
@@ -14688,6 +15458,11 @@ func (s *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGa
 	return s
 }
 
+func (s *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway) SetEnableAdvancedMonitor(v bool) *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway {
+	s.EnableAdvancedMonitor = &v
+	return s
+}
+
 func (s *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway) SetEnableSoftwareConnectionAudit(v bool) *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway {
 	s.EnableSoftwareConnectionAudit = &v
 	return s
@@ -14708,6 +15483,11 @@ func (s *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGa
 	return s
 }
 
+func (s *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway) SetIRIds(v string) *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway {
+	s.IRIds = &v
+	return s
+}
+
 func (s *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway) SetIdaasApplicationId(v string) *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway {
 	s.IdaasApplicationId = &v
 	return s
@@ -14723,6 +15503,11 @@ func (s *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGa
 	return s
 }
 
+func (s *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway) SetIsp(v string) *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway {
+	s.Isp = &v
+	return s
+}
+
 func (s *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway) SetLinks(v *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGatewayLinks) *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway {
 	s.Links = v
 	return s
@@ -14735,6 +15520,11 @@ func (s *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGa
 
 func (s *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway) SetName(v string) *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway) SetPosition(v string) *DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGateway {
+	s.Position = &v
 	return s
 }
 
@@ -17402,6 +18192,110 @@ func (s *GetAclAttributeResponse) SetBody(v *GetAclAttributeResponseBody) *GetAc
 	return s
 }
 
+type GetAdvancedMonitorStateRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SagId    *string `json:"SagId,omitempty" xml:"SagId,omitempty"`
+}
+
+func (s GetAdvancedMonitorStateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdvancedMonitorStateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdvancedMonitorStateRequest) SetRegionId(v string) *GetAdvancedMonitorStateRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetAdvancedMonitorStateRequest) SetSagId(v string) *GetAdvancedMonitorStateRequest {
+	s.SagId = &v
+	return s
+}
+
+type GetAdvancedMonitorStateResponseBody struct {
+	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetAdvancedMonitorStateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAdvancedMonitorStateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdvancedMonitorStateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdvancedMonitorStateResponseBody) SetCode(v string) *GetAdvancedMonitorStateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAdvancedMonitorStateResponseBody) SetData(v []*GetAdvancedMonitorStateResponseBodyData) *GetAdvancedMonitorStateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAdvancedMonitorStateResponseBody) SetMessage(v string) *GetAdvancedMonitorStateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAdvancedMonitorStateResponseBody) SetRequestId(v string) *GetAdvancedMonitorStateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAdvancedMonitorStateResponseBodyData struct {
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s GetAdvancedMonitorStateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdvancedMonitorStateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdvancedMonitorStateResponseBodyData) SetEnable(v bool) *GetAdvancedMonitorStateResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+type GetAdvancedMonitorStateResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAdvancedMonitorStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAdvancedMonitorStateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAdvancedMonitorStateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAdvancedMonitorStateResponse) SetHeaders(v map[string]*string) *GetAdvancedMonitorStateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAdvancedMonitorStateResponse) SetStatusCode(v int32) *GetAdvancedMonitorStateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAdvancedMonitorStateResponse) SetBody(v *GetAdvancedMonitorStateResponseBody) *GetAdvancedMonitorStateResponse {
+	s.Body = v
+	return s
+}
+
 type GetCloudConnectNetworkUseLimitRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -18694,6 +19588,128 @@ func (s *ListAccessPointsResponse) SetBody(v *ListAccessPointsResponseBody) *Lis
 	return s
 }
 
+type ListAvailableServiceAddressRequest struct {
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SagId       *string `json:"SagId,omitempty" xml:"SagId,omitempty"`
+	Sn          *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+}
+
+func (s ListAvailableServiceAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvailableServiceAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvailableServiceAddressRequest) SetAddressType(v string) *ListAvailableServiceAddressRequest {
+	s.AddressType = &v
+	return s
+}
+
+func (s *ListAvailableServiceAddressRequest) SetRegionId(v string) *ListAvailableServiceAddressRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListAvailableServiceAddressRequest) SetSagId(v string) *ListAvailableServiceAddressRequest {
+	s.SagId = &v
+	return s
+}
+
+func (s *ListAvailableServiceAddressRequest) SetSn(v string) *ListAvailableServiceAddressRequest {
+	s.Sn = &v
+	return s
+}
+
+type ListAvailableServiceAddressResponseBody struct {
+	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*ListAvailableServiceAddressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAvailableServiceAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvailableServiceAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvailableServiceAddressResponseBody) SetCode(v string) *ListAvailableServiceAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAvailableServiceAddressResponseBody) SetData(v []*ListAvailableServiceAddressResponseBodyData) *ListAvailableServiceAddressResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAvailableServiceAddressResponseBody) SetMessage(v string) *ListAvailableServiceAddressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAvailableServiceAddressResponseBody) SetRequestId(v string) *ListAvailableServiceAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAvailableServiceAddressResponseBodyData struct {
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+}
+
+func (s ListAvailableServiceAddressResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvailableServiceAddressResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvailableServiceAddressResponseBodyData) SetAddress(v string) *ListAvailableServiceAddressResponseBodyData {
+	s.Address = &v
+	return s
+}
+
+func (s *ListAvailableServiceAddressResponseBodyData) SetAddressType(v string) *ListAvailableServiceAddressResponseBodyData {
+	s.AddressType = &v
+	return s
+}
+
+type ListAvailableServiceAddressResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAvailableServiceAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAvailableServiceAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAvailableServiceAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAvailableServiceAddressResponse) SetHeaders(v map[string]*string) *ListAvailableServiceAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAvailableServiceAddressResponse) SetStatusCode(v int32) *ListAvailableServiceAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAvailableServiceAddressResponse) SetBody(v *ListAvailableServiceAddressResponseBody) *ListAvailableServiceAddressResponse {
+	s.Body = v
+	return s
+}
+
 type ListDpiConfigErrorRequest struct {
 	DpiConfigType  *string `json:"DpiConfigType,omitempty" xml:"DpiConfigType,omitempty"`
 	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -19345,6 +20361,242 @@ func (s *ListEnterpriseCodeResponse) SetStatusCode(v int32) *ListEnterpriseCodeR
 }
 
 func (s *ListEnterpriseCodeResponse) SetBody(v *ListEnterpriseCodeResponseBody) *ListEnterpriseCodeResponse {
+	s.Body = v
+	return s
+}
+
+type ListProbeTaskRequest struct {
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProbeTaskId *string `json:"ProbeTaskId,omitempty" xml:"ProbeTaskId,omitempty"`
+	Protocol    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SagId       *string `json:"SagId,omitempty" xml:"SagId,omitempty"`
+	SagName     *string `json:"SagName,omitempty" xml:"SagName,omitempty"`
+	Sn          *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s ListProbeTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProbeTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProbeTaskRequest) SetPageNumber(v int32) *ListProbeTaskRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProbeTaskRequest) SetPageSize(v int32) *ListProbeTaskRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProbeTaskRequest) SetProbeTaskId(v string) *ListProbeTaskRequest {
+	s.ProbeTaskId = &v
+	return s
+}
+
+func (s *ListProbeTaskRequest) SetProtocol(v string) *ListProbeTaskRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ListProbeTaskRequest) SetRegionId(v string) *ListProbeTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListProbeTaskRequest) SetSagId(v string) *ListProbeTaskRequest {
+	s.SagId = &v
+	return s
+}
+
+func (s *ListProbeTaskRequest) SetSagName(v string) *ListProbeTaskRequest {
+	s.SagName = &v
+	return s
+}
+
+func (s *ListProbeTaskRequest) SetSn(v string) *ListProbeTaskRequest {
+	s.Sn = &v
+	return s
+}
+
+func (s *ListProbeTaskRequest) SetTaskName(v string) *ListProbeTaskRequest {
+	s.TaskName = &v
+	return s
+}
+
+type ListProbeTaskResponseBody struct {
+	Code       *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data       []*ListProbeTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message    *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListProbeTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProbeTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProbeTaskResponseBody) SetCode(v string) *ListProbeTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBody) SetData(v []*ListProbeTaskResponseBodyData) *ListProbeTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListProbeTaskResponseBody) SetMessage(v string) *ListProbeTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBody) SetPageNumber(v int32) *ListProbeTaskResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBody) SetPageSize(v int32) *ListProbeTaskResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBody) SetRequestId(v string) *ListProbeTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBody) SetTotalCount(v int32) *ListProbeTaskResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListProbeTaskResponseBodyData struct {
+	Domain                 *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Enable                 *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GmtCreate              *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify              *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	PacketNumber           *int32  `json:"PacketNumber,omitempty" xml:"PacketNumber,omitempty"`
+	Port                   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProbeTaskId            *string `json:"ProbeTaskId,omitempty" xml:"ProbeTaskId,omitempty"`
+	ProbeTaskSourceAddress *string `json:"ProbeTaskSourceAddress,omitempty" xml:"ProbeTaskSourceAddress,omitempty"`
+	Protocol               *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	SagId                  *string `json:"SagId,omitempty" xml:"SagId,omitempty"`
+	Sn                     *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	TaskName               *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListProbeTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProbeTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListProbeTaskResponseBodyData) SetDomain(v string) *ListProbeTaskResponseBodyData {
+	s.Domain = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBodyData) SetEnable(v bool) *ListProbeTaskResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBodyData) SetGmtCreate(v string) *ListProbeTaskResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBodyData) SetGmtModify(v string) *ListProbeTaskResponseBodyData {
+	s.GmtModify = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBodyData) SetPacketNumber(v int32) *ListProbeTaskResponseBodyData {
+	s.PacketNumber = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBodyData) SetPort(v int32) *ListProbeTaskResponseBodyData {
+	s.Port = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBodyData) SetProbeTaskId(v string) *ListProbeTaskResponseBodyData {
+	s.ProbeTaskId = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBodyData) SetProbeTaskSourceAddress(v string) *ListProbeTaskResponseBodyData {
+	s.ProbeTaskSourceAddress = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBodyData) SetProtocol(v string) *ListProbeTaskResponseBodyData {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBodyData) SetSagId(v string) *ListProbeTaskResponseBodyData {
+	s.SagId = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBodyData) SetSn(v string) *ListProbeTaskResponseBodyData {
+	s.Sn = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBodyData) SetTaskName(v string) *ListProbeTaskResponseBodyData {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListProbeTaskResponseBodyData) SetType(v string) *ListProbeTaskResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type ListProbeTaskResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProbeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProbeTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProbeTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProbeTaskResponse) SetHeaders(v map[string]*string) *ListProbeTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProbeTaskResponse) SetStatusCode(v int32) *ListProbeTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListProbeTaskResponse) SetBody(v *ListProbeTaskResponseBody) *ListProbeTaskResponse {
 	s.Body = v
 	return s
 }
@@ -24487,6 +25739,93 @@ func (s *RoamClientUserResponse) SetBody(v *RoamClientUserResponseBody) *RoamCli
 	return s
 }
 
+type SetAdvancedMonitorStateRequest struct {
+	Enable   *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SagId    *string `json:"SagId,omitempty" xml:"SagId,omitempty"`
+}
+
+func (s SetAdvancedMonitorStateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAdvancedMonitorStateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetAdvancedMonitorStateRequest) SetEnable(v bool) *SetAdvancedMonitorStateRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *SetAdvancedMonitorStateRequest) SetRegionId(v string) *SetAdvancedMonitorStateRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SetAdvancedMonitorStateRequest) SetSagId(v string) *SetAdvancedMonitorStateRequest {
+	s.SagId = &v
+	return s
+}
+
+type SetAdvancedMonitorStateResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetAdvancedMonitorStateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAdvancedMonitorStateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetAdvancedMonitorStateResponseBody) SetCode(v string) *SetAdvancedMonitorStateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetAdvancedMonitorStateResponseBody) SetMessage(v string) *SetAdvancedMonitorStateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SetAdvancedMonitorStateResponseBody) SetRequestId(v string) *SetAdvancedMonitorStateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetAdvancedMonitorStateResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetAdvancedMonitorStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetAdvancedMonitorStateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAdvancedMonitorStateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetAdvancedMonitorStateResponse) SetHeaders(v map[string]*string) *SetAdvancedMonitorStateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetAdvancedMonitorStateResponse) SetStatusCode(v int32) *SetAdvancedMonitorStateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetAdvancedMonitorStateResponse) SetBody(v *SetAdvancedMonitorStateResponseBody) *SetAdvancedMonitorStateResponse {
+	s.Body = v
+	return s
+}
+
 type SynchronizeSmartAGWebConfigRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -25075,6 +26414,147 @@ func (s *UpdateEnterpriseCodeResponse) SetBody(v *UpdateEnterpriseCodeResponseBo
 	return s
 }
 
+type UpdateProbeTaskRequest struct {
+	AddressType            *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	Domain                 *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Enable                 *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	PacketNumber           *int32  `json:"PacketNumber,omitempty" xml:"PacketNumber,omitempty"`
+	Port                   *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProbeTaskId            *string `json:"ProbeTaskId,omitempty" xml:"ProbeTaskId,omitempty"`
+	ProbeTaskSourceAddress *string `json:"ProbeTaskSourceAddress,omitempty" xml:"ProbeTaskSourceAddress,omitempty"`
+	Protocol               *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SagId                  *string `json:"SagId,omitempty" xml:"SagId,omitempty"`
+	Sn                     *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	TaskName               *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s UpdateProbeTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProbeTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProbeTaskRequest) SetAddressType(v string) *UpdateProbeTaskRequest {
+	s.AddressType = &v
+	return s
+}
+
+func (s *UpdateProbeTaskRequest) SetDomain(v string) *UpdateProbeTaskRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *UpdateProbeTaskRequest) SetEnable(v bool) *UpdateProbeTaskRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateProbeTaskRequest) SetPacketNumber(v int32) *UpdateProbeTaskRequest {
+	s.PacketNumber = &v
+	return s
+}
+
+func (s *UpdateProbeTaskRequest) SetPort(v int32) *UpdateProbeTaskRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *UpdateProbeTaskRequest) SetProbeTaskId(v string) *UpdateProbeTaskRequest {
+	s.ProbeTaskId = &v
+	return s
+}
+
+func (s *UpdateProbeTaskRequest) SetProbeTaskSourceAddress(v string) *UpdateProbeTaskRequest {
+	s.ProbeTaskSourceAddress = &v
+	return s
+}
+
+func (s *UpdateProbeTaskRequest) SetProtocol(v string) *UpdateProbeTaskRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateProbeTaskRequest) SetRegionId(v string) *UpdateProbeTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateProbeTaskRequest) SetSagId(v string) *UpdateProbeTaskRequest {
+	s.SagId = &v
+	return s
+}
+
+func (s *UpdateProbeTaskRequest) SetSn(v string) *UpdateProbeTaskRequest {
+	s.Sn = &v
+	return s
+}
+
+func (s *UpdateProbeTaskRequest) SetTaskName(v string) *UpdateProbeTaskRequest {
+	s.TaskName = &v
+	return s
+}
+
+type UpdateProbeTaskResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateProbeTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProbeTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProbeTaskResponseBody) SetCode(v string) *UpdateProbeTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateProbeTaskResponseBody) SetMessage(v string) *UpdateProbeTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateProbeTaskResponseBody) SetRequestId(v string) *UpdateProbeTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateProbeTaskResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateProbeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateProbeTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProbeTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProbeTaskResponse) SetHeaders(v map[string]*string) *UpdateProbeTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateProbeTaskResponse) SetStatusCode(v int32) *UpdateProbeTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateProbeTaskResponse) SetBody(v *UpdateProbeTaskResponseBody) *UpdateProbeTaskResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateSmartAGAccessPointRequest struct {
 	AccessPointId        *int32  `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -25459,6 +26939,939 @@ func (s *UpdateSmartAGUserAccelerateConfigResponse) SetBody(v *UpdateSmartAGUser
 	return s
 }
 
+type UpdateSmartAccessGatewayAdminPasswordRequest struct {
+	CrossAccount *bool   `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceUid  *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	SagInsId     *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn        *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayAdminPasswordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayAdminPasswordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayAdminPasswordRequest) SetCrossAccount(v bool) *UpdateSmartAccessGatewayAdminPasswordRequest {
+	s.CrossAccount = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayAdminPasswordRequest) SetPassword(v string) *UpdateSmartAccessGatewayAdminPasswordRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayAdminPasswordRequest) SetRegionId(v string) *UpdateSmartAccessGatewayAdminPasswordRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayAdminPasswordRequest) SetResourceUid(v string) *UpdateSmartAccessGatewayAdminPasswordRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayAdminPasswordRequest) SetSagInsId(v string) *UpdateSmartAccessGatewayAdminPasswordRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayAdminPasswordRequest) SetSagSn(v string) *UpdateSmartAccessGatewayAdminPasswordRequest {
+	s.SagSn = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayAdminPasswordResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayAdminPasswordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayAdminPasswordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayAdminPasswordResponseBody) SetCode(v string) *UpdateSmartAccessGatewayAdminPasswordResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayAdminPasswordResponseBody) SetMessage(v string) *UpdateSmartAccessGatewayAdminPasswordResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayAdminPasswordResponseBody) SetRequestId(v string) *UpdateSmartAccessGatewayAdminPasswordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayAdminPasswordResponseBody) SetSuccess(v bool) *UpdateSmartAccessGatewayAdminPasswordResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayAdminPasswordResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSmartAccessGatewayAdminPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSmartAccessGatewayAdminPasswordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayAdminPasswordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayAdminPasswordResponse) SetHeaders(v map[string]*string) *UpdateSmartAccessGatewayAdminPasswordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayAdminPasswordResponse) SetStatusCode(v int32) *UpdateSmartAccessGatewayAdminPasswordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayAdminPasswordResponse) SetBody(v *UpdateSmartAccessGatewayAdminPasswordResponseBody) *UpdateSmartAccessGatewayAdminPasswordResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSmartAccessGatewayBgpRouteRequest struct {
+	CrossAccount *bool   `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	HoldTime     *int32  `json:"HoldTime,omitempty" xml:"HoldTime,omitempty"`
+	KeepAlive    *int32  `json:"KeepAlive,omitempty" xml:"KeepAlive,omitempty"`
+	LocalAs      *int64  `json:"LocalAs,omitempty" xml:"LocalAs,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceUid  *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	RouterId     *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
+	SagInsId     *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn        *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayBgpRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayBgpRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteRequest) SetCrossAccount(v bool) *UpdateSmartAccessGatewayBgpRouteRequest {
+	s.CrossAccount = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteRequest) SetHoldTime(v int32) *UpdateSmartAccessGatewayBgpRouteRequest {
+	s.HoldTime = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteRequest) SetKeepAlive(v int32) *UpdateSmartAccessGatewayBgpRouteRequest {
+	s.KeepAlive = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteRequest) SetLocalAs(v int64) *UpdateSmartAccessGatewayBgpRouteRequest {
+	s.LocalAs = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteRequest) SetRegionId(v string) *UpdateSmartAccessGatewayBgpRouteRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteRequest) SetResourceUid(v string) *UpdateSmartAccessGatewayBgpRouteRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteRequest) SetRouterId(v string) *UpdateSmartAccessGatewayBgpRouteRequest {
+	s.RouterId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteRequest) SetSagInsId(v string) *UpdateSmartAccessGatewayBgpRouteRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteRequest) SetSagSn(v string) *UpdateSmartAccessGatewayBgpRouteRequest {
+	s.SagSn = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayBgpRouteResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayBgpRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayBgpRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteResponseBody) SetCode(v string) *UpdateSmartAccessGatewayBgpRouteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteResponseBody) SetMessage(v string) *UpdateSmartAccessGatewayBgpRouteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteResponseBody) SetRequestId(v string) *UpdateSmartAccessGatewayBgpRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteResponseBody) SetSuccess(v bool) *UpdateSmartAccessGatewayBgpRouteResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayBgpRouteResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSmartAccessGatewayBgpRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSmartAccessGatewayBgpRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayBgpRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteResponse) SetHeaders(v map[string]*string) *UpdateSmartAccessGatewayBgpRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteResponse) SetStatusCode(v int32) *UpdateSmartAccessGatewayBgpRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayBgpRouteResponse) SetBody(v *UpdateSmartAccessGatewayBgpRouteResponseBody) *UpdateSmartAccessGatewayBgpRouteResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSmartAccessGatewayDnsRequest struct {
+	CrossAccount *bool   `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	MasterDns    *string `json:"MasterDns,omitempty" xml:"MasterDns,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceUid  *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	SagInsId     *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn        *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+	SlaveDns     *string `json:"SlaveDns,omitempty" xml:"SlaveDns,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayDnsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayDnsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayDnsRequest) SetCrossAccount(v bool) *UpdateSmartAccessGatewayDnsRequest {
+	s.CrossAccount = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsRequest) SetMasterDns(v string) *UpdateSmartAccessGatewayDnsRequest {
+	s.MasterDns = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsRequest) SetRegionId(v string) *UpdateSmartAccessGatewayDnsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsRequest) SetResourceUid(v string) *UpdateSmartAccessGatewayDnsRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsRequest) SetSagInsId(v string) *UpdateSmartAccessGatewayDnsRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsRequest) SetSagSn(v string) *UpdateSmartAccessGatewayDnsRequest {
+	s.SagSn = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsRequest) SetSlaveDns(v string) *UpdateSmartAccessGatewayDnsRequest {
+	s.SlaveDns = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayDnsResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayDnsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayDnsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayDnsResponseBody) SetCode(v string) *UpdateSmartAccessGatewayDnsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsResponseBody) SetMessage(v string) *UpdateSmartAccessGatewayDnsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsResponseBody) SetRequestId(v string) *UpdateSmartAccessGatewayDnsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsResponseBody) SetSuccess(v bool) *UpdateSmartAccessGatewayDnsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayDnsResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSmartAccessGatewayDnsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSmartAccessGatewayDnsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayDnsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayDnsResponse) SetHeaders(v map[string]*string) *UpdateSmartAccessGatewayDnsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsResponse) SetStatusCode(v int32) *UpdateSmartAccessGatewayDnsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsResponse) SetBody(v *UpdateSmartAccessGatewayDnsResponseBody) *UpdateSmartAccessGatewayDnsResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSmartAccessGatewayDnsForwardRequest struct {
+	Domain            *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MasterIp          *string `json:"MasterIp,omitempty" xml:"MasterIp,omitempty"`
+	Mode              *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	OutboundPortIndex *int32  `json:"OutboundPortIndex,omitempty" xml:"OutboundPortIndex,omitempty"`
+	OutboundPortName  *string `json:"OutboundPortName,omitempty" xml:"OutboundPortName,omitempty"`
+	OutboundPortType  *string `json:"OutboundPortType,omitempty" xml:"OutboundPortType,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SagInsId          *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn             *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+	SlaveIp           *string `json:"SlaveIp,omitempty" xml:"SlaveIp,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayDnsForwardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayDnsForwardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetDomain(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetInstanceId(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetMasterIp(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.MasterIp = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetMode(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetOutboundPortIndex(v int32) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.OutboundPortIndex = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetOutboundPortName(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.OutboundPortName = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetOutboundPortType(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.OutboundPortType = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetRegionId(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetSagInsId(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetSagSn(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.SagSn = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardRequest) SetSlaveIp(v string) *UpdateSmartAccessGatewayDnsForwardRequest {
+	s.SlaveIp = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayDnsForwardResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayDnsForwardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayDnsForwardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardResponseBody) SetCode(v string) *UpdateSmartAccessGatewayDnsForwardResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardResponseBody) SetHttpStatusCode(v string) *UpdateSmartAccessGatewayDnsForwardResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardResponseBody) SetMessage(v string) *UpdateSmartAccessGatewayDnsForwardResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardResponseBody) SetRequestId(v string) *UpdateSmartAccessGatewayDnsForwardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardResponseBody) SetSuccess(v string) *UpdateSmartAccessGatewayDnsForwardResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayDnsForwardResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSmartAccessGatewayDnsForwardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSmartAccessGatewayDnsForwardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayDnsForwardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardResponse) SetHeaders(v map[string]*string) *UpdateSmartAccessGatewayDnsForwardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardResponse) SetStatusCode(v int32) *UpdateSmartAccessGatewayDnsForwardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayDnsForwardResponse) SetBody(v *UpdateSmartAccessGatewayDnsForwardResponseBody) *UpdateSmartAccessGatewayDnsForwardResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSmartAccessGatewayGlobalRouteProtocolRequest struct {
+	CrossAccount  *bool   `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceUid   *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	RouteProtocol *string `json:"RouteProtocol,omitempty" xml:"RouteProtocol,omitempty"`
+	SagInsId      *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn         *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayGlobalRouteProtocolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayGlobalRouteProtocolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayGlobalRouteProtocolRequest) SetCrossAccount(v bool) *UpdateSmartAccessGatewayGlobalRouteProtocolRequest {
+	s.CrossAccount = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayGlobalRouteProtocolRequest) SetRegionId(v string) *UpdateSmartAccessGatewayGlobalRouteProtocolRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayGlobalRouteProtocolRequest) SetResourceUid(v string) *UpdateSmartAccessGatewayGlobalRouteProtocolRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayGlobalRouteProtocolRequest) SetRouteProtocol(v string) *UpdateSmartAccessGatewayGlobalRouteProtocolRequest {
+	s.RouteProtocol = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayGlobalRouteProtocolRequest) SetSagInsId(v string) *UpdateSmartAccessGatewayGlobalRouteProtocolRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayGlobalRouteProtocolRequest) SetSagSn(v string) *UpdateSmartAccessGatewayGlobalRouteProtocolRequest {
+	s.SagSn = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody) SetCode(v string) *UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody) SetMessage(v string) *UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody) SetRequestId(v string) *UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody) SetSuccess(v bool) *UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayGlobalRouteProtocolResponse struct {
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSmartAccessGatewayGlobalRouteProtocolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayGlobalRouteProtocolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayGlobalRouteProtocolResponse) SetHeaders(v map[string]*string) *UpdateSmartAccessGatewayGlobalRouteProtocolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayGlobalRouteProtocolResponse) SetStatusCode(v int32) *UpdateSmartAccessGatewayGlobalRouteProtocolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayGlobalRouteProtocolResponse) SetBody(v *UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody) *UpdateSmartAccessGatewayGlobalRouteProtocolResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSmartAccessGatewayOspfRouteRequest struct {
+	AreaId               *int32  `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	AuthenticationType   *string `json:"AuthenticationType,omitempty" xml:"AuthenticationType,omitempty"`
+	CrossAccount         *bool   `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	DeadTime             *int32  `json:"DeadTime,omitempty" xml:"DeadTime,omitempty"`
+	HelloTime            *int32  `json:"HelloTime,omitempty" xml:"HelloTime,omitempty"`
+	InterfaceName        *string `json:"InterfaceName,omitempty" xml:"InterfaceName,omitempty"`
+	Md5Key               *string `json:"Md5Key,omitempty" xml:"Md5Key,omitempty"`
+	Md5KeyId             *int32  `json:"Md5KeyId,omitempty" xml:"Md5KeyId,omitempty"`
+	Networks             *string `json:"Networks,omitempty" xml:"Networks,omitempty"`
+	OspfCost             *int32  `json:"OspfCost,omitempty" xml:"OspfCost,omitempty"`
+	OspfNetworkType      *string `json:"OspfNetworkType,omitempty" xml:"OspfNetworkType,omitempty"`
+	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	RedistributeProtocol *string `json:"RedistributeProtocol,omitempty" xml:"RedistributeProtocol,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceUid          *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	RouterId             *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
+	SagInsId             *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn                *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayOspfRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayOspfRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetAreaId(v int32) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.AreaId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetAuthenticationType(v string) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.AuthenticationType = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetCrossAccount(v bool) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.CrossAccount = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetDeadTime(v int32) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.DeadTime = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetHelloTime(v int32) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.HelloTime = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetInterfaceName(v string) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.InterfaceName = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetMd5Key(v string) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.Md5Key = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetMd5KeyId(v int32) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.Md5KeyId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetNetworks(v string) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.Networks = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetOspfCost(v int32) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.OspfCost = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetOspfNetworkType(v string) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.OspfNetworkType = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetPassword(v string) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetRedistributeProtocol(v string) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.RedistributeProtocol = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetRegionId(v string) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetResourceUid(v string) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetRouterId(v string) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.RouterId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetSagInsId(v string) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteRequest) SetSagSn(v string) *UpdateSmartAccessGatewayOspfRouteRequest {
+	s.SagSn = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayOspfRouteResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayOspfRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayOspfRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteResponseBody) SetCode(v string) *UpdateSmartAccessGatewayOspfRouteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteResponseBody) SetMessage(v string) *UpdateSmartAccessGatewayOspfRouteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteResponseBody) SetRequestId(v string) *UpdateSmartAccessGatewayOspfRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteResponseBody) SetSuccess(v bool) *UpdateSmartAccessGatewayOspfRouteResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayOspfRouteResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSmartAccessGatewayOspfRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSmartAccessGatewayOspfRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayOspfRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteResponse) SetHeaders(v map[string]*string) *UpdateSmartAccessGatewayOspfRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteResponse) SetStatusCode(v int32) *UpdateSmartAccessGatewayOspfRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayOspfRouteResponse) SetBody(v *UpdateSmartAccessGatewayOspfRouteResponseBody) *UpdateSmartAccessGatewayOspfRouteResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSmartAccessGatewayPortRouteProtocolRequest struct {
+	CrossAccount  *bool   `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	PortName      *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemoteAs      *string `json:"RemoteAs,omitempty" xml:"RemoteAs,omitempty"`
+	RemoteIp      *string `json:"RemoteIp,omitempty" xml:"RemoteIp,omitempty"`
+	ResourceUid   *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	RouteProtocol *string `json:"RouteProtocol,omitempty" xml:"RouteProtocol,omitempty"`
+	SagInsId      *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn         *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+	Vlan          *string `json:"Vlan,omitempty" xml:"Vlan,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayPortRouteProtocolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayPortRouteProtocolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolRequest) SetCrossAccount(v bool) *UpdateSmartAccessGatewayPortRouteProtocolRequest {
+	s.CrossAccount = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolRequest) SetPortName(v string) *UpdateSmartAccessGatewayPortRouteProtocolRequest {
+	s.PortName = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolRequest) SetRegionId(v string) *UpdateSmartAccessGatewayPortRouteProtocolRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolRequest) SetRemoteAs(v string) *UpdateSmartAccessGatewayPortRouteProtocolRequest {
+	s.RemoteAs = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolRequest) SetRemoteIp(v string) *UpdateSmartAccessGatewayPortRouteProtocolRequest {
+	s.RemoteIp = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolRequest) SetResourceUid(v string) *UpdateSmartAccessGatewayPortRouteProtocolRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolRequest) SetRouteProtocol(v string) *UpdateSmartAccessGatewayPortRouteProtocolRequest {
+	s.RouteProtocol = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolRequest) SetSagInsId(v string) *UpdateSmartAccessGatewayPortRouteProtocolRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolRequest) SetSagSn(v string) *UpdateSmartAccessGatewayPortRouteProtocolRequest {
+	s.SagSn = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolRequest) SetVlan(v string) *UpdateSmartAccessGatewayPortRouteProtocolRequest {
+	s.Vlan = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayPortRouteProtocolResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayPortRouteProtocolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayPortRouteProtocolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolResponseBody) SetCode(v string) *UpdateSmartAccessGatewayPortRouteProtocolResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolResponseBody) SetMessage(v string) *UpdateSmartAccessGatewayPortRouteProtocolResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolResponseBody) SetRequestId(v string) *UpdateSmartAccessGatewayPortRouteProtocolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolResponseBody) SetSuccess(v bool) *UpdateSmartAccessGatewayPortRouteProtocolResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayPortRouteProtocolResponse struct {
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSmartAccessGatewayPortRouteProtocolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSmartAccessGatewayPortRouteProtocolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayPortRouteProtocolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolResponse) SetHeaders(v map[string]*string) *UpdateSmartAccessGatewayPortRouteProtocolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolResponse) SetStatusCode(v int32) *UpdateSmartAccessGatewayPortRouteProtocolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayPortRouteProtocolResponse) SetBody(v *UpdateSmartAccessGatewayPortRouteProtocolResponseBody) *UpdateSmartAccessGatewayPortRouteProtocolResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateSmartAccessGatewayVersionRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -25566,6 +27979,117 @@ func (s *UpdateSmartAccessGatewayVersionResponse) SetStatusCode(v int32) *Update
 }
 
 func (s *UpdateSmartAccessGatewayVersionResponse) SetBody(v *UpdateSmartAccessGatewayVersionResponseBody) *UpdateSmartAccessGatewayVersionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSmartAccessGatewayWanSnatRequest struct {
+	CrossAccount *bool   `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceUid  *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	SagInsId     *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn        *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+	Snat         *string `json:"Snat,omitempty" xml:"Snat,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayWanSnatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayWanSnatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayWanSnatRequest) SetCrossAccount(v bool) *UpdateSmartAccessGatewayWanSnatRequest {
+	s.CrossAccount = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayWanSnatRequest) SetRegionId(v string) *UpdateSmartAccessGatewayWanSnatRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayWanSnatRequest) SetResourceUid(v string) *UpdateSmartAccessGatewayWanSnatRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayWanSnatRequest) SetSagInsId(v string) *UpdateSmartAccessGatewayWanSnatRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayWanSnatRequest) SetSagSn(v string) *UpdateSmartAccessGatewayWanSnatRequest {
+	s.SagSn = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayWanSnatRequest) SetSnat(v string) *UpdateSmartAccessGatewayWanSnatRequest {
+	s.Snat = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayWanSnatResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSmartAccessGatewayWanSnatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayWanSnatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayWanSnatResponseBody) SetCode(v string) *UpdateSmartAccessGatewayWanSnatResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayWanSnatResponseBody) SetMessage(v string) *UpdateSmartAccessGatewayWanSnatResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayWanSnatResponseBody) SetRequestId(v string) *UpdateSmartAccessGatewayWanSnatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayWanSnatResponseBody) SetSuccess(v bool) *UpdateSmartAccessGatewayWanSnatResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSmartAccessGatewayWanSnatResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSmartAccessGatewayWanSnatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSmartAccessGatewayWanSnatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmartAccessGatewayWanSnatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmartAccessGatewayWanSnatResponse) SetHeaders(v map[string]*string) *UpdateSmartAccessGatewayWanSnatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayWanSnatResponse) SetStatusCode(v int32) *UpdateSmartAccessGatewayWanSnatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSmartAccessGatewayWanSnatResponse) SetBody(v *UpdateSmartAccessGatewayWanSnatResponseBody) *UpdateSmartAccessGatewayWanSnatResponse {
 	s.Body = v
 	return s
 }
@@ -25794,6 +28318,1239 @@ func (s *UpgradeSmartAccessGatewaySoftwareResponse) SetStatusCode(v int32) *Upgr
 }
 
 func (s *UpgradeSmartAccessGatewaySoftwareResponse) SetBody(v *UpgradeSmartAccessGatewaySoftwareResponseBody) *UpgradeSmartAccessGatewaySoftwareResponse {
+	s.Body = v
+	return s
+}
+
+type ViewSmartAccessGatewayBgpRouteRequest struct {
+	CrossAccount *bool   `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceUid  *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	SagInsId     *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn        *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayBgpRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayBgpRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteRequest) SetCrossAccount(v bool) *ViewSmartAccessGatewayBgpRouteRequest {
+	s.CrossAccount = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteRequest) SetRegionId(v string) *ViewSmartAccessGatewayBgpRouteRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteRequest) SetResourceUid(v string) *ViewSmartAccessGatewayBgpRouteRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteRequest) SetSagInsId(v string) *ViewSmartAccessGatewayBgpRouteRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteRequest) SetSagSn(v string) *ViewSmartAccessGatewayBgpRouteRequest {
+	s.SagSn = &v
+	return s
+}
+
+type ViewSmartAccessGatewayBgpRouteResponseBody struct {
+	HoldTime   *int32                                                  `json:"HoldTime,omitempty" xml:"HoldTime,omitempty"`
+	KeepAlive  *int32                                                  `json:"KeepAlive,omitempty" xml:"KeepAlive,omitempty"`
+	LocalAs    *int32                                                  `json:"LocalAs,omitempty" xml:"LocalAs,omitempty"`
+	RequestId  *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RouterId   *string                                                 `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
+	TaskStates []*ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates `json:"TaskStates,omitempty" xml:"TaskStates,omitempty" type:"Repeated"`
+}
+
+func (s ViewSmartAccessGatewayBgpRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayBgpRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteResponseBody) SetHoldTime(v int32) *ViewSmartAccessGatewayBgpRouteResponseBody {
+	s.HoldTime = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteResponseBody) SetKeepAlive(v int32) *ViewSmartAccessGatewayBgpRouteResponseBody {
+	s.KeepAlive = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteResponseBody) SetLocalAs(v int32) *ViewSmartAccessGatewayBgpRouteResponseBody {
+	s.LocalAs = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteResponseBody) SetRequestId(v string) *ViewSmartAccessGatewayBgpRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteResponseBody) SetRouterId(v string) *ViewSmartAccessGatewayBgpRouteResponseBody {
+	s.RouterId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteResponseBody) SetTaskStates(v []*ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates) *ViewSmartAccessGatewayBgpRouteResponseBody {
+	s.TaskStates = v
+	return s
+}
+
+type ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates struct {
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates) SetCreateTime(v string) *ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates) SetErrorCode(v string) *ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates) SetErrorMessage(v string) *ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates) SetState(v string) *ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates {
+	s.State = &v
+	return s
+}
+
+type ViewSmartAccessGatewayBgpRouteResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ViewSmartAccessGatewayBgpRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ViewSmartAccessGatewayBgpRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayBgpRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteResponse) SetHeaders(v map[string]*string) *ViewSmartAccessGatewayBgpRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteResponse) SetStatusCode(v int32) *ViewSmartAccessGatewayBgpRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayBgpRouteResponse) SetBody(v *ViewSmartAccessGatewayBgpRouteResponseBody) *ViewSmartAccessGatewayBgpRouteResponse {
+	s.Body = v
+	return s
+}
+
+type ViewSmartAccessGatewayDnsRequest struct {
+	CrossAccount *bool   `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceUid  *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	SagInsId     *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn        *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayDnsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayDnsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayDnsRequest) SetCrossAccount(v bool) *ViewSmartAccessGatewayDnsRequest {
+	s.CrossAccount = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsRequest) SetRegionId(v string) *ViewSmartAccessGatewayDnsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsRequest) SetResourceUid(v string) *ViewSmartAccessGatewayDnsRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsRequest) SetSagInsId(v string) *ViewSmartAccessGatewayDnsRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsRequest) SetSagSn(v string) *ViewSmartAccessGatewayDnsRequest {
+	s.SagSn = &v
+	return s
+}
+
+type ViewSmartAccessGatewayDnsResponseBody struct {
+	MasterDns  *string                                            `json:"MasterDns,omitempty" xml:"MasterDns,omitempty"`
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SlaveDns   *string                                            `json:"SlaveDns,omitempty" xml:"SlaveDns,omitempty"`
+	TaskStates []*ViewSmartAccessGatewayDnsResponseBodyTaskStates `json:"TaskStates,omitempty" xml:"TaskStates,omitempty" type:"Repeated"`
+}
+
+func (s ViewSmartAccessGatewayDnsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayDnsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayDnsResponseBody) SetMasterDns(v string) *ViewSmartAccessGatewayDnsResponseBody {
+	s.MasterDns = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsResponseBody) SetRequestId(v string) *ViewSmartAccessGatewayDnsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsResponseBody) SetSlaveDns(v string) *ViewSmartAccessGatewayDnsResponseBody {
+	s.SlaveDns = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsResponseBody) SetTaskStates(v []*ViewSmartAccessGatewayDnsResponseBodyTaskStates) *ViewSmartAccessGatewayDnsResponseBody {
+	s.TaskStates = v
+	return s
+}
+
+type ViewSmartAccessGatewayDnsResponseBodyTaskStates struct {
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayDnsResponseBodyTaskStates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayDnsResponseBodyTaskStates) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayDnsResponseBodyTaskStates) SetCreateTime(v string) *ViewSmartAccessGatewayDnsResponseBodyTaskStates {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsResponseBodyTaskStates) SetErrorCode(v string) *ViewSmartAccessGatewayDnsResponseBodyTaskStates {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsResponseBodyTaskStates) SetErrorMessage(v string) *ViewSmartAccessGatewayDnsResponseBodyTaskStates {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsResponseBodyTaskStates) SetState(v string) *ViewSmartAccessGatewayDnsResponseBodyTaskStates {
+	s.State = &v
+	return s
+}
+
+type ViewSmartAccessGatewayDnsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ViewSmartAccessGatewayDnsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ViewSmartAccessGatewayDnsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayDnsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayDnsResponse) SetHeaders(v map[string]*string) *ViewSmartAccessGatewayDnsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsResponse) SetStatusCode(v int32) *ViewSmartAccessGatewayDnsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsResponse) SetBody(v *ViewSmartAccessGatewayDnsResponseBody) *ViewSmartAccessGatewayDnsResponse {
+	s.Body = v
+	return s
+}
+
+type ViewSmartAccessGatewayDnsForwardsRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SagInsId *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn    *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayDnsForwardsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayDnsForwardsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsRequest) SetRegionId(v string) *ViewSmartAccessGatewayDnsForwardsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsRequest) SetSagInsId(v string) *ViewSmartAccessGatewayDnsForwardsRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsRequest) SetSagSn(v string) *ViewSmartAccessGatewayDnsForwardsRequest {
+	s.SagSn = &v
+	return s
+}
+
+type ViewSmartAccessGatewayDnsForwardsResponseBody struct {
+	Code           *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count          *int32                                               `json:"Count,omitempty" xml:"Count,omitempty"`
+	Data           []*ViewSmartAccessGatewayDnsForwardsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayDnsForwardsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayDnsForwardsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBody) SetCode(v string) *ViewSmartAccessGatewayDnsForwardsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBody) SetCount(v int32) *ViewSmartAccessGatewayDnsForwardsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBody) SetData(v []*ViewSmartAccessGatewayDnsForwardsResponseBodyData) *ViewSmartAccessGatewayDnsForwardsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBody) SetHttpStatusCode(v int32) *ViewSmartAccessGatewayDnsForwardsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBody) SetMessage(v string) *ViewSmartAccessGatewayDnsForwardsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBody) SetRequestId(v string) *ViewSmartAccessGatewayDnsForwardsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBody) SetSuccess(v bool) *ViewSmartAccessGatewayDnsForwardsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ViewSmartAccessGatewayDnsForwardsResponseBodyData struct {
+	Domain            *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MasterIp          *string `json:"MasterIp,omitempty" xml:"MasterIp,omitempty"`
+	Mode              *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	OutboundPortIndex *int32  `json:"OutboundPortIndex,omitempty" xml:"OutboundPortIndex,omitempty"`
+	OutboundPortName  *string `json:"OutboundPortName,omitempty" xml:"OutboundPortName,omitempty"`
+	OutboundPortType  *string `json:"OutboundPortType,omitempty" xml:"OutboundPortType,omitempty"`
+	SlaveIp           *string `json:"SlaveIp,omitempty" xml:"SlaveIp,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayDnsForwardsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayDnsForwardsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBodyData) SetDomain(v string) *ViewSmartAccessGatewayDnsForwardsResponseBodyData {
+	s.Domain = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBodyData) SetInstanceId(v string) *ViewSmartAccessGatewayDnsForwardsResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBodyData) SetMasterIp(v string) *ViewSmartAccessGatewayDnsForwardsResponseBodyData {
+	s.MasterIp = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBodyData) SetMode(v string) *ViewSmartAccessGatewayDnsForwardsResponseBodyData {
+	s.Mode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBodyData) SetOutboundPortIndex(v int32) *ViewSmartAccessGatewayDnsForwardsResponseBodyData {
+	s.OutboundPortIndex = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBodyData) SetOutboundPortName(v string) *ViewSmartAccessGatewayDnsForwardsResponseBodyData {
+	s.OutboundPortName = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBodyData) SetOutboundPortType(v string) *ViewSmartAccessGatewayDnsForwardsResponseBodyData {
+	s.OutboundPortType = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponseBodyData) SetSlaveIp(v string) *ViewSmartAccessGatewayDnsForwardsResponseBodyData {
+	s.SlaveIp = &v
+	return s
+}
+
+type ViewSmartAccessGatewayDnsForwardsResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ViewSmartAccessGatewayDnsForwardsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ViewSmartAccessGatewayDnsForwardsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayDnsForwardsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponse) SetHeaders(v map[string]*string) *ViewSmartAccessGatewayDnsForwardsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponse) SetStatusCode(v int32) *ViewSmartAccessGatewayDnsForwardsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayDnsForwardsResponse) SetBody(v *ViewSmartAccessGatewayDnsForwardsResponseBody) *ViewSmartAccessGatewayDnsForwardsResponse {
+	s.Body = v
+	return s
+}
+
+type ViewSmartAccessGatewayGlobalRouteProtocolRequest struct {
+	CrossAccount *bool   `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceUid  *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	SagInsId     *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn        *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayGlobalRouteProtocolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayGlobalRouteProtocolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolRequest) SetCrossAccount(v bool) *ViewSmartAccessGatewayGlobalRouteProtocolRequest {
+	s.CrossAccount = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolRequest) SetRegionId(v string) *ViewSmartAccessGatewayGlobalRouteProtocolRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolRequest) SetResourceUid(v string) *ViewSmartAccessGatewayGlobalRouteProtocolRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolRequest) SetSagInsId(v string) *ViewSmartAccessGatewayGlobalRouteProtocolRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolRequest) SetSagSn(v string) *ViewSmartAccessGatewayGlobalRouteProtocolRequest {
+	s.SagSn = &v
+	return s
+}
+
+type ViewSmartAccessGatewayGlobalRouteProtocolResponseBody struct {
+	RequestId     *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RouteProtocol *string                                                            `json:"RouteProtocol,omitempty" xml:"RouteProtocol,omitempty"`
+	TaskStates    []*ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates `json:"TaskStates,omitempty" xml:"TaskStates,omitempty" type:"Repeated"`
+}
+
+func (s ViewSmartAccessGatewayGlobalRouteProtocolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayGlobalRouteProtocolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolResponseBody) SetRequestId(v string) *ViewSmartAccessGatewayGlobalRouteProtocolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolResponseBody) SetRouteProtocol(v string) *ViewSmartAccessGatewayGlobalRouteProtocolResponseBody {
+	s.RouteProtocol = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolResponseBody) SetTaskStates(v []*ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates) *ViewSmartAccessGatewayGlobalRouteProtocolResponseBody {
+	s.TaskStates = v
+	return s
+}
+
+type ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates struct {
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates) SetCreateTime(v string) *ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates) SetErrorCode(v string) *ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates) SetErrorMessage(v string) *ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates) SetState(v string) *ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates {
+	s.State = &v
+	return s
+}
+
+type ViewSmartAccessGatewayGlobalRouteProtocolResponse struct {
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ViewSmartAccessGatewayGlobalRouteProtocolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ViewSmartAccessGatewayGlobalRouteProtocolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayGlobalRouteProtocolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolResponse) SetHeaders(v map[string]*string) *ViewSmartAccessGatewayGlobalRouteProtocolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolResponse) SetStatusCode(v int32) *ViewSmartAccessGatewayGlobalRouteProtocolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayGlobalRouteProtocolResponse) SetBody(v *ViewSmartAccessGatewayGlobalRouteProtocolResponseBody) *ViewSmartAccessGatewayGlobalRouteProtocolResponse {
+	s.Body = v
+	return s
+}
+
+type ViewSmartAccessGatewayOspfRouteRequest struct {
+	CrossAccount *bool   `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceUid  *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	SagInsId     *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn        *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayOspfRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayOspfRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteRequest) SetCrossAccount(v bool) *ViewSmartAccessGatewayOspfRouteRequest {
+	s.CrossAccount = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteRequest) SetRegionId(v string) *ViewSmartAccessGatewayOspfRouteRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteRequest) SetResourceUid(v string) *ViewSmartAccessGatewayOspfRouteRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteRequest) SetSagInsId(v string) *ViewSmartAccessGatewayOspfRouteRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteRequest) SetSagSn(v string) *ViewSmartAccessGatewayOspfRouteRequest {
+	s.SagSn = &v
+	return s
+}
+
+type ViewSmartAccessGatewayOspfRouteResponseBody struct {
+	AreaId             *int32                                                   `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	AuthenticationType *string                                                  `json:"AuthenticationType,omitempty" xml:"AuthenticationType,omitempty"`
+	DeadTime           *int32                                                   `json:"DeadTime,omitempty" xml:"DeadTime,omitempty"`
+	HelloTime          *int32                                                   `json:"HelloTime,omitempty" xml:"HelloTime,omitempty"`
+	Md5Key             *string                                                  `json:"Md5Key,omitempty" xml:"Md5Key,omitempty"`
+	Md5KeyId           *int32                                                   `json:"Md5KeyId,omitempty" xml:"Md5KeyId,omitempty"`
+	RequestId          *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RouterId           *string                                                  `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
+	TaskStates         []*ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates `json:"TaskStates,omitempty" xml:"TaskStates,omitempty" type:"Repeated"`
+}
+
+func (s ViewSmartAccessGatewayOspfRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayOspfRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponseBody) SetAreaId(v int32) *ViewSmartAccessGatewayOspfRouteResponseBody {
+	s.AreaId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponseBody) SetAuthenticationType(v string) *ViewSmartAccessGatewayOspfRouteResponseBody {
+	s.AuthenticationType = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponseBody) SetDeadTime(v int32) *ViewSmartAccessGatewayOspfRouteResponseBody {
+	s.DeadTime = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponseBody) SetHelloTime(v int32) *ViewSmartAccessGatewayOspfRouteResponseBody {
+	s.HelloTime = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponseBody) SetMd5Key(v string) *ViewSmartAccessGatewayOspfRouteResponseBody {
+	s.Md5Key = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponseBody) SetMd5KeyId(v int32) *ViewSmartAccessGatewayOspfRouteResponseBody {
+	s.Md5KeyId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponseBody) SetRequestId(v string) *ViewSmartAccessGatewayOspfRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponseBody) SetRouterId(v string) *ViewSmartAccessGatewayOspfRouteResponseBody {
+	s.RouterId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponseBody) SetTaskStates(v []*ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates) *ViewSmartAccessGatewayOspfRouteResponseBody {
+	s.TaskStates = v
+	return s
+}
+
+type ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates struct {
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates) SetCreateTime(v string) *ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates) SetErrorCode(v string) *ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates) SetErrorMessage(v string) *ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates) SetState(v string) *ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates {
+	s.State = &v
+	return s
+}
+
+type ViewSmartAccessGatewayOspfRouteResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ViewSmartAccessGatewayOspfRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ViewSmartAccessGatewayOspfRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayOspfRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponse) SetHeaders(v map[string]*string) *ViewSmartAccessGatewayOspfRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponse) SetStatusCode(v int32) *ViewSmartAccessGatewayOspfRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayOspfRouteResponse) SetBody(v *ViewSmartAccessGatewayOspfRouteResponseBody) *ViewSmartAccessGatewayOspfRouteResponse {
+	s.Body = v
+	return s
+}
+
+type ViewSmartAccessGatewayPortRouteProtocolRequest struct {
+	CrossAccount *bool   `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceUid  *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	SagInsId     *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn        *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayPortRouteProtocolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayPortRouteProtocolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolRequest) SetCrossAccount(v bool) *ViewSmartAccessGatewayPortRouteProtocolRequest {
+	s.CrossAccount = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolRequest) SetRegionId(v string) *ViewSmartAccessGatewayPortRouteProtocolRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolRequest) SetResourceUid(v string) *ViewSmartAccessGatewayPortRouteProtocolRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolRequest) SetSagInsId(v string) *ViewSmartAccessGatewayPortRouteProtocolRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolRequest) SetSagSn(v string) *ViewSmartAccessGatewayPortRouteProtocolRequest {
+	s.SagSn = &v
+	return s
+}
+
+type ViewSmartAccessGatewayPortRouteProtocolResponseBody struct {
+	Ports      []*ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts      `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	RequestId  *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskStates []*ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates `json:"TaskStates,omitempty" xml:"TaskStates,omitempty" type:"Repeated"`
+}
+
+func (s ViewSmartAccessGatewayPortRouteProtocolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayPortRouteProtocolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBody) SetPorts(v []*ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts) *ViewSmartAccessGatewayPortRouteProtocolResponseBody {
+	s.Ports = v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBody) SetRequestId(v string) *ViewSmartAccessGatewayPortRouteProtocolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBody) SetTaskStates(v []*ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates) *ViewSmartAccessGatewayPortRouteProtocolResponseBody {
+	s.TaskStates = v
+	return s
+}
+
+type ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts struct {
+	NeighborIp    *string `json:"NeighborIp,omitempty" xml:"NeighborIp,omitempty"`
+	PortName      *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
+	RemoteAs      *string `json:"RemoteAs,omitempty" xml:"RemoteAs,omitempty"`
+	RemoteIp      *string `json:"RemoteIp,omitempty" xml:"RemoteIp,omitempty"`
+	RouteProtocol *string `json:"RouteProtocol,omitempty" xml:"RouteProtocol,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Vlan          *string `json:"Vlan,omitempty" xml:"Vlan,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts) SetNeighborIp(v string) *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts {
+	s.NeighborIp = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts) SetPortName(v string) *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts {
+	s.PortName = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts) SetRemoteAs(v string) *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts {
+	s.RemoteAs = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts) SetRemoteIp(v string) *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts {
+	s.RemoteIp = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts) SetRouteProtocol(v string) *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts {
+	s.RouteProtocol = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts) SetStatus(v string) *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts {
+	s.Status = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts) SetVlan(v string) *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts {
+	s.Vlan = &v
+	return s
+}
+
+type ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates struct {
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates) SetCreateTime(v string) *ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates) SetErrorCode(v string) *ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates) SetErrorMessage(v string) *ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates) SetState(v string) *ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates {
+	s.State = &v
+	return s
+}
+
+type ViewSmartAccessGatewayPortRouteProtocolResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ViewSmartAccessGatewayPortRouteProtocolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ViewSmartAccessGatewayPortRouteProtocolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayPortRouteProtocolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponse) SetHeaders(v map[string]*string) *ViewSmartAccessGatewayPortRouteProtocolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponse) SetStatusCode(v int32) *ViewSmartAccessGatewayPortRouteProtocolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayPortRouteProtocolResponse) SetBody(v *ViewSmartAccessGatewayPortRouteProtocolResponseBody) *ViewSmartAccessGatewayPortRouteProtocolResponse {
+	s.Body = v
+	return s
+}
+
+type ViewSmartAccessGatewayRoutesRequest struct {
+	CrossAccount *bool   `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceUid  *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	SagInsId     *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn        *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayRoutesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayRoutesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayRoutesRequest) SetCrossAccount(v bool) *ViewSmartAccessGatewayRoutesRequest {
+	s.CrossAccount = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayRoutesRequest) SetRegionId(v string) *ViewSmartAccessGatewayRoutesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayRoutesRequest) SetResourceUid(v string) *ViewSmartAccessGatewayRoutesRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayRoutesRequest) SetSagInsId(v string) *ViewSmartAccessGatewayRoutesRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayRoutesRequest) SetSagSn(v string) *ViewSmartAccessGatewayRoutesRequest {
+	s.SagSn = &v
+	return s
+}
+
+type ViewSmartAccessGatewayRoutesResponseBody struct {
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Routes    []*ViewSmartAccessGatewayRoutesResponseBodyRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
+}
+
+func (s ViewSmartAccessGatewayRoutesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayRoutesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayRoutesResponseBody) SetRequestId(v string) *ViewSmartAccessGatewayRoutesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayRoutesResponseBody) SetRoutes(v []*ViewSmartAccessGatewayRoutesResponseBodyRoutes) *ViewSmartAccessGatewayRoutesResponseBody {
+	s.Routes = v
+	return s
+}
+
+type ViewSmartAccessGatewayRoutesResponseBodyRoutes struct {
+	ConflictCidrs []*string `json:"ConflictCidrs,omitempty" xml:"ConflictCidrs,omitempty" type:"Repeated"`
+	Cost          *string   `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Dst           *string   `json:"Dst,omitempty" xml:"Dst,omitempty"`
+	Idx           *int32    `json:"Idx,omitempty" xml:"Idx,omitempty"`
+	Nexthop       *string   `json:"Nexthop,omitempty" xml:"Nexthop,omitempty"`
+	Role          *string   `json:"Role,omitempty" xml:"Role,omitempty"`
+	Type          *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayRoutesResponseBodyRoutes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayRoutesResponseBodyRoutes) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayRoutesResponseBodyRoutes) SetConflictCidrs(v []*string) *ViewSmartAccessGatewayRoutesResponseBodyRoutes {
+	s.ConflictCidrs = v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayRoutesResponseBodyRoutes) SetCost(v string) *ViewSmartAccessGatewayRoutesResponseBodyRoutes {
+	s.Cost = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayRoutesResponseBodyRoutes) SetDst(v string) *ViewSmartAccessGatewayRoutesResponseBodyRoutes {
+	s.Dst = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayRoutesResponseBodyRoutes) SetIdx(v int32) *ViewSmartAccessGatewayRoutesResponseBodyRoutes {
+	s.Idx = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayRoutesResponseBodyRoutes) SetNexthop(v string) *ViewSmartAccessGatewayRoutesResponseBodyRoutes {
+	s.Nexthop = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayRoutesResponseBodyRoutes) SetRole(v string) *ViewSmartAccessGatewayRoutesResponseBodyRoutes {
+	s.Role = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayRoutesResponseBodyRoutes) SetType(v string) *ViewSmartAccessGatewayRoutesResponseBodyRoutes {
+	s.Type = &v
+	return s
+}
+
+type ViewSmartAccessGatewayRoutesResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ViewSmartAccessGatewayRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ViewSmartAccessGatewayRoutesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayRoutesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayRoutesResponse) SetHeaders(v map[string]*string) *ViewSmartAccessGatewayRoutesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayRoutesResponse) SetStatusCode(v int32) *ViewSmartAccessGatewayRoutesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayRoutesResponse) SetBody(v *ViewSmartAccessGatewayRoutesResponseBody) *ViewSmartAccessGatewayRoutesResponse {
+	s.Body = v
+	return s
+}
+
+type ViewSmartAccessGatewayWanSnatRequest struct {
+	CrossAccount *bool   `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceUid  *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	SagInsId     *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	SagSn        *string `json:"SagSn,omitempty" xml:"SagSn,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayWanSnatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayWanSnatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayWanSnatRequest) SetCrossAccount(v bool) *ViewSmartAccessGatewayWanSnatRequest {
+	s.CrossAccount = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayWanSnatRequest) SetRegionId(v string) *ViewSmartAccessGatewayWanSnatRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayWanSnatRequest) SetResourceUid(v string) *ViewSmartAccessGatewayWanSnatRequest {
+	s.ResourceUid = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayWanSnatRequest) SetSagInsId(v string) *ViewSmartAccessGatewayWanSnatRequest {
+	s.SagInsId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayWanSnatRequest) SetSagSn(v string) *ViewSmartAccessGatewayWanSnatRequest {
+	s.SagSn = &v
+	return s
+}
+
+type ViewSmartAccessGatewayWanSnatResponseBody struct {
+	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Snat       *string                                                `json:"Snat,omitempty" xml:"Snat,omitempty"`
+	TaskStates []*ViewSmartAccessGatewayWanSnatResponseBodyTaskStates `json:"TaskStates,omitempty" xml:"TaskStates,omitempty" type:"Repeated"`
+}
+
+func (s ViewSmartAccessGatewayWanSnatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayWanSnatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayWanSnatResponseBody) SetRequestId(v string) *ViewSmartAccessGatewayWanSnatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayWanSnatResponseBody) SetSnat(v string) *ViewSmartAccessGatewayWanSnatResponseBody {
+	s.Snat = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayWanSnatResponseBody) SetTaskStates(v []*ViewSmartAccessGatewayWanSnatResponseBodyTaskStates) *ViewSmartAccessGatewayWanSnatResponseBody {
+	s.TaskStates = v
+	return s
+}
+
+type ViewSmartAccessGatewayWanSnatResponseBodyTaskStates struct {
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ViewSmartAccessGatewayWanSnatResponseBodyTaskStates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayWanSnatResponseBodyTaskStates) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayWanSnatResponseBodyTaskStates) SetCreateTime(v string) *ViewSmartAccessGatewayWanSnatResponseBodyTaskStates {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayWanSnatResponseBodyTaskStates) SetErrorCode(v string) *ViewSmartAccessGatewayWanSnatResponseBodyTaskStates {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayWanSnatResponseBodyTaskStates) SetErrorMessage(v string) *ViewSmartAccessGatewayWanSnatResponseBodyTaskStates {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayWanSnatResponseBodyTaskStates) SetState(v string) *ViewSmartAccessGatewayWanSnatResponseBodyTaskStates {
+	s.State = &v
+	return s
+}
+
+type ViewSmartAccessGatewayWanSnatResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ViewSmartAccessGatewayWanSnatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ViewSmartAccessGatewayWanSnatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ViewSmartAccessGatewayWanSnatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ViewSmartAccessGatewayWanSnatResponse) SetHeaders(v map[string]*string) *ViewSmartAccessGatewayWanSnatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayWanSnatResponse) SetStatusCode(v int32) *ViewSmartAccessGatewayWanSnatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ViewSmartAccessGatewayWanSnatResponse) SetBody(v *ViewSmartAccessGatewayWanSnatResponseBody) *ViewSmartAccessGatewayWanSnatResponse {
 	s.Body = v
 	return s
 }
@@ -26170,6 +29927,86 @@ func (client *Client) AddDnatEntry(request *AddDnatEntryRequest) (_result *AddDn
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDnatEntryResponse{}
 	_body, _err := client.AddDnatEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddSmartAccessGatewayDnsForwardWithOptions(request *AddSmartAccessGatewayDnsForwardRequest, runtime *util.RuntimeOptions) (_result *AddSmartAccessGatewayDnsForwardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterIp)) {
+		query["MasterIp"] = request.MasterIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutboundPortIndex)) {
+		query["OutboundPortIndex"] = request.OutboundPortIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutboundPortName)) {
+		query["OutboundPortName"] = request.OutboundPortName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutboundPortType)) {
+		query["OutboundPortType"] = request.OutboundPortType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlaveIp)) {
+		query["SlaveIp"] = request.SlaveIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddSmartAccessGatewayDnsForward"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddSmartAccessGatewayDnsForwardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddSmartAccessGatewayDnsForward(request *AddSmartAccessGatewayDnsForwardRequest) (_result *AddSmartAccessGatewayDnsForwardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddSmartAccessGatewayDnsForwardResponse{}
+	_body, _err := client.AddSmartAccessGatewayDnsForwardWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27277,6 +31114,90 @@ func (client *Client) CreateHealthCheck(request *CreateHealthCheckRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) CreateProbeTaskWithOptions(request *CreateProbeTaskRequest, runtime *util.RuntimeOptions) (_result *CreateProbeTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PacketNumber)) {
+		query["PacketNumber"] = request.PacketNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProbeTaskSourceAddress)) {
+		query["ProbeTaskSourceAddress"] = request.ProbeTaskSourceAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagId)) {
+		query["SagId"] = request.SagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sn)) {
+		query["Sn"] = request.Sn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProbeTask"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateProbeTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateProbeTask(request *CreateProbeTaskRequest) (_result *CreateProbeTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateProbeTaskResponse{}
+	_body, _err := client.CreateProbeTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateQosWithOptions(request *CreateQosRequest, runtime *util.RuntimeOptions) (_result *CreateQosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27718,6 +31639,66 @@ func (client *Client) CreateSagStaticRoute(request *CreateSagStaticRouteRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSagStaticRouteResponse{}
 	_body, _err := client.CreateSagStaticRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateServiceAddressWithOptions(request *CreateServiceAddressRequest, runtime *util.RuntimeOptions) (_result *CreateServiceAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
+		query["AddressType"] = request.AddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagId)) {
+		query["SagId"] = request.SagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sn)) {
+		query["Sn"] = request.Sn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceAddress"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateServiceAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateServiceAddress(request *CreateServiceAddressRequest) (_result *CreateServiceAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateServiceAddressResponse{}
+	_body, _err := client.CreateServiceAddressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28545,6 +32526,62 @@ func (client *Client) DeleteHealthCheck(request *DeleteHealthCheckRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DeleteProbeTaskWithOptions(request *DeleteProbeTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteProbeTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProbeTaskId)) {
+		query["ProbeTaskId"] = request.ProbeTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagId)) {
+		query["SagId"] = request.SagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sn)) {
+		query["Sn"] = request.Sn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProbeTask"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteProbeTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteProbeTask(request *DeleteProbeTaskRequest) (_result *DeleteProbeTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteProbeTaskResponse{}
+	_body, _err := client.DeleteProbeTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteQosWithOptions(request *DeleteQosRequest, runtime *util.RuntimeOptions) (_result *DeleteQosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28977,6 +33014,66 @@ func (client *Client) DeleteSagStaticRoute(request *DeleteSagStaticRouteRequest)
 	return _result, _err
 }
 
+func (client *Client) DeleteServiceAddressWithOptions(request *DeleteServiceAddressRequest, runtime *util.RuntimeOptions) (_result *DeleteServiceAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
+		query["AddressType"] = request.AddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagId)) {
+		query["SagId"] = request.SagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sn)) {
+		query["Sn"] = request.Sn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceAddress"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteServiceAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceAddress(request *DeleteServiceAddressRequest) (_result *DeleteServiceAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteServiceAddressResponse{}
+	_body, _err := client.DeleteServiceAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteSmartAccessGatewayWithOptions(request *DeleteSmartAccessGatewayRequest, runtime *util.RuntimeOptions) (_result *DeleteSmartAccessGatewayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29090,6 +33187,62 @@ func (client *Client) DeleteSmartAccessGatewayClientUser(request *DeleteSmartAcc
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSmartAccessGatewayClientUserResponse{}
 	_body, _err := client.DeleteSmartAccessGatewayClientUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSmartAccessGatewayDnsForwardWithOptions(request *DeleteSmartAccessGatewayDnsForwardRequest, runtime *util.RuntimeOptions) (_result *DeleteSmartAccessGatewayDnsForwardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSmartAccessGatewayDnsForward"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSmartAccessGatewayDnsForwardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSmartAccessGatewayDnsForward(request *DeleteSmartAccessGatewayDnsForwardRequest) (_result *DeleteSmartAccessGatewayDnsForwardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSmartAccessGatewayDnsForwardResponse{}
+	_body, _err := client.DeleteSmartAccessGatewayDnsForwardWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33809,6 +37962,54 @@ func (client *Client) GetAclAttribute(request *GetAclAttributeRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetAdvancedMonitorStateWithOptions(request *GetAdvancedMonitorStateRequest, runtime *util.RuntimeOptions) (_result *GetAdvancedMonitorStateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagId)) {
+		query["SagId"] = request.SagId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAdvancedMonitorState"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAdvancedMonitorStateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAdvancedMonitorState(request *GetAdvancedMonitorStateRequest) (_result *GetAdvancedMonitorStateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAdvancedMonitorStateResponse{}
+	_body, _err := client.GetAdvancedMonitorStateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetCloudConnectNetworkUseLimitWithOptions(request *GetCloudConnectNetworkUseLimitRequest, runtime *util.RuntimeOptions) (_result *GetCloudConnectNetworkUseLimitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34473,6 +38674,62 @@ func (client *Client) ListAccessPoints(request *ListAccessPointsRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) ListAvailableServiceAddressWithOptions(request *ListAvailableServiceAddressRequest, runtime *util.RuntimeOptions) (_result *ListAvailableServiceAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
+		query["AddressType"] = request.AddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagId)) {
+		query["SagId"] = request.SagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sn)) {
+		query["Sn"] = request.Sn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAvailableServiceAddress"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAvailableServiceAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAvailableServiceAddress(request *ListAvailableServiceAddressRequest) (_result *ListAvailableServiceAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAvailableServiceAddressResponse{}
+	_body, _err := client.ListAvailableServiceAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListDpiConfigErrorWithOptions(request *ListDpiConfigErrorRequest, runtime *util.RuntimeOptions) (_result *ListDpiConfigErrorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34746,6 +39003,82 @@ func (client *Client) ListEnterpriseCode(request *ListEnterpriseCodeRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEnterpriseCodeResponse{}
 	_body, _err := client.ListEnterpriseCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProbeTaskWithOptions(request *ListProbeTaskRequest, runtime *util.RuntimeOptions) (_result *ListProbeTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProbeTaskId)) {
+		query["ProbeTaskId"] = request.ProbeTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagId)) {
+		query["SagId"] = request.SagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagName)) {
+		query["SagName"] = request.SagName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sn)) {
+		query["Sn"] = request.Sn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProbeTask"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProbeTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProbeTask(request *ListProbeTaskRequest) (_result *ListProbeTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProbeTaskResponse{}
+	_body, _err := client.ListProbeTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38081,6 +42414,58 @@ func (client *Client) RoamClientUser(request *RoamClientUserRequest) (_result *R
 	return _result, _err
 }
 
+func (client *Client) SetAdvancedMonitorStateWithOptions(request *SetAdvancedMonitorStateRequest, runtime *util.RuntimeOptions) (_result *SetAdvancedMonitorStateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagId)) {
+		query["SagId"] = request.SagId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetAdvancedMonitorState"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetAdvancedMonitorStateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetAdvancedMonitorState(request *SetAdvancedMonitorStateRequest) (_result *SetAdvancedMonitorStateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetAdvancedMonitorStateResponse{}
+	_body, _err := client.SetAdvancedMonitorStateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SynchronizeSmartAGWebConfigWithOptions(request *SynchronizeSmartAGWebConfigRequest, runtime *util.RuntimeOptions) (_result *SynchronizeSmartAGWebConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38485,6 +42870,94 @@ func (client *Client) UpdateEnterpriseCode(request *UpdateEnterpriseCodeRequest)
 	return _result, _err
 }
 
+func (client *Client) UpdateProbeTaskWithOptions(request *UpdateProbeTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateProbeTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
+		query["AddressType"] = request.AddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PacketNumber)) {
+		query["PacketNumber"] = request.PacketNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProbeTaskId)) {
+		query["ProbeTaskId"] = request.ProbeTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProbeTaskSourceAddress)) {
+		query["ProbeTaskSourceAddress"] = request.ProbeTaskSourceAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagId)) {
+		query["SagId"] = request.SagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sn)) {
+		query["Sn"] = request.Sn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProbeTask"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateProbeTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateProbeTask(request *UpdateProbeTaskRequest) (_result *UpdateProbeTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateProbeTaskResponse{}
+	_body, _err := client.UpdateProbeTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateSmartAGAccessPointWithOptions(request *UpdateSmartAGAccessPointRequest, runtime *util.RuntimeOptions) (_result *UpdateSmartAGAccessPointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38749,6 +43222,554 @@ func (client *Client) UpdateSmartAGUserAccelerateConfig(request *UpdateSmartAGUs
 	return _result, _err
 }
 
+func (client *Client) UpdateSmartAccessGatewayAdminPasswordWithOptions(request *UpdateSmartAccessGatewayAdminPasswordRequest, runtime *util.RuntimeOptions) (_result *UpdateSmartAccessGatewayAdminPasswordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccount)) {
+		query["CrossAccount"] = request.CrossAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSmartAccessGatewayAdminPassword"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSmartAccessGatewayAdminPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayAdminPassword(request *UpdateSmartAccessGatewayAdminPasswordRequest) (_result *UpdateSmartAccessGatewayAdminPasswordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSmartAccessGatewayAdminPasswordResponse{}
+	_body, _err := client.UpdateSmartAccessGatewayAdminPasswordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayBgpRouteWithOptions(request *UpdateSmartAccessGatewayBgpRouteRequest, runtime *util.RuntimeOptions) (_result *UpdateSmartAccessGatewayBgpRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccount)) {
+		query["CrossAccount"] = request.CrossAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HoldTime)) {
+		query["HoldTime"] = request.HoldTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepAlive)) {
+		query["KeepAlive"] = request.KeepAlive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalAs)) {
+		query["LocalAs"] = request.LocalAs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouterId)) {
+		query["RouterId"] = request.RouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSmartAccessGatewayBgpRoute"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSmartAccessGatewayBgpRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayBgpRoute(request *UpdateSmartAccessGatewayBgpRouteRequest) (_result *UpdateSmartAccessGatewayBgpRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSmartAccessGatewayBgpRouteResponse{}
+	_body, _err := client.UpdateSmartAccessGatewayBgpRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayDnsWithOptions(request *UpdateSmartAccessGatewayDnsRequest, runtime *util.RuntimeOptions) (_result *UpdateSmartAccessGatewayDnsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccount)) {
+		query["CrossAccount"] = request.CrossAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterDns)) {
+		query["MasterDns"] = request.MasterDns
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlaveDns)) {
+		query["SlaveDns"] = request.SlaveDns
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSmartAccessGatewayDns"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSmartAccessGatewayDnsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayDns(request *UpdateSmartAccessGatewayDnsRequest) (_result *UpdateSmartAccessGatewayDnsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSmartAccessGatewayDnsResponse{}
+	_body, _err := client.UpdateSmartAccessGatewayDnsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayDnsForwardWithOptions(request *UpdateSmartAccessGatewayDnsForwardRequest, runtime *util.RuntimeOptions) (_result *UpdateSmartAccessGatewayDnsForwardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterIp)) {
+		query["MasterIp"] = request.MasterIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutboundPortIndex)) {
+		query["OutboundPortIndex"] = request.OutboundPortIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutboundPortName)) {
+		query["OutboundPortName"] = request.OutboundPortName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutboundPortType)) {
+		query["OutboundPortType"] = request.OutboundPortType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlaveIp)) {
+		query["SlaveIp"] = request.SlaveIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSmartAccessGatewayDnsForward"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSmartAccessGatewayDnsForwardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayDnsForward(request *UpdateSmartAccessGatewayDnsForwardRequest) (_result *UpdateSmartAccessGatewayDnsForwardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSmartAccessGatewayDnsForwardResponse{}
+	_body, _err := client.UpdateSmartAccessGatewayDnsForwardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayGlobalRouteProtocolWithOptions(request *UpdateSmartAccessGatewayGlobalRouteProtocolRequest, runtime *util.RuntimeOptions) (_result *UpdateSmartAccessGatewayGlobalRouteProtocolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccount)) {
+		query["CrossAccount"] = request.CrossAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteProtocol)) {
+		query["RouteProtocol"] = request.RouteProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSmartAccessGatewayGlobalRouteProtocol"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSmartAccessGatewayGlobalRouteProtocolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayGlobalRouteProtocol(request *UpdateSmartAccessGatewayGlobalRouteProtocolRequest) (_result *UpdateSmartAccessGatewayGlobalRouteProtocolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSmartAccessGatewayGlobalRouteProtocolResponse{}
+	_body, _err := client.UpdateSmartAccessGatewayGlobalRouteProtocolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayOspfRouteWithOptions(request *UpdateSmartAccessGatewayOspfRouteRequest, runtime *util.RuntimeOptions) (_result *UpdateSmartAccessGatewayOspfRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AreaId)) {
+		query["AreaId"] = request.AreaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticationType)) {
+		query["AuthenticationType"] = request.AuthenticationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccount)) {
+		query["CrossAccount"] = request.CrossAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeadTime)) {
+		query["DeadTime"] = request.DeadTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HelloTime)) {
+		query["HelloTime"] = request.HelloTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InterfaceName)) {
+		query["InterfaceName"] = request.InterfaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Md5Key)) {
+		query["Md5Key"] = request.Md5Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Md5KeyId)) {
+		query["Md5KeyId"] = request.Md5KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Networks)) {
+		query["Networks"] = request.Networks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OspfCost)) {
+		query["OspfCost"] = request.OspfCost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OspfNetworkType)) {
+		query["OspfNetworkType"] = request.OspfNetworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RedistributeProtocol)) {
+		query["RedistributeProtocol"] = request.RedistributeProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouterId)) {
+		query["RouterId"] = request.RouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSmartAccessGatewayOspfRoute"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSmartAccessGatewayOspfRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayOspfRoute(request *UpdateSmartAccessGatewayOspfRouteRequest) (_result *UpdateSmartAccessGatewayOspfRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSmartAccessGatewayOspfRouteResponse{}
+	_body, _err := client.UpdateSmartAccessGatewayOspfRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayPortRouteProtocolWithOptions(request *UpdateSmartAccessGatewayPortRouteProtocolRequest, runtime *util.RuntimeOptions) (_result *UpdateSmartAccessGatewayPortRouteProtocolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccount)) {
+		query["CrossAccount"] = request.CrossAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PortName)) {
+		query["PortName"] = request.PortName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoteAs)) {
+		query["RemoteAs"] = request.RemoteAs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoteIp)) {
+		query["RemoteIp"] = request.RemoteIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteProtocol)) {
+		query["RouteProtocol"] = request.RouteProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Vlan)) {
+		query["Vlan"] = request.Vlan
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSmartAccessGatewayPortRouteProtocol"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSmartAccessGatewayPortRouteProtocolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayPortRouteProtocol(request *UpdateSmartAccessGatewayPortRouteProtocolRequest) (_result *UpdateSmartAccessGatewayPortRouteProtocolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSmartAccessGatewayPortRouteProtocolResponse{}
+	_body, _err := client.UpdateSmartAccessGatewayPortRouteProtocolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateSmartAccessGatewayVersionWithOptions(request *UpdateSmartAccessGatewayVersionRequest, runtime *util.RuntimeOptions) (_result *UpdateSmartAccessGatewayVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38818,6 +43839,70 @@ func (client *Client) UpdateSmartAccessGatewayVersion(request *UpdateSmartAccess
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSmartAccessGatewayVersionResponse{}
 	_body, _err := client.UpdateSmartAccessGatewayVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayWanSnatWithOptions(request *UpdateSmartAccessGatewayWanSnatRequest, runtime *util.RuntimeOptions) (_result *UpdateSmartAccessGatewayWanSnatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccount)) {
+		query["CrossAccount"] = request.CrossAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Snat)) {
+		query["Snat"] = request.Snat
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSmartAccessGatewayWanSnat"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSmartAccessGatewayWanSnatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSmartAccessGatewayWanSnat(request *UpdateSmartAccessGatewayWanSnatRequest) (_result *UpdateSmartAccessGatewayWanSnatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSmartAccessGatewayWanSnatResponse{}
+	_body, _err := client.UpdateSmartAccessGatewayWanSnatWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38966,6 +44051,478 @@ func (client *Client) UpgradeSmartAccessGatewaySoftware(request *UpgradeSmartAcc
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeSmartAccessGatewaySoftwareResponse{}
 	_body, _err := client.UpgradeSmartAccessGatewaySoftwareWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayBgpRouteWithOptions(request *ViewSmartAccessGatewayBgpRouteRequest, runtime *util.RuntimeOptions) (_result *ViewSmartAccessGatewayBgpRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccount)) {
+		query["CrossAccount"] = request.CrossAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ViewSmartAccessGatewayBgpRoute"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ViewSmartAccessGatewayBgpRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayBgpRoute(request *ViewSmartAccessGatewayBgpRouteRequest) (_result *ViewSmartAccessGatewayBgpRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ViewSmartAccessGatewayBgpRouteResponse{}
+	_body, _err := client.ViewSmartAccessGatewayBgpRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayDnsWithOptions(request *ViewSmartAccessGatewayDnsRequest, runtime *util.RuntimeOptions) (_result *ViewSmartAccessGatewayDnsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccount)) {
+		query["CrossAccount"] = request.CrossAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ViewSmartAccessGatewayDns"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ViewSmartAccessGatewayDnsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayDns(request *ViewSmartAccessGatewayDnsRequest) (_result *ViewSmartAccessGatewayDnsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ViewSmartAccessGatewayDnsResponse{}
+	_body, _err := client.ViewSmartAccessGatewayDnsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayDnsForwardsWithOptions(request *ViewSmartAccessGatewayDnsForwardsRequest, runtime *util.RuntimeOptions) (_result *ViewSmartAccessGatewayDnsForwardsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ViewSmartAccessGatewayDnsForwards"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ViewSmartAccessGatewayDnsForwardsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayDnsForwards(request *ViewSmartAccessGatewayDnsForwardsRequest) (_result *ViewSmartAccessGatewayDnsForwardsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ViewSmartAccessGatewayDnsForwardsResponse{}
+	_body, _err := client.ViewSmartAccessGatewayDnsForwardsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayGlobalRouteProtocolWithOptions(request *ViewSmartAccessGatewayGlobalRouteProtocolRequest, runtime *util.RuntimeOptions) (_result *ViewSmartAccessGatewayGlobalRouteProtocolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccount)) {
+		query["CrossAccount"] = request.CrossAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ViewSmartAccessGatewayGlobalRouteProtocol"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ViewSmartAccessGatewayGlobalRouteProtocolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayGlobalRouteProtocol(request *ViewSmartAccessGatewayGlobalRouteProtocolRequest) (_result *ViewSmartAccessGatewayGlobalRouteProtocolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ViewSmartAccessGatewayGlobalRouteProtocolResponse{}
+	_body, _err := client.ViewSmartAccessGatewayGlobalRouteProtocolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayOspfRouteWithOptions(request *ViewSmartAccessGatewayOspfRouteRequest, runtime *util.RuntimeOptions) (_result *ViewSmartAccessGatewayOspfRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccount)) {
+		query["CrossAccount"] = request.CrossAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ViewSmartAccessGatewayOspfRoute"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ViewSmartAccessGatewayOspfRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayOspfRoute(request *ViewSmartAccessGatewayOspfRouteRequest) (_result *ViewSmartAccessGatewayOspfRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ViewSmartAccessGatewayOspfRouteResponse{}
+	_body, _err := client.ViewSmartAccessGatewayOspfRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayPortRouteProtocolWithOptions(request *ViewSmartAccessGatewayPortRouteProtocolRequest, runtime *util.RuntimeOptions) (_result *ViewSmartAccessGatewayPortRouteProtocolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccount)) {
+		query["CrossAccount"] = request.CrossAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ViewSmartAccessGatewayPortRouteProtocol"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ViewSmartAccessGatewayPortRouteProtocolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayPortRouteProtocol(request *ViewSmartAccessGatewayPortRouteProtocolRequest) (_result *ViewSmartAccessGatewayPortRouteProtocolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ViewSmartAccessGatewayPortRouteProtocolResponse{}
+	_body, _err := client.ViewSmartAccessGatewayPortRouteProtocolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayRoutesWithOptions(request *ViewSmartAccessGatewayRoutesRequest, runtime *util.RuntimeOptions) (_result *ViewSmartAccessGatewayRoutesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccount)) {
+		query["CrossAccount"] = request.CrossAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ViewSmartAccessGatewayRoutes"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ViewSmartAccessGatewayRoutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayRoutes(request *ViewSmartAccessGatewayRoutesRequest) (_result *ViewSmartAccessGatewayRoutesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ViewSmartAccessGatewayRoutesResponse{}
+	_body, _err := client.ViewSmartAccessGatewayRoutesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayWanSnatWithOptions(request *ViewSmartAccessGatewayWanSnatRequest, runtime *util.RuntimeOptions) (_result *ViewSmartAccessGatewayWanSnatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccount)) {
+		query["CrossAccount"] = request.CrossAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceUid)) {
+		query["ResourceUid"] = request.ResourceUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagInsId)) {
+		query["SagInsId"] = request.SagInsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SagSn)) {
+		query["SagSn"] = request.SagSn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ViewSmartAccessGatewayWanSnat"),
+		Version:     tea.String("2018-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ViewSmartAccessGatewayWanSnatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ViewSmartAccessGatewayWanSnat(request *ViewSmartAccessGatewayWanSnatRequest) (_result *ViewSmartAccessGatewayWanSnatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ViewSmartAccessGatewayWanSnatResponse{}
+	_body, _err := client.ViewSmartAccessGatewayWanSnatWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
