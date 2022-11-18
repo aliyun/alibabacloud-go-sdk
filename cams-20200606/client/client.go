@@ -14,6 +14,7 @@ import (
 
 type BeeBotAssociateRequest struct {
 	ChatBotInstanceId *string   `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
+	CustSpaceId       *string   `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	IsvCode           *string   `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	Perspective       []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
 	RecommendNum      *int32    `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
@@ -31,6 +32,11 @@ func (s BeeBotAssociateRequest) GoString() string {
 
 func (s *BeeBotAssociateRequest) SetChatBotInstanceId(v string) *BeeBotAssociateRequest {
 	s.ChatBotInstanceId = &v
+	return s
+}
+
+func (s *BeeBotAssociateRequest) SetCustSpaceId(v string) *BeeBotAssociateRequest {
+	s.CustSpaceId = &v
 	return s
 }
 
@@ -61,6 +67,7 @@ func (s *BeeBotAssociateRequest) SetUtterance(v string) *BeeBotAssociateRequest 
 
 type BeeBotAssociateShrinkRequest struct {
 	ChatBotInstanceId *string `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
+	CustSpaceId       *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	IsvCode           *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	PerspectiveShrink *string `json:"Perspective,omitempty" xml:"Perspective,omitempty"`
 	RecommendNum      *int32  `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
@@ -78,6 +85,11 @@ func (s BeeBotAssociateShrinkRequest) GoString() string {
 
 func (s *BeeBotAssociateShrinkRequest) SetChatBotInstanceId(v string) *BeeBotAssociateShrinkRequest {
 	s.ChatBotInstanceId = &v
+	return s
+}
+
+func (s *BeeBotAssociateShrinkRequest) SetCustSpaceId(v string) *BeeBotAssociateShrinkRequest {
+	s.CustSpaceId = &v
 	return s
 }
 
@@ -224,6 +236,7 @@ func (s *BeeBotAssociateResponse) SetBody(v *BeeBotAssociateResponseBody) *BeeBo
 
 type BeeBotChatRequest struct {
 	ChatBotInstanceId *string                `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
+	CustSpaceId       *string                `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	IntentName        *string                `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	IsvCode           *string                `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	KnowledgeId       *string                `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
@@ -245,6 +258,11 @@ func (s BeeBotChatRequest) GoString() string {
 
 func (s *BeeBotChatRequest) SetChatBotInstanceId(v string) *BeeBotChatRequest {
 	s.ChatBotInstanceId = &v
+	return s
+}
+
+func (s *BeeBotChatRequest) SetCustSpaceId(v string) *BeeBotChatRequest {
+	s.CustSpaceId = &v
 	return s
 }
 
@@ -295,6 +313,7 @@ func (s *BeeBotChatRequest) SetVendorParam(v map[string]interface{}) *BeeBotChat
 
 type BeeBotChatShrinkRequest struct {
 	ChatBotInstanceId *string `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
+	CustSpaceId       *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	IntentName        *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	IsvCode           *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	KnowledgeId       *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
@@ -316,6 +335,11 @@ func (s BeeBotChatShrinkRequest) GoString() string {
 
 func (s *BeeBotChatShrinkRequest) SetChatBotInstanceId(v string) *BeeBotChatShrinkRequest {
 	s.ChatBotInstanceId = &v
+	return s
+}
+
+func (s *BeeBotChatShrinkRequest) SetCustSpaceId(v string) *BeeBotChatShrinkRequest {
+	s.CustSpaceId = &v
 	return s
 }
 
@@ -742,6 +766,7 @@ func (s *BeeBotChatResponse) SetBody(v *BeeBotChatResponseBody) *BeeBotChatRespo
 type CreateChatappTemplateRequest struct {
 	Category     *string                                   `json:"Category,omitempty" xml:"Category,omitempty"`
 	Components   []*CreateChatappTemplateRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	CustSpaceId  *string                                   `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	CustWabaId   *string                                   `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	Example      map[string]*string                        `json:"Example,omitempty" xml:"Example,omitempty"`
 	IsvCode      *string                                   `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
@@ -765,6 +790,11 @@ func (s *CreateChatappTemplateRequest) SetCategory(v string) *CreateChatappTempl
 
 func (s *CreateChatappTemplateRequest) SetComponents(v []*CreateChatappTemplateRequestComponents) *CreateChatappTemplateRequest {
 	s.Components = v
+	return s
+}
+
+func (s *CreateChatappTemplateRequest) SetCustSpaceId(v string) *CreateChatappTemplateRequest {
+	s.CustSpaceId = &v
 	return s
 }
 
@@ -895,6 +925,7 @@ func (s *CreateChatappTemplateRequestComponentsButtons) SetUrlType(v string) *Cr
 type CreateChatappTemplateShrinkRequest struct {
 	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
+	CustSpaceId      *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	CustWabaId       *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	ExampleShrink    *string `json:"Example,omitempty" xml:"Example,omitempty"`
 	IsvCode          *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
@@ -918,6 +949,11 @@ func (s *CreateChatappTemplateShrinkRequest) SetCategory(v string) *CreateChatap
 
 func (s *CreateChatappTemplateShrinkRequest) SetComponentsShrink(v string) *CreateChatappTemplateShrinkRequest {
 	s.ComponentsShrink = &v
+	return s
+}
+
+func (s *CreateChatappTemplateShrinkRequest) SetCustSpaceId(v string) *CreateChatappTemplateShrinkRequest {
+	s.CustSpaceId = &v
 	return s
 }
 
@@ -1039,6 +1075,7 @@ func (s *CreateChatappTemplateResponse) SetBody(v *CreateChatappTemplateResponse
 }
 
 type DeleteChatappTemplateRequest struct {
+	CustSpaceId  *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	CustWabaId   *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	IsvCode      *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
@@ -1050,6 +1087,11 @@ func (s DeleteChatappTemplateRequest) String() string {
 
 func (s DeleteChatappTemplateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteChatappTemplateRequest) SetCustSpaceId(v string) *DeleteChatappTemplateRequest {
+	s.CustSpaceId = &v
+	return s
 }
 
 func (s *DeleteChatappTemplateRequest) SetCustWabaId(v string) *DeleteChatappTemplateRequest {
@@ -1126,6 +1168,7 @@ func (s *DeleteChatappTemplateResponse) SetBody(v *DeleteChatappTemplateResponse
 }
 
 type GetChatappTemplateDetailRequest struct {
+	CustSpaceId  *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	CustWabaId   *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	IsvCode      *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	Language     *string `json:"Language,omitempty" xml:"Language,omitempty"`
@@ -1138,6 +1181,11 @@ func (s GetChatappTemplateDetailRequest) String() string {
 
 func (s GetChatappTemplateDetailRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetChatappTemplateDetailRequest) SetCustSpaceId(v string) *GetChatappTemplateDetailRequest {
+	s.CustSpaceId = &v
+	return s
 }
 
 func (s *GetChatappTemplateDetailRequest) SetCustWabaId(v string) *GetChatappTemplateDetailRequest {
@@ -1373,6 +1421,7 @@ func (s *GetChatappTemplateDetailResponse) SetBody(v *GetChatappTemplateDetailRe
 
 type ListChatappTemplateRequest struct {
 	AuditStatus *string                         `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	CustSpaceId *string                         `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	CustWabaId  *string                         `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	IsvCode     *string                         `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	Language    *string                         `json:"Language,omitempty" xml:"Language,omitempty"`
@@ -1390,6 +1439,11 @@ func (s ListChatappTemplateRequest) GoString() string {
 
 func (s *ListChatappTemplateRequest) SetAuditStatus(v string) *ListChatappTemplateRequest {
 	s.AuditStatus = &v
+	return s
+}
+
+func (s *ListChatappTemplateRequest) SetCustSpaceId(v string) *ListChatappTemplateRequest {
+	s.CustSpaceId = &v
 	return s
 }
 
@@ -1443,6 +1497,7 @@ func (s *ListChatappTemplateRequestPage) SetSize(v int32) *ListChatappTemplateRe
 
 type ListChatappTemplateShrinkRequest struct {
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	CustWabaId  *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	IsvCode     *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
 	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
@@ -1460,6 +1515,11 @@ func (s ListChatappTemplateShrinkRequest) GoString() string {
 
 func (s *ListChatappTemplateShrinkRequest) SetAuditStatus(v string) *ListChatappTemplateShrinkRequest {
 	s.AuditStatus = &v
+	return s
+}
+
+func (s *ListChatappTemplateShrinkRequest) SetCustSpaceId(v string) *ListChatappTemplateShrinkRequest {
+	s.CustSpaceId = &v
 	return s
 }
 
@@ -1595,6 +1655,7 @@ func (s *ListChatappTemplateResponse) SetBody(v *ListChatappTemplateResponseBody
 
 type ModifyChatappTemplateRequest struct {
 	Components   []*ModifyChatappTemplateRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	CustSpaceId  *string                                   `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	CustWabaId   *string                                   `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	Example      map[string]*string                        `json:"Example,omitempty" xml:"Example,omitempty"`
 	IsvCode      *string                                   `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
@@ -1612,6 +1673,11 @@ func (s ModifyChatappTemplateRequest) GoString() string {
 
 func (s *ModifyChatappTemplateRequest) SetComponents(v []*ModifyChatappTemplateRequestComponents) *ModifyChatappTemplateRequest {
 	s.Components = v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequest) SetCustSpaceId(v string) *ModifyChatappTemplateRequest {
+	s.CustSpaceId = &v
 	return s
 }
 
@@ -1736,6 +1802,7 @@ func (s *ModifyChatappTemplateRequestComponentsButtons) SetUrlType(v string) *Mo
 
 type ModifyChatappTemplateShrinkRequest struct {
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
+	CustSpaceId      *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	CustWabaId       *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	ExampleShrink    *string `json:"Example,omitempty" xml:"Example,omitempty"`
 	IsvCode          *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
@@ -1753,6 +1820,11 @@ func (s ModifyChatappTemplateShrinkRequest) GoString() string {
 
 func (s *ModifyChatappTemplateShrinkRequest) SetComponentsShrink(v string) *ModifyChatappTemplateShrinkRequest {
 	s.ComponentsShrink = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateShrinkRequest) SetCustSpaceId(v string) *ModifyChatappTemplateShrinkRequest {
+	s.CustSpaceId = &v
 	return s
 }
 
@@ -1868,8 +1940,283 @@ func (s *ModifyChatappTemplateResponse) SetBody(v *ModifyChatappTemplateResponse
 	return s
 }
 
+type QueryChatappBindWabaRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	IsvCode     *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+}
+
+func (s QueryChatappBindWabaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryChatappBindWabaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryChatappBindWabaRequest) SetCustSpaceId(v string) *QueryChatappBindWabaRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *QueryChatappBindWabaRequest) SetIsvCode(v string) *QueryChatappBindWabaRequest {
+	s.IsvCode = &v
+	return s
+}
+
+type QueryChatappBindWabaResponseBody struct {
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryChatappBindWabaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryChatappBindWabaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryChatappBindWabaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryChatappBindWabaResponseBody) SetCode(v string) *QueryChatappBindWabaResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryChatappBindWabaResponseBody) SetData(v *QueryChatappBindWabaResponseBodyData) *QueryChatappBindWabaResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryChatappBindWabaResponseBody) SetMessage(v string) *QueryChatappBindWabaResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryChatappBindWabaResponseBody) SetRequestId(v string) *QueryChatappBindWabaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryChatappBindWabaResponseBodyData struct {
+	AccountReviewStatus      *string `json:"AccountReviewStatus,omitempty" xml:"AccountReviewStatus,omitempty"`
+	Currency                 *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	Id                       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	MessageTemplateNamespace *string `json:"MessageTemplateNamespace,omitempty" xml:"MessageTemplateNamespace,omitempty"`
+	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s QueryChatappBindWabaResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryChatappBindWabaResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryChatappBindWabaResponseBodyData) SetAccountReviewStatus(v string) *QueryChatappBindWabaResponseBodyData {
+	s.AccountReviewStatus = &v
+	return s
+}
+
+func (s *QueryChatappBindWabaResponseBodyData) SetCurrency(v string) *QueryChatappBindWabaResponseBodyData {
+	s.Currency = &v
+	return s
+}
+
+func (s *QueryChatappBindWabaResponseBodyData) SetId(v string) *QueryChatappBindWabaResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryChatappBindWabaResponseBodyData) SetMessageTemplateNamespace(v string) *QueryChatappBindWabaResponseBodyData {
+	s.MessageTemplateNamespace = &v
+	return s
+}
+
+func (s *QueryChatappBindWabaResponseBodyData) SetName(v string) *QueryChatappBindWabaResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+type QueryChatappBindWabaResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryChatappBindWabaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryChatappBindWabaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryChatappBindWabaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryChatappBindWabaResponse) SetHeaders(v map[string]*string) *QueryChatappBindWabaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryChatappBindWabaResponse) SetStatusCode(v int32) *QueryChatappBindWabaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryChatappBindWabaResponse) SetBody(v *QueryChatappBindWabaResponseBody) *QueryChatappBindWabaResponse {
+	s.Body = v
+	return s
+}
+
+type QueryChatappPhoneNumbersRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	IsvCode     *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+}
+
+func (s QueryChatappPhoneNumbersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryChatappPhoneNumbersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryChatappPhoneNumbersRequest) SetCustSpaceId(v string) *QueryChatappPhoneNumbersRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *QueryChatappPhoneNumbersRequest) SetIsvCode(v string) *QueryChatappPhoneNumbersRequest {
+	s.IsvCode = &v
+	return s
+}
+
+type QueryChatappPhoneNumbersResponseBody struct {
+	Code         *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	PhoneNumbers []*QueryChatappPhoneNumbersResponseBodyPhoneNumbers `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
+	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryChatappPhoneNumbersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryChatappPhoneNumbersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryChatappPhoneNumbersResponseBody) SetCode(v string) *QueryChatappPhoneNumbersResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryChatappPhoneNumbersResponseBody) SetMessage(v string) *QueryChatappPhoneNumbersResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryChatappPhoneNumbersResponseBody) SetPhoneNumbers(v []*QueryChatappPhoneNumbersResponseBodyPhoneNumbers) *QueryChatappPhoneNumbersResponseBody {
+	s.PhoneNumbers = v
+	return s
+}
+
+func (s *QueryChatappPhoneNumbersResponseBody) SetRequestId(v string) *QueryChatappPhoneNumbersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryChatappPhoneNumbersResponseBodyPhoneNumbers struct {
+	PhoneNumber       *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	QualityRating     *string `json:"QualityRating,omitempty" xml:"QualityRating,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusCallbackUrl *string `json:"StatusCallbackUrl,omitempty" xml:"StatusCallbackUrl,omitempty"`
+	StatusQueue       *string `json:"StatusQueue,omitempty" xml:"StatusQueue,omitempty"`
+	UpCallbackUrl     *string `json:"UpCallbackUrl,omitempty" xml:"UpCallbackUrl,omitempty"`
+	UpQueue           *string `json:"UpQueue,omitempty" xml:"UpQueue,omitempty"`
+	VerifiedName      *string `json:"VerifiedName,omitempty" xml:"VerifiedName,omitempty"`
+}
+
+func (s QueryChatappPhoneNumbersResponseBodyPhoneNumbers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryChatappPhoneNumbersResponseBodyPhoneNumbers) GoString() string {
+	return s.String()
+}
+
+func (s *QueryChatappPhoneNumbersResponseBodyPhoneNumbers) SetPhoneNumber(v string) *QueryChatappPhoneNumbersResponseBodyPhoneNumbers {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *QueryChatappPhoneNumbersResponseBodyPhoneNumbers) SetQualityRating(v string) *QueryChatappPhoneNumbersResponseBodyPhoneNumbers {
+	s.QualityRating = &v
+	return s
+}
+
+func (s *QueryChatappPhoneNumbersResponseBodyPhoneNumbers) SetStatus(v string) *QueryChatappPhoneNumbersResponseBodyPhoneNumbers {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryChatappPhoneNumbersResponseBodyPhoneNumbers) SetStatusCallbackUrl(v string) *QueryChatappPhoneNumbersResponseBodyPhoneNumbers {
+	s.StatusCallbackUrl = &v
+	return s
+}
+
+func (s *QueryChatappPhoneNumbersResponseBodyPhoneNumbers) SetStatusQueue(v string) *QueryChatappPhoneNumbersResponseBodyPhoneNumbers {
+	s.StatusQueue = &v
+	return s
+}
+
+func (s *QueryChatappPhoneNumbersResponseBodyPhoneNumbers) SetUpCallbackUrl(v string) *QueryChatappPhoneNumbersResponseBodyPhoneNumbers {
+	s.UpCallbackUrl = &v
+	return s
+}
+
+func (s *QueryChatappPhoneNumbersResponseBodyPhoneNumbers) SetUpQueue(v string) *QueryChatappPhoneNumbersResponseBodyPhoneNumbers {
+	s.UpQueue = &v
+	return s
+}
+
+func (s *QueryChatappPhoneNumbersResponseBodyPhoneNumbers) SetVerifiedName(v string) *QueryChatappPhoneNumbersResponseBodyPhoneNumbers {
+	s.VerifiedName = &v
+	return s
+}
+
+type QueryChatappPhoneNumbersResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryChatappPhoneNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryChatappPhoneNumbersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryChatappPhoneNumbersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryChatappPhoneNumbersResponse) SetHeaders(v map[string]*string) *QueryChatappPhoneNumbersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryChatappPhoneNumbersResponse) SetStatusCode(v int32) *QueryChatappPhoneNumbersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryChatappPhoneNumbersResponse) SetBody(v *QueryChatappPhoneNumbersResponseBody) *QueryChatappPhoneNumbersResponse {
+	s.Body = v
+	return s
+}
+
 type SendChatappMassMessageRequest struct {
 	ChannelType     *string                                    `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	CustSpaceId     *string                                    `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	CustWabaId      *string                                    `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	FallBackContent *string                                    `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
 	FallBackId      *string                                    `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
@@ -1891,6 +2238,11 @@ func (s SendChatappMassMessageRequest) GoString() string {
 
 func (s *SendChatappMassMessageRequest) SetChannelType(v string) *SendChatappMassMessageRequest {
 	s.ChannelType = &v
+	return s
+}
+
+func (s *SendChatappMassMessageRequest) SetCustSpaceId(v string) *SendChatappMassMessageRequest {
+	s.CustSpaceId = &v
 	return s
 }
 
@@ -1970,6 +2322,7 @@ func (s *SendChatappMassMessageRequestSenderList) SetTo(v string) *SendChatappMa
 
 type SendChatappMassMessageShrinkRequest struct {
 	ChannelType      *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	CustSpaceId      *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	CustWabaId       *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	FallBackContent  *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
 	FallBackId       *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
@@ -1991,6 +2344,11 @@ func (s SendChatappMassMessageShrinkRequest) GoString() string {
 
 func (s *SendChatappMassMessageShrinkRequest) SetChannelType(v string) *SendChatappMassMessageShrinkRequest {
 	s.ChannelType = &v
+	return s
+}
+
+func (s *SendChatappMassMessageShrinkRequest) SetCustSpaceId(v string) *SendChatappMassMessageShrinkRequest {
+	s.CustSpaceId = &v
 	return s
 }
 
@@ -2106,6 +2464,7 @@ func (s *SendChatappMassMessageResponse) SetBody(v *SendChatappMassMessageRespon
 type SendChatappMessageRequest struct {
 	ChannelType     *string            `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	Content         *string            `json:"Content,omitempty" xml:"Content,omitempty"`
+	CustSpaceId     *string            `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	CustWabaId      *string            `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	FallBackContent *string            `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
 	FallBackId      *string            `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
@@ -2135,6 +2494,11 @@ func (s *SendChatappMessageRequest) SetChannelType(v string) *SendChatappMessage
 
 func (s *SendChatappMessageRequest) SetContent(v string) *SendChatappMessageRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetCustSpaceId(v string) *SendChatappMessageRequest {
+	s.CustSpaceId = &v
 	return s
 }
 
@@ -2201,6 +2565,7 @@ func (s *SendChatappMessageRequest) SetType(v string) *SendChatappMessageRequest
 type SendChatappMessageShrinkRequest struct {
 	ChannelType          *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	Content              *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CustSpaceId          *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	CustWabaId           *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	FallBackContent      *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
 	FallBackId           *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
@@ -2230,6 +2595,11 @@ func (s *SendChatappMessageShrinkRequest) SetChannelType(v string) *SendChatappM
 
 func (s *SendChatappMessageShrinkRequest) SetContent(v string) *SendChatappMessageShrinkRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *SendChatappMessageShrinkRequest) SetCustSpaceId(v string) *SendChatappMessageShrinkRequest {
+	s.CustSpaceId = &v
 	return s
 }
 
@@ -2420,6 +2790,10 @@ func (client *Client) BeeBotAssociateWithOptions(tmpReq *BeeBotAssociateRequest,
 		body["ChatBotInstanceId"] = request.ChatBotInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
 		body["IsvCode"] = request.IsvCode
 	}
@@ -2492,6 +2866,10 @@ func (client *Client) BeeBotChatWithOptions(tmpReq *BeeBotChatRequest, runtime *
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ChatBotInstanceId)) {
 		body["ChatBotInstanceId"] = request.ChatBotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IntentName)) {
@@ -2579,6 +2957,11 @@ func (client *Client) CreateChatappTemplateWithOptions(tmpReq *CreateChatappTemp
 		request.ExampleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Example, tea.String("Example"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Category)) {
 		body["Category"] = request.Category
@@ -2613,7 +2996,8 @@ func (client *Client) CreateChatappTemplateWithOptions(tmpReq *CreateChatappTemp
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateChatappTemplate"),
@@ -2652,6 +3036,10 @@ func (client *Client) DeleteChatappTemplateWithOptions(request *DeleteChatappTem
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
 		query["CustWabaId"] = request.CustWabaId
 	}
@@ -2704,6 +3092,10 @@ func (client *Client) GetChatappTemplateDetailWithOptions(request *GetChatappTem
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
 		query["CustWabaId"] = request.CustWabaId
 	}
@@ -2768,6 +3160,10 @@ func (client *Client) ListChatappTemplateWithOptions(tmpReq *ListChatappTemplate
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AuditStatus)) {
 		query["AuditStatus"] = request.AuditStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
@@ -2844,6 +3240,10 @@ func (client *Client) ModifyChatappTemplateWithOptions(tmpReq *ModifyChatappTemp
 		body["Components"] = request.ComponentsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
 		body["CustWabaId"] = request.CustWabaId
 	}
@@ -2898,6 +3298,102 @@ func (client *Client) ModifyChatappTemplate(request *ModifyChatappTemplateReques
 	return _result, _err
 }
 
+func (client *Client) QueryChatappBindWabaWithOptions(request *QueryChatappBindWabaRequest, runtime *util.RuntimeOptions) (_result *QueryChatappBindWabaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
+		query["IsvCode"] = request.IsvCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryChatappBindWaba"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryChatappBindWabaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryChatappBindWaba(request *QueryChatappBindWabaRequest) (_result *QueryChatappBindWabaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryChatappBindWabaResponse{}
+	_body, _err := client.QueryChatappBindWabaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryChatappPhoneNumbersWithOptions(request *QueryChatappPhoneNumbersRequest, runtime *util.RuntimeOptions) (_result *QueryChatappPhoneNumbersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
+		query["IsvCode"] = request.IsvCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryChatappPhoneNumbers"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryChatappPhoneNumbersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryChatappPhoneNumbers(request *QueryChatappPhoneNumbersRequest) (_result *QueryChatappPhoneNumbersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryChatappPhoneNumbersResponse{}
+	_body, _err := client.QueryChatappPhoneNumbersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SendChatappMassMessageWithOptions(tmpReq *SendChatappMassMessageRequest, runtime *util.RuntimeOptions) (_result *SendChatappMassMessageResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2912,6 +3408,10 @@ func (client *Client) SendChatappMassMessageWithOptions(tmpReq *SendChatappMassM
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
 		body["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
@@ -3011,6 +3511,10 @@ func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRe
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
 		body["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {

@@ -1,3 +1,9 @@
+2022-11-18 Version: v2.0.3
+- Mark deprecated parameter.
+- Add CustSpaceId parameter.
+- Add QueryChatappPhoneNumbers,
+- Add QueryChatappBindWaba
+
 2022-10-12 Version: v2.0.2
 - Fixed parameter typo.
 
