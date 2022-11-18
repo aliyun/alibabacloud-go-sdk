@@ -7,9 +7,9 @@ package client
 import (
 	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pds/client"
 	
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -2403,8 +2403,6 @@ type CreateFileRequest struct {
 	ParentFileId       *string                          `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
 	PartInfoList       []*CreateFileRequestPartInfoList `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
 	PreHash            *string                          `json:"pre_hash,omitempty" xml:"pre_hash,omitempty"`
-	ProofCode          *string                          `json:"proof_code,omitempty" xml:"proof_code,omitempty"`
-	ProofVersion       *string                          `json:"proof_version,omitempty" xml:"proof_version,omitempty"`
 	ShareId            *string                          `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	Size               *int64                           `json:"size,omitempty" xml:"size,omitempty"`
 	Type               *string                          `json:"type,omitempty" xml:"type,omitempty"`
@@ -2497,16 +2495,6 @@ func (s *CreateFileRequest) SetPartInfoList(v []*CreateFileRequestPartInfoList) 
 
 func (s *CreateFileRequest) SetPreHash(v string) *CreateFileRequest {
 	s.PreHash = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetProofCode(v string) *CreateFileRequest {
-	s.ProofCode = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetProofVersion(v string) *CreateFileRequest {
-	s.ProofVersion = &v
 	return s
 }
 
@@ -2723,19 +2711,19 @@ func (s *CreateGroupResponse) SetBody(v *Group) *CreateGroupResponse {
 }
 
 type CreateShareLinkRequest struct {
-	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
-	DisableDownload *bool   `json:"disable_download,omitempty" xml:"disable_download,omitempty"`
-	DisablePreview  *bool   `json:"disable_preview,omitempty" xml:"disable_preview,omitempty"`
-	DisableSave     *bool   `json:"disable_save,omitempty" xml:"disable_save,omitempty"`
-	DownloadLimit   *int64  `json:"download_limit,omitempty" xml:"download_limit,omitempty"`
-	DriveId         *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	Expiration      *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
-	FileIdList      *string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty"`
-	PreviewLimit    *int64  `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
-	SaveLimit       *int64  `json:"save_limit,omitempty" xml:"save_limit,omitempty"`
-	ShareName       *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
-	SharePwd        *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty"`
-	UserId          *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	Description     *string   `json:"description,omitempty" xml:"description,omitempty"`
+	DisableDownload *bool     `json:"disable_download,omitempty" xml:"disable_download,omitempty"`
+	DisablePreview  *bool     `json:"disable_preview,omitempty" xml:"disable_preview,omitempty"`
+	DisableSave     *bool     `json:"disable_save,omitempty" xml:"disable_save,omitempty"`
+	DownloadLimit   *int64    `json:"download_limit,omitempty" xml:"download_limit,omitempty"`
+	DriveId         *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	Expiration      *string   `json:"expiration,omitempty" xml:"expiration,omitempty"`
+	FileIdList      []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
+	PreviewLimit    *int64    `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
+	SaveLimit       *int64    `json:"save_limit,omitempty" xml:"save_limit,omitempty"`
+	ShareName       *string   `json:"share_name,omitempty" xml:"share_name,omitempty"`
+	SharePwd        *string   `json:"share_pwd,omitempty" xml:"share_pwd,omitempty"`
+	UserId          *string   `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s CreateShareLinkRequest) String() string {
@@ -2781,8 +2769,8 @@ func (s *CreateShareLinkRequest) SetExpiration(v string) *CreateShareLinkRequest
 	return s
 }
 
-func (s *CreateShareLinkRequest) SetFileIdList(v string) *CreateShareLinkRequest {
-	s.FileIdList = &v
+func (s *CreateShareLinkRequest) SetFileIdList(v []*string) *CreateShareLinkRequest {
+	s.FileIdList = v
 	return s
 }
 
@@ -4917,7 +4905,7 @@ type GetVideoPreviewPlayInfoRequest struct {
 	Category      *string `json:"category,omitempty" xml:"category,omitempty"`
 	DriveId       *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	FileId        *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	GetWithoutUrl *string `json:"get_without_url,omitempty" xml:"get_without_url,omitempty"`
+	GetWithoutUrl *bool   `json:"get_without_url,omitempty" xml:"get_without_url,omitempty"`
 	ShareId       *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	TemplateId    *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
 }
@@ -4945,7 +4933,7 @@ func (s *GetVideoPreviewPlayInfoRequest) SetFileId(v string) *GetVideoPreviewPla
 	return s
 }
 
-func (s *GetVideoPreviewPlayInfoRequest) SetGetWithoutUrl(v string) *GetVideoPreviewPlayInfoRequest {
+func (s *GetVideoPreviewPlayInfoRequest) SetGetWithoutUrl(v bool) *GetVideoPreviewPlayInfoRequest {
 	s.GetWithoutUrl = &v
 	return s
 }
@@ -8320,129 +8308,6 @@ func (s *UpdateUserResponse) SetBody(v *User) *UpdateUserResponse {
 	return s
 }
 
-type WalkFileRequest struct {
-	Category       *string `json:"category,omitempty" xml:"category,omitempty"`
-	DriveId        *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	Fields         *string `json:"fields,omitempty" xml:"fields,omitempty"`
-	Limit          *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
-	Marker         *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	OrderBy        *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
-	OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
-	ParentFileId   *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
-	Status         *string `json:"status,omitempty" xml:"status,omitempty"`
-	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s WalkFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s WalkFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *WalkFileRequest) SetCategory(v string) *WalkFileRequest {
-	s.Category = &v
-	return s
-}
-
-func (s *WalkFileRequest) SetDriveId(v string) *WalkFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *WalkFileRequest) SetFields(v string) *WalkFileRequest {
-	s.Fields = &v
-	return s
-}
-
-func (s *WalkFileRequest) SetLimit(v int32) *WalkFileRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *WalkFileRequest) SetMarker(v string) *WalkFileRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *WalkFileRequest) SetOrderBy(v string) *WalkFileRequest {
-	s.OrderBy = &v
-	return s
-}
-
-func (s *WalkFileRequest) SetOrderDirection(v string) *WalkFileRequest {
-	s.OrderDirection = &v
-	return s
-}
-
-func (s *WalkFileRequest) SetParentFileId(v string) *WalkFileRequest {
-	s.ParentFileId = &v
-	return s
-}
-
-func (s *WalkFileRequest) SetStatus(v string) *WalkFileRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *WalkFileRequest) SetType(v string) *WalkFileRequest {
-	s.Type = &v
-	return s
-}
-
-type WalkFileResponseBody struct {
-	Items      []*File `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
-}
-
-func (s WalkFileResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s WalkFileResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *WalkFileResponseBody) SetItems(v []*File) *WalkFileResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *WalkFileResponseBody) SetNextMarker(v string) *WalkFileResponseBody {
-	s.NextMarker = &v
-	return s
-}
-
-type WalkFileResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *WalkFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s WalkFileResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s WalkFileResponse) GoString() string {
-	return s.String()
-}
-
-func (s *WalkFileResponse) SetHeaders(v map[string]*string) *WalkFileResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *WalkFileResponse) SetStatusCode(v int32) *WalkFileResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *WalkFileResponse) SetBody(v *WalkFileResponseBody) *WalkFileResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -8953,14 +8818,6 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.PreHash)) {
 		body["pre_hash"] = request.PreHash
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProofCode)) {
-		body["proof_code"] = request.ProofCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProofVersion)) {
-		body["proof_version"] = request.ProofVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ShareId)) {
@@ -12902,88 +12759,6 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, headers 
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateUserResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) WalkFile(request *WalkFileRequest) (_result *WalkFileResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &WalkFileResponse{}
-	_body, _err := client.WalkFileWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) WalkFileWithOptions(request *WalkFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *WalkFileResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Category)) {
-		body["category"] = request.Category
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
-		body["drive_id"] = request.DriveId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Fields)) {
-		body["fields"] = request.Fields
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Limit)) {
-		body["limit"] = request.Limit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Marker)) {
-		body["marker"] = request.Marker
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
-		body["order_by"] = request.OrderBy
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderDirection)) {
-		body["order_direction"] = request.OrderDirection
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ParentFileId)) {
-		body["parent_file_id"] = request.ParentFileId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		body["status"] = request.Status
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		body["type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("WalkFile"),
-		Version:     tea.String("2022-03-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v2/file/walk"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &WalkFileResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
