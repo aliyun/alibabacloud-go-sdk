@@ -1,3 +1,6 @@
+2022-11-18 Version: v3.0.1
+- Add GetQuotaTip api.
+
 2022-09-23 Version: v3.0.0
 - Generated golang 2019-09-16 for alikafka.
 

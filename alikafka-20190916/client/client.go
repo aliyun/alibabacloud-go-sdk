@@ -328,10 +328,11 @@ func (s *CreateAclResponse) SetBody(v *CreateAclResponseBody) *CreateAclResponse
 }
 
 type CreateConsumerGroupRequest struct {
-	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ConsumerId *string                          `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	InstanceId *string                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Remark     *string                          `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Tag        []*CreateConsumerGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateConsumerGroupRequest) String() string {
@@ -359,6 +360,34 @@ func (s *CreateConsumerGroupRequest) SetRegionId(v string) *CreateConsumerGroupR
 
 func (s *CreateConsumerGroupRequest) SetRemark(v string) *CreateConsumerGroupRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *CreateConsumerGroupRequest) SetTag(v []*CreateConsumerGroupRequestTag) *CreateConsumerGroupRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateConsumerGroupRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateConsumerGroupRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConsumerGroupRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConsumerGroupRequestTag) SetKey(v string) *CreateConsumerGroupRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateConsumerGroupRequestTag) SetValue(v string) *CreateConsumerGroupRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -427,17 +456,18 @@ func (s *CreateConsumerGroupResponse) SetBody(v *CreateConsumerGroupResponseBody
 }
 
 type CreatePostPayOrderRequest struct {
-	DeployType      *int32  `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	DiskSize        *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	DiskType        *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	EipMax          *int32  `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
-	IoMax           *int32  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
-	IoMaxSpec       *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
-	PartitionNum    *int32  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SpecType        *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	TopicQuota      *int32  `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
+	DeployType      *int32                          `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	DiskSize        *int32                          `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	DiskType        *string                         `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	EipMax          *int32                          `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	IoMax           *int32                          `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	IoMaxSpec       *string                         `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	PartitionNum    *int32                          `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	RegionId        *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SpecType        *string                         `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	Tag             []*CreatePostPayOrderRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TopicQuota      *int32                          `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
 }
 
 func (s CreatePostPayOrderRequest) String() string {
@@ -498,8 +528,36 @@ func (s *CreatePostPayOrderRequest) SetSpecType(v string) *CreatePostPayOrderReq
 	return s
 }
 
+func (s *CreatePostPayOrderRequest) SetTag(v []*CreatePostPayOrderRequestTag) *CreatePostPayOrderRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreatePostPayOrderRequest) SetTopicQuota(v int32) *CreatePostPayOrderRequest {
 	s.TopicQuota = &v
+	return s
+}
+
+type CreatePostPayOrderRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreatePostPayOrderRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePostPayOrderRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePostPayOrderRequestTag) SetKey(v string) *CreatePostPayOrderRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreatePostPayOrderRequestTag) SetValue(v string) *CreatePostPayOrderRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -574,17 +632,18 @@ func (s *CreatePostPayOrderResponse) SetBody(v *CreatePostPayOrderResponseBody) 
 }
 
 type CreatePrePayOrderRequest struct {
-	DeployType      *int32  `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	DiskSize        *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	DiskType        *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	EipMax          *int32  `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
-	IoMax           *int32  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
-	IoMaxSpec       *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
-	PartitionNum    *int32  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SpecType        *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	TopicQuota      *int32  `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
+	DeployType      *int32                         `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	DiskSize        *int32                         `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	DiskType        *string                        `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	EipMax          *int32                         `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	IoMax           *int32                         `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	IoMaxSpec       *string                        `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	PartitionNum    *int32                         `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	RegionId        *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SpecType        *string                        `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	Tag             []*CreatePrePayOrderRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TopicQuota      *int32                         `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
 }
 
 func (s CreatePrePayOrderRequest) String() string {
@@ -645,8 +704,36 @@ func (s *CreatePrePayOrderRequest) SetSpecType(v string) *CreatePrePayOrderReque
 	return s
 }
 
+func (s *CreatePrePayOrderRequest) SetTag(v []*CreatePrePayOrderRequestTag) *CreatePrePayOrderRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreatePrePayOrderRequest) SetTopicQuota(v int32) *CreatePrePayOrderRequest {
 	s.TopicQuota = &v
+	return s
+}
+
+type CreatePrePayOrderRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreatePrePayOrderRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePrePayOrderRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrePayOrderRequestTag) SetKey(v string) *CreatePrePayOrderRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreatePrePayOrderRequestTag) SetValue(v string) *CreatePrePayOrderRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -826,16 +913,17 @@ func (s *CreateSaslUserResponse) SetBody(v *CreateSaslUserResponseBody) *CreateS
 }
 
 type CreateTopicRequest struct {
-	CompactTopic      *bool                  `json:"CompactTopic,omitempty" xml:"CompactTopic,omitempty"`
-	Config            map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
-	InstanceId        *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LocalTopic        *bool                  `json:"LocalTopic,omitempty" xml:"LocalTopic,omitempty"`
-	MinInsyncReplicas *int64                 `json:"MinInsyncReplicas,omitempty" xml:"MinInsyncReplicas,omitempty"`
-	PartitionNum      *string                `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-	RegionId          *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark            *string                `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ReplicationFactor *int64                 `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
-	Topic             *string                `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	CompactTopic      *bool                    `json:"CompactTopic,omitempty" xml:"CompactTopic,omitempty"`
+	Config            map[string]interface{}   `json:"Config,omitempty" xml:"Config,omitempty"`
+	InstanceId        *string                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LocalTopic        *bool                    `json:"LocalTopic,omitempty" xml:"LocalTopic,omitempty"`
+	MinInsyncReplicas *int64                   `json:"MinInsyncReplicas,omitempty" xml:"MinInsyncReplicas,omitempty"`
+	PartitionNum      *string                  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	RegionId          *string                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Remark            *string                  `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ReplicationFactor *int64                   `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
+	Tag               []*CreateTopicRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Topic             *string                  `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s CreateTopicRequest) String() string {
@@ -891,22 +979,51 @@ func (s *CreateTopicRequest) SetReplicationFactor(v int64) *CreateTopicRequest {
 	return s
 }
 
+func (s *CreateTopicRequest) SetTag(v []*CreateTopicRequestTag) *CreateTopicRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateTopicRequest) SetTopic(v string) *CreateTopicRequest {
 	s.Topic = &v
 	return s
 }
 
+type CreateTopicRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateTopicRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTopicRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTopicRequestTag) SetKey(v string) *CreateTopicRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateTopicRequestTag) SetValue(v string) *CreateTopicRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateTopicShrinkRequest struct {
-	CompactTopic      *bool   `json:"CompactTopic,omitempty" xml:"CompactTopic,omitempty"`
-	ConfigShrink      *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LocalTopic        *bool   `json:"LocalTopic,omitempty" xml:"LocalTopic,omitempty"`
-	MinInsyncReplicas *int64  `json:"MinInsyncReplicas,omitempty" xml:"MinInsyncReplicas,omitempty"`
-	PartitionNum      *string `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark            *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ReplicationFactor *int64  `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
-	Topic             *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	CompactTopic      *bool                          `json:"CompactTopic,omitempty" xml:"CompactTopic,omitempty"`
+	ConfigShrink      *string                        `json:"Config,omitempty" xml:"Config,omitempty"`
+	InstanceId        *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LocalTopic        *bool                          `json:"LocalTopic,omitempty" xml:"LocalTopic,omitempty"`
+	MinInsyncReplicas *int64                         `json:"MinInsyncReplicas,omitempty" xml:"MinInsyncReplicas,omitempty"`
+	PartitionNum      *string                        `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	RegionId          *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Remark            *string                        `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ReplicationFactor *int64                         `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
+	Tag               []*CreateTopicShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Topic             *string                        `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s CreateTopicShrinkRequest) String() string {
@@ -962,8 +1079,36 @@ func (s *CreateTopicShrinkRequest) SetReplicationFactor(v int64) *CreateTopicShr
 	return s
 }
 
+func (s *CreateTopicShrinkRequest) SetTag(v []*CreateTopicShrinkRequestTag) *CreateTopicShrinkRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateTopicShrinkRequest) SetTopic(v string) *CreateTopicShrinkRequest {
 	s.Topic = &v
+	return s
+}
+
+type CreateTopicShrinkRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateTopicShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTopicShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTopicShrinkRequestTag) SetKey(v string) *CreateTopicShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateTopicShrinkRequestTag) SetValue(v string) *CreateTopicShrinkRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -1697,116 +1842,6 @@ func (s *DescribeAclsResponse) SetStatusCode(v int32) *DescribeAclsResponse {
 }
 
 func (s *DescribeAclsResponse) SetBody(v *DescribeAclsResponseBody) *DescribeAclsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeNodeStatusRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DescribeNodeStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeNodeStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeNodeStatusRequest) SetInstanceId(v string) *DescribeNodeStatusRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeNodeStatusRequest) SetRegionId(v string) *DescribeNodeStatusRequest {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeNodeStatusResponseBody struct {
-	Code       *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StatusList *DescribeNodeStatusResponseBodyStatusList `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Struct"`
-	Success    *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeNodeStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeNodeStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeNodeStatusResponseBody) SetCode(v int32) *DescribeNodeStatusResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeNodeStatusResponseBody) SetMessage(v string) *DescribeNodeStatusResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeNodeStatusResponseBody) SetRequestId(v string) *DescribeNodeStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeNodeStatusResponseBody) SetStatusList(v *DescribeNodeStatusResponseBodyStatusList) *DescribeNodeStatusResponseBody {
-	s.StatusList = v
-	return s
-}
-
-func (s *DescribeNodeStatusResponseBody) SetSuccess(v bool) *DescribeNodeStatusResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeNodeStatusResponseBodyStatusList struct {
-	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-}
-
-func (s DescribeNodeStatusResponseBodyStatusList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeNodeStatusResponseBodyStatusList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeNodeStatusResponseBodyStatusList) SetStatus(v []*string) *DescribeNodeStatusResponseBodyStatusList {
-	s.Status = v
-	return s
-}
-
-type DescribeNodeStatusResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeNodeStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeNodeStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeNodeStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeNodeStatusResponse) SetHeaders(v map[string]*string) *DescribeNodeStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeNodeStatusResponse) SetStatusCode(v int32) *DescribeNodeStatusResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeNodeStatusResponse) SetBody(v *DescribeNodeStatusResponseBody) *DescribeNodeStatusResponse {
 	s.Body = v
 	return s
 }
@@ -5477,6 +5512,10 @@ func (client *Client) CreateConsumerGroupWithOptions(request *CreateConsumerGrou
 		query["Remark"] = request.Remark
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5555,6 +5594,10 @@ func (client *Client) CreatePostPayOrderWithOptions(request *CreatePostPayOrderR
 
 	if !tea.BoolValue(util.IsUnset(request.SpecType)) {
 		query["SpecType"] = request.SpecType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TopicQuota)) {
@@ -5639,6 +5682,10 @@ func (client *Client) CreatePrePayOrderWithOptions(request *CreatePrePayOrderReq
 
 	if !tea.BoolValue(util.IsUnset(request.SpecType)) {
 		query["SpecType"] = request.SpecType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TopicQuota)) {
@@ -5785,6 +5832,10 @@ func (client *Client) CreateTopicWithOptions(tmpReq *CreateTopicRequest, runtime
 
 	if !tea.BoolValue(util.IsUnset(request.ReplicationFactor)) {
 		query["ReplicationFactor"] = request.ReplicationFactor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Topic)) {
@@ -6158,54 +6209,6 @@ func (client *Client) DescribeAcls(request *DescribeAclsRequest) (_result *Descr
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAclsResponse{}
 	_body, _err := client.DescribeAclsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeNodeStatusWithOptions(request *DescribeNodeStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeNodeStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeNodeStatus"),
-		Version:     tea.String("2019-09-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeNodeStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeNodeStatus(request *DescribeNodeStatusRequest) (_result *DescribeNodeStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeNodeStatusResponse{}
-	_body, _err := client.DescribeNodeStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
