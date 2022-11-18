@@ -2807,6 +2807,194 @@ func (s *QueryChildDivisionCodeByIdResponse) SetBody(v *QueryChildDivisionCodeBy
 	return s
 }
 
+type QueryDistributionBillDetailRequest struct {
+	BillId               *string `json:"BillId,omitempty" xml:"BillId,omitempty"`
+	BillPeriod           *string `json:"BillPeriod,omitempty" xml:"BillPeriod,omitempty"`
+	BillStatus           *string `json:"BillStatus,omitempty" xml:"BillStatus,omitempty"`
+	DistributionMallId   *string `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
+	DistributionMallName *string `json:"DistributionMallName,omitempty" xml:"DistributionMallName,omitempty"`
+	DistributorId        *string `json:"DistributorId,omitempty" xml:"DistributorId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TenantId             *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s QueryDistributionBillDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDistributionBillDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDistributionBillDetailRequest) SetBillId(v string) *QueryDistributionBillDetailRequest {
+	s.BillId = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailRequest) SetBillPeriod(v string) *QueryDistributionBillDetailRequest {
+	s.BillPeriod = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailRequest) SetBillStatus(v string) *QueryDistributionBillDetailRequest {
+	s.BillStatus = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailRequest) SetDistributionMallId(v string) *QueryDistributionBillDetailRequest {
+	s.DistributionMallId = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailRequest) SetDistributionMallName(v string) *QueryDistributionBillDetailRequest {
+	s.DistributionMallName = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailRequest) SetDistributorId(v string) *QueryDistributionBillDetailRequest {
+	s.DistributorId = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailRequest) SetPageNumber(v int32) *QueryDistributionBillDetailRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailRequest) SetPageSize(v int32) *QueryDistributionBillDetailRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailRequest) SetTenantId(v string) *QueryDistributionBillDetailRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QueryDistributionBillDetailResponseBody struct {
+	Code       *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                       `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *QueryDistributionBillDetailResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string                                       `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string                                       `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryDistributionBillDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDistributionBillDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDistributionBillDetailResponseBody) SetCode(v string) *QueryDistributionBillDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailResponseBody) SetLogsId(v string) *QueryDistributionBillDetailResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailResponseBody) SetMessage(v string) *QueryDistributionBillDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailResponseBody) SetModel(v *QueryDistributionBillDetailResponseBodyModel) *QueryDistributionBillDetailResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QueryDistributionBillDetailResponseBody) SetRequestId(v string) *QueryDistributionBillDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailResponseBody) SetSubCode(v string) *QueryDistributionBillDetailResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailResponseBody) SetSubMessage(v string) *QueryDistributionBillDetailResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailResponseBody) SetSuccess(v bool) *QueryDistributionBillDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryDistributionBillDetailResponseBodyModel struct {
+	Data       []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	PageNumber *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total      *int32    `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QueryDistributionBillDetailResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDistributionBillDetailResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDistributionBillDetailResponseBodyModel) SetData(v []*string) *QueryDistributionBillDetailResponseBodyModel {
+	s.Data = v
+	return s
+}
+
+func (s *QueryDistributionBillDetailResponseBodyModel) SetPageNumber(v int32) *QueryDistributionBillDetailResponseBodyModel {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailResponseBodyModel) SetPageSize(v int32) *QueryDistributionBillDetailResponseBodyModel {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailResponseBodyModel) SetTotal(v int32) *QueryDistributionBillDetailResponseBodyModel {
+	s.Total = &v
+	return s
+}
+
+type QueryDistributionBillDetailResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryDistributionBillDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDistributionBillDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDistributionBillDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDistributionBillDetailResponse) SetHeaders(v map[string]*string) *QueryDistributionBillDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDistributionBillDetailResponse) SetStatusCode(v int32) *QueryDistributionBillDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDistributionBillDetailResponse) SetBody(v *QueryDistributionBillDetailResponseBody) *QueryDistributionBillDetailResponse {
+	s.Body = v
+	return s
+}
+
 type QueryDistributionMallRequest struct {
 	DistributionMallId *string `json:"DistributionMallId,omitempty" xml:"DistributionMallId,omitempty"`
 	TenantId           *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
@@ -8430,6 +8618,82 @@ func (client *Client) QueryChildDivisionCodeById(request *QueryChildDivisionCode
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryChildDivisionCodeByIdResponse{}
 	_body, _err := client.QueryChildDivisionCodeByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryDistributionBillDetailWithOptions(request *QueryDistributionBillDetailRequest, runtime *util.RuntimeOptions) (_result *QueryDistributionBillDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillId)) {
+		body["BillId"] = request.BillId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillPeriod)) {
+		body["BillPeriod"] = request.BillPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillStatus)) {
+		body["BillStatus"] = request.BillStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistributionMallId)) {
+		body["DistributionMallId"] = request.DistributionMallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistributionMallName)) {
+		body["DistributionMallName"] = request.DistributionMallName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistributorId)) {
+		body["DistributorId"] = request.DistributorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDistributionBillDetail"),
+		Version:     tea.String("2022-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDistributionBillDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDistributionBillDetail(request *QueryDistributionBillDetailRequest) (_result *QueryDistributionBillDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDistributionBillDetailResponse{}
+	_body, _err := client.QueryDistributionBillDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
