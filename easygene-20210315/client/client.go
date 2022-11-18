@@ -5,17 +5,15 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AbortRunRequest struct {
-	// 任务ID
-	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	// 工作空间名称
+	RunId     *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
 	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -38,9 +36,7 @@ func (s *AbortRunRequest) SetWorkspace(v string) *AbortRunRequest {
 }
 
 type AbortRunResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -63,8 +59,9 @@ func (s *AbortRunResponseBody) SetRequestId(v string) *AbortRunResponseBody {
 }
 
 type AbortRunResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AbortRunResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AbortRunResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AbortRunResponse) String() string {
@@ -80,16 +77,19 @@ func (s *AbortRunResponse) SetHeaders(v map[string]*string) *AbortRunResponse {
 	return s
 }
 
+func (s *AbortRunResponse) SetStatusCode(v int32) *AbortRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AbortRunResponse) SetBody(v *AbortRunResponseBody) *AbortRunResponse {
 	s.Body = v
 	return s
 }
 
 type AbortSubmissionRequest struct {
-	// 投递ID
 	SubmissionId *string `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Workspace    *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s AbortSubmissionRequest) String() string {
@@ -111,9 +111,7 @@ func (s *AbortSubmissionRequest) SetWorkspace(v string) *AbortSubmissionRequest 
 }
 
 type AbortSubmissionResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -136,8 +134,9 @@ func (s *AbortSubmissionResponseBody) SetRequestId(v string) *AbortSubmissionRes
 }
 
 type AbortSubmissionResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AbortSubmissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AbortSubmissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AbortSubmissionResponse) String() string {
@@ -153,18 +152,20 @@ func (s *AbortSubmissionResponse) SetHeaders(v map[string]*string) *AbortSubmiss
 	return s
 }
 
+func (s *AbortSubmissionResponse) SetStatusCode(v int32) *AbortSubmissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AbortSubmissionResponse) SetBody(v *AbortSubmissionResponseBody) *AbortSubmissionResponse {
 	s.Body = v
 	return s
 }
 
 type CopyPublicEntityRequest struct {
-	// 数据集名称
-	Dataset *string `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
-	// 表格名称
+	Dataset    *string `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 要拷贝到的工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Workspace  *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CopyPublicEntityRequest) String() string {
@@ -191,14 +192,10 @@ func (s *CopyPublicEntityRequest) SetWorkspace(v string) *CopyPublicEntityReques
 }
 
 type CopyPublicEntityResponseBody struct {
-	// 实体类型
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	HostId     *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Workspace  *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CopyPublicEntityResponseBody) String() string {
@@ -230,8 +227,9 @@ func (s *CopyPublicEntityResponseBody) SetWorkspace(v string) *CopyPublicEntityR
 }
 
 type CopyPublicEntityResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CopyPublicEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CopyPublicEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CopyPublicEntityResponse) String() string {
@@ -247,40 +245,31 @@ func (s *CopyPublicEntityResponse) SetHeaders(v map[string]*string) *CopyPublicE
 	return s
 }
 
+func (s *CopyPublicEntityResponse) SetStatusCode(v int32) *CopyPublicEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CopyPublicEntityResponse) SetBody(v *CopyPublicEntityResponseBody) *CopyPublicEntityResponse {
 	s.Body = v
 	return s
 }
 
 type CreateAppRequest struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用类型
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// 幂等Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 参考输入
-	Configs []*CreateAppRequestConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// 应用定义
-	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// 依赖应用
-	Dependencies []*CreateAppRequestDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
-	// 应用描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 应用使用文档
-	Documentation *string `json:"Documentation,omitempty" xml:"Documentation,omitempty"`
-	// 应用标签
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 应用描述语言
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// 应用描述语语言版本
-	LanguageVersion *string `json:"LanguageVersion,omitempty" xml:"LanguageVersion,omitempty"`
-	// 主WDL路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 应用当前版本说明
-	RevisionComment *string `json:"RevisionComment,omitempty" xml:"RevisionComment,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	AppName         *string                         `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType         *string                         `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	ClientToken     *string                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Configs         []*CreateAppRequestConfigs      `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	Definition      *string                         `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Dependencies    []*CreateAppRequestDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
+	Description     *string                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	Documentation   *string                         `json:"Documentation,omitempty" xml:"Documentation,omitempty"`
+	Labels          *string                         `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Language        *string                         `json:"Language,omitempty" xml:"Language,omitempty"`
+	LanguageVersion *string                         `json:"LanguageVersion,omitempty" xml:"LanguageVersion,omitempty"`
+	Path            *string                         `json:"Path,omitempty" xml:"Path,omitempty"`
+	RevisionComment *string                         `json:"RevisionComment,omitempty" xml:"RevisionComment,omitempty"`
+	Workspace       *string                         `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateAppRequest) String() string {
@@ -385,10 +374,8 @@ func (s *CreateAppRequestConfigs) SetPath(v string) *CreateAppRequestConfigs {
 }
 
 type CreateAppRequestDependencies struct {
-	// 依赖内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 依赖路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path    *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s CreateAppRequestDependencies) String() string {
@@ -410,34 +397,20 @@ func (s *CreateAppRequestDependencies) SetPath(v string) *CreateAppRequestDepend
 }
 
 type CreateAppShrinkRequest struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用类型
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// 幂等Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 参考输入
-	ConfigsShrink *string `json:"Configs,omitempty" xml:"Configs,omitempty"`
-	// 应用定义
-	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// 依赖应用
+	AppName            *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType            *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConfigsShrink      *string `json:"Configs,omitempty" xml:"Configs,omitempty"`
+	Definition         *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
 	DependenciesShrink *string `json:"Dependencies,omitempty" xml:"Dependencies,omitempty"`
-	// 应用描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 应用使用文档
-	Documentation *string `json:"Documentation,omitempty" xml:"Documentation,omitempty"`
-	// 应用标签
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 应用描述语言
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// 应用描述语语言版本
-	LanguageVersion *string `json:"LanguageVersion,omitempty" xml:"LanguageVersion,omitempty"`
-	// 主WDL路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 应用当前版本说明
-	RevisionComment *string `json:"RevisionComment,omitempty" xml:"RevisionComment,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Documentation      *string `json:"Documentation,omitempty" xml:"Documentation,omitempty"`
+	Labels             *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Language           *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	LanguageVersion    *string `json:"LanguageVersion,omitempty" xml:"LanguageVersion,omitempty"`
+	Path               *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	RevisionComment    *string `json:"RevisionComment,omitempty" xml:"RevisionComment,omitempty"`
+	Workspace          *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateAppShrinkRequest) String() string {
@@ -519,15 +492,10 @@ func (s *CreateAppShrinkRequest) SetWorkspace(v string) *CreateAppShrinkRequest 
 }
 
 type CreateAppResponseBody struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 主机 ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求 ID
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 应用版本号
-	Revision *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
-	// 工作空间
+	Revision  *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
 	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -565,8 +533,9 @@ func (s *CreateAppResponseBody) SetWorkspace(v string) *CreateAppResponseBody {
 }
 
 type CreateAppResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateAppResponse) String() string {
@@ -582,19 +551,21 @@ func (s *CreateAppResponse) SetHeaders(v map[string]*string) *CreateAppResponse 
 	return s
 }
 
+func (s *CreateAppResponse) SetStatusCode(v int32) *CreateAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse {
 	s.Body = v
 	return s
 }
 
 type CreateEntityRequest struct {
-	// 幂等Token
 	ClientToken *string                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	EntityItems []*CreateEntityRequestEntityItems `json:"EntityItems,omitempty" xml:"EntityItems,omitempty" type:"Repeated"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	EntityType  *string                           `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Workspace   *string                           `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateEntityRequest) String() string {
@@ -627,8 +598,7 @@ func (s *CreateEntityRequest) SetWorkspace(v string) *CreateEntityRequest {
 
 type CreateEntityRequestEntityItems struct {
 	EntityData map[string]*string `json:"EntityData,omitempty" xml:"EntityData,omitempty"`
-	// 表格元素名称
-	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	EntityName *string            `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 }
 
 func (s CreateEntityRequestEntityItems) String() string {
@@ -650,13 +620,10 @@ func (s *CreateEntityRequestEntityItems) SetEntityName(v string) *CreateEntityRe
 }
 
 type CreateEntityShrinkRequest struct {
-	// 幂等Token
 	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	EntityItemsShrink *string `json:"EntityItems,omitempty" xml:"EntityItems,omitempty"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	EntityType        *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Workspace         *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateEntityShrinkRequest) String() string {
@@ -688,14 +655,10 @@ func (s *CreateEntityShrinkRequest) SetWorkspace(v string) *CreateEntityShrinkRe
 }
 
 type CreateEntityResponseBody struct {
-	// 实体类型
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	HostId     *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Workspace  *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateEntityResponseBody) String() string {
@@ -727,8 +690,9 @@ func (s *CreateEntityResponseBody) SetWorkspace(v string) *CreateEntityResponseB
 }
 
 type CreateEntityResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateEntityResponse) String() string {
@@ -744,36 +708,30 @@ func (s *CreateEntityResponse) SetHeaders(v map[string]*string) *CreateEntityRes
 	return s
 }
 
+func (s *CreateEntityResponse) SetStatusCode(v int32) *CreateEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateEntityResponse) SetBody(v *CreateEntityResponseBody) *CreateEntityResponse {
 	s.Body = v
 	return s
 }
 
 type CreateRunRequest struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用版本号
-	AppRevision *string `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
-	// 任务幂等token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 默认运行时
-	DefaultRuntime *string `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
-	// 任务描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 任务执行目录
-	ExecuteDirectory *string `json:"ExecuteDirectory,omitempty" xml:"ExecuteDirectory,omitempty"`
-	// 任务配置
-	ExecuteOptions *CreateRunRequestExecuteOptions `json:"ExecuteOptions,omitempty" xml:"ExecuteOptions,omitempty" type:"Struct"`
-	// 任务输入
-	Inputs *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
-	// 任务标签
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 任务输出拷贝目录
-	OutputFolder *string `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
-	// 任务名称
-	RunName *string `json:"RunName,omitempty" xml:"RunName,omitempty"`
-	// 工作空间名字
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	AppName          *string                         `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppRevision      *string                         `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
+	ClientToken      *string                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DefaultRuntime   *string                         `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
+	Description      *string                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecuteDirectory *string                         `json:"ExecuteDirectory,omitempty" xml:"ExecuteDirectory,omitempty"`
+	ExecuteOptions   *CreateRunRequestExecuteOptions `json:"ExecuteOptions,omitempty" xml:"ExecuteOptions,omitempty" type:"Struct"`
+	Inputs           *string                         `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
+	Labels           *string                         `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	OutputFolder     *string                         `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
+	Role             *string                         `json:"Role,omitempty" xml:"Role,omitempty"`
+	RunName          *string                         `json:"RunName,omitempty" xml:"RunName,omitempty"`
+	Workspace        *string                         `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateRunRequest) String() string {
@@ -834,6 +792,11 @@ func (s *CreateRunRequest) SetOutputFolder(v string) *CreateRunRequest {
 	return s
 }
 
+func (s *CreateRunRequest) SetRole(v string) *CreateRunRequest {
+	s.Role = &v
+	return s
+}
+
 func (s *CreateRunRequest) SetRunName(v string) *CreateRunRequest {
 	s.RunName = &v
 	return s
@@ -845,14 +808,10 @@ func (s *CreateRunRequest) SetWorkspace(v string) *CreateRunRequest {
 }
 
 type CreateRunRequestExecuteOptions struct {
-	// 使用缓存
-	CallCaching *bool `json:"CallCaching,omitempty" xml:"CallCaching,omitempty"`
-	// 删除中间结果
-	DeleteIntermediateResults *bool `json:"DeleteIntermediateResults,omitempty" xml:"DeleteIntermediateResults,omitempty"`
-	// 失败模式
-	FailureMode *string `json:"FailureMode,omitempty" xml:"FailureMode,omitempty"`
-	// 使用相对输出路径
-	UseRelativeOutputPaths *bool `json:"UseRelativeOutputPaths,omitempty" xml:"UseRelativeOutputPaths,omitempty"`
+	CallCaching               *bool   `json:"CallCaching,omitempty" xml:"CallCaching,omitempty"`
+	DeleteIntermediateResults *bool   `json:"DeleteIntermediateResults,omitempty" xml:"DeleteIntermediateResults,omitempty"`
+	FailureMode               *string `json:"FailureMode,omitempty" xml:"FailureMode,omitempty"`
+	UseRelativeOutputPaths    *bool   `json:"UseRelativeOutputPaths,omitempty" xml:"UseRelativeOutputPaths,omitempty"`
 }
 
 func (s CreateRunRequestExecuteOptions) String() string {
@@ -884,30 +843,19 @@ func (s *CreateRunRequestExecuteOptions) SetUseRelativeOutputPaths(v bool) *Crea
 }
 
 type CreateRunShrinkRequest struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用版本号
-	AppRevision *string `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
-	// 任务幂等token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 默认运行时
-	DefaultRuntime *string `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
-	// 任务描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 任务执行目录
-	ExecuteDirectory *string `json:"ExecuteDirectory,omitempty" xml:"ExecuteDirectory,omitempty"`
-	// 任务配置
+	AppName              *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppRevision          *string `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DefaultRuntime       *string `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExecuteDirectory     *string `json:"ExecuteDirectory,omitempty" xml:"ExecuteDirectory,omitempty"`
 	ExecuteOptionsShrink *string `json:"ExecuteOptions,omitempty" xml:"ExecuteOptions,omitempty"`
-	// 任务输入
-	Inputs *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
-	// 任务标签
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 任务输出拷贝目录
-	OutputFolder *string `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
-	// 任务名称
-	RunName *string `json:"RunName,omitempty" xml:"RunName,omitempty"`
-	// 工作空间名字
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Inputs               *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
+	Labels               *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	OutputFolder         *string `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
+	Role                 *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	RunName              *string `json:"RunName,omitempty" xml:"RunName,omitempty"`
+	Workspace            *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateRunShrinkRequest) String() string {
@@ -968,6 +916,11 @@ func (s *CreateRunShrinkRequest) SetOutputFolder(v string) *CreateRunShrinkReque
 	return s
 }
 
+func (s *CreateRunShrinkRequest) SetRole(v string) *CreateRunShrinkRequest {
+	s.Role = &v
+	return s
+}
+
 func (s *CreateRunShrinkRequest) SetRunName(v string) *CreateRunShrinkRequest {
 	s.RunName = &v
 	return s
@@ -979,13 +932,9 @@ func (s *CreateRunShrinkRequest) SetWorkspace(v string) *CreateRunShrinkRequest 
 }
 
 type CreateRunResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务ID
-	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	// 工作空间
+	RunId     *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
 	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -1018,8 +967,9 @@ func (s *CreateRunResponseBody) SetWorkspace(v string) *CreateRunResponseBody {
 }
 
 type CreateRunResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRunResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateRunResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateRunResponse) String() string {
@@ -1035,35 +985,29 @@ func (s *CreateRunResponse) SetHeaders(v map[string]*string) *CreateRunResponse 
 	return s
 }
 
+func (s *CreateRunResponse) SetStatusCode(v int32) *CreateRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateRunResponse) SetBody(v *CreateRunResponseBody) *CreateRunResponse {
 	s.Body = v
 	return s
 }
 
 type CreateSubmissionRequest struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 任务幂等token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 默认运行时
-	DefaultRuntime *string   `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
-	EntityNames    []*string `json:"EntityNames,omitempty" xml:"EntityNames,omitempty" type:"Repeated"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 任务执行目录
-	ExecuteDirectory *string `json:"ExecuteDirectory,omitempty" xml:"ExecuteDirectory,omitempty"`
-	// 任务配置
-	ExecuteOptions *string `json:"ExecuteOptions,omitempty" xml:"ExecuteOptions,omitempty"`
-	// 任务输入
-	Inputs *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
-	// 任务输出拷贝目录
-	OutputFolder *string `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
-	// 任务输出
-	Outputs *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
-	// 应用版本号
-	Revision *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
-	// 工作空间名字
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	AppName          *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ClientToken      *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DefaultRuntime   *string   `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
+	EntityNames      []*string `json:"EntityNames,omitempty" xml:"EntityNames,omitempty" type:"Repeated"`
+	EntityType       *string   `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	ExecuteDirectory *string   `json:"ExecuteDirectory,omitempty" xml:"ExecuteDirectory,omitempty"`
+	ExecuteOptions   *string   `json:"ExecuteOptions,omitempty" xml:"ExecuteOptions,omitempty"`
+	Inputs           *string   `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
+	OutputFolder     *string   `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
+	Outputs          *string   `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
+	Revision         *string   `json:"Revision,omitempty" xml:"Revision,omitempty"`
+	Workspace        *string   `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateSubmissionRequest) String() string {
@@ -1135,29 +1079,18 @@ func (s *CreateSubmissionRequest) SetWorkspace(v string) *CreateSubmissionReques
 }
 
 type CreateSubmissionShrinkRequest struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 任务幂等token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 默认运行时
+	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DefaultRuntime    *string `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
 	EntityNamesShrink *string `json:"EntityNames,omitempty" xml:"EntityNames,omitempty"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 任务执行目录
-	ExecuteDirectory *string `json:"ExecuteDirectory,omitempty" xml:"ExecuteDirectory,omitempty"`
-	// 任务配置
-	ExecuteOptions *string `json:"ExecuteOptions,omitempty" xml:"ExecuteOptions,omitempty"`
-	// 任务输入
-	Inputs *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
-	// 任务输出拷贝目录
-	OutputFolder *string `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
-	// 任务输出
-	Outputs *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
-	// 应用版本号
-	Revision *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
-	// 工作空间名字
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	EntityType        *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	ExecuteDirectory  *string `json:"ExecuteDirectory,omitempty" xml:"ExecuteDirectory,omitempty"`
+	ExecuteOptions    *string `json:"ExecuteOptions,omitempty" xml:"ExecuteOptions,omitempty"`
+	Inputs            *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
+	OutputFolder      *string `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
+	Outputs           *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
+	Revision          *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
+	Workspace         *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateSubmissionShrinkRequest) String() string {
@@ -1229,14 +1162,10 @@ func (s *CreateSubmissionShrinkRequest) SetWorkspace(v string) *CreateSubmission
 }
 
 type CreateSubmissionResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 投递ID
+	HostId       *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SubmissionId *string `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Workspace    *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateSubmissionResponseBody) String() string {
@@ -1268,8 +1197,9 @@ func (s *CreateSubmissionResponseBody) SetWorkspace(v string) *CreateSubmissionR
 }
 
 type CreateSubmissionResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSubmissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSubmissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateSubmissionResponse) String() string {
@@ -1285,32 +1215,27 @@ func (s *CreateSubmissionResponse) SetHeaders(v map[string]*string) *CreateSubmi
 	return s
 }
 
+func (s *CreateSubmissionResponse) SetStatusCode(v int32) *CreateSubmissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateSubmissionResponse) SetBody(v *CreateSubmissionResponseBody) *CreateSubmissionResponse {
 	s.Body = v
 	return s
 }
 
 type CreateTemplateRequest struct {
-	// 应用的名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用的版本
-	AppRevision *string `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
-	// 幂等Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 应用模板描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 应用的输入
-	InputsExpression []*CreateTemplateRequestInputsExpression `json:"InputsExpression,omitempty" xml:"InputsExpression,omitempty" type:"Repeated"`
-	// 应用标签
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 应用的输出
+	AppName           *string                                   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppRevision       *string                                   `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
+	ClientToken       *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description       *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputsExpression  []*CreateTemplateRequestInputsExpression  `json:"InputsExpression,omitempty" xml:"InputsExpression,omitempty" type:"Repeated"`
+	Labels            *string                                   `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	OutputsExpression []*CreateTemplateRequestOutputsExpression `json:"OutputsExpression,omitempty" xml:"OutputsExpression,omitempty" type:"Repeated"`
-	// 根实体类型
-	RootEntity *string `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
-	// 应用模板名称
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	RootEntity        *string                                   `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
+	TemplateName      *string                                   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Workspace         *string                                   `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateTemplateRequest) String() string {
@@ -1372,19 +1297,12 @@ func (s *CreateTemplateRequest) SetWorkspace(v string) *CreateTemplateRequest {
 }
 
 type CreateTemplateRequestInputsExpression struct {
-	// 帮助信息
-	Help *string `json:"Help,omitempty" xml:"Help,omitempty"`
-	// 是否必填
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// 步骤顺序
-	StepOrder *int32 `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
-	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// 变量名
-	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
-	// 变量类型
-	VariableType *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
-	// 变量值
+	Help          *string `json:"Help,omitempty" xml:"Help,omitempty"`
+	Required      *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	StepOrder     *int32  `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
+	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	VariableName  *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
+	VariableType  *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
 	VariableValue *string `json:"VariableValue,omitempty" xml:"VariableValue,omitempty"`
 }
 
@@ -1432,19 +1350,12 @@ func (s *CreateTemplateRequestInputsExpression) SetVariableValue(v string) *Crea
 }
 
 type CreateTemplateRequestOutputsExpression struct {
-	// 帮助信息
-	Help *string `json:"Help,omitempty" xml:"Help,omitempty"`
-	// 是否必填
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// 步骤顺序
-	StepOrder *int32 `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
-	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// 变量名
-	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
-	// 变量类型
-	VariableType *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
-	// 变量值
+	Help          *string `json:"Help,omitempty" xml:"Help,omitempty"`
+	Required      *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	StepOrder     *int32  `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
+	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	VariableName  *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
+	VariableType  *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
 	VariableValue *string `json:"VariableValue,omitempty" xml:"VariableValue,omitempty"`
 }
 
@@ -1492,26 +1403,16 @@ func (s *CreateTemplateRequestOutputsExpression) SetVariableValue(v string) *Cre
 }
 
 type CreateTemplateShrinkRequest struct {
-	// 应用的名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用的版本
-	AppRevision *string `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
-	// 幂等Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 应用模板描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 应用的输入
-	InputsExpressionShrink *string `json:"InputsExpression,omitempty" xml:"InputsExpression,omitempty"`
-	// 应用标签
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 应用的输出
+	AppName                 *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppRevision             *string `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
+	ClientToken             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputsExpressionShrink  *string `json:"InputsExpression,omitempty" xml:"InputsExpression,omitempty"`
+	Labels                  *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	OutputsExpressionShrink *string `json:"OutputsExpression,omitempty" xml:"OutputsExpression,omitempty"`
-	// 根实体类型
-	RootEntity *string `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
-	// 应用模板名称
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	RootEntity              *string `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
+	TemplateName            *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Workspace               *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateTemplateShrinkRequest) String() string {
@@ -1573,14 +1474,10 @@ func (s *CreateTemplateShrinkRequest) SetWorkspace(v string) *CreateTemplateShri
 }
 
 type CreateTemplateResponseBody struct {
-	// 主机 ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求 ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 应用模板名称
+	HostId       *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Workspace    *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateTemplateResponseBody) String() string {
@@ -1612,8 +1509,9 @@ func (s *CreateTemplateResponseBody) SetWorkspace(v string) *CreateTemplateRespo
 }
 
 type CreateTemplateResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateTemplateResponse) String() string {
@@ -1629,26 +1527,24 @@ func (s *CreateTemplateResponse) SetHeaders(v map[string]*string) *CreateTemplat
 	return s
 }
 
+func (s *CreateTemplateResponse) SetStatusCode(v int32) *CreateTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateTemplateResponse) SetBody(v *CreateTemplateResponseBody) *CreateTemplateResponse {
 	s.Body = v
 	return s
 }
 
 type CreateWorkspaceRequest struct {
-	// 幂等Token
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 工作空间描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 工作空间任务生命周期
-	JobLifecycle *int32 `json:"JobLifecycle,omitempty" xml:"JobLifecycle,omitempty"`
-	// 工作空间标签
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 工作空间内的ram角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 工作空间的OSS工作路径
-	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	JobLifecycle *int32  `json:"JobLifecycle,omitempty" xml:"JobLifecycle,omitempty"`
+	Labels       *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Storage      *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	Workspace    *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateWorkspaceRequest) String() string {
@@ -1695,11 +1591,8 @@ func (s *CreateWorkspaceRequest) SetWorkspace(v string) *CreateWorkspaceRequest 
 }
 
 type CreateWorkspaceResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 创建成功的工作空间名称
 	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -1727,8 +1620,9 @@ func (s *CreateWorkspaceResponseBody) SetWorkspace(v string) *CreateWorkspaceRes
 }
 
 type CreateWorkspaceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateWorkspaceResponse) String() string {
@@ -1744,17 +1638,19 @@ func (s *CreateWorkspaceResponse) SetHeaders(v map[string]*string) *CreateWorksp
 	return s
 }
 
+func (s *CreateWorkspaceResponse) SetStatusCode(v int32) *CreateWorkspaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateWorkspaceResponse) SetBody(v *CreateWorkspaceResponseBody) *CreateWorkspaceResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteAppRequest struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用版本
-	Revision *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
-	// 工作空间名称
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Revision  *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
 	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -1782,9 +1678,7 @@ func (s *DeleteAppRequest) SetWorkspace(v string) *DeleteAppRequest {
 }
 
 type DeleteAppResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1807,8 +1701,9 @@ func (s *DeleteAppResponseBody) SetRequestId(v string) *DeleteAppResponseBody {
 }
 
 type DeleteAppResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteAppResponse) String() string {
@@ -1824,6 +1719,11 @@ func (s *DeleteAppResponse) SetHeaders(v map[string]*string) *DeleteAppResponse 
 	return s
 }
 
+func (s *DeleteAppResponse) SetStatusCode(v int32) *DeleteAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse {
 	s.Body = v
 	return s
@@ -1831,10 +1731,8 @@ func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse
 
 type DeleteEntityItemsRequest struct {
 	EntityNames []*string `json:"EntityNames,omitempty" xml:"EntityNames,omitempty" type:"Repeated"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	EntityType  *string   `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Workspace   *string   `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s DeleteEntityItemsRequest) String() string {
@@ -1862,10 +1760,8 @@ func (s *DeleteEntityItemsRequest) SetWorkspace(v string) *DeleteEntityItemsRequ
 
 type DeleteEntityItemsShrinkRequest struct {
 	EntityNamesShrink *string `json:"EntityNames,omitempty" xml:"EntityNames,omitempty"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	EntityType        *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Workspace         *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s DeleteEntityItemsShrinkRequest) String() string {
@@ -1892,9 +1788,7 @@ func (s *DeleteEntityItemsShrinkRequest) SetWorkspace(v string) *DeleteEntityIte
 }
 
 type DeleteEntityItemsResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1917,8 +1811,9 @@ func (s *DeleteEntityItemsResponseBody) SetRequestId(v string) *DeleteEntityItem
 }
 
 type DeleteEntityItemsResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteEntityItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEntityItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteEntityItemsResponse) String() string {
@@ -1934,15 +1829,18 @@ func (s *DeleteEntityItemsResponse) SetHeaders(v map[string]*string) *DeleteEnti
 	return s
 }
 
+func (s *DeleteEntityItemsResponse) SetStatusCode(v int32) *DeleteEntityItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteEntityItemsResponse) SetBody(v *DeleteEntityItemsResponseBody) *DeleteEntityItemsResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteRunRequest struct {
-	// 任务ID
-	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	// 工作空间名称
+	RunId     *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
 	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -1965,9 +1863,7 @@ func (s *DeleteRunRequest) SetWorkspace(v string) *DeleteRunRequest {
 }
 
 type DeleteRunResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1990,8 +1886,9 @@ func (s *DeleteRunResponseBody) SetRequestId(v string) *DeleteRunResponseBody {
 }
 
 type DeleteRunResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteRunResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteRunResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteRunResponse) String() string {
@@ -2007,16 +1904,19 @@ func (s *DeleteRunResponse) SetHeaders(v map[string]*string) *DeleteRunResponse 
 	return s
 }
 
+func (s *DeleteRunResponse) SetStatusCode(v int32) *DeleteRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteRunResponse) SetBody(v *DeleteRunResponseBody) *DeleteRunResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteSubmissionRequest struct {
-	// 投递ID
 	SubmissionId *string `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Workspace    *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s DeleteSubmissionRequest) String() string {
@@ -2038,9 +1938,7 @@ func (s *DeleteSubmissionRequest) SetWorkspace(v string) *DeleteSubmissionReques
 }
 
 type DeleteSubmissionResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2063,8 +1961,9 @@ func (s *DeleteSubmissionResponseBody) SetRequestId(v string) *DeleteSubmissionR
 }
 
 type DeleteSubmissionResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSubmissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSubmissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSubmissionResponse) String() string {
@@ -2080,16 +1979,19 @@ func (s *DeleteSubmissionResponse) SetHeaders(v map[string]*string) *DeleteSubmi
 	return s
 }
 
+func (s *DeleteSubmissionResponse) SetStatusCode(v int32) *DeleteSubmissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteSubmissionResponse) SetBody(v *DeleteSubmissionResponseBody) *DeleteSubmissionResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteTemplateRequest struct {
-	// 应用模板名称
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Workspace    *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s DeleteTemplateRequest) String() string {
@@ -2111,9 +2013,7 @@ func (s *DeleteTemplateRequest) SetWorkspace(v string) *DeleteTemplateRequest {
 }
 
 type DeleteTemplateResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2136,8 +2036,9 @@ func (s *DeleteTemplateResponseBody) SetRequestId(v string) *DeleteTemplateRespo
 }
 
 type DeleteTemplateResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteTemplateResponse) String() string {
@@ -2153,13 +2054,17 @@ func (s *DeleteTemplateResponse) SetHeaders(v map[string]*string) *DeleteTemplat
 	return s
 }
 
+func (s *DeleteTemplateResponse) SetStatusCode(v int32) *DeleteTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteTemplateResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteWorkspaceRequest struct {
-	// 工作空间名称
 	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -2177,9 +2082,7 @@ func (s *DeleteWorkspaceRequest) SetWorkspace(v string) *DeleteWorkspaceRequest 
 }
 
 type DeleteWorkspaceResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2202,8 +2105,9 @@ func (s *DeleteWorkspaceResponseBody) SetRequestId(v string) *DeleteWorkspaceRes
 }
 
 type DeleteWorkspaceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteWorkspaceResponse) String() string {
@@ -2219,6 +2123,11 @@ func (s *DeleteWorkspaceResponse) SetHeaders(v map[string]*string) *DeleteWorksp
 	return s
 }
 
+func (s *DeleteWorkspaceResponse) SetStatusCode(v int32) *DeleteWorkspaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteWorkspaceResponse) SetBody(v *DeleteWorkspaceResponseBody) *DeleteWorkspaceResponse {
 	s.Body = v
 	return s
@@ -2226,10 +2135,8 @@ func (s *DeleteWorkspaceResponse) SetBody(v *DeleteWorkspaceResponseBody) *Delet
 
 type DownloadEntityRequest struct {
 	EntityNames []*string `json:"EntityNames,omitempty" xml:"EntityNames,omitempty" type:"Repeated"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	EntityType  *string   `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Workspace   *string   `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s DownloadEntityRequest) String() string {
@@ -2257,10 +2164,8 @@ func (s *DownloadEntityRequest) SetWorkspace(v string) *DownloadEntityRequest {
 
 type DownloadEntityShrinkRequest struct {
 	EntityNamesShrink *string `json:"EntityNames,omitempty" xml:"EntityNames,omitempty"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	EntityType        *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Workspace         *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s DownloadEntityShrinkRequest) String() string {
@@ -2287,12 +2192,9 @@ func (s *DownloadEntityShrinkRequest) SetWorkspace(v string) *DownloadEntityShri
 }
 
 type DownloadEntityResponseBody struct {
-	// 下载的表格文件URL
 	EntityCSVFile *string `json:"EntityCSVFile,omitempty" xml:"EntityCSVFile,omitempty"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HostId        *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DownloadEntityResponseBody) String() string {
@@ -2319,8 +2221,9 @@ func (s *DownloadEntityResponseBody) SetRequestId(v string) *DownloadEntityRespo
 }
 
 type DownloadEntityResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DownloadEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DownloadEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DownloadEntityResponse) String() string {
@@ -2336,17 +2239,19 @@ func (s *DownloadEntityResponse) SetHeaders(v map[string]*string) *DownloadEntit
 	return s
 }
 
+func (s *DownloadEntityResponse) SetStatusCode(v int32) *DownloadEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DownloadEntityResponse) SetBody(v *DownloadEntityResponseBody) *DownloadEntityResponse {
 	s.Body = v
 	return s
 }
 
 type GetAppRequest struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用版本号
-	Revision *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
-	// 工作空间名称
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Revision  *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
 	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -2374,56 +2279,31 @@ func (s *GetAppRequest) SetWorkspace(v string) *GetAppRequest {
 }
 
 type GetAppResponseBody struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 实体类型
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// 参考输入
-	Configs []*GetAppResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 应用定义
-	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// 依赖应用
-	Dependencies []*GetAppResponseBodyDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
-	// 应用简要描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 应用详细文档
-	Documentation *string `json:"Documentation,omitempty" xml:"Documentation,omitempty"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 应用输入
-	Inputs []*GetAppResponseBodyInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
-	// 应用标签
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 应用描述语言
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// 应用描述语言版本
-	LanguageVersion *string `json:"LanguageVersion,omitempty" xml:"LanguageVersion,omitempty"`
-	// 应用最后修改时间
-	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	// 应用的输出参数
-	Outputs []*GetAppResponseBodyOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
-	// 主WDL路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 应用版本号
-	Revision *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
-	// 应用当前版本修改
-	RevisionComment *string `json:"RevisionComment,omitempty" xml:"RevisionComment,omitempty"`
-	// 应用的所有版本号
-	Revisions []*GetAppResponseBodyRevisions `json:"Revisions,omitempty" xml:"Revisions,omitempty" type:"Repeated"`
-	// 应用可见范围
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// 应用来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 应用URL
-	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
-	// 工作流名称
-	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	AppName          *string                           `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType          *string                           `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	Configs          []*GetAppResponseBodyConfigs      `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	CreateTime       *string                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Definition       *string                           `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Dependencies     []*GetAppResponseBodyDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
+	Description      *string                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	Documentation    *string                           `json:"Documentation,omitempty" xml:"Documentation,omitempty"`
+	HostId           *string                           `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	Inputs           []*GetAppResponseBodyInputs       `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	Labels           map[string]*string                `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Language         *string                           `json:"Language,omitempty" xml:"Language,omitempty"`
+	LanguageVersion  *string                           `json:"LanguageVersion,omitempty" xml:"LanguageVersion,omitempty"`
+	LastModifiedTime *string                           `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	Outputs          []*GetAppResponseBodyOutputs      `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	Path             *string                           `json:"Path,omitempty" xml:"Path,omitempty"`
+	RequestId        *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Revision         *string                           `json:"Revision,omitempty" xml:"Revision,omitempty"`
+	RevisionComment  *string                           `json:"RevisionComment,omitempty" xml:"RevisionComment,omitempty"`
+	Revisions        []*GetAppResponseBodyRevisions    `json:"Revisions,omitempty" xml:"Revisions,omitempty" type:"Repeated"`
+	Scope            *string                           `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	Source           *string                           `json:"Source,omitempty" xml:"Source,omitempty"`
+	URL              *string                           `json:"URL,omitempty" xml:"URL,omitempty"`
+	WorkflowName     *string                           `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+	Workspace        *string                           `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s GetAppResponseBody) String() string {
@@ -2583,10 +2463,8 @@ func (s *GetAppResponseBodyConfigs) SetPath(v string) *GetAppResponseBodyConfigs
 }
 
 type GetAppResponseBodyDependencies struct {
-	// wdl内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 依赖路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path    *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s GetAppResponseBodyDependencies) String() string {
@@ -2608,19 +2486,12 @@ func (s *GetAppResponseBodyDependencies) SetPath(v string) *GetAppResponseBodyDe
 }
 
 type GetAppResponseBodyInputs struct {
-	// 帮助
-	Help *string `json:"Help,omitempty" xml:"Help,omitempty"`
-	// 是否必须
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// 步骤顺序
-	StepOrder *int64 `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
-	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// 变量名称
-	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
-	// 变量类型
-	VariableType *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
-	// 变量值
+	Help          *string `json:"Help,omitempty" xml:"Help,omitempty"`
+	Required      *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	StepOrder     *int64  `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
+	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	VariableName  *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
+	VariableType  *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
 	VariableValue *string `json:"VariableValue,omitempty" xml:"VariableValue,omitempty"`
 }
 
@@ -2668,19 +2539,12 @@ func (s *GetAppResponseBodyInputs) SetVariableValue(v string) *GetAppResponseBod
 }
 
 type GetAppResponseBodyOutputs struct {
-	// 帮助信息
-	Help *string `json:"Help,omitempty" xml:"Help,omitempty"`
-	// 是否必须
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// 步骤编号
-	StepOrder *int64 `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
-	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// 参数名称
-	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
-	// 参数类型
-	VariableType *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
-	// 参数值
+	Help          *string `json:"Help,omitempty" xml:"Help,omitempty"`
+	Required      *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	StepOrder     *int64  `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
+	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	VariableName  *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
+	VariableType  *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
 	VariableValue *string `json:"VariableValue,omitempty" xml:"VariableValue,omitempty"`
 }
 
@@ -2728,11 +2592,8 @@ func (s *GetAppResponseBodyOutputs) SetVariableValue(v string) *GetAppResponseBo
 }
 
 type GetAppResponseBodyRevisions struct {
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 版本号
-	Revision *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
-	// 应用当前版本修改
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Revision        *string `json:"Revision,omitempty" xml:"Revision,omitempty"`
 	RevisionComment *string `json:"RevisionComment,omitempty" xml:"RevisionComment,omitempty"`
 }
 
@@ -2760,8 +2621,9 @@ func (s *GetAppResponseBodyRevisions) SetRevisionComment(v string) *GetAppRespon
 }
 
 type GetAppResponse struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAppResponse) String() string {
@@ -2777,16 +2639,19 @@ func (s *GetAppResponse) SetHeaders(v map[string]*string) *GetAppResponse {
 	return s
 }
 
+func (s *GetAppResponse) SetStatusCode(v int32) *GetAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetAppResponse) SetBody(v *GetAppResponseBody) *GetAppResponse {
 	s.Body = v
 	return s
 }
 
 type GetEntityRequest struct {
-	// 实体类型
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Workspace  *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s GetEntityRequest) String() string {
@@ -2808,18 +2673,12 @@ func (s *GetEntityRequest) SetWorkspace(v string) *GetEntityRequest {
 }
 
 type GetEntityResponseBody struct {
-	// 属性列数组
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 实体元素总个数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	EntityType *string   `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	HostId     *string   `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Workspace  *string   `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s GetEntityResponseBody) String() string {
@@ -2861,8 +2720,9 @@ func (s *GetEntityResponseBody) SetWorkspace(v string) *GetEntityResponseBody {
 }
 
 type GetEntityResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetEntityResponse) String() string {
@@ -2878,22 +2738,22 @@ func (s *GetEntityResponse) SetHeaders(v map[string]*string) *GetEntityResponse 
 	return s
 }
 
+func (s *GetEntityResponse) SetStatusCode(v int32) *GetEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetEntityResponse) SetBody(v *GetEntityResponseBody) *GetEntityResponse {
 	s.Body = v
 	return s
 }
 
 type GetGlobalAppRequest struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用版本
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 查询字段信息：appVersions，regionIds，dag
-	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	// 应用可用区域
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 命名空间
-	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	AppName       *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppVersion    *string   `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	Attributes    []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	Location      *string   `json:"Location,omitempty" xml:"Location,omitempty"`
+	NamespaceName *string   `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
 func (s GetGlobalAppRequest) String() string {
@@ -2930,16 +2790,11 @@ func (s *GetGlobalAppRequest) SetNamespaceName(v string) *GetGlobalAppRequest {
 }
 
 type GetGlobalAppShrinkRequest struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用版本
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 查询字段信息：appVersions，regionIds，dag
+	AppName          *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppVersion       *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	AttributesShrink *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// 应用可用区域
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 命名空间
-	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	Location         *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	NamespaceName    *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
 func (s GetGlobalAppShrinkRequest) String() string {
@@ -2976,52 +2831,29 @@ func (s *GetGlobalAppShrinkRequest) SetNamespaceName(v string) *GetGlobalAppShri
 }
 
 type GetGlobalAppResponseBody struct {
-	// 默认版本
-	AppDefaultVersion *string `json:"AppDefaultVersion,omitempty" xml:"AppDefaultVersion,omitempty"`
-	// 应用描述
-	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	// 应用的描述文件内容
+	AppDefaultVersion  *string                                       `json:"AppDefaultVersion,omitempty" xml:"AppDefaultVersion,omitempty"`
+	AppDescription     *string                                       `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
 	AppDescriptorFiles []*GetGlobalAppResponseBodyAppDescriptorFiles `json:"AppDescriptorFiles,omitempty" xml:"AppDescriptorFiles,omitempty" type:"Repeated"`
-	// 应用描述语言标准
-	AppDescriptorType *string `json:"AppDescriptorType,omitempty" xml:"AppDescriptorType,omitempty"`
-	// 应用计费说明
-	AppFee *string `json:"AppFee,omitempty" xml:"AppFee,omitempty"`
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用权限
-	AppScope *string `json:"AppScope,omitempty" xml:"AppScope,omitempty"`
-	// 应用类型
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// 应用版本
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 应用的所有版本列表
-	AppVersions []*GetGlobalAppResponseBodyAppVersions `json:"AppVersions,omitempty" xml:"AppVersions,omitempty" type:"Repeated"`
-	// 应用所属分类
-	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// 应用的备注信息
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// 应用联系人信息
-	Contact *string `json:"Contact,omitempty" xml:"Contact,omitempty"`
-	// 应用的DAG信息
-	DAG *string `json:"DAG,omitempty" xml:"DAG,omitempty"`
-	// 应用的帮助文档
-	Document *string `json:"Document,omitempty" xml:"Document,omitempty"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 更新时间
-	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 应用主页信息
-	Links []*string `json:"Links,omitempty" xml:"Links,omitempty" type:"Repeated"`
-	// 应用支持的区域
-	Locations []*string `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
-	// 命名空间名称
-	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// 应用收藏置顶标记
-	Pinned *bool `json:"Pinned,omitempty" xml:"Pinned,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 应用所属工具合集
-	Toolkit *string `json:"Toolkit,omitempty" xml:"Toolkit,omitempty"`
+	AppDescriptorType  *string                                       `json:"AppDescriptorType,omitempty" xml:"AppDescriptorType,omitempty"`
+	AppFee             *string                                       `json:"AppFee,omitempty" xml:"AppFee,omitempty"`
+	AppName            *string                                       `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppScope           *string                                       `json:"AppScope,omitempty" xml:"AppScope,omitempty"`
+	AppType            *string                                       `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppVersion         *string                                       `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	AppVersions        []*GetGlobalAppResponseBodyAppVersions        `json:"AppVersions,omitempty" xml:"AppVersions,omitempty" type:"Repeated"`
+	Categories         []*string                                     `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	Comment            *string                                       `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Contact            *string                                       `json:"Contact,omitempty" xml:"Contact,omitempty"`
+	DAG                *string                                       `json:"DAG,omitempty" xml:"DAG,omitempty"`
+	Document           *string                                       `json:"Document,omitempty" xml:"Document,omitempty"`
+	HostId             *string                                       `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	LastModified       *string                                       `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	Links              []*string                                     `json:"Links,omitempty" xml:"Links,omitempty" type:"Repeated"`
+	Locations          []*string                                     `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
+	NamespaceName      *string                                       `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	Pinned             *bool                                         `json:"Pinned,omitempty" xml:"Pinned,omitempty"`
+	RequestId          *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Toolkit            *string                                       `json:"Toolkit,omitempty" xml:"Toolkit,omitempty"`
 }
 
 func (s GetGlobalAppResponseBody) String() string {
@@ -3148,16 +2980,11 @@ func (s *GetGlobalAppResponseBody) SetToolkit(v string) *GetGlobalAppResponseBod
 }
 
 type GetGlobalAppResponseBodyAppDescriptorFiles struct {
-	// 应用文件内容的完整性校验码，如MD5值
 	Checksum *string `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
-	// 应用文件内容
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 应用文件的类型
+	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 应用文件的路径，除PRIMARY_DESCRIPTOR外，其他均为相对于PRIMARY_DESCRIPTOR的相对路径
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// 应用文件链接
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Path     *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetGlobalAppResponseBodyAppDescriptorFiles) String() string {
@@ -3194,11 +3021,8 @@ func (s *GetGlobalAppResponseBodyAppDescriptorFiles) SetUrl(v string) *GetGlobal
 }
 
 type GetGlobalAppResponseBodyAppVersions struct {
-	// 应用版本
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// 版本描述
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// 更新时间
+	AppVersion   *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	Comment      *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
 }
 
@@ -3226,8 +3050,9 @@ func (s *GetGlobalAppResponseBodyAppVersions) SetLastModified(v string) *GetGlob
 }
 
 type GetGlobalAppResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetGlobalAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetGlobalAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetGlobalAppResponse) String() string {
@@ -3243,16 +3068,19 @@ func (s *GetGlobalAppResponse) SetHeaders(v map[string]*string) *GetGlobalAppRes
 	return s
 }
 
+func (s *GetGlobalAppResponse) SetStatusCode(v int32) *GetGlobalAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetGlobalAppResponse) SetBody(v *GetGlobalAppResponseBody) *GetGlobalAppResponse {
 	s.Body = v
 	return s
 }
 
 type GetPublicDatasetRequest struct {
-	// 查询的字段名:DatasetNo, DatasetDescription, About, AccessRequirements, Copyright, Tags, UpdateFrequency, Locations, LastModified, RegionIds
-	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	// 数据集名称
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Attributes  []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	DatasetName *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 }
 
 func (s GetPublicDatasetRequest) String() string {
@@ -3274,10 +3102,8 @@ func (s *GetPublicDatasetRequest) SetDatasetName(v string) *GetPublicDatasetRequ
 }
 
 type GetPublicDatasetShrinkRequest struct {
-	// 查询的字段名:DatasetNo, DatasetDescription, About, AccessRequirements, Copyright, Tags, UpdateFrequency, Locations, LastModified, RegionIds
 	AttributesShrink *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// 数据集名称
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetName      *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 }
 
 func (s GetPublicDatasetShrinkRequest) String() string {
@@ -3299,28 +3125,17 @@ func (s *GetPublicDatasetShrinkRequest) SetDatasetName(v string) *GetPublicDatas
 }
 
 type GetPublicDatasetResponseBody struct {
-	// 关于公共数据集
-	About *string `json:"About,omitempty" xml:"About,omitempty"`
-	// 公共数据集访问要求
-	AccessRequirements *string `json:"AccessRequirements,omitempty" xml:"AccessRequirements,omitempty"`
-	// 公共数据集版权信息
-	Copyright *string `json:"Copyright,omitempty" xml:"Copyright,omitempty"`
-	// 公共数据集描述
-	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
-	// 公共数据集名称
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 最后更新时间
-	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 公共数据集可用区域
-	Locations []*string `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 公共数据集标签
-	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// 公共数据集更新频率
-	UpdateFrequency *string `json:"UpdateFrequency,omitempty" xml:"UpdateFrequency,omitempty"`
+	About              *string   `json:"About,omitempty" xml:"About,omitempty"`
+	AccessRequirements *string   `json:"AccessRequirements,omitempty" xml:"AccessRequirements,omitempty"`
+	Copyright          *string   `json:"Copyright,omitempty" xml:"Copyright,omitempty"`
+	DatasetDescription *string   `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	DatasetName        *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	HostId             *string   `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	LastModified       *string   `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	Locations          []*string `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
+	RequestId          *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tags               []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UpdateFrequency    *string   `json:"UpdateFrequency,omitempty" xml:"UpdateFrequency,omitempty"`
 }
 
 func (s GetPublicDatasetResponseBody) String() string {
@@ -3387,8 +3202,9 @@ func (s *GetPublicDatasetResponseBody) SetUpdateFrequency(v string) *GetPublicDa
 }
 
 type GetPublicDatasetResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPublicDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPublicDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetPublicDatasetResponse) String() string {
@@ -3404,18 +3220,20 @@ func (s *GetPublicDatasetResponse) SetHeaders(v map[string]*string) *GetPublicDa
 	return s
 }
 
+func (s *GetPublicDatasetResponse) SetStatusCode(v int32) *GetPublicDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetPublicDatasetResponse) SetBody(v *GetPublicDatasetResponseBody) *GetPublicDatasetResponse {
 	s.Body = v
 	return s
 }
 
 type GetPublicDatasetEntityRequest struct {
-	// 数据集名称
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 公共数据集所在区域
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	EntityType  *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Location    *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
 func (s GetPublicDatasetEntityRequest) String() string {
@@ -3442,18 +3260,12 @@ func (s *GetPublicDatasetEntityRequest) SetLocation(v string) *GetPublicDatasetE
 }
 
 type GetPublicDatasetEntityResponseBody struct {
-	// 实体属性名称列表
-	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	// 公共数据集名称
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 该类型实体总数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Attributes  []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	DatasetName *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	EntityType  *string   `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	HostId      *string   `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetPublicDatasetEntityResponseBody) String() string {
@@ -3495,8 +3307,9 @@ func (s *GetPublicDatasetEntityResponseBody) SetTotalCount(v int32) *GetPublicDa
 }
 
 type GetPublicDatasetEntityResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPublicDatasetEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPublicDatasetEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetPublicDatasetEntityResponse) String() string {
@@ -3512,15 +3325,18 @@ func (s *GetPublicDatasetEntityResponse) SetHeaders(v map[string]*string) *GetPu
 	return s
 }
 
+func (s *GetPublicDatasetEntityResponse) SetStatusCode(v int32) *GetPublicDatasetEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetPublicDatasetEntityResponse) SetBody(v *GetPublicDatasetEntityResponseBody) *GetPublicDatasetEntityResponse {
 	s.Body = v
 	return s
 }
 
 type GetRunRequest struct {
-	// 任务ID
-	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	// 工作空间名字
+	RunId     *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
 	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -3543,60 +3359,33 @@ func (s *GetRunRequest) SetWorkspace(v string) *GetRunRequest {
 }
 
 type GetRunResponseBody struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用版本
-	AppRevision *string `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
-	// 作业信息
-	Calls *string `json:"Calls,omitempty" xml:"Calls,omitempty"`
-	// 提交时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 默认runtime值
-	DefaultRuntime *string `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
-	// 任务描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 实体对象名称
-	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 任务执行目录
-	ExecuteDirectory *string `json:"ExecuteDirectory,omitempty" xml:"ExecuteDirectory,omitempty"`
-	// 任务配置
-	ExecuteOptions *GetRunResponseBodyExecuteOptions `json:"ExecuteOptions,omitempty" xml:"ExecuteOptions,omitempty" type:"Struct"`
-	// 错误信息
-	Failures *string `json:"Failures,omitempty" xml:"Failures,omitempty"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 任务输入
-	Inputs *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
-	// 任务标签
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 输出拷贝目录
-	OutputFolder *string `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
-	// 任务输出
-	Outputs *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务ID
-	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	// 任务名称
-	RunName *string `json:"RunName,omitempty" xml:"RunName,omitempty"`
-	// 应用来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 提交ID
-	SubmissionId *string `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
-	// 时序信息
-	Timing *string `json:"Timing,omitempty" xml:"Timing,omitempty"`
-	// 用户ID
-	User *string `json:"User,omitempty" xml:"User,omitempty"`
-	// 工作空间名字
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	AppName          *string                           `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppRevision      *string                           `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
+	Calls            *string                           `json:"Calls,omitempty" xml:"Calls,omitempty"`
+	CreateTime       *string                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultRuntime   *string                           `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
+	Description      *string                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime          *string                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EntityName       *string                           `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	EntityType       *string                           `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	ExecuteDirectory *string                           `json:"ExecuteDirectory,omitempty" xml:"ExecuteDirectory,omitempty"`
+	ExecuteOptions   *GetRunResponseBodyExecuteOptions `json:"ExecuteOptions,omitempty" xml:"ExecuteOptions,omitempty" type:"Struct"`
+	Failures         *string                           `json:"Failures,omitempty" xml:"Failures,omitempty"`
+	HostId           *string                           `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	Inputs           *string                           `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
+	Labels           map[string]*string                `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	OutputFolder     *string                           `json:"OutputFolder,omitempty" xml:"OutputFolder,omitempty"`
+	Outputs          *string                           `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
+	RequestId        *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RunId            *string                           `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	RunName          *string                           `json:"RunName,omitempty" xml:"RunName,omitempty"`
+	Source           *string                           `json:"Source,omitempty" xml:"Source,omitempty"`
+	StartTime        *string                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status           *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmissionId     *string                           `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
+	Timing           *string                           `json:"Timing,omitempty" xml:"Timing,omitempty"`
+	User             *string                           `json:"User,omitempty" xml:"User,omitempty"`
+	Workspace        *string                           `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s GetRunResponseBody) String() string {
@@ -3743,14 +3532,10 @@ func (s *GetRunResponseBody) SetWorkspace(v string) *GetRunResponseBody {
 }
 
 type GetRunResponseBodyExecuteOptions struct {
-	// 是否开启CallCaching
-	CallCaching *bool `json:"CallCaching,omitempty" xml:"CallCaching,omitempty"`
-	// 是否删除中间文件
-	DeleteIntermediateResults *bool `json:"DeleteIntermediateResults,omitempty" xml:"DeleteIntermediateResults,omitempty"`
-	// 失败模式
-	FailureMode *string `json:"FailureMode,omitempty" xml:"FailureMode,omitempty"`
-	// 相对输出路径
-	UseRelativeOutputPaths *bool `json:"UseRelativeOutputPaths,omitempty" xml:"UseRelativeOutputPaths,omitempty"`
+	CallCaching               *bool   `json:"CallCaching,omitempty" xml:"CallCaching,omitempty"`
+	DeleteIntermediateResults *bool   `json:"DeleteIntermediateResults,omitempty" xml:"DeleteIntermediateResults,omitempty"`
+	FailureMode               *string `json:"FailureMode,omitempty" xml:"FailureMode,omitempty"`
+	UseRelativeOutputPaths    *bool   `json:"UseRelativeOutputPaths,omitempty" xml:"UseRelativeOutputPaths,omitempty"`
 }
 
 func (s GetRunResponseBodyExecuteOptions) String() string {
@@ -3782,8 +3567,9 @@ func (s *GetRunResponseBodyExecuteOptions) SetUseRelativeOutputPaths(v bool) *Ge
 }
 
 type GetRunResponse struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRunResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRunResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetRunResponse) String() string {
@@ -3799,16 +3585,19 @@ func (s *GetRunResponse) SetHeaders(v map[string]*string) *GetRunResponse {
 	return s
 }
 
+func (s *GetRunResponse) SetStatusCode(v int32) *GetRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetRunResponse) SetBody(v *GetRunResponseBody) *GetRunResponse {
 	s.Body = v
 	return s
 }
 
 type GetSubmissionRequest struct {
-	// 投递ID
 	SubmissionId *string `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Workspace    *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s GetSubmissionRequest) String() string {
@@ -3830,11 +3619,8 @@ func (s *GetSubmissionRequest) SetWorkspace(v string) *GetSubmissionRequest {
 }
 
 type GetSubmissionResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 投递详情
+	HostId     *string                              `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Submission *GetSubmissionResponseBodySubmission `json:"Submission,omitempty" xml:"Submission,omitempty" type:"Struct"`
 }
 
@@ -3862,21 +3648,14 @@ func (s *GetSubmissionResponseBody) SetSubmission(v *GetSubmissionResponseBodySu
 }
 
 type GetSubmissionResponseBodySubmission struct {
-	// 提交时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 实体类型
-	EntityType *string                                      `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	RunStats   *GetSubmissionResponseBodySubmissionRunStats `json:"RunStats,omitempty" xml:"RunStats,omitempty" type:"Struct"`
-	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 提交ID
-	SubmissionId *string `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
-	// 提交ID
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	CreateTime   *string                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EndTime      *string                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EntityType   *string                                      `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	RunStats     *GetSubmissionResponseBodySubmissionRunStats `json:"RunStats,omitempty" xml:"RunStats,omitempty" type:"Struct"`
+	StartTime    *string                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmissionId *string                                      `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
+	Workspace    *string                                      `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s GetSubmissionResponseBodySubmission) String() string {
@@ -3928,19 +3707,12 @@ func (s *GetSubmissionResponseBodySubmission) SetWorkspace(v string) *GetSubmiss
 }
 
 type GetSubmissionResponseBodySubmissionRunStats struct {
-	// 已取消数量
-	Aborted *int64 `json:"Aborted,omitempty" xml:"Aborted,omitempty"`
-	// 取消中数量
-	Aborting *int64 `json:"Aborting,omitempty" xml:"Aborting,omitempty"`
-	// 已失败数量
-	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 等待中数量
-	Pending *int64 `json:"Pending,omitempty" xml:"Pending,omitempty"`
-	// 运行中数量
-	Running *int64 `json:"Running,omitempty" xml:"Running,omitempty"`
-	// 已提交数量
+	Aborted   *int64 `json:"Aborted,omitempty" xml:"Aborted,omitempty"`
+	Aborting  *int64 `json:"Aborting,omitempty" xml:"Aborting,omitempty"`
+	Failed    *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	Pending   *int64 `json:"Pending,omitempty" xml:"Pending,omitempty"`
+	Running   *int64 `json:"Running,omitempty" xml:"Running,omitempty"`
 	Submitted *int64 `json:"Submitted,omitempty" xml:"Submitted,omitempty"`
-	// 已成功数量
 	Succeeded *int64 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
 }
 
@@ -3988,8 +3760,9 @@ func (s *GetSubmissionResponseBodySubmissionRunStats) SetSucceeded(v int64) *Get
 }
 
 type GetSubmissionResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSubmissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSubmissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSubmissionResponse) String() string {
@@ -4005,16 +3778,19 @@ func (s *GetSubmissionResponse) SetHeaders(v map[string]*string) *GetSubmissionR
 	return s
 }
 
+func (s *GetSubmissionResponse) SetStatusCode(v int32) *GetSubmissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetSubmissionResponse) SetBody(v *GetSubmissionResponseBody) *GetSubmissionResponse {
 	s.Body = v
 	return s
 }
 
 type GetTemplateRequest struct {
-	// 应用模板名称
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Workspace    *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s GetTemplateRequest) String() string {
@@ -4036,34 +3812,20 @@ func (s *GetTemplateRequest) SetWorkspace(v string) *GetTemplateRequest {
 }
 
 type GetTemplateResponseBody struct {
-	// 应用的名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用的版本
-	AppRevision *string `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 应用简要描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 应用输入
-	InputsExpression []*GetTemplateResponseBodyInputsExpression `json:"InputsExpression,omitempty" xml:"InputsExpression,omitempty" type:"Repeated"`
-	// 应用标签
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 应用最后修改时间
-	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	// 应用的输出参数
+	AppName           *string                                     `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppRevision       *string                                     `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
+	CreateTime        *string                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description       *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	HostId            *string                                     `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	InputsExpression  []*GetTemplateResponseBodyInputsExpression  `json:"InputsExpression,omitempty" xml:"InputsExpression,omitempty" type:"Repeated"`
+	Labels            map[string]*string                          `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	LastModifiedTime  *string                                     `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
 	OutputsExpression []*GetTemplateResponseBodyOutputsExpression `json:"OutputsExpression,omitempty" xml:"OutputsExpression,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 实体类型
-	RootEntity *string `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
-	// 应用来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 应用模板名称
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	RequestId         *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RootEntity        *string                                     `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
+	Source            *string                                     `json:"Source,omitempty" xml:"Source,omitempty"`
+	TemplateName      *string                                     `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Workspace         *string                                     `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s GetTemplateResponseBody) String() string {
@@ -4145,19 +3907,12 @@ func (s *GetTemplateResponseBody) SetWorkspace(v string) *GetTemplateResponseBod
 }
 
 type GetTemplateResponseBodyInputsExpression struct {
-	// 帮助信息
-	Help *string `json:"Help,omitempty" xml:"Help,omitempty"`
-	// 是否必须参数
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// 步骤顺序
-	StepOrder *int64 `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
-	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// 变量名称
-	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
-	// 变量类型
-	VariableType *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
-	// 变量值
+	Help          *string `json:"Help,omitempty" xml:"Help,omitempty"`
+	Required      *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	StepOrder     *int64  `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
+	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	VariableName  *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
+	VariableType  *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
 	VariableValue *string `json:"VariableValue,omitempty" xml:"VariableValue,omitempty"`
 }
 
@@ -4205,19 +3960,12 @@ func (s *GetTemplateResponseBodyInputsExpression) SetVariableValue(v string) *Ge
 }
 
 type GetTemplateResponseBodyOutputsExpression struct {
-	// 帮助信息
-	Help *string `json:"Help,omitempty" xml:"Help,omitempty"`
-	// 是否必须参数
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// 步骤顺序
-	StepOrder *int64 `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
-	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// 变量名称
-	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
-	// 变量类型
-	VariableType *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
-	// 变量值
+	Help          *string `json:"Help,omitempty" xml:"Help,omitempty"`
+	Required      *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	StepOrder     *int64  `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
+	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	VariableName  *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
+	VariableType  *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
 	VariableValue *string `json:"VariableValue,omitempty" xml:"VariableValue,omitempty"`
 }
 
@@ -4265,8 +4013,9 @@ func (s *GetTemplateResponseBodyOutputsExpression) SetVariableValue(v string) *G
 }
 
 type GetTemplateResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTemplateResponse) String() string {
@@ -4282,13 +4031,17 @@ func (s *GetTemplateResponse) SetHeaders(v map[string]*string) *GetTemplateRespo
 	return s
 }
 
+func (s *GetTemplateResponse) SetStatusCode(v int32) *GetTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateResponse {
 	s.Body = v
 	return s
 }
 
 type GetWorkspaceRequest struct {
-	// 工作空间名字
 	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -4306,32 +4059,19 @@ func (s *GetWorkspaceRequest) SetWorkspace(v string) *GetWorkspaceRequest {
 }
 
 type GetWorkspaceResponseBody struct {
-	// 工作空间Bucket
-	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 工作空间简要描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 工作空间内作业生命周期
-	JobLifecycle *int32 `json:"JobLifecycle,omitempty" xml:"JobLifecycle,omitempty"`
-	// 工作空间标签
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 最后修改时间
-	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	// 地域ID
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 工作空间内默认的RAM服务角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 工作空间状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 工作空间内OSS上的工作路径
-	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	BucketName       *string            `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	CreateTime       *string            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description      *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	HostId           *string            `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	JobLifecycle     *int32             `json:"JobLifecycle,omitempty" xml:"JobLifecycle,omitempty"`
+	Labels           map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	LastModifiedTime *string            `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	Location         *string            `json:"Location,omitempty" xml:"Location,omitempty"`
+	RequestId        *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Role             *string            `json:"Role,omitempty" xml:"Role,omitempty"`
+	Status           *string            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Storage          *string            `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	Workspace        *string            `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s GetWorkspaceResponseBody) String() string {
@@ -4408,8 +4148,9 @@ func (s *GetWorkspaceResponseBody) SetWorkspace(v string) *GetWorkspaceResponseB
 }
 
 type GetWorkspaceResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetWorkspaceResponse) String() string {
@@ -4425,17 +4166,19 @@ func (s *GetWorkspaceResponse) SetHeaders(v map[string]*string) *GetWorkspaceRes
 	return s
 }
 
+func (s *GetWorkspaceResponse) SetStatusCode(v int32) *GetWorkspaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetWorkspaceResponse) SetBody(v *GetWorkspaceResponseBody) *GetWorkspaceResponse {
 	s.Body = v
 	return s
 }
 
 type ImportAppRequest struct {
-	// 安装后应用名
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 工作空间
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Source    *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -4463,15 +4206,10 @@ func (s *ImportAppRequest) SetWorkspace(v string) *ImportAppRequest {
 }
 
 type ImportAppResponseBody struct {
-	// 安装后应用名
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 主机 ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 区域名
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 请求 ID
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 工作空间
 	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
@@ -4509,8 +4247,9 @@ func (s *ImportAppResponseBody) SetWorkspace(v string) *ImportAppResponseBody {
 }
 
 type ImportAppResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ImportAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImportAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ImportAppResponse) String() string {
@@ -4526,22 +4265,22 @@ func (s *ImportAppResponse) SetHeaders(v map[string]*string) *ImportAppResponse 
 	return s
 }
 
+func (s *ImportAppResponse) SetStatusCode(v int32) *ImportAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ImportAppResponse) SetBody(v *ImportAppResponseBody) *ImportAppResponse {
 	s.Body = v
 	return s
 }
 
 type InstallGlobalAppRequest struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 安装后应用名
+	AppName          *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	InstalledAppName *string `json:"InstalledAppName,omitempty" xml:"InstalledAppName,omitempty"`
-	// 命名空间名称
-	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// 来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	NamespaceName    *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	Source           *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Workspace        *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s InstallGlobalAppRequest) String() string {
@@ -4578,16 +4317,11 @@ func (s *InstallGlobalAppRequest) SetWorkspace(v string) *InstallGlobalAppReques
 }
 
 type InstallGlobalAppResponseBody struct {
-	// 主机 ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 安装后应用名
+	HostId           *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	InstalledAppName *string `json:"InstalledAppName,omitempty" xml:"InstalledAppName,omitempty"`
-	// 区域名
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 请求 ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Workspace        *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s InstallGlobalAppResponseBody) String() string {
@@ -4624,8 +4358,9 @@ func (s *InstallGlobalAppResponseBody) SetWorkspace(v string) *InstallGlobalAppR
 }
 
 type InstallGlobalAppResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InstallGlobalAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InstallGlobalAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s InstallGlobalAppResponse) String() string {
@@ -4641,32 +4376,27 @@ func (s *InstallGlobalAppResponse) SetHeaders(v map[string]*string) *InstallGlob
 	return s
 }
 
+func (s *InstallGlobalAppResponse) SetStatusCode(v int32) *InstallGlobalAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *InstallGlobalAppResponse) SetBody(v *InstallGlobalAppResponseBody) *InstallGlobalAppResponse {
 	s.Body = v
 	return s
 }
 
 type ListAppsRequest struct {
-	// 应用类型
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// 是否逆序
-	IsReversed *bool `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
-	// Label 选择器
+	AppType       *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	IsReversed    *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
 	LabelSelector *string `json:"LabelSelector,omitempty" xml:"LabelSelector,omitempty"`
-	// 应用描述语言
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// 最大返回结果数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Next Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序依据
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 应用范围
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// 按照名字匹配
-	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy       *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Scope         *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	Search        *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	Workspace     *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListAppsRequest) String() string {
@@ -4728,18 +4458,12 @@ func (s *ListAppsRequest) SetWorkspace(v string) *ListAppsRequest {
 }
 
 type ListAppsResponseBody struct {
-	// 应用数组
-	Apps []*ListAppsResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 最大返回个数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Next Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回个数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Apps       []*ListAppsResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	HostId     *string                     `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults *int32                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAppsResponseBody) String() string {
@@ -4781,26 +4505,16 @@ func (s *ListAppsResponseBody) SetTotalCount(v int32) *ListAppsResponseBody {
 }
 
 type ListAppsResponseBodyApps struct {
-	// 默认版本
-	AppDefaultVersion *string `json:"AppDefaultVersion,omitempty" xml:"AppDefaultVersion,omitempty"`
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用类型
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 应用描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 标签
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 应用描述语言
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// 应用可见范围
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// 应用来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 应用所在工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	AppDefaultVersion *string            `json:"AppDefaultVersion,omitempty" xml:"AppDefaultVersion,omitempty"`
+	AppName           *string            `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType           *string            `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CreateTime        *string            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	Labels            map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Language          *string            `json:"Language,omitempty" xml:"Language,omitempty"`
+	Scope             *string            `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	Source            *string            `json:"Source,omitempty" xml:"Source,omitempty"`
+	Workspace         *string            `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListAppsResponseBodyApps) String() string {
@@ -4862,8 +4576,9 @@ func (s *ListAppsResponseBodyApps) SetWorkspace(v string) *ListAppsResponseBodyA
 }
 
 type ListAppsResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAppsResponse) String() string {
@@ -4879,24 +4594,23 @@ func (s *ListAppsResponse) SetHeaders(v map[string]*string) *ListAppsResponse {
 	return s
 }
 
+func (s *ListAppsResponse) SetStatusCode(v int32) *ListAppsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListAppsResponse) SetBody(v *ListAppsResponseBody) *ListAppsResponse {
 	s.Body = v
 	return s
 }
 
 type ListAuthorizedSoftwareRequest struct {
-	// 是否反转
-	IsReversed *bool `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
-	// 区域
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 分页数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 翻页Token用来标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序字段
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 软件名称、软件长名称中搜索的关键字
-	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	IsReversed *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
+	Location   *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Search     *string `json:"Search,omitempty" xml:"Search,omitempty"`
 }
 
 func (s ListAuthorizedSoftwareRequest) String() string {
@@ -4938,18 +4652,12 @@ func (s *ListAuthorizedSoftwareRequest) SetSearch(v string) *ListAuthorizedSoftw
 }
 
 type ListAuthorizedSoftwareResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 分页数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 翻页Token用来表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 软件信息
-	Softwares []*ListAuthorizedSoftwareResponseBodySoftwares `json:"Softwares,omitempty" xml:"Softwares,omitempty" type:"Repeated"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	HostId     *string                                        `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults *int32                                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Softwares  []*ListAuthorizedSoftwareResponseBodySoftwares `json:"Softwares,omitempty" xml:"Softwares,omitempty" type:"Repeated"`
+	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAuthorizedSoftwareResponseBody) String() string {
@@ -4991,28 +4699,17 @@ func (s *ListAuthorizedSoftwareResponseBody) SetTotalCount(v int32) *ListAuthori
 }
 
 type ListAuthorizedSoftwareResponseBodySoftwares struct {
-	// 帮助链接
-	HelpLink *string `json:"HelpLink,omitempty" xml:"HelpLink,omitempty"`
-	// 最后更新时间
-	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 软件可用区域
-	Locations []*string `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
-	// 限时免费说明
-	Promotion *string `json:"Promotion,omitempty" xml:"Promotion,omitempty"`
-	// 软件默认版本
-	SoftwareDefaultVersion *string `json:"SoftwareDefaultVersion,omitempty" xml:"SoftwareDefaultVersion,omitempty"`
-	// 软件描述
-	SoftwareDescription *string `json:"SoftwareDescription,omitempty" xml:"SoftwareDescription,omitempty"`
-	// 软件图标链接
-	SoftwareIcon *string `json:"SoftwareIcon,omitempty" xml:"SoftwareIcon,omitempty"`
-	// 软件使用费用
-	SoftwareLicenseFee *float32 `json:"SoftwareLicenseFee,omitempty" xml:"SoftwareLicenseFee,omitempty"`
-	// 软件长名称
-	SoftwareLongName *string `json:"SoftwareLongName,omitempty" xml:"SoftwareLongName,omitempty"`
-	// 软件名称
-	SoftwareName *string `json:"SoftwareName,omitempty" xml:"SoftwareName,omitempty"`
-	// 软件所有版本
-	SoftwareVersions []*string `json:"SoftwareVersions,omitempty" xml:"SoftwareVersions,omitempty" type:"Repeated"`
+	HelpLink               *string   `json:"HelpLink,omitempty" xml:"HelpLink,omitempty"`
+	LastModified           *string   `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	Locations              []*string `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
+	Promotion              *string   `json:"Promotion,omitempty" xml:"Promotion,omitempty"`
+	SoftwareDefaultVersion *string   `json:"SoftwareDefaultVersion,omitempty" xml:"SoftwareDefaultVersion,omitempty"`
+	SoftwareDescription    *string   `json:"SoftwareDescription,omitempty" xml:"SoftwareDescription,omitempty"`
+	SoftwareIcon           *string   `json:"SoftwareIcon,omitempty" xml:"SoftwareIcon,omitempty"`
+	SoftwareLicenseFee     *float32  `json:"SoftwareLicenseFee,omitempty" xml:"SoftwareLicenseFee,omitempty"`
+	SoftwareLongName       *string   `json:"SoftwareLongName,omitempty" xml:"SoftwareLongName,omitempty"`
+	SoftwareName           *string   `json:"SoftwareName,omitempty" xml:"SoftwareName,omitempty"`
+	SoftwareVersions       []*string `json:"SoftwareVersions,omitempty" xml:"SoftwareVersions,omitempty" type:"Repeated"`
 }
 
 func (s ListAuthorizedSoftwareResponseBodySoftwares) String() string {
@@ -5079,8 +4776,9 @@ func (s *ListAuthorizedSoftwareResponseBodySoftwares) SetSoftwareVersions(v []*s
 }
 
 type ListAuthorizedSoftwareResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAuthorizedSoftwareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAuthorizedSoftwareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAuthorizedSoftwareResponse) String() string {
@@ -5096,18 +4794,20 @@ func (s *ListAuthorizedSoftwareResponse) SetHeaders(v map[string]*string) *ListA
 	return s
 }
 
+func (s *ListAuthorizedSoftwareResponse) SetStatusCode(v int32) *ListAuthorizedSoftwareResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListAuthorizedSoftwareResponse) SetBody(v *ListAuthorizedSoftwareResponseBody) *ListAuthorizedSoftwareResponse {
 	s.Body = v
 	return s
 }
 
 type ListContainerImagesRequest struct {
-	// 区域
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 分页数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 翻页Token用来标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Location   *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListContainerImagesRequest) String() string {
@@ -5134,18 +4834,12 @@ func (s *ListContainerImagesRequest) SetNextToken(v string) *ListContainerImages
 }
 
 type ListContainerImagesResponseBody struct {
-	// 容器镜像
 	ContainerImages []*ListContainerImagesResponseBodyContainerImages `json:"ContainerImages,omitempty" xml:"ContainerImages,omitempty" type:"Repeated"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 分页数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 翻页Token用来表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 主机ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	HostId          *string                                           `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults      *int32                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount      *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListContainerImagesResponseBody) String() string {
@@ -5187,20 +4881,13 @@ func (s *ListContainerImagesResponseBody) SetTotalCount(v int32) *ListContainerI
 }
 
 type ListContainerImagesResponseBodyContainerImages struct {
-	// 容器镜像描述
-	ContainerImageDescription *string `json:"ContainerImageDescription,omitempty" xml:"ContainerImageDescription,omitempty"`
-	// 容器镜像名称
-	ContainerImageName *string `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
-	// 容器镜像名称空间名称
-	ContainerImageNamespace *string `json:"ContainerImageNamespace,omitempty" xml:"ContainerImageNamespace,omitempty"`
-	// 容器镜像版本
-	ContainerImageVersions []*string `json:"ContainerImageVersions,omitempty" xml:"ContainerImageVersions,omitempty" type:"Repeated"`
-	// 容器镜像仓库名称
-	ContainerRegistry *string `json:"ContainerRegistry,omitempty" xml:"ContainerRegistry,omitempty"`
-	// 最后更新时间
-	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 容器镜像所在区域
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	ContainerImageDescription *string   `json:"ContainerImageDescription,omitempty" xml:"ContainerImageDescription,omitempty"`
+	ContainerImageName        *string   `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
+	ContainerImageNamespace   *string   `json:"ContainerImageNamespace,omitempty" xml:"ContainerImageNamespace,omitempty"`
+	ContainerImageVersions    []*string `json:"ContainerImageVersions,omitempty" xml:"ContainerImageVersions,omitempty" type:"Repeated"`
+	ContainerRegistry         *string   `json:"ContainerRegistry,omitempty" xml:"ContainerRegistry,omitempty"`
+	LastModified              *string   `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	Location                  *string   `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
 func (s ListContainerImagesResponseBodyContainerImages) String() string {
@@ -5247,8 +4934,9 @@ func (s *ListContainerImagesResponseBodyContainerImages) SetLocation(v string) *
 }
 
 type ListContainerImagesResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListContainerImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListContainerImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListContainerImagesResponse) String() string {
@@ -5264,22 +4952,22 @@ func (s *ListContainerImagesResponse) SetHeaders(v map[string]*string) *ListCont
 	return s
 }
 
+func (s *ListContainerImagesResponse) SetStatusCode(v int32) *ListContainerImagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListContainerImagesResponse) SetBody(v *ListContainerImagesResponseBody) *ListContainerImagesResponse {
 	s.Body = v
 	return s
 }
 
 type ListEntitiesRequest struct {
-	// 是否逆序
-	IsReversed *bool `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
-	// 最大返回数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 起始查询位置
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序条件
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	IsReversed *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Workspace  *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListEntitiesRequest) String() string {
@@ -5316,18 +5004,12 @@ func (s *ListEntitiesRequest) SetWorkspace(v string) *ListEntitiesRequest {
 }
 
 type ListEntitiesResponseBody struct {
-	// 实体类型数组
-	Entities []*ListEntitiesResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求的最大结果数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 下次查询的起始Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回总个数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Entities   []*ListEntitiesResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
+	HostId     *string                             `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults *int32                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListEntitiesResponseBody) String() string {
@@ -5369,7 +5051,6 @@ func (s *ListEntitiesResponseBody) SetTotalCount(v int32) *ListEntitiesResponseB
 }
 
 type ListEntitiesResponseBodyEntities struct {
-	// 实体类型
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 }
 
@@ -5387,8 +5068,9 @@ func (s *ListEntitiesResponseBodyEntities) SetEntityType(v string) *ListEntities
 }
 
 type ListEntitiesResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListEntitiesResponse) String() string {
@@ -5404,26 +5086,24 @@ func (s *ListEntitiesResponse) SetHeaders(v map[string]*string) *ListEntitiesRes
 	return s
 }
 
+func (s *ListEntitiesResponse) SetStatusCode(v int32) *ListEntitiesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListEntitiesResponse) SetBody(v *ListEntitiesResponseBody) *ListEntitiesResponse {
 	s.Body = v
 	return s
 }
 
 type ListEntityItemsRequest struct {
-	// 实体类型
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 是否逆序
-	IsReversed *bool `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
-	// 最大返回数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 起始查询位置
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序条件
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 搜索条件
-	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	IsReversed *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Search     *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	Workspace  *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListEntityItemsRequest) String() string {
@@ -5470,18 +5150,12 @@ func (s *ListEntityItemsRequest) SetWorkspace(v string) *ListEntityItemsRequest 
 }
 
 type ListEntityItemsResponseBody struct {
-	// 表格数据元素数组
 	EntityItems []*ListEntityItemsResponseBodyEntityItems `json:"EntityItems,omitempty" xml:"EntityItems,omitempty" type:"Repeated"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求的最大结果数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 下次查询的起始Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回总个数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	HostId      *string                                   `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults  *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListEntityItemsResponseBody) String() string {
@@ -5523,10 +5197,8 @@ func (s *ListEntityItemsResponseBody) SetTotalCount(v int32) *ListEntityItemsRes
 }
 
 type ListEntityItemsResponseBodyEntityItems struct {
-	// 数据元素属性
 	EntityData map[string]*string `json:"EntityData,omitempty" xml:"EntityData,omitempty"`
-	// 表格数据元素名称
-	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	EntityName *string            `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 }
 
 func (s ListEntityItemsResponseBodyEntityItems) String() string {
@@ -5548,8 +5220,9 @@ func (s *ListEntityItemsResponseBodyEntityItems) SetEntityName(v string) *ListEn
 }
 
 type ListEntityItemsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListEntityItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEntityItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListEntityItemsResponse) String() string {
@@ -5565,30 +5238,26 @@ func (s *ListEntityItemsResponse) SetHeaders(v map[string]*string) *ListEntityIt
 	return s
 }
 
+func (s *ListEntityItemsResponse) SetStatusCode(v int32) *ListEntityItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListEntityItemsResponse) SetBody(v *ListEntityItemsResponseBody) *ListEntityItemsResponse {
 	s.Body = v
 	return s
 }
 
 type ListGlobalAppsRequest struct {
-	// 可见范围
-	AppScope *string `json:"AppScope,omitempty" xml:"AppScope,omitempty"`
-	// 分类
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// 是否倒序，默认倒序排列
-	IsReversed *bool `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
-	// 区域Id
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 分页数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 翻页Token用来标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序字段:AppName,LastModified,Used
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 模糊搜索字段：NamesapceName  AppName  Categories AppDescription
-	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
-	// 工具集
-	Toolkit *string `json:"Toolkit,omitempty" xml:"Toolkit,omitempty"`
+	AppScope   *string `json:"AppScope,omitempty" xml:"AppScope,omitempty"`
+	Category   *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	IsReversed *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
+	Location   *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Search     *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	Toolkit    *string `json:"Toolkit,omitempty" xml:"Toolkit,omitempty"`
 }
 
 func (s ListGlobalAppsRequest) String() string {
@@ -5645,18 +5314,12 @@ func (s *ListGlobalAppsRequest) SetToolkit(v string) *ListGlobalAppsRequest {
 }
 
 type ListGlobalAppsResponseBody struct {
-	// 公共应用集合
 	GlobalApps []*ListGlobalAppsResponseBodyGlobalApps `json:"GlobalApps,omitempty" xml:"GlobalApps,omitempty" type:"Repeated"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 分页数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 翻页Token用来表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	HostId     *string                                 `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults *int32                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListGlobalAppsResponseBody) String() string {
@@ -5698,28 +5361,17 @@ func (s *ListGlobalAppsResponseBody) SetTotalCount(v int64) *ListGlobalAppsRespo
 }
 
 type ListGlobalAppsResponseBodyGlobalApps struct {
-	// 应用默认版本
-	AppDefaultVersion *string `json:"AppDefaultVersion,omitempty" xml:"AppDefaultVersion,omitempty"`
-	// 应用描述
-	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	// 应用计费说明
-	AppFee *string `json:"AppFee,omitempty" xml:"AppFee,omitempty"`
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用权限
-	AppScope *string `json:"AppScope,omitempty" xml:"AppScope,omitempty"`
-	// 应用所属分类
-	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// 更新时间
-	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 应用支持的区域ids
-	Locations []*string `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
-	// 命名空间名称
-	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// 应用收藏置顶标记
-	Pinned *bool `json:"Pinned,omitempty" xml:"Pinned,omitempty"`
-	// 应用工具合集
-	Toolkit *string `json:"Toolkit,omitempty" xml:"Toolkit,omitempty"`
+	AppDefaultVersion *string   `json:"AppDefaultVersion,omitempty" xml:"AppDefaultVersion,omitempty"`
+	AppDescription    *string   `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	AppFee            *string   `json:"AppFee,omitempty" xml:"AppFee,omitempty"`
+	AppName           *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppScope          *string   `json:"AppScope,omitempty" xml:"AppScope,omitempty"`
+	Categories        []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	LastModified      *string   `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	Locations         []*string `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
+	NamespaceName     *string   `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	Pinned            *bool     `json:"Pinned,omitempty" xml:"Pinned,omitempty"`
+	Toolkit           *string   `json:"Toolkit,omitempty" xml:"Toolkit,omitempty"`
 }
 
 func (s ListGlobalAppsResponseBodyGlobalApps) String() string {
@@ -5786,8 +5438,9 @@ func (s *ListGlobalAppsResponseBodyGlobalApps) SetToolkit(v string) *ListGlobalA
 }
 
 type ListGlobalAppsResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGlobalAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGlobalAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListGlobalAppsResponse) String() string {
@@ -5803,24 +5456,23 @@ func (s *ListGlobalAppsResponse) SetHeaders(v map[string]*string) *ListGlobalApp
 	return s
 }
 
+func (s *ListGlobalAppsResponse) SetStatusCode(v int32) *ListGlobalAppsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListGlobalAppsResponse) SetBody(v *ListGlobalAppsResponseBody) *ListGlobalAppsResponse {
 	s.Body = v
 	return s
 }
 
 type ListPublicDatasetRequest struct {
-	// 排序是否反转
-	IsReversed *bool `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
-	// 分页数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 翻页Token用来标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序字段
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 名称、描述中搜索的关键字
-	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
-	// 公共数据集标签名
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	IsReversed *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Search     *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListPublicDatasetRequest) String() string {
@@ -5862,18 +5514,12 @@ func (s *ListPublicDatasetRequest) SetTag(v string) *ListPublicDatasetRequest {
 }
 
 type ListPublicDatasetResponseBody struct {
-	// 公共数据集信息
-	Datasets []*ListPublicDatasetResponseBodyDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 分页数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 翻页Token用来表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Datasets   []*ListPublicDatasetResponseBodyDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	HostId     *string                                  `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults *int32                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPublicDatasetResponseBody) String() string {
@@ -5915,26 +5561,16 @@ func (s *ListPublicDatasetResponseBody) SetTotalCount(v int32) *ListPublicDatase
 }
 
 type ListPublicDatasetResponseBodyDatasets struct {
-	// 关于公共数据集
-	About *string `json:"About,omitempty" xml:"About,omitempty"`
-	// 公共数据集访问要求
-	AccessRequirements *string `json:"AccessRequirements,omitempty" xml:"AccessRequirements,omitempty"`
-	// 公共数据集版权信息
-	Copyright *string `json:"Copyright,omitempty" xml:"Copyright,omitempty"`
-	// 公共数据集描述
-	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
-	// 公共数据集UUID
-	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// 公共数据集名称
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// 最后更新时间
-	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 公共数据集可用区域
-	Locations []*string `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
-	// 公共数据集标签
-	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// 公共数据集更新频率
-	UpdateFrequency *string `json:"UpdateFrequency,omitempty" xml:"UpdateFrequency,omitempty"`
+	About              *string   `json:"About,omitempty" xml:"About,omitempty"`
+	AccessRequirements *string   `json:"AccessRequirements,omitempty" xml:"AccessRequirements,omitempty"`
+	Copyright          *string   `json:"Copyright,omitempty" xml:"Copyright,omitempty"`
+	DatasetDescription *string   `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	DatasetId          *string   `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetName        *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	LastModified       *string   `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	Locations          []*string `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
+	Tags               []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UpdateFrequency    *string   `json:"UpdateFrequency,omitempty" xml:"UpdateFrequency,omitempty"`
 }
 
 func (s ListPublicDatasetResponseBodyDatasets) String() string {
@@ -5996,8 +5632,9 @@ func (s *ListPublicDatasetResponseBodyDatasets) SetUpdateFrequency(v string) *Li
 }
 
 type ListPublicDatasetResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListPublicDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPublicDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListPublicDatasetResponse) String() string {
@@ -6013,24 +5650,23 @@ func (s *ListPublicDatasetResponse) SetHeaders(v map[string]*string) *ListPublic
 	return s
 }
 
+func (s *ListPublicDatasetResponse) SetStatusCode(v int32) *ListPublicDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListPublicDatasetResponse) SetBody(v *ListPublicDatasetResponseBody) *ListPublicDatasetResponse {
 	s.Body = v
 	return s
 }
 
 type ListPublicDatasetEntitiesRequest struct {
-	// 数据集名称
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// 排序是否反转
-	IsReversed *bool `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
-	// 公共数据集所在区域
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 分页数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 翻页Token用来标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序字段
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	IsReversed  *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
+	Location    *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy     *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 }
 
 func (s ListPublicDatasetEntitiesRequest) String() string {
@@ -6072,20 +5708,13 @@ func (s *ListPublicDatasetEntitiesRequest) SetOrderBy(v string) *ListPublicDatas
 }
 
 type ListPublicDatasetEntitiesResponseBody struct {
-	// 公共数据集名称
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// 该实体包含的所有类型
-	Entities []*ListPublicDatasetEntitiesResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 分页数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 翻页Token用来表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	DatasetName *string                                          `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Entities    []*ListPublicDatasetEntitiesResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
+	HostId      *string                                          `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults  *int32                                           `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string                                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPublicDatasetEntitiesResponseBody) String() string {
@@ -6132,7 +5761,6 @@ func (s *ListPublicDatasetEntitiesResponseBody) SetTotalCount(v int32) *ListPubl
 }
 
 type ListPublicDatasetEntitiesResponseBodyEntities struct {
-	// 实体类型
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 }
 
@@ -6150,8 +5778,9 @@ func (s *ListPublicDatasetEntitiesResponseBodyEntities) SetEntityType(v string) 
 }
 
 type ListPublicDatasetEntitiesResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListPublicDatasetEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPublicDatasetEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListPublicDatasetEntitiesResponse) String() string {
@@ -6167,28 +5796,25 @@ func (s *ListPublicDatasetEntitiesResponse) SetHeaders(v map[string]*string) *Li
 	return s
 }
 
+func (s *ListPublicDatasetEntitiesResponse) SetStatusCode(v int32) *ListPublicDatasetEntitiesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListPublicDatasetEntitiesResponse) SetBody(v *ListPublicDatasetEntitiesResponseBody) *ListPublicDatasetEntitiesResponse {
 	s.Body = v
 	return s
 }
 
 type ListPublicDatasetEntityItemsRequest struct {
-	// 数据集名称
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 是否反转
-	IsReversed *bool `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
-	// 公共数据集所在区域
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// 分页数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 翻页Token用来标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序字段
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 实体名中搜索的关键字
-	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	EntityType  *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	IsReversed  *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
+	Location    *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy     *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Search      *string `json:"Search,omitempty" xml:"Search,omitempty"`
 }
 
 func (s ListPublicDatasetEntityItemsRequest) String() string {
@@ -6240,20 +5866,13 @@ func (s *ListPublicDatasetEntityItemsRequest) SetSearch(v string) *ListPublicDat
 }
 
 type ListPublicDatasetEntityItemsResponseBody struct {
-	// 公共数据集名称
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// 该实体包含的所有对象
+	DatasetName *string                                                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	EntityItems []*ListPublicDatasetEntityItemsResponseBodyEntityItems `json:"EntityItems,omitempty" xml:"EntityItems,omitempty" type:"Repeated"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 分页数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 翻页Token用来表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	HostId      *string                                                `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults  *int32                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId   *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPublicDatasetEntityItemsResponseBody) String() string {
@@ -6300,10 +5919,8 @@ func (s *ListPublicDatasetEntityItemsResponseBody) SetTotalCount(v int32) *ListP
 }
 
 type ListPublicDatasetEntityItemsResponseBodyEntityItems struct {
-	// 实体属性值
 	EntityData map[string]*string `json:"EntityData,omitempty" xml:"EntityData,omitempty"`
-	// 实体名称
-	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	EntityName *string            `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 }
 
 func (s ListPublicDatasetEntityItemsResponseBodyEntityItems) String() string {
@@ -6325,8 +5942,9 @@ func (s *ListPublicDatasetEntityItemsResponseBodyEntityItems) SetEntityName(v st
 }
 
 type ListPublicDatasetEntityItemsResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListPublicDatasetEntityItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPublicDatasetEntityItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListPublicDatasetEntityItemsResponse) String() string {
@@ -6342,22 +5960,22 @@ func (s *ListPublicDatasetEntityItemsResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *ListPublicDatasetEntityItemsResponse) SetStatusCode(v int32) *ListPublicDatasetEntityItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListPublicDatasetEntityItemsResponse) SetBody(v *ListPublicDatasetEntityItemsResponseBody) *ListPublicDatasetEntityItemsResponse {
 	s.Body = v
 	return s
 }
 
 type ListPublicDatasetTagsRequest struct {
-	// 是否反转
-	IsReversed *bool `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
-	// 分页数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 翻页Token用来标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序字段:TagName,LastModified
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 标签名中搜索的关键字
-	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	IsReversed *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Search     *string `json:"Search,omitempty" xml:"Search,omitempty"`
 }
 
 func (s ListPublicDatasetTagsRequest) String() string {
@@ -6394,18 +6012,12 @@ func (s *ListPublicDatasetTagsRequest) SetSearch(v string) *ListPublicDatasetTag
 }
 
 type ListPublicDatasetTagsResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 分页数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 翻页Token用来表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 公共数据集标签
-	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// 总记录数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	HostId     *string   `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tags       []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPublicDatasetTagsResponseBody) String() string {
@@ -6447,8 +6059,9 @@ func (s *ListPublicDatasetTagsResponseBody) SetTotalCount(v int32) *ListPublicDa
 }
 
 type ListPublicDatasetTagsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListPublicDatasetTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPublicDatasetTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListPublicDatasetTagsResponse) String() string {
@@ -6464,18 +6077,20 @@ func (s *ListPublicDatasetTagsResponse) SetHeaders(v map[string]*string) *ListPu
 	return s
 }
 
+func (s *ListPublicDatasetTagsResponse) SetStatusCode(v int32) *ListPublicDatasetTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListPublicDatasetTagsResponse) SetBody(v *ListPublicDatasetTagsResponseBody) *ListPublicDatasetTagsResponse {
 	s.Body = v
 	return s
 }
 
 type ListRegionsResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 基因分析平台产品可用地域列表。
-	Regions []*ListRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HostId    *string                           `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	Regions   []*ListRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListRegionsResponseBody) String() string {
@@ -6502,12 +6117,9 @@ func (s *ListRegionsResponseBody) SetRequestId(v string) *ListRegionsResponseBod
 }
 
 type ListRegionsResponseBodyRegions struct {
-	// 名称
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// 访问Endpoint
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// 区域ID
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListRegionsResponseBodyRegions) String() string {
@@ -6534,8 +6146,9 @@ func (s *ListRegionsResponseBodyRegions) SetRegionId(v string) *ListRegionsRespo
 }
 
 type ListRegionsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRegionsResponse) String() string {
@@ -6551,40 +6164,31 @@ func (s *ListRegionsResponse) SetHeaders(v map[string]*string) *ListRegionsRespo
 	return s
 }
 
+func (s *ListRegionsResponse) SetStatusCode(v int32) *ListRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsResponse {
 	s.Body = v
 	return s
 }
 
 type ListRunsRequest struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用版本
-	AppRevision *string `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
-	// 实体名称
-	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 是否返回所有任务条数
-	GetTotal *bool `json:"GetTotal,omitempty" xml:"GetTotal,omitempty"`
-	// 是否逆序
-	IsReversed *bool `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
-	// 标签选择
+	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppRevision   *string `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
+	EntityName    *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	EntityType    *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	GetTotal      *bool   `json:"GetTotal,omitempty" xml:"GetTotal,omitempty"`
+	IsReversed    *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
 	LabelSelector *string `json:"LabelSelector,omitempty" xml:"LabelSelector,omitempty"`
-	// 最大返回个数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询起始位置
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序依据
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 搜索ID
-	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 提交ID
-	SubmissionId *string `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy       *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Search        *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmissionId  *string `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
+	Workspace     *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListRunsRequest) String() string {
@@ -6666,18 +6270,12 @@ func (s *ListRunsRequest) SetWorkspace(v string) *ListRunsRequest {
 }
 
 type ListRunsResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 最大返回结果
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 下次查询Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务列表
-	Runs []*ListRunsResponseBodyRuns `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
-	// 返回个数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	HostId     *string                     `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults *int32                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Runs       []*ListRunsResponseBodyRuns `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
+	TotalCount *int32                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRunsResponseBody) String() string {
@@ -6719,43 +6317,25 @@ func (s *ListRunsResponseBody) SetTotalCount(v int32) *ListRunsResponseBody {
 }
 
 type ListRunsResponseBodyRuns struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用版本号
-	AppRevision *string `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
-	// 提交时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 默认运行时
-	DefaultRuntime *string `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
-	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 实体名称
-	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// 实体对象ID
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 运行目录
+	AppName          *string                                 `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppRevision      *string                                 `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
+	CreateTime       *string                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultRuntime   *string                                 `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
+	EndTime          *string                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EntityName       *string                                 `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	EntityType       *string                                 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	ExecuteDirectory *string                                 `json:"ExecuteDirectory,omitempty" xml:"ExecuteDirectory,omitempty"`
 	ExecuteOptions   *ListRunsResponseBodyRunsExecuteOptions `json:"ExecuteOptions,omitempty" xml:"ExecuteOptions,omitempty" type:"Struct"`
-	// 输入参数
-	Inputs *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
-	// 任务标签
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 区域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 任务ID
-	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	// 任务名称
-	RunName *string `json:"RunName,omitempty" xml:"RunName,omitempty"`
-	// 应用来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 提交ID
-	SubmissionId *string `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Inputs           *string                                 `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
+	Labels           map[string]*string                      `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	RegionId         *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RunId            *string                                 `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	RunName          *string                                 `json:"RunName,omitempty" xml:"RunName,omitempty"`
+	Source           *string                                 `json:"Source,omitempty" xml:"Source,omitempty"`
+	StartTime        *string                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status           *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmissionId     *string                                 `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
+	Workspace        *string                                 `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListRunsResponseBodyRuns) String() string {
@@ -6862,14 +6442,10 @@ func (s *ListRunsResponseBodyRuns) SetWorkspace(v string) *ListRunsResponseBodyR
 }
 
 type ListRunsResponseBodyRunsExecuteOptions struct {
-	// 是否开启CallCaching
-	CallCaching *bool `json:"CallCaching,omitempty" xml:"CallCaching,omitempty"`
-	// 是否删除中间文件
-	DeleteIntermediateResults *bool `json:"DeleteIntermediateResults,omitempty" xml:"DeleteIntermediateResults,omitempty"`
-	// 失败模式
-	FailureMode *string `json:"FailureMode,omitempty" xml:"FailureMode,omitempty"`
-	// 使用相对路径
-	UseRelativeOutputPaths *bool `json:"UseRelativeOutputPaths,omitempty" xml:"UseRelativeOutputPaths,omitempty"`
+	CallCaching               *bool   `json:"CallCaching,omitempty" xml:"CallCaching,omitempty"`
+	DeleteIntermediateResults *bool   `json:"DeleteIntermediateResults,omitempty" xml:"DeleteIntermediateResults,omitempty"`
+	FailureMode               *string `json:"FailureMode,omitempty" xml:"FailureMode,omitempty"`
+	UseRelativeOutputPaths    *bool   `json:"UseRelativeOutputPaths,omitempty" xml:"UseRelativeOutputPaths,omitempty"`
 }
 
 func (s ListRunsResponseBodyRunsExecuteOptions) String() string {
@@ -6901,8 +6477,9 @@ func (s *ListRunsResponseBodyRunsExecuteOptions) SetUseRelativeOutputPaths(v boo
 }
 
 type ListRunsResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRunsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRunsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRunsResponse) String() string {
@@ -6918,26 +6495,24 @@ func (s *ListRunsResponse) SetHeaders(v map[string]*string) *ListRunsResponse {
 	return s
 }
 
+func (s *ListRunsResponse) SetStatusCode(v int32) *ListRunsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListRunsResponse) SetBody(v *ListRunsResponseBody) *ListRunsResponse {
 	s.Body = v
 	return s
 }
 
 type ListSubmissionsRequest struct {
-	// 逆序
-	IsReversed *bool `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
-	// 最大返回数目
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Next Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序依据
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 搜索ID
-	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	IsReversed *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Search     *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Workspace  *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListSubmissionsRequest) String() string {
@@ -6984,18 +6559,12 @@ func (s *ListSubmissionsRequest) SetWorkspace(v string) *ListSubmissionsRequest 
 }
 
 type ListSubmissionsResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 最大返回结果
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 下次查询Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 投递列表
+	HostId      *string                                   `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults  *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Submissions []*ListSubmissionsResponseBodySubmissions `json:"Submissions,omitempty" xml:"Submissions,omitempty" type:"Repeated"`
-	// 返回个数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount  *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSubmissionsResponseBody) String() string {
@@ -7037,21 +6606,14 @@ func (s *ListSubmissionsResponseBody) SetTotalCount(v int32) *ListSubmissionsRes
 }
 
 type ListSubmissionsResponseBodySubmissions struct {
-	// 提交时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 实体类型
-	EntityType *string                                         `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	RunStats   *ListSubmissionsResponseBodySubmissionsRunStats `json:"RunStats,omitempty" xml:"RunStats,omitempty" type:"Struct"`
-	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 提交ID
-	SubmissionId *string `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
-	// 工作空间名字
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	CreateTime   *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EndTime      *string                                         `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EntityType   *string                                         `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	RunStats     *ListSubmissionsResponseBodySubmissionsRunStats `json:"RunStats,omitempty" xml:"RunStats,omitempty" type:"Struct"`
+	StartTime    *string                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmissionId *string                                         `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
+	Workspace    *string                                         `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListSubmissionsResponseBodySubmissions) String() string {
@@ -7103,19 +6665,12 @@ func (s *ListSubmissionsResponseBodySubmissions) SetWorkspace(v string) *ListSub
 }
 
 type ListSubmissionsResponseBodySubmissionsRunStats struct {
-	// 已取消数量
-	Aborted *int64 `json:"Aborted,omitempty" xml:"Aborted,omitempty"`
-	// 取消中数量
-	Aborting *int64 `json:"Aborting,omitempty" xml:"Aborting,omitempty"`
-	// 已失败数量
-	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// 等待中数量
-	Pending *int64 `json:"Pending,omitempty" xml:"Pending,omitempty"`
-	// 运行中数量
-	Running *int64 `json:"Running,omitempty" xml:"Running,omitempty"`
-	// 已提交数量
+	Aborted   *int64 `json:"Aborted,omitempty" xml:"Aborted,omitempty"`
+	Aborting  *int64 `json:"Aborting,omitempty" xml:"Aborting,omitempty"`
+	Failed    *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	Pending   *int64 `json:"Pending,omitempty" xml:"Pending,omitempty"`
+	Running   *int64 `json:"Running,omitempty" xml:"Running,omitempty"`
 	Submitted *int64 `json:"Submitted,omitempty" xml:"Submitted,omitempty"`
-	// 已成功数量
 	Succeeded *int64 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
 }
 
@@ -7163,8 +6718,9 @@ func (s *ListSubmissionsResponseBodySubmissionsRunStats) SetSucceeded(v int64) *
 }
 
 type ListSubmissionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSubmissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSubmissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSubmissionsResponse) String() string {
@@ -7180,26 +6736,24 @@ func (s *ListSubmissionsResponse) SetHeaders(v map[string]*string) *ListSubmissi
 	return s
 }
 
+func (s *ListSubmissionsResponse) SetStatusCode(v int32) *ListSubmissionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListSubmissionsResponse) SetBody(v *ListSubmissionsResponseBody) *ListSubmissionsResponse {
 	s.Body = v
 	return s
 }
 
 type ListTemplatesRequest struct {
-	// 是否逆序
-	IsReversed *bool `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
-	// Label 选择器
+	IsReversed    *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
 	LabelSelector *string `json:"LabelSelector,omitempty" xml:"LabelSelector,omitempty"`
-	// 最大返回结果数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 下次查询起始位置
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序依据
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 查找条件
-	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy       *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Search        *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	Workspace     *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListTemplatesRequest) String() string {
@@ -7246,18 +6800,12 @@ func (s *ListTemplatesRequest) SetWorkspace(v string) *ListTemplatesRequest {
 }
 
 type ListTemplatesResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 最大返回结果
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 下次查询Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 应用模板列表
-	Templates []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
-	// 返回个数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	HostId     *string                               `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Templates  []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTemplatesResponseBody) String() string {
@@ -7299,28 +6847,17 @@ func (s *ListTemplatesResponseBody) SetTotalCount(v int32) *ListTemplatesRespons
 }
 
 type ListTemplatesResponseBodyTemplates struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用版本
-	AppRevision *string `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 模板描述信息
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 应用输入
-	InputsExpression []*ListTemplatesResponseBodyTemplatesInputsExpression `json:"InputsExpression,omitempty" xml:"InputsExpression,omitempty" type:"Repeated"`
-	// 标签
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 最后修改时间
-	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	// 应用的输出参数
+	AppName           *string                                                `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppRevision       *string                                                `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
+	CreateTime        *string                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description       *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputsExpression  []*ListTemplatesResponseBodyTemplatesInputsExpression  `json:"InputsExpression,omitempty" xml:"InputsExpression,omitempty" type:"Repeated"`
+	Labels            map[string]*string                                     `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	LastModifiedTime  *string                                                `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
 	OutputsExpression []*ListTemplatesResponseBodyTemplatesOutputsExpression `json:"OutputsExpression,omitempty" xml:"OutputsExpression,omitempty" type:"Repeated"`
-	// 实体类型
-	RootEntity *string `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
-	// 应用模板名称
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	RootEntity        *string                                                `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
+	TemplateName      *string                                                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Workspace         *string                                                `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListTemplatesResponseBodyTemplates) String() string {
@@ -7387,19 +6924,12 @@ func (s *ListTemplatesResponseBodyTemplates) SetWorkspace(v string) *ListTemplat
 }
 
 type ListTemplatesResponseBodyTemplatesInputsExpression struct {
-	// 帮助信息
-	Help *string `json:"Help,omitempty" xml:"Help,omitempty"`
-	// 是否必须参数
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// 步骤顺序
-	StepOrder *int64 `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
-	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// 变量名称
-	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
-	// 变量类型
-	VariableType *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
-	// 变量值
+	Help          *string `json:"Help,omitempty" xml:"Help,omitempty"`
+	Required      *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	StepOrder     *int64  `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
+	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	VariableName  *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
+	VariableType  *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
 	VariableValue *string `json:"VariableValue,omitempty" xml:"VariableValue,omitempty"`
 }
 
@@ -7447,19 +6977,12 @@ func (s *ListTemplatesResponseBodyTemplatesInputsExpression) SetVariableValue(v 
 }
 
 type ListTemplatesResponseBodyTemplatesOutputsExpression struct {
-	// 帮助信息
-	Help *string `json:"Help,omitempty" xml:"Help,omitempty"`
-	// 是否必须参数
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// 步骤顺序
-	StepOrder *int64 `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
-	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// 变量名称
-	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
-	// 变量类型
-	VariableType *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
-	// 变量值
+	Help          *string `json:"Help,omitempty" xml:"Help,omitempty"`
+	Required      *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	StepOrder     *int64  `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
+	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	VariableName  *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
+	VariableType  *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
 	VariableValue *string `json:"VariableValue,omitempty" xml:"VariableValue,omitempty"`
 }
 
@@ -7507,8 +7030,9 @@ func (s *ListTemplatesResponseBodyTemplatesOutputsExpression) SetVariableValue(v
 }
 
 type ListTemplatesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTemplatesResponse) String() string {
@@ -7524,13 +7048,17 @@ func (s *ListTemplatesResponse) SetHeaders(v map[string]*string) *ListTemplatesR
 	return s
 }
 
+func (s *ListTemplatesResponse) SetStatusCode(v int32) *ListTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTemplatesResponse {
 	s.Body = v
 	return s
 }
 
 type ListUserActiveRunsRequest struct {
-	// 查询数量
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 }
 
@@ -7548,18 +7076,12 @@ func (s *ListUserActiveRunsRequest) SetMaxResults(v int32) *ListUserActiveRunsRe
 }
 
 type ListUserActiveRunsResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 最大返回结果
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 下次查询Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 任务列表
-	Runs []*ListUserActiveRunsResponseBodyRuns `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
-	// 返回个数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	HostId     *string                               `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Runs       []*ListUserActiveRunsResponseBodyRuns `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListUserActiveRunsResponseBody) String() string {
@@ -7601,43 +7123,25 @@ func (s *ListUserActiveRunsResponseBody) SetTotalCount(v int32) *ListUserActiveR
 }
 
 type ListUserActiveRunsResponseBodyRuns struct {
-	// 应用名称
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用版本号
-	AppRevision *string `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
-	// 提交时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 默认运行时
-	DefaultRuntime *string `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
-	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 实体名称
-	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// 实体对象ID
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 运行目录
+	AppName          *string                                           `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppRevision      *string                                           `json:"AppRevision,omitempty" xml:"AppRevision,omitempty"`
+	CreateTime       *string                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultRuntime   *string                                           `json:"DefaultRuntime,omitempty" xml:"DefaultRuntime,omitempty"`
+	EndTime          *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EntityName       *string                                           `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	EntityType       *string                                           `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	ExecuteDirectory *string                                           `json:"ExecuteDirectory,omitempty" xml:"ExecuteDirectory,omitempty"`
 	ExecuteOptions   *ListUserActiveRunsResponseBodyRunsExecuteOptions `json:"ExecuteOptions,omitempty" xml:"ExecuteOptions,omitempty" type:"Struct"`
-	// 输入参数
-	Inputs *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
-	// 任务标签
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 区域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 任务ID
-	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	// 任务名称
-	RunName *string `json:"RunName,omitempty" xml:"RunName,omitempty"`
-	// 应用来源
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 提交ID
-	SubmissionId *string `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Inputs           *string                                           `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
+	Labels           map[string]*string                                `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	RegionId         *string                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RunId            *string                                           `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	RunName          *string                                           `json:"RunName,omitempty" xml:"RunName,omitempty"`
+	Source           *string                                           `json:"Source,omitempty" xml:"Source,omitempty"`
+	StartTime        *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status           *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmissionId     *string                                           `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
+	Workspace        *string                                           `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListUserActiveRunsResponseBodyRuns) String() string {
@@ -7744,14 +7248,10 @@ func (s *ListUserActiveRunsResponseBodyRuns) SetWorkspace(v string) *ListUserAct
 }
 
 type ListUserActiveRunsResponseBodyRunsExecuteOptions struct {
-	// 是否开启CallCaching
-	CallCaching *bool `json:"CallCaching,omitempty" xml:"CallCaching,omitempty"`
-	// 是否删除中间文件
-	DeleteIntermediateResults *bool `json:"DeleteIntermediateResults,omitempty" xml:"DeleteIntermediateResults,omitempty"`
-	// 失败模式
-	FailureMode *string `json:"FailureMode,omitempty" xml:"FailureMode,omitempty"`
-	// 使用相对路径
-	UseRelativeOutputPaths *bool `json:"UseRelativeOutputPaths,omitempty" xml:"UseRelativeOutputPaths,omitempty"`
+	CallCaching               *bool   `json:"CallCaching,omitempty" xml:"CallCaching,omitempty"`
+	DeleteIntermediateResults *bool   `json:"DeleteIntermediateResults,omitempty" xml:"DeleteIntermediateResults,omitempty"`
+	FailureMode               *string `json:"FailureMode,omitempty" xml:"FailureMode,omitempty"`
+	UseRelativeOutputPaths    *bool   `json:"UseRelativeOutputPaths,omitempty" xml:"UseRelativeOutputPaths,omitempty"`
 }
 
 func (s ListUserActiveRunsResponseBodyRunsExecuteOptions) String() string {
@@ -7783,8 +7283,9 @@ func (s *ListUserActiveRunsResponseBodyRunsExecuteOptions) SetUseRelativeOutputP
 }
 
 type ListUserActiveRunsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUserActiveRunsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUserActiveRunsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListUserActiveRunsResponse) String() string {
@@ -7800,24 +7301,23 @@ func (s *ListUserActiveRunsResponse) SetHeaders(v map[string]*string) *ListUserA
 	return s
 }
 
+func (s *ListUserActiveRunsResponse) SetStatusCode(v int32) *ListUserActiveRunsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListUserActiveRunsResponse) SetBody(v *ListUserActiveRunsResponseBody) *ListUserActiveRunsResponse {
 	s.Body = v
 	return s
 }
 
 type ListWorkspacesRequest struct {
-	// 逆序
-	IsReversed *bool `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
-	// Label选择器
+	IsReversed    *bool   `json:"IsReversed,omitempty" xml:"IsReversed,omitempty"`
 	LabelSelector *string `json:"LabelSelector,omitempty" xml:"LabelSelector,omitempty"`
-	// 最多返回数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// NextToken
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 排序依据
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// 搜索字段
-	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy       *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	Search        *string `json:"Search,omitempty" xml:"Search,omitempty"`
 }
 
 func (s ListWorkspacesRequest) String() string {
@@ -7859,17 +7359,11 @@ func (s *ListWorkspacesRequest) SetSearch(v string) *ListWorkspacesRequest {
 }
 
 type ListWorkspacesResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 最大结果数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 下次查询的起始Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回总个数
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// 工作空间数组
+	HostId     *string                                 `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	MaxResults *int32                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Workspaces []*ListWorkspacesResponseBodyWorkspaces `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
 }
 
@@ -7912,28 +7406,17 @@ func (s *ListWorkspacesResponseBody) SetWorkspaces(v []*ListWorkspacesResponseBo
 }
 
 type ListWorkspacesResponseBodyWorkspaces struct {
-	// 工作空间Bucket名字
-	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 工作空间描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 任务生命周期
-	JobLifecycle *int32 `json:"JobLifecycle,omitempty" xml:"JobLifecycle,omitempty"`
-	// 工作空间标签
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 最后修改时间
-	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	// 地域ID
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// RAM Role
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 工作空间状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// OSS工作路径
-	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	BucketName       *string            `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	CreateTime       *string            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description      *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	JobLifecycle     *int32             `json:"JobLifecycle,omitempty" xml:"JobLifecycle,omitempty"`
+	Labels           map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	LastModifiedTime *string            `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	Location         *string            `json:"Location,omitempty" xml:"Location,omitempty"`
+	Role             *string            `json:"Role,omitempty" xml:"Role,omitempty"`
+	Status           *string            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Storage          *string            `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	Workspace        *string            `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ListWorkspacesResponseBodyWorkspaces) String() string {
@@ -8000,8 +7483,9 @@ func (s *ListWorkspacesResponseBodyWorkspaces) SetWorkspace(v string) *ListWorks
 }
 
 type ListWorkspacesResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListWorkspacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListWorkspacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListWorkspacesResponse) String() string {
@@ -8017,16 +7501,19 @@ func (s *ListWorkspacesResponse) SetHeaders(v map[string]*string) *ListWorkspace
 	return s
 }
 
+func (s *ListWorkspacesResponse) SetStatusCode(v int32) *ListWorkspacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListWorkspacesResponse) SetBody(v *ListWorkspacesResponseBody) *ListWorkspacesResponse {
 	s.Body = v
 	return s
 }
 
 type ResumeSubmissionRequest struct {
-	// 投递ID
 	SubmissionId *string `json:"SubmissionId,omitempty" xml:"SubmissionId,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Workspace    *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s ResumeSubmissionRequest) String() string {
@@ -8048,9 +7535,7 @@ func (s *ResumeSubmissionRequest) SetWorkspace(v string) *ResumeSubmissionReques
 }
 
 type ResumeSubmissionResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8073,8 +7558,9 @@ func (s *ResumeSubmissionResponseBody) SetRequestId(v string) *ResumeSubmissionR
 }
 
 type ResumeSubmissionResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ResumeSubmissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResumeSubmissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ResumeSubmissionResponse) String() string {
@@ -8090,6 +7576,11 @@ func (s *ResumeSubmissionResponse) SetHeaders(v map[string]*string) *ResumeSubmi
 	return s
 }
 
+func (s *ResumeSubmissionResponse) SetStatusCode(v int32) *ResumeSubmissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ResumeSubmissionResponse) SetBody(v *ResumeSubmissionResponseBody) *ResumeSubmissionResponse {
 	s.Body = v
 	return s
@@ -8097,10 +7588,8 @@ func (s *ResumeSubmissionResponse) SetBody(v *ResumeSubmissionResponseBody) *Res
 
 type UpdateEntityRequest struct {
 	EntityItems []*UpdateEntityRequestEntityItems `json:"EntityItems,omitempty" xml:"EntityItems,omitempty" type:"Repeated"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	EntityType  *string                           `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Workspace   *string                           `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s UpdateEntityRequest) String() string {
@@ -8128,8 +7617,7 @@ func (s *UpdateEntityRequest) SetWorkspace(v string) *UpdateEntityRequest {
 
 type UpdateEntityRequestEntityItems struct {
 	EntityData map[string]*string `json:"EntityData,omitempty" xml:"EntityData,omitempty"`
-	// 实体元素名称
-	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	EntityName *string            `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 }
 
 func (s UpdateEntityRequestEntityItems) String() string {
@@ -8152,10 +7640,8 @@ func (s *UpdateEntityRequestEntityItems) SetEntityName(v string) *UpdateEntityRe
 
 type UpdateEntityShrinkRequest struct {
 	EntityItemsShrink *string `json:"EntityItems,omitempty" xml:"EntityItems,omitempty"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	EntityType        *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Workspace         *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s UpdateEntityShrinkRequest) String() string {
@@ -8182,14 +7668,10 @@ func (s *UpdateEntityShrinkRequest) SetWorkspace(v string) *UpdateEntityShrinkRe
 }
 
 type UpdateEntityResponseBody struct {
-	// 实体类型
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	HostId     *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Workspace  *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s UpdateEntityResponseBody) String() string {
@@ -8221,8 +7703,9 @@ func (s *UpdateEntityResponseBody) SetWorkspace(v string) *UpdateEntityResponseB
 }
 
 type UpdateEntityResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateEntityResponse) String() string {
@@ -8238,6 +7721,11 @@ func (s *UpdateEntityResponse) SetHeaders(v map[string]*string) *UpdateEntityRes
 	return s
 }
 
+func (s *UpdateEntityResponse) SetStatusCode(v int32) *UpdateEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateEntityResponse) SetBody(v *UpdateEntityResponseBody) *UpdateEntityResponse {
 	s.Body = v
 	return s
@@ -8245,10 +7733,8 @@ func (s *UpdateEntityResponse) SetBody(v *UpdateEntityResponseBody) *UpdateEntit
 
 type UpdateEntityItemsRequest struct {
 	EntityItems []*UpdateEntityItemsRequestEntityItems `json:"EntityItems,omitempty" xml:"EntityItems,omitempty" type:"Repeated"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	EntityType  *string                                `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Workspace   *string                                `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s UpdateEntityItemsRequest) String() string {
@@ -8276,8 +7762,7 @@ func (s *UpdateEntityItemsRequest) SetWorkspace(v string) *UpdateEntityItemsRequ
 
 type UpdateEntityItemsRequestEntityItems struct {
 	EntityData map[string]*string `json:"EntityData,omitempty" xml:"EntityData,omitempty"`
-	// 实体元素名称
-	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	EntityName *string            `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 }
 
 func (s UpdateEntityItemsRequestEntityItems) String() string {
@@ -8300,10 +7785,8 @@ func (s *UpdateEntityItemsRequestEntityItems) SetEntityName(v string) *UpdateEnt
 
 type UpdateEntityItemsShrinkRequest struct {
 	EntityItemsShrink *string `json:"EntityItems,omitempty" xml:"EntityItems,omitempty"`
-	// 实体类型
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	EntityType        *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Workspace         *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s UpdateEntityItemsShrinkRequest) String() string {
@@ -8330,14 +7813,10 @@ func (s *UpdateEntityItemsShrinkRequest) SetWorkspace(v string) *UpdateEntityIte
 }
 
 type UpdateEntityItemsResponseBody struct {
-	// 实体类型
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	HostId     *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Workspace  *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s UpdateEntityItemsResponseBody) String() string {
@@ -8369,8 +7848,9 @@ func (s *UpdateEntityItemsResponseBody) SetWorkspace(v string) *UpdateEntityItem
 }
 
 type UpdateEntityItemsResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateEntityItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateEntityItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateEntityItemsResponse) String() string {
@@ -8386,26 +7866,24 @@ func (s *UpdateEntityItemsResponse) SetHeaders(v map[string]*string) *UpdateEnti
 	return s
 }
 
+func (s *UpdateEntityItemsResponse) SetStatusCode(v int32) *UpdateEntityItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateEntityItemsResponse) SetBody(v *UpdateEntityItemsResponseBody) *UpdateEntityItemsResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateTemplateRequest struct {
-	// 应用模板描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 应用的输入
-	InputsExpression []*UpdateTemplateRequestInputsExpression `json:"InputsExpression,omitempty" xml:"InputsExpression,omitempty" type:"Repeated"`
-	// 应用模板标签
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 应用的输出
+	Description       *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputsExpression  []*UpdateTemplateRequestInputsExpression  `json:"InputsExpression,omitempty" xml:"InputsExpression,omitempty" type:"Repeated"`
+	Labels            *string                                   `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	OutputsExpression []*UpdateTemplateRequestOutputsExpression `json:"OutputsExpression,omitempty" xml:"OutputsExpression,omitempty" type:"Repeated"`
-	// 实体类型
-	RootEntity *string `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
-	// 应用模板名称
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	RootEntity        *string                                   `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
+	TemplateName      *string                                   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Workspace         *string                                   `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s UpdateTemplateRequest) String() string {
@@ -8452,19 +7930,12 @@ func (s *UpdateTemplateRequest) SetWorkspace(v string) *UpdateTemplateRequest {
 }
 
 type UpdateTemplateRequestInputsExpression struct {
-	// 帮助信息
-	Help *string `json:"Help,omitempty" xml:"Help,omitempty"`
-	// 是否必填
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// 步骤顺序
-	StepOrder *int32 `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
-	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// 变量名
-	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
-	// 变量类型
-	VariableType *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
-	// 变量值
+	Help          *string `json:"Help,omitempty" xml:"Help,omitempty"`
+	Required      *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	StepOrder     *int32  `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
+	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	VariableName  *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
+	VariableType  *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
 	VariableValue *string `json:"VariableValue,omitempty" xml:"VariableValue,omitempty"`
 }
 
@@ -8512,19 +7983,12 @@ func (s *UpdateTemplateRequestInputsExpression) SetVariableValue(v string) *Upda
 }
 
 type UpdateTemplateRequestOutputsExpression struct {
-	// 帮助信息
-	Help *string `json:"Help,omitempty" xml:"Help,omitempty"`
-	// 是否必填
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// 步骤顺序
-	StepOrder *int32 `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
-	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// 变量名
-	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
-	// 变量类型
-	VariableType *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
-	// 变量值
+	Help          *string `json:"Help,omitempty" xml:"Help,omitempty"`
+	Required      *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	StepOrder     *int32  `json:"StepOrder,omitempty" xml:"StepOrder,omitempty"`
+	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	VariableName  *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
+	VariableType  *string `json:"VariableType,omitempty" xml:"VariableType,omitempty"`
 	VariableValue *string `json:"VariableValue,omitempty" xml:"VariableValue,omitempty"`
 }
 
@@ -8572,20 +8036,13 @@ func (s *UpdateTemplateRequestOutputsExpression) SetVariableValue(v string) *Upd
 }
 
 type UpdateTemplateShrinkRequest struct {
-	// 应用模板描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 应用的输入
-	InputsExpressionShrink *string `json:"InputsExpression,omitempty" xml:"InputsExpression,omitempty"`
-	// 应用模板标签
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 应用的输出
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputsExpressionShrink  *string `json:"InputsExpression,omitempty" xml:"InputsExpression,omitempty"`
+	Labels                  *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	OutputsExpressionShrink *string `json:"OutputsExpression,omitempty" xml:"OutputsExpression,omitempty"`
-	// 实体类型
-	RootEntity *string `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
-	// 应用模板名称
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	RootEntity              *string `json:"RootEntity,omitempty" xml:"RootEntity,omitempty"`
+	TemplateName            *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Workspace               *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s UpdateTemplateShrinkRequest) String() string {
@@ -8632,9 +8089,7 @@ func (s *UpdateTemplateShrinkRequest) SetWorkspace(v string) *UpdateTemplateShri
 }
 
 type UpdateTemplateResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8657,8 +8112,9 @@ func (s *UpdateTemplateResponseBody) SetRequestId(v string) *UpdateTemplateRespo
 }
 
 type UpdateTemplateResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateTemplateResponse) String() string {
@@ -8674,22 +8130,22 @@ func (s *UpdateTemplateResponse) SetHeaders(v map[string]*string) *UpdateTemplat
 	return s
 }
 
+func (s *UpdateTemplateResponse) SetStatusCode(v int32) *UpdateTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateTemplateResponse) SetBody(v *UpdateTemplateResponseBody) *UpdateTemplateResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateWorkspaceRequest struct {
-	// 工作空间描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 工作空间内任务生命周期
-	JobLifecycle *int32 `json:"JobLifecycle,omitempty" xml:"JobLifecycle,omitempty"`
-	// 工作空间标签
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// 工作空间内Ram角色
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// 工作空间名称
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	JobLifecycle *int32  `json:"JobLifecycle,omitempty" xml:"JobLifecycle,omitempty"`
+	Labels       *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Workspace    *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s UpdateWorkspaceRequest) String() string {
@@ -8726,9 +8182,7 @@ func (s *UpdateWorkspaceRequest) SetWorkspace(v string) *UpdateWorkspaceRequest 
 }
 
 type UpdateWorkspaceResponseBody struct {
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
+	HostId    *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8751,8 +8205,9 @@ func (s *UpdateWorkspaceResponseBody) SetRequestId(v string) *UpdateWorkspaceRes
 }
 
 type UpdateWorkspaceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateWorkspaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateWorkspaceResponse) String() string {
@@ -8768,16 +8223,19 @@ func (s *UpdateWorkspaceResponse) SetHeaders(v map[string]*string) *UpdateWorksp
 	return s
 }
 
+func (s *UpdateWorkspaceResponse) SetStatusCode(v int32) *UpdateWorkspaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateWorkspaceResponse) SetBody(v *UpdateWorkspaceResponseBody) *UpdateWorkspaceResponse {
 	s.Body = v
 	return s
 }
 
 type UploadEntityRequest struct {
-	// 表格文件地址
 	EntityCSVFile *string `json:"EntityCSVFile,omitempty" xml:"EntityCSVFile,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	Workspace     *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s UploadEntityRequest) String() string {
@@ -8799,14 +8257,10 @@ func (s *UploadEntityRequest) SetWorkspace(v string) *UploadEntityRequest {
 }
 
 type UploadEntityResponseBody struct {
-	// 表格名称
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 主机ID
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 工作空间
-	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
+	HostId     *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Workspace  *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s UploadEntityResponseBody) String() string {
@@ -8838,8 +8292,9 @@ func (s *UploadEntityResponseBody) SetWorkspace(v string) *UploadEntityResponseB
 }
 
 type UploadEntityResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UploadEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UploadEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UploadEntityResponse) String() string {
@@ -8852,6 +8307,11 @@ func (s UploadEntityResponse) GoString() string {
 
 func (s *UploadEntityResponse) SetHeaders(v map[string]*string) *UploadEntityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UploadEntityResponse) SetStatusCode(v int32) *UploadEntityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8913,11 +8373,16 @@ func (client *Client) AbortRunWithOptions(request *AbortRunRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RunId"] = request.RunId
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.RunId)) {
+		query["RunId"] = request.RunId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AbortRun"),
@@ -8927,7 +8392,7 @@ func (client *Client) AbortRunWithOptions(request *AbortRunRequest, runtime *uti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AbortRunResponse{}
@@ -8956,11 +8421,16 @@ func (client *Client) AbortSubmissionWithOptions(request *AbortSubmissionRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SubmissionId"] = request.SubmissionId
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.SubmissionId)) {
+		query["SubmissionId"] = request.SubmissionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AbortSubmission"),
@@ -8970,7 +8440,7 @@ func (client *Client) AbortSubmissionWithOptions(request *AbortSubmissionRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AbortSubmissionResponse{}
@@ -8999,12 +8469,20 @@ func (client *Client) CopyPublicEntityWithOptions(request *CopyPublicEntityReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Dataset"] = request.Dataset
-	query["EntityType"] = request.EntityType
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.Dataset)) {
+		query["Dataset"] = request.Dataset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CopyPublicEntity"),
@@ -9014,7 +8492,7 @@ func (client *Client) CopyPublicEntityWithOptions(request *CopyPublicEntityReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CopyPublicEntityResponse{}
@@ -9053,19 +8531,66 @@ func (client *Client) CreateAppWithOptions(tmpReq *CreateAppRequest, runtime *ut
 	}
 
 	query := map[string]interface{}{}
-	query["AppName"] = request.AppName
-	query["AppType"] = request.AppType
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["Labels"] = request.Labels
-	query["Language"] = request.Language
-	query["LanguageVersion"] = request.LanguageVersion
-	query["Path"] = request.Path
-	query["RevisionComment"] = request.RevisionComment
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		query["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LanguageVersion)) {
+		query["LanguageVersion"] = request.LanguageVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		query["Path"] = request.Path
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevisionComment)) {
+		query["RevisionComment"] = request.RevisionComment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigsShrink)) {
+		body["Configs"] = request.ConfigsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Definition)) {
+		body["Definition"] = request.Definition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DependenciesShrink)) {
+		body["Dependencies"] = request.DependenciesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Documentation)) {
+		body["Documentation"] = request.Documentation
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateApp"),
@@ -9110,12 +8635,26 @@ func (client *Client) CreateEntityWithOptions(tmpReq *CreateEntityRequest, runti
 	}
 
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["EntityType"] = request.EntityType
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntityItemsShrink)) {
+		body["EntityItems"] = request.EntityItemsShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateEntity"),
@@ -9160,21 +8699,60 @@ func (client *Client) CreateRunWithOptions(tmpReq *CreateRunRequest, runtime *ut
 	}
 
 	query := map[string]interface{}{}
-	query["AppName"] = request.AppName
-	query["AppRevision"] = request.AppRevision
-	query["ClientToken"] = request.ClientToken
-	query["DefaultRuntime"] = request.DefaultRuntime
-	query["Description"] = request.Description
-	query["ExecuteDirectory"] = request.ExecuteDirectory
-	query["ExecuteOptions"] = request.ExecuteOptionsShrink
-	query["Inputs"] = request.Inputs
-	query["Labels"] = request.Labels
-	query["OutputFolder"] = request.OutputFolder
-	query["RunName"] = request.RunName
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppRevision)) {
+		query["AppRevision"] = request.AppRevision
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultRuntime)) {
+		query["DefaultRuntime"] = request.DefaultRuntime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteDirectory)) {
+		query["ExecuteDirectory"] = request.ExecuteDirectory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteOptionsShrink)) {
+		query["ExecuteOptions"] = request.ExecuteOptionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Inputs)) {
+		query["Inputs"] = request.Inputs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputFolder)) {
+		query["OutputFolder"] = request.OutputFolder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunName)) {
+		query["RunName"] = request.RunName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRun"),
@@ -9184,7 +8762,7 @@ func (client *Client) CreateRunWithOptions(tmpReq *CreateRunRequest, runtime *ut
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRunResponse{}
@@ -9219,21 +8797,56 @@ func (client *Client) CreateSubmissionWithOptions(tmpReq *CreateSubmissionReques
 	}
 
 	query := map[string]interface{}{}
-	query["AppName"] = request.AppName
-	query["ClientToken"] = request.ClientToken
-	query["DefaultRuntime"] = request.DefaultRuntime
-	query["EntityNames"] = request.EntityNamesShrink
-	query["EntityType"] = request.EntityType
-	query["ExecuteDirectory"] = request.ExecuteDirectory
-	query["ExecuteOptions"] = request.ExecuteOptions
-	query["Inputs"] = request.Inputs
-	query["OutputFolder"] = request.OutputFolder
-	query["Outputs"] = request.Outputs
-	query["Revision"] = request.Revision
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultRuntime)) {
+		query["DefaultRuntime"] = request.DefaultRuntime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityNamesShrink)) {
+		query["EntityNames"] = request.EntityNamesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteDirectory)) {
+		query["ExecuteDirectory"] = request.ExecuteDirectory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteOptions)) {
+		query["ExecuteOptions"] = request.ExecuteOptions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Inputs)) {
+		query["Inputs"] = request.Inputs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputFolder)) {
+		query["OutputFolder"] = request.OutputFolder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Outputs)) {
+		query["Outputs"] = request.Outputs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Revision)) {
+		query["Revision"] = request.Revision
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateSubmission"),
@@ -9243,7 +8856,7 @@ func (client *Client) CreateSubmissionWithOptions(tmpReq *CreateSubmissionReques
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSubmissionResponse{}
@@ -9282,17 +8895,50 @@ func (client *Client) CreateTemplateWithOptions(tmpReq *CreateTemplateRequest, r
 	}
 
 	query := map[string]interface{}{}
-	query["AppName"] = request.AppName
-	query["AppRevision"] = request.AppRevision
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["Labels"] = request.Labels
-	query["RootEntity"] = request.RootEntity
-	query["TemplateName"] = request.TemplateName
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppRevision)) {
+		query["AppRevision"] = request.AppRevision
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RootEntity)) {
+		query["RootEntity"] = request.RootEntity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputsExpressionShrink)) {
+		body["InputsExpression"] = request.InputsExpressionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputsExpressionShrink)) {
+		body["OutputsExpression"] = request.OutputsExpressionShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateTemplate"),
@@ -9331,16 +8977,36 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["Description"] = request.Description
-	query["JobLifecycle"] = request.JobLifecycle
-	query["Labels"] = request.Labels
-	query["Role"] = request.Role
-	query["Storage"] = request.Storage
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobLifecycle)) {
+		query["JobLifecycle"] = request.JobLifecycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Storage)) {
+		query["Storage"] = request.Storage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateWorkspace"),
@@ -9350,7 +9016,7 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateWorkspaceResponse{}
@@ -9379,12 +9045,20 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppName"] = request.AppName
-	query["Revision"] = request.Revision
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Revision)) {
+		query["Revision"] = request.Revision
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteApp"),
@@ -9394,7 +9068,7 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAppResponse{}
@@ -9429,12 +9103,20 @@ func (client *Client) DeleteEntityItemsWithOptions(tmpReq *DeleteEntityItemsRequ
 	}
 
 	query := map[string]interface{}{}
-	query["EntityNames"] = request.EntityNamesShrink
-	query["EntityType"] = request.EntityType
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.EntityNamesShrink)) {
+		query["EntityNames"] = request.EntityNamesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteEntityItems"),
@@ -9444,7 +9126,7 @@ func (client *Client) DeleteEntityItemsWithOptions(tmpReq *DeleteEntityItemsRequ
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteEntityItemsResponse{}
@@ -9473,11 +9155,16 @@ func (client *Client) DeleteRunWithOptions(request *DeleteRunRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RunId"] = request.RunId
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.RunId)) {
+		query["RunId"] = request.RunId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteRun"),
@@ -9487,7 +9174,7 @@ func (client *Client) DeleteRunWithOptions(request *DeleteRunRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteRunResponse{}
@@ -9516,11 +9203,16 @@ func (client *Client) DeleteSubmissionWithOptions(request *DeleteSubmissionReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SubmissionId"] = request.SubmissionId
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.SubmissionId)) {
+		query["SubmissionId"] = request.SubmissionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSubmission"),
@@ -9530,7 +9222,7 @@ func (client *Client) DeleteSubmissionWithOptions(request *DeleteSubmissionReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSubmissionResponse{}
@@ -9559,11 +9251,16 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TemplateName"] = request.TemplateName
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteTemplate"),
@@ -9573,7 +9270,7 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTemplateResponse{}
@@ -9602,10 +9299,12 @@ func (client *Client) DeleteWorkspaceWithOptions(request *DeleteWorkspaceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteWorkspace"),
@@ -9615,7 +9314,7 @@ func (client *Client) DeleteWorkspaceWithOptions(request *DeleteWorkspaceRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteWorkspaceResponse{}
@@ -9650,12 +9349,20 @@ func (client *Client) DownloadEntityWithOptions(tmpReq *DownloadEntityRequest, r
 	}
 
 	query := map[string]interface{}{}
-	query["EntityNames"] = request.EntityNamesShrink
-	query["EntityType"] = request.EntityType
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.EntityNamesShrink)) {
+		query["EntityNames"] = request.EntityNamesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DownloadEntity"),
@@ -9665,7 +9372,7 @@ func (client *Client) DownloadEntityWithOptions(tmpReq *DownloadEntityRequest, r
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DownloadEntityResponse{}
@@ -9694,12 +9401,20 @@ func (client *Client) GetAppWithOptions(request *GetAppRequest, runtime *util.Ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppName"] = request.AppName
-	query["Revision"] = request.Revision
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Revision)) {
+		query["Revision"] = request.Revision
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetApp"),
@@ -9709,7 +9424,7 @@ func (client *Client) GetAppWithOptions(request *GetAppRequest, runtime *util.Ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAppResponse{}
@@ -9738,11 +9453,16 @@ func (client *Client) GetEntityWithOptions(request *GetEntityRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EntityType"] = request.EntityType
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetEntity"),
@@ -9752,7 +9472,7 @@ func (client *Client) GetEntityWithOptions(request *GetEntityRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetEntityResponse{}
@@ -9798,7 +9518,7 @@ func (client *Client) GetGlobalAppWithOptions(tmpReq *GetGlobalAppRequest, runti
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetGlobalAppResponse{}
@@ -9844,7 +9564,7 @@ func (client *Client) GetPublicDatasetWithOptions(tmpReq *GetPublicDatasetReques
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPublicDatasetResponse{}
@@ -9884,7 +9604,7 @@ func (client *Client) GetPublicDatasetEntityWithOptions(request *GetPublicDatase
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPublicDatasetEntityResponse{}
@@ -9924,7 +9644,7 @@ func (client *Client) GetRunWithOptions(request *GetRunRequest, runtime *util.Ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetRunResponse{}
@@ -9964,7 +9684,7 @@ func (client *Client) GetSubmissionWithOptions(request *GetSubmissionRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetSubmissionResponse{}
@@ -9993,11 +9713,16 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TemplateName"] = request.TemplateName
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTemplate"),
@@ -10007,7 +9732,7 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTemplateResponse{}
@@ -10036,10 +9761,12 @@ func (client *Client) GetWorkspaceWithOptions(request *GetWorkspaceRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetWorkspace"),
@@ -10049,7 +9776,7 @@ func (client *Client) GetWorkspaceWithOptions(request *GetWorkspaceRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetWorkspaceResponse{}
@@ -10078,12 +9805,20 @@ func (client *Client) ImportAppWithOptions(request *ImportAppRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppName"] = request.AppName
-	query["Source"] = request.Source
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ImportApp"),
@@ -10093,7 +9828,7 @@ func (client *Client) ImportAppWithOptions(request *ImportAppRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ImportAppResponse{}
@@ -10122,14 +9857,28 @@ func (client *Client) InstallGlobalAppWithOptions(request *InstallGlobalAppReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppName"] = request.AppName
-	query["InstalledAppName"] = request.InstalledAppName
-	query["NamespaceName"] = request.NamespaceName
-	query["Source"] = request.Source
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstalledAppName)) {
+		query["InstalledAppName"] = request.InstalledAppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("InstallGlobalApp"),
@@ -10139,7 +9888,7 @@ func (client *Client) InstallGlobalAppWithOptions(request *InstallGlobalAppReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &InstallGlobalAppResponse{}
@@ -10168,19 +9917,48 @@ func (client *Client) ListAppsWithOptions(request *ListAppsRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppType"] = request.AppType
-	query["IsReversed"] = request.IsReversed
-	query["LabelSelector"] = request.LabelSelector
-	query["Language"] = request.Language
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OrderBy"] = request.OrderBy
-	query["Scope"] = request.Scope
-	query["Search"] = request.Search
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		query["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsReversed)) {
+		query["IsReversed"] = request.IsReversed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelSelector)) {
+		query["LabelSelector"] = request.LabelSelector
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["Search"] = request.Search
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListApps"),
@@ -10190,7 +9968,7 @@ func (client *Client) ListAppsWithOptions(request *ListAppsRequest, runtime *uti
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAppsResponse{}
@@ -10230,7 +10008,7 @@ func (client *Client) ListAuthorizedSoftwareWithOptions(request *ListAuthorizedS
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAuthorizedSoftwareResponse{}
@@ -10270,7 +10048,7 @@ func (client *Client) ListContainerImagesWithOptions(request *ListContainerImage
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListContainerImagesResponse{}
@@ -10310,7 +10088,7 @@ func (client *Client) ListEntitiesWithOptions(request *ListEntitiesRequest, runt
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListEntitiesResponse{}
@@ -10339,16 +10117,36 @@ func (client *Client) ListEntityItemsWithOptions(request *ListEntityItemsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EntityType"] = request.EntityType
-	query["IsReversed"] = request.IsReversed
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OrderBy"] = request.OrderBy
-	query["Search"] = request.Search
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsReversed)) {
+		query["IsReversed"] = request.IsReversed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["Search"] = request.Search
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListEntityItems"),
@@ -10358,7 +10156,7 @@ func (client *Client) ListEntityItemsWithOptions(request *ListEntityItemsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListEntityItemsResponse{}
@@ -10398,7 +10196,7 @@ func (client *Client) ListGlobalAppsWithOptions(request *ListGlobalAppsRequest, 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListGlobalAppsResponse{}
@@ -10438,7 +10236,7 @@ func (client *Client) ListPublicDatasetWithOptions(request *ListPublicDatasetReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListPublicDatasetResponse{}
@@ -10478,7 +10276,7 @@ func (client *Client) ListPublicDatasetEntitiesWithOptions(request *ListPublicDa
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListPublicDatasetEntitiesResponse{}
@@ -10518,7 +10316,7 @@ func (client *Client) ListPublicDatasetEntityItemsWithOptions(request *ListPubli
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListPublicDatasetEntityItemsResponse{}
@@ -10558,7 +10356,7 @@ func (client *Client) ListPublicDatasetTagsWithOptions(request *ListPublicDatase
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListPublicDatasetTagsResponse{}
@@ -10591,7 +10389,7 @@ func (client *Client) ListRegionsWithOptions(runtime *util.RuntimeOptions) (_res
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRegionsResponse{}
@@ -10631,7 +10429,7 @@ func (client *Client) ListRunsWithOptions(request *ListRunsRequest, runtime *uti
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRunsResponse{}
@@ -10671,7 +10469,7 @@ func (client *Client) ListSubmissionsWithOptions(request *ListSubmissionsRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSubmissionsResponse{}
@@ -10700,16 +10498,36 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["IsReversed"] = request.IsReversed
-	query["LabelSelector"] = request.LabelSelector
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
-	query["OrderBy"] = request.OrderBy
-	query["Search"] = request.Search
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.IsReversed)) {
+		query["IsReversed"] = request.IsReversed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelSelector)) {
+		query["LabelSelector"] = request.LabelSelector
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["Search"] = request.Search
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTemplates"),
@@ -10719,7 +10537,7 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTemplatesResponse{}
@@ -10759,7 +10577,7 @@ func (client *Client) ListUserActiveRunsWithOptions(request *ListUserActiveRunsR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListUserActiveRunsResponse{}
@@ -10799,7 +10617,7 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListWorkspacesResponse{}
@@ -10828,11 +10646,16 @@ func (client *Client) ResumeSubmissionWithOptions(request *ResumeSubmissionReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SubmissionId"] = request.SubmissionId
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.SubmissionId)) {
+		query["SubmissionId"] = request.SubmissionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ResumeSubmission"),
@@ -10842,7 +10665,7 @@ func (client *Client) ResumeSubmissionWithOptions(request *ResumeSubmissionReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ResumeSubmissionResponse{}
@@ -10877,11 +10700,22 @@ func (client *Client) UpdateEntityWithOptions(tmpReq *UpdateEntityRequest, runti
 	}
 
 	query := map[string]interface{}{}
-	query["EntityType"] = request.EntityType
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntityItemsShrink)) {
+		body["EntityItems"] = request.EntityItemsShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateEntity"),
@@ -10926,11 +10760,22 @@ func (client *Client) UpdateEntityItemsWithOptions(tmpReq *UpdateEntityItemsRequ
 	}
 
 	query := map[string]interface{}{}
-	query["EntityType"] = request.EntityType
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntityItemsShrink)) {
+		body["EntityItems"] = request.EntityItemsShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateEntityItems"),
@@ -10979,14 +10824,38 @@ func (client *Client) UpdateTemplateWithOptions(tmpReq *UpdateTemplateRequest, r
 	}
 
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["Labels"] = request.Labels
-	query["RootEntity"] = request.RootEntity
-	query["TemplateName"] = request.TemplateName
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RootEntity)) {
+		query["RootEntity"] = request.RootEntity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputsExpressionShrink)) {
+		body["InputsExpression"] = request.InputsExpressionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputsExpressionShrink)) {
+		body["OutputsExpression"] = request.OutputsExpressionShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTemplate"),
@@ -11025,14 +10894,28 @@ func (client *Client) UpdateWorkspaceWithOptions(request *UpdateWorkspaceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["JobLifecycle"] = request.JobLifecycle
-	query["Labels"] = request.Labels
-	query["Role"] = request.Role
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobLifecycle)) {
+		query["JobLifecycle"] = request.JobLifecycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateWorkspace"),
@@ -11042,7 +10925,7 @@ func (client *Client) UpdateWorkspaceWithOptions(request *UpdateWorkspaceRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateWorkspaceResponse{}
@@ -11071,11 +10954,16 @@ func (client *Client) UploadEntityWithOptions(request *UploadEntityRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EntityCSVFile"] = request.EntityCSVFile
-	query["Workspace"] = request.Workspace
+	if !tea.BoolValue(util.IsUnset(request.EntityCSVFile)) {
+		query["EntityCSVFile"] = request.EntityCSVFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Workspace)) {
+		query["Workspace"] = request.Workspace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UploadEntity"),
@@ -11085,7 +10973,7 @@ func (client *Client) UploadEntityWithOptions(request *UploadEntityRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UploadEntityResponse{}
