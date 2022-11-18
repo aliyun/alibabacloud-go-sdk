@@ -10504,11 +10504,11 @@ func (client *Client) GetVideoPreviewPlayInfoWithOptions(request *GetVideoPrevie
 	return _result, _err
 }
 
-func (client *Client) GetVideoPreviewPlayMeta(domainId *string, request *GetVideoPreviewPlayMetaRequest) (_result *GetVideoPreviewPlayMetaResponse, _err error) {
+func (client *Client) GetVideoPreviewPlayMeta(request *GetVideoPreviewPlayMetaRequest) (_result *GetVideoPreviewPlayMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetVideoPreviewPlayMetaResponse{}
-	_body, _err := client.GetVideoPreviewPlayMetaWithOptions(domainId, request, headers, runtime)
+	_body, _err := client.GetVideoPreviewPlayMetaWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10516,13 +10516,11 @@ func (client *Client) GetVideoPreviewPlayMeta(domainId *string, request *GetVide
 	return _result, _err
 }
 
-func (client *Client) GetVideoPreviewPlayMetaWithOptions(domainId *string, request *GetVideoPreviewPlayMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetVideoPreviewPlayMetaResponse, _err error) {
+func (client *Client) GetVideoPreviewPlayMetaWithOptions(request *GetVideoPreviewPlayMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetVideoPreviewPlayMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	hostMap := make(map[string]*string)
-	hostMap["domain_id"] = domainId
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Category)) {
 		body["category"] = request.Category
@@ -10541,7 +10539,6 @@ func (client *Client) GetVideoPreviewPlayMetaWithOptions(domainId *string, reque
 	}
 
 	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
