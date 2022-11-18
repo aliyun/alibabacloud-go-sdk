@@ -41,8 +41,8 @@ func (s *ChangeSkyRequest) SetReplaceImageURL(v string) *ChangeSkyRequest {
 }
 
 type ChangeSkyAdvanceRequest struct {
-	ImageURLObject  io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	ReplaceImageURL *string   `json:"ReplaceImageURL,omitempty" xml:"ReplaceImageURL,omitempty"`
+	ImageURLObject        io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	ReplaceImageURLObject io.Reader `json:"ReplaceImageURL,omitempty" xml:"ReplaceImageURL,omitempty"`
 }
 
 func (s ChangeSkyAdvanceRequest) String() string {
@@ -58,8 +58,8 @@ func (s *ChangeSkyAdvanceRequest) SetImageURLObject(v io.Reader) *ChangeSkyAdvan
 	return s
 }
 
-func (s *ChangeSkyAdvanceRequest) SetReplaceImageURL(v string) *ChangeSkyAdvanceRequest {
-	s.ReplaceImageURL = &v
+func (s *ChangeSkyAdvanceRequest) SetReplaceImageURLObject(v io.Reader) *ChangeSkyAdvanceRequest {
+	s.ReplaceImageURLObject = v
 	return s
 }
 
@@ -2808,6 +2808,43 @@ func (client *Client) ChangeSkyAdvance(request *ChangeSkyAdvanceRequest, runtime
 			return _result, _err
 		}
 		changeSkyReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplaceImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ReplaceImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		changeSkyReq.ReplaceImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
 	}
 
 	changeSkyResp, _err := client.ChangeSkyWithOptions(changeSkyReq, runtime)
